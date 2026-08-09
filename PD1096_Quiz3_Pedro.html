@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PD 1096 — Quiz 3 Answer Key</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#f3efe6;
+    --bg-deep:#121110;
+    --bg-panel:#1c1a17;
+    --yellow:#ffc23c;
+    --yellow-bright:#ffd873;
+    --orange:#ff6a2b;
+    --steel:#8a9099;
+    --good:#5fb178;
+    --bad:#e2554a;
+    --line: rgba(255,194,60,0.22);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(135deg, rgba(255,194,60,0.035) 0px, rgba(255,194,60,0.035) 14px, transparent 14px, transparent 28px),
+      radial-gradient(ellipse at 10% 0%, #232019 0%, transparent 55%),
+      radial-gradient(ellipse at 95% 100%, #201d18 0%, transparent 50%),
+      var(--bg-deep);
+    color:var(--ink);
+    font-family:'Barlow', sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:32px 16px 64px;
+  }
+  .wrap{width:100%; max-width:720px;}
+
+  .hazard-bar{
+    height:8px;
+    background: repeating-linear-gradient(135deg, var(--yellow) 0px, var(--yellow) 14px, #1a1712 14px, #1a1712 28px);
+    border-radius:3px;
+    margin-bottom:20px;
+  }
+
+  .masthead{
+    text-align:center;
+    margin-bottom:18px;
+  }
+  .masthead .eyebrow{
+    font-family:'Space Mono', monospace;
+    letter-spacing:0.22em;
+    font-size:11px;
+    text-transform:uppercase;
+    color:var(--orange);
+    opacity:0.95;
+  }
+  .masthead h1{
+    font-family:'Archivo Black', sans-serif;
+    font-weight:400;
+    font-size:29px;
+    margin:8px 0 4px;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+    text-transform:uppercase;
+  }
+  .masthead .sub{
+    font-style:italic;
+    color:var(--steel);
+    font-size:14px;
+  }
+
+  /* ===== persistent toolbar ===== */
+  .toolbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    padding:10px 14px;
+    margin-bottom:16px;
+    background: rgba(255,194,60,0.04);
+    border:1px solid var(--line);
+    border-radius:4px;
+    font-size:13px;
+  }
+  .toolbar-stats{
+    display:flex;
+    gap:16px;
+    letter-spacing:0.04em;
+  }
+  .toolbar-stats .stat-label{
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    font-size:10px;
+    letter-spacing:0.1em;
+    color:var(--steel);
+    display:block;
+  }
+  .toolbar-stats .stat-value{
+    font-family:'Archivo Black', sans-serif;
+    font-weight:400;
+    font-size:18px;
+  }
+  .toolbar-stats .score-val{ color: var(--yellow-bright); }
+  .toolbar-stats .mistake-val{ color: var(--bad); }
+
+  .toolbar-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .order-toggle{
+    display:flex;
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .order-toggle button{
+    background:none;
+    border:none;
+    color:#c9c2b3;
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    padding:6px 10px;
+    cursor:pointer;
+    letter-spacing:0.03em;
+  }
+  .order-toggle button.active{
+    background: var(--yellow);
+    color:#1a1712;
+    font-weight:700;
+  }
+  .toolbar-restart{
+    background:none;
+    border:1px solid var(--orange);
+    color:var(--orange);
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    padding:6px 12px;
+    border-radius:4px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .toolbar-restart:hover{ background: rgba(255,106,43,0.12); }
+
+  /* progress: ruler ticks */
+  .tesserae{
+    display:flex;
+    gap:3px;
+    margin:4px 0 8px;
+  }
+  .tess{
+    flex:1;
+    height:6px;
+    background: rgba(255,194,60,0.14);
+    border-radius:1px;
+  }
+  .tess.done{ background: var(--yellow); }
+  .tess.wrong-tess{ background: var(--bad); }
+  .tess.current{ background: var(--yellow-bright); box-shadow:0 0 6px var(--yellow-bright); }
+  .progress-label{
+    display:flex; justify-content:space-between;
+    font-family:'Space Mono', monospace;
+    font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--steel); margin-bottom:18px;
+  }
+
+  /* hazard-plate card */
+  .card{
+    position:relative;
+    background: linear-gradient(180deg, var(--bg-panel), #17140f);
+    border:1px solid var(--line);
+    border-left:5px solid var(--yellow);
+    border-radius: 4px;
+    padding:34px 32px 32px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.55), inset 0 0 40px rgba(255,194,60,0.03);
+  }
+  .section-tag{
+    display:inline-block;
+    font-family:'Space Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:#1a1712;
+    background: var(--yellow);
+    padding:4px 12px;
+    border-radius:2px;
+    margin-bottom:16px;
+    font-weight:700;
+  }
+  .reviewing-tag{
+    display:inline-block;
+    font-family:'Space Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--orange);
+    border:1px solid var(--orange);
+    padding:3px 10px;
+    border-radius:2px;
+    margin-bottom:16px;
+    margin-left:8px;
+  }
+  .qtext{
+    font-family:'Barlow', sans-serif;
+    font-weight:600;
+    font-size:21px;
+    line-height:1.4;
+    margin:0 0 22px;
+    color:var(--ink);
+  }
+  .options{ display:flex; flex-direction:column; gap:10px; }
+  .opt{
+    text-align:left;
+    background: rgba(255,194,60,0.03);
+    border:1px solid rgba(255,194,60,0.2);
+    color:var(--ink);
+    font-family:'Barlow', sans-serif;
+    font-size:16px;
+    padding:13px 16px;
+    border-radius:5px;
+    cursor:pointer;
+    transition: border-color .15s ease, background .15s ease, transform .1s ease;
+    display:flex; gap:12px; align-items:flex-start;
+  }
+  .opt:hover:not(.locked){ border-color:var(--yellow-bright); background: rgba(255,194,60,0.09); }
+  .opt .letter{
+    font-family:'Space Mono', monospace;
+    font-weight:700; color:var(--yellow-bright);
+    min-width:18px;
+  }
+  .opt.correct{ border-color:var(--good); background: rgba(95,177,120,0.16); }
+  .opt.incorrect{ border-color:var(--bad); background: rgba(226,85,74,0.16); }
+  .opt.locked{ cursor:default; }
+  .opt.dim{ opacity:0.55; }
+
+  .feedback{
+    margin-top:18px;
+    padding:14px 16px;
+    border-radius:5px;
+    font-size:14.5px;
+    line-height:1.55;
+    display:none;
+  }
+  .feedback.show{ display:block; }
+  .feedback.right{ background: rgba(95,177,120,0.12); border:1px solid rgba(95,177,120,0.4); }
+  .feedback.wrong{ background: rgba(226,85,74,0.12); border:1px solid rgba(226,85,74,0.4); }
+  .feedback b{ color: var(--yellow-bright); }
+  .feedback .ref{
+    display:block;
+    margin-top:10px;
+    font-family:'Space Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--orange);
+  }
+  .feedback .note{ display:block; margin-top:6px; color:#c9c2b3; font-style:italic; }
+
+  .controls{
+    display:flex; justify-content:space-between; align-items:center; margin-top:22px;
+  }
+  .nav-arrows{ display:flex; gap:10px; }
+  .arrow-btn{
+    font-family:'Space Mono', monospace;
+    font-size:13px;
+    background:none;
+    color:var(--yellow-bright);
+    border:1px solid var(--yellow);
+    padding:9px 16px;
+    border-radius:4px;
+    cursor:pointer;
+    display:flex; align-items:center; gap:6px;
+  }
+  .arrow-btn:hover:not(:disabled){ background: rgba(255,194,60,0.12); }
+  .arrow-btn:disabled{ opacity:0.28; cursor:default; }
+  .arrow-btn.primary{
+    background: var(--yellow);
+    color:#1a1712;
+    font-weight:700;
+    border-color:var(--yellow);
+  }
+  .arrow-btn.primary:hover:not(:disabled){ background: var(--yellow-bright); }
+
+  /* results screen */
+  .results{ display:none; text-align:center; }
+  .results.show{ display:block; }
+  .results h2{
+    font-family:'Archivo Black', sans-serif;
+    font-weight:400;
+    font-size:29px; margin-bottom:6px;
+    text-transform:uppercase;
+  }
+  .score-big{
+    font-family:'Archivo Black', sans-serif;
+    font-weight:400;
+    font-size:56px;
+    color:var(--yellow-bright);
+    margin:14px 0;
+  }
+  .results .breakdown{
+    text-align:left;
+    margin-top:26px;
+    font-size:14.5px;
+  }
+  .breakdown-row{
+    display:flex; justify-content:space-between;
+    padding:8px 0;
+    border-bottom:1px solid rgba(255,194,60,0.14);
+  }
+  .result-btns{
+    display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+    margin-top:26px;
+  }
+  .restart-btn{
+    background:none;
+    border:1px solid var(--yellow);
+    color:var(--yellow-bright);
+    padding:10px 24px;
+    border-radius:4px;
+    font-family:'Space Mono', monospace;
+    font-size:13px;
+    cursor:pointer;
+  }
+  .restart-btn:hover{ background: rgba(255,194,60,0.1); }
+  .restart-btn.primary{
+    background: var(--yellow);
+    color:#1a1712;
+    border-color:var(--yellow);
+    font-weight:700;
+  }
+  .restart-btn.primary:hover{ background: var(--yellow-bright); }
+
+  .weak-spots{
+    text-align:left;
+    margin-top:30px;
+    padding:16px 18px;
+    border:1px solid rgba(226,85,74,0.35);
+    background: rgba(226,85,74,0.06);
+    border-radius:5px;
+    font-size:14px;
+  }
+  .weak-spots h3{
+    margin:0 0 8px;
+    font-family:'Archivo Black', sans-serif;
+    font-weight:400;
+    font-size:16px;
+    color:var(--orange);
+    text-transform:uppercase;
+  }
+  .weak-spots ul{ margin:0; padding-left:20px; }
+  .weak-spots li{ margin-bottom:4px; }
+
+  .mistakes-review{
+    text-align:left;
+    margin-top:30px;
+  }
+  .mistakes-review h3{
+    font-family:'Archivo Black', sans-serif;
+    font-weight:400;
+    font-size:18px;
+    color:var(--yellow-bright);
+    margin-bottom:12px;
+    text-transform:uppercase;
+  }
+  .mistake-item{
+    border:1px solid rgba(226,85,74,0.3);
+    background: rgba(255,194,60,0.02);
+    border-radius:5px;
+    padding:14px 16px;
+    margin-bottom:12px;
+    font-size:14px;
+    line-height:1.5;
+  }
+  .mistake-item .m-section{
+    font-family:'Space Mono', monospace;
+    font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--yellow); margin-bottom:6px;
+  }
+  .mistake-item .m-q{ color:var(--ink); margin-bottom:8px; font-size:15px; }
+  .mistake-item .m-you{ color:var(--bad); }
+  .mistake-item .m-correct{ color:var(--good); }
+  .no-mistakes{
+    text-align:center; color:var(--steel); font-style:italic; margin-top:26px;
+  }
+
+  .quiz-area.hidden{ display:none; }
+
+  @media (max-width:480px){
+    .card{ padding:28px 18px 24px; }
+    .qtext{ font-size:18px; }
+    .masthead h1{ font-size:22px; }
+    .toolbar{ flex-direction:column; align-items:stretch; }
+    .toolbar-actions{ justify-content:space-between; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hazard-bar"></div>
+
+  <div class="masthead">
+    <div class="eyebrow">Quiz 3 · JPT Review Center</div>
+    <h1>PD 1096 — Site Safety &amp; Egress</h1>
+    <div class="sub">Answer key review, question by question — Arch. Pedro Santos Jr.</div>
+  </div>
+
+  <div class="toolbar">
+    <div class="toolbar-stats">
+      <div>
+        <span class="stat-label">Score</span>
+        <span class="stat-value score-val" id="scoreText">0</span>
+      </div>
+      <div>
+        <span class="stat-label">Mistakes</span>
+        <span class="stat-value mistake-val" id="mistakeText">0</span>
+      </div>
+    </div>
+    <div class="toolbar-actions">
+      <div class="order-toggle">
+        <button id="orderInOrderBtn" class="active">In order</button>
+        <button id="orderShuffleBtn">Shuffled</button>
+      </div>
+      <button class="toolbar-restart" id="toolbarRestartBtn">Restart from start</button>
+    </div>
+  </div>
+
+  <div class="tesserae" id="tesserae"></div>
+  <div class="progress-label">
+    <span id="progressText">Question 1 of 1</span>
+  </div>
+
+  <div class="quiz-area" id="quizArea">
+    <div class="card">
+      <div class="section-tag" id="sectionTag">Section</div>
+      <span class="reviewing-tag" id="reviewingTag" style="display:none;">Reviewing — answer locked</span>
+      <p class="qtext" id="qtext">Loading…</p>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="controls">
+        <div class="nav-arrows">
+          <button class="arrow-btn" id="backBtn">&larr; Back</button>
+          <button class="arrow-btn" id="forwardBtn">Forward &rarr;</button>
+        </div>
+        <button class="arrow-btn primary" id="finishBtn" style="display:none;">See results →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="results" id="results">
+    <h2 id="resultsTitle">Quiz Complete</h2>
+    <div class="sub" id="resultsSub">You've worked through every question, in order.</div>
+    <div class="score-big" id="finalScore">0 / 0</div>
+    <div class="breakdown" id="breakdown"></div>
+    <div class="weak-spots" id="weakSpots" style="display:none;">
+      <h3>Weak spots</h3>
+      <ul id="weakSpotsList"></ul>
+    </div>
+    <div class="result-btns">
+      <button class="restart-btn primary" id="retryMissedBtn" style="display:none;">Retry missed questions</button>
+      <button class="restart-btn" id="restartBtn">Take it again from the start</button>
+    </div>
+    <div class="mistakes-review" id="mistakesReview" style="display:none;">
+      <h3>Review your mistakes</h3>
+      <div id="mistakesList"></div>
+    </div>
+    <div class="no-mistakes" id="noMistakes" style="display:none;">No mistakes this run — clean sweep.</div>
+  </div>
+
+</div>
+
+<script>
+const QUESTIONS = [
+{s:"Setbacks & Encroachments · Rule X", q:"What is the maximum projection allowed for a footing, buried 600mm below grade, towards a public sidewalk?", o:["300mm","450mm","500mm","600mm"], c:2, ref:"IRR Rule X, §1002(c) — Projection into Alleys or Streets", n:"\u201cFoundations may be permitted to encroach into public sidewalk areas to a width not exceeding 500 millimeters; provided, that the top of the said foundations is not less than 600 millimeters below the established grade.\u201d Note the separate rule for footings along a national road (2.40m deep): those may only project 300mm."},
+{s:"Site Safety · Rule XI", q:"Fences should be installed around the construction or demolition site. What is the minimum height required for the fence?", o:["2.00 m","2.40 m","3.00 m","3.60 m"], c:1, ref:"IRR Rule XI, §1106(c) — Pedestrian Protection, Fences", n:"\u201cFences shall be built of an approved material, not less than 2.40 meters in height above grade, and be placed on the side of the walkway nearest to the building site. Fences shall enclose entirely the building site.\u201d"},
+{s:"Site Safety · Rule XI", q:"If the distance between the outermost face of the building and the inner edge of the sidewalk is equal to the building height, what is required?", o:["A fence only","A fence and a canopy","A fence, a canopy, and a net","A fence and a temporary walkway"], c:0, ref:"IRR Rule XI, §1106 — Pedestrian Protection", n:"Only a fence is required because the setback is already more than half of the building height \u2014 the threshold at which canopies and nets start being triggered under Table 1106-A."},
+{s:"Occupant Load · Rule XII", q:"What is the minimum size of a classroom for 30 students and 1 teacher, according to the occupant load factors in Rule 12 of the Building Code?", o:["54.00 sqm","55.80 sqm","138.00 sqm","142.60 sqm"], c:1, ref:"IRR Rule XII, §1207 — Occupant Load Factors (Educational)", n:"31 persons \u00d7 1.80 sqm/person (classroom occupant load factor) = 55.80 sqm."},
+{s:"Occupant Load · Rule XII", q:"What is the occupant load factor for hotels, according to Rule 12?", o:["28.00 sqm/person","18.60 sqm/person","8.40 sqm/person","None of these"], c:1, ref:"IRR Rule XII, §1207 — Occupant Load Factors (Residential)", n:"Hotels, apartment buildings, and lodging or rooming houses are factored at 18.60 sqm/person. 28.00 sqm/person is the figure for detached single and two-family dwellings instead."},
+{s:"Means of Egress · Rule XII", q:"A floor with an occupant load of 700 shall have at least how many exits?", o:["2","3","4","5"], c:1, ref:"IRR Rule XII, §1210 — Number of Exits", n:"\u201cEvery storey or portion thereof, having an occupant load of 500 to 999 shall have at least three (3) exits.\u201d Four exits only kick in at 1,000 or more."},
+{s:"Means of Egress · Rule XII", q:"What is the maximum travel distance to an exit if the building has an automatic fire extinguishing system?", o:["30 meters","45 meters","60 meters","75 meters"], c:2, ref:"IRR Rule XII, §1210 — Distance to Exits", n:"\u201cNo point in a building without a sprinkler system shall be more than 45.00 meters from an exit... In a building equipped with a complete automatic fire extinguishing system the distance from exits may be increased to 60.00 meters.\u201d"},
+{s:"Doors · Rule XII", q:"What is the minimum height required for doors in the Building Code?", o:["1.80 meters","1.90 meters","2.00 meters","2.10 meters"], c:2, ref:"IRR Rule XII, §1211 — Doors", n:"The general minimum door height under PD 1096 is 2.00 meters, applied consistently across occupancy types."},
+{s:"Stairs · Rule XII", q:"What is the minimum stair width required if the occupant load is 15?", o:["750mm","900mm","1100mm","1200mm"], c:1, ref:"IRR Rule XII, §1207(5)(a) — Stairs", n:"Stairs are tiered by occupant load: under 10 occupants \u2192 750mm; 10 to 50 occupants \u2192 900mm; more than 50 \u2192 1,100mm. An occupant load of 15 falls in the 900mm tier."},
+{s:"Stairs · Rule XII", q:"What is the correct mounting height of handrails, according to the Building Code?", o:["700-800mm","800-900mm","700-900mm","800-1000mm"], c:1, ref:"IRR Rule XII, §1207 — Stairs, Handrails", n:"Handrails on stairs are required to be mounted between 800mm and 900mm above the nosing of the treads."},
+{s:"Elevators · Rule XII", q:"What is the minimum depth of for elevator pits?", o:["600mm","800mm","850mm","1000mm"], c:0, ref:"IRR Rule XII, §1217 — Elevators", n:"The minimum depth of a hoistway pit, measured from the underside of the elevator car, is 600mm."},
+{s:"Seating & Aisles · Rule XII", q:"What is the maximum number of seats between two aisles?", o:["7 seats","10 seats","14 seats","30 seats"], c:2, ref:"IRR Rule XII, §1209 — Aisles", n:"\u201cThe maximum number of seats in any row extending from one aisle to another shall be fourteen.\u201d This may only be increased to 30 under specific conditions on exit width and seat spacing."},
+{s:"Glass & Glazing · Rule XVIII", q:"Minimum thickness of a glass panel measuring 2.50 x 2.50 m", o:["8mm","10mm","12mm","15mm"], c:2, ref:"IRR Rule XVIII, §1801 — Glass and Glazing", n:"For an exterior-grade panel of this size (6.25 sqm), 12mm is the standard minimum used to keep deflection and breaking-stress levels within safe limits for an unsupported span this large."},
+{s:"Doors · Rule XII", q:"Maximum width of a door leaf", o:["There is no maximum width for a door leaf","800mm","900mm","1200mm"], c:0, ref:"IRR Rule XII, §1211 — Doors", n:"Remember: while there is no maximum width for the doorway or the door opening, each door leaf or door panel can only be 1200mm long at the most \u2014 so the doorway itself has no cap, but each individual leaf does."},
+{s:"Seating & Aisles · Rule XII", q:"What is the maximum number of seats between a wall and an aisle?", o:["7 seats","10 seats","14 seats","30 seats"], c:0, ref:"IRR Rule XII, §1209 — Aisles", n:"\u201cThe maximum number of seats in any row extending from one aisle to a wall shall be seven\u201d \u2014 exactly half the 14-seat limit that applies between two aisles."},
+];
+
+// ============== STATE ==============
+let order = QUESTIONS.map((_, i) => i);
+let answersLog = [];
+let frontier = 0;
+let pos = 0;
+let isRetryRun = false;
+let shuffleMode = false;
+let optOrders = [];
+let everMissed = new Set();
+
+const tesseraeEl = document.getElementById('tesserae');
+const progressText = document.getElementById('progressText');
+const scoreText = document.getElementById('scoreText');
+const mistakeText = document.getElementById('mistakeText');
+const sectionTag = document.getElementById('sectionTag');
+const reviewingTag = document.getElementById('reviewingTag');
+const qtextEl = document.getElementById('qtext');
+const optionsEl = document.getElementById('options');
+const feedbackEl = document.getElementById('feedback');
+const backBtn = document.getElementById('backBtn');
+const forwardBtn = document.getElementById('forwardBtn');
+const finishBtn = document.getElementById('finishBtn');
+const quizArea = document.getElementById('quizArea');
+const resultsEl = document.getElementById('results');
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function letter(i){ return String.fromCharCode(65+i); }
+
+function getOptOrder(p){
+  if(!optOrders[p]){
+    const item = QUESTIONS[order[p]];
+    optOrders[p] = shuffle(item.o.map((_, i) => i));
+  }
+  return optOrders[p];
+}
+
+function buildTesserae(){
+  tesseraeEl.innerHTML = '';
+  order.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'tess';
+    d.id = 'tess-' + i;
+    tesseraeEl.appendChild(d);
+  });
+}
+
+function updateTesserae(){
+  order.forEach((_, i) => {
+    const el = document.getElementById('tess-' + i);
+    el.classList.remove('done','current','wrong-tess');
+    if(answersLog[i]){
+      el.classList.add(answersLog[i].isCorrect ? 'done' : 'wrong-tess');
+    }
+    if(i === pos) el.classList.add('current');
+  });
+}
+
+function updateStats(){
+  const scoreCount = answersLog.filter(a => a && a.isCorrect).length;
+  const mistakeCount = answersLog.filter(a => a && !a.isCorrect).length;
+  scoreText.textContent = scoreCount;
+  mistakeText.textContent = mistakeCount;
+}
+
+function renderQuestion(){
+  const item = QUESTIONS[order[pos]];
+  const logged = answersLog[pos];
+
+  sectionTag.textContent = item.s;
+  qtextEl.textContent = item.q;
+  optionsEl.innerHTML = '';
+  feedbackEl.className = 'feedback';
+  feedbackEl.innerHTML = '';
+  finishBtn.style.display = 'none';
+  reviewingTag.style.display = logged ? 'inline-block' : 'none';
+
+  const perm = getOptOrder(pos);
+
+  perm.forEach((origIdx, displayI) => {
+    const opt = item.o[origIdx];
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.innerHTML = '<span class="letter">' + letter(displayI) + '.</span><span>' + opt + '</span>';
+    if(logged){
+      btn.classList.add('locked');
+      if(origIdx === item.c) btn.classList.add('correct');
+      else if(origIdx === logged.selected) btn.classList.add('incorrect');
+      else btn.classList.add('dim');
+    } else {
+      btn.addEventListener('click', () => selectAnswer(origIdx, btn));
+    }
+    optionsEl.appendChild(btn);
+  });
+
+  if(logged){
+    const correctDisplayLetter = letter(perm.indexOf(item.c));
+    const refHtml = item.ref ? '<span class="ref">' + item.ref + '</span>' : '';
+    const noteHtml = item.n ? '<span class="note">' + item.n + '</span>' : '';
+    if(logged.isCorrect){
+      feedbackEl.className = 'feedback show right';
+      feedbackEl.innerHTML = '<b>Correct.</b> ' + item.o[item.c] + '.' + refHtml + noteHtml;
+    } else {
+      feedbackEl.className = 'feedback show wrong';
+      feedbackEl.innerHTML = '<b>Not quite.</b> The right answer is <b>' + correctDisplayLetter + '</b>: ' + item.o[item.c] + '.' + refHtml + noteHtml;
+    }
+    if(pos === frontier && pos === order.length - 1){
+      finishBtn.style.display = 'inline-block';
+    }
+  }
+
+  progressText.textContent = 'Question ' + (pos+1) + ' of ' + order.length + (isRetryRun ? ' (missed questions)' : '');
+  backBtn.disabled = (pos === 0);
+  const atLastAnswered = (pos === order.length - 1 && logged);
+  forwardBtn.disabled = atLastAnswered || !(pos < frontier || (pos === frontier && logged));
+  updateStats();
+  updateTesserae();
+}
+
+function selectAnswer(i, btn){
+  if(answersLog[pos]) return;
+  const item = QUESTIONS[order[pos]];
+  const correct = item.c;
+  const isCorrect = (i === correct);
+  answersLog[pos] = {selected: i, isCorrect};
+
+  if(isCorrect) everMissed.delete(order[pos]);
+  else everMissed.add(order[pos]);
+
+  if(pos === frontier && frontier < order.length - 1){
+    frontier = pos + 1;
+  }
+
+  renderQuestion();
+}
+
+backBtn.addEventListener('click', () => {
+  if(pos > 0){ pos--; renderQuestion(); }
+});
+
+forwardBtn.addEventListener('click', () => {
+  if(pos < frontier){
+    pos++;
+    renderQuestion();
+  } else if(pos === frontier && answersLog[pos] && pos < order.length - 1){
+    pos++;
+    renderQuestion();
+  }
+});
+
+finishBtn.addEventListener('click', showResults);
+
+function showResults(){
+  quizArea.classList.add('hidden');
+  document.querySelector('.tesserae').style.display = 'none';
+  document.querySelector('.progress-label').style.display = 'none';
+  resultsEl.classList.add('show');
+
+  const score = answersLog.filter(a => a && a.isCorrect).length;
+  const mistakes = [];
+  answersLog.forEach((a, i) => {
+    if(a && !a.isCorrect) mistakes.push({qIndex: order[i], selected: a.selected, pos: i});
+  });
+
+  document.getElementById('resultsTitle').textContent = isRetryRun ? 'Retry Complete' : 'Quiz Complete';
+  document.getElementById('resultsSub').textContent = isRetryRun
+    ? 'A second pass at the questions you missed before.'
+    : "You've worked through every question, in order.";
+  document.getElementById('finalScore').textContent = score + ' / ' + order.length;
+
+  const bySection = {};
+  order.forEach((qIndex, i) => {
+    const item = QUESTIONS[qIndex];
+    if(!bySection[item.s]) bySection[item.s] = {right:0, total:0, missed:0};
+    bySection[item.s].total++;
+    const a = answersLog[i];
+    if(a && a.isCorrect) bySection[item.s].right++;
+    else if(a && !a.isCorrect) bySection[item.s].missed++;
+  });
+  const breakdown = document.getElementById('breakdown');
+  breakdown.innerHTML = '';
+  Object.keys(bySection).forEach(sec => {
+    const row = document.createElement('div');
+    row.className = 'breakdown-row';
+    row.innerHTML = '<span>' + sec + '</span><span>' + bySection[sec].right + ' / ' + bySection[sec].total + '</span>';
+    breakdown.appendChild(row);
+  });
+
+  const weakList = Object.keys(bySection)
+    .filter(sec => bySection[sec].missed > 0)
+    .sort((a,b) => bySection[b].missed - bySection[a].missed);
+  const weakSpotsEl = document.getElementById('weakSpots');
+  const weakSpotsList = document.getElementById('weakSpotsList');
+  if(weakList.length){
+    weakSpotsEl.style.display = 'block';
+    weakSpotsList.innerHTML = '';
+    weakList.slice(0,5).forEach(sec => {
+      const li = document.createElement('li');
+      li.textContent = sec + ' — missed ' + bySection[sec].missed + ' of ' + bySection[sec].total;
+      weakSpotsList.appendChild(li);
+    });
+  } else {
+    weakSpotsEl.style.display = 'none';
+  }
+
+  const mistakesReview = document.getElementById('mistakesReview');
+  const mistakesList = document.getElementById('mistakesList');
+  const noMistakes = document.getElementById('noMistakes');
+  if(mistakes.length){
+    mistakesReview.style.display = 'block';
+    noMistakes.style.display = 'none';
+    mistakesList.innerHTML = '';
+    mistakes.forEach(m => {
+      const item = QUESTIONS[m.qIndex];
+      const perm = optOrders[m.pos] || item.o.map((_, i) => i);
+      const yourLetter = letter(perm.indexOf(m.selected));
+      const correctLetter = letter(perm.indexOf(item.c));
+      const div = document.createElement('div');
+      div.className = 'mistake-item';
+      div.innerHTML =
+        '<div class="m-section">' + item.s + '</div>' +
+        '<div class="m-q">' + item.q + '</div>' +
+        '<div class="m-you">Your answer: ' + yourLetter + '. ' + item.o[m.selected] + '</div>' +
+        '<div class="m-correct">Correct answer: ' + correctLetter + '. ' + item.o[item.c] + '</div>';
+      mistakesList.appendChild(div);
+    });
+  } else {
+    mistakesReview.style.display = 'none';
+    noMistakes.style.display = 'block';
+  }
+
+  const retryBtn = document.getElementById('retryMissedBtn');
+  if(everMissed.size > 0){
+    retryBtn.style.display = 'inline-block';
+    retryBtn.textContent = 'Retry missed questions (' + everMissed.size + ')';
+  } else {
+    retryBtn.style.display = 'none';
+  }
+}
+
+function startRun(newOrder, retryMode){
+  order = newOrder;
+  answersLog = new Array(order.length).fill(null);
+  optOrders = new Array(order.length).fill(null);
+  frontier = 0;
+  pos = 0;
+  isRetryRun = retryMode;
+  quizArea.classList.remove('hidden');
+  document.querySelector('.tesserae').style.display = 'flex';
+  document.querySelector('.progress-label').style.display = 'flex';
+  resultsEl.classList.remove('show');
+  buildTesserae();
+  renderQuestion();
+}
+
+function freshOrder(){
+  const base = QUESTIONS.map((_, i) => i);
+  return shuffleMode ? shuffle(base) : base;
+}
+
+function fullRestart(){
+  everMissed = new Set();
+  startRun(freshOrder(), false);
+}
+
+document.getElementById('restartBtn').addEventListener('click', fullRestart);
+document.getElementById('toolbarRestartBtn').addEventListener('click', fullRestart);
+
+document.getElementById('retryMissedBtn').addEventListener('click', () => {
+  let missed = Array.from(everMissed).sort((a,b) => a - b);
+  if(shuffleMode) missed = shuffle(missed);
+  startRun(missed, true);
+});
+
+document.getElementById('orderInOrderBtn').addEventListener('click', () => {
+  if(shuffleMode){
+    shuffleMode = false;
+    document.getElementById('orderInOrderBtn').classList.add('active');
+    document.getElementById('orderShuffleBtn').classList.remove('active');
+    fullRestart();
+  }
+});
+document.getElementById('orderShuffleBtn').addEventListener('click', () => {
+  if(!shuffleMode){
+    shuffleMode = true;
+    document.getElementById('orderShuffleBtn').classList.add('active');
+    document.getElementById('orderInOrderBtn').classList.remove('active');
+    fullRestart();
+  }
+});
+
+buildTesserae();
+renderQuestion();
+</script>
+</body>
+</html>
