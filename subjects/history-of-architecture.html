@@ -703,7 +703,7 @@ const MODULES = [
 {s:"Pre-Columbian America · Knowledge Check", q:"What did the Maya build on top of their pyramids?", o:["King's palace","Priest's quarters","Temple","Lookout tower"], c:2},
 {s:"Pre-Columbian America · Knowledge Check", q:"The pyramids of the Maya were very similar to those of what other civilization?", o:["Inca","Aztecs","Chinese","Greek"], c:1},
 {s:"Pre-Columbian America · Knowledge Check", q:"The area from which the Inca originated is what country today?", o:["Bolivia","Mexico","Peru","Brazil"], c:2},
-{s:"Pre-Columbian America · Knowledge Check", q:"Why were the Aztec pyramids so tall?", o:["The pyramids were often built over older, smaller versions","From the top, the priests were considered nearer to god","Both A and B are true","None of the above"], c:2},]
+{s:"Pre-Columbian America · Knowledge Check", q:"Why were the Aztec pyramids so tall?", o:["The pyramids were often built over older, smaller versions","From the top, the priests were considered nearer to god",{ref:[0,1],tpl:"both_true"},"None of the above"], c:2},]
   },
   {
     id: "egr",
@@ -2478,7 +2478,8 @@ function computeOverallStats(p){
 // via the get_leaderboard() RPC, so this can't get out of sync with reality.
 function computeGlobalTotals(full){
   let totalMastered = 0, scoreSum = 0, scoreCount = 0;
-  Object.values(full || {}).forEach(subjectData => {
+  Object.entries(full || {}).forEach(([subjId, subjectData]) => {
+    if(subjId === '__meta') return; // last-activity marker, not a subject's progress
     Object.values(subjectData || {}).forEach(mp => {
       totalMastered += (mp.mastered || []).length;
       if(mp.bestTotal > 0){ scoreSum += (mp.bestCorrect / mp.bestTotal); scoreCount++; }
@@ -2597,6 +2598,12 @@ function recordFullRunScore(moduleId, correct, total){
     mp.bestCorrect = correct;
     mp.bestTotal = total;
   }
+  // Last-activity marker, read by the home page's "Last quiz taken" insight.
+  FULL_DATA.__meta = {
+    subjectId: SUBJECT_ID,
+    moduleTitle: currentModule ? currentModule.title : '',
+    at: new Date().toISOString()
+  };
   saveProgress(PROGRESS);
 }
 
@@ -2800,6 +2807,18 @@ function shuffle(arr){
 
 function letter(i){ return String.fromCharCode(65+i); }
 
+function optText(item, idx, perm){
+  const o = item.o[idx];
+  if(typeof o === 'string') return o;
+  const letters = o.ref.map(r => letter(perm.indexOf(r))).sort();
+  const join = (arr, conj) => arr.length===1 ? arr[0] : arr.length===2 ? (arr[0]+' '+conj+' '+arr[1]) : (arr.slice(0,-1).join(', ')+', '+conj+' '+arr[arr.length-1]);
+  if(o.tpl==='both') return 'Both ' + join(letters,'and');
+  if(o.tpl==='both_true') return 'Both ' + join(letters,'and') + ' are true';
+  if(o.tpl==='either') return 'Either ' + join(letters,'or');
+  if(o.tpl==='only') return join(letters,'and') + ' only';
+  return join(letters,'and');
+}
+
 function getOptOrder(p){
   if(!optOrders[p]){
     const item = QUESTIONS[order[p]];
@@ -2851,7 +2870,7 @@ function renderQuestion(){
   const perm = getOptOrder(pos);
 
   perm.forEach((origIdx, displayI) => {
-    const opt = item.o[origIdx];
+    const opt = optText(item, origIdx, perm);
     const btn = document.createElement('button');
     btn.className = 'opt';
     btn.innerHTML = '<span class="letter">' + letter(displayI) + '.</span><span>' + opt + '</span>';
@@ -2872,13 +2891,13 @@ function renderQuestion(){
     const correctDisplayLetter = letter(perm.indexOf(item.c));
     if(logged.isCorrect){
       feedbackEl.className = 'feedback show right';
-      feedbackEl.innerHTML = '<b>Correct.</b> ' + item.o[item.c] + '.';
+      feedbackEl.innerHTML = '<b>Correct.</b> ' + optText(item, item.c, perm) + '.';
     } else if(logged.timedOut){
       feedbackEl.className = 'feedback show wrong';
-      feedbackEl.innerHTML = '<b>Time\'s up.</b> The right answer is <b>' + correctDisplayLetter + '</b>: ' + item.o[item.c] + '.';
+      feedbackEl.innerHTML = '<b>Time\'s up.</b> The right answer is <b>' + correctDisplayLetter + '</b>: ' + optText(item, item.c, perm) + '.';
     } else {
       feedbackEl.className = 'feedback show wrong';
-      feedbackEl.innerHTML = '<b>Not quite.</b> The right answer is <b>' + correctDisplayLetter + '</b>: ' + item.o[item.c] + '.';
+      feedbackEl.innerHTML = '<b>Not quite.</b> The right answer is <b>' + correctDisplayLetter + '</b>: ' + optText(item, item.c, perm) + '.';
     }
     if(pos === frontier && pos === order.length - 1){
       finishBtn.style.display = 'inline-block';
@@ -3044,8 +3063,8 @@ function showResults(){
       div.innerHTML =
         '<div class="m-section">' + item.s + '</div>' +
         '<div class="m-q">' + item.q + '</div>' +
-        '<div class="m-you">Your answer: ' + yourLetter + '. ' + item.o[m.selected] + '</div>' +
-        '<div class="m-correct">Correct answer: ' + correctLetter + '. ' + item.o[item.c] + '</div>';
+        '<div class="m-you">Your answer: ' + yourLetter + '. ' + optText(item, m.selected, perm) + '</div>' +
+        '<div class="m-correct">Correct answer: ' + correctLetter + '. ' + optText(item, item.c, perm) + '</div>';
       mistakesList.appendChild(div);
     });
   } else {

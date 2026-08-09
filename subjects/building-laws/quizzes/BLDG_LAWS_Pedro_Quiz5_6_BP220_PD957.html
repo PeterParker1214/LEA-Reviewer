@@ -559,6 +559,17 @@ function shuffle(arr){
 
 function letter(i){ return String.fromCharCode(65+i); }
 
+function optText(item, idx, perm){
+  const o = item.o[idx];
+  if(typeof o === 'string') return o;
+  const letters = o.ref.map(r => letter(perm.indexOf(r))).sort();
+  const join = (arr, conj) => arr.length===1 ? arr[0] : arr.length===2 ? (arr[0]+' '+conj+' '+arr[1]) : (arr.slice(0,-1).join(', ')+', '+conj+' '+arr[arr.length-1]);
+  if(o.tpl==='both') return 'Both ' + join(letters,'and');
+  if(o.tpl==='either') return 'Either ' + join(letters,'or');
+  if(o.tpl==='only') return join(letters,'and') + ' only';
+  return join(letters,'and');
+}
+
 function getOptOrder(p){
   if(!optOrders[p]){
     const item = QUESTIONS[order[p]];
@@ -610,7 +621,7 @@ function renderQuestion(){
   const perm = getOptOrder(pos);
 
   perm.forEach((origIdx, displayI) => {
-    const opt = item.o[origIdx];
+    const opt = optText(item, origIdx, perm);
     const btn = document.createElement('button');
     btn.className = 'opt';
     btn.innerHTML = '<span class="letter">' + letter(displayI) + '</span><span>' + opt + '</span>';
@@ -631,10 +642,10 @@ function renderQuestion(){
     const noteHtml = item.n ? '<span class="note">' + item.n + '</span>' : '';
     if(logged.isCorrect){
       feedbackEl.className = 'feedback show right';
-      feedbackEl.innerHTML = '<b>Correct.</b> ' + item.o[item.c] + '.' + refHtml + noteHtml;
+      feedbackEl.innerHTML = '<b>Correct.</b> ' + optText(item, item.c, perm) + '.' + refHtml + noteHtml;
     } else {
       feedbackEl.className = 'feedback show wrong';
-      feedbackEl.innerHTML = '<b>Not quite.</b> The right answer is <b>' + correctDisplayLetter + '</b>: ' + item.o[item.c] + '.' + refHtml + noteHtml;
+      feedbackEl.innerHTML = '<b>Not quite.</b> The right answer is <b>' + correctDisplayLetter + '</b>: ' + optText(item, item.c, perm) + '.' + refHtml + noteHtml;
     }
     if(pos === frontier && pos === order.length - 1){
       finishBtn.style.display = 'inline-block';
@@ -752,8 +763,8 @@ function showResults(){
       div.innerHTML =
         '<div class="m-section">' + item.s + '</div>' +
         '<div class="m-q">' + item.q + '</div>' +
-        '<div class="m-you">Your answer: ' + yourLetter + '. ' + item.o[m.selected] + '</div>' +
-        '<div class="m-correct">Correct answer: ' + correctLetter + '. ' + item.o[item.c] + '</div>';
+        '<div class="m-you">Your answer: ' + yourLetter + '. ' + optText(item, m.selected, perm) + '</div>' +
+        '<div class="m-correct">Correct answer: ' + correctLetter + '. ' + optText(item, item.c, perm) + '</div>';
       mistakesList.appendChild(div);
     });
   } else {

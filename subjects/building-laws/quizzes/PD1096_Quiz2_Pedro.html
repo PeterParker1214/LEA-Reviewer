@@ -478,7 +478,7 @@ const QUESTIONS = [
 {s:"Light & Ventilation", q:"What is the minimum ceiling height required for the seventh floor of an artificially-ventilated building?", o:["1.80m","2.10m","2.40m","2.70m"], c:1, ref:"PD 1096, §805 — Ceiling Heights", n:"Section 805 sets the first storey at 2.70m and the second at 2.40m, with the \u201csucceeding stories\u201d — the 7th floor included — needing only an unobstructed clearance of not less than 2.10m."},
 {s:"Easements", q:"For forest areas, the NBC requires at least _____ of easement for each side of the waterway.", o:["3.00m","10.00m","20.00m","40.00m"], c:3, ref:"PD 1067 (Water Code of the Philippines), Art. 51", n:"The public-use easement along waterway banks is 3m in urban areas, 20m in agricultural areas, and 40m in forest areas — a Water Code rule the Building Laws reviewer folds into site-easement questions."},
 {s:"Zoning Classification", q:"Rowhouses 1-3 storeys high fall under which zoning classification?", o:["R-2","R-3","GI","C-1"], c:1, ref:"IRR Rule VII — Zoning Classification Tables", n:"Rowhouses of 1 to 3 storeys are classified under R-3 (the basic multi-unit residential category), as opposed to R-2 (duplex/single-attached) or the non-residential GI and C-1 classifications."},
-{s:"Firewalls · R-2", q:"What are the allowable firewall configurations for an R2 project?", o:["Allowed on one side of property","Allowed on both sides of the property","Allowed on one side and the rear","Both B and C"], c:0, ref:"IRR Rule VII, §704.4 — Firewall Provisions", n:"R-2 (duplex/single-attached) projects are only allowed a firewall on one side of the property — reflecting that only one common wall is expected between adjoining units."},
+{s:"Firewalls · R-2", q:"What are the allowable firewall configurations for an R2 project?", o:["Allowed on one side of property","Allowed on both sides of the property","Allowed on one side and the rear",{ref:[1,2],tpl:"both"}], c:0, ref:"IRR Rule VII, §704.4 — Firewall Provisions", n:"R-2 (duplex/single-attached) projects are only allowed a firewall on one side of the property — reflecting that only one common wall is expected between adjoining units."},
 {s:"Firewalls · R-4", q:"For R-4 projects, firewalls may be allowed on both sides of the property. What is the maximum height for these firewalls?", o:["2 floors high only","3 floors high only","4 floors high only","14 meters high only"], c:1, ref:"IRR Rule VII, §704.4 — Firewall Provisions", n:"R-4 firewalls on both sides of the property are capped at 3 storeys, beyond which a firewall configuration is no longer allowed and a yard/setback must be used instead."},
 {s:"Building Footprint · TGFA", q:"All of these affect the maximum total gross floor area given by Table 7.1 except for:", o:["Zoning designation of the property","Use or non-use of firewalls for the project","Lot type","Width of the road"], c:3, ref:"IRR Rule VII, Table VII.1 — Allowable Maximum TGFA", n:"Table VII.1 keys the maximum TGFA to the zoning designation, lot type, and firewall use (which drive the allowable PSO), but road width is not a factor in the TGFA table itself — it affects other checks, like BHL from Table VIII.2/8.3, but not TGFA."},
 {s:"Building Height Limit", q:"When the only road fronting a property is 5 meters wide and the property is zoned as R1, the maximum height allowed for the project is", o:["2 floors only","2.5 floors only","3 floors only","5 floors only"], c:1, ref:"IRR Rule VII/VIII — Building Height Limit by Road Width & Zoning", n:"For an R-1 lot fronting only a 5-meter road, the Building Height Limit tables cap the project at 2.5 storeys — narrow road frontage constrains height even where the zoning would otherwise allow more."},
@@ -519,6 +519,17 @@ function shuffle(arr){
 }
 
 function letter(i){ return String.fromCharCode(65+i); }
+
+function optText(item, idx, perm){
+  const o = item.o[idx];
+  if(typeof o === 'string') return o;
+  const letters = o.ref.map(r => letter(perm.indexOf(r))).sort();
+  const join = (arr, conj) => arr.length===1 ? arr[0] : arr.length===2 ? (arr[0]+' '+conj+' '+arr[1]) : (arr.slice(0,-1).join(', ')+', '+conj+' '+arr[arr.length-1]);
+  if(o.tpl==='both') return 'Both ' + join(letters,'and');
+  if(o.tpl==='either') return 'Either ' + join(letters,'or');
+  if(o.tpl==='only') return join(letters,'and') + ' only';
+  return join(letters,'and');
+}
 
 function getOptOrder(p){
   if(!optOrders[p]){
@@ -571,7 +582,7 @@ function renderQuestion(){
   const perm = getOptOrder(pos);
 
   perm.forEach((origIdx, displayI) => {
-    const opt = item.o[origIdx];
+    const opt = optText(item, origIdx, perm);
     const btn = document.createElement('button');
     btn.className = 'opt';
     btn.innerHTML = '<span class="letter">' + letter(displayI) + '.</span><span>' + opt + '</span>';
@@ -592,10 +603,10 @@ function renderQuestion(){
     const noteHtml = item.n ? '<span class="note">' + item.n + '</span>' : '';
     if(logged.isCorrect){
       feedbackEl.className = 'feedback show right';
-      feedbackEl.innerHTML = '<b>Correct.</b> ' + item.o[item.c] + '.' + refHtml + noteHtml;
+      feedbackEl.innerHTML = '<b>Correct.</b> ' + optText(item, item.c, perm) + '.' + refHtml + noteHtml;
     } else {
       feedbackEl.className = 'feedback show wrong';
-      feedbackEl.innerHTML = '<b>Not quite.</b> The right answer is <b>' + correctDisplayLetter + '</b>: ' + item.o[item.c] + '.' + refHtml + noteHtml;
+      feedbackEl.innerHTML = '<b>Not quite.</b> The right answer is <b>' + correctDisplayLetter + '</b>: ' + optText(item, item.c, perm) + '.' + refHtml + noteHtml;
     }
     if(pos === frontier && pos === order.length - 1){
       finishBtn.style.display = 'inline-block';
@@ -713,8 +724,8 @@ function showResults(){
       div.innerHTML =
         '<div class="m-section">' + item.s + '</div>' +
         '<div class="m-q">' + item.q + '</div>' +
-        '<div class="m-you">Your answer: ' + yourLetter + '. ' + item.o[m.selected] + '</div>' +
-        '<div class="m-correct">Correct answer: ' + correctLetter + '. ' + item.o[item.c] + '</div>' +
+        '<div class="m-you">Your answer: ' + yourLetter + '. ' + optText(item, m.selected, perm) + '</div>' +
+        '<div class="m-correct">Correct answer: ' + correctLetter + '. ' + optText(item, item.c, perm) + '</div>' +
         (item.ref ? '<div class="m-ref">' + item.ref + '</div>' : '');
       mistakesList.appendChild(div);
     });

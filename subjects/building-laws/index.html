@@ -575,15 +575,15 @@ const MODULES = [
 {s:"Traditional Dwellings · Rule 2", q:"According to the National Building Code, what is the maximum cost of a traditional family dwelling?", o:["PHP10,000","PHP15,000","PHP20,000","PHP25,000"], c:1, ref:"PD 1096, §209 — Exemption", n:"A \u201ctraditional indigenous family dwelling\u201d is defined as one built of native materials (bamboo, nipa, logs, or lumber) for the owner's family only, \u201cthe total cost of which does not exceed fifteen thousand pesos (\u20b115,000.00).\u201d"},
 {s:"Building Permits", q:"Which of the following requires a building permit?", o:["Garden pools 500mm deep or shallower","Repairs of doors, floors, windows, or fences","Repairs of load-bearing partition walls","An open terrace 15sqm in area"], c:2, ref:"IRR Rule III, §301 — Work Exempt from Building Permit", n:"Section 301 exempts only \u201crepair and/or replacement of non load-bearing partition walls,\u201d along with repairs of doors, windows, flooring, and fences. Load-bearing (structural) repairs are never on that exempt list, so they still need a permit."},
 {s:"The Building Official", q:"This person is tasked with the enforcement of the National Building Code in his or her jurisdiction. He/she issues, denies, suspends, or revokes building permits.", o:["The Secretary of the DPWH","The Building Official","The construction inspector","The barangay captain"], c:1, ref:"PD 1096, §207 — Duties of a Building Official", n:"\u201cIn his respective territorial jurisdiction, the Building Official shall be primarily responsible for the enforcement of the provisions of this Code... He is the official charged with the duties of issuing building permits.\u201d"},
-{s:"Fees & Exemptions", q:"Which of the following are exempt from fees?", o:["Public buildings","Single family dwellings made of native materials, costing PHP15,000 or less","Hospitals","Both A and B"], c:3, ref:"PD 1096, §209 — Exemption", n:"\u201cPublic buildings and traditional indigenous family dwelling[s] shall be exempt from payment of building permit fees.\u201d Choice B is that same traditional-dwelling definition capped at \u20b115,000."},
+{s:"Fees & Exemptions", q:"Which of the following are exempt from fees?", o:["Public buildings","Single family dwellings made of native materials, costing PHP15,000 or less","Hospitals",{ref:[0,1],tpl:"both"}], c:3, ref:"PD 1096, §209 — Exemption", n:"\u201cPublic buildings and traditional indigenous family dwelling[s] shall be exempt from payment of building permit fees.\u201d Choice B is that same traditional-dwelling definition capped at \u20b115,000."},
 {s:"Building Permits", q:"According to the Building Code, how many sets of plans and specifications must be submitted when applying for a permit?", o:["3 sets","5 sets","6 sets","7 sets"], c:1, ref:"PD 1096 / IRR Rule III, §302(3) — Application for Permits", n:"\u201cTo be submitted together with such application are at least five (5) sets of corresponding plans and specifications prepared, signed and sealed by...\u201d the relevant licensed professionals."},
-{s:"Civil Code Liability", q:"According to Article 1723 of the Civil Code, who shall be held liable if a building collapses due to defects in the plans?", o:["The architect or the engineer who drew up the plans","The contractor and the construction supervisor","The Building Official who reviewed and approved the plans","Both A and B"], c:0, ref:"Civil Code of the Philippines, Art. 1723", n:"The contractor is not liable because the cause of the collapse isn't defective construction or inferior materials, and the Building Official is never implicated in Article 1723."},
+{s:"Civil Code Liability", q:"According to Article 1723 of the Civil Code, who shall be held liable if a building collapses due to defects in the plans?", o:["The architect or the engineer who drew up the plans","The contractor and the construction supervisor","The Building Official who reviewed and approved the plans",{ref:[0,1],tpl:"both"}], c:0, ref:"Civil Code of the Philippines, Art. 1723", n:"The contractor is not liable because the cause of the collapse isn't defective construction or inferior materials, and the Building Official is never implicated in Article 1723."},
 {s:"Certificates & Occupancy", q:"Before using or occupying a completed building, this document must be issued first.", o:["Building permit","Certificate of inspection","Certificate of compliance","Certificate of occupancy"], c:3, ref:"PD 1096, §309 — Certificate of Occupancy", n:"\u201cNo building or structure shall be used or occupied... until the Building Official has issued a Certificate of Occupancy therefor.\u201d"},
-{s:"Construction Inspection", q:"The Building Code requires that the owner hire a full-time inspector for the construction. This inspector must be a:", o:["Licensed architect","Licensed civil engineer","Licensed contractor","Either A or B"], c:3, ref:"PD 1096, §308 — Inspection and Supervision of Work", n:"\u201cThe owner of the Building... shall engage the services of a duly licensed architect or civil engineer to undertake the full time inspection and supervision of the construction work.\u201d"},
+{s:"Construction Inspection", q:"The Building Code requires that the owner hire a full-time inspector for the construction. This inspector must be a:", o:["Licensed architect","Licensed civil engineer","Licensed contractor",{ref:[0,1],tpl:"either"}], c:3, ref:"PD 1096, §308 — Inspection and Supervision of Work", n:"\u201cThe owner of the Building... shall engage the services of a duly licensed architect or civil engineer to undertake the full time inspection and supervision of the construction work.\u201d"},
 {s:"Definitions", q:"This term refers to any new construction which increases the height or area of an existing building.", o:["Addition","Alteration","Renovation","Conversion"], c:0, ref:"IRR Rule I, §106 — Definitions", n:"\u201cADDITION \u2014 Any new construction which increases the height and/or floor area of an existing building/structure.\u201d"},
 {s:"Types of Construction", q:"This type of construction is four-hour fire-resistive throughout.", o:["Type I","Type II","Type III and IV","Type V"], c:3, ref:"PD 1096 / IRR Rule IV, §401 — Types of Construction", n:"\u201cType V \u2014 [Construction] shall be four-hour fire-resistive throughout and the structural elements shall be of steel, iron, concrete, or masonry construction,\u201d the only type rated four-hour all through."},
 {s:"Scope & Exemptions", q:"The provisions of the National Building Code apply to all public and private buildings except for:", o:["BP 220 projects","PD 957 projects","Projects that only involve non-structural repairs","Projects that only involve alteration and renovation"], c:0, ref:"IRR Rule I, §103 — Scope and Application", n:"Section 103 applies the Code to all buildings/structures \u201cexcept traditional indigenous family dwellings... and those covered by Batas Pambansa Bilang 220,\u201d i.e. Economic and Socialized Housing Projects. Traditional family dwellings aren't in the choices, leaving BP 220 as the answer."},
-{s:"Fire Zones", q:"In which fire zone can Type 3 constructions be built?", o:["Non-restricted zone","Fire restrictive zone","Highly fire restrictive zone","A and B only","A, B, and C"], c:3, ref:"IRR Rule V — Requirements for Fire Zones", n:"The fire restrictive zone only bars Type I, so Type III is allowed there and in the non-restricted zone. The highly fire restrictive zone bars Types I, II, and III, permitting only Types IV and V."},
+{s:"Fire Zones", q:"In which fire zone can Type 3 constructions be built?", o:["Non-restricted zone","Fire restrictive zone","Highly fire restrictive zone",{ref:[0,1],tpl:"only"},{ref:[0,1,2],tpl:"list"}], c:3, ref:"IRR Rule V — Requirements for Fire Zones", n:"The fire restrictive zone only bars Type I, so Type III is allowed there and in the non-restricted zone. The highly fire restrictive zone bars Types I, II, and III, permitting only Types IV and V."},
 {s:"Building Permits", q:"Which repair requires a permit?", o:["Repair of a solid wood door that is used as an exit","Repair of a minor beam supporting a secondary balcony","Repair of all drywall partitions in a three-story house","None of these require a permit"], c:1, ref:"IRR Rule III, §301 — Work Exempt from Building Permit", n:"Section 301's exemption list covers only non-load-bearing items \u2014 doors, windows, flooring, fences, non-bearing partitions. A structural beam, even a minor one, is a load-bearing element and isn't on that list."},
 {s:"Dangerous Buildings", q:"Which of the following is not a ground to declare a building as dangerous?", o:["Structural hazard","Fire hazard","Unsafe mechanical installation","Aesthetic deficiency"], c:3, ref:"PD 1096 / IRR Rule II, §214 — Dangerous and Ruinous Buildings or Structures", n:"Section 214's grounds include structural hazard, fire hazard, and hazardous electrical/mechanical installations, plus \u201carchitectural deficiency\u201d \u2014 not \u201caesthetic deficiency,\u201d which is the wrong term used in choice D."},
 ]
@@ -607,7 +607,7 @@ const MODULES = [
 {s:"Light & Ventilation", q:"What is the minimum ceiling height required for the seventh floor of an artificially-ventilated building?", o:["1.80m","2.10m","2.40m","2.70m"], c:1, ref:"PD 1096, §805 — Ceiling Heights", n:"Section 805 sets the first storey at 2.70m and the second at 2.40m, with the \u201csucceeding stories\u201d — the 7th floor included — needing only an unobstructed clearance of not less than 2.10m."},
 {s:"Easements", q:"For forest areas, the NBC requires at least _____ of easement for each side of the waterway.", o:["3.00m","10.00m","20.00m","40.00m"], c:3, ref:"PD 1067 (Water Code of the Philippines), Art. 51", n:"The public-use easement along waterway banks is 3m in urban areas, 20m in agricultural areas, and 40m in forest areas — a Water Code rule the Building Laws reviewer folds into site-easement questions."},
 {s:"Zoning Classification", q:"Rowhouses 1-3 storeys high fall under which zoning classification?", o:["R-2","R-3","GI","C-1"], c:1, ref:"IRR Rule VII — Zoning Classification Tables", n:"Rowhouses of 1 to 3 storeys are classified under R-3 (the basic multi-unit residential category), as opposed to R-2 (duplex/single-attached) or the non-residential GI and C-1 classifications."},
-{s:"Firewalls · R-2", q:"What are the allowable firewall configurations for an R2 project?", o:["Allowed on one side of property","Allowed on both sides of the property","Allowed on one side and the rear","Both B and C"], c:0, ref:"IRR Rule VII, §704.4 — Firewall Provisions", n:"R-2 (duplex/single-attached) projects are only allowed a firewall on one side of the property — reflecting that only one common wall is expected between adjoining units."},
+{s:"Firewalls · R-2", q:"What are the allowable firewall configurations for an R2 project?", o:["Allowed on one side of property","Allowed on both sides of the property","Allowed on one side and the rear",{ref:[1,2],tpl:"both"}], c:0, ref:"IRR Rule VII, §704.4 — Firewall Provisions", n:"R-2 (duplex/single-attached) projects are only allowed a firewall on one side of the property — reflecting that only one common wall is expected between adjoining units."},
 {s:"Firewalls · R-4", q:"For R-4 projects, firewalls may be allowed on both sides of the property. What is the maximum height for these firewalls?", o:["2 floors high only","3 floors high only","4 floors high only","14 meters high only"], c:1, ref:"IRR Rule VII, §704.4 — Firewall Provisions", n:"R-4 firewalls on both sides of the property are capped at 3 storeys, beyond which a firewall configuration is no longer allowed and a yard/setback must be used instead."},
 {s:"Building Footprint · TGFA", q:"All of these affect the maximum total gross floor area given by Table 7.1 except for:", o:["Zoning designation of the property","Use or non-use of firewalls for the project","Lot type","Width of the road"], c:3, ref:"IRR Rule VII, Table VII.1 — Allowable Maximum TGFA", n:"Table VII.1 keys the maximum TGFA to the zoning designation, lot type, and firewall use (which drive the allowable PSO), but road width is not a factor in the TGFA table itself — it affects other checks, like BHL from Table VIII.2/8.3, but not TGFA."},
 {s:"Building Height Limit", q:"When the only road fronting a property is 5 meters wide and the property is zoned as R1, the maximum height allowed for the project is", o:["2 floors only","2.5 floors only","3 floors only","5 floors only"], c:1, ref:"IRR Rule VII/VIII — Building Height Limit by Road Width & Zoning", n:"For an R-1 lot fronting only a 5-meter road, the Building Height Limit tables cap the project at 2.5 storeys — narrow road frontage constrains height even where the zoning would otherwise allow more."},
@@ -804,7 +804,8 @@ function computeOverallStats(p){
 // via the get_leaderboard() RPC, so this can't get out of sync with reality.
 function computeGlobalTotals(full){
   let totalMastered = 0, scoreSum = 0, scoreCount = 0;
-  Object.values(full || {}).forEach(subjectData => {
+  Object.entries(full || {}).forEach(([subjId, subjectData]) => {
+    if(subjId === '__meta') return; // last-activity marker, not a subject's progress
     Object.values(subjectData || {}).forEach(mp => {
       totalMastered += (mp.mastered || []).length;
       if(mp.bestTotal > 0){ scoreSum += (mp.bestCorrect / mp.bestTotal); scoreCount++; }
@@ -923,6 +924,12 @@ function recordFullRunScore(moduleId, correct, total){
     mp.bestCorrect = correct;
     mp.bestTotal = total;
   }
+  // Last-activity marker, read by the home page's "Last quiz taken" insight.
+  FULL_DATA.__meta = {
+    subjectId: SUBJECT_ID,
+    moduleTitle: currentModule ? currentModule.title : '',
+    at: new Date().toISOString()
+  };
   saveProgress(PROGRESS);
 }
 
@@ -1126,6 +1133,18 @@ function shuffle(arr){
 
 function letter(i){ return String.fromCharCode(65+i); }
 
+function optText(item, idx, perm){
+  const o = item.o[idx];
+  if(typeof o === 'string') return o;
+  const letters = o.ref.map(r => letter(perm.indexOf(r))).sort();
+  const join = (arr, conj) => arr.length===1 ? arr[0] : arr.length===2 ? (arr[0]+' '+conj+' '+arr[1]) : (arr.slice(0,-1).join(', ')+', '+conj+' '+arr[arr.length-1]);
+  if(o.tpl==='both') return 'Both ' + join(letters,'and');
+  if(o.tpl==='both_true') return 'Both ' + join(letters,'and') + ' are true';
+  if(o.tpl==='either') return 'Either ' + join(letters,'or');
+  if(o.tpl==='only') return join(letters,'and') + ' only';
+  return join(letters,'and');
+}
+
 function getOptOrder(p){
   if(!optOrders[p]){
     const item = QUESTIONS[order[p]];
@@ -1177,7 +1196,7 @@ function renderQuestion(){
   const perm = getOptOrder(pos);
 
   perm.forEach((origIdx, displayI) => {
-    const opt = item.o[origIdx];
+    const opt = optText(item, origIdx, perm);
     const btn = document.createElement('button');
     btn.className = 'opt';
     btn.innerHTML = '<span class="letter">' + letter(displayI) + '.</span><span>' + opt + '</span>';
@@ -1198,13 +1217,13 @@ function renderQuestion(){
     const correctDisplayLetter = letter(perm.indexOf(item.c));
     if(logged.isCorrect){
       feedbackEl.className = 'feedback show right';
-      feedbackEl.innerHTML = '<b>Correct.</b> ' + item.o[item.c] + '.';
+      feedbackEl.innerHTML = '<b>Correct.</b> ' + optText(item, item.c, perm) + '.';
     } else if(logged.timedOut){
       feedbackEl.className = 'feedback show wrong';
-      feedbackEl.innerHTML = '<b>Time\'s up.</b> The right answer is <b>' + correctDisplayLetter + '</b>: ' + item.o[item.c] + '.';
+      feedbackEl.innerHTML = '<b>Time\'s up.</b> The right answer is <b>' + correctDisplayLetter + '</b>: ' + optText(item, item.c, perm) + '.';
     } else {
       feedbackEl.className = 'feedback show wrong';
-      feedbackEl.innerHTML = '<b>Not quite.</b> The right answer is <b>' + correctDisplayLetter + '</b>: ' + item.o[item.c] + '.';
+      feedbackEl.innerHTML = '<b>Not quite.</b> The right answer is <b>' + correctDisplayLetter + '</b>: ' + optText(item, item.c, perm) + '.';
     }
     if(item.ref || item.n){
       feedbackEl.innerHTML += '<div class="law-note">' +
@@ -1376,8 +1395,8 @@ function showResults(){
       div.innerHTML =
         '<div class="m-section">' + item.s + '</div>' +
         '<div class="m-q">' + item.q + '</div>' +
-        '<div class="m-you">Your answer: ' + yourLetter + '. ' + item.o[m.selected] + '</div>' +
-        '<div class="m-correct">Correct answer: ' + correctLetter + '. ' + item.o[item.c] + '</div>' +
+        '<div class="m-you">Your answer: ' + yourLetter + '. ' + optText(item, m.selected, perm) + '</div>' +
+        '<div class="m-correct">Correct answer: ' + correctLetter + '. ' + optText(item, item.c, perm) + '</div>' +
         ((item.ref || item.n) ? '<div class="law-note">' + (item.ref ? '<span class="law-ref">' + item.ref + '</span>' : '') + (item.n ? '<div>' + item.n + '</div>' : '') + '</div>' : '');
       mistakesList.appendChild(div);
     });
