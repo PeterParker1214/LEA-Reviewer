@@ -465,11 +465,11 @@ const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 // show a mastered/total badge without loading each subject's full quiz data.
 const SUBJECTS = [
   { id: "history", name: "History of Architecture", href: "subjects/history-of-architecture.html", ready: true, totalQuestions: 1352, totalModules: 11 },
-  { id: "building-utilities", name: "Building Utilities", href: "subjects/building-utilities.html", ready: false },
+  { id: "building-utilities", name: "Building Utilities", href: "subjects/building-utilities/index.html", ready: true, totalQuestions: 255, totalModules: 4 },
   { id: "building-technology", name: "Building Technology", href: "subjects/building-technology.html", ready: false },
-  { id: "structural", name: "Structural", href: "subjects/structural.html", ready: false },
+  { id: "structural", name: "Structural", href: "subjects/structural/index.html", ready: true, totalQuestions: 30, totalModules: 1 },
   { id: "building-laws", name: "Building Laws", href: "subjects/building-laws/index.html", ready: true, totalQuestions: 70, totalModules: 4 },
-  { id: "professional-practice", name: "Professional Practice", href: "subjects/professional-practice.html", ready: false },
+  { id: "professional-practice", name: "Professional Practice", href: "subjects/professional-practice/index.html", ready: true, totalQuestions: 356, totalModules: 2 },
   { id: "theory-of-architecture-and-planning", name: "Theory of Architecture and Principles of Planning", href: "subjects/theory-of-architecture-and-planning.html", ready: false },
   { id: "architectural-design", name: "Architectural Design", href: "subjects/architectural-design.html", ready: false },
   { id: "professional-planning", name: "Professional Planning", href: "subjects/professional-planning.html", ready: false },

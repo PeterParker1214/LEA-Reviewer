@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Structural — LEA Reviewer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Bitter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#f1e4c9; --bg-deep:#1c130f; --bg-panel:#2a1c14; --bg-glow1:#3a2416; --bg-glow2:#24170f;
+    --clay:#c1502e; --clay-bright:#e8804f; --turq:#2a9d8f; --turq-bright:#4fc3b0; --sand:#d4a373;
+    --good:#4fa87a; --bad:#b0503f; --line: rgba(212,163,115,0.32); --bg-panel-deep:#20150f;
+    --font-head:'Cinzel', serif; --font-body:'Bitter', serif;
+  }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{
+    background: radial-gradient(ellipse at 15% 0%, var(--bg-glow1) 0%, transparent 55%),
+                radial-gradient(ellipse at 90% 100%, var(--bg-glow2) 0%, transparent 50%), var(--bg-deep);
+    color:var(--ink); font-family:var(--font-body); min-height:100vh;
+    display:flex; justify-content:center; padding:40px 16px 64px;
+  }
+  .wrap{width:100%; max-width:720px;} a{color:inherit;}
+  .hidden{display:none !important;}
+  .auth-bar{ display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:13px; color:var(--sand); margin-bottom:26px; flex-wrap:wrap; }
+  .auth-link{ background:none; border:none; color:var(--turq-bright); cursor:pointer; font-family:var(--font-body); font-size:13px; text-decoration:underline; padding:0; }
+  .auth-link:hover{ color:var(--turq); }
+  .masthead{ text-align:center; margin-bottom:22px; }
+  .masthead .eyebrow{ letter-spacing:0.28em; font-size:11px; text-transform:uppercase; color:var(--clay-bright); opacity:0.9; }
+  .masthead h1{ font-family:var(--font-head); font-weight:700; font-size:30px; margin:8px 0 4px; color:var(--ink); letter-spacing:0.02em; }
+  .masthead .sub{ font-style:italic; color:var(--sand); font-size:15px; }
+  .step-frieze{
+    height:10px; margin:14px auto 0; max-width:220px;
+    background-image: repeating-linear-gradient(135deg, var(--clay) 0 6px, var(--turq) 6px 12px);
+    clip-path: polygon(0% 100%, 10% 0%, 20% 100%, 30% 0%, 40% 100%, 50% 0%, 60% 100%, 70% 0%, 80% 100%, 90% 0%, 100% 100%);
+    opacity:0.85;
+  }
+  .module-grid{ display:flex; flex-direction:column; gap:14px; }
+  .module-card{
+    position:relative; display:block; text-decoration:none;
+    background: linear-gradient(180deg, var(--bg-panel), var(--bg-panel-deep));
+    border:1px solid var(--line); border-radius:6px 6px 18px 18px; padding:20px 22px;
+    box-shadow: 0 14px 34px rgba(0,0,0,0.45);
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .module-card:hover{ transform: translateY(-2px); border-color: var(--turq); }
+  .module-card::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:6px; border-radius:6px 6px 0 0;
+    background-image: repeating-linear-gradient(135deg, var(--accent1) 0 7px, var(--accent2) 7px 14px); opacity:0.9;
+  }
+  .module-num{ font-family:var(--font-head); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--sand); margin-bottom:6px; }
+  .module-title{ font-family:var(--font-head); font-size:18px; font-weight:600; color:var(--ink); margin-bottom:6px; }
+  .module-sub{ font-size:13.5px; color:var(--sand); line-height:1.5; margin-bottom:10px; }
+  .module-meta{ font-size:12px; color:var(--turq-bright); letter-spacing:0.04em; display:flex; justify-content:space-between; align-items:center; }
+  .module-arrow{ font-size:16px; }
+  .note-panel{
+    margin-top:24px; background: linear-gradient(180deg, var(--bg-panel), var(--bg-panel-deep));
+    border:1px solid var(--line); border-radius:10px; padding:16px 20px; font-size:12.5px; color:var(--sand); line-height:1.6;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="auth-bar">
+    <div><a class="auth-link" href="../../index.html">&larr; All subjects</a> &nbsp;&middot;&nbsp; <span id="authStatus">Checking session…</span></div>
+  </div>
+
+  <div class="masthead">
+    <div class="eyebrow">JPT Manila &middot; Module Compendium</div>
+    <h1>Structural</h1>
+    <div class="sub">Mechanics, strength of materials, and structural analysis.</div>
+    <div class="step-frieze"></div>
+  </div>
+
+  <div class="module-grid">
+    <a class="module-card" style="--accent1:#ef5a24;--accent2:#f2c744;" href="quizzes/Structural_Masangkay_Quiz1_Module.html">
+      <div class="module-num">Module 1</div>
+      <div class="module-title">Mechanics, Strength & Structural Analysis — Quiz 1</div>
+      <div class="module-sub">Core structural mechanics fundamentals.</div>
+      <div class="module-meta"><span>30 questions</span><span class="module-arrow">&rarr;</span></div>
+    </a>
+
+  </div>
+
+  <div class="note-panel">Contributed by Masangkay. This module isn't wired into the site-wide mastery tracker yet — progress is tracked locally within the quiz itself.</div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const authStatus = document.getElementById('authStatus');
+
+async function onSignedIn(user){
+  let username = (user.email || '').split('@')[0];
+  const { data: profile } = await sb.from('profiles').select('username').eq('id', user.id).single();
+  if(profile && profile.username) username = profile.username;
+  authStatus.innerHTML = 'Logged in as <b>' + username + '</b> — <button class="auth-link" id="logoutBtn">Log out</button>';
+  document.getElementById('logoutBtn').addEventListener('click', async () => { await sb.auth.signOut(); });
+}
+
+sb.auth.onAuthStateChange((event, session) => {
+  if(event === 'SIGNED_OUT') window.location.href = '../../index.html';
+});
+
+(async function initApp(){
+  const { data: { session } } = await sb.auth.getSession();
+  if(session){ await onSignedIn(session.user); } else { window.location.href = '../../index.html'; }
+})();
+</script>
+</body>
+</html>

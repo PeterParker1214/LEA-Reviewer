@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SPP & Architect's Guidelines — Full Coverage Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#eaf0e9;
+    --bg-deep:#0d1a13;
+    --bg-panel:#152a1e;
+    --brass:#c9a24d;
+    --brass-bright:#e8c878;
+    --sage:#6fa87a;
+    --good:#6fa87a;
+    --bad:#c1594a;
+    --line: rgba(200,180,120,0.22);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, rgba(200,180,120,0.045) 0px, rgba(200,180,120,0.045) 1px, transparent 1px, transparent 30px),
+      repeating-linear-gradient(90deg, rgba(200,180,120,0.045) 0px, rgba(200,180,120,0.045) 1px, transparent 1px, transparent 30px),
+      radial-gradient(ellipse at 12% 0%, #1c3524 0%, transparent 55%),
+      radial-gradient(ellipse at 92% 100%, #17301f 0%, transparent 50%),
+      var(--bg-deep);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:32px 16px 64px;
+  }
+  .wrap{width:100%; max-width:720px;}
+
+  .masthead{ text-align:center; margin-bottom:18px; }
+  .masthead .eyebrow{
+    font-family:'Space Mono', monospace;
+    letter-spacing:0.22em;
+    font-size:11px;
+    text-transform:uppercase;
+    color:var(--brass);
+    opacity:0.9;
+  }
+  .masthead h1{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size:32px;
+    margin:6px 0 2px;
+    color:var(--ink);
+    letter-spacing:0.01em;
+  }
+  .masthead .sub{
+    font-style:italic;
+    color:#a9c2ae;
+    font-size:14px;
+  }
+
+  .toolbar{
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
+    gap:10px; padding:10px 14px; margin-bottom:16px;
+    background: rgba(200,180,120,0.04);
+    border:1px solid var(--line);
+    border-radius:4px;
+    font-size:13px;
+  }
+  .toolbar-stats{ display:flex; gap:16px; letter-spacing:0.04em; }
+  .toolbar-stats .stat-label{
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase; font-size:10px; letter-spacing:0.1em;
+    color:#84a08c; display:block;
+  }
+  .toolbar-stats .stat-value{ font-family:'Cormorant Garamond', serif; font-size:20px; font-weight:700; }
+  .toolbar-stats .score-val{ color: var(--brass-bright); }
+  .toolbar-stats .mistake-val{ color: var(--bad); }
+
+  .toolbar-actions{ display:flex; align-items:center; gap:10px; }
+  .order-toggle{ display:flex; border:1px solid var(--line); border-radius:4px; overflow:hidden; }
+  .order-toggle button{
+    background:none; border:none; color:#b9cabd;
+    font-family:'Space Mono', monospace; font-size:11px; padding:6px 10px; cursor:pointer; letter-spacing:0.03em;
+  }
+  .order-toggle button.active{ background: var(--brass); color:#12200e; font-weight:700; }
+  .toolbar-restart{
+    background:none; border:1px solid var(--sage); color:var(--sage);
+    font-family:'Space Mono', monospace; font-size:11px; padding:6px 12px;
+    border-radius:4px; cursor:pointer; white-space:nowrap;
+  }
+  .toolbar-restart:hover{ background: rgba(111,168,122,0.14); }
+
+  .tesserae{ display:flex; gap:2px; margin:4px 0 8px; flex-wrap:wrap; }
+  .tess{ flex:1; min-width:3px; height:6px; background: rgba(200,180,120,0.16); border-radius:1px; }
+  .tess.done{ background: var(--brass); }
+  .tess.wrong-tess{ background: var(--bad); }
+  .tess.current{ background: var(--brass-bright); box-shadow:0 0 6px var(--brass-bright); }
+  .progress-label{
+    display:flex; justify-content:space-between;
+    font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
+    color:#84a08c; margin-bottom:18px;
+  }
+
+  .card{
+    position:relative;
+    background: linear-gradient(180deg, var(--bg-panel), #0f2016);
+    border:1px solid var(--line);
+    border-radius: 4px;
+    clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 34px, 100% 100%, 0 100%);
+    padding:38px 34px 34px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.55), inset 0 0 40px rgba(201,162,77,0.04);
+  }
+  .card::before{
+    content:""; position:absolute; top:0; right:0; width:34px; height:34px;
+    background: linear-gradient(135deg, transparent 49%, var(--sage) 50%);
+    opacity:0.85;
+  }
+  .section-tag{
+    display:inline-block;
+    font-family:'Space Mono', monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--bg-deep); background: var(--brass); padding:4px 12px; border-radius:2px; margin-bottom:16px;
+  }
+  .reviewing-tag{
+    display:inline-block;
+    font-family:'Space Mono', monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--sage); border:1px solid var(--sage); padding:3px 10px; border-radius:2px;
+    margin-bottom:16px; margin-left:8px;
+  }
+  .qtext{
+    font-family:'Cormorant Garamond', serif; font-weight:600; font-size:24px; line-height:1.35;
+    margin:0 0 22px; color:var(--ink);
+  }
+  .options{ display:flex; flex-direction:column; gap:10px; }
+  .opt{
+    text-align:left; background: rgba(200,180,120,0.03); border:1px solid rgba(200,180,120,0.25);
+    color:var(--ink); font-family:'Source Sans 3', sans-serif; font-size:16px; padding:13px 16px;
+    border-radius:6px; cursor:pointer; transition: border-color .15s ease, background .15s ease, transform .1s ease;
+    display:flex; gap:12px; align-items:flex-start;
+  }
+  .opt:hover:not(.locked){ border-color:var(--brass-bright); background: rgba(201,162,77,0.09); }
+  .opt .letter{ font-family:'Space Mono', monospace; font-weight:700; color:var(--brass-bright); min-width:18px; }
+  .opt.correct{ border-color:var(--good); background: rgba(111,168,122,0.16); }
+  .opt.incorrect{ border-color:var(--bad); background: rgba(193,89,74,0.16); }
+  .opt.locked{ cursor:default; }
+  .opt.dim{ opacity:0.55; }
+
+  .feedback{ margin-top:18px; padding:14px 16px; border-radius:6px; font-size:14.5px; line-height:1.55; display:none; }
+  .feedback.show{ display:block; }
+  .feedback.right{ background: rgba(111,168,122,0.13); border:1px solid rgba(111,168,122,0.4); }
+  .feedback.wrong{ background: rgba(193,89,74,0.13); border:1px solid rgba(193,89,74,0.4); }
+  .feedback b{ color: var(--brass-bright); }
+  .feedback .ref{
+    display:block; margin-top:10px; font-family:'Space Mono', monospace; font-size:10.5px;
+    letter-spacing:0.06em; text-transform:uppercase; color:var(--sage);
+  }
+  .feedback .note{ display:block; margin-top:6px; color:#b9cabd; font-style:italic; }
+
+  .controls{ display:flex; justify-content:space-between; align-items:center; margin-top:22px; }
+  .nav-arrows{ display:flex; gap:10px; }
+  .arrow-btn{
+    font-family:'Space Mono', monospace; font-size:13px; background:none; color:var(--brass-bright);
+    border:1px solid var(--brass); padding:9px 16px; border-radius:4px; cursor:pointer;
+    display:flex; align-items:center; gap:6px;
+  }
+  .arrow-btn:hover:not(:disabled){ background: rgba(201,162,77,0.12); }
+  .arrow-btn:disabled{ opacity:0.28; cursor:default; }
+  .arrow-btn.primary{ background: var(--brass); color:#12200e; font-weight:700; border-color:var(--brass); }
+  .arrow-btn.primary:hover:not(:disabled){ background: var(--brass-bright); }
+
+  .results{ display:none; text-align:center; }
+  .results.show{ display:block; }
+  .results h2{ font-family:'Cormorant Garamond', serif; font-size:34px; margin-bottom:6px; }
+  .score-big{ font-family:'Cormorant Garamond', serif; font-size:60px; color:var(--brass-bright); margin:14px 0; }
+  .results .breakdown{ text-align:left; margin-top:26px; font-size:13.5px; }
+  .breakdown-row{ display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px solid rgba(200,180,120,0.16); }
+  .result-btns{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:26px; }
+  .restart-btn{
+    background:none; border:1px solid var(--brass); color:var(--brass-bright); padding:10px 24px;
+    border-radius:4px; font-family:'Space Mono', monospace; font-size:13px; cursor:pointer;
+  }
+  .restart-btn:hover{ background: rgba(201,162,77,0.1); }
+  .restart-btn.primary{ background: var(--brass); color:#12200e; border-color:var(--brass); font-weight:700; }
+  .restart-btn.primary:hover{ background: var(--brass-bright); }
+
+  .weak-spots{
+    text-align:left; margin-top:30px; padding:16px 18px; border:1px solid rgba(193,89,74,0.35);
+    background: rgba(193,89,74,0.07); border-radius:6px; font-size:14px;
+  }
+  .weak-spots h3{ margin:0 0 8px; font-family:'Cormorant Garamond', serif; font-size:19px; color:var(--brass); }
+  .weak-spots ul{ margin:0; padding-left:20px; }
+  .weak-spots li{ margin-bottom:4px; }
+
+  .mistakes-review{ text-align:left; margin-top:30px; }
+  .mistakes-review h3{ font-family:'Cormorant Garamond', serif; font-size:21px; color:var(--brass-bright); margin-bottom:12px; }
+  .mistake-item{
+    border:1px solid rgba(193,89,74,0.3); background: rgba(200,180,120,0.02); border-radius:6px;
+    padding:14px 16px; margin-bottom:12px; font-size:14px; line-height:1.5;
+  }
+  .mistake-item .m-section{
+    font-family:'Space Mono', monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--brass); margin-bottom:6px;
+  }
+  .mistake-item .m-q{ color:var(--ink); margin-bottom:8px; font-size:15px; }
+  .mistake-item .m-you{ color:var(--bad); }
+  .mistake-item .m-correct{ color:var(--good); }
+  .no-mistakes{ text-align:center; color:#a9c2ae; font-style:italic; margin-top:26px; }
+
+  .quiz-area.hidden{ display:none; }
+  .jump{ text-align:center; margin-top:8px; }
+  .jump select{
+    background: var(--bg-panel); color:var(--ink); border:1px solid var(--line); border-radius:4px;
+    font-family:'Space Mono', monospace; font-size:11px; padding:6px 8px; max-width:100%;
+  }
+
+  @media (max-width:480px){
+    .card{ padding:32px 20px 26px; }
+    .qtext{ font-size:20px; }
+    .masthead h1{ font-size:24px; }
+    .toolbar{ flex-direction:column; align-items:stretch; }
+    .toolbar-actions{ justify-content:space-between; }
+  }
+</style>
+</head>
+<body>
+<div style="max-width:900px;margin:0 auto;padding:14px 16px 0;font-family:sans-serif;font-size:13px;">
+  <a href="../index.html" style="color:#4fc3b0;text-decoration:underline;">&larr; Back to subject</a>
+  &nbsp;&middot;&nbsp;
+  <a href="../../../index.html" style="color:#4fc3b0;text-decoration:underline;">All subjects</a>
+</div>
+
+<div class="wrap">
+
+  <div class="masthead">
+    <div class="eyebrow">Full Coverage Module Quiz · JPT Review Center</div>
+    <h1>Standards of Professional Practice &amp; Architect's Guidelines</h1>
+    <div class="sub">Annex A · SPP Documents 201–209 · UAP-IAPOA Document 210, Rules I–IV — every rule, term, and figure</div>
+  </div>
+
+  <div class="toolbar">
+    <div class="toolbar-stats">
+      <div>
+        <span class="stat-label">Score</span>
+        <span class="stat-value score-val" id="scoreText">0</span>
+      </div>
+      <div>
+        <span class="stat-label">Mistakes</span>
+        <span class="stat-value mistake-val" id="mistakeText">0</span>
+      </div>
+    </div>
+    <div class="toolbar-actions">
+      <div class="order-toggle">
+        <button id="orderInOrderBtn" class="active">In order</button>
+        <button id="orderShuffleBtn">Shuffled</button>
+      </div>
+      <button class="toolbar-restart" id="toolbarRestartBtn">Restart from start</button>
+    </div>
+  </div>
+
+  <div class="tesserae" id="tesserae"></div>
+  <div class="progress-label">
+    <span id="progressText">Question 1 of 1</span>
+  </div>
+
+  <div class="quiz-area" id="quizArea">
+    <div class="card">
+      <div class="section-tag" id="sectionTag">Section</div>
+      <span class="reviewing-tag" id="reviewingTag" style="display:none;">Reviewing — answer locked</span>
+      <p class="qtext" id="qtext">Loading…</p>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="controls">
+        <div class="nav-arrows">
+          <button class="arrow-btn" id="backBtn">&larr; Back</button>
+          <button class="arrow-btn" id="forwardBtn">Forward &rarr;</button>
+        </div>
+        <button class="arrow-btn primary" id="finishBtn" style="display:none;">See results →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="results" id="results">
+    <h2 id="resultsTitle">Quiz Complete</h2>
+    <div class="sub" id="resultsSub">You've worked through every question, in order.</div>
+    <div class="score-big" id="finalScore">0 / 0</div>
+    <div class="breakdown" id="breakdown"></div>
+    <div class="weak-spots" id="weakSpots" style="display:none;">
+      <h3>Weak spots</h3>
+      <ul id="weakSpotsList"></ul>
+    </div>
+    <div class="result-btns">
+      <button class="restart-btn primary" id="retryMissedBtn" style="display:none;">Retry missed questions</button>
+      <button class="restart-btn" id="restartBtn">Take it again from the start</button>
+    </div>
+    <div class="mistakes-review" id="mistakesReview" style="display:none;">
+      <h3>Review your mistakes</h3>
+      <div id="mistakesList"></div>
+    </div>
+    <div class="no-mistakes" id="noMistakes" style="display:none;">No mistakes this run — clean sweep.</div>
+  </div>
+
+</div>
+
+<script>
+const QUESTIONS = [
+{s:"Annex A · Definitions", q:"In Annex A's General Definitions, what does \u201cState\u201d refer to?", o:["Any LGU","The National Government","The PRC","The IAPOA"], c:1, ref:"Annex A §A.1", n:"\u201cState \u2013 National Government.\u201d"},
+{s:"Annex A · Definitions", q:"The Standards of Professional Practice (SPP) originates from which legal provision?", o:["Article V Section 41 of RA 9266","Article III Section 12 of RA 9266","RA 8293","RA 9184"], c:0, ref:"Annex A §A.2", n:"\u201cStandards of Professional Practice (SPP) \u2013 from Article V Section 41 of RA 9266.\u201d"},
+{s:"Annex A · Definitions", q:"\u201cCommission,\u201d as used in the SPP, refers to:", o:["PRBoA","IAPOA","PRC","UAP"], c:2, ref:"Annex A §A.3", n:"\u201cCommission \u2013 PRC.\u201d The Board, separately, refers to the PRBoA."},
+{s:"Annex A · Definitions", q:"How often must an Architect's Certificate of Registration and Professional Identification Card (CoR/PIC) be renewed?", o:["Every year","Every 2 years","Every 3 years","Every 5 years"], c:2, ref:"Annex A §A.5", n:"\u201cArchitect \u2013 Registered and Licensed Architect (RLA), natural person with CoR and PIC (renewable every 3 years).\u201d"},
+{s:"Annex A · Definitions", q:"Which of these is NOT a role the term \u201cArchitect\u201d can refer to under Annex A?", o:["Architect-of-Record (AOR)","Architect in charge of Construction (AICC)","Consulting Architect (CA)","Project Manager (PM)"], c:3, ref:"Annex A §A.5", n:"The Architect definition explicitly lists AOR, AICC, and CA as roles it can refer to. Project Manager is a role created under SPP 206, not part of this base definition."},
+{s:"Annex A · Definitions", q:"An Architectural Firm (AF) organized as a sole proprietorship registers with:", o:["SEC","DTI","PRC only","IAPOA"], c:1, ref:"Annex A §A.6", n:"\u201csole proprietorship for individual practice \u2013 registered to DTI,\u201d while a professional partnership or architectural corporation registers with SEC and PRC."},
+{s:"Annex A · Definitions", q:"Which statement about Architect vs. Architectural Firm is correct?", o:["Both can be natural or juridical persons","Architect is always a natural person; AF is only a juridical person","AF is always a natural person; Architect is only juridical","There is no legal distinction"], c:1, ref:"Annex A §A.5–6", n:"The Architect is defined as a \u201cnatural person,\u201d while the Architectural Firm is \u201conly juridical person under Philippine law and jurisprudence.\u201d"},
+{s:"Annex A · Definitions", q:"\u201cRLPs\u201d as defined in Annex A refers to:", o:["Registered Licensed Practitioners","Registered and Licensed Professionals","Regulated Licensed Persons","Recognized Local Professionals"], c:1, ref:"Annex A §A.7", n:"\u201cProfessionals \u2013 Register[ed] and Licensed Professionals (RLPs), natural person with CoR and PIC.\u201d"},
+{s:"Annex A · Definitions", q:"Under Annex A, which pair of terms is treated as meaning the same thing?", o:["Architect and Consultant","Client, Owner and Project Proponent","Bid and Proposal","Board and Commission"], c:1, ref:"Annex A §A.8", n:"\u201cClient, Owner and Project Proponent \u2013 meaning the same.\u201d Separately, \u201cBid or Tender \u2013 meaning the same,\u201d and \u201cContractor and General Contractor\u201d also mean the same."},
+{s:"Annex A · Selection of Architect", q:"Under the General Notes on the Selection of the Architect, what determines the most appropriate method of selecting an architect?", o:["The client's budget alone","The type and complexity of the project","The architect's years of experience","The region where the project is located"], c:1, ref:"Annex A §C.1", n:"\u201cMost appropriate method of selecting an architect will depend on the type and complexity of the project,\u201d and the scope of services also depends on the selection method used."},
+{s:"Annex A · Selection of Architect", q:"Which selection method is described as being \u201cfor relatively small project[s], based on reputation, personal or recommendations\u201d?", o:["Comparative Selection","Architectural Design Competition","Direct Selection","Negotiated Procurement"], c:2, ref:"Annex A §C.3", n:"Direct Selection is the method described this way, as opposed to Comparative Selection, which is conducted by committees through a multi-step process."},
+{s:"Annex A · Selection of Architect", q:"Put the steps of Comparative Selection in their correct order.", o:["Interview \u2192 Invitation \u2192 Verification \u2192 Negotiation \u2192 Evaluation","Invitation \u2192 Pre-qualification \u2192 Interview \u2192 Verification \u2192 Evaluation and Ranking \u2192 Negotiation","Pre-qualification \u2192 Negotiation \u2192 Invitation \u2192 Interview \u2192 Evaluation","Evaluation \u2192 Verification \u2192 Interview \u2192 Invitation \u2192 Negotiation"], c:1, ref:"Annex A §C.3", n:"The six steps run: Invitation (with Terms of Reference), Pre-qualification (resume/portfolio), Interview (design methodology, not design itself), Verification (site visits), Evaluation and Ranking, then Negotiation of scope and fees."},
+{s:"Annex A · Selection of Architect", q:"During the Interview step of Comparative Selection, what does the architect explain?", o:["The final design concept","His design methodology, not the design itself","The itemized fee breakdown","The contractor he intends to hire"], c:1, ref:"Annex A §C.3", n:"\u201cInterview \u2013 architect explains his design methodology (not design).\u201d"},
+{s:"Annex A · Selection of Architect", q:"An Architectural Design Competition (ADC) is typically used for what kind of project?", o:["Routine residential subdivisions","Civic or monumental projects","Any BPO office fit-out","Interior renovation only"], c:1, ref:"Annex A §C.3", n:"\u201cArchitectural Design Competition (ADC) \u2013 used for civic or monumental projects (idea competition, design competition or design-build competition).\u201d"},
+{s:"Annex A · Selection of Architect", q:"Under Annex A, an ADC Jury must have at least how many members, and who assists in running the competition procedure?", o:["3 members; assisted by the PRC","5 members; assisted by IAPOA","7 members; assisted by DTI","10 members; assisted by the Building Official"], c:1, ref:"Annex A §C.3", n:"\u201cJury (at least 5 members, architect & sponsor/client).\u201d The ADC procedure is \u201cassisted by IAPOA; follows Archt's Guidelines.\u201d"},
+{s:"Annex A · Selection of Architect", q:"Which is listed as a disadvantage of the Architectural Design Competition method, per Annex A?", o:["It is too fast to properly evaluate designs","It is expensive and time-consuming, and may discourage participants","It excludes foreign architects entirely","It cannot be used for government projects"], c:1, ref:"Annex A §C.3", n:"Disadvantages listed are: \u201cexpensive and time-consuming; may discourage participants; fraud clients/competitions.\u201d The advantage listed is that it's \u201copen to RLAs and AFs.\u201d"},
+{s:"SPP 201 · Pre-Design Services", q:"Under SPP Document 201, what distinguishes Feasibility Studies from Pre-feasibility Studies?", o:["Feasibility Studies use only secondary data; Pre-feasibility uses primary data","Feasibility Studies involve primary data and forecast project performance over time; Pre-feasibility relies on secondary data","There is no real difference between them","Pre-feasibility Studies are conducted only after construction begins"], c:1, ref:"SPP 201 §B(b–c)", n:"Pre-feasibility Studies use secondary data for early decision-making, while Feasibility Studies \u201cinvolve[] primary data\u201d and forecast \u201cthe performance of the project over time by gathering and analyzing primary data.\u201d"},
+{s:"SPP 201 · Pre-Design Services", q:"Which Pre-Design service is described as an \u201canalytical problem-seeking process to produce a statement and solution,\u201d including a space program with space characteristics and costs?", o:["Space Planning","Architectural Research","Architectural Programming","Value Management Studies"], c:2, ref:"SPP 201 §B(g)", n:"\u201cArchitectural Programming \u2013 analytical problem-seeking process to produce a statement and solution; space program with characteristics of the spaces, cost etc.\u201d"},
+{s:"SPP 201 · Pre-Design Services", q:"Value Management Studies, under SPP 201, aims to achieve what outcome?", o:["The lowest possible design quality at any cost","An unimpaired program, system, or design at minimum cost with the same performance","Maximum profit for the contractor","A design that ignores budget constraints entirely"], c:1, ref:"SPP 201 §B(j)", n:"\u201cValue Management Studies \u2013 applied in the cost management studies... achieving an unimpaired program, system or design at minimum cost with same performance.\u201d"},
+{s:"SPP 201 · Pre-Design Services", q:"In Promotional Services under SPP 201, the architect acts in what capacity?", o:["As the general contractor","As an agent conducting and coordinating activities to promote the project, as the owner's professional representative","As an independent government auditor","As a specialist consultant only, with no representative role"], c:1, ref:"SPP 201 §B(l)", n:"\u201cPromotional Services \u2013 ...architect acts as an agent by conducting and coordinating activities for the promotion of the project (professional representative of the owner).\u201d"},
+{s:"SPP 201 · Pre-Design Services", q:"Before rendering Pre-Design Services, what four things must the architect's proposal state?", o:["Scope of work, manner of payment, owner's responsibilities, and other conditions","Only the fee amount and payment date","Scope of work and the architect's resume only","The names of all sub-consultants and their fees"], c:0, ref:"SPP 201 §C(a)", n:"The proposal must state: (1) scope of work, (2) manner of payment, (3) owner's responsibilities, and (4) other conditions."},
+{s:"SPP 201 · Pre-Design Services", q:"Which method of compensation is notably NOT listed as an option for Pre-Design Services under SPP 201 (though it is available for Regular Design Services under SPP 202)?", o:["Multiple of Direct Personnel Expense","Percentage of Project Construction Cost","Lump Sum or Fixed Fee","Per Diem, Honorarium Plus Reimbursable Expenses"], c:1, ref:"SPP 201 §D", n:"SPP 201 lists Multiple of DPE, Professional Fee + Expenses, Lump Sum/Fixed Fee, Per Diem/Honorarium + Reimbursable, and Mixed Methods \u2014 but not Percentage of PCC, since there's typically no construction cost yet at the pre-design stage."},
+{s:"SPP 201 · Pre-Design Services", q:"In the Multiple of Direct Personnel Expenses formula, what does the Multiplier (M) compensate the architect for, and what is its typical range?", o:["Overhead and reasonable profit; ranges 1.5 to 2.5","Only travel expenses; fixed at 2.0","Reimbursable taxes only; ranges 3.0 to 4.0","Contractor's markup; fixed at 1.0"], c:0, ref:"SPP 201 §D(a)", n:"\u201cM = Multiplier for head and reasonable profit (1.5 to 2.5 depending on architect's setup, expertise and complexity of the project).\u201d Fee = Direct Cost \u00d7 M."},
+{s:"SPP 201 · Pre-Design Services", q:"Under SPP 201's reimbursable expenses (R), housing, transportation, and living allowance for consultants or technical staff apply when they are assigned to places how far from the area of operation?", o:["Over 25km","Over 50km","Over 100km","Over 200km"], c:2, ref:"SPP 201 §D(a)", n:"\u201cR = reimbursable expenses such as housing, transportation and living allowance of consultants or technical staff (if assigned to places over 100km from the area of operation), cost of printing of extra set of drawings...\u201d"},
+{s:"SPP 201 · Pre-Design Services", q:"In the Per Diem, Honorarium + Reimbursable Expenses method under SPP 201, what specifically is an \u201cHonorarium\u201d, as distinguished from Per Diem and Reimbursement?", o:["A fixed daily wage set by contract","A voluntary payment for which no charge was set","Out-of-pocket travel and accommodation costs","A percentage-based fee tied to project cost"], c:1, ref:"SPP 201 §D(d)", n:"\u201cPer Diem \u2013 per day payment; Honorarium \u2013 voluntary payment (no charge was set); Reimbursement \u2013 out-of-pocket expenses such as travel, accommodations and subsistence.\u201d Total Payment = Per Diem/Honorarium + Reimbursement."},
+{s:"SPP 202 · Regular Design Services", q:"Under SPP 202's applicability, which entities are NOT covered unless they are registered architectural firms?", o:["Foreign architects with a TSP","BPOs and KPOs providing services for overseas clients","Sole proprietorships","Group practices"], c:1, ref:"SPP 202 §A", n:"\u201cnot applicable to BPO and KPO providing services for overseas clients unless they are registered architectural firms.\u201d"},
+{s:"SPP 202 · Regular Design Services", q:"What three requirements must a foreign architect meet to practice regular design services under SPP 202?", o:["A local counterpart RLA, malpractice insurance, and a government endorsement","Temporary/Special Permit (TSP) from PRC and DOLE, a Work Permit from DOLE, and a local counterpart who is an RLA","A Philippine passport, a PRC license, and 10 years' experience","None \u2014 foreign architects are automatically exempt from these requirements"], c:1, ref:"SPP 202 §A.b", n:"Requirements: (i) Temporary/Special Permit (TSP) from PRC and DOLE, (ii) Work Permit from DOLE, (iii) a local counterpart who is RLA."},
+{s:"SPP 202 · Regular Design Services", q:"When do Regular Design Services, per SPP 202, officially begin and end?", o:["Begin at groundbreaking; end at building turnover","Begin at project inception (analysis of owner's needs); end only at turn-over of the completed project to the owner","Begin at contract signing; end at issuance of building permit","Begin at schematic design; end at bidding"], c:1, ref:"SPP 202 §A.e", n:"\u201cregular services start at the project inception, from analysis and study of the owner's needs, preparation for the instruments of the service and supervision during project implementation, and ends only in the turn-over of the completed project to the owner.\u201d"},
+{s:"SPP 202 · Schematic Design Phase", q:"What document, based on current cost parameters, does the architect submit at the end of the Schematic Design Phase?", o:["Certificate of Occupancy","Statement of the Probable Project Construction Cost (SPPCC)","Final Project Construction Cost (FPCC)","Certificate of Payment"], c:1, ref:"SPP 202 §B(b)", n:"The architect \u201csubmits Statement of the Probable Project Construction Cost (SPPCC) based on current cost parameters\u201d during Schematic Design, and this SPPCC is updated again at Design Development and Contract Document phases."},
+{s:"SPP 202 · Contract Document Phase", q:"How many sets of construction drawings and technical specifications must be submitted for the purpose of securing a building permit?", o:["3 sets","5 sets","7 sets","10 sets"], c:2, ref:"SPP 202 §B(d)", n:"\u201csubmits 7 sets of construction drawings and technical specifications for the purpose of building permit.\u201d"},
+{s:"SPP 202 · Bidding or Negotiation Phase", q:"Regarding bid documents furnished to bidders during competitive bidding, which statement is correct?", o:["Bidders may reproduce bid documents freely once loaned","Bid documents are intellectual property; they are loaned (a bond may be required) and reproduction is not allowed","Bid documents become the bidder's property once submitted","There is no restriction on reproducing bid documents"], c:1, ref:"SPP 202 §B(e)", n:"\u201cbid documents are intellectual property, returned (a bond may be required), reproduction is not allowed... documents used by the purpose agreed with the owner.\u201d"},
+{s:"SPP 202 · Construction Phase", q:"Is the architect required to provide continuous 8-hour on-site supervision, and is he liable for the contractor's failure to carry out the contract documents?", o:["Yes to both", "No to both \u2014 8-hour on-site supervision is not required, and the architect is not liable for the contractor's failures", "8-hour supervision is required, but liability is waived", "Liability applies, but 8-hour supervision is not required"], c:1, ref:"SPP 202 §B(f)", n:"\u201carchitect is not required to supervise on 8-hour on-site and shall not be responsible for the failures of contractor to carry-out the contract documents.\u201d He does, however, report defects and condemn non-conforming work."},
+{s:"SPP 202 · Construction Phase", q:"A \u201cCertificate of Payment\u201d issued by the architect certifies what, specifically?", o:["That the contractor is licensed","That the work has progressed, is sufficient, and is in accordance with the contract documents, to the architect's best knowledge","That the building is ready for occupancy","That all reimbursable expenses have been paid"], c:1, ref:"SPP 202 §B(f)", n:"\u201cCertificates of Payment \u2013 certification to the Client that the work progressed, sufficient and in accordance to the contract documents (to the architect's best knowledge).\u201d"},
+{s:"SPP 202 · Manner of Providing Services", q:"What is the key difference between a Single Contract and a Separate Contract manner of providing services under SPP 202?", o:["Single Contract has no sub-consultants at all", "Single Contract is between architect and owner with sub-consultancy contracts to other allied professionals; Separate Contract has separate owner contracts with each professional", "Separate Contract merges all professional liabilities into one", "There is no meaningful difference"], c:1, ref:"SPP 202 §C", n:"In both cases, professional and civil liabilities of each State-regulated professional remain separate, but the contracting structure differs as described."},
+{s:"SPP 202 · Project Classification", q:"Group 1 under SPP 202's Project Classification covers buildings of the simplest utilization and character. Which of these belongs to Group 1?", o:["Public markets and warehouses","Hospitals and hotels","Museums and mausoleums","Residences and townhouses"], c:0, ref:"SPP 202 §D.1", n:"Group 1 lists armories, bakeries, freight facilities, hangars, industrial plants, parking structures, public markets, service garages, and warehouses, among similar simplest-character buildings."},
+{s:"SPP 202 · Project Classification", q:"Which of the following is classified under Group 2 (moderate complexity of plan or design)?", o:["Nuclear facilities and laboratories","Schools, churches, and office buildings","Small residential townhouses","Mausoleums and monuments"], c:1, ref:"SPP 202 §D.b", n:"Group 2 includes art galleries, banks, call centers, churches, city/town halls, college buildings and schools, dormitories, malls, and mixed-use buildings \u2014 moderate complexity."},
+{s:"SPP 202 · Project Classification", q:"Group 3 covers buildings of exceptional character and complexity. Which of these is a Group 3 building?", o:["A public market","A hotel","A townhouse","A warehouse"], c:1, ref:"SPP 202 §D.c", n:"Group 3 includes aquariums, marinas, nuclear facilities, laboratories, auditoriums, airports, hospitals, hotels, and mortuaries."},
+{s:"SPP 202 · Project Classification", q:"Group 4 under the SPP's Project Classification refers specifically to:", o:["Monumental buildings","Housing projects with repetitive construction","Residences (single-detached, duplex, rowhouses, small apartments, townhouses)","Extensive detail projects like built-in components"], c:2, ref:"SPP 202 §D.d", n:"\u201cGroup 4 \u2013 Residences (single-detached; single-attached or duplex; rowhouses or shophouses, small apartment houses and townhouses).\u201d"},
+{s:"SPP 202 · Project Classification", q:"Group 5 covers monumental buildings and similar facilities. Which of these belongs there?", o:["Museums, mausoleums, memorials and monuments","Hospitals and clinics","Call centers and BPO offices","Parking structures"], c:0, ref:"SPP 202 §D.e", n:"\u201cGroup 5 \u2013 monumental buildings and other facilities such as: Exposition & Fair Buildings; Mausoleums, Memorials and Monuments; Specialized decorative buildings; Museums.\u201d"},
+{s:"SPP 202 · Project Classification", q:"Group 6 is defined by which characteristic?", o:["Extensive built-in detailing", "Repetitive projects, where contract drawings are reused for repetitive construction without amending the drawing or specifications", "Alterations and renovations to existing buildings", "Housing subdivisions on a single site"], c:1, ref:"SPP 202 §D.f", n:"\u201cGroup 6 \u2013 repetitive projects (contract drawings are reused for repetitive construction without amending the drawing and specifications).\u201d"},
+{s:"SPP 202 · Project Classification", q:"Group 7 specifically applies to which situation?", o:["A single custom-designed residence", "Housing projects: construction of several residential units on a single site using one set of plans, specs and related documents", "A hospital renovation", "A design competition entry"], c:1, ref:"SPP 202 §D.g", n:"\u201cGroup 7 \u2013 housing projects (construction of several residential units on single site) with use of one (1) set of plans or design, specifications and related documents.\u201d"},
+{s:"SPP 202 · Project Classification", q:"Group 8, \u201cextensive detail projects,\u201d covers which type of work?", o:["Master development planning", "Built-in components/elements, built-in equipment, special fittings, screens, counters, architectural interiors and development planning/design", "Ideas competitions", "Government projects exclusively"], c:1, ref:"SPP 202 §D.h", n:"\u201cGroup 8 \u2013 extensive detail projects such as: built-in components or elements, built-in equipment, special fittings, screens, counters, architectural interiors (AI) and development planning and/or design.\u201d"},
+{s:"SPP 202 · Project Classification", q:"Group 9 in the SPP's Project Classification applies to:", o:["New construction only", "Alterations, renovations, rehabilitations, retrofit and expansion/additions to existing buildings belonging to Groups 1 to 5", "Design competitions", "Consulting services only"], c:1, ref:"SPP 202 §D.i", n:"\u201cGroup 9 \u2013 alterations, renovations, rehabilitations, retrofit and expansion/additions to existing buildings belonging to Group 1 to 5.\u201d"},
+{s:"SPP 202 · Project Classification", q:"Group 10 covers which kind of engagement?", o:["Full design and construction services", "Rendering opinion or giving advice, clarifications or explanation on technical matters pertaining to architectural works", "Site development planning only", "Government housing subdivisions"], c:1, ref:"SPP 202 §D.j", n:"\u201cGroup 10 \u2013 engaged in rendering opinion or give advice, clarifications or explanation on technical matters pertaining to architectural works.\u201d"},
+{s:"SPP 202 · Owner's Responsibilities", q:"Under SPP 202, through whom should the Owner issue orders to the General Contractor?", o:["Directly to the Contractor","Only through the architect","Through the Building Official","Through a third-party project manager, always"], c:1, ref:"SPP 202 §F.c", n:"\u201cThe owner should issue orders to the General Contractor only through the architect,\u201d as part of the owner's duty for prompt examination and decisions to avoid unreasonable delay."},
+{s:"SPP 202 · Other Conditions", q:"If the owner fails to implement the project after the architect has completed architectural plans/designs, specifications, and contract documents for the General Contractor, what percentage of his work is that considered, and what fee is he entitled to?", o:["50% of his work; entitled to 50% of the fee","75% of his work; entitled to 75% of the fee","90% of his work; entitled to 90% of the Architect's fee","100% of his work; entitled to 100% of the fee"], c:2, ref:"SPP 202 §G.g", n:"\u201cthe Detailed Design and Contract Documents Phase of his services... is equivalent to 90% of his work. If the owner fails to implement the project, the architect is entitled to receive 90% of the Architect's fee.\u201d"},
+{s:"SPP 202 · Other Conditions", q:"If construction is suspended for more than 6 months, what happens to the fee for the remaining construction-phase works?", o:["It is cancelled","It stays the same","It is doubled","It is reduced by 50%"], c:2, ref:"SPP 202 §G.h", n:"\u201cWhen construction is suspended for more than 6 months, the fee for the remaining works shall be doubled.\u201d"},
+{s:"SPP 202 · Other Conditions", q:"Design of movable/fixed cabinets and other AI elements, site development plans, and urban design elements are compensated how, per SPP 202?", o:["Included automatically in the base design fee","Separately, based on SPP Document 203","Not compensable under any SPP document","Only through a Design-Build contract"], c:1, ref:"SPP 202 §G.j", n:"\u201cSeparate Services \u2013 the following services shall be compensated separately based on SPP Document 203: design of movable or fixed pieces of cabinets and other AI elements, site development plan (SDP), urban design elements, other items of similar nature.\u201d"},
+{s:"SPP 202 · Other Conditions", q:"Who owns all drawings and contract documents signed and sealed by the Architect, whether the project is implemented or not?", o:["The Owner, automatically","The Contractor","The Architect \u2014 they remain his intellectual property under Sec 33 of RA 9266 unless a written agreement says otherwise","The PRC"], c:2, ref:"SPP 202 §G.n", n:"\u201cOwnership of Documents \u2013 all drawings and contract documents signed and sealed are intellectual property and documents of the Architect (implemented or not), not to be reproduced or used in other work unless under written agreement with the Architect (Section 33 of RA 9266).\u201d"},
+{s:"SPP 202 · Other Conditions", q:"Project Construction Cost (PCC), as defined under SPP 202, excludes which of the following?", o:["Structure and plumbing/sanitary fixtures","Cost of materials and labor for architectural interiors","Fees for the Architect, the Engineer, and Specialist Consultants","Fire protection and alarm systems"], c:2, ref:"SPP 202 §G.q", n:"PCC covers all construction-related costs (structure, fixtures, elevators, fire protection, AI, SDP elements) but \u201cexcluding professional and consultancy fees.\u201d Project Development Cost (PDC), by contrast, is PCC plus all professional fees and other fees."},
+{s:"SPP 203 · Specialized Architectural Services", q:"For purposes of SPP Document 203, the term \u201cArchitect\u201d specifically refers to which role?", o:["Architect-of-Record","Consulting Architect (CA)","Project Manager","Construction Manager"], c:1, ref:"SPP 203 §A", n:"\u201cFor SPP Document 203, \u2018Architect\u2019 refers to \u2018Consulting Architect.\u2019\u201d A CA is defined as \u201conly RLAs who may have another professional license or may have a valid specialist certificate.\u201d"},
+{s:"SPP 203 · Architectural Interiors", q:"What does the Architect's fee for extensive detailing of Architectural Interiors (AI) components get based on?", o:["A flat government-set rate","A percentage of the AI work's total cost","The same rate as Regular Design Services, with no adjustment","Man-hours billed at the DPE multiplier only"], c:1, ref:"SPP 203 §B", n:"\u201cFor extensive detailing of AI components... Architect's fee shall be percentage of AI work total cost,\u201d while any Engineering or Specialist Consultant fees remain separate from the architect's own."},
+{s:"SPP 203 · Acoustic Design Services", q:"Under Acoustic Design Services, the Consulting Architect works in cooperation with whom, who is described as the \u201cprime professional hired by the owner\u201d?", o:["The Building Official","The Architect","The Contractor","The Specialist Consultant"], c:1, ref:"SPP 203 §C", n:"Acoustic Design Services are provided \u201cin cooperation with the Architect which is the prime professional hired by the owner.\u201d"},
+{s:"SPP 203 · Site Development Planning", q:"For large-scale Site Development Planning (SDP), who must the Architect hire as additional support, per SPP 203?", o:["A licensed contractor only","Other RLPs as qualified Specialist Consultants (SCs)","The Building Official","A government auditor"], c:1, ref:"SPP 203 §E", n:"\u201cOrdinarily, the landscaping layout of small building projects could be done by an Architects as part of the SDP design. For large scale, the Architect must hire other RLPs as qualified Specialist Consultants (SCs).\u201d"},
+{s:"SPP 203 · Site & Physical Planning", q:"What is \u201cPhysical Planning,\u201d as defined under SPP 203?", o:["Only the structural engineering of a building","The orderly arrangement of vertical structures and horizontal developments (ROWs, open spaces, activity spaces), considering surroundings and neighboring impact","Interior furniture layout only","A synonym for Comprehensive Development Planning"], c:1, ref:"SPP 203 §F", n:"\u201cPhysical Planning \u2013 orderly arrangement of vertical structures, horizontal developments like ROWs, open spaces and activity spaces, considering the immediate surroundings, interrelationship of structures and the impact on the neighboring areas.\u201d"},
+{s:"SPP 203 · Comprehensive Development Planning", q:"CDP services call for detailed study of which components, requiring the expertise of Specialist Consultants?", o:["Physical, Economic, Socio-Cultural, Transport, and Legal/Administrative","Structural, Mechanical, and Electrical only","Financial and Marketing only","Environmental only"], c:0, ref:"SPP 203 §G", n:"The five components are Physical (land use/physical environment, mainly the MDP), Economic (nation's assets/management), Socio-Cultural (living conditions), Transport (movement of people/goods), and Legal and Administrative (relation to existing laws)."},
+{s:"SPP 203 · Comprehensive Development Planning", q:"What are the two compensation options for Comprehensive Development Planning (CDP) Services?", o:["Man-months, or as prescribed by the Architect's Guidelines","Only a flat government rate","Percentage of PCC only","Hourly billing only, with no other option"], c:0, ref:"SPP 203 §G", n:"\u201cManner of Compensation \u2013 two options: through man-months (for example, 22-man-days x 8-man hours and multiplied by a factor); as prescribed by the Architect's Guidelines.\u201d"},
+{s:"SPP 203 · Building Environment Certification", q:"Which is NOT one of the three required characteristics of a building environment rating system under SPP 203?", o:["Credit-based","Flexible","Government-mandated with no alternatives","Consensus-based and market-driven"], c:2, ref:"SPP 203 §M", n:"The rating system must be credit-based (earning points for eco-friendly actions), flexible (projects need not meet identical requirements), and consensus-based/market-driven \u2014 not a rigid government mandate."},
+{s:"SPP 203 · Forensic Architecture", q:"Forensic Architecture, under SPP 203, is described as what kind of study?", o:["A legal review of contracts only","A scientific study on the built environment's well-being, focused on maintaining and prolonging the building's life cost-efficiently","A marketing analysis for building resale value","A purely aesthetic critique"], c:1, ref:"SPP 203 §N", n:"\u201cThe Architect in this area of practice undertakes a scientific study on the built environment's well-being, which allows the Architect to focus on the ways in which the building/structure can best maintain itself and prolong its life in a cost-efficient manner.\u201d"},
+{s:"SPP 203 · Post-Design Services", q:"What specific report, required under RA 9514 (the Fire Code of the Philippines), is included under the Post-Design specialized practice in SPP 203?", o:["Certificate of Occupancy","Fire Safety and Life Assessment Report (FALAR)","Environmental Impact Statement","Structural Conceptualization Report"], c:1, ref:"SPP 203 §S", n:"\u201cIncluded under this Specialized Practice is the preparation of the Fire Safety and Life Assessment Report (FALAR) required by R.A. No. 9514, the 2008 Fire Code of the Philippines.\u201d"},
+{s:"SPP 203 · Dispute Avoidance and Resolution", q:"Under SPP 203, an Architect specializing in Alternative Dispute Resolution (ADR) should preferably hold what status?", o:["A foreign consulting license","State-accreditation","Membership in the IAPOA ADC Committee only","No special status is required"], c:1, ref:"SPP 203 §T", n:"\u201cAn Architect specializing in ADR must preferably be State-accredited,\u201d and the ADR modes covered are those prescribed under RA 9285."},
+{s:"SPP 203 · General Notes on Compensation", q:"Compensation for the various Specialized Architectural Services listed under SPP 203, all classified as additional/extra services, is generally computed how?", o:["Only through a flat percentage of PCC","Through man-months (22 man-days \u00d7 8 man-hours, multiplied by a factor for overhead/indirect costs), or other applicable modes stated in Doc. 201, 202, or the Guidelines","Only through Lump Sum contracts","Through a fixed government schedule with no adjustment"], c:1, ref:"SPP 203 §Y", n:"\u201cCompensation for the foregoing specialized architectural services... shall be through man-months... or through any other applicable mode of determination of the Architect's fee as stated in Doc. 201, Doc. 202 and the Architect's Guidelines.\u201d"},
+{s:"SPP 204-A · Fulltime Supervision", q:"Under SPP 204-A, who are the four principal members in the design and construction process?", o:["Owner, Architect and SCs, Contractor, and the Supervision Group","Owner, Building Official, Contractor, and Bank","Architect, Engineer, Lawyer, and Accountant","Owner, Contractor, Insurer, and the PRC"], c:0, ref:"SPP 204-A §A", n:"\u201cFor 50 years, four principal members in the design and construction process \u2013 the owner, the Architect and SCs, the Contractor and the Supervision Group.\u201d"},
+{s:"SPP 204-A · Fulltime Supervision", q:"Who is normally responsible for recommending the Construction Supervision Group (CSG), and who hires them?", o:["Recommended by the Contractor; hired by the Architect","Recommended by the Architect; hired by the Owner","Recommended and hired by the Owner alone","Recommended by the PRC; hired by the Owner"], c:1, ref:"SPP 204-A §A", n:"\u201cThe Construction Supervision Group (CSG) is normally recommended by the Architect and hired by the Owner. They report both to the owner and the architect.\u201d"},
+{s:"SPP 204-A · Fulltime Supervision", q:"What are the four items in the Scope of Services for Fulltime Supervision under SPP 204-A?", o:["Design, Bidding, Negotiation, Turnover","Quality Control, Evaluation of Construction Work, Preparation of Daily Inspection Reports, Filing of Documents","Feasibility, Programming, Space Planning, Value Management","Marketing, Promotion, Sales, Leasing"], c:1, ref:"SPP 204-A §B", n:"Scope of Services \u2013 Quality Control, Evaluation of Construction Work, Preparation of Daily Inspection Reports, Filing of Documents (with detailed tasks specified under the Architect's Guidelines)."},
+{s:"SPP 204-A · Limitation of Authority", q:"Which of the following is a limitation placed on the Construction Supervision Group (CSG) under SPP 204-A?", o:["The CSG may assume the Contractor's project superintendent role if needed","The CSG shall not assume the responsibility of the Contractor's project superintendent, nor decide on matters solely the AoR's responsibility","The CSG has unlimited decision-making authority over design changes","The CSG reports only to the Contractor"], c:1, ref:"SPP 204-A §E", n:"\u201cThe CSG... shall not assume the responsibility of the Contractor's project superintendent. The CSG shall not make decisions on matters that are the sole responsibility of the Architect-of-Record (AoR).\u201d"},
+{s:"SPP 204-A · Legal Responsibility", q:"Under Article 1723 of the Civil Code, and per SPP 204-A, the CSG's legal responsibility runs to whom, for what type of matters?", o:["To the Owner for all matters, technical and administrative alike","To the Owner for administrative matters; to the Architect-of-Record for technical matters","To the Contractor for all matters","To the PRC exclusively"], c:1, ref:"SPP 204-A §F", n:"\u201cThe Construction Supervision Group (CSG) is responsible to the Owner only for administrative matters. For technical matters, the CSG is responsible to the Architect-of-Record (AoR).\u201d"},
+{s:"SPP 204-A · Qualifications", q:"What degree, at minimum, must Inspectors of the Construction Supervision Group (CSG) hold?", o:["Any engineering degree","A Bachelor of Science in Architecture (B.S. Arch.) degree","A master's degree in construction management","No formal degree is required"], c:1, ref:"SPP 204-A §G", n:"\u201cInspectors of the Construction Supervision Group (CSG) must have: A Bachelor of Science in Architecture (B.S. Arch.) degree,\u201d plus extensive experience in design and building construction."},
+{s:"SPP 204-B · Construction Management", q:"Who may serve as the Construction Manager (CM) under SPP 204-B?", o:["Only a licensed engineer","A member of the Owner's staff, an independent individual, or a firm hired by the Owner \u2014 and the Architect himself may serve in this role","Only the original Architect-of-Record","Only a government agency"], c:1, ref:"SPP 204-B §A", n:"\u201cConstruction Manager (CM) could be: a member of the staff of the owner, independent individual or a firm hired by the Owner... The Architect can serve as the Construction Manager (CM).\u201d"},
+{s:"SPP 204-B · Functions", q:"Which of these is NOT one of the four functions of the Construction Manager listed under SPP 204-B?", o:["Coordination and Supervision","Cost and Time Control","Design of the building's structural system","Keeping of Records"], c:2, ref:"SPP 204-B §B", n:"The CM's four functions are Coordination and Supervision, Cost and Time Control, Quality Control of Work, and Keeping of Records \u2014 mirroring CSG functions, not structural design, which remains the Architect/Engineer's role."},
+{s:"SPP 204-B · Limitation of Authority", q:"As Construction Manager, what is the Architect explicitly prohibited from doing?", o:["Reviewing shop drawings","Involving himself directly with the work of the Contractor (assuming the Contractor's liability), or imposing methods/systems/designs that substantially affect the construction schedule or impair his own design concept", "Attending site meetings", "Issuing Certificates of Payment"], c:1, ref:"SPP 204-B §C", n:"The Architect as CM \u201cshall not: involve himself directly with the work of the Contractor... [or] impose methods, systems or designs that will substantially affect the construction schedule and impair the design concept of the Architect.\u201d"},
+{s:"SPP 204-B · Legal Responsibility", q:"Under what condition does the Construction Manager (Architect) assume no liability for deficiencies in the manner of construction?", o:["Never \u2014 the CM is always liable for construction deficiencies","Provided the CM faithfully discharged his functions during construction/project implementation","Only if the Owner signs a liability waiver","Only if construction is completed ahead of schedule"], c:1, ref:"SPP 204-B §D", n:"The CM assumes no liability for construction-manner deficiencies \u201cprovided the CM faithfully discharged his function/s during the construction or project implementation,\u201d and similarly for design deficiencies provided the CM did not participate in that review/approval."},
+{s:"SPP 204-B · Qualifications", q:"Who is generally considered capable of becoming a Construction Manager, per SPP 204-B's qualifications section?", o:["Only civil engineers", "Architects who are Contractors or have been in-charge of construction works", "Only lawyers with a construction specialization", "Only accountants"], c:1, ref:"SPP 204-B §E", n:"\u201cArchitects who are Contractors or have been in-charge of construction are usually capable of becoming Construction Managers (CMs).\u201d The individual or firm principal must be a State-regulated professional, preferably an RLA in good IAPOA standing."},
+{s:"SPP 204-B · Method of Compensation", q:"How are Construction Management Services compensated, relative to design services?", o:["Bundled automatically into the design fee","Separately compensated from regular design services","Never compensated \u2014 considered a public service","Only through a fixed government rate"], c:1, ref:"SPP 204-B §F", n:"\u201cServices of Architect as Construction Manager (CM) shall be separately compensated.\u201d"},
+{s:"SPP 204-B · Contracting Concepts", q:"Which incentive-type contract, appropriate during the initial stages of a project, adjusts the contract price upward or downward using a prearranged formula?", o:["Firm Fixed Price","Price Adjustment Provisions","Cost + Fixed Fee","Award Fee Provisions"], c:1, ref:"Architect's Guidelines, Rule III §9.B", n:"\u201cPrice Adjustment Provisions \u2013 the contract price is adjusted upward or downward using a prearranged formula. The operating and support cost factor provision provides a direct incentive on operating and support costs.\u201d (Award Fee Provisions instead reward meeting cost-related target values.)"},
+{s:"SPP 205 · Post-Construction Services", q:"Building administration and management, per SPP 205, requires what kind of professional?", o:["A single-discipline specialist only","A multi-disciplinary professional who can perform a wide range of functions for efficient and economical operation and maintenance","Only a licensed real estate broker","Only the original design architect"], c:1, ref:"SPP 205 §A", n:"\u201cIt requires the services of a multi-disciplinary professional who can perform a wide range or functions for the efficient and economical operation and maintenance of a building, facility or a complex.\u201d"},
+{s:"SPP 205 · Scope of Services", q:"Under Building and Facilities Administration, what does the Building Maintenance Architect specifically formulate and enforce, especially during emergencies?", o:["Tenant leasing rates","Rules on proper building usage","Landscape contractor payments","Fire insurance premiums"], c:1, ref:"SPP 205 §B", n:"The Building Maintenance Architect shall \u201cformulate and enforce rules on proper building usage (especially during emergency),\u201d along with monitoring security and maintenance/upkeep services."},
+{s:"SPP 205 · Post-Construction Evaluation", q:"The study, research, and provision of solutions to discovered defects such as shrinkage and water seepage in a completed building is referred to as:", o:["Value Management Studies","\u201cForensic investigation\u201d of the building's systems","Comprehensive Development Planning","Structural Conceptualization"], c:1, ref:"SPP 205 §B", n:"\u201cstudy, research and give solutions to any discovered/emerging/evolving defects and failures such as shrinkage, water seepage and other problems in the building. This is referred to as \u2018forensic investigation\u2019 of the building's systems (Reference Document 203).\u201d"},
+{s:"SPP 205 · Method of Compensation", q:"What are the two listed methods of compensation for Post-Construction Services under SPP 205?", o:["Percentage of gross rentals, maintenance and security fees; or Monthly salary/fee","Lump sum only","Per diem only","Retainer only"], c:0, ref:"SPP 205 §Method of Compensation", n:"\u201cPercentage of gross rentals, maintenance and security fees\u201d and \u201cMonthly salary/fee\u201d are the two methods explicitly listed for Post-Construction Services."},
+{s:"SPP 206 · Comprehensive Architectural Services", q:"Comprehensive Architectural Services, per SPP 206, covers which five categories?", o:["Only Pre-design and Regular Design Services","Pre-design, Regular Design, Specialized Architectural, Construction, and Post-Construction Services","Only Construction and Post-Construction Services","Design-Build and ADC Services only"], c:1, ref:"SPP 206 §A", n:"\u201cComprehensive Architectural Services covers Pre-design Services, Regular Design Services, Specialized Architectural Services, Construction Services and Post-Construction Services.\u201d"},
+{s:"SPP 206 · Project Management", q:"When an Owner hires an Architect or firm to coordinate the whole range of Comprehensive Architectural Services, what does this constitute?", o:["Design-Build Services","Project Management (PM)","Professional Architectural Consulting Services","Full-Time Supervision"], c:1, ref:"SPP 206 §C", n:"\u201cWhen the Owner hires and Architect or a firm to coordinate the whole range of Comprehensive Architectural Services (CAS), this constitutes Project Management (PM).\u201d"},
+{s:"SPP 206 · The Project Manager", q:"In the Owner-Architect-Engineer-Contractor Team Approach, what is the Project Manager's (PM's) primary responsibility?", o:["Structural design","The exercise of overall cost control \u2014 planning, programming, and monitoring activities, advising on material costs and construction methods","Securing building permits only","Marketing the finished building"], c:1, ref:"SPP 206 §D", n:"\u201cThe Project Manager (PM)'s primary responsibility is the exercise of overall cost control. He will plan, program and monitor the various activities, and will act as an adviser on material costs and construction methods.\u201d"},
+{s:"SPP 206 · The Project Manager", q:"In the Team Approach, who bears prime responsibility for the plan/design of the project?", o:["The Contractor","The Owner","The Architect and the Specialist Consultants (SCs)","The Project Manager alone"], c:2, ref:"SPP 206 §D", n:"\u201cThe Architect and the Specialist Consultants (SCs) will have prime responsibility for the plan/design of the project,\u201d while Engineers handle their respective engineering plans and the Contractor is responsible for men, equipment, and delivery."},
+{s:"SPP 206 · Method of Compensation", q:"How is the Project Manager generally compensated, and what happens if the Architect-PM also performs regular design services on the same project?", o:["Only through a fixed government rate; no separate compensation for design", "On a percentage basis per the Architect's Guidelines; regular design services are compensated separately per SPP Doc. 202", "Only through man-months; design services are bundled in", "Never separately; PM services are always free"], c:1, ref:"SPP 206 §E", n:"\u201cThe Project Manager is compensated on a percentage basis, described in the Architect's Guidelines. If the Architect as Project Manager (PM) performs regular design services for the same project, he shall be compensated separately for these services as stipulated in SPP Document 202.\u201d"},
+{s:"SPP 207 · Design-Build Services", q:"In Design-Build Services, what liability does the Architect assume that he does NOT assume under Regular Design Services?", o:["No additional liability at all", "Professional responsibility and civil liability for both the design AND the construction of the project", "Liability only for the construction, not the design", "Liability transferred entirely to the Contractor"], c:1, ref:"SPP 207 §A", n:"\u201cThe Architect renders professional services in the implementation of his design. In Design-Build Services, he assumes the professional responsibility and civil liability for both the design and the construction of the project.\u201d"},
+{s:"SPP 207 · Scope of Design-Build Services", q:"Design-Build Services come in which two types or categories?", o:["Fast-track and Slow-track","Design-Build Services by Administration, and Design-Build Services with Guaranteed Maximum Project Construction Cost","Public and Private only","Local and Foreign only"], c:1, ref:"SPP 207 §B", n:"The two categories are Design-Build Services by Administration (covers the full Regular Design phases plus expanded construction-phase duties) and Design-Build Services with Guaranteed Maximum Project Construction Cost."},
+{s:"SPP 207 · Guaranteed Maximum Cost", q:"Under Design-Build with Guaranteed Maximum PCC, realized savings from the estimated PCC are divided how?", o:["100% to the Owner","100% to the Architect","Equally between the Owner/Client and the Architect","70% Owner, 30% Architect"], c:2, ref:"SPP 207 §B", n:"\u201cThe Owner/Client is given an estimate of the project, and upon completion, if there are realized savings from the estimated project construction cost, it is divided equally between the Owner/Client and the Architect.\u201d"},
+{s:"SPP 207 · Guaranteed Maximum Cost", q:"If the actual cost exceeds the guaranteed PCC + 10% due to the Architect's own fault, up to what amount is the Architect liable for the excess?", o:["Unlimited liability","Up to the amount of his administration fee","No liability whatsoever","Double his administration fee"], c:1, ref:"SPP 207 §B", n:"\u201cShould the actual cost exceed the estimated PC + 10%, the Architect is liable for the excess amount but only up to the amount of his administration fee.\u201d Costs from CVOs, EWOs, or NEDA-certified price escalation are instead borne by the Owner/Client."},
+{s:"SPP 207 · Manner of Providing Services", q:"Which pledge from the Architect's Credo must the Architect adhere to when involved in construction under Design-Build arrangements?", o:["A pledge of exclusive loyalty to the Contractor", "A pledge to disclose whenever required any business investment or venture that may create a conflict of interest, without compromising the Client's legitimate interest or impartial judgment", "A pledge to waive all design fees", "A pledge to always use the lowest-cost materials"], c:1, ref:"SPP 207 §B", n:"The Architect \u201cshall disclose whenever required, any businesses investment or venture that may tend to create a conflict of interest, and ensure that such conflict neither compromises the legitimate interest of the Client nor interfere with his duty to render impartial judgment.\u201d"},
+{s:"SPP 207 · Method of Compensation", q:"Under Design-Build Services, who pays directly for all labor and materials, and does the Architect advance money for these expenditures?", o:["The Architect pays and later gets reimbursed", "The Client pays all costs directly; the Architect does not advance money, though a revolving fund subject to periodic auditing may be given beforehand", "The Contractor pays and bills the Architect", "The Building Official manages all payments"], c:1, ref:"SPP 207 §Method of Compensation", n:"\u201cAll costs for labor and materials are paid directly by the Client. The Architect does not advance any money for payment of expenditures connected with the work. Generally, a revolving fund is given to the Architect beforehand and is accounted for and subject to periodic auditing by the Client.\u201d"},
+{s:"SPP 208 · Architectural Design Competition", q:"Who is the \u201cProfessional Advisor\u201d in an ADC, and what is their role?", o:["A juror who casts the deciding vote", "An architect nominated by the Owner and approved by IAPOA to organize the ADC on the Owner's behalf", "The winning competitor's assistant", "A government auditor overseeing prize distribution"], c:1, ref:"SPP 208 §B", n:"\u201cProfessional Advisor \u2013 an architect nominated by the Owner and approved by IAPOA to organize the ADC on behalf of the Owner.\u201d"},
+{s:"SPP 208 · Architectural Design Competition", q:"An ADC's classification as either \u201cProject ADC\u201d or \u201cIdeas Competition\u201d depends on what?", o:["Whether it's open or limited by invitation only", "Whether the ADC is for an actual project proposed for implementation, or a design/planning exercise to elucidate a problem", "Whether the jury includes a lay member", "Whether the competition runs one or two stages"], c:1, ref:"SPP 208 §B", n:"\u201cProject ADCs for actual projects proposed for implementation\u201d versus \u201cIdeas Competition or competition of ideas set as a design and planning exercise to elucidate a problem.\u201d Project ADCs may separately be single-stage/two-stage and open/limited."},
+{s:"SPP 208 · IAPOA Approval", q:"Before the Owner officially announces an ADC, what must be obtained through the ADC Committee of IAPOA?", o:["Nothing \u2014 the Owner may announce freely", "A written approval of the draft conditions, including timetable, registration fee, and jury membership", "A signed contract with the eventual winner", "A completed feasibility study"], c:1, ref:"SPP 208 §C", n:"\u201cBefore official announcement by the Owner, a written approval of the draft conditions (including timetable, registration fee and membership of the jury) shall be received by the owner through the ADC Committee of IAPOA.\u201d"},
+{s:"SPP 208 · The Jury", q:"What are the size and composition rules for an ADC Jury?", o:["Even number, no more than 10, no architect requirement", "Odd number, not exceeding 7, with a majority who are architects, and at least one representing IAPOA", "Exactly 5 members, all must be architects", "No size limit, as long as the Owner approves"], c:1, ref:"SPP 208 §F", n:"\u201cThe Jury shall be composed of the smallest reasonable number of persons and in any event should be an odd number and should not exceed seven (7); majority of the members should be architects. At least one of the Architect-Jurors shall represent the IAPOA. Maximum of (1) representative of the Owner.\u201d"},
+{s:"SPP 208 · The Jury", q:"For a two-stage ADC, must the same Jury judge both stages?", o:["No, a fresh jury is required for each stage", "Yes \u2014 the same Jury should judge both stages of the competition", "Only the chairperson needs to remain the same", "It is optional, at the Owner's discretion"], c:1, ref:"SPP 208 §F", n:"\u201cIn a two (2)-stage competition, the same Jury should judge both stages of the competition. In no case may a competition that has received IAPOA approval as a single-stage competition proceed to a second stage unless approved by IAPOA.\u201d"},
+{s:"SPP 208 · Persons Not Eligible", q:"May a member of the Jury take part in the ADC as a competitor?", o:["Yes, as long as they recuse themselves from judging their own entry", "No \u2014 no Jury member may compete, directly or indirectly, nor be commissioned with work connected to the prize-winning design", "Yes, if approved by the Owner", "Only for Ideas Competitions"], c:1, ref:"SPP 208 §G", n:"\u201cNo member of the Jury will be allowed to take part in the competition, either directly or indirectly, nor be commissioned with work connected with the prize-winning design either directly or indirectly.\u201d"},
+{s:"SPP 208 · Prizes, Honoraria and Mentions", q:"Within what timeframe of the official ADC announcement must the Owner pay out the allotted prizes?", o:["One week", "One month", "Three months", "One year"], c:1, ref:"SPP 208 §H", n:"\u201cThe Owner undertakes to accept the decisions of the Jury and to pay the prizes allotted within one (1) month of the official announcement of the ADC results.\u201d"},
+{s:"SPP 208 · Prizes, Honoraria and Mentions", q:"If the winning Competitor of a Project ADC has no signed contract within 12 months of the results announcement, what happens?", o:["The design becomes public domain automatically", "The winner receives a further sum equal to the first prize; the Owner still cannot implement the project except with the winner's collaboration", "The Owner is released from all obligations", "The second-place winner is awarded the project instead"], c:1, ref:"SPP 208 §H", n:"\u201cprovisions shall be made in the ADC Conditions for the first prize winner to receive compensation of a further sum equal to the amount of the first prize, if no contract has been signed within twelve (12) months... In so compensating the first prize winner, the Owner does not acquire the right to carry out the project except with the collaboration of its Author.\u201d"},
+{s:"SPP 208 · Copyright and Right of Ownership", q:"Who retains the copyright of a plan/design submitted to an ADC?", o:["The Owner, automatically upon submission", "The IAPOA, as competition organizer", "The Author of the plan/design", "The Jury collectively"], c:2, ref:"SPP 208 §I", n:"\u201cThe author of any plan/design shall retain the copyright of his work; no alterations may be made without his written consent,\u201d citing Secs. 20(4) and 33 of RA 9266."},
+{s:"SPP 208 · Exhibitions and Entries", q:"For how long, as a general rule, must all ADC entries (including disqualified ones) be exhibited to the public, free of charge?", o:["At least 3 days", "At least 1 week", "At least 2 weeks", "At least 1 month"], c:2, ref:"SPP 208 §L", n:"\u201cAll designs, including those disqualified by the Jury, shall be exhibited, as a general rule, for at least two (2) weeks, together with a copy of the signed report of the Jury. The exhibition shall be open to the public free of charge.\u201d"},
+{s:"SPP 208 · ADR or Litigation", q:"In the event of a dispute unrelated to the adjudication process or prize awarding, how is it settled under SPP 208?", o:["Direct litigation in court, skipping arbitration", "Through an arbitration process approved by IAPOA, without initial recourse to litigation", "The Jury decides unilaterally with no appeal", "The PRC mediates directly"], c:1, ref:"SPP 208 §N", n:"\u201cIn the event of a dispute, not related to the adjudication process or awarding of the prizes, the matter shall be settled by arbitration process approved by the IAPOA, and without initial recourse to any form of litigation.\u201d The Jury remains the sole arbiter on adjudication/prize matters."},
+{s:"SPP 209 · PACS Foreword", q:"What presidential issuance, dated March 20, 1980, directed government agencies to prioritize members of Accredited Professional Organizations (APOs) in hiring professionals?", o:["Executive Order No. 1000","Letter of Instruction (LOI) No. 1000","Presidential Decree No. 1096","RA 9266"], c:1, ref:"SPP 209 §A", n:"\u201cMarch 20, 1980 \u2013 Marcos issued LOI No. 1000 which directs all government agencies to prioritize members of APOs in the hiring of professionals.\u201d"},
+{s:"SPP 209 · PACS Rationale", q:"According to SPP 209's Rationale, what is a key argument against relying heavily on foreign consultants?", o:["Foreign consultants are legally barred from practicing at all", "It entails expenditure of foreign exchange and is irrational since local technology/expertise is already adequate, displacing Filipino RLPs", "Filipino architects lack the technical competence to compete", "It is prohibited outright by the 1987 Constitution"], c:1, ref:"SPP 209 §B", n:"\u201cThe full utilization of Filipino Professional Consultants can minimize the importation of foreign expertise (which entails expenditure of foreign exchange). Such importation is irrational... The competence of FPC (especially PCAs) is adequate and well-established.\u201d"},
+{s:"SPP 209 · Declaration of Policy", q:"SPP 209's Declaration of Policy is grounded in which constitutional provision?", o:["Section 14, Article XII of the 1987 Constitution", "Article III, Bill of Rights", "Article II, Declaration of Principles", "Article VI, Legislative Department"], c:0, ref:"SPP 209 §D", n:"The Declaration of Policy quotes \u201cSection 14, Article XII of the 1987 Constitution,\u201d on sustained development of a reservoir of national talents and limiting profession practice to Filipino citizens save as prescribed by law."},
+{s:"SPP 209 · Definitions", q:"What happens to an FPCA's status if he/she signs and seals architectural documents on a project?", o:["Nothing changes; the FPCA has no added responsibility", "He/she becomes the Architect-of-Record (AoR) and assumes the attendant responsibilities and liabilities", "The project automatically becomes a Design-Build arrangement", "The FPCA loses PACS eligibility"], c:1, ref:"SPP 209 §E", n:"\u201cnote: if the FPCA signs and seals architectural documents, he becomes the Architect-of-Record (AoR) and assumes the attendant responsibilities and liabilities.\u201d"},
+{s:"SPP 209 · Definitions", q:"Which of the following is NOT one of the six qualifications required for a Foreign Consultant (FC) or Foreign Architect (FA) under SPP 209?", o:["Satisfies the PCA definition", "Has a Temporary/Special Permit (TSP) per Secs. 37 and 38 of RA 9266", "Is a registered/licensed professional in his own country of origin", "Must hold a PRC license identical to a Filipino architect's"], c:3, ref:"SPP 209 §E", n:"The six qualifications are: satisfies PCA definition; has a work/business permit per PRC guidelines; has acquired a TSP under Secs. 37–38 of RA 9266; is allowed by DOLE/BID to practice here; and is a registered/licensed professional in his own country \u2014 not a requirement to hold an identical PRC license."},
+{s:"SPP 209 · Definitions", q:"The \u201cMultiplier\u201d under SPP 209 compensates the PCA for which combination of items?", o:["Only reasonable profit", "Overhead costs, fringe benefits/social charges, fee for contingencies, interest on capital reserves, and profit", "Only fringe benefits", "Only interest on capital reserves"], c:1, ref:"SPP 209 §E", n:"The Multiplier covers all five: overhead costs of the office, fringe benefits and social charges, fee for contingencies, interest on capital reserves, and profit \u2014 and it \u201cvaries according to the types of architectural consulting work.\u201d"},
+{s:"SPP 209 · Scope of PACS", q:"Which of the following IS listed within the Scope of Professional Architectural Consulting Services (PACS)?", o:["Teaching, lecturing, coaching, and mentoring", "Issuing building permits", "Setting national building codes", "Approving IAPOA membership applications"], c:0, ref:"SPP 209 §F", n:"PACS scope includes program/project conceptualization, technical advice/consultation, teaching/lecturing/coaching/mentoring, R&D, documentation, feasibility studies, land use planning, construction management, post-construction evaluation, and CPE training \u2014 not government regulatory functions."},
+{s:"SPP 209 · Qualification of PCAs", q:"If a Professional Consulting Architect (PCA) is a juridical person, what must the firm hold, in addition to SEC/DTI registration?", o:["Nothing else is required", "A PRC-issued certificate to operate as a registered architectural firm", "A separate PACS license from the DTI", "An IAPOA charter membership only"], c:1, ref:"SPP 209 §G", n:"\u201cif juridical person, SEC-registered partnership/corporation or DTI-registered sole proprietorship... Note: the consulting firm must have PRC-issued certificate to operate as a registered architectural firm.\u201d"},
+{s:"SPP 209 · Selection of PCAs", q:"If no Filipino Professional Consulting Architect (FPCA) is available for a specialization, and a non-FPCA is engaged, what condition must be met?", o:["No condition \u2014 non-FPCAs may be freely engaged", "At least 2 Filipino RLAs shall be employed as understudies", "The non-FPCA must waive all professional fees", "Only government projects may engage non-FPCAs"], c:1, ref:"SPP 209 §H", n:"\u201cOnly duly-qualified FPCAs for fields of specialization under the CBNE. If no FPCA is available, non-FPCA... is allowed as long as at least 2 Filipino RLAs shall be employed as understudies.\u201d"},
+{s:"SPP 209 · Compensation of PACS", q:"Under the Salary Cost × Multiplier method for PACS compensation, what multiplier factor is specified?", o:["1.5", "2.5", "3.0", "5.0"], c:2, ref:"SPP 209 §J", n:"\u201cSalary Cost X multiplier + (direct cost/reimbursable expenses) \u2013 Multiplier \u2013 factor of 3.0.\u201d This method suits cases where costs are hard to pre-determine, but cannot be used when services aren't measured by length of time worked (e.g. creative works)."},
+{s:"SPP 209 · Compensation of PACS", q:"When are PCA fees for late payment entitled to interest, and per what standard?", o:["Immediately upon any delay, at a fixed 10% rate", "Late payments of more than 30 days from billing, at the rate set by BSP/IAPOA or as mutually agreed", "Only after formal litigation begins", "Interest is never charged on late PACS payments"], c:1, ref:"SPP 209 §J", n:"\u201cInterest Due on Late Payment of Fees \u2013 late payments of more than 30 days from billing shall be entitled to interest (as set by BSP, IAPOA or when agreed by the PCA and client).\u201d"},
+{s:"SPP 209 · Seal and Use of Seal", q:"Under what condition may a PCA sign and seal architectural documents in a PACS engagement?", o:["Only if the PCA is a foreign consultant", "Only if the PCA also acts as the Architect-of-Record of the project", "Any PCA may always sign and seal documents", "Never \u2014 sealing is reserved to the CSG"], c:1, ref:"SPP 209 §K", n:"\u201cthe PCA can only sign and seal architectural documents if and only if he also acts as the Architect-of-Record of the project.\u201d"},
+{s:"Architect's Guidelines · Rule I", q:"What is the general rationale of the Architect's Guidelines (UAP-IAPOA Document 210), per Rule I?", o:["To eliminate all prior SPP documents", "Standardizing the architect's compensation and complementing other regulatory laws", "To set criminal penalties for unlicensed practice exclusively", "To regulate only government construction contracts"], c:1, ref:"Architect's Guidelines, Rule I §2", n:"\u201cSection 2: Rationale \u2013 standardizing the architect compensation and complement other regulatory laws.\u201d"},
+{s:"Architect's Guidelines · Rule II, Criteria", q:"Which of these is listed among the \u201cother considerations on professional fees\u201d under Rule II's Criteria section?", o:["The architect's astrological sign", "Time schedule and potential changes; other professional input; client's procedure/timing; administration costs; probability of contingencies; number of parties consulted", "The architect's marital status", "The contractor's profit margin"], c:1, ref:"Architect's Guidelines, Rule II §3", n:"These six factors are explicitly listed as additional considerations layered on top of the base criteria of talent/skill/experience and type/scope/complexity of services."},
+{s:"Architect's Guidelines · Rule II, Method of Compensation", q:"How many main types of Method of Compensation does Rule II, Section 4 recognize?", o:["Two", "Three: percentage-based, lump sum/fixed, and time basis", "Four", "Five, one per SPP category"], c:1, ref:"Architect's Guidelines, Rule II §4", n:"\u201cit has three main types \u2013 percentage-based, lump sum/fixed, time basis,\u201d though methods can be combined or modified for specific cases."},
+{s:"Architect's Guidelines · Rule II, Percentage-Based Fee", q:"What are the three options for determining the Project Construction Cost (PCC) used in a percentage-based Professional Fee?", o:["Estimated, Awarded, and Final PCC (PPCC, APCC, FPCC)", "Only the Final PCC is ever used", "Government-assessed PCC only", "Contractor-declared PCC only"], c:0, ref:"Architect's Guidelines, Rule II §4.A", n:"Probable PCC (PPCC, mutually agreed based on unit price parameters), Awarded PCC (APCC, based on the winning contractor's bid), and Final PCC (FPCC, based on submitted cost records)."},
+{s:"Architect's Guidelines · Rule II, DAEDS vs DADS", q:"What is the minimum percentage that a DADS (Detailed Architectural Design Services) contract's architectural fee must represent, relative to the equivalent DAEDS fee?", o:["30%", "50%", "60%", "75%"], c:2, ref:"Architect's Guidelines, Rule II §4.A", n:"\u201cthe architectural design services for this contract [DADS] shall be at least 60% of the fees in DAEDS contract,\u201d since DADS excludes engineering fees while the architect remains the lead coordinator."},
+{s:"Architect's Guidelines · Rule II, Lump Sum", q:"For Lump Sum or Fixed Fee compensation, what should the Service Agreement state regarding time and changes?", o:["Nothing \u2014 lump sum contracts never need a time limit", "A time limit for the service, and a provision for additional compensation for extra time on changes ordered after approval", "Only the final total price, with no other terms", "The contractor's construction schedule only"], c:1, ref:"Architect's Guidelines, Rule II §4.B", n:"\u201cIt is recommended that the Service Agreement states the time limit of the service and provision for additional compensation for extra time for changes ordered by the Client after the approval.\u201d"},
+{s:"Architect's Guidelines · Rule II, Time Basis", q:"Time Basis compensation is typically used for which kinds of services?", o:["Only large government infrastructure projects", "Services that are difficult to determine in advance, or interim/short in duration \u2014 e.g. pre-design services, expert witness work, or specialist consultancy", "Only Design-Build Services", "Only Architectural Design Competitions"], c:1, ref:"Architect's Guidelines, Rule II §4.C", n:"\u201cTime Basis \u2013 charged on a mutually-agreed hourly (man-hours) or daily (per diem) or per month rate. Applicable if the services are difficult to determine in advance, or if interim or short in duration.\u201d"},
+{s:"Architect's Guidelines · Rule III, Pre-Design Fees", q:"Prior to starting Pre-Design Services, what acceptance fee does the Architect request upon signing the agreement, and within how many days must the Client pay subsequent billings?", o:["10% acceptance fee; payment within 15 days", "5% acceptance fee based on the agreed PF; payment within 7 days", "No acceptance fee; payment within 30 days", "20% acceptance fee; payment within 3 days"], c:1, ref:"Architect's Guidelines, Rule III §5", n:"\u201cthe Architect requests for a 5% acceptance fee based on the agreed PF upon signing of the agreement... the Client shall pay the payments upon the request of the client within 7 days from submission of the statement of account.\u201d"},
+{s:"Architect's Guidelines · Rule III, RPF Groups", q:"For a Group 1 building (e.g. a warehouse) under a DAEDS contract, with a PCC of \u20b150M or less, what is the Recommended Professional Fee?", o:["3%", "5%", "6%", "7%"], c:1, ref:"Architect's Guidelines, Rule III §6.C", n:"Group 1's RPF for DAEDS at 50M and less is 5% (3% for DADS, being 60% of the DAEDS rate)."},
+{s:"Architect's Guidelines · Rule III, RPF Groups", q:"For a Group 2 building (e.g. a school) under a DAEDS contract, with a PCC of \u20b150M or less, what is the Recommended Professional Fee?", o:["5%", "6%", "7%", "10%"], c:1, ref:"Architect's Guidelines, Rule III §6.C", n:"Group 2's RPF for DAEDS at 50M and less is 6% (3.6% for DADS)."},
+{s:"Architect's Guidelines · Rule III, RPF Groups", q:"For a Group 3 building (e.g. a hospital or hotel) under a DAEDS contract, with a PCC of \u20b150M or less, what is the Recommended Professional Fee?", o:["6%", "7%", "8%", "12%"], c:1, ref:"Architect's Guidelines, Rule III §6.C", n:"Group 3's RPF for DAEDS at 50M and less is 7% (4.2% for DADS) \u2014 the highest sliding-scale starting rate among Groups 1–3, reflecting exceptional character and complexity."},
+{s:"Architect's Guidelines · Rule III, RPF Groups", q:"What flat DAEDS Recommended Professional Fee applies to Group 4 (residences, small apartment houses, townhouses), regardless of PCC?", o:["6% of PCC", "8% of PCC", "10% of PCC", "12% of PCC"], c:2, ref:"Architect's Guidelines, Rule III §6.C", n:"\u201cGroup 4 Projects: small residentials, apartment houses and townhouses \u2013 regardless of cost \u2013 RPF for DAEDS: 10% of PCC; RPF for DADS: 6% of PCC.\u201d Unlike Groups 1–3, this rate does not slide with PCC brackets."},
+{s:"Architect's Guidelines · Rule III, RPF Groups", q:"What flat DAEDS Recommended Professional Fee applies to Group 5 (museums, mausoleums, monumental buildings), regardless of PCC?", o:["8% of PCC", "10% of PCC", "12% of PCC", "15% of PCC"], c:2, ref:"Architect's Guidelines, Rule III §6.C", n:"\u201cGroup 5 Projects... regardless of cost \u2013 RPF for DAEDS: 12% of PCC; RPF for DADS: 7.5% of PCC.\u201d"},
+{s:"Architect's Guidelines · Rule III, RPF Groups", q:"Under Group 6 (repetitive projects reusing the same contract documents), what percentage of the original RPF applies to the Second Building in the series?", o:["100%", "75%", "50%", "30%"], c:2, ref:"Architect's Guidelines, Rule III §6.C", n:"Group 6's schedule: First Building = 100% of RPF; Second Building = 50%; Third Building = 40%; Fourth and succeeding buildings = 30% \u2014 subject to major adjustment if site conditions differ significantly."},
+{s:"Architect's Guidelines · Rule III, RPF Groups", q:"Group 8 (extensive detail projects: built-ins, special fittings, screens, counters, architectural interiors) carries what flat Recommended Professional Fee?", o:["10% of the PCC", "15% of the PCC", "20% of the PCC", "It varies entirely by negotiation, with no baseline"], c:1, ref:"Architect's Guidelines, Rule III §6.C", n:"\u201cGroup 8... Recommended Professional Fee (RPF) \u2013 15% of the PCC.\u201d"},
+{s:"Architect's Guidelines · Rule III, RPF Groups", q:"Group 9 (alterations, renovations, rehabilitations, retrofit, and expansion of existing buildings under Groups 1–5) carries what Recommended Professional Fee?", o:["50% of the base group's RPF", "100% of the base group's RPF", "150% of the base group's RPF", "200% of the base group's RPF"], c:2, ref:"Architect's Guidelines, Rule III §6.C", n:"\u201cGroup 9... Recommended Professional Fee (RPF) \u2013 150% of the RPF,\u201d reflecting the added complexity of working within/around an existing structure."},
+{s:"Architect's Guidelines · Rule III, RPF Groups", q:"For Group 10 (rendering technical opinions/advice, e.g. consultations), what is the minimum RPF for a consultation, and for serving as an expert witness?", o:["\u20b1500/hour consultation; \u20b12,000/appearance", "\u20b11,000/hour consultation; \u20b15,000/appearance (whether the hearing happens or not)", "\u20b12,000/hour consultation; \u20b110,000/appearance", "No minimum is specified"], c:1, ref:"Architect's Guidelines, Rule III §6.C", n:"\u201cMinimum RPF for consultations \u2013 Php 1,000 per hour... Minimum RPF for being expert witness \u2013 Php 5,000 per appearance (whether the hearing happened or not).\u201d These figures reference October 2014 peso values."},
+{s:"Architect's Guidelines · Rule III, Unit Cost Method", q:"In the Unit Cost Method example (10,000 sqm GFA office building, \u20b130,000/sqm, 6% RPF), what unit rate is applied to the Non-GFA portion relative to the GFA rate?", o:["The same rate as GFA (100%)", "50% of the GFA unit rate", "150% of the GFA unit rate", "25% of the GFA unit rate"], c:1, ref:"Architect's Guidelines, Rule III §6.A", n:"\u201cFor the PF unit cost of Non-GFA (use 50% of PF of GFA): P900/sqm,\u201d against the GFA unit cost of P1,800/sqm (6% \u00d7 P30,000/sqm)."},
+{s:"Architect's Guidelines · Rule III, Manner of Payment", q:"Under the cumulative Manner of Payment schedule, what percentage of the Professional Fee should have been paid by the completion of the Design Development Phase?", o:["20%", "40%", "70%", "90%"], c:1, ref:"Architect's Guidelines, Rule III §6.D", n:"Cumulative schedule: 5% at signing \u2192 +15% (20% total) at Schematic Design \u2192 +20% (40% total) at Design Development \u2192 +50% (90% total) at Contract Documents \u2192 remaining 10% split between construction-phase liability (5%) and periodic supervision (5%)."},
+{s:"Architect's Guidelines · Rule III, Manner of Payment", q:"Within the Bidding and Negotiation Phase, within how many days after awarding to the bidder should the PF be adjusted to 90% based on the winning bid?", o:["7 days", "15 days", "30 days", "60 days"], c:1, ref:"Architect's Guidelines, Rule III §6.D", n:"\u201cwithin 15 days after the awarding to the bidder, the PF shall be adjusted so that it will amount to 90% of the PF computed from the lowest or winning bid.\u201d"},
+{s:"Architect's Guidelines · Rule III, Manner of Payment", q:"The remaining 10% of the Professional Fee, chargeable during the Construction Phase, is broken down how?", o:["10% for supervision only, nothing for liability", "5% for Architect's Liability and 5% for Periodic Construction Supervision", "2% for liability and 8% for supervision", "All 10% is withheld until final Certificate of Occupancy"], c:1, ref:"Architect's Guidelines, Rule III §6.D", n:"\u201cConstruction Phase \u2013 the remaining 10% of the PF is broken down as follows: 5% for Architect's Liability; 5% for Periodic Construction Supervision.\u201d"},
+{s:"Architect's Guidelines · Rule III, Fee Adjustment Factors", q:"Which of the following is explicitly listed among the Fee Adjustment Factors that can increase or decrease the architect's Professional Fee?", o:["The architect's personal preferences on color schemes", "Project Delivery Method and Construction Procurement (e.g. Design-Bid-Build vs Design-Build vs PPP)", "The client's religion", "The season of the year construction begins"], c:1, ref:"Architect's Guidelines, Rule III §6.E", n:"Listed adjustment factors include Scope of Services, Project Delivery Method/Procurement, Construction Schedules, Documentation/BIM, Specialist Consultants, Approvals, New Technologies, Construction Administration, Site Conditions, Renovation vs New Construction, Repeat Work, and more."},
+{s:"Architect's Guidelines · Rule III, Specialized Services Fees", q:"For Architectural Interior, Acoustic Design, Architectural Lighting, and Site Development Planning services, what is the Recommended Professional Fee range under Rule III?", o:["2% to 5% of the cost of work", "10% to 15% of the cost of work", "20% to 25% of the cost of work", "A flat 8% regardless of cost of work"], c:1, ref:"Architect's Guidelines, Rule III §7.C", n:"\u201cFor Architectural Interior (AI), Acoustic Design, Architectural Lighting Layout and Design, and Site Development Planning (SDP) \u2013 Recommended Professional Fee (RPF) \u2013 10% to 15% of the cost of work.\u201d Payment runs 30% at preliminary design, 50% at final design, and 50% at project completion."},
+{s:"Architect's Guidelines · Rule III, Physical Planning Fee", q:"Under the Physical Planning fee schedule (for building sites like industrial estates or subdivisions), what is the basic rate per square meter for the first 5 hectares?", o:["P1.50 per sqm", "P3.00 per sqm", "P5.00 per sqm", "P10.00 per sqm"], c:2, ref:"Architect's Guidelines, Rule III §7.C", n:"\u201cBasic rate for the first 5 hectares \u2013 P5.00 per sqm \u2013 P250,000\u201d flat, dropping to P4.00/sqm (5–10 has), P3.00/sqm (10–50 has), and P1.50/sqm beyond 50 has. Rugged/steep terrain adds 20–30%."},
+{s:"Architect's Guidelines · Rule III, Physical Planning Payment", q:"In the Physical Planning payment schedule, how is the RPF split across the Framework Development Plan, Conceptual Master Development Plan, Preliminary Master Development Plan, and Detailed Master Development Plan?", o:["25% each across all four stages", "30% / 30% / 20% / 20%", "50% / 20% / 20% / 10%", "10% / 20% / 30% / 40%"], c:1, ref:"Architect's Guidelines, Rule III §7.C", n:"FRDP: 30% of RPF; CMDP: 30% of RPF; PMDP: 20% of RPF; DMDP: 20% of RPF."},
+{s:"Architect's Guidelines · Rule III, Fulltime Supervision Fee", q:"What is the Recommended Professional Fee for Full-Time Supervision Services (SPP 204-A) under Rule III?", o:["0.5% to 1% of PC", "1% to 1.5% of PC", "2% to 3% of PC", "5% of PC"], c:1, ref:"Architect's Guidelines, Rule III §8.C", n:"\u201cRecommended Professional Fee \u2013 1% to 1.5% of PC.\u201d The Architect may also bill Specialist Consultant coordination at 5% of the SC's fee, if hired separately by the Client."},
+{s:"Architect's Guidelines · Rule III, Construction Management Fee", q:"What is the Recommended Professional Fee for Construction Management Services (SPP 204-B) under Rule III?", o:["0.5% to 1% of the PCC", "1% to 1.5% of the PCC", "1.5% to 3% of the PCC", "5% to 8% of the PCC"], c:2, ref:"Architect's Guidelines, Rule III §9.C", n:"\u201cRecommended Professional Fee \u2013 1.5% to 3% of the PCC,\u201d notably higher than the Fulltime Supervision range because it carries broader coordination, cost, and time-control responsibilities."},
+{s:"Architect's Guidelines · Rule III, Post-Construction Fee", q:"If Post-Construction Services compensation is based on value-pricing, what is the Recommended Professional Fee range?", o:["1% to 2% of gross rental", "4% to 6% of gross rental", "8% to 10% of gross rental", "15% to 20% of gross rental"], c:1, ref:"Architect's Guidelines, Rule III §10.C", n:"\u201cif based on value-pricing, 4% - 6% of gross rental. This incentive-type of management fee will ensure more efficient and economical operation and maximize building revenues.\u201d"},
+{s:"Architect's Guidelines · Rule III, Comprehensive Services Fee", q:"What is the Recommended Professional Fee range for Comprehensive Architectural Services (SPP 206) as Project Manager?", o:["1% to 2% of PCC", "2% to 5% of PCC", "5% to 8% of PCC", "10% to 12% of PCC"], c:1, ref:"Architect's Guidelines, Rule III §11.C", n:"\u201cRPF = 2% to 5% of PCC.\u201d If the PM also performs regular design services, that portion is compensated separately."},
+{s:"Architect's Guidelines · Rule III, Design-Build Fee", q:"What is the Recommended Professional Fee for Design-Build Services by Administration, versus Design-Build with a Guaranteed Maximum Cost?", o:["5% by Administration; 8% Guaranteed Max Cost", "7% by Administration; 10% Guaranteed Max Cost", "10% by Administration; 15% Guaranteed Max Cost", "Both are fixed at 12%"], c:1, ref:"Architect's Guidelines, Rule III §12.D", n:"\u201cFor DBS by Administration \u2013 7% of the PCC (exclusive of Regular Design Services RPF); For DBS on a Guaranteed Max. Cost \u2013 10% of PCC or built-in in the GMC (exclusive of Regular Design RPF).\u201d"},
+{s:"Architect's Guidelines · Rule IV, General Conditions", q:"Under Rule IV, who is prohibited from lawfully collecting fees for architectural services?", o:["Any architect regardless of license status", "An unlicensed or unregistered person", "Only foreign consultants", "No one \u2014 fee collection is unregulated"], c:1, ref:"Architect's Guidelines, Rule IV §15", n:"\u201cUnlicensed or unregistered person collecting fee for architectural services is unlawful under RA 9266.\u201d"},
+{s:"Architect's Guidelines · Rule IV, Late Payment Interest", q:"Under Rule IV, on what basis is interest computed for architect's fees unpaid beyond 30 days from billing?", o:["A flat 12% annual rate set by RA 9266", "The prevailing rate set by the BSP, mutually agreed upon by the Architect and Client", "10% of the total unpaid amount, flat", "No interest is charged \u2014 only late fees apply"], c:1, ref:"Architect's Guidelines, Rule IV §16", n:"\u201cthe Architect is entitled for interest at the prevailing rate set by the BSP and mutually agreed upon by the Architect and his client, on all fees... not paid within 30 days from receipt of billing.\u201d"},
+{s:"Architect's Guidelines · Rule IV, Government Taxes", q:"The Professional Fee stipulated under the Methods of Compensation and Schedule of Fees is described as \u201cnet.\u201d What does this mean regarding taxes?", o:["Income tax is included in the PF, but VAT is carried by the Architect", "Any tax such as VAT (except income tax) shall be carried by the Owner", "All taxes, including income tax, are the Owner's responsibility", "No taxes apply to architectural services at all"], c:1, ref:"Architect's Guidelines, Rule IV §17", n:"\u201cthe PF stipulated... is net which means any tax i.e. VAT (except income tax) shall be carried by the Owner.\u201d Income tax remains the Architect's own personal obligation."},
+{s:"Architect's Guidelines · Rule IV, Professional and Civil Liability", q:"What may the Architect secure, where applicable, commensurate with the magnitude of their project involvement and compensation?", o:["A performance bond from the Contractor", "A professional liability/malpractice insurance policy or its equivalent in bond form", "A government subsidy", "A tax exemption certificate"], c:1, ref:"Architect's Guidelines, Rule IV §18", n:"\u201cwhere applicable, the Architect may secure locally their professional liability insurance or malpractice insurance or their acceptable equivalent in bond commensurate with the nature magnitude of their project involvement and compensation.\u201d This cost is chargeable as part of total project cost."},
+{s:"Architect's Guidelines · Rule IV, Arbitration", q:"What is the correct sequence of dispute-resolution steps under Rule IV, Section 19, before litigation is even considered?", o:["Straight to CIAC arbitration", "14-calendar-day negotiation \u2192 14-calendar-day mediation/conciliation \u2192 CIAC arbitration (6-month guaranteed resolution)", "Court filing first, then optional CIAC review", "Mediation only, with no arbitration option"], c:1, ref:"Architect's Guidelines, Rule IV §19", n:"Parties \u201cmay venture into a 14-calendar-day negotiation period,\u201d then if that fails, \u201c14-calendar-day mediation/conciliatory discussions,\u201d then may \u201cseek for arbitration modes of ADR under the Construction Industry Arbitration Commission (CIAC) that guarantees resolution within 6-month period.\u201d"},
+{s:"Architect's Guidelines · Rule IV, Arbitration", q:"Where are CIAC arbitration proceedings under Rule IV held?", o:["Quezon City", "Manila City Hall", "The CIAC Office at corners Sen. Gil Puyat Ave. and Makati Ave., Makati City", "Anywhere the Architect designates"], c:2, ref:"Architect's Guidelines, Rule IV §19", n:"\u201cADR proceedings shall be at the CIAC Office at corners Sen. Gil Puyat Ave. and Makati Ave. in Makati City.\u201d A losing party may file a Petition for Review before the Court of Appeals."},
+{s:"Architect's Guidelines · Rule IV, Amendments", q:"Who prepares amendments to the Architect's Guidelines, and where must the final amendment be submitted for approval?", o:["Any individual architect; approved directly by the PRC", "A Special Committee on the SPP of the IAPOA, in consultation with PRC-PRBoA; submitted to the UAP National Board for Approval", "The Building Official; approved by the DTI", "The Contractor's association; approved by DOLE"], c:1, ref:"Architect's Guidelines, Rule IV §21", n:"\u201camendment to this document shall be prepared by a Special Committee on the Standards of Professional Practice of the IAPOA, in consultation with PRC-PRBoA and other association of architects. Amendment shall be submitted to the UAP National Board for Approval.\u201d"},
+{s:"Annex A · Key Terms", q:"\u201cCost of Work (CoW),\u201d as defined in Annex A, refers to what?", o:["The total Project Development Cost", "The total cost of fixtures and accessories for architectural interiors, acoustics, lighting works, and site development civil works designed/specified/procured by the Specialist Architect and SCs", "The architect's own salary cost", "The contractor's total labor bill only"], c:1, ref:"Annex A §i", n:"\u201cCost of Work (CoW) \u2013 total cost of fixtures and accessories for architectural interiors, acoustics, lighting works, site development civil works (hardscape and softscape) designed, specified or procured by the Specialist Architect and the SCs.\u201d This is used for some Specialized Architectural Services fee computations."},
+{s:"Annex A · Key Terms", q:"Who is the \u201cPrime Professional,\u201d as defined in Annex A?", o:["Any engineer working on the project", "The Architect commissioned to plan/design the building and coordinate the works of all allied design professionals, ensuring compatibility with the architectural design concept", "The Construction Manager exclusively", "The Building Official"], c:1, ref:"Annex A §m", n:"\u201cPrime Professional \u2013 refer to the Architect commissioned by the Owner/Client to plan and design the building/structure and all its utilities and to coordinate the works of all allied design professionals involved.\u201d"},
+{s:"Annex A · Key Terms", q:"What must a \u201cService Agreement,\u201d as defined in Annex A, formally be?", o:["A verbal understanding is sufficient", "A duly notarized written contract or equivalent public instrument stipulating scope of services and guaranteeing compensation", "An email exchange confirming the scope of work", "A handshake agreement witnessed by two parties"], c:1, ref:"Annex A §u", n:"\u201cService Agreement \u2013 means a duly notarized written contract or equivalent public instrument stipulating the scope of services and guaranteeing compensation of such services to be rendered by an architect registered and licensed by the PRC-PRBoA.\u201d"},
+{s:"Annex A · Key Terms", q:"Which items are explicitly included under \u201cOverhead,\u201d as defined in Annex A?", o:["Only rent and utilities", "Provisions for office/light/air-conditioning, depreciation/rental of equipment, vehicle/travel expenses, office supplies, taxes/insurance (other than salary-related), library/periodical expenses, and non-project-specific admin salaries", "Only the architect's personal transportation", "Only marketing and advertising costs"], c:1, ref:"Annex A §l", n:"Overhead is a broad category covering office operating costs, equipment depreciation, non-salary taxes/insurance, professional development expenses, and general executive/administrative salaries not tied to a specific project."},
+{s:"Related Laws", q:"Which Republic Act is the source law establishing the Alternative Dispute Resolution Act referenced throughout the SPP and Architect's Guidelines?", o:["RA 8293", "RA 9184", "RA 9266", "RA 9285"], c:3, ref:"Annex A §C — Related Laws", n:"RA 9285 is the Alternative Dispute Resolution Act of 2004. RA 8293 is the Intellectual Property Code, RA 9184 is the Government Procurement Reform Act of 2003, and RA 9266 is the Architecture Act of 2004."},
+{s:"Related Laws", q:"Which Republic Act is the Architecture Act, under which the SPP itself (per Article V, Section 41) and the licensure of architects are established?", o:["RA 8293", "RA 9184", "RA 9266", "RA 9285"], c:2, ref:"Annex A §C — Related Laws", n:"RA 9266 is the Architecture Act of 2004, establishing the PRBoA, licensure requirements (CoR/PIC), and Section 41 mandating the SPP itself."},
+];
+
+// ============== STATE ==============
+let order = QUESTIONS.map((_, i) => i);
+let answersLog = [];
+let frontier = 0;
+let pos = 0;
+let isRetryRun = false;
+let shuffleMode = false;
+let optOrders = [];
+let everMissed = new Set();
+
+const tesseraeEl = document.getElementById('tesserae');
+const progressText = document.getElementById('progressText');
+const scoreText = document.getElementById('scoreText');
+const mistakeText = document.getElementById('mistakeText');
+const sectionTag = document.getElementById('sectionTag');
+const reviewingTag = document.getElementById('reviewingTag');
+const qtextEl = document.getElementById('qtext');
+const optionsEl = document.getElementById('options');
+const feedbackEl = document.getElementById('feedback');
+const backBtn = document.getElementById('backBtn');
+const forwardBtn = document.getElementById('forwardBtn');
+const finishBtn = document.getElementById('finishBtn');
+const quizArea = document.getElementById('quizArea');
+const resultsEl = document.getElementById('results');
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function letter(i){ return String.fromCharCode(65+i); }
+
+function getOptOrder(p){
+  if(!optOrders[p]){
+    const item = QUESTIONS[order[p]];
+    optOrders[p] = shuffle(item.o.map((_, i) => i));
+  }
+  return optOrders[p];
+}
+
+function buildTesserae(){
+  tesseraeEl.innerHTML = '';
+  order.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'tess';
+    d.id = 'tess-' + i;
+    tesseraeEl.appendChild(d);
+  });
+}
+
+function updateTesserae(){
+  order.forEach((_, i) => {
+    const el = document.getElementById('tess-' + i);
+    if(!el) return;
+    el.classList.remove('done','current','wrong-tess');
+    if(answersLog[i]){
+      el.classList.add(answersLog[i].isCorrect ? 'done' : 'wrong-tess');
+    }
+    if(i === pos) el.classList.add('current');
+  });
+}
+
+function updateStats(){
+  const scoreCount = answersLog.filter(a => a && a.isCorrect).length;
+  const mistakeCount = answersLog.filter(a => a && !a.isCorrect).length;
+  scoreText.textContent = scoreCount;
+  mistakeText.textContent = mistakeCount;
+}
+
+function renderQuestion(){
+  const item = QUESTIONS[order[pos]];
+  const logged = answersLog[pos];
+
+  sectionTag.textContent = item.s;
+  qtextEl.textContent = item.q;
+  optionsEl.innerHTML = '';
+  feedbackEl.className = 'feedback';
+  feedbackEl.innerHTML = '';
+  finishBtn.style.display = 'none';
+  reviewingTag.style.display = logged ? 'inline-block' : 'none';
+
+  const perm = getOptOrder(pos);
+
+  perm.forEach((origIdx, displayI) => {
+    const opt = item.o[origIdx];
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.innerHTML = '<span class="letter">' + letter(displayI) + '.</span><span>' + opt + '</span>';
+    if(logged){
+      btn.classList.add('locked');
+      if(origIdx === item.c) btn.classList.add('correct');
+      else if(origIdx === logged.selected) btn.classList.add('incorrect');
+      else btn.classList.add('dim');
+    } else {
+      btn.addEventListener('click', () => selectAnswer(origIdx, btn));
+    }
+    optionsEl.appendChild(btn);
+  });
+
+  if(logged){
+    const correctDisplayLetter = letter(perm.indexOf(item.c));
+    const refHtml = item.ref ? '<span class="ref">' + item.ref + '</span>' : '';
+    const noteHtml = item.n ? '<span class="note">' + item.n + '</span>' : '';
+    if(logged.isCorrect){
+      feedbackEl.className = 'feedback show right';
+      feedbackEl.innerHTML = '<b>Correct.</b> ' + item.o[item.c] + '.' + refHtml + noteHtml;
+    } else {
+      feedbackEl.className = 'feedback show wrong';
+      feedbackEl.innerHTML = '<b>Not quite.</b> The right answer is <b>' + correctDisplayLetter + '</b>: ' + item.o[item.c] + '.' + refHtml + noteHtml;
+    }
+    if(pos === frontier && pos === order.length - 1){
+      finishBtn.style.display = 'inline-block';
+    }
+  }
+
+  progressText.textContent = 'Question ' + (pos+1) + ' of ' + order.length + (isRetryRun ? ' (missed questions)' : '');
+  backBtn.disabled = (pos === 0);
+  const atLastAnswered = (pos === order.length - 1 && logged);
+  forwardBtn.disabled = atLastAnswered || !(pos < frontier || (pos === frontier && logged));
+  updateStats();
+  updateTesserae();
+}
+
+function selectAnswer(i, btn){
+  if(answersLog[pos]) return;
+  const item = QUESTIONS[order[pos]];
+  const correct = item.c;
+  const isCorrect = (i === correct);
+  answersLog[pos] = {selected: i, isCorrect};
+
+  if(isCorrect) everMissed.delete(order[pos]);
+  else everMissed.add(order[pos]);
+
+  if(pos === frontier && frontier < order.length - 1){
+    frontier = pos + 1;
+  }
+
+  renderQuestion();
+}
+
+backBtn.addEventListener('click', () => {
+  if(pos > 0){ pos--; renderQuestion(); }
+});
+
+forwardBtn.addEventListener('click', () => {
+  if(pos < frontier){
+    pos++;
+    renderQuestion();
+  } else if(pos === frontier && answersLog[pos] && pos < order.length - 1){
+    pos++;
+    renderQuestion();
+  }
+});
+
+finishBtn.addEventListener('click', showResults);
+
+function showResults(){
+  quizArea.classList.add('hidden');
+  document.querySelector('.tesserae').style.display = 'none';
+  document.querySelector('.progress-label').style.display = 'none';
+  resultsEl.classList.add('show');
+
+  const score = answersLog.filter(a => a && a.isCorrect).length;
+  const mistakes = [];
+  answersLog.forEach((a, i) => {
+    if(a && !a.isCorrect) mistakes.push({qIndex: order[i], selected: a.selected, pos: i});
+  });
+
+  document.getElementById('resultsTitle').textContent = isRetryRun ? 'Retry Complete' : 'Quiz Complete';
+  document.getElementById('resultsSub').textContent = isRetryRun
+    ? 'A second pass at the questions you missed before.'
+    : "You've worked through every question, in order.";
+  document.getElementById('finalScore').textContent = score + ' / ' + order.length;
+
+  const bySection = {};
+  order.forEach((qIndex, i) => {
+    const item = QUESTIONS[qIndex];
+    if(!bySection[item.s]) bySection[item.s] = {right:0, total:0, missed:0};
+    bySection[item.s].total++;
+    const a = answersLog[i];
+    if(a && a.isCorrect) bySection[item.s].right++;
+    else if(a && !a.isCorrect) bySection[item.s].missed++;
+  });
+  const breakdown = document.getElementById('breakdown');
+  breakdown.innerHTML = '';
+  Object.keys(bySection).forEach(sec => {
+    const row = document.createElement('div');
+    row.className = 'breakdown-row';
+    row.innerHTML = '<span>' + sec + '</span><span>' + bySection[sec].right + ' / ' + bySection[sec].total + '</span>';
+    breakdown.appendChild(row);
+  });
+
+  const weakList = Object.keys(bySection)
+    .filter(sec => bySection[sec].missed > 0)
+    .sort((a,b) => bySection[b].missed - bySection[a].missed);
+  const weakSpotsEl = document.getElementById('weakSpots');
+  const weakSpotsList = document.getElementById('weakSpotsList');
+  if(weakList.length){
+    weakSpotsEl.style.display = 'block';
+    weakSpotsList.innerHTML = '';
+    weakList.slice(0,8).forEach(sec => {
+      const li = document.createElement('li');
+      li.textContent = sec + ' — missed ' + bySection[sec].missed + ' of ' + bySection[sec].total;
+      weakSpotsList.appendChild(li);
+    });
+  } else {
+    weakSpotsEl.style.display = 'none';
+  }
+
+  const mistakesReview = document.getElementById('mistakesReview');
+  const mistakesList = document.getElementById('mistakesList');
+  const noMistakes = document.getElementById('noMistakes');
+  if(mistakes.length){
+    mistakesReview.style.display = 'block';
+    noMistakes.style.display = 'none';
+    mistakesList.innerHTML = '';
+    mistakes.forEach(m => {
+      const item = QUESTIONS[m.qIndex];
+      const perm = optOrders[m.pos] || item.o.map((_, i) => i);
+      const yourLetter = letter(perm.indexOf(m.selected));
+      const correctLetter = letter(perm.indexOf(item.c));
+      const div = document.createElement('div');
+      div.className = 'mistake-item';
+      div.innerHTML =
+        '<div class="m-section">' + item.s + '</div>' +
+        '<div class="m-q">' + item.q + '</div>' +
+        '<div class="m-you">Your answer: ' + yourLetter + '. ' + item.o[m.selected] + '</div>' +
+        '<div class="m-correct">Correct answer: ' + correctLetter + '. ' + item.o[item.c] + '</div>';
+      mistakesList.appendChild(div);
+    });
+  } else {
+    mistakesReview.style.display = 'none';
+    noMistakes.style.display = 'block';
+  }
+
+  const retryBtn = document.getElementById('retryMissedBtn');
+  if(everMissed.size > 0){
+    retryBtn.style.display = 'inline-block';
+    retryBtn.textContent = 'Retry missed questions (' + everMissed.size + ')';
+  } else {
+    retryBtn.style.display = 'none';
+  }
+}
+
+function startRun(newOrder, retryMode){
+  order = newOrder;
+  answersLog = new Array(order.length).fill(null);
+  optOrders = new Array(order.length).fill(null);
+  frontier = 0;
+  pos = 0;
+  isRetryRun = retryMode;
+  quizArea.classList.remove('hidden');
+  document.querySelector('.tesserae').style.display = 'flex';
+  document.querySelector('.progress-label').style.display = 'flex';
+  resultsEl.classList.remove('show');
+  buildTesserae();
+  renderQuestion();
+}
+
+function freshOrder(){
+  const base = QUESTIONS.map((_, i) => i);
+  return shuffleMode ? shuffle(base) : base;
+}
+
+function fullRestart(){
+  everMissed = new Set();
+  startRun(freshOrder(), false);
+}
+
+document.getElementById('restartBtn').addEventListener('click', fullRestart);
+document.getElementById('toolbarRestartBtn').addEventListener('click', fullRestart);
+
+document.getElementById('retryMissedBtn').addEventListener('click', () => {
+  let missed = Array.from(everMissed).sort((a,b) => a - b);
+  if(shuffleMode) missed = shuffle(missed);
+  startRun(missed, true);
+});
+
+document.getElementById('orderInOrderBtn').addEventListener('click', () => {
+  if(shuffleMode){
+    shuffleMode = false;
+    document.getElementById('orderInOrderBtn').classList.add('active');
+    document.getElementById('orderShuffleBtn').classList.remove('active');
+    fullRestart();
+  }
+});
+document.getElementById('orderShuffleBtn').addEventListener('click', () => {
+  if(!shuffleMode){
+    shuffleMode = true;
+    document.getElementById('orderShuffleBtn').classList.add('active');
+    document.getElementById('orderInOrderBtn').classList.remove('active');
+    fullRestart();
+  }
+});
+
+buildTesserae();
+renderQuestion();
+</script>
+</body>
+</html>
