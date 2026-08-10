@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PP & Building Laws — Preboard Review</title>
@@ -443,7 +449,7 @@
   <div class="quiz-nav-bar">
     <a href="../index.html">&larr; Back to subject</a>
     &nbsp;&middot;&nbsp;
-    <a href="../../../index.html">All subjects</a>
+    <a href="../../../index.html?source=jpt">All subjects</a>
   </div>
 
   <div class="masthead">
@@ -529,6 +535,23 @@ let isRetryRun = false;
 let shuffleMode = false;
 let optOrders = [];
 let everMissed = new Set();
+
+// ============== LOCAL PROGRESS (not synced to the site-wide tracker) ==============
+// Mirrors the {mastered, bestCorrect, bestTotal, attempts} shape used elsewhere on
+// the site, but kept in its own local-only key so the parent index page can show
+// a progress bar and Start/Continue button for this quiz.
+const LOCAL_PROGRESS_KEY = 'lea_local_progress_bldglaws_preboard_v1';
+function loadLocalProgress(){
+  try{
+    const raw = localStorage.getItem(LOCAL_PROGRESS_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return { mastered: [], bestCorrect: 0, bestTotal: 0, attempts: 0 };
+}
+function saveLocalProgress(){
+  try{ localStorage.setItem(LOCAL_PROGRESS_KEY, JSON.stringify(localProgress)); }catch(e){}
+}
+let localProgress = loadLocalProgress();
 
 const tesseraeEl = document.getElementById('tesserae');
 const progressText = document.getElementById('progressText');
@@ -656,6 +679,11 @@ function selectAnswer(i, btn){
   if(isCorrect) everMissed.delete(order[pos]);
   else everMissed.add(order[pos]);
 
+  if(isCorrect && localProgress.mastered.indexOf(order[pos]) === -1){
+    localProgress.mastered.push(order[pos]);
+    saveLocalProgress();
+  }
+
   if(pos === frontier && frontier < order.length - 1){
     frontier = pos + 1;
   }
@@ -696,6 +724,15 @@ function showResults(){
     ? 'A second pass at the questions you missed before.'
     : "You've worked through every question, in order.";
   document.getElementById('finalScore').textContent = score + ' / ' + order.length;
+
+  if(!isRetryRun){
+    localProgress.attempts = (localProgress.attempts || 0) + 1;
+    if(score > localProgress.bestCorrect || localProgress.bestTotal === 0){
+      localProgress.bestCorrect = score;
+      localProgress.bestTotal = order.length;
+    }
+    saveLocalProgress();
+  }
 
   const bySection = {};
   order.forEach((qIndex, i) => {

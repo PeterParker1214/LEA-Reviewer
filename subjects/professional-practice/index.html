@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Professional Practice — LEA Reviewer</title>
@@ -68,6 +74,17 @@
   .module-sub{ font-size:13.5px; color:var(--sand); line-height:1.5; margin-bottom:10px; }
   .module-meta{ font-size:12px; color:var(--turq-bright); letter-spacing:0.04em; display:flex; justify-content:space-between; align-items:center; }
   .module-arrow{ font-size:16px; }
+  .module-progress-track{ margin-top:14px; height:8px; border-radius:6px; background:rgba(255,255,255,0.08); overflow:hidden; }
+  .module-progress-fill{ height:100%; border-radius:6px; background:linear-gradient(90deg, var(--clay), var(--turq)); transition:width .3s ease; }
+  .module-progress-caption{ font-size:11.5px; color:var(--sand); margin-top:7px; }
+  .module-actions{ display:flex; justify-content:flex-end; align-items:center; gap:12px; margin-top:16px; }
+  .module-reset-btn{ background:none; border:none; color:var(--sand); font-family:var(--font-body); font-size:12.5px; text-decoration:underline; cursor:pointer; padding:0; }
+  .module-reset-btn:hover{ color:var(--clay-bright); }
+  .module-start-btn{
+    background:var(--clay); color:#fff8ee; border:none; font-family:var(--font-head); font-size:13px; font-weight:600;
+    letter-spacing:0.02em; padding:9px 20px; border-radius:6px; cursor:pointer; text-decoration:none; display:inline-block;
+  }
+  .module-start-btn:hover{ background:var(--clay-bright); }
   .note-panel{
     margin-top:24px; background: linear-gradient(180deg, var(--bg-panel), var(--bg-panel-deep));
     border:1px solid var(--line); border-radius:10px; padding:16px 20px; font-size:12.5px; color:var(--sand); line-height:1.6;
@@ -79,7 +96,7 @@
 <body>
 <div class="wrap">
   <div class="auth-bar">
-    <div><a class="auth-link" href="../../index.html">&larr; All subjects</a> &nbsp;&middot;&nbsp; <span id="authStatus">Checking session…</span></div>
+    <div><a class="auth-link" href="../../index.html?source=jpt">&larr; All subjects</a> &nbsp;&middot;&nbsp; <span id="authStatus">Checking session…</span></div>
     <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>☀️</button>
   </div>
@@ -92,18 +109,51 @@
   </div>
 
   <div class="module-grid">
-    <a class="module-card" style="--accent1:#c1502e;--accent2:#2a9d8f;" href="quizzes/SPP_ArchitectsGuidelines_FullCoverage_Quiz.html">
+    <div class="module-card" style="--accent1:#c1502e;--accent2:#2a9d8f;">
       <div class="module-num">Module 1</div>
       <div class="module-title">SPP & Architect's Guidelines — Full Coverage Quiz</div>
       <div class="module-sub">Standards of Professional Practice: fees, services, and architect's guidelines.</div>
-      <div class="module-meta"><span>156 questions</span><span class="module-arrow">&rarr;</span></div>
-    </a>
+      <div class="module-meta"><span>156 questions</span></div>
+      <div class="module-progress-track"><div class="module-progress-fill" id="sppProgressFill" style="width:0%"></div></div>
+      <div class="module-progress-caption" id="sppProgressCaption">0 / 156 mastered</div>
+      <div class="module-actions">
+        <button class="module-reset-btn" id="sppResetBtn">Reset</button>
+        <a class="module-start-btn" id="sppStartBtn" href="quizzes/SPP_ArchitectsGuidelines_FullCoverage_Quiz.html">Start</a>
+      </div>
+    </div>
 
   </div>
 
   <div class="note-panel">Contributed by Pedro. This module isn't wired into the site-wide mastery tracker yet — progress is tracked locally within the quiz. Looking for the PP &amp; Building Laws Preboard Review? It's now under <a href="../building-laws/index.html" style="color:var(--turq-bright);">Building Laws</a>.</div>
 </div>
 
+<script>
+// ---- Local (quiz-only) progress for the SPP module card ----
+const SPP_TOTAL_QUESTIONS = 156;
+const SPP_LOCAL_KEY = 'lea_local_progress_spp_fullcoverage_v1';
+function renderSppProgress(){
+  let p = { mastered: [], bestCorrect: 0, bestTotal: 0, attempts: 0 };
+  try{
+    const raw = localStorage.getItem(SPP_LOCAL_KEY);
+    if(raw) p = JSON.parse(raw);
+  }catch(e){}
+  const mastered = Math.min((p.mastered || []).length, SPP_TOTAL_QUESTIONS);
+  const pct = SPP_TOTAL_QUESTIONS > 0 ? Math.round((mastered / SPP_TOTAL_QUESTIONS) * 100) : 0;
+  document.getElementById('sppProgressFill').style.width = pct + '%';
+  document.getElementById('sppProgressCaption').textContent = mastered + ' / ' + SPP_TOTAL_QUESTIONS + ' mastered';
+  document.getElementById('sppStartBtn').textContent = (p.attempts > 0 || mastered > 0) ? 'Continue' : 'Start';
+}
+renderSppProgress();
+document.getElementById('sppResetBtn').addEventListener('click', () => {
+  if(confirm('Reset progress for "SPP & Architect\'s Guidelines — Full Coverage Quiz"? This clears its mastered questions and best score.')){
+    try{ localStorage.removeItem(SPP_LOCAL_KEY); }catch(e){}
+    renderSppProgress();
+  }
+});
+// Refresh if the person returns to this tab/page after taking the quiz (e.g. via back button).
+document.addEventListener('visibilitychange', () => { if(!document.hidden) renderSppProgress(); });
+window.addEventListener('pageshow', renderSppProgress);
+</script>
 <script>
 const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';

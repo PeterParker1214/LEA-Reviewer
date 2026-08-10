@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Building Laws — Quiz Compendium</title>
@@ -468,7 +474,7 @@
   </div>
 
   <div class="auth-bar">
-    <div><a class="auth-link" href="../../index.html">&larr; All subjects</a> &nbsp;·&nbsp; <span id="authStatus">Checking session…</span></div>
+    <div><a class="auth-link" href="../../index.html?source=jpt">&larr; All subjects</a> &nbsp;·&nbsp; <span id="authStatus">Checking session…</span></div>
     <button class="auth-link" id="openLeaderboardBtn">🏆 Leaderboard</button>
     <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>☀️</button>
@@ -501,11 +507,22 @@
 
     <div class="external-quiz-section">
       <div class="external-quiz-heading">Also under Building Laws</div>
-      <a class="external-quiz-card" href="quizzes/PP_BldgLaws_Preboard_Quiz_Pedro.html">
+      <div class="external-quiz-card" style="cursor:default;">
         <div class="external-quiz-title">PP &amp; Building Laws — Preboard Review</div>
         <div class="external-quiz-sub">Combined preboard review spanning Professional Practice and Building Laws. Contributed by Pedro — progress is tracked locally within the quiz.</div>
-        <div class="external-quiz-meta"><span>200 questions</span><span class="module-arrow">&rarr;</span></div>
-      </a>
+        <div class="external-quiz-meta" style="margin-bottom:10px;"><span>200 questions</span></div>
+        <div class="mastery-row">
+          <div class="mastery-track"><div class="mastery-fill" id="preboardMasteryFill" style="width:0%;"></div></div>
+          <div class="mastery-caption" id="preboardMasteryCaption">0 / 200 mastered</div>
+        </div>
+        <div class="module-card-bottom">
+          <span class="attempts-note" id="preboardAttemptsNote"></span>
+          <div style="display:flex; gap:14px; align-items:center;">
+            <button class="module-reset-btn" id="preboardResetBtn">Reset</button>
+            <a class="module-start-btn" id="preboardStartBtn" href="quizzes/PP_BldgLaws_Preboard_Quiz_Pedro.html" style="text-decoration:none; display:inline-block;">Start</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="footer-note">A question counts as mastered once you've answered it correctly at least once. Best score reflects your highest full run through a quiz.</div>
@@ -1569,6 +1586,36 @@ async function initApp(){
   }
 }
 initApp();
+
+// ---- Local (quiz-only) progress for the PP & Building Laws Preboard card ----
+// This quiz lives in its own file and isn't wired into PROGRESS/FULL_DATA above;
+// it keeps its own local key, matching what that quiz page writes to.
+const PREBOARD_TOTAL_QUESTIONS = 200;
+const PREBOARD_LOCAL_KEY = 'lea_local_progress_bldglaws_preboard_v1';
+function renderPreboardProgress(){
+  let p = { mastered: [], bestCorrect: 0, bestTotal: 0, attempts: 0 };
+  try{
+    const raw = localStorage.getItem(PREBOARD_LOCAL_KEY);
+    if(raw) p = JSON.parse(raw);
+  }catch(e){}
+  const mastered = Math.min((p.mastered || []).length, PREBOARD_TOTAL_QUESTIONS);
+  const pct = PREBOARD_TOTAL_QUESTIONS > 0 ? Math.round((mastered / PREBOARD_TOTAL_QUESTIONS) * 100) : 0;
+  document.getElementById('preboardMasteryFill').style.width = pct + '%';
+  document.getElementById('preboardMasteryCaption').textContent = mastered + ' / ' + PREBOARD_TOTAL_QUESTIONS + ' mastered';
+  document.getElementById('preboardAttemptsNote').textContent =
+    (p.attempts > 0) ? (p.attempts + (p.attempts === 1 ? ' run completed' : ' runs completed')) : '';
+  document.getElementById('preboardStartBtn').textContent = (p.attempts > 0 || mastered > 0) ? 'Continue' : 'Start';
+}
+renderPreboardProgress();
+document.getElementById('preboardResetBtn').addEventListener('click', () => {
+  if(confirm('Reset progress for "PP & Building Laws — Preboard Review"? This clears its mastered questions and best score.')){
+    try{ localStorage.removeItem(PREBOARD_LOCAL_KEY); }catch(e){}
+    renderPreboardProgress();
+  }
+});
+// Refresh if the person returns to this tab/page after taking the quiz (e.g. via back button).
+document.addEventListener('visibilitychange', () => { if(!document.hidden) renderPreboardProgress(); });
+window.addEventListener('pageshow', renderPreboardProgress);
 </script>
 </body>
 </html>

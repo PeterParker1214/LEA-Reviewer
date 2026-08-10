@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LEA Reviewer</title>
@@ -629,16 +635,38 @@ function countCompletedQuizzes(){
 }
 
 function computeSubjectInsights(){
+  // Strong subject: the best average quiz score, among subjects that have at
+  // least one completed quiz.
   const scored = READY_SUBJECTS.map(s => {
     const { avgScore } = subjectStats(s.id, s.totalQuestions);
     return { id: s.id, name: s.name, avgScore };
   }).filter(s => s.avgScore !== null);
-  if(scored.length === 0) return { strong: null, weak: null };
-  let strong = scored[0], weak = scored[0];
-  scored.forEach(s => {
-    if(s.avgScore > strong.avgScore) strong = s;
-    if(s.avgScore < weak.avgScore) weak = s;
-  });
+  let strong = null;
+  if(scored.length){
+    strong = scored[0];
+    scored.forEach(s => { if(s.avgScore > strong.avgScore) strong = s; });
+  }
+
+  // Needs work: the least-progressed subject by mastery percentage, regardless
+  // of quiz score — so a subject that's barely been touched surfaces ahead of
+  // one you've already scored well on (and this can differ from Strong Subject,
+  // rather than just echoing it when only one subject has been attempted).
+  let weak = null;
+  const progressed = READY_SUBJECTS.map(s => {
+    const { mastered } = subjectStats(s.id, s.totalQuestions);
+    const total = s.totalQuestions || 0;
+    const pct = total > 0 ? mastered / total : 0;
+    return { id: s.id, name: s.name, mastered, total, pct };
+  }).filter(s => s.total > 0);
+  if(progressed.length){
+    weak = progressed[0];
+    progressed.forEach(s => {
+      // Lower % mastered wins; ties broken toward the subject with more
+      // total questions left to cover.
+      if(s.pct < weak.pct || (s.pct === weak.pct && s.total > weak.total)) weak = s;
+    });
+  }
+
   return { strong, weak };
 }
 
@@ -674,7 +702,7 @@ function renderReadinessAndInsights(){
   document.getElementById('strongSubjectName').innerHTML = strong ? strong.name : 'Not enough data yet';
   document.getElementById('strongSubjectPct').textContent = strong ? Math.round(strong.avgScore * 100) + '% avg score' : '';
   document.getElementById('weakSubjectName').innerHTML = weak ? weak.name : 'Not enough data yet';
-  document.getElementById('weakSubjectPct').textContent = weak ? Math.round(weak.avgScore * 100) + '% avg score' : '';
+  document.getElementById('weakSubjectPct').textContent = weak ? weak.mastered + ' / ' + weak.total + ' mastered' : '';
 
   const meta = FULL_DATA.__meta;
   const lastNameEl = document.getElementById('lastQuizName');
@@ -813,13 +841,23 @@ async function showSignedIn(user){
   authPanel.classList.add('hidden');
   signedInShell.classList.remove('hidden');
 
-  let lastSourceId = null;
-  try{ lastSourceId = localStorage.getItem('leaLastSource'); }catch(e){}
+  // A link like index.html?source=jpt (used by subject/quiz pages) always
+  // wins over local storage, so "All subjects" works even if this browser
+  // never recorded a previous source click (new device, cleared storage,
+  // private browsing, a bookmarked/shared quiz link, etc).
+  let urlSourceId = null;
+  try{ urlSourceId = new URLSearchParams(window.location.search).get('source'); }catch(e){}
+
+  let lastSourceId = urlSourceId;
+  if(!lastSourceId){
+    try{ lastSourceId = localStorage.getItem('leaLastSource'); }catch(e){}
+  }
   const lastSource = SOURCES.find(s => s.id === lastSourceId && s.ready);
   if(lastSource){
     sourcePanel.classList.add('hidden');
     subjectPanel.classList.remove('hidden');
     comingSoonPanel.classList.add('hidden');
+    try{ localStorage.setItem('leaLastSource', lastSource.id); }catch(e){}
   } else {
     sourcePanel.classList.remove('hidden');
     subjectPanel.classList.add('hidden');
