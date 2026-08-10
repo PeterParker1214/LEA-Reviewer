@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LEA Reviewer — Admin</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="assets/theme.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#f4e9d8;
+    --bg-deep:#1f1220;
+    --bg-panel:#2f1a2e;
+    --bg-panel-deep:#201121;
+    --bg-glow1:#3a2038;
+    --bg-glow2:#24162a;
+    --gold:#c99a46;
+    --gold-bright:#e0b568;
+    --rose:#b3667a;
+    --rose-bright:#d68fa0;
+    --muted:#c7b3c4;
+    --good:#6fae7d;
+    --bad:#c65a52;
+    --line: rgba(201,154,70,0.28);
+    --font-head: 'Fraunces', serif;
+    --font-body: 'Lora', serif;
+  }
+  body.light-mode{
+    --ink:#2a1c28;
+    --bg-deep:#f8f1e9;
+    --bg-panel:#fffdf9;
+    --bg-panel-deep:#f1e6da;
+    --bg-glow1:#f3e3ea;
+    --bg-glow2:#efe6da;
+    --gold:#a67934;
+    --gold-bright:#8c5f1f;
+    --rose:#96475a;
+    --rose-bright:#7a3346;
+    --muted:#6b5864;
+    --good:#3f8a55;
+    --bad:#a13d33;
+    --line: rgba(42,28,40,0.16);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(ellipse at 15% 0%, var(--bg-glow1) 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 100%, var(--bg-glow2) 0%, transparent 50%),
+      var(--bg-deep);
+    color:var(--ink);
+    font-family:var(--font-body);
+    min-height:100vh;
+    padding:32px 16px 80px;
+  }
+  .wrap{max-width:760px;margin:0 auto;}
+  h1{font-family:var(--font-head);font-weight:600;font-size:32px;margin:0 0 4px;color:var(--gold-bright);}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:28px;}
+  .card{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:20px;
+  }
+  .msg{padding:16px;border-radius:10px;font-size:14px;}
+  .msg.error{background:rgba(198,90,82,0.15);border:1px solid var(--bad);color:var(--bad);}
+  .msg.info{background:rgba(201,154,70,0.12);border:1px solid var(--line);color:var(--muted);}
+  a{color:var(--gold-bright);}
+  .row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .row:last-child{border-bottom:none;}
+  .row input[type="text"]{
+    flex:1;
+    background:var(--bg-panel-deep);
+    border:1px solid var(--line);
+    color:var(--ink);
+    padding:8px 10px;
+    border-radius:8px;
+    font-family:var(--font-body);
+    font-size:14px;
+  }
+  .row .status-tag{
+    font-size:11px;
+    padding:3px 8px;
+    border-radius:20px;
+    border:1px solid var(--line);
+    white-space:nowrap;
+  }
+  .row .status-tag.ready{color:var(--good);border-color:var(--good);}
+  .row .status-tag.notready{color:var(--muted);}
+  button{
+    font-family:var(--font-body);
+    cursor:pointer;
+    border-radius:8px;
+    border:1px solid var(--line);
+    background:var(--bg-panel-deep);
+    color:var(--ink);
+    padding:7px 10px;
+    font-size:13px;
+  }
+  button:hover{border-color:var(--gold);}
+  button.primary{
+    background:var(--gold);
+    color:var(--bg-deep);
+    border:none;
+    font-weight:600;
+  }
+  button.primary:hover{background:var(--gold-bright);}
+  button:disabled{opacity:0.5;cursor:not-allowed;}
+  .toggle-btn.on{color:var(--good);border-color:var(--good);}
+  .actions{display:flex;gap:8px;margin-top:18px;}
+  .save-status{font-size:13px;margin-top:10px;min-height:18px;}
+  .save-status.ok{color:var(--good);}
+  .save-status.err{color:var(--bad);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Admin</h1>
+  <div class="sub">Subject manager — LEA Reviewer</div>
+
+  <div id="gate" class="card msg info">Checking your session…</div>
+  <div id="panel" style="display:none;"></div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const GITHUB_OWNER = 'peterparker1214';
+const GITHUB_REPO = 'LEA-Reviewer';
+const GITHUB_BRANCH = 'main';
+const INDEX_PATH = 'index.html';
+
+const gateEl = document.getElementById('gate');
+const panelEl = document.getElementById('panel');
+
+let subjects = [];       // parsed SUBJECTS array (live working copy)
+let rawIndexHtml = '';   // full text of index.html as currently on GitHub
+let accessToken = '';    // current user's session token, for calling the Edge Function
+
+function showGate(html, isError){
+  gateEl.style.display = 'block';
+  gateEl.className = 'card msg ' + (isError ? 'error' : 'info');
+  gateEl.innerHTML = html;
+  panelEl.style.display = 'none';
+}
+
+async function init(){
+  const { data: { session } } = await sb.auth.getSession();
+  if(!session){
+    showGate('You need to be logged in first. <a href="index.html">Go log in on the main site</a>, then come back to this page.');
+    return;
+  }
+  accessToken = session.access_token;
+
+  const { data: profile, error } = await sb
+    .from('profiles')
+    .select('is_admin')
+    .eq('id', session.user.id)
+    .single();
+
+  if(error || !profile || profile.is_admin !== true){
+    showGate('This account is not an admin, so this page is not available to you.', true);
+    return;
+  }
+
+  gateEl.style.display = 'none';
+  panelEl.style.display = 'block';
+  await loadSubjects();
+}
+
+async function loadSubjects(){
+  panelEl.innerHTML = '<div class="card msg info">Loading current subjects from GitHub…</div>';
+  try{
+    const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${INDEX_PATH}?t=${Date.now()}`;
+    const resp = await fetch(url);
+    if(!resp.ok) throw new Error('Could not fetch index.html (status ' + resp.status + ')');
+    rawIndexHtml = await resp.text();
+
+    const match = rawIndexHtml.match(/const SUBJECTS = (\[[\s\S]*?\]);/);
+    if(!match) throw new Error('Could not find the SUBJECTS list inside index.html — the file may have changed shape.');
+
+    subjects = new Function('return ' + match[1])();
+    renderPanel();
+  }catch(e){
+    panelEl.innerHTML = '<div class="card msg error">' + escapeHtml(e.message) + '</div>';
+  }
+}
+
+function renderPanel(){
+  let rowsHtml = subjects.map((s, i) => `
+    <div class="row" data-idx="${i}">
+      <input type="text" value="${escapeAttr(s.name)}" data-field="name" data-idx="${i}">
+      <button class="toggle-btn ${s.ready ? 'on' : ''}" data-action="toggle" data-idx="${i}">${s.ready ? 'Available' : 'Coming soon'}</button>
+      <button data-action="up" data-idx="${i}" ${i===0 ? 'disabled' : ''}>↑</button>
+      <button data-action="down" data-idx="${i}" ${i===subjects.length-1 ? 'disabled' : ''}>↓</button>
+    </div>
+  `).join('');
+
+  panelEl.innerHTML = `
+    <div class="card">
+      ${rowsHtml}
+    </div>
+    <div class="actions">
+      <button class="primary" id="saveBtn">Save to site</button>
+      <button id="reloadBtn">Reload from GitHub</button>
+    </div>
+    <div class="save-status" id="saveStatus"></div>
+  `;
+
+  panelEl.querySelectorAll('input[data-field="name"]').forEach(inp => {
+    inp.addEventListener('input', () => {
+      subjects[+inp.dataset.idx].name = inp.value;
+    });
+  });
+  panelEl.querySelectorAll('button[data-action="toggle"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const i = +btn.dataset.idx;
+      subjects[i].ready = !subjects[i].ready;
+      renderPanel();
+    });
+  });
+  panelEl.querySelectorAll('button[data-action="up"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const i = +btn.dataset.idx;
+      [subjects[i-1], subjects[i]] = [subjects[i], subjects[i-1]];
+      renderPanel();
+    });
+  });
+  panelEl.querySelectorAll('button[data-action="down"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const i = +btn.dataset.idx;
+      [subjects[i+1], subjects[i]] = [subjects[i], subjects[i+1]];
+      renderPanel();
+    });
+  });
+
+  document.getElementById('saveBtn').addEventListener('click', saveSubjects);
+  document.getElementById('reloadBtn').addEventListener('click', loadSubjects);
+}
+
+function subjectsToJsLiteral(list){
+  const lines = list.map(s => {
+    const parts = [
+      `id: ${JSON.stringify(s.id)}`,
+      `name: ${JSON.stringify(s.name)}`,
+      `href: ${JSON.stringify(s.href)}`,
+      `ready: ${s.ready ? 'true' : 'false'}`,
+    ];
+    if(s.totalQuestions !== undefined) parts.push(`totalQuestions: ${s.totalQuestions}`);
+    if(s.totalModules !== undefined) parts.push(`totalModules: ${s.totalModules}`);
+    return `  { ${parts.join(', ')} },`;
+  });
+  return `[\n${lines.join('\n')}\n]`;
+}
+
+async function saveSubjects(){
+  const statusEl = document.getElementById('saveStatus');
+  const saveBtn = document.getElementById('saveBtn');
+  saveBtn.disabled = true;
+  statusEl.className = 'save-status';
+  statusEl.textContent = 'Saving…';
+
+  try{
+    const newArrayText = subjectsToJsLiteral(subjects);
+    const newFileText = rawIndexHtml.replace(
+      /const SUBJECTS = \[[\s\S]*?\];/,
+      `const SUBJECTS = ${newArrayText};`
+    );
+
+    const resp = await fetch(`${SUPABASE_URL}/functions/v1/admin-save-file`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`
+      },
+      body: JSON.stringify({
+        path: INDEX_PATH,
+        content: newFileText,
+        message: 'Admin: update subjects via admin panel'
+      })
+    });
+
+    const result = await resp.json();
+    if(!resp.ok) throw new Error(result.error || 'Save failed');
+
+    rawIndexHtml = newFileText;
+    statusEl.className = 'save-status ok';
+    statusEl.textContent = 'Saved! It may take a minute or two for GitHub Pages to update the live site.';
+  }catch(e){
+    statusEl.className = 'save-status err';
+    statusEl.textContent = 'Error: ' + e.message;
+  }finally{
+    saveBtn.disabled = false;
+  }
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function escapeAttr(s){
+  return escapeHtml(s);
+}
+
+init();
+</script>
+</body>
+</html>
