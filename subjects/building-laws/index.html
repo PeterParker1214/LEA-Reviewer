@@ -28,6 +28,12 @@
     --font-head: 'Cinzel', serif;
     --font-body: 'Bitter', serif;
   }
+  body.light-mode{
+    --ink:#2b2013; --bg-deep:#f3ead9; --bg-panel:#fffaf0; --bg-glow1:#efdfc2; --bg-glow2:#f7ecd6;
+    --clay:#b5502e; --clay-bright:#a13d1a; --turq:#1f8577; --turq-bright:#1c7267; --sand:#6b5a44;
+    --good:#2f7a4f; --bad:#a13d2e; --line: rgba(43,32,19,0.18); --bg-panel-deep:#ecdfc3;
+    --accent: #b5502e; --accent2: #a13d1a;
+  }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
@@ -43,6 +49,13 @@
     justify-content:center;
     padding:32px 16px 64px;
   }
+  .theme-toggle{
+    background:none; border:1px solid var(--line); color:var(--sand);
+    font-family:var(--font-body); font-size:14px; width:30px; height:30px;
+    border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
+    flex-shrink:0;
+  }
+  .theme-toggle:hover{ border-color:var(--clay-bright); color:var(--clay-bright); }
   .wrap{width:100%; max-width:760px;}
   a{color:inherit;}
 
@@ -187,6 +200,23 @@
   }
   .module-reset-btn:hover{ opacity:1; color:var(--bad); }
   .attempts-note{ font-size:11px; color:var(--sand); opacity:0.7; }
+
+  .external-quiz-section{ margin-top:22px; }
+  .external-quiz-heading{
+    font-family:var(--font-head); font-size:11px; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--sand); margin-bottom:10px;
+  }
+  .external-quiz-card{
+    position:relative; display:block; text-decoration:none;
+    background: linear-gradient(180deg, var(--bg-panel), var(--bg-panel-deep));
+    border:1px solid var(--line); border-left:4px solid var(--clay-bright);
+    border-radius:4px 10px 10px 4px; padding:16px 20px;
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .external-quiz-card:hover{ transform: translateY(-2px); border-color: var(--turq); }
+  .external-quiz-title{ font-family:var(--font-head); font-weight:600; font-size:16px; color:var(--ink); margin-bottom:4px; }
+  .external-quiz-sub{ font-size:13px; color:var(--sand); line-height:1.5; margin-bottom:8px; }
+  .external-quiz-meta{ font-size:12px; color:var(--turq-bright); letter-spacing:0.04em; display:flex; justify-content:space-between; align-items:center; }
 
   .footer-note{
     text-align:center; font-size:12px; color:var(--sand); opacity:0.55; margin-top:28px;
@@ -424,6 +454,8 @@
     .overall-stats-row{ gap:18px; }
   }
 </style>
+<script src="../../assets/presence.js"></script>
+<script src="../../assets/theme.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -438,6 +470,8 @@
   <div class="auth-bar">
     <div><a class="auth-link" href="../../index.html">&larr; All subjects</a> &nbsp;·&nbsp; <span id="authStatus">Checking session…</span></div>
     <button class="auth-link" id="openLeaderboardBtn">🏆 Leaderboard</button>
+    <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>☀️</button>
   </div>
 
   <div id="dashboardView">
@@ -464,6 +498,15 @@
     </div>
 
     <div class="module-grid" id="moduleGrid"></div>
+
+    <div class="external-quiz-section">
+      <div class="external-quiz-heading">Also under Building Laws</div>
+      <a class="external-quiz-card" href="quizzes/PP_BldgLaws_Preboard_Quiz_Pedro.html">
+        <div class="external-quiz-title">PP &amp; Building Laws — Preboard Review</div>
+        <div class="external-quiz-sub">Combined preboard review spanning Professional Practice and Building Laws. Contributed by Pedro — progress is tracked locally within the quiz.</div>
+        <div class="external-quiz-meta"><span>200 questions</span><span class="module-arrow">&rarr;</span></div>
+      </a>
+    </div>
 
     <div class="footer-note">A question counts as mastered once you've answered it correctly at least once. Best score reflects your highest full run through a quiz.</div>
   </div>
@@ -756,6 +799,7 @@ const KNOWN_SUBJECT_IDS = ['history', 'building-laws'];
 const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+if (window.LEAPresence) { LEAPresence.init({ client: sb }); }
 
 let currentUser = null;      // null = guest (localStorage mode)
 let currentUsername = null;

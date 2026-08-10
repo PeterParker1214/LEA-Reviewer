@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PD 1096 — Quiz 2 Answer Key</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -20,6 +21,28 @@
     --line: rgba(43,36,27,0.16);
     --line-strong: rgba(43,36,27,0.32);
   }
+  body.dark-mode{
+    --ink:#f1e6d4;
+    --paper:#1c1712;
+    --paper-deep:#241d16;
+    --card:#241d16;
+    --rust:#d97a4f;
+    --rust-deep:#e8935f;
+    --olive:#8fa06a;
+    --clay:#e0a866;
+    --good:#6fae7a;
+    --bad:#d9694f;
+    --line: rgba(241,230,212,0.16);
+    --line-strong: rgba(241,230,212,0.32);
+  }
+  body.dark-mode{
+    background:
+      repeating-linear-gradient(0deg, rgba(241,230,212,0.045) 0px, rgba(241,230,212,0.045) 1px, transparent 1px, transparent 28px),
+      repeating-linear-gradient(90deg, rgba(241,230,212,0.045) 0px, rgba(241,230,212,0.045) 1px, transparent 1px, transparent 28px),
+      radial-gradient(ellipse at 10% 0%, #241d16 0%, transparent 55%),
+      radial-gradient(ellipse at 95% 105%, #1c1712 0%, transparent 50%),
+      var(--paper);
+  }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
@@ -35,7 +58,15 @@
     display:flex;
     justify-content:center;
     padding:32px 16px 64px;
+    transition: background-color .2s ease, color .2s ease;
   }
+  .theme-toggle{
+    background:none; border:1px solid var(--line); color:var(--rust);
+    font-family:inherit; font-size:14px; width:30px; height:30px;
+    border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
+    flex-shrink:0;
+  }
+  .theme-toggle:hover{ border-color:var(--clay); color:var(--clay); }
   .wrap{width:100%; max-width:720px;}
 
   .masthead{
@@ -390,9 +421,18 @@
     .toolbar{ flex-direction:column; align-items:stretch; }
     .toolbar-actions{ justify-content:space-between; }
   }
+
+  body.dark-mode .masthead .sub, body.dark-mode .no-mistakes{ color:#a89a82; }
+  body.dark-mode .progress-label, body.dark-mode .mistake-item .m-ref{ color:#a89a82; }
+  body.dark-mode .feedback .note{ color:#c9bba0; }
+  body.dark-mode .opt:hover:not(.locked){ background:#2b2219; }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../../../assets/presence.js"></script>
+<script src="../../../assets/theme.js"></script>
 </head>
 <body>
+<script>if (window.LEAPresence) { LEAPresence.init(); }</script>
 <div class="wrap">
 
   <div class="masthead">
@@ -418,6 +458,8 @@
         <button id="orderShuffleBtn">Shuffled</button>
       </div>
       <button class="toolbar-restart" id="toolbarRestartBtn">Restart from start</button>
+      <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'dark-mode', defaultIs:'light', buttonId:'themeToggleBtn' }); }</script>☀️</button>
     </div>
   </div>
 

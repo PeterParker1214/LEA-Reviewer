@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Utilities & Plumbing — Module 1 Quiz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -59,6 +60,9 @@
     transition: background-color .2s ease, border-color .2s ease;
   }
   .wrap{width:100%; max-width:740px;}
+  .quiz-nav-bar{ font-size:13px; margin-bottom:16px; }
+  .quiz-nav-bar a{ color:var(--primary); text-decoration:underline; }
+  .quiz-nav-bar a:hover{ color:var(--accent); }
 
   .masthead{
     text-align:center;
@@ -448,15 +452,18 @@
     .toolbar-actions{ justify-content:space-between; }
   }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../../../assets/presence.js"></script>
+<script src="../../../assets/theme.js"></script>
 </head>
 <body>
-<div style="max-width:900px;margin:0 auto;padding:14px 16px 0;font-family:sans-serif;font-size:13px;">
-  <a href="../index.html" style="color:#4fc3b0;text-decoration:underline;">&larr; Back to subject</a>
-  &nbsp;&middot;&nbsp;
-  <a href="../../../index.html" style="color:#4fc3b0;text-decoration:underline;">All subjects</a>
-</div>
-
+<script>if (window.LEAPresence) { LEAPresence.init(); }</script>
 <div class="wrap">
+  <div class="quiz-nav-bar">
+    <a href="../index.html">&larr; Back to subject</a>
+    &nbsp;&middot;&nbsp;
+    <a href="../../../index.html">All subjects</a>
+  </div>
 
   <div class="masthead">
     <div class="eyebrow">Module 1 · General Terms</div>
@@ -892,28 +899,7 @@ document.getElementById('orderShuffleBtn').addEventListener('click', () => {
 });
 
 const themeToggleBtn = document.getElementById('themeToggleBtn');
-
-function applyTheme(dark){
-  document.body.classList.toggle('dark-mode', dark);
-  themeToggleBtn.textContent = dark ? '☀️' : '🌙';
-}
-
-function initTheme(){
-  const saved = localStorage.getItem('quizTheme');
-  if(saved === 'dark' || saved === 'light'){
-    applyTheme(saved === 'dark');
-  } else {
-    applyTheme(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  }
-}
-
-themeToggleBtn.addEventListener('click', () => {
-  const nowDark = !document.body.classList.contains('dark-mode');
-  applyTheme(nowDark);
-  try{ localStorage.setItem('quizTheme', nowDark ? 'dark' : 'light'); }catch(e){}
-});
-
-initTheme();
+if (window.LEATheme) { LEATheme.init({ altClass:'dark-mode', defaultIs:'light', buttonId:'themeToggleBtn', lightIcon:'\ud83c\udf19', darkIcon:'\u2600\ufe0f' }); }
 buildTesserae();
 renderQuestion();
 </script>

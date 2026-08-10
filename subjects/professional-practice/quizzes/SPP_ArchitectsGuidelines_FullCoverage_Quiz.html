@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SPP & Architect's Guidelines — Full Coverage Quiz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -16,6 +17,25 @@
     --good:#6fa87a;
     --bad:#c1594a;
     --line: rgba(200,180,120,0.22);
+  }
+  body.light-mode{
+    --ink:#1c2a20;
+    --bg-deep:#f5f2e6;
+    --bg-panel:#ffffff;
+    --brass:#9c7a2e;
+    --brass-bright:#7a5e1f;
+    --sage:#3f7a54;
+    --good:#3f7a54;
+    --bad:#a1402f;
+    --line: rgba(156,122,46,0.25);
+  }
+  body.light-mode{
+    background:
+      repeating-linear-gradient(0deg, rgba(156,122,46,0.045) 0px, rgba(156,122,46,0.045) 1px, transparent 1px, transparent 30px),
+      repeating-linear-gradient(90deg, rgba(156,122,46,0.045) 0px, rgba(156,122,46,0.045) 1px, transparent 1px, transparent 30px),
+      radial-gradient(ellipse at 12% 0%, #eee8d2 0%, transparent 55%),
+      radial-gradient(ellipse at 92% 100%, #f2ecd8 0%, transparent 50%),
+      var(--bg-deep);
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
@@ -32,8 +52,19 @@
     display:flex;
     justify-content:center;
     padding:32px 16px 64px;
+    transition: background-color .2s ease, color .2s ease;
   }
+  .theme-toggle{
+    background:none; border:1px solid var(--line); color:var(--brass-bright);
+    font-family:inherit; font-size:14px; width:30px; height:30px;
+    border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
+    flex-shrink:0;
+  }
+  .theme-toggle:hover{ border-color:var(--sage); color:var(--sage); }
   .wrap{width:100%; max-width:720px;}
+  .quiz-nav-bar{ font-size:13px; margin-bottom:16px; }
+  .quiz-nav-bar a{ color:var(--brass-bright); text-decoration:underline; }
+  .quiz-nav-bar a:hover{ color:var(--sage); }
 
   .masthead{ text-align:center; margin-bottom:18px; }
   .masthead .eyebrow{
@@ -219,16 +250,24 @@
     .toolbar{ flex-direction:column; align-items:stretch; }
     .toolbar-actions{ justify-content:space-between; }
   }
+
+  body.light-mode .no-mistakes{ color:#4a6b56; }
+  body.light-mode .toolbar-stats .stat-label, body.light-mode .progress-label{ color:#4a6b56; }
+  body.light-mode .toolbar-stats .stat-value, body.light-mode .feedback .note{ color:#3f5a49; }
+  body.light-mode .card{ background: linear-gradient(180deg, var(--bg-panel), #dce8dd); }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../../../assets/presence.js"></script>
+<script src="../../../assets/theme.js"></script>
 </head>
 <body>
-<div style="max-width:900px;margin:0 auto;padding:14px 16px 0;font-family:sans-serif;font-size:13px;">
-  <a href="../index.html" style="color:#4fc3b0;text-decoration:underline;">&larr; Back to subject</a>
-  &nbsp;&middot;&nbsp;
-  <a href="../../../index.html" style="color:#4fc3b0;text-decoration:underline;">All subjects</a>
-</div>
-
+<script>if (window.LEAPresence) { LEAPresence.init(); }</script>
 <div class="wrap">
+  <div class="quiz-nav-bar">
+    <a href="../index.html">&larr; Back to subject</a>
+    &nbsp;&middot;&nbsp;
+    <a href="../../../index.html">All subjects</a>
+  </div>
 
   <div class="masthead">
     <div class="eyebrow">Full Coverage Module Quiz · JPT Review Center</div>
@@ -253,6 +292,8 @@
         <button id="orderShuffleBtn">Shuffled</button>
       </div>
       <button class="toolbar-restart" id="toolbarRestartBtn">Restart from start</button>
+      <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>☀️</button>
     </div>
   </div>
 

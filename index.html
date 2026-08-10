@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="assets/theme.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
@@ -26,6 +27,22 @@
     --font-head: 'Fraunces', serif;
     --font-body: 'Lora', serif;
   }
+  body.light-mode{
+    --ink:#2a1c28;
+    --bg-deep:#f8f1e9;
+    --bg-panel:#fffdf9;
+    --bg-panel-deep:#f1e6da;
+    --bg-glow1:#f3e3ea;
+    --bg-glow2:#efe6da;
+    --gold:#a67934;
+    --gold-bright:#8c5f1f;
+    --rose:#96475a;
+    --rose-bright:#7a3346;
+    --muted:#6b5864;
+    --good:#3f8a55;
+    --bad:#a13d33;
+    --line: rgba(42,28,40,0.16);
+  }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
@@ -39,7 +56,15 @@
     display:flex;
     justify-content:center;
     padding:40px 16px 64px;
+    transition: background-color .2s ease, color .2s ease;
   }
+  .theme-toggle{
+    position:fixed; top:16px; right:16px; z-index:50;
+    background:none; border:1px solid var(--line); color:var(--muted);
+    font-family:var(--font-body); font-size:14px; width:32px; height:32px;
+    border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
+  }
+  .theme-toggle:hover{ border-color:var(--gold-bright); color:var(--gold-bright); }
   .wrap{width:100%; max-width:720px;}
   a{color:inherit;}
   .hidden{display:none !important;}
@@ -317,6 +342,8 @@
 </head>
 <body>
 <div class="wrap">
+  <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>☀️</button>
 
   <div class="masthead">
     <div class="eyebrow">JPT Manila · Licensure Exam for Architects</div>
@@ -805,6 +832,7 @@ sb.auth.onAuthStateChange((event, session) => {
   const { data: { session } } = await sb.auth.getSession();
   if(session){ await showSignedIn(session.user); } else { showSignedOut(); }
 })();
+
 </script>
 </body>
 </html>

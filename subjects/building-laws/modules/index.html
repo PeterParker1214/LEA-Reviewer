@@ -12,13 +12,26 @@
     --clay:#c1502e; --clay-bright:#e8804f; --turq:#2a9d8f; --sand:#d4a373; --line: rgba(212,163,115,0.32);
     --bg-panel-deep:#20150f; --font-head:'Cinzel', serif; --font-body:'Bitter', serif;
   }
+  body.light-mode{
+    --ink:#2b2013; --bg-deep:#f3ead9; --bg-panel:#fffaf0; --bg-glow1:#efdfc2; --bg-glow2:#f7ecd6;
+    --clay:#b5502e; --clay-bright:#a13d1a; --turq:#1f8577; --sand:#6b5a44;
+    --line: rgba(43,32,19,0.18); --bg-panel-deep:#ecdfc3;
+  }
   *{box-sizing:border-box;} html,body{margin:0;padding:0;}
   body{
     background: radial-gradient(ellipse at 15% 0%, var(--bg-glow1) 0%, transparent 55%),
                 radial-gradient(ellipse at 90% 100%, var(--bg-glow2) 0%, transparent 50%), var(--bg-deep);
     color:var(--ink); font-family:var(--font-body); min-height:100vh;
     display:flex; justify-content:center; padding:40px 16px 64px;
+    transition: background-color .2s ease, color .2s ease;
   }
+  .theme-toggle{
+    background:none; border:1px solid var(--line); color:var(--sand);
+    font-family:var(--font-body); font-size:14px; width:30px; height:30px;
+    border-radius:8px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; line-height:1;
+    vertical-align:middle; margin-left:10px;
+  }
+  .theme-toggle:hover{ border-color:var(--clay-bright); color:var(--clay-bright); }
   .wrap{width:100%; max-width:720px;} a{color:inherit;}
   .auth-bar{ font-size:13px; color:var(--sand); margin-bottom:26px; }
   .auth-link{ color:var(--turq); text-decoration:underline; }
@@ -31,10 +44,17 @@
   }
   .panel p{ color:var(--sand); font-size:13.5px; line-height:1.6; }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../../../assets/presence.js"></script>
+<script src="../../../assets/theme.js"></script>
 </head>
 <body>
+<script>
+if (window.LEAPresence) { LEAPresence.init(); }
+if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }
+</script>
 <div class="wrap">
-  <div class="auth-bar"><a class="auth-link" href="../index.html">&larr; Building Laws</a></div>
+  <div class="auth-bar"><a class="auth-link" href="../index.html">&larr; Building Laws</a><button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">☀️</button></div>
   <div class="masthead">
     <div class="eyebrow">JPT Manila · Module Compendium</div>
     <h1>Building Laws — Modules</h1>

@@ -14,13 +14,27 @@
     --good:#4fa87a; --bad:#b0503f; --line: rgba(212,163,115,0.32); --bg-panel-deep:#20150f;
     --font-head:'Cinzel', serif; --font-body:'Bitter', serif;
   }
+  body.light-mode{
+    --ink:#2b2013; --bg-deep:#f3ead9; --bg-panel:#fffaf0; --bg-glow1:#efdfc2; --bg-glow2:#f7ecd6;
+    --clay:#b5502e; --clay-bright:#a13d1a; --turq:#1f8577; --turq-bright:#1c7267; --sand:#6b5a44;
+    --good:#2f7a4f; --bad:#a13d2e; --line: rgba(43,32,19,0.18); --bg-panel-deep:#ecdfc3;
+    --accent: #b5502e; --accent2: #a13d1a;
+  }
   *{box-sizing:border-box;} html,body{margin:0;padding:0;}
   body{
     background: radial-gradient(ellipse at 15% 0%, var(--bg-glow1) 0%, transparent 55%),
                 radial-gradient(ellipse at 90% 100%, var(--bg-glow2) 0%, transparent 50%), var(--bg-deep);
     color:var(--ink); font-family:var(--font-body); min-height:100vh;
     display:flex; justify-content:center; padding:40px 16px 64px;
+    transition: background-color .2s ease, color .2s ease;
   }
+  .theme-toggle{
+    background:none; border:1px solid var(--line); color:var(--sand);
+    font-family:var(--font-body); font-size:14px; width:30px; height:30px;
+    border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
+    flex-shrink:0;
+  }
+  .theme-toggle:hover{ border-color:var(--clay-bright); color:var(--clay-bright); }
   .wrap{width:100%; max-width:720px;} a{color:inherit;}
   .hidden{display:none !important;}
   .masthead{ text-align:center; margin-bottom:22px; }
@@ -49,11 +63,15 @@
   .panel h2{ font-family:var(--font-head); font-size:20px; color:var(--ink); margin:0 0 10px; }
   .panel p{ color:var(--sand); font-size:13.5px; line-height:1.6; max-width:420px; margin:0 auto; }
 </style>
+<script src="../assets/presence.js"></script>
+<script src="../assets/theme.js"></script>
 </head>
 <body>
 <div class="wrap">
   <div class="auth-bar">
     <div><a class="auth-link" href="../index.html">&larr; All subjects</a> &nbsp;·&nbsp; <span id="authStatus">Checking session…</span></div>
+    <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>☀️</button>
   </div>
 
   <div class="masthead">
@@ -74,6 +92,7 @@
 const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+if (window.LEAPresence) { LEAPresence.init({ client: sb }); }
 const authStatus = document.getElementById('authStatus');
 
 async function onSignedIn(user){

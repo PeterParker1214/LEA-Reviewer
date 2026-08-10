@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PP & Building Laws — Preboard Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6efe0;
+    --paper-card:#fffaf0;
+    --ink:#2c2317;
+    --ink-soft:#6b5d4a;
+    --maroon:#7a2a2a;
+    --maroon-bright:#a53c3c;
+    --gold:#b3862a;
+    --forest:#3c5c46;
+    --good:#3c6e4f;
+    --bad:#a53c3c;
+    --line: rgba(122,42,42,0.22);
+  }
+  body.dark-mode{
+    --paper:#211a13;
+    --paper-card:#2b2118;
+    --ink:#f1e6d3;
+    --ink-soft:#b8a98d;
+    --maroon:#c46a5a;
+    --maroon-bright:#e08a72;
+    --gold:#d8ac52;
+    --forest:#6fa383;
+    --good:#6fa383;
+    --bad:#dd7c6a;
+    --line: rgba(216,172,82,0.22);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(ellipse at 10% 0%, rgba(179,134,42,0.10) 0%, transparent 45%),
+      radial-gradient(ellipse at 95% 100%, rgba(60,92,70,0.08) 0%, transparent 50%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:32px 16px 64px;
+    transition: background-color .2s ease, color .2s ease;
+  }
+  body.dark-mode{
+    background:
+      radial-gradient(ellipse at 10% 0%, rgba(216,172,82,0.07) 0%, transparent 45%),
+      radial-gradient(ellipse at 95% 100%, rgba(111,163,131,0.07) 0%, transparent 50%),
+      var(--paper);
+  }
+  .card, .toolbar, .results .breakdown{
+    transition: background-color .2s ease, border-color .2s ease;
+  }
+  .wrap{width:100%; max-width:740px;}
+  .quiz-nav-bar{ font-size:13px; margin-bottom:16px; }
+  .quiz-nav-bar a{ color:var(--maroon-bright); text-decoration:underline; }
+  .quiz-nav-bar a:hover{ color:var(--gold); }
+
+  .masthead{
+    text-align:center;
+    margin-bottom:20px;
+    border-bottom: 2px solid var(--maroon);
+    padding-bottom:16px;
+  }
+  .masthead .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    letter-spacing:0.2em;
+    font-size:11px;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+  }
+  .masthead h1{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:34px;
+    margin:8px 0 4px;
+    color:var(--maroon);
+    letter-spacing:-0.01em;
+  }
+  .masthead .sub{
+    font-style:italic;
+    color:var(--ink-soft);
+    font-size:14px;
+  }
+
+  /* ===== toolbar ===== */
+  .toolbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    padding:12px 16px;
+    margin-bottom:16px;
+    background: var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    font-size:13px;
+    box-shadow: 0 2px 10px rgba(44,35,23,0.05);
+  }
+  .toolbar-stats{
+    display:flex;
+    gap:20px;
+  }
+  .toolbar-stats .stat-label{
+    font-family:'JetBrains Mono', monospace;
+    text-transform:uppercase;
+    font-size:10px;
+    letter-spacing:0.1em;
+    color:var(--ink-soft);
+    display:block;
+  }
+  .toolbar-stats .stat-value{
+    font-family:'Fraunces', serif;
+    font-size:19px;
+    font-weight:700;
+  }
+  .toolbar-stats .score-val{ color: var(--forest); }
+  .toolbar-stats .mistake-val{ color: var(--bad); }
+
+  .toolbar-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .order-toggle{
+    display:flex;
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+  }
+  .order-toggle button{
+    background:none;
+    border:none;
+    color:var(--ink-soft);
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    padding:6px 10px;
+    cursor:pointer;
+    letter-spacing:0.03em;
+  }
+  .order-toggle button.active{
+    background: var(--maroon);
+    color:#fff8ea;
+    font-weight:600;
+  }
+  .toolbar-restart{
+    background:none;
+    border:1px solid var(--gold);
+    color:var(--gold);
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    padding:6px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .toolbar-restart:hover{ background: rgba(179,134,42,0.12); }
+  .theme-toggle{
+    background:none;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px;
+    width:30px; height:30px;
+    border-radius:8px;
+    cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    line-height:1;
+  }
+  .theme-toggle:hover{ border-color:var(--gold); color:var(--gold); }
+
+  /* progress: docket dots */
+  .tesserae{
+    display:flex;
+    gap:3px;
+    margin:4px 0 8px;
+  }
+  .tess{
+    flex:1;
+    height:5px;
+    background: rgba(122,42,42,0.14);
+    border-radius:3px;
+  }
+  .tess.done{ background: var(--forest); }
+  .tess.wrong-tess{ background: var(--bad); }
+  .tess.current{ background: var(--gold); box-shadow:0 0 5px var(--gold); }
+  .progress-label{
+    display:flex; justify-content:space-between;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--ink-soft); margin-bottom:18px;
+  }
+
+  /* casebook card */
+  .card{
+    position:relative;
+    background: var(--paper-card);
+    border:1px solid var(--line);
+    border-radius: 14px;
+    padding:34px 32px 30px;
+    box-shadow: 0 16px 40px rgba(44,35,23,0.12);
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    left:0; top:22px; bottom:22px;
+    width:4px;
+    background: linear-gradient(180deg, var(--maroon), var(--gold));
+    border-radius:0 4px 4px 0;
+  }
+  .section-tag{
+    display:inline-block;
+    font-family:'JetBrains Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:#fff8ea;
+    background: var(--maroon);
+    padding:5px 13px;
+    border-radius:20px;
+    margin-bottom:16px;
+  }
+  .reviewing-tag{
+    display:inline-block;
+    font-family:'JetBrains Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--gold);
+    border:1px solid var(--gold);
+    padding:4px 11px;
+    border-radius:20px;
+    margin-bottom:16px;
+    margin-left:8px;
+  }
+  .qtext{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:22px;
+    line-height:1.4;
+    margin:0 0 22px;
+    color:var(--ink);
+  }
+  .options{ display:flex; flex-direction:column; gap:10px; }
+  .opt{
+    text-align:left;
+    background: rgba(122,42,42,0.03);
+    border:1px solid rgba(122,42,42,0.18);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    font-size:16px;
+    padding:13px 16px;
+    border-radius:10px;
+    cursor:pointer;
+    transition: border-color .15s ease, background .15s ease;
+    display:flex; gap:12px; align-items:flex-start;
+  }
+  .opt:hover:not(.locked){ border-color:var(--gold); background: rgba(179,134,42,0.08); }
+  .opt .letter{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:600; color:var(--maroon-bright);
+    min-width:18px;
+  }
+  .opt.correct{ border-color:var(--good); background: rgba(60,110,79,0.14); }
+  .opt.incorrect{ border-color:var(--bad); background: rgba(165,60,60,0.13); }
+  .opt.locked{ cursor:default; }
+  .opt.dim{ opacity:0.5; }
+
+  .feedback{
+    margin-top:18px;
+    padding:14px 16px;
+    border-radius:10px;
+    font-size:14.5px;
+    line-height:1.55;
+    display:none;
+  }
+  .feedback.show{ display:block; }
+  .feedback.right{ background: rgba(60,110,79,0.10); border:1px solid rgba(60,110,79,0.35); }
+  .feedback.wrong{ background: rgba(165,60,60,0.10); border:1px solid rgba(165,60,60,0.35); }
+  .feedback b{ color: var(--maroon); }
+  .feedback .ref{
+    display:block;
+    margin-top:10px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+  .feedback .note{ display:block; margin-top:6px; color:var(--ink-soft); font-style:italic; }
+
+  .controls{
+    display:flex; justify-content:space-between; align-items:center; margin-top:22px;
+  }
+  .nav-arrows{ display:flex; gap:10px; }
+  .arrow-btn{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    background:none;
+    color:var(--maroon);
+    border:1px solid var(--maroon);
+    padding:9px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    display:flex; align-items:center; gap:6px;
+  }
+  .arrow-btn:hover:not(:disabled){ background: rgba(122,42,42,0.08); }
+  .arrow-btn:disabled{ opacity:0.28; cursor:default; }
+  .arrow-btn.primary{
+    background: var(--maroon);
+    color:#fff8ea;
+    font-weight:600;
+    border-color:var(--maroon);
+  }
+  .arrow-btn.primary:hover:not(:disabled){ background: var(--maroon-bright); }
+
+  /* results screen */
+  .results{ display:none; text-align:center; }
+  .results.show{ display:block; }
+  .results h2{
+    font-family:'Fraunces', serif;
+    font-size:32px; margin-bottom:6px;
+    color:var(--maroon);
+  }
+  .score-big{
+    font-family:'Fraunces', serif;
+    font-size:58px;
+    color:var(--forest);
+    margin:14px 0;
+  }
+  .results .breakdown{
+    text-align:left;
+    margin-top:26px;
+    font-size:14.5px;
+    background: var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:6px 18px;
+  }
+  .breakdown-row{
+    display:flex; justify-content:space-between;
+    padding:9px 0;
+    border-bottom:1px solid rgba(122,42,42,0.12);
+  }
+  .breakdown-row:last-child{ border-bottom:none; }
+  .result-btns{
+    display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+    margin-top:26px;
+  }
+  .restart-btn{
+    background:none;
+    border:1px solid var(--maroon);
+    color:var(--maroon);
+    padding:10px 24px;
+    border-radius:8px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    cursor:pointer;
+  }
+  .restart-btn:hover{ background: rgba(122,42,42,0.08); }
+  .restart-btn.primary{
+    background: var(--maroon);
+    color:#fff8ea;
+    border-color:var(--maroon);
+    font-weight:600;
+  }
+  .restart-btn.primary:hover{ background: var(--maroon-bright); }
+
+  .weak-spots{
+    text-align:left;
+    margin-top:30px;
+    padding:16px 18px;
+    border:1px solid rgba(165,60,60,0.32);
+    background: rgba(165,60,60,0.06);
+    border-radius:12px;
+    font-size:14px;
+  }
+  .weak-spots h3{
+    margin:0 0 8px;
+    font-family:'Fraunces', serif;
+    font-size:17px;
+    color:var(--maroon);
+  }
+  .weak-spots ul{ margin:0; padding-left:20px; }
+  .weak-spots li{ margin-bottom:4px; }
+
+  .mistakes-review{
+    text-align:left;
+    margin-top:30px;
+  }
+  .mistakes-review h3{
+    font-family:'Fraunces', serif;
+    font-size:19px;
+    color:var(--maroon);
+    margin-bottom:12px;
+  }
+  .mistake-item{
+    border:1px solid rgba(165,60,60,0.28);
+    background: rgba(122,42,42,0.02);
+    border-radius:12px;
+    padding:14px 16px;
+    margin-bottom:12px;
+    font-size:14px;
+    line-height:1.5;
+  }
+  .mistake-item .m-section{
+    font-family:'JetBrains Mono', monospace;
+    font-size:10.5px; letter-spacing:0.07em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:6px;
+  }
+  .mistake-item .m-q{ color:var(--ink); margin-bottom:8px; font-size:15px; font-family:'Fraunces', serif; }
+  .mistake-item .m-you{ color:var(--bad); }
+  .mistake-item .m-correct{ color:var(--good); }
+  .no-mistakes{
+    text-align:center; color:var(--ink-soft); font-style:italic; margin-top:26px;
+  }
+
+  .quiz-area.hidden{ display:none; }
+
+  @media (max-width:480px){
+    .card{ padding:28px 18px 24px; }
+    .qtext{ font-size:19px; }
+    .masthead h1{ font-size:26px; }
+    .toolbar{ flex-direction:column; align-items:stretch; }
+    .toolbar-actions{ justify-content:space-between; }
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../../../assets/presence.js"></script>
+<script src="../../../assets/theme.js"></script>
+</head>
+<body>
+<script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+<div class="wrap">
+  <div class="quiz-nav-bar">
+    <a href="../index.html">&larr; Back to subject</a>
+    &nbsp;&middot;&nbsp;
+    <a href="../../../index.html">All subjects</a>
+  </div>
+
+  <div class="masthead">
+    <div class="eyebrow">Comprehensive Review · JPT Review Center</div>
+    <h1>PP &amp; Building Laws — Preboard</h1>
+    <div class="sub">Answer key review, question by question — Arch. Pedro Santos Jr.</div>
+  </div>
+
+  <div class="toolbar">
+    <div class="toolbar-stats">
+      <div>
+        <span class="stat-label">Score</span>
+        <span class="stat-value score-val" id="scoreText">0</span>
+      </div>
+      <div>
+        <span class="stat-label">Mistakes</span>
+        <span class="stat-value mistake-val" id="mistakeText">0</span>
+      </div>
+    </div>
+    <div class="toolbar-actions">
+      <div class="order-toggle">
+        <button id="orderInOrderBtn" class="active">In order</button>
+        <button id="orderShuffleBtn">Shuffled</button>
+      </div>
+      <button class="toolbar-restart" id="toolbarRestartBtn">Restart from start</button>
+      <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark mode">🌙</button>
+    </div>
+  </div>
+
+  <div class="tesserae" id="tesserae"></div>
+  <div class="progress-label">
+    <span id="progressText">Question 1 of 1</span>
+  </div>
+
+  <div class="quiz-area" id="quizArea">
+    <div class="card">
+      <div class="section-tag" id="sectionTag">Section</div>
+      <span class="reviewing-tag" id="reviewingTag" style="display:none;">Reviewing — answer locked</span>
+      <p class="qtext" id="qtext">Loading…</p>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="controls">
+        <div class="nav-arrows">
+          <button class="arrow-btn" id="backBtn">&larr; Back</button>
+          <button class="arrow-btn" id="forwardBtn">Forward &rarr;</button>
+        </div>
+        <button class="arrow-btn primary" id="finishBtn" style="display:none;">See results →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="results" id="results">
+    <h2 id="resultsTitle">Quiz Complete</h2>
+    <div class="sub" id="resultsSub">You've worked through every question, in order.</div>
+    <div class="score-big" id="finalScore">0 / 0</div>
+    <div class="breakdown" id="breakdown"></div>
+    <div class="weak-spots" id="weakSpots" style="display:none;">
+      <h3>Weak spots</h3>
+      <ul id="weakSpotsList"></ul>
+    </div>
+    <div class="result-btns">
+      <button class="restart-btn primary" id="retryMissedBtn" style="display:none;">Retry missed questions</button>
+      <button class="restart-btn" id="restartBtn">Take it again from the start</button>
+    </div>
+    <div class="mistakes-review" id="mistakesReview" style="display:none;">
+      <h3>Review your mistakes</h3>
+      <div id="mistakesList"></div>
+    </div>
+    <div class="no-mistakes" id="noMistakes" style="display:none;">No mistakes this run — clean sweep.</div>
+  </div>
+
+</div>
+
+<script>
+const QUESTIONS = [{"s": "PD 1096 — National Building Code", "q": "Construction in a building involving changes in the materials used, partitioning, locations/sizes of openings, structural parts, existing utilities and equipment without increasing the overall area.", "o": ["Alteration", "Renovation", "Slum upgrading", "Redecoration"], "c": 0}, {"s": "PD 1096 — National Building Code", "q": "The transfer of buildings or portions thereof from an original location to another, either within the same lot or to a different one.", "o": ["Evacuation", "Reassembly", "Moving", "Disaster displacement"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "Any physical change made on a building/ structure to increase its value, utility and/ or to improve its aesthetic quality", "o": ["Slum upgrading", "Renovation", "Interior design", "Architectural interiors"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Which of the following is NOT true about the building official, according to Rule II of the IRR of PD 1096?", "o": ["The building official must either be a duly registered architect or civil engineer", "The building official must be of good moral character", "The building official must have at least five years of diversified and professional experience in building design and construction", "All of the above are true"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "Which of the following violations is the gravest, according to Rule II of the NBC IRR?", "o": ["Failure to post Certificate of Occupancy", "Use or occupancy of building/structure without appropriate Certificate of Occupancy", "Non-compliance with work stoppage order for construction or demolition without permit", "Non-compliance with the work stoppage order for the alteration, addition, conversion, or repair without permit"], "c": 2}, {"s": "RA 9266 — Architecture Law", "q": "Whose duty is it to declare buildings as ruinous or dangerous?", "o": ["This is the building official’s duty", "This is the secretary’s duty", "This is the architect’s duty", "This is the PRBOA’s duty"], "c": 0}, {"s": "PD 1096 — National Building Code", "q": "Which of the following does NOT require a building permit?", "o": ["A small patio,only 25 sqm. in area, resting directly on the ground", "A low garden masonry wall that is only 6 meters long and only 1.5 meters high", "A greenhouse that measures 2 meters x 3 meters only", "A mini-aviary measuring 3 meters x 4 meters with a maximum height of less than 6 meters measured from the ground to the apex of the roof"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "What is the minimum distance required between eaves and the rear and side property lines?", "o": ["500mm", "750mm", "1000mm", "None of the above. Setbacks are measured not to the eaves, but to the exterior faces of the walls."], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "What is the minimum front setback required for an industrial project when the RROW adjoining the property is 30 meters wide?", "o": ["9.00 meters", "8.00 meters", "6.00 meters", "5.00 meters"], "c": 1}, {"s": "RA 9514 — Fire Code", "q": "A written authorization granted by the Building Official to an applicant allowing him to proceed with construction after plans, specifications and other pertinent documents have been found to be in conformity with the Code", "o": ["Building permit", "Occupancy permit", "FSIC", "FSEC"], "c": 0}, {"s": "PD 1096 — National Building Code", "q": "According to Rule II of the NBC IRR, which does not fall under civil/structural documents?", "o": ["Roof framing plans", "Boring and load tests", "Seismic analysis", "All of the above are included under civil/structural documents"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "Firewalls are not allowed for R1 developments. However, an abutment of up to 3.20m in height is allowed, provided that above ____, the abutment shall be made of perforated concrete blocks.", "o": ["1.00m", "1.20m", "1.50m", "1.70m"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "Does the law permit the owner to proceed with ground preparation and excavation works before the issuance of the building permit?", "o": ["No. The owner must wait for the building permit to be issued before he can proceed with excavation works.", "Yes, as long as the Building Official issues the Ground Preparation and Excavation Permit and as long as the owner follows the corresponding rules/requirements.", "The NBC is silent on this matter.", "Both A and C."], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Does the law permit the owner to occupy completed portions of the building even though other parts are still being constructed?", "o": ["No. The entire building must be completed first and the Certificate of Occupancy for the entire building must be issued before anyone can occupy any portion of the building.", "No, this is extremely dangerous. There must be no ongoing works within the building before anyone may be allowed to occupy it.", "Yes, if the Building Official grants a Partial Certificate of Occupancy to the owner.", "Both A and B"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "For a sloping lot with a 2.00m difference between the highest and lowest points of the lot, where will the established grade line be for building height determination?", "o": ["The lowest point of the lot", "The highest point of the lot", "The average between the two points", "None of the above"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "What is the minimum parking slot size for a standard truck?", "o": ["2.50m x 5.00m", "3.00 x 9.00m", "3.60 x 12.00m", "3.60 x 18.00m"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "If you add the ISA and the USA, what will you get?", "o": ["TOSL", "PSO", "MACA", "AMBF"], "c": 0}, {"s": "PD 1096 — National Building Code", "q": "If you subtract the ISAmax from the MACA, what will you get?", "o": ["TOSLmin", "PSOmax", "USAmin", "BHL"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "If you multiply the FLAR by the TLA, what will you get?", "o": ["AMBF", "GFA", "TGFA", "MACA"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "What is the minimum area for habitable rooms, 20. according to the National Building Code?", "o": ["1.20 sqm", "3.00 sqm", "6.00 sqm", "12.00 sqm"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "What is the minimum air space provision per person for habitable rooms?", "o": ["3.00 cubic meters", "12.00 cubic meters", "14 cubic meters", "18 cubic meters"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "What is the minimum width for an access road serving an interior lot intended to serve 4 dwelling units?", "o": ["3.00m", "4.00m", "5.00m", "8.00m"], "c": 0}, {"s": "PD 1096 — National Building Code", "q": "What is the minimum ceiling height required for the seventh floor of a naturally-ventilated building?", "o": ["1.80m", "2.10m", "2.40m", "2.70m"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "For agricultural areas, the NBC requires at least _____ of easement for each side of the waterway.", "o": ["3.00m", "10.00m", "20.00m", "40.00m"], "c": 2}, {"s": "Zoning & Housing Laws", "q": "Townhouses characterize which zoning classification?", "o": ["R-2", "R-4", "R-5", "C-1"], "c": 1}, {"s": "Civil Code Liability", "q": "According to Article 1723 of the Civil Code, who shall be held liable if a building collapses more than 10 years after completion due to the use of inferior materials?", "o": ["The architect or the engineer who drew up the plans", "The contractor and the construction supervisor", "The building official who reviewed and approved the c. plans", "Both B and C"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Before using or occupying a completed building, this document must be issued first.", "o": ["Building permit", "Certificate of inspection", "Certificate of compliance", "Certificate of occupancy"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "The Building Code requires that the owner hire a fulltime inspector for the construction. This inspector must be a:", "o": ["Licensed architect", "Licensed mechanical engineer", "Licensed contractor", "Either A or B"], "c": 0}, {"s": "PD 1096 — National Building Code", "q": "What are the allowable firewall configurations for an R3 project?", "o": ["Allowed only on one side of property", "Allowed on both sides of the property", "Allowed on one side and the rear", "Both B and C"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "This term refers to any new construction which increases the height or area of an existing building.", "o": ["Addition", "Alteration", "Renovation", "Conversion"], "c": 0}, {"s": "PD 1096 — National Building Code", "q": "This uses wood construction with protective fireresistant materials and is one-hour fire-resistive throughout.", "o": ["Type I", "Type II", "Type III and IV", "Type V"], "c": 1}, {"s": "Zoning & Housing Laws", "q": "The provisions of the National Building Code apply to all public and private buildings except for:", "o": ["BP 220 projects", "Buildings made of native materials like wood, nipa, and lumber", "Projects that only involve non-structural repairs", "Both A and B"], "c": 0}, {"s": "PD 1096 — National Building Code", "q": "Which is not included among the valid grounds for declaring a building as dangerous?", "o": ["Structural hazard", "Aesthetic deficiency", "Unsafe electrical wiring", "Inadequate sanitation"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Type II constructions are not allowed in which zones?", "o": ["Non-fire restricted zone", "Fire restrictive zone", "Highly fire restrictive zone", "Both B and C"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "On a non-arcaded RROW, signs may be allowed to project by as much as", "o": ["300mm", "600mm", "900mm", "1200mm"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "Should a sign be allowed to project beyond the property line and into an arcaded RROW, a minimum vertical clearance of ___ must be maintained from the road surface to the bottom of the sign.", "o": ["3.00 m", "4.27 m", "5.00 m", "6.00 m"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "For glass panels that need to be larger than 3.00m x 3.00m, the minimum thickness needs to be:", "o": ["8mm", "10mm", "12mm", "15mm"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "According to the NBC, the maximum speed of escalators is", "o": ["90 feet per minute", "120 feet per minute", "36 meters per minute", "38 meters per minute"], "c": 3}, {"s": "RA 9514 — Fire Code", "q": "According to the NBC, the minimum stairway width for buildings with an occupant load of 10-50 is", "o": ["1.10m", "0.90m", "0.75m", "0.60m"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "For protection of pedestrians, what will be required when the distance between the OFB and the inner edge of the sidewalk is equal to 75% of the building height?", "o": ["A fence only a.", "A canopy only", "A fence and a canopy", "A fence, a canopy, and a safety net"], "c": 0}, {"s": "PD 1096 — National Building Code", "q": "Every fence or building corner must be truncated at the corner to form a chaflan on roads that are less than 3.60m wide. What is the minimum width of a chaflan?", "o": ["3.00m", "3.60m", "4.00m", "5.00m"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "Which formula could be used to yield building bulk?", "o": ["PSOmax * AMBF", "TLA * PSOmax * BHLmeters", "PSOmax * TLA / BHLmeters", "[ (FLAR * TLA) * BHLstoreys] * BHLmeters"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Which would be included when obtaining GFA?", "o": ["Balconies with an area of 5 square meters", "Parking areas equivalent to half the area of one floor", "Utility areas equivalent to not more than one-third of one floor", "Fire escape structures if complying to standards stair measurements of the NBC"], "c": 0}, {"s": "BP 344 — Accessibility Law", "q": "What is the maximum allowable slope for PWD ramps, according to BP 344?", "o": ["10%", "12%", "1:10", "1:12"], "c": 3}, {"s": "BP 344 — Accessibility Law", "q": "For ramps using the maximum allowable slope, a landing must be provided after every 6.00 meters of horizontal travel distance. What is the minimum length of this landing?", "o": ["1.00m", "1.20m", "1.50m", "2.00m"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "What is the minimum width required for a curb cutout leading to a 1.20m-wide crossing?", "o": ["0.90m", "1.00m", "1.20m", "1.50m"], "c": 0}, {"s": "BP 344 — Accessibility Law", "q": "What is the minimum dimension of the required turnabout space for walkways and what should be the maximum distance between two turnabout spaces?", "o": ["Minimum dimension of 1.20m, center-to-center distance of 15.00m", "Minimum dimension of 1.50m, center-to-center distance of 13.50m", "Minimum dimension of 1.20m, maximum gap of 12.00m between turning spaces", "Minimum dimension of 1.50m, center-to-center distance of 12.00m"], "c": 1}, {"s": "BP 344 — Accessibility Law", "q": "Handrails are required for ramps, stairs, and dropped curbs at crossings. These handrails should be installed at what height/s?", "o": ["700mm and 900mm", "800mm and 900mm", "900mm and 1000m", "900mm only"], "c": 0}, {"s": "PD 1096 — National Building Code", "q": "What is the minimum width of an accessible parking slot?", "o": ["2.15m", "2.50m", "2.70m", "3.70m"], "c": 3}, {"s": "BP 344 — Accessibility Law", "q": "What is required to be provided at the bottom and the top of a ramp?", "o": ["A turnabout space with a minimum dimension of 1.50m", "A vestibule with a level space at least 1.50m wide and 2.00m deep", "A curb with a minimum height of 100mm", "A level area not less than 1.80m in length"], "c": 3}, {"s": "BP 344 — Accessibility Law", "q": "What are the minimum dimensions of a toilet stall for PWDs?", "o": ["1.50m x 1.50m", "1.50m x 1.80m", "1.70m x 1.80m", "1.80m x 2.00m"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "What are the minimum dimensions required for elevators?", "o": ["Hoistway inside dimensions of 1.10m x 1.40m", "Car inside dimensions of 1.10 x 1.40m", "Hoistway inside dimensions of 1.10 x 1.70", "Car inside dimensions of 1.10 x 1.70"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "What is the maximum travel distance allowed for accessible elevators?", "o": ["10.00m from entrance", "15.00m from entrance", "20.00m from entrance", "30.00m from entrance"], "c": 3}, {"s": "BP 344 — Accessibility Law", "q": "For PWD washrooms, what is the maximum height allowed for a lavatory counter?", "o": ["750mm", "800mm", "850mm", "900mm"], "c": 1}, {"s": "BP 344 — Accessibility Law", "q": "What is the minimum clear width for doors according to BP 344?", "o": ["600mm", "700mm", "800mm", "900mm"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "A central refuge area with a minimum depth of 1.50m is required for crossings if the width of the road to be crossed exceeds", "o": ["6.50m", "8.00m", "10.00m", "12.00m"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "Fires involving energized electrical equipment are classified as:", "o": ["Class A", "Class B", "Class C", "Class D"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "For drainage purposes, a maximum cross gradient of ____ toward the road is allowed for dropped curbs.", "o": ["1:12", "1:20", "12%", "20%"], "c": 1}, {"s": "RA 9514 — Fire Code", "q": "A type of standpipe system in which the pipes are normally not filled with water. Water is introduced into the system thru fire service connections when needed.", "o": ["Wet standpipe", "Dry standpipe", "Combination standpipe", "Both A and C"], "c": 1}, {"s": "Zoning & Housing Laws", "q": "What is the maximum allowable riser height for stairs in BP 220?", "o": ["150 mm.", "175 mm.", "200 mm.", "250 mm."], "c": 3}, {"s": "Zoning & Housing Laws", "q": "What is the minimum tread width for stairs in BP 220?", "o": ["200 mm.", "225 mm.", "250 mm.", "300 mm."], "c": 0}, {"s": "PD 1096 — National Building Code", "q": "Fires involving ordinary combustible materials such as wood, cloth, rubber and plastics", "o": ["Class A", "Class B", "Class K", "Class D"], "c": 0}, {"s": "Zoning & Housing Laws", "q": "Which of the following is prohibited by BP 220 and PD 957?", "o": ["A rowhouse cluster of 10 units", "A rowhouse cluster of 20 units", "A rowhouse cluster 100 m. long", "A block 500.00m long with a 2.00m-wide alley approximately at the center"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "Any visual or audible signal produced by a device or system to warn the occupants of the building or fire fighting elements of the presence or danger of fire", "o": ["Annunciator panel", "Fire signal", "Fire alerting system", "Fire alarm"], "c": 3}, {"s": "RA 9514 — Fire Code", "q": "An integrated network of hydraulically designed piping system installed in a building, structure or area with outlets arranged in a systematic pattern which automatically discharges water when activated by heat or combustion products from a fire.", "o": ["Standpipe system", "Fire extinguishing system", "Sprinkler system", "None of the above"], "c": 2}, {"s": "Zoning & Housing Laws", "q": "What is the prescribed ratio for saleable and nonsaleable lots in PD 957?", "o": ["30% min saleable, 70% max non-saleable", "70% max saleable, 30% min non-saleable", "60% max saleable, 40% min non-saleable", "None of the above"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Which of the following is true?", "o": ["An alley may be used as property access for socialized developments only", "A pathwalk may be used as property access for socialized and economic developments", "A pathwalk length of up to 60.00 m. is allowed", "An alley must have a minimum width of 1.20 m."], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "What is the minimum ceiling height required for socialized and economic housing (not including mezzanines)?", "o": ["2.70 m.", "2.40 m.", "2.10 m.", "2.00 m."], "c": 3}, {"s": "RA 9514 — Fire Code", "q": "Results of the annual fire pump flow test, the annual main drain test, and the standpipe water flow test should be included in the:", "o": ["FSCR", "FSCCR", "FSMR", "FSEC"], "c": 2}, {"s": "BP 344 — Accessibility Law", "q": "What is the acceptable range of handrail heights 70. according to BP 220?", "o": ["800-900 mm. from the floor", "800-100 mm. from the floor", "800-1200 mm. from the floor", "800-1500 mm.from the floor"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "For economic housing, what is the minimum lot area required for single-detached developments?", "o": ["64 sqm.", "72 sqm.", "18 sqm.", "22 sqm."], "c": 1}, {"s": "Zoning & Housing Laws", "q": "For socialized housing, what is the minimum lot frontage required for single-detached developments?", "o": ["6.00 m.", "8.00 m.", "10.00 m.", "12.00 m."], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "What is the minimum side setback required for socialized and economic housing?", "o": ["1.00 m.", "1.50 m.", "2.00 m.", "4.50 m."], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Fires in cooking appliances that involve combustible cooking media (vegetable or animal oils and fats) are classified as:", "o": ["Class K", "Class D", "Class B", "Class A"], "c": 0}, {"s": "Zoning & Housing Laws", "q": "Which of the following are the last three items on the list of minimum basic needs of human settlements prescribed by BP 220?", "o": ["Water, power, storm drainage", "Water, power, parks and playgrounds", "Solid and liquid waste disposal, parks and playgrounds, power", "Storm drainage, parks and playgrounds, power"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "For medium-cost and open market housing developments, what is the minimum area required for parks and playgrounds?", "o": ["3.5% of gross area", "4.0% of gross area", "5.0% of gross area", "9.0% of gross area"], "c": 0}, {"s": "PD 1096 — National Building Code", "q": "What is the minimum floor area required for open market housing?", "o": ["18 sqm.", "22 sqm.", "30 sqm.", "42 sqm."], "c": 3}, {"s": "Zoning & Housing Laws", "q": "What is the minimum level of completion required for 78. PD 957?", "o": ["Shell house", "Shell house with doors and windows", "Complete house", "Complete house without interior partitions"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "What is the minimum lot area required for open market, duplex housing?", "o": ["50 sqm.", "80 sqm.", "96 sqm.", "120 sqm."], "c": 2}, {"s": "Zoning & Housing Laws", "q": "For BP 220, what is the minimum thickness required for firewalls?", "o": ["4 inches", "5 inches", "6 inches", "8 inches"], "c": 2}, {"s": "Zoning & Housing Laws", "q": "Subdivisions abutting main public roads must provide setbacks on both sides of the subdivision entrance for public utility vehicles. What are the minimum dimensions required for the setback?", "o": ["2.50 m. x 5.00 m.", "3.00 m. x 5.00 m.", "3.00 m. x 9.00 m.", "3.60 m. x 12.00 m."], "c": 1}, {"s": "Zoning & Housing Laws", "q": "What is the minimum floor area required for a medium 82. cost family condominium according to PD 957?", "o": ["12 sqm.", "18 sqm.", "22 sqm.", "36 sqm."], "c": 2}, {"s": "RA 9514 — Fire Code", "q": "An integrated piping system connected to a source of extinguishing agent which suppresses fires when actuated by its automatic detecting device", "o": ["Standpipe system", "Automatic fire suppression system", "Fire extinguisher", "Fire hose"], "c": 1}, {"s": "RA 9514 — Fire Code", "q": "The maximum number of persons that may be allowed to occupy a particular building or space", "o": ["Maximum occupancy", "Building load", "Occupant load", "Occupant total"], "c": 2}, {"s": "RA 9514 — Fire Code", "q": "This document is issued upon determination that design and specification is in accordance with the provisions of the Fire Code.", "o": ["FSCR", "FSCCR", "FSIC", "FSEC"], "c": 3}, {"s": "Code of Ethics", "q": "Who is violating the Code of Ethics?", "o": ["An architect who recommends the method of arbitration when it comes to settling disputes", "An architect who informs his colleague that he is being hired by the latter’s former client as a new architect for a project", "An architect who refuses to make schematic sketches without payment for a client who is short of money", "An architect who credits half of his commission from the supplier to the owner’s bill (to add to the owner’s discount)"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "Are architects allowed to accept gifts from suppliers?", "o": ["Only when the gift does not exceed the contract amount awarded to that supplier", "Only when the gift will not cloud the architect’s judgment and objectivity", "Only when the gift was solicited by the architect", "The architect is never allowed to accept gifts, no matter how small"], "c": 1}, {"s": "Code of Ethics", "q": "Who is not violating the Code of Ethics?", "o": ["An architect who asks to be considered for a project even though the owner has already begun negotiations with another architect (but no contract yet)", "An architect who accepts a commission to remodel a building after notifying the original architect of the commission and ensuring that the previous architect’s contract was properly terminated", "An architect who fails to pay his draftsmen according to the work contract because of his firm’s financial difficulties", "All of these architects are violating the Code of Ethics"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Which of the following shall take precedence over the other?", "o": ["An architect’s duty to his client", "An architect’s duty to the public", "Both A and B are equally important", "None of the above"], "c": 1}, {"s": "Civil Code Liability", "q": "An architect registered and licensed under R.A. No. 9266, who is directly and professionally responsible and liable for the construction supervision of the project", "o": ["Architect of record", "Architect in charge of construction", "Architect builder", "Consulting architect"], "c": 1}, {"s": "RA 9266 — Architecture Law", "q": "Which is not a duty of the PRBOA?", "o": ["Conduct seminars and workshops as part of the Continuing Professional Development (CPD) program and as an automatic CPD provider", "Adopt an official seal", "Suspend the Certificate of Registration of an architect, if necessary", "Administer oaths in connection with the Architecture Act"], "c": 0}, {"s": "RA 9266 — Architecture Law", "q": "Which is not grounds for removal of a member of the PRBOA?", "o": ["Inability to perform his or her duties due to sickness", "Manipulation of grades in the exams", "Removing “Site Planning” from the syllabus of the exam. This subject should be included because it is extremely important in architecture.", "Spreading malicious rumors about an architect that turn out to be false information"], "c": 2}, {"s": "RA 9266 — Architecture Law", "q": "Who cannot be elected as a member of the PRBArch today?", "o": ["An architect who ceased all teaching functions and connections with any school or review center on September 24, 2010 only", "An architect who started practicing architecture on September 24, 2003 only", "An architect who has never been convicted of crimes involving moral turpitude and who has plenty of related experience as current chairman of the Philippine Institute of Architects", "An architect who has never received a commission for high-rise building projects"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "Can a person who is not a citizen of the Philippines 94. take the licensure examination for architects?", "o": ["Absolutely. The PRC encourages and freely allows all architecture graduates from other countries to take the exam as part of the globalization initiative.", "Yes, but there are conditions.", "No. Only Filipinos are allowed to take the examination.", "Yes, if they have experience working under a Filipino mentor for a project on Philippine soil."], "c": 1}, {"s": "RA 9266 — Architecture Law", "q": "Which of the following is grounds for suspension/revocation of an architect’s license?", "o": ["Fraud in the exam application", "Unprofessional conduct", "Violation of the minor provisions of RA 9266", "All of the above"], "c": 3}, {"s": "RA 9266 — Architecture Law", "q": "Which person is violating RA 9266?", "o": ["An architecture graduate who posts an advertisement on www.OLX.ph that he can prepare plans that are just as good as a licensed architect’s", "A secretary who, upon her boss’ instruction, offers her boss’ architectural design services even though her boss is not a licensed architect", "A person who uses another name instead of his/her registered name because the new name is more marketable and is easier to remember", "All of these persons are violating RA 9266"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "When the project is not yet executed, what happens to the intellectual property of the design/drawings?", "o": ["The intellectual property for the design does not exist until the project is built", "The intellectual property for the design is the owner’s until the project is built", "The intellectual property for the design remains the same because the construction of the project is irrelevant to intellectual property", "The intellectual property for the design is still the architect’s because it only becomes the owner’s AFTER the project is built"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "Which will need to be registered with the SEC?", "o": ["A sole proprietorship", "A partnership", "An architectural firm", "Both B and C"], "c": 1}, {"s": "Professional Practice (SPP)", "q": "Which method of selection is recommended for small projects?", "o": ["Direct selection", "Comparative selection", "Architectural design competition", "All of the above are recommended"], "c": 0}, {"s": "Professional Practice (SPP)", "q": "In an architectural design competition, which is true about the jury?", "o": ["The jury should be even-numbered", "There should be at least seven members", "All of the jurors must be licensed architects because only then will they be qualified to judge the designs", "None of this is true"], "c": 3}, {"s": "Professional Practice (SPP)", "q": "How many representatives of the owner can sit on the jury in an architectural competition?", "o": ["Only one", "Up to two", "Less than half of the jury", "The owner cannot have representatives on the jury because he needs to uphold the decisions of the jury"], "c": 0}, {"s": "Professional Practice (SPP)", "q": "This refers to the detailed analysis of the project based on pre-feasibility studies and will determine the viability of a proposed development. This requires primary data gathering and analysis.", "o": ["Pre-feasibility studies", "Feasibility studies", "Site utilization and land use studies", "Architectural programming"], "c": 1}, {"s": "Professional Practice (SPP)", "q": "As defined by SPP 201, the goal of this is to achieve an unimpaired program at minimum cost.", "o": ["Value engineering", "Value management", "Cost estimation", "Architectural research"], "c": 1}, {"s": "Professional Practice (SPP)", "q": "Which method of rendering services is NOT allowed in 104. SPP 201 (Predesign Services)?", "o": ["Rendering the service as an individual architect", "Rendering the service with the architect’s staff", "Rendering the service in collaboration with another firm", "All of these are allowed by SPP 201"], "c": 3}, {"s": "Professional Practice (SPP)", "q": "In the multiple of direct personnel expenses, what is added to the “Fee” to get the total cost charged to the client?", "o": ["The consultant’s fee", "Reimbursibles", "Income taxes", "Healthcard"], "c": 1}, {"s": "Professional Practice (SPP)", "q": "When there is a continuing relationship with the owner involving a series of projects, which method of compensation is recommended?", "o": ["Lump sum", "Multiple of direct personnel expense", "Honorarium", "Professional fee plus expenses"], "c": 3}, {"s": "Professional Practice (SPP)", "q": "For cases where the client requests an architect to do work that will require his personal time, what is recommended to be charged to the client?", "o": ["Per diem", "Honorarium", "Reimbursible expenses", "All of the above"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "Which is not a phase in the regular design services of the architect?", "o": ["Project definition", "Design development", "Bidding", "Site development"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "Which is NOT part of the architect’s scope of work when rendering regular design services?", "o": ["Preparation of change orders", "Monitoring of maintenance and upkeep services of the building", "Periodic visits to the construction site", "Responding to questions from bidders"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Which is not an architect’s duty when he functions as a construction manager?", "o": ["Quality control of work (QC)", "Keeping of records for the project", "Design revisions", "Cost and time control"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "The orderly arrangement within a piece of land or property on which vertical structures such as buildings, monuments and the like, as well as horizontal developments like RROWs are going to be built", "o": ["Site planning", "Physical planning", "Master development panning", "Comprehensive planning"], "c": 1}, {"s": "Professional Practice (SPP)", "q": "Forensic architecture is a", "o": ["Regular design service", "Specialized allied service", "Specialized architectural service", "Specialized predesign service"], "c": 2}, {"s": "Professional Practice (SPP)", "q": "Which SPP document covers Construction Management (CM) services?", "o": ["SPP 203", "SPP-204A", "SPP-204B", "SPP-201"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "Upon moving in to your new condominium building, you discovered that your friend who is an RLA works in your building and collects condo dues from the residents. Your friend is probably rendering", "o": ["Specialized architectural services", "Specialized allied services", "Comprehensive architectural services", "Post-construction services"], "c": 3}, {"s": "Professional Practice (SPP)", "q": "Your boss offered to his client the option to award to your boss the entire range of professional services, all the way from predesign to post-construction services so that the client does not have to deal with too many professionals and award too many contracts. What kind of service did your boss offer?", "o": ["Comprehensive architectural services", "Regular design services", "Specialized architectural services", "An illegal service"], "c": 0}, {"s": "Professional Practice (SPP)", "q": "For the multiple of direct personnel expense method of compensation, what is the multiplier recommended by the SPP?", "o": ["1.0-2.0", "1.5-2.5", "3.5-5.0", "5.0-7.5"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "During regular design service, when should the architect submit or update the SPPCC?", "o": ["Schematic design phase", "Design development phase", "Contract documents phase", "All of the above"], "c": 3}, {"s": "Professional Practice (SPP)", "q": "In SPP 202, projects are classified according to the degree of complexity of the project. Which falls under Group 2?", "o": ["Printing plants", "Auditorium", "Mausoleum", "Mall"], "c": 3}, {"s": "Professional Practice (SPP)", "q": "In SPP 202, projects are classified according to the degree of complexity of the project. Which falls under Group 3?", "o": ["Airport", "Aquarium", "Gymnasium", "All of the above"], "c": 3}, {"s": "Professional Practice (SPP)", "q": "In SPP 202, projects where the plan / design and related Contract Documents are re-used for the repetitive construction of similar buildings without amending the drawing and the specifications is classified as", "o": ["Group 4", "Group 5", "Group 6", "Group 7"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "Once the Architect has prepared all contract documents, the Architect is considered to have completed the Detailed Design and Contract Documents Phase of his services. This is equivalent to", "o": ["80% of his work", "85% of his work", "90% of his work", "100% of his work"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "When construction is suspended for a period of 8 months, what happens to the architect’s fee for the remaining works?", "o": ["It is withheld by the owner until completion of the project.", "It is withheld by the owner until the issues on-site are b. resolved.", "It is doubled.", "Nothing. It stays the same."], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "The architect’s fee is a", "o": ["Net amount", "Immune to all forms of taxes", "Incomplete amount", "Both A and B"], "c": 0}, {"s": "PD 1096 — National Building Code", "q": "Which is not part of the PCC?", "o": ["Cost of electrical fixtures", "Cost of the air-conditioning system", "Cost of acquiring the lot", "All of these are not part of the PCC"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "Which is the largest amount?", "o": ["PCC", "PDC", "The architect’s fee", "Both A and B"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "This planning service places heavy emphasis on the non-physical and non-engineering components of the master development plan", "o": ["Site planning", "Physical planning", "Master planning", "Comprehensive development planning"], "c": 3}, {"s": "Professional Practice (SPP)", "q": "In the project team, whose responsibility is it to plan, program and monitor the various activities, and act as an adviser on material costs and construction methods?", "o": ["The contractor’s", "The project manager’s", "The owner’s", "The estimator’s"], "c": 1}, {"s": "Professional Practice (SPP)", "q": "When an architect renders a design-build service, is he allowed to guarantee a maximum project construction cost?", "o": ["Yes, because this is one of the methods of rendering design-build services according to the SPP", "No, because estimates should never be guaranteed by the architect", "No, because the architect is not allowed to build his own project and must hire a third party contractor", "Both B and C"], "c": 0}, {"s": "PD 1096 — National Building Code", "q": "For the purposes of obtaining the FSCCR, who shall certify that all fire protection and life safety features indicated in FSCR for Building Permit, including amendments thereto which must be approved by concerned authorities, have been properly installed and implemented?", "o": ["The architect", "The fire protection consultant", "The contractor", "The owner"], "c": 2}, {"s": "RA 9514 — Fire Code", "q": "For the purposes of obtaining the FSCR, who shall ensure and certify that the design, criteria and specifications of all fire safety features are appropriate to the proposed project and compliant with the provisions of RA 9514?", "o": ["The fire marshall", "The architect", "The construction manager", "The building official"], "c": 1}, {"s": "RA 9514 — Fire Code", "q": "What is the minimum tread required for new stairs in RA 9514?", "o": ["180mm", "200mm", "250mm", "280mm"], "c": 3}, {"s": "RA 9514 — Fire Code", "q": "What is the minimum riser height required for new stairs in RA 9514?", "o": ["100mm", "180mm", "200mm", "None of the above"], "c": 0}, {"s": "RA 9514 — Fire Code", "q": "Which handrail height is NOT allowed by RA 9514?", "o": ["760mm", "770mm", "850mm", "870mm"], "c": 3}, {"s": "RA 9514 — Fire Code", "q": "For sleeping departments of hospitals, what is the minimum area that needs to be allotted per person in the determination of the occupant load, based on RA 9514?", "o": ["1.40sqm", "1.90sqm", "11.10sqm", "22.30sqm"], "c": 2}, {"s": "RA 9514 — Fire Code", "q": "For the basement level of a store that is used for backof-house offices, how much area per person should be allotted based on RA 9514?", "o": ["2.80sqm", "5.60sqm", "9.30sqm", "18.60sqm"], "c": 2}, {"s": "RA 9514 — Fire Code", "q": "Based on RA 9514, how many exits are required if the occupant load is 600?", "o": ["1 exit", "2 exits", "3 exits", "4 exits"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "What is the minimum lot frontage required for a socialized duplex housing unit?", "o": ["3.00m", "4.00m", "5.00m", "6.00m"], "c": 3}, {"s": "RA 9514 — Fire Code", "q": "The minimum tread for existing stairs, according to RA 9514.", "o": ["200mm", "230mm", "250mm", "280mm"], "c": 1}, {"s": "RA 9514 — Fire Code", "q": "Minimum ramp width, according to RA 9514.", "o": ["915mm", "1120mm", "1200mm", "1420mm"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Minimum elevator pit depth according to the NBC.", "o": ["300mm", "500mm", "600mm", "800mm"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "Area per person for places of assembly, standing rooms.", "o": ["0.18sqm", "0.28sqm", "0.65sqm", "1.40sqm"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Firewall extension under the eaves, according to the NBC.", "o": ["200mm", "300mm", "400mm", "600mm"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Minimum floor area of a single-occupancy condominium for medium cost housing.", "o": ["12sqm", "15sqm", "18sqm", "20sqm"], "c": 2}, {"s": "Zoning & Housing Laws", "q": "Minimum width of a pathwalk, according to BP 220.", "o": ["2.00m", "3.00m", "6.50m", "8.00m"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Minimum width of passageway for courts according to NBC.", "o": ["1.00m", "1.20m", "1.50m", "2.00m"], "c": 1}, {"s": "BP 344 — Accessibility Law", "q": "Maximum distance of the required turning space from a dead end, according to BP 344.", "o": ["2.00m", "3.50m", "4.50m", "6.00m"], "c": 1}, {"s": "BP 344 — Accessibility Law", "q": "Maximum height of a flush control device for PWD toilets, according to BP 344.", "o": ["800mm from the floor", "850mm from the floor", "900mm from the floor", "1200mm from the floor"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "Minimum width of stairs for OL greater than 10, according to the NBC", "o": ["0.75m", "0.90m", "1.10m", "1.50m"], "c": 1}, {"s": "BP 344 — Accessibility Law", "q": "Minimum depth of tactile strip that needs to be provided at the top and the bottom of stairs, according to BP 344.", "o": ["300mm", "500mm", "600mm", "1200mm"], "c": 0}, {"s": "BP 344 — Accessibility Law", "q": "Maximum longitudinal gradient of a walkway, according to BP 344.", "o": ["1:10", "1:12", "1:20", "1:100"], "c": 2}, {"s": "BP 344 — Accessibility Law", "q": "Maximum cross gradient of a walkway, according to BP 344.", "o": ["1:10", "1:12", "1:20", "1:100"], "c": 3}, {"s": "BP 344 — Accessibility Law", "q": "Maximum projection of gratings from the surface of the walkway, according to BP 344.", "o": ["3.0mm", "6.5mm", "13mm", "25mm"], "c": 1}, {"s": "BP 344 — Accessibility Law", "q": "Minimum clearance of a handrail that is vertically mounted on top of a ledge, according to BP 344.", "o": ["30mm", "40mm", "50mm", "60mm"], "c": 1}, {"s": "BP 344 — Accessibility Law", "q": "Minimum clearance of a handrail that is horizontally mounted onto a wall, according to BP 344.", "o": ["20mm", "30mm", "40mm", "50mm"], "c": 3}, {"s": "BP 344 — Accessibility Law", "q": "Maximum crossing speed for pedestrians prescribed by BP 344.", "o": ["0.50m/sec", "0.70m/sec", "0.90m/sec", "1.10m/sec"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "If there are 24 water closet stalls for women and 18 156. water closet stalls for men (all located on one floor), how many accessible toilet stalls need to be provided for the entire floor?", "o": ["1", "2", "3", "4"], "c": 2}, {"s": "BP 344 — Accessibility Law", "q": "Which is an acceptable height for a doorknob, according to BP 344?", "o": ["925mm", "1100mm", "1200mm", "None of the above"], "c": 0}, {"s": "PD 1096 — National Building Code", "q": "The minimum distance required from a major road intersection and the ingress point of a traffic generating building", "o": ["25m", "50m", "75m", "100m"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "According to the NBC, minimum foundation thickness for Group A dwellings", "o": ["150mm", "200mm", "225mm", "250mm"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "Minimum vertical clearance from the top of the sidewalk to the lowest part of the street canopy (for pedestrian protection)", "o": ["2.00m", "2.40m", "2.70m", "3.00m"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Minimum width of a single-loaded aisle, according to the NBC.", "o": ["600mm", "750mm", "800mm", "1200mm"], "c": 2}, {"s": "RA 9514 — Fire Code", "q": "Which does NOT require a wet standpipe, according to the NBC?", "o": ["Group H or I occupancy of any height", "Group C occupancy 2 or more storeys in height", "Groups B, D, E F and G 3 or more storeys in height", "Group H buildings without stage whose seating capacity is less than 500"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "Maximum inclination of an escalator according to the NBC", "o": ["25 degrees from horizontal", "25 degrees from vertical", "30 degreees from vertical", "30 degrees from horizontal"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "For a condominium project with 12 condo units and which is 900 meters away from the nearest public park, how much space should be allotted to parks and playgrounds inside the condo development?", "o": ["50 sqm", "53 sqm", "56 sqm", "The requirement can be waived"], "c": 2}, {"s": "Zoning & Housing Laws", "q": "Minimum width of main door according to BP 220", "o": ["600mm", "700mm", "800mm", "900mm"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "According to the NBC, what is the minimum rear setback for R1?", "o": ["1.50m", "2.00m", "3.00m", "4.50m"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Minimum area of windows for habitable rooms according to the NBC", "o": ["5% of floor area but not less than 240sqmm", "5% of floor area but not less than 1sqm", "10% of floor area but not less than 240sqmm", "10% of floor area but not less than 1sqm"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "The approved form of security furnished by the Contractor and his Surety as a guarantee of good faith on the part of the contractor to execute the work in accordance with the terms of the contract.", "o": ["Proposal bond", "Payment bond", "Performance bond", "Surety"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "The approved form of security furnished by the contractor and his surety as a guarantee of good faith on the part of the Contractor to pay all obligations arising from the contract.", "o": ["Proposal bond", "Payment bond", "Performance bond", "None of the above"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "The approved form of security furnished by the contractor and its surety as a guarantee to the quality of materials and equipment installed and the workmanship performed by the Contractor.", "o": ["Proposal bond", "Payment bond", "Performance bond", "None of the above"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "The person, firm or corporation who provides the guarantee for the Contractor’s Bonds.", "o": ["Proposal bond", "Payment bond", "Performance bond", "None of the above"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "Printed documents stipulating the procedural and the administrative aspects of the contract.", "o": ["Contract agreement", "General conditions", "Special provisions", "Proposal agreement"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Shall be understood to mean “Purchase and/or fabricate and deliver to the jobsite or other location when so designated.”", "o": ["Work", "Furnish", "Provide", "Install"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Shall mean to build in, mount in positions, connect or apply any object specified ready for the intended use.", "o": ["Work", "Furnish", "Provide", "Install"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "Shall be understood to mean “furnish and install”", "o": ["Work", "Furnish", "Provide", "Install"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "When is the work considered “substantially completed?”", "o": ["When the amount of completed work is equal to 95% or more of the contract amount", "When the amount of completed work is equal to 97% or more of the contract amount", "When the amount of completed work is equal to 98% or more of the contract amount", "Only after the Period of Making Good of Known Defects or Faults"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "The Period of Making Good of Known Defects or Faults usually lasts for 60 days maximum, unless otherwise stated in the contract. When does this period begin?", "o": ["When the Certificate of Completion is issued", "When the contractor receives the Notice to Proceed", "When the work completed is equivalent to at least 95% of the contract amount", "Three months after the date of the final payment"], "c": 0}, {"s": "RA 9266 — Architecture Law", "q": "Unless any agreement otherwise is made, who shall shoulder the costs for permits and licenses needed for the project, according to UAP Doc. 301?", "o": ["The owner", "The architect", "The contractor", "The PM"], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "Who is responsible for the establishment of boundary lines of the property?", "o": ["The owner", "The architect", "The contractor", "The PM"], "c": 0}, {"s": "PD 1096 — National Building Code", "q": "If there is conflict between the specs and the drawings, which should be followed?", "o": ["The drawings", "The specs", "The service agreement", "The general conditions"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Which is not part of the contract documents?", "o": ["General conditions", "Special provisions", "Specifications", "All of these are part of the contract documents"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "Minimum ceiling height for a one-storey artificially ventilated structure according to NBC", "o": ["2.10m", "2.40m", "2.70m", "3.00m"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Area per person for places of assembly, according to the NBC.", "o": ["0.28 sqm", "0.65 sqm", "0.90 sqm", "1.40sqm"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Maximum length of dead ends according to the NBC.", "o": ["4.50m", "6.00m", "7.50m", "10.00m"], "c": 1}, {"s": "RA 9266 — Architecture Law", "q": "An architect registered and licensed or permitted to practice under RA 9266, who is professionally and academically qualified and with exceptional or recognized expertise or specialization in any branch of architecture.", "o": ["Expert architect", "Consulting architect", "Foreign consultant", "Architect of record"], "c": 1}, {"s": "RA 9266 — Architecture Law", "q": "According to the IRR of RA 9266, the term “architectural company” is considered synonymous to", "o": ["Sole proprietorship", "Partnership", "Corporation", "All of the above"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "The proprietary rights retained by an architect over any architectural work that he prepares, including the right to control the erection of any building which reproduces his design whether in whole or in part.", "o": ["Copyright", "Ownership", "Authorship", "Statute of limitations"], "c": 0}, {"s": "PD 1096 — National Building Code", "q": "If any additional drawing issued by the architect during construction involves additional cost due to changes from the original design, is the contractor entitled to charge additional costs to the owner?", "o": ["No. The cost must be charged to the architect because it is he who issued the drawings and the changes contained in the drawing.", "No. The contract is fixed and cannot be changed, so the contractor needs to follow the original design.", "Yes, as long as he gives written notice to the architect regarding the extra cost within 15 days of receiving the instruction.", "Yes, but owner has the right to charge the cost to the architect because the owner did not order the change."], "c": 2}, {"s": "PD 1096 — National Building Code", "q": "The proprietary rights to an architectural work by a person who commissions the Architect for the said work. These proprietary rights shall be limited to use of the design for one project only.", "o": ["Copyright", "Ownership", "Authorship", "Statute of limitations"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Which is not a document that needs to be submitted when applying to take the licensure examination for architects?", "o": ["Certificate of Live Birth in National Statistics Office (NSO) Security Paper", "Marriage Contract in NSO Security Paper for married male applicants", "National Bureau of Investigation (NBI) Clearance", "All of these are required"], "c": 1}, {"s": "RA 9266 — Architecture Law", "q": "Who decides on the design of the Architect’s seal?", "o": ["The IAPOA", "The PRBArch", "The President of the Philippines", "The architect is free to choose his own seal design"], "c": 1}, {"s": "RA 9266 — Architecture Law", "q": "The provision of RA 9266 regarding the ownership of plans, specifications, and other contract documents needs to be incorporated by all architects in all contract documents and other instruments of service. Which is this provision?", "o": ["Section 23 of RA 9266", "Section 32 of RA 9266", "Section 22 of RA 9266", "Section 33 of RA 9266"], "c": 3}, {"s": "PD 1096 — National Building Code", "q": "What happens when the architect is only able to 193. condemn inferior work a month before substantial completion?", "o": ["The contractor still needs to rectify it because it is inferior work, at no cost to the owner.", "The contractor will rectify the inferior work but will charge the cost of rectification to the owner because the condemnation period expires no later than 6 months from substantial completion.", "Since the condemnation period has already expired, the owner may cross charge to the architect the cost for rectification. This may be deducted from the architect’s remaining fee for construction supervision.", "Both B and C"], "c": 0}, {"s": "PD 1096 — National Building Code", "q": "In order for a corporation to be registered for the corporate practice of architecture, at least ____ of the owners, shareholders, members, etc. of that firm must be RLAs.", "o": ["1/4", "1/2", "3/4", "Majority (50% + 1)"], "c": 2}, {"s": "RA 9266 — Architecture Law", "q": "Who shall nominate persons for the vacant positions in the PRBArch?", "o": ["The President of the Philippines", "The UAP as the IAPOA", "The other board members", "Any RLA is entitled to make nominations for the vacancy"], "c": 1}, {"s": "PD 1096 — National Building Code", "q": "Foreign nationals must work with a Filipino counterpart in order to perform architectural services on Philippine soil. Between them, who shall be the architect of record?", "o": ["The foreign national", "The Filipino counterpart", "Either of the two", "Both of them"], "c": 1}, {"s": "RA 9266 — Architecture Law", "q": "According to UAP Document 301, who shall be responsible for making the necessary arrangements with utility companies to provide water, power, and telephone services to the jobsite?", "o": ["The owner", "The architect", "The construction manager", "The contractor"], "c": 3}, {"s": "RA 9266 — Architecture Law", "q": "If any section of the IRR of RA 9266 is declared unconstitutional, what happens to the other sections of the IRR?", "o": ["They shall be invalidated as well", "They shall not be affected", "They need to be passed into law again in order to take effect", "Their validity will be cast in doubt"], "c": 1}, {"s": "RA 9266 — Architecture Law", "q": "Which is not true about the IAPOA?", "o": ["The UAP is the current IAPOA", "The IAPOA must be a non-profit, non-stock corporation", "The IAPOA must be registered with the DTI and the PRBOA", "All registered architects automatically become members of the IAPOA"], "c": 2}, {"s": "RA 9266 — Architecture Law", "q": "What is the minimum average score required to pass the board exam?", "o": ["50%", "60%", "70%", "75%"], "c": 2}];
+
+// ============== STATE ==============
+let order = QUESTIONS.map((_, i) => i);
+let answersLog = [];
+let frontier = 0;
+let pos = 0;
+let isRetryRun = false;
+let shuffleMode = false;
+let optOrders = [];
+let everMissed = new Set();
+
+const tesseraeEl = document.getElementById('tesserae');
+const progressText = document.getElementById('progressText');
+const scoreText = document.getElementById('scoreText');
+const mistakeText = document.getElementById('mistakeText');
+const sectionTag = document.getElementById('sectionTag');
+const reviewingTag = document.getElementById('reviewingTag');
+const qtextEl = document.getElementById('qtext');
+const optionsEl = document.getElementById('options');
+const feedbackEl = document.getElementById('feedback');
+const backBtn = document.getElementById('backBtn');
+const forwardBtn = document.getElementById('forwardBtn');
+const finishBtn = document.getElementById('finishBtn');
+const quizArea = document.getElementById('quizArea');
+const resultsEl = document.getElementById('results');
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function letter(i){ return String.fromCharCode(65+i); }
+
+function getOptOrder(p){
+  if(!optOrders[p]){
+    const item = QUESTIONS[order[p]];
+    optOrders[p] = shuffle(item.o.map((_, i) => i));
+  }
+  return optOrders[p];
+}
+
+function buildTesserae(){
+  tesseraeEl.innerHTML = '';
+  order.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'tess';
+    d.id = 'tess-' + i;
+    tesseraeEl.appendChild(d);
+  });
+}
+
+function updateTesserae(){
+  order.forEach((_, i) => {
+    const el = document.getElementById('tess-' + i);
+    el.classList.remove('done','current','wrong-tess');
+    if(answersLog[i]){
+      el.classList.add(answersLog[i].isCorrect ? 'done' : 'wrong-tess');
+    }
+    if(i === pos) el.classList.add('current');
+  });
+}
+
+function updateStats(){
+  const scoreCount = answersLog.filter(a => a && a.isCorrect).length;
+  const mistakeCount = answersLog.filter(a => a && !a.isCorrect).length;
+  scoreText.textContent = scoreCount;
+  mistakeText.textContent = mistakeCount;
+}
+
+function renderQuestion(){
+  const item = QUESTIONS[order[pos]];
+  const logged = answersLog[pos];
+
+  sectionTag.textContent = item.s;
+  qtextEl.textContent = item.q;
+  optionsEl.innerHTML = '';
+  feedbackEl.className = 'feedback';
+  feedbackEl.innerHTML = '';
+  finishBtn.style.display = 'none';
+  reviewingTag.style.display = logged ? 'inline-block' : 'none';
+
+  const perm = getOptOrder(pos);
+
+  perm.forEach((origIdx, displayI) => {
+    const opt = item.o[origIdx];
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.innerHTML = '<span class="letter">' + letter(displayI) + '.</span><span>' + opt + '</span>';
+    if(logged){
+      btn.classList.add('locked');
+      if(origIdx === item.c) btn.classList.add('correct');
+      else if(origIdx === logged.selected) btn.classList.add('incorrect');
+      else btn.classList.add('dim');
+    } else {
+      btn.addEventListener('click', () => selectAnswer(origIdx, btn));
+    }
+    optionsEl.appendChild(btn);
+  });
+
+  if(logged){
+    const correctDisplayLetter = letter(perm.indexOf(item.c));
+    const refHtml = item.ref ? '<span class="ref">' + item.ref + '</span>' : '';
+    const noteHtml = item.n ? '<span class="note">' + item.n + '</span>' : '';
+    if(logged.isCorrect){
+      feedbackEl.className = 'feedback show right';
+      feedbackEl.innerHTML = '<b>Correct.</b> ' + item.o[item.c] + '.' + refHtml + noteHtml;
+    } else {
+      feedbackEl.className = 'feedback show wrong';
+      feedbackEl.innerHTML = '<b>Not quite.</b> The right answer is <b>' + correctDisplayLetter + '</b>: ' + item.o[item.c] + '.' + refHtml + noteHtml;
+    }
+    if(pos === frontier && pos === order.length - 1){
+      finishBtn.style.display = 'inline-block';
+    }
+  }
+
+  progressText.textContent = 'Question ' + (pos+1) + ' of ' + order.length + (isRetryRun ? ' (missed questions)' : '');
+  backBtn.disabled = (pos === 0);
+  const atLastAnswered = (pos === order.length - 1 && logged);
+  forwardBtn.disabled = atLastAnswered || !(pos < frontier || (pos === frontier && logged));
+  updateStats();
+  updateTesserae();
+}
+
+function selectAnswer(i, btn){
+  if(answersLog[pos]) return;
+  const item = QUESTIONS[order[pos]];
+  const correct = item.c;
+  const isCorrect = (i === correct);
+  answersLog[pos] = {selected: i, isCorrect};
+
+  if(isCorrect) everMissed.delete(order[pos]);
+  else everMissed.add(order[pos]);
+
+  if(pos === frontier && frontier < order.length - 1){
+    frontier = pos + 1;
+  }
+
+  renderQuestion();
+}
+
+backBtn.addEventListener('click', () => {
+  if(pos > 0){ pos--; renderQuestion(); }
+});
+
+forwardBtn.addEventListener('click', () => {
+  if(pos < frontier){
+    pos++;
+    renderQuestion();
+  } else if(pos === frontier && answersLog[pos] && pos < order.length - 1){
+    pos++;
+    renderQuestion();
+  }
+});
+
+finishBtn.addEventListener('click', showResults);
+
+function showResults(){
+  quizArea.classList.add('hidden');
+  document.querySelector('.tesserae').style.display = 'none';
+  document.querySelector('.progress-label').style.display = 'none';
+  resultsEl.classList.add('show');
+
+  const score = answersLog.filter(a => a && a.isCorrect).length;
+  const mistakes = [];
+  answersLog.forEach((a, i) => {
+    if(a && !a.isCorrect) mistakes.push({qIndex: order[i], selected: a.selected, pos: i});
+  });
+
+  document.getElementById('resultsTitle').textContent = isRetryRun ? 'Retry Complete' : 'Quiz Complete';
+  document.getElementById('resultsSub').textContent = isRetryRun
+    ? 'A second pass at the questions you missed before.'
+    : "You've worked through every question, in order.";
+  document.getElementById('finalScore').textContent = score + ' / ' + order.length;
+
+  const bySection = {};
+  order.forEach((qIndex, i) => {
+    const item = QUESTIONS[qIndex];
+    if(!bySection[item.s]) bySection[item.s] = {right:0, total:0, missed:0};
+    bySection[item.s].total++;
+    const a = answersLog[i];
+    if(a && a.isCorrect) bySection[item.s].right++;
+    else if(a && !a.isCorrect) bySection[item.s].missed++;
+  });
+  const breakdown = document.getElementById('breakdown');
+  breakdown.innerHTML = '';
+  Object.keys(bySection).forEach(sec => {
+    const row = document.createElement('div');
+    row.className = 'breakdown-row';
+    row.innerHTML = '<span>' + sec + '</span><span>' + bySection[sec].right + ' / ' + bySection[sec].total + '</span>';
+    breakdown.appendChild(row);
+  });
+
+  const weakList = Object.keys(bySection)
+    .filter(sec => bySection[sec].missed > 0)
+    .sort((a,b) => bySection[b].missed - bySection[a].missed);
+  const weakSpotsEl = document.getElementById('weakSpots');
+  const weakSpotsList = document.getElementById('weakSpotsList');
+  if(weakList.length){
+    weakSpotsEl.style.display = 'block';
+    weakSpotsList.innerHTML = '';
+    weakList.slice(0,5).forEach(sec => {
+      const li = document.createElement('li');
+      li.textContent = sec + ' — missed ' + bySection[sec].missed + ' of ' + bySection[sec].total;
+      weakSpotsList.appendChild(li);
+    });
+  } else {
+    weakSpotsEl.style.display = 'none';
+  }
+
+  const mistakesReview = document.getElementById('mistakesReview');
+  const mistakesList = document.getElementById('mistakesList');
+  const noMistakes = document.getElementById('noMistakes');
+  if(mistakes.length){
+    mistakesReview.style.display = 'block';
+    noMistakes.style.display = 'none';
+    mistakesList.innerHTML = '';
+    mistakes.forEach(m => {
+      const item = QUESTIONS[m.qIndex];
+      const perm = optOrders[m.pos] || item.o.map((_, i) => i);
+      const yourLetter = letter(perm.indexOf(m.selected));
+      const correctLetter = letter(perm.indexOf(item.c));
+      const div = document.createElement('div');
+      div.className = 'mistake-item';
+      div.innerHTML =
+        '<div class="m-section">' + item.s + '</div>' +
+        '<div class="m-q">' + item.q + '</div>' +
+        '<div class="m-you">Your answer: ' + yourLetter + '. ' + item.o[m.selected] + '</div>' +
+        '<div class="m-correct">Correct answer: ' + correctLetter + '. ' + item.o[item.c] + '</div>';
+      mistakesList.appendChild(div);
+    });
+  } else {
+    mistakesReview.style.display = 'none';
+    noMistakes.style.display = 'block';
+  }
+
+  const retryBtn = document.getElementById('retryMissedBtn');
+  if(everMissed.size > 0){
+    retryBtn.style.display = 'inline-block';
+    retryBtn.textContent = 'Retry missed questions (' + everMissed.size + ')';
+  } else {
+    retryBtn.style.display = 'none';
+  }
+}
+
+function startRun(newOrder, retryMode){
+  order = newOrder;
+  answersLog = new Array(order.length).fill(null);
+  optOrders = new Array(order.length).fill(null);
+  frontier = 0;
+  pos = 0;
+  isRetryRun = retryMode;
+  quizArea.classList.remove('hidden');
+  document.querySelector('.tesserae').style.display = 'flex';
+  document.querySelector('.progress-label').style.display = 'flex';
+  resultsEl.classList.remove('show');
+  buildTesserae();
+  renderQuestion();
+}
+
+function freshOrder(){
+  const base = QUESTIONS.map((_, i) => i);
+  return shuffleMode ? shuffle(base) : base;
+}
+
+function fullRestart(){
+  everMissed = new Set();
+  startRun(freshOrder(), false);
+}
+
+document.getElementById('restartBtn').addEventListener('click', fullRestart);
+document.getElementById('toolbarRestartBtn').addEventListener('click', fullRestart);
+
+document.getElementById('retryMissedBtn').addEventListener('click', () => {
+  let missed = Array.from(everMissed).sort((a,b) => a - b);
+  if(shuffleMode) missed = shuffle(missed);
+  startRun(missed, true);
+});
+
+document.getElementById('orderInOrderBtn').addEventListener('click', () => {
+  if(shuffleMode){
+    shuffleMode = false;
+    document.getElementById('orderInOrderBtn').classList.add('active');
+    document.getElementById('orderShuffleBtn').classList.remove('active');
+    fullRestart();
+  }
+});
+document.getElementById('orderShuffleBtn').addEventListener('click', () => {
+  if(!shuffleMode){
+    shuffleMode = true;
+    document.getElementById('orderShuffleBtn').classList.add('active');
+    document.getElementById('orderInOrderBtn').classList.remove('active');
+    fullRestart();
+  }
+});
+
+const themeToggleBtn = document.getElementById('themeToggleBtn');
+if (window.LEATheme) { LEATheme.init({ altClass:'dark-mode', defaultIs:'light', buttonId:'themeToggleBtn', lightIcon:'\ud83c\udf19', darkIcon:'\u2600\ufe0f' }); }
+buildTesserae();
+renderQuestion();
+</script>
+</body>
+</html>

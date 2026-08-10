@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BP 220 &amp; PD 957 — Quiz 5 &amp; 6 Answer Key</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;600;700&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -19,6 +20,25 @@
     --bad: var(--clay);
     --line: rgba(47,54,40,0.24);
   }
+  body.dark-mode{
+    --ink:#eae7d8;
+    --ink-soft:#b8b6a4;
+    --paper:#1e2118;
+    --paper-panel:#262a1e;
+    --moss:#7fa363;
+    --moss-deep:#5c7d44;
+    --clay:#e0794f;
+    --mustard:#e0ab3c;
+    --line: rgba(234,231,216,0.18);
+  }
+  body.dark-mode{
+    background:
+      radial-gradient(circle at 8px 8px, rgba(234,231,216,0.06) 1.4px, transparent 1.5px),
+      radial-gradient(ellipse at 12% 0%, #262a1e 0%, transparent 55%),
+      radial-gradient(ellipse at 92% 100%, #1a1d15 0%, transparent 50%),
+      var(--paper);
+    background-size: 22px 22px, auto, auto;
+  }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
@@ -34,7 +54,15 @@
     display:flex;
     justify-content:center;
     padding:32px 16px 64px;
+    transition: background-color .2s ease, color .2s ease;
   }
+  .theme-toggle{
+    background:none; border:1px solid var(--line); color:var(--moss);
+    font-family:inherit; font-size:14px; width:30px; height:30px;
+    border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
+    flex-shrink:0;
+  }
+  .theme-toggle:hover{ border-color:var(--mustard); color:var(--mustard); }
   .wrap{width:100%; max-width:720px;}
 
   .masthead{
@@ -417,9 +445,16 @@
     .toolbar{ flex-direction:column; align-items:stretch; }
     .toolbar-actions{ justify-content:space-between; }
   }
+
+  body.dark-mode .masthead .sub, body.dark-mode .toolbar-stats .stat-label, body.dark-mode .progress-label{ color:#d9a45c; }
+  body.dark-mode .no-mistakes{ color:#e8a37d; }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../../../assets/presence.js"></script>
+<script src="../../../assets/theme.js"></script>
 </head>
 <body>
+<script>if (window.LEAPresence) { LEAPresence.init(); }</script>
 <div class="wrap">
 
   <div class="masthead">
@@ -445,6 +480,8 @@
         <button id="orderShuffleBtn">Shuffled</button>
       </div>
       <button class="toolbar-restart" id="toolbarRestartBtn">Restart from start</button>
+      <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'dark-mode', defaultIs:'light', buttonId:'themeToggleBtn' }); }</script>☀️</button>
     </div>
   </div>
 
