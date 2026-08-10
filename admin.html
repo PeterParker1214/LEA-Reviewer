@@ -10,37 +10,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#f4e9d8;
-    --bg-deep:#1f1220;
-    --bg-panel:#2f1a2e;
-    --bg-panel-deep:#201121;
-    --bg-glow1:#3a2038;
-    --bg-glow2:#24162a;
-    --gold:#c99a46;
-    --gold-bright:#e0b568;
-    --rose:#b3667a;
-    --rose-bright:#d68fa0;
-    --muted:#c7b3c4;
-    --good:#6fae7d;
-    --bad:#c65a52;
-    --line: rgba(201,154,70,0.28);
-    --font-head: 'Fraunces', serif;
-    --font-body: 'Lora', serif;
+    --ink:#f4e9d8; --bg-deep:#1f1220; --bg-panel:#2f1a2e; --bg-panel-deep:#201121;
+    --bg-glow1:#3a2038; --bg-glow2:#24162a; --gold:#c99a46; --gold-bright:#e0b568;
+    --rose:#b3667a; --rose-bright:#d68fa0; --muted:#c7b3c4; --good:#6fae7d; --bad:#c65a52;
+    --line: rgba(201,154,70,0.28); --font-head: 'Fraunces', serif; --font-body: 'Lora', serif;
   }
   body.light-mode{
-    --ink:#2a1c28;
-    --bg-deep:#f8f1e9;
-    --bg-panel:#fffdf9;
-    --bg-panel-deep:#f1e6da;
-    --bg-glow1:#f3e3ea;
-    --bg-glow2:#efe6da;
-    --gold:#a67934;
-    --gold-bright:#8c5f1f;
-    --rose:#96475a;
-    --rose-bright:#7a3346;
-    --muted:#6b5864;
-    --good:#3f8a55;
-    --bad:#a13d33;
+    --ink:#2a1c28; --bg-deep:#f8f1e9; --bg-panel:#fffdf9; --bg-panel-deep:#f1e6da;
+    --bg-glow1:#f3e3ea; --bg-glow2:#efe6da; --gold:#a67934; --gold-bright:#8c5f1f;
+    --rose:#96475a; --rose-bright:#7a3346; --muted:#6b5864; --good:#3f8a55; --bad:#a13d33;
     --line: rgba(42,28,40,0.16);
   }
   *{box-sizing:border-box;}
@@ -50,85 +28,72 @@
       radial-gradient(ellipse at 15% 0%, var(--bg-glow1) 0%, transparent 55%),
       radial-gradient(ellipse at 90% 100%, var(--bg-glow2) 0%, transparent 50%),
       var(--bg-deep);
-    color:var(--ink);
-    font-family:var(--font-body);
-    min-height:100vh;
-    padding:32px 16px 80px;
+    color:var(--ink); font-family:var(--font-body); min-height:100vh; padding:32px 16px 80px;
   }
-  .wrap{max-width:760px;margin:0 auto;}
+  .wrap{max-width:820px;margin:0 auto;}
   h1{font-family:var(--font-head);font-weight:600;font-size:32px;margin:0 0 4px;color:var(--gold-bright);}
-  .sub{color:var(--muted);font-size:14px;margin-bottom:28px;}
-  .card{
-    background:var(--bg-panel);
-    border:1px solid var(--line);
-    border-radius:12px;
-    padding:20px;
-    margin-bottom:20px;
+  .sub{color:var(--muted);font-size:14px;margin-bottom:20px;}
+  .tabs{display:flex;gap:8px;margin-bottom:20px;}
+  .tab-btn{
+    font-family:var(--font-body); cursor:pointer; border-radius:8px 8px 0 0; border:1px solid var(--line);
+    border-bottom:none; background:var(--bg-panel-deep); color:var(--muted); padding:10px 16px; font-size:14px;
   }
+  .tab-btn.active{background:var(--bg-panel);color:var(--gold-bright);font-weight:600;}
+  .card{background:var(--bg-panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:20px;}
   .msg{padding:16px;border-radius:10px;font-size:14px;}
   .msg.error{background:rgba(198,90,82,0.15);border:1px solid var(--bad);color:var(--bad);}
   .msg.info{background:rgba(201,154,70,0.12);border:1px solid var(--line);color:var(--muted);}
   a{color:var(--gold-bright);}
-  .row{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:10px 0;
-    border-bottom:1px solid var(--line);
-  }
+  .row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);}
   .row:last-child{border-bottom:none;}
-  .row input[type="text"]{
-    flex:1;
-    background:var(--bg-panel-deep);
-    border:1px solid var(--line);
-    color:var(--ink);
-    padding:8px 10px;
-    border-radius:8px;
-    font-family:var(--font-body);
-    font-size:14px;
+  input[type="text"], textarea, select{
+    background:var(--bg-panel-deep); border:1px solid var(--line); color:var(--ink);
+    padding:8px 10px; border-radius:8px; font-family:var(--font-body); font-size:14px; width:100%;
   }
-  .row .status-tag{
-    font-size:11px;
-    padding:3px 8px;
-    border-radius:20px;
-    border:1px solid var(--line);
-    white-space:nowrap;
-  }
-  .row .status-tag.ready{color:var(--good);border-color:var(--good);}
-  .row .status-tag.notready{color:var(--muted);}
+  .row input[type="text"]{flex:1;}
+  textarea{resize:vertical;}
+  .status-tag{font-size:11px;padding:3px 8px;border-radius:20px;border:1px solid var(--line);white-space:nowrap;}
   button{
-    font-family:var(--font-body);
-    cursor:pointer;
-    border-radius:8px;
-    border:1px solid var(--line);
-    background:var(--bg-panel-deep);
-    color:var(--ink);
-    padding:7px 10px;
-    font-size:13px;
+    font-family:var(--font-body); cursor:pointer; border-radius:8px; border:1px solid var(--line);
+    background:var(--bg-panel-deep); color:var(--ink); padding:7px 10px; font-size:13px;
   }
   button:hover{border-color:var(--gold);}
-  button.primary{
-    background:var(--gold);
-    color:var(--bg-deep);
-    border:none;
-    font-weight:600;
-  }
+  button.primary{background:var(--gold);color:var(--bg-deep);border:none;font-weight:600;}
   button.primary:hover{background:var(--gold-bright);}
+  button.danger{color:var(--bad);border-color:var(--bad);}
   button:disabled{opacity:0.5;cursor:not-allowed;}
   .toggle-btn.on{color:var(--good);border-color:var(--good);}
-  .actions{display:flex;gap:8px;margin-top:18px;}
+  .actions{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap;}
   .save-status{font-size:13px;margin-top:10px;min-height:18px;}
   .save-status.ok{color:var(--good);}
   .save-status.err{color:var(--bad);}
+  .field-label{font-size:12px;color:var(--muted);margin:14px 0 4px;text-transform:uppercase;letter-spacing:0.06em;}
+  .file-list{max-height:280px;overflow-y:auto;}
+  .file-item{
+    padding:8px 10px;border-radius:6px;cursor:pointer;font-size:13px;font-family:monospace;
+    display:flex;justify-content:space-between;
+  }
+  .file-item:hover{background:var(--bg-panel-deep);}
+  .q-card{border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:14px;background:var(--bg-panel-deep);}
+  .q-opts{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:center;margin-top:6px;}
+  .hidden{display:none;}
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>Admin</h1>
-  <div class="sub">Subject manager — LEA Reviewer</div>
+  <div class="sub">LEA Reviewer</div>
 
   <div id="gate" class="card msg info">Checking your session…</div>
-  <div id="panel" style="display:none;"></div>
+
+  <div id="panel" style="display:none;">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="subjects">Subjects</button>
+      <button class="tab-btn" data-tab="pages">Pages &amp; Quizzes</button>
+    </div>
+    <div id="tab-subjects"></div>
+    <div id="tab-pages" class="hidden"></div>
+  </div>
 </div>
 
 <script>
@@ -143,16 +108,37 @@ const INDEX_PATH = 'index.html';
 
 const gateEl = document.getElementById('gate');
 const panelEl = document.getElementById('panel');
+const tabSubjectsEl = document.getElementById('tab-subjects');
+const tabPagesEl = document.getElementById('tab-pages');
 
-let subjects = [];       // parsed SUBJECTS array (live working copy)
-let rawIndexHtml = '';   // full text of index.html as currently on GitHub
-let accessToken = '';    // current user's session token, for calling the Edge Function
+let subjects = [];
+let rawIndexHtml = '';
+let accessToken = '';
+let fileTree = [];        // list of {path} for every .html file in the repo
+let currentFilePath = '';
+let currentFileRaw = '';
+let currentQuestions = null; // parsed QUESTIONS array, or null if this file doesn't have one
 
 function showGate(html, isError){
   gateEl.style.display = 'block';
   gateEl.className = 'card msg ' + (isError ? 'error' : 'info');
   gateEl.innerHTML = html;
   panelEl.style.display = 'none';
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+async function callSave(path, content, message){
+  const resp = await fetch(`${SUPABASE_URL}/functions/v1/admin-save-file`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${accessToken}` },
+    body: JSON.stringify({ path, content, message })
+  });
+  const result = await resp.json();
+  if(!resp.ok) throw new Error(result.error || 'Save failed');
+  return result;
 }
 
 async function init(){
@@ -163,12 +149,7 @@ async function init(){
   }
   accessToken = session.access_token;
 
-  const { data: profile, error } = await sb
-    .from('profiles')
-    .select('is_admin')
-    .eq('id', session.user.id)
-    .single();
-
+  const { data: profile, error } = await sb.from('profiles').select('is_admin').eq('id', session.user.id).single();
   if(error || !profile || profile.is_admin !== true){
     showGate('This account is not an admin, so this page is not available to you.', true);
     return;
@@ -176,11 +157,24 @@ async function init(){
 
   gateEl.style.display = 'none';
   panelEl.style.display = 'block';
+
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      tabSubjectsEl.classList.toggle('hidden', btn.dataset.tab !== 'subjects');
+      tabPagesEl.classList.toggle('hidden', btn.dataset.tab !== 'pages');
+      if(btn.dataset.tab === 'pages' && fileTree.length === 0) loadFileTree();
+    });
+  });
+
   await loadSubjects();
 }
 
+/* ================= SUBJECTS TAB ================= */
+
 async function loadSubjects(){
-  panelEl.innerHTML = '<div class="card msg info">Loading current subjects from GitHub…</div>';
+  tabSubjectsEl.innerHTML = '<div class="card msg info">Loading current subjects from GitHub…</div>';
   try{
     const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${INDEX_PATH}?t=${Date.now()}`;
     const resp = await fetch(url);
@@ -188,75 +182,79 @@ async function loadSubjects(){
     rawIndexHtml = await resp.text();
 
     const match = rawIndexHtml.match(/const SUBJECTS = (\[[\s\S]*?\]);/);
-    if(!match) throw new Error('Could not find the SUBJECTS list inside index.html — the file may have changed shape.');
+    if(!match) throw new Error('Could not find the SUBJECTS list inside index.html.');
 
     subjects = new Function('return ' + match[1])();
-    renderPanel();
+    renderSubjectsTab();
   }catch(e){
-    panelEl.innerHTML = '<div class="card msg error">' + escapeHtml(e.message) + '</div>';
+    tabSubjectsEl.innerHTML = '<div class="card msg error">' + escapeHtml(e.message) + '</div>';
   }
 }
 
-function renderPanel(){
+function slugify(name){
+  return name.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+function renderSubjectsTab(){
   let rowsHtml = subjects.map((s, i) => `
     <div class="row" data-idx="${i}">
-      <input type="text" value="${escapeAttr(s.name)}" data-field="name" data-idx="${i}">
+      <input type="text" value="${escapeHtml(s.name)}" data-field="name" data-idx="${i}">
       <button class="toggle-btn ${s.ready ? 'on' : ''}" data-action="toggle" data-idx="${i}">${s.ready ? 'Available' : 'Coming soon'}</button>
       <button data-action="up" data-idx="${i}" ${i===0 ? 'disabled' : ''}>↑</button>
       <button data-action="down" data-idx="${i}" ${i===subjects.length-1 ? 'disabled' : ''}>↓</button>
+      <button class="danger" data-action="delete" data-idx="${i}">Delete</button>
     </div>
   `).join('');
 
-  panelEl.innerHTML = `
+  tabSubjectsEl.innerHTML = `
     <div class="card">
       ${rowsHtml}
+      <div class="actions">
+        <button id="addSubjectBtn">+ Add subject</button>
+      </div>
     </div>
     <div class="actions">
-      <button class="primary" id="saveBtn">Save to site</button>
-      <button id="reloadBtn">Reload from GitHub</button>
+      <button class="primary" id="saveSubjectsBtn">Save to site</button>
+      <button id="reloadSubjectsBtn">Reload from GitHub</button>
     </div>
-    <div class="save-status" id="saveStatus"></div>
+    <div class="save-status" id="subjectsSaveStatus"></div>
   `;
 
-  panelEl.querySelectorAll('input[data-field="name"]').forEach(inp => {
-    inp.addEventListener('input', () => {
-      subjects[+inp.dataset.idx].name = inp.value;
-    });
+  tabSubjectsEl.querySelectorAll('input[data-field="name"]').forEach(inp => {
+    inp.addEventListener('input', () => { subjects[+inp.dataset.idx].name = inp.value; });
   });
-  panelEl.querySelectorAll('button[data-action="toggle"]').forEach(btn => {
+  tabSubjectsEl.querySelectorAll('button[data-action="toggle"]').forEach(btn => {
+    btn.addEventListener('click', () => { const i=+btn.dataset.idx; subjects[i].ready=!subjects[i].ready; renderSubjectsTab(); });
+  });
+  tabSubjectsEl.querySelectorAll('button[data-action="up"]').forEach(btn => {
+    btn.addEventListener('click', () => { const i=+btn.dataset.idx; [subjects[i-1],subjects[i]]=[subjects[i],subjects[i-1]]; renderSubjectsTab(); });
+  });
+  tabSubjectsEl.querySelectorAll('button[data-action="down"]').forEach(btn => {
+    btn.addEventListener('click', () => { const i=+btn.dataset.idx; [subjects[i+1],subjects[i]]=[subjects[i],subjects[i+1]]; renderSubjectsTab(); });
+  });
+  tabSubjectsEl.querySelectorAll('button[data-action="delete"]').forEach(btn => {
     btn.addEventListener('click', () => {
       const i = +btn.dataset.idx;
-      subjects[i].ready = !subjects[i].ready;
-      renderPanel();
+      if(confirm(`Delete "${subjects[i].name}" from the subject list? (This only removes it from the menu — it does not delete any quiz files.)`)){
+        subjects.splice(i, 1);
+        renderSubjectsTab();
+      }
     });
   });
-  panelEl.querySelectorAll('button[data-action="up"]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const i = +btn.dataset.idx;
-      [subjects[i-1], subjects[i]] = [subjects[i], subjects[i-1]];
-      renderPanel();
-    });
+  document.getElementById('addSubjectBtn').addEventListener('click', () => {
+    const name = prompt('Name of the new subject:');
+    if(!name) return;
+    const slug = slugify(name);
+    subjects.push({ id: slug, name: name, href: `subjects/${slug}.html`, ready: false });
+    renderSubjectsTab();
   });
-  panelEl.querySelectorAll('button[data-action="down"]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const i = +btn.dataset.idx;
-      [subjects[i+1], subjects[i]] = [subjects[i], subjects[i+1]];
-      renderPanel();
-    });
-  });
-
-  document.getElementById('saveBtn').addEventListener('click', saveSubjects);
-  document.getElementById('reloadBtn').addEventListener('click', loadSubjects);
+  document.getElementById('saveSubjectsBtn').addEventListener('click', saveSubjects);
+  document.getElementById('reloadSubjectsBtn').addEventListener('click', loadSubjects);
 }
 
 function subjectsToJsLiteral(list){
   const lines = list.map(s => {
-    const parts = [
-      `id: ${JSON.stringify(s.id)}`,
-      `name: ${JSON.stringify(s.name)}`,
-      `href: ${JSON.stringify(s.href)}`,
-      `ready: ${s.ready ? 'true' : 'false'}`,
-    ];
+    const parts = [`id: ${JSON.stringify(s.id)}`, `name: ${JSON.stringify(s.name)}`, `href: ${JSON.stringify(s.href)}`, `ready: ${s.ready ? 'true' : 'false'}`];
     if(s.totalQuestions !== undefined) parts.push(`totalQuestions: ${s.totalQuestions}`);
     if(s.totalModules !== undefined) parts.push(`totalModules: ${s.totalModules}`);
     return `  { ${parts.join(', ')} },`;
@@ -265,35 +263,15 @@ function subjectsToJsLiteral(list){
 }
 
 async function saveSubjects(){
-  const statusEl = document.getElementById('saveStatus');
-  const saveBtn = document.getElementById('saveBtn');
+  const statusEl = document.getElementById('subjectsSaveStatus');
+  const saveBtn = document.getElementById('saveSubjectsBtn');
   saveBtn.disabled = true;
   statusEl.className = 'save-status';
   statusEl.textContent = 'Saving…';
-
   try{
     const newArrayText = subjectsToJsLiteral(subjects);
-    const newFileText = rawIndexHtml.replace(
-      /const SUBJECTS = \[[\s\S]*?\];/,
-      `const SUBJECTS = ${newArrayText};`
-    );
-
-    const resp = await fetch(`${SUPABASE_URL}/functions/v1/admin-save-file`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken}`
-      },
-      body: JSON.stringify({
-        path: INDEX_PATH,
-        content: newFileText,
-        message: 'Admin: update subjects via admin panel'
-      })
-    });
-
-    const result = await resp.json();
-    if(!resp.ok) throw new Error(result.error || 'Save failed');
-
+    const newFileText = rawIndexHtml.replace(/const SUBJECTS = \[[\s\S]*?\];/, `const SUBJECTS = ${newArrayText};`);
+    await callSave(INDEX_PATH, newFileText, 'Admin: update subjects via admin panel');
     rawIndexHtml = newFileText;
     statusEl.className = 'save-status ok';
     statusEl.textContent = 'Saved! It may take a minute or two for GitHub Pages to update the live site.';
@@ -305,11 +283,217 @@ async function saveSubjects(){
   }
 }
 
-function escapeHtml(s){
-  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+/* ================= PAGES / QUIZZES TAB ================= */
+
+async function loadFileTree(){
+  tabPagesEl.innerHTML = '<div class="card msg info">Loading list of pages from GitHub…</div>';
+  try{
+    const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/git/trees/${GITHUB_BRANCH}?recursive=1`;
+    const resp = await fetch(url);
+    if(!resp.ok) throw new Error('Could not list files (status ' + resp.status + ')');
+    const data = await resp.json();
+    fileTree = (data.tree || []).filter(item => item.type === 'blob' && item.path.endsWith('.html'));
+    renderPagesTab();
+  }catch(e){
+    tabPagesEl.innerHTML = '<div class="card msg error">' + escapeHtml(e.message) + '</div>';
+  }
 }
-function escapeAttr(s){
-  return escapeHtml(s);
+
+function renderPagesTab(filterText){
+  filterText = (filterText || '').toLowerCase();
+  const filtered = fileTree.filter(f => f.path.toLowerCase().includes(filterText));
+
+  tabPagesEl.innerHTML = `
+    <div class="card">
+      <input type="text" id="fileSearch" placeholder="Search for a page, e.g. Structural_Quiz1 or building-laws" value="${escapeHtml(filterText)}">
+      <div class="file-list" id="fileList">
+        ${filtered.map(f => `<div class="file-item" data-path="${escapeHtml(f.path)}">${escapeHtml(f.path)}</div>`).join('') || '<div class="msg info">No matches.</div>'}
+      </div>
+    </div>
+    <div id="editorArea"></div>
+  `;
+
+  document.getElementById('fileSearch').addEventListener('input', (e) => {
+    const val = e.target.value;
+    const list = document.getElementById('fileList');
+    const matches = fileTree.filter(f => f.path.toLowerCase().includes(val.toLowerCase()));
+    list.innerHTML = matches.map(f => `<div class="file-item" data-path="${escapeHtml(f.path)}">${escapeHtml(f.path)}</div>`).join('') || '<div class="msg info">No matches.</div>';
+    list.querySelectorAll('.file-item').forEach(el => el.addEventListener('click', () => openFile(el.dataset.path)));
+  });
+
+  tabPagesEl.querySelectorAll('.file-item').forEach(el => {
+    el.addEventListener('click', () => openFile(el.dataset.path));
+  });
+}
+
+async function openFile(path){
+  currentFilePath = path;
+  const editorArea = document.getElementById('editorArea');
+  editorArea.innerHTML = '<div class="card msg info">Loading ' + escapeHtml(path) + '…</div>';
+  try{
+    const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${path}?t=${Date.now()}`;
+    const resp = await fetch(url);
+    if(!resp.ok) throw new Error('Could not load file (status ' + resp.status + ')');
+    currentFileRaw = await resp.text();
+
+    const qMatch = currentFileRaw.match(/const QUESTIONS = (\[[\s\S]*?\]);/);
+    if(qMatch){
+      try{ currentQuestions = JSON.parse(qMatch[1]); }
+      catch(e){ currentQuestions = new Function('return ' + qMatch[1])(); }
+      renderQuizEditor(path);
+    } else {
+      currentQuestions = null;
+      renderRawEditor(path);
+    }
+  }catch(e){
+    editorArea.innerHTML = '<div class="card msg error">' + escapeHtml(e.message) + '</div>';
+  }
+}
+
+function renderQuizEditor(path){
+  const titleMatch = currentFileRaw.match(/<title>([^<]*)<\/title>/);
+  const h1Match = currentFileRaw.match(/<h1>([^<]*)<\/h1>/);
+  const pageTitle = titleMatch ? titleMatch[1] : '';
+  const headingText = h1Match ? h1Match[1] : '';
+
+  const editorArea = document.getElementById('editorArea');
+  editorArea.innerHTML = `
+    <div class="card">
+      <div class="field-label">Browser tab title</div>
+      <input type="text" id="pageTitleInput" value="${escapeHtml(pageTitle)}">
+      <div class="field-label">Heading shown on the page</div>
+      <input type="text" id="headingInput" value="${escapeHtml(headingText)}">
+    </div>
+    <div id="questionsList"></div>
+    <div class="actions">
+      <button id="addQuestionBtn">+ Add question</button>
+    </div>
+    <div class="actions">
+      <button class="primary" id="saveQuizBtn">Save to site</button>
+      <button id="rawModeBtn">Switch to raw HTML editor</button>
+    </div>
+    <div class="save-status" id="quizSaveStatus"></div>
+  `;
+  renderQuestionsList();
+
+  document.getElementById('addQuestionBtn').addEventListener('click', () => {
+    currentQuestions.push({ s:'', q:'New question text', o:['Option A','Option B','Option C','Option D'], c:0, ref:'', n:'' });
+    renderQuestionsList();
+  });
+  document.getElementById('saveQuizBtn').addEventListener('click', () => saveQuizFile(path));
+  document.getElementById('rawModeBtn').addEventListener('click', () => renderRawEditor(path));
+}
+
+function renderQuestionsList(){
+  const listEl = document.getElementById('questionsList');
+  listEl.innerHTML = currentQuestions.map((q, i) => `
+    <div class="q-card" data-idx="${i}">
+      <div class="field-label">Question ${i+1} — topic/section</div>
+      <input type="text" data-field="s" data-idx="${i}" value="${escapeHtml(q.s || '')}">
+      <div class="field-label">Question text</div>
+      <textarea data-field="q" data-idx="${i}" rows="2">${escapeHtml(q.q || '')}</textarea>
+      <div class="field-label">Answer choices (mark the correct one)</div>
+      <div class="q-opts">
+        ${(q.o || []).map((opt, oi) => `
+          <input type="radio" name="correct-${i}" data-correct-idx="${oi}" data-idx="${i}" ${q.c === oi ? 'checked' : ''}>
+          <input type="text" data-field="o" data-oidx="${oi}" data-idx="${i}" value="${escapeHtml(opt)}">
+        `).join('')}
+      </div>
+      <div class="field-label">Reference (optional)</div>
+      <input type="text" data-field="ref" data-idx="${i}" value="${escapeHtml(q.ref || '')}">
+      <div class="field-label">Explanation note (optional)</div>
+      <textarea data-field="n" data-idx="${i}" rows="2">${escapeHtml(q.n || '')}</textarea>
+      <div class="actions">
+        <button class="danger" data-action="deleteQ" data-idx="${i}">Delete this question</button>
+      </div>
+    </div>
+  `).join('');
+
+  listEl.querySelectorAll('input[data-field="s"], input[data-field="ref"]').forEach(el => {
+    el.addEventListener('input', () => { currentQuestions[+el.dataset.idx][el.dataset.field] = el.value; });
+  });
+  listEl.querySelectorAll('textarea[data-field="q"], textarea[data-field="n"]').forEach(el => {
+    el.addEventListener('input', () => { currentQuestions[+el.dataset.idx][el.dataset.field] = el.value; });
+  });
+  listEl.querySelectorAll('input[data-field="o"]').forEach(el => {
+    el.addEventListener('input', () => { currentQuestions[+el.dataset.idx].o[+el.dataset.oidx] = el.value; });
+  });
+  listEl.querySelectorAll('input[data-correct-idx]').forEach(el => {
+    el.addEventListener('change', () => { currentQuestions[+el.dataset.idx].c = +el.dataset.correctIdx; });
+  });
+  listEl.querySelectorAll('button[data-action="deleteQ"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if(confirm('Delete this question?')){
+        currentQuestions.splice(+btn.dataset.idx, 1);
+        renderQuestionsList();
+      }
+    });
+  });
+}
+
+async function saveQuizFile(path){
+  const statusEl = document.getElementById('quizSaveStatus');
+  const saveBtn = document.getElementById('saveQuizBtn');
+  saveBtn.disabled = true;
+  statusEl.className = 'save-status';
+  statusEl.textContent = 'Saving…';
+  try{
+    let newText = currentFileRaw;
+    const newTitle = document.getElementById('pageTitleInput').value;
+    const newHeading = document.getElementById('headingInput').value;
+    newText = newText.replace(/<title>[^<]*<\/title>/, `<title>${newTitle}</title>`);
+    newText = newText.replace(/<h1>[^<]*<\/h1>/, `<h1>${newHeading}</h1>`);
+    const newQuestionsText = JSON.stringify(currentQuestions, null, 0)
+      .replace(/^\[/, '[\n')
+      .replace(/\},\{/g, '},\n{')
+      .replace(/\]$/, '\n]');
+    newText = newText.replace(/const QUESTIONS = \[[\s\S]*?\];/, `const QUESTIONS = ${newQuestionsText};`);
+
+    await callSave(path, newText, `Admin: update quiz — ${path}`);
+    currentFileRaw = newText;
+    statusEl.className = 'save-status ok';
+    statusEl.textContent = 'Saved! It may take a minute or two for GitHub Pages to update the live site.';
+  }catch(e){
+    statusEl.className = 'save-status err';
+    statusEl.textContent = 'Error: ' + e.message;
+  }finally{
+    saveBtn.disabled = false;
+  }
+}
+
+function renderRawEditor(path){
+  const editorArea = document.getElementById('editorArea');
+  editorArea.innerHTML = `
+    <div class="card">
+      <div class="msg info" style="margin-bottom:14px;">
+        This page doesn't look like a standard quiz file, so here's the raw HTML — edit carefully, this is the whole page's code.
+      </div>
+      <textarea id="rawEditor" rows="24" style="font-family:monospace;font-size:12px;">${escapeHtml(currentFileRaw)}</textarea>
+    </div>
+    <div class="actions">
+      <button class="primary" id="saveRawBtn">Save to site</button>
+    </div>
+    <div class="save-status" id="rawSaveStatus"></div>
+  `;
+  document.getElementById('saveRawBtn').addEventListener('click', async () => {
+    const statusEl = document.getElementById('rawSaveStatus');
+    const saveBtn = document.getElementById('saveRawBtn');
+    saveBtn.disabled = true;
+    statusEl.className = 'save-status';
+    statusEl.textContent = 'Saving…';
+    try{
+      const newText = document.getElementById('rawEditor').value;
+      await callSave(path, newText, `Admin: raw edit — ${path}`);
+      currentFileRaw = newText;
+      statusEl.className = 'save-status ok';
+      statusEl.textContent = 'Saved! It may take a minute or two for GitHub Pages to update the live site.';
+    }catch(e){
+      statusEl.className = 'save-status err';
+      statusEl.textContent = 'Error: ' + e.message;
+    }finally{
+      saveBtn.disabled = false;
+    }
+  });
 }
 
 init();
