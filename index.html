@@ -344,6 +344,31 @@
   .leaderboard-row .lb-name{ flex:1; color:var(--ink); }
   .leaderboard-row .lb-stats{ color:var(--muted); font-size:12px; text-align:right; }
   .leaderboard-empty{ color:var(--muted); font-style:italic; text-align:center; padding:12px 0; }
+
+  .leaderboard-row.lb-top1{
+    padding:16px 16px; font-size:16.5px;
+    background:linear-gradient(135deg, rgba(224,181,104,0.28), var(--bg-panel-deep));
+    border:1px solid var(--gold-bright);
+    box-shadow:0 0 0 1px rgba(224,181,104,0.15);
+  }
+  .leaderboard-row.lb-top1 .lb-rank{ font-size:24px; width:30px; }
+  .leaderboard-row.lb-top1 .lb-name{ font-weight:700; color:var(--gold-bright); }
+
+  .leaderboard-row.lb-top2{
+    padding:12px 14px; font-size:14.5px;
+    background:linear-gradient(135deg, rgba(200,200,205,0.16), var(--bg-panel-deep));
+    border:1px solid #b7b7bd;
+  }
+  .leaderboard-row.lb-top2 .lb-rank{ font-size:19px; width:26px; }
+  .leaderboard-row.lb-top2 .lb-name{ font-weight:600; }
+
+  .leaderboard-row.lb-top3{
+    padding:11px 13px; font-size:14px;
+    background:linear-gradient(135deg, rgba(205,127,50,0.16), var(--bg-panel-deep));
+    border:1px solid #cd7f32;
+  }
+  .leaderboard-row.lb-top3 .lb-rank{ font-size:18px; width:26px; }
+  .leaderboard-row.lb-top3 .lb-name{ font-weight:600; }
 </style>
 </head>
 <body>
@@ -736,13 +761,20 @@ document.getElementById('openMainLeaderboardBtn').addEventListener('click', asyn
     listEl.innerHTML = '<div class="leaderboard-empty">No scores yet — be the first!</div>';
     return;
   }
-  listEl.innerHTML = data.map((row, i) =>
-    '<div class="leaderboard-row">' +
-      '<span class="lb-rank">' + (i+1) + '</span>' +
-      '<span class="lb-name">' + row.username + '</span>' +
-      '<span class="lb-stats">' + row.total_mastered + ' mastered · ' + Math.round((row.avg_best_score||0)*100) + '% avg</span>' +
-    '</div>'
-  ).join('');
+  const top10 = data.slice(0, 10);
+  const medals = { 1: '🥇', 2: '🥈', 3: '🥉' };
+  listEl.innerHTML = top10.map((row, i) => {
+    const rank = i + 1;
+    const rowClass = rank <= 3 ? 'leaderboard-row lb-top' + rank : 'leaderboard-row';
+    const rankDisplay = medals[rank] || rank;
+    return (
+      '<div class="' + rowClass + '">' +
+        '<span class="lb-rank">' + rankDisplay + '</span>' +
+        '<span class="lb-name">' + row.username + '</span>' +
+        '<span class="lb-stats">' + row.total_mastered + ' mastered · ' + Math.round((row.avg_best_score||0)*100) + '% avg</span>' +
+      '</div>'
+    );
+  }).join('');
 });
 document.getElementById('leaderboardModalClose').addEventListener('click', () => leaderboardModalOverlay.classList.add('hidden'));
 leaderboardModalOverlay.addEventListener('click', (e) => { if(e.target === leaderboardModalOverlay) leaderboardModalOverlay.classList.add('hidden'); });
