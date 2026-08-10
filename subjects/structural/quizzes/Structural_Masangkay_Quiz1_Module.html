@@ -490,6 +490,7 @@
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="../../../assets/presence.js"></script>
+<script src="../../../assets/module-progress.js"></script>
 <script src="../../../assets/theme.js"></script>
 </head>
 <body>
@@ -577,6 +578,8 @@
 </div>
 
 <script>
+const LEA_SUBJECT_ID = 'structural';
+const LEA_MODULE_ID = 'masangkay-quiz1';
 const QUESTIONS = [
 {"s":"Foundations & Units","q":"NSCP 2015 Volume 1 defines it as the discipline of civil engineering that focuses on the analysis and design of structures to ensure their safety and ability to withstand loads, including those imposed by natural forces.","o":["Building or Bridge Engineering","Infrastructure Engineering","Geotechnical Engineering","Structural Engineering"],"c":3,"ref":"NSCP 2015 Vol. 1 — Definitions","n":"NSCP defines Structural Engineering as the branch concerned with analyzing and designing structures so they safely resist all imposed loads, including natural forces, through their intended lifespan."},
 {"s":"Foundations & Units","q":"These engineering materials do not deform under loads.","o":["Reinforced concretes","Rigid bodies","Hard materials","Rocks"],"c":1,"ref":"Mechanics — idealized bodies","n":"A rigid body is an idealization used in mechanics where deformation under load is assumed to be zero, unlike deformable/elastic bodies studied in strength of materials."},
@@ -812,6 +815,7 @@ function selectAnswer(i, btn){
 
   if(isCorrect) everMissed.delete(order[pos]);
   else everMissed.add(order[pos]);
+  if(isCorrect && window.LEAProgress) LEAProgress.markMastered(LEA_SUBJECT_ID, LEA_MODULE_ID, order[pos]);
 
   if(pos === frontier && frontier < order.length - 1){
     frontier = pos + 1;
@@ -845,6 +849,7 @@ function showResults(){
   resultsEl.classList.add('show');
 
   const score = answersLog.filter(a => a && a.isCorrect).length;
+  if(window.LEAProgress) LEAProgress.recordRunScore(LEA_SUBJECT_ID, LEA_MODULE_ID, score, order.length);
   const mistakes = [];
   answersLog.forEach((a, i) => {
     if(a && !a.isCorrect) mistakes.push({qIndex: order[i], selected: a.selected, pos: i});

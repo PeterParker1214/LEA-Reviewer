@@ -9,7 +9,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Professional Practice — LEA Reviewer</title>
+<title>Theory of Architecture &amp; Planning — LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Bitter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -100,6 +100,9 @@
     display:flex; justify-content:space-between; font-size:12px; color:var(--sand);
     margin-top:6px; letter-spacing:0.03em;
   }
+  .mp-bar-track{ height:5px; border-radius:3px; background: rgba(212,163,115,0.18); overflow:hidden; margin-top:10px; }
+  .mp-bar-fill{ height:100%; border-radius:3px; background: linear-gradient(90deg, var(--clay), var(--turq)); transition: width .3s ease; }
+  .mp-cap{ font-size:11px; color:var(--sand); margin-top:4px; }
   .module-grid{ display:flex; flex-direction:column; gap:14px; }
   .module-card{
     position:relative; display:block; text-decoration:none;
@@ -118,23 +121,13 @@
   .module-sub{ font-size:13.5px; color:var(--sand); line-height:1.5; margin-bottom:10px; }
   .module-meta{ font-size:12px; color:var(--turq-bright); letter-spacing:0.04em; display:flex; justify-content:space-between; align-items:center; }
   .module-arrow{ font-size:16px; }
-  .module-progress-track{ margin-top:14px; height:8px; border-radius:6px; background:rgba(255,255,255,0.08); overflow:hidden; }
-  .module-progress-fill{ height:100%; border-radius:6px; background:linear-gradient(90deg, var(--clay), var(--turq)); transition:width .3s ease; }
-  .module-progress-caption{ font-size:11.5px; color:var(--sand); margin-top:7px; }
-  .module-actions{ display:flex; justify-content:flex-end; align-items:center; gap:12px; margin-top:16px; }
-  .module-reset-btn{ background:none; border:none; color:var(--sand); font-family:var(--font-body); font-size:12.5px; text-decoration:underline; cursor:pointer; padding:0; }
-  .module-reset-btn:hover{ color:var(--clay-bright); }
-  .module-start-btn{
-    background:var(--clay); color:#fff8ee; border:none; font-family:var(--font-head); font-size:13px; font-weight:600;
-    letter-spacing:0.02em; padding:9px 20px; border-radius:6px; cursor:pointer; text-decoration:none; display:inline-block;
-  }
-  .module-start-btn:hover{ background:var(--clay-bright); }
   .note-panel{
     margin-top:24px; background: linear-gradient(180deg, var(--bg-panel), var(--bg-panel-deep));
     border:1px solid var(--line); border-radius:10px; padding:16px 20px; font-size:12.5px; color:var(--sand); line-height:1.6;
   }
 </style>
 <script src="../../assets/presence.js"></script>
+<script src="../../assets/module-progress.js"></script>
 <script src="../../assets/theme.js"></script>
 </head>
 <body>
@@ -147,58 +140,34 @@
 
   <div class="masthead">
     <div class="eyebrow">JPT Manila &middot; Module Compendium</div>
-    <h1>Professional Practice</h1>
-    <div class="sub">Architecture law, ethics, standards of professional practice, and building laws crossover.</div>
+    <h1>Theory of Architecture &amp; Planning</h1>
+    <div class="sub">Design theory, principles of planning, and the foundations of architectural thought.</div>
     <div class="step-frieze"></div>
   </div>
 
   <div class="overall-card" id="overallCard"></div>
 
   <div class="module-grid">
-    <div class="module-card" style="--accent1:#c1502e;--accent2:#2a9d8f;">
+    <a class="module-card" style="--accent1:#7b5ce8;--accent2:#f2c744;" href="quizzes/Theory_of_Architecture_Zhardei_Quiz1_Module.html">
       <div class="module-num">Module 1</div>
-      <div class="module-title">SPP & Architect's Guidelines — Full Coverage Quiz</div>
-      <div class="module-sub">Standards of Professional Practice: fees, services, and architect's guidelines.</div>
-      <div class="module-meta"><span>156 questions</span></div>
-      <div class="module-progress-track"><div class="module-progress-fill" id="sppProgressFill" style="width:0%"></div></div>
-      <div class="module-progress-caption" id="sppProgressCaption">0 / 156 mastered</div>
-      <div class="module-actions">
-        <button class="module-reset-btn" id="sppResetBtn">Reset</button>
-        <a class="module-start-btn" id="sppStartBtn" href="quizzes/SPP_ArchitectsGuidelines_FullCoverage_Quiz.html">Start</a>
-      </div>
-    </div>
+      <div class="module-title">Theory of Architecture — Quiz 1</div>
+      <div class="module-sub">Foundations of design: shape, form, and the principles that shape architectural thought.</div>
+      <div class="module-meta"><span>50 questions</span><span class="module-arrow">&rarr;</span></div>
+      <div id="badge-zhardei-quiz1"></div>
+    </a>
+    <a class="module-card" style="--accent1:#2a9d8f;--accent2:#e8804f;" href="quizzes/TAPP_Zhardei_Quiz2_Module.html">
+      <div class="module-num">Module 2</div>
+      <div class="module-title">Theory of Architecture &amp; Principles of Planning — Quiz 2</div>
+      <div class="module-sub">Continued coverage of design theory and planning principles.</div>
+      <div class="module-meta"><span>45 questions</span><span class="module-arrow">&rarr;</span></div>
+      <div id="badge-zhardei-quiz2"></div>
+    </a>
 
   </div>
 
-  <div class="note-panel">Contributed by Pedro. Progress on this page is tracked per device (mastered questions and best scores are saved in this browser). Looking for the PP &amp; Building Laws Preboard Review? It's now under <a href="../building-laws/index.html" style="color:var(--turq-bright);">Building Laws</a>.</div>
+  <div class="note-panel">Contributed by Zhardei. Progress on this page is tracked per device (mastered questions and best scores are saved in this browser).</div>
 </div>
 
-<script src="../../assets/module-progress.js"></script>
-<script>
-// ---- Progress for the SPP module card, via the shared LEAProgress tracker ----
-const LEA_SUBJECT_ID_PAGE = 'professional-practice';
-const MODULES = [{id:'spp-fullcoverage', total:156, title:"SPP & Architect's Guidelines — Full Coverage Quiz"}];
-function renderSppProgress(){
-  LEAProgress.renderOverallCard(document.getElementById('overallCard'), LEA_SUBJECT_ID_PAGE, MODULES);
-  const p = LEAProgress.load(LEA_SUBJECT_ID_PAGE, 'spp-fullcoverage');
-  const mastered = LEAProgress.masteredCount(LEA_SUBJECT_ID_PAGE, 'spp-fullcoverage', 156);
-  const pct = Math.round((mastered / 156) * 100);
-  document.getElementById('sppProgressFill').style.width = pct + '%';
-  document.getElementById('sppProgressCaption').textContent = mastered + ' / 156 mastered';
-  document.getElementById('sppStartBtn').textContent = (p.attempts > 0 || mastered > 0) ? 'Continue' : 'Start';
-}
-window.leaOnProgressReset = renderSppProgress;
-renderSppProgress();
-document.getElementById('sppResetBtn').addEventListener('click', () => {
-  if(confirm('Reset progress for "SPP & Architect\'s Guidelines — Full Coverage Quiz"? This clears its mastered questions and best score.')){
-    LEAProgress.reset(LEA_SUBJECT_ID_PAGE, 'spp-fullcoverage');
-    renderSppProgress();
-  }
-});
-// Refresh if the person returns to this tab/page after taking the quiz (e.g. via back button).
-document.addEventListener('visibilitychange', () => { if(!document.hidden) renderSppProgress(); });
-window.addEventListener('pageshow', renderSppProgress);
-</script>
 <script>
 const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
@@ -222,6 +191,22 @@ sb.auth.onAuthStateChange((event, session) => {
   const { data: { session } } = await sb.auth.getSession();
   if(session){ await onSignedIn(session.user); } else { window.location.href = '../../index.html'; }
 })();
+</script>
+
+<script>
+const LEA_SUBJECT_ID_PAGE = 'theory-of-architecture-and-planning';
+const MODULES = [{id:'zhardei-quiz1', total:50, title:'Theory of Architecture — Quiz 1'},{id:'zhardei-quiz2', total:45, title:'Theory of Architecture & Principles of Planning — Quiz 2'}];
+function leaRenderProgress(){
+  LEAProgress.renderOverallCard(document.getElementById('overallCard'), LEA_SUBJECT_ID_PAGE, MODULES);
+  MODULES.forEach(function(m){
+    const el = document.getElementById('badge-' + m.id);
+    if(el) LEAProgress.renderModuleBadge(el, LEA_SUBJECT_ID_PAGE, m.id, m.total);
+  });
+}
+window.leaOnProgressReset = leaRenderProgress;
+leaRenderProgress();
+document.addEventListener('visibilitychange', function(){ if(!document.hidden) leaRenderProgress(); });
+window.addEventListener('pageshow', leaRenderProgress);
 </script>
 </body>
 </html>

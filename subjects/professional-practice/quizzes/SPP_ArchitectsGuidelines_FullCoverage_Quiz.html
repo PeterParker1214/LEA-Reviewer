@@ -264,6 +264,7 @@
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="../../../assets/presence.js"></script>
+<script src="../../../assets/module-progress.js"></script>
 <script src="../../../assets/theme.js"></script>
 </head>
 <body>
@@ -348,6 +349,8 @@
 </div>
 
 <script>
+const LEA_SUBJECT_ID = 'professional-practice';
+const LEA_MODULE_ID = 'spp-fullcoverage';
 const QUESTIONS = [
 {s:"Annex A · Definitions", q:"In Annex A's General Definitions, what does \u201cState\u201d refer to?", o:["Any LGU","The National Government","The PRC","The IAPOA"], c:1, ref:"Annex A §A.1", n:"\u201cState \u2013 National Government.\u201d"},
 {s:"Annex A · Definitions", q:"The Standards of Professional Practice (SPP) originates from which legal provision?", o:["Article V Section 41 of RA 9266","Article III Section 12 of RA 9266","RA 8293","RA 9184"], c:0, ref:"Annex A §A.2", n:"\u201cStandards of Professional Practice (SPP) \u2013 from Article V Section 41 of RA 9266.\u201d"},
@@ -660,6 +663,7 @@ function selectAnswer(i, btn){
 
   if(isCorrect) everMissed.delete(order[pos]);
   else everMissed.add(order[pos]);
+  if(isCorrect && window.LEAProgress) LEAProgress.markMastered(LEA_SUBJECT_ID, LEA_MODULE_ID, order[pos]);
 
   if(isCorrect && localProgress.mastered.indexOf(order[pos]) === -1){
     localProgress.mastered.push(order[pos]);
@@ -696,6 +700,7 @@ function showResults(){
   resultsEl.classList.add('show');
 
   const score = answersLog.filter(a => a && a.isCorrect).length;
+  if(window.LEAProgress) LEAProgress.recordRunScore(LEA_SUBJECT_ID, LEA_MODULE_ID, score, order.length);
   const mistakes = [];
   answersLog.forEach((a, i) => {
     if(a && !a.isCorrect) mistakes.push({qIndex: order[i], selected: a.selected, pos: i});

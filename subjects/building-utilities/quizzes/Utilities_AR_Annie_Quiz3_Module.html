@@ -467,6 +467,7 @@
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="../../../assets/presence.js"></script>
+<script src="../../../assets/module-progress.js"></script>
 <script src="../../../assets/theme.js"></script>
 </head>
 <body>
@@ -554,6 +555,8 @@
 </div>
 
 <script>
+const LEA_SUBJECT_ID = 'building-utilities';
+const LEA_MODULE_ID = 'annie-quiz3';
 const QUESTIONS = [{"s": "Water Supply Systems", "q": "You noticed a six-storey building without the presence of an elevated water tank. What is used?", "o": ["Hydro-pneumatic tank", "Booster pump", "Jockey pump", "None of the above"], "c": 0, "ref": "Water supply systems \u2014 pressurized distribution", "n": "A hydro-pneumatic (pressure) tank substitutes for an elevated tank by using compressed air to pressurize the water supply."}, {"s": "Water Supply Systems", "q": "At a certain point in the distribution of water, water stopped. What could be the reason?", "o": ["Water is fed from a lower level source", "Water equated with the level of water source", "Water volume is lesser", "Booster pump cannot reach higher level"], "c": 1, "ref": "Water supply systems \u2014 gravity distribution", "n": "Gravity-fed flow stops once the water level in the distribution point equals the level of the source \u2014 pressure runs out at that point."}, {"s": "Water Supply Systems", "q": "Water is drawn from a cistern to an elevated water tank", "o": ["Indirect downfeed", "Indirect upfeed", "Booster-feed", "Direct upfeed"], "c": 0, "ref": "Water supply systems \u2014 feed system types", "n": "Moving water from a cistern up to an elevated tank, then letting it feed down by gravity, is the indirect downfeed arrangement."}, {"s": "Water Supply Systems", "q": "Water is drawn indirectly from the main water line to a cistern and delivered upward by a booster pump", "o": ["Indirect downfeed", "Indirect upfeed", "Booster-feed", "Direct upfeed"], "c": 1, "ref": "Water supply systems \u2014 feed system types", "n": "Storing water in a cistern first, then pushing it upward by pump, is the indirect upfeed arrangement."}, {"s": "Pumps", "q": "Pump normally used for residence?", "o": ["Centrifugal pump", "Piston pump", "Booster pump", "Impeller pump"], "c": 2, "ref": "Pump selection \u2014 plumbing systems", "n": "For typical residential water systems, a booster pump is the standard choice to maintain adequate pressure."}, {"s": "Pumps", "q": "Pump normally used for high-rise buildings", "o": ["Centrifugal pump", "Piston pump", "Booster pump", "Impeller pump"], "c": 0, "ref": "Pump selection \u2014 plumbing systems", "n": "High-rise water distribution commonly relies on centrifugal pumps, often staged in series to overcome the greater lift."}, {"s": "Pumps", "q": "Where do you use submersible pumps?", "o": ["Cistern", "Deep well", "Elevated water tank", "Faucet"], "c": 1, "ref": "Pump types \u2014 plumbing systems", "n": "Submersible pumps are built to operate fully underwater, which is why they're used inside deep wells."}, {"s": "Water Heating & Storage", "q": "A practical type of a water heating device", "o": ["Gas Furnace", "Solar Water Heater", "Electric Heater", "Coal Heater"], "c": 0, "ref": "Water heating devices \u2014 plumbing systems", "n": "Among common water-heating options, the gas furnace type is treated as the practical, widely-used choice in this material."}, {"s": "Water Heating & Storage", "q": "What is placed below a pump room?", "o": ["Reservoir", "Underground container", "Cistern", "Water tank"], "c": 2, "ref": "Building water storage \u2014 plumbing systems", "n": "A cistern is typically located beneath the pump room so the pump can draw stored water and push it upward."}, {"s": "Water Hammer & Protection", "q": "The water high pressure causing a banging effect in pipe interior is caused by", "o": ["Air Pressure", "Vacuum", "Water Hammer", "Siphonage"], "c": 2, "ref": "Pipe hydraulics \u2014 water hammer", "n": "Water hammer is the banging or knocking sound from a sudden pressure surge when flowing water is abruptly stopped or redirected."}, {"s": "Water Hammer & Protection", "q": "How do you address the above situation?", "o": ["Vacuum Breaker", "Air Cushion", "Air Filter", "Water Hammer Arrestor"], "c": 3, "ref": "Pipe hydraulics \u2014 water hammer", "n": "A water hammer arrestor absorbs the pressure spike with a cushioned air chamber, preventing the banging effect."}, {"s": "Valves", "q": "A valve where flow is cut off by means of a circular disk, at right angles to the direction of flow", "o": ["Globe Valve", "Ball Valve", "Gate Valve", "Cut-off Valve"], "c": 2, "ref": "Valve types \u2014 plumbing systems", "n": "A gate valve uses a flat disk (gate) that lowers perpendicular to the flow path to fully block it."}, {"s": "Valves", "q": "Valve used for boiler, pressure vessel when pressure/temperature exceeds", "o": ["Boiler Blow-off", "Water Hammer", "Check Valve", "Ball Valve"], "c": 0, "ref": "Valve types \u2014 plumbing systems", "n": "A boiler blow-off valve releases excess pressure or sediment from a boiler or pressure vessel once safe limits are exceeded."}, {"s": "Valves", "q": "Valve with a one-way direction", "o": ["Boiler Blow-off", "Water Hammer", "Check Valve", "Ball Valve"], "c": 2, "ref": "Valve types \u2014 plumbing systems", "n": "A check valve allows flow in only one direction, preventing backflow into the supply line."}, {"s": "Valves", "q": "Valve used to achieve tortuous passage of water to increase pressure", "o": ["Globe Valve", "Ball Valve", "Gate Valve", "Cut-off Valve"], "c": 0, "ref": "Valve types \u2014 plumbing systems", "n": "A globe valve forces water through a winding (tortuous) internal path, which builds up pressure as it throttles flow."}];
 
 // ============== STATE ==============
@@ -744,6 +747,7 @@ function selectAnswer(i, btn){
 
   if(isCorrect) everMissed.delete(order[pos]);
   else everMissed.add(order[pos]);
+  if(isCorrect && window.LEAProgress) LEAProgress.markMastered(LEA_SUBJECT_ID, LEA_MODULE_ID, order[pos]);
 
   if(pos === frontier && frontier < order.length - 1){
     frontier = pos + 1;
@@ -777,6 +781,7 @@ function showResults(){
   resultsEl.classList.add('show');
 
   const score = answersLog.filter(a => a && a.isCorrect).length;
+  if(window.LEAProgress) LEAProgress.recordRunScore(LEA_SUBJECT_ID, LEA_MODULE_ID, score, order.length);
   const mistakes = [];
   answersLog.forEach((a, i) => {
     if(a && !a.isCorrect) mistakes.push({qIndex: order[i], selected: a.selected, pos: i});

@@ -56,6 +56,53 @@
     clip-path: polygon(0% 100%, 10% 0%, 20% 100%, 30% 0%, 40% 100%, 50% 0%, 60% 100%, 70% 0%, 80% 100%, 90% 0%, 100% 100%);
     opacity:0.85;
   }
+  .overall-card{
+    position:relative;
+    background: linear-gradient(180deg, var(--bg-panel), var(--bg-panel-deep));
+    border:1px solid var(--line);
+    border-radius: 6px 6px 22px 22px;
+    padding:28px 28px 24px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    margin-bottom:26px;
+  }
+  .overall-card::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:8px;
+    border-radius: 6px 6px 0 0;
+    background-image: repeating-linear-gradient(135deg, var(--clay) 0 7px, var(--turq) 7px 14px);
+    opacity:0.9;
+  }
+  .overall-title{
+    font-family:var(--font-head); font-size:15px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--sand); margin-bottom:16px;
+    display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;
+  }
+  .overall-title .reset-all{
+    font-family:var(--font-body); text-transform:none; letter-spacing:0; font-size:12px;
+    color:var(--bad); background:none; border:1px solid rgba(176,80,63,0.5);
+    padding:5px 11px; border-radius:6px; cursor:pointer;
+  }
+  .overall-title .reset-all:hover{ background: rgba(176,80,63,0.12); }
+  .overall-stats-row{ display:flex; gap:26px; flex-wrap:wrap; margin-bottom:18px; }
+  .overall-stat .num{
+    font-family:var(--font-head); font-size:30px; font-weight:600; color:var(--turq-bright);
+    line-height:1;
+  }
+  .overall-stat .lbl{
+    font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--sand); margin-top:4px;
+  }
+  .overall-bar-track{ height:10px; border-radius:5px; background: rgba(212,163,115,0.14); overflow:hidden; }
+  .overall-bar-fill{
+    height:100%; border-radius:5px;
+    background: linear-gradient(90deg, var(--clay), var(--turq));
+    transition: width .4s ease;
+  }
+  .overall-bar-caption{
+    display:flex; justify-content:space-between; font-size:12px; color:var(--sand);
+    margin-top:6px; letter-spacing:0.03em;
+  }
+  .mp-bar-track{ height:5px; border-radius:3px; background: rgba(212,163,115,0.18); overflow:hidden; margin-top:10px; }
+  .mp-bar-fill{ height:100%; border-radius:3px; background: linear-gradient(90deg, var(--clay), var(--turq)); transition: width .3s ease; }
+  .mp-cap{ font-size:11px; color:var(--sand); margin-top:4px; }
   .module-grid{ display:flex; flex-direction:column; gap:14px; }
   .module-card{
     position:relative; display:block; text-decoration:none;
@@ -80,6 +127,7 @@
   }
 </style>
 <script src="../../assets/presence.js"></script>
+<script src="../../assets/module-progress.js"></script>
 <script src="../../assets/theme.js"></script>
 </head>
 <body>
@@ -97,35 +145,41 @@
     <div class="step-frieze"></div>
   </div>
 
+  <div class="overall-card" id="overallCard"></div>
+
   <div class="module-grid">
     <a class="module-card" style="--accent1:#c1502e;--accent2:#2a9d8f;" href="quizzes/Utilities_AR_Annie_Quiz1_Module.html">
       <div class="module-num">Module 1</div>
       <div class="module-title">Utilities & Plumbing — Module 1 Quiz</div>
       <div class="module-sub">Foundational plumbing and utilities concepts.</div>
       <div class="module-meta"><span>25 questions</span><span class="module-arrow">&rarr;</span></div>
+      <div id="badge-annie-quiz1"></div>
     </a>
     <a class="module-card" style="--accent1:#c1502e;--accent2:#2a9d8f;" href="quizzes/Utilities_AR_Annie_Quiz2_Module.html">
       <div class="module-num">Module 2</div>
       <div class="module-title">Utilities & Plumbing — Module 2 Quiz</div>
       <div class="module-sub">Continued utilities coverage.</div>
       <div class="module-meta"><span>15 questions</span><span class="module-arrow">&rarr;</span></div>
+      <div id="badge-annie-quiz2"></div>
     </a>
     <a class="module-card" style="--accent1:#c1502e;--accent2:#2a9d8f;" href="quizzes/Utilities_AR_Annie_Quiz3_Module.html">
       <div class="module-num">Module 3</div>
       <div class="module-title">Utilities & Plumbing — Module 3 Quiz</div>
       <div class="module-sub">Continued utilities coverage.</div>
       <div class="module-meta"><span>15 questions</span><span class="module-arrow">&rarr;</span></div>
+      <div id="badge-annie-quiz3"></div>
     </a>
     <a class="module-card" style="--accent1:#c1502e;--accent2:#2a9d8f;" href="quizzes/Utilities_AR_Annie_Exam1_Module.html">
       <div class="module-num">Module 4</div>
       <div class="module-title">Utilities & Plumbing — Exam 1</div>
       <div class="module-sub">Full-length exam covering all utilities modules.</div>
       <div class="module-meta"><span>200 questions</span><span class="module-arrow">&rarr;</span></div>
+      <div id="badge-annie-exam1"></div>
     </a>
 
   </div>
 
-  <div class="note-panel">Contributed by Annie. These modules aren't wired into the site-wide mastery tracker yet — progress is tracked locally within each quiz.</div>
+  <div class="note-panel">Contributed by Annie. Progress on this page is tracked per device (mastered questions and best scores are saved in this browser).</div>
 </div>
 
 <script>
@@ -151,6 +205,22 @@ sb.auth.onAuthStateChange((event, session) => {
   const { data: { session } } = await sb.auth.getSession();
   if(session){ await onSignedIn(session.user); } else { window.location.href = '../../index.html'; }
 })();
+</script>
+
+<script>
+const LEA_SUBJECT_ID_PAGE = 'building-utilities';
+const MODULES = [{id:'annie-quiz1', total:25, title:'Utilities & Plumbing — Module 1 Quiz'},{id:'annie-quiz2', total:15, title:'Utilities & Plumbing — Module 2 Quiz'},{id:'annie-quiz3', total:15, title:'Utilities & Plumbing — Module 3 Quiz'},{id:'annie-exam1', total:200, title:'Utilities & Plumbing — Exam 1'}];
+function leaRenderProgress(){
+  LEAProgress.renderOverallCard(document.getElementById('overallCard'), LEA_SUBJECT_ID_PAGE, MODULES);
+  MODULES.forEach(function(m){
+    const el = document.getElementById('badge-' + m.id);
+    if(el) LEAProgress.renderModuleBadge(el, LEA_SUBJECT_ID_PAGE, m.id, m.total);
+  });
+}
+window.leaOnProgressReset = leaRenderProgress;
+leaRenderProgress();
+document.addEventListener('visibilitychange', function(){ if(!document.hidden) leaRenderProgress(); });
+window.addEventListener('pageshow', leaRenderProgress);
 </script>
 </body>
 </html>
