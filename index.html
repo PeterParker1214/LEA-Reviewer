@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -348,8 +348,8 @@
 </head>
 <body>
 <div class="wrap">
-  <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">
-<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>☀️</button>
+  <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">☀️</button>
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>
 
   <div class="masthead">
     <div class="eyebrow">JPT Manila · Licensure Exam for Architects</div>
@@ -359,7 +359,7 @@
   </div>
 
   <!-- ===================== SIGNED-OUT: AUTH PANEL ===================== -->
-  <div id="authPanel" class="panel">
+  <div id="authPanel" class="panel hidden">
     <div class="auth-heading">Sign in to continue</div>
     <div class="intro-note">An account is required — progress and scores are saved to your profile, not this device.</div>
     <div class="auth-tabs">
@@ -501,7 +501,7 @@ const SUBJECTS = [
   { id: "building-utilities", name: "Building Utilities", href: "subjects/building-utilities/index.html", ready: true, totalQuestions: 255, totalModules: 4 },
   { id: "building-technology", name: "Building Technology", href: "subjects/building-technology.html", ready: false },
   { id: "structural", name: "Structural", href: "subjects/structural/index.html", ready: true, totalQuestions: 30, totalModules: 1 },
-  { id: "building-laws", name: "Building Laws", href: "subjects/building-laws/index.html", ready: true, totalQuestions: 70, totalModules: 4 },
+  { id: "building-laws", name: "Building Laws", href: "subjects/building-laws/index.html", ready: true, totalQuestions: 270, totalModules: 5 },
   { id: "professional-practice", name: "Professional Practice", href: "subjects/professional-practice/index.html", ready: true, totalQuestions: 356, totalModules: 2 },
   { id: "theory-of-architecture-and-planning", name: "Theory of Architecture and Principles of Planning", href: "subjects/theory-of-architecture-and-planning.html", ready: false },
   { id: "architectural-design", name: "Architectural Design", href: "subjects/architectural-design.html", ready: false },
@@ -702,7 +702,7 @@ function renderReadinessAndInsights(){
   document.getElementById('strongSubjectName').innerHTML = strong ? strong.name : 'Not enough data yet';
   document.getElementById('strongSubjectPct').textContent = strong ? Math.round(strong.avgScore * 100) + '% avg score' : '';
   document.getElementById('weakSubjectName').innerHTML = weak ? weak.name : 'Not enough data yet';
-  document.getElementById('weakSubjectPct').textContent = weak ? weak.mastered + ' / ' + weak.total + ' mastered' : '';
+  document.getElementById('weakSubjectPct').textContent = weak ? Math.round(weak.pct * 100) + '% mastered' : '';
 
   const meta = FULL_DATA.__meta;
   const lastNameEl = document.getElementById('lastQuizName');

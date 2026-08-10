@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" type="image/png" href="../../favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="manifest" href="../../site.webmanifest">
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -208,10 +208,6 @@
   .attempts-note{ font-size:11px; color:var(--sand); opacity:0.7; }
 
   .external-quiz-section{ margin-top:22px; }
-  .external-quiz-heading{
-    font-family:var(--font-head); font-size:11px; letter-spacing:0.16em; text-transform:uppercase;
-    color:var(--sand); margin-bottom:10px;
-  }
   .external-quiz-card{
     position:relative; display:block; text-decoration:none;
     background: linear-gradient(180deg, var(--bg-panel), var(--bg-panel-deep));
@@ -469,18 +465,18 @@
   <div class="masthead">
     <div class="eyebrow">JPT Manila · Quiz Compendium</div>
     <h1>Building Laws</h1>
-    <div class="sub" id="mastheadSub">Four quizzes. One record of what you've mastered.</div>
+    <div class="sub" id="mastheadSub">Five quizzes. One record of what you've mastered.</div>
     <div class="step-frieze"></div>
   </div>
 
   <div class="auth-bar">
     <div><a class="auth-link" href="../../index.html?source=jpt">&larr; All subjects</a> &nbsp;·&nbsp; <span id="authStatus">Checking session…</span></div>
     <button class="auth-link" id="openLeaderboardBtn">🏆 Leaderboard</button>
-    <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">
-<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>☀️</button>
+    <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">☀️</button>
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>
   </div>
 
-  <div id="dashboardView">
+  <div id="dashboardView" class="hidden">
     <div class="overall-card">
       <div class="overall-title">
         <span>Overall progress</span>
@@ -492,13 +488,13 @@
           <div class="lbl">Questions mastered</div>
         </div>
         <div class="overall-stat">
-          <div class="num" id="overallModulesDone">0 / 4</div>
+          <div class="num" id="overallModulesDone">0 / 5</div>
           <div class="lbl">Quizzes fully mastered</div>
         </div>
       </div>
       <div class="overall-bar-track"><div class="overall-bar-fill" id="overallBarFill" style="width:0%;"></div></div>
       <div class="overall-bar-caption">
-        <span id="overallBarCaption">0 of 70 questions mastered across all quizzes</span>
+        <span id="overallBarCaption">0 of 270 questions mastered across all quizzes</span>
         <span id="overallBarPct">0%</span>
       </div>
     </div>
@@ -506,10 +502,9 @@
     <div class="module-grid" id="moduleGrid"></div>
 
     <div class="external-quiz-section">
-      <div class="external-quiz-heading">Also under Building Laws</div>
       <div class="external-quiz-card" style="cursor:default;">
         <div class="external-quiz-title">PP &amp; Building Laws — Preboard Review</div>
-        <div class="external-quiz-sub">Combined preboard review spanning Professional Practice and Building Laws. Contributed by Pedro — progress is tracked locally within the quiz.</div>
+        <div class="external-quiz-sub">Combined preboard review spanning Professional Practice and Building Laws. Contributed by Pedro.</div>
         <div class="external-quiz-meta" style="margin-bottom:10px;"><span>200 questions</span></div>
         <div class="mastery-row">
           <div class="mastery-track"><div class="mastery-fill" id="preboardMasteryFill" style="width:0%;"></div></div>
@@ -922,6 +917,8 @@ async function onSignedIn(user){
   PROGRESS = FULL_DATA[SUBJECT_ID];
   renderAuthBar();
   renderDashboard();
+  renderPreboardProgress();
+  dashboardView.classList.remove('hidden');
 }
 
 function onSignedOut(){
@@ -1063,8 +1060,17 @@ function renderDashboard(){
     moduleGrid.appendChild(card);
   });
 
+  // Preboard lives in its own file rather than as an inline module, but its
+  // progress is stored the same way (PROGRESS['preboard']) — fold it into the
+  // same overall totals so it counts toward "questions mastered" and the bar.
+  const preboardP = PROGRESS[PREBOARD_ID];
+  const preboardMastered = preboardP ? Math.min((preboardP.mastered || []).length, PREBOARD_TOTAL_QUESTIONS) : 0;
+  totalQ += PREBOARD_TOTAL_QUESTIONS;
+  totalMastered += preboardMastered;
+  if(preboardMastered === PREBOARD_TOTAL_QUESTIONS) modulesFullyDone++;
+
   document.getElementById('overallMasteredNum').textContent = totalMastered;
-  document.getElementById('overallModulesDone').textContent = modulesFullyDone + ' / ' + MODULES.length;
+  document.getElementById('overallModulesDone').textContent = modulesFullyDone + ' / ' + (MODULES.length + 1);
   const overallPct = totalQ > 0 ? Math.round((totalMastered/totalQ)*100) : 0;
   document.getElementById('overallBarFill').style.width = overallPct + '%';
   document.getElementById('overallBarCaption').textContent = totalMastered + ' of ' + totalQ + ' questions mastered across all quizzes';
@@ -1587,17 +1593,14 @@ async function initApp(){
 }
 initApp();
 
-// ---- Local (quiz-only) progress for the PP & Building Laws Preboard card ----
-// This quiz lives in its own file and isn't wired into PROGRESS/FULL_DATA above;
-// it keeps its own local key, matching what that quiz page writes to.
+// ---- Preboard progress (synced the same way as every module above) ----
+// Lives in its own file, but its progress is stored at PROGRESS['preboard'] —
+// same FULL_DATA blob, same Supabase row — so it's included in the overall
+// tracker below and follows the signed-in user across devices/browsers.
+const PREBOARD_ID = 'preboard';
 const PREBOARD_TOTAL_QUESTIONS = 200;
-const PREBOARD_LOCAL_KEY = 'lea_local_progress_bldglaws_preboard_v1';
 function renderPreboardProgress(){
-  let p = { mastered: [], bestCorrect: 0, bestTotal: 0, attempts: 0 };
-  try{
-    const raw = localStorage.getItem(PREBOARD_LOCAL_KEY);
-    if(raw) p = JSON.parse(raw);
-  }catch(e){}
+  const p = PROGRESS[PREBOARD_ID] || { mastered: [], bestCorrect: 0, bestTotal: 0, attempts: 0 };
   const mastered = Math.min((p.mastered || []).length, PREBOARD_TOTAL_QUESTIONS);
   const pct = PREBOARD_TOTAL_QUESTIONS > 0 ? Math.round((mastered / PREBOARD_TOTAL_QUESTIONS) * 100) : 0;
   document.getElementById('preboardMasteryFill').style.width = pct + '%';
@@ -1606,16 +1609,28 @@ function renderPreboardProgress(){
     (p.attempts > 0) ? (p.attempts + (p.attempts === 1 ? ' run completed' : ' runs completed')) : '';
   document.getElementById('preboardStartBtn').textContent = (p.attempts > 0 || mastered > 0) ? 'Continue' : 'Start';
 }
-renderPreboardProgress();
 document.getElementById('preboardResetBtn').addEventListener('click', () => {
   if(confirm('Reset progress for "PP & Building Laws — Preboard Review"? This clears its mastered questions and best score.')){
-    try{ localStorage.removeItem(PREBOARD_LOCAL_KEY); }catch(e){}
+    delete PROGRESS[PREBOARD_ID];
+    saveProgress(PROGRESS);
     renderPreboardProgress();
+    renderDashboard();
   }
 });
-// Refresh if the person returns to this tab/page after taking the quiz (e.g. via back button).
-document.addEventListener('visibilitychange', () => { if(!document.hidden) renderPreboardProgress(); });
-window.addEventListener('pageshow', renderPreboardProgress);
+// Refresh if the person returns to this tab/page after taking the quiz (e.g. via back
+// button) — re-pull the row from Supabase since the Preboard page saves there directly.
+async function refreshProgressFromRemote(){
+  if(!currentUser) return;
+  const { data: row } = await sb.from('progress').select('data').eq('user_id', currentUser.id).single();
+  if(!row) return;
+  FULL_DATA = migrateFullData(row.data);
+  if(!FULL_DATA[SUBJECT_ID]) FULL_DATA[SUBJECT_ID] = {};
+  PROGRESS = FULL_DATA[SUBJECT_ID];
+  renderPreboardProgress();
+  renderDashboard();
+}
+document.addEventListener('visibilitychange', () => { if(!document.hidden) refreshProgressFromRemote(); });
+window.addEventListener('pageshow', refreshProgressFromRemote);
 </script>
 </body>
 </html>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" type="image/png" href="../../../favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="../../../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../../../apple-touch-icon.png">
+<link rel="manifest" href="../../../site.webmanifest">
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -536,22 +536,63 @@ let shuffleMode = false;
 let optOrders = [];
 let everMissed = new Set();
 
-// ============== LOCAL PROGRESS (not synced to the site-wide tracker) ==============
-// Mirrors the {mastered, bestCorrect, bestTotal, attempts} shape used elsewhere on
-// the site, but kept in its own local-only key so the parent index page can show
-// a progress bar and Start/Continue button for this quiz.
-const LOCAL_PROGRESS_KEY = 'lea_local_progress_bldglaws_preboard_v1';
-function loadLocalProgress(){
-  try{
-    const raw = localStorage.getItem(LOCAL_PROGRESS_KEY);
-    if(raw) return JSON.parse(raw);
-  }catch(e){}
-  return { mastered: [], bestCorrect: 0, bestTotal: 0, attempts: 0 };
+// ============== PROGRESS (synced to the site-wide Supabase tracker) ==============
+// Mirrors the {mastered, bestCorrect, bestTotal, attempts} shape used by every
+// other module, stored at FULL_DATA['building-laws'].preboard — the same row
+// and namespace the Building Laws dashboard reads, so progress here shows up
+// there too and follows the signed-in user across devices/browsers.
+const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+if (window.LEAPresence) { LEAPresence.init({ client: sb }); }
+
+const SUBJECT_ID = 'building-laws';
+const MODULE_ID = 'preboard';
+let currentUser = null;
+let FULL_DATA = {};
+let localProgress = { mastered: [], bestCorrect: 0, bestTotal: 0, attempts: 0 };
+let remoteSaveTimer = null;
+
+function migrateFullData(raw){
+  raw = raw || {};
+  const looksNamespaced = ['history', 'building-laws'].some(id => Object.prototype.hasOwnProperty.call(raw, id));
+  if(looksNamespaced || Object.keys(raw).length === 0) return raw;
+  return { history: raw }; // legacy pre-multi-subject shape was all History data
 }
+
 function saveLocalProgress(){
-  try{ localStorage.setItem(LOCAL_PROGRESS_KEY, JSON.stringify(localProgress)); }catch(e){}
+  if(!FULL_DATA[SUBJECT_ID]) FULL_DATA[SUBJECT_ID] = {};
+  FULL_DATA[SUBJECT_ID][MODULE_ID] = localProgress;
+  if(!currentUser) return;
+  clearTimeout(remoteSaveTimer);
+  remoteSaveTimer = setTimeout(async () => {
+    let totalMastered = 0, scoreSum = 0, scoreCount = 0;
+    Object.entries(FULL_DATA || {}).forEach(([subjId, subjectData]) => {
+      if(subjId === '__meta') return;
+      Object.values(subjectData || {}).forEach(mp => {
+        totalMastered += (mp.mastered || []).length;
+        if(mp.bestTotal > 0){ scoreSum += (mp.bestCorrect / mp.bestTotal); scoreCount++; }
+      });
+    });
+    await sb.from('progress').upsert({
+      user_id: currentUser.id,
+      data: FULL_DATA,
+      total_mastered: totalMastered,
+      avg_best_score: scoreCount > 0 ? (scoreSum / scoreCount) : 0,
+      updated_at: new Date().toISOString()
+    });
+  }, 600);
 }
-let localProgress = loadLocalProgress();
+
+async function initProgress(user){
+  currentUser = user;
+  let { data: row } = await sb.from('progress').select('data').eq('user_id', user.id).single();
+  FULL_DATA = row ? migrateFullData(row.data) : {};
+  if(!FULL_DATA[SUBJECT_ID]) FULL_DATA[SUBJECT_ID] = {};
+  const existing = FULL_DATA[SUBJECT_ID][MODULE_ID];
+  localProgress = existing || { mastered: [], bestCorrect: 0, bestTotal: 0, attempts: 0 };
+  FULL_DATA[SUBJECT_ID][MODULE_ID] = localProgress;
+}
 
 const tesseraeEl = document.getElementById('tesserae');
 const progressText = document.getElementById('progressText');
@@ -857,8 +898,18 @@ document.getElementById('orderShuffleBtn').addEventListener('click', () => {
 
 const themeToggleBtn = document.getElementById('themeToggleBtn');
 if (window.LEATheme) { LEATheme.init({ altClass:'dark-mode', defaultIs:'light', buttonId:'themeToggleBtn', lightIcon:'\ud83c\udf19', darkIcon:'\u2600\ufe0f' }); }
-buildTesserae();
-renderQuestion();
+
+sb.auth.onAuthStateChange((event, session) => {
+  if(event === 'SIGNED_OUT') window.location.href = '../../../index.html';
+});
+
+(async function initApp(){
+  const { data: { session } } = await sb.auth.getSession();
+  if(!session){ window.location.href = '../../../index.html'; return; }
+  await initProgress(session.user);
+  buildTesserae();
+  renderQuestion();
+})();
 </script>
 </body>
 </html>
