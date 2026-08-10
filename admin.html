@@ -118,6 +118,7 @@ let fileTree = [];        // list of {path} for every .html file in the repo
 let currentFilePath = '';
 let currentFileRaw = '';
 let currentQuestions = null; // parsed QUESTIONS array, or null if this file doesn't have one
+let currentDoc = null;       // parsed Document, used by the generic text editor
 
 function showGate(html, isError){
   gateEl.style.display = 'block';
@@ -343,7 +344,7 @@ async function openFile(path){
       renderQuizEditor(path);
     } else {
       currentQuestions = null;
-      renderRawEditor(path);
+      renderTextEditor(path);
     }
   }catch(e){
     editorArea.innerHTML = '<div class="card msg error">' + escapeHtml(e.message) + '</div>';
@@ -370,7 +371,6 @@ function renderQuizEditor(path){
     </div>
     <div class="actions">
       <button class="primary" id="saveQuizBtn">Save to site</button>
-      <button id="rawModeBtn">Switch to raw HTML editor</button>
     </div>
     <div class="save-status" id="quizSaveStatus"></div>
   `;
@@ -381,7 +381,6 @@ function renderQuizEditor(path){
     renderQuestionsList();
   });
   document.getElementById('saveQuizBtn').addEventListener('click', () => saveQuizFile(path));
-  document.getElementById('rawModeBtn').addEventListener('click', () => renderRawEditor(path));
 }
 
 function renderQuestionsList(){
@@ -461,39 +460,84 @@ async function saveQuizFile(path){
   }
 }
 
-function renderRawEditor(path){
+// Finds every piece of visible writing on the page (headings, paragraphs, notes, etc.)
+// and turns each one into a plain text box — no code shown, ever.
+let textNodeRefs = []; // {node, tag} — live references into currentDoc
+
+function collectTextNodes(doc){
+  textNodeRefs = [];
+  const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT, null);
+  let n;
+  while((n = walker.nextNode())){
+    if(!n.nodeValue || n.nodeValue.trim() === '') continue;
+    const parentTag = n.parentElement ? n.parentElement.closest('script, style, noscript') : null;
+    if(parentTag) continue;
+    textNodeRefs.push({ node: n, tag: n.parentElement ? n.parentElement.tagName.toLowerCase() : 'text' });
+  }
+}
+
+function renderTextEditor(path){
+  const parser = new DOMParser();
+  currentDoc = parser.parseFromString(currentFileRaw, 'text/html');
+  collectTextNodes(currentDoc);
+
+  const titleMatch = currentFileRaw.match(/<title>([^<]*)<\/title>/);
+  const pageTitle = titleMatch ? titleMatch[1] : '';
+
   const editorArea = document.getElementById('editorArea');
   editorArea.innerHTML = `
     <div class="card">
-      <div class="msg info" style="margin-bottom:14px;">
-        This page doesn't look like a standard quiz file, so here's the raw HTML — edit carefully, this is the whole page's code.
-      </div>
-      <textarea id="rawEditor" rows="24" style="font-family:monospace;font-size:12px;">${escapeHtml(currentFileRaw)}</textarea>
+      <div class="field-label">Browser tab title</div>
+      <input type="text" id="pageTitleInput2" value="${escapeHtml(pageTitle)}">
+    </div>
+    <div class="card">
+      ${textNodeRefs.map((ref, i) => {
+        const val = ref.node.nodeValue.trim();
+        const long = val.length > 60;
+        return `
+          <div class="field-label">${escapeHtml(ref.tag)}</div>
+          ${long
+            ? `<textarea data-idx="${i}" rows="3">${escapeHtml(val)}</textarea>`
+            : `<input type="text" data-idx="${i}" value="${escapeHtml(val)}">`}
+        `;
+      }).join('')}
     </div>
     <div class="actions">
-      <button class="primary" id="saveRawBtn">Save to site</button>
+      <button class="primary" id="saveTextBtn">Save to site</button>
     </div>
-    <div class="save-status" id="rawSaveStatus"></div>
+    <div class="save-status" id="textSaveStatus"></div>
   `;
-  document.getElementById('saveRawBtn').addEventListener('click', async () => {
-    const statusEl = document.getElementById('rawSaveStatus');
-    const saveBtn = document.getElementById('saveRawBtn');
-    saveBtn.disabled = true;
-    statusEl.className = 'save-status';
-    statusEl.textContent = 'Saving…';
-    try{
-      const newText = document.getElementById('rawEditor').value;
-      await callSave(path, newText, `Admin: raw edit — ${path}`);
-      currentFileRaw = newText;
-      statusEl.className = 'save-status ok';
-      statusEl.textContent = 'Saved! It may take a minute or two for GitHub Pages to update the live site.';
-    }catch(e){
-      statusEl.className = 'save-status err';
-      statusEl.textContent = 'Error: ' + e.message;
-    }finally{
-      saveBtn.disabled = false;
-    }
+
+  editorArea.querySelectorAll('[data-idx]').forEach(el => {
+    el.addEventListener('input', () => {
+      textNodeRefs[+el.dataset.idx].node.nodeValue = el.value;
+    });
   });
+
+  document.getElementById('saveTextBtn').addEventListener('click', () => saveTextFile(path));
+}
+
+async function saveTextFile(path){
+  const statusEl = document.getElementById('textSaveStatus');
+  const saveBtn = document.getElementById('saveTextBtn');
+  saveBtn.disabled = true;
+  statusEl.className = 'save-status';
+  statusEl.textContent = 'Saving…';
+  try{
+    const newTitle = document.getElementById('pageTitleInput2').value;
+    let newText = '<!DOCTYPE html>\n' + currentDoc.documentElement.outerHTML;
+    newText = newText.replace(/<title>[^<]*<\/title>/, `<title>${newTitle}</title>`);
+
+    await callSave(path, newText, `Admin: edit page text — ${path}`);
+    currentFileRaw = newText;
+    statusEl.className = 'save-status ok';
+    statusEl.textContent = 'Saved! It may take a minute or two for GitHub Pages to update the live site.';
+  }catch(e){
+    statusEl.className = 'save-status err';
+    statusEl.textContent = 'Error: ' + e.message;
+  }finally{
+    saveBtn.disabled = false;
+  }
 }
 
 init();
