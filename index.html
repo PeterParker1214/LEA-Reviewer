@@ -542,6 +542,7 @@ function openSource(sourceId){
   if(source.ready){
     subjectPanel.classList.remove('hidden');
     comingSoonPanel.classList.add('hidden');
+    try{ localStorage.setItem('leaLastSource', sourceId); }catch(e){}
   } else {
     comingSoonPanel.classList.remove('hidden');
     subjectPanel.classList.add('hidden');
@@ -554,6 +555,7 @@ function backToSources(){
   subjectPanel.classList.add('hidden');
   comingSoonPanel.classList.add('hidden');
   sourcePanel.classList.remove('hidden');
+  try{ localStorage.removeItem('leaLastSource'); }catch(e){}
 }
 document.getElementById('backToSourcesBtn').addEventListener('click', backToSources);
 document.getElementById('backToSourcesBtn2').addEventListener('click', backToSources);
@@ -810,9 +812,20 @@ async function showSignedIn(user){
   welcomeName.textContent = username;
   authPanel.classList.add('hidden');
   signedInShell.classList.remove('hidden');
-  sourcePanel.classList.remove('hidden');
-  subjectPanel.classList.add('hidden');
-  comingSoonPanel.classList.add('hidden');
+
+  let lastSourceId = null;
+  try{ lastSourceId = localStorage.getItem('leaLastSource'); }catch(e){}
+  const lastSource = SOURCES.find(s => s.id === lastSourceId && s.ready);
+  if(lastSource){
+    sourcePanel.classList.add('hidden');
+    subjectPanel.classList.remove('hidden');
+    comingSoonPanel.classList.add('hidden');
+  } else {
+    sourcePanel.classList.remove('hidden');
+    subjectPanel.classList.add('hidden');
+    comingSoonPanel.classList.add('hidden');
+  }
+
   startPresence(username);
   await loadFullProgress(user);
 }
