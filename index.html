@@ -377,7 +377,7 @@
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>
 
   <div class="masthead">
-    <div class="eyebrow">JPT Manila · Licensure Exam for Architects</div>
+    <div class="eyebrow">Licensure Exam for Architects</div>
     <h1>LEA REVIEWER</h1>
     <div class="sub">Structured compendiums and practice modules for every subject on the boards. Log in to track your mastery, pick up where you left off, and see where you stand on the leaderboard.</div>
     <div class="step-frieze"></div>
@@ -535,13 +535,13 @@ const SUBJECTS = [
 const READY_SUBJECTS = SUBJECTS.filter(s => s.ready);
 
 // ---- Source folders (top-level, sit above Subjects) ----
-// All current subjects live under JPT. The others are placeholders until
+// All current subjects live under Source A. The others are placeholders until
 // their own subject libraries are compiled.
 const SOURCES = [
-  { id: "jpt", name: "JPT", ready: true, blurb: "" },
-  { id: "mst", name: "MST", ready: false, blurb: "The MST library isn't set up yet — it'll appear here once it's ready." },
-  { id: "toplab", name: "Toplab", ready: false, blurb: "The Toplab library isn't set up yet — it'll appear here once it's ready." },
-  { id: "freesource", name: "Freesource", ready: false, blurb: "The Freesource library isn't set up yet — it'll appear here once it's ready." },
+  { id: "jpt", name: "Source A", ready: true, blurb: "" },
+  { id: "mst", name: "Source B", ready: false, blurb: "This library isn't set up yet — it'll appear here once it's ready." },
+  { id: "toplab", name: "Source C", ready: false, blurb: "This library isn't set up yet — it'll appear here once it's ready." },
+  { id: "freesource", name: "Source D", ready: false, blurb: "This library isn't set up yet — it'll appear here once it's ready." },
 ];
 
 const authPanel = document.getElementById('authPanel');
