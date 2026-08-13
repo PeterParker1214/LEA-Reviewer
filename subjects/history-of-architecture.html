@@ -12,7 +12,7 @@
 <title>History of Architecture — Module Compendium</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Bitter:ital,wght@0,400;0,500;0,600;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Space+Grotesk:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Marcellus&family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Bitter:ital,wght@0,400;0,500;0,600;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Space+Grotesk:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Marcellus&family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#f1e4c9;
@@ -39,6 +39,25 @@
     --clay:#b5502e; --clay-bright:#a13d1a; --turq:#1f8577; --turq-bright:#1c7267; --sand:#6b5a44;
     --good:#2f7a4f; --bad:#a13d2e; --line: rgba(43,32,19,0.18); --bg-panel-deep:#ecdfc3;
     --accent: #b5502e; --accent2: #a13d1a;
+  }
+  /* Preboard keeps its own original light-mode palette (from its standalone
+     quiz page) instead of the generic site light theme above. */
+  body.light-mode[data-quiz-module="preboard"]{
+    --ink:#2c2618; --bg-deep:#efe6d6; --bg-panel:#fbf6ea; --bg-panel-deep:#e6dcc4;
+    --bg-glow1:#f2ead8; --bg-glow2:#f6ecd2;
+    --clay:#a9752c; --clay-bright:#c68f3f; --turq:#2f5d54; --turq-bright:#3f7d70;
+    --sand:#8a7c5e; --good:#3f6b45; --bad:#9c3b3b; --line: rgba(47,93,84,0.24);
+    --accent:#a9752c; --accent2:#c68f3f;
+  }
+  /* ...and its own original dark-mode palette too, instead of the generic
+     site dark theme, so toggling dark mode inside Preboard matches its
+     standalone quiz page rather than falling back to the compendium look. */
+  body[data-quiz-module="preboard"]:not(.light-mode){
+    --ink:#ece3d0; --bg-deep:#181c19; --bg-panel:#20261f; --bg-panel-deep:#1c221c;
+    --bg-glow1:#1f2621; --bg-glow2:#20281f;
+    --clay:#d7a441; --clay-bright:#eccb7c; --turq:#6fb5a3; --turq-bright:#8fcdbc;
+    --sand:#9aa898; --good:#7cbf87; --bad:#e2837a; --line: rgba(111,181,163,0.28);
+    --accent:#d7a441; --accent2:#eccb7c;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
@@ -312,7 +331,7 @@
   .feedback b{ color: var(--accent2); }
   .feedback .ref{
     display:block; margin-top:10px;
-    font-family:'Space Grotesk', monospace;
+    font-family:'JetBrains Mono', monospace;
     font-size:10.5px; letter-spacing:0.05em; text-transform:uppercase;
     color:var(--accent);
   }
@@ -2372,11 +2391,11 @@ const THEMES = {
     fontHead:"'Big Shoulders Display', sans-serif", fontBody:"'IBM Plex Sans', sans-serif"
   },
   preboard: {
-    ink:"#2c2618", bgDeep:"#efe6d6", bgPanel:"#fbf6ea", bgPanelDeep:"#e6dcc4",
-    bgGlow1:"#f5efe0", bgGlow2:"#e9ddc4",
-    clay:"#a9752c", clayBright:"#d7a441", turq:"#2f5d54", turqBright:"#6fb5a3",
-    sand:"#8a7c5e", good:"#3f6b45", bad:"#9c3b3b", line:"rgba(47,93,84,0.24)",
-    fontHead:"'Playfair Display', serif", fontBody:"'Bitter', serif"
+    ink:"#ece3d0", bgDeep:"#181c19", bgPanel:"#20261f", bgPanelDeep:"#1a201a",
+    bgGlow1:"#212a20", bgGlow2:"#241f16",
+    clay:"#d7a441", clayBright:"#e8bd63", turq:"#6fb5a3", turqBright:"#8fcdbc",
+    sand:"#9aa898", good:"#7cbf87", bad:"#e2837a", line:"rgba(111,181,163,0.28)",
+    fontHead:"'Playfair Display', serif", fontBody:"'Source Serif 4', Georgia, serif"
   }
 };
 
@@ -2466,6 +2485,7 @@ function restoreDefaultTheme(){
   applyMotif(DEFAULT_MOTIF);
   document.documentElement.style.removeProperty('--accent');
   document.documentElement.style.removeProperty('--accent2');
+  document.body.removeAttribute('data-quiz-module');
 }
 
 // ============== PERSISTENT PROGRESS (shared across all subjects) ==============
@@ -3193,6 +3213,7 @@ function openModule(id){
   const t = THEMES[m.id] || DEFAULT_THEME;
   document.documentElement.style.setProperty('--accent', t.clay);
   document.documentElement.style.setProperty('--accent2', t.clayBright);
+  document.body.setAttribute('data-quiz-module', m.id);
 
   document.getElementById('quizEyebrow').innerHTML = 'Module ' + m.num + (m.hard ? ' · Hard Mode' : '') + '';
   document.getElementById('quizTitle').innerHTML = m.title;
