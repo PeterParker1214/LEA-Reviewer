@@ -4,11 +4,14 @@
  * Theory of Architecture, and any future subject built the same way).
  *
  * Each quiz question that's answered correctly at least once is "mastered".
- * Progress is namespaced by subjectId + moduleId and stored in localStorage,
- * matching the existing per-quiz pattern already used on this site (see the
- * Professional Practice SPP card) — just centralized so every subject gets
- * the same "Overall Progress" summary card, and so new modules only need a
- * couple of lines to plug in.
+ * Progress is namespaced by subjectId + moduleId. It's always cached in
+ * localStorage (so the badges paint instantly and guests/offline still
+ * work), and — once a signed-in session is available — it's also synced to
+ * the same `progress` table (one JSON blob per user, namespaced by subject)
+ * that Building Laws and History already use. That's what lets a subject
+ * built on LEAProgress plug into the site-wide dashboard and the
+ * get_leaderboard() RPC for free, with no per-subject sync code and no new
+ * tables — same pattern, same table, just read/written by more pages now.
  *
  * To wire a new quiz module into this tracker:
  *   1. On the quiz page, include this script and set:
@@ -23,15 +26,23 @@
  *   const MODULES = [{ id:'your-module-id', total:30, title:'...' }, ...];
  *   LEAProgress.renderOverallCard(document.getElementById('overallCard'), 'your-subject-id', MODULES);
  *   MODULES.forEach(m => LEAProgress.renderModuleBadge(document.getElementById('badge-'+m.id), 'your-subject-id', m.id, m.total));
+ *
+ * Sync starts itself as soon as this script loads — nothing extra to call.
+ * A page only needs to react to it if it wants to re-render the moment
+ * remote data lands; the existing `window.leaOnProgressReset` hook (already
+ * defined on every page that uses this tracker, for the "reset all" button)
+ * doubles as that signal, so no new hook is needed either.
  */
 window.LEAProgress = (function () {
   const STORAGE_PREFIX = 'lea_progress_';
+  const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
 
   function key(subjectId, moduleId) {
     return STORAGE_PREFIX + subjectId + '_' + moduleId + '_v1';
   }
 
-  function load(subjectId, moduleId) {
+  function loadLocal(subjectId, moduleId) {
     try {
       const raw = localStorage.getItem(key(subjectId, moduleId));
       if (raw) {
@@ -43,8 +54,153 @@ window.LEAProgress = (function () {
     return { mastered: [], bestCorrect: 0, bestTotal: 0, attempts: 0 };
   }
 
-  function save(subjectId, moduleId, data) {
+  function saveLocal(subjectId, moduleId, data) {
     try { localStorage.setItem(key(subjectId, moduleId), JSON.stringify(data)); } catch (e) {}
+  }
+
+  // ---- Remote sync (mirrors the Building Laws / History `progress` row) ----
+  let sbClient = null;
+  let syncUser = null;
+  let fullData = null;       // whole multi-subject blob once loaded; null until a session syncs
+  let saveTimer = null;
+  let lastRenderCtx = null;  // {subjectId, moduleIds} from the most recent renderOverallCard call
+
+  function ensureSbLib(cb) {
+    if (window.supabase && window.supabase.createClient) { cb(); return; }
+    const existing = document.querySelector('script[data-lea-supabase-lib]');
+    if (existing) { existing.addEventListener('load', cb); return; }
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js';
+    s.setAttribute('data-lea-supabase-lib', '1');
+    s.onload = cb;
+    document.head.appendChild(s);
+  }
+
+  function getClient() {
+    if (!window.supabase || !window.supabase.createClient) return null;
+    sbClient = window.__leaSharedClient = window.__leaSharedClient ||
+      window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    return sbClient;
+  }
+
+  // Generic, module-shape-agnostic totals across ALL subjects in the row —
+  // kept as top-level columns for reference, same as Building Laws does.
+  // Leaderboards themselves read live from the `data` JSON via the RPC.
+  function computeGlobalTotals(full) {
+    let totalMastered = 0, scoreSum = 0, scoreCount = 0;
+    Object.entries(full || {}).forEach(function ([subjId, subjectData]) {
+      if (subjId === '__meta') return;
+      Object.values(subjectData || {}).forEach(function (mp) {
+        totalMastered += (mp.mastered || []).length;
+        if (mp.bestTotal > 0) { scoreSum += (mp.bestCorrect / mp.bestTotal); scoreCount++; }
+      });
+    });
+    return { totalMastered: totalMastered, avgScore: scoreCount > 0 ? (scoreSum / scoreCount) : 0 };
+  }
+
+  function pushRemote() {
+    if (!syncUser || !sbClient || !fullData) return;
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function () {
+      const totals = computeGlobalTotals(fullData);
+      sbClient.from('progress').upsert({
+        user_id: syncUser.id,
+        data: fullData,
+        total_mastered: totals.totalMastered,
+        avg_best_score: totals.avgScore,
+        updated_at: new Date().toISOString()
+      }).then(function () {});
+    }, 600);
+  }
+
+  // One-time catch-up for a browser that built up local progress before this
+  // subject synced: fold anything richer on the local side into fullData.
+  // Doesn't clobber remote progress that's already ahead (e.g. from another
+  // device) — takes the union of mastered questions and the better best score.
+  function migrateLocalIntoRemote(subjectId, moduleIds) {
+    if (!fullData) return false;
+    let changed = false;
+    if (!fullData[subjectId]) fullData[subjectId] = {};
+    moduleIds.forEach(function (moduleId) {
+      const local = loadLocal(subjectId, moduleId);
+      const localHasProgress = (local.mastered && local.mastered.length > 0) || local.bestTotal > 0;
+      if (!localHasProgress) return;
+      const remote = fullData[subjectId][moduleId];
+      if (!remote) {
+        fullData[subjectId][moduleId] = local;
+        changed = true;
+        return;
+      }
+      const mergedMastered = Array.from(new Set((remote.mastered || []).concat(local.mastered || [])));
+      const localBetter = (local.bestCorrect || 0) > (remote.bestCorrect || 0);
+      if (mergedMastered.length !== (remote.mastered || []).length || localBetter) {
+        fullData[subjectId][moduleId] = {
+          mastered: mergedMastered,
+          bestCorrect: localBetter ? local.bestCorrect : remote.bestCorrect,
+          bestTotal: localBetter ? local.bestTotal : remote.bestTotal,
+          attempts: Math.max(remote.attempts || 0, local.attempts || 0)
+        };
+        changed = true;
+      }
+    });
+    return changed;
+  }
+
+  function runPendingMigration() {
+    if (!lastRenderCtx || !fullData) return;
+    if (migrateLocalIntoRemote(lastRenderCtx.subjectId, lastRenderCtx.moduleIds)) pushRemote();
+  }
+
+  function loadRow(user) {
+    syncUser = user;
+    sbClient.from('progress').select('data').eq('user_id', user.id).single().then(function (res) {
+      if (res && res.data) {
+        fullData = res.data.data || {};
+      } else {
+        fullData = {};
+        sbClient.from('progress').insert({ user_id: user.id, data: {} }).then(function () {});
+      }
+      runPendingMigration();
+      if (typeof window.leaOnProgressReset === 'function') window.leaOnProgressReset();
+    });
+  }
+
+  let syncStarted = false;
+  function initSync() {
+    if (syncStarted) return;
+    syncStarted = true;
+    ensureSbLib(function () {
+      const sb = getClient();
+      if (!sb) return;
+      sb.auth.onAuthStateChange(function (event, session) {
+        if (event === 'SIGNED_IN' && session) loadRow(session.user);
+        if (event === 'SIGNED_OUT') { syncUser = null; fullData = null; }
+      });
+      sb.auth.getSession().then(function (res) {
+        const session = res && res.data && res.data.session;
+        if (session) loadRow(session.user);
+      });
+    });
+  }
+
+  // ---- Public, sync-aware read/write (same signatures as before) ----
+  function load(subjectId, moduleId) {
+    if (fullData) {
+      if (!fullData[subjectId]) fullData[subjectId] = {};
+      const p = fullData[subjectId][moduleId];
+      if (p) return p;
+      return { mastered: [], bestCorrect: 0, bestTotal: 0, attempts: 0 };
+    }
+    return loadLocal(subjectId, moduleId);
+  }
+
+  function save(subjectId, moduleId, data) {
+    saveLocal(subjectId, moduleId, data); // keep the local cache warm regardless
+    if (fullData) {
+      if (!fullData[subjectId]) fullData[subjectId] = {};
+      fullData[subjectId][moduleId] = data;
+      pushRemote();
+    }
   }
 
   function markMastered(subjectId, moduleId, qIndex) {
@@ -69,6 +225,10 @@ window.LEAProgress = (function () {
 
   function reset(subjectId, moduleId) {
     try { localStorage.removeItem(key(subjectId, moduleId)); } catch (e) {}
+    if (fullData && fullData[subjectId]) {
+      delete fullData[subjectId][moduleId];
+      pushRemote();
+    }
   }
 
   function resetSubject(subjectId, moduleIds) {
@@ -95,6 +255,8 @@ window.LEAProgress = (function () {
 
   function renderOverallCard(container, subjectId, modules) {
     if (!container) return;
+    lastRenderCtx = { subjectId: subjectId, moduleIds: modules.map(function (m) { return m.id; }) };
+    if (fullData && migrateLocalIntoRemote(subjectId, lastRenderCtx.moduleIds)) pushRemote();
     const t = subjectTotals(subjectId, modules);
     const pct = t.totalQuestions > 0 ? Math.round((t.totalMastered / t.totalQuestions) * 100) : 0;
     container.innerHTML =
@@ -127,6 +289,8 @@ window.LEAProgress = (function () {
       '<div class="mp-cap">' + c + ' / ' + total + ' mastered</div>';
   }
 
+  initSync();
+
   return {
     load: load,
     save: save,
@@ -138,6 +302,7 @@ window.LEAProgress = (function () {
     subjectTotals: subjectTotals,
     renderOverallCard: renderOverallCard,
     renderModuleBadge: renderModuleBadge,
-    key: key
+    key: key,
+    initSync: initSync
   };
 })();

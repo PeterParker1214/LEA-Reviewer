@@ -125,6 +125,33 @@
     margin-top:24px; background: linear-gradient(180deg, var(--bg-panel), var(--bg-panel-deep));
     border:1px solid var(--line); border-radius:10px; padding:16px 20px; font-size:12.5px; color:var(--sand); line-height:1.6;
   }
+  /* ===== leaderboard modal (reused pattern) ===== */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(0,0,0,0.6);
+    display:flex; align-items:center; justify-content:center;
+    padding:16px; z-index:100;
+  }
+  .modal-overlay.hidden{ display:none; }
+  .modal-box{
+    width:100%; max-width:380px; max-height:86vh; overflow-y:auto;
+    background:var(--bg-panel); border:1px solid var(--line);
+    border-radius:14px; padding:24px 22px; position:relative;
+  }
+  .modal-close{
+    position:absolute; top:12px; right:14px; background:none; border:none;
+    color:var(--sand); font-size:20px; cursor:pointer; line-height:1;
+  }
+  .modal-box h2{ font-family:var(--font-head); font-size:20px; margin:0 0 16px; color:var(--ink); }
+  .leaderboard-list{ display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+  .leaderboard-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:9px 12px; border-radius:8px; background:var(--bg-panel-deep);
+    border:1px solid var(--line); font-size:13.5px;
+  }
+  .leaderboard-row .lb-rank{ color:var(--clay-bright); font-weight:700; width:24px; }
+  .leaderboard-row .lb-name{ flex:1; color:var(--ink); }
+  .leaderboard-row .lb-stats{ color:var(--sand); font-size:12px; text-align:right; }
+  .leaderboard-empty{ color:var(--sand); font-style:italic; text-align:center; padding:12px 0; }
 </style>
 <script src="../../assets/presence.js"></script>
 <script src="../../assets/module-progress.js"></script>
@@ -134,6 +161,7 @@
 <div class="wrap">
   <div class="auth-bar">
     <div><a class="auth-link" href="../../index.html?source=jpt">&larr; All subjects</a> &nbsp;&middot;&nbsp; <span id="authStatus">Checking session…</span></div>
+    <button class="auth-link" id="openLeaderboardBtn">🏆 Leaderboard</button>
     <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">☀️</button>
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>
   </div>
@@ -165,7 +193,18 @@
 
   </div>
 
-  <div class="note-panel">Progress on this page is tracked per device (mastered questions and best scores are saved in this browser).</div>
+  <div class="note-panel">Progress is saved to your account and synced across devices.</div>
+</div>
+
+<!-- ===================== LEADERBOARD MODAL ===================== -->
+<div class="modal-overlay hidden" id="leaderboardModalOverlay">
+  <div class="modal-box">
+    <button class="modal-close" id="leaderboardModalClose">&times;</button>
+    <h2>🏆 Leaderboard</h2>
+    <div class="leaderboard-list" id="leaderboardList">
+      <div class="leaderboard-empty">Loading…</div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -191,6 +230,28 @@ sb.auth.onAuthStateChange((event, session) => {
   const { data: { session } } = await sb.auth.getSession();
   if(session){ await onSignedIn(session.user); } else { window.location.href = '../../index.html'; }
 })();
+
+// ---- Leaderboard (same get_leaderboard RPC Building Laws uses, scoped to this subject) ----
+const leaderboardModalOverlay = document.getElementById('leaderboardModalOverlay');
+document.getElementById('openLeaderboardBtn').addEventListener('click', async () => {
+  leaderboardModalOverlay.classList.remove('hidden');
+  const listEl = document.getElementById('leaderboardList');
+  listEl.innerHTML = '<div class="leaderboard-empty">Loading…</div>';
+  const { data, error } = await sb.rpc('get_leaderboard', { p_subject: LEA_SUBJECT_ID_PAGE });
+  if(error || !data || data.length === 0){
+    listEl.innerHTML = '<div class="leaderboard-empty">No scores yet — be the first!</div>';
+    return;
+  }
+  listEl.innerHTML = data.map((row, i) =>
+    '<div class="leaderboard-row">' +
+      '<span class="lb-rank">' + (i+1) + '</span>' +
+      '<span class="lb-name">' + row.username + '</span>' +
+      '<span class="lb-stats">' + row.total_mastered + ' mastered · ' + Math.round((row.avg_best_score||0)*100) + '% avg</span>' +
+    '</div>'
+  ).join('');
+});
+document.getElementById('leaderboardModalClose').addEventListener('click', () => leaderboardModalOverlay.classList.add('hidden'));
+leaderboardModalOverlay.addEventListener('click', (e) => { if(e.target === leaderboardModalOverlay) leaderboardModalOverlay.classList.add('hidden'); });
 </script>
 
 <script>
