@@ -470,6 +470,7 @@
 </style>
 <script src="../assets/presence.js"></script>
 <script src="../assets/theme.js"></script>
+<script src="../assets/sfx.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -485,6 +486,8 @@
     <div><a class="auth-link" href="../index.html?source=jpt">&larr; All subjects</a> &nbsp;·&nbsp; <span id="authStatus">Checking session…</span></div>
     <button class="auth-link" id="openLeaderboardBtn">🏆 Leaderboard</button>
     <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">☀️</button>
+    <button class="theme-toggle" id="sfxToggleBtn" title="Mute / unmute sound effects">🔊</button>
+<script>if (window.LEASfx) { LEASfx.init({ buttonId:'sfxToggleBtn' }); }</script>
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>
   </div>
 
@@ -3010,6 +3013,7 @@ function selectAnswer(i, btn){
   const item = QUESTIONS[order[pos]];
   const correct = item.c;
   const isCorrect = (i === correct);
+  if (window.LEASfx) { isCorrect ? LEASfx.playCorrect() : LEASfx.playIncorrect(); }
   answersLog[pos] = {selected: i, isCorrect};
 
   const qIndex = order[pos];
@@ -3044,6 +3048,7 @@ forwardBtn.addEventListener('click', () => {
 finishBtn.addEventListener('click', showResults);
 
 function showResults(){
+  if (window.LEASfx) { LEASfx.playComplete(); }
   stopTimer();
   timerRow.classList.add('hidden');
   quizArea.classList.add('hidden');
