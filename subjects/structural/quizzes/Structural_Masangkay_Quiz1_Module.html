@@ -492,6 +492,7 @@
 <script src="../../../assets/presence.js"></script>
 <script src="../../../assets/module-progress.js"></script>
 <script src="../../../assets/theme.js"></script>
+<script src="../../../assets/sfx.js"></script>
 </head>
 <body>
 <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
@@ -526,6 +527,8 @@
       </div>
       <button class="toolbar-restart" id="toolbarRestartBtn">Restart from start</button>
       <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark mode">🌙</button>
+      <button class="theme-toggle" id="sfxToggleBtn" title="Mute / unmute sound effects">🔊</button>
+<script>if (window.LEASfx) { LEASfx.init({ buttonId:'sfxToggleBtn' }); }</script>
     </div>
   </div>
 
@@ -811,6 +814,7 @@ function selectAnswer(i, btn){
   const item = QUESTIONS[order[pos]];
   const correct = item.c;
   const isCorrect = (i === correct);
+  if (window.LEASfx) { isCorrect ? LEASfx.playCorrect() : LEASfx.playIncorrect(); }
   answersLog[pos] = {selected: i, isCorrect};
 
   if(isCorrect) everMissed.delete(order[pos]);
@@ -841,6 +845,7 @@ forwardBtn.addEventListener('click', () => {
 finishBtn.addEventListener('click', showResults);
 
 function showResults(){
+  if (window.LEASfx) { LEASfx.playComplete(); }
   stopTimer();
   timerRow.classList.add('hidden');
   quizArea.classList.add('hidden');

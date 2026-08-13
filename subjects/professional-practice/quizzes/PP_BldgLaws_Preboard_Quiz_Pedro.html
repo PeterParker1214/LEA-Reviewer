@@ -429,6 +429,7 @@
     .toolbar-actions{ justify-content:space-between; }
   }
 </style>
+<script src="../../../assets/sfx.js"></script>
 </head>
 <body>
 <div style="max-width:900px;margin:0 auto;padding:14px 16px 0;font-family:sans-serif;font-size:13px;">
@@ -463,6 +464,8 @@
       </div>
       <button class="toolbar-restart" id="toolbarRestartBtn">Restart from start</button>
       <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark mode">🌙</button>
+      <button class="theme-toggle" id="sfxToggleBtn" title="Mute / unmute sound effects">🔊</button>
+<script>if (window.LEASfx) { LEASfx.init({ buttonId:'sfxToggleBtn' }); }</script>
     </div>
   </div>
 
@@ -644,6 +647,7 @@ function selectAnswer(i, btn){
   const item = QUESTIONS[order[pos]];
   const correct = item.c;
   const isCorrect = (i === correct);
+  if (window.LEASfx) { isCorrect ? LEASfx.playCorrect() : LEASfx.playIncorrect(); }
   answersLog[pos] = {selected: i, isCorrect};
 
   if(isCorrect) everMissed.delete(order[pos]);
@@ -673,6 +677,7 @@ forwardBtn.addEventListener('click', () => {
 finishBtn.addEventListener('click', showResults);
 
 function showResults(){
+  if (window.LEASfx) { LEASfx.playComplete(); }
   quizArea.classList.add('hidden');
   document.querySelector('.tesserae').style.display = 'none';
   document.querySelector('.progress-label').style.display = 'none';
