@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <link rel="icon" type="image/png" href="../../favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="../../favicon-16x16.png" sizes="16x16">
 <link rel="icon" href="../../favicon.ico" sizes="any">
@@ -9,10 +8,10 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Building Laws — Quiz Compendium</title>
+<title>Building Laws/Codes</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Bitter:ital,wght@0,400;0,500;0,600;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Space+Grotesk:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Marcellus&family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&amp;family=Bitter:ital,wght@0,400;0,500;0,600;1,400&amp;family=Crimson+Text:ital,wght@0,400;0,600;1,400&amp;family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&amp;family=EB+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Inter:ital,wght@0,400;0,500;0,600;1,400&amp;family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&amp;family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=Marcellus&amp;family=Big+Shoulders+Display:wght@600;700;800&amp;family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#f1e4c9;
@@ -464,13 +463,13 @@
 
   <div class="masthead">
     <div class="eyebrow">Quiz Compendium</div>
-    <h1>Building Laws</h1>
+    <h1>Building Laws/Codes</h1>
     <div class="sub" id="mastheadSub">Five quizzes. One record of what you've mastered.</div>
     <div class="step-frieze"></div>
   </div>
 
   <div class="auth-bar">
-    <div><a class="auth-link" href="../../index.html?source=jpt">&larr; All subjects</a> &nbsp;·&nbsp; <span id="authStatus">Checking session…</span></div>
+    <div><a class="auth-link" href="../../index.html?source=jpt">← All subjects</a> &nbsp;·&nbsp; <span id="authStatus">Checking session…</span></div>
     <button class="auth-link" id="openLeaderboardBtn">🏆 Leaderboard</button>
     <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">☀️</button>
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>
@@ -525,7 +524,7 @@
 
   <div id="quizView" class="hidden">
     <div class="back-row">
-      <button class="back-link" id="backToModulesBtn">&larr; All quizzes</button>
+      <button class="back-link" id="backToModulesBtn">← All quizzes</button>
     </div>
 
     <div class="masthead" id="quizMasthead" style="margin-bottom:12px;">
@@ -572,8 +571,8 @@
         <div class="feedback" id="feedback"></div>
         <div class="controls">
           <div class="nav-arrows">
-            <button class="arrow-btn" id="backBtn">&larr; Back</button>
-            <button class="arrow-btn" id="forwardBtn">Forward &rarr;</button>
+            <button class="arrow-btn" id="backBtn">← Back</button>
+            <button class="arrow-btn" id="forwardBtn">Forward →</button>
           </div>
           <button class="arrow-btn primary" id="finishBtn" style="display:none;">See results →</button>
         </div>
@@ -608,7 +607,7 @@
 <!-- ===================== LEADERBOARD MODAL ===================== -->
 <div class="modal-overlay hidden" id="leaderboardModalOverlay">
   <div class="modal-box">
-    <button class="modal-close" id="leaderboardModalClose">&times;</button>
+    <button class="modal-close" id="leaderboardModalClose">×</button>
     <h2>🏆 Leaderboard</h2>
     <div class="leaderboard-list" id="leaderboardList">
       <div class="leaderboard-empty">Loading…</div>
@@ -1632,5 +1631,6 @@ async function refreshProgressFromRemote(){
 document.addEventListener('visibilitychange', () => { if(!document.hidden) refreshProgressFromRemote(); });
 window.addEventListener('pageshow', refreshProgressFromRemote);
 </script>
-</body>
-</html>
+
+
+</body></html>
