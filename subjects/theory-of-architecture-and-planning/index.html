@@ -190,6 +190,13 @@
       <div class="module-meta"><span>45 questions</span><span class="module-arrow">&rarr;</span></div>
       <div id="badge-zhardei-quiz2"></div>
     </a>
+    <a class="module-card" style="--accent1:#c1502e;--accent2:#d4a373;" href="quizzes/TAPP_Zhardei_PreBoard_Module.html">
+      <div class="module-num">Pre-Board Exam</div>
+      <div class="module-title">TAPP — Pre-Board Exam (200 Items)</div>
+      <div class="module-sub">Full-coverage mock exam: ordering principles through urban planning theory, with answer key and explanations.</div>
+      <div class="module-meta"><span>200 questions</span><span class="module-arrow">&rarr;</span></div>
+      <div id="badge-zhardei-preboard"></div>
+    </a>
 
   </div>
 
@@ -256,7 +263,7 @@ leaderboardModalOverlay.addEventListener('click', (e) => { if(e.target === leade
 
 <script>
 const LEA_SUBJECT_ID_PAGE = 'theory-of-architecture-and-planning';
-const MODULES = [{id:'zhardei-quiz1', total:50, title:'Theory of Architecture — Quiz 1'},{id:'zhardei-quiz2', total:45, title:'Theory of Architecture & Principles of Planning — Quiz 2'}];
+const MODULES = [{id:'zhardei-quiz1', total:50, title:'Theory of Architecture — Quiz 1'},{id:'zhardei-quiz2', total:45, title:'Theory of Architecture & Principles of Planning — Quiz 2'},{id:'zhardei-preboard', total:200, title:'TAPP — Pre-Board Exam (200 Items)'}];
 function leaRenderProgress(){
   LEAProgress.renderOverallCard(document.getElementById('overallCard'), LEA_SUBJECT_ID_PAGE, MODULES);
   MODULES.forEach(function(m){

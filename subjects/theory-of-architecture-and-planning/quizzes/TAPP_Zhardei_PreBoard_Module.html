@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="../../../favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="../../../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../../../apple-touch-icon.png">
+<link rel="manifest" href="../../../site.webmanifest">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TAPP — Pre-Board Exam (200 Items)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blueprint:#0e3a63;
+    --blueprint-2:#123f6c;
+    --grid-major: rgba(255,255,255,0.09);
+    --grid-minor: rgba(255,255,255,0.045);
+    --vellum:#f6f2e7;
+    --vellum-2:#efe9d8;
+    --ink:#152f4a;
+    --ink-soft:#4c6478;
+    --accent:#e2711d;
+    --accent-bright:#f28a3e;
+    --cyan:#1f7a92;
+    --good:#1f7a5c;
+    --bad:#b3432b;
+    --line: rgba(21,47,74,0.22);
+    --rule: rgba(226,113,29,0.55);
+  }
+  body.dark-mode{
+    --blueprint:#0b0f14;
+    --blueprint-2:#10161d;
+    --grid-major: rgba(120,190,255,0.10);
+    --grid-minor: rgba(120,190,255,0.05);
+    --vellum:#1b222b;
+    --vellum-2:#20293380;
+    --ink:#e6edf3;
+    --ink-soft:#93a6b8;
+    --accent:#f0973f;
+    --accent-bright:#ffb164;
+    --cyan:#5fc7de;
+    --good:#4fbf93;
+    --bad:#e2775a;
+    --line: rgba(230,237,243,0.14);
+    --rule: rgba(240,151,63,0.45);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-major) 0px, var(--grid-major) 1px, transparent 1px, transparent 80px),
+      repeating-linear-gradient(90deg, var(--grid-major) 0px, var(--grid-major) 1px, transparent 1px, transparent 80px),
+      repeating-linear-gradient(0deg, var(--grid-minor) 0px, var(--grid-minor) 1px, transparent 1px, transparent 16px),
+      repeating-linear-gradient(90deg, var(--grid-minor) 0px, var(--grid-minor) 1px, transparent 1px, transparent 16px),
+      var(--blueprint);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:34px 16px 64px;
+    transition: background-color .2s ease, color .2s ease;
+  }
+  .wrap{width:100%; max-width:760px;}
+
+  /* ===== title block (masthead) ===== */
+  .titleblock{
+    background: var(--vellum);
+    border:2px solid var(--ink);
+    border-radius:2px;
+    margin-bottom:18px;
+    box-shadow: 0 18px 42px rgba(0,0,0,0.35);
+    position:relative;
+  }
+  .titleblock::before, .titleblock::after,
+  .titleblock .crop-tl, .titleblock .crop-br{
+    content:"";
+    position:absolute;
+    width:16px; height:16px;
+    border-color: var(--accent);
+    pointer-events:none;
+  }
+  .titleblock::before{ top:-8px; left:-8px; border-top:2px solid var(--accent); border-left:2px solid var(--accent); }
+  .titleblock::after{ bottom:-8px; right:-8px; border-bottom:2px solid var(--accent); border-right:2px solid var(--accent); }
+  .tb-top{
+    padding:20px 24px 14px;
+    text-align:center;
+    border-bottom:2px solid var(--ink);
+  }
+  .tb-top .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.25em;
+    font-size:11px;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:600;
+  }
+  .tb-top h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:30px;
+    margin:8px 0 4px;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+  .tb-top .sub{
+    font-size:14px;
+    color:var(--ink-soft);
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .tb-fields{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .tb-field{
+    padding:9px 12px;
+    border-right:1px solid var(--line);
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .tb-field:last-child{ border-right:none; }
+  .tb-field .k{
+    font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft);
+    display:block; margin-bottom:2px;
+  }
+  .tb-field .v{ font-size:13px; font-weight:600; color:var(--ink); }
+
+  /* ===== toolbar ===== */
+  .toolbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    padding:11px 16px;
+    margin-bottom:16px;
+    background: var(--vellum);
+    border:1px solid var(--ink);
+    border-radius:2px;
+    font-size:13px;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.25);
+  }
+  .toolbar-stats{ display:flex; gap:20px; }
+  .toolbar-stats .stat-label{
+    font-family:'IBM Plex Mono', monospace;
+    text-transform:uppercase;
+    font-size:10px;
+    letter-spacing:0.12em;
+    color:var(--ink-soft);
+    display:block;
+  }
+  .toolbar-stats .stat-value{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:21px;
+  }
+  .toolbar-stats .score-val{ color: var(--good); }
+  .toolbar-stats .mistake-val{ color: var(--bad); }
+
+  .toolbar-actions{ display:flex; align-items:center; gap:10px; }
+  .order-toggle{ display:flex; border:1px solid var(--line); border-radius:2px; overflow:hidden; }
+  .order-toggle button{
+    background:none; border:none; color:var(--ink-soft);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; padding:6px 11px; cursor:pointer; letter-spacing:0.03em;
+  }
+  .order-toggle button.active{ background: var(--accent); color:#1b1204; font-weight:600; }
+  .toolbar-restart{
+    background:none; border:1px solid var(--cyan); color:var(--cyan);
+    font-family:'IBM Plex Mono', monospace; font-size:11px;
+    padding:6px 12px; border-radius:2px; cursor:pointer; white-space:nowrap;
+  }
+  .toolbar-restart:hover{ background: rgba(31,122,146,0.12); }
+  .theme-toggle{
+    background:none; border:1px solid var(--line); color:var(--ink-soft);
+    font-size:14px; width:30px; height:30px; border-radius:2px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; line-height:1;
+  }
+  .theme-toggle:hover{ border-color:var(--accent); color:var(--accent); }
+
+  /* ===== progress: architect's scale ruler ===== */
+  .ruler-wrap{ margin:4px 0 8px; }
+  .ruler{ display:flex; gap:2px; height:14px; }
+  .rtick{
+    flex:1; position:relative;
+    background: rgba(255,255,255,0.10);
+    border-radius:0px;
+  }
+  body:not(.dark-mode) .rtick{ background: rgba(255,255,255,0.28); }
+  .rtick.done{ background: var(--good); }
+  .rtick.wrong-tess{ background: var(--bad); }
+  .rtick.current{ background: var(--accent); box-shadow:0 0 8px var(--accent); }
+  .progress-label{
+    display:flex; justify-content:space-between;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
+    color:rgba(255,255,255,0.65); margin-bottom:18px;
+  }
+
+  /* ===== card (drawing sheet) ===== */
+  .card{
+    position:relative;
+    background: var(--vellum);
+    border:1px solid var(--ink);
+    border-radius: 2px;
+    padding:36px 32px 30px;
+    box-shadow: 0 20px 48px rgba(0,0,0,0.35);
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    inset:9px;
+    border:1px solid var(--rule);
+    pointer-events:none;
+  }
+  .section-tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:#1b1204;
+    background: var(--accent);
+    padding:5px 14px;
+    border-radius:2px;
+    margin-bottom:18px;
+    font-weight:600;
+  }
+  .reviewing-tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--cyan);
+    border:1px solid var(--cyan);
+    padding:4px 11px;
+    border-radius:2px;
+    margin-bottom:18px;
+    margin-left:8px;
+  }
+  .timer-row{ display:flex; align-items:center; gap:10px; margin:0 0 18px; }
+  .timer-row.hidden{ display:none; }
+  .timer-track{ flex:1; height:5px; border-radius:0; background: rgba(21,47,74,0.14); overflow:hidden; }
+  .timer-fill{ height:100%; width:100%; background: var(--cyan); border-radius:0; transition: width 1s linear, background .3s ease; }
+  .timer-text{ font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:12px; color:var(--cyan); min-width:22px; text-align:right; transition: color .3s ease; }
+  .timer-row.urgent .timer-fill{ background: var(--bad); }
+  .timer-row.urgent .timer-text{ color: var(--bad); animation: timerPulse 1s ease-in-out infinite; }
+  @keyframes timerPulse{ 0%,100%{ opacity:1; } 50%{ opacity:0.45; } }
+  .qtext{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:20px;
+    line-height:1.45;
+    margin:0 0 22px;
+    color:var(--ink);
+  }
+  .options{ display:flex; flex-direction:column; gap:10px; }
+  .opt{
+    text-align:left;
+    background: rgba(21,47,74,0.02);
+    border:1px solid rgba(21,47,74,0.25);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    padding:12px 16px;
+    border-radius:2px;
+    cursor:pointer;
+    transition: border-color .15s ease, background .15s ease;
+    display:flex; gap:12px; align-items:center;
+  }
+  body.dark-mode .opt{ border-color: rgba(230,237,243,0.22); }
+  .opt:hover:not(.locked){ border-color:var(--accent); background: rgba(226,113,29,0.08); }
+  .opt .letter{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600; color:#fff;
+    background: var(--ink-soft);
+    min-width:22px; height:22px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:12px;
+    flex-shrink:0;
+  }
+  .opt.correct{ border-color:var(--good); border-width:2px; background: rgba(31,122,92,0.12); }
+  .opt.correct .letter{ background: var(--good); }
+  .opt.incorrect{ border-color:var(--bad); border-width:2px; background: rgba(179,67,43,0.11); }
+  .opt.incorrect .letter{ background: var(--bad); }
+  .opt.locked{ cursor:default; }
+  .opt.dim{ opacity:0.5; }
+
+  .feedback{
+    margin-top:18px;
+    padding:14px 16px;
+    border-radius:2px;
+    font-size:14px;
+    line-height:1.6;
+    display:none;
+    border-left:3px solid var(--accent);
+  }
+  .feedback.show{ display:block; }
+  .feedback.right{ background: rgba(31,122,92,0.09); border-left-color: var(--good); }
+  .feedback.wrong{ background: rgba(179,67,43,0.09); border-left-color: var(--bad); }
+  .feedback b{ color: var(--accent-bright); }
+  .feedback .ref{
+    display:block;
+    margin-top:10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--cyan);
+  }
+  .feedback .note{ display:block; margin-top:6px; color:var(--ink-soft); font-style:italic; font-family:'IBM Plex Sans', sans-serif; }
+
+  .controls{ display:flex; justify-content:space-between; align-items:center; margin-top:24px; }
+  .nav-arrows{ display:flex; gap:10px; }
+  .arrow-btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    background:none;
+    color:var(--ink);
+    border:1px solid var(--line);
+    padding:9px 16px;
+    border-radius:2px;
+    cursor:pointer;
+    display:flex; align-items:center; gap:6px;
+  }
+  .arrow-btn:hover:not(:disabled){ border-color:var(--accent); color:var(--accent); }
+  .arrow-btn:disabled{ opacity:0.28; cursor:default; }
+  .arrow-btn.primary{ background: var(--accent); color:#1b1204; font-weight:600; border-color:var(--accent); }
+  .arrow-btn.primary:hover:not(:disabled){ background: var(--accent-bright); color:#1b1204; }
+
+  /* ===== results ===== */
+  .results{ display:none; text-align:center; }
+  .results.show{ display:block; }
+  .results h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:30px; margin-bottom:6px;
+    color:var(--ink); font-weight:700;
+  }
+  .score-big{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:52px;
+    color:var(--accent);
+    margin:12px 0;
+  }
+  .results .breakdown{
+    text-align:left;
+    margin-top:26px;
+    font-size:14px;
+    background: var(--vellum);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:6px 18px;
+  }
+  .breakdown-row{
+    display:flex; justify-content:space-between;
+    padding:9px 0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    border-bottom:1px solid var(--rule);
+  }
+  .breakdown-row:last-child{ border-bottom:none; }
+  .result-btns{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:26px; }
+  .restart-btn{
+    background:none; border:1px solid var(--ink-soft); color:var(--ink);
+    padding:10px 24px; border-radius:2px;
+    font-family:'IBM Plex Mono', monospace; font-size:13px; cursor:pointer;
+  }
+  .restart-btn:hover{ border-color:var(--accent); color:var(--accent); }
+  .restart-btn.primary{ background: var(--accent); color:#1b1204; border-color:var(--accent); font-weight:600; }
+  .restart-btn.primary:hover{ background: var(--accent-bright); }
+
+  .weak-spots{
+    text-align:left; margin-top:30px; padding:16px 18px;
+    border:1px solid var(--bad); background: rgba(179,67,43,0.06);
+    border-radius:2px; font-size:14px;
+  }
+  .weak-spots h3{ margin:0 0 8px; font-family:'Space Grotesk', sans-serif; font-size:17px; color:var(--accent); }
+  .weak-spots ul{ margin:0; padding-left:20px; }
+  .weak-spots li{ margin-bottom:4px; }
+
+  .mistakes-review{ text-align:left; margin-top:30px; }
+  .mistakes-review h3{ font-family:'Space Grotesk', sans-serif; font-size:21px; color:var(--ink); margin-bottom:12px; }
+  .mistake-item{
+    border:1px solid var(--line); border-left:3px solid var(--bad);
+    background: rgba(21,47,74,0.02); border-radius:2px;
+    padding:14px 16px; margin-bottom:12px; font-size:14px; line-height:1.55;
+  }
+  .mistake-item .m-section{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--cyan); margin-bottom:6px;
+  }
+  .mistake-item .m-q{ color:var(--ink); margin-bottom:8px; font-size:15px; font-weight:600; font-family:'Space Grotesk', sans-serif; }
+  .mistake-item .m-you{ color:var(--bad); }
+  .mistake-item .m-correct{ color:var(--good); }
+  .no-mistakes{ text-align:center; color:var(--ink-soft); font-style:italic; margin-top:26px; }
+
+  .quiz-area.hidden{ display:none; }
+
+  @media (max-width:480px){
+    .card{ padding:28px 18px 22px; }
+    .qtext{ font-size:18px; }
+    .tb-top h1{ font-size:22px; }
+    .tb-fields{ grid-template-columns: repeat(2, 1fr); }
+    .tb-field:nth-child(2){ border-right:none; }
+    .toolbar{ flex-direction:column; align-items:stretch; }
+    .toolbar-actions{ justify-content:space-between; }
+  }
+</style>
+<script src="../../../assets/presence.js"></script>
+<script src="../../../assets/theme.js"></script>
+<script src="../../../assets/sfx.js"></script>
+<script src="../../../assets/module-progress.js"></script>
+</head>
+<body>
+<script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+<div class="wrap">
+  <div class="quiz-nav-bar">
+    <a href="../index.html">&larr; Back to subject</a>
+    &nbsp;&middot;&nbsp;
+    <a href="../../../index.html?source=jpt">All subjects</a>
+  </div>
+
+  <div class="titleblock">
+    <div class="tb-top">
+      <div class="eyebrow">Theory of Architecture &amp; Planning Principles</div>
+      <h1>PRE-BOARD EXAM — FULL COVERAGE</h1>
+      <div class="sub">200-item mock exam spanning design theory through urban planning — answer key review</div>
+    </div>
+    <div class="tb-fields">
+      <div class="tb-field"><span class="k">Drawing No.</span><span class="v">TAPP-PB</span></div>
+      <div class="tb-field"><span class="k">Scale</span><span class="v">1 : 1</span></div>
+      <div class="tb-field"><span class="k">Sheet</span><span class="v">200 items</span></div>
+      <div class="tb-field"><span class="k">Rev.</span><span class="v">A</span></div>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <div class="toolbar-stats">
+      <div>
+        <span class="stat-label">Score</span>
+        <span class="stat-value score-val" id="scoreText">0</span>
+      </div>
+      <div>
+        <span class="stat-label">Mistakes</span>
+        <span class="stat-value mistake-val" id="mistakeText">0</span>
+      </div>
+    </div>
+    <div class="toolbar-actions">
+      <div class="order-toggle">
+        <button id="orderInOrderBtn" class="active">In order</button>
+        <button id="orderShuffleBtn">Shuffled</button>
+      </div>
+      <button class="toolbar-restart" id="toolbarRestartBtn">Restart from start</button>
+      <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark mode">🌙</button>
+      <button class="theme-toggle" id="sfxToggleBtn" title="Mute / unmute sound effects">🔊</button>
+<script>if (window.LEASfx) { LEASfx.init({ buttonId:'sfxToggleBtn' }); }</script>
+    </div>
+  </div>
+
+  <div class="ruler-wrap">
+    <div class="ruler" id="tesserae"></div>
+  </div>
+  <div class="progress-label">
+    <span id="progressText">Question 1 of 1</span>
+  </div>
+
+  <div class="quiz-area" id="quizArea">
+    <div class="card">
+      <div class="section-tag" id="sectionTag">Section</div>
+      <span class="reviewing-tag" id="reviewingTag" style="display:none;">Reviewing — answer locked</span>
+      <div class="timer-row hidden" id="timerRow">
+        <div class="timer-track"><div class="timer-fill" id="timerFill"></div></div>
+        <div class="timer-text" id="timerText">60</div>
+      </div>
+      <p class="qtext" id="qtext">Loading…</p>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="controls">
+        <div class="nav-arrows">
+          <button class="arrow-btn" id="backBtn">&larr; Back</button>
+          <button class="arrow-btn" id="forwardBtn">Forward &rarr;</button>
+        </div>
+        <button class="arrow-btn primary" id="finishBtn" style="display:none;">See results →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="results" id="results">
+    <h2 id="resultsTitle">Quiz Complete</h2>
+    <div class="sub" id="resultsSub">You've worked through every question, in order.</div>
+    <div class="score-big" id="finalScore">0 / 0</div>
+    <div class="breakdown" id="breakdown"></div>
+    <div class="weak-spots" id="weakSpots" style="display:none;">
+      <h3>Weak spots</h3>
+      <ul id="weakSpotsList"></ul>
+    </div>
+    <div class="result-btns">
+      <button class="restart-btn primary" id="retryMissedBtn" style="display:none;">Retry missed questions</button>
+      <button class="restart-btn" id="restartBtn">Take it again from the start</button>
+    </div>
+    <div class="mistakes-review" id="mistakesReview" style="display:none;">
+      <h3>Review your mistakes</h3>
+      <div id="mistakesList"></div>
+    </div>
+    <div class="no-mistakes" id="noMistakes" style="display:none;">No mistakes this run — clean sweep.</div>
+  </div>
+
+</div>
+
+<script>
+const LEA_SUBJECT_ID = 'theory-of-architecture-and-planning';
+const LEA_MODULE_ID = 'zhardei-preboard';
+const QUESTIONS = [{"s": "Ordering Principles", "q": "What must a linear axis do to organize a spatial composition?", "o": ["Act as a continuous line/plane linking scattered elements", "An imaginary line with length and direction needing terminating elements at both ends", "Balance visual mass around a virtual center", "It functions as a continuous line, plane, or volume that draws together, accumulates, and stabilizes separate elements through its structural and visual continuity."], "c": 1, "n": "Ching: an axis is an imaginary line of length and direction that requires terminating elements at both ends to anchor its visual force."}, {"s": "Ordering Principles", "q": "How does a datum bring order to varied forms and spaces?", "o": ["By acting as a continuous line, plane, or volume that gathers and organizes elements", "An imaginary line needing terminating elements", "Balancing visual mass around a center", "It works as an unbroken line, plane, or volume that draws together, accumulates, and stabilizes separate elements through its structural and visual continuity."], "c": 0, "n": "Ching: a datum is a continuous line, plane, or volume whose regularity gathers and organizes a scattered set of forms."}, {"s": "Ordering Principles", "q": "Which is NOT one of the three ways an element achieves hierarchical dominance?", "o": ["Exceptional size", "Contrasting shape", "Placement at a focal point", "Being completely hidden from view"], "c": 3, "n": "Ching's three ways an element achieves hierarchical dominance are by size, shape, and strategic placement --- concealment is the opposite of dominance."}, {"s": "Ordering Principles", "q": "What turns simple repetition into architectural rhythm?", "o": ["Changing material every repetition", "Arranging elements on a curved plane", "Forming a structured/alternating sequence guiding the eye", "Limiting repetition to three elements"], "c": 2, "n": "Simple repetition becomes rhythm only when the repeated elements form a structured or alternating sequence that guides the eye."}, {"s": "Ordering Principles", "q": "What is the goal of 'Transformation' in design morphology?", "o": ["Changing a shape step-by-step until unrecognizable", "Modifying a form through geometric changes while keeping its grid/identity", "Altering a form until it loses its identity", "Making interiors disorient viewers from outside"], "c": 1, "n": "Transformation is the incremental alteration of a form while its underlying grid/identity remains recognizable, per Ching's design vocabulary."}, {"s": "Ordering Principles", "q": "How can an asymmetrical composition still achieve balance?", "o": ["Light mass near center, heavy mass far out", "A heavy element near center balanced by a light element far from center", "Large mass near center with light elements removed", "Asymmetry can never be balanced"], "c": 1, "n": "Asymmetrical balance works like a lever: a small mass far from the center can balance a large mass near it."}, {"s": "Ordering Principles", "q": "How does transformation help when adding a modern wing to a historic library?", "o": ["Studying the old grid/proportions and applying those rules to the new design", "Demolishing and rebuilding in glass", "Improving old structural bays, then repurposing the library", "Requiring the new wing to be an exact replica"], "c": 0, "n": "In adaptive reuse, architects study the historic grid, rhythm, and proportion of the old structure and extend those same rules into the new design."}, {"s": "Ordering Principles", "q": "Which configuration shows Radial Symmetry?", "o": ["A circular altar with identical piers radiating outward", "A long hospital wing with rooms on both sides", "A skyscraper that twists as it rises", "Huts scattered along a riverbank"], "c": 0, "n": "Radial symmetry is a central element with identical parts repeating outward around it, as in a circular altar with radiating piers."}, {"s": "Proportion, Scale & Spatial Organization", "q": "What is the key difference between Proportion and Scale?", "o": ["Proportion compares to a person; scale is part-to-whole", "Proportion needs metric units, scale needs imperial", "Proportion is part-to-part/whole relation; scale compares to an external standard", "Scale is set by engineers, proportion by clients"], "c": 2, "n": "Proportion is the relationship of parts to each other and the whole; scale compares an object's size to an external reference, usually the human body."}, {"s": "Proportion, Scale & Spatial Organization", "q": "In Classical Orders, what module derives all column and entablature dimensions?", "o": ["The Royal Egyptian cubit", "The height of the entrance portal", "The base diameter of the column shaft", "A dimension chosen arbitrarily by the mason"], "c": 2, "n": "In the Classical Orders, the module is the base diameter of the column shaft, from which all other dimensions are derived."}, {"s": "Proportion, Scale & Spatial Organization", "q": "What belief drove Renaissance architects like Palladio to base proportions on musical ratios?", "o": ["Deep walls were needed to amplify music", "Musical ratios reflected a cosmic order applicable to space", "Applying the mathematical ratios of musical harmony to building dimensions to reflect a divine order.", "Ratios were used to confuse rival builders"], "c": 2, "n": "Renaissance theorists like Palladio believed musical harmonic ratios reflected a divine, cosmic order and translated those ratios directly into building proportions."}, {"s": "Proportion, Scale & Spatial Organization", "q": "What does 'Anthropometry' primarily study as a proportioning system?", "o": ["Weathering of historic monuments", "Human body dimensions, reach, and clearance needs", "Humidity shifts in concrete rooms", "Wind shear on facades"], "c": 1, "n": "Anthropometry is the study of human body dimensions, reach, and clearance requirements used to size architectural elements."}, {"s": "Proportion, Scale & Spatial Organization", "q": "The Fibonacci sequence is linked to which proportioning system?", "o": ["Tuscan Order", "Golden Section", "Inaka-ma grid", "Anthropometric Matrix"], "c": 1, "n": "The Fibonacci sequence approximates the Golden Ratio, the basis of the Golden Section proportioning system."}, {"s": "Proportion, Scale & Spatial Organization", "q": "What is Le Corbusier's universal scaling system based on the Golden Ratio and human proportions called?", "o": ["Golden Section", "Modulor", "Ken", "Anthropometric Matrix"], "c": 1, "n": "Le Corbusier's Modulor combined the Golden Ratio with human body proportions into a universal scale."}, {"s": "Proportion, Scale & Spatial Organization", "q": "Which Vitruvian triad term represents function and efficient program arrangement?", "o": ["Firmitas", "Utilitas", "Venustas", "Commoditas"], "c": 1, "n": "In the Vitruvian triad, Utilitas refers to function/utility, Firmitas to structure, and Venustas to beauty."}, {"s": "Proportion, Scale & Spatial Organization", "q": "What spatial relationship occurs when a larger space fully encloses a smaller one?", "o": ["Space within a space", "Interlocking spaces", "Adjacent spaces", "Spaces linked by a common space"], "c": 0, "n": "'Space within a space' occurs when a larger volume fully contains and encloses a smaller one."}, {"s": "Proportion, Scale & Spatial Organization", "q": "Which layout has a dominant central space with arms extending outward like spokes?", "o": ["Centralized organization", "Radial organization", "Cluster organization", "Grid organization"], "c": 1, "n": "Radial organization extends linear arms outward from a dominant central space, like spokes on a wheel."}, {"s": "Proportion, Scale & Spatial Organization", "q": "Which organizing system uses a repeating 3D matrix of bays to regulate layout?", "o": ["Linear organization", "Grid organization", "Centralized organization", "Clustered organization"], "c": 1, "n": "Grid organization uses a repeating three-dimensional matrix of bays to regulate form and layout."}, {"s": "Proportion, Scale & Spatial Organization", "q": "What term, coined by Edward T. Hall, studies culturally determined spatial distances between people?", "o": ["Ergonomics", "Proxemics", "Anthropometrics", "Kinesics"], "c": 1, "n": "Edward T. Hall coined 'proxemics' for the study of culturally determined personal spatial distances."}, {"s": "Proportion, Scale & Spatial Organization", "q": "Which proxemic zone (about 1.5-4 ft) is reserved for close friends and family?", "o": ["Intimate Distance", "Personal Distance", "Social Distance", "Public Distance"], "c": 1, "n": "Hall's Personal Distance zone (about 1.5--4 ft) is reserved for close friends and family."}, {"s": "Proportion, Scale & Spatial Organization", "q": "Which Japanese module governs both column layout and tatami mat sizing?", "o": ["Tatami", "Ken", "Shaku", "Tokonoma"], "c": 1, "n": "The Ken is a Japanese modular unit that governs both the structural column grid and standard tatami mat sizes."}, {"s": "Design Elements & Form", "q": "What term describes a beam/slab projecting past its support, held by internal tension?", "o": ["Portal Frame", "Cantilever", "Truss", "Tie-Rod"], "c": 1, "n": "A cantilever is a horizontal member that projects beyond its support, held by internal tension/counterbalance rather than an end support."}, {"s": "Design Elements & Form", "q": "What principle harmonizes all elements of a composition so nothing distracts from the concept?", "o": ["Contrast", "Unity", "Contrast and Variety", "Emphasis"], "c": 1, "n": "Unity is achieved when all compositional elements are harmonized around one overarching concept, with nothing distracting from it."}, {"s": "Design Elements & Form", "q": "What kind of rhythm results from a gradual, step-by-step change in an element's size/shape?", "o": ["Alternating rhythm", "Progressive rhythm", "Monotonous rhythm", "Static rhythm"], "c": 1, "n": "Progressive rhythm is created by a step-by-step, predictable change in an element's size, shape, or spacing."}, {"s": "Design Elements & Form", "q": "Which scale intentionally makes people feel small to project institutional power?", "o": ["Human Scale", "Monumental Scale", "Intimate Scale", "Anthropometric Scale"], "c": 1, "n": "Monumental scale intentionally overwhelms the individual to project institutional, state, or religious power."}, {"s": "Design Elements & Form", "q": "Which design element marks a position with no dimension and generates all other forms?", "o": ["Line", "Plane", "Point", "Volume"], "c": 2, "n": "A point marks a position in space with no dimension, and is the primitive generator of line, plane, and volume."}, {"s": "Design Elements & Form", "q": "What term describes a form's degree of stability based on shape, orientation, and ground relation?", "o": ["Visual Scale", "Visual Inertia", "Surface Articulation", "Volumetric Proportion"], "c": 1, "n": "Visual inertia describes a form's degree of stability/concentration, based on its shape, orientation, and relation to the ground."}, {"s": "Design Elements & Form", "q": "What transformation type removes volume from a form while keeping its overall identity?", "o": ["Dimensional Transformation", "Additive Transformation", "Subtractive Transformation", "Parametric Transformation"], "c": 2, "n": "Removing volume from a primary solid while its overall identity remains recognizable is a subtractive transformation."}, {"s": "Design Elements & Form", "q": "What effect does an elevated base plane have relative to surrounding ground?", "o": ["Creates a hidden, introverted pocket", "Creates detachment, prominence, and territory", "Removes all visual boundary", "Creates an unstable zone"], "c": 1, "n": "An elevated plane visually and psychologically separates itself, creating a sense of prominence, detachment, and territory."}, {"s": "Design Elements & Form", "q": "What effect does a depressed base plane have relative to surrounding ground?", "o": ["Acts as a monumental marker", "Maximizes structural tension", "Eliminates surrounding activity", "Forms an introverted, enclosed field"], "c": 3, "n": "A depressed plane forms an introverted, sheltered field of space distinct from --- but continuous with --- the surrounding ground."}, {"s": "Design Elements & Form", "q": "What term describes the outline/contour that lets us identify a form?", "o": ["Texture", "Size", "Shape", "Position"], "c": 2, "n": "Shape is the characteristic outline/contour that lets us identify and distinguish a form."}, {"s": "Color Theory", "q": "Rotating a triangle about its vertical apex axis generates which volume?", "o": ["Cylinder", "Cone", "Sphere", "Pyramid"], "c": 1, "n": "Rotating a triangle about its vertical apex axis sweeps out a cone."}, {"s": "Color Theory", "q": "What term describes a place's unique character rooted in geography, history, and form ('spirit of place')?", "o": ["Zeitgeist", "Parti Pris", "Partis", "Genius Loci"], "c": 3, "n": "'Genius loci,' Latin for 'spirit of place,' describes the unique character rooted in a site's geography, history, and form."}, {"s": "Color Theory", "q": "How does a polished, reflective floor alter perception of a lobby?", "o": ["Makes it feel dark and cramped", "Stabilizes columns by absorbing light", "Emphasizes 3D form and geometric contours", "Mirrors the ceiling, creating an illusion of extra height"], "c": 3, "n": "A polished reflective floor mirrors the ceiling plane, creating an illusion of greater vertical height."}, {"s": "Color Theory", "q": "How is a 'Tone' produced in color theory?", "o": ["Adding white to a hue", "Adding black to a hue", "Adding grey to a hue", "Mixing two secondary colors"], "c": 2, "n": "In color theory a tone is produced by adding grey (a mix of black and white) to a pure hue."}, {"s": "Color Theory", "q": "What term describes a hue mixed with black, making it darker?", "o": ["Tint", "Tone", "Shade", "Intensity"], "c": 2, "n": "A shade is a hue mixed with black, which lowers its value and darkens it."}, {"s": "Color Theory", "q": "Which color is clinically linked to lowering blood pressure and creating a calm healing environment?", "o": ["High-saturation Orange", "Low-chroma Blue", "High-value Red", "Low-value Yellow"], "c": 1, "n": "Low-chroma/desaturated blue is documented to calm the nervous system, lowering blood pressure and respiration --- useful in healing environments."}, {"s": "Color Theory", "q": "In a split-complementary scheme based on Yellow, what two colors balance it?", "o": ["Violet and Blue-Violet", "Red-Violet and Blue-Violet", "Red and Blue", "Green and Orange"], "c": 1, "n": "Yellow's complement is violet; a split-complementary scheme pairs yellow with the two hues flanking violet --- red-violet and blue-violet."}, {"s": "Color Theory", "q": "What color harmony pairs hues directly opposite on the color wheel?", "o": ["Analogous Harmony", "Monochromatic Harmony", "Complementary Harmony", "Triadic Harmony"], "c": 2, "n": "Complementary harmony pairs hues directly opposite each other on the color wheel."}, {"s": "Ergonomics & Space Planning", "q": "In commercial kitchen design, what layout links the sink, fridge, and range for efficiency?", "o": ["The Linear Assembly", "The Work Triangle", "The Circulation Spine", "The Concentric Ring"], "c": 1, "n": "The Work Triangle links the sink, refrigerator, and range/stove for efficient kitchen circulation."}, {"s": "Ergonomics & Space Planning", "q": "What clearance is needed between facing kitchen equipment rows for staff to pass back-to-back with oven doors open?", "o": ["900 mm", "1200 mm", "1500 mm", "1800 mm"], "c": 2, "n": "Commercial kitchen guidelines call for roughly 1500 mm between facing equipment rows when staff must pass back-to-back with oven doors open."}, {"s": "Ergonomics & Space Planning", "q": "What is the minimum width for a secondary residential corridor to let two people pass comfortably?", "o": ["900 mm", "1200 mm", "1500 mm", "1800 mm"], "c": 1, "n": "Building/space-planning standards set about 1200 mm as the minimum secondary corridor width for two people to pass comfortably."}, {"s": "Ergonomics & Space Planning", "q": "What is the key conceptual difference between 'Personal Space' and 'Territoriality'?", "o": ["Personal space needs legal ownership, territoriality doesn't", "Personal space is interior-only, territoriality is urban-only", "Personal space is fixed, territoriality is mobile", "Personal space is a portable bubble; territoriality is a fixed claimed area"], "c": 3, "n": "Personal space is a portable psychological 'bubble' that travels with a person, while territoriality is a fixed area someone claims and defends."}, {"s": "Ergonomics & Space Planning", "q": "Which of Alan Westin's privacy states describes being unidentified while present in a public crowd?", "o": ["Solitude", "Intimacy", "Anonymity", "Reserve"], "c": 2, "n": "Alan Westin's 'anonymity' describes being unidentified and unobserved while present in a public crowd."}, {"s": "Ergonomics & Space Planning", "q": "Why do accessibility codes require high-contrast colors between doors, signage, and walls?", "o": ["To cut graphic branding costs", "To absorb noise on evacuation routes", "To match minimalist aesthetics", "To guide low-vision users to paths of travel and exits"], "c": 3, "n": "High-contrast signage/door colors under codes like BP 344 help low-vision users identify paths of travel and exits."}, {"s": "Ergonomics & Space Planning", "q": "How can color selection influence thermal comfort in workspaces?", "o": ["Bright pink blocks HVAC drafts", "Cool colors lower perceived temperature in hot climates", "Color has no effect on temperature perception", "Neon paint traps cool air"], "c": 1, "n": "Cool colors (blues/greens) can lower a room's perceived temperature, helping thermal comfort in hot climates."}, {"s": "Ergonomics & Space Planning", "q": "What color approach suits a fast-casual restaurant aiming for quick turnover?", "o": ["High-saturation colors to stimulate appetite and mild restlessness", "Low-saturation colors for the same effect", "Deep blacks/grays to prevent movement", "Pastels to stimulate hunger"], "c": 0, "n": "High-saturation warm colors stimulate appetite while producing mild restlessness, encouraging quick turnover in fast-casual dining."}, {"s": "Western Architectural History", "q": "What structural shift marks the transition from Old Kingdom to New Kingdom Egyptian royal tombs?", "o": ["Limestone columns to brick ziggurats", "Roman concrete vaults in temples", "Abandoning stone for timber framing", "Visible pyramids to hidden rock-cut tombs to deter raiders"], "c": 3, "n": "Egyptian royal burials shifted from visible Old Kingdom pyramids to hidden, rock-cut New Kingdom tombs (Valley of the Kings) to deter raiders."}, {"s": "Western Architectural History", "q": "What technological breakthrough enabled the shift from Greek to Roman structural design?", "o": ["High-tensile steel alloys", "Concrete (opus caementicium) and the true arch replacing trabeation", "Pointed arch and ribbed vault", "Marble to bamboo framing"], "c": 1, "n": "Rome's development of opus caementicium (concrete) and the true arch freed architecture from the strictly post-and-lintel Greek trabeated system."}, {"s": "Western Architectural History", "q": "Why is the 1851 Crystal Palace (Great Exhibition, London) a watershed moment?", "o": ["First public building with hand-carved marble orders", "It ended urban planning regulation in Europe", "It proved rapid construction using prefabricated iron and glass", "It introduced the first electric elevator"], "c": 2, "n": "The Crystal Palace proved that a massive building could be rapidly assembled from prefabricated, modular iron-and-glass components."}, {"s": "Western Architectural History", "q": "Arrange these design movements in correct chronological order.", "o": ["Gothic → Baroque → Renaissance → Art Nouveau → Modernism", "Gothic → Renaissance → Baroque → Art Nouveau → Modernism", "Renaissance → Gothic → Baroque → Modernism → Art Nouveau", "Baroque → Gothic → Renaissance → Modernism → Art Nouveau"], "c": 1, "n": "The correct historical order is Gothic → Renaissance → Baroque → Art Nouveau → Modernism."}, {"s": "Western Architectural History", "q": "What element did Sullivan use to express a skyscraper's tripartite division, like a classical column?", "o": ["A decorative non-structural curtain wall", "A clear base/shaft/cornice division", "An uninterrupted glass facade exposing the core", "Buttresses that thin as the building rises"], "c": 1, "n": "Sullivan described the skyscraper's tripartite division --- base, shaft, and cornice/top --- echoing a classical column."}, {"s": "Western Architectural History", "q": "What structural element unlocks the 'free plan' and 'free facade' in Le Corbusier's Five Points?", "o": ["Load-bearing concrete perimeter walls", "Pilotis with an internal column grid and cantilevered slabs", "A central load-bearing masonry core", "Heavy timber post-and-beam joinery"], "c": 1, "n": "Pilotis, an internal reinforced-concrete column grid, and cantilevered slabs free both the plan and facade from load-bearing walls."}, {"s": "Western Architectural History", "q": "How is 'Organic Architecture' implemented in Wright's Fallingwater?", "o": ["Mimicking skeletal/leaf-vein structural forms", "Using only biodegradable local materials", "Concrete terraces blended into the site, mimicking rock ledges", "A circular plan avoiding right angles"], "c": 2, "n": "Fallingwater's cantilevered concrete terraces echo the natural rock ledges of the site, embodying Wright's organic architecture."}, {"s": "Western Architectural History", "q": "What strategy did Gropius use to emphasize weightlessness in the Bauhaus Dessau workshop wing?", "o": ["A continuous glass curtain wall independent of the recessed structural grid", "Thick brick walls with small windows", "Heavy asymmetrical stone pilasters", "Tensile fabric and steel cable structure"], "c": 0, "n": "Gropius wrapped the Dessau workshop wing in a continuous glass curtain wall set free of the recessed structural grid, expressing weightlessness."}, {"s": "Western Architectural History", "q": "How did Mies express structure on the Seagram Building's exterior while meeting fire codes?", "o": ["Leaving structural steel exposed without fireproofing", "Applying non-structural bronze I-beam mullions over fireproofed steel", "A structural glass fin system with no mullions", "An exterior cast entirely of raw concrete"], "c": 1, "n": "Fire codes required Mies to fireproof the Seagram Building's real steel frame, so he applied non-structural bronze I-beam mullions to express structural rhythm."}, {"s": "Western Architectural History", "q": "How did Aalto integrate humanistic factors into the Paimio Sanatorium design?", "o": ["Monumental symmetrical neoclassical facades", "Custom glare-free lighting, curved sinks, and soothing colors for patients", "Harsh Brutalist concrete finishes", "A central panopticon for monitoring"], "c": 1, "n": "Aalto tailored Paimio Sanatorium's fixtures, sinks, and colors specifically to the psychological and physical needs of bedridden patients."}, {"s": "Western Architectural History", "q": "In which book did Venturi argue for embracing complexity and contradiction over modernist purism?", "o": ["Towards a New Architecture", "The Language of Post-Modern Architecture", "Complexity and Contradiction in Architecture", "Delirious New York"], "c": 2, "n": "Venturi's 1966 book 'Complexity and Contradiction in Architecture' argued for embracing ambiguity over modernist purism."}, {"s": "Western Architectural History", "q": "What defines the High-Tech style of the Pompidou Center?", "o": ["Concealing structure/mechanicals within stone cladding", "Exposing and color-coding structural and MEP systems on the exterior", "Ornamental Art Nouveau steel filigree", "Building entirely underground"], "c": 1, "n": "The Pompidou Center exposes and color-codes its structural and MEP systems on the exterior, the hallmark of High-Tech design."}, {"s": "Western Architectural History", "q": "Which fragmented, titanium-clad project brought Deconstructivism to global prominence?", "o": ["Wexner Center by Eisenman", "Parc de la Villette by Tschumi", "Jewish Museum Berlin by Libeskind", "Guggenheim Bilbao by Gehry"], "c": 3, "n": "Gehry's titanium-clad, fragmented Guggenheim Bilbao brought Deconstructivism to mainstream global attention."}, {"s": "Western Architectural History", "q": "What material reality gave rise to the term 'Brutalism' at Unité d'Habitation?", "o": ["Anti-social micro-unit layouts", "Raw exposed steel left to rust", "Rough concrete left raw from formwork ('béton brut')", "Demolition using eminent domain"], "c": 2, "n": "'Brutalism' derives from 'béton brut' --- raw concrete left exposed as cast, seen at Le Corbusier's Unité d'Habitation."}, {"s": "Western Architectural History", "q": "How did Niemeyer's Brasília works depart from European functionalism?", "o": ["Strict adherence to right-angled grids", "Portuguese Baroque ornamentation", "Sculptural reinforced concrete curves inspired by Brazil's geography", "Traditional thatched roofs on bamboo"], "c": 2, "n": "Niemeyer's Brasília works used sculptural, curving reinforced concrete inspired by Brazil's landscape, diverging from rigid European functionalism."}, {"s": "Western Architectural History", "q": "What is the spatial goal of Hadid's undulating skin at the Heydar Aliyev Center?", "o": ["Sharply separating plaza and facade", "A fluid design where the plaza folds upward into walls and roof", "Efficient identical triangular panels", "Mimicking mud-brick fortifications"], "c": 1, "n": "Hadid's Heydar Aliyev Center dissolves the ground/building boundary, letting the plaza fold upward to become walls and roof."}, {"s": "Western Architectural History", "q": "What is a key spatial/contextual difference between the Glass House and Farnsworth House?", "o": ["Glass House on stilts over a floodplain, Farnsworth flat on concrete", "Glass House sits on the ground with a brick core, Farnsworth is elevated on steel columns", "Farnsworth is opaque timber, Glass House is transparent", "Glass House uses stone arches, Farnsworth uses a steel space frame"], "c": 1, "n": "The Glass House sits on the ground with a solid brick core, while the Farnsworth House is elevated on steel columns above the floodplain."}, {"s": "Western Architectural History", "q": "How did Japanese Metabolism (e.g. Kurokawa) conceptualize buildings?", "o": ["As organisms with a fixed spine and replaceable plug-in units", "As static monuments resisting change", "As mobile vehicles on mechanical tracks", "As purely subterranean bunkers"], "c": 0, "n": "Metabolism envisioned buildings as organisms with a fixed structural core and replaceable, plug-in capsule/module units."}, {"s": "Western Architectural History", "q": "Which Five Points element creates Villa Savoye's elevated open-air living space?", "o": ["Pilotis", "Ribbon Window", "Free Façade", "Roof Garden"], "c": 3, "n": "The Roof Garden is the Five Points element that creates Villa Savoye's open-air living space on the upper level."}, {"s": "Western Architectural History", "q": "What defines the focal point of Ando's Church of the Light interior?", "o": ["A gilded carved altar", "A stained-glass rose window", "A cruciform void cut into the concrete wall to admit light", "Suspended fabric panels catching light"], "c": 2, "n": "Tadao Ando cuts a cruciform void into the raw concrete altar wall of the Church of the Light to admit natural light."}, {"s": "Western Architectural History", "q": "Who curated MoMA's 1932 exhibition that defined the International Style?", "o": ["Pevsner and Frampton", "Hitchcock and Johnson", "Giedion and Banham", "Mumford and Jacobs"], "c": 1, "n": "Henry-Russell Hitchcock and Philip Johnson curated MoMA's 1932 exhibition that named and defined the International Style."}, {"s": "Western Architectural History", "q": "What apex detail of the AT&T Building sparked debate as a Postmodern icon?", "o": ["A broken pediment resembling Chippendale furniture", "A gold Gothic spire", "A functional orange exterior elevator cage", "Exposed raw concrete columns"], "c": 0, "n": "The AT&T Building's open, broken pediment resembling Chippendale furniture became the most debated Postmodern gesture of its time."}, {"s": "Western Architectural History", "q": "What geometric breakthrough let Utzon and Ove Arup fabricate the Sydney Opera House shells?", "o": ["Every shell segment could be cut from one common sphere's surface", "Shells built from canvas over steel frames", "Shifting to intersecting flat triangles", "Using AI to generate random forms"], "c": 0, "n": "Utzon and Ove Arup discovered every Sydney Opera House shell could be cut from the surface of one common sphere, enabling standardized fabrication."}, {"s": "Western Architectural History", "q": "What is the symbolic/geometric basis of Libeskind's zigzag plan at the Jewish Museum Berlin?", "o": ["A transcription of a symphony's sound wave", "Imitation of WWI trenches", "An energy-efficiency sunlight path", "A distorted Star of David linked to Berlin addresses, cut by a void"], "c": 3, "n": "Libeskind's zigzag plan derives from a distorted Star of David linking Berlin addresses, cut through by a linear void of absence."}, {"s": "Western Architectural History", "q": "How did Mies achieve fluid open space at the Barcelona Pavilion?", "o": ["Load-bearing marble partitions enclosing rooms", "Slender cruciform steel columns carrying loads, freeing stone/glass planes to float independently", "A geodesic dome removing columns", "Sloped floor plates dissolving levels"], "c": 1, "n": "Slender cruciform steel columns carry all structural load in the Barcelona Pavilion, freeing the stone and glass planes to float independently."}, {"s": "Western Architectural History", "q": "Who formulated the Modulor, an anthropometric scale based on the human body and Golden Ratio?", "o": ["Walter Gropius", "Frank Lloyd Wright", "Le Corbusier", "Mies van der Rohe"], "c": 2, "n": "Le Corbusier devised the Modulor, an anthropometric scale based on human proportions and the Golden Ratio."}, {"s": "Western Architectural History", "q": "What led to the Nakagin Capsule Tower's 2022 demolition?", "o": ["Capsules detaching in windstorms", "Lack of a concrete core causing lean", "Decay from unreplaced capsules, rusted joints, burst pipes, and asbestos", "Illegal construction on parkland"], "c": 2, "n": "The Nakagin Capsule Tower was demolished after decades of unreplaced capsules led to rusted joints, burst pipes, and asbestos hazards."}, {"s": "Western Architectural History", "q": "What imagery did Saarinen evoke with the TWA Flight Center's shell vaults?", "o": ["A factory assembly line", "A bird or airplane in flight, capturing jet-age optimism", "A Gothic cathedral spire", "A noise-shielding cavern"], "c": 1, "n": "Saarinen shaped the TWA Flight Center's thin-shell vaults to evoke a bird or airplane in flight, capturing jet-age optimism."}, {"s": "Western Architectural History", "q": "What facade detail of the Vanna Venturi House subverts Modernist functionalism?", "o": ["A transparent curtain wall exposing bedrooms", "An oversized non-structural gable with a split lintel and applied molding", "A steel column in the driveway", "Unpainted corrugated steel skin"], "c": 1, "n": "The Vanna Venturi House's oversized, non-structural gable with a split lintel and applied molding mocks Modernist functionalist honesty."}, {"s": "Western Architectural History", "q": "What breakthrough did Shigeru Ban's use of cardboard tubes enable?", "o": ["Cheap automated luxury hotels", "Fast, low-cost disaster-relief housing for refugees/victims", "Replacing steel in supertall towers", "Biodegradable underwater stations"], "c": 1, "n": "Shigeru Ban's paper/cardboard-tube structures enabled fast, low-cost disaster-relief shelters for refugees and disaster victims."}, {"s": "Western Architectural History", "q": "How did Art Nouveau structurally integrate organic ornament, per Horta's Hôtel Tassel?", "o": ["Iron/steel sculpted into biomorphic curves, blending structure and decoration", "Plaster reliefs on brick walls", "Structure hidden behind concrete slabs", "Eliminating structural metal for timber"], "c": 0, "n": "Victor Horta's Hôtel Tassel fused Art Nouveau ornament directly into structural iron and steel, sculpted into biomorphic curves."}, {"s": "Western Architectural History", "q": "How did 1916 NYC zoning shape Art Deco skyscrapers like the Chrysler Building?", "o": ["Mandating flat unornamented facades", "Setback rules based on a 'sky exposure plane' creating a 'wedding cake' form", "Banning steel above the tenth floor", "Forcing circular towers"], "c": 1, "n": "NYC's 1916 zoning law required setbacks along a 'sky exposure plane,' producing the tiered 'wedding cake' Art Deco skyscraper profile."}, {"s": "Western Architectural History", "q": "What tension defines the Einstein Tower's construction reality?", "o": ["Rigid machine look built from timber logs", "Meant to look like fluid concrete but built in brick/stucco due to shortages", "Prefab glass units that collapsed", "Egyptian stone-stacking without mortar"], "c": 1, "n": "Material shortages forced Mendelsohn's Einstein Tower to be built in brick and stucco rather than the fluid poured concrete he intended."}, {"s": "Western Architectural History", "q": "What three criteria defined the International Style per Hitchcock and Johnson?", "o": ["Symmetry, heavy ornament, regional masonry", "Volume over mass, regularity over symmetry, rejection of ornament", "Biomorphic curves and kinetic members", "Tripartite stacking and classical modules"], "c": 1, "n": "Hitchcock and Johnson's three criteria were volume over mass, regularity over axial symmetry, and rejection of applied ornament."}, {"s": "Western Architectural History", "q": "How does the Ronchamp Chapel challenge Corbusier's earlier functionalist work?", "o": ["It keeps a rigid right-angled column-and-slab system", "It replaces concrete with timber framing", "It uses mass-produced glass panels on steel grids", "It abandons the white-cube geometry for irregular openings, heavy walls, and a curved roof"], "c": 3, "n": "Ronchamp abandons Corbusier's earlier white-cube rationalism for irregular window punctures, thick sculptural walls, and a curved crab-shell roof."}, {"s": "Western Architectural History", "q": "What theoretical shift marked the Bauhaus move from Weimar to Dessau?", "o": ["From craftsmanship to industrial standardization/mass production", "Abandoning steel for Roman stone arches", "Mandatory religious artwork", "Building underground for tax reasons"], "c": 0, "n": "The Bauhaus's move to Dessau reflected Gropius's turn from individual craft toward industrial standardization and mass production."}, {"s": "Western Architectural History", "q": "How does the Portland Building's facade break from the International Style?", "o": ["Classical tripartite division with polychrome graphics, oversized pilasters, and a ribbon", "A fully transparent columnless glass skin", "Hanging mechanicals on the exterior", "Sloped walls mimicking a pyramid"], "c": 0, "n": "Graves' Portland Building reintroduces a classical tripartite facade with polychrome graphics, oversized pilasters, and a decorative ribbon."}, {"s": "Western Architectural History", "q": "What defines a 'Decorated Shed' per Venturi, Scott Brown, and Izenour?", "o": ["A structural form deformed into a literal sculptural sign", "An underground raw-concrete building", "A plain functional building with applied signs to convey meaning", "A structure with dynamic kinetic geometry"], "c": 2, "n": "Venturi, Scott Brown, and Izenour defined a 'Decorated Shed' as a plain functional building carrying applied signs/ornament to communicate meaning."}, {"s": "Western Architectural History", "q": "What structural method underlies Safdie's Habitat 67?", "o": ["A single wall dividing the complex", "354 stacked prefabricated concrete boxes in a terraced layout", "Timber frames wrapped in canvas", "Living spaces sunk into limestone shafts"], "c": 1, "n": "Habitat 67 stacks 354 prefabricated concrete housing modules in an irregular, terraced arrangement."}, {"s": "Western Architectural History", "q": "What structural system carries the HSBC HQ's floors?", "o": ["Thick load-bearing masonry walls", "Exterior steel masts and suspension trusses freeing the interior of columns", "A grid of timber posts", "Telescoping subterranean piles"], "c": 1, "n": "The HSBC HQ hangs its floors from exterior steel masts and suspension trusses, freeing the interior of columns."}, {"s": "Western Architectural History", "q": "What engineering technique gives Calatrava's Milwaukee Art Museum addition its biomorphic form?", "o": ["Masonry copying pyramid silhouettes", "An operable Burke Brise Soleil controlling solar gain", "Hiding columns behind glass", "Walls of agricultural waste"], "c": 1, "n": "Calatrava's Milwaukee Art Museum addition uses the operable Burke Brise Soleil, a movable sunshade 'wing', to control solar gain."}, {"s": "Western Architectural History", "q": "How does the shift from Modernist linearity to Parametric fluidity reflect architecture's evolution?", "o": ["Abandoning safety standards for decoration", "Limiting podium heights to ten stories", "Shifting from CAD to AI language for design", "A shift from industrial standardization to flexible, computer-guided, context-responsive systems"], "c": 3, "n": "The shift to Parametricism reflects a move from standardized industrial forms toward flexible, computer-guided, context-responsive design."}, {"s": "Philippine Architecture & Architects", "q": "What is the mechanical purpose of Paoay Church's massive 'Earthquake Baroque' buttresses?", "o": ["Maximizing floor area by moving supports outside", "Providing defensive, moisture-absorbing thick walls", "Resisting lateral seismic forces by transferring loads diagonally to ground", "Preventing ground shaking itself"], "c": 2, "n": "The Earthquake Baroque buttresses of Paoay Church resist lateral seismic forces, channeling loads diagonally down to the ground."}, {"s": "Philippine Architecture & Architects", "q": "Which Juan Arellano building is a Philippine Art Deco masterpiece with native floral motifs?", "o": ["Legislative Building", "Manila Metropolitan Theater", "Manila Central Post Office", "National Museum of Fine Arts"], "c": 1, "n": "Juan Arellano's Manila Metropolitan Theater is the landmark Philippine Art Deco building with stylized native floral motifs."}, {"s": "Philippine Architecture & Architects", "q": "What design shift is evident in Juan Nakpil's mid-century civic works like the SSS Building?", "o": ["Heavily ornamented facades showing wealth", "Structural expressionism and clean geometric corporate lines", "Reliance on wood/masonry over concrete", "Abandoning climate-responsive features"], "c": 1, "n": "Nakpil's postwar civic works, like the SSS Building, moved toward structural expressionism and clean corporate geometry."}, {"s": "Philippine Architecture & Architects", "q": "Why did colonial architects like Antonio Toledo use Neoclassical style for public buildings?", "o": ["Cheap lightweight timber", "Maximized cross-ventilation", "Western influence signifying integrity/wealth", "To project democratic authority and institutional stability through monumental symmetry"], "c": 3, "n": "Neoclassicism's monumental columns and symmetry were used on colonial civic buildings to project democratic authority and institutional stability."}, {"s": "Philippine Architecture & Architects", "q": "What did Tomas Mapua's transition to professionalized practice primarily mean?", "o": ["Moving away from codes toward hand-drawn craft", "Institutionalizing formal engineering, testing, and academic training", "Standardizing civic/residential designs for the country", "Prioritizing residential over public projects"], "c": 1, "n": "Mapua's practice reflected the shift toward formal engineering calculation, material testing, and academic training in Philippine architecture."}, {"s": "Philippine Architecture & Architects", "q": "What passive cooling technique did Pablo Antonio prioritize at Far Eastern University?", "o": ["Deep mechanical cooling shafts", "Wide corridors, large windows, and orientation for cross-ventilation", "Stack ventilation sweeping cool air across floors", "Shaded arcades and verandas with concrete for durability"], "c": 1, "n": "Pablo Antonio's FEU campus uses wide corridors, expansive windows, and orientation to maximize natural cross-ventilation."}, {"s": "Philippine Architecture & Architects", "q": "How did Carlos Arguelles modify the International Style curtain wall for the Philamlife Building?", "o": ["Added an unusual interior theater", "Added thatched overhanging eaves", "Made the envelope airtight and placed it underground", "Added exterior aluminum sun-shading louvers"], "c": 3, "n": "Carlos Arguelles adapted the International Style curtain wall for Manila's climate with exterior aluminum sun-shading louvers."}, {"s": "Philippine Architecture & Architects", "q": "What effect does Locsin's cantilevered concrete block over a glass base create at the CCP?", "o": ["Directs compression down a shell curve, removing need for columns", "Integrates monuments into shaded walkways", "An illusion of a massive concrete volume floating", "Shows thin glass can carry concrete floors"], "c": 2, "n": "Locsin's cantilevered CCP theater block creates a striking illusion of a massive concrete volume floating above the glass base."}, {"s": "Philippine Architecture & Architects", "q": "How does the San Miguel Corporation Building's stepped geometry function environmentally?", "o": ["Blending modern forms with classical hierarchy for spiritual scale", "Enabling a column-free interior with minimal material", "Self-shading floors and landscaping to cut solar heat gain", "Shaded arcades and durable concrete for storms"], "c": 2, "n": "The Mañosa brothers' terraced San Miguel building self-shades its floors and integrates landscaping to cut solar heat gain."}, {"s": "Philippine Architecture & Architects", "q": "What theoretical approach do Jose Maria Zaragoza's church designs (e.g. Santo Domingo) demonstrate?", "o": ["Blending modern structural forms with classical hierarchy for spiritual scale", "A column-free layout maximizing altar sightlines", "Self-shading floors cutting solar gain", "Shaded arcades and durable concrete construction"], "c": 0, "n": "Zaragoza's Santo Domingo Church blends modern structural forms with classical spatial hierarchy to evoke spiritual scale."}, {"s": "Philippine Architecture & Architects", "q": "What was a key element of William Parsons's tropical adaptation of reinforced concrete at the Manila Hotel?", "o": ["Blending modern forms with classical hierarchy", "A column-free layout for altar sightlines", "Self-shading floors and landscaping", "Shaded arcades, deep verandas, and high ceilings using durable concrete"], "c": 3, "n": "Parsons adapted Manila Hotel's concrete construction to the tropics with shaded arcades, deep verandas, and high ceilings."}, {"s": "Philippine Architecture & Architects", "q": "What advantage did the thin-shell dome of Church of the Holy Sacrifice (UP Diliman) offer?", "o": ["Blending modern forms with classical hierarchy", "A column-free interior maximizing altar sightlines", "Self-shading floors and landscaping", "Shaded arcades and durable concrete construction"], "c": 1, "n": "The Church of the Holy Sacrifice's thin-shell dome eliminates interior columns, opening sightlines toward the central altar."}, {"s": "Tropical & Climate-Responsive Design", "q": "What macroclimate classification describes the Philippine archipelago?", "o": ["Hot-Arid", "Maritime Tropical", "Continental Sub-Tropical", "Composite Mediterranean"], "c": 1, "n": "The Philippines' overall climate classification is Maritime Tropical."}, {"s": "Tropical & Climate-Responsive Design", "q": "What wind blows from the Northeast bringing cool, dry air from Nov-Feb?", "o": ["Habagat", "Amihan", "Timog", "Salatan"], "c": 1, "n": "The Amihan is the cool, dry northeast wind that dominates the Philippines from roughly November to February."}, {"s": "Tropical & Climate-Responsive Design", "q": "What wind blows from the Southwest bringing moist monsoon air from June-Oct?", "o": ["Habagat", "Amihan", "Timog", "Salatan"], "c": 0, "n": "The Habagat is the moist southwest monsoon wind that dominates from about June to October."}, {"s": "Tropical & Climate-Responsive Design", "q": "Why does high humidity make a space feel hotter than the thermometer reading?", "o": ["Increases radiant heat transfer speed", "Compresses air molecules, generating friction", "Drops oxygen, spiking blood pressure", "Stops sweat from evaporating, trapping body heat"], "c": 3, "n": "High humidity slows sweat evaporation, trapping body heat and making the same temperature feel hotter."}, {"s": "Tropical & Climate-Responsive Design", "q": "What term describes dense cities like Manila running 2-5°C warmer than rural areas?", "o": ["Atmospheric Inversion", "Urban Heat Island Effect", "Microclimate Stratification", "Greenhouse Concentricity"], "c": 1, "n": "The Urban Heat Island Effect describes dense cities running measurably warmer than surrounding rural land due to dark, hard surfaces."}, {"s": "Tropical & Climate-Responsive Design", "q": "What problem arises from a very small diurnal temperature range in the tropics?", "o": ["Warm nights fail to flush heat trapped in concrete walls", "Rapid cracking in timber", "Eliminated wind movement", "Reduced solar power generation"], "c": 0, "n": "A small diurnal range means nights don't cool enough to flush the solar heat that concrete/masonry walls absorbed during the day."}, {"s": "Tropical & Climate-Responsive Design", "q": "What term describes cool ocean air moving inland in the afternoon as land air rises?", "o": ["Land Breeze (Tungkasan)", "Sea Breeze (Ambon)", "Katabatic Mountain Wind", "Cyclonic Monsoon Core"], "c": 1, "n": "A sea breeze is the daily cycle where cooler ocean air moves inland in the afternoon as land air heats and rises."}, {"s": "Tropical & Climate-Responsive Design", "q": "Which axis orientation best keeps a building cool by avoiding direct sun on its long walls?", "o": ["East-to-West", "North-to-South", "Diagonal at 45°", "Perpendicular to the coast"], "c": 0, "n": "Stretching a building's long axis East-to-West minimizes the exposed wall area facing the intense low-angle morning/afternoon sun."}, {"s": "Tropical & Climate-Responsive Design", "q": "Which facades get the most intense low-angle sun, hard to shade with horizontal overhangs?", "o": ["North and South", "East and West", "Northeast and Southwest", "Only true North"], "c": 1, "n": "East and West facades receive intense, low-angle sun that horizontal overhangs (better suited to high-angle sun) can't easily block."}, {"s": "Tropical & Climate-Responsive Design", "q": "Which shading device best blocks high-angle noon sun on North/South facades?", "o": ["Vertical louvers", "Deep horizontal overhangs", "Black eggcrate panels", "Reflective double-pane glass"], "c": 1, "n": "Deep horizontal overhangs/canopies are most effective at blocking the high-angle noon sun typical on North/South facades."}, {"s": "Tropical & Climate-Responsive Design", "q": "Which shading device best blocks low-angle morning/afternoon sun on East/West facades?", "o": ["Vertical louvers", "Deep horizontal overhangs", "Black eggcrate panels", "Reflective double-pane glass"], "c": 0, "n": "Vertical louvers or fins are best suited to block the low, raking morning/afternoon sun on East/West facades."}, {"s": "Tropical & Climate-Responsive Design", "q": "What happens at night with an unshaded concrete roof slab in the tropics?", "o": ["It turns instantly cold causing condensation", "It deflects downward from contraction", "Stored daytime heat radiates downward at night", "Cross-ventilation velocity drops"], "c": 2, "n": "A massive unshaded concrete roof stores solar heat during the day and re-radiates it downward into the interior at night."}, {"s": "Tropical & Climate-Responsive Design", "q": "What roof pitch sheds monsoon rain fast while venting hot air away from occupants?", "o": ["Flat roof with parapets", "Low sawtooth roof facing West", "Steep pitch with generous eaves", "Mono-sloped roof toward the windward inlet"], "c": 2, "n": "A steep roof pitch with generous eaves sheds heavy monsoon rain fast while letting hot air rise and pool near the peak, away from occupants."}, {"s": "Tropical & Climate-Responsive Design", "q": "What is the function of a breeze block screen wall in tropical buildings?", "o": ["Shade while blocking breeze", "Load-bearing column system", "Reduce glare while letting air pass through", "Increase heat gain while venting"], "c": 2, "n": "Breeze blocks perforate a wall to cut direct glare while still letting natural airflow pass through."}, {"s": "Tropical & Climate-Responsive Design", "q": "What does 'Azimuth' represent in solar geometry?", "o": ["Vertical sun angle above horizon", "Ozone layer thickness", "Vertical sun distance along horizon", "The sun's horizontal angular position along the horizon"], "c": 3, "n": "Azimuth is the sun's horizontal angular position measured along the horizon; altitude is its vertical angle."}, {"s": "Tropical & Climate-Responsive Design", "q": "What U-value should wall insulation have to minimize heat transfer?", "o": ["Very high", "Low, indicating high resistance to heat flow", "Exactly 1.0", "U-value has no impact"], "c": 1, "n": "Good insulation should have a low U-value, meaning high resistance to heat flow."}, {"s": "Tropical & Climate-Responsive Design", "q": "Why should highly reflective finishes be used cautiously in dense neighborhoods?", "o": ["They absorb too much moisture", "They absorb heat into adjacent buildings", "They reflect glare/heat onto neighbors", "They attract insects"], "c": 2, "n": "Highly reflective finishes can bounce intense solar glare and heat onto neighboring buildings and streets."}, {"s": "Tropical & Climate-Responsive Design", "q": "What principle explains air speeding up when forced through a narrow opening?", "o": ["The Stack Effect", "The Venturi Effect", "The Doppler Shift", "Archimedes' Principle"], "c": 1, "n": "The Venturi Effect explains why air speeds up when forced through a narrowed opening."}, {"s": "Tropical & Climate-Responsive Design", "q": "What inlet/outlet sizing maximizes cross-ventilation velocity?", "o": ["Inlet smaller than or equal to outlet", "Inlet larger than or equal to outlet", "Both openings at the same height", "Outlet facing the floor"], "c": 0, "n": "Sizing the inlet smaller than the outlet creates a pressure differential (like a nozzle) that speeds up indoor air movement."}, {"s": "Tropical & Climate-Responsive Design", "q": "What ventilation mechanism relies on warm air rising and exiting high vents, pulling cool air in low?", "o": ["The Stack Effect", "The Venturi Effect", "The Doppler Shift", "Archimedes' Principle"], "c": 0, "n": "The stack effect relies on warm, buoyant air rising and exiting high vents, drawing cooler air in through low openings."}, {"s": "Tropical & Climate-Responsive Design", "q": "Which window type allows near-100% ventilation while shedding rain?", "o": ["Casement windows", "Fixed glass curtain walls", "Jalousie windows", "Hopper windows"], "c": 2, "n": "Jalousie windows open to nearly 100% of their area while their angled glass slats still shed rain."}, {"s": "Tropical & Climate-Responsive Design", "q": "What landscape feature placed upwind of an inlet cools incoming air?", "o": ["An asphalt lot with no trees", "A hedge fence", "Shrubs planted below openings", "A lawn with a water feature for evaporative cooling"], "c": 3, "n": "A water feature or lawn placed upwind of an inlet cools incoming air through evaporative cooling."}, {"s": "Tropical & Climate-Responsive Design", "q": "What is the passive cooling benefit of wide overhanging verandas in tropical resorts?", "o": ["Sealing the core from storms", "Shading perimeter walls from sun while sheltering from rain", "Increasing material longevity", "Acting as seismic counterweights"], "c": 1, "n": "Wide overhanging verandas shade a building's perimeter walls from direct sun while sheltering them from rain."}, {"s": "Tropical & Climate-Responsive Design", "q": "What glass technology reduces SHGC without external shading?", "o": ["Clear single-pane float glass", "Wire-reinforced fire-rated glass", "High-transparency acoustic glass", "Low-E reflective double-glazed units"], "c": 3, "n": "Low-Emissivity, reflective double-glazed units reduce a window's solar heat gain coefficient without needing external shading."}, {"s": "Tropical & Climate-Responsive Design", "q": "What material choice keeps the Bahay Kubo from storing heat?", "o": ["Massive coral stone blocks", "Lightweight, porous materials with low thermal mass", "Poured concrete clad in tuff", "Wood panels that absorb heat"], "c": 1, "n": "The Bahay Kubo's light, porous natural materials (bamboo, nipa) have low thermal mass, so the structure doesn't store heat."}, {"s": "Tropical & Climate-Responsive Design", "q": "Why is the Bahay Kubo's floor elevated on stilts?", "o": ["To protect from flooding and pests", "For a security vantage during tribal wars", "To maximize roof rigidity in typhoons", "To isolate the house from ventilation"], "c": 0, "n": "Elevating the Bahay Kubo on stilts protects occupants and the structure from floodwater and ground pests."}, {"s": "Tropical & Climate-Responsive Design", "q": "What feature combines Bahay Kubo's lightweight logic with heavy stone in a Bahay na Bato?", "o": ["Stone upper floor on a bamboo ground floor", "A heavy masonry ground floor topped by a timber upper story", "An envelope entirely of imported sheet metal", "No windows on upper levels"], "c": 1, "n": "The Bahay na Bato pairs a heavy masonry ground floor with a lighter timber upper residential story."}, {"s": "Tropical & Climate-Responsive Design", "q": "What pierced wooden screen near the ceiling in a Bahay na Bato lets hot air circulate between rooms?", "o": ["Calado", "Ventanilla", "Volada", "Zaguan"], "c": 0, "n": "The calado is a pierced wooden screen near the ceiling that lets hot air circulate freely between rooms."}, {"s": "Tropical & Climate-Responsive Design", "q": "What is the purpose of the ventanilla sliding panels below windowsills in a Bahay na Bato?", "o": ["Allowing low-level cross-ventilation across the floor", "Letting hot air flow between rooms", "Serving as escape hatches", "Purely decorative airflow"], "c": 0, "n": "Ventanilla sliding panels beneath the windowsill admit low-level cross-ventilation across the floor where occupants sit."}, {"s": "Tropical & Climate-Responsive Design", "q": "What is the primary advantage of translucent Capiz shells in Bahay na Bato windows?", "o": ["Fully soundproof", "Diffusing soft light while withstanding typhoon winds", "Lowering incoming air humidity", "Acting as a fire barrier"], "c": 1, "n": "Capiz shell panes diffuse soft interior light while remaining durable enough to withstand typhoon winds."}, {"s": "Site Planning & Landscape", "q": "What do closely spaced contour lines on a site map indicate?", "o": ["A flat open field", "A steep slope or cliff", "A high flood-risk zone", "An underground utility line"], "c": 1, "n": "Closely spaced contour lines indicate a steep slope or cliff."}, {"s": "Site Planning & Landscape", "q": "What does soil bearing capacity tell an architect?", "o": ["How much water soil holds in storms", "Organic compost percentage", "Required foundation depth", "How much weight the soil can safely support"], "c": 3, "n": "Soil bearing capacity tells an architect how much load the ground can safely carry before a foundation sinks."}, {"s": "Site Planning & Landscape", "q": "What does a 'cut and fill' grading strategy aim to achieve?", "o": ["Removing trees for gravel fill", "Minimizing cost of hauling/importing soil", "Digging for historic artifacts", "Balancing soil to prevent erosion"], "c": 1, "n": "Cut-and-fill grading balances excavated and needed soil on site, minimizing the cost of hauling material away or importing it."}, {"s": "Site Planning & Landscape", "q": "What is a 'bioswale' in sustainable site planning?", "o": ["A sewage pump", "An underground drinking-water tank", "A drainage trench channeling rainwater", "A shallow planted ditch that captures, slows, and filters stormwater"], "c": 3, "n": "A bioswale is a shallow, planted depression designed to capture, slow, and filter stormwater runoff."}, {"s": "Site Planning & Landscape", "q": "What challenge does a 'high water table' pose to a design?", "o": ["Makes excavation harder but is otherwise safe", "Shallow groundwater makes basements flood-prone", "Keeps site air completely dry", "Requires lightweight timber construction"], "c": 1, "n": "A high water table means shallow groundwater, making basements especially prone to flooding and requiring waterproofing."}, {"s": "Site Planning & Landscape", "q": "What distinguishes a 'vista' from a 'panorama' in site design?", "o": ["Vista is 360°, panorama is hidden", "A vista is a framed view, a panorama is wide and open in all directions", "Vista is night-only, panorama is day-only", "They are identical"], "c": 1, "n": "A vista is a framed, directed view (often along an axis), while a panorama is a wide, open view in all directions."}, {"s": "Site Planning & Landscape", "q": "Why align parking lanes North-to-South rather than East-to-West?", "o": ["Minimizes low-angle sun exposure, keeping cars cooler", "Easier for drivers to park", "Aligns with the Earth's magnetic core", "Fits more cars in the lot"], "c": 0, "n": "Orienting parking rows North--South limits how long parked cars sit exposed to the low, direct East/West sun, keeping them cooler."}, {"s": "Site Planning & Landscape", "q": "Why are native plants preferred over exotic plants in sustainable landscaping?", "o": ["They need far less water, fertilizer, and maintenance", "They grow faster than exotic plants", "They match building roofline height", "They are immune to solar radiation"], "c": 0, "n": "Native plants are adapted to local conditions and typically need far less water, fertilizer, and maintenance than exotic species."}, {"s": "Site Planning & Landscape", "q": "What site element best blocks loud highway noise from a residential building?", "o": ["A thin chain-link fence", "An open lawn with a concrete fence", "An earth berm with dense shrubs and trees", "Painting the exterior bright white"], "c": 2, "n": "An earth berm combined with dense shrubs and trees is an effective passive barrier against highway traffic noise."}, {"s": "Site Planning & Landscape", "q": "What is a 'microclimate' in site analysis?", "o": ["A localized area whose climate differs notably from the surrounding region", "A regional climate spanning hundreds of km", "A specific small-site climate shaped by its own features", "A weather forecast changing every five minutes"], "c": 0, "n": "A microclimate is a localized area whose temperature, humidity, wind, or rainfall differs notably from the surrounding regional climate."}, {"s": "Site Planning & Landscape", "q": "What is the primary purpose of a 'site inventory' early in a project?", "o": ["Ordering final construction materials", "Calculating final rental prices", "Cataloging all existing physical site features", "Choosing existing elements and their cost"], "c": 2, "n": "A site inventory catalogs all existing physical features of a site as a baseline before design begins."}, {"s": "Site Planning & Landscape", "q": "Why is removing mature trees from a sloped site hazardous?", "o": ["It violates the ecosystem", "Roots stabilize soil/absorb rain; removal raises erosion/landslide risk", "It weakens soil bearing capacity directly", "It drops the water table too fast"], "c": 1, "n": "Mature tree roots stabilize slope soil and absorb rainwater; removing them raises the risk of erosion and landslides."}, {"s": "Site Planning & Landscape", "q": "What is an 'earth berm' in landscape design?", "o": ["Soil used to collect rainwater", "A decorative stone fountain", "A drainage trench", "A raised, intentional mound of soil"], "c": 3, "n": "An earth berm is a raised, intentionally shaped mound of soil used for screening, shading, or noise control."}, {"s": "Site Planning & Landscape", "q": "What is the design advantage of deciduous trees for shading a south facade?", "o": ["Blocking 100% of wind year-round", "Providing wildlife food/shelter and erosion control", "Acting as windbreaks and privacy screens", "Shading in summer, dropping leaves to let sun through in winter"], "c": 3, "n": "Deciduous trees shade a south facade in summer heat and drop their leaves in winter, letting sunlight through when it's wanted."}, {"s": "Site Planning & Landscape", "q": "What term describes a broad paved public walkway along a waterfront for leisurely walking?", "o": ["Pleached walkway", "Esplanade", "Cul-de-sac", "Alleyway"], "c": 1, "n": "An esplanade is a broad, paved public walkway along a waterfront meant for leisurely strolling."}, {"s": "Site Planning & Landscape", "q": "What outdoor structure has an open timber frame, often vine-covered, framing a path or seating area?", "o": ["Pergola", "Gazebo", "Trellis", "Vestibule"], "c": 0, "n": "A pergola is an open timber framework of posts and cross-beams, often planted with vines, that frames a path or shaded seating area."}, {"s": "Site Planning & Landscape", "q": "What landscape element is a dense row of shrubs forming a living wall for boundaries/screening?", "o": ["Fence line", "Hedge", "Bushes", "Parterre"], "c": 1, "n": "A hedge is a dense, continuous planted row that forms a living wall marking boundaries or screening views."}, {"s": "Site Planning & Landscape", "q": "What distinguishes 'hardscape' from 'softscape'?", "o": ["Hardscape is non-living, softscape is all plant material", "Hardscape is living, softscape is non-living", "Hardscape is by architects, softscape by engineers only", "Hardscape is water systems, softscape is lighting"], "c": 0, "n": "Hardscape refers to non-living built elements (paving, walls), while softscape refers to living plant materials."}, {"s": "Urban Planning Theory", "q": "What was the core layout of Ebenezer Howard's 1898 Garden City concept?", "o": ["Endless skyscrapers along a greenbelt", "A car-focused grid with no parks", "A factory complex with housing on roofs", "Self-contained walkable towns surrounded by a greenbelt"], "c": 3, "n": "Howard's Garden City model proposed self-contained, walkable towns encircled by a protective greenbelt."}, {"s": "Urban Planning Theory", "q": "What is the primary goal of Transit-Oriented Development (TOD)?", "o": ["Building highways for faster car travel", "Clustering dense housing/offices/shops near transit hubs", "Making development scattered and far from transit", "Moving all transit underground"], "c": 1, "n": "Transit-Oriented Development clusters dense housing, offices, and retail within easy walking distance of transit hubs."}, {"s": "Urban Planning Theory", "q": "What does 'urban sprawl' describe?", "o": ["Vertical growth via skyscrapers", "Converting factories into libraries", "Uncontrolled, uncoordinated outward city growth", "Planting forests downtown"], "c": 2, "n": "Urban sprawl describes the uncontrolled, low-density, outward expansion of a city."}, {"s": "Urban Planning Theory", "q": "What layout does the 'New Urbanism' movement champion?", "o": ["Car-dependent cul-de-sacs with large lawns", "Walkable, human-scaled neighborhoods", "Mega-blocks with wide highways", "Mountain-zone residential relocation"], "c": 1, "n": "New Urbanism promotes walkable, human-scaled neighborhoods in place of car-dependent sprawl."}, {"s": "Urban Planning Theory", "q": "How does the Concentric Zone Model describe city growth?", "o": ["Pie-shaped slices along transit routes", "Concentric rings radiating from a central business district", "Sectors along transportation corridors", "Growth around multiple independent hubs"], "c": 1, "n": "The Concentric Zone Model (Burgess) describes a city as a series of rings expanding outward from a central business district."}, {"s": "Urban Planning Theory", "q": "How does the Sector Model (Hoyt) map urban land use?", "o": ["Concentric rings from a center", "Pie-shaped wedges growing along transportation corridors", "Independent focal points", "Random scattered growth"], "c": 1, "n": "The Sector Model (Hoyt) describes land use radiating outward in pie-shaped wedges along transportation corridors."}, {"s": "Urban Planning Theory", "q": "What claim does the 'Multiple Nuclei Model' make about metropolitan growth?", "o": ["Rings from a center", "Wedges along corridors", "Slices along transit routes", "Growth around several independent, specialized hubs"], "c": 3, "n": "The Multiple Nuclei Model holds that cities grow around several independent, specialized focal points rather than one center."}, {"s": "Urban Planning Theory", "q": "What is 'gentrification' in an urban context?", "o": ["Reinforcing old bridges", "Wealthier residents moving into a low-income area, raising costs and displacing residents", "Planting trees along highways", "Forced removal due to war/disaster"], "c": 1, "n": "Gentrification is the influx of wealthier residents into a lower-income neighborhood, raising costs and often displacing the original community."}, {"s": "Urban Planning Theory", "q": "What defines a 'Mega-city'?", "o": ["Population over 100 thousand", "Population over 1 million", "Population over 10 million", "Population over 100 million"], "c": 2, "n": "A megacity is a continuous metropolitan area with a population exceeding 10 million."}, {"s": "Urban Planning Theory", "q": "What is the function of a 'Greenbelt' in metropolitan planning?", "o": ["Paint marking bike lanes", "A corporate office lawn", "A recycled water pipe network", "A protected ring of open space containing sprawl and preserving habitat"], "c": 3, "n": "A greenbelt is a protected ring of open land encircling a city to contain sprawl and preserve natural habitat."}, {"s": "Urban Planning Theory", "q": "What was a common criticism of mid-20th-century Urban Renewal slum-clearance programs?", "o": ["Not enough spent on monuments", "Demolished historic areas and displaced residents without adequate housing", "Caused gentrification", "Caused forced migration from war"], "c": 1, "n": "Mid-century Urban Renewal was criticized for demolishing historic, low-income neighborhoods without providing adequate replacement housing."}, {"s": "Urban Planning Theory", "q": "What is 'urban blight' or 'urban decay'?", "o": ["Converting old assets into new public amenities", "Displacing communities via demolition", "Deterioration, abandonment, and economic decline of inner-city buildings", "A raw concrete design trend"], "c": 2, "n": "Urban blight/decay refers to the functional deterioration, abandonment, and economic decline of inner-city buildings and infrastructure."}, {"s": "Urban Planning Theory", "q": "How is residential density typically measured on planning maps?", "o": ["Windows per facade", "Dwelling units per unit land area", "Building weight over road length", "Cars parked per street"], "c": 1, "n": "Residential density is expressed as the number of dwelling units per unit of land area."}, {"s": "Urban Planning Theory", "q": "What is a 'Planned Unit Development' (PUD)?", "o": ["A community with identical setback rules", "A flexible master-planned zoning category allowing mixed uses/housing on one parcel", "A water treatment blueprint", "A park of identical playgrounds"], "c": 1, "n": "A Planned Unit Development is a flexible master-planned zoning category allowing mixed uses and housing types on one large parcel."}, {"s": "Urban Planning Theory", "q": "What is the fundamental difference between 'land use' and 'zoning'?", "o": ["Land use is current activity; zoning is the legal regulation for future development", "Land use is private, zoning is engineering-only", "Land use is rural, zoning is urban only", "They are identical terms"], "c": 0, "n": "Land use describes what is actually on the ground now; zoning is the legal regulation controlling what may be built there."}, {"s": "Urban Planning Theory", "q": "In Kevin Lynch's 'Image of the City', what are strategic busy focal points where paths cross called?", "o": ["Districts", "Landmarks", "Nodes", "Edges"], "c": 2, "n": "Kevin Lynch's 'nodes' are strategic, busy focal points, such as where major paths intersect."}, {"s": "Urban Planning Theory", "q": "What is an 'Edge' in Kevin Lynch's mental-mapping theory?", "o": ["A highway for pedestrians", "A linear boundary acting as a barrier or break", "A distinct architectural neighborhood", "A visible skyscraper"], "c": 1, "n": "Lynch defines an 'edge' as a linear boundary that acts as a barrier or break between districts."}, {"s": "Urban Planning Theory", "q": "How does Kevin Lynch define a 'District'?", "o": ["A linear barrier", "A medium-large area with a distinct identity one can mentally enter", "A property boundary fence", "A prominent statue at an intersection"], "c": 1, "n": "Lynch's 'district' is a medium-to-large area with a distinct, shared identity a person can mentally enter."}, {"s": "Urban Planning Theory", "q": "What does Jane Jacobs's 'eyes on the street' concept mean for safety?", "o": ["Windows/storefronts facing sidewalks so residents naturally watch the street", "Installing CCTV on every pole", "Police stations on every block", "Keeping streets empty at night"], "c": 0, "n": "Jane Jacobs's 'eyes on the street' means active windows and storefronts facing the sidewalk let residents naturally watch over it."}, {"s": "Urban Planning Theory", "q": "What was Daniel Burnham's core philosophy for the 'City Beautiful' movement?", "o": ["Monumental civic centers, boulevards, and classical beauty for civic pride", "Moving shops underground", "Replacing parks with parking decks", "No central planning rules"], "c": 0, "n": "Burnham's City Beautiful movement pursued monumental civic centers, wide boulevards, and classical grandeur to inspire civic order and pride."}, {"s": "Urban Planning Theory", "q": "What daily schedule does Carlos Moreno's '15-Minute City' concept aim to enable?", "o": ["15 minutes a day planting trees", "Trains every 15 minutes", "Necessities within a 15-minute walk/bike ride", "Necessities within a 15-minute drive"], "c": 2, "n": "Moreno's 15-Minute City aims to put daily necessities within a 15-minute walk or bike ride of home."}, {"s": "Urban Planning Theory", "q": "What does Patrick Geddes's 'Survey before plan' mandate?", "o": ["Thoroughly studying a site's geography, history, culture, and people before planning", "Calculating profit before buying land", "Interviewing neighboring mayors", "Pouring roads before zoning"], "c": 0, "n": "Geddes's 'survey before plan' calls for thoroughly studying a site's geography, history, culture, and people before laying out any plan."}, {"s": "Urban Planning Theory", "q": "What was the ideal destination in Ebenezer Howard's 'Three Magnets' diagram?", "o": ["The Town (high wages, pollution)", "The Town-Country (city opportunity plus nature)", "The Country (isolated but scenic)", "The Wilderness (no infrastructure)"], "c": 1, "n": "Howard's ideal 'Town-Country' magnet combined the economic opportunity of the city with the open space and nature of the countryside."}, {"s": "Urban Planning Theory", "q": "What threat are 'Floating City' concepts like Oceanix designed to address?", "o": ["Tornado damage", "Volcanic ash", "Earthquakes", "Rising seas and climate-driven coastal flooding"], "c": 3, "n": "Floating city concepts like Oceanix are designed to protect coastal populations from rising seas and climate-driven storm flooding."}, {"s": "Urban Planning Theory", "q": "How did Le Corbusier map Chandigarh's sectors using a human-body analogy?", "o": ["Capitol as 'Head', parks as 'Lungs', commerce as 'Heart'", "Factories as 'Brain', homes as 'Feet'", "Highways as 'Stomach', schools as 'Eyes'", "City shaped like a skeletal arm"], "c": 0, "n": "Le Corbusier mapped Chandigarh's capitol as the 'Head,' its green parks as the 'Lungs,' and its commercial center as the 'Heart.'"}, {"s": "Urban Planning Theory", "q": "What does Kevin Lynch mean by 'urban legibility'?", "o": ["Ease of reading zoning laws", "Font size on wayfinding signs", "How easily residents form a coherent mental map of a city's parts", "Number of books in a library"], "c": 2, "n": "Urban legibility is how easily residents can recognize and organize a city's parts into a coherent mental map."}, {"s": "Urban Planning Theory", "q": "Which of Doxiadis's five ekistic elements represents physical buildings that shelter people?", "o": ["Shells", "Networks", "Society", "Nature"], "c": 0, "n": "Of Doxiadis's five ekistic elements, 'Shells' are the physical buildings and structures that house people."}, {"s": "Urban Planning Theory", "q": "What was the typical pre-colonial layout of native Filipino barangay settlements?", "o": ["Dense stone cities in mountains", "A rigid grid around stone palaces", "Linear settlements along coasts/rivers for transit and trade", "Concentric rings around a temple"], "c": 2, "n": "Pre-colonial barangays typically formed linear settlements along coasts and rivers for transit, fishing, and trade."}, {"s": "Urban Planning Theory", "q": "What was the typical size/structure of a pre-colonial Philippine barangay?", "o": ["A massive empire of millions", "A nomadic camp of 5-10 hunters", "Industrial workers in barracks", "A kinship community of 30-100 families led by a Datu"], "c": 3, "n": "A pre-colonial barangay was a small, kinship-based community of roughly 30--100 families led by a Datu."}, {"s": "Urban Planning Theory", "q": "What was the goal of the Spanish 'Reducción' policy in the Philippines?", "o": ["Reducing farmland per family", "Grouping scattered communities into centralized towns for conversion/taxation", "Reducing population via migration", "Replacing timber with bamboo buildings"], "c": 1, "n": "The Reducción policy resettled scattered native communities into centralized towns to ease religious conversion and tax collection."}, {"s": "Urban Planning Theory", "q": "What is the historic 1573 document dictating Spanish colonial town layouts called?", "o": ["The Burnham Manifesto", "The Tordesillas Urban Accord", "The Gridiron Mandate", "The Laws of the Indies"], "c": 3, "n": "King Philip II's 1573 planning code for Spanish colonial towns is known as the Laws of the Indies."}, {"s": "Urban Planning Theory", "q": "Where were elite Principalia houses mandated to be built in a colonial plaza complex?", "o": ["Facing or adjacent to the central plaza", "Hidden in rural zones", "On floating river rafts", "On top of the church bell tower"], "c": 0, "n": "Colonial plaza complexes required the Principalia's grand houses to face or sit adjacent to the central plaza."}, {"s": "Urban Planning Theory", "q": "What is the scientific definition of 'Ekistics'?", "o": ["The multidisciplinary study of human settlements' growth and structure", "Engineering study of foundations", "Analysis of Roman masonry", "Interior furniture styling"], "c": 0, "n": "Ekistics is the comprehensive, multidisciplinary study of human settlements and their scale, growth, and structure."}, {"s": "Urban Planning Theory", "q": "Which American planner designed City Beautiful master plans for Manila and Baguio in 1904?", "o": ["Robert Moses", "Louis Sullivan", "Frank Lloyd Wright", "Daniel Burnham"], "c": 3, "n": "Daniel Burnham visited the Philippines in 1904 to prepare City Beautiful master plans for Manila and Baguio."}, {"s": "Urban Planning Theory", "q": "What was the 'Parian' in Spanish colonial Manila?", "o": ["A regulated commercial district outside Intramuros for Chinese merchants", "The Governor-General's palace", "A stone aqueduct", "A cemetery behind the cathedral"], "c": 0, "n": "The Parian was the regulated commercial district outside Intramuros's walls designated for Chinese merchants and artisans."}, {"s": "Urban Planning Theory", "q": "What movement inspired Quezon City's 1939 wide avenues and civic circles?", "o": ["City Beautiful, prioritizing monumental axes and parkways", "Brutalism, with raw concrete mega-blocks", "Deconstructivism, with chaotic grids", "New Urbanism, focused on rural lanes"], "c": 0, "n": "Quezon City's 1939 plan of wide avenues and civic circles was directly inspired by the City Beautiful movement."}, {"s": "Urban Planning Theory", "q": "What term did Doxiadis give to a hypothetical future single worldwide connected city?", "o": ["Megalopolis", "Ecumenopolis", "Metropolis", "Necropolis"], "c": 1, "n": "Doxiadis called his hypothetical future of one continuous, planet-spanning city 'Ecumenopolis.'"}, {"s": "Urban Planning Theory", "q": "Which Kevin Lynch element describes the channels people regularly travel along?", "o": ["Nodes", "Edges", "Paths", "Landmarks"], "c": 2, "n": "Lynch's 'paths' are the channels --- streets, walkways --- along which people habitually travel."}, {"s": "Urban Planning Theory", "q": "What zoning milestone did Tony Garnier's 1904 'Industrial City' concept introduce?", "o": ["First strict separation of work and living areas", "Mandatory cast-iron residential framing", "Banning electricity in commercial zones", "Concentrating population in one palace"], "c": 0, "n": "Tony Garnier's Cité Industrielle (1904) was among the first plans to strictly zone work areas apart from living areas."}, {"s": "Urban Planning Theory", "q": "Which architect wrote 'A house is a machine for living in'?", "o": ["Le Corbusier", "Walter Gropius", "Kenzo Tange", "Tadao Ando"], "c": 0, "n": "Le Corbusier wrote that 'a house is a machine for living in' in Vers une architecture."}, {"s": "Urban Planning Theory", "q": "A public building with grand columns, a pediment, and a symmetrical stone facade mimicking Greek/Roman temples is what style?", "o": ["Bauhaus", "Gothic Revival", "Neoclassical", "Rococo"], "c": 2, "n": "Grand columns, a pediment, and symmetrical stone facades echoing Greek/Roman temples define the Neoclassical style."}, {"s": "Urban Planning Theory", "q": "What principle is applied when benches, handles, and ceiling heights are designed to match human reach and proportion?", "o": ["Human Scale", "Monumental Scale", "Asymmetrical Contrast", "Axial Symmetry"], "c": 0, "n": "Designing fixtures and dimensions to match comfortable human reach and proportion is the principle of Human Scale."}, {"s": "Urban Planning Theory", "q": "What planning strategy isolates residential streets from traffic by routing it around a large block's perimeter?", "o": ["Ribbon Sprawl Layout", "Concentric Business Rings", "Spot Zoning Plan", "Superblock Design"], "c": 3, "n": "Superblock design routes fast traffic around the perimeter of a large block, keeping the quiet residential interior free of through-traffic."}, {"s": "Urban Planning Theory", "q": "What was the core philosophy of the Postmodern movement emerging in the late 1960s-70s?", "o": ["Banning color for factory-warehouse looks", "Making all buildings round", "Reviving historical ornament, color, irony, and playful shapes", "Moving spaces underground"], "c": 2, "n": "Postmodernism reintroduced historical ornament, color, irony, and playful form in reaction against strict Modernist rules."}, {"s": "Urban Planning Theory", "q": "What is the primary benefit of a centralized park system or greenway corridors in master planning?", "o": ["Concentrating factories in one zone", "Increasing commercial tower density", "Acting as the city's 'green lungs' for air, drainage, and recreation", "Maximizing highway space"], "c": 2, "n": "A connected park/greenway system serves as a city's 'green lungs,' managing stormwater, air quality, and recreation."}, {"s": "Urban Planning Theory", "q": "What 1920s-30s style features geometric sunbursts, chevrons, and sleek metal lines, as on the Chrysler Building?", "o": ["Baroque", "Art Nouveau", "Neoclassical", "Art Deco"], "c": 3, "n": "Geometric sunbursts, chevrons, and sleek metallic lines atop buildings like the Chrysler Building define Art Deco."}, {"s": "Urban Planning Theory", "q": "What proportion system uses a roughly 1:1.618 ratio found throughout nature for pleasing width-height relationships?", "o": ["The Golden Section", "The Ken Dimension", "The Modular Grid", "The Ergonomic Metric"], "c": 0, "n": "The Golden Section is the roughly 1:1.618 ratio found throughout nature and applied to pleasing architectural proportions."}, {"s": "Urban Planning Theory", "q": "What is the traffic-safety benefit of a cul-de-sac?", "o": ["Increases cross-town commute speed", "Eliminates fast through-traffic on residential blocks", "Cuts sewer installation cost", "Maximizes retail frontage"], "c": 1, "n": "A cul-de-sac's dead-end turnaround keeps fast through-traffic from cutting through quiet residential streets."}, {"s": "Urban Planning Theory", "q": "What road layout overlays diagonal avenues onto a rectangular grid, meeting at civic circles?", "o": ["Linear Network", "Concentric Ring Plan", "Radial-Gridiron Plan", "Multi-Nuclei Mesh"], "c": 2, "n": "A Radial-Gridiron plan overlays diagonal boulevards onto a rectangular grid, meeting at civic circles or squares."}, {"s": "Urban Planning Theory", "q": "Which architect, nicknamed 'Queen of the Curve,' designed the Heydar Aliyev Center using digital modeling?", "o": ["Maya Lin", "Kazuyo Sejima", "Zaha Hadid", "Neri Oxman"], "c": 2, "n": "Zaha Hadid, nicknamed the 'Queen of the Curve,' designed the fluid, digitally modeled Heydar Aliyev Center."}, {"s": "Urban Planning Theory", "q": "What is the 'Volada' in a traditional Bahay na Bato?", "o": ["A solid stone foundation wall sealing the ground floor", "A secret underground drainage tunnel", "An overhanging enclosed wooden gallery on the second floor for shade and airflow", "Decorative iron window grillwork"], "c": 2, "n": "The volada is an overhanging, enclosed second-floor wooden gallery that shades the ground floor and allows air to circulate."}];
+
+const QUESTION_SECONDS = 60;
+
+const sectionTag = document.getElementById('sectionTag');
+const reviewingTag = document.getElementById('reviewingTag');
+const qtextEl = document.getElementById('qtext');
+const optionsEl = document.getElementById('options');
+const feedbackEl = document.getElementById('feedback');
+const backBtn = document.getElementById('backBtn');
+const forwardBtn = document.getElementById('forwardBtn');
+const finishBtn = document.getElementById('finishBtn');
+const progressText = document.getElementById('progressText');
+const tesseraeEl = document.getElementById('tesserae');
+const scoreText = document.getElementById('scoreText');
+const mistakeText = document.getElementById('mistakeText');
+const quizArea = document.getElementById('quizArea');
+const resultsEl = document.getElementById('results');
+const timerRow = document.getElementById('timerRow');
+const timerFill = document.getElementById('timerFill');
+const timerText = document.getElementById('timerText');
+
+let shuffleMode = false;
+let order = QUESTIONS.map((_, i) => i);
+let pos = 0;
+let frontier = 0;
+let answersLog = new Array(order.length).fill(null);
+let optOrders = new Array(order.length).fill(null);
+let everMissed = new Set();
+let isRetryRun = false;
+let timerHandle = null;
+let timerRemaining = QUESTION_SECONDS;
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function letter(i){ return String.fromCharCode(65 + i); }
+
+function stopTimer(){
+  if(timerHandle){ clearInterval(timerHandle); timerHandle = null; }
+}
+
+function startTimer(){
+  stopTimer();
+  timerRemaining = QUESTION_SECONDS;
+  timerRow.classList.remove('hidden');
+  timerRow.classList.remove('urgent');
+  timerFill.style.width = '100%';
+  timerText.textContent = timerRemaining;
+  timerHandle = setInterval(() => {
+    timerRemaining--;
+    const pct = Math.max(0, (timerRemaining / QUESTION_SECONDS) * 100);
+    timerFill.style.width = pct + '%';
+    timerText.textContent = Math.max(0, timerRemaining);
+    if(timerRemaining <= 10){ timerRow.classList.add('urgent'); }
+    if(timerRemaining <= 0){
+      stopTimer();
+      selectAnswer(-1, null);
+    }
+  }, 1000);
+}
+
+function getOptOrder(p){
+  if(!optOrders[p]){
+    const item = QUESTIONS[order[p]];
+    optOrders[p] = shuffle(item.o.map((_, i) => i));
+  }
+  return optOrders[p];
+}
+
+function buildTesserae(){
+  tesseraeEl.innerHTML = '';
+  order.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'rtick';
+    d.id = 'tess-' + i;
+    tesseraeEl.appendChild(d);
+  });
+}
+
+function updateTesserae(){
+  order.forEach((_, i) => {
+    const el = document.getElementById('tess-' + i);
+    el.classList.remove('done','current','wrong-tess');
+    if(answersLog[i]){
+      el.classList.add(answersLog[i].isCorrect ? 'done' : 'wrong-tess');
+    }
+    if(i === pos) el.classList.add('current');
+  });
+}
+
+function updateStats(){
+  const scoreCount = answersLog.filter(a => a && a.isCorrect).length;
+  const mistakeCount = answersLog.filter(a => a && !a.isCorrect).length;
+  scoreText.textContent = scoreCount;
+  mistakeText.textContent = mistakeCount;
+}
+
+function renderQuestion(){
+  const item = QUESTIONS[order[pos]];
+  const logged = answersLog[pos];
+
+  sectionTag.textContent = item.s;
+  qtextEl.textContent = item.q;
+  let qimgWrap = document.getElementById('qimgWrap');
+  if(item.img){
+    if(!qimgWrap){
+      qimgWrap = document.createElement('div');
+      qimgWrap.className = 'qimg-wrap';
+      qimgWrap.id = 'qimgWrap';
+      qtextEl.insertAdjacentElement('afterend', qimgWrap);
+    }
+    qimgWrap.innerHTML = '<img src="' + item.img + '" alt="Figure for this question">';
+    qimgWrap.style.display = 'flex';
+  } else if(qimgWrap){
+    qimgWrap.style.display = 'none';
+    qimgWrap.innerHTML = '';
+  }
+  optionsEl.innerHTML = '';
+  feedbackEl.className = 'feedback';
+  feedbackEl.innerHTML = '';
+  finishBtn.style.display = 'none';
+  reviewingTag.style.display = logged ? 'inline-block' : 'none';
+
+  const perm = getOptOrder(pos);
+
+  perm.forEach((origIdx, displayI) => {
+    const opt = item.o[origIdx];
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.innerHTML = '<span class="letter">' + letter(displayI) + '</span><span>' + opt + '</span>';
+    if(logged){
+      btn.classList.add('locked');
+      if(origIdx === item.c) btn.classList.add('correct');
+      else if(origIdx === logged.selected) btn.classList.add('incorrect');
+      else btn.classList.add('dim');
+    } else {
+      btn.addEventListener('click', () => selectAnswer(origIdx, btn));
+    }
+    optionsEl.appendChild(btn);
+  });
+
+  if(logged){
+    stopTimer();
+    timerRow.classList.add('hidden');
+    const correctDisplayLetter = letter(perm.indexOf(item.c));
+    const refHtml = item.ref ? '<span class="ref">' + item.ref + '</span>' : '';
+    const noteHtml = item.n ? '<span class="note">' + item.n + '</span>' : '';
+    if(logged.isCorrect){
+      feedbackEl.className = 'feedback show right';
+      feedbackEl.innerHTML = '<b>Correct.</b> ' + item.o[item.c] + '.' + refHtml + noteHtml;
+    } else {
+      const wrongLabel = logged.timedOut ? "Time's up." : 'Not quite.';
+      feedbackEl.className = 'feedback show wrong';
+      feedbackEl.innerHTML = '<b>' + wrongLabel + '</b> The right answer is <b>' + correctDisplayLetter + '</b>: ' + item.o[item.c] + '.' + refHtml + noteHtml;
+    }
+    if(pos === frontier && pos === order.length - 1){
+      finishBtn.style.display = 'inline-block';
+    }
+  } else {
+    startTimer();
+  }
+
+  progressText.textContent = 'Question ' + (pos+1) + ' of ' + order.length + (isRetryRun ? ' (missed questions)' : '');
+  backBtn.disabled = (pos === 0);
+  const atLastAnswered = (pos === order.length - 1 && logged);
+  forwardBtn.disabled = atLastAnswered || !(pos < frontier || (pos === frontier && logged));
+  updateStats();
+  updateTesserae();
+}
+
+function selectAnswer(i, btn){
+  if(answersLog[pos]) return;
+  stopTimer();
+  const item = QUESTIONS[order[pos]];
+  const correct = item.c;
+  const isCorrect = (i === correct);
+  if (window.LEASfx) { isCorrect ? LEASfx.playCorrect() : LEASfx.playIncorrect(); }
+  answersLog[pos] = {selected: i, isCorrect, timedOut: (i === -1)};
+
+  if(isCorrect) everMissed.delete(order[pos]);
+  else everMissed.add(order[pos]);
+  if(isCorrect && window.LEAProgress) LEAProgress.markMastered(LEA_SUBJECT_ID, LEA_MODULE_ID, order[pos]);
+
+  if(pos === frontier && frontier < order.length - 1){
+    frontier = pos + 1;
+  }
+
+  renderQuestion();
+}
+
+backBtn.addEventListener('click', () => {
+  if(pos > 0){ pos--; renderQuestion(); }
+});
+
+forwardBtn.addEventListener('click', () => {
+  if(pos < frontier){
+    pos++;
+    renderQuestion();
+  } else if(pos === frontier && answersLog[pos] && pos < order.length - 1){
+    pos++;
+    renderQuestion();
+  }
+});
+
+finishBtn.addEventListener('click', showResults);
+
+function showResults(){
+  if (window.LEASfx) { LEASfx.playComplete(); }
+  stopTimer();
+  timerRow.classList.add('hidden');
+  quizArea.classList.add('hidden');
+  document.querySelector('.ruler-wrap').style.display = 'none';
+  document.querySelector('.progress-label').style.display = 'none';
+  resultsEl.classList.add('show');
+
+  const score = answersLog.filter(a => a && a.isCorrect).length;
+  if(window.LEAProgress) LEAProgress.recordRunScore(LEA_SUBJECT_ID, LEA_MODULE_ID, score, order.length);
+  const mistakes = [];
+  answersLog.forEach((a, i) => {
+    if(a && !a.isCorrect) mistakes.push({qIndex: order[i], selected: a.selected, pos: i});
+  });
+
+  document.getElementById('resultsTitle').textContent = isRetryRun ? 'Retry Complete' : 'Quiz Complete';
+  document.getElementById('resultsSub').textContent = isRetryRun
+    ? 'A second pass at the questions you missed before.'
+    : "You've worked through every question, in order.";
+  document.getElementById('finalScore').textContent = score + ' / ' + order.length;
+
+  const bySection = {};
+  order.forEach((qIndex, i) => {
+    const item = QUESTIONS[qIndex];
+    if(!bySection[item.s]) bySection[item.s] = {right:0, total:0, missed:0};
+    bySection[item.s].total++;
+    const a = answersLog[i];
+    if(a && a.isCorrect) bySection[item.s].right++;
+    else if(a && !a.isCorrect) bySection[item.s].missed++;
+  });
+  const breakdown = document.getElementById('breakdown');
+  breakdown.innerHTML = '';
+  Object.keys(bySection).forEach(sec => {
+    const row = document.createElement('div');
+    row.className = 'breakdown-row';
+    row.innerHTML = '<span>' + sec + '</span><span>' + bySection[sec].right + ' / ' + bySection[sec].total + '</span>';
+    breakdown.appendChild(row);
+  });
+
+  const weakList = Object.keys(bySection)
+    .filter(sec => bySection[sec].missed > 0)
+    .sort((a,b) => bySection[b].missed - bySection[a].missed);
+  const weakSpotsEl = document.getElementById('weakSpots');
+  const weakSpotsList = document.getElementById('weakSpotsList');
+  if(weakList.length){
+    weakSpotsEl.style.display = 'block';
+    weakSpotsList.innerHTML = '';
+    weakList.slice(0,5).forEach(sec => {
+      const li = document.createElement('li');
+      li.textContent = sec + ' — missed ' + bySection[sec].missed + ' of ' + bySection[sec].total;
+      weakSpotsList.appendChild(li);
+    });
+  } else {
+    weakSpotsEl.style.display = 'none';
+  }
+
+  const mistakesReview = document.getElementById('mistakesReview');
+  const mistakesList = document.getElementById('mistakesList');
+  const noMistakes = document.getElementById('noMistakes');
+  if(mistakes.length){
+    mistakesReview.style.display = 'block';
+    noMistakes.style.display = 'none';
+    mistakesList.innerHTML = '';
+    mistakes.forEach(m => {
+      const item = QUESTIONS[m.qIndex];
+      const perm = optOrders[m.pos] || item.o.map((_, i) => i);
+      const correctLetter = letter(perm.indexOf(item.c));
+      const yourAnswerHtml = m.selected === -1
+        ? '⏱ No answer — time expired'
+        : letter(perm.indexOf(m.selected)) + '. ' + item.o[m.selected];
+      const div = document.createElement('div');
+      div.className = 'mistake-item';
+      div.innerHTML =
+        '<div class="m-section">' + item.s + '</div>' +
+        '<div class="m-q">' + item.q + '</div>' +
+        '<div class="m-you">Your answer: ' + yourAnswerHtml + '</div>' +
+        '<div class="m-correct">Correct answer: ' + correctLetter + '. ' + item.o[item.c] + '</div>';
+      mistakesList.appendChild(div);
+    });
+  } else {
+    mistakesReview.style.display = 'none';
+    noMistakes.style.display = 'block';
+  }
+
+  const retryBtn = document.getElementById('retryMissedBtn');
+  if(everMissed.size > 0){
+    retryBtn.style.display = 'inline-block';
+    retryBtn.textContent = 'Retry missed questions (' + everMissed.size + ')';
+  } else {
+    retryBtn.style.display = 'none';
+  }
+}
+
+function startRun(newOrder, retryMode){
+  order = newOrder;
+  answersLog = new Array(order.length).fill(null);
+  optOrders = new Array(order.length).fill(null);
+  frontier = 0;
+  pos = 0;
+  isRetryRun = retryMode;
+  quizArea.classList.remove('hidden');
+  document.querySelector('.ruler-wrap').style.display = 'block';
+  document.querySelector('.progress-label').style.display = 'flex';
+  resultsEl.classList.remove('show');
+  buildTesserae();
+  renderQuestion();
+}
+
+function freshOrder(){
+  const base = QUESTIONS.map((_, i) => i);
+  return shuffleMode ? shuffle(base) : base;
+}
+
+function fullRestart(){
+  everMissed = new Set();
+  startRun(freshOrder(), false);
+}
+
+document.getElementById('restartBtn').addEventListener('click', fullRestart);
+document.getElementById('toolbarRestartBtn').addEventListener('click', fullRestart);
+
+document.getElementById('retryMissedBtn').addEventListener('click', () => {
+  let missed = Array.from(everMissed).sort((a,b) => a - b);
+  if(shuffleMode) missed = shuffle(missed);
+  startRun(missed, true);
+});
+
+document.getElementById('orderInOrderBtn').addEventListener('click', () => {
+  if(shuffleMode){
+    shuffleMode = false;
+    document.getElementById('orderInOrderBtn').classList.add('active');
+    document.getElementById('orderShuffleBtn').classList.remove('active');
+    fullRestart();
+  }
+});
+document.getElementById('orderShuffleBtn').addEventListener('click', () => {
+  if(!shuffleMode){
+    shuffleMode = true;
+    document.getElementById('orderShuffleBtn').classList.add('active');
+    document.getElementById('orderInOrderBtn').classList.remove('active');
+    fullRestart();
+  }
+});
+
+const themeToggleBtn = document.getElementById('themeToggleBtn');
+
+function applyTheme(dark){
+  document.body.classList.toggle('dark-mode', dark);
+  themeToggleBtn.textContent = dark ? '☀️' : '🌙';
+}
+
+function initTheme(){
+  const saved = localStorage.getItem('tappPreboardTheme');
+  if(saved === 'dark' || saved === 'light'){
+    applyTheme(saved === 'dark');
+  } else {
+    applyTheme(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+}
+
+themeToggleBtn.addEventListener('click', () => {
+  const nowDark = !document.body.classList.contains('dark-mode');
+  applyTheme(nowDark);
+  try{ localStorage.setItem('tappPreboardTheme', nowDark ? 'dark' : 'light'); }catch(e){}
+});
+
+initTheme();
+buildTesserae();
+renderQuestion();
+</script>
+</body>
+</html>
