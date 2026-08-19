@@ -259,7 +259,24 @@ window.LEAProgress = (function () {
     if (fullData && migrateLocalIntoRemote(subjectId, lastRenderCtx.moduleIds)) pushRemote();
     const t = subjectTotals(subjectId, modules);
     const pct = t.totalQuestions > 0 ? Math.round((t.totalMastered / t.totalQuestions) * 100) : 0;
+
+    // Weak module: lowest mastered % among modules that have questions,
+    // ties broken toward the module with more total questions remaining.
+    let weakMod = null;
+    modules.forEach(function (m) {
+      if (!(m.total > 0)) return;
+      const c = masteredCount(subjectId, m.id, m.total);
+      const p = c / m.total;
+      if (!weakMod || p < weakMod.p || (p === weakMod.p && m.total > weakMod.total)) {
+        weakMod = { title: m.title, total: m.total, p: p };
+      }
+    });
+    const weakModuleHtml = weakMod
+      ? '<div class="weak-module-line"><span class="wm-tag">📈 Weak module</span><span class="wm-name">' + weakMod.title + '</span></div>'
+      : '';
+
     container.innerHTML =
+      weakModuleHtml +
       '<div class="overall-title"><span>Overall Progress</span>' +
       '<button class="reset-all" id="leaResetAllBtn">Reset all progress</button></div>' +
       '<div class="overall-stats-row">' +

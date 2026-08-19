@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <link rel="icon" type="image/png" href="../../../favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="../../../favicon-16x16.png" sizes="16x16">
 <link rel="icon" href="../../../favicon.ico" sizes="any">
@@ -10,53 +13,51 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PD 1096 — Quiz 2 Answer Key</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#2b241b;
-    --paper:#f4ecdc;
-    --paper-deep:#eee2c9;
-    --card:#fbf6e8;
-    --rust:#b5502e;
-    --rust-deep:#8f3c21;
-    --olive:#5b6a3f;
-    --clay:#c98a4b;
-    --good:#4c7a4f;
-    --bad:#b5432e;
-    --line: rgba(43,36,27,0.16);
-    --line-strong: rgba(43,36,27,0.32);
+    --ink: #f6f1e6;
+    --paper: #e8a13c;
+    --paper-deep: #090c0a;
+    --card: #f6c667;
+    --rust: #e2933a;
+    --rust-deep: #090c0a;
+    --olive: #ffcf85;
+    --clay: #e8a13c;
+    --good: #5fbf7f;
+    --bad: #e2604a;
+    --line: rgba(255,255,255,0.09);
+    --line-strong: rgba(255,255,255,0.09);
   }
   body.dark-mode{
-    --ink:#f1e6d4;
-    --paper:#1c1712;
-    --paper-deep:#241d16;
-    --card:#241d16;
-    --rust:#d97a4f;
-    --rust-deep:#e8935f;
-    --olive:#8fa06a;
-    --clay:#e0a866;
-    --good:#6fae7a;
-    --bad:#d9694f;
-    --line: rgba(241,230,212,0.16);
-    --line-strong: rgba(241,230,212,0.32);
+    --ink: #241c10;
+    --paper: #a3691b;
+    --paper-deep: #f3ede0;
+    --card: #8a5417;
+    --rust: #8a5417;
+    --rust-deep: #f3ede0;
+    --olive: #c98a2c;
+    --clay: #a3691b;
+    --good: #2f8f5c;
+    --bad: #b8442f;
+    --line: rgba(36,28,16,0.12);
+    --line-strong: rgba(36,28,16,0.12);
   }
   body.dark-mode{
     background:
-      repeating-linear-gradient(0deg, rgba(241,230,212,0.045) 0px, rgba(241,230,212,0.045) 1px, transparent 1px, transparent 28px),
-      repeating-linear-gradient(90deg, rgba(241,230,212,0.045) 0px, rgba(241,230,212,0.045) 1px, transparent 1px, transparent 28px),
-      radial-gradient(ellipse at 10% 0%, #241d16 0%, transparent 55%),
-      radial-gradient(ellipse at 95% 105%, #1c1712 0%, transparent 50%),
+      repeating-linear-gradient(0deg, rgba(232,161,60,0.045) 0px, rgba(232,161,60,0.045) 1px, transparent 1px, transparent 28px),
+      repeating-linear-gradient(90deg, rgba(232,161,60,0.045) 0px, rgba(232,161,60,0.045) 1px, transparent 1px, transparent 28px),
+      radial-gradient(ellipse at 10% 0%, #1e3c2d 0%, transparent 55%),
+      radial-gradient(ellipse at 95% 105%, #12261c 0%, transparent 50%),
       var(--paper);
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     background:
-      repeating-linear-gradient(0deg, rgba(43,36,27,0.045) 0px, rgba(43,36,27,0.045) 1px, transparent 1px, transparent 28px),
-      repeating-linear-gradient(90deg, rgba(43,36,27,0.045) 0px, rgba(43,36,27,0.045) 1px, transparent 1px, transparent 28px),
-      radial-gradient(ellipse at 10% 0%, #f6ead2 0%, transparent 55%),
-      radial-gradient(ellipse at 95% 105%, #ecdcb8 0%, transparent 50%),
+      repeating-linear-gradient(0deg, rgba(232,161,60,0.045) 0px, rgba(232,161,60,0.045) 1px, transparent 1px, transparent 28px),
+      repeating-linear-gradient(90deg, rgba(232,161,60,0.045) 0px, rgba(232,161,60,0.045) 1px, transparent 1px, transparent 28px),
+      radial-gradient(ellipse at 10% 0%, #dce9de 0%, transparent 55%),
+      radial-gradient(ellipse at 95% 105%, #eef0e2 0%, transparent 50%),
       var(--paper);
     color:var(--ink);
     font-family:'Inter', sans-serif;
@@ -99,7 +100,7 @@
   }
   .masthead .sub{
     font-style:italic;
-    color:#6b6152;
+    color:#2a4a36;
     font-size:14px;
   }
 
@@ -127,7 +128,7 @@
     text-transform:uppercase;
     font-size:10px;
     letter-spacing:0.1em;
-    color:#7a7060;
+    color:#2a4a36;
     display:block;
   }
   .toolbar-stats .stat-value{
@@ -197,7 +198,7 @@
     display:flex; justify-content:space-between;
     font-family:'JetBrains Mono', monospace;
     font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
-    color:#7a7060; margin-bottom:18px;
+    color:#2a4a36; margin-bottom:18px;
   }
 
   /* card: torn-edge site-plan card */
@@ -263,7 +264,7 @@
     transition: border-color .15s ease, background .15s ease, transform .1s ease;
     display:flex; gap:12px; align-items:flex-start;
   }
-  .opt:hover:not(.locked){ border-color:var(--rust); background: #f8f0dc; }
+  .opt:hover:not(.locked){ border-color:var(--rust); background: #d2e4d5; }
   .opt .letter{
     font-family:'JetBrains Mono', monospace;
     font-weight:600; color:var(--rust-deep);
@@ -295,7 +296,7 @@
     text-transform:uppercase;
     color:var(--olive);
   }
-  .feedback .note{ display:block; margin-top:6px; color:#5c5343; font-style:italic; }
+  .feedback .note{ display:block; margin-top:6px; color:#1c3524; font-style:italic; }
 
   .controls{
     display:flex; justify-content:space-between; align-items:center; margin-top:22px;
@@ -413,9 +414,9 @@
   .mistake-item .m-q{ color:var(--ink); margin-bottom:8px; font-size:15px; }
   .mistake-item .m-you{ color:var(--bad); }
   .mistake-item .m-correct{ color:var(--good); }
-  .mistake-item .m-ref{ display:block; margin-top:6px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.05em; text-transform:uppercase; color:#7a7060; }
+  .mistake-item .m-ref{ display:block; margin-top:6px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.05em; text-transform:uppercase; color:#2a4a36; }
   .no-mistakes{
-    text-align:center; color:#6b6152; font-style:italic; margin-top:26px;
+    text-align:center; color:#2a4a36; font-style:italic; margin-top:26px;
   }
 
   .quiz-area.hidden{ display:none; }
@@ -428,15 +429,81 @@
     .toolbar-actions{ justify-content:space-between; }
   }
 
-  body.dark-mode .masthead .sub, body.dark-mode .no-mistakes{ color:#a89a82; }
-  body.dark-mode .progress-label, body.dark-mode .mistake-item .m-ref{ color:#a89a82; }
-  body.dark-mode .feedback .note{ color:#c9bba0; }
-  body.dark-mode .opt:hover:not(.locked){ background:#2b2219; }
+  body.dark-mode .masthead .sub, body.dark-mode .no-mistakes{ color:#5c8a6c; }
+  body.dark-mode .progress-label, body.dark-mode .mistake-item .m-ref{ color:#5c8a6c; }
+  body.dark-mode .feedback .note{ color:#7fac8c; }
+  body.dark-mode .opt:hover:not(.locked){ background:#0b1912; }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="../../../assets/presence.js"></script>
 <script src="../../../assets/theme.js"></script>
 <script src="../../../assets/sfx.js"></script>
+
+
+<style id="glass-revamp">
+  :root{ --radius-lg: 22px; --radius-md: 16px; --radius-sm: 10px; }
+  body{ transition: background-color .3s ease, color .3s ease; }
+
+  [class*="panel"], [class*="card"]:not(.leaderboard-list), [class*="box"]:not(.modal-overlay),
+  [class*="module-card"], [class*="insight"], [class*="toolbar"]:not(.toolbar-actions),
+  [class*="auth-bar"], [class*="results"], [class*="quiz-area"], [class*="feedback"],
+  [class*="modal-box"], [class*="overall-card"], [class*="note-panel"], .mistakes-review,
+  .leaderboard-list, .options label, .breakdown {
+    background:
+      linear-gradient(155deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)),
+      #10140f !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    backdrop-filter: blur(4px) !important;
+    border: 1px solid var(--line, rgba(255,255,255,0.09)) !important;
+    border-left-width: 1px !important;
+    border-radius: var(--radius-lg) !important;
+    clip-path: none !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45) !important;
+  }
+  body.light-mode [class*="panel"], body.light-mode [class*="card"]:not(.leaderboard-list),
+  body.light-mode [class*="box"]:not(.modal-overlay), body.light-mode [class*="module-card"],
+  body.light-mode [class*="insight"], body.light-mode [class*="toolbar"]:not(.toolbar-actions),
+  body.light-mode [class*="auth-bar"], body.light-mode [class*="results"],
+  body.light-mode [class*="quiz-area"], body.light-mode [class*="feedback"],
+  body.light-mode [class*="modal-box"], body.light-mode [class*="overall-card"],
+  body.light-mode [class*="note-panel"], body.light-mode .mistakes-review,
+  body.light-mode .leaderboard-list, body.light-mode .options label, body.light-mode .breakdown {
+    background:
+      linear-gradient(155deg, rgba(36,28,16,0.045), rgba(36,28,16,0.015)),
+      #faf6ec !important;
+    box-shadow: 0 10px 26px rgba(36,28,16,0.10) !important;
+  }
+
+  /* module-card: drop per-module rainbow accents, unify to gold, square off the asymmetric radius */
+  [class*="module-card"]{
+    border-left-width: 1px !important;
+  }
+  [class*="module-card"] .eyebrow, [class*="module-card"] .best-badge,
+  .insight-box .insight-name, .insight-tag {
+    color: #f0c169 !important;
+  }
+  body.light-mode [class*="module-card"] .eyebrow, body.light-mode [class*="module-card"] .best-badge,
+  body.light-mode .insight-box .insight-name, body.light-mode .insight-tag {
+    color: #8a5417 !important;
+  }
+
+  /* progress / mastery bars: unified gold-amber gradient fill */
+  [class*="mastery-fill"]:not(.complete), [class*="overall-bar-fill"], [class*="bar-fill"]:not(.complete),
+  [class*="progress-fill"]:not(.complete), [class*="mp-bar-fill"]:not(.complete) {
+    background: linear-gradient(90deg, #e8a13c, #f6c667) !important;
+  }
+
+  button, .theme-toggle, [class*="btn"], [class*="tab"], .step-frieze, input, select, textarea {
+    border-radius: var(--radius-md) !important;
+  }
+  .theme-toggle{ border-radius: 999px !important; }
+  [class*="btn"], .primary, button.primary, .auth-tab.active, [class*="tab"].active,
+  .order-toggle button.active {
+    border-radius: 999px !important;
+  }
+  [class*="module-card"] img, .card img { border-radius: var(--radius-sm) !important; }
+</style>
+
 </head>
 <body>
 <script>if (window.LEAPresence) { LEAPresence.init(); }</script>

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -12,45 +15,40 @@
 <title>LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="assets/theme.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@600;700;800;900&family=Architects+Daughter&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#f2ead9;
-    --bg-deep:#0d1f18;
-    --bg-panel:#173327;
-    --bg-panel-deep:#0f2119;
-    --bg-glow1:#1c3b2c;
-    --bg-glow2:#122a20;
-    --gold:#dba955;
-    --gold-bright:#eec27c;
-    --rose:#c98f46;
-    --rose-bright:#e0b568;
-    --muted:#8ba28f;
-    --good:#6fae7d;
-    --bad:#d16b5f;
-    --line: rgba(219,169,85,0.28);
-    --grid-line: rgba(255,255,255,0.05);
-    --font-head: 'Big Shoulders', sans-serif;
-    --font-body: 'IBM Plex Mono', monospace;
-    --font-hand: 'Architects Daughter', cursive;
+    --ink: #f6f1e6;
+    --bg-deep: #090c0a;
+    --bg-panel: rgba(255,255,255,0.035);
+    --bg-panel-deep: rgba(255,255,255,0.015);
+    --bg-glow1: #12140f;
+    --bg-glow2: #0b0d0a;
+    --gold: #e8a13c;
+    --gold-bright: #f6c667;
+    --rose: #e2933a;
+    --rose-bright: #ffcf85;
+    --muted: #8d9690;
+    --good: #5fbf7f;
+    --bad: #e2604a;
+    --line: rgba(255,255,255,0.09);
+    --font-head: 'Fredoka', sans-serif;
+    --font-body: 'Quicksand', sans-serif;
   }
   body.light-mode{
-    --ink:#16261d;
-    --bg-deep:#f4efe0;
-    --bg-panel:#fffcf4;
-    --bg-panel-deep:#eee4cd;
-    --bg-glow1:#eadfc2;
-    --bg-glow2:#e2ead7;
-    --gold:#a67934;
-    --gold-bright:#8c5f1f;
-    --rose:#7c8f5e;
-    --rose-bright:#5f7a46;
-    --muted:#5c6b5f;
-    --good:#3f8a55;
-    --bad:#a13d33;
-    --line: rgba(22,38,29,0.18);
-    --grid-line: rgba(22,38,29,0.06);
+    --ink: #241c10;
+    --bg-deep: #f3ede0;
+    --bg-panel: rgba(36,28,16,0.04);
+    --bg-panel-deep: rgba(36,28,16,0.02);
+    --bg-glow1: #e9e0cc;
+    --bg-glow2: #f6f1e6;
+    --gold: #a3691b;
+    --gold-bright: #8a5417;
+    --rose: #8a5417;
+    --rose-bright: #c98a2c;
+    --muted: #6a5f4a;
+    --good: #2f8f5c;
+    --bad: #b8442f;
+    --line: rgba(36,28,16,0.12);
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
@@ -58,8 +56,6 @@
     background:
       radial-gradient(ellipse at 15% 0%, var(--bg-glow1) 0%, transparent 55%),
       radial-gradient(ellipse at 90% 100%, var(--bg-glow2) 0%, transparent 50%),
-      repeating-linear-gradient(0deg, var(--grid-line) 0 1px, transparent 1px 108px),
-      repeating-linear-gradient(90deg, var(--grid-line) 0 1px, transparent 1px 108px),
       var(--bg-deep);
     color:var(--ink);
     font-family:var(--font-body);
@@ -83,20 +79,20 @@
   /* ===== masthead ===== */
   .masthead{ text-align:center; margin-bottom:28px; }
   .masthead .eyebrow{
-    font-family:var(--font-hand); letter-spacing:0.14em; font-size:15px; text-transform:uppercase;
-    color:var(--gold-bright); opacity:0.95; font-weight:400;
+    letter-spacing:0.28em; font-size:11px; text-transform:uppercase;
+    color:var(--gold-bright); opacity:0.9;
   }
   .masthead h1{
-    font-family:var(--font-head); font-weight:800; font-size:clamp(46px,14vw,84px);
-    margin:6px 0 0; color:var(--ink); letter-spacing:0.01em; line-height:0.92;
-    text-transform:uppercase;
+    font-family:var(--font-head); font-weight:600; font-size:46px;
+    margin:12px 0 8px; color:var(--ink); letter-spacing:0.03em;
   }
+  .masthead .sub{ font-style:italic; color:var(--muted); font-size:15px; max-width:480px; margin:0 auto; line-height:1.55; }
   .step-frieze{
-    height:3px; width:100%; margin:20px 0 22px;
-    background:var(--gold); opacity:0.9; border-radius:1px;
+    height:8px; margin:20px auto 0; max-width:220px;
+    background-image: repeating-linear-gradient(135deg, var(--gold) 0 6px, var(--rose) 6px 12px);
+    clip-path: polygon(0% 100%, 10% 0%, 20% 100%, 30% 0%, 40% 100%, 50% 0%, 60% 100%, 70% 0%, 80% 100%, 90% 0%, 100% 100%);
+    opacity:0.8;
   }
-  .masthead .sub{ font-family:var(--font-hand); font-style:normal; color:var(--muted); font-size:16px; max-width:520px; margin:0 auto; line-height:1.75; }
-  .masthead .sub .hl{ color:var(--gold-bright); }
 
   /* ===== panel (shared card look) ===== */
   .panel{
@@ -116,65 +112,46 @@
   }
 
   /* ===== auth panel ===== */
-  #authPanel{ overflow:visible; }
-  #authPanel::before{
-    content:""; position:absolute; top:-1px; left:-1px; right:auto; bottom:auto;
-    width:26px; height:26px; background:none; opacity:1; border-radius:0;
-    border-top:3px solid var(--gold); border-left:3px solid var(--gold);
-  }
-  #authPanel::after{
-    content:""; position:absolute; bottom:-1px; right:-1px; top:auto; left:auto;
-    width:26px; height:26px; background:none; opacity:1;
-    border-bottom:3px solid var(--gold); border-right:3px solid var(--gold);
-  }
   .auth-heading{
-    font-family:var(--font-body); font-weight:700; font-size:19px;
-    text-align:center; margin-bottom:24px; color:var(--ink); letter-spacing:0.01em;
+    font-family:var(--font-head); font-weight:600; font-size:21px;
+    text-align:center; margin-bottom:8px; color:var(--gold-bright);
   }
+  .intro-note{ font-size:13.5px; color:var(--muted); line-height:1.6; margin-bottom:22px; text-align:center; }
   .auth-tabs{
-    display:flex; margin-bottom:22px; max-width:340px; margin-left:auto; margin-right:auto;
-    border:1px solid var(--line); border-radius:10px; overflow:hidden;
+    display:flex; gap:6px; margin-bottom:20px; justify-content:center;
+    background:rgba(255,255,255,0.04); padding:5px; border-radius:12px; max-width:280px; margin-left:auto; margin-right:auto;
   }
   .auth-tab{
     flex:1; text-align:center;
-    font-family:var(--font-body); font-weight:700; font-size:14px; letter-spacing:0.01em;
-    padding:13px 16px; border:none; color:var(--muted); cursor:pointer;
-    transition: all .18s ease; background:transparent;
+    font-family:var(--font-head); font-weight:600; font-size:12.5px; letter-spacing:0.05em; text-transform:uppercase;
+    padding:9px 16px; border-radius:8px; border:none; color:var(--muted); cursor:pointer;
+    transition: all .18s ease; background:none;
   }
-  .auth-tab.active{ background:var(--gold); color:#152a20; }
-  .auth-form{ display:flex; flex-direction:column; gap:13px; max-width:340px; margin:0 auto; }
+  .auth-tab.active{ background:var(--gold); color:#0b1912; box-shadow: 0 4px 14px rgba(201,154,70,0.35); }
+  .auth-form{ display:flex; flex-direction:column; gap:11px; max-width:320px; margin:0 auto; }
   .auth-form.hidden{ display:none; }
   .auth-form input{
-    width:100%;
-    background: var(--bg-panel-deep); border:1px solid var(--line); color:var(--ink);
-    padding:15px 16px; border-radius:12px; font-family:var(--font-body); font-size:14px;
+    background: rgba(255,255,255,0.045); border:1px solid var(--line); color:var(--ink);
+    padding:12px 14px; border-radius:8px; font-family:var(--font-body); font-size:14px;
     transition: border-color .15s ease, box-shadow .15s ease;
   }
-  .auth-form input::placeholder{ color:var(--muted); opacity:0.85; }
-  .auth-form input:focus{ outline:none; border-color:var(--gold); box-shadow: 0 0 0 3px rgba(219,169,85,0.16); }
-  .field-wrap{ position:relative; }
-  .field-wrap input{ padding-right:44px; }
-  .field-eye{
-    position:absolute; right:14px; top:50%; transform:translateY(-50%);
-    background:none; border:none; cursor:pointer; color:var(--muted); font-size:16px;
-    padding:4px; line-height:1; display:flex;
-  }
-  .field-eye:hover{ color:var(--gold-bright); }
+  .auth-form input::placeholder{ color:var(--muted); opacity:0.8; }
+  .auth-form input:focus{ outline:none; border-color:var(--gold); box-shadow: 0 0 0 3px rgba(201,154,70,0.18); }
   .auth-form button[type="submit"]{
-    background: var(--gold); color:#152a20; font-weight:700;
-    font-family:var(--font-body); letter-spacing:0.01em;
-    font-size:15px; border:none; padding:16px 18px; border-radius:12px; cursor:pointer; margin-top:6px;
-    box-shadow: 0 10px 24px rgba(219,169,85,0.25); transition: transform .12s ease, box-shadow .12s ease;
+    background: linear-gradient(120deg, var(--gold), var(--rose)); color:#0b1912; font-weight:700;
+    font-family:var(--font-head); letter-spacing:0.02em;
+    font-size:14.5px; border:none; padding:12px 18px; border-radius:8px; cursor:pointer; margin-top:4px;
+    box-shadow: 0 8px 22px rgba(201,154,70,0.3); transition: transform .12s ease, box-shadow .12s ease;
   }
-  .auth-form button[type="submit"]:hover{ transform: translateY(-1px); box-shadow: 0 12px 28px rgba(219,169,85,0.35); }
-  .auth-divider{ text-align:center; color:var(--muted); font-size:12px; margin:18px 0; max-width:340px; margin-left:auto; margin-right:auto; text-transform:uppercase; letter-spacing:0.1em; }
+  .auth-form button[type="submit"]:hover{ transform: translateY(-1px); box-shadow: 0 10px 26px rgba(201,154,70,0.42); }
+  .auth-divider{ text-align:center; color:var(--muted); font-size:12px; margin:16px 0; max-width:320px; margin-left:auto; margin-right:auto; }
   .google-btn{
-    display:block; width:100%; max-width:340px; margin:0 auto;
-    background: var(--bg-panel-deep); border:1px solid var(--line); color:var(--ink);
-    padding:14px 18px; border-radius:12px; cursor:pointer; font-family:var(--font-body); font-size:14px; font-weight:700;
+    display:block; width:100%; max-width:320px; margin:0 auto;
+    background: rgba(255,255,255,0.03); border:1px solid var(--line); color:var(--ink);
+    padding:11px 18px; border-radius:8px; cursor:pointer; font-family:var(--font-body); font-size:14px;
     transition: border-color .15s ease, background .15s ease;
   }
-  .google-btn:hover{ border-color:var(--gold-bright); background: rgba(219,169,85,0.08); }
+  .google-btn:hover{ border-color:var(--rose-bright); background: rgba(214,143,160,0.07); }
   .auth-error{ color:var(--bad); font-size:12.5px; min-height:16px; text-align:center; }
   .auth-msg{ color:var(--good); font-size:12.5px; min-height:16px; text-align:center; }
 
@@ -279,9 +256,21 @@
     content:""; position:absolute; top:0; left:0; right:0; height:5px;
     background-image: linear-gradient(90deg, var(--gold), var(--rose)); opacity:0.9;
   }
-  .readiness-pct{ font-family:var(--font-head); font-weight:700; font-size:44px; color:var(--gold-bright); line-height:1; }
-  .readiness-label{ font-size:12px; text-transform:uppercase; letter-spacing:0.14em; color:var(--muted); margin-top:8px; }
-  .readiness-sub{ font-size:12.5px; color:var(--muted); opacity:0.85; margin-top:6px; font-style:italic; }
+  .readiness-card{ display:flex; align-items:center; gap:22px; text-align:left; }
+  .readiness-ring-wrap{ position:relative; width:104px; height:104px; flex:none; }
+  .readiness-ring{ transform:rotate(-90deg); }
+  .readiness-ring .ring-track{ fill:none; stroke:var(--line); stroke-width:10; }
+  .readiness-ring .ring-fill{
+    fill:none; stroke:url(#readinessRingGrad); stroke-width:10; stroke-linecap:round;
+    transition: stroke-dashoffset .6s ease;
+  }
+  .readiness-pct{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-head); font-weight:700; font-size:26px; color:var(--gold-bright); line-height:1;
+  }
+  .readiness-text{ flex:1; }
+  .readiness-label{ font-family:var(--font-head); font-weight:600; font-size:19px; color:var(--ink); }
+  .readiness-sub{ font-size:12.5px; color:var(--muted); opacity:0.85; margin-top:6px; }
 
   /* ===== quick subject insight ribbon ===== */
   .insight-ribbon{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:22px; }
@@ -381,7 +370,7 @@
   .leaderboard-row.lb-top2{
     padding:12px 14px; font-size:14.5px;
     background:linear-gradient(135deg, rgba(200,200,205,0.16), var(--bg-panel-deep));
-    border:1px solid #b7b7bd;
+    border:1px solid #7fac8c;
   }
   .leaderboard-row.lb-top2 .lb-rank{ font-size:19px; width:26px; }
   .leaderboard-row.lb-top2 .lb-name{ font-weight:600; }
@@ -389,11 +378,77 @@
   .leaderboard-row.lb-top3{
     padding:11px 13px; font-size:14px;
     background:linear-gradient(135deg, rgba(205,127,50,0.16), var(--bg-panel-deep));
-    border:1px solid #cd7f32;
+    border:1px solid #9c3a2b;
   }
   .leaderboard-row.lb-top3 .lb-rank{ font-size:18px; width:26px; }
   .leaderboard-row.lb-top3 .lb-name{ font-weight:600; }
 </style>
+
+
+<style id="glass-revamp">
+  :root{ --radius-lg: 22px; --radius-md: 16px; --radius-sm: 10px; }
+  body{ transition: background-color .3s ease, color .3s ease; }
+
+  [class*="panel"], [class*="card"]:not(.leaderboard-list), [class*="box"]:not(.modal-overlay),
+  [class*="module-card"], [class*="insight"], [class*="toolbar"]:not(.toolbar-actions),
+  [class*="auth-bar"], [class*="results"], [class*="quiz-area"], [class*="feedback"],
+  [class*="modal-box"], [class*="overall-card"], [class*="note-panel"], .mistakes-review,
+  .leaderboard-list, .options label, .breakdown {
+    background:
+      linear-gradient(155deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)),
+      #10140f !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    backdrop-filter: blur(4px) !important;
+    border: 1px solid var(--line, rgba(255,255,255,0.09)) !important;
+    border-left-width: 1px !important;
+    border-radius: var(--radius-lg) !important;
+    clip-path: none !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45) !important;
+  }
+  body.light-mode [class*="panel"], body.light-mode [class*="card"]:not(.leaderboard-list),
+  body.light-mode [class*="box"]:not(.modal-overlay), body.light-mode [class*="module-card"],
+  body.light-mode [class*="insight"], body.light-mode [class*="toolbar"]:not(.toolbar-actions),
+  body.light-mode [class*="auth-bar"], body.light-mode [class*="results"],
+  body.light-mode [class*="quiz-area"], body.light-mode [class*="feedback"],
+  body.light-mode [class*="modal-box"], body.light-mode [class*="overall-card"],
+  body.light-mode [class*="note-panel"], body.light-mode .mistakes-review,
+  body.light-mode .leaderboard-list, body.light-mode .options label, body.light-mode .breakdown {
+    background:
+      linear-gradient(155deg, rgba(36,28,16,0.045), rgba(36,28,16,0.015)),
+      #faf6ec !important;
+    box-shadow: 0 10px 26px rgba(36,28,16,0.10) !important;
+  }
+
+  /* module-card: drop per-module rainbow accents, unify to gold, square off the asymmetric radius */
+  [class*="module-card"]{
+    border-left-width: 1px !important;
+  }
+  [class*="module-card"] .eyebrow, [class*="module-card"] .best-badge,
+  .insight-box .insight-name, .insight-tag {
+    color: #f0c169 !important;
+  }
+  body.light-mode [class*="module-card"] .eyebrow, body.light-mode [class*="module-card"] .best-badge,
+  body.light-mode .insight-box .insight-name, body.light-mode .insight-tag {
+    color: #8a5417 !important;
+  }
+
+  /* progress / mastery bars: unified gold-amber gradient fill */
+  [class*="mastery-fill"]:not(.complete), [class*="overall-bar-fill"], [class*="bar-fill"]:not(.complete),
+  [class*="progress-fill"]:not(.complete), [class*="mp-bar-fill"]:not(.complete) {
+    background: linear-gradient(90deg, #e8a13c, #f6c667) !important;
+  }
+
+  button, .theme-toggle, [class*="btn"], [class*="tab"], .step-frieze, input, select, textarea {
+    border-radius: var(--radius-md) !important;
+  }
+  .theme-toggle{ border-radius: 999px !important; }
+  [class*="btn"], .primary, button.primary, .auth-tab.active, [class*="tab"].active,
+  .order-toggle button.active {
+    border-radius: 999px !important;
+  }
+  [class*="module-card"] img, .card img { border-radius: var(--radius-sm) !important; }
+</style>
+
 </head>
 <body>
 <div class="wrap">
@@ -401,26 +456,24 @@
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>
 
   <div class="masthead">
-    <div class="eyebrow">Peter Parker's</div>
+    <div class="eyebrow">Licensure Exam for Architects</div>
     <h1>LEA REVIEWER</h1>
+    <div class="sub">Structured compendiums and practice modules for every subject on the boards. Log in to track your mastery, pick up where you left off, and see where you stand on the leaderboard.</div>
     <div class="step-frieze"></div>
-    <div class="sub"><span class="hl">Log in</span> to track your mastery, pick up where you left off, and see where you stand on the leaderboard. <span class="hl">AYAW BOARD!</span></div>
   </div>
 
   <!-- ===================== SIGNED-OUT: AUTH PANEL ===================== -->
   <div id="authPanel" class="panel hidden">
     <div class="auth-heading">Sign in to continue</div>
+    <div class="intro-note">An account is required — progress and scores are saved to your profile, not this device.</div>
     <div class="auth-tabs">
       <div class="auth-tab active" id="loginTab">Log in</div>
-      <div class="auth-tab" id="signupTab">Sign Up</div>
+      <div class="auth-tab" id="signupTab">Sign up</div>
     </div>
 
     <form class="auth-form" id="loginForm">
       <input type="email" id="loginEmail" placeholder="Email" required autocomplete="email">
-      <div class="field-wrap">
-        <input type="password" id="loginPassword" placeholder="Password" required autocomplete="current-password">
-        <button type="button" class="field-eye" data-toggle="loginPassword" aria-label="Show password">👁</button>
-      </div>
+      <input type="password" id="loginPassword" placeholder="Password" required autocomplete="current-password">
       <div class="auth-error" id="loginError"></div>
       <button type="submit">Log in</button>
     </form>
@@ -428,10 +481,7 @@
     <form class="auth-form hidden" id="signupForm">
       <input type="text" id="signupUsername" placeholder="Username (shown on leaderboard)" required maxlength="24">
       <input type="email" id="signupEmail" placeholder="Email" required autocomplete="email">
-      <div class="field-wrap">
-        <input type="password" id="signupPassword" placeholder="Password (min 6 characters)" required minlength="6" autocomplete="new-password">
-        <button type="button" class="field-eye" data-toggle="signupPassword" aria-label="Show password">👁</button>
-      </div>
+      <input type="password" id="signupPassword" placeholder="Password (min 6 characters)" required minlength="6" autocomplete="new-password">
       <div class="auth-error" id="signupError"></div>
       <div class="auth-msg" id="signupMsg"></div>
       <button type="submit">Create account</button>
@@ -469,19 +519,33 @@
       <button class="back-link" id="backToSourcesBtn">&larr; All sources</button>
 
       <div class="readiness-card">
-        <div class="readiness-pct" id="readinessPct">0%</div>
-        <div class="readiness-label">Ready for the Board</div>
-        <div class="readiness-sub" id="readinessSub">0 quizzes completed</div>
+        <div class="readiness-ring-wrap">
+          <svg class="readiness-ring" viewBox="0 0 120 120" width="104" height="104">
+            <defs>
+              <linearGradient id="readinessRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#e8a13c"/>
+                <stop offset="100%" stop-color="#f6c667"/>
+              </linearGradient>
+            </defs>
+            <circle class="ring-track" cx="60" cy="60" r="52"></circle>
+            <circle class="ring-fill" id="readinessRingFill" cx="60" cy="60" r="52"></circle>
+          </svg>
+          <div class="readiness-pct" id="readinessPct">0%</div>
+        </div>
+        <div class="readiness-text">
+          <div class="readiness-label">Ready for the Board!</div>
+          <div class="readiness-sub" id="readinessSub">0 quizzes completed</div>
+        </div>
       </div>
 
       <div class="insight-ribbon">
         <div class="insight-box">
-          <div class="insight-tag">💪 Strong subject</div>
+          <div class="insight-tag">💪 Best subject</div>
           <div class="insight-name" id="strongSubjectName">—</div>
           <div class="insight-pct" id="strongSubjectPct"></div>
         </div>
         <div class="insight-box">
-          <div class="insight-tag">📈 Needs work</div>
+          <div class="insight-tag">📈 Weak subject</div>
           <div class="insight-name" id="weakSubjectName">—</div>
           <div class="insight-pct" id="weakSubjectPct"></div>
         </div>
@@ -755,6 +819,12 @@ function renderReadinessAndInsights(){
   document.getElementById('readinessPct').textContent = pct + '%';
   document.getElementById('readinessSub').textContent =
     completedCount + (completedCount === 1 ? ' quiz completed' : ' quizzes completed');
+  const ringFill = document.getElementById('readinessRingFill');
+  if (ringFill) {
+    const circumference = 2 * Math.PI * 52;
+    ringFill.style.strokeDasharray = circumference;
+    ringFill.style.strokeDashoffset = circumference * (1 - pct / 100);
+  }
 
   const { strong, weak } = computeSubjectInsights();
   document.getElementById('strongSubjectName').innerHTML = strong ? strong.name : 'Not enough data yet';
@@ -824,17 +894,6 @@ loginTab.addEventListener('click', () => {
 signupTab.addEventListener('click', () => {
   signupTab.classList.add('active'); loginTab.classList.remove('active');
   signupForm.classList.remove('hidden'); loginForm.classList.add('hidden');
-});
-
-// ---- Password show/hide ----
-document.querySelectorAll('.field-eye').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const input = document.getElementById(btn.dataset.toggle);
-    const showing = input.type === 'text';
-    input.type = showing ? 'password' : 'text';
-    btn.textContent = showing ? '👁' : '🙈';
-    btn.setAttribute('aria-label', showing ? 'Show password' : 'Hide password');
-  });
 });
 
 document.getElementById('googleBtn').addEventListener('click', async () => {

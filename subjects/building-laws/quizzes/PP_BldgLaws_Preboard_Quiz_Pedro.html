@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <link rel="icon" type="image/png" href="../../../favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="../../../favicon-16x16.png" sizes="16x16">
 <link rel="icon" href="../../../favicon.ico" sizes="any">
@@ -10,34 +13,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PP & Building Laws — Preboard Review</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#f6efe0;
-    --paper-card:#fffaf0;
-    --ink:#2c2317;
-    --ink-soft:#6b5d4a;
-    --maroon:#7a2a2a;
-    --maroon-bright:#a53c3c;
-    --gold:#b3862a;
-    --forest:#3c5c46;
-    --good:#3c6e4f;
-    --bad:#a53c3c;
-    --line: rgba(122,42,42,0.22);
+    --paper: #e8a13c;
+    --paper-card: #f6c667;
+    --ink: #f6f1e6;
+    --ink-soft: #e2933a;
+    --maroon: #ffcf85;
+    --maroon-bright: #e8a13c;
+    --gold: #f6c667;
+    --forest: #e2933a;
+    --good: #5fbf7f;
+    --bad: #e2604a;
+    --line: rgba(255,255,255,0.09);
   }
   body.dark-mode{
-    --paper:#211a13;
-    --paper-card:#2b2118;
-    --ink:#f1e6d3;
-    --ink-soft:#b8a98d;
-    --maroon:#c46a5a;
-    --maroon-bright:#e08a72;
-    --gold:#d8ac52;
-    --forest:#6fa383;
-    --good:#6fa383;
-    --bad:#dd7c6a;
-    --line: rgba(216,172,82,0.22);
+    --paper: #a3691b;
+    --paper-card: #8a5417;
+    --ink: #241c10;
+    --ink-soft: #8a5417;
+    --maroon: #c98a2c;
+    --maroon-bright: #a3691b;
+    --gold: #8a5417;
+    --forest: #8a5417;
+    --good: #2f8f5c;
+    --bad: #b8442f;
+    --line: rgba(36,28,16,0.12);
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
@@ -154,7 +155,7 @@
   }
   .order-toggle button.active{
     background: var(--maroon);
-    color:#fff8ea;
+    color:#eef4ef;
     font-weight:600;
   }
   .toolbar-restart{
@@ -228,7 +229,7 @@
     font-size:10.5px;
     letter-spacing:0.08em;
     text-transform:uppercase;
-    color:#fff8ea;
+    color:#eef4ef;
     background: var(--maroon);
     padding:5px 13px;
     border-radius:20px;
@@ -322,7 +323,7 @@
   .arrow-btn:disabled{ opacity:0.28; cursor:default; }
   .arrow-btn.primary{
     background: var(--maroon);
-    color:#fff8ea;
+    color:#eef4ef;
     font-weight:600;
     border-color:var(--maroon);
   }
@@ -374,7 +375,7 @@
   .restart-btn:hover{ background: rgba(122,42,42,0.08); }
   .restart-btn.primary{
     background: var(--maroon);
-    color:#fff8ea;
+    color:#eef4ef;
     border-color:var(--maroon);
     font-weight:600;
   }
@@ -443,6 +444,72 @@
 <script src="../../../assets/presence.js"></script>
 <script src="../../../assets/theme.js"></script>
 <script src="../../../assets/sfx.js"></script>
+
+
+<style id="glass-revamp">
+  :root{ --radius-lg: 22px; --radius-md: 16px; --radius-sm: 10px; }
+  body{ transition: background-color .3s ease, color .3s ease; }
+
+  [class*="panel"], [class*="card"]:not(.leaderboard-list), [class*="box"]:not(.modal-overlay),
+  [class*="module-card"], [class*="insight"], [class*="toolbar"]:not(.toolbar-actions),
+  [class*="auth-bar"], [class*="results"], [class*="quiz-area"], [class*="feedback"],
+  [class*="modal-box"], [class*="overall-card"], [class*="note-panel"], .mistakes-review,
+  .leaderboard-list, .options label, .breakdown {
+    background:
+      linear-gradient(155deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)),
+      #10140f !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    backdrop-filter: blur(4px) !important;
+    border: 1px solid var(--line, rgba(255,255,255,0.09)) !important;
+    border-left-width: 1px !important;
+    border-radius: var(--radius-lg) !important;
+    clip-path: none !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45) !important;
+  }
+  body.light-mode [class*="panel"], body.light-mode [class*="card"]:not(.leaderboard-list),
+  body.light-mode [class*="box"]:not(.modal-overlay), body.light-mode [class*="module-card"],
+  body.light-mode [class*="insight"], body.light-mode [class*="toolbar"]:not(.toolbar-actions),
+  body.light-mode [class*="auth-bar"], body.light-mode [class*="results"],
+  body.light-mode [class*="quiz-area"], body.light-mode [class*="feedback"],
+  body.light-mode [class*="modal-box"], body.light-mode [class*="overall-card"],
+  body.light-mode [class*="note-panel"], body.light-mode .mistakes-review,
+  body.light-mode .leaderboard-list, body.light-mode .options label, body.light-mode .breakdown {
+    background:
+      linear-gradient(155deg, rgba(36,28,16,0.045), rgba(36,28,16,0.015)),
+      #faf6ec !important;
+    box-shadow: 0 10px 26px rgba(36,28,16,0.10) !important;
+  }
+
+  /* module-card: drop per-module rainbow accents, unify to gold, square off the asymmetric radius */
+  [class*="module-card"]{
+    border-left-width: 1px !important;
+  }
+  [class*="module-card"] .eyebrow, [class*="module-card"] .best-badge,
+  .insight-box .insight-name, .insight-tag {
+    color: #f0c169 !important;
+  }
+  body.light-mode [class*="module-card"] .eyebrow, body.light-mode [class*="module-card"] .best-badge,
+  body.light-mode .insight-box .insight-name, body.light-mode .insight-tag {
+    color: #8a5417 !important;
+  }
+
+  /* progress / mastery bars: unified gold-amber gradient fill */
+  [class*="mastery-fill"]:not(.complete), [class*="overall-bar-fill"], [class*="bar-fill"]:not(.complete),
+  [class*="progress-fill"]:not(.complete), [class*="mp-bar-fill"]:not(.complete) {
+    background: linear-gradient(90deg, #e8a13c, #f6c667) !important;
+  }
+
+  button, .theme-toggle, [class*="btn"], [class*="tab"], .step-frieze, input, select, textarea {
+    border-radius: var(--radius-md) !important;
+  }
+  .theme-toggle{ border-radius: 999px !important; }
+  [class*="btn"], .primary, button.primary, .auth-tab.active, [class*="tab"].active,
+  .order-toggle button.active {
+    border-radius: 999px !important;
+  }
+  [class*="module-card"] img, .card img { border-radius: var(--radius-sm) !important; }
+</style>
+
 </head>
 <body>
 <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
