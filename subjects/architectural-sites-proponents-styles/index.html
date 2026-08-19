@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="../../favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="manifest" href="../../site.webmanifest">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Architectural Sites, Proponents, &amp; Styles — LEA Reviewer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#eef2f0; --bg-deep:#0f1a17; --bg-panel:#152420; --bg-glow1:#1c3830; --bg-glow2:#122019;
+    --clay:#0f6e5e; --clay-bright:#3fbfa2; --turq:#b8863b; --turq-bright:#e0b466;
+    --sand:#9fb8ae;
+    --good:#4fbf7f; --bad:#e2665a; --line: rgba(63,191,162,0.28); --bg-panel-deep:#0e1815;
+    --font-head:'Cormorant Garamond', serif; --font-body:'Inter', sans-serif;
+  }
+  body.light-mode{
+    --ink:#22303f; --bg-deep:#f4efe4; --bg-panel:#ffffff; --bg-glow1:#e7e0cd; --bg-glow2:#f0ebdc;
+    --clay:#0f6e5e; --clay-bright:#12907a; --turq:#b8863b; --turq-bright:#a1701f;
+    --sand:#66707c;
+    --good:#2f8a52; --bad:#c1483a; --line: rgba(34,48,63,0.16); --bg-panel-deep:#ece4d2;
+    --accent: #0f6e5e; --accent2: #b8863b;
+  }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{
+    background: radial-gradient(ellipse at 15% 0%, var(--bg-glow1) 0%, transparent 55%),
+                radial-gradient(ellipse at 90% 100%, var(--bg-glow2) 0%, transparent 50%), var(--bg-deep);
+    color:var(--ink); font-family:var(--font-body); min-height:100vh;
+    display:flex; justify-content:center; padding:40px 16px 64px;
+    transition: background-color .2s ease, color .2s ease;
+  }
+  .theme-toggle{
+    background:none; border:1px solid var(--line); color:var(--sand);
+    font-family:var(--font-body); font-size:14px; width:30px; height:30px;
+    border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
+    flex-shrink:0;
+  }
+  .theme-toggle:hover{ border-color:var(--clay-bright); color:var(--clay-bright); }
+  .wrap{width:100%; max-width:720px;} a{color:inherit;}
+  .hidden{display:none !important;}
+  .auth-bar{ display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:13px; color:var(--sand); margin-bottom:26px; flex-wrap:wrap; }
+  .auth-link{ background:none; border:none; color:var(--turq-bright); cursor:pointer; font-family:var(--font-body); font-size:13px; text-decoration:underline; padding:0; }
+  .auth-link:hover{ color:var(--turq); }
+  .masthead{ text-align:center; margin-bottom:22px; }
+  .masthead .eyebrow{ letter-spacing:0.28em; font-size:11px; text-transform:uppercase; color:var(--clay-bright); opacity:0.9; font-family:'IBM Plex Mono', monospace; }
+  .masthead h1{ font-family:var(--font-head); font-weight:700; font-size:32px; margin:8px 0 4px; color:var(--ink); letter-spacing:0.02em; }
+  .masthead .sub{ font-style:italic; color:var(--sand); font-size:15px; }
+  .step-frieze{
+    height:8px; margin:14px auto 0; max-width:220px;
+    background-image: repeating-linear-gradient(135deg, var(--clay) 0 6px, var(--turq) 6px 12px);
+    opacity:0.85;
+  }
+  .overall-card{
+    position:relative;
+    background: linear-gradient(180deg, var(--bg-panel), var(--bg-panel-deep));
+    border:1px solid var(--line);
+    border-radius: 6px 6px 22px 22px;
+    padding:28px 28px 24px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    margin-bottom:26px;
+  }
+  .overall-card::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:8px;
+    border-radius: 6px 6px 0 0;
+    background-image: repeating-linear-gradient(135deg, var(--clay) 0 7px, var(--turq) 7px 14px);
+    opacity:0.9;
+  }
+  .overall-title{
+    font-family:var(--font-head); font-size:15px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--sand); margin-bottom:16px;
+    display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;
+  }
+  .overall-title .reset-all{
+    font-family:var(--font-body); text-transform:none; letter-spacing:0; font-size:12px;
+    color:var(--bad); background:none; border:1px solid rgba(226,102,90,0.5);
+    padding:5px 11px; border-radius:6px; cursor:pointer;
+  }
+  .overall-title .reset-all:hover{ background: rgba(226,102,90,0.12); }
+  .overall-stats-row{ display:flex; gap:26px; flex-wrap:wrap; margin-bottom:18px; }
+  .overall-stat .num{
+    font-family:var(--font-head); font-size:30px; font-weight:600; color:var(--turq-bright);
+    line-height:1;
+  }
+  .overall-stat .lbl{
+    font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--sand); margin-top:4px;
+  }
+  .overall-bar-track{ height:10px; border-radius:5px; background: rgba(184,134,59,0.14); overflow:hidden; }
+  .overall-bar-fill{
+    height:100%; border-radius:5px;
+    background: linear-gradient(90deg, var(--clay), var(--turq));
+    transition: width .4s ease;
+  }
+  .overall-bar-caption{
+    display:flex; justify-content:space-between; font-size:12px; color:var(--sand);
+    margin-top:6px; letter-spacing:0.03em;
+  }
+  .mp-bar-track{ height:5px; border-radius:3px; background: rgba(184,134,59,0.18); overflow:hidden; margin-top:10px; }
+  .mp-bar-fill{ height:100%; border-radius:3px; background: linear-gradient(90deg, var(--clay), var(--turq)); transition: width .3s ease; }
+  .mp-cap{ font-size:11px; color:var(--sand); margin-top:4px; }
+  .module-grid{ display:flex; flex-direction:column; gap:14px; }
+  .module-card{
+    position:relative; display:block; text-decoration:none;
+    background: linear-gradient(180deg, var(--bg-panel), var(--bg-panel-deep));
+    border:1px solid var(--line); border-radius:6px 6px 18px 18px; padding:20px 22px;
+    box-shadow: 0 14px 34px rgba(0,0,0,0.45);
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .module-card:hover{ transform: translateY(-2px); border-color: var(--turq); }
+  .module-card::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:6px; border-radius:6px 6px 0 0;
+    background-image: repeating-linear-gradient(135deg, var(--accent1) 0 7px, var(--accent2) 7px 14px); opacity:0.9;
+  }
+  .module-num{ font-family:var(--font-head); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--sand); margin-bottom:6px; }
+  .module-title{ font-family:var(--font-head); font-size:18px; font-weight:600; color:var(--ink); margin-bottom:6px; }
+  .module-sub{ font-size:13.5px; color:var(--sand); line-height:1.5; margin-bottom:10px; }
+  .module-meta{ font-size:12px; color:var(--turq-bright); letter-spacing:0.04em; display:flex; justify-content:space-between; align-items:center; }
+  .module-arrow{ font-size:16px; }
+  .note-panel{
+    margin-top:24px; background: linear-gradient(180deg, var(--bg-panel), var(--bg-panel-deep));
+    border:1px solid var(--line); border-radius:10px; padding:16px 20px; font-size:12.5px; color:var(--sand); line-height:1.6;
+  }
+  /* ===== leaderboard modal (reused pattern) ===== */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(0,0,0,0.6);
+    display:flex; align-items:center; justify-content:center;
+    padding:16px; z-index:100;
+  }
+  .modal-overlay.hidden{ display:none; }
+  .modal-box{
+    width:100%; max-width:380px; max-height:86vh; overflow-y:auto;
+    background:var(--bg-panel); border:1px solid var(--line);
+    border-radius:14px; padding:24px 22px; position:relative;
+  }
+  .modal-close{
+    position:absolute; top:12px; right:14px; background:none; border:none;
+    color:var(--sand); font-size:20px; cursor:pointer; line-height:1;
+  }
+  .modal-box h2{ font-family:var(--font-head); font-size:20px; margin:0 0 16px; color:var(--ink); }
+  .leaderboard-list{ display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+  .leaderboard-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:9px 12px; border-radius:8px; background:var(--bg-panel-deep);
+    border:1px solid var(--line); font-size:13.5px;
+  }
+  .leaderboard-row .lb-rank{ color:var(--clay-bright); font-weight:700; width:24px; }
+  .leaderboard-row .lb-name{ flex:1; color:var(--ink); }
+  .leaderboard-row .lb-stats{ color:var(--sand); font-size:12px; text-align:right; }
+  .leaderboard-empty{ color:var(--sand); font-style:italic; text-align:center; padding:12px 0; }
+</style>
+<script src="../../assets/presence.js"></script>
+<script src="../../assets/module-progress.js"></script>
+<script src="../../assets/theme.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="auth-bar">
+    <div><a class="auth-link" href="../../index.html?source=mst">&larr; All subjects</a> &nbsp;&middot;&nbsp; <span id="authStatus">Checking session…</span></div>
+    <button class="auth-link" id="openLeaderboardBtn">🏆 Leaderboard</button>
+    <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">☀️</button>
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>
+  </div>
+
+  <div class="masthead">
+    <div class="eyebrow">Module Compendium &middot; 630 Building Examples</div>
+    <h1>Architectural Sites, Proponents, &amp; Styles</h1>
+    <div class="sub">Identify the structure, the architect behind it, and its architectural style.</div>
+    <div class="step-frieze"></div>
+  </div>
+
+  <div class="overall-card" id="overallCard"></div>
+
+  <div class="module-grid">
+    <a class="module-card" style="--accent1:#0f6e5e;--accent2:#b8863b;" href="quizzes/Identify_Structure_Module.html">
+      <div class="module-num">Module 1</div>
+      <div class="module-title">Identify the Structure</div>
+      <div class="module-sub">Landmarks and buildings from around the world &mdash; name the structure from the image.</div>
+      <div class="module-meta"><span>629 questions</span><span class="module-arrow">&rarr;</span></div>
+      <div id="badge-identify-structure"></div>
+    </a>
+    <a class="module-card" style="--accent1:#0f6e5e;--accent2:#b8863b;" href="quizzes/Identify_Architect_Module.html">
+      <div class="module-num">Module 2</div>
+      <div class="module-title">Identify the Architect / Proponent</div>
+      <div class="module-sub">Match each landmark to the architect or proponent behind it.</div>
+      <div class="module-meta"><span>448 questions</span><span class="module-arrow">&rarr;</span></div>
+      <div id="badge-identify-architect"></div>
+    </a>
+    <a class="module-card" style="--accent1:#0f6e5e;--accent2:#b8863b;" href="quizzes/Identify_Style_Module.html">
+      <div class="module-num">Module 3</div>
+      <div class="module-title">Identify the Architectural Style</div>
+      <div class="module-sub">Recognize the architectural style or movement each landmark belongs to.</div>
+      <div class="module-meta"><span>217 questions</span><span class="module-arrow">&rarr;</span></div>
+      <div id="badge-identify-style"></div>
+    </a>
+
+  </div>
+
+  <div class="note-panel">Progress is saved to your account and synced across devices.</div>
+</div>
+
+<!-- ===================== LEADERBOARD MODAL ===================== -->
+<div class="modal-overlay hidden" id="leaderboardModalOverlay">
+  <div class="modal-box">
+    <button class="modal-close" id="leaderboardModalClose">&times;</button>
+    <h2>🏆 Leaderboard</h2>
+    <div class="leaderboard-list" id="leaderboardList">
+      <div class="leaderboard-empty">Loading…</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+if (window.LEAPresence) { LEAPresence.init({ client: sb }); }
+const authStatus = document.getElementById('authStatus');
+
+async function onSignedIn(user){
+  let username = (user.email || '').split('@')[0];
+  const { data: profile } = await sb.from('profiles').select('username').eq('id', user.id).single();
+  if(profile && profile.username) username = profile.username;
+  authStatus.innerHTML = 'Logged in as <b>' + username + '</b> — <button class="auth-link" id="logoutBtn">Log out</button>';
+  document.getElementById('logoutBtn').addEventListener('click', async () => { await sb.auth.signOut(); });
+}
+
+sb.auth.onAuthStateChange((event, session) => {
+  if(event === 'SIGNED_OUT') window.location.href = '../../index.html';
+});
+
+(async function initApp(){
+  const { data: { session } } = await sb.auth.getSession();
+  if(session){ await onSignedIn(session.user); } else { window.location.href = '../../index.html'; }
+})();
+
+// ---- Leaderboard (same get_leaderboard RPC every subject uses, scoped to this subject) ----
+const leaderboardModalOverlay = document.getElementById('leaderboardModalOverlay');
+document.getElementById('openLeaderboardBtn').addEventListener('click', async () => {
+  leaderboardModalOverlay.classList.remove('hidden');
+  const listEl = document.getElementById('leaderboardList');
+  listEl.innerHTML = '<div class="leaderboard-empty">Loading…</div>';
+  const { data, error } = await sb.rpc('get_leaderboard', { p_subject: LEA_SUBJECT_ID_PAGE });
+  if(error || !data || data.length === 0){
+    listEl.innerHTML = '<div class="leaderboard-empty">No scores yet — be the first!</div>';
+    return;
+  }
+  listEl.innerHTML = data.map((row, i) =>
+    '<div class="leaderboard-row">' +
+      '<span class="lb-rank">' + (i+1) + '</span>' +
+      '<span class="lb-name">' + row.username + '</span>' +
+      '<span class="lb-stats">' + row.total_mastered + ' mastered · ' + Math.round((row.avg_best_score||0)*100) + '% avg</span>' +
+    '</div>'
+  ).join('');
+});
+document.getElementById('leaderboardModalClose').addEventListener('click', () => leaderboardModalOverlay.classList.add('hidden'));
+leaderboardModalOverlay.addEventListener('click', (e) => { if(e.target === leaderboardModalOverlay) leaderboardModalOverlay.classList.add('hidden'); });
+</script>
+
+<script>
+const LEA_SUBJECT_ID_PAGE = 'architectural-sites-proponents-styles';
+const MODULES = [{id:'identify-structure', total:629, title:'Identify the Structure'},{id:'identify-architect', total:448, title:'Identify the Architect / Proponent'},{id:'identify-style', total:217, title:'Identify the Architectural Style'}];
+function leaRenderProgress(){
+  LEAProgress.renderOverallCard(document.getElementById('overallCard'), LEA_SUBJECT_ID_PAGE, MODULES);
+  MODULES.forEach(function(m){
+    const el = document.getElementById('badge-' + m.id);
+    if(el) LEAProgress.renderModuleBadge(el, LEA_SUBJECT_ID_PAGE, m.id, m.total);
+  });
+}
+window.leaOnProgressReset = leaRenderProgress;
+leaRenderProgress();
+document.addEventListener('visibilitychange', function(){ if(!document.hidden) leaRenderProgress(); });
+window.addEventListener('pageshow', leaRenderProgress);
+</script>
+</body>
+</html>

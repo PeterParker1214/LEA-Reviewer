@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LEA Reviewer — Admin</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="assets/theme.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#f4e9d8; --bg-deep:#1f1220; --bg-panel:#2f1a2e; --bg-panel-deep:#201121;
@@ -88,7 +89,7 @@
   <div id="panel" style="display:none;">
     <div class="tabs">
       <button class="tab-btn active" data-tab="subjects">Subjects</button>
-      <button class="tab-btn" data-tab="pages">Quizzes</button>
+      <button class="tab-btn" data-tab="pages">Pages &amp; Quizzes</button>
     </div>
     <div id="tab-subjects"></div>
     <div id="tab-pages" class="hidden"></div>
@@ -117,8 +118,6 @@ let fileTree = [];        // list of {path} for every .html file in the repo
 let currentFilePath = '';
 let currentFileRaw = '';
 let currentQuestions = null; // parsed QUESTIONS array, or null if this file doesn't have one
-let currentModules = null;   // parsed MODULES array, for "compendium" pages that bundle several quizzes in one file
-let currentModuleIndex = null; // which module of currentModules is currently being edited
 let currentDoc = null;       // parsed Document, used by the generic text editor
 
 function showGate(html, isError){
@@ -328,11 +327,6 @@ function renderPagesTab(filterText){
   });
 }
 
-function parseArrayLiteral(text){
-  try{ return JSON.parse(text); }
-  catch(e){ return new Function('return ' + text)(); }
-}
-
 async function openFile(path){
   currentFilePath = path;
   const editorArea = document.getElementById('editorArea');
@@ -344,173 +338,16 @@ async function openFile(path){
     currentFileRaw = await resp.text();
 
     const qMatch = currentFileRaw.match(/const QUESTIONS = (\[[\s\S]*?\]);/);
-    const mMatch = !qMatch ? currentFileRaw.match(/const MODULES = (\[[\s\S]*?\]);/) : null;
-
-    let parsedModules = null;
-    if(mMatch){
-      try{
-        const test = parseArrayLiteral(mMatch[1]);
-        if(Array.isArray(test) && test.some(m => m && Array.isArray(m.questions))) parsedModules = test;
-      }catch(e){ /* not a usable MODULES block — fall through */ }
-    }
-
     if(qMatch){
-      currentQuestions = parseArrayLiteral(qMatch[1]);
-      currentModules = null;
+      try{ currentQuestions = JSON.parse(qMatch[1]); }
+      catch(e){ currentQuestions = new Function('return ' + qMatch[1])(); }
       renderQuizEditor(path);
-    } else if(parsedModules){
-      // A "compendium" page — several quiz modules bundled into one file, each with its own questions.
-      currentModules = parsedModules;
-      currentQuestions = null;
-      currentModuleIndex = null;
-      renderCompendiumEditor(path);
     } else {
       currentQuestions = null;
-      currentModules = null;
       renderTextEditor(path);
     }
   }catch(e){
     editorArea.innerHTML = '<div class="card msg error">' + escapeHtml(e.message) + '</div>';
-  }
-}
-
-/* ===== Compendium editor: pages with multiple quiz modules bundled in one file ===== */
-
-function renderCompendiumEditor(path){
-  const editorArea = document.getElementById('editorArea');
-  editorArea.innerHTML = `
-    <div class="card msg info">This page bundles several quiz modules together. Pick one below to edit its questions.</div>
-    <div class="card">
-      ${currentModules.map((m, i) => `
-        <div class="row">
-          <div style="flex:1;">
-            <div style="font-weight:600;">${escapeHtml(m.title || m.id || ('Module ' + (i + 1)))}</div>
-            <div style="font-size:12px;color:var(--muted);">${(m.questions || []).length} question(s)${m.sub ? ' · ' + escapeHtml(m.sub) : ''}</div>
-          </div>
-          <button data-action="openModule" data-idx="${i}">Edit</button>
-        </div>
-      `).join('')}
-    </div>
-  `;
-  editorArea.querySelectorAll('button[data-action="openModule"]').forEach(el => {
-    el.addEventListener('click', () => { currentModuleIndex = +el.dataset.idx; renderModuleQuestionsEditor(path); });
-  });
-}
-
-function renderModuleQuestionsEditor(path){
-  const m = currentModules[currentModuleIndex];
-  const editorArea = document.getElementById('editorArea');
-  editorArea.innerHTML = `
-    <div class="actions" style="margin-bottom:10px;">
-      <button id="backToModulesBtn">&larr; Back to module list</button>
-    </div>
-    <div class="card">
-      <div class="field-label">Module title</div>
-      <input type="text" id="moduleTitleInput" value="${escapeHtml(m.title || '')}">
-      ${m.sub !== undefined ? `<div class="field-label">Module subtitle</div><input type="text" id="moduleSubInput" value="${escapeHtml(m.sub || '')}">` : ''}
-    </div>
-    <div id="moduleQuestionsList"></div>
-    <div class="actions">
-      <button id="addModuleQuestionBtn">+ Add question</button>
-    </div>
-    <div class="actions">
-      <button class="primary" id="saveModuleBtn">Save to site</button>
-    </div>
-    <div class="save-status" id="moduleSaveStatus"></div>
-  `;
-  renderModuleQuestionsList();
-
-  document.getElementById('backToModulesBtn').addEventListener('click', () => renderCompendiumEditor(path));
-  document.getElementById('moduleTitleInput').addEventListener('input', (e) => { m.title = e.target.value; });
-  const subInput = document.getElementById('moduleSubInput');
-  if(subInput) subInput.addEventListener('input', (e) => { m.sub = e.target.value; });
-  document.getElementById('addModuleQuestionBtn').addEventListener('click', () => {
-    m.questions.push({ s:'', q:'New question text', o:['Option A','Option B','Option C','Option D'], c:0, ref:'', n:'' });
-    renderModuleQuestionsList();
-  });
-  document.getElementById('saveModuleBtn').addEventListener('click', () => saveCompendiumFile(path));
-}
-
-function renderModuleQuestionsList(){
-  const m = currentModules[currentModuleIndex];
-  const listEl = document.getElementById('moduleQuestionsList');
-  listEl.innerHTML = m.questions.map((q, i) => `
-    <div class="q-card" data-idx="${i}">
-      <div class="field-label">Question ${i+1} — topic/section</div>
-      <input type="text" data-field="s" data-idx="${i}" value="${escapeHtml(q.s || '')}">
-      <div class="field-label">Question text</div>
-      <textarea data-field="q" data-idx="${i}" rows="2">${escapeHtml(q.q || '')}</textarea>
-      <div class="field-label">Answer choices (mark the correct one)</div>
-      <div class="q-opts">
-        ${(q.o || []).map((opt, oi) => `
-          <input type="radio" name="mod-correct-${i}" data-correct-idx="${oi}" data-idx="${i}" ${q.c === oi ? 'checked' : ''}>
-          <input type="text" data-field="o" data-oidx="${oi}" data-idx="${i}" value="${escapeHtml(opt)}">
-        `).join('')}
-      </div>
-      <div class="field-label">Reference (optional)</div>
-      <input type="text" data-field="ref" data-idx="${i}" value="${escapeHtml(q.ref || '')}">
-      <div class="field-label">Explanation note (optional)</div>
-      <textarea data-field="n" data-idx="${i}" rows="2">${escapeHtml(q.n || '')}</textarea>
-      <div class="actions">
-        <button class="danger" data-action="deleteModQ" data-idx="${i}">Delete this question</button>
-      </div>
-    </div>
-  `).join('');
-
-  listEl.querySelectorAll('input[data-field="s"], input[data-field="ref"]').forEach(el => {
-    el.addEventListener('input', () => { m.questions[+el.dataset.idx][el.dataset.field] = el.value; });
-  });
-  listEl.querySelectorAll('textarea[data-field="q"], textarea[data-field="n"]').forEach(el => {
-    el.addEventListener('input', () => { m.questions[+el.dataset.idx][el.dataset.field] = el.value; });
-  });
-  listEl.querySelectorAll('input[data-field="o"]').forEach(el => {
-    el.addEventListener('input', () => { m.questions[+el.dataset.idx].o[+el.dataset.oidx] = el.value; });
-  });
-  listEl.querySelectorAll('input[data-correct-idx]').forEach(el => {
-    el.addEventListener('change', () => { m.questions[+el.dataset.idx].c = +el.dataset.correctIdx; });
-  });
-  listEl.querySelectorAll('button[data-action="deleteModQ"]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if(confirm('Delete this question?')){
-        m.questions.splice(+btn.dataset.idx, 1);
-        renderModuleQuestionsList();
-      }
-    });
-  });
-}
-
-function modulesToJsLiteral(mods){
-  const modStrs = mods.map(m => {
-    const otherKeys = Object.keys(m).filter(k => k !== 'questions');
-    const fieldsStr = otherKeys.map(k => `${k}: ${JSON.stringify(m[k])}`).join(',\n    ');
-    const qJson = JSON.stringify(m.questions || [])
-      .replace(/^\[/, '[\n')
-      .replace(/\},\{/g, '},\n{')
-      .replace(/\]$/, '\n]');
-    return `  {\n    ${fieldsStr}${fieldsStr ? ',\n    ' : ''}questions: ${qJson}\n  }`;
-  });
-  return `[\n${modStrs.join(',\n')}\n]`;
-}
-
-async function saveCompendiumFile(path){
-  const statusEl = document.getElementById('moduleSaveStatus');
-  const saveBtn = document.getElementById('saveModuleBtn');
-  saveBtn.disabled = true;
-  statusEl.className = 'save-status';
-  statusEl.textContent = 'Saving…';
-  try{
-    const newModulesText = modulesToJsLiteral(currentModules);
-    const newText = currentFileRaw.replace(/const MODULES = \[[\s\S]*?\];/, `const MODULES = ${newModulesText};`);
-    const moduleLabel = currentModules[currentModuleIndex] ? (currentModules[currentModuleIndex].id || currentModuleIndex) : '';
-    await callSave(path, newText, `Admin: update quiz module — ${path} (${moduleLabel})`);
-    currentFileRaw = newText;
-    statusEl.className = 'save-status ok';
-    statusEl.textContent = 'Saved! It may take a minute or two for GitHub Pages to update the live site.';
-  }catch(e){
-    statusEl.className = 'save-status err';
-    statusEl.textContent = 'Error: ' + e.message;
-  }finally{
-    saveBtn.disabled = false;
   }
 }
 
@@ -705,6 +542,5 @@ async function saveTextFile(path){
 
 init();
 </script>
-
-
-</body></html>
+</body>
+</html>

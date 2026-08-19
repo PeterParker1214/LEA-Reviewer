@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <link rel="icon" type="image/png" href="../favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="../favicon-16x16.png" sizes="16x16">
 <link rel="icon" href="../favicon.ico" sizes="any">
@@ -8,10 +9,10 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Architectural Design</title>
+<title>Architectural Design — LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&amp;family=Bitter:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Bitter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#f1e4c9; --bg-deep:#1c130f; --bg-panel:#2a1c14; --bg-glow1:#3a2416; --bg-glow2:#24170f;
@@ -74,7 +75,7 @@
 <body>
 <div class="wrap">
   <div class="auth-bar">
-    <div><a class="auth-link" href="../index.html?source=jpt">← All subjects</a> &nbsp;·&nbsp; <span id="authStatus">Checking session…</span></div>
+    <div><a class="auth-link" href="../index.html?source=jpt">&larr; All subjects</a> &nbsp;·&nbsp; <span id="authStatus">Checking session…</span></div>
     <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">☀️</button>
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>
   </div>
@@ -117,6 +118,5 @@ sb.auth.onAuthStateChange((event, session) => {
   if(session){ await onSignedIn(session.user); } else { window.location.href = '../index.html'; }
 })();
 </script>
-
-
-</body></html>
+</body>
+</html>
