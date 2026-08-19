@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <link rel="icon" type="image/png" href="../../../favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="../../../favicon-16x16.png" sizes="16x16">
 <link rel="icon" href="../../../favicon.ico" sizes="any">
@@ -10,38 +13,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BP 220 &amp; PD 957 — Quiz 5 &amp; 6 Answer Key</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;600;700&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#2f3628;
-    --ink-soft:#5c6650;
-    --paper:#e9e2cf;
-    --paper-panel:#f6f2e4;
-    --moss:#4f6b3a;
-    --moss-deep:#374d28;
-    --clay:#b5502e;
-    --mustard:#c98a1f;
-    --good: var(--moss);
-    --bad: var(--clay);
-    --line: rgba(47,54,40,0.24);
+    --ink: #f6f1e6;
+    --ink-soft: #e8a13c;
+    --paper: #f6c667;
+    --paper-panel: rgba(255,255,255,0.035);
+    --moss: #e2933a;
+    --moss-deep: #090c0a;
+    --clay: #ffcf85;
+    --mustard: #e8a13c;
+    --good: #5fbf7f;
+    --bad: #e2604a;
+    --line: rgba(255,255,255,0.09);
   }
   body.dark-mode{
-    --ink:#eae7d8;
-    --ink-soft:#b8b6a4;
-    --paper:#1e2118;
-    --paper-panel:#262a1e;
-    --moss:#7fa363;
-    --moss-deep:#5c7d44;
-    --clay:#e0794f;
-    --mustard:#e0ab3c;
-    --line: rgba(234,231,216,0.18);
+    --ink: #241c10;
+    --ink-soft: #a3691b;
+    --paper: #8a5417;
+    --paper-panel: rgba(36,28,16,0.04);
+    --moss: #8a5417;
+    --moss-deep: #f3ede0;
+    --clay: #c98a2c;
+    --mustard: #a3691b;
+    --line: rgba(36,28,16,0.12);
   }
   body.dark-mode{
     background:
       radial-gradient(circle at 8px 8px, rgba(234,231,216,0.06) 1.4px, transparent 1.5px),
-      radial-gradient(ellipse at 12% 0%, #262a1e 0%, transparent 55%),
-      radial-gradient(ellipse at 92% 100%, #1a1d15 0%, transparent 50%),
+      radial-gradient(ellipse at 12% 0%, #1e3c2d 0%, transparent 55%),
+      radial-gradient(ellipse at 92% 100%, #12261c 0%, transparent 50%),
       var(--paper);
     background-size: 22px 22px, auto, auto;
   }
@@ -50,8 +51,8 @@
   body{
     background:
       radial-gradient(circle at 8px 8px, rgba(47,54,40,0.09) 1.4px, transparent 1.5px),
-      radial-gradient(ellipse at 12% 0%, #f1ead7 0%, transparent 55%),
-      radial-gradient(ellipse at 92% 100%, #ded3b2 0%, transparent 50%),
+      radial-gradient(ellipse at 12% 0%, #dce9de 0%, transparent 55%),
+      radial-gradient(ellipse at 92% 100%, #eef0e2 0%, transparent 50%),
       var(--paper);
     background-size: 22px 22px, auto, auto;
     color:var(--ink);
@@ -172,7 +173,7 @@
   .toolbar-restart{
     background:none;
     border:1px solid var(--mustard);
-    color:#8a5d13;
+    color:#7a2a1f;
     font-family:'JetBrains Mono', monospace;
     font-size:11px;
     padding:6px 13px;
@@ -249,7 +250,7 @@
     font-size:10.5px;
     letter-spacing:0.07em;
     text-transform:uppercase;
-    color:#8a5d13;
+    color:#7a2a1f;
     border:1px solid var(--mustard);
     padding:3px 10px;
     border-radius:999px;
@@ -317,7 +318,7 @@
     font-size:10.5px;
     letter-spacing:0.05em;
     text-transform:uppercase;
-    color:#8a5d13;
+    color:#7a2a1f;
   }
   .feedback .note{ display:block; margin-top:6px; color:var(--ink-soft); font-style:italic; }
 
@@ -406,7 +407,7 @@
     margin:0 0 8px;
     font-family:'Roboto Slab', serif;
     font-size:17px;
-    color:#8a3d20;
+    color:#5c1f17;
   }
   .weak-spots ul{ margin:0; padding-left:20px; }
   .weak-spots li{ margin-bottom:4px; }
@@ -452,13 +453,79 @@
     .toolbar-actions{ justify-content:space-between; }
   }
 
-  body.dark-mode .masthead .sub, body.dark-mode .toolbar-stats .stat-label, body.dark-mode .progress-label{ color:#d9a45c; }
-  body.dark-mode .no-mistakes{ color:#e8a37d; }
+  body.dark-mode .masthead .sub, body.dark-mode .toolbar-stats .stat-label, body.dark-mode .progress-label{ color:#df6a53; }
+  body.dark-mode .no-mistakes{ color:#df6a53; }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="../../../assets/presence.js"></script>
 <script src="../../../assets/theme.js"></script>
 <script src="../../../assets/sfx.js"></script>
+
+
+<style id="glass-revamp">
+  :root{ --radius-lg: 22px; --radius-md: 16px; --radius-sm: 10px; }
+  body{ transition: background-color .3s ease, color .3s ease; }
+
+  [class*="panel"], [class*="card"]:not(.leaderboard-list), [class*="box"]:not(.modal-overlay),
+  [class*="module-card"], [class*="insight"], [class*="toolbar"]:not(.toolbar-actions),
+  [class*="auth-bar"], [class*="results"], [class*="quiz-area"], [class*="feedback"],
+  [class*="modal-box"], [class*="overall-card"], [class*="note-panel"], .mistakes-review,
+  .leaderboard-list, .options label, .breakdown {
+    background:
+      linear-gradient(155deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)),
+      #10140f !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    backdrop-filter: blur(4px) !important;
+    border: 1px solid var(--line, rgba(255,255,255,0.09)) !important;
+    border-left-width: 1px !important;
+    border-radius: var(--radius-lg) !important;
+    clip-path: none !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45) !important;
+  }
+  body.light-mode [class*="panel"], body.light-mode [class*="card"]:not(.leaderboard-list),
+  body.light-mode [class*="box"]:not(.modal-overlay), body.light-mode [class*="module-card"],
+  body.light-mode [class*="insight"], body.light-mode [class*="toolbar"]:not(.toolbar-actions),
+  body.light-mode [class*="auth-bar"], body.light-mode [class*="results"],
+  body.light-mode [class*="quiz-area"], body.light-mode [class*="feedback"],
+  body.light-mode [class*="modal-box"], body.light-mode [class*="overall-card"],
+  body.light-mode [class*="note-panel"], body.light-mode .mistakes-review,
+  body.light-mode .leaderboard-list, body.light-mode .options label, body.light-mode .breakdown {
+    background:
+      linear-gradient(155deg, rgba(36,28,16,0.045), rgba(36,28,16,0.015)),
+      #faf6ec !important;
+    box-shadow: 0 10px 26px rgba(36,28,16,0.10) !important;
+  }
+
+  /* module-card: drop per-module rainbow accents, unify to gold, square off the asymmetric radius */
+  [class*="module-card"]{
+    border-left-width: 1px !important;
+  }
+  [class*="module-card"] .eyebrow, [class*="module-card"] .best-badge,
+  .insight-box .insight-name, .insight-tag {
+    color: #f0c169 !important;
+  }
+  body.light-mode [class*="module-card"] .eyebrow, body.light-mode [class*="module-card"] .best-badge,
+  body.light-mode .insight-box .insight-name, body.light-mode .insight-tag {
+    color: #8a5417 !important;
+  }
+
+  /* progress / mastery bars: unified gold-amber gradient fill */
+  [class*="mastery-fill"]:not(.complete), [class*="overall-bar-fill"], [class*="bar-fill"]:not(.complete),
+  [class*="progress-fill"]:not(.complete), [class*="mp-bar-fill"]:not(.complete) {
+    background: linear-gradient(90deg, #e8a13c, #f6c667) !important;
+  }
+
+  button, .theme-toggle, [class*="btn"], [class*="tab"], .step-frieze, input, select, textarea {
+    border-radius: var(--radius-md) !important;
+  }
+  .theme-toggle{ border-radius: 999px !important; }
+  [class*="btn"], .primary, button.primary, .auth-tab.active, [class*="tab"].active,
+  .order-toggle button.active {
+    border-radius: 999px !important;
+  }
+  [class*="module-card"] img, .card img { border-radius: var(--radius-sm) !important; }
+</style>
+
 </head>
 <body>
 <script>if (window.LEAPresence) { LEAPresence.init(); }</script>

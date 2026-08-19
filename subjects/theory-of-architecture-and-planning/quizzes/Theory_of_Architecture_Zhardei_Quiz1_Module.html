@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <link rel="icon" type="image/png" href="../../../favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="../../../favicon-16x16.png" sizes="16x16">
 <link rel="icon" href="../../../favicon.ico" sizes="any">
@@ -9,36 +12,34 @@
 
 <meta charset="UTF-8">
 <title>Theory of Architecture &amp; Planning — Quiz 1</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#efe6d3;
-    --paper-card:#fbf4e4;
-    --ink:#2b201a;
-    --ink-soft:#5c4a3a;
-    --primary:#7a1f2b;
-    --primary-bright:#9c2b39;
-    --accent:#a8842f;
-    --accent-bright:#c9a54a;
-    --good:#3f6b3f;
-    --bad:#8a2a2a;
-    --line: rgba(43,32,26,0.22);
-    --rule: rgba(168,132,47,0.55);
+    --paper: #e8a13c;
+    --paper-card: #f6c667;
+    --ink: #f6f1e6;
+    --ink-soft: #e2933a;
+    --primary: #ffcf85;
+    --primary-bright: #e8a13c;
+    --accent: #f6c667;
+    --accent-bright: #e2933a;
+    --good: #5fbf7f;
+    --bad: #e2604a;
+    --line: rgba(255,255,255,0.09);
+    --rule: #ffcf85;
   }
   body.dark-mode{
-    --paper:#1c1712;
-    --paper-card:#241d16;
-    --ink:#ecdfc4;
-    --ink-soft:#b9a583;
-    --primary:#c9525f;
-    --primary-bright:#e07683;
-    --accent:#c9a54a;
-    --accent-bright:#e3c274;
-    --good:#7cb37c;
-    --bad:#d97070;
-    --line: rgba(236,223,196,0.16);
-    --rule: rgba(201,165,74,0.4);
+    --paper: #a3691b;
+    --paper-card: #8a5417;
+    --ink: #241c10;
+    --ink-soft: #8a5417;
+    --primary: #c98a2c;
+    --primary-bright: #a3691b;
+    --accent: #8a5417;
+    --accent-bright: #8a5417;
+    --good: #2f8f5c;
+    --bad: #b8442f;
+    --line: rgba(36,28,16,0.12);
+    --rule: #c98a2c;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
@@ -47,7 +48,7 @@
       radial-gradient(circle at 15% 20%, rgba(0,0,0,0.035) 0%, transparent 3%),
       radial-gradient(circle at 82% 60%, rgba(0,0,0,0.03) 0%, transparent 3%),
       radial-gradient(circle at 40% 85%, rgba(0,0,0,0.03) 0%, transparent 3%),
-      repeating-linear-gradient(100deg, rgba(122,31,43,0.015) 0px, rgba(122,31,43,0.015) 1px, transparent 1px, transparent 5px),
+      repeating-linear-gradient(100deg, rgba(232,161,60,0.015) 0px, rgba(232,161,60,0.015) 1px, transparent 1px, transparent 5px),
       var(--paper);
     color:var(--ink);
     font-family:'EB Garamond', serif;
@@ -62,7 +63,7 @@
       radial-gradient(circle at 15% 20%, rgba(255,255,255,0.02) 0%, transparent 3%),
       radial-gradient(circle at 82% 60%, rgba(0,0,0,0.35) 0%, transparent 3%),
       radial-gradient(circle at 40% 85%, rgba(0,0,0,0.3) 0%, transparent 3%),
-      repeating-linear-gradient(100deg, rgba(201,165,74,0.02) 0px, rgba(201,165,74,0.02) 1px, transparent 1px, transparent 5px),
+      repeating-linear-gradient(100deg, rgba(232,161,60,0.02) 0px, rgba(232,161,60,0.02) 1px, transparent 1px, transparent 5px),
       var(--paper);
   }
   .card, .toolbar, .results .breakdown{
@@ -173,7 +174,7 @@
   }
   .order-toggle button.active{
     background: var(--primary);
-    color:#fbf4e4;
+    color:#eef4ef;
     font-weight:600;
   }
   .toolbar-restart{
@@ -246,7 +247,7 @@
     font-size:12px;
     letter-spacing:0.12em;
     text-transform:uppercase;
-    color:#fbf4e4;
+    color:#eef4ef;
     background: var(--primary);
     padding:5px 14px;
     border-radius:2px;
@@ -285,13 +286,13 @@
   .qimg-wrap{
     margin:0 0 22px;
     padding:14px;
-    background:#f6efdd;
+    background:#d2e4d5;
     border:1px solid var(--rule);
     border-radius:3px;
     display:flex;
     justify-content:center;
   }
-  body.dark-mode .qimg-wrap{ background:#2a2219; }
+  body.dark-mode .qimg-wrap{ background:#0b1912; }
   .qimg-wrap img{
     max-width:100%;
     height:auto;
@@ -366,11 +367,11 @@
   .arrow-btn:disabled{ opacity:0.28; cursor:default; }
   .arrow-btn.primary{
     background: var(--primary);
-    color:#fbf4e4;
+    color:#eef4ef;
     font-weight:600;
     border-color:var(--primary);
   }
-  .arrow-btn.primary:hover:not(:disabled){ background: var(--primary-bright); color:#fbf4e4; }
+  .arrow-btn.primary:hover:not(:disabled){ background: var(--primary-bright); color:#eef4ef; }
 
   /* results screen */
   .results{ display:none; text-align:center; }
@@ -422,7 +423,7 @@
   .restart-btn:hover{ border-color:var(--primary); color:var(--primary); }
   .restart-btn.primary{
     background: var(--primary);
-    color:#fbf4e4;
+    color:#eef4ef;
     border-color:var(--primary);
     font-weight:600;
   }
@@ -492,6 +493,85 @@
 <script src="../../../assets/theme.js"></script>
 <script src="../../../assets/sfx.js"></script>
 <script src="../../../assets/module-progress.js"></script>
+
+
+<style id="glass-revamp">
+  :root{ --radius-lg: 22px; --radius-md: 16px; --radius-sm: 10px; }
+  body{ transition: background-color .3s ease, color .3s ease; }
+
+  [class*="panel"], [class*="card"]:not(.leaderboard-list), [class*="box"]:not(.modal-overlay),
+  [class*="module-card"], [class*="insight"], [class*="toolbar"]:not(.toolbar-actions),
+  [class*="auth-bar"], [class*="results"], [class*="quiz-area"], [class*="feedback"],
+  [class*="modal-box"], [class*="overall-card"], [class*="note-panel"], .mistakes-review,
+  .leaderboard-list, .options label, .breakdown {
+    background:
+      linear-gradient(155deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)),
+      #10140f !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    backdrop-filter: blur(4px) !important;
+    border: 1px solid var(--line, rgba(255,255,255,0.09)) !important;
+    border-left-width: 1px !important;
+    border-radius: var(--radius-lg) !important;
+    clip-path: none !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45) !important;
+  }
+  body.light-mode [class*="panel"], body.light-mode [class*="card"]:not(.leaderboard-list),
+  body.light-mode [class*="box"]:not(.modal-overlay), body.light-mode [class*="module-card"],
+  body.light-mode [class*="insight"], body.light-mode [class*="toolbar"]:not(.toolbar-actions),
+  body.light-mode [class*="auth-bar"], body.light-mode [class*="results"],
+  body.light-mode [class*="quiz-area"], body.light-mode [class*="feedback"],
+  body.light-mode [class*="modal-box"], body.light-mode [class*="overall-card"],
+  body.light-mode [class*="note-panel"], body.light-mode .mistakes-review,
+  body.light-mode .leaderboard-list, body.light-mode .options label, body.light-mode .breakdown {
+    background:
+      linear-gradient(155deg, rgba(36,28,16,0.045), rgba(36,28,16,0.015)),
+      #faf6ec !important;
+    box-shadow: 0 10px 26px rgba(36,28,16,0.10) !important;
+  }
+
+  /* module-card: drop per-module rainbow accents, unify to gold, square off the asymmetric radius */
+  [class*="module-card"]{
+    border-left-width: 1px !important;
+  }
+  [class*="module-card"] .eyebrow, [class*="module-card"] .best-badge,
+  .insight-box .insight-name, .insight-tag {
+    color: #f0c169 !important;
+  }
+  body.light-mode [class*="module-card"] .eyebrow, body.light-mode [class*="module-card"] .best-badge,
+  body.light-mode .insight-box .insight-name, body.light-mode .insight-tag {
+    color: #8a5417 !important;
+  }
+
+  /* progress / mastery bars: unified gold-amber gradient fill */
+  [class*="mastery-fill"]:not(.complete), [class*="overall-bar-fill"], [class*="bar-fill"]:not(.complete),
+  [class*="progress-fill"]:not(.complete), [class*="mp-bar-fill"]:not(.complete) {
+    background: linear-gradient(90deg, #e8a13c, #f6c667) !important;
+  }
+
+  button, .theme-toggle, [class*="btn"], [class*="tab"], .step-frieze, input, select, textarea {
+    border-radius: var(--radius-md) !important;
+  }
+  .theme-toggle{ border-radius: 999px !important; }
+  [class*="btn"], .primary, button.primary, .auth-tab.active, [class*="tab"].active,
+  .order-toggle button.active {
+    border-radius: 999px !important;
+  }
+  [class*="module-card"] img, .card img { border-radius: var(--radius-sm) !important; }
+</style>
+
+<style>
+  .weak-module-line{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    font-family:var(--font-body); font-size:12.5px; color:var(--muted);
+    border-bottom:1px solid var(--line); padding-bottom:12px; margin-bottom:14px;
+  }
+  .weak-module-line .wm-tag{
+    font-family:var(--font-head); font-weight:600; font-size:11px; text-transform:uppercase;
+    letter-spacing:0.08em; color:#f0c169;
+  }
+  .weak-module-line .wm-name{ color:var(--ink); font-weight:600; }
+  body.light-mode .weak-module-line .wm-tag{ color:#8a5417; }
+</style>
 </head>
 <body>
 <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
@@ -595,16 +675,16 @@ const QUESTIONS = [
 {"s":"Foundations of Design","q":"It is a regular and repeated pattern.","o":["Balance","Rhythm","Proportion","Contrast"],"c":1,"ref":"Ordering principles — rhythm","n":"Rhythm is achieved through the regular or patterned repetition of elements, creating a sense of organized movement across a composition."},
 {"s":"Vitruvius & Renaissance Treatises","q":"The term theory of architecture was originally simply the accepted translation of the Latin term __________, as used by Vitruvius.","o":["Ratiocination","Doctrina de Architectura","Venustas","Racionalle"],"c":0,"ref":"Vitruvius — origins of the term 'theory'","n":"Vitruvius used 'ratiocinatio' (ratiocination) to describe the reasoned, intellectual basis of architecture, distinct from 'fabrica' (practical craft/construction)."},
 {"s":"Vitruvius & Renaissance Treatises","q":"Written by a Roman architect and dedicated to his patron, the Emperor Caesar Augustus, as a guide for building projects. It is divided into 10 books dealing with city planning and architecture in general.","o":["De Re Aedificatoria","De architectura","Of Architecture","10 books on Architecture and Planning"],"c":1,"ref":"Vitruvius — De architectura","n":"'De architectura' (On Architecture), Vitruvius's ten-book treatise dedicated to Augustus, is the earliest surviving major work on architectural theory."},
-{"s":"Vitruvius & Renaissance Treatises","q":"The author of the De Architectura is ___________.","o":["Leon Battista Alberti","Sebastiano Serlio","Vitruvius","Andrea Palladio"],"c":2,"ref":"Vitruvius — De architectura","n":"Marcus Vitruvius Pollio is the Roman architect and engineer credited with authoring 'De architectura'."},
-{"s":"Vitruvius & Renaissance Treatises","q":"Which among the following is not under the Philosophy of Vitruvius?","o":["Firmitas","Venustas","Concretas","Utilitas"],"c":2,"ref":"Vitruvius — Firmitas, Utilitas, Venustas","n":"Vitruvius's triad of architectural values is firmitas (strength), utilitas (utility) and venustas (beauty); 'Concretas' is not one of Vitruvius's terms."},
+{"s":"Vitruvius & Renaissance Treatises","q":"The author of the said book is ___________.","o":["Leon Battista Alberti","Sebastiano Serlio","Vitruvius","Andrea Palladio"],"c":2,"ref":"Vitruvius — De architectura","n":"Marcus Vitruvius Pollio is the Roman architect and engineer credited with authoring 'De architectura'."},
+{"s":"Vitruvius & Renaissance Treatises","q":"Which among the following is not under his Philosophy","o":["Firmitas","Venustas","Concretas","Utilitas"],"c":2,"ref":"Vitruvius — Firmitas, Utilitas, Venustas","n":"Vitruvius's triad of architectural values is firmitas (strength), utilitas (utility) and venustas (beauty); 'Concretas' is not one of Vitruvius's terms."},
 {"s":"Vitruvius & Renaissance Treatises","q":"Written by a Roman architect and dedicated to his patron, The Pope, as a guide for building projects, focusing on the art of building in both single buildings and entire urban spaces.","o":["De Re Aedificatoria","De architectura","Of Architecture","10 books on Architecture and Planning"],"c":0,"ref":"Alberti — De Re Aedificatoria","n":"Leon Battista Alberti's 'De Re Aedificatoria' (On the Art of Building), dedicated to Pope Nicholas V, revived and expanded Vitruvian ideas for Renaissance patrons and urban design."},
-{"s":"Vitruvius & Renaissance Treatises","q":"The author of the De Re Aedificatoria is ___________. He is also called “The Universal Man”.","o":["Leon Battista Alberti","Sebastiano Serlio","Vitruvius","Andrea Palladio"],"c":0,"ref":"Alberti — the Renaissance 'Universal Man'","n":"Leon Battista Alberti, celebrated as a true Renaissance polymath ('Uomo Universale'), authored 'De Re Aedificatoria'."},
+{"s":"Vitruvius & Renaissance Treatises","q":"The author of the said book is ___________. He is also called “The Universal Man”.","o":["Leon Battista Alberti","Sebastiano Serlio","Vitruvius","Andrea Palladio"],"c":0,"ref":"Alberti — the Renaissance 'Universal Man'","n":"Leon Battista Alberti, celebrated as a true Renaissance polymath ('Uomo Universale'), authored 'De Re Aedificatoria'."},
 {"s":"Vitruvius & Renaissance Treatises","q":"This was the first architectural handbook that emphasized the practical rather than the theoretical aspects of architecture, and it was the first to catalog the five orders.","o":["Complete works on Architecture and Perspective","Complete works on Art and Orders","Estraordinario Libro","Sebastiano Libro"],"c":0,"ref":"Serlio — Complete Works on Architecture and Perspective","n":"Sebastiano Serlio's treatise, later compiled as the 'Complete Works on Architecture and Perspective' (Tutte l'opere d'architettura et prospetiva), was practical and pattern-book oriented, and was the first to systematically present the five classical orders."},
-{"s":"Vitruvius & Renaissance Treatises","q":"The author of the Complete works on Architecture and Perspective is ___________. An Italian Mannerist architect, painter and theorist. He also pioneered the use of high-quality illustrations to supplement the text.","o":["Leon Battista Alberti","Sebastiano Serlio","Vitruvius","Andrea Palladio"],"c":1,"ref":"Serlio's illustrated treatise","n":"Sebastiano Serlio was known for pairing his practical Mannerist text with extensive, high-quality woodcut illustrations, making his treatise widely accessible."},
+{"s":"Vitruvius & Renaissance Treatises","q":"The author of the said book is ___________. An Italian Mannerist architect, painter and theorist. He also pioneered the use of high-quality illustrations to supplement the text.","o":["Leon Battista Alberti","Sebastiano Serlio","Vitruvius","Andrea Palladio"],"c":1,"ref":"Serlio's illustrated treatise","n":"Sebastiano Serlio was known for pairing his practical Mannerist text with extensive, high-quality woodcut illustrations, making his treatise widely accessible."},
 {"s":"Vitruvius & Renaissance Treatises","q":"Regola Delle Cinque Ordini D’ Architettura, in English translation, means _______________.","o":["Complete works on Art and Orders.","Canon of Art and Orders.","Canon of the Three Orders of Architecture.","Canon of the Five Orders of Architecture."],"c":3,"ref":"Vignola — Regola delli cinque ordini","n":"Vignola's title translates directly as the 'Rule of the Five Orders of Architecture,' referencing the five classical orders: Tuscan, Doric, Ionic, Corinthian, and Composite."},
-{"s":"Vitruvius & Renaissance Treatises","q":"The author of Canon of the Five Orders of Architecture is ___________. He was one of the great Italian architects of 16th century Mannerism","o":["Michelangelo","Sebastiano Serlio","Giacomo Barocci Vignola","Andrea Palladio"],"c":2,"ref":"Vignola's canon of the orders","n":"Giacomo Barocci da Vignola, a leading Mannerist architect, wrote the influential 'Regola delli cinque ordini d'architettura' (1562)."},
+{"s":"Vitruvius & Renaissance Treatises","q":"The author of the said book is ___________. He was one of the great Italian architects of 16th century Mannerism","o":["Michelangelo","Sebastiano Serlio","Giacomo Barocci Vignola","Andrea Palladio"],"c":2,"ref":"Vignola's canon of the orders","n":"Giacomo Barocci da Vignola, a leading Mannerist architect, wrote the influential 'Regola delli cinque ordini d'architettura' (1562)."},
 {"s":"Vitruvius & Renaissance Treatises","q":"It is one of the most influential books in architecture history. It contains the author’s designs celebrating the purity and simplicity of classical architecture.","o":["4 books of Architecture","6 books of Architecture","8 books of Architecture","10 books of Architecture"],"c":0,"ref":"Palladio — I Quattro Libri dell'Architettura","n":"Andrea Palladio's 'I Quattro Libri dell'Architettura' (The Four Books of Architecture) became one of the most influential architectural treatises, prizing classical purity and clarity of proportion."},
-{"s":"Vitruvius & Renaissance Treatises","q":"He is called “The Father of modern picture books.” He is the author of The Four Books of Architecture.","o":["Michelangelo","Sebastiano Serlio","Giacomo Barocci Vignola","Andrea Palladio"],"c":3,"ref":"Palladio and the Four Books","n":"Andrea Palladio, author of the Four Books of Architecture with its clear plans, elevations and woodcuts, is often called the father of the modern architectural 'picture book'."},
+{"s":"Vitruvius & Renaissance Treatises","q":"He is called “The Father of modern picture books.” He is the author of the said book.","o":["Michelangelo","Sebastiano Serlio","Giacomo Barocci Vignola","Andrea Palladio"],"c":3,"ref":"Palladio and the Four Books","n":"Andrea Palladio, author of the Four Books of Architecture with its clear plans, elevations and woodcuts, is often called the father of the modern architectural 'picture book'."},
 {"s":"Elements of Form","q":"Indicates a position in space.","o":["Point","Two Point","Line","Linear Element"],"c":0,"ref":"Ching — primary elements: the point","n":"A point marks a position in space; conceptually it has no length, width, or depth."},
 {"s":"Elements of Form","q":"Can denote a gateway signifying a passage from one place to another.","o":["Point","Two Point","Line","Linear Element"],"c":1,"ref":"Ching — the two-point condition","n":"Two points in space can define a gateway or threshold condition, marking a passage from one place or field to another."},
 {"s":"Elements of Form","q":"Associated with linearity and direction.","o":["Point","Two Point","Line","Linear Element"],"c":2,"ref":"Ching — primary elements: the line","n":"A line results from the extension of a point and carries the qualities of length, direction, and linearity."},
