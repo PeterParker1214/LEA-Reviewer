@@ -191,8 +191,26 @@
     width:7px; height:7px; border-radius:50%; background:var(--good); flex-shrink:0;
     box-shadow:0 0 6px var(--good);
   }
-  .online-count{ color:var(--ink); font-weight:600; }
-  .online-names{ color:var(--muted); opacity:0.9; }
+  .online-count{ color:var(--ink); font-weight:600; flex-shrink:0; }
+  .online-names-wrap{
+    flex:1 1 auto; min-width:0; height:1.4em; overflow:hidden; position:relative;
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 20px, #000 calc(100% - 20px), transparent 100%);
+    mask-image:linear-gradient(90deg, transparent 0, #000 20px, #000 calc(100% - 20px), transparent 100%);
+  }
+  .online-names{
+    color:var(--muted); opacity:0.9; white-space:nowrap;
+    position:absolute; left:0; top:0;
+    animation:online-scroll 16s linear infinite;
+  }
+  .online-names.no-scroll{ position:static; animation:none; }
+  .online-bar:hover .online-names{ animation-play-state:paused; }
+  @keyframes online-scroll{
+    from{ transform:translateX(100%); }
+    to{ transform:translateX(-100%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .online-names{ position:static; animation:none; }
+  }
 
   /* ===== source list (stacked pill buttons) ===== */
   .source-intro, .subject-intro{
@@ -401,7 +419,7 @@
     <div class="online-bar">
       <span class="online-dot"></span>
       <span><span class="online-count" id="onlineCount">0</span> online</span>
-      <span class="online-names" id="onlineNames">—</span>
+      <span class="online-names-wrap"><span class="online-names" id="onlineNames">—</span></span>
     </div>
 
     <!-- ===== SOURCE FOLDERS ===== -->
@@ -822,6 +840,7 @@ function renderOnline(names){
   const uniq = Array.from(new Set(names));
   onlineCountEl.textContent = uniq.length;
   onlineNamesEl.textContent = uniq.length ? uniq.join(', ') : '—';
+  onlineNamesEl.classList.toggle('no-scroll', uniq.length === 0);
 }
 
 function startPresence(username){
