@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <link rel="icon" type="image/png" href="../../../favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="../../../favicon-16x16.png" sizes="16x16">
 <link rel="icon" href="../../../favicon.ico" sizes="any">
@@ -13,45 +10,47 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PD 1096 — Quiz 3 Answer Key</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap&family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@500;600" rel="stylesheet">
 <style>
   :root{
-    --ink: #f6f1e6;
-    --bg-deep: #090c0a;
-    --bg-panel: rgba(255,255,255,0.035);
-    --yellow: #e8a13c;
-    --yellow-bright: #f6c667;
-    --orange: #e2933a;
-    --steel: #ffcf85;
-    --good: #5fbf7f;
-    --bad: #e2604a;
-    --line: rgba(255,255,255,0.09);
+    --ink:#f3efe6;
+    --bg-deep:#121110;
+    --bg-panel:#1c1a17;
+    --yellow:#ffc23c;
+    --yellow-bright:#ffd873;
+    --orange:#ff6a2b;
+    --steel:#8a9099;
+    --good:#5fb178;
+    --bad:#e2554a;
+    --line: rgba(255,194,60,0.22);
   }
   body.light-mode{
-    --ink: #241c10;
-    --bg-deep: #f3ede0;
-    --bg-panel: rgba(36,28,16,0.04);
-    --yellow: #a3691b;
-    --yellow-bright: #8a5417;
-    --orange: #8a5417;
-    --steel: #c98a2c;
-    --good: #2f8f5c;
-    --bad: #b8442f;
-    --line: rgba(36,28,16,0.12);
+    --ink:#1f1b12;
+    --bg-deep:#faf6ec;
+    --bg-panel:#ffffff;
+    --yellow:#b8860b;
+    --yellow-bright:#8a6508;
+    --orange:#c1440e;
+    --steel:#5c6470;
+    --good:#2f7a48;
+    --bad:#b0392c;
+    --line: rgba(184,134,11,0.25);
   }
   body.light-mode{
     background:
-      repeating-linear-gradient(135deg, rgba(232,161,60,0.05) 0px, rgba(232,161,60,0.05) 14px, transparent 14px, transparent 28px),
-      radial-gradient(ellipse at 10% 0%, #dce9de 0%, transparent 55%),
-      radial-gradient(ellipse at 95% 100%, #eef0e2 0%, transparent 50%),
+      repeating-linear-gradient(135deg, rgba(184,134,11,0.05) 0px, rgba(184,134,11,0.05) 14px, transparent 14px, transparent 28px),
+      radial-gradient(ellipse at 10% 0%, #f3ecd6 0%, transparent 55%),
+      radial-gradient(ellipse at 95% 100%, #f7f0dc 0%, transparent 50%),
       var(--bg-deep);
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     background:
-      repeating-linear-gradient(135deg, rgba(232,161,60,0.035) 0px, rgba(232,161,60,0.035) 14px, transparent 14px, transparent 28px),
-      radial-gradient(ellipse at 10% 0%, #1e3c2d 0%, transparent 55%),
-      radial-gradient(ellipse at 95% 100%, #12261c 0%, transparent 50%),
+      repeating-linear-gradient(135deg, rgba(255,194,60,0.035) 0px, rgba(255,194,60,0.035) 14px, transparent 14px, transparent 28px),
+      radial-gradient(ellipse at 10% 0%, #232019 0%, transparent 55%),
+      radial-gradient(ellipse at 95% 100%, #201d18 0%, transparent 50%),
       var(--bg-deep);
     color:var(--ink);
     font-family:'Barlow', sans-serif;
@@ -72,7 +71,7 @@
 
   .hazard-bar{
     height:8px;
-    background: repeating-linear-gradient(135deg, var(--yellow) 0px, var(--yellow) 14px, #6ebe96 14px, #6ebe96 28px);
+    background: repeating-linear-gradient(135deg, var(--yellow) 0px, var(--yellow) 14px, #1a1712 14px, #1a1712 28px);
     border-radius:3px;
     margin-bottom:20px;
   }
@@ -153,7 +152,7 @@
   .order-toggle button{
     background:none;
     border:none;
-    color:#a7c3b1;
+    color:#c9c2b3;
     font-family:'Space Mono', monospace;
     font-size:11px;
     padding:6px 10px;
@@ -162,7 +161,7 @@
   }
   .order-toggle button.active{
     background: var(--yellow);
-    color:#0b1912;
+    color:#1a1712;
     font-weight:700;
   }
   .toolbar-restart{
@@ -203,7 +202,7 @@
   /* hazard-plate card */
   .card{
     position:relative;
-    background: linear-gradient(180deg, var(--bg-panel), #0b1912);
+    background: linear-gradient(180deg, var(--bg-panel), #17140f);
     border:1px solid var(--line);
     border-left:5px solid var(--yellow);
     border-radius: 4px;
@@ -216,7 +215,7 @@
     font-size:10.5px;
     letter-spacing:0.1em;
     text-transform:uppercase;
-    color:#0b1912;
+    color:#1a1712;
     background: var(--yellow);
     padding:4px 12px;
     border-radius:2px;
@@ -290,7 +289,7 @@
     text-transform:uppercase;
     color:var(--orange);
   }
-  .feedback .note{ display:block; margin-top:6px; color:#a7c3b1; font-style:italic; }
+  .feedback .note{ display:block; margin-top:6px; color:#c9c2b3; font-style:italic; }
 
   .controls{
     display:flex; justify-content:space-between; align-items:center; margin-top:22px;
@@ -311,7 +310,7 @@
   .arrow-btn:disabled{ opacity:0.28; cursor:default; }
   .arrow-btn.primary{
     background: var(--yellow);
-    color:#0b1912;
+    color:#1a1712;
     font-weight:700;
     border-color:var(--yellow);
   }
@@ -360,7 +359,7 @@
   .restart-btn:hover{ background: rgba(255,194,60,0.1); }
   .restart-btn.primary{
     background: var(--yellow);
-    color:#0b1912;
+    color:#1a1712;
     border-color:var(--yellow);
     font-weight:700;
   }
@@ -429,79 +428,29 @@
     .toolbar-actions{ justify-content:space-between; }
   }
 
-  body.light-mode .masthead .sub, body.light-mode .feedback .note{ color:#2a4a36; }
-  body.light-mode .card{ background: linear-gradient(180deg, var(--bg-panel), #d2e4d5); }
+  body.light-mode .masthead .sub, body.light-mode .feedback .note{ color:#6b6357; }
+  body.light-mode .card{ background: linear-gradient(180deg, var(--bg-panel), #f0e6cc); }
+
+  /* ===== drafting-table masthead override ===== */
+  .masthead{ position:relative; }
+  .masthead::before, .masthead::after{
+    content:""; position:absolute; width:12px; height:12px;
+    border:2px solid var(--orange); opacity:.85; pointer-events:none;
+  }
+  .masthead::before{ top:-6px; left:-6px; border-width:2px 0 0 2px; }
+  .masthead::after{ bottom:-6px; right:-6px; border-width:0 2px 2px 0; }
+  .masthead .eyebrow{ font-family:'IBM Plex Mono', monospace !important; }
+  .masthead h1{
+    font-family:'Big Shoulders Display', sans-serif !important;
+    font-weight:800 !important;
+    text-transform:uppercase !important;
+    letter-spacing:0.01em !important;
+  }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="../../../assets/presence.js"></script>
 <script src="../../../assets/theme.js"></script>
 <script src="../../../assets/sfx.js"></script>
-
-
-<style id="glass-revamp">
-  :root{ --radius-lg: 22px; --radius-md: 16px; --radius-sm: 10px; }
-  body{ transition: background-color .3s ease, color .3s ease; }
-
-  [class*="panel"], [class*="card"]:not(.leaderboard-list), [class*="box"]:not(.modal-overlay),
-  [class*="module-card"], [class*="insight"], [class*="toolbar"]:not(.toolbar-actions),
-  [class*="auth-bar"], [class*="results"], [class*="quiz-area"], [class*="feedback"],
-  [class*="modal-box"], [class*="overall-card"], [class*="note-panel"], .mistakes-review,
-  .leaderboard-list, .options label, .breakdown {
-    background:
-      linear-gradient(155deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)),
-      #10140f !important;
-    -webkit-backdrop-filter: blur(4px) !important;
-    backdrop-filter: blur(4px) !important;
-    border: 1px solid var(--line, rgba(255,255,255,0.09)) !important;
-    border-left-width: 1px !important;
-    border-radius: var(--radius-lg) !important;
-    clip-path: none !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.45) !important;
-  }
-  body.light-mode [class*="panel"], body.light-mode [class*="card"]:not(.leaderboard-list),
-  body.light-mode [class*="box"]:not(.modal-overlay), body.light-mode [class*="module-card"],
-  body.light-mode [class*="insight"], body.light-mode [class*="toolbar"]:not(.toolbar-actions),
-  body.light-mode [class*="auth-bar"], body.light-mode [class*="results"],
-  body.light-mode [class*="quiz-area"], body.light-mode [class*="feedback"],
-  body.light-mode [class*="modal-box"], body.light-mode [class*="overall-card"],
-  body.light-mode [class*="note-panel"], body.light-mode .mistakes-review,
-  body.light-mode .leaderboard-list, body.light-mode .options label, body.light-mode .breakdown {
-    background:
-      linear-gradient(155deg, rgba(36,28,16,0.045), rgba(36,28,16,0.015)),
-      #faf6ec !important;
-    box-shadow: 0 10px 26px rgba(36,28,16,0.10) !important;
-  }
-
-  /* module-card: drop per-module rainbow accents, unify to gold, square off the asymmetric radius */
-  [class*="module-card"]{
-    border-left-width: 1px !important;
-  }
-  [class*="module-card"] .eyebrow, [class*="module-card"] .best-badge,
-  .insight-box .insight-name, .insight-tag {
-    color: #f0c169 !important;
-  }
-  body.light-mode [class*="module-card"] .eyebrow, body.light-mode [class*="module-card"] .best-badge,
-  body.light-mode .insight-box .insight-name, body.light-mode .insight-tag {
-    color: #8a5417 !important;
-  }
-
-  /* progress / mastery bars: unified gold-amber gradient fill */
-  [class*="mastery-fill"]:not(.complete), [class*="overall-bar-fill"], [class*="bar-fill"]:not(.complete),
-  [class*="progress-fill"]:not(.complete), [class*="mp-bar-fill"]:not(.complete) {
-    background: linear-gradient(90deg, #e8a13c, #f6c667) !important;
-  }
-
-  button, .theme-toggle, [class*="btn"], [class*="tab"], .step-frieze, input, select, textarea {
-    border-radius: var(--radius-md) !important;
-  }
-  .theme-toggle{ border-radius: 999px !important; }
-  [class*="btn"], .primary, button.primary, .auth-tab.active, [class*="tab"].active,
-  .order-toggle button.active {
-    border-radius: 999px !important;
-  }
-  [class*="module-card"] img, .card img { border-radius: var(--radius-sm) !important; }
-</style>
-
 </head>
 <body>
 <script>if (window.LEAPresence) { LEAPresence.init(); }</script>

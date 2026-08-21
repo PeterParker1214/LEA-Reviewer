@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <link rel="icon" type="image/png" href="../../../favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="../../../favicon-16x16.png" sizes="16x16">
 <link rel="icon" href="../../../favicon.ico" sizes="any">
@@ -13,40 +10,42 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TAPP — Pre-Board Exam (200 Items)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap&family=Big+Shoulders+Display:wght@700;800" rel="stylesheet">
 <style>
   :root{
-    --blueprint: #e8a13c;
-    --blueprint-2: #f6c667;
-    --grid-major: #e2933a;
-    --grid-minor: #ffcf85;
-    --vellum: #e8a13c;
-    --vellum-2: #f6c667;
-    --ink: #f6f1e6;
-    --ink-soft: #e2933a;
-    --accent: #ffcf85;
-    --accent-bright: #e8a13c;
-    --cyan: #f6c667;
-    --good: #5fbf7f;
-    --bad: #e2604a;
-    --line: rgba(255,255,255,0.09);
-    --rule: #e2933a;
+    --blueprint:#0e3a63;
+    --blueprint-2:#123f6c;
+    --grid-major: rgba(255,255,255,0.09);
+    --grid-minor: rgba(255,255,255,0.045);
+    --vellum:#f6f2e7;
+    --vellum-2:#efe9d8;
+    --ink:#152f4a;
+    --ink-soft:#4c6478;
+    --accent:#e2711d;
+    --accent-bright:#f28a3e;
+    --cyan:#1f7a92;
+    --good:#1f7a5c;
+    --bad:#b3432b;
+    --line: rgba(21,47,74,0.22);
+    --rule: rgba(226,113,29,0.55);
   }
   body.dark-mode{
-    --blueprint: #a3691b;
-    --blueprint-2: #8a5417;
-    --grid-major: #8a5417;
-    --grid-minor: #c98a2c;
-    --vellum: #a3691b;
-    --vellum-2: #8a5417;
-    --ink: #241c10;
-    --ink-soft: #8a5417;
-    --accent: #c98a2c;
-    --accent-bright: #a3691b;
-    --cyan: #8a5417;
-    --good: #2f8f5c;
-    --bad: #b8442f;
-    --line: rgba(36,28,16,0.12);
-    --rule: #8a5417;
+    --blueprint:#0b0f14;
+    --blueprint-2:#10161d;
+    --grid-major: rgba(120,190,255,0.10);
+    --grid-minor: rgba(120,190,255,0.05);
+    --vellum:#1b222b;
+    --vellum-2:#20293380;
+    --ink:#e6edf3;
+    --ink-soft:#93a6b8;
+    --accent:#f0973f;
+    --accent-bright:#ffb164;
+    --cyan:#5fc7de;
+    --good:#4fbf93;
+    --bad:#e2775a;
+    --line: rgba(230,237,243,0.14);
+    --rule: rgba(240,151,63,0.45);
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
@@ -167,7 +166,7 @@
     font-family:'IBM Plex Mono', monospace;
     font-size:11px; padding:6px 11px; cursor:pointer; letter-spacing:0.03em;
   }
-  .order-toggle button.active{ background: var(--accent); color:#0b1912; font-weight:600; }
+  .order-toggle button.active{ background: var(--accent); color:#1b1204; font-weight:600; }
   .toolbar-restart{
     background:none; border:1px solid var(--cyan); color:var(--cyan);
     font-family:'IBM Plex Mono', monospace; font-size:11px;
@@ -222,7 +221,7 @@
     font-size:11px;
     letter-spacing:0.1em;
     text-transform:uppercase;
-    color:#0b1912;
+    color:#1b1204;
     background: var(--accent);
     padding:5px 14px;
     border-radius:2px;
@@ -330,8 +329,8 @@
   }
   .arrow-btn:hover:not(:disabled){ border-color:var(--accent); color:var(--accent); }
   .arrow-btn:disabled{ opacity:0.28; cursor:default; }
-  .arrow-btn.primary{ background: var(--accent); color:#0b1912; font-weight:600; border-color:var(--accent); }
-  .arrow-btn.primary:hover:not(:disabled){ background: var(--accent-bright); color:#0b1912; }
+  .arrow-btn.primary{ background: var(--accent); color:#1b1204; font-weight:600; border-color:var(--accent); }
+  .arrow-btn.primary:hover:not(:disabled){ background: var(--accent-bright); color:#1b1204; }
 
   /* ===== results ===== */
   .results{ display:none; text-align:center; }
@@ -372,7 +371,7 @@
     font-family:'IBM Plex Mono', monospace; font-size:13px; cursor:pointer;
   }
   .restart-btn:hover{ border-color:var(--accent); color:var(--accent); }
-  .restart-btn.primary{ background: var(--accent); color:#0b1912; border-color:var(--accent); font-weight:600; }
+  .restart-btn.primary{ background: var(--accent); color:#1b1204; border-color:var(--accent); font-weight:600; }
   .restart-btn.primary:hover{ background: var(--accent-bright); }
 
   .weak-spots{
@@ -412,90 +411,19 @@
     .toolbar{ flex-direction:column; align-items:stretch; }
     .toolbar-actions{ justify-content:space-between; }
   }
+
+  /* ===== drafting-table masthead override ===== */
+  .tb-top h1{
+    font-family:'Big Shoulders Display', sans-serif !important;
+    font-weight:800 !important;
+    text-transform:uppercase !important;
+    letter-spacing:0.01em !important;
+  }
 </style>
 <script src="../../../assets/presence.js"></script>
 <script src="../../../assets/theme.js"></script>
 <script src="../../../assets/sfx.js"></script>
 <script src="../../../assets/module-progress.js"></script>
-
-
-<style id="glass-revamp">
-  :root{ --radius-lg: 22px; --radius-md: 16px; --radius-sm: 10px; }
-  body{ transition: background-color .3s ease, color .3s ease; }
-
-  [class*="panel"], [class*="card"]:not(.leaderboard-list), [class*="box"]:not(.modal-overlay),
-  [class*="module-card"], [class*="insight"], [class*="toolbar"]:not(.toolbar-actions),
-  [class*="auth-bar"], [class*="results"], [class*="quiz-area"], [class*="feedback"],
-  [class*="modal-box"], [class*="overall-card"], [class*="note-panel"], .mistakes-review,
-  .leaderboard-list, .options label, .breakdown {
-    background:
-      linear-gradient(155deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)),
-      #10140f !important;
-    -webkit-backdrop-filter: blur(4px) !important;
-    backdrop-filter: blur(4px) !important;
-    border: 1px solid var(--line, rgba(255,255,255,0.09)) !important;
-    border-left-width: 1px !important;
-    border-radius: var(--radius-lg) !important;
-    clip-path: none !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.45) !important;
-  }
-  body.light-mode [class*="panel"], body.light-mode [class*="card"]:not(.leaderboard-list),
-  body.light-mode [class*="box"]:not(.modal-overlay), body.light-mode [class*="module-card"],
-  body.light-mode [class*="insight"], body.light-mode [class*="toolbar"]:not(.toolbar-actions),
-  body.light-mode [class*="auth-bar"], body.light-mode [class*="results"],
-  body.light-mode [class*="quiz-area"], body.light-mode [class*="feedback"],
-  body.light-mode [class*="modal-box"], body.light-mode [class*="overall-card"],
-  body.light-mode [class*="note-panel"], body.light-mode .mistakes-review,
-  body.light-mode .leaderboard-list, body.light-mode .options label, body.light-mode .breakdown {
-    background:
-      linear-gradient(155deg, rgba(36,28,16,0.045), rgba(36,28,16,0.015)),
-      #faf6ec !important;
-    box-shadow: 0 10px 26px rgba(36,28,16,0.10) !important;
-  }
-
-  /* module-card: drop per-module rainbow accents, unify to gold, square off the asymmetric radius */
-  [class*="module-card"]{
-    border-left-width: 1px !important;
-  }
-  [class*="module-card"] .eyebrow, [class*="module-card"] .best-badge,
-  .insight-box .insight-name, .insight-tag {
-    color: #f0c169 !important;
-  }
-  body.light-mode [class*="module-card"] .eyebrow, body.light-mode [class*="module-card"] .best-badge,
-  body.light-mode .insight-box .insight-name, body.light-mode .insight-tag {
-    color: #8a5417 !important;
-  }
-
-  /* progress / mastery bars: unified gold-amber gradient fill */
-  [class*="mastery-fill"]:not(.complete), [class*="overall-bar-fill"], [class*="bar-fill"]:not(.complete),
-  [class*="progress-fill"]:not(.complete), [class*="mp-bar-fill"]:not(.complete) {
-    background: linear-gradient(90deg, #e8a13c, #f6c667) !important;
-  }
-
-  button, .theme-toggle, [class*="btn"], [class*="tab"], .step-frieze, input, select, textarea {
-    border-radius: var(--radius-md) !important;
-  }
-  .theme-toggle{ border-radius: 999px !important; }
-  [class*="btn"], .primary, button.primary, .auth-tab.active, [class*="tab"].active,
-  .order-toggle button.active {
-    border-radius: 999px !important;
-  }
-  [class*="module-card"] img, .card img { border-radius: var(--radius-sm) !important; }
-</style>
-
-<style>
-  .weak-module-line{
-    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-    font-family:var(--font-body); font-size:12.5px; color:var(--muted);
-    border-bottom:1px solid var(--line); padding-bottom:12px; margin-bottom:14px;
-  }
-  .weak-module-line .wm-tag{
-    font-family:var(--font-head); font-weight:600; font-size:11px; text-transform:uppercase;
-    letter-spacing:0.08em; color:#f0c169;
-  }
-  .weak-module-line .wm-name{ color:var(--ink); font-weight:600; }
-  body.light-mode .weak-module-line .wm-tag{ color:#8a5417; }
-</style>
 </head>
 <body>
 <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
