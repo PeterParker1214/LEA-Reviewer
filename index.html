@@ -508,16 +508,16 @@ const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 // mirror the MODULES defined in that subject's own page, used here purely to
 // show a mastered/total badge without loading each subject's full quiz data.
 const SUBJECTS = [
-  { id: "history", name: "History of Architecture 📜⌛🏛️🏺", href: "subjects/history-of-architecture.html", ready: true, totalQuestions: 1552, totalModules: 12, source: "jpt" },
-  { id: "building-utilities", name: "Building Utilities 💧⚡⚙️💡", href: "subjects/building-utilities/index.html", ready: true, totalQuestions: 255, totalModules: 4, source: "jpt" },
-  { id: "building-technology", name: "Building Technology", href: "subjects/building-technology.html", ready: false, source: "jpt" },
-  { id: "structural", name: "Structural 🏗️🧱👷🏗", href: "subjects/structural/index.html", ready: true, totalQuestions: 230, totalModules: 2, source: "jpt" },
-  { id: "building-laws", name: "Building Laws 🏢⚖👮⚖️", href: "subjects/building-laws/index.html", ready: true, totalQuestions: 270, totalModules: 5, source: "jpt" },
-  { id: "professional-practice", name: "Professional Practice 💼👨🏻‍💼👔👷🏻‍♂️", href: "subjects/professional-practice/index.html", ready: true, totalQuestions: 436, totalModules: 5, source: "jpt" },
-  { id: "theory-of-architecture-and-planning", name: "Theory of Architecture and Principles of Planning", href: "subjects/theory-of-architecture-and-planning/index.html", ready: true, totalQuestions: 95, totalModules: 2, source: "jpt" },
-  { id: "architectural-design", name: "Architectural Design", href: "subjects/architectural-design.html", ready: false, source: "jpt" },
-  { id: "professional-planning", name: "Professional Planning", href: "subjects/professional-planning.html", ready: false, source: "jpt" },
-  { id: "architectural-sites-proponents-styles", name: "Architectural Sites, Proponents, & Styles", href: "subjects/architectural-sites-proponents-styles/index.html", ready: true, totalQuestions: 1294, totalModules: 3, source: "mst" },
+  { id: "history", name: "History of Architecture 📜⌛🏛️🏺", href: "subjects/history-of-architecture.html", ready: true, totalQuestions: 1552, totalModules: 12 },
+  { id: "building-utilities", name: "Building Utilities 💧⚡⚙️💡", href: "subjects/building-utilities/index.html", ready: true, totalQuestions: 255, totalModules: 4 },
+  { id: "structural", name: "Structural 🏗️🧱👷🏗", href: "subjects/structural/index.html", ready: true, totalQuestions: 230, totalModules: 2 },
+  { id: "building-laws", name: "Building Laws 🏢⚖👮⚖️", href: "subjects/building-laws/index.html", ready: true, totalQuestions: 270, totalModules: 5 },
+  { id: "professional-practice", name: "Professional Practice 💼👨🏻‍💼👔👷🏻‍♂️", href: "subjects/professional-practice/index.html", ready: true, totalQuestions: 436, totalModules: 5 },
+  { id: "theory-of-architecture-and-planning", name: "Theory of Architecture and Principles of Planning", href: "subjects/theory-of-architecture-and-planning/index.html", ready: true, totalQuestions: 95, totalModules: 2 },
+  { id: "building-technology", name: "Building Technology", href: "subjects/building-technology.html", ready: false },
+  { id: "architectural-design", name: "Architectural Design", href: "subjects/architectural-design.html", ready: false },
+  { id: "professional-planning", name: "Professional Planning", href: "subjects/professional-planning.html", ready: false },
+  { id: "architectural-sites-proponents-styles", name: "Architectural Sites, Proponents, & Styles", href: "subjects/architectural-sites-proponents-styles/index.html", ready: true, totalQuestions: 1294, totalModules: 3 },
 ];
 const READY_SUBJECTS = SUBJECTS.filter(s => s.ready);
 
