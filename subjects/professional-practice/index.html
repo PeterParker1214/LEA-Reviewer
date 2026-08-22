@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- LEA-ADMIN:GENERIC-SUBJECT-V1 -->
 <html lang="en">
 <head>
 <link rel="icon" type="image/png" href="../../favicon-32x32.png" sizes="32x32">
@@ -15,37 +16,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#eef1e9;
-    --bg-deep:#0a1218;
-    --bg-panel:#0e1c28;
-    --bg-panel-deep:#0a1520;
-    --gold:#e0a83f;
-    --gold-bright:#f0c268;
-    --blue:#6fa8cf;
-    --blue-bright:#8fc4ea;
-    --sand:#8b98a5;
-    --good:#5fbf82;
-    --bad:#e2604a;
-    --line: rgba(111,168,207,0.20);
-    --grid-line: rgba(111,168,207,0.09);
-    --font-head:'Big Shoulders Display', sans-serif;
-    --font-body:'Space Grotesk', sans-serif;
-    --font-mono:'IBM Plex Mono', monospace;
+    --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-deep:#0a1520;
+    --gold:#e0a83f; --gold-bright:#f0c268; --blue:#6fa8cf; --blue-bright:#8fc4ea;
+    --sand:#8b98a5; --good:#5fbf82; --bad:#e2604a;
+    --line: rgba(111,168,207,0.20); --grid-line: rgba(111,168,207,0.09);
+    --font-head:'Big Shoulders Display', sans-serif; --font-body:'Space Grotesk', sans-serif; --font-mono:'IBM Plex Mono', monospace;
   }
   body.light-mode{
-    --ink:#182028;
-    --bg-deep:#eef2f3;
-    --bg-panel:#ffffff;
-    --bg-panel-deep:#f3f6f7;
-    --gold:#b5791f;
-    --gold-bright:#8f5f16;
-    --blue:#2f6c95;
-    --blue-bright:#1f5478;
-    --sand:#5c6975;
-    --good:#2f8a55;
-    --bad:#b23d2f;
-    --line: rgba(47,108,149,0.20);
-    --grid-line: rgba(47,108,149,0.09);
+    --ink:#182028; --bg-deep:#eef2f3; --bg-panel:#ffffff; --bg-panel-deep:#f3f6f7;
+    --gold:#b5791f; --gold-bright:#8f5f16; --blue:#2f6c95; --blue-bright:#1f5478;
+    --sand:#5c6975; --good:#2f8a55; --bad:#b23d2f;
+    --line: rgba(47,108,149,0.20); --grid-line: rgba(47,108,149,0.09);
   }
   *{box-sizing:border-box;} html,body{margin:0;padding:0;}
   body{
@@ -74,21 +55,9 @@
   .masthead h1{ font-family:var(--font-head); font-weight:800; font-size:42px; margin:10px 0 8px; color:var(--ink); letter-spacing:0.01em; text-transform:uppercase; line-height:1; }
   .masthead .sub{ font-style:normal; color:var(--sand); font-size:14px; max-width:440px; margin:0 auto; line-height:1.5; }
   .step-frieze{ height:2px; width:90px; background:var(--gold); margin:16px auto 0; opacity:.85; }
-
-  .overall-card{
-    position:relative; background: var(--bg-panel); border:1px solid var(--line);
-    border-radius:14px; padding:24px 24px 20px; margin-bottom:20px;
-  }
-  .overall-title{
-    font-family:var(--font-mono); font-size:11px; letter-spacing:0.12em;
-    text-transform:uppercase; color:var(--sand); margin-bottom:16px;
-    display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;
-  }
-  .overall-title .reset-all{
-    font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.04em; font-size:10.5px;
-    color:var(--bad); background:none; border:1px solid rgba(226,96,74,0.4);
-    padding:5px 11px; border-radius:6px; cursor:pointer;
-  }
+  .overall-card{ position:relative; background: var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:24px 24px 20px; margin-bottom:20px; }
+  .overall-title{ font-family:var(--font-mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--sand); margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; }
+  .overall-title .reset-all{ font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.04em; font-size:10.5px; color:var(--bad); background:none; border:1px solid rgba(226,96,74,0.4); padding:5px 11px; border-radius:6px; cursor:pointer; }
   .overall-title .reset-all:hover{ background: rgba(226,96,74,0.12); }
   .overall-stats-row{ display:flex; gap:28px; flex-wrap:wrap; margin-bottom:18px; }
   .overall-stat .num{ font-family:var(--font-mono); font-size:28px; font-weight:600; color:var(--gold-bright); line-height:1; }
@@ -96,27 +65,18 @@
   .overall-bar-track{ height:8px; border-radius:4px; background: var(--bg-panel-deep); overflow:hidden; }
   .overall-bar-fill{ height:100%; border-radius:4px; background: linear-gradient(90deg, var(--gold-bright), var(--blue-bright)); transition: width .4s ease; }
   .overall-bar-caption{ display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:11px; color:var(--sand); margin-top:8px; letter-spacing:0.02em; }
-
   .mp-bar-track{ height:6px; border-radius:3px; background: var(--bg-panel-deep); overflow:hidden; margin-top:12px; }
   .mp-bar-fill{ height:100%; border-radius:3px; background: linear-gradient(90deg, var(--gold-bright), var(--gold) 70%, rgba(224,168,63,0.25)); transition: width .3s ease; }
   .mp-cap{ font-family:var(--font-mono); font-size:11px; color:var(--sand); margin-top:6px; }
-
   .module-grid{ display:flex; flex-direction:column; gap:12px; }
-  .module-card{
-    position:relative; display:block; text-decoration:none;
-    background: var(--bg-panel-deep); border:1px solid var(--line); border-radius:14px; padding:18px 20px;
-    transition: border-color .15s ease;
-  }
+  .module-card{ position:relative; display:block; text-decoration:none; background: var(--bg-panel-deep); border:1px solid var(--line); border-radius:14px; padding:18px 20px; transition: border-color .15s ease; }
   .module-card:hover{ border-color: var(--gold); }
   .module-num{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue-bright); margin-bottom:6px; }
   .module-title{ font-family:var(--font-head); font-size:19px; font-weight:700; color:var(--ink); margin-bottom:6px; text-transform:uppercase; line-height:1.1; }
   .module-sub{ font-size:13px; color:var(--sand); line-height:1.5; margin-bottom:10px; }
   .module-meta{ font-family:var(--font-mono); font-size:11px; color:var(--sand); letter-spacing:0.04em; display:flex; justify-content:space-between; align-items:center; text-transform:uppercase; }
   .module-arrow{ font-size:16px; color:var(--gold-bright); }
-  .note-panel{
-    margin-top:22px; background: var(--bg-panel); border:1px solid var(--line);
-    border-radius:12px; padding:16px 20px; font-family:var(--font-mono); font-size:11.5px; color:var(--sand); line-height:1.6;
-  }
+  .note-panel{ margin-top:22px; background: var(--bg-panel); border:1px solid var(--line); border-radius:12px; padding:16px 20px; font-family:var(--font-mono); font-size:11.5px; color:var(--sand); line-height:1.6; }
   .modal-overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; padding:16px; z-index:100; }
   .modal-overlay.hidden{ display:none; }
   .modal-box{ width:100%; max-width:380px; max-height:86vh; overflow-y:auto; background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:24px 22px; position:relative; }
@@ -151,22 +111,38 @@
   <div class="overall-card" id="overallCard"></div>
 
   <div class="module-grid">
-    <div class="module-card" style="--accent1:#c1502e;--accent2:#2a9d8f;">
+    <a class="module-card" style="--accent1:#c1502e;--accent2:#2a9d8f;" href="quizzes/SPP_ArchitectsGuidelines_FullCoverage_Quiz.html">
       <div class="module-num">Module 1</div>
-      <div class="module-title">SPP & Architect's Guidelines — Full Coverage Quiz</div>
-      <div class="module-sub">Standards of Professional Practice: fees, services, and architect's guidelines.</div>
-      <div class="module-meta"><span>156 questions</span></div>
-      <div class="module-progress-track"><div class="module-progress-fill" id="sppProgressFill" style="width:0%"></div></div>
-      <div class="module-progress-caption" id="sppProgressCaption">0 / 156 mastered</div>
-      <div class="module-actions">
-        <button class="module-reset-btn" id="sppResetBtn">Reset</button>
-        <a class="module-start-btn" id="sppStartBtn" href="quizzes/SPP_ArchitectsGuidelines_FullCoverage_Quiz.html">Start</a>
-      </div>
-    </div>
+      <div class="module-title">SPP &amp; Architect&#39;s Guidelines — Full Coverage Quiz</div>
+      <div class="module-sub">Standards of Professional Practice: fees, services, and architect&#39;s guidelines.</div>
+      <div class="module-meta"><span>156 questions</span><span class="module-arrow">&rarr;</span></div>
+      <div id="badge-spp-fullcoverage"></div>
+    </a>
+    <a class="module-card" style="--accent1:#c1502e;--accent2:#2a9d8f;" href="quizzes/SPP_Fees_MCQ_Reviewer_Situational.html">
+      <div class="module-num">Module 2</div>
+      <div class="module-title">Methods of Compensation &amp; Schedule of Fees — Situational Reviewer</div>
+      <div class="module-sub">Situational / critical-analysis set on fee methods and the Schedule of Fees.</div>
+      <div class="module-meta"><span>15 questions</span><span class="module-arrow">&rarr;</span></div>
+      <div id="badge-spp-fees-situational"></div>
+    </a>
+    <a class="module-card" style="--accent1:#c1502e;--accent2:#2a9d8f;" href="quizzes/Architects_SPP_Fees_Quiz_Blueprint_updated.html">
+      <div class="module-num">Module 3</div>
+      <div class="module-title">Methods of Compensation &amp; Schedule of Fees — Fee Schedules Drafting Sheet</div>
+      <div class="module-sub">Broad-coverage drill across Doc. 210’s fee methods, groups, and provisions.</div>
+      <div class="module-meta"><span>50 questions</span><span class="module-arrow">&rarr;</span></div>
+      <div id="badge-spp-fees-drafting-sheet"></div>
+    </a>
+    <a class="module-card" style="--accent1:#c1502e;--accent2:#2a9d8f;" href="quizzes/MOC_Situational_Computation_Quiz_Blueprint_updated.html">
+      <div class="module-num">Module 4</div>
+      <div class="module-title">Methods of Compensation — Worked Problems</div>
+      <div class="module-sub">Situational and computation-heavy worked problems on fee calculations.</div>
+      <div class="module-meta"><span>15 questions</span><span class="module-arrow">&rarr;</span></div>
+      <div id="badge-spp-fees-worked-problems"></div>
+    </a>
 
   </div>
 
-  <div class="note-panel">Progress is saved to your account and synced across devices. Looking for the PP &amp; Building Laws Preboard Review? It's now under <a href="../building-laws/index.html" style="color:var(--turq-bright);">Building Laws</a>.</div>
+  <div class="note-panel">Progress is saved to your account and synced across devices.</div>
 </div>
 
 <!-- ===================== LEADERBOARD MODAL ===================== -->
@@ -181,31 +157,6 @@
 </div>
 
 <script src="../../assets/module-progress.js"></script>
-<script>
-// ---- Progress for the SPP module card, via the shared LEAProgress tracker ----
-const LEA_SUBJECT_ID_PAGE = 'professional-practice';
-const MODULES = [{id:'spp-fullcoverage', total:156, title:"SPP & Architect's Guidelines — Full Coverage Quiz"}];
-function renderSppProgress(){
-  LEAProgress.renderOverallCard(document.getElementById('overallCard'), LEA_SUBJECT_ID_PAGE, MODULES);
-  const p = LEAProgress.load(LEA_SUBJECT_ID_PAGE, 'spp-fullcoverage');
-  const mastered = LEAProgress.masteredCount(LEA_SUBJECT_ID_PAGE, 'spp-fullcoverage', 156);
-  const pct = Math.round((mastered / 156) * 100);
-  document.getElementById('sppProgressFill').style.width = pct + '%';
-  document.getElementById('sppProgressCaption').textContent = mastered + ' / 156 mastered';
-  document.getElementById('sppStartBtn').textContent = (p.attempts > 0 || mastered > 0) ? 'Continue' : 'Start';
-}
-window.leaOnProgressReset = renderSppProgress;
-renderSppProgress();
-document.getElementById('sppResetBtn').addEventListener('click', () => {
-  if(confirm('Reset progress for "SPP & Architect\'s Guidelines — Full Coverage Quiz"? This clears its mastered questions and best score.')){
-    LEAProgress.reset(LEA_SUBJECT_ID_PAGE, 'spp-fullcoverage');
-    renderSppProgress();
-  }
-});
-// Refresh if the person returns to this tab/page after taking the quiz (e.g. via back button).
-document.addEventListener('visibilitychange', () => { if(!document.hidden) renderSppProgress(); });
-window.addEventListener('pageshow', renderSppProgress);
-</script>
 <script>
 const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
@@ -230,7 +181,6 @@ sb.auth.onAuthStateChange((event, session) => {
   if(session){ await onSignedIn(session.user); } else { window.location.href = '../../index.html'; }
 })();
 
-// ---- Leaderboard (same get_leaderboard RPC Building Laws uses, scoped to this subject) ----
 const leaderboardModalOverlay = document.getElementById('leaderboardModalOverlay');
 document.getElementById('openLeaderboardBtn').addEventListener('click', async () => {
   leaderboardModalOverlay.classList.remove('hidden');
@@ -251,6 +201,21 @@ document.getElementById('openLeaderboardBtn').addEventListener('click', async ()
 });
 document.getElementById('leaderboardModalClose').addEventListener('click', () => leaderboardModalOverlay.classList.add('hidden'));
 leaderboardModalOverlay.addEventListener('click', (e) => { if(e.target === leaderboardModalOverlay) leaderboardModalOverlay.classList.add('hidden'); });
+</script>
+<script>
+const LEA_SUBJECT_ID_PAGE = 'professional-practice';
+const MODULES = [{id:"spp-fullcoverage", total:156, title:"SPP & Architect's Guidelines — Full Coverage Quiz"},{id:"spp-fees-situational", total:15, title:"Methods of Compensation & Schedule of Fees — Situational Reviewer"},{id:"spp-fees-drafting-sheet", total:50, title:"Methods of Compensation & Schedule of Fees — Fee Schedules Drafting Sheet"},{id:"spp-fees-worked-problems", total:15, title:"Methods of Compensation — Worked Problems"}];
+function leaRenderProgress(){
+  LEAProgress.renderOverallCard(document.getElementById('overallCard'), LEA_SUBJECT_ID_PAGE, MODULES);
+  MODULES.forEach(function(m){
+    const el = document.getElementById('badge-' + m.id);
+    if(el) LEAProgress.renderModuleBadge(el, LEA_SUBJECT_ID_PAGE, m.id, m.total);
+  });
+}
+window.leaOnProgressReset = leaRenderProgress;
+leaRenderProgress();
+document.addEventListener('visibilitychange', function(){ if(!document.hidden) leaRenderProgress(); });
+window.addEventListener('pageshow', leaRenderProgress);
 </script>
 </body>
 </html>

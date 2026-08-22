@@ -91,9 +91,11 @@
     <div class="tabs">
       <button class="tab-btn active" data-tab="subjects">Subjects</button>
       <button class="tab-btn" data-tab="pages">Pages &amp; Quizzes</button>
+      <button class="tab-btn" data-tab="upload">Add Module</button>
     </div>
     <div id="tab-subjects"></div>
     <div id="tab-pages" class="hidden"></div>
+    <div id="tab-upload" class="hidden"></div>
   </div>
 </div>
 
@@ -111,8 +113,10 @@ const gateEl = document.getElementById('gate');
 const panelEl = document.getElementById('panel');
 const tabSubjectsEl = document.getElementById('tab-subjects');
 const tabPagesEl = document.getElementById('tab-pages');
+const tabUploadEl = document.getElementById('tab-upload');
 
 let subjects = [];
+let sources = [];
 let rawIndexHtml = '';
 let accessToken = '';
 let fileTree = [];        // list of {path} for every .html file in the repo
@@ -120,6 +124,10 @@ let currentFilePath = '';
 let currentFileRaw = '';
 let currentQuestions = null; // parsed QUESTIONS array, or null if this file doesn't have one
 let currentDoc = null;       // parsed Document, used by the generic text editor
+
+// ---- "Add Module" (drag & drop upload) tab state ----
+let uploadedFileText = null;
+let uploadedParsed = null;   // { format: 'native'|'blueprint'|'unknown', questionCount, suggestedTitle }
 
 function showGate(html, isError){
   gateEl.style.display = 'block';
@@ -166,7 +174,9 @@ async function init(){
       btn.classList.add('active');
       tabSubjectsEl.classList.toggle('hidden', btn.dataset.tab !== 'subjects');
       tabPagesEl.classList.toggle('hidden', btn.dataset.tab !== 'pages');
+      tabUploadEl.classList.toggle('hidden', btn.dataset.tab !== 'upload');
       if(btn.dataset.tab === 'pages' && fileTree.length === 0) loadFileTree();
+      if(btn.dataset.tab === 'upload') renderUploadTab();
     });
   });
 
@@ -187,6 +197,10 @@ async function loadSubjects(){
     if(!match) throw new Error('Could not find the SUBJECTS list inside index.html.');
 
     subjects = new Function('return ' + match[1])();
+
+    const srcMatch = rawIndexHtml.match(/const SOURCES = (\[[\s\S]*?\]);/);
+    sources = srcMatch ? new Function('return ' + srcMatch[1])() : [];
+
     renderSubjectsTab();
   }catch(e){
     tabSubjectsEl.innerHTML = '<div class="card msg error">' + escapeHtml(e.message) + '</div>';
@@ -538,6 +552,648 @@ async function saveTextFile(path){
     statusEl.textContent = 'Error: ' + e.message;
   }finally{
     saveBtn.disabled = false;
+  }
+}
+
+/* ================= ADD MODULE (DRAG & DROP UPLOAD) TAB ================= */
+//
+// Lets an admin drop in a self-contained quiz/module HTML file (built with its
+// own design, own CSS, own question data) and have it wired into the site's
+// three "layers" automatically:
+//   1. The quiz file itself — saved under subjects/<subject>/quizzes/, with a
+//      small invisible adapter appended so its answers report into the shared
+//      LEAProgress tracker (assets/module-progress.js). The quiz's own markup,
+//      styling and behavior are left untouched.
+//   2. The subject's index.html — a new module card is added (or the subject
+//      page is created from scratch if it's a brand-new subject).
+//   3. The main index.html — the subject's totals (and the source, if new)
+//      are registered in SUBJECTS / SOURCES so it shows up on the home page.
+//
+// Two quiz formats are auto-detected:
+//   "native"    — the site's own quiz template (const QUESTIONS = [...], and
+//                  already calls LEAProgress itself) — just re-point its
+//                  LEA_SUBJECT_ID / LEA_MODULE_ID at the chosen module.
+//   "blueprint" — the standalone "QUIZ_DATA" reviewer template (const
+//                  QUIZ_DATA = [...], function selectOption(...), function
+//                  showResults(...)) — gets a small adapter script appended
+//                  that hooks those functions to report mastery/scores.
+
+function parseQuizFile(text){
+  const titleMatch = text.match(/<title>([^<]*)<\/title>/);
+  const h1Match = text.match(/<h1>([^<]*)<\/h1>/);
+  const suggestedTitle = (h1Match && h1Match[1].trim()) || (titleMatch && titleMatch[1].trim()) || '';
+
+  function countArray(re){
+    const m = text.match(re);
+    if(!m) return 0;
+    try{ return JSON.parse(m[1]).length; }catch(e){}
+    try{ return new Function('return ' + m[1])().length; }catch(e){}
+    return 0;
+  }
+
+  if(/const QUESTIONS\s*=\s*\[/.test(text) && /LEAProgress/.test(text)){
+    return { format:'native', questionCount: countArray(/const QUESTIONS = (\[[\s\S]*?\]);/), suggestedTitle };
+  }
+  if(/const QUIZ_DATA\s*=\s*\[/.test(text) && /function\s+selectOption\s*\(/.test(text) && /function\s+showResults\s*\(/.test(text)){
+    return { format:'blueprint', questionCount: countArray(/const QUIZ_DATA = (\[[\s\S]*?\]);/), suggestedTitle };
+  }
+  return { format:'unknown', questionCount:0, suggestedTitle };
+}
+
+function buildAdaptedQuizHtml(raw, format, opts){
+  const { subjectId, moduleId, subjectName, sourceId, includeBackLink } = opts;
+  let out = raw;
+  const assetPath = '../../../assets/module-progress.js';
+
+  if(format === 'native'){
+    out = out.replace(/const LEA_SUBJECT_ID\s*=\s*'[^']*';/, `const LEA_SUBJECT_ID = '${subjectId}';`);
+    out = out.replace(/const LEA_MODULE_ID\s*=\s*'[^']*';/, `const LEA_MODULE_ID = '${moduleId}';`);
+    if(!/module-progress\.js/.test(out)){
+      out = out.replace('</body>', `<script src="${assetPath}"></script>\n</body>`);
+    }
+  } else if(format === 'blueprint'){
+    const adapter = `
+<script src="${assetPath}"></script>
+<script>
+// ---- Auto-generated by the admin "Add Module" tool: reports this quiz's ----
+// ---- answers into the shared LEAProgress tracker, without touching the  ----
+// ---- quiz's own markup, styling, or behavior.                           ----
+(function(){
+  var LEA_SUBJECT_ID = ${JSON.stringify(subjectId)};
+  var LEA_MODULE_ID = ${JSON.stringify(moduleId)};
+  if (typeof selectOption === 'function') {
+    var _leaOrigSelectOption = selectOption;
+    selectOption = function(origIdx){
+      _leaOrigSelectOption(origIdx);
+      try {
+        var r = results[current];
+        if (r && r.isCorrect && window.LEAProgress) {
+          LEAProgress.markMastered(LEA_SUBJECT_ID, LEA_MODULE_ID, order[current]);
+        }
+      } catch(e){}
+    };
+  }
+  if (typeof showResults === 'function') {
+    var _leaOrigShowResults = showResults;
+    showResults = function(){
+      _leaOrigShowResults();
+      try {
+        if (window.LEAProgress) {
+          var correctCount = results.filter(function(r){ return r && r.isCorrect; }).length;
+          LEAProgress.recordRunScore(LEA_SUBJECT_ID, LEA_MODULE_ID, correctCount, order.length);
+        }
+      } catch(e){}
+    };
+  }
+})();
+</script>
+`;
+    out = out.replace('</body>', adapter + '</body>');
+  }
+
+  if(includeBackLink){
+    const backLinkHtml = `<div style="max-width:760px;margin:0 auto 12px;font:12px 'IBM Plex Mono',monospace;">` +
+      `<a href="../index.html?source=${sourceId}" style="color:#8fc4ea;text-decoration:underline;">&larr; Back to ${escapeHtml(subjectName)}</a>` +
+      `</div>\n`;
+    out = out.replace('<body>', '<body>\n' + backLinkHtml);
+  }
+  return out;
+}
+
+// Shared CSS/markup used by every generic subject page this tool creates or
+// migrates to — copied from the site's existing subject-page style so new
+// pages look identical to hand-built ones.
+const SUBJECT_PAGE_STYLE = `
+  :root{
+    --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-deep:#0a1520;
+    --gold:#e0a83f; --gold-bright:#f0c268; --blue:#6fa8cf; --blue-bright:#8fc4ea;
+    --sand:#8b98a5; --good:#5fbf82; --bad:#e2604a;
+    --line: rgba(111,168,207,0.20); --grid-line: rgba(111,168,207,0.09);
+    --font-head:'Big Shoulders Display', sans-serif; --font-body:'Space Grotesk', sans-serif; --font-mono:'IBM Plex Mono', monospace;
+  }
+  body.light-mode{
+    --ink:#182028; --bg-deep:#eef2f3; --bg-panel:#ffffff; --bg-panel-deep:#f3f6f7;
+    --gold:#b5791f; --gold-bright:#8f5f16; --blue:#2f6c95; --blue-bright:#1f5478;
+    --sand:#5c6975; --good:#2f8a55; --bad:#b23d2f;
+    --line: rgba(47,108,149,0.20); --grid-line: rgba(47,108,149,0.09);
+  }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      var(--bg-deep);
+    color:var(--ink); font-family:var(--font-body); min-height:100vh;
+    display:flex; justify-content:center; padding:36px 16px 64px;
+    transition: background-color .2s ease, color .2s ease;
+  }
+  .theme-toggle{
+    background:var(--bg-panel); border:1px solid var(--line); color:var(--gold-bright);
+    font-family:var(--font-body); font-size:14px; width:32px; height:32px;
+    border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
+    flex-shrink:0;
+  }
+  .theme-toggle:hover{ border-color:var(--gold-bright); }
+  .wrap{width:100%; max-width:720px;} a{color:inherit;}
+  .hidden{display:none !important;}
+  .auth-bar{ display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:12.5px; color:var(--sand); margin-bottom:24px; flex-wrap:wrap; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.03em; }
+  .auth-link{ background:none; border:none; color:var(--gold-bright); cursor:pointer; font-family:var(--font-mono); font-size:12px; text-decoration:underline; padding:0; text-transform:uppercase; letter-spacing:.03em; }
+  .auth-link:hover{ color:var(--blue-bright); }
+  .masthead{ text-align:center; margin-bottom:24px; }
+  .masthead .eyebrow{ font-family:var(--font-mono); letter-spacing:0.22em; font-size:11px; text-transform:uppercase; color:var(--gold-bright); opacity:0.95; }
+  .masthead h1{ font-family:var(--font-head); font-weight:800; font-size:42px; margin:10px 0 8px; color:var(--ink); letter-spacing:0.01em; text-transform:uppercase; line-height:1; }
+  .masthead .sub{ font-style:normal; color:var(--sand); font-size:14px; max-width:440px; margin:0 auto; line-height:1.5; }
+  .step-frieze{ height:2px; width:90px; background:var(--gold); margin:16px auto 0; opacity:.85; }
+  .overall-card{ position:relative; background: var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:24px 24px 20px; margin-bottom:20px; }
+  .overall-title{ font-family:var(--font-mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--sand); margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; }
+  .overall-title .reset-all{ font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.04em; font-size:10.5px; color:var(--bad); background:none; border:1px solid rgba(226,96,74,0.4); padding:5px 11px; border-radius:6px; cursor:pointer; }
+  .overall-title .reset-all:hover{ background: rgba(226,96,74,0.12); }
+  .overall-stats-row{ display:flex; gap:28px; flex-wrap:wrap; margin-bottom:18px; }
+  .overall-stat .num{ font-family:var(--font-mono); font-size:28px; font-weight:600; color:var(--gold-bright); line-height:1; }
+  .overall-stat .lbl{ font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.08em; color:var(--sand); margin-top:5px; }
+  .overall-bar-track{ height:8px; border-radius:4px; background: var(--bg-panel-deep); overflow:hidden; }
+  .overall-bar-fill{ height:100%; border-radius:4px; background: linear-gradient(90deg, var(--gold-bright), var(--blue-bright)); transition: width .4s ease; }
+  .overall-bar-caption{ display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:11px; color:var(--sand); margin-top:8px; letter-spacing:0.02em; }
+  .mp-bar-track{ height:6px; border-radius:3px; background: var(--bg-panel-deep); overflow:hidden; margin-top:12px; }
+  .mp-bar-fill{ height:100%; border-radius:3px; background: linear-gradient(90deg, var(--gold-bright), var(--gold) 70%, rgba(224,168,63,0.25)); transition: width .3s ease; }
+  .mp-cap{ font-family:var(--font-mono); font-size:11px; color:var(--sand); margin-top:6px; }
+  .module-grid{ display:flex; flex-direction:column; gap:12px; }
+  .module-card{ position:relative; display:block; text-decoration:none; background: var(--bg-panel-deep); border:1px solid var(--line); border-radius:14px; padding:18px 20px; transition: border-color .15s ease; }
+  .module-card:hover{ border-color: var(--gold); }
+  .module-num{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue-bright); margin-bottom:6px; }
+  .module-title{ font-family:var(--font-head); font-size:19px; font-weight:700; color:var(--ink); margin-bottom:6px; text-transform:uppercase; line-height:1.1; }
+  .module-sub{ font-size:13px; color:var(--sand); line-height:1.5; margin-bottom:10px; }
+  .module-meta{ font-family:var(--font-mono); font-size:11px; color:var(--sand); letter-spacing:0.04em; display:flex; justify-content:space-between; align-items:center; text-transform:uppercase; }
+  .module-arrow{ font-size:16px; color:var(--gold-bright); }
+  .note-panel{ margin-top:22px; background: var(--bg-panel); border:1px solid var(--line); border-radius:12px; padding:16px 20px; font-family:var(--font-mono); font-size:11.5px; color:var(--sand); line-height:1.6; }
+  .modal-overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; padding:16px; z-index:100; }
+  .modal-overlay.hidden{ display:none; }
+  .modal-box{ width:100%; max-width:380px; max-height:86vh; overflow-y:auto; background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:24px 22px; position:relative; }
+  .modal-close{ position:absolute; top:12px; right:14px; background:none; border:none; color:var(--sand); font-size:20px; cursor:pointer; line-height:1; }
+  .modal-box h2{ font-family:var(--font-head); font-weight:700; font-size:22px; text-transform:uppercase; margin:0 0 16px; color:var(--ink); }
+  .leaderboard-list{ display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+  .leaderboard-row{ display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border-radius:8px; background:var(--bg-panel-deep); border:1px solid var(--line); font-size:13px; }
+  .leaderboard-row .lb-rank{ font-family:var(--font-mono); color:var(--gold-bright); font-weight:700; width:24px; }
+  .leaderboard-row .lb-name{ flex:1; color:var(--ink); }
+  .leaderboard-row .lb-stats{ color:var(--sand); font-size:11.5px; text-align:right; font-family:var(--font-mono); }
+  .leaderboard-empty{ color:var(--sand); font-style:italic; text-align:center; padding:12px 0; }
+`;
+
+function moduleCardHtml(m, num){
+  return `    <a class="module-card" style="--accent1:#c1502e;--accent2:#2a9d8f;" href="quizzes/${escapeHtml(m.file)}">
+      <div class="module-num">Module ${num}</div>
+      <div class="module-title">${escapeHtml(m.title)}</div>
+      <div class="module-sub">${escapeHtml(m.sub || '')}</div>
+      <div class="module-meta"><span>${m.total} questions</span><span class="module-arrow">&rarr;</span></div>
+      <div id="badge-${escapeHtml(m.id)}"></div>
+    </a>
+`;
+}
+
+function modulesArrayLiteral(modules){
+  return '[' + modules.map(m => `{id:${JSON.stringify(m.id)}, total:${m.total}, title:${JSON.stringify(m.title)}}`).join(',') + ']';
+}
+
+// Builds a brand-new subject index.html (or a full rebuild for a legacy page
+// that's being migrated onto the generic, loop-driven module template).
+function buildSubjectIndexHtml({ subjectId, subjectName, tagline, sourceId, modules }){
+  const moduleCards = modules.map((m, i) => moduleCardHtml(m, i + 1)).join('');
+  return `<!DOCTYPE html>
+<!-- LEA-ADMIN:GENERIC-SUBJECT-V1 -->
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="../../favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="manifest" href="../../site.webmanifest">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${escapeHtml(subjectName)} — LEA Reviewer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>${SUBJECT_PAGE_STYLE}</style>
+<script src="../../assets/presence.js"></script>
+<script src="../../assets/theme.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="auth-bar">
+    <div><a class="auth-link" href="../../index.html?source=${sourceId}">&larr; All subjects</a> &nbsp;&middot;&nbsp; <span id="authStatus">Checking session…</span></div>
+    <button class="auth-link" id="openLeaderboardBtn">🏆 Leaderboard</button>
+    <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">☀️</button>
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>
+  </div>
+
+  <div class="masthead">
+    <div class="eyebrow">Module Compendium</div>
+    <h1>${escapeHtml(subjectName)}</h1>
+    <div class="sub">${escapeHtml(tagline || '')}</div>
+    <div class="step-frieze"></div>
+  </div>
+
+  <div class="overall-card" id="overallCard"></div>
+
+  <div class="module-grid">
+${moduleCards}
+  </div>
+
+  <div class="note-panel">Progress is saved to your account and synced across devices.</div>
+</div>
+
+<!-- ===================== LEADERBOARD MODAL ===================== -->
+<div class="modal-overlay hidden" id="leaderboardModalOverlay">
+  <div class="modal-box">
+    <button class="modal-close" id="leaderboardModalClose">&times;</button>
+    <h2>🏆 Leaderboard</h2>
+    <div class="leaderboard-list" id="leaderboardList">
+      <div class="leaderboard-empty">Loading…</div>
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/module-progress.js"></script>
+<script>
+const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+if (window.LEAPresence) { LEAPresence.init({ client: sb }); }
+const authStatus = document.getElementById('authStatus');
+
+async function onSignedIn(user){
+  let username = (user.email || '').split('@')[0];
+  const { data: profile } = await sb.from('profiles').select('username').eq('id', user.id).single();
+  if(profile && profile.username) username = profile.username;
+  authStatus.innerHTML = 'Logged in as <b>' + username + '</b> — <button class="auth-link" id="logoutBtn">Log out</button>';
+  document.getElementById('logoutBtn').addEventListener('click', async () => { await sb.auth.signOut(); });
+}
+
+sb.auth.onAuthStateChange((event, session) => {
+  if(event === 'SIGNED_OUT') window.location.href = '../../index.html';
+});
+
+(async function initApp(){
+  const { data: { session } } = await sb.auth.getSession();
+  if(session){ await onSignedIn(session.user); } else { window.location.href = '../../index.html'; }
+})();
+
+const leaderboardModalOverlay = document.getElementById('leaderboardModalOverlay');
+document.getElementById('openLeaderboardBtn').addEventListener('click', async () => {
+  leaderboardModalOverlay.classList.remove('hidden');
+  const listEl = document.getElementById('leaderboardList');
+  listEl.innerHTML = '<div class="leaderboard-empty">Loading…</div>';
+  const { data, error } = await sb.rpc('get_leaderboard', { p_subject: LEA_SUBJECT_ID_PAGE });
+  if(error || !data || data.length === 0){
+    listEl.innerHTML = '<div class="leaderboard-empty">No scores yet — be the first!</div>';
+    return;
+  }
+  listEl.innerHTML = data.map((row, i) =>
+    '<div class="leaderboard-row">' +
+      '<span class="lb-rank">' + (i+1) + '</span>' +
+      '<span class="lb-name">' + row.username + '</span>' +
+      '<span class="lb-stats">' + row.total_mastered + ' mastered · ' + Math.round((row.avg_best_score||0)*100) + '% avg</span>' +
+    '</div>'
+  ).join('');
+});
+document.getElementById('leaderboardModalClose').addEventListener('click', () => leaderboardModalOverlay.classList.add('hidden'));
+leaderboardModalOverlay.addEventListener('click', (e) => { if(e.target === leaderboardModalOverlay) leaderboardModalOverlay.classList.add('hidden'); });
+</script>
+<script>
+const LEA_SUBJECT_ID_PAGE = '${subjectId}';
+const MODULES = ${modulesArrayLiteral(modules)};
+function leaRenderProgress(){
+  LEAProgress.renderOverallCard(document.getElementById('overallCard'), LEA_SUBJECT_ID_PAGE, MODULES);
+  MODULES.forEach(function(m){
+    const el = document.getElementById('badge-' + m.id);
+    if(el) LEAProgress.renderModuleBadge(el, LEA_SUBJECT_ID_PAGE, m.id, m.total);
+  });
+}
+window.leaOnProgressReset = leaRenderProgress;
+leaRenderProgress();
+document.addEventListener('visibilitychange', function(){ if(!document.hidden) leaRenderProgress(); });
+window.addEventListener('pageshow', leaRenderProgress);
+</script>
+</body>
+</html>
+`;
+}
+
+// Appends a module card to a subject page that already uses the generic,
+// loop-driven template (detected via LEAProgress.renderModuleBadge).
+function appendModuleToGenericSubjectHtml(rawHtml, newModule){
+  const numMatches = rawHtml.match(/module-num">Module (\d+)</g) || [];
+  const nextNum = numMatches.length + 1;
+  const cardHtml = moduleCardHtml(newModule, nextNum);
+
+  const noteIdx = rawHtml.indexOf('<div class="note-panel">');
+  let out;
+  if(noteIdx === -1){
+    // Fallback: no note-panel found — insert right before module-grid's own closing div.
+    const gridStart = rawHtml.indexOf('<div class="module-grid">');
+    const gridEnd = rawHtml.indexOf('</div>', gridStart);
+    out = rawHtml.slice(0, gridEnd) + cardHtml + rawHtml.slice(gridEnd);
+  } else {
+    const beforeNote = rawHtml.slice(0, noteIdx);
+    const lastAClose = beforeNote.lastIndexOf('</a>');
+    const insertPos = lastAClose === -1 ? noteIdx : lastAClose + '</a>'.length;
+    out = rawHtml.slice(0, insertPos) + '\n' + cardHtml + rawHtml.slice(insertPos);
+  }
+
+  out = out.replace(/const MODULES = \[[\s\S]*?\];/, (full) => {
+    const m = full.match(/const MODULES = (\[[\s\S]*?\]);/);
+    let list = [];
+    try{ list = JSON.parse(m[1]); }catch(e){ try{ list = new Function('return ' + m[1])(); }catch(e2){} }
+    list.push({ id: newModule.id, total: newModule.total, title: newModule.title });
+    return `const MODULES = ${modulesArrayLiteral(list)};`;
+  });
+  return out;
+}
+
+// Extracts what a legacy (hand-authored, pre-generic-template) subject page
+// already has, so it can be rebuilt on the generic template without losing
+// its existing modules. Progress is unaffected either way since it's keyed
+// by subjectId + moduleId, not by page markup.
+function migrateLegacySubjectHtml(rawHtml){
+  const h1Match = rawHtml.match(/<h1>([^<]*)<\/h1>/);
+  const subMatch = rawHtml.match(/<div class="sub">([^<]*)<\/div>/);
+  const modulesMatch = rawHtml.match(/const MODULES = (\[[\s\S]*?\]);/);
+  let baseModules = [];
+  if(modulesMatch){
+    try{ baseModules = JSON.parse(modulesMatch[1]); }catch(e){ try{ baseModules = new Function('return ' + modulesMatch[1])(); }catch(e2){} }
+  }
+  const subs = Array.from(rawHtml.matchAll(/<div class="module-sub">([^<]*)<\/div>/g)).map(m => m[1]);
+  const hrefs = Array.from(rawHtml.matchAll(/href="(quizzes\/[^"]+\.html)"/g)).map(m => m[1].replace('quizzes/', ''));
+  const modules = baseModules.map((m, i) => ({
+    id: m.id, total: m.total, title: m.title,
+    sub: subs[i] || '', file: hrefs[i] || (m.id + '.html')
+  }));
+  return {
+    subjectName: h1Match ? h1Match[1].trim() : '',
+    tagline: subMatch ? subMatch[1].trim() : '',
+    modules
+  };
+}
+
+function sourcesToJsLiteral(list){
+  const lines = list.map(s => `  { id: ${JSON.stringify(s.id)}, name: ${JSON.stringify(s.name)}, ready: ${s.ready ? 'true' : 'false'}, blurb: ${JSON.stringify(s.blurb || '')} },`);
+  return `[\n${lines.join('\n')}\n]`;
+}
+
+function upsertSubjectInIndexHtml(rawIndex, { id, name, href, sourceId, addQuestions, addModules }){
+  const match = rawIndex.match(/const SUBJECTS = (\[[\s\S]*?\]);/);
+  const list = new Function('return ' + match[1])();
+  const existing = list.find(s => s.id === id);
+  if(existing){
+    existing.totalQuestions = (existing.totalQuestions || 0) + addQuestions;
+    existing.totalModules = (existing.totalModules || 0) + addModules;
+    existing.ready = true;
+  } else {
+    list.push({ id, name, href, ready: true, source: sourceId, totalQuestions: addQuestions, totalModules: addModules });
+  }
+  return rawIndex.replace(/const SUBJECTS = \[[\s\S]*?\];/, `const SUBJECTS = ${subjectsToJsLiteral(list)};`);
+}
+
+function upsertSourceInIndexHtml(rawIndex, { id, name }){
+  const match = rawIndex.match(/const SOURCES = (\[[\s\S]*?\]);/);
+  const list = match ? new Function('return ' + match[1])() : [];
+  if(!list.find(s => s.id === id)) list.push({ id, name, ready: true, blurb: '' });
+  return rawIndex.replace(/const SOURCES = \[[\s\S]*?\];/, `const SOURCES = ${sourcesToJsLiteral(list)};`);
+}
+
+/* ---------------- Rendering the tab + handling the drop/submit ---------------- */
+
+function renderUploadTab(){
+  const subjectOptions = subjects.map(s => `<option value="${escapeHtml(s.id)}">${escapeHtml(s.name)}${s.source ? ' (' + escapeHtml(s.source) + ')' : ''}</option>`).join('');
+  const sourceOptions = sources.map(s => `<option value="${escapeHtml(s.id)}">${escapeHtml(s.name)}</option>`).join('');
+
+  tabUploadEl.innerHTML = `
+    <div class="card msg info">
+      Drop in a self-contained quiz/module HTML file (its own design, its own questions).
+      Its look stays exactly the same — this just wires its scoring into the site's shared
+      progress tracker, and adds it to a subject (new or existing) under a source (new or existing).
+    </div>
+
+    <div class="card">
+      <div class="field-label">Quiz / module file</div>
+      <div id="dropZone" style="border:2px dashed var(--line); border-radius:10px; padding:28px; text-align:center; cursor:pointer; color:var(--muted); transition:border-color .15s ease;">
+        <div id="dropZoneText">Drag &amp; drop an .html file here, or click to browse</div>
+        <input type="file" id="fileInput" accept=".html,text/html" style="display:none;">
+      </div>
+      <div id="fileInfo" class="save-status"></div>
+    </div>
+
+    <div class="card" id="uploadFormCard" style="display:none;">
+      <div class="field-label">Subject</div>
+      <select id="uploadSubjectSelect">
+        <option value="__new__">+ New subject…</option>
+        ${subjectOptions}
+      </select>
+      <div id="newSubjectFields" style="display:none;">
+        <div class="field-label">New subject name</div>
+        <input type="text" id="newSubjectName" placeholder="e.g. Architectural Design">
+        <div class="field-label">Tagline / short description (optional)</div>
+        <input type="text" id="newSubjectTagline" placeholder="Shown under the subject title">
+      </div>
+
+      <div class="field-label">Source (library)</div>
+      <select id="uploadSourceSelect">
+        <option value="__new__">+ New source…</option>
+        ${sourceOptions}
+      </select>
+      <div id="newSourceFields" style="display:none;">
+        <div class="field-label">New source name</div>
+        <input type="text" id="newSourceName" placeholder="e.g. Source E">
+      </div>
+
+      <div class="field-label">Module title</div>
+      <input type="text" id="uploadModuleTitle">
+      <div class="field-label">Short description on the module card (optional)</div>
+      <input type="text" id="uploadModuleSub" placeholder="e.g. Fees, contracts, and situational items.">
+      <div class="field-label">Module ID (internal — used for progress tracking, keep unique within the subject)</div>
+      <input type="text" id="uploadModuleId">
+      <div class="field-label">Quiz file name</div>
+      <input type="text" id="uploadFileName">
+
+      <div class="field-label" style="margin-top:16px;">
+        <label style="display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-size:13px;color:var(--ink);">
+          <input type="checkbox" id="uploadBackLinkChk" checked style="width:auto;">
+          Add a small "&larr; Back to subject" link (the rest of the quiz's design is left untouched)
+        </label>
+      </div>
+
+      <div class="actions">
+        <button class="primary" id="uploadSubmitBtn">Add module to site</button>
+      </div>
+      <div class="save-status" id="uploadStatus"></div>
+    </div>
+  `;
+
+  const dropZone = document.getElementById('dropZone');
+  const fileInput = document.getElementById('fileInput');
+  dropZone.addEventListener('click', () => fileInput.click());
+  dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = 'var(--gold)'; });
+  dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = 'var(--line)'; });
+  dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropZone.style.borderColor = 'var(--line)';
+    if(e.dataTransfer.files && e.dataTransfer.files[0]) handleUploadedFile(e.dataTransfer.files[0]);
+  });
+  fileInput.addEventListener('change', (e) => { if(e.target.files[0]) handleUploadedFile(e.target.files[0]); });
+
+  document.getElementById('uploadSubjectSelect').addEventListener('change', (e) => {
+    document.getElementById('newSubjectFields').style.display = e.target.value === '__new__' ? 'block' : 'none';
+  });
+  document.getElementById('uploadSourceSelect').addEventListener('change', (e) => {
+    document.getElementById('newSourceFields').style.display = e.target.value === '__new__' ? 'block' : 'none';
+  });
+  document.getElementById('uploadSubmitBtn').addEventListener('click', handleAddModule);
+}
+
+function handleUploadedFile(file){
+  const reader = new FileReader();
+  reader.onload = () => {
+    uploadedFileText = reader.result;
+    uploadedParsed = parseQuizFile(uploadedFileText);
+    document.getElementById('dropZoneText').textContent = 'Loaded: ' + file.name;
+    const fileInfoEl = document.getElementById('fileInfo');
+    const formCard = document.getElementById('uploadFormCard');
+
+    if(uploadedParsed.format === 'unknown' || !uploadedParsed.questionCount){
+      fileInfoEl.className = 'save-status err';
+      fileInfoEl.textContent = 'Couldn\u2019t recognize a supported question set in this file (looked for the site\u2019s own quiz template or the standalone "QUIZ_DATA" reviewer template).';
+      formCard.style.display = 'none';
+      return;
+    }
+
+    fileInfoEl.className = 'save-status ok';
+    fileInfoEl.textContent = `Detected ${uploadedParsed.questionCount} question(s) — format: ${uploadedParsed.format === 'native' ? "LEA site quiz template" : 'Standalone "QUIZ_DATA" reviewer template'}.`;
+    formCard.style.display = 'block';
+
+    const suggestedTitle = uploadedParsed.suggestedTitle || file.name.replace(/\.html?$/i, '');
+    document.getElementById('uploadModuleTitle').value = suggestedTitle;
+    document.getElementById('uploadModuleId').value = slugify(suggestedTitle);
+    document.getElementById('uploadFileName').value = file.name.replace(/\s+/g, '_');
+  };
+  reader.readAsText(file);
+}
+
+async function handleAddModule(){
+  const statusEl = document.getElementById('uploadStatus');
+  const btn = document.getElementById('uploadSubmitBtn');
+  function log(msg){ statusEl.innerHTML += '<div>' + escapeHtml(msg) + '</div>'; }
+
+  btn.disabled = true;
+  statusEl.className = 'save-status';
+  statusEl.innerHTML = '';
+
+  try{
+    if(!uploadedFileText || !uploadedParsed || !uploadedParsed.questionCount){
+      throw new Error('Drop or choose a supported quiz HTML file first.');
+    }
+
+    // ---- Resolve subject ----
+    const subjectSelectVal = document.getElementById('uploadSubjectSelect').value;
+    let subjectId, subjectName, subjectTagline = '', isNewSubject = false;
+    if(subjectSelectVal === '__new__'){
+      subjectName = document.getElementById('newSubjectName').value.trim();
+      if(!subjectName) throw new Error('Enter a name for the new subject.');
+      subjectId = slugify(subjectName);
+      subjectTagline = document.getElementById('newSubjectTagline').value.trim();
+      isNewSubject = true;
+    } else {
+      const s = subjects.find(s => s.id === subjectSelectVal);
+      if(!s) throw new Error('Pick a subject.');
+      subjectId = s.id; subjectName = s.name;
+    }
+
+    // ---- Resolve source ----
+    const sourceSelectVal = document.getElementById('uploadSourceSelect').value;
+    let sourceId, sourceName, isNewSource = false;
+    if(sourceSelectVal === '__new__'){
+      sourceName = document.getElementById('newSourceName').value.trim();
+      if(!sourceName) throw new Error('Enter a name for the new source.');
+      sourceId = slugify(sourceName);
+      isNewSource = true;
+    } else {
+      const s = sources.find(s => s.id === sourceSelectVal);
+      if(!s) throw new Error('Pick a source.');
+      sourceId = s.id; sourceName = s.name;
+    }
+
+    const moduleTitle = document.getElementById('uploadModuleTitle').value.trim() || uploadedParsed.suggestedTitle || 'Untitled Module';
+    const moduleId = slugify(document.getElementById('uploadModuleId').value.trim() || moduleTitle);
+    const moduleSub = document.getElementById('uploadModuleSub').value.trim();
+    const fileName = (document.getElementById('uploadFileName').value.trim() || (slugify(moduleTitle) + '.html')).replace(/[^a-zA-Z0-9_.-]/g, '_');
+    const includeBackLink = document.getElementById('uploadBackLinkChk').checked;
+
+    if(!moduleId) throw new Error('Enter a module ID.');
+
+    log('Preparing quiz file…');
+    const adaptedHtml = buildAdaptedQuizHtml(uploadedFileText, uploadedParsed.format, {
+      subjectId, moduleId, subjectName, sourceId, includeBackLink
+    });
+
+    const quizPath = `subjects/${subjectId}/quizzes/${fileName}`;
+    log('Saving quiz file to ' + quizPath + '…');
+    await callSave(quizPath, adaptedHtml, `Admin: add module "${moduleTitle}" to ${subjectId}`);
+
+    // ---- Subject index.html ----
+    const subjectIndexPath = `subjects/${subjectId}/index.html`;
+    log('Updating subject page…');
+    let subjectRaw = null;
+    if(!isNewSubject){
+      const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${subjectIndexPath}?t=${Date.now()}`;
+      const resp = await fetch(url);
+      if(resp.ok) subjectRaw = await resp.text();
+    }
+
+    const newModuleDef = { id: moduleId, total: uploadedParsed.questionCount, title: moduleTitle, sub: moduleSub, file: fileName };
+    let newSubjectHtml;
+    if(!subjectRaw){
+      newSubjectHtml = buildSubjectIndexHtml({ subjectId, subjectName, tagline: subjectTagline, sourceId, modules: [newModuleDef] });
+    } else if(/LEAProgress\.renderModuleBadge/.test(subjectRaw)){
+      newSubjectHtml = appendModuleToGenericSubjectHtml(subjectRaw, newModuleDef);
+    } else {
+      log('This subject page uses the older hand-built layout — migrating it to the shared module template (existing modules and progress are preserved)…');
+      const migrated = migrateLegacySubjectHtml(subjectRaw);
+      newSubjectHtml = buildSubjectIndexHtml({
+        subjectId,
+        subjectName: migrated.subjectName || subjectName,
+        tagline: migrated.tagline,
+        sourceId,
+        modules: migrated.modules.concat([newModuleDef])
+      });
+    }
+    await callSave(subjectIndexPath, newSubjectHtml, `Admin: add module "${moduleTitle}" to ${subjectId}`);
+
+    // ---- Main index.html (SUBJECTS / SOURCES) ----
+    log('Updating main subjects list…');
+    let idx = rawIndexHtml;
+    if(!idx){
+      const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${INDEX_PATH}?t=${Date.now()}`;
+      const resp = await fetch(url);
+      idx = await resp.text();
+    }
+    if(isNewSource) idx = upsertSourceInIndexHtml(idx, { id: sourceId, name: sourceName });
+    idx = upsertSubjectInIndexHtml(idx, {
+      id: subjectId, name: subjectName, href: `subjects/${subjectId}/index.html`,
+      sourceId, addQuestions: uploadedParsed.questionCount, addModules: 1
+    });
+    await callSave(INDEX_PATH, idx, `Admin: register module "${moduleTitle}" under ${subjectId}`);
+    rawIndexHtml = idx;
+
+    statusEl.className = 'save-status ok';
+    log('✅ Done! "' + moduleTitle + '" is live under ' + subjectName + '. It may take a minute or two for GitHub Pages to update the live site.');
+
+    await loadSubjects();
+    renderUploadTab();
+  }catch(e){
+    statusEl.className = 'save-status err';
+    log('Error: ' + e.message);
+  }finally{
+    btn.disabled = false;
   }
 }
 

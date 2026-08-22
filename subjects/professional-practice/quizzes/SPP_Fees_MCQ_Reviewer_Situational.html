@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doc. 210 — Situational Reviewer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue-deep:#0e2a4a;
+    --blue-mid:#123a63;
+    --blue-line:#4f86c6;
+    --blue-line-faint:rgba(120,170,225,0.16);
+    --paper:#f6f1e4;
+    --paper-edge:#e8dfc6;
+    --ink:#1c2b3a;
+    --ink-soft:#4c5f72;
+    --brass:#d3a24d;
+    --brass-deep:#b3823a;
+    --approve:#4c8c6b;
+    --approve-deep:#2f6b4c;
+    --revise:#c0533f;
+    --revise-deep:#96392a;
+    --paper-2:#fbf8ef;
+  }
+
+  body.dark-mode{
+    --paper:#16232f;
+    --paper-edge:#25384a;
+    --paper-2:#1b2836;
+    --ink:#eef2f6;
+    --ink-soft:#b9c6d4;
+    --timer-track: rgba(238,242,246,0.16);
+  }
+  :root{ --timer-track: rgba(28,43,58,0.12); }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:100vh;
+    background:
+      radial-gradient(circle at 15% 8%, rgba(255,255,255,0.05), transparent 45%),
+      repeating-linear-gradient(0deg, var(--blue-line-faint) 0px, var(--blue-line-faint) 1px, transparent 1px, transparent 32px),
+      repeating-linear-gradient(90deg, var(--blue-line-faint) 0px, var(--blue-line-faint) 1px, transparent 1px, transparent 32px),
+      linear-gradient(160deg, var(--blue-deep), var(--blue-mid) 70%);
+    font-family:'IBM Plex Sans', sans-serif;
+    color:var(--paper);
+    display:flex;
+    justify-content:center;
+    padding:28px 16px 60px;
+  }
+
+  .sheet{
+    width:100%;
+    max-width:760px;
+  }
+
+  /* ---------- Title block ---------- */
+  .titleblock{
+    border:1.5px solid var(--blue-line);
+    border-radius:2px;
+    background:rgba(10,30,54,0.45);
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:0;
+    margin-bottom:18px;
+    overflow:hidden;
+  }
+  .titleblock-main{
+    padding:14px 18px;
+    border-right:1.5px solid var(--blue-line);
+  }
+  .titleblock .doc-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    color:var(--brass);
+    text-transform:uppercase;
+  }
+  .titleblock h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:20px;
+    font-weight:700;
+    margin:4px 0 2px;
+    color:#f2ecdb;
+    letter-spacing:0.01em;
+  }
+  .titleblock .sub{
+    font-size:12.5px;
+    color:#aebfd4;
+  }
+  .titleblock-meta{
+    padding:14px 16px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:6px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:#cdd9ea;
+    min-width:150px;
+  }
+  .titleblock-meta .row{display:flex; justify-content:space-between; gap:10px;}
+  .titleblock-meta .row span:first-child{color:#7f97b3;}
+
+  /* ---------- Progress ruler ---------- */
+  .ruler-wrap{
+    margin-bottom:22px;
+  }
+  .ruler-labels{
+    display:flex;
+    justify-content:space-between;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:#9fb4cc;
+    margin-bottom:6px;
+  }
+  .ruler{
+    position:relative;
+    height:22px;
+    border:1px solid var(--blue-line);
+    border-radius:2px;
+    background:rgba(255,255,255,0.03);
+    overflow:hidden;
+  }
+  .ruler-fill{
+    position:absolute; top:0; left:0; bottom:0;
+    width:0%;
+    background:linear-gradient(90deg, var(--brass-deep), var(--brass));
+    transition:width .35s ease;
+  }
+  .ruler-ticks{
+    position:absolute; inset:0;
+    display:flex;
+  }
+  .ruler-tick{
+    flex:1;
+    border-right:1px solid rgba(14,42,74,0.35);
+  }
+  .ruler-tick:last-child{border-right:none;}
+  .ruler-tick.answered-correct{background:rgba(76,140,107,0.55);}
+  .ruler-tick.answered-wrong{background:rgba(192,83,63,0.55);}
+
+  /* ---------- Question card ---------- */
+  .card{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:3px;
+    box-shadow:0 18px 40px rgba(4,14,28,0.45), 0 2px 0 rgba(0,0,0,0.15);
+    position:relative;
+    padding:26px 26px 22px;
+    background-image:
+      linear-gradient(var(--paper-edge) 1px, transparent 1px);
+    background-size:100% 100%;
+  }
+  .card::before{
+    content:"";
+    position:absolute; inset:0;
+    border:1px solid var(--paper-edge);
+    border-radius:3px;
+    pointer-events:none;
+  }
+  .card-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--brass-deep);
+    background:rgba(211,162,77,0.14);
+    border:1px solid rgba(179,130,58,0.35);
+    padding:4px 9px;
+    border-radius:2px;
+    margin-bottom:14px;
+  }
+  .question-text{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:19px;
+    font-weight:600;
+    line-height:1.4;
+    color:var(--ink);
+    margin:0 0 20px;
+  }
+
+  .options{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .option{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    text-align:left;
+    width:100%;
+    background:var(--paper-2);
+    border:1.5px solid #d8cba9;
+    border-radius:2px;
+    padding:12px 14px;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:14.5px;
+    color:var(--ink);
+    cursor:pointer;
+    transition:border-color .15s ease, background .15s ease, transform .1s ease;
+  }
+  .option:hover:not(.locked){
+    border-color:var(--blue-line);
+    background:#fffdf6;
+  }
+  .option:active:not(.locked){transform:translateY(1px);}
+  .option .letter{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:13px;
+    color:var(--ink-soft);
+    border:1.5px solid #c9bb95;
+    border-radius:50%;
+    width:24px; height:24px;
+    min-width:24px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .option .opt-text{padding-top:1px;}
+
+  .option.locked{cursor:default;}
+  .option.correct{
+    border-color:var(--approve-deep);
+    background:rgba(76,140,107,0.14);
+  }
+  .option.correct .letter{
+    border-color:var(--approve-deep);
+    background:var(--approve);
+    color:#fff;
+  }
+  .option.wrong{
+    border-color:var(--revise-deep);
+    background:rgba(192,83,63,0.12);
+  }
+  .option.wrong .letter{
+    border-color:var(--revise-deep);
+    background:var(--revise);
+    color:#fff;
+  }
+  .option.dim{opacity:0.55;}
+
+  /* stamp */
+  .stamp{
+    position:absolute;
+    top:20px; right:22px;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:0.06em;
+    padding:6px 12px;
+    border:2.5px solid currentColor;
+    border-radius:4px;
+    transform:rotate(6deg);
+    opacity:0;
+    animation:stampIn .28s ease forwards;
+    pointer-events:none;
+  }
+  .stamp.approve{color:var(--approve-deep);}
+  .stamp.revise{color:var(--revise-deep); transform:rotate(-5deg);}
+  @keyframes stampIn{
+    0%{opacity:0; transform:scale(1.6) rotate(6deg);}
+    60%{opacity:1;}
+    100%{opacity:1; transform:scale(1) rotate(6deg);}
+  }
+  .stamp.revise{animation-name:stampInRev;}
+  @keyframes stampInRev{
+    0%{opacity:0; transform:scale(1.6) rotate(-5deg);}
+    60%{opacity:1;}
+    100%{opacity:1; transform:scale(1) rotate(-5deg);}
+  }
+
+  /* explanation panel */
+  .explain{
+    margin-top:18px;
+    border-top:1.5px dashed #c9bb95;
+    padding-top:16px;
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+  }
+  .explain.open{max-height:400px;}
+  .explain-inner{font-size:13.5px; line-height:1.55; color:var(--ink-soft);}
+  .explain-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--blue-mid);
+    margin-bottom:6px;
+    display:block;
+  }
+
+  .card-actions{
+    margin-top:20px;
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+  }
+  .btn{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:13.5px;
+    letter-spacing:0.02em;
+    border:none;
+    border-radius:2px;
+    padding:11px 20px;
+    cursor:pointer;
+    transition:transform .1s ease, filter .15s ease;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{
+    background:linear-gradient(180deg, var(--brass), var(--brass-deep));
+    color:#2a1c05;
+    box-shadow:0 2px 0 rgba(0,0,0,0.15);
+  }
+  .btn-primary:hover{filter:brightness(1.06);}
+  .btn-primary:disabled{opacity:0.4; cursor:not-allowed;}
+  .btn-ghost{
+    background:transparent;
+    border:1.5px solid var(--blue-mid);
+    color:var(--blue-mid);
+  }
+  .btn-ghost:hover{background:rgba(18,58,99,0.06);}
+
+  /* ---------- Results / certificate ---------- */
+  .cert{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:3px;
+    box-shadow:0 18px 40px rgba(4,14,28,0.45);
+    padding:32px 28px;
+    position:relative;
+    text-align:center;
+  }
+  .cert::before{
+    content:"";
+    position:absolute; inset:10px;
+    border:1.5px solid var(--brass-deep);
+    border-radius:2px;
+    pointer-events:none;
+  }
+  .cert-eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--blue-mid);
+    margin-bottom:8px;
+  }
+  .cert h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:24px;
+    margin:0 0 18px;
+  }
+  .cert-score{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:56px;
+    font-weight:700;
+    color:var(--blue-mid);
+    line-height:1;
+    margin:6px 0 4px;
+  }
+  .cert-score span{font-size:22px; color:var(--ink-soft); font-weight:500;}
+  .cert-tier{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-bottom:22px;
+  }
+  .cert-grid{
+    display:grid;
+    grid-template-columns:repeat(10, 1fr);
+    gap:5px;
+    margin:0 auto 24px;
+    max-width:480px;
+  }
+  .cert-grid .dot{
+    aspect-ratio:1;
+    border-radius:2px;
+    border:1px solid #c9bb95;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:9.5px;
+    color:#fff;
+    cursor:pointer;
+  }
+  .cert-grid .dot.right{background:var(--approve);}
+  .cert-grid .dot.wrong{background:var(--revise);}
+
+  .cert-actions{display:flex; justify-content:center; gap:10px; flex-wrap:wrap;}
+
+  .review-list{
+    margin-top:26px;
+    text-align:left;
+    display:none;
+    flex-direction:column;
+    gap:10px;
+  }
+  .review-list.open{display:flex;}
+  .review-item{
+    border:1px solid #d8cba9;
+    border-left-width:4px;
+    border-radius:2px;
+    padding:10px 12px;
+    font-size:12.5px;
+    background:var(--paper-2);
+  }
+  .review-item.right{border-left-color:var(--approve-deep);}
+  .review-item.wrong{border-left-color:var(--revise-deep);}
+  .review-item .q{font-weight:600; margin-bottom:4px; font-family:'Space Grotesk',sans-serif;}
+  .review-item .a{color:var(--ink-soft);}
+
+  footer{
+    text-align:center;
+    margin-top:22px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color:#7f97b3;
+    letter-spacing:0.04em;
+  }
+
+  @media (max-width:520px){
+    .toolbar{justify-content:center;}
+    .titleblock{grid-template-columns:1fr;}
+    .titleblock-main{border-right:none; border-bottom:1.5px solid var(--blue-line);}
+    .question-text{font-size:17px;}
+    .cert-score{font-size:44px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  /* ---------- Theme transition ---------- */
+  body, .card, .titleblock, .titleblock-main, .titleblock-meta, .ruler,
+  .cert, .option, .review-item, footer, .toolbar, .stamp, .timer-track{
+    transition: background-color .3s ease, border-color .3s ease, color .3s ease;
+  }
+
+  /* ---------- Toolbar ---------- */
+  .toolbar{
+    border:1.5px solid var(--blue-line);
+    border-radius:2px;
+    background:rgba(10,30,54,0.45);
+    padding:10px 14px;
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .order-toggle{
+    display:flex;
+    border:1px solid var(--blue-line);
+    border-radius:2px;
+    overflow:hidden;
+  }
+  .order-toggle .order-btn{
+    background:none;
+    border:none;
+    color:#aebfd4;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    padding:6px 10px;
+    cursor:pointer;
+    letter-spacing:0.04em;
+  }
+  .order-toggle .order-btn.active{
+    background:var(--brass);
+    color:#2a1c05;
+    font-weight:700;
+  }
+  .toolbar-restart{
+    background:none;
+    border:1px dashed var(--brass);
+    color:var(--brass);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    padding:6px 12px;
+    border-radius:2px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .toolbar-restart:hover{ background:rgba(211,162,77,0.12); }
+  .theme-toggle{
+    background:none;
+    border:1px solid var(--blue-line);
+    color:#cdd9ea;
+    font-size:14px;
+    width:30px; height:30px;
+    border-radius:2px;
+    cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    line-height:1;
+  }
+  .theme-toggle:hover{ border-color:var(--brass); color:var(--brass); }
+
+  /* ---------- Per-question timer ---------- */
+  .timer-row{ display:flex; align-items:center; gap:10px; margin:0 0 16px; }
+  .timer-row.hidden{ display:none; }
+  .timer-track{
+    flex:1; height:7px; border-radius:2px;
+    background: var(--timer-track);
+    overflow:hidden;
+  }
+  .timer-fill{
+    height:100%; width:100%;
+    background: var(--blue-line);
+    border-radius:2px;
+    transition: width 1s linear, background .3s ease;
+  }
+  .timer-text{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:13px;
+    color: var(--blue-mid);
+    min-width:24px;
+    text-align:right;
+    transition: color .3s ease;
+  }
+  .timer-row.urgent .timer-fill{ background: var(--revise); }
+  .timer-row.urgent .timer-text{ color: var(--revise-deep); animation: timerPulse 1s ease-in-out infinite; }
+  @keyframes timerPulse{ 0%,100%{ opacity:1; } 50%{ opacity:0.45; } }
+
+</style>
+</head>
+<body>
+<div style="max-width:760px;margin:0 auto 12px;font:12px 'IBM Plex Mono',monospace;"><a href="../index.html?source=jpt" style="color:#8fc4ea;text-decoration:underline;">&larr; Back to Professional Practice 💼👨🏻‍💼👔👷🏻‍♂️</a></div>
+
+
+<div class="sheet">
+
+  <div class="titleblock">
+    <div class="titleblock-main">
+      <div class="doc-label">UAP·IAPOA Doc. 210 — Situational Reviewer</div>
+      <h1>Methods of Compensation &amp; Schedule of Fees</h1>
+      <div class="sub">15-item situational / critical-analysis set · LEA Board Exam level</div>
+    </div>
+    <div class="titleblock-meta">
+      <div class="row"><span>DWG NO.</span><span id="meta-dwg">Q-01/50</span></div>
+      <div class="row"><span>SCALE</span><span>N.T.S.</span></div>
+      <div class="row"><span>SCORE</span><span id="meta-score">0/0</span></div>
+    </div>
+  </div>
+
+  <div class="toolbar" id="toolbar">
+    <div class="order-toggle">
+      <button id="orderInOrderBtn" class="order-btn active">In order</button>
+      <button id="orderShuffleBtn" class="order-btn">Shuffled</button>
+    </div>
+    <button class="toolbar-restart" id="toolbarRestartBtn">Restart sheet</button>
+    <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark mode">🌙</button>
+    <button class="theme-toggle" id="sfxToggleBtn" title="Mute / unmute sound effects">🔊</button>
+  </div>
+
+  <div class="ruler-wrap">
+    <div class="ruler-labels">
+      <span id="ruler-current">Item 1 of 50</span>
+      <span id="ruler-pct">0% complete</span>
+    </div>
+    <div class="ruler">
+      <div class="ruler-ticks" id="ruler-ticks"></div>
+    </div>
+  </div>
+
+  <div id="quiz-view">
+    <div class="card" id="card">
+      <div class="stamp" id="stamp" style="display:none;"></div>
+      <div class="card-tag" id="card-tag">SEC. —</div>
+      <div class="timer-row hidden" id="timer-row">
+        <div class="timer-track"><div class="timer-fill" id="timer-fill"></div></div>
+        <div class="timer-text" id="timer-text">60</div>
+      </div>
+      <p class="question-text" id="question-text"></p>
+      <div class="options" id="options"></div>
+      <div class="explain" id="explain">
+        <div class="explain-inner">
+          <span class="explain-label">Explanation &amp; source</span>
+          <span id="explain-text"></span>
+        </div>
+      </div>
+      <div class="card-actions">
+        <button class="btn btn-primary" id="next-btn" disabled>Check answer</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="results-view" style="display:none;"></div>
+
+  <footer>UAP·IAPOA DOC. 210 — DRAFTED FOR STUDY PURPOSES ONLY — NOT FOR OFFICIAL FILING</footer>
+</div>
+
+<script>
+const QUIZ_DATA = [{"num": 1, "question": "A Client wants to know the exact total professional fee upfront before construction begins, and the scope of services (design, approvals, construction schedule) can already be clearly and fully defined at the outset. Which method of compensation should the Architect propose?", "options": [{"letter": "A", "text": "Percentage-based Fee on PCC"}, {"letter": "B", "text": "Lump Sum or Fixed Fee"}, {"letter": "C", "text": "Multiple of Direct Personnel Expense"}, {"letter": "D", "text": "Per Diem, Honorarium plus Reimbursable Expenses"}], "correct": "B", "explanation": "Lump Sum fits when scope, schedule, and approvals are already fully defined, letting both parties fix the total fee in advance. [Source: Sec. 4.2.1, UAP-IAPOA Doc. 210]"}, {"num": 2, "question": "A Client wants a single point of responsibility for both the architectural design and the normal basic engineering works (structural, plumbing, sanitary, mechanical, electrical). Under which contract arrangement should the Architect be engaged?", "options": [{"letter": "A", "text": "Detailed Architectural Design Services (DADS)"}, {"letter": "B", "text": "Comprehensive Architectural Services"}, {"letter": "C", "text": "Detailed Architectural and Engineering Design Services (DAEDS)"}, {"letter": "D", "text": "Design-Build Services by Administration"}], "correct": "C", "explanation": "DAEDS bundles architectural design with basic engineering under one contract, giving the Client a single point of responsibility. [Source: Sec. 4.1.1.3, UAP-IAPOA Doc. 210]"}, {"num": 3, "question": "An Architect is asked to design the interior renovation of an existing office space, using a similar historical project's cost per square meter as reference. Compared to a new-build project of the same unit cost, how should the Architect treat the required service effort?", "options": [{"letter": "A", "text": "Apply the same effort since unit cost method standardizes all projects equally"}, {"letter": "B", "text": "Reduce the fee since renovation reuses existing structural elements"}, {"letter": "C", "text": "Recognize that renovation work requires greater service effort per unit than new work"}, {"letter": "D", "text": "Convert the project to a Lump Sum arrangement instead"}], "correct": "C", "explanation": "The Guidelines explicitly note that renovation work demands more service effort per unit area than comparable new construction. [Source: Sec. 4.1.2, UAP-IAPOA Doc. 210]"}, {"num": 4, "question": "A Client needs the Architect to serve as an expert witness in a construction-related court case — a short, interim engagement that is difficult to scope in advance. Which method of compensation is most appropriate?", "options": [{"letter": "A", "text": "Percentage of Gross Rentals"}, {"letter": "B", "text": "Unit Cost Method"}, {"letter": "C", "text": "Time Basis (hourly/per diem)"}, {"letter": "D", "text": "Value-based Pricing"}], "correct": "C", "explanation": "Time Basis fits engagements that are short, interim, or hard to scope in advance, such as expert-witness testimony. [Source: Sec. 4.3.1–4.3.2, UAP-IAPOA Doc. 210]"}, {"num": 5, "question": "A Client wants an Architect available for consultation at intervals over the coming year, without engaging the Architect full-time, and is willing to pay a stipulated amount regularly for a minimum service obligation. What compensation arrangement fits this situation?", "options": [{"letter": "A", "text": "Multiple of Direct Personnel Expense"}, {"letter": "B", "text": "Retainer"}, {"letter": "C", "text": "Lump Sum or Fixed Fee"}, {"letter": "D", "text": "Value-based Pricing / Percentage of Gross Rentals"}], "correct": "B", "explanation": "A Retainer is used precisely for on-call, interval-based engagements paid a regular stipulated amount for a minimum service obligation. [Source: Sec. 4.3.13, UAP-IAPOA Doc. 210]"}, {"num": 6, "question": "An Architect's office is tasked with purely administrative work for a project — record-keeping, data-gathering, and report preparation, with no creative-design input involved. Why is the Multiple of Direct Personnel Expense method specifically suited to this task?", "options": [{"letter": "A", "text": "It is the default method for all architectural services regardless of nature"}, {"letter": "B", "text": "It applies only to services requiring a licensed engineer"}, {"letter": "C", "text": "It applies only to non-creative work, since creative-design value cannot be measured by time spent"}, {"letter": "D", "text": "It guarantees the highest possible fee for the Architect"}], "correct": "C", "explanation": "Multiple of DPE is reserved for non-creative work because time spent cannot fairly measure the value of creative design. [Source: Sec. 4.3.8, UAP-IAPOA Doc. 210]"}, {"num": 7, "question": "For a single project, an Architect is asked to prepare architectural renderings for marketing purposes (a clearly determinate, specific service) while also providing ongoing design services for the rest of the project. How should the Architect structure the compensation for these two components?", "options": [{"letter": "A", "text": "Charge both components using only a percentage of PCC"}, {"letter": "B", "text": "Charge the rendering at a fixed price/lump sum, while the other services are compensated on a per diem or % of construction cost basis (Mixed Methods)"}, {"letter": "C", "text": "Refuse the rendering request since it falls outside the SPP"}, {"letter": "D", "text": "Charge both components purely on an hourly basis"}], "correct": "B", "explanation": "Mixed Methods lets a determinate service be billed as a fixed price while other, less-determinate services use a different basis. [Source: Sec. 4.4.1, UAP-IAPOA Doc. 210]"}, {"num": 8, "question": "A Client commissions an Architect to design a public market with minimal architectural finishes and simple engineering requirements. Under the Schedule of Fees, how should this project be classified?", "options": [{"letter": "A", "text": "Group 3 — Exceptional character/complexity"}, {"letter": "B", "text": "Group 1 — Simplest utilization/character"}, {"letter": "C", "text": "Group 5 — Monumental buildings"}, {"letter": "D", "text": "Group 8 — Extensive detail"}], "correct": "B", "explanation": "Group 1 covers buildings with the simplest utilization/character and minimum finishes, such as public markets. [Source: Sec. 6.3, Group 1, UAP-IAPOA Doc. 210]"}, {"num": 9, "question": "An Architect is engaged to renovate and expand an existing school building (originally classified under Group 2). How should the Recommended Professional Fee be adjusted for this engagement?", "options": [{"letter": "A", "text": "The RPF remains unchanged since it is the same building type"}, {"letter": "B", "text": "The RPF is reduced by 50% since existing structural work is reused"}, {"letter": "C", "text": "The RPF is increased by 50%, i.e., a total of 150% of the applicable RPF for Group 9 (alterations/renovations)"}, {"letter": "D", "text": "The RPF is computed solely on a Time Basis"}], "correct": "C", "explanation": "Group 9 (alterations/renovations) adds 50% to the applicable RPF of the original building group, for a total of 150%. [Source: Sec. 6.3, Group 9, UAP-IAPOA Doc. 210]"}, {"num": 10, "question": "The Architect has completed the Detailed Design and Contract Documents Phase (90% of the total work), but the Owner subsequently decides not to proceed with implementing the plans. What is the Architect entitled to receive?", "options": [{"letter": "A", "text": "Only the fee for the Schematic Design Phase"}, {"letter": "B", "text": "90% of the total Professional Fee"}, {"letter": "C", "text": "The full 100% Professional Fee regardless of completion"}, {"letter": "D", "text": "No fee, since the project did not proceed to construction"}], "correct": "B", "explanation": "Once the Contract Documents Phase (90% of work) is done, the Architect keeps 90% of the fee even if the Owner abandons the project. [Source: Sec. 6.4.9, UAP-IAPOA Doc. 210]"}, {"num": 11, "question": "Due to unforeseen circumstances, the Construction Phase of a project is suspended for eight (8) months. How should the fee for the remaining Periodic Construction Supervision works be treated once work resumes?", "options": [{"letter": "A", "text": "It remains the same as originally agreed"}, {"letter": "B", "text": "It is reduced by half to account for the delay"}, {"letter": "C", "text": "It is doubled, since the suspension exceeded six (6) months"}, {"letter": "D", "text": "It is converted automatically to a Lump Sum arrangement"}], "correct": "C", "explanation": "A construction suspension beyond six months doubles the fee for the remaining Periodic Construction Supervision work. [Source: Sec. 6.4.10, UAP-IAPOA Doc. 210]"}, {"num": 12, "question": "A Client decides to hire a Specialist Consultant (SC) directly and separately, rather than through the Architect, but still expects the Architect-of-Record to coordinate the SC's work with the overall design. What compensation is the Architect entitled to for this coordination work?", "options": [{"letter": "A", "text": "No additional compensation, since coordination is part of the basic fee"}, {"letter": "B", "text": "A coordination fee equivalent to 5% of the Specialist Consultant's fee"}, {"letter": "C", "text": "50% of the Specialist Consultant's fee"}, {"letter": "D", "text": "A fee equal to the SC's fee, paid by the Client"}], "correct": "B", "explanation": "When a Client engages a Specialist Consultant directly, the Architect-of-Record still earns a 5% coordination fee on the SC's fee. [Source: Sec. 7.2.3 / Sec. 8.5, UAP-IAPOA Doc. 210]"}, {"num": 13, "question": "A dispute arises between an Architect and Client over the Service Agreement. The parties attempt direct negotiation for 14 calendar days but fail to reach a resolution. What is the appropriate next step before initiating formal arbitration?", "options": [{"letter": "A", "text": "Immediately file a case in a regular court"}, {"letter": "B", "text": "Either party may initiate mediation/conciliatory discussions with a neutral third party within another 14 days"}, {"letter": "C", "text": "The Architect must unilaterally terminate the Service Agreement"}, {"letter": "D", "text": "Wait indefinitely until the Client agrees to arbitration"}], "correct": "B", "explanation": "Sec. 19.2 sequences dispute resolution: negotiation first, then mediation with a neutral third party, before formal arbitration. [Source: Sec. 19.2, UAP-IAPOA Doc. 210]"}, {"num": 14, "question": "An Owner fails to pay the Architect's billed fees within thirty (30) days from receipt of the statement of account, with no dispute over the amount owed. What is the Architect entitled to under the Guidelines?", "options": [{"letter": "A", "text": "Nothing, since fees are due only upon project completion"}, {"letter": "B", "text": "Interest at the prevailing rate set by the Bangko Sentral ng Pilipinas (BSP), as mutually agreed with the Client"}, {"letter": "C", "text": "Automatic termination of the Service Agreement"}, {"letter": "D", "text": "A penalty equal to 50% of the unpaid amount"}], "correct": "B", "explanation": "Sec. 16 entitles the Architect to interest at the BSP rate on fees unpaid 30 days after billing, as agreed with the Client. [Source: Sec. 16, UAP-IAPOA Doc. 210]"}, {"num": 15, "question": "An unlicensed and unregistered individual collects payment for architectural design services rendered on a residential project. Under this Guideline, how is this act characterized?", "options": [{"letter": "A", "text": "Permissible, provided the Client consents in writing"}, {"letter": "B", "text": "Permissible only for Group 4 (residential) projects"}, {"letter": "C", "text": "Unlawful, as provided under R.A. 9266"}, {"letter": "D", "text": "Permissible if a licensed Architect later reviews the work"}], "correct": "C", "explanation": "R.A. 9266 makes it unlawful for anyone without a valid license/registration to collect fees for architectural services. [Source: Sec. 15, UAP-IAPOA Doc. 210]"}];
+
+// Precompute the correct option's original index for each question
+const CORRECT_INDEX = QUIZ_DATA.map(q => q.options.findIndex(o => o.letter === q.correct));
+
+let order = QUIZ_DATA.map((_, i) => i);
+let shuffleMode = false;
+let current = 0;
+let answered = false;
+let selectedIndex = null;
+const results = [];   // parallel to order: {isCorrect, selectedOriginal, correctOriginal, perm, timedOut}
+let optOrders = [];   // parallel to order: cached shuffled option-index permutation per position
+let muted = false;
+
+const dwgEl = document.getElementById('meta-dwg');
+const scoreEl = document.getElementById('meta-score');
+const rulerCurrent = document.getElementById('ruler-current');
+const rulerPct = document.getElementById('ruler-pct');
+const rulerTicksEl = document.getElementById('ruler-ticks');
+const cardTag = document.getElementById('card-tag');
+const questionText = document.getElementById('question-text');
+const optionsEl = document.getElementById('options');
+const explainEl = document.getElementById('explain');
+const explainText = document.getElementById('explain-text');
+const nextBtn = document.getElementById('next-btn');
+const stampEl = document.getElementById('stamp');
+const quizView = document.getElementById('quiz-view');
+const resultsView = document.getElementById('results-view');
+const timerRow = document.getElementById('timer-row');
+const timerFillEl = document.getElementById('timer-fill');
+const timerTextEl = document.getElementById('timer-text');
+const orderInOrderBtn = document.getElementById('orderInOrderBtn');
+const orderShuffleBtn = document.getElementById('orderShuffleBtn');
+const toolbarRestartBtn = document.getElementById('toolbarRestartBtn');
+const themeToggleBtn = document.getElementById('themeToggleBtn');
+const sfxToggleBtn = document.getElementById('sfxToggleBtn');
+
+function buildTicks(){
+  rulerTicksEl.innerHTML = '';
+  order.forEach((_, i) => {
+    const t = document.createElement('div');
+    t.className = 'ruler-tick';
+    t.id = 'tick-' + i;
+    rulerTicksEl.appendChild(t);
+  });
+}
+
+function tagFor(q){
+  return 'Situational · Item ' + q.num;
+}
+
+function letter(i){ return String.fromCharCode(65 + i); }
+
+function shuffle(arr){
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function freshOrder(){
+  const base = QUIZ_DATA.map((_, i) => i);
+  return shuffleMode ? shuffle(base) : base;
+}
+
+function getOptOrder(pos, q){
+  if (!optOrders[pos]) {
+    optOrders[pos] = shuffle(q.options.map((_, i) => i));
+  }
+  return optOrders[pos];
+}
+
+// ============== AUDIO (correct / wrong feedback) ==============
+let audioCtx = null;
+function getAudioCtx(){
+  if (!audioCtx) {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (AC) audioCtx = new AC();
+  }
+  return audioCtx;
+}
+function playTone(freq, duration, type, delay){
+  if (muted) return;
+  const ctx = getAudioCtx();
+  if (!ctx) return;
+  try{
+    const start = ctx.currentTime + (delay || 0);
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = type || 'sine';
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.0001, start);
+    gain.gain.exponentialRampToValueAtTime(0.16, start + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(start);
+    osc.stop(start + duration + 0.02);
+  } catch(e){ /* ignore audio errors */ }
+}
+function playCorrectSfx(){
+  playTone(880, 0.14, 'sine', 0);
+  playTone(1174, 0.18, 'sine', 0.11);
+}
+function playWrongSfx(){
+  playTone(196, 0.28, 'sawtooth', 0);
+}
+function playTimerTick(){
+  playTone(660, 0.05, 'square', 0);
+}
+
+// ============== PER-QUESTION TIMER ==============
+const TIME_LIMIT = 60;
+let timeLeft = TIME_LIMIT;
+let timerInterval = null;
+
+function stopTimer(){
+  if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+}
+
+function updateTimerDisplay(){
+  timerTextEl.textContent = timeLeft;
+  timerFillEl.style.width = Math.max(0, (timeLeft / TIME_LIMIT) * 100) + '%';
+  timerRow.classList.toggle('urgent', timeLeft <= 10);
+}
+
+function startTimer(){
+  stopTimer();
+  timeLeft = TIME_LIMIT;
+  timerRow.classList.remove('hidden');
+  updateTimerDisplay();
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    if (timeLeft <= 10 && timeLeft > 0) playTimerTick();
+    if (timeLeft <= 0) {
+      timeLeft = 0;
+      updateTimerDisplay();
+      stopTimer();
+      handleTimeout();
+    } else {
+      updateTimerDisplay();
+    }
+  }, 1000);
+}
+
+function render(){
+  const qIndex = order[current];
+  const q = QUIZ_DATA[qIndex];
+  answered = false;
+  selectedIndex = null;
+  stampEl.style.display = 'none';
+  stampEl.className = 'stamp';
+  explainEl.classList.remove('open');
+  nextBtn.disabled = true;
+  nextBtn.textContent = 'Check answer';
+
+  dwgEl.textContent = 'Q-' + String(current + 1).padStart(2, '0') + '/' + order.length;
+  rulerCurrent.textContent = 'Item ' + (current + 1) + ' of ' + order.length;
+  rulerPct.textContent = Math.round((current / order.length) * 100) + '% complete';
+  cardTag.textContent = tagFor(q);
+  questionText.textContent = q.question;
+
+  const perm = getOptOrder(current, q);
+  optionsEl.innerHTML = '';
+  perm.forEach((origIdx, displayI) => {
+    const opt = q.options[origIdx];
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.dataset.origIndex = origIdx;
+    btn.innerHTML = '<span class="letter">' + letter(displayI) + '</span><span class="opt-text">' + opt.text + '</span>';
+    btn.addEventListener('click', () => selectOption(origIdx));
+    optionsEl.appendChild(btn);
+  });
+
+  updateScore();
+  startTimer();
+}
+
+function selectOption(origIdx){
+  if (answered) return;
+  stopTimer();
+  answered = true;
+  selectedIndex = origIdx;
+  const qIndex = order[current];
+  const q = QUIZ_DATA[qIndex];
+  const correctOriginal = CORRECT_INDEX[qIndex];
+  const isCorrect = origIdx === correctOriginal;
+  const perm = optOrders[current];
+  results[current] = { isCorrect, selectedOriginal: origIdx, correctOriginal, perm: perm.slice(), timedOut: false };
+
+  isCorrect ? playCorrectSfx() : playWrongSfx();
+
+  document.querySelectorAll('.option').forEach(btn => {
+    btn.classList.add('locked');
+    const oi = parseInt(btn.dataset.origIndex, 10);
+    if (oi === correctOriginal) btn.classList.add('correct');
+    else if (oi === origIdx) btn.classList.add('wrong');
+    else btn.classList.add('dim');
+  });
+
+  stampEl.style.display = 'block';
+  if (isCorrect){
+    stampEl.textContent = 'APPROVED';
+    stampEl.classList.add('approve');
+  } else {
+    stampEl.textContent = 'REVISE';
+    stampEl.classList.add('revise');
+  }
+
+  explainText.textContent = q.explanation;
+  explainEl.classList.add('open');
+
+  const tick = document.getElementById('tick-' + current);
+  tick.classList.add(isCorrect ? 'answered-correct' : 'answered-wrong');
+
+  nextBtn.disabled = false;
+  nextBtn.textContent = current === order.length - 1 ? 'See results' : 'Next item →';
+
+  updateScore();
+  updateRulerFill();
+}
+
+function handleTimeout(){
+  if (answered) return;
+  answered = true;
+  const qIndex = order[current];
+  const q = QUIZ_DATA[qIndex];
+  const correctOriginal = CORRECT_INDEX[qIndex];
+  const perm = optOrders[current];
+  results[current] = { isCorrect: false, selectedOriginal: -1, correctOriginal, perm: perm.slice(), timedOut: true };
+
+  playWrongSfx();
+
+  document.querySelectorAll('.option').forEach(btn => {
+    btn.classList.add('locked');
+    const oi = parseInt(btn.dataset.origIndex, 10);
+    if (oi === correctOriginal) btn.classList.add('correct');
+    else btn.classList.add('dim');
+  });
+
+  stampEl.style.display = 'block';
+  stampEl.textContent = "TIME'S UP";
+  stampEl.classList.add('revise');
+
+  explainText.textContent = q.explanation;
+  explainEl.classList.add('open');
+
+  const tick = document.getElementById('tick-' + current);
+  tick.classList.add('answered-wrong');
+
+  nextBtn.disabled = false;
+  nextBtn.textContent = current === order.length - 1 ? 'See results' : 'Next item →';
+
+  updateScore();
+  updateRulerFill();
+}
+
+function updateScore(){
+  const correctCount = results.filter(r => r && r.isCorrect).length;
+  const answeredCount = results.filter(r => r).length;
+  scoreEl.textContent = correctCount + '/' + answeredCount;
+  rulerPct.textContent = Math.round((answeredCount / order.length) * 100) + '% complete';
+}
+
+function updateRulerFill(){
+  const answeredCount = results.filter(r => r).length;
+  document.querySelector('.ruler-fill') || initFill();
+  const fill = document.querySelector('.ruler-fill');
+  fill.style.width = (answeredCount / order.length * 100) + '%';
+}
+
+function initFill(){
+  const fill = document.createElement('div');
+  fill.className = 'ruler-fill';
+  document.querySelector('.ruler').prepend(fill);
+}
+
+nextBtn.addEventListener('click', () => {
+  if (!answered) return;
+  stopTimer();
+  if (current < order.length - 1){
+    current++;
+    render();
+  } else {
+    showResults();
+  }
+});
+
+function showResults(){
+  stopTimer();
+  timerRow.classList.add('hidden');
+  quizView.style.display = 'none';
+  resultsView.style.display = 'block';
+  const correctCount = results.filter(r => r && r.isCorrect).length;
+  const total = order.length;
+  const pct = Math.round(correctCount / total * 100);
+
+  let tier = 'Needs revision';
+  if (pct >= 90) tier = 'Ready to seal & sign';
+  else if (pct >= 75) tier = 'Approved with minor notes';
+  else if (pct >= 50) tier = 'Draft — revise & resubmit';
+
+  const dotsHtml = results.map((r, i) => {
+    const cls = r && r.isCorrect ? 'right' : 'wrong';
+    return '<div class="dot ' + cls + '" title="Item ' + (i + 1) + '" data-idx="' + i + '">' + (i + 1) + '</div>';
+  }).join('');
+
+  resultsView.innerHTML = `
+    <div class="cert">
+      <div class="cert-eyebrow">Certificate of Completion</div>
+      <h2>Doc. 210 — Situational Reviewer</h2>
+      <div class="cert-score">${correctCount}<span> / ${total}</span></div>
+      <div class="cert-tier">${pct}% correct — ${tier}</div>
+      <div class="cert-grid">${dotsHtml}</div>
+      <div class="cert-actions">
+        <button class="btn btn-primary" id="restart-btn">Restart sheet</button>
+        <button class="btn btn-ghost" id="review-btn">Review all items</button>
+      </div>
+      <div class="review-list" id="review-list"></div>
+    </div>
+  `;
+
+  document.getElementById('restart-btn').addEventListener('click', fullRestart);
+  document.getElementById('review-btn').addEventListener('click', toggleReview);
+  document.querySelectorAll('.cert-grid .dot').forEach(d => {
+    d.addEventListener('click', () => {
+      toggleReview(true);
+      const idx = parseInt(d.dataset.idx, 10);
+      setTimeout(() => {
+        const item = document.getElementById('review-item-' + idx);
+        if (item) item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 50);
+    });
+  });
+}
+
+function toggleReview(forceOpen){
+  const list = document.getElementById('review-list');
+  const btn = document.getElementById('review-btn');
+  const willOpen = forceOpen === true ? true : !list.classList.contains('open');
+  if (willOpen && list.innerHTML === ''){
+    list.innerHTML = order.map((qIdx, i) => {
+      const q = QUIZ_DATA[qIdx];
+      const r = results[i];
+      const correctOriginal = CORRECT_INDEX[qIdx];
+      const perm = (r && r.perm) ? r.perm : q.options.map((_, x) => x);
+      const correctDisplayLetter = letter(perm.indexOf(correctOriginal));
+      const yourLetter = (r && !r.timedOut) ? letter(perm.indexOf(r.selectedOriginal)) : '—';
+      const cls = r && r.isCorrect ? 'right' : 'wrong';
+      return `<div class="review-item ${cls}" id="review-item-${i}">
+        <div class="q">${q.num}. ${q.question}</div>
+        <div class="a">Correct: ${correctDisplayLetter}. ${q.options[correctOriginal].text}
+        ${(!r || !r.isCorrect) ? ' — your answer: ' + yourLetter : ''}</div>
+      </div>`;
+    }).join('');
+  }
+  list.classList.toggle('open', willOpen);
+  if (btn) btn.textContent = willOpen ? 'Hide review' : 'Review all items';
+}
+
+function fullRestart(){
+  stopTimer();
+  order = freshOrder();
+  optOrders = [];
+  results.length = 0;
+  current = 0;
+  quizView.style.display = 'block';
+  resultsView.style.display = 'none';
+  buildTicks();
+  initFill();
+  const fill = document.querySelector('.ruler-fill');
+  if (fill) fill.style.width = '0%';
+  scoreEl.textContent = '0/0';
+  render();
+}
+
+toolbarRestartBtn.addEventListener('click', fullRestart);
+
+orderInOrderBtn.addEventListener('click', () => {
+  if (shuffleMode){
+    shuffleMode = false;
+    orderInOrderBtn.classList.add('active');
+    orderShuffleBtn.classList.remove('active');
+    fullRestart();
+  }
+});
+orderShuffleBtn.addEventListener('click', () => {
+  if (!shuffleMode){
+    shuffleMode = true;
+    orderShuffleBtn.classList.add('active');
+    orderInOrderBtn.classList.remove('active');
+    fullRestart();
+  }
+});
+
+themeToggleBtn.addEventListener('click', () => {
+  const isDark = document.body.classList.toggle('dark-mode');
+  themeToggleBtn.textContent = isDark ? '☀️' : '🌙';
+});
+
+sfxToggleBtn.addEventListener('click', () => {
+  muted = !muted;
+  sfxToggleBtn.textContent = muted ? '🔇' : '🔊';
+});
+
+buildTicks();
+initFill();
+render();
+
+</script>
+
+<script src="../../../assets/module-progress.js"></script>
+<script>
+// ---- Auto-generated by the admin "Add Module" tool: reports this quiz's ----
+// ---- answers into the shared LEAProgress tracker, without touching the  ----
+// ---- quiz's own markup, styling, or behavior.                           ----
+(function(){
+  var LEA_SUBJECT_ID = "professional-practice";
+  var LEA_MODULE_ID = "spp-fees-situational";
+  if (typeof selectOption === 'function') {
+    var _leaOrigSelectOption = selectOption;
+    selectOption = function(origIdx){
+      _leaOrigSelectOption(origIdx);
+      try {
+        var r = results[current];
+        if (r && r.isCorrect && window.LEAProgress) {
+          LEAProgress.markMastered(LEA_SUBJECT_ID, LEA_MODULE_ID, order[current]);
+        }
+      } catch(e){}
+    };
+  }
+  if (typeof showResults === 'function') {
+    var _leaOrigShowResults = showResults;
+    showResults = function(){
+      _leaOrigShowResults();
+      try {
+        if (window.LEAProgress) {
+          var correctCount = results.filter(function(r){ return r && r.isCorrect; }).length;
+          LEAProgress.recordRunScore(LEA_SUBJECT_ID, LEA_MODULE_ID, correctCount, order.length);
+        }
+      } catch(e){}
+    };
+  }
+})();
+</script>
+</body>
+</html>

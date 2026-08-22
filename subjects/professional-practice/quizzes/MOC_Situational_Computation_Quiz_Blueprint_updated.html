@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doc. 210 — Situational &amp; Computation Worksheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue-deep:#0e2a4a;
+    --blue-mid:#123a63;
+    --blue-line:#4f86c6;
+    --blue-line-faint:rgba(120,170,225,0.16);
+    --paper:#f6f1e4;
+    --paper-edge:#e8dfc6;
+    --ink:#1c2b3a;
+    --ink-soft:#4c5f72;
+    --brass:#d3a24d;
+    --brass-deep:#b3823a;
+    --approve:#4c8c6b;
+    --approve-deep:#2f6b4c;
+    --revise:#c0533f;
+    --revise-deep:#96392a;
+    --paper-2:#fbf8ef;
+  }
+
+  body.dark-mode{
+    --paper:#16232f;
+    --paper-edge:#25384a;
+    --paper-2:#1b2836;
+    --ink:#eef2f6;
+    --ink-soft:#b9c6d4;
+    --timer-track: rgba(238,242,246,0.16);
+  }
+  :root{ --timer-track: rgba(28,43,58,0.12); }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:100vh;
+    background:
+      radial-gradient(circle at 15% 8%, rgba(255,255,255,0.05), transparent 45%),
+      repeating-linear-gradient(0deg, var(--blue-line-faint) 0px, var(--blue-line-faint) 1px, transparent 1px, transparent 32px),
+      repeating-linear-gradient(90deg, var(--blue-line-faint) 0px, var(--blue-line-faint) 1px, transparent 1px, transparent 32px),
+      linear-gradient(160deg, var(--blue-deep), var(--blue-mid) 70%);
+    font-family:'IBM Plex Sans', sans-serif;
+    color:var(--paper);
+    display:flex;
+    justify-content:center;
+    padding:28px 16px 60px;
+  }
+
+  .sheet{
+    width:100%;
+    max-width:760px;
+  }
+
+  /* ---------- Title block ---------- */
+  .titleblock{
+    border:1.5px solid var(--blue-line);
+    border-radius:2px;
+    background:rgba(10,30,54,0.45);
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:0;
+    margin-bottom:18px;
+    overflow:hidden;
+  }
+  .titleblock-main{
+    padding:14px 18px;
+    border-right:1.5px solid var(--blue-line);
+  }
+  .titleblock .doc-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    color:var(--brass);
+    text-transform:uppercase;
+  }
+  .titleblock h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:20px;
+    font-weight:700;
+    margin:4px 0 2px;
+    color:#f2ecdb;
+    letter-spacing:0.01em;
+  }
+  .titleblock .sub{
+    font-size:12.5px;
+    color:#aebfd4;
+  }
+  .titleblock-meta{
+    padding:14px 16px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:6px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:#cdd9ea;
+    min-width:150px;
+  }
+  .titleblock-meta .row{display:flex; justify-content:space-between; gap:10px;}
+  .titleblock-meta .row span:first-child{color:#7f97b3;}
+
+  /* ---------- Progress ruler ---------- */
+  .ruler-wrap{
+    margin-bottom:22px;
+  }
+  .ruler-labels{
+    display:flex;
+    justify-content:space-between;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:#9fb4cc;
+    margin-bottom:6px;
+  }
+  .ruler{
+    position:relative;
+    height:22px;
+    border:1px solid var(--blue-line);
+    border-radius:2px;
+    background:rgba(255,255,255,0.03);
+    overflow:hidden;
+  }
+  .ruler-fill{
+    position:absolute; top:0; left:0; bottom:0;
+    width:0%;
+    background:linear-gradient(90deg, var(--brass-deep), var(--brass));
+    transition:width .35s ease;
+  }
+  .ruler-ticks{
+    position:absolute; inset:0;
+    display:flex;
+  }
+  .ruler-tick{
+    flex:1;
+    border-right:1px solid rgba(14,42,74,0.35);
+  }
+  .ruler-tick:last-child{border-right:none;}
+  .ruler-tick.answered-correct{background:rgba(76,140,107,0.55);}
+  .ruler-tick.answered-wrong{background:rgba(192,83,63,0.55);}
+
+  /* ---------- Question card ---------- */
+  .card{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:3px;
+    box-shadow:0 18px 40px rgba(4,14,28,0.45), 0 2px 0 rgba(0,0,0,0.15);
+    position:relative;
+    padding:26px 26px 22px;
+    background-image:
+      linear-gradient(var(--paper-edge) 1px, transparent 1px);
+    background-size:100% 100%;
+  }
+  .card::before{
+    content:"";
+    position:absolute; inset:0;
+    border:1px solid var(--paper-edge);
+    border-radius:3px;
+    pointer-events:none;
+  }
+  .card-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--brass-deep);
+    background:rgba(211,162,77,0.14);
+    border:1px solid rgba(179,130,58,0.35);
+    padding:4px 9px;
+    border-radius:2px;
+    margin-bottom:14px;
+  }
+  .question-text{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:19px;
+    font-weight:600;
+    line-height:1.4;
+    color:var(--ink);
+    margin:0 0 20px;
+  }
+
+  .options{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .option{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    text-align:left;
+    width:100%;
+    background:var(--paper-2);
+    border:1.5px solid #d8cba9;
+    border-radius:2px;
+    padding:12px 14px;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:14.5px;
+    color:var(--ink);
+    cursor:pointer;
+    transition:border-color .15s ease, background .15s ease, transform .1s ease;
+  }
+  .option:hover:not(.locked){
+    border-color:var(--blue-line);
+    background:#fffdf6;
+  }
+  .option:active:not(.locked){transform:translateY(1px);}
+  .option .letter{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:13px;
+    color:var(--ink-soft);
+    border:1.5px solid #c9bb95;
+    border-radius:50%;
+    width:24px; height:24px;
+    min-width:24px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .option .opt-text{padding-top:1px;}
+
+  .option.locked{cursor:default;}
+  .option.correct{
+    border-color:var(--approve-deep);
+    background:rgba(76,140,107,0.14);
+  }
+  .option.correct .letter{
+    border-color:var(--approve-deep);
+    background:var(--approve);
+    color:#fff;
+  }
+  .option.wrong{
+    border-color:var(--revise-deep);
+    background:rgba(192,83,63,0.12);
+  }
+  .option.wrong .letter{
+    border-color:var(--revise-deep);
+    background:var(--revise);
+    color:#fff;
+  }
+  .option.dim{opacity:0.55;}
+
+  /* stamp */
+  .stamp{
+    position:absolute;
+    top:20px; right:22px;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:0.06em;
+    padding:6px 12px;
+    border:2.5px solid currentColor;
+    border-radius:4px;
+    transform:rotate(6deg);
+    opacity:0;
+    animation:stampIn .28s ease forwards;
+    pointer-events:none;
+  }
+  .stamp.approve{color:var(--approve-deep);}
+  .stamp.revise{color:var(--revise-deep); transform:rotate(-5deg);}
+  @keyframes stampIn{
+    0%{opacity:0; transform:scale(1.6) rotate(6deg);}
+    60%{opacity:1;}
+    100%{opacity:1; transform:scale(1) rotate(6deg);}
+  }
+  .stamp.revise{animation-name:stampInRev;}
+  @keyframes stampInRev{
+    0%{opacity:0; transform:scale(1.6) rotate(-5deg);}
+    60%{opacity:1;}
+    100%{opacity:1; transform:scale(1) rotate(-5deg);}
+  }
+
+  /* explanation panel */
+  .explain{
+    margin-top:18px;
+    border-top:1.5px dashed #c9bb95;
+    padding-top:16px;
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+  }
+  .explain.open{max-height:400px;}
+  .explain-inner{font-size:13.5px; line-height:1.55; color:var(--ink-soft);}
+  .explain-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--blue-mid);
+    margin-bottom:6px;
+    display:block;
+  }
+
+  .card-actions{
+    margin-top:20px;
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+  }
+  .btn{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:13.5px;
+    letter-spacing:0.02em;
+    border:none;
+    border-radius:2px;
+    padding:11px 20px;
+    cursor:pointer;
+    transition:transform .1s ease, filter .15s ease;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{
+    background:linear-gradient(180deg, var(--brass), var(--brass-deep));
+    color:#2a1c05;
+    box-shadow:0 2px 0 rgba(0,0,0,0.15);
+  }
+  .btn-primary:hover{filter:brightness(1.06);}
+  .btn-primary:disabled{opacity:0.4; cursor:not-allowed;}
+  .btn-ghost{
+    background:transparent;
+    border:1.5px solid var(--blue-mid);
+    color:var(--blue-mid);
+  }
+  .btn-ghost:hover{background:rgba(18,58,99,0.06);}
+
+  /* ---------- Results / certificate ---------- */
+  .cert{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:3px;
+    box-shadow:0 18px 40px rgba(4,14,28,0.45);
+    padding:32px 28px;
+    position:relative;
+    text-align:center;
+  }
+  .cert::before{
+    content:"";
+    position:absolute; inset:10px;
+    border:1.5px solid var(--brass-deep);
+    border-radius:2px;
+    pointer-events:none;
+  }
+  .cert-eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--blue-mid);
+    margin-bottom:8px;
+  }
+  .cert h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:24px;
+    margin:0 0 18px;
+  }
+  .cert-score{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:56px;
+    font-weight:700;
+    color:var(--blue-mid);
+    line-height:1;
+    margin:6px 0 4px;
+  }
+  .cert-score span{font-size:22px; color:var(--ink-soft); font-weight:500;}
+  .cert-tier{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-bottom:22px;
+  }
+  .cert-grid{
+    display:grid;
+    grid-template-columns:repeat(10, 1fr);
+    gap:5px;
+    margin:0 auto 24px;
+    max-width:480px;
+  }
+  .cert-grid .dot{
+    aspect-ratio:1;
+    border-radius:2px;
+    border:1px solid #c9bb95;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:9.5px;
+    color:#fff;
+    cursor:pointer;
+  }
+  .cert-grid .dot.right{background:var(--approve);}
+  .cert-grid .dot.wrong{background:var(--revise);}
+
+  .cert-actions{display:flex; justify-content:center; gap:10px; flex-wrap:wrap;}
+
+  .review-list{
+    margin-top:26px;
+    text-align:left;
+    display:none;
+    flex-direction:column;
+    gap:10px;
+  }
+  .review-list.open{display:flex;}
+  .review-item{
+    border:1px solid #d8cba9;
+    border-left-width:4px;
+    border-radius:2px;
+    padding:10px 12px;
+    font-size:12.5px;
+    background:var(--paper-2);
+  }
+  .review-item.right{border-left-color:var(--approve-deep);}
+  .review-item.wrong{border-left-color:var(--revise-deep);}
+  .review-item .q{font-weight:600; margin-bottom:4px; font-family:'Space Grotesk',sans-serif;}
+  .review-item .a{color:var(--ink-soft);}
+
+  footer{
+    text-align:center;
+    margin-top:22px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color:#7f97b3;
+    letter-spacing:0.04em;
+  }
+
+  @media (max-width:520px){
+    .toolbar{justify-content:center;}
+    .titleblock{grid-template-columns:1fr;}
+    .titleblock-main{border-right:none; border-bottom:1.5px solid var(--blue-line);}
+    .question-text{font-size:17px;}
+    .cert-score{font-size:44px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  /* ---------- Theme transition ---------- */
+  body, .card, .titleblock, .titleblock-main, .titleblock-meta, .ruler,
+  .cert, .option, .review-item, footer, .toolbar, .stamp, .timer-track{
+    transition: background-color .3s ease, border-color .3s ease, color .3s ease;
+  }
+
+  /* ---------- Toolbar ---------- */
+  .toolbar{
+    border:1.5px solid var(--blue-line);
+    border-radius:2px;
+    background:rgba(10,30,54,0.45);
+    padding:10px 14px;
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .order-toggle{
+    display:flex;
+    border:1px solid var(--blue-line);
+    border-radius:2px;
+    overflow:hidden;
+  }
+  .order-toggle .order-btn{
+    background:none;
+    border:none;
+    color:#aebfd4;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    padding:6px 10px;
+    cursor:pointer;
+    letter-spacing:0.04em;
+  }
+  .order-toggle .order-btn.active{
+    background:var(--brass);
+    color:#2a1c05;
+    font-weight:700;
+  }
+  .toolbar-restart{
+    background:none;
+    border:1px dashed var(--brass);
+    color:var(--brass);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    padding:6px 12px;
+    border-radius:2px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .toolbar-restart:hover{ background:rgba(211,162,77,0.12); }
+  .theme-toggle{
+    background:none;
+    border:1px solid var(--blue-line);
+    color:#cdd9ea;
+    font-size:14px;
+    width:30px; height:30px;
+    border-radius:2px;
+    cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    line-height:1;
+  }
+  .theme-toggle:hover{ border-color:var(--brass); color:var(--brass); }
+
+  /* ---------- Per-question timer ---------- */
+  .timer-row{ display:flex; align-items:center; gap:10px; margin:0 0 16px; }
+  .timer-row.hidden{ display:none; }
+  .timer-track{
+    flex:1; height:7px; border-radius:2px;
+    background: var(--timer-track);
+    overflow:hidden;
+  }
+  .timer-fill{
+    height:100%; width:100%;
+    background: var(--blue-line);
+    border-radius:2px;
+    transition: width 1s linear, background .3s ease;
+  }
+  .timer-text{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:13px;
+    color: var(--blue-mid);
+    min-width:24px;
+    text-align:right;
+    transition: color .3s ease;
+  }
+  .timer-row.urgent .timer-fill{ background: var(--revise); }
+  .timer-row.urgent .timer-text{ color: var(--revise-deep); animation: timerPulse 1s ease-in-out infinite; }
+  @keyframes timerPulse{ 0%,100%{ opacity:1; } 50%{ opacity:0.45; } }
+
+</style>
+</head>
+<body>
+<div style="max-width:760px;margin:0 auto 12px;font:12px 'IBM Plex Mono',monospace;"><a href="../index.html?source=jpt" style="color:#8fc4ea;text-decoration:underline;">&larr; Back to Professional Practice 💼👨🏻‍💼👔👷🏻‍♂️</a></div>
+
+
+<div class="sheet">
+
+  <div class="titleblock">
+    <div class="titleblock-main">
+      <div class="doc-label">UAP·IAPOA Doc. 210 — Situational &amp; Computation Set</div>
+      <h1>Methods of Compensation — Worked Problems</h1>
+      <div class="sub">15-item drafting sheet · fee brackets, schedules &amp; adjustment math</div>
+    </div>
+    <div class="titleblock-meta">
+      <div class="row"><span>DWG NO.</span><span id="meta-dwg">Q-01/50</span></div>
+      <div class="row"><span>SCALE</span><span>N.T.S.</span></div>
+      <div class="row"><span>SCORE</span><span id="meta-score">0/0</span></div>
+    </div>
+  </div>
+
+  <div class="toolbar" id="toolbar">
+    <div class="order-toggle">
+      <button id="orderInOrderBtn" class="order-btn active">In order</button>
+      <button id="orderShuffleBtn" class="order-btn">Shuffled</button>
+    </div>
+    <button class="toolbar-restart" id="toolbarRestartBtn">Restart sheet</button>
+    <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark mode">🌙</button>
+    <button class="theme-toggle" id="sfxToggleBtn" title="Mute / unmute sound effects">🔊</button>
+  </div>
+
+  <div class="ruler-wrap">
+    <div class="ruler-labels">
+      <span id="ruler-current">Item 1 of 50</span>
+      <span id="ruler-pct">0% complete</span>
+    </div>
+    <div class="ruler">
+      <div class="ruler-ticks" id="ruler-ticks"></div>
+    </div>
+  </div>
+
+  <div id="quiz-view">
+    <div class="card" id="card">
+      <div class="stamp" id="stamp" style="display:none;"></div>
+      <div class="card-tag" id="card-tag">SEC. —</div>
+      <div class="timer-row hidden" id="timer-row">
+        <div class="timer-track"><div class="timer-fill" id="timer-fill"></div></div>
+        <div class="timer-text" id="timer-text">60</div>
+      </div>
+      <p class="question-text" id="question-text"></p>
+      <div class="options" id="options"></div>
+      <div class="explain" id="explain">
+        <div class="explain-inner">
+          <span class="explain-label">Explanation &amp; source</span>
+          <span id="explain-text"></span>
+        </div>
+      </div>
+      <div class="card-actions">
+        <button class="btn btn-primary" id="next-btn" disabled>Check answer</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="results-view" style="display:none;"></div>
+
+  <footer>UAP·IAPOA DOC. 210 — DRAFTED FOR STUDY PURPOSES ONLY — NOT FOR OFFICIAL FILING</footer>
+</div>
+
+<script>
+const QUIZ_DATA = [{"num": 1, "question": "A Group 2 building (e.g., a school) has a PCC of P150,000,000. Using the DAEDS bracket (P5,500,000 + 4% of excess over P100.0M), what is the Professional Fee?", "options": [{"letter": "A", "text": "P7,500,000"}, {"letter": "B", "text": "P6,500,000"}, {"letter": "C", "text": "P8,500,000"}, {"letter": "D", "text": "P9,000,000"}], "correct": "A", "explanation": "Group 2 DAEDS bracket for P100M—P200M: P5,500,000 + 4% of excess over P100M. Excess = P50M; 4% × P50M = P2,000,000. Total = P5,500,000 + P2,000,000 = P7,500,000. [Source: Sec. 6.3, Group 2 DAEDS table]"}, {"num": 2, "question": "A Group 3 hospital project has a PCC of P300,000,000. Using the DAEDS bracket (P11,500,000 + 4% of excess over P200.0M), what is the Professional Fee?", "options": [{"letter": "A", "text": "P15,500,000"}, {"letter": "B", "text": "P16,500,000"}, {"letter": "C", "text": "P14,500,000"}, {"letter": "D", "text": "P13,500,000"}], "correct": "A", "explanation": "Group 3 DAEDS bracket for P200M—P500M: P11,500,000 + 4% of excess over P200M. Excess = P100M; 4% × P100M = P4,000,000. Total = P11,500,000 + P4,000,000 = P15,500,000. [Source: Sec. 6.3, Group 3 DAEDS table]"}, {"num": 3, "question": "An industrial plant (Group 1) is engaged under DADS with a PCC of P120,000,000. Using the DADS bracket (P2,700,000 + 1.8% of excess over P100.0M), what is the Professional Fee?", "options": [{"letter": "A", "text": "P2,880,000"}, {"letter": "B", "text": "P3,060,000"}, {"letter": "C", "text": "P3,240,000"}, {"letter": "D", "text": "P3,600,000"}], "correct": "B", "explanation": "Group 1 DADS bracket for P100M—P200M: P2,700,000 + 1.8% of excess over P100M. Excess = P20M; 1.8% × P20M = P360,000. Total = P2,700,000 + P360,000 = P3,060,000. [Source: Sec. 6.3, Group 1 DADS table]"}, {"num": 4, "question": "A single-detached residence (Group 4) has a PCC of P20,000,000 and is engaged under DADS (6% of PCC). What is the Professional Fee?", "options": [{"letter": "A", "text": "P1,200,000"}, {"letter": "B", "text": "P1,000,000"}, {"letter": "C", "text": "P2,000,000"}, {"letter": "D", "text": "P1,600,000"}], "correct": "A", "explanation": "Group 4 DADS is a flat 6% of PCC (architecture-only scope). 6% × P20,000,000 = P1,200,000. [Source: Sec. 6.3, Group 4]"}, {"num": 5, "question": "A developer builds 4 identical retail branches (Group 6, Repetitive Construction) using the same unamended plans. If the full RPF for one building of this type is P5,000,000, what is the fee for the 4th building?", "options": [{"letter": "A", "text": "P2,500,000"}, {"letter": "B", "text": "P1,500,000"}, {"letter": "C", "text": "P2,000,000"}, {"letter": "D", "text": "P1,000,000"}], "correct": "B", "explanation": "Under Group 6, the 4th building and succeeding units are billed at 30% of the RPF for that building type. 30% × P5,000,000 = P1,500,000. [Source: Sec. 6.3, Group 6]"}, {"num": 6, "question": "An existing office building (Group 2) is being renovated. The renovation's PCC is P40,000,000, and the applicable base DAEDS rate for Group 2 (PCC ≤ P50M) is 6%. Applying the Group 9 renovation surcharge, what is the total Professional Fee?", "options": [{"letter": "A", "text": "P4,000,000"}, {"letter": "B", "text": "P3,000,000"}, {"letter": "C", "text": "P3,600,000"}, {"letter": "D", "text": "P2,400,000"}], "correct": "C", "explanation": "The building is a Group 2 type (base DAEDS rate 6%), and renovation work under Group 9 is surcharged 150% of the applicable RPF: 6% × 1.5 = 9%. 9% × P40,000,000 = P3,600,000. [Source: Sec. 6.3, Groups 2 and 9]"}, {"num": 7, "question": "An Architect is summoned as an expert witness for 3 scheduled court hearings, but 2 of the 3 hearings are postponed and do not push through. What is the minimum total fee owed for all 3 appearances?", "options": [{"letter": "A", "text": "P5,000"}, {"letter": "B", "text": "P15,000"}, {"letter": "C", "text": "P0 (no fee, since hearings did not push through)"}, {"letter": "D", "text": "P10,000"}], "correct": "B", "explanation": "As an expert witness, the fee is not less than P5,000.00 per appearance, regardless of whether the scheduled hearing took place. 3 appearances × P5,000 = P15,000. [Source: Sec. 6.3, Group 10]"}, {"num": 8, "question": "The total Professional Fee (PF) for a project is P10,000,000. What is the cumulative amount due to the Architect upon completion of the Schematic Design phase?", "options": [{"letter": "A", "text": "P2,000,000"}, {"letter": "B", "text": "P500,000"}, {"letter": "C", "text": "P4,000,000"}, {"letter": "D", "text": "P1,500,000"}], "correct": "A", "explanation": "Cumulative payment after Schematic Design completion is 20% of PF (5% signing + 15% schematic). 20% × P10,000,000 = P2,000,000. [Source: Sec. 6.4]"}, {"num": 9, "question": "The total PF for a project is P8,000,000. Within 15 days after the contract is awarded to the winning Constructor, what cumulative amount should the Architect have received?", "options": [{"letter": "A", "text": "P4,000,000"}, {"letter": "B", "text": "P7,200,000"}, {"letter": "C", "text": "P6,400,000"}, {"letter": "D", "text": "P8,000,000"}], "correct": "B", "explanation": "Within 15 days after award to the winning Constructor, cumulative payment reaches 90% of PF (based on the winning bid price). 90% × P8,000,000 = P7,200,000. [Source: Sec. 6.4]"}, {"num": 10, "question": "(Unit Cost Method): An office building has 5,000 sqm GFA at a historical PCC of P25,000/sqm and a 5% PCC fee, plus 1,000 sqm non-GFA area billed at 50% of the GFA rate. What is the TOTAL fee (GFA + non-GFA)?", "options": [{"letter": "A", "text": "P6,250,000"}, {"letter": "B", "text": "P7,000,000"}, {"letter": "C", "text": "P6,500,000"}, {"letter": "D", "text": "P6,875,000"}], "correct": "D", "explanation": "GFA fee: P25,000 × 0.05 = P1,250/sqm × 5,000 sqm = P6,250,000. Non-GFA fee (50% of GFA rate): P625/sqm × 1,000 sqm = P625,000. Total = P6,250,000 + P625,000 = P6,875,000. [Source: Sec. 4.1.2, Unit Cost Method]"}, {"num": 11, "question": "(Group 7, Housing Project — DAEDS): A housing project has 15 identical units. If the RPF for the 1st unit alone is P1,000,000, what is the TOTAL fee for all 15 units?", "options": [{"letter": "A", "text": "P6,500,000"}, {"letter": "B", "text": "P15,000,000"}, {"letter": "C", "text": "P10,000,000"}, {"letter": "D", "text": "P7,500,000"}], "correct": "D", "explanation": "Units 2—10 (9 additional units) at 50% of RPF each: 9 × (0.5 × P1,000,000) = P4,500,000, plus the 1st unit's P1,000,000 = P5,500,000 for 10 units. For units 11—15 (5 additional units) at 40% of RPF each: 5 × (0.4 × P1,000,000) = P2,000,000. Total for 15 units = P5,500,000 + P2,000,000 = P7,500,000. [Source: Sec. 6.3, Group 7]"}, {"num": 12, "question": "A Group 2 building has a PCC of P40,000,000 (within the ≤P50M bracket, base DAEDS rate 6%). The Architect is a Level 2 Specialist (+1.00%), the project uses BIM (+0.10%), and submittals are fast-tracked (+0.10%). What is the total Professional Fee after adjustments?", "options": [{"letter": "A", "text": "P2,400,000"}, {"letter": "B", "text": "P2,880,000"}, {"letter": "C", "text": "P3,600,000"}, {"letter": "D", "text": "P3,200,000"}], "correct": "B", "explanation": "Sub-total rate = 6.00% base + 1.00% (Level 2 Specialist) + 0.10% (BIM) + 0.10% (fast-track) = 7.20%. Since PCC ≤ P50M, the fee is simply 7.20% × P40,000,000 = P2,880,000. [Source: Sec. 6.3, Group 2; Annex D-style adjustment factors]"}, {"num": 13, "question": "A hotel (Group 3) is engaged under DADS with a PCC of P90,000,000. Using the DADS bracket (P2,100,000 + 3.6% of excess over P50.0M), what is the Professional Fee?", "options": [{"letter": "A", "text": "P3,540,000"}, {"letter": "B", "text": "P3,240,000"}, {"letter": "C", "text": "P3,780,000"}, {"letter": "D", "text": "P4,020,000"}], "correct": "A", "explanation": "Group 3 DADS bracket for P50M—P100M: P2,100,000 + 3.6% of excess over P50M. Excess = P40M; 3.6% × P40M = P1,440,000. Total = P2,100,000 + P1,440,000 = P3,540,000. [Source: Sec. 6.3, Group 3 DADS table]"}, {"num": 14, "question": "A manufacturing plant (Group 1) is engaged under DADS with a PCC of P250,000,000. Using the DADS bracket (P4,500,000 + 1.2% of excess over P200.0M), what is the Professional Fee?", "options": [{"letter": "A", "text": "P5,100,000"}, {"letter": "B", "text": "P4,900,000"}, {"letter": "C", "text": "P5,000,000"}, {"letter": "D", "text": "P4,800,000"}], "correct": "A", "explanation": "Group 1 DADS bracket for P200M—P500M: P4,500,000 + 1.2% of excess over P200M. Excess = P50M; 1.2% × P50M = P600,000. Total = P4,500,000 + P600,000 = P5,100,000. [Source: Sec. 6.3, Group 1 DADS table]"}, {"num": 15, "question": "A PCA is engaged on a P50,000/month Retainer for 6 months. During that period, the Client also requests one additional consultation outside the retainer's scope, billed separately at P1,000/hour for 8 hours. What is the PCA's TOTAL compensation for the period?", "options": [{"letter": "A", "text": "P308,000"}, {"letter": "B", "text": "P350,000"}, {"letter": "C", "text": "P300,000"}, {"letter": "D", "text": "P8,000"}], "correct": "A", "explanation": "Retainer covers the minimum service obligation: 6 months × P50,000 = P300,000. The additional consultation (outside the retainer scope) is billed separately on an hourly basis: 8 hours × P1,000/hr = P8,000. Total compensation = P300,000 + P8,000 = P308,000. [Source: Sec. 4.3.13, Retainer]"}];
+
+// Precompute the correct option's original index for each question
+const CORRECT_INDEX = QUIZ_DATA.map(q => q.options.findIndex(o => o.letter === q.correct));
+
+let order = QUIZ_DATA.map((_, i) => i);
+let shuffleMode = false;
+let current = 0;
+let answered = false;
+let selectedIndex = null;
+const results = [];   // parallel to order: {isCorrect, selectedOriginal, correctOriginal, perm, timedOut}
+let optOrders = [];   // parallel to order: cached shuffled option-index permutation per position
+let muted = false;
+
+const dwgEl = document.getElementById('meta-dwg');
+const scoreEl = document.getElementById('meta-score');
+const rulerCurrent = document.getElementById('ruler-current');
+const rulerPct = document.getElementById('ruler-pct');
+const rulerTicksEl = document.getElementById('ruler-ticks');
+const cardTag = document.getElementById('card-tag');
+const questionText = document.getElementById('question-text');
+const optionsEl = document.getElementById('options');
+const explainEl = document.getElementById('explain');
+const explainText = document.getElementById('explain-text');
+const nextBtn = document.getElementById('next-btn');
+const stampEl = document.getElementById('stamp');
+const quizView = document.getElementById('quiz-view');
+const resultsView = document.getElementById('results-view');
+const timerRow = document.getElementById('timer-row');
+const timerFillEl = document.getElementById('timer-fill');
+const timerTextEl = document.getElementById('timer-text');
+const orderInOrderBtn = document.getElementById('orderInOrderBtn');
+const orderShuffleBtn = document.getElementById('orderShuffleBtn');
+const toolbarRestartBtn = document.getElementById('toolbarRestartBtn');
+const themeToggleBtn = document.getElementById('themeToggleBtn');
+const sfxToggleBtn = document.getElementById('sfxToggleBtn');
+
+function buildTicks(){
+  rulerTicksEl.innerHTML = '';
+  order.forEach((_, i) => {
+    const t = document.createElement('div');
+    t.className = 'ruler-tick';
+    t.id = 'tick-' + i;
+    rulerTicksEl.appendChild(t);
+  });
+}
+
+function tagFor(q){
+  const m = q.explanation.match(/\[Source:\s*([^\]]+)\]/i);
+  const src = m ? m[1].split(',')[0].trim() : 'Worked Problem';
+  return 'Computation · ' + src + ' · Item ' + q.num;
+}
+
+function letter(i){ return String.fromCharCode(65 + i); }
+
+function shuffle(arr){
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function freshOrder(){
+  const base = QUIZ_DATA.map((_, i) => i);
+  return shuffleMode ? shuffle(base) : base;
+}
+
+function getOptOrder(pos, q){
+  if (!optOrders[pos]) {
+    optOrders[pos] = shuffle(q.options.map((_, i) => i));
+  }
+  return optOrders[pos];
+}
+
+// ============== AUDIO (correct / wrong feedback) ==============
+let audioCtx = null;
+function getAudioCtx(){
+  if (!audioCtx) {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (AC) audioCtx = new AC();
+  }
+  return audioCtx;
+}
+function playTone(freq, duration, type, delay){
+  if (muted) return;
+  const ctx = getAudioCtx();
+  if (!ctx) return;
+  try{
+    const start = ctx.currentTime + (delay || 0);
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = type || 'sine';
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.0001, start);
+    gain.gain.exponentialRampToValueAtTime(0.16, start + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(start);
+    osc.stop(start + duration + 0.02);
+  } catch(e){ /* ignore audio errors */ }
+}
+function playCorrectSfx(){
+  playTone(880, 0.14, 'sine', 0);
+  playTone(1174, 0.18, 'sine', 0.11);
+}
+function playWrongSfx(){
+  playTone(196, 0.28, 'sawtooth', 0);
+}
+function playTimerTick(){
+  playTone(660, 0.05, 'square', 0);
+}
+
+// ============== PER-QUESTION TIMER ==============
+const TIME_LIMIT = 60;
+let timeLeft = TIME_LIMIT;
+let timerInterval = null;
+
+function stopTimer(){
+  if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+}
+
+function updateTimerDisplay(){
+  timerTextEl.textContent = timeLeft;
+  timerFillEl.style.width = Math.max(0, (timeLeft / TIME_LIMIT) * 100) + '%';
+  timerRow.classList.toggle('urgent', timeLeft <= 10);
+}
+
+function startTimer(){
+  stopTimer();
+  timeLeft = TIME_LIMIT;
+  timerRow.classList.remove('hidden');
+  updateTimerDisplay();
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    if (timeLeft <= 10 && timeLeft > 0) playTimerTick();
+    if (timeLeft <= 0) {
+      timeLeft = 0;
+      updateTimerDisplay();
+      stopTimer();
+      handleTimeout();
+    } else {
+      updateTimerDisplay();
+    }
+  }, 1000);
+}
+
+function render(){
+  const qIndex = order[current];
+  const q = QUIZ_DATA[qIndex];
+  answered = false;
+  selectedIndex = null;
+  stampEl.style.display = 'none';
+  stampEl.className = 'stamp';
+  explainEl.classList.remove('open');
+  nextBtn.disabled = true;
+  nextBtn.textContent = 'Check answer';
+
+  dwgEl.textContent = 'Q-' + String(current + 1).padStart(2, '0') + '/' + order.length;
+  rulerCurrent.textContent = 'Item ' + (current + 1) + ' of ' + order.length;
+  rulerPct.textContent = Math.round((current / order.length) * 100) + '% complete';
+  cardTag.textContent = tagFor(q);
+  questionText.textContent = q.question;
+
+  const perm = getOptOrder(current, q);
+  optionsEl.innerHTML = '';
+  perm.forEach((origIdx, displayI) => {
+    const opt = q.options[origIdx];
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.dataset.origIndex = origIdx;
+    btn.innerHTML = '<span class="letter">' + letter(displayI) + '</span><span class="opt-text">' + opt.text + '</span>';
+    btn.addEventListener('click', () => selectOption(origIdx));
+    optionsEl.appendChild(btn);
+  });
+
+  updateScore();
+  startTimer();
+}
+
+function selectOption(origIdx){
+  if (answered) return;
+  stopTimer();
+  answered = true;
+  selectedIndex = origIdx;
+  const qIndex = order[current];
+  const q = QUIZ_DATA[qIndex];
+  const correctOriginal = CORRECT_INDEX[qIndex];
+  const isCorrect = origIdx === correctOriginal;
+  const perm = optOrders[current];
+  results[current] = { isCorrect, selectedOriginal: origIdx, correctOriginal, perm: perm.slice(), timedOut: false };
+
+  isCorrect ? playCorrectSfx() : playWrongSfx();
+
+  document.querySelectorAll('.option').forEach(btn => {
+    btn.classList.add('locked');
+    const oi = parseInt(btn.dataset.origIndex, 10);
+    if (oi === correctOriginal) btn.classList.add('correct');
+    else if (oi === origIdx) btn.classList.add('wrong');
+    else btn.classList.add('dim');
+  });
+
+  stampEl.style.display = 'block';
+  if (isCorrect){
+    stampEl.textContent = 'APPROVED';
+    stampEl.classList.add('approve');
+  } else {
+    stampEl.textContent = 'REVISE';
+    stampEl.classList.add('revise');
+  }
+
+  explainText.textContent = q.explanation;
+  explainEl.classList.add('open');
+
+  const tick = document.getElementById('tick-' + current);
+  tick.classList.add(isCorrect ? 'answered-correct' : 'answered-wrong');
+
+  nextBtn.disabled = false;
+  nextBtn.textContent = current === order.length - 1 ? 'See results' : 'Next item →';
+
+  updateScore();
+  updateRulerFill();
+}
+
+function handleTimeout(){
+  if (answered) return;
+  answered = true;
+  const qIndex = order[current];
+  const q = QUIZ_DATA[qIndex];
+  const correctOriginal = CORRECT_INDEX[qIndex];
+  const perm = optOrders[current];
+  results[current] = { isCorrect: false, selectedOriginal: -1, correctOriginal, perm: perm.slice(), timedOut: true };
+
+  playWrongSfx();
+
+  document.querySelectorAll('.option').forEach(btn => {
+    btn.classList.add('locked');
+    const oi = parseInt(btn.dataset.origIndex, 10);
+    if (oi === correctOriginal) btn.classList.add('correct');
+    else btn.classList.add('dim');
+  });
+
+  stampEl.style.display = 'block';
+  stampEl.textContent = "TIME'S UP";
+  stampEl.classList.add('revise');
+
+  explainText.textContent = q.explanation;
+  explainEl.classList.add('open');
+
+  const tick = document.getElementById('tick-' + current);
+  tick.classList.add('answered-wrong');
+
+  nextBtn.disabled = false;
+  nextBtn.textContent = current === order.length - 1 ? 'See results' : 'Next item →';
+
+  updateScore();
+  updateRulerFill();
+}
+
+function updateScore(){
+  const correctCount = results.filter(r => r && r.isCorrect).length;
+  const answeredCount = results.filter(r => r).length;
+  scoreEl.textContent = correctCount + '/' + answeredCount;
+  rulerPct.textContent = Math.round((answeredCount / order.length) * 100) + '% complete';
+}
+
+function updateRulerFill(){
+  const answeredCount = results.filter(r => r).length;
+  document.querySelector('.ruler-fill') || initFill();
+  const fill = document.querySelector('.ruler-fill');
+  fill.style.width = (answeredCount / order.length * 100) + '%';
+}
+
+function initFill(){
+  const fill = document.createElement('div');
+  fill.className = 'ruler-fill';
+  document.querySelector('.ruler').prepend(fill);
+}
+
+nextBtn.addEventListener('click', () => {
+  if (!answered) return;
+  stopTimer();
+  if (current < order.length - 1){
+    current++;
+    render();
+  } else {
+    showResults();
+  }
+});
+
+function showResults(){
+  stopTimer();
+  timerRow.classList.add('hidden');
+  quizView.style.display = 'none';
+  resultsView.style.display = 'block';
+  const correctCount = results.filter(r => r && r.isCorrect).length;
+  const total = order.length;
+  const pct = Math.round(correctCount / total * 100);
+
+  let tier = 'Needs revision';
+  if (pct >= 90) tier = 'Ready to seal & sign';
+  else if (pct >= 75) tier = 'Approved with minor notes';
+  else if (pct >= 50) tier = 'Draft — revise & resubmit';
+
+  const dotsHtml = results.map((r, i) => {
+    const cls = r && r.isCorrect ? 'right' : 'wrong';
+    return '<div class="dot ' + cls + '" title="Item ' + (i + 1) + '" data-idx="' + i + '">' + (i + 1) + '</div>';
+  }).join('');
+
+  resultsView.innerHTML = `
+    <div class="cert">
+      <div class="cert-eyebrow">Certificate of Completion</div>
+      <h2>Doc. 210 — Situational &amp; Computation Worksheet</h2>
+      <div class="cert-score">${correctCount}<span> / ${total}</span></div>
+      <div class="cert-tier">${pct}% correct — ${tier}</div>
+      <div class="cert-grid">${dotsHtml}</div>
+      <div class="cert-actions">
+        <button class="btn btn-primary" id="restart-btn">Restart sheet</button>
+        <button class="btn btn-ghost" id="review-btn">Review all items</button>
+      </div>
+      <div class="review-list" id="review-list"></div>
+    </div>
+  `;
+
+  document.getElementById('restart-btn').addEventListener('click', fullRestart);
+  document.getElementById('review-btn').addEventListener('click', toggleReview);
+  document.querySelectorAll('.cert-grid .dot').forEach(d => {
+    d.addEventListener('click', () => {
+      toggleReview(true);
+      const idx = parseInt(d.dataset.idx, 10);
+      setTimeout(() => {
+        const item = document.getElementById('review-item-' + idx);
+        if (item) item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 50);
+    });
+  });
+}
+
+function toggleReview(forceOpen){
+  const list = document.getElementById('review-list');
+  const btn = document.getElementById('review-btn');
+  const willOpen = forceOpen === true ? true : !list.classList.contains('open');
+  if (willOpen && list.innerHTML === ''){
+    list.innerHTML = order.map((qIdx, i) => {
+      const q = QUIZ_DATA[qIdx];
+      const r = results[i];
+      const correctOriginal = CORRECT_INDEX[qIdx];
+      const perm = (r && r.perm) ? r.perm : q.options.map((_, x) => x);
+      const correctDisplayLetter = letter(perm.indexOf(correctOriginal));
+      const yourLetter = (r && !r.timedOut) ? letter(perm.indexOf(r.selectedOriginal)) : '—';
+      const cls = r && r.isCorrect ? 'right' : 'wrong';
+      return `<div class="review-item ${cls}" id="review-item-${i}">
+        <div class="q">${q.num}. ${q.question}</div>
+        <div class="a">Correct: ${correctDisplayLetter}. ${q.options[correctOriginal].text}
+        ${(!r || !r.isCorrect) ? ' — your answer: ' + yourLetter : ''}</div>
+      </div>`;
+    }).join('');
+  }
+  list.classList.toggle('open', willOpen);
+  if (btn) btn.textContent = willOpen ? 'Hide review' : 'Review all items';
+}
+
+function fullRestart(){
+  stopTimer();
+  order = freshOrder();
+  optOrders = [];
+  results.length = 0;
+  current = 0;
+  quizView.style.display = 'block';
+  resultsView.style.display = 'none';
+  buildTicks();
+  initFill();
+  const fill = document.querySelector('.ruler-fill');
+  if (fill) fill.style.width = '0%';
+  scoreEl.textContent = '0/0';
+  render();
+}
+
+toolbarRestartBtn.addEventListener('click', fullRestart);
+
+orderInOrderBtn.addEventListener('click', () => {
+  if (shuffleMode){
+    shuffleMode = false;
+    orderInOrderBtn.classList.add('active');
+    orderShuffleBtn.classList.remove('active');
+    fullRestart();
+  }
+});
+orderShuffleBtn.addEventListener('click', () => {
+  if (!shuffleMode){
+    shuffleMode = true;
+    orderShuffleBtn.classList.add('active');
+    orderInOrderBtn.classList.remove('active');
+    fullRestart();
+  }
+});
+
+themeToggleBtn.addEventListener('click', () => {
+  const isDark = document.body.classList.toggle('dark-mode');
+  themeToggleBtn.textContent = isDark ? '☀️' : '🌙';
+});
+
+sfxToggleBtn.addEventListener('click', () => {
+  muted = !muted;
+  sfxToggleBtn.textContent = muted ? '🔇' : '🔊';
+});
+
+buildTicks();
+initFill();
+render();
+
+</script>
+
+<script src="../../../assets/module-progress.js"></script>
+<script>
+// ---- Auto-generated by the admin "Add Module" tool: reports this quiz's ----
+// ---- answers into the shared LEAProgress tracker, without touching the  ----
+// ---- quiz's own markup, styling, or behavior.                           ----
+(function(){
+  var LEA_SUBJECT_ID = "professional-practice";
+  var LEA_MODULE_ID = "spp-fees-worked-problems";
+  if (typeof selectOption === 'function') {
+    var _leaOrigSelectOption = selectOption;
+    selectOption = function(origIdx){
+      _leaOrigSelectOption(origIdx);
+      try {
+        var r = results[current];
+        if (r && r.isCorrect && window.LEAProgress) {
+          LEAProgress.markMastered(LEA_SUBJECT_ID, LEA_MODULE_ID, order[current]);
+        }
+      } catch(e){}
+    };
+  }
+  if (typeof showResults === 'function') {
+    var _leaOrigShowResults = showResults;
+    showResults = function(){
+      _leaOrigShowResults();
+      try {
+        if (window.LEAProgress) {
+          var correctCount = results.filter(function(r){ return r && r.isCorrect; }).length;
+          LEAProgress.recordRunScore(LEA_SUBJECT_ID, LEA_MODULE_ID, correctCount, order.length);
+        }
+      } catch(e){}
+    };
+  }
+})();
+</script>
+</body>
+</html>
