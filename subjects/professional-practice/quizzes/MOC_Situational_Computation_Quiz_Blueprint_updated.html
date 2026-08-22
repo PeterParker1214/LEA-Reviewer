@@ -1049,5 +1049,77 @@ render();
   }
 })();
 </script>
+<script src="../../../assets/quiz-resume.js"></script>
+<script>
+(function(){
+  var LEA_RESUME_SUBJECT = 'professional-practice';
+  var LEA_RESUME_MODULE = 'spp-fees-worked-problems';
+
+  function leaPersist(){
+    if (!window.LEAResume) return;
+    var answeredCount = results.filter(function(r){ return r; }).length;
+    if (answeredCount === 0 || answeredCount >= order.length) {
+      LEAResume.clear(LEA_RESUME_SUBJECT, LEA_RESUME_MODULE);
+    } else {
+      LEAResume.save(LEA_RESUME_SUBJECT, LEA_RESUME_MODULE, {
+        answeredCount: answeredCount,
+        total: order.length,
+        position: current + 1,
+        payload: {
+          order: order,
+          shuffleMode: shuffleMode,
+          current: current,
+          results: results,
+          optOrders: optOrders
+        }
+      });
+    }
+  }
+
+  if (typeof render === 'function') {
+    var _leaOrigRender = render;
+    render = function(){
+      _leaOrigRender();
+      try { leaPersist(); } catch(e){}
+    };
+  }
+
+  if (typeof showResults === 'function') {
+    var _leaOrigShowResults = showResults;
+    showResults = function(){
+      _leaOrigShowResults();
+      try { if (window.LEAResume) LEAResume.clear(LEA_RESUME_SUBJECT, LEA_RESUME_MODULE); } catch(e){}
+    };
+  }
+
+  if (window.LEAResume) {
+    LEAResume.promptIfUnfinished(LEA_RESUME_SUBJECT, LEA_RESUME_MODULE, {
+      onResume: function(state){
+        order = state.order;
+        shuffleMode = !!state.shuffleMode;
+        current = Math.min(state.current, order.length - 1);
+        results.length = 0;
+        (state.results || []).forEach(function(r, i){ if (r) results[i] = r; });
+        optOrders = state.optOrders || [];
+        var inOrderBtn = document.getElementById('orderInOrderBtn');
+        var shuffleBtn = document.getElementById('orderShuffleBtn');
+        if (inOrderBtn && shuffleBtn) {
+          inOrderBtn.classList.toggle('active', !shuffleMode);
+          shuffleBtn.classList.toggle('active', shuffleMode);
+        }
+        if (typeof buildTicks === 'function') buildTicks();
+        render();
+        results.forEach(function(r, i){
+          if (!r) return;
+          var tick = document.getElementById('tick-' + i);
+          if (tick) tick.classList.add(r.isCorrect ? 'answered-correct' : 'answered-wrong');
+        });
+        if (typeof updateRulerFill === 'function') updateRulerFill();
+      },
+      onStartOver: function(){ /* quiz is already showing a fresh question 1 */ }
+    });
+  }
+})();
+</script>
 </body>
 </html>

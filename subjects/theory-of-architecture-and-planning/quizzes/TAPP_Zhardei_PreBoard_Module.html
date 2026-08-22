@@ -908,5 +908,80 @@ initTheme();
 buildTesserae();
 renderQuestion();
 </script>
+<script src="../../../assets/quiz-resume.js"></script>
+<script>
+(function(){
+  var LEA_RESUME_SUBJECT = 'theory-of-architecture-and-planning';
+  var LEA_RESUME_MODULE = 'zhardei-preboard';
+
+  function leaSnapshot(){
+    return {
+      order: order,
+      answersLog: answersLog,
+      frontier: frontier,
+      pos: pos,
+      isRetryRun: isRetryRun,
+      shuffleMode: shuffleMode,
+      optOrders: optOrders,
+      everMissed: Array.from(everMissed)
+    };
+  }
+
+  function leaPersist(){
+    if (!window.LEAResume) return;
+    var answeredCount = answersLog.filter(function(a){ return a; }).length;
+    if (answeredCount === 0 || answeredCount >= order.length) {
+      LEAResume.clear(LEA_RESUME_SUBJECT, LEA_RESUME_MODULE);
+    } else {
+      LEAResume.save(LEA_RESUME_SUBJECT, LEA_RESUME_MODULE, {
+        answeredCount: answeredCount,
+        total: order.length,
+        position: pos + 1,
+        payload: leaSnapshot()
+      });
+    }
+  }
+
+  if (typeof renderQuestion === 'function') {
+    var _leaOrigRenderQuestion = renderQuestion;
+    renderQuestion = function(){
+      _leaOrigRenderQuestion();
+      try { leaPersist(); } catch(e){}
+    };
+  }
+
+  if (typeof showResults === 'function') {
+    var _leaOrigShowResults = showResults;
+    showResults = function(){
+      _leaOrigShowResults();
+      try { if (window.LEAResume) LEAResume.clear(LEA_RESUME_SUBJECT, LEA_RESUME_MODULE); } catch(e){}
+    };
+  }
+
+  if (window.LEAResume) {
+    LEAResume.promptIfUnfinished(LEA_RESUME_SUBJECT, LEA_RESUME_MODULE, {
+      onResume: function(state){
+        order = state.order;
+        answersLog = state.answersLog;
+        frontier = state.frontier;
+        pos = Math.min(state.pos, order.length - 1);
+        isRetryRun = !!state.isRetryRun;
+        shuffleMode = !!state.shuffleMode;
+        optOrders = state.optOrders || new Array(order.length).fill(null);
+        everMissed = new Set(state.everMissed || []);
+        var inOrderBtn = document.getElementById('orderInOrderBtn');
+        var shuffleBtn = document.getElementById('orderShuffleBtn');
+        if (inOrderBtn && shuffleBtn) {
+          inOrderBtn.classList.toggle('active', !shuffleMode);
+          shuffleBtn.classList.toggle('active', shuffleMode);
+        }
+        if (typeof buildTesserae === 'function') buildTesserae();
+        renderQuestion();
+      },
+      onStartOver: function(){ /* quiz is already showing a fresh question 1 */ }
+    });
+  }
+})();
+</script>
 </body>
 </html>
