@@ -520,8 +520,8 @@ function wireOverallReset(subject){
 
 function renderModeRows(subject, rollup, mode){
   const rows = [
-    { id:'study', no:'01', name:'Study', cap:'Full explanation after every answer', num: (rollup.total > 0 ? Math.round((rollup.mastered/rollup.total)*100) + '%' : '—'), disabled:false },
-    { id:'exam', no:'02', name:'Mock exam', cap:'Timed, feedback withheld until submit', num: String(subject.modules.length), disabled:false },
+    { id:'study', no:'01', name:'Study mode', cap:'Answer → explanation, no clock', num: (rollup.total > 0 ? Math.round((rollup.mastered/rollup.total)*100) + '%' : '—'), disabled:false },
+    { id:'exam', no:'02', name:'Mock exam', cap:'Full 200 · 5 h, or a 50-item sim', num: String(subject.modules.length), disabled:false },
     { id:'drill', no:'03', name:'Drill my misses', cap: rollup.toDrill > 0 ? (rollup.total - rollup.mastered) + ' unmastered · ' + rollup.flagged + ' flagged' : 'All caught up', num: String(rollup.toDrill), disabled: rollup.toDrill === 0 }
   ];
   return '<div class="mode-rows">' + rows.map(r =>

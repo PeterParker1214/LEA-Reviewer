@@ -1393,11 +1393,14 @@ document.getElementById('mapClose').addEventListener('click', closeMap);
 document.getElementById('mapOverlay').addEventListener('click', (e) => { if(e.target.id === 'mapOverlay') closeMap(); });
 
 // ================= Report sheet (offline-first queue) =================
+// The four categories the frame specifies, verbatim. "Other" is deliberately
+// absent: without a required free-text field it produces reports nobody can
+// act on, so every reason here names something specific enough to fix.
 const REPORT_REASONS = [
-  'Key seems wrong',
-  'Confusing or unclear wording',
-  'Typo or formatting issue',
-  'Other'
+  'Answer key looks wrong',
+  'Typo or unclear wording',
+  'Figure missing or broken',
+  'Duplicate of another item'
 ];
 let selectedReason = null;
 
