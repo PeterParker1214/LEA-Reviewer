@@ -296,6 +296,14 @@
   .rt-pct.low{ color:var(--bad); }
   .rt-pct.full{ color:var(--good); }
 
+  /* 3a streak chip and 3c exam timer: 44px, gold-bordered, in the header. */
+  .streak-chip{ display:flex; align-items:center; gap:5px; height:44px; padding:0 11px;
+    border:1px solid rgba(224,168,63,0.45); color:var(--gold-bright);
+    font-family:var(--font-mono); font-size:12px; font-weight:600; flex-shrink:0; }
+  .exam-timer{ display:inline-flex; align-items:center; gap:7px; height:44px; padding:0 12px;
+    background:var(--bg-panel); border:1px solid rgba(224,168,63,0.45); color:var(--gold-bright);
+    font-family:var(--font-mono); font-size:15px; font-weight:600; letter-spacing:.04em; }
+
   .state-card{
     background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:28px 22px;
     text-align:center; color:var(--muted); font-family:var(--font-mono); font-size:13px; line-height:1.7;
@@ -697,11 +705,12 @@ function examStatusBar(){
   const answeredCount = answersLog.filter(a => a && a.selected != null && a.selected !== -1).length;
   return (
     '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin:2px 0 8px;flex-wrap:wrap;">' +
-      '<span class="clock-chip" id="examTimerPill" style="border-style:solid;border-color:var(--gold);color:var(--gold-bright);">' + formatDuration(remaining) + '</span>' +
+      '<span class="exam-timer" id="examTimerPill">' + formatDuration(remaining) + '</span>' +
       '<div class="counts-text" style="white-space:nowrap;">' + answeredCount + ' answered · ' + flaggedSet.size + ' flagged · ' + (order.length - answeredCount) + ' left</div>' +
     '</div>' +
-    '<div style="height:4px;border-radius:2px;background:var(--bg-panel-2);overflow:hidden;margin-bottom:10px;"><div style="height:100%;width:' + pct + '%;background:var(--gold);"></div></div>' +
-    '<div class="clock-chip" style="display:block;text-align:center;margin-bottom:14px;">No feedback until you submit</div>'
+    // Frame 3c shows no progress bar during an exam — the clock is the only
+    // pacing signal it gives, and that reads as deliberate rather than omitted.
+    '<div class="clock-chip blue" style="display:block;text-align:center;margin-bottom:14px;padding:7px 10px;">No feedback until you submit</div>'
   );
 }
 
@@ -1769,13 +1778,28 @@ function multiScopeLabel(){
 function renderMultiHeader(){
   const cell = pool[pos];
   const title = MULTI_KIND_LABELS[multiKind] || 'Drill';
+  // Frame 3a puts the scope in the kicker and the progress in the title —
+  // "Mixed subjects" over "Daily drill · 6 / 20" — rather than repeating the
+  // mode name on both lines.
+  const isDaily = multiKind === 'drill-daily';
+  const kicker = isDaily ? multiScopeLabel() : (title + ' · ' + multiScopeLabel());
+  const main = isDaily
+    ? (title + ' · ' + (pos+1) + ' / ' + pool.length)
+    : ('Question ' + (pos+1) + ' / ' + pool.length);
+  // The streak chip appears only where the frame draws it, and only when
+  // there is a streak — it reads the stored value rather than guessing one.
+  const streak = isDaily ? (LEAProgress.loadMeta('streak') || {}) : null;
+  const streakChip = (streak && streak.current > 0)
+    ? '<span class="streak-chip" title="Current daily-drill streak">' + svgFlame() + streak.current + '</span>'
+    : '';
   return (
     '<div class="run-header">' +
       '<button class="icon-btn" id="backBtn" title="Back home">' + svgArrowLeft() + '</button>' +
       '<div class="header-title">' +
-        '<div class="h-sub">' + escapeHtml(title) + ' · ' + escapeHtml(multiScopeLabel()) + '</div>' +
-        '<div class="h-main">Question ' + (pos+1) + ' / ' + pool.length + '</div>' +
+        '<div class="h-sub">' + escapeHtml(kicker) + '</div>' +
+        '<div class="h-main">' + escapeHtml(main) + '</div>' +
       '</div>' +
+      streakChip +
       '<button class="icon-btn' + (cell.flagged ? ' flagged' : '') + '" id="flagBtn" title="Flag this question">' + svgFlag() + '</button>' +
       '<button class="icon-btn" id="moreBtn" title="Report a problem with this question">' + svgMore() + '</button>' +
     '</div>'
@@ -2125,13 +2149,17 @@ function examStatusBarFor(total){
   const remaining = examEndAt - Date.now();
   const pct = total > 0 ? Math.round(((pos + 1) / total) * 100) : 0;
   const answeredCount = answersLog.filter(a => a && a.selected != null && a.selected !== -1).length;
+  const flaggedCount = (typeof pool !== 'undefined' && pool && pool.length)
+    ? pool.filter(c => c.flagged).length
+    : order.filter(qi => flaggedSet.has(qi)).length;
   return (
     '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin:2px 0 8px;flex-wrap:wrap;">' +
-      '<span class="clock-chip" id="examTimerPill" style="border-style:solid;border-color:var(--gold);color:var(--gold-bright);">' + formatDuration(remaining) + '</span>' +
-      '<div class="counts-text" style="white-space:nowrap;">' + answeredCount + ' answered · ' + (total - answeredCount) + ' left</div>' +
+      '<span class="exam-timer" id="examTimerPill">' + formatDuration(remaining) + '</span>' +
+      '<div class="counts-text" style="white-space:nowrap;">' + answeredCount + ' answered · ' + flaggedCount + ' flagged · ' + (total - answeredCount) + ' left</div>' +
     '</div>' +
-    '<div style="height:4px;border-radius:2px;background:var(--bg-panel-2);overflow:hidden;margin-bottom:10px;"><div style="height:100%;width:' + pct + '%;background:var(--gold);"></div></div>' +
-    '<div class="clock-chip" style="display:block;text-align:center;margin-bottom:14px;">No feedback until you submit</div>'
+    // Frame 3c shows no progress bar during an exam — the clock is the only
+    // pacing signal it gives, and that looks deliberate rather than omitted.
+    '<div class="clock-chip blue" style="display:block;text-align:center;margin-bottom:14px;padding:7px 10px;">No feedback until you submit</div>'
   );
 }
 
@@ -2238,6 +2266,11 @@ function showMultiExamResults(auto, correct){
 }
 
 // ---- SVGs (Lucide-style, stroke-width 1.5, matching the site's icon set) ----
+// Flame for the daily-drill streak chip, same Lucide geometry as icons.js.
+function svgFlame(){
+  return '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>';
+}
+
 function svgArrowLeft(){
   return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
 }
