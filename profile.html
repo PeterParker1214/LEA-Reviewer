@@ -11,27 +11,283 @@
 <title>Profile — LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Architects+Daughter&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{ --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --line:rgba(111,168,207,0.20); --gold-bright:#f0c268; --muted:#8b98a5; --font-display:'Big Shoulders Display',sans-serif; --font-mono:'IBM Plex Mono',monospace; }
+  :root{
+    --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-2:#0a1520;
+    --gold:#e0a83f; --gold-bright:#f0c268; --blue:#6fa8cf; --blue-bright:#8fc4ea;
+    --muted:#8b98a5; --good:#5fbf82; --bad:#e2604a;
+    --line: rgba(111,168,207,0.20); --line-soft: rgba(111,168,207,0.14);
+    --grid-line: rgba(111,168,207,0.09);
+    --font-display:'Big Shoulders Display',sans-serif;
+    --font-hand:'Architects Daughter',cursive;
+    --font-body:'Space Grotesk',sans-serif;
+    --font-mono:'IBM Plex Mono',monospace;
+  }
+  body.light-mode, :root.light-mode{
+    --ink:#16202b; --bg-deep:#d3dee6; --bg-panel:#ffffff; --bg-panel-2:#e9eff4;
+    --gold:#b5791f; --gold-bright:#7d520c; --blue:#2f6c95; --blue-bright:#1b4a6b;
+    --muted:#4f5d6a; --good:#206b3c; --bad:#a1372a;
+    --line: rgba(47,108,149,0.28); --line-soft: rgba(47,108,149,0.20);
+    --grid-line: rgba(47,108,149,0.11);
+  }
   *{box-sizing:border-box;} html,body{margin:0;padding:0;}
-  body{ background:var(--bg-deep); color:var(--ink); font-family:var(--font-mono); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px; }
-  .card{ max-width:380px; text-align:center; background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:32px 24px; }
-  h1{ font-family:var(--font-display); font-weight:800; font-size:24px; text-transform:uppercase; margin:0 0 12px; }
-  p{ color:var(--muted); font-size:13px; line-height:1.7; margin:0 0 20px; }
-  a{ color:var(--gold-bright); }
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      var(--bg-deep);
+    color:var(--ink); font-family:var(--font-body); min-height:100vh;
+    display:flex; justify-content:center; padding:14px 16px 24px;
+  }
+  .wrap{ width:100%; max-width:390px; }
+  button{ font-family:inherit; }
+
+  .pf-head{ display:flex; align-items:center; gap:8px; margin-bottom:20px; }
+  .icon-btn-44{
+    width:44px; height:44px; border-radius:8px; background:var(--bg-panel); border:1px solid var(--line);
+    color:var(--gold-bright); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+  }
+  .icon-btn-44 svg{ width:18px; height:18px; }
+  .pf-title{ flex:1; font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; line-height:1; }
+  .pf-save{
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--gold-bright); background:none; border:0; cursor:pointer; padding:8px 4px;
+  }
+  .pf-save[disabled]{ color:var(--muted); cursor:default; }
+
+  /* Identity card — blueprint corner marks, same as the frame. */
+  .pf-id{
+    position:relative; background:var(--bg-panel); border:1px solid var(--line);
+    padding:20px; margin-bottom:16px; display:flex; gap:16px; align-items:center;
+  }
+  .pf-id::before, .pf-id::after{
+    content:''; position:absolute; width:12px; height:12px; border:2px solid var(--gold); opacity:.9;
+  }
+  .pf-id::before{ top:-1px; left:-1px; border-width:2px 0 0 2px; }
+  .pf-id::after{ bottom:-1px; right:-1px; border-width:0 2px 2px 0; }
+
+  .pf-avatar{
+    position:relative; width:88px; height:88px; flex-shrink:0; background:var(--bg-panel-2);
+    border:1px solid rgba(224,168,63,0.5); display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-weight:800; font-size:34px; color:var(--gold-bright);
+    overflow:hidden;
+  }
+  .pf-avatar img{ width:100%; height:100%; object-fit:cover; }
+  .pf-meta{ flex:1; min-width:0; }
+  .pf-name{ font-family:var(--font-display); font-weight:700; font-size:24px; text-transform:uppercase; line-height:1; overflow:hidden; text-overflow:ellipsis; }
+  .pf-stats{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); margin-top:6px; line-height:1.6; }
+
+  .pf-label{ font-family:var(--font-mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+  .pf-note{ font-family:var(--font-mono); font-size:9.5px; color:var(--muted); line-height:1.6; margin-bottom:18px; }
+
+  .pf-field{
+    display:flex; align-items:center; gap:10px; min-height:50px; background:var(--bg-panel);
+    border:1px solid var(--line); padding:0 14px; font-size:16px; margin-bottom:8px;
+  }
+  .pf-field input{
+    flex:1; min-width:0; background:none; border:0; color:var(--ink);
+    font-family:var(--font-body); font-size:16px; padding:0;
+  }
+  .pf-field input:focus{ outline:none; }
+  .pf-count{ font-family:var(--font-mono); font-size:10px; color:var(--muted); flex-shrink:0; }
+  .pf-status{ font-family:var(--font-mono); font-size:9.5px; margin-bottom:18px; min-height:14px; color:var(--muted); }
+  .pf-status.err{ color:var(--bad); }
+  .pf-status.ok{ color:var(--good); }
+
+  .pf-callout{
+    background:var(--bg-panel); border:1px solid var(--line); border-left:3px solid var(--blue-bright);
+    padding:13px 15px; margin-bottom:16px; font-family:var(--font-mono); font-size:10.5px;
+    color:var(--muted); line-height:1.7;
+  }
+  .pf-row{ display:flex; gap:8px; }
+  .pf-row a, .pf-row button{
+    flex:1; min-height:50px; display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line); color:var(--muted); background:none; cursor:pointer;
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase;
+    text-decoration:none;
+  }
+  .pf-row .danger{ border-color:rgba(226,96,74,0.4); color:var(--bad); }
+  .pf-row a:hover, .pf-row button:hover{ border-color:var(--gold); }
 </style>
+<link rel="stylesheet" href="assets/blueprint.css?v=1">
+<script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=1"></script>
+<script src="assets/module-progress.js?v=1"></script>
 <script src="assets/offline.js?v=1"></script>
 </head>
 <body>
-<div class="card">
-  <h1>Profile</h1>
-  <p>Avatar upload and profile editing (screen 5e) isn't built yet — this page is just a real entry point so the account sheet doesn't dead-end.</p>
-  <a href="index.html">&larr; Back home</a>
-</div>
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
+<div class="wrap" id="pfWrap"><div class="pf-note">Loading…</div></div>
+
 <script>
-const sb = supabase.createClient('https://rjrrprbvsmflzncojbtq.supabase.co', 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y');
-(async () => { const { data: { session } } = await sb.auth.getSession(); if(!session) window.location.href = 'index.html'; })();
+const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const NAME_MAX = 24;
+
+function escapeHtml(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// Initials are the default avatar, so a profile never looks empty and the
+// leaderboard gains faces without anyone uploading anything. Derived from the
+// display name — two letters where the name splits, one where it doesn't.
+function initialsOf(name){
+  const parts = String(name || '').split(/[^A-Za-z0-9]+/).filter(Boolean);
+  if(parts.length === 0) return '?';
+  if(parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0][0] + parts[1][0]).toUpperCase();
+}
+
+function monthYear(iso){
+  if(!iso) return null;
+  const d = new Date(iso);
+  if(isNaN(d)) return null;
+  const now = new Date();
+  const month = d.toLocaleString('en-GB', { month: 'long' });
+  return d.getFullYear() === now.getFullYear() ? month : (month + ' ' + d.getFullYear());
+}
+
+const state = {
+  userId: null, email: null, username: '', joined: null,
+  rank: null, mastered: null, streak: null, dirty: false
+};
+
+// Every line here is a real number or it is absent. Rank and mastered come
+// from the same RPC the standings page uses; streak is the stored daily-drill
+// counter; joined is the account's own creation date. Anything that fails to
+// load is dropped from the line rather than guessed at.
+function statsLines(){
+  const first = [];
+  if(state.rank != null) first.push('#' + state.rank + ' overall');
+  if(state.mastered != null) first.push(state.mastered.toLocaleString('en-GB') + ' mastered');
+  const second = [];
+  if(state.streak && state.streak.current > 0){
+    second.push(state.streak.current + '-day streak');
+  }
+  const joined = monthYear(state.joined);
+  if(joined) second.push('joined ' + joined);
+  return [first.join(' · '), second.join(' · ')].filter(Boolean);
+}
+
+function render(){
+  const lines = statsLines();
+  document.getElementById('pfWrap').innerHTML =
+    '<div class="pf-head">' +
+      '<a class="icon-btn-44" href="index.html" title="Back home">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>' +
+      '</a>' +
+      '<div class="pf-title">Profile</div>' +
+      '<button class="pf-save" id="pfSave" disabled>Save</button>' +
+    '</div>' +
+
+    '<div class="pf-id">' +
+      '<div class="pf-avatar" id="pfAvatar">' + escapeHtml(initialsOf(state.username)) + '</div>' +
+      '<div class="pf-meta">' +
+        '<div class="pf-name" id="pfName">' + escapeHtml(state.username || '—') + '</div>' +
+        '<div class="pf-stats">' + lines.map(escapeHtml).join('<br>') + '</div>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="pf-label">Picture</div>' +
+    // No upload control: it needs a storage bucket and an avatar column that
+    // do not exist yet. A disabled Upload button would still be a promise, so
+    // the section says what is actually true today instead.
+    '<div class="pf-note">Your initials, in gold. Photo uploads aren’t switched on yet — when they are, this is where they’ll go. Shown on the leaderboard and the online strip.</div>' +
+
+    '<div class="pf-label">Display name</div>' +
+    '<div class="pf-field">' +
+      '<input id="pfNameInput" type="text" maxlength="' + NAME_MAX + '" value="' + escapeHtml(state.username) + '" autocomplete="off" spellcheck="false">' +
+      '<span class="pf-count" id="pfCount">' + state.username.length + ' / ' + NAME_MAX + '</span>' +
+    '</div>' +
+    '<div class="pf-status" id="pfStatus"></div>' +
+
+    '<div class="pf-callout">Everyone on the leaderboard and the online strip. No opt-out — the batch studies together.</div>' +
+
+    '<div class="pf-row">' +
+      '<a href="reminders.html">Reminders</a>' +
+      '<button class="danger" id="pfLogout">Log out</button>' +
+    '</div>';
+
+  wire();
+}
+
+function wire(){
+  const input = document.getElementById('pfNameInput');
+  const count = document.getElementById('pfCount');
+  const save = document.getElementById('pfSave');
+  const status = document.getElementById('pfStatus');
+
+  input.addEventListener('input', () => {
+    const v = input.value;
+    count.textContent = v.length + ' / ' + NAME_MAX;
+    const changed = v.trim() !== state.username;
+    save.disabled = !changed || v.trim().length < 3;
+    status.textContent = '';
+    status.className = 'pf-status';
+    // The avatar follows the field as you type, so the initials are never a
+    // surprise after saving.
+    document.getElementById('pfAvatar').textContent = initialsOf(v.trim() || state.username);
+  });
+
+  save.addEventListener('click', async () => {
+    const next = input.value.trim();
+    if(next.length < 3){ return; }
+    save.disabled = true;
+    status.className = 'pf-status';
+    status.textContent = 'Saving…';
+    const { error } = await sb.from('profiles').update({ username: next }).eq('id', state.userId);
+    if(error){
+      // A unique-violation is the common case and deserves its own words.
+      const taken = /duplicate|unique/i.test(error.message || '');
+      status.className = 'pf-status err';
+      status.textContent = taken ? 'That name is taken — try another.' : 'Couldn’t save — try again.';
+      save.disabled = false;
+      return;
+    }
+    state.username = next;
+    status.className = 'pf-status ok';
+    status.textContent = 'Saved.';
+    document.getElementById('pfName').textContent = next;
+    document.getElementById('pfAvatar').textContent = initialsOf(next);
+  });
+
+  document.getElementById('pfLogout').addEventListener('click', async () => {
+    await sb.auth.signOut();
+    window.location.href = 'index.html';
+  });
+}
+
+(async function boot(){
+  const { data: { session } } = await sb.auth.getSession();
+  if(!session){ window.location.href = 'index.html'; return; }
+  state.userId = session.user.id;
+  state.email = session.user.email || '';
+  state.joined = session.user.created_at || null;
+
+  const { data: profile } = await sb.from('profiles').select('username').eq('id', state.userId).single();
+  state.username = (profile && profile.username) || state.email.split('@')[0] || '';
+
+  state.streak = LEAProgress.loadMeta('streak') || null;
+
+  // Rank and mastered total, from the same source the standings page reads.
+  // Left null — and therefore off the card — if the call fails.
+  try{
+    const { data, error } = await sb.rpc('get_leaderboard');
+    if(!error && data){
+      const rows = data.slice().sort((a,b) => (b.total_mastered||0) - (a.total_mastered||0));
+      const idx = rows.findIndex(r => r.username === state.username);
+      if(idx !== -1){
+        state.rank = idx + 1;
+        state.mastered = rows[idx].total_mastered || 0;
+      }
+    }
+  }catch(e){}
+
+  render();
+})();
 </script>
 </body>
 </html>
