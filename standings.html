@@ -51,6 +51,23 @@
   }
   .icon-btn-44 svg{ width:19px; height:19px; }
   .page-title{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; flex:1; }
+  /* Faces on the leaderboard. Initials by default, so every row has one and
+     the list never looks half-filled while people upload pictures. */
+  .lb-face{
+    width:30px; height:30px; flex-shrink:0; background:var(--bg-panel-2);
+    border:1px solid rgba(224,168,63,0.45); display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-weight:800; font-size:12.5px; color:var(--gold-bright);
+    overflow:hidden; margin-right:10px;
+  }
+  .lb-face img{ width:100%; height:100%; object-fit:cover; }
+  .rv-face{
+    width:44px; height:44px; margin:0 0 8px; border:1px solid rgba(224,168,63,0.45);
+    background:var(--bg-panel-2); display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-weight:800; font-size:17px; color:var(--gold-bright); overflow:hidden;
+  }
+  .rv-side.them .rv-face{ margin-left:auto; }
+  .rv-face img{ width:100%; height:100%; object-fit:cover; }
+
   .rank-chip{ font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
 
   /* 3g Closest rival: two standings either side of a VS. */
@@ -107,6 +124,7 @@
 </style>
 <link rel="stylesheet" href="assets/blueprint.css?v=1">
 <script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/avatar.js?v=2"></script>
 <script src="assets/offline.js?v=1"></script>
 </head>
 <body>
@@ -158,11 +176,28 @@ function renderTabs(){
   });
 }
 
+// Pictures keyed by display name, fetched once. Left empty when the column
+// does not exist yet (see design_handoff_lea_reviewer/avatars-setup.sql), in
+// which case every row simply shows initials.
+let avatarByUsername = {};
+function avatarFor(username){ return avatarByUsername[username] || null; }
+
+async function loadAvatars(){
+  try{
+    const { data, error } = await sb.from('profiles').select('username, avatar_url');
+    if(error || !data) return;
+    const map = {};
+    data.forEach(r => { if(r.username && r.avatar_url) map[r.username] = r.avatar_url; });
+    avatarByUsername = map;
+  }catch(e){}
+}
+
 function lbRowHtml(row, rank, isMine){
   const cls = 'lb-row' + (rank <= 3 ? ' top' + rank : '') + (isMine ? ' mine' : '');
   return (
     '<div class="' + cls + '">' +
       '<div class="lb-rank">' + rank + '</div>' +
+      '<div class="lb-face">' + LEAAvatar.faceHtml(avatarFor(row.username), row.username) + '</div>' +
       '<div class="lb-name">' + escapeHtml(row.username) + (isMine ? ' (you)' : '') + '</div>' +
       '<div class="lb-stats">' + (row.total_mastered||0) + ' mastered · ' + Math.round((row.avg_best_score||0)*100) + '% avg</div>' +
     '</div>'
@@ -200,6 +235,7 @@ function rivalCardHtml(data, myIdx){
   const drills = Math.round((gap / 20) * 10) / 10;
   const side = (name, row) =>
     '<div class="rv-side' + (name === null ? ' them' : '') + '">' +
+      '<div class="rv-face">' + LEAAvatar.faceHtml(avatarFor(row.username), row.username) + '</div>' +
       '<div class="rv-name">' + escapeHtml(name === null ? (row.username || '\u2014') : name) + '</div>' +
       '<div class="rv-mastered">' + (row.total_mastered || 0) + ' mastered</div>' +
       '<div class="rv-avg">' + Math.round((row.avg_best_score || 0) * 100) + '% avg</div>' +
@@ -265,6 +301,7 @@ async function render(){
   const { data: profile } = await sb.from('profiles').select('username').eq('id', session.user.id).single();
   if(profile && profile.username) username = profile.username;
   currentUsername = username;
+  await loadAvatars();
   await render();
 })();
 </script>

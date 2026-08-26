@@ -78,6 +78,18 @@
   .pf-name{ font-family:var(--font-display); font-weight:700; font-size:24px; text-transform:uppercase; line-height:1; overflow:hidden; text-overflow:ellipsis; }
   .pf-stats{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); margin-top:6px; line-height:1.6; }
 
+  .pf-pic{ display:flex; gap:8px; margin-bottom:8px; }
+  .pic-btn{
+    flex:1; text-align:center; font-family:var(--font-mono); font-size:11px; letter-spacing:.05em;
+    text-transform:uppercase; padding:13px 6px; border:1px solid var(--line);
+    background:none; color:var(--gold-bright); cursor:pointer;
+  }
+  .pic-btn.primary{ background:var(--gold); border-color:var(--gold); color:#1a1206; font-weight:600; }
+  body.light-mode .pic-btn.primary, :root.light-mode .pic-btn.primary{ color:#fff; }
+  .pic-btn:last-child{ color:var(--muted); }
+  .pic-btn[disabled]{ opacity:.45; cursor:default; }
+  .pic-btn:not([disabled]):hover{ border-color:var(--gold-bright); }
+
   .pf-label{ font-family:var(--font-mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
   .pf-note{ font-family:var(--font-mono); font-size:9.5px; color:var(--muted); line-height:1.6; margin-bottom:18px; }
 
@@ -113,6 +125,7 @@
 <link rel="stylesheet" href="assets/blueprint.css?v=1">
 <script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
 <script src="assets/quiz-source.js?v=1"></script>
+<script src="assets/avatar.js?v=2"></script>
 <script src="assets/module-progress.js?v=1"></script>
 <script src="assets/offline.js?v=1"></script>
 </head>
@@ -131,15 +144,9 @@ function escapeHtml(s){
   return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
-// Initials are the default avatar, so a profile never looks empty and the
-// leaderboard gains faces without anyone uploading anything. Derived from the
-// display name — two letters where the name splits, one where it doesn't.
-function initialsOf(name){
-  const parts = String(name || '').split(/[^A-Za-z0-9]+/).filter(Boolean);
-  if(parts.length === 0) return '?';
-  if(parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
-  return (parts[0][0] + parts[1][0]).toUpperCase();
-}
+// One definition of initials for the whole app, so Profile and the
+// leaderboard can never disagree about someone's face.
+const initialsOf = LEAAvatar.initialsOf;
 
 function monthYear(iso){
   if(!iso) return null;
@@ -152,7 +159,8 @@ function monthYear(iso){
 
 const state = {
   userId: null, email: null, username: '', joined: null,
-  rank: null, mastered: null, streak: null, dirty: false
+  rank: null, mastered: null, streak: null, dirty: false,
+  avatarUrl: null, canUpload: false
 };
 
 // Every line here is a real number or it is absent. Rank and mastered come
@@ -184,7 +192,7 @@ function render(){
     '</div>' +
 
     '<div class="pf-id">' +
-      '<div class="pf-avatar" id="pfAvatar">' + escapeHtml(initialsOf(state.username)) + '</div>' +
+      '<div class="pf-avatar" id="pfAvatar">' + LEAAvatar.faceHtml(state.avatarUrl, state.username) + '</div>' +
       '<div class="pf-meta">' +
         '<div class="pf-name" id="pfName">' + escapeHtml(state.username || '—') + '</div>' +
         '<div class="pf-stats">' + lines.map(escapeHtml).join('<br>') + '</div>' +
@@ -192,10 +200,19 @@ function render(){
     '</div>' +
 
     '<div class="pf-label">Picture</div>' +
-    // No upload control: it needs a storage bucket and an avatar column that
-    // do not exist yet. A disabled Upload button would still be a promise, so
-    // the section says what is actually true today instead.
-    '<div class="pf-note">Your initials, in gold. Photo uploads aren’t switched on yet — when they are, this is where they’ll go. Shown on the leaderboard and the online strip.</div>' +
+    // The controls appear only where they can actually work. capability()
+    // asks this deployment whether the bucket and column exist rather than
+    // assuming, so running avatars-setup.sql turns them on with no redeploy —
+    // and until then nothing offers a button that would fail.
+    (state.canUpload
+      ? '<div class="pf-pic">' +
+          '<button class="pic-btn primary" id="pfUpload">Upload</button>' +
+          '<button class="pic-btn" id="pfInitials"' + (state.avatarUrl ? '' : ' disabled') + '>Initials</button>' +
+          '<button class="pic-btn" id="pfRemove"' + (state.avatarUrl ? '' : ' disabled') + '>Remove</button>' +
+          '<input type="file" id="pfFile" accept="image/*" hidden>' +
+        '</div>' +
+        '<div class="pf-note" id="pfPicNote">Square, up to 5 MB. Shown on the leaderboard.</div>'
+      : '<div class="pf-note">Your initials, in gold. Photo uploads aren’t switched on yet — when they are, this is where they’ll go. Shown on the leaderboard.</div>') +
 
     '<div class="pf-label">Display name</div>' +
     '<div class="pf-field">' +
@@ -227,9 +244,12 @@ function wire(){
     save.disabled = !changed || v.trim().length < 3;
     status.textContent = '';
     status.className = 'pf-status';
-    // The avatar follows the field as you type, so the initials are never a
-    // surprise after saving.
-    document.getElementById('pfAvatar').textContent = initialsOf(v.trim() || state.username);
+    // The initials follow the field as you type, so they are never a surprise
+    // after saving — but only while initials are what is actually shown. With
+    // a picture uploaded, the box keeps the picture.
+    if(!state.avatarUrl){
+      document.getElementById('pfAvatar').textContent = initialsOf(v.trim() || state.username);
+    }
   });
 
   save.addEventListener('click', async () => {
@@ -251,8 +271,62 @@ function wire(){
     status.className = 'pf-status ok';
     status.textContent = 'Saved.';
     document.getElementById('pfName').textContent = next;
-    document.getElementById('pfAvatar').textContent = initialsOf(next);
+    if(!state.avatarUrl) document.getElementById('pfAvatar').textContent = initialsOf(next);
   });
+
+  const picNote = document.getElementById('pfPicNote');
+  function picSay(msg, cls){
+    if(!picNote) return;
+    picNote.textContent = msg;
+    picNote.style.color = cls === 'err' ? 'var(--bad)' : '';
+  }
+  function repaintAvatar(){
+    document.getElementById('pfAvatar').innerHTML = LEAAvatar.faceHtml(state.avatarUrl, state.username);
+  }
+
+  const fileInput = document.getElementById('pfFile');
+  if(fileInput){
+    document.getElementById('pfUpload').addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', async () => {
+      const file = fileInput.files && fileInput.files[0];
+      if(!file) return;
+      picSay('Uploading…');
+      try{
+        state.avatarUrl = await LEAAvatar.upload(sb, state.userId, file);
+        repaintAvatar();
+        render();
+        picSay('Picture updated.');
+      }catch(err){
+        const m = String((err && err.message) || err);
+        picSay(
+          m === 'too-big' ? 'That file is over 5 MB — pick a smaller one.' :
+          m === 'not-an-image' ? 'That isn’t an image file.' :
+          m === 'unreadable' ? 'Couldn’t read that image.' :
+          'Couldn’t upload — try again.', 'err');
+      }
+      fileInput.value = '';
+    });
+    // "Initials" and "Remove" both end with initials showing. They differ in
+    // what happens to the file: Initials leaves it in storage so switching
+    // back is instant, Remove deletes it.
+    document.getElementById('pfInitials').addEventListener('click', async () => {
+      picSay('Switching…');
+      const { error } = await sb.from('profiles').update({ avatar_url: null }).eq('id', state.userId);
+      if(error){ picSay('Couldn’t switch — try again.', 'err'); return; }
+      state.avatarUrl = null;
+      render();
+      picSay('Showing your initials.');
+    });
+    document.getElementById('pfRemove').addEventListener('click', async () => {
+      picSay('Removing…');
+      try{
+        await LEAAvatar.remove(sb, state.userId);
+        state.avatarUrl = null;
+        render();
+        picSay('Picture removed.');
+      }catch(e){ picSay('Couldn’t remove — try again.', 'err'); }
+    });
+  }
 
   document.getElementById('pfLogout').addEventListener('click', async () => {
     await sb.auth.signOut();
@@ -269,6 +343,13 @@ function wire(){
 
   const { data: profile } = await sb.from('profiles').select('username').eq('id', state.userId).single();
   state.username = (profile && profile.username) || state.email.split('@')[0] || '';
+
+  const cap = await LEAAvatar.capability(sb, state.userId);
+  state.canUpload = cap.ready;
+  if(cap.column){
+    const { data: av } = await sb.from('profiles').select('avatar_url').eq('id', state.userId).single();
+    state.avatarUrl = (av && av.avatar_url) || null;
+  }
 
   state.streak = LEAProgress.loadMeta('streak') || null;
 
