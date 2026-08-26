@@ -108,6 +108,10 @@
   }
   .pf-field input:focus{ outline:none; }
   .pf-count{ font-family:var(--font-mono); font-size:10px; color:var(--muted); flex-shrink:0; }
+  /* An account made before the 12-character limit can arrive here already
+     over it. The field shows the real name rather than silently truncating
+     it; the counter is what says it has to come down. */
+  .pf-count.over{ color:var(--bad); }
   .pf-status{ font-family:var(--font-mono); font-size:9.5px; margin-bottom:18px; min-height:14px; color:var(--muted); }
   .pf-status.err{ color:var(--bad); }
   .pf-status.ok{ color:var(--good); }
@@ -197,7 +201,8 @@ const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-const NAME_MAX = 24;
+const NAME_MAX = 12;
+const NAME_MIN = 3;
 
 function escapeHtml(s){
   return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -274,9 +279,10 @@ function render(){
       : '<div class="pf-note">Your initials, in gold. Photo uploads aren’t switched on yet — when they are, this is where they’ll go. Shown on the leaderboard.</div>') +
 
     '<div class="pf-label">Display name</div>' +
+    '<div class="pf-note">' + NAME_MIN + ' to ' + NAME_MAX + ' characters — it has to fit the leaderboard.</div>' +
     '<div class="pf-field">' +
-      '<input id="pfNameInput" type="text" maxlength="' + NAME_MAX + '" value="' + escapeHtml(state.username) + '" autocomplete="off" spellcheck="false">' +
-      '<span class="pf-count" id="pfCount">' + state.username.length + ' / ' + NAME_MAX + '</span>' +
+      '<input id="pfNameInput" type="text" maxlength="' + Math.max(NAME_MAX, state.username.length) + '" value="' + escapeHtml(state.username) + '" autocomplete="off" spellcheck="false">' +
+      '<span class="pf-count' + (state.username.length > NAME_MAX ? ' over' : '') + '" id="pfCount">' + state.username.length + ' / ' + NAME_MAX + '</span>' +
     '</div>' +
     '<div class="pf-status" id="pfStatus"></div>' +
 
@@ -299,6 +305,7 @@ function wire(){
   input.addEventListener('input', () => {
     const v = input.value;
     count.textContent = v.length + ' / ' + NAME_MAX;
+    count.classList.toggle('over', v.trim().length > NAME_MAX);
     status.textContent = '';
     status.className = 'pf-status';
     // The initials follow the field as you type, so they are never a surprise
@@ -319,9 +326,15 @@ function wire(){
       status.textContent = 'Nothing to change — your name is already ' + state.username + '.';
       return;
     }
-    if(next.length < 3){
+    if(next.length < NAME_MIN){
       status.className = 'pf-status err';
-      status.textContent = 'Names need at least 3 characters.';
+      status.textContent = 'Names need at least ' + NAME_MIN + ' characters.';
+      return;
+    }
+    if(next.length > NAME_MAX){
+      status.className = 'pf-status err';
+      status.textContent = 'Names are ' + NAME_MAX + ' characters at most — that is ' +
+        (next.length - NAME_MAX) + ' over.';
       return;
     }
     save.disabled = true;
