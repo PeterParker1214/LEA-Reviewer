@@ -1631,7 +1631,13 @@
             <div style="font-family:'Big Shoulders Display',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;line-height:1.1">RC Design &amp; NSCP Provisions</div>
             <div style="height:5px;border-radius:3px;background:rgba(111,168,207,0.14);overflow:hidden;margin-top:10px"><div style="height:100%;width:70%;background:linear-gradient(90deg,#f0c268,#e0a83f 70%,rgba(224,168,63,0.25))"></div></div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8b98a5"><span>140 / 200 mastered</span><span style="color:#f0c268;text-transform:uppercase;letter-spacing:.05em;font-weight:600">Resume Q84 →</span></div>
-          </div><div onClick="{{ toggleTopics }}" style="display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none" style-hover="background:#12222f">
+          </div>
+        </div>
+
+        <div style="background:#0e1c28;border:1px solid rgba(111,168,207,0.20);border-radius:12px;padding:14px 16px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8b98a5;line-height:1.7;margin-bottom:16px">Progress syncs to your account. The last 3 modules you opened stay cached, so they work offline.</div>
+
+        <div data-comment-anchor="subject-topics" style="background:#0e1c28;border:1px solid rgba(111,168,207,0.20);border-radius:14px;overflow:hidden">
+          <div onClick="{{ toggleTopics }}" style="display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none" style-hover="background:#12222f">
             <div style="flex:1">
               <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8b98a5">Topics · 12 tagged</div>
               <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#e2604a;margin-top:5px">Weakest — Statics of Structures 52%</div>
@@ -1641,11 +1647,6 @@
               <sc-if value="{{ topicsClosed }}" hint-placeholder-val="{{ true }}">+</sc-if>
             </div>
           </div>
-        </div>
-
-        <div style="background:#0e1c28;border:1px solid rgba(111,168,207,0.20);border-radius:12px;padding:14px 16px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8b98a5;line-height:1.7;margin-bottom:16px">Progress syncs to your account. The last 3 modules you opened stay cached, so they work offline.</div>
-
-        <div data-comment-anchor="subject-topics" style="background:#0e1c28;border:1px solid rgba(111,168,207,0.20);border-radius:14px;overflow:hidden">
           
           <sc-if value="{{ topicsOpen }}" hint-placeholder-val="{{ false }}">
           <div style="padding:0 16px;border-top:1px solid rgba(111,168,207,0.14)">
@@ -1685,7 +1686,7 @@
           </sc-if>
         </div>
       </div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;line-height:1.8;color:#8b98a5;letter-spacing:.02em">One subject template + a module manifest, so History of Architecture stops being its own 500 KB planet. Topics fold shut at the bottom — twelve of them were pushing the modules off the screen, and modules are what you act on. Folded, the header still names the weakest topic, which is the one thing worth knowing without opening it. Only <em style="font-style:normal;color:#eef1e9">tagged</em> topics count: an untagged module would otherwise show up as one giant pseudo-topic and win "weakest" on size alone, so those are excluded and named in the note instead. A subject with nothing tagged shows no topics block at all.</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;line-height:1.8;color:#8b98a5;letter-spacing:.02em">One subject template + a module manifest, so History of Architecture stops being its own 500 KB planet. Topics fold shut at the bottom — twelve of them were pushing the modules off the screen, and modules are what you act on. Folded, the header still names the weakest topic, which is the one thing worth knowing without opening it. Only <em style="font-style:normal;color:#eef1e9">tagged</em> topics count: an untagged module would otherwise show up as one giant pseudo-topic and win "weakest" on size alone, so those are excluded and named in the note instead. A subject with nothing tagged shows no topics block at all. Two rules the example data hides: a topic needs <em style="font-style:normal;color:#eef1e9">4+ items</em> to be eligible for the weakest line (a one-question topic can only read 0% or 100%, so it would win on noise), and the tail expands to at most <em style="font-style:normal;color:#eef1e9">24 rows, weakest first</em> — History has 302 topics, and dumping them would recreate the problem the fold solves.</div>
     </div>
 
     <!-- ===== 2c QUIZ ===== -->
