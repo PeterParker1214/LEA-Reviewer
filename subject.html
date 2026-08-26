@@ -85,7 +85,23 @@
   a{color:inherit;}
   .hidden{display:none !important;}
 
-  .auth-bar{ display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:12.5px; color:var(--muted); margin-bottom:24px; flex-wrap:wrap; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.03em; }
+  /* Frame 2b's header: a gold "Home" link on the left, two 44px buttons on
+     the right. It used to carry "Logged in as … — Log out" as running text,
+     which the frame never had; signing out lives on Home's account sheet. */
+  .auth-bar{ display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:16px; }
+  .auth-bar .back{
+    display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:11px;
+    letter-spacing:.05em; text-transform:uppercase; color:var(--gold-bright); text-decoration:underline;
+  }
+  .auth-bar .back svg{ width:18px; height:18px; }
+  .bar-actions{ display:flex; gap:8px; }
+  .icon-btn-44{
+    width:44px; height:44px; border-radius:8px; background:var(--bg-panel); border:1px solid var(--line);
+    color:var(--gold-bright); display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .icon-btn-44:hover{ border-color:var(--gold-bright); }
+  .icon-btn-44 .btn-ico{ margin:0; }
+  .icon-btn-44 .btn-ico svg{ width:18px; height:18px; }
   .auth-link{ background:none; border:none; color:var(--gold-bright); cursor:pointer; font-family:var(--font-mono); font-size:12px; text-decoration:underline; padding:0; text-transform:uppercase; letter-spacing:.03em; }
   .auth-link:hover{ color:var(--blue-bright); }
 
@@ -143,11 +159,17 @@
   .mode-rows{ display:flex; flex-direction:column; gap:8px; margin-bottom:20px; }
   .mode-row{
     display:flex; justify-content:space-between; align-items:center;
-    padding:14px 16px; border-radius:12px; border:1px solid var(--line);
+    padding:14px 16px; border-radius:12px; border:1px solid var(--line); gap:12px;
     background: var(--bg-panel-2); cursor:pointer; text-align:left; width:100%;
     font-family:var(--font-body); color:var(--ink);
   }
-  .mode-row .mode-lbl{ display:flex; flex-direction:column; gap:3px; }
+  /* The frame keeps the index in its own 22px column rather than running it
+     into the title, and colours it per row. */
+  .mode-row .mode-no{ font-family:var(--font-mono); font-size:11px; font-weight:600; width:22px; flex-shrink:0; }
+  .mode-row[data-mode="exam"] .mode-no{ color:var(--blue-bright); }
+  .mode-row[data-mode="drill"] .mode-no{ color:var(--bad); }
+  .mode-row.selected .mode-no{ color:#1a1206; }
+  .mode-row .mode-lbl{ display:flex; flex-direction:column; gap:3px; flex:1; min-width:0; }
   .mode-row .mode-name{ font-family:var(--font-display); font-weight:700; font-size:16px; text-transform:uppercase; letter-spacing:.01em; }
   .mode-row .mode-cap{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); letter-spacing:.03em; }
   .mode-row .mode-num{ font-family:var(--font-mono); font-size:22px; font-weight:600; color:var(--blue-bright); flex-shrink:0; }
@@ -227,7 +249,25 @@
   .module-card.in-progress{ border-left:3px solid var(--gold); }
   .module-card.disabled{ opacity:.55; pointer-events:none; }
   .module-num{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue-bright); margin-bottom:6px; }
-  .module-title{ font-family:var(--font-display); font-size:19px; font-weight:700; color:var(--ink); margin-bottom:6px; text-transform:uppercase; line-height:1.1; }
+  /* Long module titles used to wrap onto a second line and push the card
+     out of shape. They stay on one line now and scroll if they must, the
+     same treatment the subject blurb already gets. */
+  .module-title{
+    font-family:var(--font-display); font-size:19px; font-weight:700; color:var(--ink);
+    margin-bottom:6px; text-transform:uppercase; line-height:1.1;
+    overflow:hidden; white-space:nowrap;
+    -webkit-mask-image:linear-gradient(90deg, #000 calc(100% - 22px), transparent 100%);
+    mask-image:linear-gradient(90deg, #000 calc(100% - 22px), transparent 100%);
+  }
+  .module-title .mt-run{ display:inline-block; }
+  .module-card:hover .module-title.scrolls .mt-run{ animation: module-scroll 9s linear infinite; }
+  @keyframes module-scroll{
+    0%, 10%{ transform:translateX(0); }
+    90%, 100%{ transform:translateX(var(--mt-shift, 0px)); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .module-card:hover .module-title.scrolls .mt-run{ animation:none; }
+  }
   .module-meta{ font-family:var(--font-mono); font-size:11px; color:var(--muted); letter-spacing:0.04em; display:flex; justify-content:space-between; align-items:center; text-transform:uppercase; }
   .module-arrow{ font-size:16px; color:var(--gold-bright); }
   .module-resume{ font-family:var(--font-mono); font-size:10.5px; color:var(--gold-bright); margin-top:8px; text-transform:uppercase; letter-spacing:.03em; }
@@ -266,8 +306,15 @@
 <body>
 <div class="wrap">
   <div class="auth-bar">
-    <div><a class="auth-link" href="index.html">&larr; All subjects</a> &nbsp;&middot;&nbsp; <span id="authStatus">Checking session…</span></div>
-    <button class="auth-link" id="openLeaderboardBtn"><span class="btn-ico" data-icon="trophy"></span> Leaderboard</button>
+    <a class="auth-link back" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+      Home
+    </a>
+    <div class="bar-actions">
+      <button class="icon-btn-44" id="openLeaderboardBtn" title="Standings" aria-label="Standings"><span class="btn-ico" data-icon="trophy"></span></button>
+      <button class="icon-btn-44" id="themeBtn" title="Switch theme" aria-label="Switch theme"><span class="btn-ico" data-icon="sun"></span></button>
+    </div>
+    <span id="authStatus" hidden></span>
     <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
   </div>
 
@@ -454,6 +501,20 @@ function initMarquee(){
   else{ wrap.classList.add('ellipsis'); }
 }
 
+// Only titles that actually overflow get the scroll, and each one scrolls
+// exactly as far as it overruns — measured, not guessed.
+function initModuleTitleMarquees(){
+  document.querySelectorAll('.module-title').forEach(el => {
+    const run = el.querySelector('.mt-run');
+    if(!run) return;
+    const overflow = run.scrollWidth - el.clientWidth;
+    if(overflow > 4){
+      el.classList.add('scrolls');
+      el.style.setProperty('--mt-shift', (-overflow - 6) + 'px');
+    }
+  });
+}
+
 // ================= Mode selection (persisted per subject) =================
 function getMode(subjectId){
   try{ return localStorage.getItem('lea_mode_' + subjectId) || 'study'; }catch(e){ return 'study'; }
@@ -505,6 +566,7 @@ async function render(subject){
     '<div id="topicsSlot"></div>';
 
   initMarquee();
+  initModuleTitleMarquees();
   wireOverallReset(subject);
   wireModeRows(subject);
 
@@ -558,7 +620,8 @@ function renderModeRows(subject, rollup, mode){
   ];
   return '<div class="mode-rows">' + rows.map(r =>
     '<button type="button" class="mode-row' + (r.id === mode ? ' selected' : '') + (r.disabled ? ' disabled' : '') + '" data-mode="' + r.id + '"' + (r.disabled ? ' disabled' : '') + '>' +
-      '<div class="mode-lbl"><div class="mode-name">' + r.no + ' ' + escapeHtml(r.name) + '</div><div class="mode-cap">' + escapeHtml(r.cap) + '</div></div>' +
+      '<div class="mode-no">' + r.no + '</div>' +
+      '<div class="mode-lbl"><div class="mode-name">' + escapeHtml(r.name) + '</div><div class="mode-cap">' + escapeHtml(r.cap) + '</div></div>' +
       '<div class="mode-num">' + escapeHtml(r.num) + '</div>' +
     '</button>'
   ).join('') + '</div>';
@@ -597,7 +660,7 @@ function renderModulesList(subject, mode){
     return (
       '<a class="module-card' + (inProgress ? ' in-progress' : '') + (disabled ? ' disabled' : '') + '" href="' + escapeHtml(href) + '">' +
         '<div class="module-num">' + escapeHtml(mod.no) + (mod.hard ? ' · Advanced' : '') + '</div>' +
-        '<div class="module-title">' + escapeHtml(mod.title) + '</div>' +
+        '<div class="module-title"><span class="mt-run">' + escapeHtml(mod.title) + '</span></div>' +
         '<div class="module-meta"><span>' + escapeHtml(metaLeft) + '</span><span class="module-arrow">&rarr;</span></div>' +
         '<div class="mp-bar-track"><div class="mp-bar-fill" style="width:' + pct + '%;"></div></div>' +
         (inProgress ? '<div class="module-resume">Resume Q' + resume.position + ' &rarr;</div>' : '') +
@@ -783,6 +846,26 @@ function wireTopicsBlock(){
   document.querySelectorAll('.btn-ico[data-icon]').forEach(function(el){
     var fn = LEAIcons[el.getAttribute('data-icon')];
     if(fn) el.innerHTML = fn(15);
+  });
+
+  // The theme button shows the mode you would switch TO, per the handoff's
+  // note on where the theme control lives — sun while dark, moon while light.
+  var themeBtn = document.getElementById('themeBtn');
+  if(!themeBtn || !window.LEATheme) return;
+  function paintTheme(){
+    var isLight = document.documentElement.classList.contains('light-mode') ||
+                  document.body.classList.contains('light-mode');
+    var icon = isLight ? 'moon' : 'sun';
+    var span = themeBtn.querySelector('.btn-ico');
+    span.setAttribute('data-icon', icon);
+    if(LEAIcons[icon]) span.innerHTML = LEAIcons[icon](18);
+    themeBtn.title = isLight ? 'Switch to dark' : 'Switch to light';
+    themeBtn.setAttribute('aria-label', themeBtn.title);
+  }
+  paintTheme();
+  themeBtn.addEventListener('click', function(){
+    LEATheme.toggle();
+    paintTheme();
   });
 })();
 </script>

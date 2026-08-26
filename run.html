@@ -68,8 +68,14 @@
   .tick.skipped{ background:var(--blue-bright); border-color:var(--blue-bright); }
   .tick.flagged{ background:var(--gold); border-color:var(--gold); }
   .counts-row{ display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; gap:10px; flex-wrap:wrap; }
+  /* Frame 2c colours each count by what it means — green right, red wrong,
+     blue skipped, gold flagged — rather than one uniform ink. */
   .counts-text{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); letter-spacing:.03em; }
   .counts-text b{ color:var(--ink); }
+  .counts-text .c-right{ color:var(--good); }
+  .counts-text .c-wrong{ color:var(--bad); }
+  .counts-text .c-skip{ color:var(--blue-bright); }
+  .counts-text .c-flag{ color:var(--gold-bright); }
   .jump-chip{
     font-family:var(--font-mono); font-size:11px; letter-spacing:.03em; text-transform:uppercase;
     background:var(--bg-panel); border:1px solid var(--line); color:var(--blue-bright);
@@ -1021,7 +1027,7 @@ function renderCountsRow(){
   answersLog.forEach(a => { if(a){ if(a.skipped) skipped++; else if(a.isCorrect) correct++; else incorrect++; } });
   return (
     '<div class="counts-row">' +
-      '<div class="counts-text"><b>' + correct + '</b> right · <b>' + incorrect + '</b> wrong · <b>' + skipped + '</b> skipped · <b>' + flaggedSet.size + '</b> flagged</div>' +
+      '<div class="counts-text">' + '<span class="c-right">' + correct + ' right</span> · ' + '<span class="c-wrong">' + incorrect + ' wrong</span> · ' + '<span class="c-skip">' + skipped + ' skipped</span> · ' + '<span class="c-flag">' + flaggedSet.size + ' flagged</span>' + '</div>' +
       '<button class="jump-chip" id="jumpChip">⊞ Jump</button>' +
     '</div>'
   );
@@ -1827,7 +1833,7 @@ function renderMultiCountsRow(){
   pool.forEach(c => { if(c.flagged) flagged++; });
   return (
     '<div class="counts-row">' +
-      '<div class="counts-text"><b>' + correct + '</b> right · <b>' + incorrect + '</b> wrong · <b>' + skipped + '</b> skipped · <b>' + flagged + '</b> flagged</div>' +
+      '<div class="counts-text">' + '<span class="c-right">' + correct + ' right</span> · ' + '<span class="c-wrong">' + incorrect + ' wrong</span> · ' + '<span class="c-skip">' + skipped + ' skipped</span> · ' + '<span class="c-flag">' + flagged + ' flagged</span>' + '</div>' +
       '<button class="jump-chip" id="jumpChip">⊞ Jump</button>' +
     '</div>'
   );

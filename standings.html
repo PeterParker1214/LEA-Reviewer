@@ -111,7 +111,13 @@
   .lb-row.top3 .lb-rank{ font-family:var(--font-display); font-size:22px; color:var(--gold); }
   .lb-row.mine{ border-color:var(--gold); background:rgba(224,168,63,0.12); }
   .lb-rank{ font-family:var(--font-mono); color:var(--muted); font-weight:700; width:30px; flex-shrink:0; }
-  .lb-name{ flex:1; font-family:var(--font-body); font-size:14px; }
+  .lb-name{ flex:1; font-family:var(--font-body); font-size:14px; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  /* The frame sets the top three in the display face at descending sizes, so
+     the podium reads as a podium rather than as three more rows. */
+  .lb-row.top1 .lb-name{ font-family:var(--font-display); font-weight:700; font-size:18px; text-transform:uppercase; }
+  .lb-row.top2 .lb-name{ font-family:var(--font-display); font-weight:700; font-size:16px; text-transform:uppercase; }
+  .lb-row.top3 .lb-name{ font-family:var(--font-display); font-weight:700; font-size:15px; text-transform:uppercase; }
+  .lb-row.top1 .lb-rank, .lb-row.top2 .lb-rank, .lb-row.top3 .lb-rank{ font-weight:800; }
   .lb-stats{ font-family:var(--font-mono); font-size:11px; color:var(--muted); text-align:right; }
 
   .state-note{ font-family:var(--font-mono); font-size:12px; color:var(--muted); text-align:center; padding:40px 0; line-height:1.7; }
