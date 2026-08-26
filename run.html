@@ -203,6 +203,59 @@
   }
 
 
+  /* ===== 7b desktop (1120px) =====
+     The Jump sheet disappears and the map lives permanently in a 300px rail.
+     Below this width the rail renders nothing at all (renderRail bails), so
+     the phone layout is exactly as it was. */
+  .run-shell{ width:100%; display:flex; justify-content:center; }
+  .run-rail{ display:none; }
+  .kbd-hint{ display:none; }
+
+  @media (min-width:1120px){
+    .run-shell{ display:grid; grid-template-columns:1fr 300px; gap:28px;
+      align-items:start; max-width:1120px; margin:0 auto; }
+    .wrap{ max-width:none; }
+    .run-rail{ display:block; position:sticky; top:24px; }
+
+    /* The map is always open, so the Jump chip has nothing left to do. */
+    #jumpChip{ display:none; }
+
+    /* Options span the card in two columns so every edge lines up with the
+       action bar, as the frame shows. */
+    .options{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+    .opt{ margin:0; }
+    /* A question with a figure puts the image beside the text rather than
+       pushing the options below the fold. */
+    .bp-card.has-figure .qtext{ float:none; }
+    .qimg-wrap{ max-width:340px; }
+
+    .kbd-hint{ display:block; text-align:center; font-family:var(--font-mono);
+      font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;
+      color:var(--muted); margin-top:10px; }
+  }
+
+  /* Rail furniture */
+  .rail-block{ background:var(--bg-panel); border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:14px; }
+  .rail-head{ font-family:var(--font-mono); font-size:9.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:10px; }
+  /* A full module runs to 200+ questions, which would push "To resolve" and
+     the module stat far below the fold. Cap the grid and let it scroll so the
+     rail stays a rail. */
+  .rail-map{ display:grid; grid-template-columns:repeat(6,1fr); gap:5px; margin-bottom:12px;
+    max-height:min(46vh, 340px); overflow-y:auto; padding-right:2px; }
+  .rail-map .map-cell{ aspect-ratio:1; padding:0; font-size:9.5px; }
+  .resolve-row{ display:flex; align-items:center; justify-content:space-between; gap:8px;
+    width:100%; background:none; border:none; border-bottom:1px solid var(--line);
+    color:var(--ink); font-family:var(--font-mono); font-size:11px; text-transform:uppercase;
+    letter-spacing:.03em; padding:9px 2px; cursor:pointer; }
+  .resolve-row:last-of-type{ border-bottom:none; }
+  .resolve-row:hover{ color:var(--gold-bright); }
+  .resolve-row .rr-go{ color:var(--blue-bright); }
+  .rail-more{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); padding:6px 2px; }
+  .rail-stat-row{ display:flex; justify-content:space-between; align-items:baseline; font-family:var(--font-mono); font-size:11.5px; color:var(--muted); margin-bottom:8px; }
+  .rail-stat-row b{ color:var(--gold-bright); font-size:14px; }
+  .rail-bar{ height:5px; border-radius:3px; background:var(--bg-panel-2); overflow:hidden; }
+  .rail-bar-fill{ height:100%; background:linear-gradient(90deg, var(--gold), var(--blue-bright)); }
+
   .state-card{
     background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:28px 22px;
     text-align:center; color:var(--muted); font-family:var(--font-mono); font-size:13px; line-height:1.7;
@@ -221,8 +274,13 @@
 <script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
 </head>
 <body>
-<div class="wrap" id="pageBody">
-  <div class="state-card">Loading…</div>
+<!-- The rail is a sibling of #pageBody, not a child: every render replaces
+     pageBody's innerHTML wholesale, which would destroy anything inside it. -->
+<div class="run-shell">
+  <div class="wrap" id="pageBody">
+    <div class="state-card">Loading…</div>
+  </div>
+  <aside class="run-rail" id="runRail" aria-label="Question map"></aside>
 </div>
 
 <!-- ===== question map sheet ===== -->
@@ -561,6 +619,7 @@ function renderExamRun(){
   renderExamCardUngraded();
   wireHeader();
   wireExamFooter();
+  renderRail();
 }
 
 function examStatusBar(){
@@ -622,6 +681,7 @@ function examFooterHtml(){
       '<button class="footer-btn skip" id="examFlagBtn">' + (isFlagged ? 'Unflag' : 'Flag') + '</button>' +
       '<button class="footer-btn next" id="examNextBtn">' + (isLast ? 'Review & submit →' : 'Next question →') + '</button>' +
     '</div>' +
+    '<div class="kbd-hint">Keys 1-4 to answer · Enter for next</div>' +
     '<button class="sheet-close" id="examSubmitEarlyBtn" style="display:block;width:100%;margin-top:12px;">Submit exam early</button>'
   );
 }
@@ -733,6 +793,7 @@ function renderRun(){
   renderCard();
   wireHeader();
   wireFooter();
+  renderRail();
 }
 
 function renderHeader(){
@@ -784,7 +845,8 @@ function renderFooter(){
     '<div class="run-footer">' +
       (showSkip ? '<button class="footer-btn skip" id="skipBtn">Skip</button>' : '') +
       '<button class="footer-btn next" id="nextBtn"' + (canGoNext ? '' : ' disabled') + '>' + (isLast && resolved ? 'See results →' : 'Next question →') + '</button>' +
-    '</div>'
+    '</div>' +
+    '<div class="kbd-hint">Keys 1-4 to answer · Enter for next</div>'
   );
 }
 
@@ -987,6 +1049,130 @@ function examTickClass(p){
   const qIndex = order[p];
   if(flaggedSet.has(qIndex)) return 'flagged';
   return examStateAt(p) === 'answered' ? 'skipped' : '';
+}
+
+// ================= 7b keyboard =================
+// The desktop hint promises "Keys 1-4 to answer · Enter for next", so the keys
+// have to actually work. Bound once at load; every handler re-reads live state
+// rather than capturing it, since the DOM is replaced on each render.
+document.addEventListener('keydown', (e) => {
+  if(window.innerWidth < 1120) return;
+  // Never steal keystrokes from a field the reader is typing into.
+  const t = e.target;
+  if(t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+  // Nor while a sheet is up — those have their own affordances.
+  if([...document.querySelectorAll('.sheet-overlay')].some(o => !o.classList.contains('hidden'))) return;
+  if(e.metaKey || e.ctrlKey || e.altKey) return;
+
+  if(e.key >= '1' && e.key <= '9'){
+    const opts = document.querySelectorAll('#cardSlot .opt[data-idx]');
+    const btn = opts[parseInt(e.key, 10) - 1];
+    if(btn && !btn.disabled){ e.preventDefault(); btn.click(); }
+    return;
+  }
+  if(e.key === 'Enter'){
+    // Whichever "advance" control this mode is currently showing.
+    const next = document.getElementById('nextBtn') || document.getElementById('examNextBtn');
+    if(next && !next.disabled){ e.preventDefault(); next.click(); }
+  }
+});
+
+// ================= 7b desktop rail =================
+// At 1120px the Jump sheet disappears and the map is simply always open, with
+// flagged and skipped items listed beside it. Same data as the sheet, same
+// state helpers — only the container differs, so the two cannot drift.
+// Called at the end of every render pass; a no-op when the rail is off-screen.
+function renderRail(){
+  const rail = document.getElementById('runRail');
+  if(!rail) return;
+  // Cross-subject runs use pool[]; single-module runs use order[].
+  const isMulti = typeof pool !== 'undefined' && pool && pool.length && (typeof MODULE === 'undefined' || !MODULE);
+  const total = isMulti ? pool.length : (typeof order !== 'undefined' ? order.length : 0);
+  if(!total || window.innerWidth < 1120){ rail.innerHTML = ''; return; }
+
+  const examPhase = (MODE === 'exam' && !examSubmitted);
+  const classAt = p => {
+    let c = isMulti ? multiTickClass(p) : (examPhase ? examTickClass(p) : tickClass(p));
+    if(p === pos) c += ' current';
+    return c;
+  };
+
+  const cells = Array.from({ length: total }, (_, p) =>
+    '<button class="map-cell" data-pos="' + p + '" type="button">' + (p + 1) + '</button>'
+  ).join('');
+
+  const legend = examPhase
+    ? '<div class="lg-item"><span class="lg-dot" style="background:var(--blue-bright);"></span>Answered</div>' +
+      '<div class="lg-item"><span class="lg-dot" style="background:var(--gold);"></span>Flagged</div>'
+    : '<div class="lg-item"><span class="lg-dot" style="background:var(--good);"></span>Correct</div>' +
+      '<div class="lg-item"><span class="lg-dot" style="background:var(--bad);"></span>Wrong</div>' +
+      '<div class="lg-item"><span class="lg-dot" style="background:var(--blue-bright);"></span>Skipped</div>' +
+      '<div class="lg-item"><span class="lg-dot" style="background:var(--gold);"></span>Flagged</div>';
+
+  // "To resolve": everything still standing between the reader and a finish.
+  const toResolve = [];
+  for(let p = 0; p < total; p++){
+    const flagged = isMulti ? !!pool[p].flagged : flaggedSet.has(order[p]);
+    const a = answersLog[p];
+    if(flagged) toResolve.push({ p, why: 'flagged' });
+    else if(a && a.skipped) toResolve.push({ p, why: 'skipped' });
+    else if(!examPhase && !a) continue;
+  }
+
+  const resolveHtml = toResolve.length
+    ? toResolve.slice(0, 8).map(item =>
+        '<button class="resolve-row" data-pos="' + item.p + '" type="button">' +
+          '<span>Q' + (item.p + 1) + ' ' + item.why + '</span><span class="rr-go">Go →</span>' +
+        '</button>').join('') +
+      (toResolve.length > 8 ? '<div class="rail-more">+' + (toResolve.length - 8) + ' more</div>' : '')
+    : '<div class="rail-more">Nothing outstanding.</div>';
+
+  let statHtml = '';
+  if(!isMulti && typeof MODULE !== 'undefined' && MODULE){
+    const p = LEAProgress.load(SUBJECT.id, MODULE.id);
+    const mastered = (p.mastered || []).length;
+    const pct = MODULE.total > 0 ? Math.round((mastered / MODULE.total) * 100) : 0;
+    statHtml =
+      '<div class="rail-block">' +
+        '<div class="rail-head">This module</div>' +
+        '<div class="rail-stat-row"><span>' + mastered + ' / ' + MODULE.total + ' mastered</span><b>' + pct + '%</b></div>' +
+        '<div class="rail-bar"><div class="rail-bar-fill" style="width:' + pct + '%;"></div></div>' +
+      '</div>';
+  }
+
+  rail.innerHTML =
+    '<div class="rail-block">' +
+      '<div class="rail-head">Question map</div>' +
+      '<div class="rail-map">' + cells + '</div>' +
+      '<div class="map-legend">' + legend + '</div>' +
+    '</div>' +
+    '<div class="rail-block">' +
+      '<div class="rail-head">To resolve</div>' + resolveHtml +
+    '</div>' +
+    statHtml;
+
+  // Paint cell states after insertion so the class logic stays in one place.
+  rail.querySelectorAll('.map-cell').forEach(cell => {
+    const p = parseInt(cell.getAttribute('data-pos'), 10);
+    cell.className = 'map-cell ' + classAt(p);
+    cell.addEventListener('click', () => jumpToPosition(p));
+  });
+  rail.querySelectorAll('.resolve-row').forEach(row => {
+    row.addEventListener('click', () => jumpToPosition(parseInt(row.getAttribute('data-pos'), 10)));
+  });
+}
+
+// Shared by the rail and the keyboard shortcuts. Honours the same frontier
+// rule the sheet does: you cannot skip ahead of where you have reached.
+function jumpToPosition(target){
+  const isMulti = typeof pool !== 'undefined' && pool && pool.length && (typeof MODULE === 'undefined' || !MODULE);
+  if(target > frontier) return;
+  pos = target;
+  if(isMulti){
+    if(multiKind === 'exam' && !examSubmitted) renderMultiExamRun(); else renderMultiRun();
+  } else {
+    if(MODE === 'exam' && !examSubmitted) renderExamRun(); else renderRun();
+  }
 }
 
 function openMap(){
@@ -1367,6 +1553,7 @@ function renderMultiRun(){
   renderMultiCard();
   wireMultiHeader();
   wireMultiFooter();
+  renderRail();
 }
 
 // Every cross-subject run used to label itself "Drill", so a Mock Exam read
@@ -1434,7 +1621,8 @@ function renderMultiFooter(){
     '<div class="run-footer">' +
       (showSkip ? '<button class="footer-btn skip" id="skipBtn">Skip</button>' : '') +
       '<button class="footer-btn next" id="nextBtn"' + (canGoNext ? '' : ' disabled') + '>' + (isLast && resolved ? 'See results →' : 'Next question →') + '</button>' +
-    '</div>'
+    '</div>' +
+    '<div class="kbd-hint">Keys 1-4 to answer · Enter for next</div>'
   );
 }
 
@@ -1699,6 +1887,7 @@ function renderMultiExamRun(){
   renderMultiExamCardUngraded();
   wireMultiHeader();
   wireMultiExamFooter();
+  renderRail();
 }
 
 function examStatusBarFor(total){
@@ -1722,6 +1911,7 @@ function examFooterHtmlFor(total, onNext){
       '<button class="footer-btn skip" id="examFlagBtn">' + (pool[pos].flagged ? 'Unflag' : 'Flag') + '</button>' +
       '<button class="footer-btn next" id="examNextBtn">' + (isLast ? 'Review & submit →' : 'Next question →') + '</button>' +
     '</div>' +
+    '<div class="kbd-hint">Keys 1-4 to answer · Enter for next</div>' +
     '<button class="sheet-close" id="examSubmitEarlyBtn" style="display:block;width:100%;margin-top:12px;">Submit exam early</button>'
   );
 }
