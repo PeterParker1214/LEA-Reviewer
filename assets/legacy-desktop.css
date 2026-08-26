@@ -1,0 +1,46 @@
+/*
+ * Desktop layout for the legacy quiz pages.
+ *
+ * Those pages predate the run.html engine. Each is a self-contained file with
+ * its own markup and quiz logic, hardcoded to a ~740px column with no
+ * breakpoint at all — so on a wide screen they stayed a narrow strip while the
+ * new engine's pages got the full 1120px treatment. Seventeen modules across
+ * five subjects still use them, which is roughly half the quiz surface, so the
+ * inconsistency is what a reader actually sees most of the time.
+ *
+ * This is a holding measure, not a rebuild. It is one file, it adds no
+ * JavaScript, and it contains no page-specific selectors: it keys only off the
+ * .wrap / .options vocabulary those pages already share. Pages that do not
+ * share that vocabulary simply do not link it. When a subject migrates to the
+ * engine its page stops linking this, and when the last one migrates the file
+ * is deleted outright.
+ *
+ * Measurements are taken from run.html rather than re-derived, so the two
+ * surfaces do not read as two different products:
+ *
+ *   run.html at >=1120px:  .run-shell is 1120px wide, split 1fr / 300px rail
+ *                          with a 28px gap, leaving 792px for the question
+ *                          card;  .options is a 2-column grid with an 8px gap.
+ *
+ * Everything here lives inside the media query. The narrow layout is untouched.
+ */
+
+@media (min-width: 1120px) {
+
+  /* 1120 - 300 (rail) - 28 (gap) = 792: the exact width of the question card
+     in the new engine. These pages have no rail, so the column simply centres. */
+  .wrap { max-width: 792px; }
+
+  /* Two columns only where the options are short enough to sit on one line.
+     A 792px card split in two leaves ~380px per option, comfortable to about
+     45-50 characters. Pages whose options run longer than that keep the single
+     column and just get the wider card — two cramped columns read worse than
+     one wide one, so they opt in explicitly rather than by default.
+     The attribute selector also outranks the pages' own `.options` rule,
+     which sets flex-direction:column. */
+  body[data-desk="2col"] .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+}

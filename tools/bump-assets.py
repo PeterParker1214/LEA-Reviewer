@@ -34,13 +34,14 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Shared scripts whose staleness actually matters.
-ASSETS = ['module-progress', 'quiz-resume', 'theme', 'lea-confirm', 'presence', 'icons', 'sfx']
+ASSETS = ['module-progress', 'quiz-resume', 'theme', 'lea-confirm', 'presence', 'icons', 'sfx',
+          'legacy-desktop']
 
 # Matches assets/<name>.js, optionally already versioned, when followed by a
 # quote (a src="…" attribute or a JS string). The trailing-quote anchor is what
 # keeps prose mentions in comments from being rewritten.
 PATTERN = re.compile(
-    r'(assets/(?:%s)\.js)(\?v=\d+)?(?=["\'])' % '|'.join(re.escape(a) for a in ASSETS)
+    r'(assets/(?:%s)\.(?:js|css))(\?v=\d+)?(?=["\'])' % '|'.join(re.escape(a) for a in ASSETS)
 )
 
 
