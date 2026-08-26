@@ -104,8 +104,40 @@
   /* Phone: the wrapper takes no part in layout, so text and figure stack
      exactly as they always did. Desktop re-forms it as a row. */
   .q-body{ display:contents; }
-  .qimg-wrap{ margin-bottom:14px; display:none; }
-  .qimg-wrap img{ max-width:100%; border-radius:8px; border:1px solid var(--line); display:block; }
+  .qimg-wrap{ margin-bottom:14px; display:none; position:relative; }
+  .qimg-wrap img{ max-width:100%; border-radius:8px; border:1px solid var(--line); display:block; cursor:zoom-in; }
+  /* A figure is often the whole question — a truss, a load diagram, a plan.
+     At 390px it is unreadable without opening it. */
+  .qimg-hint{
+    position:absolute; right:8px; bottom:8px; pointer-events:none;
+    background:rgba(10,18,24,0.82); color:var(--gold-bright);
+    font-family:var(--font-mono); font-size:9.5px; letter-spacing:.06em; text-transform:uppercase;
+    padding:4px 7px; border-radius:5px; border:1px solid var(--line);
+  }
+
+  /* Full-screen figure viewer: pinch or wheel to zoom, drag to pan. */
+  .imgview{
+    position:fixed; inset:0; z-index:120; background:rgba(4,9,13,0.96);
+    display:flex; align-items:center; justify-content:center; touch-action:none; overflow:hidden;
+  }
+  .imgview.hidden{ display:none; }
+  .imgview img{
+    max-width:100%; max-height:100%; user-select:none; -webkit-user-drag:none;
+    transform-origin:center center; will-change:transform;
+  }
+  .imgview-bar{
+    position:absolute; top:0; left:0; right:0; display:flex; align-items:center;
+    justify-content:space-between; gap:10px; padding:12px 14px;
+  }
+  .imgview-bar .iv-note{
+    font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);
+  }
+  .imgview-bar button{
+    width:44px; height:44px; border-radius:8px; background:var(--bg-panel); border:1px solid var(--line);
+    color:var(--gold-bright); font-family:var(--font-mono); font-size:18px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .imgview-zoom{ position:absolute; bottom:16px; left:50%; transform:translateX(-50%); display:flex; gap:8px; }
   .options{ display:flex; flex-direction:column; gap:10px; }
   .opt{
     min-height:56px; text-align:left; padding:13px 16px; border-radius:10px;
@@ -349,6 +381,18 @@
 <body>
 <!-- The rail is a sibling of #pageBody, not a child: every render replaces
      pageBody's innerHTML wholesale, which would destroy anything inside it. -->
+<div class="imgview hidden" id="imgView" role="dialog" aria-modal="true" aria-label="Figure">
+  <div class="imgview-bar">
+    <span class="iv-note">Drag to pan · double-tap to reset</span>
+    <button type="button" id="ivClose" title="Close" aria-label="Close">&times;</button>
+  </div>
+  <img id="ivImg" alt="">
+  <div class="imgview-zoom">
+    <button type="button" id="ivOut" title="Zoom out" aria-label="Zoom out">&minus;</button>
+    <button type="button" id="ivIn" title="Zoom in" aria-label="Zoom in">+</button>
+  </div>
+</div>
+
 <div class="run-shell">
   <div class="wrap" id="pageBody">
     <div class="state-card">Loading…</div>
@@ -750,7 +794,7 @@ function renderExamCardUngraded(){
   });
 
   let imgHtml = '';
-  if(item.img){ imgHtml = '<div class="qimg-wrap" style="display:flex;"><img src="' + escapeHtml(item.img) + '" alt="Figure for this question"></div>'; }
+  if(item.img){ imgHtml = '<div class="qimg-wrap" style="display:flex;"><img src="' + escapeHtml(item.img) + '" alt="Figure for this question"><span class="qimg-hint">Tap to zoom</span></div>'; }
 
   slot.innerHTML =
     '<div class="bp-card">' +
@@ -1071,7 +1115,7 @@ function renderCard(){
   });
 
   let imgHtml = '';
-  if(item.img){ imgHtml = '<div class="qimg-wrap" style="display:flex;"><img src="' + escapeHtml(item.img) + '" alt="Figure for this question"></div>'; }
+  if(item.img){ imgHtml = '<div class="qimg-wrap" style="display:flex;"><img src="' + escapeHtml(item.img) + '" alt="Figure for this question"><span class="qimg-hint">Tap to zoom</span></div>'; }
 
   let explainHtml = '';
   if(logged && !logged.skipped){
@@ -1877,7 +1921,7 @@ function renderMultiCard(){
   });
 
   let imgHtml = '';
-  if(item.img){ imgHtml = '<div class="qimg-wrap" style="display:flex;"><img src="' + escapeHtml(item.img) + '" alt="Figure for this question"></div>'; }
+  if(item.img){ imgHtml = '<div class="qimg-wrap" style="display:flex;"><img src="' + escapeHtml(item.img) + '" alt="Figure for this question"><span class="qimg-hint">Tap to zoom</span></div>'; }
 
   let explainHtml = '';
   if(logged && !logged.skipped){
@@ -2200,7 +2244,7 @@ function renderMultiExamCardUngraded(){
     optsHtml += '<button class="' + cls + '" data-idx="' + origIdx + '">' + markup + '</button>';
   });
   let imgHtml = '';
-  if(item.img){ imgHtml = '<div class="qimg-wrap" style="display:flex;"><img src="' + escapeHtml(item.img) + '" alt="Figure for this question"></div>'; }
+  if(item.img){ imgHtml = '<div class="qimg-wrap" style="display:flex;"><img src="' + escapeHtml(item.img) + '" alt="Figure for this question"><span class="qimg-hint">Tap to zoom</span></div>'; }
   slot.innerHTML =
     '<div class="bp-card">' +
       sectionTagHtml(item) +
@@ -2297,6 +2341,103 @@ function svgFlag(){
 function svgMore(){
   return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>';
 }
+</script>
+<script>
+// ================= Figure viewer =================
+// A figure is often the whole question — a truss, a load diagram, a floor
+// plan — and at phone width it is unreadable in the card. Tapping one opens
+// it full-screen with wheel/pinch zoom and drag to pan.
+//
+// Delegated from the document, because the card is re-rendered on every
+// question and per-image handlers would be rebound (or leaked) each time.
+(function(){
+  const view = document.getElementById('imgView');
+  const img = document.getElementById('ivImg');
+  if(!view || !img) return;
+
+  let scale = 1, tx = 0, ty = 0;
+  let dragging = false, lastX = 0, lastY = 0, pointers = new Map(), startDist = 0, startScale = 1;
+
+  function apply(){ img.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')'; }
+  function reset(){ scale = 1; tx = 0; ty = 0; apply(); }
+  function setScale(next){
+    scale = Math.min(6, Math.max(1, next));
+    if(scale === 1){ tx = 0; ty = 0; }
+    apply();
+  }
+
+  function open(src, alt){
+    img.src = src;
+    img.alt = alt || 'Figure';
+    reset();
+    view.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    view.classList.add('hidden');
+    document.body.style.overflow = '';
+    img.removeAttribute('src');
+  }
+
+  document.addEventListener('click', (e) => {
+    const hit = e.target.closest('.qimg-wrap img');
+    if(!hit) return;
+    e.preventDefault();
+    open(hit.getAttribute('src'), hit.getAttribute('alt'));
+  });
+
+  document.getElementById('ivClose').addEventListener('click', close);
+  document.getElementById('ivIn').addEventListener('click', () => setScale(scale * 1.5));
+  document.getElementById('ivOut').addEventListener('click', () => setScale(scale / 1.5));
+  // Clicking the backdrop closes; clicking the image itself must not.
+  view.addEventListener('click', (e) => { if(e.target === view) close(); });
+  document.addEventListener('keydown', (e) => {
+    if(view.classList.contains('hidden')) return;
+    if(e.key === 'Escape') close();
+    if(e.key === '+' || e.key === '=') setScale(scale * 1.5);
+    if(e.key === '-') setScale(scale / 1.5);
+  });
+
+  view.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    setScale(scale * (e.deltaY < 0 ? 1.12 : 1 / 1.12));
+  }, { passive: false });
+
+  view.addEventListener('pointerdown', (e) => {
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if(pointers.size === 2){
+      const [a, b] = [...pointers.values()];
+      startDist = Math.hypot(a.x - b.x, a.y - b.y);
+      startScale = scale;
+    } else {
+      dragging = true; lastX = e.clientX; lastY = e.clientY;
+      view.setPointerCapture(e.pointerId);
+    }
+  });
+  view.addEventListener('pointermove', (e) => {
+    if(!pointers.has(e.pointerId)) return;
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if(pointers.size === 2 && startDist > 0){
+      const [a, b] = [...pointers.values()];
+      setScale(startScale * (Math.hypot(a.x - b.x, a.y - b.y) / startDist));
+      return;
+    }
+    if(!dragging || scale === 1) return;
+    tx += e.clientX - lastX; ty += e.clientY - lastY;
+    lastX = e.clientX; lastY = e.clientY;
+    apply();
+  });
+  function release(e){
+    pointers.delete(e.pointerId);
+    if(pointers.size < 2) startDist = 0;
+    if(pointers.size === 0) dragging = false;
+  }
+  view.addEventListener('pointerup', release);
+  view.addEventListener('pointercancel', release);
+  img.addEventListener('dblclick', () => { scale > 1 ? reset() : setScale(2.5); });
+})();
+
+
 </script>
 </body>
 </html>
