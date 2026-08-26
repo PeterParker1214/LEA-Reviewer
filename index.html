@@ -15,6 +15,7 @@
 <script src="assets/countdown.js?v=1"></script>
 <script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
 <script src="assets/quiz-source.js?v=1"></script>
+<script src="assets/avatar.js?v=5"></script>
 <script src="assets/module-progress.js?v=1"></script>
 <script src="assets/offline.js?v=1"></script>
 <script src="assets/quiz-resume.js?v=1"></script>
@@ -269,7 +270,9 @@
     width:44px; height:44px; border-radius:10px; background:var(--bg-panel-2); border:1px solid var(--gold);
     color:var(--gold-bright); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
     font-family:var(--font-display); font-weight:700; font-size:15px;
+    overflow:hidden; padding:0;
   }
+  .avatar-btn-44 img{ width:100%; height:100%; object-fit:cover; display:block; }
   .avatar-btn-44:hover{ border-color:var(--gold-bright); }
   .account-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:13px 4px; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); }
   .account-row:last-child{ border-bottom:none; }
@@ -717,6 +720,7 @@ const signedOutShell = document.getElementById('signedOutShell');
 const signedInShell = document.getElementById('signedInShell');
 const homeBody = document.getElementById('homeBody');
 let currentUsername = '';
+let currentAvatarUrl = null;
 let SUBJECTS_ALL = [];
 
 async function loadSubjectsCatalogue(){
@@ -877,11 +881,16 @@ function renderHome(){
   ).join('');
 
   const savedCounts = computeSavedCounts();
-  const initials = (currentUsername || '?').trim().slice(0, 2).toUpperCase();
+  // One definition of a face across the app: the picture if there is one,
+  // the initials if not — the same helper Profile and the leaderboard use, so
+  // the three can never disagree about what someone looks like.
+  const faceHtml = window.LEAAvatar
+    ? LEAAvatar.faceHtml(currentAvatarUrl, currentUsername)
+    : escapeHtml((currentUsername || '?').trim().slice(0, 2).toUpperCase());
 
   homeBody.innerHTML =
     '<div class="home-top-bar">' +
-      '<button class="avatar-btn-44" id="openAccountBtn" title="Account">' + escapeHtml(initials) + '</button>' +
+      '<button class="avatar-btn-44" id="openAccountBtn" title="Account">' + faceHtml + '</button>' +
       '<div class="home-wordmark"><div class="hw-eyebrow">Peter Parker’s</div><div class="hw-title">LEA Reviewer</div></div>' +
       '<a class="icon-btn-44" href="standings.html" title="Standings">' + svgTrophy() + '</a>' +
     '</div>' +
@@ -1216,7 +1225,16 @@ async function showSignedIn(user){
   // maybeSingle(), and the error is checked: with single() a failed lookup
   // was indistinguishable from "no profile row", so one network blip would
   // bounce a long-established user into the display-name onboarding screen.
-  const { data: profile, error: profileErr } = await sb.from('profiles').select('username').eq('id', user.id).maybeSingle();
+  // avatar_url comes back in the same read as the name. Selected separately
+  // from `username` so a deployment without the column (see
+  // design_handoff_lea_reviewer/avatars-setup.sql) still gets its name — the
+  // face just falls back to initials.
+  let { data: profile, error: profileErr } = await sb.from('profiles').select('username, avatar_url').eq('id', user.id).maybeSingle();
+  if(profileErr){
+    const retry = await sb.from('profiles').select('username').eq('id', user.id).maybeSingle();
+    profile = retry.data; profileErr = retry.error;
+  }
+  currentAvatarUrl = (profile && profile.avatar_url) || null;
   if(profileErr){
     // Couldn't read the profile. Fall back to the email prefix for display
     // and carry on — Home is still perfectly usable, and it's far better
