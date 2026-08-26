@@ -121,9 +121,68 @@ window.LEAProgress = (function () {
   // that write never happened. Progress survives in the local cache and gets
   // folded back up by the migration on a later load, but meta values (streak,
   // mock-exam history) read remote-first and would simply lose the update.
+  // ---- Mastery events (weekly standings) --------------------------------
+  //
+  // Progress records WHICH questions are mastered but never WHEN, so a
+  // time-windowed leaderboard cannot be answered from it. Each first mastery
+  // is dated here instead, in its own append-only table.
+  //
+  // Queued before it is sent, and flushed on the same signals as progress:
+  // studying on a train must not silently lose a day's count. Duplicates are
+  // harmless — the table's unique index collapses them — so a retry that
+  // double-sends costs nothing.
+  //
+  // Deliberately fire-and-forget with respect to the UI: a failed send must
+  // never block or alter what the reader sees about their own progress, which
+  // is stored separately and authoritative.
+  const MASTERY_QUEUE_KEY = 'lea_mastery_queue_v1';
+
+  function readMasteryQueue() {
+    try { return JSON.parse(localStorage.getItem(MASTERY_QUEUE_KEY) || '[]'); }
+    catch (e) { return []; }
+  }
+  function writeMasteryQueue(q) {
+    try { localStorage.setItem(MASTERY_QUEUE_KEY, JSON.stringify(q)); } catch (e) {}
+  }
+
+  function recordMasteryEvent(subjectId, moduleId, qIndex) {
+    const q = readMasteryQueue();
+    q.push({ s: subjectId, m: moduleId, q: qIndex });
+    // A runaway queue would be a storage problem, not a standings problem.
+    writeMasteryQueue(q.length > 2000 ? q.slice(-2000) : q);
+    flushMasteryQueue();
+  }
+
+  let masteryFlushing = false;
+  function flushMasteryQueue() {
+    if (masteryFlushing || !sbClient || !syncUser) return;
+    const q = readMasteryQueue();
+    if (q.length === 0) return;
+    masteryFlushing = true;
+    const batch = q.slice(0, 200);
+    const rows = batch.map(function (e) {
+      return { user_id: syncUser.id, subject_id: e.s, module_id: e.m, q_index: e.q };
+    });
+    sbClient.from('mastery_events')
+      .upsert(rows, { onConflict: 'user_id,subject_id,module_id,q_index', ignoreDuplicates: true })
+      .then(function (res) {
+        masteryFlushing = false;
+        if (res && res.error) {
+          // Includes "table does not exist" on a deployment that has not run
+          // weekly-standings-setup.sql. Keep the queue and try again later
+          // rather than dropping a record we cannot recreate.
+          return;
+        }
+        writeMasteryQueue(readMasteryQueue().slice(batch.length));
+        if (readMasteryQueue().length) flushMasteryQueue();
+      })
+      .catch(function () { masteryFlushing = false; });
+  }
+
   // Flush on the way out. visibilitychange:hidden is the signal that actually
   // fires on mobile, where 'unload' frequently never does.
   function flushPendingPush() {
+    flushMasteryQueue();
     if (!saveTimer) return;
     clearTimeout(saveTimer);
     saveTimer = null;
@@ -249,6 +308,8 @@ window.LEAProgress = (function () {
         sbClient.from('progress').insert({ user_id: user.id, data: {} }).then(function () {});
       }
       runPendingMigration();
+      // Anything queued while signed out or offline goes now.
+      flushMasteryQueue();
       if (typeof window.leaOnProgressReset === 'function') window.leaOnProgressReset();
     });
   }
@@ -320,6 +381,9 @@ window.LEAProgress = (function () {
     if (p.mastered.indexOf(qIndex) === -1) {
       p.mastered.push(qIndex);
       save(subjectId, moduleId, p);
+      // This branch IS "first time mastered" — the only moment worth dating,
+      // and the only hook weekly standings needs.
+      recordMasteryEvent(subjectId, moduleId, qIndex);
     }
     return p;
   }

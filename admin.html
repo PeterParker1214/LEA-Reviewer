@@ -816,7 +816,7 @@ function parseQuizFile(text){
 function buildAdaptedQuizHtml(raw, format, opts){
   const { subjectId, moduleId, subjectName, includeBackLink } = opts;
   let out = raw;
-  const assetPath = '../../../assets/module-progress.js?v=1';
+  const assetPath = '../../../assets/module-progress.js?v=2';
 
   if(format === 'native'){
     out = out.replace(/const LEA_SUBJECT_ID\s*=\s*'[^']*';/, `const LEA_SUBJECT_ID = '${subjectId}';`);
@@ -1069,7 +1069,7 @@ ${moduleCards}
   </div>
 </div>
 
-<script src="../../assets/module-progress.js?v=1"><\/script>
+<script src="../../assets/module-progress.js?v=2"><\/script>
 <script>
 const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
