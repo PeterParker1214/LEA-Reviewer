@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -464,6 +465,8 @@
 <script src="assets/quiz-source.js?v=1"></script>
 <script src="assets/module-progress.js?v=2"></script>
 <script src="assets/offline.js?v=1"></script>
+<script src="assets/presence.js?v=2"></script>
+<script>if(window.LEAPresence) LEAPresence.init({});</script>
 <script src="assets/quiz-resume.js?v=1"></script>
 <script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
 </head>
@@ -1807,11 +1810,36 @@ async function buildQuestionIndex(subjects){
 // 3-4 approximate "most-missed" at the module level (no per-question miss
 // count exists): unmastered questions in a module you've attempted before
 // outrank unmastered questions in a module you've never opened.
+// Tier 3 is "unmastered in a module you have opened", tier 4 is "unmastered
+// in one you have not". Taking tier 3 first and only falling through when it
+// runs dry meant a reader with a backlog never saw a new subject: 275 tier-3
+// questions across two subjects kept 3,363 across seven permanently out of
+// reach, so every drill was the same two subjects for weeks.
+//
+// Revisiting still leads — that is the point of the tier — but a fixed share
+// of each drill is reserved for ground you have not opened, so the drill can
+// introduce a subject instead of waiting to be asked. Either side lends its
+// slots to the other when it is short, so a full backlog or a blank slate
+// both still produce twenty questions.
+const DRILL_SIZE = 20;
+const DRILL_REVISIT_SHARE = 0.7;   // 14 of 20
+
 function buildDailyDrillPool(index){
   const unmastered = index.filter(c => !c.mastered);
-  const tier3 = shuffleArr(unmastered.filter(c => c.moduleAttempts > 0));
-  const tier4 = shuffleArr(unmastered.filter(c => c.moduleAttempts === 0));
-  return tier3.concat(tier4).slice(0, 20);
+  const revisit = shuffleArr(unmastered.filter(c => c.moduleAttempts > 0));
+  const fresh = shuffleArr(unmastered.filter(c => c.moduleAttempts === 0));
+
+  const wantRevisit = Math.round(DRILL_SIZE * DRILL_REVISIT_SHARE);
+  const takeRevisit = Math.min(revisit.length, wantRevisit);
+  const takeFresh = Math.min(fresh.length, DRILL_SIZE - takeRevisit);
+  const pool = revisit.slice(0, takeRevisit).concat(fresh.slice(0, takeFresh));
+
+  // Whichever side was short, top up from the other so the drill is full.
+  if(pool.length < DRILL_SIZE){
+    const rest = revisit.slice(takeRevisit).concat(fresh.slice(takeFresh));
+    pool.push(...rest.slice(0, DRILL_SIZE - pool.length));
+  }
+  return shuffleArr(pool);
 }
 
 function buildMockExamPool(index, count){
@@ -1847,17 +1875,50 @@ function buildSearchDrillPool(index, q, filter){
   return shuffleArr(matches);
 }
 
+// Sorting purely by percentage looks right until you notice that most topics
+// are on 0%, and every tie was broken by position in the index — which is
+// subject order. The whole list came out of whichever subject happens to be
+// first in the manifest.
+//
+// Percentage still decides the order. Within a run of topics on the SAME
+// percentage the subjects take turns, so a tie is broken by variety rather
+// than by manifest position, and "your shakiest topics" reads as a spread.
 function aggregateWeakTopics(index){
   const byTopic = {};
   index.forEach(c => {
-    byTopic[c.s] = byTopic[c.s] || { total: 0, mastered: 0 };
-    byTopic[c.s].total++;
-    if(c.mastered) byTopic[c.s].mastered++;
+    const t = byTopic[c.s] || (byTopic[c.s] = { total: 0, mastered: 0, subjects: {} });
+    t.total++;
+    if(c.mastered) t.mastered++;
+    t.subjects[c.subjectId] = (t.subjects[c.subjectId] || 0) + 1;
   });
-  return Object.keys(byTopic).map(name => {
+
+  const rows = Object.keys(byTopic).map(name => {
     const t = byTopic[name];
-    return { name, total: t.total, mastered: t.mastered, pct: Math.round((t.mastered / t.total) * 100) };
-  }).filter(t => t.pct < 100).sort((a, b) => a.pct - b.pct);
+    // A topic name can appear in more than one subject; attribute it to
+    // whichever contributes most of its questions.
+    const subjectId = Object.keys(t.subjects).sort((a, b) => t.subjects[b] - t.subjects[a])[0];
+    return { name, total: t.total, mastered: t.mastered, subjectId, pct: Math.round((t.mastered / t.total) * 100) };
+  }).filter(t => t.pct < 100)
+    .sort((a, b) => (a.pct - b.pct) || (b.total - a.total) || a.name.localeCompare(b.name));
+
+  // Round-robin within each percentage band, never across bands.
+  const out = [];
+  let i = 0;
+  while(i < rows.length){
+    let j = i;
+    while(j < rows.length && rows[j].pct === rows[i].pct) j++;
+    const band = rows.slice(i, j);
+    const queues = {};
+    band.forEach(r => (queues[r.subjectId] = queues[r.subjectId] || []).push(r));
+    const keys = Object.keys(queues);
+    let drained = false;
+    while(!drained){
+      drained = true;
+      keys.forEach(k => { if(queues[k].length){ out.push(queues[k].shift()); drained = false; } });
+    }
+    i = j;
+  }
+  return out;
 }
 
 async function bootMulti(subjects, drillParams){

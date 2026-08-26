@@ -5,6 +5,13 @@
   var SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
   var SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
   var CHANNEL_NAME = 'online-users';
+  var currentNames = [];
+  var listeners = [];
+
+  function announce(names) {
+    currentNames = names;
+    listeners.slice().forEach(function (fn) { try { fn(names.slice()); } catch (e) {} });
+  }
 
   function ensureLib(cb) {
     if (window.supabase && window.supabase.createClient) { cb(); return; }
@@ -35,10 +42,15 @@
       var channel = null;
 
       function pushState() {
-        if (!channel || !opts.onChange) return;
+        if (!channel) return;
         var state = channel.presenceState();
-        var names = Object.values(state).flat().map(function (p) { return p.username; }).filter(Boolean);
-        opts.onChange(Array.from(new Set(names)));
+        // De-duplicated by name: the presence key is per tab, so one person
+        // with two tabs open is one person online, not two.
+        var names = Array.from(new Set(
+          Object.values(state).flat().map(function (p) { return p.username; }).filter(Boolean)
+        )).sort(function (a, b) { return a.localeCompare(b); });
+        announce(names);
+        if (opts.onChange) opts.onChange(names.slice());
       }
 
       function start(username) {
@@ -56,6 +68,7 @@
 
       function stop() {
         if (channel) { sb.removeChannel(channel); channel = null; }
+        announce([]);
         if (opts.onChange) opts.onChange([]);
       }
 
@@ -71,5 +84,30 @@
     });
   }
 
-  window.LEAPresence = { init: init };
+  window.LEAPresence = {
+    init: init,
+    /** Who is online right now, as an array of display names. */
+    names: function () { return currentNames.slice(); },
+    /**
+     * Called whenever that list changes, and once immediately with the list
+     * as it stands. Returns an unsubscribe function.
+     *
+     * Several parts of a page want this at once — a count, a marquee, a dot
+     * beside every name on the board — and each of them renders at a
+     * different moment, so a single onChange callback was not enough.
+     */
+    subscribe: function (fn) {
+      if (typeof fn !== 'function') return function () {};
+      listeners.push(fn);
+      try { fn(currentNames.slice()); } catch (e) {}
+      return function () {
+        const i = listeners.indexOf(fn);
+        if (i !== -1) listeners.splice(i, 1);
+      };
+    },
+    /** True when `name` is one of the people currently online. */
+    isOnline: function (name) {
+      return !!name && currentNames.indexOf(name) !== -1;
+    }
+  };
 })();

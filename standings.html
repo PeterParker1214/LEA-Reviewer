@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -60,6 +61,13 @@
     overflow:hidden; margin-right:10px;
   }
   .lb-face img{ width:100%; height:100%; object-fit:cover; }
+  /* A green dot beside anyone who is online right now. Sized and glowing the
+     same as Home's, so the two read as one signal. */
+  .lb-live{
+    width:8px; height:8px; border-radius:50%; background:var(--good);
+    box-shadow:0 0 6px var(--good); flex-shrink:0; margin-left:8px;
+  }
+  .lb-name{ display:flex; align-items:center; }
   .rv-face{
     width:44px; height:44px; margin:0 0 8px; border:1px solid rgba(224,168,63,0.45);
     background:var(--bg-panel-2); display:flex; align-items:center; justify-content:center;
@@ -137,6 +145,8 @@
 <script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
 <script src="assets/avatar.js?v=5"></script>
 <script src="assets/offline.js?v=1"></script>
+<script src="assets/presence.js?v=2"></script>
+<script>if(window.LEAPresence) LEAPresence.init({});</script>
 </head>
 <body>
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
@@ -203,13 +213,23 @@ async function loadAvatars(){
   }catch(e){}
 }
 
+// Marked only where it is known to be true: LEAPresence reports who is on
+// the channel right now, and anyone absent simply gets no dot rather than an
+// "offline" claim we cannot make about someone who may just be on a page
+// that has not connected yet.
+function onlineDot(username){
+  return (window.LEAPresence && LEAPresence.isOnline(username))
+    ? '<span class="lb-live" title="Online now"></span>'
+    : '';
+}
+
 function lbRowHtml(row, rank, isMine){
   const cls = 'lb-row' + (rank <= 3 ? ' top' + rank : '') + (isMine ? ' mine' : '');
   return (
     '<div class="' + cls + '">' +
       '<div class="lb-rank">' + rank + '</div>' +
       '<div class="lb-face">' + LEAAvatar.faceHtml(avatarFor(row.username), row.username) + '</div>' +
-      '<div class="lb-name">' + escapeHtml(row.username) + (isMine ? ' (you)' : '') + '</div>' +
+      '<div class="lb-name">' + escapeHtml(row.username) + (isMine ? ' (you)' : '') + onlineDot(row.username) + '</div>' +
       '<div class="lb-stats">' + (row.total_mastered||0) + ' mastered · ' + Math.round((row.avg_best_score||0)*100) + '% avg</div>' +
     '</div>'
   );
@@ -328,7 +348,7 @@ function weekRowHtml(row, rank, isMine){
     '<div class="' + cls + '">' +
       '<div class="lb-rank">' + rank + '</div>' +
       '<div class="lb-face">' + LEAAvatar.faceHtml(avatarFor(row.username), row.username) + '</div>' +
-      '<div class="lb-name">' + escapeHtml(row.username) + (isMine ? ' (you)' : '') + '</div>' +
+      '<div class="lb-name">' + escapeHtml(row.username) + (isMine ? ' (you)' : '') + onlineDot(row.username) + '</div>' +
       '<div class="lb-stats">' + row.mastered + ' this week</div>' +
     '</div>'
   );
@@ -381,6 +401,15 @@ async function render(){
   currentUsername = username;
   await loadAvatars();
   await render();
+  // Re-render when people arrive or leave, so the dots stay true without a
+  // refresh. render() rebuilds the active tab from data already in hand.
+  if(window.LEAPresence){
+    let firstCall = true;
+    LEAPresence.subscribe(() => {
+      if(firstCall){ firstCall = false; return; }
+      render();
+    });
+  }
 })();
 </script>
 </body>

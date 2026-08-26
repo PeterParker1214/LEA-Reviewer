@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="LEA Reviewer">
+  <!--
+    The app's own language at 16px: the deep blueprint ground, a faint grid,
+    gold registration corners, and the L that the wordmark leads with.
+    Drawn heavy and simple because a favicon is read at a glance, not studied.
+  -->
+  <defs>
+    <pattern id="g" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M8 0H0v8" fill="none" stroke="#6fa8cf" stroke-width="1" opacity=".16"/>
+    </pattern>
+  </defs>
+
+  <rect width="64" height="64" rx="12" fill="#0a1218"/>
+  <rect width="64" height="64" rx="12" fill="url(#g)"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="11" fill="none" stroke="#e0a83f" stroke-width="2.5" opacity=".55"/>
+
+  <!-- Registration corners, top-left and bottom-right, as the cards use. -->
+  <path d="M10 20V10h10M54 44v10H44" fill="none" stroke="#f0c268" stroke-width="4"
+        stroke-linecap="square"/>
+
+  <!-- L -->
+  <path d="M23 17v30h20" fill="none" stroke="#f0c268" stroke-width="7"
+        stroke-linecap="square" stroke-linejoin="miter"/>
+</svg>
