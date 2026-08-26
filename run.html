@@ -93,6 +93,9 @@
     padding:4px 9px; border-radius:20px;
   }
   .qtext{ font-size:17px; font-weight:450; line-height:1.6; color:var(--ink); margin:0 0 14px; }
+  /* Phone: the wrapper takes no part in layout, so text and figure stack
+     exactly as they always did. Desktop re-forms it as a row. */
+  .q-body{ display:contents; }
   .qimg-wrap{ margin-bottom:14px; display:none; }
   .qimg-wrap img{ max-width:100%; border-radius:8px; border:1px solid var(--line); display:block; }
   .options{ display:flex; flex-direction:column; gap:10px; }
@@ -220,14 +223,19 @@
     /* The map is always open, so the Jump chip has nothing left to do. */
     #jumpChip{ display:none; }
 
-    /* Options span the card in two columns so every edge lines up with the
-       action bar, as the frame shows. */
-    .options{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+    /* Frame 7b: options in two columns at a 10px gap, so their outer edges
+       line up with the action bar below. Padding and size come from the
+       shared layer's desktop block. */
+    .options{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
     .opt{ margin:0; }
-    /* A question with a figure puts the image beside the text rather than
-       pushing the options below the fold. */
-    .bp-card.has-figure .qtext{ float:none; }
-    .qimg-wrap{ max-width:340px; }
+
+    /* The figure sits beside the question text rather than above it, which is
+       what keeps the options on screen without scrolling. Both are wrapped in
+       .q-body so they can share a row; the wrapper is display:contents on a
+       phone, so the stacked order there is untouched. */
+    .q-body{ display:flex; gap:26px; align-items:flex-start; margin-bottom:20px; }
+    .q-body .qtext{ flex:1; min-width:0; margin:0; }
+    .q-body .qimg-wrap{ width:252px; height:150px; flex-shrink:0; margin:0; }
 
     .kbd-hint{ display:block; text-align:center; font-family:var(--font-mono);
       font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;
@@ -735,8 +743,7 @@ function renderExamCardUngraded(){
   slot.innerHTML =
     '<div class="bp-card">' +
       '<span class="section-tag">' + escapeHtml(item.s || '') + '</span>' +
-      '<p class="qtext">' + escapeHtml(item.q) + '</p>' +
-      imgHtml +
+      '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
       '<div class="options">' + optsHtml + '</div>' +
     '</div>';
 
@@ -1085,8 +1092,7 @@ function renderCard(){
     '<div class="bp-card">' +
       '<span class="section-tag">' + escapeHtml(item.s || '') + '</span>' +
       '<span class="clock-chip">' + (MODE === 'exam' ? 'Reviewing · mock exam' : MODE === 'drill' ? 'No clock · drilling your misses' : 'No clock · study mode') + '</span>' +
-      '<p class="qtext">' + escapeHtml(item.q) + '</p>' +
-      imgHtml +
+      '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
       '<div class="options">' + optsHtml + '</div>' +
       explainHtml +
     '</div>';
@@ -1886,8 +1892,7 @@ function renderMultiCard(){
     '<div class="bp-card">' +
       '<span class="section-tag">' + escapeHtml(item.s || '') + '</span>' +
       '<span class="clock-chip">' + escapeHtml(cell.moduleTitle) + '</span>' +
-      '<p class="qtext">' + escapeHtml(item.q) + '</p>' +
-      imgHtml +
+      '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
       '<div class="options">' + optsHtml + '</div>' +
       explainHtml +
     '</div>';
@@ -2195,8 +2200,7 @@ function renderMultiExamCardUngraded(){
     '<div class="bp-card">' +
       '<span class="section-tag">' + escapeHtml(item.s || '') + '</span>' +
       '<span class="clock-chip">' + escapeHtml(stripEmoji(cell.subjectName)) + '</span>' +
-      '<p class="qtext">' + escapeHtml(item.q) + '</p>' +
-      imgHtml +
+      '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
       '<div class="options">' + optsHtml + '</div>' +
     '</div>';
   slot.querySelectorAll('.opt[data-idx]').forEach(btn => {
