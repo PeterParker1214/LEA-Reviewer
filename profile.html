@@ -54,7 +54,11 @@
     font-family:var(--font-mono); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase;
     color:var(--gold-bright); background:none; border:0; cursor:pointer; padding:8px 4px;
   }
-  .pf-save[disabled]{ color:var(--muted); cursor:default; }
+  .pf-save:hover{ text-decoration:underline; }
+  /* The name row is an input, so it should look like one. Without this it
+     reads as a static row and nobody discovers it can be typed in. */
+  .pf-field:focus-within{ border-color:var(--gold); }
+  .pf-field:hover{ border-color:rgba(224,168,63,0.45); }
 
   /* Identity card — blueprint corner marks, same as the frame. */
   .pf-id{
@@ -188,7 +192,7 @@ function render(){
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>' +
       '</a>' +
       '<div class="pf-title">Profile</div>' +
-      '<button class="pf-save" id="pfSave" disabled>Save</button>' +
+      '<button class="pf-save" id="pfSave">Save</button>' +
     '</div>' +
 
     '<div class="pf-id">' +
@@ -240,8 +244,6 @@ function wire(){
   input.addEventListener('input', () => {
     const v = input.value;
     count.textContent = v.length + ' / ' + NAME_MAX;
-    const changed = v.trim() !== state.username;
-    save.disabled = !changed || v.trim().length < 3;
     status.textContent = '';
     status.className = 'pf-status';
     // The initials follow the field as you type, so they are never a surprise
@@ -252,9 +254,21 @@ function wire(){
     }
   });
 
+  // Save used to sit disabled whenever there was nothing to save, which is
+  // honest but silent: pressing it did nothing at all and read as a broken
+  // button. It is always pressable now and always says what happened.
   save.addEventListener('click', async () => {
     const next = input.value.trim();
-    if(next.length < 3){ return; }
+    if(next === state.username){
+      status.className = 'pf-status';
+      status.textContent = 'Nothing to change — your name is already ' + state.username + '.';
+      return;
+    }
+    if(next.length < 3){
+      status.className = 'pf-status err';
+      status.textContent = 'Names need at least 3 characters.';
+      return;
+    }
     save.disabled = true;
     status.className = 'pf-status';
     status.textContent = 'Saving…';
@@ -267,6 +281,7 @@ function wire(){
       save.disabled = false;
       return;
     }
+    save.disabled = false;
     state.username = next;
     status.className = 'pf-status ok';
     status.textContent = 'Saved.';

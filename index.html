@@ -29,8 +29,24 @@
 // Only an unexpired token counts. If it has lapsed, the sign-in screen is the
 // correct thing to show and there is nothing to suppress.
 (function () {
+  // Look in BOTH storages, and match the key by shape rather than by name.
+  // leaAuthStorage puts the session in localStorage when "keep me signed in"
+  // is ticked and sessionStorage when it is not, so a localStorage-only probe
+  // missed every reader who unticked it — and they kept the flash. Matching
+  // on shape also survives a project-ref or key-name change.
+  function findSession(store) {
+    try {
+      for (var i = 0; i < store.length; i++) {
+        var k = store.key(i);
+        if (k && k.indexOf('sb-') === 0 && k.indexOf('-auth-token') !== -1) {
+          return store.getItem(k);
+        }
+      }
+    } catch (e) {}
+    return null;
+  }
   try {
-    var raw = localStorage.getItem('sb-rjrrprbvsmflzncojbtq-auth-token');
+    var raw = findSession(window.localStorage) || findSession(window.sessionStorage);
     if (!raw) return;
     var s = JSON.parse(raw);
     var exp = s && (s.expires_at || (s.currentSession && s.currentSession.expires_at));
