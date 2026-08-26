@@ -578,9 +578,11 @@ function renderModulesList(subject, mode){
     const mp = moduleProgress(subject.id, mod);
     const resume = LEAResume.load(subject.id, mod.id);
     const inProgress = !!(resume && resume.total && resume.answeredCount > 0 && resume.answeredCount < resume.total);
-    const href = mod.format === 'json'
-      ? 'run.html?s=' + encodeURIComponent(subject.id) + '&m=' + encodeURIComponent(mod.id) + '&mode=' + mode
-      : mod.file;
+    // Every module opens in the run engine now, whatever format it is stored
+    // as. It used to fall back to the module's own legacy quiz page, which
+    // meant 17 of 33 modules — 61% of the questions — opened in the old design
+    // even though the rest of the app had been rebuilt around them.
+    const href = 'run.html?s=' + encodeURIComponent(subject.id) + '&m=' + encodeURIComponent(mod.id) + '&mode=' + mode;
     const disabled = mode === 'drill' && mp.toDrill === 0;
 
     let metaLeft;

@@ -739,7 +739,7 @@ function renderExamCardUngraded(){
 
   slot.innerHTML =
     '<div class="bp-card">' +
-      '<span class="section-tag">' + escapeHtml(item.s || '') + '</span>' +
+      sectionTagHtml(item) +
       '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
       '<div class="options">' + optsHtml + '</div>' +
     '</div>';
@@ -1087,7 +1087,7 @@ function renderCard(){
 
   slot.innerHTML =
     '<div class="bp-card">' +
-      '<span class="section-tag">' + escapeHtml(item.s || '') + '</span>' +
+      sectionTagHtml(item) +
       '<span class="clock-chip">' + (MODE === 'exam' ? 'Reviewing · mock exam' : MODE === 'drill' ? 'No clock · drilling your misses' : 'No clock · study mode') + '</span>' +
       '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
       '<div class="options">' + optsHtml + '</div>' +
@@ -1880,7 +1880,7 @@ function renderMultiCard(){
 
   slot.innerHTML =
     '<div class="bp-card">' +
-      '<span class="section-tag">' + escapeHtml(item.s || '') + '</span>' +
+      sectionTagHtml(item) +
       '<span class="clock-chip">' + escapeHtml(cell.moduleTitle) + '</span>' +
       '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
       '<div class="options">' + optsHtml + '</div>' +
@@ -2188,7 +2188,7 @@ function renderMultiExamCardUngraded(){
   if(item.img){ imgHtml = '<div class="qimg-wrap" style="display:flex;"><img src="' + escapeHtml(item.img) + '" alt="Figure for this question"></div>'; }
   slot.innerHTML =
     '<div class="bp-card">' +
-      '<span class="section-tag">' + escapeHtml(item.s || '') + '</span>' +
+      sectionTagHtml(item) +
       '<span class="clock-chip">' + escapeHtml(stripEmoji(cell.subjectName)) + '</span>' +
       '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
       '<div class="options">' + optsHtml + '</div>' +
@@ -2263,6 +2263,14 @@ function showMultiExamResults(auto, correct){
 // Flame for the daily-drill streak chip, same Lucide geometry as icons.js.
 function svgFlame(){
   return '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>';
+}
+
+// Not every module tags its questions by topic (the older QUIZ_DATA quizzes
+// carry no topic field at all). Omit the tag entirely in that case rather than
+// drawing an empty gold chip.
+function sectionTagHtml(item){
+  const s = item && item.s ? String(item.s).trim() : '';
+  return s ? '<span class="section-tag">' + escapeHtml(s) + '</span>' : '';
 }
 
 function svgArrowLeft(){
