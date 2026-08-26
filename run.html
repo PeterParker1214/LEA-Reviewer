@@ -257,6 +257,9 @@
   .rail-bar-fill{ height:100%; background:linear-gradient(90deg, var(--gold), var(--blue-bright)); }
 
   /* ===== 2d Results ===== */
+  .res-saved{ font-family:var(--font-mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--good); margin-bottom:10px; }
+  .res-newly{ font-family:var(--font-mono); font-size:11.5px; color:var(--muted); margin:-8px 0 16px; }
+  .res-newly b{ color:var(--good); font-size:13px; }
   .res-best{ font-family:var(--font-mono); font-size:13px; color:var(--gold-bright); margin:6px 0 16px; }
   .res-best.muted{ color:var(--muted); }
   .res-best span{ color:var(--muted); }
@@ -406,6 +409,24 @@ let examLengthChoice = null; // 'full' | 'sim50'
 let examEndAt = 0;
 let examSubmitted = false;
 let examPrevBestPct = null;   // standing best %, captured before submit overwrites it
+
+// How many questions in this module were already mastered when the attempt
+// began. markMastered runs DURING an attempt, so by the results screen the
+// earlier state is gone unless it is captured up front. A run-local value is
+// enough because results follow the run in the same page session — except
+// across a resume, where the page may have reloaded, so it also rides in the
+// resume payload. Null means "never captured", which omits the line rather
+// than reporting a wrong number.
+let masteredAtStart = null;
+function captureMasteredAtStart(){
+  const p = LEAProgress.load(SUBJECT.id, MODULE.id);
+  masteredAtStart = (p.mastered || []).length;
+}
+function newlyMasteredCount(){
+  if(masteredAtStart === null) return null;
+  const p = LEAProgress.load(SUBJECT.id, MODULE.id);
+  return Math.max(0, (p.mastered || []).length - masteredAtStart);
+}
 let examTimerHandle = null;
 
 async function boot(){
@@ -473,6 +494,7 @@ async function boot(){
     order = QUESTIONS.map((_, i) => i).filter(i => !QUESTIONS[i].hidden);
     answersLog = new Array(order.length).fill(null);
     pos = 0; frontier = 0;
+    captureMasteredAtStart();
     tryResume();
   } else if(MODE === 'exam'){
     tryResumeExam();
@@ -489,6 +511,7 @@ async function boot(){
     }
     answersLog = new Array(order.length).fill(null);
     pos = 0; frontier = 0;
+    captureMasteredAtStart();
     tryResume();
   }
 }
@@ -518,6 +541,10 @@ function tryResume(){
         frontier = payload.frontier || 0;
         pos = Math.min(payload.pos || 0, order.length - 1);
         if(Array.isArray(payload.flagged)) flaggedSet = new Set(payload.flagged);
+        // Prefer the figure from when the attempt actually began. Re-capturing
+        // here would count everything mastered before the reload as new, which
+        // is the opposite of the truth.
+        if(typeof payload.masteredAtStart === 'number') masteredAtStart = payload.masteredAtStart;
       }
       renderRun();
     },
@@ -529,7 +556,7 @@ function saveResumeState(){
   const answeredCount = answersLog.filter(a => a && !a.skipped).length;
   LEAResume.save(SUBJECT.id, resumeKey(), {
     answeredCount, total: order.length, position: pos + 1,
-    payload: { answersLog, frontier, pos, flagged: Array.from(flaggedSet) }
+    payload: { answersLog, frontier, pos, flagged: Array.from(flaggedSet), masteredAtStart }
   });
 }
 
@@ -546,6 +573,7 @@ function tryResumeExam(){
     order = rec.payload.order;
     answersLog = rec.payload.answersLog;
     if(Array.isArray(rec.payload.flagged)) flaggedSet = new Set(rec.payload.flagged);
+    if(typeof rec.payload.masteredAtStart === 'number') masteredAtStart = rec.payload.masteredAtStart;
     examEndAt = rec.payload.examEndAt;
     submitExam(true);
     return;
@@ -559,6 +587,7 @@ function tryResumeExam(){
       if(Array.isArray(payload.flagged)) flaggedSet = new Set(payload.flagged);
       examEndAt = payload.examEndAt;
       examLengthChoice = payload.examLengthChoice;
+      if(typeof payload.masteredAtStart === 'number') masteredAtStart = payload.masteredAtStart;
       examSubmitted = false;
       startExamTimer();
       renderExamRun();
@@ -571,7 +600,7 @@ function saveExamResumeState(){
   const answeredCount = answersLog.filter(a => a && a.selected != null && a.selected !== -1).length;
   LEAResume.save(SUBJECT.id, resumeKey(), {
     answeredCount, total: order.length, position: pos + 1,
-    payload: { order, answersLog, pos, flagged: Array.from(flaggedSet), examEndAt, examLengthChoice }
+    payload: { order, answersLog, pos, flagged: Array.from(flaggedSet), examEndAt, examLengthChoice, masteredAtStart }
   });
 }
 
@@ -609,6 +638,7 @@ function renderExamStart(){
 }
 
 function startExam(choice){
+  captureMasteredAtStart();
   examLengthChoice = choice;
   let idxs = visibleQIndexes();
   if(choice === 'sim50' && idxs.length > 50){
@@ -750,7 +780,7 @@ function submitExam(auto){
   const correct = answersLog.filter(a => a.isCorrect).length;
   // Read the standing best BEFORE recordRunScore replaces it, or the results
   // screen has nothing to compare this attempt against.
-  examPrevBestPct = previousBestPct();
+  examPrevBestPct = previousBestPct(order.length);
   LEAProgress.recordRunScore(SUBJECT.id, MODULE.id, correct, order.length);
   LEAResume.clear(SUBJECT.id, resumeKey());
   frontier = order.length - 1;
@@ -762,11 +792,11 @@ function submitExam(auto){
 // ================= 2d Results =================
 // Built only from data that exists. Three elements the frame draws are left
 // out rather than stubbed:
-//   - "+N newly mastered" needs the pre-attempt mastered[] set, which nothing
-//     captures. Cheap to add, but it is a data change, not this one.
 //   - "Queue for tomorrow" is an SRS action and there are no SRS boxes.
-//   - "Saved / synced" needs a sync status module-progress.js does not expose;
-//     pushRemote() is fire-and-forget.
+//   - "synced" is cut: pushRemote() is fire-and-forget, so the UI cannot know
+//     it succeeded, and a false reassurance about data safety is the worst
+//     kind of invented element. "Saved" alone is verifiable — the local
+//     write is synchronous — so that is all it claims.
 // The drill action also carries no time estimate: the only pace constant in
 // the app is EXAM_MS_PER_ITEM (90s, the real exam's pace), which is not drill
 // pace, and inventing a drill constant to fill the line would be a made-up
@@ -774,9 +804,18 @@ function submitExam(auto){
 
 // The standing best, read BEFORE recordRunScore overwrites it. Null when
 // there is nothing to compare against, so a first attempt claims nothing.
-function previousBestPct(){
+// Only comparable when the earlier best was over the same number of
+// questions. 80% on a 50-item sim against 71% on a 128-item full exam is not
+// a comparison, and the reader is exactly the person who would notice. When
+// the lengths differ we withhold the line rather than normalise or caveat it.
+//
+// FOLLOW-UP: if this suppresses the line too often to be useful, the fix is
+// keying best scores by mode and length so a 50-item sim keeps its own best.
+// That is a schema change and is deliberately not done here.
+function previousBestPct(runTotal){
   const p = LEAProgress.load(SUBJECT.id, MODULE.id);
   if(!p || !p.bestTotal || !(p.attempts > 0)) return null;
+  if(p.bestTotal !== runTotal) return null;
   return Math.round((p.bestCorrect / p.bestTotal) * 100);
 }
 
@@ -809,6 +848,11 @@ function renderResultsCard(opts){
   else if(pct === prev)  bestLine = '<div class="res-best">' + pct + '% \u2014 matches your best</div>';
   else                   bestLine = '<div class="res-best muted">' + pct + '%<span> \u00b7 your best is ' + prev + '%</span></div>';
 
+  // Absent, not zero, when the attempt began without a capture.
+  const newly = opts.newlyMastered;
+  const newlyLine = (newly === null || newly === undefined) ? ''
+    : '<div class="res-newly"><b>+' + newly + '</b> question' + (newly === 1 ? '' : 's') + ' newly mastered</div>';
+
   const topicRows = resultsByTopic().map(t =>
     '<div class="res-topic">' +
       '<span class="rt-name">' + escapeHtml(t.name) + '</span>' +
@@ -820,8 +864,10 @@ function renderResultsCard(opts){
     '<div class="bp-card results-card">' +
       '<span class="section-tag">' + escapeHtml(opts.kicker) + '</span>' +
       (opts.auto ? '<div class="counts-text" style="color:var(--bad);margin:10px 0;">Time\u2019s up \u2014 submitted automatically.</div>' : '') +
+      '<div class="res-saved">✓ Saved</div>' +
       '<div class="results-score">' + correct + '<span> / ' + total + '</span></div>' +
       bestLine +
+      newlyLine +
       '<div class="res-split">' +
         '<div class="rs-cell"><b>' + correct + '</b><span>right</span></div>' +
         '<div class="rs-cell"><b>' + missed + '</b><span>to revisit</span></div>' +
@@ -856,7 +902,7 @@ function showExamResults(auto){
   body.innerHTML = renderResultsCard({
     kicker: MODULE.title + ' \u00b7 Mock exam',
     correct: correct, total: order.length, missed: order.length - correct,
-    prevBestPct: examPrevBestPct, auto: auto
+    prevBestPct: examPrevBestPct, newlyMastered: newlyMasteredCount(), auto: auto
   });
   wireResultsCard(() => {
     const firstMiss = answersLog.findIndex(a => a && !a.isCorrect);
@@ -1131,14 +1177,14 @@ function finishRun(){
   const answeredWrong = answersLog.filter(a => a && !a.skipped && !a.isCorrect).length;
   const skipped = answersLog.filter(a => a && a.skipped).length;
   // Same reason as the exam path: read the standing best first.
-  const prevBest = previousBestPct();
+  const prevBest = previousBestPct(order.length);
   LEAProgress.recordRunScore(SUBJECT.id, MODULE.id, correct, order.length);
 
   const body = document.getElementById('pageBody');
   body.innerHTML = renderResultsCard({
     kicker: MODULE.title + (MODE === 'drill' ? ' \u00b7 Drill' : ''),
     correct: correct, total: order.length, missed: answeredWrong + skipped,
-    prevBestPct: prevBest, auto: false
+    prevBestPct: prevBest, newlyMastered: newlyMasteredCount(), auto: false
   });
   wireResultsCard(() => {
     const firstMiss = answersLog.findIndex(a => a && (a.skipped || !a.isCorrect));
