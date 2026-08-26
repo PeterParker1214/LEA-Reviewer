@@ -98,6 +98,7 @@
 </style>
 <link rel="stylesheet" href="assets/blueprint.css?v=1">
 <script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=1"></script>
 <script src="assets/module-progress.js?v=1"></script>
 </head>
 <body>
@@ -116,7 +117,7 @@
   <div class="chip-row" id="chipRow"></div>
   <div id="resultsArea"><div class="state-note">Loading…</div></div>
 
-  <div class="footer-note">Runs on cached questions from History of Architecture and Building Laws — the only subjects extracted to the searchable format so far.</div>
+  <div class="footer-note">Searches every question in every ready subject. Results are cached for the rest of this session.</div>
 </div>
 
 <script>
@@ -149,18 +150,10 @@ async function buildSearchIndex(){
   for(const subject of subjects){
     if(!subject.ready) continue;
     for(const mod of (subject.modules || [])){
-      if(mod.format !== 'json') continue;
-      let arr;
-      try{
-        const cacheKey = 'lea_qidx_v1_' + mod.file;
-        const cached = sessionStorage.getItem(cacheKey);
-        if(cached != null){ arr = JSON.parse(cached); }
-        else{
-          const res = await fetch(mod.file);
-          arr = await res.json();
-          try{ sessionStorage.setItem(cacheKey, JSON.stringify(arr)); }catch(e){}
-        }
-      }catch(e){ continue; }
+      // Search covers every module, not just the .json ones — see
+      // assets/quiz-source.js for why that distinction used to exist.
+      const arr = await LEAQuizSource.loadModuleQuestions(mod);
+      if(!arr) continue;
       const p = LEAProgress.load(subject.id, mod.id);
       const masteredSet = new Set(p.mastered || []);
       const flagSet = new Set(p.flagged || []);

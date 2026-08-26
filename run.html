@@ -326,6 +326,7 @@
 </style>
 <link rel="stylesheet" href="assets/blueprint.css?v=1">
 <script src="assets/lea-confirm.js?v=1"></script>
+<script src="assets/quiz-source.js?v=1"></script>
 <script src="assets/module-progress.js?v=1"></script>
 <script src="assets/quiz-resume.js?v=1"></script>
 <script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
@@ -1565,18 +1566,11 @@ async function buildQuestionIndex(subjects){
   for(const subject of subjects){
     if(!subject.ready) continue;
     for(const mod of (subject.modules || [])){
-      if(mod.format !== 'json') continue;
-      let arr;
-      try{
-        const cacheKey = 'lea_qidx_v1_' + mod.file;
-        const cached = sessionStorage.getItem(cacheKey);
-        if(cached != null){ arr = JSON.parse(cached); }
-        else{
-          const res = await fetch(mod.file);
-          arr = await res.json();
-          try{ sessionStorage.setItem(cacheKey, JSON.stringify(arr)); }catch(e){}
-        }
-      }catch(e){ continue; }
+      // Every module, whatever it is stored as. This used to skip anything
+      // that wasn't a .json file, which hid 61% of the bank from every
+      // cross-subject feature — see assets/quiz-source.js.
+      const arr = await LEAQuizSource.loadModuleQuestions(mod);
+      if(!arr) continue;
       const p = LEAProgress.load(subject.id, mod.id);
       const masteredSet = new Set(p.mastered || []);
       const flagSet = new Set(p.flagged || []);
@@ -1667,7 +1661,7 @@ async function bootMulti(subjects, drillParams){
     startMultiRun('drill-daily');
   } else if(MODE === 'exam'){
     if(index.length === 0){
-      body.innerHTML = '<div class="state-card">No drillable questions yet — Mock Exam needs at least one subject extracted to the new format.<br><br><a href="index.html" style="color:var(--gold-bright);">&larr; Home</a></div>';
+      body.innerHTML = '<div class="state-card">No questions could be loaded right now. Check your connection and try again.<br><br><a href="index.html" style="color:var(--gold-bright);">&larr; Home</a></div>';
       return;
     }
     renderMultiExamStart(index);

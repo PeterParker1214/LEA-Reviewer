@@ -93,6 +93,7 @@
 </style>
 <link rel="stylesheet" href="assets/blueprint.css?v=1">
 <script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=1"></script>
 <script src="assets/module-progress.js?v=1"></script>
 </head>
 <body>
@@ -130,23 +131,15 @@ async function buildSavedIndex(){
   for(const subject of subjects){
     if(!subject.ready) continue;
     for(const mod of (subject.modules || [])){
-      if(mod.format !== 'json') continue;
       const p = LEAProgress.load(subject.id, mod.id);
       const flagged = p.flagged || [];
       const notes = p.notes || {};
       if(flagged.length === 0 && Object.keys(notes).length === 0) continue;
 
-      let arr;
-      try{
-        const cacheKey = 'lea_qidx_v1_' + mod.file;
-        const cached = sessionStorage.getItem(cacheKey);
-        if(cached != null){ arr = JSON.parse(cached); }
-        else{
-          const res = await fetch(mod.file);
-          arr = await res.json();
-          try{ sessionStorage.setItem(cacheKey, JSON.stringify(arr)); }catch(e){}
-        }
-      }catch(e){ continue; }
+      // Anything you flagged is worth showing back, whatever format the
+      // module happens to be stored as — see assets/quiz-source.js.
+      const arr = await LEAQuizSource.loadModuleQuestions(mod);
+      if(!arr) continue;
 
       const flagSet = new Set(flagged);
       const qIndexes = new Set([...flagged.map(Number), ...Object.keys(notes).map(Number)]);

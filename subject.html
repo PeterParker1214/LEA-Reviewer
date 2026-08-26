@@ -256,6 +256,7 @@
 <link rel="stylesheet" href="assets/blueprint.css?v=1">
 <script src="assets/presence.js?v=1"></script>
 <script src="assets/lea-confirm.js?v=1"></script>
+<script src="assets/quiz-source.js?v=1"></script>
 <script src="assets/module-progress.js?v=1"></script>
 <script src="assets/quiz-resume.js?v=1"></script>
 <script src="assets/icons.js?v=1"></script>
@@ -386,33 +387,11 @@ function extractArrayLiteral(html, varName){
 // Returns an array of topic strings (one per question, in order), or null if
 // this module's source has no per-question topic field at all (some
 // "QUIZ_DATA" blueprint-format quizzes don't tag questions by topic).
+// One extractor for the whole app now lives in assets/quiz-source.js, so this
+// page and the cross-subject index can never disagree about what a module
+// contains or what order its questions are in.
 async function loadModuleTopics(mod){
-  const cacheKey = 'lea_topics_v1_' + mod.file;
-  const cached = sessionStorage.getItem(cacheKey);
-  if(cached != null){
-    try{ return JSON.parse(cached); }catch(e){}
-  }
-  let topics = null;
-  try{
-    if(mod.format === 'json'){
-      const res = await fetch(mod.file);
-      const arr = await res.json();
-      if(Array.isArray(arr) && arr.length && typeof arr[0].s === 'string'){
-        topics = arr.map(q => q.s);
-      }
-    } else {
-      const res = await fetch(mod.file);
-      const html = await res.text();
-      const arr = extractArrayLiteral(html, 'QUESTIONS') || extractArrayLiteral(html, 'QUIZ_DATA');
-      if(Array.isArray(arr) && arr.length && typeof arr[0].s === 'string'){
-        topics = arr.map(q => q.s);
-      }
-      // QUIZ_DATA (blueprint) quizzes have no per-question topic field —
-      // topics stays null, handled by the caller with a module-title fallback.
-    }
-  }catch(e){ topics = null; }
-  try{ sessionStorage.setItem(cacheKey, JSON.stringify(topics)); }catch(e){}
-  return topics;
+  return LEAQuizSource.loadModuleTopics(mod);
 }
 
 // ================= Boot =================

@@ -14,6 +14,7 @@
 <script src="assets/icons.js?v=1"></script>
 <script src="assets/countdown.js?v=1"></script>
 <script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=1"></script>
 <script src="assets/module-progress.js?v=1"></script>
 <script src="assets/quiz-resume.js?v=1"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -727,7 +728,9 @@ function computeDailyDrillPreview(){
   let touchedUnmastered = 0, untouchedUnmastered = 0;
   SUBJECTS_ALL.filter(s => s.ready).forEach(subject => {
     (subject.modules || []).forEach(mod => {
-      if(mod.format !== 'json') return;
+      // Counts read the manifest and stored progress only — no question fetch
+      // — so every module counts, matching what the drill can now actually draw
+      // from.
       const p = LEAProgress.load(subject.id, mod.id);
       const masteredCount = Math.min((p.mastered||[]).length, mod.total);
       const unmastered = mod.total - masteredCount;
@@ -744,7 +747,6 @@ function findMostRecentResume(){
   let best = null;
   SUBJECTS_ALL.filter(s => s.ready).forEach(subject => {
     (subject.modules || []).forEach(mod => {
-      if(mod.format !== 'json') return;
       ['study','exam','drill'].forEach(mode => {
         const rec = LEAResume.load(subject.id, mod.id + '__' + mode);
         if(rec && rec.total && rec.answeredCount > 0 && rec.answeredCount < rec.total){
@@ -971,18 +973,9 @@ async function buildHomeQuestionIndex(){
   for(const subject of SUBJECTS_ALL){
     if(!subject.ready) continue;
     for(const mod of (subject.modules || [])){
-      if(mod.format !== 'json') continue;
-      let arr;
-      try{
-        const cacheKey = 'lea_qidx_v1_' + mod.file;
-        const cached = sessionStorage.getItem(cacheKey);
-        if(cached != null){ arr = JSON.parse(cached); }
-        else{
-          const res = await fetch(mod.file);
-          arr = await res.json();
-          try{ sessionStorage.setItem(cacheKey, JSON.stringify(arr)); }catch(e){}
-        }
-      }catch(e){ continue; }
+      // Weak Spots reads the whole bank — see assets/quiz-source.js.
+      const arr = await LEAQuizSource.loadModuleQuestions(mod);
+      if(!arr) continue;
       const p = LEAProgress.load(subject.id, mod.id);
       const masteredSet = new Set(p.mastered || []);
       arr.forEach((q, qIndex) => {
@@ -998,7 +991,6 @@ function computeSavedCounts(){
   let flagged = 0, notes = 0;
   SUBJECTS_ALL.filter(s => s.ready).forEach(subject => {
     (subject.modules || []).forEach(mod => {
-      if(mod.format !== 'json') return;
       const p = LEAProgress.load(subject.id, mod.id);
       flagged += (p.flagged || []).length;
       notes += Object.keys(p.notes || {}).length;
