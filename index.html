@@ -198,39 +198,6 @@
   #homeBody .subjects-divider{ order:2; }
   #homeBody .subject-grid{ order:3; }
 
-  @media (min-width:1120px){
-    .wrap{ max-width:1120px; }
-
-    /* Header band: wordmark · search · online · trophy · avatar, all on one
-       row. The search field and presence strip are children of #homeBody, not
-       of the top bar, so the bar is set to display:contents and its children
-       are placed directly onto this grid. That gets the spec's header without
-       duplicating any markup — the phone keeps the single element it had, in
-       the stack position the phone design calls for. */
-    #homeBody{ display:grid; grid-template-columns:auto 1fr auto auto auto;
-      align-items:center; column-gap:10px; }
-    .home-top-bar{ display:contents; }
-    .home-top-bar .home-wordmark{ grid-row:1; grid-column:1; text-align:left; }
-    #homeBody .search-field{ grid-row:1; grid-column:2; justify-self:end;
-      width:300px; margin:0; }
-    #homeBody .presence-strip{ grid-row:1; grid-column:3; width:auto; margin:0; }
-    .home-top-bar .icon-btn-44{ grid-row:1; grid-column:4; }
-    .home-top-bar .avatar-btn-44{ grid-row:1; grid-column:5; }
-    /* Offline-ready is stated in the right rail at this width. */
-    #homeBody .presence-strip .offline-ready{ display:none; }
-
-    /* The stack becomes three rails, under a rule that closes the header. */
-    .home-cols{ grid-row:2; grid-column:1 / -1; margin-top:20px; padding-top:20px;
-      border-top:1px solid var(--line);
-      display:grid; grid-template-columns:296px 1fr 264px; gap:24px; align-items:start; }
-    .col-left, .col-center, .col-right{ display:flex; flex-direction:column; gap:16px; }
-    .col-right{ display:flex; }
-
-    /* Width buys context, not bigger type — all subjects visible at once. */
-    .subject-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-    .tiles-row{ margin:0; }
-    .drill-card, .resume-card, .search-field, .subjects-divider{ margin:0; }
-  }
 
   /* Right rail cards */
   .rail-card{ background:var(--bg-panel); border:1px solid var(--line); border-radius:12px; padding:14px 14px 12px; }
@@ -385,6 +352,92 @@
     font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em; cursor:pointer;
   }
   .state-note{ font-family:var(--font-mono); font-size:11.5px; color:var(--muted); text-align:center; padding:16px 0; }
+
+  /* ---- Desktop (7a) lives last on purpose ----
+     A media query adds no specificity, so these rules only beat the
+     phone declarations above by coming later in source order. Moving
+     this block up would silently drop every property the base rules
+     also set (display, padding), which is exactly what happened once. */
+  /* Every value below is taken from frame 7a ("Home — desktop, three rails")
+     rather than scaled from the phone. The phone layout is not touched:
+     everything is inside the query. */
+  @media (min-width:1120px){
+    .wrap{ max-width:1120px; }
+    /* 7a frame padding, replacing the phone's 20px 16px 64px. */
+    body{ padding:24px 28px 32px; }
+
+    /* --- Header: brand left, controls right, all 40px tall --- */
+    /* The search field and presence strip are children of #homeBody, not of
+       the top bar, so the bar becomes display:contents and its children are
+       placed directly onto this grid. No markup is duplicated: the phone keeps
+       the single element it had, in the stack position it calls for. */
+    #homeBody{ display:grid; grid-template-columns:auto 1fr auto auto auto;
+      align-items:center; column-gap:10px; }
+    .home-top-bar{ display:contents; }
+    .home-top-bar .home-wordmark{ grid-row:1; grid-column:1; text-align:left;
+      margin-right:6px; }
+    /* gap:16px sits between the brand block and the control cluster; the
+       cluster itself is 10px, which is the column-gap above. */
+    #homeBody .search-field{ grid-row:1; grid-column:2; justify-self:end;
+      min-width:260px; width:auto; margin:0 0 0 16px; }
+    #homeBody .search-field input{ height:40px; padding:0 14px 0 40px; }
+    #homeBody .presence-strip{ grid-row:1; grid-column:3; width:auto; margin:0;
+      height:40px; padding:0 12px; gap:7px; }
+    .home-top-bar .icon-btn-44{ grid-row:1; grid-column:4; width:40px; height:40px; }
+    .home-top-bar .avatar-btn-44{ grid-row:1; grid-column:5; width:40px; height:40px; }
+    /* Offline-ready is stated in the right rail at this width. */
+    #homeBody .presence-strip .offline-ready{ display:none; }
+
+    /* --- Body: three rails --- */
+    .home-cols{ grid-row:2; grid-column:1 / -1;
+      margin-top:18px; padding-top:22px; border-top:1px solid var(--line);
+      display:grid; grid-template-columns:296px 1fr 264px; gap:24px; align-items:start; }
+    .col-left, .col-right{ display:flex; flex-direction:column; gap:16px; }
+    .col-right{ display:flex; }
+
+    /* --- Centre: the three modes share one row --- */
+    /* 7a runs Daily Drill / Mock exam / Topic drill across a single row at
+       flex 1.4 / 1 / 1 with a 14px gap. On the phone they are a full-width
+       drill card above a 2-up tiles row, so `.tiles-row` dissolves here and
+       its two tiles join the drill card as siblings on this grid. */
+    .col-center{ display:grid; grid-template-columns:1.4fr 1fr 1fr;
+      gap:16px 14px; align-content:start; }
+    .tiles-row{ display:contents; }
+    .drill-card{ grid-row:1; grid-column:1; padding:20px; margin:0; }
+    .tile.mock{ grid-row:1; grid-column:2; padding:20px; }
+    .tile.topic{ grid-row:1; grid-column:3; padding:20px; }
+    .resume-card, .subjects-divider, .subject-grid{ grid-column:1 / -1; margin:0; }
+
+    /* Resume becomes a strip: kicker+title left, progress block right. */
+    .resume-card{ display:flex; align-items:center; gap:18px; padding:16px 18px; }
+    .resume-card .rc-body{ flex:1; min-width:0; }
+    .resume-card .rc-meta{ width:180px; flex-shrink:0; }
+
+    .subjects-divider{ margin-top:4px; }
+    /* Width buys context: every subject visible at once, as cards. */
+    .subject-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .subject-grid .subject-row{ padding:13px 14px; border-bottom:none;
+      background:var(--bg-panel-2); border:1px solid var(--line); border-radius:10px; }
+
+    /* --- Left rail: 7a's own card sizes, not the phone's --- */
+    .col-left .countdown-card{ padding:16px; margin:0; }
+    .col-left .flap-grid{ gap:7px; }
+    .col-left .flap{ padding:9px 4px 7px; }
+    .col-left .readiness-card{ padding:18px; margin:0; text-align:center;
+      display:block; }
+    /* The frame draws the donut at 132px and centres it above the text,
+       rather than the phone's 84px ring sitting beside it. */
+    .col-left .readiness-ring{ width:132px; height:132px; margin:0 auto 14px; }
+    .col-left .streak-card{ padding:16px; margin:0; }
+
+    /* --- Right rail --- */
+    .rail-card{ padding:16px; }
+    .rail-row{ padding:11px 0; }
+    .rail-row .rr-rank{ width:24px; }
+    .rail-stat{ padding:9px 0; }
+    .rail-note{ background:var(--bg-panel-2); border:1px solid var(--line);
+      border-left:3px solid var(--blue-bright); padding:13px 15px; border-radius:10px; }
+  }
 </style>
 </head>
 <body>
@@ -610,8 +663,13 @@ function renderHome(){
 
   const resumeCard = resume
     ? '<a class="resume-card" href="run.html?s=' + encodeURIComponent(resume.subject.id) + '&m=' + encodeURIComponent(resume.mod.id) + '&mode=' + resume.mode + '">' +
-        '<div class="rc-kicker">Unfinished attempt · ' + escapeHtml(stripEmoji(resume.subject.name)) + '</div>' +
-        '<div class="rc-title">' + escapeHtml(resume.mod.title) + '</div>' +
+        // .rc-body groups the two text lines so the desktop strip can sit them
+        // beside the progress block. On a phone it is a plain block and changes
+        // nothing about the stacked layout.
+        '<div class="rc-body">' +
+          '<div class="rc-kicker">Unfinished attempt · ' + escapeHtml(stripEmoji(resume.subject.name)) + '</div>' +
+          '<div class="rc-title">' + escapeHtml(resume.mod.title) + '</div>' +
+        '</div>' +
         '<div class="rc-meta"><span>Q' + resume.rec.position + ' of ' + resume.rec.total + ' · ' + timeAgo(new Date(resume.rec.savedAt).toISOString()) + '</span><span><b>Resume →</b></span></div>' +
       '</a>'
     : '';
