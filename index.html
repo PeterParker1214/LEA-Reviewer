@@ -18,6 +18,27 @@
 <script src="assets/module-progress.js?v=1"></script>
 <script src="assets/offline.js?v=1"></script>
 <script src="assets/quiz-resume.js?v=1"></script>
+<script>
+// Coming back to Home from anywhere in the app used to flash the sign-in
+// screen for about half a second: the signed-out shell is what the document
+// ships with, and it stays on screen until `await sb.auth.getSession()`
+// resolves. Supabase keeps the session in localStorage, so the answer is
+// already on the device — read it here, at parse time, and let CSS hide the
+// wrong shell before anything paints. Same fix as the theme flash.
+//
+// Only an unexpired token counts. If it has lapsed, the sign-in screen is the
+// correct thing to show and there is nothing to suppress.
+(function () {
+  try {
+    var raw = localStorage.getItem('sb-rjrrprbvsmflzncojbtq-auth-token');
+    if (!raw) return;
+    var s = JSON.parse(raw);
+    var exp = s && (s.expires_at || (s.currentSession && s.currentSession.expires_at));
+    if (exp && (exp * 1000) < Date.now()) return;
+    document.documentElement.classList.add('lea-resuming');
+  } catch (e) { /* unreadable session: fall through and show sign-in */ }
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Architects+Daughter&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -97,6 +118,17 @@
   /* Frame padding is 34px 20px 26px and the frame clips its own decoration,
      so the shell owns both rather than the page body. */
   #signedOutShell{ position:relative; overflow:hidden; padding:34px 20px 26px; }
+  /* While a stored session is being confirmed, neither shell is right yet:
+     hide the signed-out one and hold a quiet placeholder rather than a blank
+     page, so returning to Home reads as loading rather than as signing out. */
+  html.lea-resuming #signedOutShell{ display:none; }
+  #bootHold{ display:none; }
+  html.lea-resuming #bootHold{
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:10px; min-height:60vh; text-align:center;
+  }
+  #bootHold .bh-kicker{ font-family:var(--font-mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+  #bootHold .bh-word{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; color:var(--ink); line-height:1; }
   .signin-body{ position:relative; }
 
   .signin-geo{ position:absolute; inset:0; pointer-events:none; }
@@ -498,6 +530,12 @@
 <body>
 <div class="wrap">
   <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
+
+  <!-- Shown only while a stored session is being confirmed. -->
+  <div id="bootHold" aria-hidden="true">
+    <div class="bh-kicker">Peter Parker's</div>
+    <div class="bh-word">LEA Reviewer</div>
+  </div>
 
   <!-- ===================== SIGNED-OUT: MASTHEAD + AUTH PANEL ===================== -->
   <div id="signedOutShell">
@@ -1180,6 +1218,7 @@ async function showSignedIn(user){
 
   currentUsername = username;
   stopSignInScreen();
+  document.documentElement.classList.remove('lea-resuming');
   signedOutShell.classList.add('hidden');
   signedInShell.classList.remove('hidden');
   startPresence(username);
@@ -1189,6 +1228,7 @@ async function showSignedIn(user){
 }
 
 function showSignedOut(){
+  document.documentElement.classList.remove('lea-resuming');
   stopPresence();
   // countdownTimer holds the unsubscribe returned by LEACountdown.subscribe.
   if(countdownTimer){ countdownTimer(); countdownTimer = null; }
