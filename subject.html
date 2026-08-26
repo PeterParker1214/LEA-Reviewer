@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Subject — LEA Reviewer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Architects+Daughter&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#eef1e9;
+    --bg-deep:#0a1218;
+    --bg-panel:#0e1c28;
+    --bg-panel-2:#0a1520;
+    --gold:#e0a83f;
+    --gold-bright:#f0c268;
+    --blue:#6fa8cf;
+    --blue-bright:#8fc4ea;
+    --muted:#8b98a5;
+    --good:#5fbf82;
+    --bad:#e2604a;
+    --line: rgba(111,168,207,0.20);
+    --grid-line: rgba(111,168,207,0.09);
+    --font-display: 'Big Shoulders Display', sans-serif;
+    --font-hand: 'Architects Daughter', cursive;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+  body.light-mode, :root.light-mode{
+    --ink:#16202b;
+    --bg-deep:#d3dee6;
+    --bg-panel:#ffffff;
+    --bg-panel-2:#e9eff4;
+    --gold:#b5791f;
+    --gold-bright:#7d520c;
+    --blue:#2f6c95;
+    --blue-bright:#1b4a6b;
+    --muted:#4f5d6a;
+    --good:#206b3c;
+    --bad:#a1372a;
+    --line: rgba(47,108,149,0.28);
+    --grid-line: rgba(47,108,149,0.11);
+  }
+  /* inline SVG icons sitting inside a text label */
+  .btn-ico{ display:inline-flex; vertical-align:-2px; margin-right:2px; }
+  .btn-ico svg{ width:15px; height:15px; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      var(--bg-deep);
+    color:var(--ink);
+    font-family:var(--font-body);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:36px 16px 64px;
+    transition: background-color .2s ease, color .2s ease;
+  }
+  .theme-toggle{
+    background:var(--bg-panel); border:1px solid var(--line); color:var(--gold-bright);
+    font-family:var(--font-body); font-size:14px; width:32px; height:32px;
+    border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
+    flex-shrink:0;
+  }
+  .theme-toggle:hover{ border-color:var(--gold-bright); }
+  .wrap{width:100%; max-width:720px;}
+  a{color:inherit;}
+  .hidden{display:none !important;}
+
+  .auth-bar{ display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:12.5px; color:var(--muted); margin-bottom:24px; flex-wrap:wrap; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.03em; }
+  .auth-link{ background:none; border:none; color:var(--gold-bright); cursor:pointer; font-family:var(--font-mono); font-size:12px; text-decoration:underline; padding:0; text-transform:uppercase; letter-spacing:.03em; }
+  .auth-link:hover{ color:var(--blue-bright); }
+
+  /* ===== masthead ===== */
+  .masthead{ text-align:center; margin-bottom:24px; }
+  .masthead .eyebrow{ font-family:var(--font-mono); letter-spacing:0.22em; font-size:10px; text-transform:uppercase; color:var(--gold-bright); opacity:0.95; }
+  .masthead h1{ font-family:var(--font-display); font-weight:800; font-size:38px; margin:10px 0 8px; color:var(--ink); letter-spacing:0.01em; text-transform:uppercase; line-height:1; }
+  .marquee-wrap{
+    max-width:480px; margin:0 auto; overflow:hidden; white-space:nowrap;
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+    mask-image:linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+  }
+  .marquee-wrap.ellipsis{ text-overflow:ellipsis; -webkit-mask-image:none; mask-image:none; }
+  .marquee-text{
+    display:inline-block; font-family:var(--font-hand); color:var(--ink); opacity:.92; font-size:15px; line-height:1.5;
+  }
+  .marquee-wrap.ellipsis .marquee-text{ display:block; overflow:hidden; text-overflow:ellipsis; }
+  .marquee-wrap.animate .marquee-text{ animation: marquee-scroll 14s linear infinite; padding-left:100%; }
+  .marquee-wrap:hover .marquee-text{ animation-play-state:paused; }
+  @keyframes marquee-scroll{
+    0%, 12%{ transform:translateX(0); }
+    88%, 100%{ transform:translateX(-100%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .marquee-wrap.animate .marquee-text{ animation:none; padding-left:0; }
+    .marquee-wrap.animate{ text-overflow:ellipsis; }
+    .marquee-wrap.animate .marquee-text{ display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  }
+  .step-frieze{ height:2px; background:var(--gold); margin:16px 0 0; opacity:.85; }
+
+  /* ===== overall progress card ===== */
+  .overall-card{
+    position:relative; background: var(--bg-panel); border:1px solid var(--line);
+    border-radius:14px; padding:24px 24px 20px; margin-bottom:16px;
+  }
+  .overall-title{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--muted); margin-bottom:16px;
+    display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;
+  }
+  .overall-title .reset-all{
+    font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.04em; font-size:10.5px;
+    color:var(--bad); background:none; border:1px solid rgba(226,96,74,0.4);
+    padding:5px 11px; border-radius:6px; cursor:pointer;
+  }
+  .overall-title .reset-all:hover{ background: rgba(226,96,74,0.12); }
+  .overall-stats-row{ display:flex; justify-content:space-between; gap:14px; margin-bottom:18px; }
+  .overall-stat .num{ font-family:var(--font-mono); font-size:26px; font-weight:600; color:var(--gold-bright); line-height:1; }
+  .overall-stat .lbl{ font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-top:5px; }
+  .overall-bar-track{ height:8px; border-radius:4px; background: var(--bg-panel-2); overflow:hidden; }
+  .overall-bar-fill{ height:100%; border-radius:4px; background: linear-gradient(90deg, var(--gold-bright), var(--blue-bright)); transition: width .4s ease; }
+  .overall-bar-caption{ display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-top:8px; letter-spacing:0.02em; }
+
+  /* ===== mode rows ===== */
+  .mode-rows{ display:flex; flex-direction:column; gap:8px; margin-bottom:20px; }
+  .mode-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 16px; border-radius:12px; border:1px solid var(--line);
+    background: var(--bg-panel-2); cursor:pointer; text-align:left; width:100%;
+    font-family:var(--font-body); color:var(--ink);
+  }
+  .mode-row .mode-lbl{ display:flex; flex-direction:column; gap:3px; }
+  .mode-row .mode-name{ font-family:var(--font-display); font-weight:700; font-size:16px; text-transform:uppercase; letter-spacing:.01em; }
+  .mode-row .mode-cap{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); letter-spacing:.03em; }
+  .mode-row .mode-num{ font-family:var(--font-mono); font-size:22px; font-weight:600; color:var(--blue-bright); flex-shrink:0; }
+  .mode-row.selected{ background: var(--gold); border-color: var(--gold); color:#1a1206; }
+  .mode-row.selected .mode-cap{ color:rgba(26,18,6,0.7); }
+  .mode-row.selected .mode-num{ color:#1a1206; }
+  .mode-row.disabled{ opacity:.5; cursor:default; }
+  .mode-row:not(.disabled):hover{ border-color: var(--gold); }
+
+  /* ===== topics card ===== */
+  .topics-card{
+    background: var(--bg-panel); border:1px solid var(--line); border-radius:14px;
+    padding:18px 20px 14px; margin-bottom:16px;
+  }
+  .topics-card .card-title{ font-family:var(--font-mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+  .topic-row{ display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--line); }
+  .topic-row:last-child{ border-bottom:none; }
+  .topic-name{ flex:1; font-size:13.5px; color:var(--ink); min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .topic-bar-track{ width:64px; height:6px; border-radius:3px; background:var(--bg-panel-2); overflow:hidden; flex-shrink:0; }
+  .topic-bar-fill{ height:100%; border-radius:3px; }
+  .topic-pct{ font-family:var(--font-mono); font-size:11px; width:34px; text-align:right; flex-shrink:0; }
+  .topic-arrow{ font-family:var(--font-mono); font-size:13px; color:var(--muted); flex-shrink:0; }
+  .topics-note{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); margin-top:8px; line-height:1.5; }
+
+  /* ===== modules list ===== */
+  .section-label{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin:4px 0 10px; }
+  .mp-bar-track{ height:6px; border-radius:3px; background: var(--bg-panel-2); overflow:hidden; margin-top:12px; }
+  .mp-bar-fill{ height:100%; border-radius:3px; background: linear-gradient(90deg, var(--gold-bright), var(--gold) 70%, rgba(224,168,63,0.25)); transition: width .3s ease; }
+  .mp-cap{ font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-top:6px; }
+  .module-grid{ display:flex; flex-direction:column; gap:12px; }
+  .module-card{
+    position:relative; display:block; text-decoration:none;
+    background: var(--bg-panel-2); border:1px solid var(--line); border-radius:14px; padding:18px 20px;
+    transition: border-color .15s ease;
+  }
+  .module-card:hover{ border-color: var(--gold); }
+  .module-card.in-progress{ border-left:3px solid var(--gold); }
+  .module-card.disabled{ opacity:.55; pointer-events:none; }
+  .module-num{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue-bright); margin-bottom:6px; }
+  .module-title{ font-family:var(--font-display); font-size:19px; font-weight:700; color:var(--ink); margin-bottom:6px; text-transform:uppercase; line-height:1.1; }
+  .module-meta{ font-family:var(--font-mono); font-size:11px; color:var(--muted); letter-spacing:0.04em; display:flex; justify-content:space-between; align-items:center; text-transform:uppercase; }
+  .module-arrow{ font-size:16px; color:var(--gold-bright); }
+  .module-resume{ font-family:var(--font-mono); font-size:10.5px; color:var(--gold-bright); margin-top:8px; text-transform:uppercase; letter-spacing:.03em; }
+
+  .note-panel{
+    margin-top:22px; background: var(--bg-panel); border:1px solid var(--line);
+    border-radius:12px; padding:16px 20px; font-family:var(--font-mono); font-size:11.5px; color:var(--muted); line-height:1.6;
+  }
+  .state-card{
+    background: var(--bg-panel); border:1px solid var(--line); border-radius:14px;
+    padding:28px 22px; text-align:center; color:var(--muted); font-family:var(--font-mono); font-size:13px; line-height:1.7;
+  }
+
+  .modal-overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; padding:16px; z-index:100; }
+  .modal-overlay.hidden{ display:none; }
+  .modal-box{ width:100%; max-width:380px; max-height:86vh; overflow-y:auto; background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:24px 22px; position:relative; }
+  .modal-close{ position:absolute; top:12px; right:14px; background:none; border:none; color:var(--muted); font-size:20px; cursor:pointer; line-height:1; }
+  .modal-box h2{ font-family:var(--font-display); font-weight:700; font-size:22px; text-transform:uppercase; margin:0 0 16px; color:var(--ink); }
+  .leaderboard-list{ display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+  .leaderboard-row{ display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border-radius:8px; background:var(--bg-panel-2); border:1px solid var(--line); font-size:13px; }
+  .leaderboard-row .lb-rank{ font-family:var(--font-mono); color:var(--gold-bright); font-weight:700; width:24px; }
+  .leaderboard-row .lb-name{ flex:1; color:var(--ink); }
+  .leaderboard-row .lb-stats{ color:var(--muted); font-size:11.5px; text-align:right; font-family:var(--font-mono); }
+  .leaderboard-empty{ color:var(--muted); font-style:italic; text-align:center; padding:12px 0; }
+</style>
+<script src="assets/presence.js?v=1"></script>
+<script src="assets/lea-confirm.js?v=1"></script>
+<script src="assets/module-progress.js?v=1"></script>
+<script src="assets/quiz-resume.js?v=1"></script>
+<script src="assets/icons.js?v=1"></script>
+<script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="auth-bar">
+    <div><a class="auth-link" href="index.html">&larr; All subjects</a> &nbsp;&middot;&nbsp; <span id="authStatus">Checking session…</span></div>
+    <button class="auth-link" id="openLeaderboardBtn"><span class="btn-ico" data-icon="trophy"></span> Leaderboard</button>
+    <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
+  </div>
+
+  <div id="pageBody">
+    <div class="state-card">Loading…</div>
+  </div>
+</div>
+
+<!-- ===================== LEADERBOARD MODAL ===================== -->
+<div class="modal-overlay hidden" id="leaderboardModalOverlay">
+  <div class="modal-box">
+    <button class="modal-close" id="leaderboardModalClose">&times;</button>
+    <h2><span class="btn-ico" data-icon="trophy"></span> Leaderboard</h2>
+    <div class="leaderboard-list" id="leaderboardList">
+      <div class="leaderboard-empty">Loading…</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ================= Auth (same pattern every subject page uses) =================
+const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+if (window.LEAPresence) { LEAPresence.init({ client: sb }); }
+const authStatus = document.getElementById('authStatus');
+
+async function onSignedIn(user){
+  let username = (user.email || '').split('@')[0];
+  const { data: profile } = await sb.from('profiles').select('username').eq('id', user.id).single();
+  if(profile && profile.username) username = profile.username;
+  authStatus.innerHTML = 'Logged in as <b>' + username + '</b> — <button class="auth-link" id="logoutBtn">Log out</button>';
+  document.getElementById('logoutBtn').addEventListener('click', async () => { await sb.auth.signOut(); });
+}
+
+sb.auth.onAuthStateChange((event, session) => {
+  if(event === 'SIGNED_OUT') window.location.href = 'index.html';
+});
+
+let LEA_SUBJECT_ID_PAGE = null;
+
+(async function initApp(){
+  const { data: { session } } = await sb.auth.getSession();
+  if(session){ await onSignedIn(session.user); } else { window.location.href = 'index.html'; return; }
+  await boot();
+})();
+
+// ---- Leaderboard, scoped to this subject ----
+const leaderboardModalOverlay = document.getElementById('leaderboardModalOverlay');
+document.getElementById('openLeaderboardBtn').addEventListener('click', async () => {
+  leaderboardModalOverlay.classList.remove('hidden');
+  const listEl = document.getElementById('leaderboardList');
+  listEl.innerHTML = '<div class="leaderboard-empty">Loading…</div>';
+  const { data, error } = await sb.rpc('get_leaderboard', { p_subject: LEA_SUBJECT_ID_PAGE });
+  if(error || !data || data.length === 0){
+    listEl.innerHTML = '<div class="leaderboard-empty">No scores yet — be the first!</div>';
+    return;
+  }
+  listEl.innerHTML = data.map((row, i) =>
+    '<div class="leaderboard-row">' +
+      '<span class="lb-rank">' + (i+1) + '</span>' +
+      '<span class="lb-name">' + row.username + '</span>' +
+      '<span class="lb-stats">' + row.total_mastered + ' mastered · ' + Math.round((row.avg_best_score||0)*100) + '% avg</span>' +
+    '</div>'
+  ).join('');
+});
+document.getElementById('leaderboardModalClose').addEventListener('click', () => leaderboardModalOverlay.classList.add('hidden'));
+leaderboardModalOverlay.addEventListener('click', (e) => { if(e.target === leaderboardModalOverlay) leaderboardModalOverlay.classList.add('hidden'); });
+
+// ================= Helpers =================
+function escapeHtml(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// Subject-page mastheads show a clean title without the emoji used on the
+// compact home-page subject rows.
+function stripEmoji(str){
+  return String(str || '')
+    .replace(/[\p{Extended_Pictographic}\p{Emoji_Modifier}\u{200D}\u{FE0F}]+/gu, '')
+    .trim();
+}
+
+// Balanced-bracket scan so embedded quiz text containing brackets/quotes
+// can't break the extraction (same approach used to build data/*.json).
+function extractBalanced(text, startIdx){
+  const openCh = text[startIdx];
+  const pairs = { '[': ']', '{': '}', '(': ')' };
+  const closeCh = pairs[openCh];
+  let depth = 0, inString = null;
+  for(let i = startIdx; i < text.length; i++){
+    const ch = text[i];
+    if(inString){
+      if(ch === '\\'){ i++; continue; }
+      if(ch === inString) inString = null;
+      continue;
+    }
+    if(ch === "'" || ch === '"' || ch === '`'){ inString = ch; continue; }
+    if(ch === '/' && text[i+1] === '/'){ const nl = text.indexOf('\n', i); i = (nl === -1 ? text.length : nl); continue; }
+    if(ch === '/' && text[i+1] === '*'){ const end = text.indexOf('*/', i+2); i = (end === -1 ? text.length : end+1); continue; }
+    if(ch === openCh) depth++;
+    else if(ch === closeCh){ depth--; if(depth === 0) return i+1; }
+  }
+  return -1;
+}
+
+function extractArrayLiteral(html, varName){
+  const marker = 'const ' + varName + ' = ';
+  const idx = html.indexOf(marker);
+  if(idx === -1) return null;
+  const start = idx + marker.length;
+  if(html[start] !== '[') return null;
+  const end = extractBalanced(html, start);
+  if(end === -1) return null;
+  try{ return new Function('return ' + html.slice(start, end))(); }catch(e){ return null; }
+}
+
+// ---- Per-module topic list: fetched once per session, cached in sessionStorage.
+// Returns an array of topic strings (one per question, in order), or null if
+// this module's source has no per-question topic field at all (some
+// "QUIZ_DATA" blueprint-format quizzes don't tag questions by topic).
+async function loadModuleTopics(mod){
+  const cacheKey = 'lea_topics_v1_' + mod.file;
+  const cached = sessionStorage.getItem(cacheKey);
+  if(cached != null){
+    try{ return JSON.parse(cached); }catch(e){}
+  }
+  let topics = null;
+  try{
+    if(mod.format === 'json'){
+      const res = await fetch(mod.file);
+      const arr = await res.json();
+      if(Array.isArray(arr) && arr.length && typeof arr[0].s === 'string'){
+        topics = arr.map(q => q.s);
+      }
+    } else {
+      const res = await fetch(mod.file);
+      const html = await res.text();
+      const arr = extractArrayLiteral(html, 'QUESTIONS') || extractArrayLiteral(html, 'QUIZ_DATA');
+      if(Array.isArray(arr) && arr.length && typeof arr[0].s === 'string'){
+        topics = arr.map(q => q.s);
+      }
+      // QUIZ_DATA (blueprint) quizzes have no per-question topic field —
+      // topics stays null, handled by the caller with a module-title fallback.
+    }
+  }catch(e){ topics = null; }
+  try{ sessionStorage.setItem(cacheKey, JSON.stringify(topics)); }catch(e){}
+  return topics;
+}
+
+// ================= Boot =================
+async function boot(){
+  const params = new URLSearchParams(window.location.search);
+  const subjectId = params.get('s');
+  const body = document.getElementById('pageBody');
+
+  let subjects;
+  try{
+    const res = await fetch('data/subjects.json');
+    subjects = await res.json();
+  }catch(e){
+    body.innerHTML = '<div class="state-card">Couldn’t load the subjects catalogue. Try reloading.</div>';
+    return;
+  }
+
+  const subject = subjects.find(s => s.id === subjectId);
+  if(!subject){
+    body.innerHTML = '<div class="state-card">Unknown subject' + (subjectId ? ': "' + escapeHtml(subjectId) + '"' : '') + '.<br>Go back and pick one from the list.</div>';
+    return;
+  }
+
+  LEA_SUBJECT_ID_PAGE = subject.id;
+  document.title = stripEmoji(subject.name) + ' — LEA Reviewer';
+
+  if(!subject.ready || !subject.modules || subject.modules.length === 0){
+    body.innerHTML =
+      renderMastheadHtml(subject) +
+      '<div class="state-card">This subject isn’t compiled yet — check back once it’s ready.</div>';
+    initMarquee();
+    return;
+  }
+
+  render(subject);
+  window.leaOnProgressReset = () => render(subject);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) render(subject); });
+  window.addEventListener('pageshow', () => render(subject));
+}
+
+function renderMastheadHtml(subject){
+  return (
+    '<div class="masthead">' +
+      '<div class="eyebrow">Module Compendium</div>' +
+      '<h1>' + escapeHtml(stripEmoji(subject.name)) + '</h1>' +
+      '<div class="marquee-wrap" id="marqueeWrap"><span class="marquee-text" id="marqueeText">' + escapeHtml(subject.blurb || '') + '</span></div>' +
+      '<div class="step-frieze"></div>' +
+    '</div>'
+  );
+}
+
+function initMarquee(){
+  const wrap = document.getElementById('marqueeWrap');
+  const text = document.getElementById('marqueeText');
+  if(!wrap || !text) return;
+  if(!text.textContent.trim()){ wrap.classList.add('ellipsis'); return; }
+  const overflow = text.scrollWidth - wrap.clientWidth;
+  if(overflow > 24){ wrap.classList.add('animate'); }
+  else{ wrap.classList.add('ellipsis'); }
+}
+
+// ================= Mode selection (persisted per subject) =================
+function getMode(subjectId){
+  try{ return localStorage.getItem('lea_mode_' + subjectId) || 'study'; }catch(e){ return 'study'; }
+}
+function setMode(subjectId, mode){
+  try{ localStorage.setItem('lea_mode_' + subjectId, mode); }catch(e){}
+}
+
+// ================= Progress rollups =================
+function moduleProgress(subjectId, mod){
+  const p = LEAProgress.load(subjectId, mod.id);
+  const masteredSet = new Set(p.mastered || []);
+  const flaggedSet = new Set(p.flagged || []);
+  const mastered = Math.min(masteredSet.size, mod.total);
+  const toDrillSet = new Set(flaggedSet);
+  for(let i = 0; i < mod.total; i++){ if(!masteredSet.has(i)) toDrillSet.add(i); }
+  return { p, masteredSet, flaggedSet, mastered, toDrill: toDrillSet.size };
+}
+
+function subjectRollup(subject){
+  let mastered = 0, total = 0, modulesDone = 0, flagged = 0, toDrill = 0;
+  subject.modules.forEach(mod => {
+    const mp = moduleProgress(subject.id, mod);
+    mastered += mp.mastered;
+    total += mod.total;
+    flagged += mp.flaggedSet.size;
+    toDrill += mp.toDrill;
+    if(mod.total > 0 && mp.mastered >= mod.total) modulesDone++;
+  });
+  return { mastered, total, modulesDone, flagged, toDrill };
+}
+
+// ================= Render =================
+async function render(subject){
+  const body = document.getElementById('pageBody');
+  const rollup = subjectRollup(subject);
+  const pct = rollup.total > 0 ? Math.round((rollup.mastered / rollup.total) * 100) : 0;
+  const mode = getMode(subject.id);
+
+  body.innerHTML =
+    renderMastheadHtml(subject) +
+    renderOverallCard(rollup, pct) +
+    renderModeRows(subject, rollup, mode) +
+    '<div id="topicsSlot"></div>' +
+    '<div class="section-label">Modules</div>' +
+    renderModulesList(subject, mode) +
+    '<div class="note-panel">Progress is saved to your account and synced across devices.</div>';
+
+  initMarquee();
+  wireOverallReset(subject);
+  wireModeRows(subject);
+
+  // Topics card: async, since it may need to fetch/scrape question data.
+  renderTopicsCard(subject).then(html => {
+    const slot = document.getElementById('topicsSlot');
+    if(slot) slot.innerHTML = html;
+  });
+}
+
+function renderOverallCard(rollup, pct){
+  return (
+    '<div class="overall-card">' +
+      '<div class="overall-title"><span>Overall progress</span>' +
+      '<button class="reset-all" id="resetAllBtn">Reset all progress</button></div>' +
+      '<div class="overall-stats-row">' +
+        '<div class="overall-stat"><div class="num">' + rollup.mastered + '</div><div class="lbl">Mastered</div></div>' +
+        '<div class="overall-stat"><div class="num">' + rollup.modulesDone + ' / ' + '<span id="ovModCount"></span></div><div class="lbl">Modules done</div></div>' +
+        '<div class="overall-stat"><div class="num">' + rollup.flagged + '</div><div class="lbl">Flagged</div></div>' +
+      '</div>' +
+      '<div class="overall-bar-track"><div class="overall-bar-fill" style="width:' + pct + '%;"></div></div>' +
+      '<div class="overall-bar-caption"><span>' + rollup.mastered + ' of ' + rollup.total + ' questions mastered</span><span>' + pct + '%</span></div>' +
+    '</div>'
+  );
+}
+
+function wireOverallReset(subject){
+  const btn = document.getElementById('resetAllBtn');
+  const countEl = document.getElementById('ovModCount');
+  if(countEl) countEl.textContent = subject.modules.length;
+  if(btn){
+    btn.addEventListener('click', async () => {
+      const ok = await LEAConfirm(
+        'Reset all progress for this subject? This clears mastered questions, flags, and best scores for every module.',
+        { title: 'Reset all progress', yes: 'Reset progress' }
+      );
+      if(!ok) return;
+      LEAProgress.resetSubject(subject.id, subject.modules.map(m => m.id));
+      render(subject);
+    });
+  }
+}
+
+function renderModeRows(subject, rollup, mode){
+  const rows = [
+    { id:'study', no:'01', name:'Study', cap:'Full explanation after every answer', num: (rollup.total > 0 ? Math.round((rollup.mastered/rollup.total)*100) + '%' : '—'), disabled:false },
+    { id:'exam', no:'02', name:'Mock exam', cap:'Timed, feedback withheld until submit', num: String(subject.modules.length), disabled:false },
+    { id:'drill', no:'03', name:'Drill my misses', cap: rollup.toDrill > 0 ? (rollup.total - rollup.mastered) + ' unmastered · ' + rollup.flagged + ' flagged' : 'All caught up', num: String(rollup.toDrill), disabled: rollup.toDrill === 0 }
+  ];
+  return '<div class="mode-rows">' + rows.map(r =>
+    '<button type="button" class="mode-row' + (r.id === mode ? ' selected' : '') + (r.disabled ? ' disabled' : '') + '" data-mode="' + r.id + '"' + (r.disabled ? ' disabled' : '') + '>' +
+      '<div class="mode-lbl"><div class="mode-name">' + r.no + ' ' + escapeHtml(r.name) + '</div><div class="mode-cap">' + escapeHtml(r.cap) + '</div></div>' +
+      '<div class="mode-num">' + escapeHtml(r.num) + '</div>' +
+    '</button>'
+  ).join('') + '</div>';
+}
+
+function wireModeRows(subject){
+  document.querySelectorAll('.mode-row[data-mode]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if(btn.disabled) return;
+      setMode(subject.id, btn.getAttribute('data-mode'));
+      render(subject);
+    });
+  });
+}
+
+function renderModulesList(subject, mode){
+  return '<div class="module-grid">' + subject.modules.map(mod => {
+    const mp = moduleProgress(subject.id, mod);
+    const resume = LEAResume.load(subject.id, mod.id);
+    const inProgress = !!(resume && resume.total && resume.answeredCount > 0 && resume.answeredCount < resume.total);
+    const href = mod.format === 'json'
+      ? 'run.html?s=' + encodeURIComponent(subject.id) + '&m=' + encodeURIComponent(mod.id) + '&mode=' + mode
+      : mod.file;
+    const disabled = mode === 'drill' && mp.toDrill === 0;
+
+    let metaLeft;
+    if(mode === 'study'){ metaLeft = mp.mastered + ' / ' + mod.total + ' mastered'; }
+    else if(mode === 'exam'){ metaLeft = mod.total + ' questions' + (mp.p.bestTotal ? ' · best ' + mp.p.bestCorrect + '/' + mp.p.bestTotal : ''); }
+    else { metaLeft = disabled ? 'Nothing to drill' : mp.toDrill + ' to drill'; }
+
+    let pct = mod.total > 0 ? Math.round((mp.mastered / mod.total) * 100) : 0;
+    if(mode === 'drill'){ pct = mod.total > 0 ? Math.round(((mod.total - mp.toDrill) / mod.total) * 100) : 0; }
+
+    return (
+      '<a class="module-card' + (inProgress ? ' in-progress' : '') + (disabled ? ' disabled' : '') + '" href="' + escapeHtml(href) + '">' +
+        '<div class="module-num">' + escapeHtml(mod.no) + (mod.hard ? ' · Advanced' : '') + '</div>' +
+        '<div class="module-title">' + escapeHtml(mod.title) + '</div>' +
+        '<div class="module-meta"><span>' + escapeHtml(metaLeft) + '</span><span class="module-arrow">&rarr;</span></div>' +
+        '<div class="mp-bar-track"><div class="mp-bar-fill" style="width:' + pct + '%;"></div></div>' +
+        (inProgress ? '<div class="module-resume">Resume Q' + resume.position + ' &rarr;</div>' : '') +
+      '</a>'
+    );
+  }).join('') + '</div>';
+}
+
+// ================= Topics card (async — needs question data) =================
+async function renderTopicsCard(subject){
+  const topicTotals = {};
+  const topicMastered = {};
+  let anyRealTopics = false;
+
+  for(const mod of subject.modules){
+    const mp = moduleProgress(subject.id, mod);
+    let topics = await loadModuleTopics(mod);
+    if(topics && topics.length === mod.total) anyRealTopics = true;
+    if(!topics || topics.length !== mod.total){
+      // No per-question topic field available for this module's source —
+      // fall back to grouping its questions under the module's own title.
+      topics = new Array(mod.total).fill(mod.title);
+    }
+    for(let i = 0; i < mod.total; i++){
+      const t = topics[i];
+      topicTotals[t] = (topicTotals[t] || 0) + 1;
+      if(mp.masteredSet.has(i)) topicMastered[t] = (topicMastered[t] || 0) + 1;
+    }
+  }
+
+  const names = Object.keys(topicTotals);
+  if(names.length === 0) return '';
+
+  const rows = names.map(name => {
+    const total = topicTotals[name];
+    const mastered = topicMastered[name] || 0;
+    const pct = total > 0 ? Math.round((mastered / total) * 100) : 0;
+    const color = pct >= 100 ? 'var(--good)' : pct >= 70 ? 'var(--gold)' : 'var(--bad)';
+    return (
+      '<div class="topic-row">' +
+        '<div class="topic-name">' + escapeHtml(name) + '</div>' +
+        '<div class="topic-bar-track"><div class="topic-bar-fill" style="width:' + pct + '%;background:' + color + ';"></div></div>' +
+        '<div class="topic-pct" style="color:' + color + ';">' + pct + '%</div>' +
+        '<div class="topic-arrow">&rarr;</div>' +
+      '</div>'
+    );
+  }).join('');
+
+  const note = anyRealTopics
+    ? (names.length && Object.values(topicTotals).length !== subject.modules.length && names.some(n => subject.modules.some(m => m.title === n))
+        ? 'Some modules don’t tag questions by topic, so they’re grouped under the module name instead.'
+        : '')
+    : 'This subject’s questions aren’t tagged by topic yet, so modules are listed as-is.';
+
+  return (
+    '<div class="topics-card">' +
+      '<div class="card-title">Topics</div>' +
+      rows +
+      (note ? '<div class="topics-note">' + escapeHtml(note) + '</div>' : '') +
+    '</div>'
+  );
+}
+</script>
+<script>
+// Paint any inline SVG icons declared as <span class="btn-ico" data-icon="…">.
+// Done once at load; these labels are static markup, not re-rendered.
+(function(){
+  if(!window.LEAIcons) return;
+  document.querySelectorAll('.btn-ico[data-icon]').forEach(function(el){
+    var fn = LEAIcons[el.getAttribute('data-icon')];
+    if(fn) el.innerHTML = fn(15);
+  });
+})();
+</script>
+</body>
+</html>

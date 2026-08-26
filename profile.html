@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profile — LEA Reviewer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{ --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --line:rgba(111,168,207,0.20); --gold-bright:#f0c268; --muted:#8b98a5; --font-display:'Big Shoulders Display',sans-serif; --font-mono:'IBM Plex Mono',monospace; }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{ background:var(--bg-deep); color:var(--ink); font-family:var(--font-mono); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px; }
+  .card{ max-width:380px; text-align:center; background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:32px 24px; }
+  h1{ font-family:var(--font-display); font-weight:800; font-size:24px; text-transform:uppercase; margin:0 0 12px; }
+  p{ color:var(--muted); font-size:13px; line-height:1.7; margin:0 0 20px; }
+  a{ color:var(--gold-bright); }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Profile</h1>
+  <p>Avatar upload and profile editing (screen 5e) isn't built yet — this page is just a real entry point so the account sheet doesn't dead-end.</p>
+  <a href="index.html">&larr; Back home</a>
+</div>
+<script>
+const sb = supabase.createClient('https://rjrrprbvsmflzncojbtq.supabase.co', 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y');
+(async () => { const { data: { session } } = await sb.auth.getSession(); if(!session) window.location.href = 'index.html'; })();
+</script>
+</body>
+</html>

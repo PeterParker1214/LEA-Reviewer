@@ -1,0 +1,1831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run — LEA Reviewer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Architects+Daughter&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-2:#0a1520;
+    --gold:#e0a83f; --gold-bright:#f0c268; --blue:#6fa8cf; --blue-bright:#8fc4ea;
+    --muted:#8b98a5; --good:#5fbf82; --bad:#e2604a;
+    --line: rgba(111,168,207,0.20); --grid-line: rgba(111,168,207,0.09);
+    --font-display: 'Big Shoulders Display', sans-serif;
+    --font-hand: 'Architects Daughter', cursive;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+  body.light-mode, :root.light-mode{
+    --ink:#16202b; --bg-deep:#d3dee6; --bg-panel:#ffffff; --bg-panel-2:#e9eff4;
+    --gold:#b5791f; --gold-bright:#7d520c; --blue:#2f6c95; --blue-bright:#1b4a6b;
+    --muted:#4f5d6a; --good:#206b3c; --bad:#a1372a;
+    --line: rgba(47,108,149,0.28); --grid-line: rgba(47,108,149,0.11);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      var(--bg-deep);
+    color:var(--ink); font-family:var(--font-body); min-height:100vh;
+    display:flex; justify-content:center; padding:20px 14px 90px;
+  }
+  .wrap{width:100%; max-width:640px;}
+  a{color:inherit;}
+  .hidden{display:none !important;}
+  button{font-family:inherit;}
+
+  /* ===== header ===== */
+  .run-header{ display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:14px; }
+  .icon-btn{
+    width:44px; height:44px; border-radius:10px; background:var(--bg-panel); border:1px solid var(--line);
+    color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+  }
+  .icon-btn svg{ width:19px; height:19px; }
+  .icon-btn.flagged{ border-color:var(--gold); color:var(--gold); }
+  .header-title{ text-align:center; flex:1; min-width:0; }
+  .header-title .h-sub{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+  .header-title .h-main{ font-family:var(--font-display); font-weight:700; font-size:15px; text-transform:uppercase; color:var(--ink); margin-top:2px; }
+
+  /* ===== tick strip ===== */
+  .tick-strip{ display:flex; gap:3px; overflow-x:auto; padding-bottom:2px; margin-bottom:8px; scrollbar-width:none; }
+  .tick-strip::-webkit-scrollbar{ display:none; }
+  .tick{ width:7px; height:7px; border-radius:1px; background:var(--bg-panel-2); border:1px solid var(--line); flex-shrink:0; }
+  .tick.correct{ background:var(--good); border-color:var(--good); }
+  .tick.incorrect{ background:var(--bad); border-color:var(--bad); }
+  .tick.skipped{ background:var(--blue-bright); border-color:var(--blue-bright); }
+  .tick.flagged{ background:var(--gold); border-color:var(--gold); }
+  .counts-row{ display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; gap:10px; flex-wrap:wrap; }
+  .counts-text{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); letter-spacing:.03em; }
+  .counts-text b{ color:var(--ink); }
+  .jump-chip{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.03em; text-transform:uppercase;
+    background:var(--bg-panel); border:1px solid var(--line); color:var(--blue-bright);
+    padding:6px 12px; border-radius:20px; cursor:pointer; flex-shrink:0;
+  }
+  .jump-chip:hover{ border-color:var(--blue-bright); }
+
+  /* ===== blueprint card ===== */
+  .bp-card{
+    position:relative; background:var(--bg-panel); border:1px solid var(--line);
+    padding:22px 20px 20px; margin-bottom:16px;
+  }
+  .bp-card::before, .bp-card::after{ content:""; position:absolute; width:12px; height:12px; border:2px solid var(--gold); opacity:.9; }
+  .bp-card::before{ top:-2px; left:-2px; border-width:2px 0 0 2px; }
+  .bp-card::after{ bottom:-2px; right:-2px; border-width:0 2px 2px 0; }
+  .section-tag{
+    display:inline-block; background:var(--gold); color:#1a1206; font-family:var(--font-mono);
+    font-size:10px; letter-spacing:.1em; text-transform:uppercase; padding:4px 10px; border-radius:3px; margin-bottom:12px;
+  }
+  .clock-chip{
+    display:inline-block; margin-left:8px; border:1px dashed var(--line); color:var(--muted);
+    font-family:var(--font-mono); font-size:9.5px; letter-spacing:.04em; text-transform:uppercase;
+    padding:4px 9px; border-radius:20px;
+  }
+  .qtext{ font-size:17px; font-weight:450; line-height:1.6; color:var(--ink); margin:0 0 14px; }
+  .qimg-wrap{ margin-bottom:14px; display:none; }
+  .qimg-wrap img{ max-width:100%; border-radius:8px; border:1px solid var(--line); display:block; }
+  .options{ display:flex; flex-direction:column; gap:10px; }
+  .opt{
+    min-height:56px; text-align:left; padding:13px 16px; border-radius:10px;
+    border:1.5px dashed var(--line); background:var(--bg-panel-2); color:var(--ink);
+    font-family:var(--font-body); font-size:14.5px; line-height:1.4; cursor:pointer;
+    display:flex; align-items:center; gap:10px; transition:border-color .12s ease;
+  }
+  .opt:hover:not(.locked){ border-style:solid; border-color:var(--blue-bright); }
+  .opt .letter{ font-family:var(--font-mono); color:var(--blue-bright); flex-shrink:0; }
+  .opt.locked{ cursor:default; }
+  .opt.correct{ border-style:solid; border-color:var(--good); background:rgba(95,191,130,0.12); }
+  .opt.correct::after{ content:"\2713"; margin-left:auto; color:var(--good); font-weight:700; }
+  .opt.incorrect{ border-style:solid; border-color:var(--bad); background:rgba(226,96,74,0.12); }
+  .opt.incorrect::after{ content:"\2715"; margin-left:auto; color:var(--bad); font-weight:700; }
+  .opt.dim{ opacity:.6; }
+  .opt.chosen-tag::after{ content:"Chosen"; margin-left:auto; font-family:var(--font-mono); font-size:10px; color:var(--blue-bright); text-transform:uppercase; }
+  /* Ungraded "chosen" state (exam mode, pre-submit) — a plain selection
+     highlight, distinct from study mode's chosen-tag+incorrect combo which
+     must keep its red styling untouched. */
+  .opt.chosen-tag:not(.incorrect):not(.correct){ border-style:solid; border-color:var(--blue-bright); }
+  .opt.chosen-tag:not(.incorrect):not(.correct) .letter{ color:var(--blue-bright); }
+
+  /* ===== explanation panel ===== */
+  .explain{ margin-top:16px; padding:14px 16px; border-left:3px solid var(--good); background:var(--bg-panel-2); border-radius:0 8px 8px 0; }
+  .explain.wrong{ border-left-color:var(--bad); }
+  .explain .verdict{ font-family:var(--font-display); font-weight:700; font-size:19px; text-transform:uppercase; margin-bottom:6px; }
+  .explain.right .verdict{ color:var(--good); }
+  .explain.wrong .verdict{ color:var(--bad); }
+  .explain .reason{ font-size:13.5px; line-height:1.6; color:var(--ink); margin-bottom:10px; }
+  .explain .meta-row{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); margin-bottom:4px; }
+  .explain .meta-row b{ color:var(--ink); text-transform:uppercase; letter-spacing:.05em; margin-right:6px; }
+  .explain .steps-list{ margin:8px 0 0; padding-left:18px; font-size:13px; color:var(--ink); line-height:1.7; }
+  .chip-row{ display:flex; gap:8px; margin-top:12px; }
+  .chip-btn{
+    flex:1; font-family:var(--font-mono); font-size:11px; letter-spacing:.03em; text-transform:uppercase;
+    background:var(--bg-panel); border:1px solid var(--line); color:var(--ink);
+    padding:9px 6px; border-radius:8px; cursor:pointer; text-align:center;
+  }
+  .chip-btn:hover{ border-color:var(--gold); }
+  .chip-btn.active{ border-color:var(--gold); color:var(--gold); background:rgba(224,168,63,0.1); }
+  .note-box{ margin-top:10px; }
+  .note-box textarea{
+    width:100%; min-height:64px; background:var(--bg-panel); border:1px solid var(--line); border-radius:8px;
+    color:var(--ink); font-family:var(--font-hand); font-size:14px; padding:10px 12px; resize:vertical;
+  }
+  .note-box .note-save{
+    margin-top:6px; font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.04em;
+    background:var(--gold); color:#1a1206; border:none; padding:7px 14px; border-radius:6px; cursor:pointer;
+  }
+
+  /* ===== footer ===== */
+  .run-footer{ display:flex; gap:10px; }
+  .footer-btn{
+    flex:1; height:52px; border-radius:12px; font-family:var(--font-mono); font-size:13px;
+    text-transform:uppercase; letter-spacing:.04em; cursor:pointer; border:none;
+  }
+  .footer-btn.skip{ background:var(--bg-panel); border:1px solid var(--blue-bright); color:var(--blue-bright); }
+  .footer-btn.next{ background:var(--gold); color:#1a1206; font-weight:700; }
+  .footer-btn:disabled{ opacity:.4; cursor:default; }
+
+  /* ===== bottom sheets ===== */
+  .sheet-overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.55); display:flex; align-items:flex-end; justify-content:center; z-index:200; }
+  .sheet-overlay.hidden{ display:none; }
+  .sheet{
+    width:100%; max-width:640px; max-height:82vh; overflow-y:auto; background:var(--bg-panel);
+    border-top:2px solid var(--gold); border-radius:16px 16px 0 0; padding:22px 20px 26px;
+    box-shadow:0 -24px 60px rgba(0,0,0,0.5);
+  }
+  .sheet.report{ border-top-color:var(--bad); }
+  .sheet h3{ font-family:var(--font-display); font-weight:700; font-size:20px; text-transform:uppercase; margin:0 0 14px; }
+  .map-legend{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:14px; }
+  .map-legend .lg-item{ display:flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:10.5px; color:var(--muted); text-transform:uppercase; }
+  .map-legend .lg-dot{ width:9px; height:9px; border-radius:2px; }
+  .map-grid{ display:grid; grid-template-columns:repeat(8, 1fr); gap:6px; margin-bottom:16px; }
+  .map-cell{
+    aspect-ratio:1; border-radius:5px; background:var(--bg-panel-2); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:10px; color:var(--muted); cursor:pointer;
+  }
+  .map-cell.correct{ background:var(--good); color:#0a1218; border-color:var(--good); }
+  .map-cell.incorrect{ background:var(--bad); color:#0a1218; border-color:var(--bad); }
+  .map-cell.skipped{ background:var(--blue-bright); color:#0a1218; border-color:var(--blue-bright); }
+  .map-cell.flagged{ background:var(--gold); color:#1a1206; border-color:var(--gold); }
+  .map-cell.current{ outline:2px solid var(--ink); outline-offset:1px; }
+  .map-actions{ display:flex; flex-direction:column; gap:8px; }
+  .map-action-btn{
+    height:48px; border-radius:10px; font-family:var(--font-mono); font-size:12px; text-transform:uppercase;
+    letter-spacing:.03em; background:var(--bg-panel-2); border:1px solid var(--line); color:var(--ink); cursor:pointer;
+  }
+  .map-action-btn:disabled{ opacity:.4; cursor:default; }
+
+  .report-reason{ display:flex; align-items:center; gap:10px; min-height:48px; padding:10px 12px; border-radius:8px; border:1px solid var(--line); margin-bottom:8px; cursor:pointer; }
+  .report-reason input{ accent-color:var(--bad); }
+  .report-reason.selected{ border-color:var(--bad); background:rgba(226,96,74,0.08); }
+  .report-comment{
+    width:100%; min-height:70px; background:var(--bg-panel-2); border:1px solid var(--line); border-radius:8px;
+    color:var(--ink); font-family:var(--font-hand); font-size:14px; padding:10px 12px; margin:8px 0 14px; resize:vertical;
+  }
+  .report-send{
+    width:100%; height:48px; border-radius:10px; background:var(--bad); color:#fff; border:none;
+    font-family:var(--font-mono); font-size:12.5px; text-transform:uppercase; letter-spacing:.04em; cursor:pointer;
+  }
+  .report-note{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); text-align:center; margin-top:10px; }
+  .sheet-close{
+    display:block; margin:14px auto 0; background:none; border:none; color:var(--muted);
+    font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em; cursor:pointer;
+  }
+
+
+  .state-card{
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:28px 22px;
+    text-align:center; color:var(--muted); font-family:var(--font-mono); font-size:13px; line-height:1.7;
+  }
+
+  /* ===== results ===== */
+  .results-card{ text-align:center; }
+  .results-score{ font-family:var(--font-display); font-weight:800; font-size:52px; color:var(--gold-bright); margin:6px 0; }
+  .results-score span{ font-size:24px; color:var(--muted); }
+  .results-actions{ display:flex; gap:10px; margin-top:18px; }
+  .results-actions .footer-btn{ flex:1; }
+</style>
+<script src="assets/lea-confirm.js?v=1"></script>
+<script src="assets/module-progress.js?v=1"></script>
+<script src="assets/quiz-resume.js?v=1"></script>
+<script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
+</head>
+<body>
+<div class="wrap" id="pageBody">
+  <div class="state-card">Loading…</div>
+</div>
+
+<!-- ===== question map sheet ===== -->
+<div class="sheet-overlay hidden" id="mapOverlay">
+  <div class="sheet">
+    <h3>Question map</h3>
+    <div class="map-legend" id="mapLegend"></div>
+    <div class="map-grid" id="mapGrid"></div>
+    <div class="map-actions">
+      <button class="map-action-btn" id="mapGoFlagged">Go to flagged</button>
+      <button class="map-action-btn" id="mapGoSkipped">Go to skipped</button>
+    </div>
+    <button class="sheet-close" id="mapClose">Close</button>
+  </div>
+</div>
+
+<!-- ===== report sheet ===== -->
+<div class="sheet-overlay hidden" id="reportOverlay">
+  <div class="sheet report">
+    <h3>Report this question</h3>
+    <div id="reportReasons"></div>
+    <textarea class="report-comment" id="reportComment" placeholder="Anything else? (optional)"></textarea>
+    <button class="report-send" id="reportSend">Send report</button>
+    <div class="report-note">Queues offline · sends when you reconnect</div>
+    <button class="sheet-close" id="reportClose">Cancel</button>
+  </div>
+</div>
+
+<script>
+// ================= Auth =================
+const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let currentUserId = null;
+
+sb.auth.onAuthStateChange((event, session) => {
+  if(event === 'SIGNED_OUT') window.location.href = 'index.html';
+});
+
+(async function initApp(){
+  const { data: { session } } = await sb.auth.getSession();
+  if(!session){ window.location.href = 'index.html'; return; }
+  currentUserId = session.user.id;
+  if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }
+  await boot();
+})();
+
+// ================= Helpers =================
+function escapeHtml(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function letter(i){ return String.fromCharCode(65 + i); }
+// Subject names carry decorative emoji that the compact headers can't fit.
+// Must consume skin-tone modifiers and ZWJ joiners too, or compound emoji
+// leave stray glyphs behind. Mirrors the helper in index.html/subject.html.
+function stripEmoji(str){ return String(str||'').replace(/[\p{Extended_Pictographic}\p{Emoji_Modifier}\u{200D}\u{FE0F}]+/gu,'').trim(); }
+
+// Renders one option's display text — plain strings pass through; the
+// templated {ref,tpl} option type (Building Laws' "Both A and B"-style
+// answers) recomputes its letters from the *current* shuffled order, so it
+// stays correct no matter how options are shuffled.
+function optionText(item, origIdx, perm){
+  const o = item.o[origIdx];
+  if(typeof o === 'string') return o;
+  const letters = o.ref.map(r => letter(perm.indexOf(r))).sort();
+  const join = (arr, conj) => arr.length===1 ? arr[0] : arr.length===2 ? (arr[0]+' '+conj+' '+arr[1]) : (arr.slice(0,-1).join(', ')+', '+conj+' '+arr[arr.length-1]);
+  if(o.tpl==='both') return 'Both ' + join(letters,'and');
+  if(o.tpl==='both_true') return 'Both ' + join(letters,'and') + ' are true';
+  if(o.tpl==='either') return 'Either ' + join(letters,'or');
+  if(o.tpl==='only') return join(letters,'and') + ' only';
+  return join(letters,'and');
+}
+
+// ================= Boot =================
+let SUBJECT, MODULE, QUESTIONS, MODE;
+let order = [];       // question indices, in play order
+let pos = 0;           // current position in `order`
+let frontier = 0;      // furthest position reached (answered OR skipped)
+let answersLog = [];   // per position: {selected,isCorrect} | {skipped:true} | null
+let optOrders = {};    // per position: shuffled option-index permutation
+let flaggedSet = new Set();
+let notes = {};
+let reportTargetQIndex = null;
+let reportTargetSubjectId = null;
+let reportTargetModuleId = null;
+
+// ---- Exam-mode state ----
+const EXAM_MS_PER_ITEM = (5 * 60 * 60 * 1000) / 200; // 90s/item — the real 200-item/5h exam's pace, scaled to any module size
+let examLengthChoice = null; // 'full' | 'sim50'
+let examEndAt = 0;
+let examSubmitted = false;
+let examTimerHandle = null;
+
+async function boot(){
+  const params = new URLSearchParams(window.location.search);
+  const subjectId = params.get('s');
+  const moduleId = params.get('m');
+  const drillParams = { topic: params.get('topic'), scope: params.get('scope'), q: params.get('q'), filter: params.get('filter') };
+  MODE = params.get('mode') || 'study';
+  const body = document.getElementById('pageBody');
+
+  if(MODE !== 'study' && MODE !== 'exam' && MODE !== 'drill' && MODE !== 'daily-drill'){
+    body.innerHTML = '<div class="state-card">' + escapeHtml(MODE) + ' isn’t a run mode this page knows.<br><br><a href="index.html" style="color:var(--gold-bright);">&larr; Home</a></div>';
+    return;
+  }
+
+  let subjects;
+  try{
+    const res = await fetch('data/subjects.json');
+    subjects = await res.json();
+  }catch(e){
+    body.innerHTML = '<div class="state-card">Couldn’t load the subjects catalogue. Try reloading.</div>';
+    return;
+  }
+  ALL_SUBJECTS = subjects;
+
+  // Daily Drill, and Mock Exam / topic Drill launched without a specific
+  // subject+module, all draw from multiple modules at once — see the
+  // "Cross-subject" section below for why that's a genuinely different code
+  // path from the rest of this function.
+  const isMulti = MODE === 'daily-drill' || (!subjectId && !moduleId && (MODE === 'exam' || MODE === 'drill'));
+  if(isMulti){
+    await bootMulti(subjects, drillParams);
+    return;
+  }
+
+  SUBJECT = subjects.find(s => s.id === subjectId);
+  MODULE = SUBJECT && SUBJECT.modules.find(m => m.id === moduleId);
+  if(!SUBJECT || !MODULE){
+    body.innerHTML = '<div class="state-card">Unknown module.<br><br><a href="index.html" style="color:var(--gold-bright);">&larr; All subjects</a></div>';
+    return;
+  }
+  if(MODULE.format !== 'json'){
+    body.innerHTML = '<div class="state-card">This module isn’t wired into the new run engine yet.<br><br><a href="subject.html?s=' + encodeURIComponent(subjectId) + '" style="color:var(--gold-bright);">&larr; Back to subject</a></div>';
+    return;
+  }
+
+  try{
+    const res = await fetch(MODULE.file);
+    QUESTIONS = await res.json();
+  }catch(e){
+    body.innerHTML = '<div class="state-card">Couldn’t load this module’s questions. Try reloading.</div>';
+    return;
+  }
+
+  document.title = MODULE.title + ' — LEA Reviewer';
+
+  const p = LEAProgress.load(SUBJECT.id, MODULE.id);
+  flaggedSet = new Set(p.flagged || []);
+  notes = Object.assign({}, p.notes || {});
+
+  if(MODE === 'study'){
+    // Hidden questions (admin's "Hide this question", engine-spec §4) keep
+    // their slot forever — mastered[] indices must never shift — they just
+    // stop being served.
+    order = QUESTIONS.map((_, i) => i).filter(i => !QUESTIONS[i].hidden);
+    answersLog = new Array(order.length).fill(null);
+    pos = 0; frontier = 0;
+    tryResume();
+  } else if(MODE === 'exam'){
+    tryResumeExam();
+  } else if(MODE === 'drill'){
+    // Not the cross-subject SRS system (that's the separate Daily Drill,
+    // §6) — this pulls whatever in *this module* isn't mastered yet, plus
+    // anything flagged, and runs it exactly like study mode (immediate
+    // feedback, no clock). See engine-spec.md §5.1.
+    const masteredSet = new Set(p.mastered || []);
+    order = QUESTIONS.map((_, i) => i).filter(i => !QUESTIONS[i].hidden && (!masteredSet.has(i) || flaggedSet.has(i)));
+    if(order.length === 0){
+      body.innerHTML = '<div class="state-card">Nothing to drill here — every question in this module is mastered and nothing’s flagged.<br><br><a href="subject.html?s=' + encodeURIComponent(subjectId) + '" style="color:var(--gold-bright);">&larr; Back to subject</a></div>';
+      return;
+    }
+    answersLog = new Array(order.length).fill(null);
+    pos = 0; frontier = 0;
+    tryResume();
+  }
+}
+
+// Resume attempts are namespaced by mode too, not just subject+module —
+// otherwise a study attempt and an exam attempt on the same module would
+// clobber each other's saved slot (LEAResume's own key is subject+module
+// only). Passing this composite in place of a bare moduleId keeps that fix
+// entirely inside run.html, no change to quiz-resume.js needed.
+function resumeKey(){ return MODULE.id + '__' + MODE; }
+
+// Mirrors LEAResume's own "is there something worth prompting about" check,
+// so we know synchronously whether to expect its onResume/onStartOver
+// callback (and skip the immediate render) or render right away (and not
+// wait for a callback that will never come).
+function tryResume(){
+  const rec = LEAResume.load(SUBJECT.id, resumeKey());
+  const hasUnfinished = rec && rec.total && rec.answeredCount > 0 && rec.answeredCount < rec.total;
+  if(!hasUnfinished){
+    renderRun();
+    return;
+  }
+  LEAResume.promptIfUnfinished(SUBJECT.id, resumeKey(), {
+    onResume: (payload) => {
+      if(payload && Array.isArray(payload.answersLog)){
+        answersLog = payload.answersLog;
+        frontier = payload.frontier || 0;
+        pos = Math.min(payload.pos || 0, order.length - 1);
+        if(Array.isArray(payload.flagged)) flaggedSet = new Set(payload.flagged);
+      }
+      renderRun();
+    },
+    onStartOver: () => { renderRun(); }
+  });
+}
+
+function saveResumeState(){
+  const answeredCount = answersLog.filter(a => a && !a.skipped).length;
+  LEAResume.save(SUBJECT.id, resumeKey(), {
+    answeredCount, total: order.length, position: pos + 1,
+    payload: { answersLog, frontier, pos, flagged: Array.from(flaggedSet) }
+  });
+}
+
+// ================= Exam mode =================
+function tryResumeExam(){
+  const rec = LEAResume.load(SUBJECT.id, resumeKey());
+  const hasUnfinished = rec && rec.payload && rec.payload.examEndAt && Array.isArray(rec.payload.order);
+  if(!hasUnfinished){
+    renderExamStart();
+    return;
+  }
+  if(Date.now() >= rec.payload.examEndAt){
+    // Clock ran out while away — restore what was answered and grade it now.
+    order = rec.payload.order;
+    answersLog = rec.payload.answersLog;
+    if(Array.isArray(rec.payload.flagged)) flaggedSet = new Set(rec.payload.flagged);
+    examEndAt = rec.payload.examEndAt;
+    submitExam(true);
+    return;
+  }
+  LEAResume.promptIfUnfinished(SUBJECT.id, resumeKey(), {
+    onResume: (payload) => {
+      order = payload.order;
+      answersLog = payload.answersLog;
+      pos = Math.min(payload.pos || 0, order.length - 1);
+      frontier = order.length - 1;
+      if(Array.isArray(payload.flagged)) flaggedSet = new Set(payload.flagged);
+      examEndAt = payload.examEndAt;
+      examLengthChoice = payload.examLengthChoice;
+      examSubmitted = false;
+      startExamTimer();
+      renderExamRun();
+    },
+    onStartOver: () => { renderExamStart(); }
+  });
+}
+
+function saveExamResumeState(){
+  const answeredCount = answersLog.filter(a => a && a.selected != null && a.selected !== -1).length;
+  LEAResume.save(SUBJECT.id, resumeKey(), {
+    answeredCount, total: order.length, position: pos + 1,
+    payload: { order, answersLog, pos, flagged: Array.from(flaggedSet), examEndAt, examLengthChoice }
+  });
+}
+
+function visibleQIndexes(){
+  return QUESTIONS.map((_, i) => i).filter(i => !QUESTIONS[i].hidden);
+}
+
+function renderExamStart(){
+  const body = document.getElementById('pageBody');
+  const visibleCount = visibleQIndexes().length;
+  const fullMs = visibleCount * EXAM_MS_PER_ITEM;
+  const simCount = Math.min(50, visibleCount);
+  const simMs = simCount * EXAM_MS_PER_ITEM;
+  body.innerHTML =
+    '<div class="run-header">' +
+      '<button class="icon-btn" id="backBtn" title="Back to subject">' + svgArrowLeft() + '</button>' +
+      '<div class="header-title"><div class="h-sub">' + escapeHtml(stripEmoji(SUBJECT.name)) + ' · Module ' + escapeHtml(MODULE.no) + '</div><div class="h-main">Mock exam</div></div>' +
+      '<div style="width:44px;flex-shrink:0;"></div>' +
+    '</div>' +
+    '<div class="bp-card">' +
+      '<span class="section-tag">' + escapeHtml(MODULE.title) + '</span>' +
+      '<p class="qtext" style="font-size:15px;">One global clock. No feedback until you submit — everything gets reviewed at the end.</p>' +
+      '<div class="options">' +
+        '<button class="opt" id="startFullBtn" style="min-height:64px;">' +
+          '<span style="display:flex;flex-direction:column;gap:3px;"><b>Full exam — ' + visibleCount + ' items</b><span style="font-family:var(--font-mono);font-size:11px;color:var(--muted);">' + formatDuration(fullMs) + '</span></span>' +
+        '</button>' +
+        '<button class="opt" id="startSimBtn" style="min-height:64px;">' +
+          '<span style="display:flex;flex-direction:column;gap:3px;"><b>' + simCount + '-item sim</b><span style="font-family:var(--font-mono);font-size:11px;color:var(--muted);">' + formatDuration(simMs) + '</span></span>' +
+        '</button>' +
+      '</div>' +
+    '</div>';
+  document.getElementById('backBtn').addEventListener('click', () => { window.location.href = 'subject.html?s=' + encodeURIComponent(SUBJECT.id); });
+  document.getElementById('startFullBtn').addEventListener('click', () => startExam('full'));
+  document.getElementById('startSimBtn').addEventListener('click', () => startExam('sim50'));
+}
+
+function startExam(choice){
+  examLengthChoice = choice;
+  let idxs = visibleQIndexes();
+  if(choice === 'sim50' && idxs.length > 50){
+    for(let i = idxs.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [idxs[i], idxs[j]] = [idxs[j], idxs[i]]; }
+    idxs = idxs.slice(0, 50);
+  }
+  order = idxs;
+  answersLog = new Array(order.length).fill(null);
+  optOrders = {};
+  pos = 0;
+  frontier = order.length - 1; // exam navigation is free — no per-question gating
+  examSubmitted = false;
+  examEndAt = Date.now() + Math.round(order.length * EXAM_MS_PER_ITEM);
+  saveExamResumeState();
+  startExamTimer();
+  renderExamRun();
+}
+
+function startExamTimer(){
+  stopExamTimer();
+  examTimerHandle = setInterval(() => {
+    const remaining = examEndAt - Date.now();
+    const pill = document.getElementById('examTimerPill');
+    if(pill) pill.textContent = formatDuration(remaining);
+    if(remaining <= 0) submitExam(true);
+  }, 1000);
+}
+function stopExamTimer(){
+  if(examTimerHandle){ clearInterval(examTimerHandle); examTimerHandle = null; }
+}
+
+function renderExamRun(){
+  const body = document.getElementById('pageBody');
+  if(examSubmitted){
+    body.innerHTML = renderHeader() + renderTickStrip() + renderCountsRow() + '<div id="cardSlot"></div>' + renderFooter();
+    renderCard();
+    wireHeader();
+    wireFooter();
+    return;
+  }
+  body.innerHTML = renderHeader() + examStatusBar() + '<div id="cardSlot"></div>' + examFooterHtml();
+  renderExamCardUngraded();
+  wireHeader();
+  wireExamFooter();
+}
+
+function examStatusBar(){
+  const remaining = examEndAt - Date.now();
+  const pct = order.length > 0 ? Math.round(((pos + 1) / order.length) * 100) : 0;
+  const answeredCount = answersLog.filter(a => a && a.selected != null && a.selected !== -1).length;
+  return (
+    '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin:2px 0 8px;flex-wrap:wrap;">' +
+      '<span class="clock-chip" id="examTimerPill" style="border-style:solid;border-color:var(--gold);color:var(--gold-bright);">' + formatDuration(remaining) + '</span>' +
+      '<div class="counts-text" style="white-space:nowrap;">' + answeredCount + ' answered · ' + flaggedSet.size + ' flagged · ' + (order.length - answeredCount) + ' left</div>' +
+    '</div>' +
+    '<div style="height:4px;border-radius:2px;background:var(--bg-panel-2);overflow:hidden;margin-bottom:10px;"><div style="height:100%;width:' + pct + '%;background:var(--gold);"></div></div>' +
+    '<div class="clock-chip" style="display:block;text-align:center;margin-bottom:14px;">No feedback until you submit</div>'
+  );
+}
+
+function renderExamCardUngraded(){
+  const slot = document.getElementById('cardSlot');
+  const item = QUESTIONS[order[pos]];
+  const logged = answersLog[pos];
+  const perm = getOptOrder(pos);
+
+  let optsHtml = '';
+  perm.forEach((origIdx, displayI) => {
+    const text = optionText(item, origIdx, perm);
+    let cls = 'opt';
+    if(logged && logged.selected === origIdx) cls += ' chosen-tag';
+    const markup = '<span class="letter">' + letter(displayI) + '.</span><span>' + escapeHtml(text) + '</span>';
+    optsHtml += '<button class="' + cls + '" data-idx="' + origIdx + '">' + markup + '</button>';
+  });
+
+  let imgHtml = '';
+  if(item.img){ imgHtml = '<div class="qimg-wrap" style="display:flex;"><img src="' + escapeHtml(item.img) + '" alt="Figure for this question"></div>'; }
+
+  slot.innerHTML =
+    '<div class="bp-card">' +
+      '<span class="section-tag">' + escapeHtml(item.s || '') + '</span>' +
+      '<p class="qtext">' + escapeHtml(item.q) + '</p>' +
+      imgHtml +
+      '<div class="options">' + optsHtml + '</div>' +
+    '</div>';
+
+  slot.querySelectorAll('.opt[data-idx]').forEach(btn => {
+    btn.addEventListener('click', () => selectExamAnswer(parseInt(btn.getAttribute('data-idx'), 10)));
+  });
+}
+
+function selectExamAnswer(origIdx){
+  answersLog[pos] = { selected: origIdx };
+  saveExamResumeState();
+  renderExamRun();
+}
+
+function examFooterHtml(){
+  const isLast = pos === order.length - 1;
+  const isFlagged = flaggedSet.has(order[pos]);
+  return (
+    '<div class="run-footer">' +
+      '<button class="footer-btn skip" id="examFlagBtn">' + (isFlagged ? 'Unflag' : 'Flag') + '</button>' +
+      '<button class="footer-btn next" id="examNextBtn">' + (isLast ? 'Review & submit →' : 'Next question →') + '</button>' +
+    '</div>' +
+    '<button class="sheet-close" id="examSubmitEarlyBtn" style="display:block;width:100%;margin-top:12px;">Submit exam early</button>'
+  );
+}
+
+function wireExamFooter(){
+  document.getElementById('examFlagBtn').addEventListener('click', toggleFlag);
+  document.getElementById('examNextBtn').addEventListener('click', () => {
+    const isLast = pos === order.length - 1;
+    if(isLast){ submitExam(false); return; }
+    pos++; saveExamResumeState(); renderExamRun();
+  });
+  document.getElementById('examSubmitEarlyBtn').addEventListener('click', async () => {
+    if(await LEAConfirm('Submit the exam now? You can still review every question afterward.', { yes: 'Submit exam' })) submitExam(false);
+  });
+}
+
+function submitExam(auto){
+  if(examSubmitted) return;
+  examSubmitted = true;
+  stopExamTimer();
+  answersLog = answersLog.map((a, p) => {
+    const item = QUESTIONS[order[p]];
+    const selected = (a && a.selected != null) ? a.selected : -1;
+    const isCorrect = selected !== -1 && selected === item.c;
+    if(isCorrect) LEAProgress.markMastered(SUBJECT.id, MODULE.id, order[p]);
+    // Blanks still score as misses, but review mode must be able to tell
+    // "I answered and got it wrong" from "I ran out of time and never saw
+    // this" — without the flag both paint the same red in the counts row,
+    // tick strip, and question map.
+    return selected === -1 ? { selected, isCorrect, skipped: true } : { selected, isCorrect };
+  });
+  const correct = answersLog.filter(a => a.isCorrect).length;
+  LEAProgress.recordRunScore(SUBJECT.id, MODULE.id, correct, order.length);
+  LEAResume.clear(SUBJECT.id, resumeKey());
+  frontier = order.length - 1;
+  pos = 0;
+  showExamResults(auto);
+}
+
+function showExamResults(auto){
+  const body = document.getElementById('pageBody');
+  const correct = answersLog.filter(a => a.isCorrect).length;
+  const attempted = answersLog.filter(a => a.selected !== -1).length;
+  const pct = order.length > 0 ? Math.round((correct / order.length) * 100) : 0;
+  body.innerHTML =
+    '<div class="bp-card results-card">' +
+      '<span class="section-tag">' + escapeHtml(MODULE.title) + ' · Mock exam</span>' +
+      (auto ? '<div class="counts-text" style="color:var(--bad);margin:10px 0;">Time’s up — submitted automatically.</div>' : '') +
+      '<div class="results-score">' + correct + '<span> / ' + order.length + '</span></div>' +
+      '<div class="counts-text">' + attempted + ' answered · ' + (order.length - attempted) + ' left blank · ' + pct + '%</div>' +
+      '<div class="results-actions">' +
+        '<button class="footer-btn skip" id="backToSubjectBtn">Back to subject</button>' +
+        '<button class="footer-btn next" id="reviewAnswersBtn">Review answers →</button>' +
+      '</div>' +
+    '</div>';
+  document.getElementById('backToSubjectBtn').addEventListener('click', () => {
+    window.location.href = 'subject.html?s=' + encodeURIComponent(SUBJECT.id);
+  });
+  document.getElementById('reviewAnswersBtn').addEventListener('click', () => {
+    pos = 0;
+    renderRun();
+  });
+}
+
+function persistFlags(){
+  const p = LEAProgress.load(SUBJECT.id, MODULE.id);
+  p.flagged = Array.from(flaggedSet);
+  p.notes = notes;
+  LEAProgress.save(SUBJECT.id, MODULE.id, p);
+}
+
+function getOptOrder(p, itemOverride){
+  if(!optOrders[p]){
+    const item = itemOverride || QUESTIONS[order[p]];
+    const idxs = item.o.map((_, i) => i);
+    for(let i = idxs.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [idxs[i], idxs[j]] = [idxs[j], idxs[i]];
+    }
+    optOrders[p] = idxs;
+  }
+  return optOrders[p];
+}
+
+// visit-state for a position: 'unvisited' | 'correct' | 'incorrect' | 'skipped'
+function stateAt(p){
+  const a = answersLog[p];
+  if(!a) return 'unvisited';
+  if(a.skipped) return 'skipped';
+  return a.isCorrect ? 'correct' : 'incorrect';
+}
+
+function tickClass(p){
+  const qIndex = order[p];
+  if(flaggedSet.has(qIndex)) return 'flagged';
+  const st = stateAt(p);
+  return st === 'unvisited' ? '' : st;
+}
+
+// ================= Render: run screen =================
+function renderRun(){
+  const body = document.getElementById('pageBody');
+  body.innerHTML =
+    renderHeader() +
+    renderTickStrip() +
+    renderCountsRow() +
+    '<div id="cardSlot"></div>' +
+    renderFooter();
+  renderCard();
+  wireHeader();
+  wireFooter();
+}
+
+function renderHeader(){
+  const qIndex = order[pos];
+  const isFlagged = flaggedSet.has(qIndex);
+  return (
+    '<div class="run-header">' +
+      '<button class="icon-btn" id="backBtn" title="Back to subject">' + svgArrowLeft() + '</button>' +
+      '<div class="header-title">' +
+        '<div class="h-sub">' + escapeHtml(stripEmoji(SUBJECT.name)) + ' · Module ' + escapeHtml(MODULE.no) + '</div>' +
+        '<div class="h-main">Question ' + (pos+1) + ' / ' + order.length + '</div>' +
+      '</div>' +
+      '<button class="icon-btn' + (isFlagged ? ' flagged' : '') + '" id="flagBtn" title="Flag this question">' + svgFlag() + '</button>' +
+      '<button class="icon-btn" id="moreBtn" title="Report a problem with this question">' + svgMore() + '</button>' +
+    '</div>'
+  );
+}
+
+function renderTickStrip(){
+  const WINDOW = 15;
+  let start = Math.max(0, pos - Math.floor(WINDOW/2));
+  let end = Math.min(order.length, start + WINDOW);
+  start = Math.max(0, end - WINDOW);
+  let ticks = '';
+  for(let p = start; p < end; p++){
+    ticks += '<div class="tick ' + tickClass(p) + '" title="Question ' + (p+1) + '"></div>';
+  }
+  return '<div class="tick-strip">' + ticks + '</div>';
+}
+
+function renderCountsRow(){
+  let correct=0, incorrect=0, skipped=0;
+  answersLog.forEach(a => { if(a){ if(a.skipped) skipped++; else if(a.isCorrect) correct++; else incorrect++; } });
+  return (
+    '<div class="counts-row">' +
+      '<div class="counts-text"><b>' + correct + '</b> right · <b>' + incorrect + '</b> wrong · <b>' + skipped + '</b> skipped · <b>' + flaggedSet.size + '</b> flagged</div>' +
+      '<button class="jump-chip" id="jumpChip">⊞ Jump</button>' +
+    '</div>'
+  );
+}
+
+function renderFooter(){
+  const st = stateAt(pos);
+  const resolved = st !== 'unvisited';
+  const isLast = pos === order.length - 1;
+  const canGoNext = resolved && (pos < frontier || isLast);
+  const showSkip = !resolved;
+  return (
+    '<div class="run-footer">' +
+      (showSkip ? '<button class="footer-btn skip" id="skipBtn">Skip</button>' : '') +
+      '<button class="footer-btn next" id="nextBtn"' + (canGoNext ? '' : ' disabled') + '>' + (isLast && resolved ? 'See results →' : 'Next question →') + '</button>' +
+    '</div>'
+  );
+}
+
+function renderCard(){
+  const slot = document.getElementById('cardSlot');
+  const item = QUESTIONS[order[pos]];
+  const logged = answersLog[pos];
+  const perm = getOptOrder(pos);
+
+  let optsHtml = '';
+  perm.forEach((origIdx, displayI) => {
+    const text = optionText(item, origIdx, perm);
+    let cls = 'opt';
+    let markup = '<span class="letter">' + letter(displayI) + '.</span><span>' + escapeHtml(text) + '</span>';
+    if(logged && !logged.skipped){
+      cls += ' locked';
+      if(origIdx === item.c) cls += ' correct';
+      else if(origIdx === logged.selected) cls += ' incorrect chosen-tag';
+      else cls += ' dim';
+    } else if(logged && logged.skipped){
+      cls += ' locked dim';
+    }
+    optsHtml += '<button class="' + cls + '" data-idx="' + origIdx + '"' + (logged ? ' disabled' : '') + '>' + markup + '</button>';
+  });
+
+  let imgHtml = '';
+  if(item.img){ imgHtml = '<div class="qimg-wrap" style="display:flex;"><img src="' + escapeHtml(item.img) + '" alt="Figure for this question"></div>'; }
+
+  let explainHtml = '';
+  if(logged && !logged.skipped){
+    const verdictClass = logged.isCorrect ? 'right' : 'wrong';
+    const verdictText = logged.isCorrect ? 'Correct.' : 'Not quite.';
+    const stepsHtml = (item.steps && item.steps.length)
+      ? '<div id="stepsBlock" class="hidden"><ol class="steps-list">' + item.steps.map(s => '<li>' + escapeHtml(s) + '</li>').join('') + '</ol></div>'
+      : '';
+    const qIndex = order[pos];
+    const isFlagged = flaggedSet.has(qIndex);
+    const noteVal = notes[qIndex] || '';
+    explainHtml =
+      '<div class="explain ' + verdictClass + '">' +
+        '<div class="verdict">' + verdictText + '</div>' +
+        '<div class="reason">' + escapeHtml(item.o[item.c]) + '.' + (item.n ? ' ' + escapeHtml(item.n) : '') + '</div>' +
+        (item.ref ? '<div class="meta-row"><b>Rule</b>' + escapeHtml(item.ref) + '</div>' : '') +
+        '<div class="chip-row">' +
+          (item.steps && item.steps.length ? '<button class="chip-btn" id="stepsChip">＋ Steps</button>' : '<div style="flex:1;"></div>') +
+          '<button class="chip-btn" id="noteChip">✎ Note</button>' +
+          '<button class="chip-btn' + (isFlagged ? ' active' : '') + '" id="drillChip">↻ Drill</button>' +
+        '</div>' +
+        stepsHtml +
+        '<div class="note-box hidden" id="noteBox"><textarea id="noteText" placeholder="Your note on this question…">' + escapeHtml(noteVal) + '</textarea><button class="note-save" id="noteSave">Save note</button></div>' +
+      '</div>';
+  } else if(logged && logged.skipped){
+    explainHtml = '<div class="explain" style="border-left-color:var(--blue-bright);"><div class="verdict" style="color:var(--blue-bright);">Skipped</div><div class="reason">Answer it now, or come back later from the question map.</div></div>';
+  }
+
+  slot.innerHTML =
+    '<div class="bp-card">' +
+      '<span class="section-tag">' + escapeHtml(item.s || '') + '</span>' +
+      '<span class="clock-chip">' + (MODE === 'exam' ? 'Reviewing · mock exam' : MODE === 'drill' ? 'No clock · drilling your misses' : 'No clock · study mode') + '</span>' +
+      '<p class="qtext">' + escapeHtml(item.q) + '</p>' +
+      imgHtml +
+      '<div class="options">' + optsHtml + '</div>' +
+      explainHtml +
+    '</div>';
+
+  wireCard(item);
+}
+
+function wireCard(item){
+  document.querySelectorAll('.opt[data-idx]').forEach(btn => {
+    btn.addEventListener('click', () => selectAnswer(item, parseInt(btn.getAttribute('data-idx'), 10)));
+  });
+  const stepsChip = document.getElementById('stepsChip');
+  if(stepsChip) stepsChip.addEventListener('click', () => {
+    const block = document.getElementById('stepsBlock');
+    block.classList.toggle('hidden');
+    stepsChip.classList.toggle('active');
+  });
+  const noteChip = document.getElementById('noteChip');
+  if(noteChip) noteChip.addEventListener('click', () => {
+    document.getElementById('noteBox').classList.toggle('hidden');
+  });
+  const noteSave = document.getElementById('noteSave');
+  if(noteSave) noteSave.addEventListener('click', () => {
+    const qIndex = order[pos];
+    const val = document.getElementById('noteText').value.trim();
+    if(val) notes[qIndex] = val; else delete notes[qIndex];
+    persistFlags();
+    noteSave.textContent = 'Saved';
+    setTimeout(() => { noteSave.textContent = 'Save note'; }, 1200);
+  });
+  const drillChip = document.getElementById('drillChip');
+  if(drillChip) drillChip.addEventListener('click', () => toggleFlag());
+}
+
+function selectAnswer(item, origIdx){
+  if(answersLog[pos]) return;
+  const isCorrect = origIdx === item.c;
+  answersLog[pos] = { selected: origIdx, isCorrect };
+  if(isCorrect) LEAProgress.markMastered(SUBJECT.id, MODULE.id, order[pos]);
+  if(pos === frontier && frontier < order.length - 1) frontier = pos + 1;
+  else if(pos === frontier) frontier = pos;
+  saveResumeState();
+  renderRun();
+}
+
+function toggleFlag(){
+  const qIndex = order[pos];
+  if(flaggedSet.has(qIndex)) flaggedSet.delete(qIndex);
+  else flaggedSet.add(qIndex);
+  persistFlags();
+  if(MODE === 'exam' && !examSubmitted) renderExamRun();
+  else renderRun();
+}
+
+function formatDuration(ms){
+  if(ms < 0) ms = 0;
+  const totalSec = Math.floor(ms / 1000);
+  const h = Math.floor(totalSec / 3600);
+  const m = Math.floor((totalSec % 3600) / 60);
+  const s = totalSec % 60;
+  const p2 = n => String(n).padStart(2, '0');
+  return h > 0 ? (h + ':' + p2(m) + ':' + p2(s)) : (p2(m) + ':' + p2(s));
+}
+
+function wireHeader(){
+  document.getElementById('backBtn').addEventListener('click', () => {
+    window.location.href = 'subject.html?s=' + encodeURIComponent(SUBJECT.id);
+  });
+  document.getElementById('flagBtn').addEventListener('click', toggleFlag);
+  document.getElementById('moreBtn').addEventListener('click', openReport);
+  // jumpChip lives in renderCountsRow (study/drill) — exam mode's
+  // examStatusBar has no Jump button, so this must stay optional. See the
+  // matching note in wireMultiHeader() for why a blind call here is
+  // dangerous: it would throw and skip whatever wireExamFooter() call
+  // follows it in the same render pass.
+  const jumpChip = document.getElementById('jumpChip');
+  if(jumpChip) jumpChip.addEventListener('click', openMap);
+}
+
+function wireFooter(){
+  const skipBtn = document.getElementById('skipBtn');
+  if(skipBtn) skipBtn.addEventListener('click', () => {
+    answersLog[pos] = { skipped: true };
+    if(pos === frontier && frontier < order.length - 1) frontier = pos + 1;
+    saveResumeState();
+    if(pos < order.length - 1){ pos++; }
+    renderRun();
+  });
+  const nextBtn = document.getElementById('nextBtn');
+  nextBtn.addEventListener('click', () => {
+    const isLast = pos === order.length - 1;
+    const resolved = stateAt(pos) !== 'unvisited';
+    if(isLast && resolved){ finishRun(); return; }
+    if(pos < order.length - 1){ pos++; renderRun(); }
+  });
+}
+
+function finishRun(){
+  if(MODE === 'exam' && examSubmitted){ showExamResults(false); return; }
+  LEAResume.clear(SUBJECT.id, resumeKey());
+  const correct = answersLog.filter(a => a && !a.skipped && a.isCorrect).length;
+  const attempted = answersLog.filter(a => a && !a.skipped).length;
+  LEAProgress.recordRunScore(SUBJECT.id, MODULE.id, correct, order.length);
+
+  const body = document.getElementById('pageBody');
+  const pct = order.length > 0 ? Math.round((correct / order.length) * 100) : 0;
+  body.innerHTML =
+    '<div class="bp-card results-card">' +
+      '<span class="section-tag">' + escapeHtml(MODULE.title) + (MODE === 'drill' ? ' · Drill' : '') + '</span>' +
+      '<div class="results-score">' + correct + '<span> / ' + order.length + '</span></div>' +
+      '<div class="counts-text">' + attempted + ' answered · ' + (order.length - attempted) + ' skipped · ' + pct + '%</div>' +
+      '<div class="results-actions">' +
+        '<button class="footer-btn skip" id="backToSubjectBtn">Back to subject</button>' +
+        '<button class="footer-btn next" id="reviewMistakesBtn">Review mistakes →</button>' +
+      '</div>' +
+    '</div>';
+  document.getElementById('backToSubjectBtn').addEventListener('click', () => {
+    window.location.href = 'subject.html?s=' + encodeURIComponent(SUBJECT.id);
+  });
+  document.getElementById('reviewMistakesBtn').addEventListener('click', () => {
+    const firstMiss = answersLog.findIndex(a => a && !a.skipped && !a.isCorrect);
+    pos = firstMiss === -1 ? 0 : firstMiss;
+    renderRun();
+  });
+}
+
+// ================= Question map =================
+// During an active (pre-submit) exam nothing is graded yet, so the map can
+// only ever show "answered" vs "not answered" — reusing tickClass/stateAt
+// (which read .isCorrect) would leak a false "wrong" read on every answered
+// item. examTickClass reuses the same blue used for "skipped" in study mode
+// to mean "answered" here — the two concepts never appear on screen at the
+// same time, so sharing the color isn't ambiguous in practice.
+function examStateAt(p){
+  const a = answersLog[p];
+  return (a && a.selected != null && a.selected !== -1) ? 'answered' : 'unanswered';
+}
+function examTickClass(p){
+  const qIndex = order[p];
+  if(flaggedSet.has(qIndex)) return 'flagged';
+  return examStateAt(p) === 'answered' ? 'skipped' : '';
+}
+
+function openMap(){
+  const examPhase = (MODE === 'exam' && !examSubmitted);
+  const legend = document.getElementById('mapLegend');
+  legend.innerHTML = examPhase
+    ? ('<div class="lg-item"><span class="lg-dot" style="background:var(--blue-bright);"></span>Answered</div>' +
+       '<div class="lg-item"><span class="lg-dot" style="background:var(--gold);"></span>Flagged</div>' +
+       '<div class="lg-item"><span class="lg-dot" style="background:var(--bg-panel-2);border:1px solid var(--line);"></span>Not answered</div>')
+    : ('<div class="lg-item"><span class="lg-dot" style="background:var(--good);"></span>Correct</div>' +
+       '<div class="lg-item"><span class="lg-dot" style="background:var(--bad);"></span>Wrong</div>' +
+       '<div class="lg-item"><span class="lg-dot" style="background:var(--blue-bright);"></span>Skipped</div>' +
+       '<div class="lg-item"><span class="lg-dot" style="background:var(--gold);"></span>Flagged</div>' +
+       '<div class="lg-item"><span class="lg-dot" style="background:var(--bg-panel-2);border:1px solid var(--line);"></span>Not seen</div>');
+
+  const grid = document.getElementById('mapGrid');
+  grid.innerHTML = order.map((qIndex, p) => {
+    let cls = examPhase ? examTickClass(p) : tickClass(p);
+    if(p === pos) cls += ' current';
+    return '<div class="map-cell ' + cls + '" data-pos="' + p + '">' + (p+1) + '</div>';
+  }).join('');
+  grid.querySelectorAll('.map-cell').forEach(cell => {
+    cell.addEventListener('click', () => {
+      const target = parseInt(cell.getAttribute('data-pos'), 10);
+      if(target <= frontier){
+        pos = target; closeMap();
+        if(examPhase) renderExamRun(); else renderRun();
+      }
+    });
+  });
+
+  const flaggedPositions = order.map((qIndex, p) => flaggedSet.has(qIndex) ? p : -1).filter(p => p >= 0);
+  const goFlagged = document.getElementById('mapGoFlagged');
+  const goSkipped = document.getElementById('mapGoSkipped');
+  goFlagged.textContent = 'Go to ' + flaggedPositions.length + ' flagged';
+  goFlagged.disabled = flaggedPositions.length === 0;
+  goFlagged.onclick = () => { if(flaggedPositions.length){ pos = flaggedPositions[0]; closeMap(); if(examPhase) renderExamRun(); else renderRun(); } };
+
+  if(examPhase){
+    const unansweredPositions = order.map((qIndex, p) => examStateAt(p) === 'unanswered' ? p : -1).filter(p => p >= 0);
+    goSkipped.textContent = unansweredPositions.length + ' unanswered';
+    goSkipped.disabled = unansweredPositions.length === 0;
+    goSkipped.onclick = () => { if(unansweredPositions.length){ pos = unansweredPositions[0]; closeMap(); renderExamRun(); } };
+  } else {
+    const skippedPositions = answersLog.map((a, p) => (a && a.skipped) ? p : -1).filter(p => p >= 0);
+    goSkipped.textContent = skippedPositions.length + ' skipped';
+    goSkipped.disabled = skippedPositions.length === 0;
+    goSkipped.onclick = () => { if(skippedPositions.length){ pos = skippedPositions[0]; closeMap(); renderRun(); } };
+  }
+  document.getElementById('mapOverlay').classList.remove('hidden');
+}
+function closeMap(){ document.getElementById('mapOverlay').classList.add('hidden'); }
+document.getElementById('mapClose').addEventListener('click', closeMap);
+document.getElementById('mapOverlay').addEventListener('click', (e) => { if(e.target.id === 'mapOverlay') closeMap(); });
+
+// ================= Report sheet (offline-first queue) =================
+const REPORT_REASONS = [
+  'Key seems wrong',
+  'Confusing or unclear wording',
+  'Typo or formatting issue',
+  'Other'
+];
+let selectedReason = null;
+
+function openReport(){
+  reportTargetSubjectId = SUBJECT.id;
+  reportTargetModuleId = MODULE.id;
+  reportTargetQIndex = order[pos];
+  openReportSheet();
+}
+
+function openReportSheet(){
+  selectedReason = null;
+  document.getElementById('reportComment').value = '';
+  const container = document.getElementById('reportReasons');
+  container.innerHTML = REPORT_REASONS.map((r, i) =>
+    '<label class="report-reason" data-i="' + i + '"><input type="radio" name="reportReason" value="' + i + '"> ' + escapeHtml(r) + '</label>'
+  ).join('');
+  container.querySelectorAll('.report-reason').forEach(row => {
+    row.addEventListener('click', () => {
+      selectedReason = REPORT_REASONS[parseInt(row.getAttribute('data-i'), 10)];
+      container.querySelectorAll('.report-reason').forEach(r => r.classList.remove('selected'));
+      row.classList.add('selected');
+      row.querySelector('input').checked = true;
+    });
+  });
+  document.getElementById('reportOverlay').classList.remove('hidden');
+}
+function closeReport(){ document.getElementById('reportOverlay').classList.add('hidden'); }
+document.getElementById('reportClose').addEventListener('click', closeReport);
+document.getElementById('reportOverlay').addEventListener('click', (e) => { if(e.target.id === 'reportOverlay') closeReport(); });
+
+// Confirmation sheets come from assets/lea-confirm.js (window.LEAConfirm) —
+// see that file for why native confirm() cannot be used here.
+
+// Capped: if the backend is unreachable (or the table is missing) every send
+// fails and lands here, so an uncapped queue would grow until it blew the
+// localStorage quota and started breaking saved progress too.
+const REPORT_QUEUE_MAX = 50;
+function queueReport(report){
+  let queue = [];
+  try{ queue = JSON.parse(localStorage.getItem('lea_report_queue') || '[]'); }catch(e){}
+  queue.push(report);
+  if(queue.length > REPORT_QUEUE_MAX) queue = queue.slice(-REPORT_QUEUE_MAX);
+  try{ localStorage.setItem('lea_report_queue', JSON.stringify(queue)); }catch(e){}
+}
+
+async function flushReportQueue(){
+  let queue = [];
+  try{ queue = JSON.parse(localStorage.getItem('lea_report_queue') || '[]'); }catch(e){}
+  if(!queue.length || !navigator.onLine) return;
+  const remaining = [];
+  for(const report of queue){
+    try{
+      const { error } = await sb.from('reports').insert(report);
+      if(error) remaining.push(report);
+    }catch(e){ remaining.push(report); }
+  }
+  try{ localStorage.setItem('lea_report_queue', JSON.stringify(remaining)); }catch(e){}
+}
+window.addEventListener('online', flushReportQueue);
+
+document.getElementById('reportSend').addEventListener('click', async () => {
+  if(!selectedReason || reportTargetQIndex == null) return;
+  const report = {
+    question_ref: reportTargetSubjectId + '/' + reportTargetModuleId + '/' + reportTargetQIndex,
+    reason: selectedReason,
+    comment: document.getElementById('reportComment').value.trim() || null,
+    user_id: currentUserId,
+    status: 'open',
+    created_at: new Date().toISOString()
+  };
+  // This used to queue, close the sheet, and fire a flush whose result was
+  // discarded — so a failed send looked exactly like a successful one. A
+  // reader flagging a wrong answer deserves to know whether it actually
+  // went anywhere, so send first and report what really happened.
+  const sendBtn = document.getElementById('reportSend');
+  sendBtn.disabled = true;
+  sendBtn.textContent = 'Sending…';
+  let sent = false, failure = null;
+  try{
+    const { error } = await sb.from('reports').insert(report);
+    if(error) failure = error.message || String(error); else sent = true;
+  }catch(e){ failure = e.message || String(e); }
+
+  sendBtn.disabled = false;
+  sendBtn.textContent = 'Send report';
+
+  if(sent){
+    closeReport();
+    showReportToast('Report sent. Thank you.');
+    return;
+  }
+  // Hold it locally and retry on reconnect, but never claim it was sent.
+  queueReport(report);
+  closeReport();
+  showReportToast(navigator.onLine
+    ? 'Couldn’t send that report — saved on this device and it’ll retry.'
+    : 'Saved — it’ll send when you’re back online.');
+});
+
+// Small transient confirmation. The report sheet is already closed by the
+// time this shows, so it can't live inside it.
+function showReportToast(message){
+  let el = document.getElementById('reportToast');
+  if(!el){
+    el = document.createElement('div');
+    el.id = 'reportToast';
+    el.style.cssText =
+      'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:2500;' +
+      'max-width:calc(100% - 32px);background:var(--bg-panel);border:1px solid var(--line);' +
+      'border-left:3px solid var(--gold);border-radius:10px;padding:12px 16px;' +
+      'font-family:var(--font-mono);font-size:12px;color:var(--ink);' +
+      'box-shadow:0 8px 30px rgba(0,0,0,0.45);';
+    document.body.appendChild(el);
+  }
+  el.textContent = message;
+  el.style.display = 'block';
+  clearTimeout(showReportToast._t);
+  showReportToast._t = setTimeout(() => { el.style.display = 'none'; }, 3800);
+}
+
+// ================= Cross-subject: Daily Drill / Mock Exam / Topic Drill =================
+// These three all launch without ?s=&m= — they draw from multiple modules at
+// once, so a single global SUBJECT/MODULE/QUESTIONS/order (as used by the
+// single-module study/exam/drill paths above) doesn't fit. `pool[]` holds
+// resolved cells instead: { subjectId, subjectName, moduleId, moduleTitle,
+// qIndex, q, s, mastered, flagged }. Every write (markMastered, flag) goes
+// to that cell's own subject+module, not a shared one.
+//
+// Only format:'json' modules are answerable here (today: History of
+// Architecture + Building Laws) — every other subject's questions still live
+// in standalone quiz HTML this engine can't run. That ceiling is real and
+// shown in the UI rather than hidden; it lifts on its own as more subjects
+// get extracted to JSON.
+let pool = [];
+let multiKind = null; // 'drill-daily' | 'drill-topic' | 'exam'
+let ALL_SUBJECTS = null;
+
+function shuffleArr(arr){
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+
+async function buildQuestionIndex(subjects){
+  const cells = [];
+  for(const subject of subjects){
+    if(!subject.ready) continue;
+    for(const mod of (subject.modules || [])){
+      if(mod.format !== 'json') continue;
+      let arr;
+      try{
+        const cacheKey = 'lea_qidx_v1_' + mod.file;
+        const cached = sessionStorage.getItem(cacheKey);
+        if(cached != null){ arr = JSON.parse(cached); }
+        else{
+          const res = await fetch(mod.file);
+          arr = await res.json();
+          try{ sessionStorage.setItem(cacheKey, JSON.stringify(arr)); }catch(e){}
+        }
+      }catch(e){ continue; }
+      const p = LEAProgress.load(subject.id, mod.id);
+      const masteredSet = new Set(p.mastered || []);
+      const flagSet = new Set(p.flagged || []);
+      arr.forEach((q, qIndex) => {
+        if(q.hidden) return; // admin-hidden — keeps its slot, just never served
+        cells.push({
+          subjectId: subject.id, subjectName: subject.name, moduleId: mod.id, moduleTitle: mod.title,
+          moduleAttempts: p.attempts || 0, qIndex, q, s: q.s || mod.title,
+          mastered: masteredSet.has(qIndex), flagged: flagSet.has(qIndex)
+        });
+      });
+    }
+  }
+  return cells;
+}
+
+// engine-spec §6's tiers, reduced: tiers 1-2 (overdue / due today) need
+// {box,dueAt} SRS state that doesn't exist yet, so they're empty until that
+// ships — adding boxes later is a data addition here, not a rewrite. Tiers
+// 3-4 approximate "most-missed" at the module level (no per-question miss
+// count exists): unmastered questions in a module you've attempted before
+// outrank unmastered questions in a module you've never opened.
+function buildDailyDrillPool(index){
+  const unmastered = index.filter(c => !c.mastered);
+  const tier3 = shuffleArr(unmastered.filter(c => c.moduleAttempts > 0));
+  const tier4 = shuffleArr(unmastered.filter(c => c.moduleAttempts === 0));
+  return tier3.concat(tier4).slice(0, 20);
+}
+
+function buildMockExamPool(index, count){
+  const bySubject = {};
+  index.forEach(c => { (bySubject[c.subjectId] = bySubject[c.subjectId] || []).push(c); });
+  let out = [];
+  Object.keys(bySubject).forEach(sid => {
+    const share = bySubject[sid].length / index.length;
+    const take = Math.max(1, Math.round(count * share));
+    out = out.concat(shuffleArr(bySubject[sid]).slice(0, take));
+  });
+  return shuffleArr(out).slice(0, count);
+}
+
+function buildTopicDrillPool(index, topicName){
+  return shuffleArr(index.filter(c => c.s === topicName && (!c.mastered || c.flagged)));
+}
+
+function buildFlaggedDrillPool(index){
+  return shuffleArr(index.filter(c => c.flagged));
+}
+
+// Mirrors search.html's own filter chips (all/unmastered/flagged/notes) so
+// "Drill all N" from a search actually drills the same N results.
+function buildSearchDrillPool(index, q, filter){
+  const needle = (q || '').toLowerCase();
+  let matches = index.filter(c => (c.q.q || '').toLowerCase().includes(needle));
+  if(filter === 'unmastered') matches = matches.filter(c => !c.mastered);
+  else if(filter === 'flagged') matches = matches.filter(c => c.flagged);
+  // 'notes' filter isn't representable here — buildQuestionIndex doesn't carry
+  // per-cell note state (only the Search/Saved pages fetch that) — matches
+  // stay unfiltered by notes, same "not mastered" pool as everything else.
+  return shuffleArr(matches);
+}
+
+function aggregateWeakTopics(index){
+  const byTopic = {};
+  index.forEach(c => {
+    byTopic[c.s] = byTopic[c.s] || { total: 0, mastered: 0 };
+    byTopic[c.s].total++;
+    if(c.mastered) byTopic[c.s].mastered++;
+  });
+  return Object.keys(byTopic).map(name => {
+    const t = byTopic[name];
+    return { name, total: t.total, mastered: t.mastered, pct: Math.round((t.mastered / t.total) * 100) };
+  }).filter(t => t.pct < 100).sort((a, b) => a.pct - b.pct);
+}
+
+async function bootMulti(subjects, drillParams){
+  const body = document.getElementById('pageBody');
+  document.title = (MODE === 'daily-drill' ? 'Daily Drill' : MODE === 'exam' ? 'Mock Exam' : 'Drill') + ' — LEA Reviewer';
+  body.innerHTML = '<div class="state-card">Building your set…</div>';
+  const index = await buildQuestionIndex(subjects);
+
+  if(MODE === 'daily-drill'){
+    pool = buildDailyDrillPool(index);
+    if(pool.length === 0){
+      body.innerHTML = '<div class="state-card">Nothing to drill right now — you’re caught up.<br><br><a href="index.html" style="color:var(--gold-bright);">&larr; Home</a></div>';
+      return;
+    }
+    startMultiRun('drill-daily');
+  } else if(MODE === 'exam'){
+    if(index.length === 0){
+      body.innerHTML = '<div class="state-card">No drillable questions yet — Mock Exam needs at least one subject extracted to the new format.<br><br><a href="index.html" style="color:var(--gold-bright);">&larr; Home</a></div>';
+      return;
+    }
+    renderMultiExamStart(index);
+  } else if(MODE === 'drill'){
+    // Three ways to land in a cross-subject drill: a weak topic (Home), all
+    // flagged items (Saved), or a search's results (Search) — same pool
+    // mechanics underneath, just a different filter building the set.
+    let drillKind = 'drill-topic';
+    if(drillParams.topic){
+      pool = buildTopicDrillPool(index, drillParams.topic);
+      if(pool.length === 0){
+        body.innerHTML = '<div class="state-card">Nothing left to drill in “' + escapeHtml(drillParams.topic) + '.”<br><br><a href="index.html" style="color:var(--gold-bright);">&larr; Home</a></div>';
+        return;
+      }
+    } else if(drillParams.scope === 'flagged'){
+      drillKind = 'drill-flagged';
+      pool = buildFlaggedDrillPool(index);
+      if(pool.length === 0){
+        body.innerHTML = '<div class="state-card">Nothing flagged right now.<br><br><a href="saved.html" style="color:var(--gold-bright);">&larr; Saved</a></div>';
+        return;
+      }
+    } else if(drillParams.q){
+      drillKind = 'drill-search';
+      pool = buildSearchDrillPool(index, drillParams.q, drillParams.filter);
+      if(pool.length === 0){
+        body.innerHTML = '<div class="state-card">Nothing to drill from that search.<br><br><a href="search.html" style="color:var(--gold-bright);">&larr; Search</a></div>';
+        return;
+      }
+    } else {
+      body.innerHTML = '<div class="state-card">No drill set specified.<br><br><a href="index.html" style="color:var(--gold-bright);">&larr; Home</a></div>';
+      return;
+    }
+    startMultiRun(drillKind);
+  }
+}
+
+// ---- Drill-kind (daily / topic) run: immediate feedback, no clock ----
+function startMultiRun(kind){
+  multiKind = kind;
+  answersLog = new Array(pool.length).fill(null);
+  pos = 0; frontier = 0;
+  renderMultiRun();
+}
+
+function multiStateAt(p){
+  const a = answersLog[p];
+  if(!a) return 'unvisited';
+  if(a.skipped) return 'skipped';
+  return a.isCorrect ? 'correct' : 'incorrect';
+}
+function multiTickClass(p){
+  if(pool[p].flagged) return 'flagged';
+  const st = multiStateAt(p);
+  return st === 'unvisited' ? '' : st;
+}
+
+function renderMultiRun(){
+  const body = document.getElementById('pageBody');
+  body.innerHTML =
+    renderMultiHeader() +
+    renderMultiTickStrip() +
+    renderMultiCountsRow() +
+    '<div id="cardSlot"></div>' +
+    renderMultiFooter();
+  renderMultiCard();
+  wireMultiHeader();
+  wireMultiFooter();
+}
+
+// Every cross-subject run used to label itself "Drill", so a Mock Exam read
+// "Drill · History of Architecture" — wrong on both halves.
+const MULTI_KIND_LABELS = {
+  'exam': 'Mock Exam',
+  'drill-daily': 'Daily Drill',
+  'drill-topic': 'Topic Drill',
+  'drill-flagged': 'Flagged',
+  'drill-search': 'Search'
+};
+
+// The card tags each question with its own subject; the header describes the
+// run as a whole, so a pool spanning subjects must not claim to be whichever
+// subject happens to be on screen at the moment.
+function multiScopeLabel(){
+  const names = new Set(pool.map(c => stripEmoji(c.subjectName)));
+  return names.size === 1 ? [...names][0] : 'Mixed';
+}
+
+function renderMultiHeader(){
+  const cell = pool[pos];
+  const title = MULTI_KIND_LABELS[multiKind] || 'Drill';
+  return (
+    '<div class="run-header">' +
+      '<button class="icon-btn" id="backBtn" title="Back home">' + svgArrowLeft() + '</button>' +
+      '<div class="header-title">' +
+        '<div class="h-sub">' + escapeHtml(title) + ' · ' + escapeHtml(multiScopeLabel()) + '</div>' +
+        '<div class="h-main">Question ' + (pos+1) + ' / ' + pool.length + '</div>' +
+      '</div>' +
+      '<button class="icon-btn' + (cell.flagged ? ' flagged' : '') + '" id="flagBtn" title="Flag this question">' + svgFlag() + '</button>' +
+      '<button class="icon-btn" id="moreBtn" title="Report a problem with this question">' + svgMore() + '</button>' +
+    '</div>'
+  );
+}
+
+function renderMultiTickStrip(){
+  const WINDOW = 15;
+  let start = Math.max(0, pos - Math.floor(WINDOW/2));
+  let end = Math.min(pool.length, start + WINDOW);
+  start = Math.max(0, end - WINDOW);
+  let ticks = '';
+  for(let p = start; p < end; p++){ ticks += '<div class="tick ' + multiTickClass(p) + '" title="Question ' + (p+1) + '"></div>'; }
+  return '<div class="tick-strip">' + ticks + '</div>';
+}
+
+function renderMultiCountsRow(){
+  let correct=0, incorrect=0, skipped=0, flagged=0;
+  answersLog.forEach(a => { if(a){ if(a.skipped) skipped++; else if(a.isCorrect) correct++; else incorrect++; } });
+  pool.forEach(c => { if(c.flagged) flagged++; });
+  return (
+    '<div class="counts-row">' +
+      '<div class="counts-text"><b>' + correct + '</b> right · <b>' + incorrect + '</b> wrong · <b>' + skipped + '</b> skipped · <b>' + flagged + '</b> flagged</div>' +
+      '<button class="jump-chip" id="jumpChip">⊞ Jump</button>' +
+    '</div>'
+  );
+}
+
+function renderMultiFooter(){
+  const resolved = multiStateAt(pos) !== 'unvisited';
+  const isLast = pos === pool.length - 1;
+  const canGoNext = resolved && (pos < frontier || isLast);
+  const showSkip = !resolved;
+  return (
+    '<div class="run-footer">' +
+      (showSkip ? '<button class="footer-btn skip" id="skipBtn">Skip</button>' : '') +
+      '<button class="footer-btn next" id="nextBtn"' + (canGoNext ? '' : ' disabled') + '>' + (isLast && resolved ? 'See results →' : 'Next question →') + '</button>' +
+    '</div>'
+  );
+}
+
+function renderMultiCard(){
+  const slot = document.getElementById('cardSlot');
+  const cell = pool[pos];
+  const item = cell.q;
+  const logged = answersLog[pos];
+  const perm = getOptOrder(pos, item);
+
+  let optsHtml = '';
+  perm.forEach((origIdx, displayI) => {
+    const text = optionText(item, origIdx, perm);
+    let cls = 'opt';
+    const markup = '<span class="letter">' + letter(displayI) + '.</span><span>' + escapeHtml(text) + '</span>';
+    if(logged && !logged.skipped){
+      cls += ' locked';
+      if(origIdx === item.c) cls += ' correct';
+      else if(origIdx === logged.selected) cls += ' incorrect chosen-tag';
+      else cls += ' dim';
+    } else if(logged && logged.skipped){
+      cls += ' locked dim';
+    }
+    optsHtml += '<button class="' + cls + '" data-idx="' + origIdx + '"' + (logged ? ' disabled' : '') + '>' + markup + '</button>';
+  });
+
+  let imgHtml = '';
+  if(item.img){ imgHtml = '<div class="qimg-wrap" style="display:flex;"><img src="' + escapeHtml(item.img) + '" alt="Figure for this question"></div>'; }
+
+  let explainHtml = '';
+  if(logged && !logged.skipped){
+    const verdictClass = logged.isCorrect ? 'right' : 'wrong';
+    const verdictText = logged.isCorrect ? 'Correct.' : 'Not quite.';
+    explainHtml =
+      '<div class="explain ' + verdictClass + '">' +
+        '<div class="verdict">' + verdictText + '</div>' +
+        '<div class="reason">' + escapeHtml(item.o[item.c]) + '.' + (item.n ? ' ' + escapeHtml(item.n) : '') + '</div>' +
+        (item.ref ? '<div class="meta-row"><b>Rule</b>' + escapeHtml(item.ref) + '</div>' : '') +
+      '</div>';
+  } else if(logged && logged.skipped){
+    explainHtml = '<div class="explain" style="border-left-color:var(--blue-bright);"><div class="verdict" style="color:var(--blue-bright);">Skipped</div><div class="reason">Answer it now, or come back later from the question map.</div></div>';
+  }
+
+  slot.innerHTML =
+    '<div class="bp-card">' +
+      '<span class="section-tag">' + escapeHtml(item.s || '') + '</span>' +
+      '<span class="clock-chip">' + escapeHtml(cell.moduleTitle) + '</span>' +
+      '<p class="qtext">' + escapeHtml(item.q) + '</p>' +
+      imgHtml +
+      '<div class="options">' + optsHtml + '</div>' +
+      explainHtml +
+    '</div>';
+
+  slot.querySelectorAll('.opt[data-idx]').forEach(btn => {
+    btn.addEventListener('click', () => selectMultiAnswer(item, parseInt(btn.getAttribute('data-idx'), 10)));
+  });
+}
+
+function selectMultiAnswer(item, origIdx){
+  if(answersLog[pos]) return;
+  const cell = pool[pos];
+  const isCorrect = origIdx === item.c;
+  answersLog[pos] = { selected: origIdx, isCorrect };
+  if(isCorrect) LEAProgress.markMastered(cell.subjectId, cell.moduleId, cell.qIndex);
+  if(pos === frontier && frontier < pool.length - 1) frontier = pos + 1;
+  renderMultiRun();
+}
+
+function toggleMultiFlag(){
+  const cell = pool[pos];
+  cell.flagged = !cell.flagged;
+  const p = LEAProgress.load(cell.subjectId, cell.moduleId);
+  const fset = new Set(p.flagged || []);
+  if(cell.flagged) fset.add(cell.qIndex); else fset.delete(cell.qIndex);
+  p.flagged = Array.from(fset);
+  LEAProgress.save(cell.subjectId, cell.moduleId, p);
+  if(multiKind === 'exam' && !examSubmitted) renderMultiExamRun();
+  else renderMultiRun();
+}
+
+function wireMultiHeader(){
+  document.getElementById('backBtn').addEventListener('click', () => { window.location.href = 'index.html'; });
+  document.getElementById('flagBtn').addEventListener('click', toggleMultiFlag);
+  document.getElementById('moreBtn').addEventListener('click', openMultiReport);
+  // jumpChip lives in renderMultiCountsRow (drill-kind runs) — exam mode
+  // uses examStatusBarFor instead, which has no Jump button, so this must
+  // stay optional. A blind getElementById().addEventListener() here would
+  // throw for exam runs and silently skip every wireMulti*Footer() call
+  // that follows it in the same render pass.
+  const jumpChip = document.getElementById('jumpChip');
+  if(jumpChip) jumpChip.addEventListener('click', openMultiMap);
+}
+
+function wireMultiFooter(){
+  const skipBtn = document.getElementById('skipBtn');
+  if(skipBtn) skipBtn.addEventListener('click', () => {
+    answersLog[pos] = { skipped: true };
+    if(pos === frontier && frontier < pool.length - 1) frontier = pos + 1;
+    if(pos < pool.length - 1) pos++;
+    renderMultiRun();
+  });
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    const isLast = pos === pool.length - 1;
+    const resolved = multiStateAt(pos) !== 'unvisited';
+    if(isLast && resolved){ finishMultiRun(); return; }
+    if(pos < pool.length - 1){ pos++; renderMultiRun(); }
+  });
+}
+
+function finishMultiRun(){
+  if(multiKind === 'exam' && examSubmitted){
+    showMultiExamResults(false, answersLog.filter(a => a.isCorrect).length);
+    return;
+  }
+  const correct = answersLog.filter(a => a && !a.skipped && a.isCorrect).length;
+  const attempted = answersLog.filter(a => a && !a.skipped).length;
+
+  if(multiKind === 'drill-daily'){
+    showDailyDrillDone(correct, attempted);
+    return;
+  }
+
+  const body = document.getElementById('pageBody');
+  const pct = pool.length > 0 ? Math.round((correct / pool.length) * 100) : 0;
+  body.innerHTML =
+    '<div class="bp-card results-card">' +
+      '<span class="section-tag">' + escapeHtml(MULTI_KIND_LABELS[multiKind] || 'Drill') + '</span>' +
+      '<div class="results-score">' + correct + '<span> / ' + pool.length + '</span></div>' +
+      '<div class="counts-text">' + attempted + ' answered · ' + (pool.length - attempted) + ' skipped · ' + pct + '%</div>' +
+      '<div class="results-actions">' +
+        '<button class="footer-btn skip" id="backHomeBtn">Back home</button>' +
+      '</div>' +
+    '</div>';
+  document.getElementById('backHomeBtn').addEventListener('click', () => { window.location.href = 'index.html'; });
+}
+
+// ---- Streak: {current, best, lastCompletedDate}, guarded on the calendar
+// date string (not elapsed hours) so timezone/DST can't double-count or
+// skip a day. Increments once per completed Daily Drill session, even if
+// the pool had fewer than 20 items because that's all there was to drill.
+function dateStr(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); }
+function bumpStreak(){
+  const streak = LEAProgress.loadMeta('streak') || { current: 0, best: 0, lastCompletedDate: null };
+  const today = dateStr(new Date());
+  if(streak.lastCompletedDate === today) return streak;
+  const yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1);
+  streak.current = (streak.lastCompletedDate === dateStr(yesterday)) ? (streak.current || 0) + 1 : 1;
+  streak.best = Math.max(streak.best || 0, streak.current);
+  streak.lastCompletedDate = today;
+  LEAProgress.saveMeta('streak', streak);
+  return streak;
+}
+
+function showDailyDrillDone(correct, attempted){
+  const streak = bumpStreak();
+  const misses = pool.length - correct;
+  const body = document.getElementById('pageBody');
+  body.innerHTML =
+    '<div class="bp-card results-card">' +
+      '<div style="width:62px;height:62px;border-radius:50%;background:var(--good);color:#0a1218;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:28px;">✓</div>' +
+      '<div class="verdict" style="font-size:24px;color:var(--good);">Done for today</div>' +
+      '<div class="counts-text" style="margin:10px 0 18px;">' + correct + ' / ' + pool.length + ' right · ' + misses + ' to revisit · ' + streak.current + '-day streak</div>' +
+      '<div class="results-actions">' +
+        '<button class="footer-btn skip" id="backHomeBtn">Back home</button>' +
+      '</div>' +
+    '</div>';
+  document.getElementById('backHomeBtn').addEventListener('click', () => { window.location.href = 'index.html'; });
+}
+
+// ---- Question map (drill-kind multi runs) ----
+function openMultiMap(){
+  const legend = document.getElementById('mapLegend');
+  legend.innerHTML =
+    '<div class="lg-item"><span class="lg-dot" style="background:var(--good);"></span>Correct</div>' +
+    '<div class="lg-item"><span class="lg-dot" style="background:var(--bad);"></span>Wrong</div>' +
+    '<div class="lg-item"><span class="lg-dot" style="background:var(--blue-bright);"></span>Skipped</div>' +
+    '<div class="lg-item"><span class="lg-dot" style="background:var(--gold);"></span>Flagged</div>' +
+    '<div class="lg-item"><span class="lg-dot" style="background:var(--bg-panel-2);border:1px solid var(--line);"></span>Not seen</div>';
+  const grid = document.getElementById('mapGrid');
+  grid.innerHTML = pool.map((cell, p) => {
+    let cls = multiTickClass(p);
+    if(p === pos) cls += ' current';
+    return '<div class="map-cell ' + cls + '" data-pos="' + p + '">' + (p+1) + '</div>';
+  }).join('');
+  grid.querySelectorAll('.map-cell').forEach(c => {
+    c.addEventListener('click', () => {
+      const target = parseInt(c.getAttribute('data-pos'), 10);
+      if(target <= frontier){ pos = target; closeMap(); renderMultiRun(); }
+    });
+  });
+  const flaggedPositions = pool.map((c, p) => c.flagged ? p : -1).filter(p => p >= 0);
+  const skippedPositions = answersLog.map((a, p) => (a && a.skipped) ? p : -1).filter(p => p >= 0);
+  const goFlagged = document.getElementById('mapGoFlagged');
+  const goSkipped = document.getElementById('mapGoSkipped');
+  goFlagged.textContent = 'Go to ' + flaggedPositions.length + ' flagged';
+  goFlagged.disabled = flaggedPositions.length === 0;
+  goFlagged.onclick = () => { if(flaggedPositions.length){ pos = flaggedPositions[0]; closeMap(); renderMultiRun(); } };
+  goSkipped.textContent = skippedPositions.length + ' skipped';
+  goSkipped.disabled = skippedPositions.length === 0;
+  goSkipped.onclick = () => { if(skippedPositions.length){ pos = skippedPositions[0]; closeMap(); renderMultiRun(); } };
+  document.getElementById('mapOverlay').classList.remove('hidden');
+}
+
+function openMultiReport(){
+  const cell = pool[pos];
+  reportTargetQIndex = cell.qIndex;
+  reportTargetSubjectId = cell.subjectId;
+  reportTargetModuleId = cell.moduleId;
+  openReportSheet();
+}
+
+// ---- Exam-kind (cross-subject Mock Exam): same shape as single-module exam ----
+function renderMultiExamStart(index){
+  const body = document.getElementById('pageBody');
+  const fullMs = index.length * EXAM_MS_PER_ITEM;
+  const simCount = Math.min(50, index.length);
+  const simMs = simCount * EXAM_MS_PER_ITEM;
+  body.innerHTML =
+    '<div class="run-header">' +
+      '<button class="icon-btn" id="backBtn" title="Back home">' + svgArrowLeft() + '</button>' +
+      '<div class="header-title"><div class="h-sub">Mock Exam</div><div class="h-main">Mixed, across subjects</div></div>' +
+      '<div style="width:44px;flex-shrink:0;"></div>' +
+    '</div>' +
+    '<div class="bp-card">' +
+      '<span class="section-tag">Cross-subject</span>' +
+      '<p class="qtext" style="font-size:15px;">A mixed run drawn proportionally across every subject with drillable questions today. One global clock, no feedback until you submit.</p>' +
+      '<div class="options">' +
+        '<button class="opt" id="startFullBtn" style="min-height:64px;">' +
+          '<span style="display:flex;flex-direction:column;gap:3px;"><b>Full exam — ' + index.length + ' items</b><span style="font-family:var(--font-mono);font-size:11px;color:var(--muted);">' + formatDuration(fullMs) + '</span></span>' +
+        '</button>' +
+        '<button class="opt" id="startSimBtn" style="min-height:64px;">' +
+          '<span style="display:flex;flex-direction:column;gap:3px;"><b>' + simCount + '-item sim</b><span style="font-family:var(--font-mono);font-size:11px;color:var(--muted);">' + formatDuration(simMs) + '</span></span>' +
+        '</button>' +
+      '</div>' +
+    '</div>';
+  document.getElementById('backBtn').addEventListener('click', () => { window.location.href = 'index.html'; });
+  document.getElementById('startFullBtn').addEventListener('click', () => startMultiExam(index, index.length));
+  document.getElementById('startSimBtn').addEventListener('click', () => startMultiExam(index, simCount));
+}
+
+function startMultiExam(index, count){
+  multiKind = 'exam';
+  pool = buildMockExamPool(index, count);
+  answersLog = new Array(pool.length).fill(null);
+  pos = 0; frontier = pool.length - 1;
+  examSubmitted = false;
+  examEndAt = Date.now() + Math.round(pool.length * EXAM_MS_PER_ITEM);
+  startExamTimer();
+  renderMultiExamRun();
+}
+
+function renderMultiExamRun(){
+  const body = document.getElementById('pageBody');
+  if(examSubmitted){
+    body.innerHTML = renderMultiHeader() + renderMultiTickStrip() + renderMultiCountsRow() + '<div id="cardSlot"></div>' + renderMultiFooter();
+    renderMultiCard();
+    wireMultiHeader();
+    wireMultiFooter();
+    return;
+  }
+  body.innerHTML = renderMultiHeader() + examStatusBarFor(pool.length) + '<div id="cardSlot"></div>' + examFooterHtmlFor(pool.length, (n) => selectMultiExamNext(n));
+  renderMultiExamCardUngraded();
+  wireMultiHeader();
+  wireMultiExamFooter();
+}
+
+function examStatusBarFor(total){
+  const remaining = examEndAt - Date.now();
+  const pct = total > 0 ? Math.round(((pos + 1) / total) * 100) : 0;
+  const answeredCount = answersLog.filter(a => a && a.selected != null && a.selected !== -1).length;
+  return (
+    '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin:2px 0 8px;flex-wrap:wrap;">' +
+      '<span class="clock-chip" id="examTimerPill" style="border-style:solid;border-color:var(--gold);color:var(--gold-bright);">' + formatDuration(remaining) + '</span>' +
+      '<div class="counts-text" style="white-space:nowrap;">' + answeredCount + ' answered · ' + (total - answeredCount) + ' left</div>' +
+    '</div>' +
+    '<div style="height:4px;border-radius:2px;background:var(--bg-panel-2);overflow:hidden;margin-bottom:10px;"><div style="height:100%;width:' + pct + '%;background:var(--gold);"></div></div>' +
+    '<div class="clock-chip" style="display:block;text-align:center;margin-bottom:14px;">No feedback until you submit</div>'
+  );
+}
+
+function examFooterHtmlFor(total, onNext){
+  const isLast = pos === total - 1;
+  return (
+    '<div class="run-footer">' +
+      '<button class="footer-btn skip" id="examFlagBtn">' + (pool[pos].flagged ? 'Unflag' : 'Flag') + '</button>' +
+      '<button class="footer-btn next" id="examNextBtn">' + (isLast ? 'Review & submit →' : 'Next question →') + '</button>' +
+    '</div>' +
+    '<button class="sheet-close" id="examSubmitEarlyBtn" style="display:block;width:100%;margin-top:12px;">Submit exam early</button>'
+  );
+}
+
+function renderMultiExamCardUngraded(){
+  const slot = document.getElementById('cardSlot');
+  const cell = pool[pos];
+  const item = cell.q;
+  const logged = answersLog[pos];
+  const perm = getOptOrder(pos, item);
+  let optsHtml = '';
+  perm.forEach((origIdx, displayI) => {
+    const text = optionText(item, origIdx, perm);
+    let cls = 'opt';
+    if(logged && logged.selected === origIdx) cls += ' chosen-tag';
+    const markup = '<span class="letter">' + letter(displayI) + '.</span><span>' + escapeHtml(text) + '</span>';
+    optsHtml += '<button class="' + cls + '" data-idx="' + origIdx + '">' + markup + '</button>';
+  });
+  let imgHtml = '';
+  if(item.img){ imgHtml = '<div class="qimg-wrap" style="display:flex;"><img src="' + escapeHtml(item.img) + '" alt="Figure for this question"></div>'; }
+  slot.innerHTML =
+    '<div class="bp-card">' +
+      '<span class="section-tag">' + escapeHtml(item.s || '') + '</span>' +
+      '<span class="clock-chip">' + escapeHtml(stripEmoji(cell.subjectName)) + '</span>' +
+      '<p class="qtext">' + escapeHtml(item.q) + '</p>' +
+      imgHtml +
+      '<div class="options">' + optsHtml + '</div>' +
+    '</div>';
+  slot.querySelectorAll('.opt[data-idx]').forEach(btn => {
+    btn.addEventListener('click', () => selectMultiExamAnswer(parseInt(btn.getAttribute('data-idx'), 10)));
+  });
+}
+
+function selectMultiExamAnswer(origIdx){
+  answersLog[pos] = { selected: origIdx };
+  renderMultiExamRun();
+}
+
+function wireMultiExamFooter(){
+  document.getElementById('examFlagBtn').addEventListener('click', toggleMultiFlag);
+  document.getElementById('examNextBtn').addEventListener('click', () => {
+    const isLast = pos === pool.length - 1;
+    if(isLast){ submitMultiExam(false); return; }
+    pos++; renderMultiExamRun();
+  });
+  document.getElementById('examSubmitEarlyBtn').addEventListener('click', async () => {
+    if(await LEAConfirm('Submit the exam now? You can still review every question afterward.', { yes: 'Submit exam' })) submitMultiExam(false);
+  });
+}
+
+function submitMultiExam(auto){
+  if(examSubmitted) return;
+  examSubmitted = true;
+  stopExamTimer();
+  answersLog = answersLog.map((a, p) => {
+    const cell = pool[p];
+    const selected = (a && a.selected != null) ? a.selected : -1;
+    const isCorrect = selected !== -1 && selected === cell.q.c;
+    if(isCorrect) LEAProgress.markMastered(cell.subjectId, cell.moduleId, cell.qIndex);
+    // See the note in submitExam — blanks stay misses for scoring but are
+    // flagged so review mode can distinguish them from real wrong answers.
+    return selected === -1 ? { selected, isCorrect, skipped: true } : { selected, isCorrect };
+  });
+  const correct = answersLog.filter(a => a.isCorrect).length;
+  // A mixed exam spans modules, so its score can't live under any one
+  // module's bestCorrect/bestTotal without corrupting that module's real
+  // best score — it goes in its own meta list instead.
+  const history = LEAProgress.loadMeta('mockexams') || [];
+  history.push({ at: new Date().toISOString(), correct, total: pool.length, auto: !!auto });
+  LEAProgress.saveMeta('mockexams', history.slice(-20));
+  frontier = pool.length - 1;
+  pos = 0;
+  showMultiExamResults(auto, correct);
+}
+
+function showMultiExamResults(auto, correct){
+  const body = document.getElementById('pageBody');
+  const attempted = answersLog.filter(a => a.selected !== -1).length;
+  const pct = pool.length > 0 ? Math.round((correct / pool.length) * 100) : 0;
+  body.innerHTML =
+    '<div class="bp-card results-card">' +
+      '<span class="section-tag">Mock Exam · Mixed</span>' +
+      (auto ? '<div class="counts-text" style="color:var(--bad);margin:10px 0;">Time’s up — submitted automatically.</div>' : '') +
+      '<div class="results-score">' + correct + '<span> / ' + pool.length + '</span></div>' +
+      '<div class="counts-text">' + attempted + ' answered · ' + (pool.length - attempted) + ' left blank · ' + pct + '%</div>' +
+      '<div class="results-actions">' +
+        '<button class="footer-btn skip" id="backHomeBtn">Back home</button>' +
+        '<button class="footer-btn next" id="reviewAnswersBtn">Review answers →</button>' +
+      '</div>' +
+    '</div>';
+  document.getElementById('backHomeBtn').addEventListener('click', () => { window.location.href = 'index.html'; });
+  document.getElementById('reviewAnswersBtn').addEventListener('click', () => { pos = 0; renderMultiRun(); });
+}
+
+// ---- SVGs (Lucide-style, stroke-width 1.5, matching the site's icon set) ----
+function svgArrowLeft(){
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
+}
+function svgFlag(){
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V4a1 1 0 0 1 1-1h13.7a.5.5 0 0 1 .4.8L16 9l3.1 5.2a.5.5 0 0 1-.4.8H5"/></svg>';
+}
+function svgMore(){
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welcome — LEA Reviewer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-2:#0a1520;
+    --gold:#e0a83f; --gold-bright:#f0c268; --blue:#6fa8cf; --blue-bright:#8fc4ea;
+    --muted:#8b98a5; --good:#5fbf82; --bad:#e2604a;
+    --line: rgba(111,168,207,0.20); --grid-line: rgba(111,168,207,0.09);
+    --font-display: 'Big Shoulders Display', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+  body.light-mode, :root.light-mode{
+    --ink:#16202b; --bg-deep:#d3dee6; --bg-panel:#ffffff; --bg-panel-2:#e9eff4;
+    --gold:#b5791f; --gold-bright:#7d520c; --blue:#2f6c95; --blue-bright:#1b4a6b;
+    --muted:#4f5d6a; --good:#206b3c; --bad:#a1372a;
+    --line: rgba(47,108,149,0.28); --grid-line: rgba(47,108,149,0.11);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      var(--bg-deep);
+    color:var(--ink); font-family:var(--font-body); min-height:100vh;
+    display:flex; justify-content:center; align-items:center; padding:20px 16px;
+  }
+  .wrap{width:100%; max-width:420px;}
+  button, input{font-family:inherit;}
+
+  .step-note{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-bright); text-align:center; margin-bottom:10px; }
+  .title{ font-family:var(--font-display); font-weight:800; font-size:40px; line-height:1.05; text-transform:uppercase; text-align:center; margin-bottom:14px; }
+  .explain{ font-size:13.5px; color:var(--muted); line-height:1.6; text-align:center; margin-bottom:26px; }
+
+  .field-wrap{ position:relative; margin-bottom:8px; }
+  .name-field{
+    width:100%; height:54px; background:var(--bg-panel-2); border:1.5px solid var(--line); border-radius:12px;
+    padding:0 44px 0 16px; color:var(--ink); font-size:16px;
+  }
+  .name-field:focus{ outline:none; border-color:var(--gold); }
+  .name-field.available{ border-color:var(--good); }
+  .name-field.taken{ border-color:var(--bad); }
+  .check-icon{ position:absolute; right:14px; top:50%; transform:translateY(-50%); width:18px; height:18px; color:var(--good); display:none; }
+  .check-icon.show{ display:block; }
+
+  .field-status{ display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:11px; margin-bottom:20px; min-height:16px; }
+  .field-status .avail-text{ color:var(--good); }
+  .field-status .avail-text.taken{ color:var(--bad); }
+  .field-status .count-text{ color:var(--muted); }
+
+  .chip-row{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
+  .suggestion-chip{
+    font-family:var(--font-mono); font-size:12px; background:var(--bg-panel); border:1px solid var(--line); color:var(--blue-bright);
+    padding:8px 14px; border-radius:20px; cursor:pointer;
+  }
+  .suggestion-chip:hover{ border-color:var(--blue-bright); }
+
+  .continue-btn{
+    display:block; width:100%; height:54px; background:var(--gold); color:#1a1206; border:none; border-radius:12px;
+    font-family:var(--font-mono); font-weight:700; text-transform:uppercase; letter-spacing:.03em; font-size:14px; cursor:pointer;
+  }
+  .continue-btn:disabled{ opacity:.5; cursor:default; }
+  .continue-btn:hover:not(:disabled){ background:var(--gold-bright); }
+
+  .footnote{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); text-align:center; margin-top:16px; }
+</style>
+<script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="step-note">Step 1 of 1</div>
+  <div class="title">Pick a<br>display name</div>
+  <div class="explain">This replaces the email prefix you'd otherwise show as on the leaderboard and the online list — pick something you're fine with others seeing.</div>
+
+  <div class="field-wrap">
+    <input type="text" class="name-field" id="nameInput" maxlength="24" placeholder="Your display name" autocomplete="off">
+    <svg class="check-icon" id="checkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+  </div>
+  <div class="field-status">
+    <span class="avail-text" id="availText"></span>
+    <span class="count-text" id="countText">0 / 24</span>
+  </div>
+
+  <div class="chip-row" id="chipRow"></div>
+
+  <button class="continue-btn" id="continueBtn" disabled>Continue →</button>
+  <div class="footnote">Changeable once, from your profile.</div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+let currentUser = null;
+let checkTimer = null;
+let isAvailable = false;
+
+function suggestionsFor(emailPrefix){
+  const base = (emailPrefix || 'reviewee').replace(/[^a-zA-Z0-9]/g, '');
+  const n = Math.floor(Math.random() * 900) + 100;
+  return [base, base + n, base + '_' + new Date().getFullYear()].slice(0, 3);
+}
+
+async function checkAvailability(val){
+  const availText = document.getElementById('availText');
+  const input = document.getElementById('nameInput');
+  const checkIcon = document.getElementById('checkIcon');
+  const continueBtn = document.getElementById('continueBtn');
+
+  if(val.length < 3){
+    input.classList.remove('available', 'taken');
+    checkIcon.classList.remove('show');
+    availText.textContent = val.length ? 'At least 3 characters' : '';
+    availText.classList.remove('taken');
+    continueBtn.disabled = true;
+    isAvailable = false;
+    return;
+  }
+  const { data, error } = await sb.from('profiles').select('id').eq('username', val).neq('id', currentUser.id).maybeSingle();
+  const taken = !error && !!data;
+  isAvailable = !taken;
+  input.classList.toggle('available', !taken);
+  input.classList.toggle('taken', taken);
+  checkIcon.classList.toggle('show', !taken);
+  availText.textContent = taken ? 'Already taken' : 'Available';
+  availText.classList.toggle('taken', taken);
+  continueBtn.disabled = taken;
+}
+
+document.getElementById('nameInput').addEventListener('input', (e) => {
+  const val = e.target.value.trim();
+  document.getElementById('countText').textContent = val.length + ' / 24';
+  clearTimeout(checkTimer);
+  checkTimer = setTimeout(() => checkAvailability(val), 350);
+});
+
+document.getElementById('continueBtn').addEventListener('click', async () => {
+  const val = document.getElementById('nameInput').value.trim();
+  if(!isAvailable || val.length < 3) return;
+  const btn = document.getElementById('continueBtn');
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
+  const { error } = await sb.from('profiles').update({ username: val }).eq('id', currentUser.id);
+  if(error){
+    btn.disabled = false;
+    btn.textContent = 'Continue →';
+    document.getElementById('availText').textContent = 'Couldn’t save — try again';
+    document.getElementById('availText').classList.add('taken');
+    return;
+  }
+  window.location.href = 'index.html';
+});
+
+(async function boot(){
+  const { data: { session } } = await sb.auth.getSession();
+  if(!session){ window.location.href = 'index.html'; return; }
+  currentUser = session.user;
+
+  // Home only sends people here when profiles.username is still empty, but
+  // nothing stops an already-named user arriving directly — a bookmark, the
+  // back button, or a tab left open from before onboarding. Without this
+  // guard they get the first-run naming screen and can overwrite the name
+  // this very page calls "changeable once".
+  const { data: existing, error: existingErr } = await sb.from('profiles').select('username').eq('id', currentUser.id).maybeSingle();
+  // If the lookup itself failed we can't tell whether they already have a
+  // name, and offering the form would risk overwriting one. Send them back
+  // to Home, which retries the same lookup.
+  if(existingErr || (existing && existing.username)){ window.location.href = 'index.html'; return; }
+
+  if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }
+
+  const prefix = (currentUser.email || '').split('@')[0];
+  const chips = suggestionsFor(prefix);
+  document.getElementById('chipRow').innerHTML = chips.map(c => '<button type="button" class="suggestion-chip">' + c + '</button>').join('');
+  document.querySelectorAll('.suggestion-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.getElementById('nameInput').value = btn.textContent;
+      document.getElementById('nameInput').dispatchEvent(new Event('input'));
+    });
+  });
+})();
+</script>
+</body>
+</html>

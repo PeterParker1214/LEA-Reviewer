@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search — LEA Reviewer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-2:#0a1520;
+    --gold:#e0a83f; --gold-bright:#f0c268; --blue:#6fa8cf; --blue-bright:#8fc4ea;
+    --muted:#8b98a5; --good:#5fbf82; --bad:#e2604a;
+    --line: rgba(111,168,207,0.20); --grid-line: rgba(111,168,207,0.09);
+    --font-display: 'Big Shoulders Display', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+  body.light-mode, :root.light-mode{
+    --ink:#16202b; --bg-deep:#d3dee6; --bg-panel:#ffffff; --bg-panel-2:#e9eff4;
+    --gold:#b5791f; --gold-bright:#7d520c; --blue:#2f6c95; --blue-bright:#1b4a6b;
+    --muted:#4f5d6a; --good:#206b3c; --bad:#a1372a;
+    --line: rgba(47,108,149,0.28); --grid-line: rgba(47,108,149,0.11);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      var(--bg-deep);
+    color:var(--ink); font-family:var(--font-body); min-height:100vh;
+    display:flex; justify-content:center; padding:20px 16px 64px;
+  }
+  .wrap{width:100%; max-width:520px;}
+  a{color:inherit;}
+  button{font-family:inherit;}
+
+  .run-header{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .icon-btn-44{
+    width:44px; height:44px; border-radius:10px; background:var(--bg-panel); border:1px solid var(--line);
+    color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+  }
+  .icon-btn-44 svg{ width:19px; height:19px; }
+  .search-form{ position:relative; flex:1; }
+  .search-form svg{ position:absolute; left:14px; top:50%; transform:translateY(-50%); width:15px; height:15px; color:var(--blue-bright); }
+  .search-form input{
+    width:100%; background:var(--bg-panel-2); border:1.5px solid var(--gold); border-radius:10px;
+    padding:12px 14px 12px 40px; color:var(--ink); font-family:var(--font-body); font-size:14px;
+  }
+  .search-form input::placeholder{ color:var(--muted); }
+  .search-form input:focus{ outline:none; border-color:var(--gold-bright); }
+
+  .chip-row{ display:flex; gap:8px; overflow-x:auto; margin-bottom:14px; padding-bottom:2px; }
+  .filter-chip{
+    flex-shrink:0; font-family:var(--font-mono); font-size:11px; letter-spacing:.03em; text-transform:uppercase;
+    background:var(--bg-panel); border:1px solid var(--line); color:var(--muted);
+    padding:8px 14px; border-radius:20px; cursor:pointer; white-space:nowrap;
+  }
+  .filter-chip.active{ border-color:var(--gold); color:var(--gold-bright); background:rgba(224,168,63,0.08); }
+
+  .results-summary{ display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; gap:10px; flex-wrap:wrap; }
+  .results-count{ font-family:var(--font-mono); font-size:12px; color:var(--muted); }
+  .drill-all-link{ font-family:var(--font-mono); font-size:12px; color:var(--gold-bright); text-decoration:none; white-space:nowrap; }
+  .drill-all-link:hover{ text-decoration:underline; }
+
+  .result-card{
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px;
+    margin-bottom:10px; text-decoration:none; color:var(--ink); display:block;
+  }
+  .result-card:hover{ border-color:var(--gold); }
+  .result-card .rc-meta{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:6px; }
+  .result-card .rc-loc{ font-family:var(--font-mono); font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.03em; }
+  .result-card .rc-status{ font-family:var(--font-mono); font-size:10px; text-transform:uppercase; padding:2px 8px; border-radius:20px; white-space:nowrap; }
+  .result-card .rc-status.mastered{ color:var(--good); border:1px solid var(--good); }
+  .result-card .rc-status.flagged{ color:var(--gold-bright); border:1px solid var(--gold); }
+  .result-card .rc-status.unmastered{ color:var(--muted); border:1px solid var(--line); }
+  .result-card .rc-text{ font-size:14px; line-height:1.5; }
+  .result-card .rc-text b{ color:var(--gold-bright); font-weight:700; }
+
+  .footer-note{ font-family:var(--font-mono); font-size:11px; color:var(--muted); text-align:center; margin-top:20px; line-height:1.6; }
+  .state-note{ font-family:var(--font-mono); font-size:12px; color:var(--muted); text-align:center; padding:30px 0; }
+  .theme-toggle{
+    position:fixed; top:16px; right:16px; z-index:50;
+    background:var(--bg-panel); border:1px solid var(--line); color:var(--gold-bright);
+    font-size:15px; width:34px; height:34px;
+    border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
+  }
+</style>
+<script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/module-progress.js?v=1"></script>
+</head>
+<body>
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
+<div class="wrap">
+  <div class="run-header">
+    <a class="icon-btn-44" href="index.html" title="Back home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </a>
+    <form class="search-form" id="searchForm">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" id="searchInput" placeholder="Search questions">
+    </form>
+  </div>
+
+  <div class="chip-row" id="chipRow"></div>
+  <div id="resultsArea"><div class="state-note">Loading…</div></div>
+
+  <div class="footer-note">Runs on cached questions from History of Architecture and Building Laws — the only subjects extracted to the searchable format so far.</div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+function escapeHtml(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function boldQuery(text, q){
+  if(!q) return escapeHtml(text);
+  const idx = text.toLowerCase().indexOf(q.toLowerCase());
+  if(idx === -1) return escapeHtml(text);
+  return escapeHtml(text.slice(0, idx)) + '<b>' + escapeHtml(text.slice(idx, idx + q.length)) + '</b>' + escapeHtml(text.slice(idx + q.length));
+}
+
+let FULL_INDEX = null; // built once per session
+let activeFilter = 'all';
+
+async function buildSearchIndex(){
+  if(FULL_INDEX) return FULL_INDEX;
+  let subjects;
+  try{
+    const res = await fetch('data/subjects.json');
+    subjects = await res.json();
+  }catch(e){ subjects = []; }
+
+  const cells = [];
+  for(const subject of subjects){
+    if(!subject.ready) continue;
+    for(const mod of (subject.modules || [])){
+      if(mod.format !== 'json') continue;
+      let arr;
+      try{
+        const cacheKey = 'lea_qidx_v1_' + mod.file;
+        const cached = sessionStorage.getItem(cacheKey);
+        if(cached != null){ arr = JSON.parse(cached); }
+        else{
+          const res = await fetch(mod.file);
+          arr = await res.json();
+          try{ sessionStorage.setItem(cacheKey, JSON.stringify(arr)); }catch(e){}
+        }
+      }catch(e){ continue; }
+      const p = LEAProgress.load(subject.id, mod.id);
+      const masteredSet = new Set(p.mastered || []);
+      const flagSet = new Set(p.flagged || []);
+      const notesObj = p.notes || {};
+      arr.forEach((q, qIndex) => {
+        if(q.hidden) return;
+        cells.push({
+          subjectId: subject.id, subjectName: subject.name, moduleId: mod.id, moduleTitle: mod.title, qIndex,
+          text: q.q || '', mastered: masteredSet.has(qIndex), flagged: flagSet.has(qIndex), hasNote: !!notesObj[qIndex]
+        });
+      });
+    }
+  }
+  FULL_INDEX = cells;
+  return cells;
+}
+
+function applyFilter(results, filter){
+  if(filter === 'unmastered') return results.filter(r => !r.mastered);
+  if(filter === 'flagged') return results.filter(r => r.flagged);
+  if(filter === 'notes') return results.filter(r => r.hasNote);
+  return results;
+}
+
+function renderChips(query){
+  const chips = [
+    { key: 'all', label: 'All' },
+    { key: 'unmastered', label: 'Not mastered' },
+    { key: 'flagged', label: 'Flagged' },
+    { key: 'notes', label: 'With notes' }
+  ];
+  document.getElementById('chipRow').innerHTML = chips.map(c =>
+    '<button class="filter-chip' + (activeFilter === c.key ? ' active' : '') + '" data-key="' + c.key + '">' + c.label + '</button>'
+  ).join('');
+  document.querySelectorAll('.filter-chip').forEach(btn => {
+    btn.addEventListener('click', () => { activeFilter = btn.dataset.key; runSearch(query); });
+  });
+}
+
+async function runSearch(query){
+  renderChips(query);
+  const area = document.getElementById('resultsArea');
+  if(!query){
+    area.innerHTML = '<div class="state-note">Type something to search, or pick a filter to browse everything.</div>';
+    return;
+  }
+  area.innerHTML = '<div class="state-note">Searching…</div>';
+  const index = await buildSearchIndex();
+  const q = query.toLowerCase();
+  let matches = index.filter(c => c.text.toLowerCase().includes(q));
+  matches = applyFilter(matches, activeFilter);
+
+  if(matches.length === 0){
+    area.innerHTML = '<div class="state-note">No matches for "' + escapeHtml(query) + '".</div>';
+    return;
+  }
+
+  const shown = matches.slice(0, 40);
+  const drillHref = 'run.html?mode=drill&q=' + encodeURIComponent(query) + (activeFilter !== 'all' ? '&filter=' + activeFilter : '');
+  area.innerHTML =
+    '<div class="results-summary">' +
+      '<div class="results-count">' + shown.length + ' of ' + matches.length + ' questions</div>' +
+      '<a class="drill-all-link" href="' + drillHref + '">Drill all ' + matches.length + ' →</a>' +
+    '</div>' +
+    shown.map(r => {
+      const status = r.flagged ? 'flagged' : r.mastered ? 'mastered' : 'unmastered';
+      const statusLabel = r.flagged ? 'Flagged' : r.mastered ? 'Mastered' : 'Not mastered';
+      return (
+        '<a class="result-card" href="run.html?s=' + encodeURIComponent(r.subjectId) + '&m=' + encodeURIComponent(r.moduleId) + '&mode=study">' +
+          '<div class="rc-meta">' +
+            '<div class="rc-loc">' + escapeHtml(r.subjectName.replace(/[\p{Extended_Pictographic}\p{Emoji_Modifier}\u{200D}\u{FE0F}]+/gu,'').trim()) + ' · ' + escapeHtml(r.moduleTitle) + '</div>' +
+            '<div class="rc-status ' + status + '">' + statusLabel + '</div>' +
+          '</div>' +
+          '<div class="rc-text">' + boldQuery(r.text, query) + '</div>' +
+        '</a>'
+      );
+    }).join('');
+}
+
+document.getElementById('searchForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const q = document.getElementById('searchInput').value.trim();
+  const url = new URL(window.location.href);
+  if(q) url.searchParams.set('q', q); else url.searchParams.delete('q');
+  window.history.replaceState({}, '', url);
+  runSearch(q);
+});
+
+(async function boot(){
+  const { data: { session } } = await sb.auth.getSession();
+  if(!session){ window.location.href = 'index.html'; return; }
+  const params = new URLSearchParams(window.location.search);
+  const q = params.get('q') || '';
+  document.getElementById('searchInput').value = q;
+  renderChips(q);
+  await runSearch(q);
+})();
+</script>
+</body>
+</html>
