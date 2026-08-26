@@ -164,7 +164,9 @@ document.getElementById('continueBtn').addEventListener('click', async () => {
     document.getElementById('availText').classList.add('taken');
     return;
   }
-  window.location.href = 'index.html';
+  // Straight into the tour (5c) rather than Home — this is a brand-new
+  // account, which is exactly who the three screens are for.
+  window.location.href = 'onboarding.html';
 });
 
 (async function boot(){

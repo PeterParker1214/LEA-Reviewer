@@ -1167,6 +1167,16 @@ async function showSignedIn(user){
     window.location.href = 'welcome.html';
     return;
   }
+  // The tour (5c), once per device. Read synchronously from localStorage so
+  // there is no window in which a returning user gets sent to it while the
+  // flag is still in flight.
+  let seenTour = true;
+  try{ seenTour = localStorage.getItem('lea_onboarded_v1') === '1'; }catch(e){}
+  if(!seenTour){
+    window.location.href = 'onboarding.html';
+    return;
+  }
+
   currentUsername = username;
   stopSignInScreen();
   signedOutShell.classList.add('hidden');

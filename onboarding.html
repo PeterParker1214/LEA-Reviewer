@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welcome — LEA Reviewer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Architects+Daughter&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-2:#0a1520;
+    --gold:#e0a83f; --gold-bright:#f0c268; --blue:#6fa8cf; --blue-bright:#8fc4ea;
+    --muted:#8b98a5; --good:#5fbf82; --bad:#e2604a; --body-ink:#c9d2da;
+    --line: rgba(111,168,207,0.20); --line-soft: rgba(111,168,207,0.14);
+    --track: rgba(111,168,207,0.25); --grid-line: rgba(111,168,207,0.09);
+    --font-display:'Big Shoulders Display',sans-serif;
+    --font-hand:'Architects Daughter',cursive;
+    --font-body:'Space Grotesk',sans-serif;
+    --font-mono:'IBM Plex Mono',monospace;
+  }
+  body.light-mode, :root.light-mode{
+    --ink:#16202b; --bg-deep:#d3dee6; --bg-panel:#ffffff; --bg-panel-2:#e9eff4;
+    --gold:#b5791f; --gold-bright:#7d520c; --blue:#2f6c95; --blue-bright:#1b4a6b;
+    --muted:#4f5d6a; --good:#206b3c; --bad:#a1372a; --body-ink:#2b3a47;
+    --line: rgba(47,108,149,0.28); --line-soft: rgba(47,108,149,0.20);
+    --track: rgba(47,108,149,0.25); --grid-line: rgba(47,108,149,0.11);
+  }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      var(--bg-deep);
+    color:var(--ink); font-family:var(--font-body); min-height:100vh;
+    display:flex; justify-content:center; padding:24px 20px 26px;
+  }
+  .wrap{ width:100%; max-width:390px; display:flex; flex-direction:column; }
+
+  .ob-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:28px; }
+  .ob-bars{ display:flex; gap:6px; }
+  .ob-bar{ width:26px; height:4px; background:var(--track); }
+  .ob-bar.done{ background:var(--gold); }
+  .ob-skip{
+    font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--muted); cursor:pointer; background:none; border:0; padding:8px 4px;
+  }
+  .ob-skip:hover{ color:var(--gold-bright); }
+
+  .ob-step{ font-family:var(--font-mono); font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-bright); }
+  .ob-title{
+    font-family:var(--font-display); font-weight:800; font-size:38px; line-height:.95;
+    margin:10px 0 14px; text-transform:uppercase;
+  }
+  .ob-title em{ font-style:normal; color:var(--gold-bright); }
+  .ob-body{ font-size:15px; line-height:1.65; color:var(--body-ink); margin-bottom:24px; }
+
+  /* The teaching illustration. Real components, fixed example numbers — it is
+     showing how the app behaves, not reporting the reader's own progress. */
+  .ob-demo{ background:var(--bg-panel); border:1px solid var(--line); padding:16px; margin-bottom:24px; }
+  .ob-demo-head{
+    display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:10px;
+    letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;
+  }
+  .ob-demo-head b{ color:var(--gold-bright); font-weight:400; }
+  .ob-demo-bar{ height:6px; background:var(--line-soft); overflow:hidden; margin-bottom:12px; }
+  .ob-demo-bar span{ display:block; height:100%; background:linear-gradient(90deg, var(--gold-bright), var(--gold) 70%, rgba(224,168,63,0.25)); }
+  .ob-ticks{ display:flex; gap:2px; }
+  .ob-ticks i{ flex:1; height:8px; background:rgba(111,168,207,0.18); }
+  .ob-ticks i.ok{ background:var(--good); }
+  .ob-ticks i.no{ background:var(--bad); }
+  .ob-note{ font-family:var(--font-hand); font-size:14px; color:var(--muted); margin-top:12px; }
+
+  .ob-next{
+    min-height:54px; width:100%; display:flex; align-items:center; justify-content:center; gap:10px;
+    background:var(--gold); color:#1a1206; border:0; cursor:pointer;
+    font-family:var(--font-mono); font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  }
+  body.light-mode .ob-next, :root.light-mode .ob-next{ color:#fff; }
+  .ob-next:hover{ background:var(--gold-bright); }
+  .ob-foot{
+    text-align:center; font-family:var(--font-mono); font-size:9.5px; letter-spacing:.05em;
+    text-transform:uppercase; color:var(--muted); margin-top:12px;
+  }
+</style>
+<link rel="stylesheet" href="assets/blueprint.css?v=1">
+<script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=1"></script>
+<script src="assets/module-progress.js?v=1"></script>
+</head>
+<body>
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
+<div class="wrap" id="obWrap"></div>
+
+<script>
+const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+function escapeHtml(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// Seen-once flag. Device-local and read synchronously, so Home can decide
+// whether to send someone here without waiting on a network round-trip —
+// a race there would show the tour to people who had already dismissed it.
+const SEEN_KEY = 'lea_onboarded_v1';
+function markSeen(){ try{ localStorage.setItem(SEEN_KEY, '1'); }catch(e){} }
+
+// Three screens, each teaching one thing the app does differently.
+//
+// The third screen is NOT the frame's "everything works offline". Nothing in
+// the build makes that true — there is no service worker, so the site cannot
+// load without a connection at all — and a tour is the worst place to teach
+// someone something they will disprove on the train. Sync is the same kind of
+// promise and is real, so it takes the slot until offline is actually built.
+const STEPS = [
+  {
+    kicker: 'Step 1 of 3',
+    title: 'The drill picks<br><em>itself</em>',
+    body: 'Twenty questions a day, chosen for you. It leans on what you have already opened and got wrong, so you do not have to decide what to revise.',
+    demo: 'drill'
+  },
+  {
+    kicker: 'Step 2 of 3',
+    title: 'Mastered means<br><em>right once</em>',
+    body: 'Get a question right and it counts as mastered — but it comes back in your drill until it sticks. That’s why the bar moves slower than your score.',
+    demo: 'mastery'
+  },
+  {
+    kicker: 'Step 3 of 3',
+    title: 'Your progress<br><em>follows you</em>',
+    body: 'Everything saves to your account, not to this browser. Start on your phone at lunch, carry on from a laptop that evening, and the same questions are waiting.',
+    demo: 'sync'
+  }
+];
+
+function demoHtml(kind){
+  if(kind === 'mastery'){
+    return (
+      '<div class="ob-demo">' +
+        '<div class="ob-demo-head"><span>Structural</span><b>3 / 30</b></div>' +
+        '<div class="ob-demo-bar"><span style="width:10%;"></span></div>' +
+        '<div class="ob-ticks">' +
+          '<i class="ok"></i><i class="ok"></i><i class="no"></i><i class="ok"></i><i></i><i></i><i></i><i></i>' +
+        '</div>' +
+        '<div class="ob-note">The red one comes back tomorrow.</div>' +
+      '</div>'
+    );
+  }
+  if(kind === 'drill'){
+    return (
+      '<div class="ob-demo">' +
+        '<div class="ob-demo-head"><span>Today’s drill</span><b>20 items</b></div>' +
+        '<div class="ob-demo-bar"><span style="width:100%;"></span></div>' +
+        '<div class="ob-ticks">' +
+          '<i class="no"></i><i class="no"></i><i></i><i></i><i class="no"></i><i></i><i></i><i></i>' +
+        '</div>' +
+        '<div class="ob-note">Ones you missed come first.</div>' +
+      '</div>'
+    );
+  }
+  return (
+    '<div class="ob-demo">' +
+      '<div class="ob-demo-head"><span>Phone · 12:40</span><b>Q84</b></div>' +
+      '<div class="ob-demo-bar"><span style="width:42%;"></span></div>' +
+      '<div class="ob-demo-head" style="margin:12px 0 8px;"><span>Laptop · 19:10</span><b>Q84</b></div>' +
+      '<div class="ob-demo-bar"><span style="width:42%;"></span></div>' +
+      '<div class="ob-note">Same place, either way.</div>' +
+    '</div>'
+  );
+}
+
+let idx = 0;
+
+function render(){
+  const s = STEPS[idx];
+  const last = idx === STEPS.length - 1;
+  document.getElementById('obWrap').innerHTML =
+    '<div class="ob-top">' +
+      '<div class="ob-bars">' +
+        STEPS.map((_, i) => '<div class="ob-bar' + (i <= idx ? ' done' : '') + '"></div>').join('') +
+      '</div>' +
+      '<button class="ob-skip" id="obSkip">Skip</button>' +
+    '</div>' +
+    '<div class="ob-step">' + escapeHtml(s.kicker) + '</div>' +
+    '<h2 class="ob-title">' + s.title + '</h2>' +
+    '<div class="ob-body">' + escapeHtml(s.body) + '</div>' +
+    demoHtml(s.demo) +
+    '<button class="ob-next" id="obNext">' + (last ? 'Start reviewing →' : 'Next') + '</button>' +
+    '<div class="ob-foot">' + (last ? 'That’s everything' : 'Three screens, then you’re in') + '</div>';
+
+  document.getElementById('obSkip').addEventListener('click', done);
+  document.getElementById('obNext').addEventListener('click', () => {
+    if(last) return done();
+    idx++;
+    render();
+    window.scrollTo(0, 0);
+  });
+}
+
+function done(){
+  markSeen();
+  window.location.href = 'index.html';
+}
+
+(async function boot(){
+  const { data: { session } } = await sb.auth.getSession();
+  if(!session){ window.location.href = 'index.html'; return; }
+  render();
+})();
+</script>
+</body>
+</html>
