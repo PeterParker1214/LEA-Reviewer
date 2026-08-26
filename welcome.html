@@ -92,7 +92,7 @@
   <div class="explain">This replaces the email prefix you'd otherwise show as on the leaderboard and the online list — pick something you're fine with others seeing.</div>
 
   <div class="field-wrap">
-    <input type="text" class="name-field" id="nameInput" maxlength="24" placeholder="Your display name" autocomplete="off">
+    <input type="text" class="name-field" id="nameInput" maxlength="12" placeholder="Your display name" autocomplete="off">
     <svg class="check-icon" id="checkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
   </div>
   <div class="field-status">
@@ -149,7 +149,7 @@ async function checkAvailability(val){
 
 document.getElementById('nameInput').addEventListener('input', (e) => {
   const val = e.target.value.trim();
-  document.getElementById('countText').textContent = val.length + ' / 24';
+  document.getElementById('countText').textContent = val.length + ' / 12';
   clearTimeout(checkTimer);
   checkTimer = setTimeout(() => checkAvailability(val), 350);
 });

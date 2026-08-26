@@ -68,6 +68,7 @@
     box-shadow:0 0 6px var(--good); flex-shrink:0; margin-left:8px;
   }
   .lb-name{ display:flex; align-items:center; }
+  .lb-name .who{ min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .rv-face{
     width:44px; height:44px; margin:0 0 8px; border:1px solid rgba(224,168,63,0.45);
     background:var(--bg-panel-2); display:flex; align-items:center; justify-content:center;
@@ -127,9 +128,14 @@
   .lb-name{ flex:1; font-family:var(--font-body); font-size:14px; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   /* The frame sets the top three in the display face at descending sizes, so
      the podium reads as a podium rather than as three more rows. */
-  .lb-row.top1 .lb-name{ font-family:var(--font-display); font-weight:700; font-size:18px; text-transform:uppercase; }
-  .lb-row.top2 .lb-name{ font-family:var(--font-display); font-weight:700; font-size:16px; text-transform:uppercase; }
-  .lb-row.top3 .lb-name{ font-family:var(--font-display); font-weight:700; font-size:15px; text-transform:uppercase; }
+  /* The top three read as one group rather than three sizes: the same face
+     as everyone else, one step larger, bold and gold. Three descending
+     display-font sizes made the podium look like three different lists. */
+  .lb-row.top1 .lb-name,
+  .lb-row.top2 .lb-name,
+  .lb-row.top3 .lb-name{
+    font-family:var(--font-body); font-size:16px; font-weight:700; color:var(--gold);
+  }
   .lb-row.top1 .lb-rank, .lb-row.top2 .lb-rank, .lb-row.top3 .lb-rank{ font-weight:800; }
   .lb-stats{ font-family:var(--font-mono); font-size:11px; color:var(--muted); text-align:right; }
 
@@ -229,7 +235,7 @@ function lbRowHtml(row, rank, isMine){
     '<div class="' + cls + '">' +
       '<div class="lb-rank">' + rank + '</div>' +
       '<div class="lb-face">' + LEAAvatar.faceHtml(avatarFor(row.username), row.username) + '</div>' +
-      '<div class="lb-name">' + escapeHtml(row.username) + (isMine ? ' (you)' : '') + onlineDot(row.username) + '</div>' +
+      '<div class="lb-name"><span class="who">' + escapeHtml(row.username) + (isMine ? ' (you)' : '') + '</span>' + onlineDot(row.username) + '</div>' +
       '<div class="lb-stats">' + (row.total_mastered||0) + ' mastered · ' + Math.round((row.avg_best_score||0)*100) + '% avg</div>' +
     '</div>'
   );
@@ -348,7 +354,7 @@ function weekRowHtml(row, rank, isMine){
     '<div class="' + cls + '">' +
       '<div class="lb-rank">' + rank + '</div>' +
       '<div class="lb-face">' + LEAAvatar.faceHtml(avatarFor(row.username), row.username) + '</div>' +
-      '<div class="lb-name">' + escapeHtml(row.username) + (isMine ? ' (you)' : '') + onlineDot(row.username) + '</div>' +
+      '<div class="lb-name"><span class="who">' + escapeHtml(row.username) + (isMine ? ' (you)' : '') + '</span>' + onlineDot(row.username) + '</div>' +
       '<div class="lb-stats">' + row.mastered + ' this week</div>' +
     '</div>'
   );
