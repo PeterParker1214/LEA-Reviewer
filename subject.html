@@ -199,6 +199,14 @@
     font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.06em;
     text-transform:uppercase; color:var(--gold-bright); cursor:pointer;
   }
+  /* Sits where the tail sat, so it takes the tail's shape — but it states a
+     fact rather than offering an action, so it is muted, not gold. */
+  .topics-status{
+    display:flex; align-items:center; justify-content:center; padding:12px 0;
+    border-bottom:1px solid var(--line-soft);
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--muted);
+  }
   .topics-note{ padding:11px 0 13px; font-family:var(--font-mono); font-size:10px; line-height:1.65; color:var(--muted-dim); }
   /* Whatever ends up last has no rule under it — otherwise it doubles up
      against the card's own bottom border. */
@@ -625,6 +633,15 @@ function renderModulesList(subject, mode){
 // modules are named in the trailing note instead. A subject with nothing
 // tagged renders no block at all — the Modules list above already covers it.
 const TOPICS_VISIBLE = 5;
+// The tail expands to a slice, not to everything. History has 302 tagged
+// topics; listing them recreates the problem the fold solves, one tap deeper.
+// Weakest 24 is the actionable slice — finding the 200th is a search problem.
+const TOPICS_EXPANDED_MAX = 24;
+// A topic needs this many items before its percentage means anything. One
+// question can only read 0% or 100%, two gives quartiles at best, and either
+// churns on every answer — so small buckets would win "weakest" on noise.
+// Applies to the header's claim only; every tagged topic still gets a row.
+const TOPICS_WEAKEST_MIN_ITEMS = 4;
 let topicsView = null;   // { subjectId, rows, note, open, expanded }
 
 function topicsOpenKey(subjectId){ return 'lea_topics_open_' + subjectId + '_v1'; }
@@ -698,8 +715,14 @@ function untaggedNote(untagged){
 function topicsBlockHtml(){
   const v = topicsView;
   if(!v) return '';
-  const weakest = v.rows[0];
-  const shown = v.expanded ? v.rows : v.rows.slice(0, TOPICS_VISIBLE);
+  // Rows are already weakest-first, so the first one clearing the floor is the
+  // weakest topic worth naming. If nothing clears it, the line is dropped
+  // rather than softened — on those subjects the claim was never worth making.
+  const weakest = v.rows.find(r => r.total >= TOPICS_WEAKEST_MIN_ITEMS) || null;
+  const capped = v.rows.length > TOPICS_EXPANDED_MAX;
+  const shown = v.expanded
+    ? v.rows.slice(0, TOPICS_EXPANDED_MAX)
+    : v.rows.slice(0, TOPICS_VISIBLE);
 
   const rowsHtml = shown.map(r => {
     const color = r.pct >= 100 ? 'var(--good)' : r.pct >= 70 ? 'var(--gold)' : 'var(--bad)';
@@ -715,19 +738,30 @@ function topicsBlockHtml(){
     );
   }).join('');
 
-  const more = (!v.expanded && v.rows.length > TOPICS_VISIBLE)
-    ? '<button class="topics-more" id="topicsMoreBtn">Show all ' + v.rows.length + ' &rarr;</button>'
-    : '';
+  // The tail must not promise more than tapping it delivers, so above the cap
+  // it names the slice instead of the total. Expanded, a status line states
+  // the full count so the number is never hidden, only the rows.
+  let more = '';
+  if(!v.expanded && v.rows.length > TOPICS_VISIBLE){
+    more = '<button class="topics-more" id="topicsMoreBtn">' +
+      (capped ? 'Show ' + TOPICS_EXPANDED_MAX + ' weakest' : 'Show all ' + v.rows.length) +
+      ' &rarr;</button>';
+  } else if(v.expanded && capped){
+    more = '<div class="topics-status">' + v.rows.length + ' topics · showing the ' +
+      TOPICS_EXPANDED_MAX + ' weakest</div>';
+  }
 
   return (
     '<div class="topics-card">' +
       '<button class="topics-head" id="topicsHeadBtn" aria-expanded="' + (v.open ? 'true' : 'false') + '">' +
         '<div class="th-lines">' +
           '<div class="th-count">Topics · ' + v.rows.length + ' tagged</div>' +
-          '<div class="th-weakest">' +
-            '<span class="thw-name">Weakest — ' + escapeHtml(weakest.name) + '</span>' +
-            '<span class="thw-pct"> ' + weakest.pct + '%</span>' +
-          '</div>' +
+          (weakest
+            ? '<div class="th-weakest">' +
+                '<span class="thw-name">Weakest — ' + escapeHtml(weakest.name) + '</span>' +
+                '<span class="thw-pct"> ' + weakest.pct + '%</span>' +
+              '</div>'
+            : '') +
         '</div>' +
         '<div class="th-sign">' + (v.open ? '−' : '+') + '</div>' +
       '</button>' +
