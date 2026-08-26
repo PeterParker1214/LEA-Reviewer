@@ -179,10 +179,31 @@
     });
   }
 
+  /**
+   * Swap a quiz page's array literal for new text, leaving the rest of the
+   * file untouched. Uses the same balanced scan as extraction, so a question
+   * containing "];" cannot truncate the replacement — which a non-greedy
+   * regex silently did.
+   *
+   * Returns null when the variable isn't there, so a caller can try the other
+   * name rather than write a corrupted file.
+   */
+  function replaceArrayLiteral(html, varName, newLiteralText) {
+    var marker = 'const ' + varName + ' = ';
+    var idx = html.indexOf(marker);
+    if (idx === -1) return null;
+    var start = idx + marker.length;
+    if (html[start] !== '[') return null;
+    var end = extractBalanced(html, start);
+    if (end === -1) return null;
+    return html.slice(0, start) + newLiteralText + html.slice(end);
+  }
+
   window.LEAQuizSource = {
     loadModuleQuestions: loadModuleQuestions,
     loadModuleTopics: loadModuleTopics,
     extractArrayLiteral: extractArrayLiteral,
+    replaceArrayLiteral: replaceArrayLiteral,
     CACHE_PREFIX: CACHE_PREFIX
   };
 })();
