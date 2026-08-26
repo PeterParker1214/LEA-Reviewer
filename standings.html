@@ -68,6 +68,11 @@
   .rv-side.them .rv-face{ margin-left:auto; }
   .rv-face img{ width:100%; height:100%; object-fit:cover; }
 
+  .week-note{
+    font-family:var(--font-mono); font-size:10.5px; line-height:1.7; color:var(--muted);
+    border-left:3px solid var(--blue-bright); background:var(--bg-panel);
+    border:1px solid var(--line); border-left-width:3px; padding:12px 14px; margin-top:14px;
+  }
   .rank-chip{ font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
 
   /* 3g Closest rival: two standings either side of a VS. */
@@ -257,9 +262,76 @@ function rivalCardHtml(data, myIdx){
   );
 }
 
-function renderWeek(){
-  document.getElementById('contentArea').innerHTML =
-    '<div class="state-note">Weekly standings need a time-windowed leaderboard query that doesn’t exist in the database yet — the current get_leaderboard() only returns all-time totals. This needs a backend change, not a page change.</div>';
+// Counted from mastery_events, which dates each question the first time it
+// is mastered. Questions mastered before that table existed carry no date and
+// never will, so the window genuinely starts when it was switched on — the
+// footnote says so rather than letting a short first week read as a full one.
+async function renderWeek(){
+  const area = document.getElementById('contentArea');
+  area.innerHTML = '<div class="state-note">Counting this week…</div>';
+
+  let payload = null, failed = false;
+  try{
+    const { data, error } = await sb.rpc('get_weekly_leaderboard', { p_days: 7 });
+    if(error) failed = true; else payload = data;
+  }catch(e){ failed = true; }
+
+  if(failed || !payload){
+    // Most likely this deployment has not run weekly-standings-setup.sql.
+    // Say what is missing rather than showing an empty week as a result.
+    area.innerHTML =
+      '<div class="state-note">Weekly standings aren’t switched on for this database yet. ' +
+      'Running <b>weekly-standings-setup.sql</b> starts the clock.</div>';
+    return;
+  }
+
+  const rows = payload.rows || [];
+  const since = payload.since ? new Date(payload.since) : null;
+  const days = payload.window_days || 7;
+
+  // How much of the window actually has data behind it.
+  const sinceNote = (() => {
+    if(!since) return '';
+    const elapsedDays = Math.floor((Date.now() - since.getTime()) / 86400000);
+    const stamp = since.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
+    return elapsedDays >= days
+      ? '<div class="week-note">Last ' + days + ' days.</div>'
+      : '<div class="week-note">Counting from ' + stamp +
+        ' — questions mastered before then carry no date, so this week is still filling up.</div>';
+  })();
+
+  if(rows.length === 0){
+    area.innerHTML =
+      '<div class="state-note">Nothing mastered in the last ' + days + ' days yet — ' +
+      'be the first.</div>' + sinceNote;
+    return;
+  }
+
+  const myIdx = rows.findIndex(r => r.username === currentUsername);
+  const chip = document.getElementById('rankChip');
+  if(chip) chip.textContent = myIdx >= 0 ? ('You’re #' + (myIdx + 1) + ' this week') : '';
+
+  area.innerHTML =
+    '<div class="lb-list">' +
+      rows.slice(0, 10).map((r, i) =>
+        weekRowHtml(r, i + 1, i === myIdx)
+      ).join('') +
+    '</div>' +
+    // Your own row, pinned, when it falls outside the ten shown.
+    (myIdx >= 10 ? '<div class="lb-list" style="margin-top:10px;">' + weekRowHtml(rows[myIdx], myIdx + 1, true) + '</div>' : '') +
+    sinceNote;
+}
+
+function weekRowHtml(row, rank, isMine){
+  const cls = 'lb-row' + (rank <= 3 ? ' top' + rank : '') + (isMine ? ' mine' : '');
+  return (
+    '<div class="' + cls + '">' +
+      '<div class="lb-rank">' + rank + '</div>' +
+      '<div class="lb-face">' + LEAAvatar.faceHtml(avatarFor(row.username), row.username) + '</div>' +
+      '<div class="lb-name">' + escapeHtml(row.username) + (isMine ? ' (you)' : '') + '</div>' +
+      '<div class="lb-stats">' + row.mastered + ' this week</div>' +
+    '</div>'
+  );
 }
 
 async function renderRivals(){
@@ -296,7 +368,7 @@ async function render(){
   const area = document.getElementById('contentArea');
   area.innerHTML = '<div class="state-note">Loading…</div>';
   if(activeTab === 'overall') await renderOverall();
-  else if(activeTab === 'week') renderWeek();
+  else if(activeTab === 'week') await renderWeek();
   else await renderRivals();
 }
 
