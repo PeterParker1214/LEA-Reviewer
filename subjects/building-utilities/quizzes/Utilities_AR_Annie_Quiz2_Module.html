@@ -25,7 +25,7 @@
     --bad:#b23b3b;
     --line: rgba(15,118,110,0.22);
   }
-  body.dark-mode{
+  body.dark-mode, :root.dark-mode{
     --paper:#0a1f1c;
     --paper-card:#12302b;
     --ink:#e3f2ee;
@@ -54,7 +54,7 @@
     padding:32px 16px 64px;
     transition: background-color .2s ease, color .2s ease;
   }
-  body.dark-mode{
+  body.dark-mode, :root.dark-mode{
     background:
       radial-gradient(ellipse at 8% 0%, rgba(45,212,191,0.12) 0%, transparent 48%),
       radial-gradient(ellipse at 97% 100%, rgba(224,138,91,0.08) 0%, transparent 52%),
@@ -475,13 +475,14 @@
     letter-spacing:0.01em !important;
   }
 </style>
+<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=1">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="../../../assets/presence.js"></script>
-<script src="../../../assets/module-progress.js"></script>
-<script src="../../../assets/theme.js"></script>
-<script src="../../../assets/sfx.js"></script>
+<script src="../../../assets/presence.js?v=1"></script>
+<script src="../../../assets/module-progress.js?v=1"></script>
+<script src="../../../assets/theme.js?v=1" data-alt-class="dark-mode" data-default-is="light"></script>
+<script src="../../../assets/sfx.js?v=1"></script>
 </head>
-<body>
+<body data-desk="2col">
 <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
 <div class="wrap">
   <div class="quiz-nav-bar">
@@ -936,7 +937,7 @@ if (window.LEATheme) { LEATheme.init({ altClass:'dark-mode', defaultIs:'light', 
 buildTesserae();
 renderQuestion();
 </script>
-<script src="../../../assets/quiz-resume.js"></script>
+<script src="../../../assets/quiz-resume.js?v=1"></script>
 <script>
 (function(){
   var LEA_RESUME_SUBJECT = 'building-utilities';

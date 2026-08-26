@@ -11,7 +11,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/theme.js"></script>
+<script src="assets/icons.js?v=1"></script>
+<script src="assets/countdown.js?v=1"></script>
+<script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=1"></script>
+<script src="assets/module-progress.js?v=1"></script>
+<script src="assets/offline.js?v=1"></script>
+<script src="assets/quiz-resume.js?v=1"></script>
+<script>
+// Coming back to Home from anywhere in the app used to flash the sign-in
+// screen for about half a second: the signed-out shell is what the document
+// ships with, and it stays on screen until `await sb.auth.getSession()`
+// resolves. Supabase keeps the session in localStorage, so the answer is
+// already on the device — read it here, at parse time, and let CSS hide the
+// wrong shell before anything paints. Same fix as the theme flash.
+//
+// Only an unexpired token counts. If it has lapsed, the sign-in screen is the
+// correct thing to show and there is nothing to suppress.
+(function () {
+  // Look in BOTH storages, and match the key by shape rather than by name.
+  // leaAuthStorage puts the session in localStorage when "keep me signed in"
+  // is ticked and sessionStorage when it is not, so a localStorage-only probe
+  // missed every reader who unticked it — and they kept the flash. Matching
+  // on shape also survives a project-ref or key-name change.
+  function findSession(store) {
+    try {
+      for (var i = 0; i < store.length; i++) {
+        var k = store.key(i);
+        if (k && k.indexOf('sb-') === 0 && k.indexOf('-auth-token') !== -1) {
+          return store.getItem(k);
+        }
+      }
+    } catch (e) {}
+    return null;
+  }
+  try {
+    var raw = findSession(window.localStorage) || findSession(window.sessionStorage);
+    if (!raw) return;
+    var s = JSON.parse(raw);
+    var exp = s && (s.expires_at || (s.currentSession && s.currentSession.expires_at));
+    if (exp && (exp * 1000) < Date.now()) return;
+    document.documentElement.classList.add('lea-resuming');
+  } catch (e) { /* unreadable session: fall through and show sign-in */ }
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Architects+Daughter&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -34,20 +77,20 @@
     --font-body: 'Space Grotesk', sans-serif;
     --font-mono: 'IBM Plex Mono', monospace;
   }
-  body.light-mode{
-    --ink:#182028;
-    --bg-deep:#eef2f3;
+  body.light-mode, :root.light-mode{
+    --ink:#16202b;
+    --bg-deep:#d3dee6;
     --bg-panel:#ffffff;
-    --bg-panel-2:#f3f6f7;
+    --bg-panel-2:#e9eff4;
     --gold:#b5791f;
-    --gold-bright:#8f5f16;
+    --gold-bright:#7d520c;
     --blue:#2f6c95;
-    --blue-bright:#1f5478;
-    --muted:#5c6975;
-    --good:#2f8a55;
-    --bad:#b23d2f;
-    --line: rgba(47,108,149,0.20);
-    --grid-line: rgba(47,108,149,0.09);
+    --blue-bright:#1b4a6b;
+    --muted:#4f5d6a;
+    --good:#206b3c;
+    --bad:#a1372a;
+    --line: rgba(47,108,149,0.28);
+    --grid-line: rgba(47,108,149,0.11);
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
@@ -61,23 +104,17 @@
     min-height:100vh;
     display:flex;
     justify-content:center;
-    padding:36px 16px 64px;
+    padding:20px 16px 64px;
     transition: background-color .2s ease, color .2s ease;
   }
-  .theme-toggle{
-    position:fixed; top:16px; right:16px; z-index:50;
-    background:var(--bg-panel); border:1px solid var(--line); color:var(--gold-bright);
-    font-family:var(--font-body); font-size:15px; width:34px; height:34px;
-    border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
-  }
-  .theme-toggle:hover{ border-color:var(--gold-bright); }
-  .wrap{width:100%; max-width:720px;}
+  .wrap{width:100%; max-width:520px;}
   a{color:inherit;}
   .hidden{display:none !important;}
   .sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
+  button{font-family:inherit;}
 
-  /* ===== masthead ===== */
-  .masthead{ text-align:center; margin-bottom:26px; }
+  /* ===== masthead (signed-out only) ===== */
+  .masthead{ text-align:center; margin:16px 0 26px; }
   .masthead .eyebrow{
     font-family:var(--font-mono); letter-spacing:0.24em; font-size:11px; text-transform:uppercase;
     color:var(--gold-bright);
@@ -92,6 +129,68 @@
     margin:0 auto; line-height:1.6;
   }
   .masthead .sub b{ color:var(--gold-bright); font-weight:400; }
+
+  /* ===== 2e Sign in ===== */
+  /* Frame padding is 34px 20px 26px and the frame clips its own decoration,
+     so the shell owns both rather than the page body. */
+  #signedOutShell{ position:relative; overflow:hidden; padding:34px 20px 26px; }
+  /* While a stored session is being confirmed, neither shell is right yet:
+     hide the signed-out one and hold a quiet placeholder rather than a blank
+     page, so returning to Home reads as loading rather than as signing out. */
+  html.lea-resuming #signedOutShell{ display:none; }
+  #bootHold{ display:none; }
+  html.lea-resuming #bootHold{
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:10px; min-height:60vh; text-align:center;
+  }
+  #bootHold .bh-kicker{ font-family:var(--font-mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+  #bootHold .bh-word{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; color:var(--ink); line-height:1; }
+  .signin-body{ position:relative; }
+
+  .signin-geo{ position:absolute; inset:0; pointer-events:none; }
+  .signin-geo span{ position:absolute; pointer-events:none; }
+  .geo-arc{ border-radius:50%; }
+  .geo-arc-1{ top:-120px; right:-130px; width:330px; height:330px; border:1px solid rgba(224,168,63,0.22); }
+  .geo-arc-2{ top:-60px; right:-70px; width:210px; height:210px; border:1px solid rgba(111,168,207,0.18); }
+  .geo-square{ bottom:70px; left:-90px; width:250px; height:250px; border:1px dashed rgba(111,168,207,0.14); transform:rotate(18deg); }
+  .geo-plus{ font-family:var(--font-mono); font-size:15px; }
+  .geo-plus-1{ top:34px; right:26px; color:rgba(224,168,63,0.5); }
+  .geo-plus-2{ bottom:120px; left:22px; color:rgba(111,168,207,0.35); }
+
+  .signin-eyebrow{ font-family:var(--font-mono); letter-spacing:.28em; font-size:10px; text-transform:uppercase; color:var(--muted); }
+  .signin-wordmark{ font-family:var(--font-display); font-weight:800; font-size:60px; line-height:.86; margin:8px 0 0; text-transform:uppercase; letter-spacing:.01em; }
+  .signin-rule{ height:2px; width:64px; background:var(--gold); margin:16px 0 14px; }
+  .signin-tagline{ font-family:var(--font-hand); font-size:16px; line-height:1.65; color:#c9d2da; }
+  body.light-mode .signin-tagline, :root.light-mode .signin-tagline{ color:var(--muted); }
+
+  .signin-clock{ display:flex; align-items:center; gap:10px; margin:22px 0 20px; }
+  .sc-units{ display:flex; gap:6px; }
+  .sc-unit{ text-align:center; }
+  .sc-unit b{ display:block; font-family:var(--font-display); font-weight:800; font-size:26px; line-height:1; }
+  .sc-unit span{ display:block; font-family:var(--font-mono); font-size:8.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:4px; }
+  .sc-sep{ font-family:var(--font-display); font-weight:800; font-size:26px; line-height:1; color:#3d4d5c; }
+  .sc-divider{ width:1px; height:34px; background:rgba(111,168,207,0.25); }
+  .sc-label{ font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); line-height:1.6; }
+
+  .field{ display:block; }
+  .field-label{ display:block; font-family:var(--font-mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:7px; }
+  .signin-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .keepme{ display:flex; align-items:center; gap:9px; font-size:13px; color:#c9d2da; cursor:pointer; }
+  body.light-mode .keepme, :root.light-mode .keepme{ color:var(--ink); }
+  .keepme input{ position:absolute; opacity:0; width:0; height:0; }
+  .keepme-box{ width:20px; height:20px; flex-shrink:0; border:1px solid var(--gold); display:flex; align-items:center; justify-content:center; }
+  .keepme input:checked + .keepme-box{ background:var(--gold); }
+  .keepme input:checked + .keepme-box::after{ content:"\2713"; color:#1a1206; font-size:13px; line-height:1; }
+  .keepme input:focus-visible + .keepme-box{ outline:2px solid var(--gold-bright); outline-offset:2px; }
+  .forgot-link{ background:none; border:none; font-family:var(--font-mono); font-size:10px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); cursor:pointer; padding:0; }
+  .forgot-link:hover{ color:var(--gold-bright); }
+
+  .signin-primary{ display:flex; align-items:center; justify-content:center; gap:10px; width:100%; background:var(--gold); color:#1a1206; border:none; font-family:var(--font-mono); font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:15px 18px; cursor:pointer; }
+  .signin-primary:hover{ background:var(--gold-bright); }
+
+  .signin-presence{ display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:10px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); padding-top:16px; margin-top:20px; border-top:1px solid rgba(111,168,207,0.18); }
+  .signin-presence b{ color:var(--ink); font-weight:600; }
+  .sp-dot{ width:6px; height:6px; border-radius:50%; background:var(--good); flex-shrink:0; }
 
   /* ===== panel (shared card look, with drafting-corner brackets) ===== */
   .panel{
@@ -158,323 +257,403 @@
   .auth-error{ color:var(--bad); font-size:12.5px; min-height:16px; text-align:center; }
   .auth-msg{ color:var(--good); font-size:12.5px; min-height:16px; text-align:center; }
 
-  /* ===== signed-in top bar ===== */
-  .top-bar{
-    display:flex; justify-content:space-between; align-items:center; gap:12px;
-    margin-bottom:18px;
+  /* ===== 2a top bar ===== */
+  .home-top-bar{ display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:12px; }
+  .icon-btn-44{
+    width:44px; height:44px; border-radius:10px; background:var(--bg-panel); border:1px solid var(--line);
+    color:var(--gold-bright); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
   }
-  .icon-btn{
-    background:var(--bg-panel); border:1px solid var(--line); color:var(--gold-bright);
-    width:36px; height:36px; border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center;
-    font-size:16px; flex-shrink:0;
+  .icon-btn-44:hover{ border-color:var(--gold-bright); }
+  .icon-btn-44 svg{ width:19px; height:19px; }
+  .avatar-btn-44{
+    width:44px; height:44px; border-radius:10px; background:var(--bg-panel-2); border:1px solid var(--gold);
+    color:var(--gold-bright); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+    font-family:var(--font-display); font-weight:700; font-size:15px;
   }
-  .icon-btn:hover{ border-color:var(--gold-bright); }
-  .top-bar-user{
-    font-family:var(--font-mono); font-size:13px; letter-spacing:.08em; text-transform:uppercase;
-    color:var(--ink); text-align:center; border-bottom:1px solid var(--line); padding-bottom:6px;
-  }
-  .top-bar .leaderboard-open{
-    background:var(--bg-panel); border:1px solid var(--line); color:var(--gold-bright);
-    font-family:var(--font-mono); font-size:12px; letter-spacing:.04em; text-transform:uppercase;
-    padding:0 12px; height:36px; border-radius:8px; cursor:pointer; white-space:nowrap;
-  }
-  .top-bar .leaderboard-open:hover{ border-color:var(--gold-bright); }
+  .avatar-btn-44:hover{ border-color:var(--gold-bright); }
+  .account-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:13px 4px; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); }
+  .account-row:last-child{ border-bottom:none; }
+  .account-row .ar-label{ font-family:var(--font-display); font-weight:700; font-size:15px; text-transform:uppercase; }
+  .account-row .ar-sub{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); margin-top:2px; }
+  .account-row.danger .ar-label{ color:var(--bad); }
+  /* Rows that are <button> (Appearance, Log out) must match the <a> rows. */
+  button.account-row{ width:100%; background:none; border:none; border-bottom:1px solid var(--line); font-family:inherit; text-align:left; cursor:pointer; min-height:44px; }
+  button.account-row:last-child{ border-bottom:none; }
+  .account-row .ar-icon{ display:flex; align-items:center; color:var(--gold-bright); flex-shrink:0; }
 
-  /* ===== online presence ===== */
-  .online-bar{
-    display:flex; align-items:center; gap:8px; flex-wrap:wrap;
-    font-family:var(--font-mono); font-size:11.5px; color:var(--muted); margin-bottom:18px;
-    background:var(--bg-panel-2); border:1px solid var(--line);
-    border-radius:8px; padding:9px 14px;
-  }
-  .online-dot{
-    width:7px; height:7px; border-radius:50%; background:var(--good); flex-shrink:0;
-    box-shadow:0 0 6px var(--good);
-  }
-  .online-count{ color:var(--ink); font-weight:600; flex-shrink:0; }
-  .online-names-wrap{
-    flex:1 1 auto; min-width:0; height:1.4em; overflow:hidden; position:relative;
-    -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 20px, #000 calc(100% - 20px), transparent 100%);
-    mask-image:linear-gradient(90deg, transparent 0, #000 20px, #000 calc(100% - 20px), transparent 100%);
-  }
-  .online-names{
-    color:var(--muted); opacity:0.9; white-space:nowrap;
-    position:absolute; left:0; top:0;
-    animation:online-scroll 16s linear infinite;
-  }
-  .online-names.no-scroll{ position:static; animation:none; }
-  .online-bar:hover .online-names{ animation-play-state:paused; }
-  @keyframes online-scroll{
-    from{ transform:translateX(100%); }
-    to{ transform:translateX(-100%); }
-  }
-  @media (prefers-reduced-motion: reduce){
-    .online-names{ position:static; animation:none; }
-  }
+  /* ===== 7a desktop (1120px) =====
+     On phones the three column wrappers are display:contents, so they take no
+     part in layout and the children stack exactly as before. The right rail is
+     desktop-only — on a phone that content is behind the trophy and the
+     account sheet, and duplicating it in the stack would just lengthen it. */
+  .home-cols{ display:contents; }
+  .col-left, .col-center{ display:contents; }
+  .col-right{ display:none; }
+  .subject-grid{ display:block; }
+  /* The search field sits between the resume card and Subjects on a phone,
+     but is a direct child of #homeBody so the desktop header can place it.
+     Ordering keeps the phone stack in the sequence the design specifies
+     without tying it to DOM position. Everything else defaults to order 0
+     and therefore stays in document order. */
+  #homeBody{ display:flex; flex-direction:column; }
+  #homeBody .search-field{ order:1; }
+  #homeBody .subjects-divider{ order:2; }
+  #homeBody .subject-grid{ order:3; }
 
-  /* ===== source list (stacked pill buttons) ===== */
-  .source-intro, .subject-intro{
-    text-align:center; font-family:var(--font-mono); font-size:11.5px; letter-spacing:.06em; text-transform:uppercase;
-    color:var(--muted); margin:26px 0 16px;
-    display:flex; align-items:center; gap:12px;
-  }
-  .source-intro::before, .source-intro::after,
-  .subject-intro::before, .subject-intro::after{ content:""; flex:1; height:1px; background:var(--line); }
-  .source-grid{ display:flex; flex-direction:column; gap:12px; margin-bottom:8px; }
-  .source-card{
-    display:flex; justify-content:space-between; align-items:center; gap:10px;
-    background: var(--gold); color:#1a1206;
-    border:1px solid var(--gold); border-radius:12px;
-    padding:16px 20px; cursor:pointer; text-decoration:none;
-    font-family:var(--font-display); font-weight:700; font-size:17px; text-transform:uppercase; letter-spacing:.02em;
-    transition: transform .12s ease;
-    width:100%; text-align:left;
-  }
-  .source-card:hover{ transform:translateY(-1px); }
-  .source-card .source-status{ display:none; }
-  .source-card.placeholder{
-    background:transparent; color:var(--muted); border:1px solid var(--line);
-  }
-  .source-card.placeholder:hover{ transform:none; border-color:var(--gold); color:var(--gold-bright); }
 
-  .back-link{
-    background:none; border:none; color:var(--gold-bright); cursor:pointer;
-    font-family:var(--font-mono); font-size:12.5px; text-decoration:underline; padding:0;
-    margin-bottom:18px; display:inline-block; text-transform:uppercase; letter-spacing:.05em;
-  }
-  .back-link:hover{ color:var(--blue-bright); }
-  .coming-soon-panel{ text-align:center; }
-  .coming-soon-panel .icon{ font-size:30px; margin-bottom:12px; }
-  .coming-soon-panel h2{ font-family:var(--font-display); font-size:22px; text-transform:uppercase; margin:0 0 8px; color:var(--ink); }
-  .coming-soon-panel p{ color:var(--muted); font-size:13.5px; line-height:1.6; max-width:420px; margin:0 auto; }
+  /* Right rail cards */
+  .rail-card{ background:var(--bg-panel); border:1px solid var(--line); border-radius:12px; padding:14px 14px 12px; }
+  .rail-head{ font-family:var(--font-mono); font-size:9.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:10px; }
+  .rail-row{ display:flex; align-items:center; gap:8px; padding:7px 0; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); }
+  .rail-row:last-of-type{ border-bottom:none; }
+  .rail-row.mine{ color:var(--gold-bright); }
+  .rail-row .rr-rank{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); width:16px; flex-shrink:0; }
+  .rail-row .rr-name{ font-size:12.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1; }
+  .rail-row .rr-num{ font-family:var(--font-mono); font-size:11.5px; color:var(--blue-bright); flex-shrink:0; }
+  .rail-gap{ font-family:var(--font-hand); font-size:13px; color:var(--muted); margin-top:9px; line-height:1.5; }
+  .rail-empty{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); }
+  .rail-stat{ display:flex; align-items:center; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); font-size:12.5px; }
+  .rail-stat:last-of-type{ border-bottom:none; }
+  .rail-stat b{ font-family:var(--font-mono); color:var(--gold-bright); }
+  .rail-note{ font-family:var(--font-mono); font-size:10px; line-height:1.6; color:var(--muted); padding:0 2px; }
+  .home-wordmark{ text-align:center; }
+  .home-wordmark .hw-eyebrow{ font-family:var(--font-mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+  .home-wordmark .hw-title{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; color:var(--ink); line-height:1; margin-top:2px; }
 
-  /* ===== ready-for-the-board ring card ===== */
-  .ring-card{
-    background:var(--bg-panel); border:1px solid var(--line); border-radius:14px;
-    padding:22px 22px 18px; margin-bottom:14px; display:flex; align-items:center; gap:20px; flex-wrap:wrap;
+  /* ===== presence strip ===== */
+  .presence-strip{
+    display:flex; align-items:center; justify-content:space-between; gap:8px;
+    background:var(--bg-panel-2); border:1px solid var(--line); border-radius:8px;
+    padding:9px 14px; margin-bottom:12px; font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--muted);
   }
-  .ring{
-    width:106px; height:106px; border-radius:50%; flex-shrink:0; position:relative;
-    background: conic-gradient(var(--blue-bright) calc(var(--pct,0)*1%), var(--bg-panel-2) 0);
-  }
-  .ring::before{ content:""; position:absolute; inset:9px; border-radius:50%; background:var(--bg-panel); }
-  .ring .ring-pct{
-    position:relative; z-index:1; width:100%; height:100%; display:flex; align-items:center; justify-content:center;
-    font-family:var(--font-mono); font-weight:600; font-size:21px; color:var(--ink);
-  }
-  .ring-info{ flex:1; min-width:180px; }
-  .ring-info h2{ font-family:var(--font-display); font-weight:700; font-size:24px; text-transform:uppercase; margin:0 0 8px; color:var(--ink); line-height:1; }
-  .ring-info .rule{ height:1px; background:var(--gold); opacity:.6; margin-bottom:10px; }
-  .ring-info .best-sub{ font-size:13px; color:var(--muted); }
-  .ring-info .best-sub b{ color:var(--ink); font-weight:600; }
-  .ring-info .best-sub .pct-tag{ color:var(--blue-bright); font-family:var(--font-mono); font-size:11.5px; }
-  .ring-last{ font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-top:12px; width:100%; }
+  .presence-strip .online-dot{ width:9px; height:9px; border-radius:50%; background:var(--good); box-shadow:0 0 6px var(--good); display:inline-block; margin-right:6px; }
+  .presence-strip .offline-ready{ color:var(--blue-bright); }
 
-  /* ===== weak subject + mastered-count duo ===== */
-  .stat-duo{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:8px; }
-  .stat-box{
-    background:var(--bg-panel-2); border:1px solid var(--line); border-radius:14px;
-    padding:18px 16px; text-align:center;
+  /* ===== split-flap countdown ===== */
+  .countdown-card{
+    position:relative; background:var(--bg-panel); border:1px solid var(--line);
+    padding:18px 16px 14px; margin-bottom:12px;
   }
-  .stat-box .lbl{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
-  .stat-box .val{ font-family:var(--font-display); font-weight:700; font-size:17px; color:var(--ink); text-transform:uppercase; margin:6px 0 12px; line-height:1.15; }
-  .stat-box .val .pct-tag{ display:block; font-family:var(--font-mono); font-size:11px; color:var(--blue-bright); text-transform:none; margin-top:4px; }
-  .stat-box .cap{ font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
-  .stat-box .big{ font-family:var(--font-mono); font-weight:600; font-size:26px; color:var(--gold-bright); }
-  .stat-box.alt .num{ font-family:var(--font-mono); font-weight:600; font-size:30px; color:var(--gold-bright); line-height:1.15; }
-  .stat-box.alt .num.total{ color:var(--blue-bright); }
-  .stat-box.alt .lbl{ margin-top:6px; }
+  .countdown-card::before, .countdown-card::after{ content:""; position:absolute; width:12px; height:12px; border:2px solid var(--gold); opacity:.9; }
+  .countdown-card::before{ top:-2px; left:-2px; border-width:2px 0 0 2px; }
+  .countdown-card::after{ bottom:-2px; right:-2px; border-width:0 2px 2px 0; }
+  .countdown-label{ font-family:var(--font-mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); text-align:center; margin-bottom:12px; }
+  .flap-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+  .flap{
+    position:relative; background:var(--bg-panel-2); border:1px solid rgba(111,168,207,0.28); border-radius:4px;
+    padding:10px 4px 8px; text-align:center; overflow:hidden;
+  }
+  .flap::before{ content:""; position:absolute; top:0; left:0; right:0; height:50%; background:linear-gradient(rgba(255,255,255,0.045), transparent); }
+  .flap::after{ content:""; position:absolute; top:50%; left:0; right:0; height:1px; background:rgba(0,0,0,0.55); }
+  .flap.seconds{ border-color:var(--gold); }
+  .flap .flap-val{ font-family:var(--font-display); font-weight:800; font-size:34px; color:var(--ink); line-height:1; position:relative; z-index:1; }
+  .flap.seconds .flap-val{ color:var(--gold); }
+  .flap .flap-lbl{ font-family:var(--font-mono); font-size:8.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:4px; }
 
-  /* ===== per-subject progress badge on each card ===== */
-  .subject-progress{ margin-top:12px; }
-  .subject-progress .bar-track{ height:6px; border-radius:3px; background: var(--bg-panel-2); overflow:hidden; }
-  .subject-progress .bar-fill{ height:100%; border-radius:3px; background: linear-gradient(90deg, var(--gold-bright), var(--gold) 70%, rgba(224,168,63,0.25)); }
-  .subject-progress .cap{ font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-top:6px; }
+  /* ===== readiness ===== */
+  .readiness-card{ background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:18px 18px 14px; margin-bottom:12px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  .readiness-ring{ width:84px; height:84px; border-radius:50%; flex-shrink:0; position:relative; background:conic-gradient(var(--blue-bright) calc(var(--pct,0)*1%), var(--bg-panel-2) 0); }
+  .readiness-ring::before{ content:""; position:absolute; inset:8px; border-radius:50%; background:var(--bg-panel); }
+  .readiness-ring .rr-pct{ position:relative; z-index:1; width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-weight:600; font-size:18px; color:var(--ink); }
+  .readiness-info{ flex:1; min-width:170px; }
+  .readiness-info h2{ font-family:var(--font-display); font-weight:700; font-size:20px; text-transform:uppercase; margin:0 0 8px; color:var(--ink); line-height:1; }
+  .readiness-info .rr-rule{ height:1px; background:var(--gold); opacity:.6; margin-bottom:8px; }
+  .readiness-info .rr-stats{ font-family:var(--font-mono); font-size:11px; color:var(--muted); line-height:1.6; }
 
-  /* ===== subject cards ===== */
-  .subject-grid{ display:flex; flex-direction:column; gap:12px; }
-  .subject-card{
-    display:block;
-    background: var(--bg-panel-2);
-    border:1px solid var(--line);
-    border-radius: 14px;
-    padding:18px 20px;
-    text-decoration:none;
-    transition: border-color .15s ease;
-  }
-  .subject-card:hover{ border-color: var(--gold); }
-  .subject-card .top-row{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
-  .subject-card .name{
-    font-family:var(--font-display); font-weight:700; font-size:19px; color:var(--ink); text-transform:uppercase; line-height:1.1;
-  }
-  .subject-card .arrow{ font-family:var(--font-mono); font-size:17px; color:var(--gold-bright); flex-shrink:0; }
-  .subject-card .status{
-    font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-top:6px;
-  }
-  .subject-card .status.ready{ color:var(--good); }
-  .subject-card.placeholder{ opacity:0.65; }
-  .subject-card.placeholder .arrow{ color:var(--muted); }
+  /* ===== streak ===== */
+  .streak-card{ background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin-bottom:12px; }
+  .streak-title{ font-family:var(--font-display); font-weight:700; font-size:15px; text-transform:uppercase; color:var(--ink); display:flex; align-items:center; gap:6px; margin-bottom:10px; }
+  .streak-ticks{ display:flex; gap:5px; margin-bottom:10px; }
+  .streak-tick{ flex:1; height:8px; border-radius:2px; background:rgba(111,168,207,0.18); }
+  .streak-tick.filled{ background:var(--gold); }
+  .streak-note{ font-family:var(--font-hand); font-size:14px; color:var(--ink); opacity:.92; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .streak-note b{ color:var(--gold-bright); font-family:var(--font-mono); font-weight:600; font-style:normal; }
 
-  .footer-note{
-    text-align:center; font-family:var(--font-mono); font-size:11px; color:var(--muted); opacity:0.75; margin-top:24px;
+  /* ===== daily drill ===== */
+  .drill-card{
+    background:var(--gold); color:#1a1206; border:1px solid var(--gold); border-radius:12px;
+    padding:16px 18px; margin-bottom:10px;
+    display:block; text-decoration:none; cursor:pointer; width:100%; text-align:left;
   }
-  .brand-footer{
-    text-align:center; margin-top:34px; opacity:.8;
+  /* Title and count share one row, as drawn — stacking them made the card
+     noticeably taller than the frame. */
+  .drill-card .dc-head{ display:flex; justify-content:space-between; align-items:center; gap:10px; }
+  .drill-card.disabled{ opacity:.55; cursor:default; }
+  .drill-card .dc-title{ font-family:var(--font-display); font-weight:700; font-size:24px; text-transform:uppercase; line-height:1; }
+  .drill-card .dc-count{ font-family:var(--font-mono); font-weight:600; font-size:12px; white-space:nowrap; }
+  .drill-card .dc-sub{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.04em; text-transform:uppercase; margin-top:8px; opacity:.85; }
+
+  /* ===== two tiles ===== */
+  .tiles-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px; }
+  .tile{
+    background:var(--bg-panel-2); border:1px solid var(--line); border-radius:12px; padding:14px 14px 12px;
+    display:block; text-decoration:none; cursor:pointer; border-style:solid; text-align:left; color:var(--ink);
   }
+  .tile .tile-kicker{ font-family:var(--font-mono); font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px; }
+  .tile.mock .tile-kicker{ color:var(--blue-bright); }
+  .tile.topic .tile-kicker{ color:var(--bad); }
+  .tile .tile-title{ font-family:var(--font-display); font-weight:700; font-size:16px; text-transform:uppercase; margin-bottom:4px; }
+  .tile .tile-sub{ font-family:var(--font-mono); font-size:10px; color:var(--muted); line-height:1.4; }
+
+  /* ===== resume ===== */
+  .resume-card{ background:var(--bg-panel-2); border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:10px; padding:14px 16px; margin-bottom:12px; display:block; text-decoration:none; color:var(--ink); }
+  .resume-card .rc-kicker{ font-family:var(--font-mono); font-size:10px; letter-spacing:.05em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:4px; }
+  .resume-card .rc-title{ font-family:var(--font-display); font-weight:700; font-size:16px; text-transform:uppercase; margin-bottom:4px; }
+  .resume-card .rc-meta{ font-family:var(--font-mono); font-size:11px; color:var(--muted); display:flex; justify-content:space-between; }
+  .resume-card .rc-meta b{ color:var(--gold-bright); }
+
+  /* ===== search ===== */
+  .search-field{ position:relative; margin-bottom:18px; }
+  .search-field svg{ position:absolute; left:14px; top:50%; transform:translateY(-50%); width:15px; height:15px; color:var(--blue-bright); }
+  .search-field input{
+    width:100%; background:var(--bg-panel-2); border:1px solid var(--line); border-radius:10px;
+    padding:12px 14px 12px 40px; color:var(--ink); font-family:var(--font-body); font-size:13.5px;
+  }
+  .search-field input::placeholder{ color:var(--muted); }
+  .search-field input:focus{ outline:none; border-color:var(--gold); }
+
+  /* ===== subjects divider + rows ===== */
+  .subjects-divider{ display:flex; align-items:center; gap:12px; margin:20px 0 12px; font-family:var(--font-mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+  .subjects-divider::before, .subjects-divider::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .subject-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 4px; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); }
+  .subject-row:last-child{ border-bottom:none; }
+  .subject-row .sr-left{ flex:1; min-width:0; }
+  .subject-row .sr-name{ font-family:var(--font-display); font-weight:700; font-size:17px; text-transform:uppercase; color:var(--ink); line-height:1.1; }
+  .subject-row .sr-bar-track{ height:5px; border-radius:3px; background:var(--bg-panel-2); overflow:hidden; margin-top:7px; }
+  .subject-row .sr-bar-fill{ height:100%; border-radius:3px; background:linear-gradient(90deg, var(--gold-bright), var(--gold)); }
+  .subject-row .sr-pct{ font-family:var(--font-mono); font-size:10.5px; color:var(--gold-bright); flex-shrink:0; }
+  .subject-row .sr-pct.low{ color:var(--bad); }
+  .subject-row.placeholder{ opacity:.55; }
+  .see-all-link{ display:block; text-align:center; font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--gold-bright); text-decoration:none; margin-top:10px; padding:8px; }
+
+  .brand-footer{ text-align:center; margin-top:30px; opacity:.8; }
   .brand-footer .bf-eyebrow{ font-family:var(--font-mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
   .brand-footer .bf-title{ font-family:var(--font-display); font-weight:700; font-size:20px; text-transform:uppercase; color:var(--ink); margin-top:4px; }
 
-  /* ===== leaderboard modal ===== */
-  .modal-overlay{
-    position:fixed; inset:0; background:rgba(0,0,0,0.6);
-    display:flex; align-items:center; justify-content:center;
-    padding:16px; z-index:100;
+  /* ===== theme toggle ===== */
+  .theme-toggle{
+    position:fixed; top:16px; right:16px; z-index:50;
+    background:var(--bg-panel); border:1px solid var(--line); color:var(--gold-bright);
+    font-family:var(--font-body); font-size:15px; width:34px; height:34px;
+    border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
   }
-  .modal-overlay.hidden{ display:none; }
-  .modal-box{
-    width:100%; max-width:400px; max-height:86vh; overflow-y:auto;
-    background:var(--bg-panel); border:1px solid var(--line);
-    border-radius:14px; padding:26px 22px; position:relative;
-  }
-  .modal-close{
-    position:absolute; top:14px; right:16px; background:none; border:none;
-    color:var(--muted); font-size:20px; cursor:pointer; line-height:1;
-  }
-  .modal-box h2{ font-family:var(--font-display); font-weight:700; font-size:24px; text-transform:uppercase; margin:0 0 4px; color:var(--ink); }
-  .modal-box .modal-sub{ font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:.04em; }
-  .modal-box .rule{ height:1px; background:var(--gold); opacity:.6; margin-bottom:16px; }
-  .leaderboard-list{ display:flex; flex-direction:column; gap:2px; margin-top:4px; }
-  .leaderboard-row{
-    display:flex; justify-content:space-between; align-items:center;
-    padding:11px 4px; border-bottom:1px solid var(--line); font-size:14px;
-  }
-  .leaderboard-row .lb-rank{ font-family:var(--font-mono); color:var(--muted); font-weight:600; width:34px; }
-  .leaderboard-row .lb-name{ flex:1; color:var(--ink); font-family:var(--font-body); }
-  .leaderboard-row .lb-stats{ color:var(--muted); font-size:11px; text-align:right; font-family:var(--font-mono); }
-  .leaderboard-empty{ color:var(--muted); font-style:italic; text-align:center; padding:12px 0; }
+  .theme-toggle:hover{ border-color:var(--gold-bright); }
 
-  .leaderboard-row.lb-top1 .lb-rank{ font-family:var(--font-display); font-size:26px; color:var(--gold-bright); width:36px; }
-  .leaderboard-row.lb-top1 .lb-name{ font-family:var(--font-display); font-weight:700; font-size:18px; text-transform:uppercase; color:var(--ink); }
-  .leaderboard-row.lb-top2 .lb-rank{ font-family:var(--font-display); font-size:22px; color:var(--ink); width:36px; }
-  .leaderboard-row.lb-top2 .lb-name{ font-family:var(--font-display); font-weight:700; font-size:16px; text-transform:uppercase; }
-  .leaderboard-row.lb-top3 .lb-rank{ font-family:var(--font-display); font-size:22px; color:var(--gold); width:36px; }
-  .leaderboard-row.lb-top3 .lb-name{ font-family:var(--font-display); font-weight:700; font-size:16px; text-transform:uppercase; }
+  /* ===== bottom sheets ===== */
+  .sheet-overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.55); display:flex; align-items:flex-end; justify-content:center; z-index:200; }
+  .sheet-overlay.hidden{ display:none; }
+  .sheet{
+    width:100%; max-width:520px; max-height:82vh; overflow-y:auto; background:var(--bg-panel);
+    border-top:2px solid var(--gold); border-radius:16px 16px 0 0; padding:22px 20px 26px;
+    box-shadow:0 -24px 60px rgba(0,0,0,0.5);
+  }
+  .sheet h3{ font-family:var(--font-display); font-weight:700; font-size:20px; text-transform:uppercase; margin:0 0 14px; }
+  .weak-topic-row{ display:flex; align-items:center; gap:10px; padding:11px 0; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); }
+  .weak-topic-row:last-child{ border-bottom:none; }
+  .weak-topic-row .wt-name{ flex:1; font-size:14px; }
+  .weak-topic-row .wt-pct{ font-family:var(--font-mono); font-size:11px; color:var(--bad); }
+  .weak-topic-row .wt-arrow{ font-family:var(--font-mono); color:var(--muted); }
+  .sheet-close{
+    display:block; margin:14px auto 0; background:none; border:none; color:var(--muted);
+    font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em; cursor:pointer;
+  }
+  .state-note{ font-family:var(--font-mono); font-size:11.5px; color:var(--muted); text-align:center; padding:16px 0; }
+
+  /* ---- Desktop (7a) lives last on purpose ----
+     A media query adds no specificity, so these rules only beat the
+     phone declarations above by coming later in source order. Moving
+     this block up would silently drop every property the base rules
+     also set (display, padding), which is exactly what happened once. */
+  /* Every value below is taken from frame 7a ("Home — desktop, three rails")
+     rather than scaled from the phone. The phone layout is not touched:
+     everything is inside the query. */
+  @media (min-width:1120px){
+    .wrap{ max-width:1120px; }
+    /* 7a frame padding, replacing the phone's 20px 16px 64px. */
+    body{ padding:24px 28px 32px; }
+
+    /* --- Header: brand left, controls right, all 40px tall --- */
+    /* The search field and presence strip are children of #homeBody, not of
+       the top bar, so the bar becomes display:contents and its children are
+       placed directly onto this grid. No markup is duplicated: the phone keeps
+       the single element it had, in the stack position it calls for. */
+    #homeBody{ display:grid; grid-template-columns:auto 1fr auto auto auto;
+      align-items:center; column-gap:10px; }
+    .home-top-bar{ display:contents; }
+    .home-top-bar .home-wordmark{ grid-row:1; grid-column:1; text-align:left;
+      margin-right:6px; }
+    /* gap:16px sits between the brand block and the control cluster; the
+       cluster itself is 10px, which is the column-gap above. */
+    #homeBody .search-field{ grid-row:1; grid-column:2; justify-self:end;
+      min-width:260px; width:auto; margin:0 0 0 16px; }
+    #homeBody .search-field input{ height:40px; padding:0 14px 0 40px; }
+    #homeBody .presence-strip{ grid-row:1; grid-column:3; width:auto; margin:0;
+      height:40px; padding:0 12px; gap:7px; }
+    .home-top-bar .icon-btn-44{ grid-row:1; grid-column:4; width:40px; height:40px; }
+    .home-top-bar .avatar-btn-44{ grid-row:1; grid-column:5; width:40px; height:40px; }
+    /* Offline-ready is stated in the right rail at this width. */
+    #homeBody .presence-strip .offline-ready{ display:none; }
+
+    /* --- Body: three rails --- */
+    .home-cols{ grid-row:2; grid-column:1 / -1;
+      margin-top:18px; padding-top:22px; border-top:1px solid var(--line);
+      display:grid; grid-template-columns:296px 1fr 264px; gap:24px; align-items:start; }
+    .col-left, .col-right{ display:flex; flex-direction:column; gap:16px; }
+    .col-right{ display:flex; }
+
+    /* --- Centre: the three modes share one row --- */
+    /* 7a runs Daily Drill / Mock exam / Topic drill across a single row at
+       flex 1.4 / 1 / 1 with a 14px gap. On the phone they are a full-width
+       drill card above a 2-up tiles row, so `.tiles-row` dissolves here and
+       its two tiles join the drill card as siblings on this grid. */
+    .col-center{ display:grid; grid-template-columns:1.4fr 1fr 1fr;
+      gap:16px 14px; align-content:start; }
+    .tiles-row{ display:contents; }
+    .drill-card{ grid-row:1; grid-column:1; padding:20px; margin:0; }
+    .tile.mock{ grid-row:1; grid-column:2; padding:20px; }
+    .tile.topic{ grid-row:1; grid-column:3; padding:20px; }
+    .resume-card, .subjects-divider, .subject-grid{ grid-column:1 / -1; margin:0; }
+
+    /* Resume becomes a strip: kicker+title left, progress block right. */
+    .resume-card{ display:flex; align-items:center; gap:18px; padding:16px 18px; }
+    .resume-card .rc-body{ flex:1; min-width:0; }
+    .resume-card .rc-meta{ width:180px; flex-shrink:0; }
+
+    .subjects-divider{ margin-top:4px; }
+    /* Width buys context: every subject visible at once, as cards. */
+    .subject-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .subject-grid .subject-row{ padding:13px 14px; border-bottom:none;
+      background:var(--bg-panel-2); border:1px solid var(--line); border-radius:10px; }
+
+    /* --- Left rail: 7a's own card sizes, not the phone's --- */
+    .col-left .countdown-card{ padding:16px; margin:0; }
+    .col-left .flap-grid{ gap:7px; }
+    .col-left .flap{ padding:9px 4px 7px; }
+    .col-left .readiness-card{ padding:18px; margin:0; text-align:center;
+      display:block; }
+    /* The frame draws the donut at 132px and centres it above the text,
+       rather than the phone's 84px ring sitting beside it. */
+    .col-left .readiness-ring{ width:132px; height:132px; margin:0 auto 14px; }
+    .col-left .streak-card{ padding:16px; margin:0; }
+
+    /* --- Right rail --- */
+    .rail-card{ padding:16px; }
+    .rail-row{ padding:11px 0; }
+    .rail-row .rr-rank{ width:24px; }
+    .rail-stat{ padding:9px 0; }
+    .rail-note{ background:var(--bg-panel-2); border:1px solid var(--line);
+      border-left:3px solid var(--blue-bright); padding:13px 15px; border-radius:10px; }
+  }
 </style>
+<link rel="stylesheet" href="assets/blueprint.css?v=1">
 </head>
 <body>
 <div class="wrap">
-  <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">☀️</button>
-<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>
+  <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
 
-  <div class="masthead">
-    <div class="eyebrow">Peter Parker's</div>
-    <h1>LEA Reviewer</h1>
-    <div class="rule"></div>
-    <div class="sub"><b>Log in</b> to track your mastery, pick up where you left off, and see where you stand on the leaderboard. AYAW BOARD</div>
+  <!-- Shown only while a stored session is being confirmed. -->
+  <div id="bootHold" aria-hidden="true">
+    <div class="bh-kicker">Peter Parker's</div>
+    <div class="bh-word">LEA Reviewer</div>
   </div>
 
-  <!-- ===================== SIGNED-OUT: AUTH PANEL ===================== -->
-  <div id="authPanel" class="panel hidden">
-    <div class="auth-heading">Sign in to continue</div>
-    <div class="intro-note">An account is required — progress and scores are saved to your profile, not this device.</div>
-    <div class="auth-tabs">
-      <div class="auth-tab active" id="loginTab">Log in</div>
-      <div class="auth-tab" id="signupTab">Sign up</div>
+  <!-- ===================== SIGNED-OUT: MASTHEAD + AUTH PANEL ===================== -->
+  <div id="signedOutShell">
+    <!-- 2e. Decorative drafting geometry: two arcs off the top-right, a rotated
+         dashed square bottom-left, and two registration crosses. Purely
+         atmospheric, so it is aria-hidden and cannot take a pointer. -->
+    <div class="signin-geo" aria-hidden="true">
+      <span class="geo-arc geo-arc-1"></span>
+      <span class="geo-arc geo-arc-2"></span>
+      <span class="geo-square"></span>
+      <span class="geo-plus geo-plus-1">+</span>
+      <span class="geo-plus geo-plus-2">+</span>
     </div>
 
-    <form class="auth-form" id="loginForm">
-      <input type="email" id="loginEmail" placeholder="Email" required autocomplete="email">
-      <div class="field-wrap">
-        <input type="password" id="loginPassword" placeholder="Password" required autocomplete="current-password">
-        <button type="button" class="field-eye" data-target="loginPassword">👁</button>
-      </div>
-      <div class="auth-error" id="loginError"></div>
-      <button type="submit">Log in</button>
-    </form>
+    <div class="signin-body">
+      <div class="signin-eyebrow">Peter Parker&rsquo;s</div>
+      <h1 class="signin-wordmark">LEA Reviewer</h1>
+      <div class="signin-rule"></div>
+      <div class="signin-tagline">Track what you&rsquo;ve actually mastered &mdash; not what you&rsquo;ve merely read.</div>
 
-    <form class="auth-form hidden" id="signupForm">
-      <input type="text" id="signupUsername" placeholder="Username (shown on leaderboard)" required maxlength="24">
-      <input type="email" id="signupEmail" placeholder="Email" required autocomplete="email">
-      <div class="field-wrap">
-        <input type="password" id="signupPassword" placeholder="Password (min 6 characters)" required minlength="6" autocomplete="new-password">
-        <button type="button" class="field-eye" data-target="signupPassword">👁</button>
+      <!-- Same clock as Home, from assets/countdown.js. Seconds are omitted
+           here by design; the frame shows days : hrs : min only. -->
+      <div class="signin-clock">
+        <div class="sc-units">
+          <div class="sc-unit"><b id="scDays">0</b><span>days</span></div>
+          <div class="sc-sep">:</div>
+          <div class="sc-unit"><b id="scHrs">00</b><span>hrs</span></div>
+          <div class="sc-sep">:</div>
+          <div class="sc-unit"><b id="scMins">00</b><span>min</span></div>
+        </div>
+        <div class="sc-divider"></div>
+        <div class="sc-label">until the<br>LEA &middot; 17 Jan 2027</div>
       </div>
-      <div class="auth-error" id="signupError"></div>
-      <div class="auth-msg" id="signupMsg"></div>
-      <button type="submit">Create account</button>
-    </form>
 
-    <div class="auth-divider">or</div>
-    <button class="google-btn" id="googleBtn">Continue with Google</button>
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab active" id="loginTab">Log in</button>
+        <button type="button" class="auth-tab" id="signupTab">Sign up</button>
+      </div>
+
+      <form class="auth-form" id="loginForm">
+        <label class="field">
+          <span class="field-label">Email</span>
+          <input type="email" id="loginEmail" required autocomplete="email">
+        </label>
+        <label class="field">
+          <span class="field-label">Password</span>
+          <span class="field-wrap">
+            <input type="password" id="loginPassword" required autocomplete="current-password">
+            <button type="button" class="field-eye" data-target="loginPassword" aria-label="Show password"></button>
+          </span>
+        </label>
+        <div class="signin-row">
+          <label class="keepme">
+            <input type="checkbox" id="keepSignedIn" checked>
+            <span class="keepme-box" aria-hidden="true"></span>
+            <span>Keep me signed in</span>
+          </label>
+          <button type="button" class="forgot-link" id="forgotBtn">Forgot?</button>
+        </div>
+        <div class="auth-error" id="loginError"></div>
+        <button type="submit" class="signin-primary">Start reviewing &rarr;</button>
+      </form>
+
+      <form class="auth-form hidden" id="signupForm">
+        <label class="field">
+          <span class="field-label">Display name</span>
+          <input type="text" id="signupUsername" required maxlength="24">
+        </label>
+        <label class="field">
+          <span class="field-label">Email</span>
+          <input type="email" id="signupEmail" required autocomplete="email">
+        </label>
+        <label class="field">
+          <span class="field-label">Password</span>
+          <span class="field-wrap">
+            <input type="password" id="signupPassword" required minlength="6" autocomplete="new-password">
+            <button type="button" class="field-eye" data-target="signupPassword" aria-label="Show password"></button>
+          </span>
+        </label>
+        <div class="auth-error" id="signupError"></div>
+        <div class="auth-msg" id="signupMsg"></div>
+        <button type="submit" class="signin-primary">Create account &rarr;</button>
+      </form>
+
+      <button class="google-btn" id="googleBtn">Continue with Google</button>
+
+      <!-- Real presence, read from the same channel Home uses. A signed-out
+           client can subscribe without tracking itself, so it never inflates
+           the number it reports. Hidden until a count actually arrives. -->
+      <div class="signin-presence hidden" id="signinPresence">
+        <span class="sp-dot"></span><b id="signinPresenceCount">0</b>&nbsp;reviewees studying right now
+      </div>
+    </div>
   </div>
 
-  <!-- ===================== SIGNED-IN SHELL ===================== -->
+  <!-- ===================== SIGNED-IN: HOME (2a) ===================== -->
   <div id="signedInShell" class="hidden">
-    <div class="top-bar">
-      <button class="icon-btn" id="logoutBtn" title="Log out" aria-label="Log out">⏻</button>
-      <div class="top-bar-user" id="welcomeName"></div>
-      <button class="leaderboard-open" id="openMainLeaderboardBtn">🏆 Leaderboard</button>
-    </div>
-
-    <div class="online-bar">
-      <span class="online-dot"></span>
-      <span><span class="online-count" id="onlineCount">0</span> online</span>
-      <span class="online-names-wrap"><span class="online-names" id="onlineNames">—</span></span>
-    </div>
-
-    <!-- ===== SOURCE FOLDERS ===== -->
-    <div id="sourcePanel">
-      <div class="source-intro">Choose a source</div>
-      <div class="source-grid" id="sourceGrid"></div>
-    </div>
-
-    <!-- ===== SUBJECT GRID (within a source) ===== -->
-    <div id="subjectPanel" class="hidden">
-      <button class="back-link" id="backToSourcesBtn">&larr; All sources</button>
-
-      <div class="ring-card">
-        <div class="ring" id="readinessRing"><div class="ring-pct" id="readinessPct">0%</div></div>
-        <div class="ring-info">
-          <h2>Ready for the board!</h2>
-          <div class="rule"></div>
-          <div class="best-sub">Best Subject: <b id="strongSubjectName">—</b> <span class="pct-tag" id="strongSubjectPct"></span></div>
-        </div>
-        <div class="ring-last"><span id="readinessSub">0 quizzes completed</span> · Last: <span id="lastQuizName">—</span> <span id="lastQuizSub"></span></div>
-      </div>
-
-      <div class="stat-duo">
-        <div class="stat-box">
-          <div class="lbl">Weak Subject</div>
-          <div class="val" id="weakSubjectName">—<span class="pct-tag" id="weakSubjectPct"></span></div>
-          <div class="cap">Subjects Fully Mastered</div>
-          <div class="big" id="overallSubjectsDone">0 / 0</div>
-        </div>
-        <div class="stat-box alt">
-          <div class="num" id="overallMasteredNum">0</div>
-          <div class="num total"><span id="overallTotalNum">0</span></div>
-          <div class="lbl">Questions mastered</div>
-        </div>
-      </div>
-
-      <div class="sr-only">
-        <div class="overall-bar-track"><div class="overall-bar-fill" id="overallBarFill"></div></div>
-        <span id="overallBarCaption"></span>
-        <span id="overallBarPct"></span>
-      </div>
-
-      <div class="subject-intro">Choose a subject</div>
-      <div class="subject-grid" id="subjectGrid"></div>
-
-      <div class="footer-note">More subjects are added as they're compiled — check back for updates.</div>
-    </div>
-
-    <!-- ===== COMING SOON (other sources) ===== -->
-    <div id="comingSoonPanel" class="hidden panel coming-soon-panel">
-      <div class="icon">🚧</div>
-      <h2 id="comingSoonTitle">Coming soon</h2>
-      <p id="comingSoonText">This source isn't set up yet.</p>
-      <button class="back-link" id="backToSourcesBtn2">&larr; All sources</button>
-    </div>
+    <div id="homeBody"><div class="state-note">Loading…</div></div>
 
     <div class="brand-footer">
       <div class="bf-eyebrow">Peter Parker's</div>
@@ -484,206 +663,79 @@
 
 </div>
 
-<!-- ===================== MAIN LEADERBOARD MODAL ===================== -->
-<div class="modal-overlay hidden" id="leaderboardModalOverlay">
-  <div class="modal-box">
-    <button class="modal-close" id="leaderboardModalClose">&times;</button>
-    <h2>Main Leaderboard</h2>
-    <div class="modal-sub">Combined ranking across every subject</div>
-    <div class="rule"></div>
-    <div class="leaderboard-list" id="leaderboardList">
-      <div class="leaderboard-empty">Loading…</div>
-    </div>
+<!-- ===================== WEAK TOPICS SHEET ===================== -->
+<div class="sheet-overlay hidden" id="topicSheetOverlay">
+  <div class="sheet">
+    <h3>Weak topics</h3>
+    <div id="topicSheetBody"><div class="state-note">Finding your shakiest topics…</div></div>
+    <button class="sheet-close" id="topicSheetClose">Close</button>
+  </div>
+</div>
+
+<!-- ===================== ACCOUNT SHEET ===================== -->
+<div class="sheet-overlay hidden" id="accountSheetOverlay">
+  <div class="sheet">
+    <h3>Account</h3>
+    <div id="accountSheetBody"></div>
+    <button class="sheet-close" id="accountSheetClose">Close</button>
   </div>
 </div>
 
 <script>
-// ---- Supabase setup (shared with all subject pages) ----
+// ---- Supabase setup (shared with all subject/run pages) ----
 const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
-const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// "Keep me signed in" has to mean something, so the auth token's home is
+// chosen at write time rather than baked in: localStorage survives the
+// browser closing, sessionStorage does not. The flag is read on every write,
+// so ticking the box before signing in is what decides it.
+let leaPersistSession = true;
+const leaAuthStorage = {
+  getItem(k){
+    try{ return localStorage.getItem(k) ?? sessionStorage.getItem(k); }catch(e){ return null; }
+  },
+  setItem(k, v){
+    try{
+      if(leaPersistSession){ localStorage.setItem(k, v); sessionStorage.removeItem(k); }
+      else { sessionStorage.setItem(k, v); localStorage.removeItem(k); }
+    }catch(e){}
+  },
+  removeItem(k){
+    try{ localStorage.removeItem(k); sessionStorage.removeItem(k); }catch(e){}
+  }
+};
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  auth: { storage: leaAuthStorage, persistSession: true, autoRefreshToken: true }
+});
 
-// ---- Subjects list ----
-// totalQuestions/totalModules are only meaningful for "ready" subjects — they
-// mirror the MODULES defined in that subject's own page, used here purely to
-// show a mastered/total badge without loading each subject's full quiz data.
-const SUBJECTS = [
-  { id: "history", name: "History of Architecture 📜⌛🏛️🏺", href: "subjects/history-of-architecture.html", ready: true, totalQuestions: 1552, totalModules: 12, source: "jpt" },
-  { id: "building-utilities", name: "Building Utilities 💧⚡⚙️💡", href: "subjects/building-utilities/index.html", ready: true, totalQuestions: 255, totalModules: 4, source: "jpt" },
-  { id: "building-technology", name: "Building Technology", href: "subjects/building-technology.html", ready: false, source: "jpt" },
-  { id: "structural", name: "Structural 🏗️🧱👷🏗", href: "subjects/structural/index.html", ready: true, totalQuestions: 230, totalModules: 2, source: "jpt" },
-  { id: "building-laws", name: "Building Laws 🏢⚖👮⚖️", href: "subjects/building-laws/index.html", ready: true, totalQuestions: 270, totalModules: 5, source: "jpt" },
-  { id: "professional-practice", name: "Professional Practice 💼👨🏻‍💼👔👷🏻‍♂️", href: "subjects/professional-practice/index.html", ready: true, totalQuestions: 436, totalModules: 5, source: "jpt" },
-  { id: "theory-of-architecture-and-planning", name: "Theory of Architecture and Principles of Planning", href: "subjects/theory-of-architecture-and-planning/index.html", ready: true, totalQuestions: 95, totalModules: 2, source: "jpt" },
-  { id: "architectural-design", name: "Architectural Design", href: "subjects/architectural-design.html", ready: false, source: "jpt" },
-  { id: "professional-planning", name: "Professional Planning", href: "subjects/professional-planning.html", ready: false, source: "jpt" },
-  { id: "architectural-sites-proponents-styles", name: "Architectural Sites, Proponents, & Styles", href: "subjects/architectural-sites-proponents-styles/index.html", ready: true, totalQuestions: 1294, totalModules: 3, source: "mst" },
-];
-const READY_SUBJECTS = SUBJECTS.filter(s => s.ready);
+function escapeHtml(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function stripEmoji(str){ return String(str||'').replace(/[\p{Extended_Pictographic}\p{Emoji_Modifier}\u{200D}\u{FE0F}]+/gu,'').trim(); }
 
-// ---- Source folders (top-level, sit above Subjects) ----
-// All current subjects live under Source A. The others are placeholders until
-// their own subject libraries are compiled.
-const SOURCES = [
-  { id: "jpt", name: "Source A", ready: true, blurb: "" },
-  { id: "mst", name: "Source B", ready: true, blurb: "" },
-  { id: "toplab", name: "Source C", ready: false, blurb: "This library isn't set up yet — it'll appear here once it's ready." },
-  { id: "freesource", name: "Source D", ready: false, blurb: "This library isn't set up yet — it'll appear here once it's ready." },
-];
-
-const authPanel = document.getElementById('authPanel');
+const signedOutShell = document.getElementById('signedOutShell');
 const signedInShell = document.getElementById('signedInShell');
-const sourcePanel = document.getElementById('sourcePanel');
-const sourceGrid = document.getElementById('sourceGrid');
-const subjectPanel = document.getElementById('subjectPanel');
-const subjectGrid = document.getElementById('subjectGrid');
-const comingSoonPanel = document.getElementById('comingSoonPanel');
-const welcomeName = document.getElementById('welcomeName');
-let currentSourceId = null;
+const homeBody = document.getElementById('homeBody');
+let currentUsername = '';
+let SUBJECTS_ALL = [];
 
-// ---- Source navigation ----
-function renderSourceGrid(){
-  sourceGrid.innerHTML = SOURCES.map(s => `
-    <button class="source-card${s.ready ? '' : ' placeholder'}" data-source="${s.id}">
-      <div class="source-name">${s.name}</div>
-      <div class="source-status${s.ready ? ' ready' : ''}">${s.ready ? 'Available' : 'Coming soon'}</div>
-    </button>
-  `).join('');
-  sourceGrid.querySelectorAll('.source-card').forEach(btn => {
-    btn.addEventListener('click', () => openSource(btn.dataset.source));
+async function loadSubjectsCatalogue(){
+  try{
+    const res = await fetch('data/subjects.json');
+    SUBJECTS_ALL = await res.json();
+  }catch(e){ SUBJECTS_ALL = []; }
+}
+
+function subjectMastery(subject){
+  let mastered = 0, total = 0, modulesDone = 0, attempts = 0;
+  (subject.modules || []).forEach(m => {
+    const p = LEAProgress.load(subject.id, m.id);
+    const c = Math.min((p.mastered || []).length, m.total);
+    mastered += c; total += m.total;
+    if(m.total > 0 && c >= m.total) modulesDone++;
+    attempts += p.attempts || 0;
   });
-}
-renderSourceGrid();
-
-function openSource(sourceId){
-  const source = SOURCES.find(s => s.id === sourceId);
-  sourcePanel.classList.add('hidden');
-  if(source.ready){
-    currentSourceId = sourceId;
-    renderSubjectGrid();
-    subjectPanel.classList.remove('hidden');
-    comingSoonPanel.classList.add('hidden');
-    try{ localStorage.setItem('leaLastSource', sourceId); }catch(e){}
-  } else {
-    comingSoonPanel.classList.remove('hidden');
-    subjectPanel.classList.add('hidden');
-    document.getElementById('comingSoonTitle').textContent = source.name + ' — coming soon';
-    document.getElementById('comingSoonText').textContent = source.blurb;
-  }
-}
-
-function backToSources(){
-  subjectPanel.classList.add('hidden');
-  comingSoonPanel.classList.add('hidden');
-  sourcePanel.classList.remove('hidden');
-  try{ localStorage.removeItem('leaLastSource'); }catch(e){}
-}
-document.getElementById('backToSourcesBtn').addEventListener('click', backToSources);
-document.getElementById('backToSourcesBtn2').addEventListener('click', backToSources);
-
-// Namespaced progress blob shared with every subject page:
-// { history: { moduleId: {mastered:[], bestCorrect, bestTotal, attempts} }, "building-laws": {...} }
-let FULL_DATA = {};
-
-function subjectStats(subjectId, totalQuestions){
-  const subjData = FULL_DATA[subjectId] || {};
-  let mastered = 0, scoreSum = 0, scoreCount = 0;
-  Object.values(subjData).forEach(mp => {
-    mastered += (mp.mastered || []).length;
-    if(mp.bestTotal > 0){ scoreSum += (mp.bestCorrect / mp.bestTotal); scoreCount++; }
-  });
-  // Guard against a stale/inflated count exceeding the known total.
-  if(totalQuestions) mastered = Math.min(mastered, totalQuestions);
-  return { mastered, avgScore: scoreCount > 0 ? (scoreSum / scoreCount) : null };
-}
-
-function renderSubjectGrid(){
-  subjectGrid.innerHTML = SUBJECTS.filter(s => s.source === currentSourceId).map(s => {
-    let progressHtml = '';
-    if(s.ready && s.totalQuestions){
-      const { mastered } = subjectStats(s.id, s.totalQuestions);
-      const pct = Math.round((mastered / s.totalQuestions) * 100);
-      progressHtml = `
-        <div class="subject-progress">
-          <div class="bar-track"><div class="bar-fill" style="width:${pct}%;"></div></div>
-          <div class="cap">${mastered} / ${s.totalQuestions} mastered</div>
-        </div>`;
-    }
-    return `
-    <a class="subject-card${s.ready ? '' : ' placeholder'}" href="${s.href}">
-      <div class="top-row">
-        <div class="name">${s.name}</div>
-        <div class="arrow">&rarr;</div>
-      </div>
-      <div class="status${s.ready ? ' ready' : ''}">${s.ready ? 'Available' : 'Coming soon'}</div>
-      ${progressHtml}
-    </a>
-  `;
-  }).join('');
-}
-renderSubjectGrid();
-
-function renderOverallTracker(){
-  let totalMastered = 0, totalQuestions = 0, subjectsDone = 0;
-  READY_SUBJECTS.forEach(s => {
-    const { mastered } = subjectStats(s.id, s.totalQuestions);
-    totalMastered += mastered;
-    totalQuestions += s.totalQuestions;
-    if(mastered === s.totalQuestions) subjectsDone++;
-  });
-  const pct = totalQuestions > 0 ? Math.round((totalMastered / totalQuestions) * 100) : 0;
-  document.getElementById('overallMasteredNum').textContent = totalMastered;
-  document.getElementById('overallTotalNum').textContent = totalQuestions;
-  document.getElementById('overallSubjectsDone').textContent = subjectsDone + ' / ' + READY_SUBJECTS.length;
-  document.getElementById('overallBarFill').style.width = pct + '%';
-  document.getElementById('overallBarCaption').textContent = totalMastered + ' of ' + totalQuestions + ' questions mastered across every subject';
-  document.getElementById('overallBarPct').textContent = pct + '%';
-}
-
-// ---- "Ready for the Board" tracker + Quick Subject Insight ribbon ----
-function countCompletedQuizzes(){
-  let count = 0;
-  Object.entries(FULL_DATA).forEach(([key, subjData]) => {
-    if(key === '__meta') return; // last-activity marker, not a subject's progress
-    Object.values(subjData || {}).forEach(mp => { if(mp && mp.bestTotal > 0) count++; });
-  });
-  return count;
-}
-
-function computeSubjectInsights(){
-  // Strong subject: the best average quiz score, among subjects that have at
-  // least one completed quiz.
-  const scored = READY_SUBJECTS.map(s => {
-    const { avgScore } = subjectStats(s.id, s.totalQuestions);
-    return { id: s.id, name: s.name, avgScore };
-  }).filter(s => s.avgScore !== null);
-  let strong = null;
-  if(scored.length){
-    strong = scored[0];
-    scored.forEach(s => { if(s.avgScore > strong.avgScore) strong = s; });
-  }
-
-  // Needs work: the least-progressed subject by mastery percentage, regardless
-  // of quiz score — so a subject that's barely been touched surfaces ahead of
-  // one you've already scored well on (and this can differ from Strong Subject,
-  // rather than just echoing it when only one subject has been attempted).
-  let weak = null;
-  const progressed = READY_SUBJECTS.map(s => {
-    const { mastered } = subjectStats(s.id, s.totalQuestions);
-    const total = s.totalQuestions || 0;
-    const pct = total > 0 ? mastered / total : 0;
-    return { id: s.id, name: s.name, mastered, total, pct };
-  }).filter(s => s.total > 0);
-  if(progressed.length){
-    weak = progressed[0];
-    progressed.forEach(s => {
-      // Lower % mastered wins; ties broken toward the subject with more
-      // total questions left to cover.
-      if(s.pct < weak.pct || (s.pct === weak.pct && s.total > weak.total)) weak = s;
-    });
-  }
-
-  return { strong, weak };
+  return { mastered, total, modulesDone, attempts, pct: total > 0 ? Math.round((mastered/total)*100) : 0 };
 }
 
 function timeAgo(iso){
@@ -701,77 +753,378 @@ function timeAgo(iso){
   return years + (years === 1 ? ' year ago' : ' years ago');
 }
 
-function renderReadinessAndInsights(){
-  let totalMastered = 0, totalQuestions = 0;
-  READY_SUBJECTS.forEach(s => {
-    const { mastered } = subjectStats(s.id, s.totalQuestions);
-    totalMastered += mastered;
-    totalQuestions += s.totalQuestions;
+// ================= Countdown =================
+// The clock itself lives in assets/countdown.js, shared with Sign in (2e).
+// This only paints Home's split-flap panels from the numbers it hands over.
+function renderCountdown(p){
+  p = p || LEACountdown.parts();
+  const set = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = LEACountdown.pad2(v); };
+  const daysEl = document.getElementById('cdDays');
+  if(daysEl) daysEl.textContent = p.days;
+  set('cdHrs', p.hrs); set('cdMins', p.mins); set('cdSecs', p.secs);
+}
+let countdownTimer = null;
+
+// ================= Readiness =================
+function computeReadiness(){
+  let mastered = 0, total = 0, completedQuizzes = 0;
+  SUBJECTS_ALL.filter(s => s.ready).forEach(s => {
+    (s.modules || []).forEach(m => {
+      const p = LEAProgress.load(s.id, m.id);
+      mastered += Math.min((p.mastered||[]).length, m.total);
+      total += m.total;
+      if(p.bestTotal > 0) completedQuizzes++;
+    });
   });
-  const pct = totalQuestions > 0 ? Math.round((totalMastered / totalQuestions) * 100) : 0;
-  const completedCount = countCompletedQuizzes();
-  document.getElementById('readinessPct').textContent = pct + '%';
-  document.getElementById('readinessRing').style.setProperty('--pct', pct);
-  document.getElementById('readinessSub').textContent =
-    completedCount + (completedCount === 1 ? ' quiz completed' : ' quizzes completed');
-
-  const { strong, weak } = computeSubjectInsights();
-  document.getElementById('strongSubjectName').innerHTML = strong ? strong.name : 'Not enough data yet';
-  document.getElementById('strongSubjectPct').textContent = strong ? Math.round(strong.avgScore * 100) + '% avg score' : '';
-  document.getElementById('weakSubjectName').innerHTML = weak ? weak.name : 'Not enough data yet';
-  document.getElementById('weakSubjectPct').textContent = weak ? Math.round(weak.pct * 100) + '% mastered' : '';
-
-  const meta = FULL_DATA.__meta;
-  const lastNameEl = document.getElementById('lastQuizName');
-  const lastSubEl = document.getElementById('lastQuizSub');
-  if(meta && meta.at){
-    const subject = SUBJECTS.find(s => s.id === meta.subjectId);
-    lastNameEl.innerHTML = meta.moduleTitle || 'A quiz';
-    lastSubEl.textContent = (subject ? subject.name : meta.subjectId) + ' · ' + timeAgo(meta.at);
-  } else {
-    lastNameEl.textContent = 'No quizzes yet';
-    lastSubEl.textContent = '';
-  }
+  return { mastered, total, pct: total > 0 ? Math.round((mastered/total)*100) : 0, completedQuizzes };
 }
 
-async function loadFullProgress(user){
-  const { data: row } = await sb.from('progress').select('data').eq('user_id', user.id).single();
-  FULL_DATA = (row && row.data) || {};
-  renderSubjectGrid();
-  renderOverallTracker();
-  renderReadinessAndInsights();
+// ================= Streak =================
+function getStreak(){ return LEAProgress.loadMeta('streak') || { current: 0, best: 0, lastCompletedDate: null }; }
+
+// ================= Daily Drill preview (lightweight — no question fetches) =================
+function computeDailyDrillPreview(){
+  let touchedUnmastered = 0, untouchedUnmastered = 0;
+  SUBJECTS_ALL.filter(s => s.ready).forEach(subject => {
+    (subject.modules || []).forEach(mod => {
+      // Counts read the manifest and stored progress only — no question fetch
+      // — so every module counts, matching what the drill can now actually draw
+      // from.
+      const p = LEAProgress.load(subject.id, mod.id);
+      const masteredCount = Math.min((p.mastered||[]).length, mod.total);
+      const unmastered = mod.total - masteredCount;
+      if((p.attempts||0) > 0) touchedUnmastered += unmastered;
+      else untouchedUnmastered += unmastered;
+    });
+  });
+  const total = touchedUnmastered + untouchedUnmastered;
+  return { poolSize: Math.min(20, total), fromTouched: Math.min(20, touchedUnmastered), hasAny: total > 0 };
 }
 
-// ---- Main (global) leaderboard ----
-const leaderboardModalOverlay = document.getElementById('leaderboardModalOverlay');
-document.getElementById('openMainLeaderboardBtn').addEventListener('click', async () => {
-  leaderboardModalOverlay.classList.remove('hidden');
-  const listEl = document.getElementById('leaderboardList');
-  listEl.innerHTML = '<div class="leaderboard-empty">Loading…</div>';
-  const { data, error } = await sb.rpc('get_leaderboard');
-  if(error || !data || data.length === 0){
-    listEl.innerHTML = '<div class="leaderboard-empty">No scores yet — be the first!</div>';
-    return;
-  }
-  const top10 = data.slice(0, 10);
-  const medals = { 1: '1ST', 2: '2ND', 3: '3RD' };
-  listEl.innerHTML = top10.map((row, i) => {
-    const rank = i + 1;
-    const rowClass = rank <= 3 ? 'leaderboard-row lb-top' + rank : 'leaderboard-row';
-    const rankDisplay = medals[rank] || rank;
+// ================= Resume: most recent unfinished run.html attempt =================
+function findMostRecentResume(){
+  let best = null;
+  SUBJECTS_ALL.filter(s => s.ready).forEach(subject => {
+    (subject.modules || []).forEach(mod => {
+      ['study','exam','drill'].forEach(mode => {
+        const rec = LEAResume.load(subject.id, mod.id + '__' + mode);
+        if(rec && rec.total && rec.answeredCount > 0 && rec.answeredCount < rec.total){
+          if(!best || (rec.savedAt||0) > (best.rec.savedAt||0)) best = { subject, mod, mode, rec };
+        }
+      });
+    });
+  });
+  return best;
+}
+
+// ================= Render: Home (2a) =================
+function renderHome(){
+  const readiness = computeReadiness();
+  const streak = getStreak();
+  const drillPreview = computeDailyDrillPreview();
+  const resume = findMostRecentResume();
+  const readySubjects = SUBJECTS_ALL.filter(s => s.ready);
+
+  // Filled from the LEFT, the way the frame draws it — days done so far run
+  // left to right, and the empty ticks at the end are the days still to come.
+  // This used to fill from the right, so a one-day streak lit the last tick
+  // and read as "six days missed".
+  const streakTicks = Array.from({length:7}, (_, i) => i < Math.min(streak.current, 7)).map(filled =>
+    '<div class="streak-tick' + (filled ? ' filled' : '') + '"></div>'
+  ).join('');
+  const streakNote = streak.current > 0
+    ? 'Don’t break the chain — <b>' + streak.current + '</b> day' + (streak.current===1?'':'s') + ' and counting.'
+    : 'Start today’s drill to begin a streak.';
+
+  const drillHref = 'run.html?mode=daily-drill';
+  const drillCard = drillPreview.hasAny
+    ? '<a class="drill-card" href="' + drillHref + '">' +
+        '<div class="dc-head">' +
+          '<div class="dc-title">Daily Drill</div>' +
+          '<div class="dc-count">' + drillPreview.poolSize + ' items →</div>' +
+        '</div>' +
+        '<div class="dc-sub">' + drillPreview.fromTouched + ' you keep missing · rest to introduce</div>' +
+      '</a>'
+    : '<div class="drill-card disabled"><div class="dc-head"><div class="dc-title">Daily Drill</div></div><div class="dc-sub">Nothing to drill right now — you’re caught up.</div></div>';
+
+  const resumeCard = resume
+    ? '<a class="resume-card" href="run.html?s=' + encodeURIComponent(resume.subject.id) + '&m=' + encodeURIComponent(resume.mod.id) + '&mode=' + resume.mode + '">' +
+        // .rc-body groups the two text lines so the desktop strip can sit them
+        // beside the progress block. On a phone it is a plain block and changes
+        // nothing about the stacked layout.
+        '<div class="rc-body">' +
+          '<div class="rc-kicker">Unfinished attempt · ' + escapeHtml(stripEmoji(resume.subject.name)) + '</div>' +
+          '<div class="rc-title">' + escapeHtml(resume.mod.title) + '</div>' +
+        '</div>' +
+        '<div class="rc-meta"><span>Q' + resume.rec.position + ' of ' + resume.rec.total + ' · ' + timeAgo(new Date(resume.rec.savedAt).toISOString()) + '</span><span><b>Resume →</b></span></div>' +
+      '</a>'
+    : '';
+
+  const subjectRows = readySubjects.slice(0, 7).map(s => {
+    const m = subjectMastery(s);
+    const low = m.pct < 10;
     return (
-      '<div class="' + rowClass + '">' +
-        '<span class="lb-rank">' + rankDisplay + '</span>' +
-        '<span class="lb-name">' + row.username + '</span>' +
-        '<span class="lb-stats">' + row.total_mastered + ' mastered · ' + Math.round((row.avg_best_score||0)*100) + '% avg</span>' +
-      '</div>'
+      '<a class="subject-row" href="subject.html?s=' + encodeURIComponent(s.id) + '">' +
+        '<div class="sr-left"><div class="sr-name">' + escapeHtml(stripEmoji(s.name)) + '</div>' +
+          '<div class="sr-bar-track"><div class="sr-bar-fill" style="width:' + m.pct + '%;"></div></div>' +
+        '</div>' +
+        '<div class="sr-pct' + (low ? ' low' : '') + '">' + m.pct + '%</div>' +
+      '</a>'
     );
   }).join('');
-});
-document.getElementById('leaderboardModalClose').addEventListener('click', () => leaderboardModalOverlay.classList.add('hidden'));
-leaderboardModalOverlay.addEventListener('click', (e) => { if(e.target === leaderboardModalOverlay) leaderboardModalOverlay.classList.add('hidden'); });
+  const placeholderRows = SUBJECTS_ALL.filter(s => !s.ready).map(s =>
+    '<div class="subject-row placeholder"><div class="sr-left"><div class="sr-name">' + escapeHtml(stripEmoji(s.name)) + '</div></div><div class="sr-pct" style="color:var(--muted);">Soon</div></div>'
+  ).join('');
 
-// ---- Auth tabs ----
+  const savedCounts = computeSavedCounts();
+  const initials = (currentUsername || '?').trim().slice(0, 2).toUpperCase();
+
+  homeBody.innerHTML =
+    '<div class="home-top-bar">' +
+      '<button class="avatar-btn-44" id="openAccountBtn" title="Account">' + escapeHtml(initials) + '</button>' +
+      '<div class="home-wordmark"><div class="hw-eyebrow">Peter Parker’s</div><div class="hw-title">LEA Reviewer</div></div>' +
+      '<a class="icon-btn-44" href="standings.html" title="Standings">' + svgTrophy() + '</a>' +
+    '</div>' +
+
+    '<div class="presence-strip">' +
+      '<span><span class="online-dot"></span><span id="onlineCount">0</span> online</span>' +
+      '<span class="offline-ready">◎ Offline-ready</span>' +
+    '</div>' +
+
+    // A direct child of #homeBody, not of a column, so the desktop header grid
+    // can place it. Its phone position (between the resume card and Subjects)
+    // is held by `order` instead of DOM order — see the .search-field rule.
+    '<form class="search-field" id="searchForm">' + svgSearch() + '<input type="text" id="searchInput" placeholder="Search questions"></form>' +
+
+    // Three column groups for the 1120px layout. On phones they are
+    // display:contents, so these wrappers vanish from layout entirely and the
+    // children flow as the single stack they always were — the mobile design
+    // is untouched. The right rail is desktop-only: on a phone that material
+    // already lives behind the trophy button and the account sheet.
+    '<div class="home-cols">' +
+    '<div class="col-left">' +
+
+    '<div class="countdown-card">' +
+      '<div class="countdown-label">Until the LEA · 17 January 2027</div>' +
+      '<div class="flap-grid">' +
+        '<div class="flap"><div class="flap-val" id="cdDays">0</div><div class="flap-lbl">Days</div></div>' +
+        '<div class="flap"><div class="flap-val" id="cdHrs">00</div><div class="flap-lbl">Hrs</div></div>' +
+        '<div class="flap"><div class="flap-val" id="cdMins">00</div><div class="flap-lbl">Min</div></div>' +
+        '<div class="flap seconds"><div class="flap-val" id="cdSecs">00</div><div class="flap-lbl">Sec</div></div>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="readiness-card">' +
+      '<div class="readiness-ring" style="--pct:' + readiness.pct + ';"><div class="rr-pct">' + readiness.pct + '%</div></div>' +
+      '<div class="readiness-info">' +
+        '<h2>Ready for the board!</h2>' +
+        '<div class="rr-rule"></div>' +
+        '<div class="rr-stats">' + readiness.mastered + ' / ' + readiness.total + ' mastered<br>' + readiness.completedQuizzes + ' quizzes completed</div>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="streak-card">' +
+      '<div class="streak-title">' + LEAIcons.flame(15) + ' ' + streak.current + '-day streak' + (streak.best > streak.current ? ' · best ' + streak.best : '') + '</div>' +
+      '<div class="streak-ticks">' + streakTicks + '</div>' +
+      '<div class="streak-note">' + streakNote + '</div>' +
+    '</div>' +
+
+    '</div>' +          // /col-left
+    '<div class="col-center">' +
+
+    drillCard +
+
+    '<div class="tiles-row">' +
+      '<a class="tile mock" href="run.html?mode=exam">' +
+        '<div class="tile-kicker">Mock exam</div>' +
+        '<div class="tile-title">Mixed run</div>' +
+        '<div class="tile-sub">Full 200/5h or 50-item sim · across subjects</div>' +
+      '</a>' +
+      '<button class="tile topic" id="openTopicDrillBtn" type="button">' +
+        '<div class="tile-kicker">Topic drill</div>' +
+        '<div class="tile-title">Weak spots</div>' +
+        '<div class="tile-sub">Practice your shakiest topics</div>' +
+      '</button>' +
+    '</div>' +
+
+    resumeCard +
+
+    '<div class="subjects-divider">Subjects</div>' +
+    '<div class="subject-grid">' + subjectRows + placeholderRows + '</div>' +
+
+    '</div>' +          // /col-center
+    '<div class="col-right">' + renderDesktopRail(savedCounts) + '</div>' +
+    '</div>';           // /home-cols
+
+  document.getElementById('openAccountBtn').addEventListener('click', openAccountSheet);
+  document.getElementById('openTopicDrillBtn').addEventListener('click', openTopicSheet);
+  document.getElementById('searchForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const q = document.getElementById('searchInput').value.trim();
+    if(q) window.location.href = 'search.html?q=' + encodeURIComponent(q);
+  });
+
+  if(countdownTimer) countdownTimer();
+  countdownTimer = LEACountdown.subscribe(renderCountdown);
+  fillDesktopRail();
+}
+
+// ================= Desktop right rail (7a) =================
+// Standings and saved counts, which on a phone live behind the trophy button
+// and the account sheet. At 1120px there's room to keep them on screen, which
+// is the point of the wider layout: context, not bigger type.
+function renderDesktopRail(savedCounts){
+  return (
+    '<div class="rail-card">' +
+      '<div class="rail-head">Standings</div>' +
+      '<div id="railStandings"><div class="rail-empty">Loading…</div></div>' +
+    '</div>' +
+    '<div class="rail-card">' +
+      '<div class="rail-head">Saved</div>' +
+      '<a class="rail-stat" href="saved.html"><span>Flagged</span><b>' + savedCounts.flagged + '</b></a>' +
+      '<a class="rail-stat" href="saved.html"><span>With notes</span><b>' + savedCounts.notes + '</b></a>' +
+    '</div>' +
+    '<div class="rail-note">◎ Offline-ready — cached modules work without a connection</div>'
+  );
+}
+
+// Fetched after Home has painted: the rail is supporting context, and must
+// never hold up the screen the reader actually came for.
+async function fillDesktopRail(){
+  const slot = document.getElementById('railStandings');
+  if(!slot) return;
+  let rows = [];
+  try{
+    const { data, error } = await sb.rpc('get_leaderboard');
+    if(error) throw error;
+    rows = (data || []).slice().sort((a, b) => (b.total_mastered || 0) - (a.total_mastered || 0));
+  }catch(e){
+    slot.innerHTML = '<div class="rail-empty">Standings unavailable right now.</div>';
+    return;
+  }
+  if(!rows.length){ slot.innerHTML = '<div class="rail-empty">No standings yet.</div>'; return; }
+
+  const myIndex = rows.findIndex(r => r.username === currentUsername);
+  // Show the top three, then you in context — the rail is 264px, so the
+  // interesting rows are the leaders and whoever is immediately ahead of you.
+  const picks = [];
+  rows.slice(0, 3).forEach((r, i) => picks.push({ r, rank: i + 1 }));
+  if(myIndex > 2){
+    if(myIndex > 3) picks.push({ r: rows[myIndex - 1], rank: myIndex });
+    picks.push({ r: rows[myIndex], rank: myIndex + 1, mine: true });
+  }
+
+  let html = picks.map(p =>
+    '<a class="rail-row' + (p.mine ? ' mine' : '') + '" href="standings.html">' +
+      '<span class="rr-rank">' + p.rank + '</span>' +
+      '<span class="rr-name">' + escapeHtml(p.r.username || '—') + '</span>' +
+      '<span class="rr-num">' + (p.r.total_mastered || 0) + '</span>' +
+    '</a>'
+  ).join('');
+
+  if(myIndex > 0){
+    const ahead = rows[myIndex - 1];
+    const gap = (ahead.total_mastered || 0) - (rows[myIndex].total_mastered || 0);
+    if(gap > 0){
+      html += '<div class="rail-gap">' + gap + ' behind ' + escapeHtml(ahead.username || 'the next place') + '.</div>';
+    }
+  }
+  slot.innerHTML = html;
+}
+
+// ================= Weak topics sheet =================
+async function buildHomeQuestionIndex(){
+  const cells = [];
+  for(const subject of SUBJECTS_ALL){
+    if(!subject.ready) continue;
+    for(const mod of (subject.modules || [])){
+      // Weak Spots reads the whole bank — see assets/quiz-source.js.
+      const arr = await LEAQuizSource.loadModuleQuestions(mod);
+      if(!arr) continue;
+      const p = LEAProgress.load(subject.id, mod.id);
+      const masteredSet = new Set(p.mastered || []);
+      arr.forEach((q, qIndex) => {
+        if(q.hidden) return; // admin-hidden — keeps its slot, just never served
+        cells.push({ subjectId: subject.id, moduleId: mod.id, qIndex, s: q.s || mod.title, mastered: masteredSet.has(qIndex) });
+      });
+    }
+  }
+  return cells;
+}
+
+function computeSavedCounts(){
+  let flagged = 0, notes = 0;
+  SUBJECTS_ALL.filter(s => s.ready).forEach(subject => {
+    (subject.modules || []).forEach(mod => {
+      const p = LEAProgress.load(subject.id, mod.id);
+      flagged += (p.flagged || []).length;
+      notes += Object.keys(p.notes || {}).length;
+    });
+  });
+  return { flagged, notes };
+}
+
+function openAccountSheet(){
+  const counts = computeSavedCounts();
+  const body = document.getElementById('accountSheetBody');
+  body.innerHTML =
+    '<a class="account-row" href="profile.html"><div><div class="ar-label">Profile</div><div class="ar-sub">' + escapeHtml(currentUsername) + '</div></div><span>→</span></a>' +
+    '<a class="account-row" href="saved.html"><div><div class="ar-label">Saved</div><div class="ar-sub">' + counts.flagged + ' flagged · ' + counts.notes + ' note' + (counts.notes === 1 ? '' : 's') + '</div></div><span>→</span></a>' +
+    '<a class="account-row" href="reminders.html"><div><div class="ar-label">Reminders</div></div><span>→</span></a>' +
+    // Appearance lives here rather than as a floating button over the page:
+    // it's a set-once preference, and the sheet is where the other ones are.
+    '<button class="account-row" id="themeRow" type="button"><div><div class="ar-label">Appearance</div><div class="ar-sub" id="themeRowSub"></div></div><span class="ar-icon" id="themeRowIcon"></span></button>' +
+    '<button class="account-row danger" id="logoutBtn2" type="button"><div class="ar-label">Log out</div></button>';
+
+  const themeRow = document.getElementById('themeRow');
+  const paintThemeRow = () => {
+    const isLight = document.documentElement.classList.contains('light-mode');
+    document.getElementById('themeRowSub').textContent = isLight ? 'Light' : 'Dark';
+    // Show the icon for the mode you'd switch TO, matching the row's action.
+    document.getElementById('themeRowIcon').innerHTML = isLight ? LEAIcons.moon(18) : LEAIcons.sun(18);
+    themeRow.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+  };
+  paintThemeRow();
+  themeRow.addEventListener('click', () => { LEATheme.toggle(); paintThemeRow(); });
+
+  document.getElementById('logoutBtn2').addEventListener('click', async () => { await sb.auth.signOut(); });
+  document.getElementById('accountSheetOverlay').classList.remove('hidden');
+}
+document.getElementById('accountSheetClose').addEventListener('click', () => document.getElementById('accountSheetOverlay').classList.add('hidden'));
+document.getElementById('accountSheetOverlay').addEventListener('click', (e) => { if(e.target.id === 'accountSheetOverlay') document.getElementById('accountSheetOverlay').classList.add('hidden'); });
+
+async function openTopicSheet(){
+  document.getElementById('topicSheetOverlay').classList.remove('hidden');
+  const body = document.getElementById('topicSheetBody');
+  body.innerHTML = '<div class="state-note">Finding your shakiest topics…</div>';
+  const index = await buildHomeQuestionIndex();
+  const byTopic = {};
+  index.forEach(c => {
+    byTopic[c.s] = byTopic[c.s] || { total: 0, mastered: 0 };
+    byTopic[c.s].total++;
+    if(c.mastered) byTopic[c.s].mastered++;
+  });
+  const weak = Object.keys(byTopic).map(name => {
+    const t = byTopic[name];
+    return { name, pct: Math.round((t.mastered / t.total) * 100) };
+  }).filter(t => t.pct < 100).sort((a,b) => a.pct - b.pct).slice(0, 6);
+
+  if(weak.length === 0){
+    body.innerHTML = '<div class="state-note">No weak topics found — nice work.</div>';
+    return;
+  }
+  body.innerHTML = weak.map(t =>
+    '<a class="weak-topic-row" href="run.html?mode=drill&topic=' + encodeURIComponent(t.name) + '">' +
+      '<div class="wt-name">' + escapeHtml(t.name) + '</div>' +
+      '<div class="wt-pct">' + t.pct + '%</div>' +
+      '<div class="wt-arrow">→</div>' +
+    '</a>'
+  ).join('');
+}
+document.getElementById('topicSheetClose').addEventListener('click', () => document.getElementById('topicSheetOverlay').classList.add('hidden'));
+document.getElementById('topicSheetOverlay').addEventListener('click', (e) => { if(e.target.id === 'topicSheetOverlay') document.getElementById('topicSheetOverlay').classList.add('hidden'); });
+
+// ================= Auth tabs =================
 const loginTab = document.getElementById('loginTab');
 const signupTab = document.getElementById('signupTab');
 const loginForm = document.getElementById('loginForm');
@@ -785,14 +1138,14 @@ signupTab.addEventListener('click', () => {
   signupForm.classList.remove('hidden'); loginForm.classList.add('hidden');
 });
 
-// ---- Password visibility toggles ----
 document.querySelectorAll('.field-eye').forEach(btn => {
   btn.addEventListener('click', () => {
     const target = document.getElementById(btn.dataset.target);
     if(!target) return;
     const showing = target.type === 'text';
     target.type = showing ? 'password' : 'text';
-    btn.textContent = showing ? '👁' : '🙈';
+    btn.innerHTML = showing ? LEAIcons.eyeOff(17) : LEAIcons.eye(17);
+    btn.setAttribute('aria-label', showing ? 'Hide password' : 'Show password');
   });
 });
 
@@ -806,6 +1159,9 @@ loginForm.addEventListener('submit', async (e) => {
   const password = document.getElementById('loginPassword').value;
   const errEl = document.getElementById('loginError');
   errEl.textContent = '';
+  // Read the box before the token is written, not after.
+  const keep = document.getElementById('keepSignedIn');
+  leaPersistSession = keep ? keep.checked : true;
   const { error } = await sb.auth.signInWithPassword({ email, password });
   if(error){ errEl.textContent = error.message; return; }
 });
@@ -827,22 +1183,13 @@ signupForm.addEventListener('submit', async (e) => {
   }
 });
 
-document.getElementById('logoutBtn').addEventListener('click', async () => {
-  await sb.auth.signOut();
-});
-
-// ---- Online presence (who's online right now) ----
+// ================= Online presence =================
 let presenceChannel = null;
-const onlineCountEl = document.getElementById('onlineCount');
-const onlineNamesEl = document.getElementById('onlineNames');
-
 function renderOnline(names){
   const uniq = Array.from(new Set(names));
-  onlineCountEl.textContent = uniq.length;
-  onlineNamesEl.textContent = uniq.length ? uniq.join(', ') : '—';
-  onlineNamesEl.classList.toggle('no-scroll', uniq.length === 0);
+  const el = document.getElementById('onlineCount');
+  if(el) el.textContent = uniq.length;
 }
-
 function startPresence(username){
   if(presenceChannel) return;
   presenceChannel = sb.channel('online-users', {
@@ -859,57 +1206,135 @@ function startPresence(username){
     }
   });
 }
-
 function stopPresence(){
-  if(presenceChannel){
-    sb.removeChannel(presenceChannel);
-    presenceChannel = null;
-  }
-  renderOnline([]);
+  if(presenceChannel){ sb.removeChannel(presenceChannel); presenceChannel = null; }
 }
 
-// ---- Session-driven view state ----
+// ================= Session-driven view state =================
 async function showSignedIn(user){
   let username = (user.email || '').split('@')[0];
-  const { data: profile } = await sb.from('profiles').select('username').eq('id', user.id).single();
-  if(profile && profile.username) username = profile.username;
-  welcomeName.textContent = username;
-  authPanel.classList.add('hidden');
-  signedInShell.classList.remove('hidden');
-
-  // A link like index.html?source=jpt (used by subject/quiz pages) always
-  // wins over local storage, so "All subjects" works even if this browser
-  // never recorded a previous source click (new device, cleared storage,
-  // private browsing, a bookmarked/shared quiz link, etc).
-  let urlSourceId = null;
-  try{ urlSourceId = new URLSearchParams(window.location.search).get('source'); }catch(e){}
-
-  let lastSourceId = urlSourceId;
-  if(!lastSourceId){
-    try{ lastSourceId = localStorage.getItem('leaLastSource'); }catch(e){}
-  }
-  const lastSource = SOURCES.find(s => s.id === lastSourceId && s.ready);
-  if(lastSource){
-    currentSourceId = lastSource.id;
-    renderSubjectGrid();
-    sourcePanel.classList.add('hidden');
-    subjectPanel.classList.remove('hidden');
-    comingSoonPanel.classList.add('hidden');
-    try{ localStorage.setItem('leaLastSource', lastSource.id); }catch(e){}
+  // maybeSingle(), and the error is checked: with single() a failed lookup
+  // was indistinguishable from "no profile row", so one network blip would
+  // bounce a long-established user into the display-name onboarding screen.
+  const { data: profile, error: profileErr } = await sb.from('profiles').select('username').eq('id', user.id).maybeSingle();
+  if(profileErr){
+    // Couldn't read the profile. Fall back to the email prefix for display
+    // and carry on — Home is still perfectly usable, and it's far better
+    // than sending someone who already has a name off to pick a new one.
+    username = (user.email || '').split('@')[0];
+  } else if(profile && profile.username){
+    username = profile.username;
   } else {
-    sourcePanel.classList.remove('hidden');
-    subjectPanel.classList.add('hidden');
-    comingSoonPanel.classList.add('hidden');
+    // Genuinely no username yet — happens for Google sign-in, which skips the
+    // signup form's username field entirely. One-time onboarding (3h)
+    // before Home, not a permanent redirect loop: welcome.html itself sets
+    // profiles.username, so this branch won't fire again after it runs.
+    window.location.href = 'welcome.html';
+    return;
+  }
+  // The tour (5c), once per device. Read synchronously from localStorage so
+  // there is no window in which a returning user gets sent to it while the
+  // flag is still in flight.
+  let seenTour = true;
+  try{ seenTour = localStorage.getItem('lea_onboarded_v1') === '1'; }catch(e){}
+  if(!seenTour){
+    window.location.href = 'onboarding.html';
+    return;
   }
 
+  currentUsername = username;
+  stopSignInScreen();
+  document.documentElement.classList.remove('lea-resuming');
+  signedOutShell.classList.add('hidden');
+  signedInShell.classList.remove('hidden');
   startPresence(username);
-  await loadFullProgress(user);
+  await loadSubjectsCatalogue();
+  renderHome();
+  window.leaOnProgressReset = renderHome;
 }
 
 function showSignedOut(){
+  document.documentElement.classList.remove('lea-resuming');
   stopPresence();
+  // countdownTimer holds the unsubscribe returned by LEACountdown.subscribe.
+  if(countdownTimer){ countdownTimer(); countdownTimer = null; }
   signedInShell.classList.add('hidden');
-  authPanel.classList.remove('hidden');
+  signedOutShell.classList.remove('hidden');
+  startSignInScreen();
+}
+
+// ================= 2e Sign in =================
+let signInClockStop = null;
+let signInPresenceChannel = null;
+
+// Forgot?: sends Supabase's own reset mail to whatever is in the email field.
+// It reports what happened either way rather than silently doing nothing —
+// and it does not reveal whether the address has an account, which is why the
+// success copy is deliberately non-committal.
+async function requestPasswordReset(){
+  const emailEl = document.getElementById('loginEmail');
+  const errEl = document.getElementById('loginError');
+  const email = (emailEl && emailEl.value || '').trim();
+  if(!email){
+    if(errEl) errEl.textContent = 'Enter your email above first, then tap Forgot.';
+    if(emailEl) emailEl.focus();
+    return;
+  }
+  const btn = document.getElementById('forgotBtn');
+  if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+  try{
+    await sb.auth.resetPasswordForEmail(email, { redirectTo: window.location.origin + window.location.pathname });
+    if(errEl) errEl.textContent = 'If that address has an account, a reset link is on its way.';
+  }catch(e){
+    if(errEl) errEl.textContent = 'Could not send a reset link just now — try again shortly.';
+  }
+  if(btn){ btn.disabled = false; btn.textContent = 'Forgot?'; }
+}
+
+function startSignInScreen(){
+  // Same clock as Home — one source, two renderings. Seconds are deliberately
+  // absent here: the frame shows days : hrs : min.
+  if(signInClockStop) signInClockStop();
+  signInClockStop = LEACountdown.subscribe(p => {
+    const set = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = v; };
+    set('scDays', p.days);
+    set('scHrs', LEACountdown.pad2(p.hrs));
+    set('scMins', LEACountdown.pad2(p.mins));
+  });
+  startSignInPresence();
+  const forgotBtn = document.getElementById('forgotBtn');
+  if(forgotBtn && !forgotBtn.dataset.wired){
+    forgotBtn.dataset.wired = '1';
+    forgotBtn.addEventListener('click', requestPasswordReset);
+  }
+}
+
+// Real presence, not a placeholder. A signed-out client may subscribe to the
+// same channel Home uses and read its state; it never calls track(), so it
+// cannot inflate the number it reports. The row stays hidden until a real
+// count arrives, and hides again at zero — "0 reviewees studying right now"
+// is worse than saying nothing.
+function startSignInPresence(){
+  if(signInPresenceChannel) return;
+  const row = document.getElementById('signinPresence');
+  const num = document.getElementById('signinPresenceCount');
+  if(!row || !num) return;
+  try{
+    const ch = sb.channel('online-users', { config: { presence: { key: 'signin-' + Math.random().toString(36).slice(2) } } });
+    signInPresenceChannel = ch;
+    ch.on('presence', { event: 'sync' }, () => {
+      const names = Object.values(ch.presenceState()).flat().map(p => p.username).filter(Boolean);
+      const n = new Set(names).size;
+      num.textContent = n;
+      row.classList.toggle('hidden', n === 0);
+    });
+    ch.subscribe();
+  }catch(e){ /* leave the row hidden */ }
+}
+
+function stopSignInScreen(){
+  if(signInClockStop){ signInClockStop(); signInClockStop = null; }
+  if(signInPresenceChannel){ try{ sb.removeChannel(signInPresenceChannel); }catch(e){} signInPresenceChannel = null; }
 }
 
 sb.auth.onAuthStateChange((event, session) => {
@@ -922,6 +1347,13 @@ sb.auth.onAuthStateChange((event, session) => {
   if(session){ await showSignedIn(session.user); } else { showSignedOut(); }
 })();
 
+// ---- SVGs (Lucide-style, stroke-width 1.5, matching the site's icon set) ----
+function svgTrophy(){
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M17 5h3a2 2 0 0 1-2 4h-1M7 5H4a2 2 0 0 0 2 4h1"/></svg>';
+}
+function svgSearch(){
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>';
+}
 </script>
 </body>
 </html>

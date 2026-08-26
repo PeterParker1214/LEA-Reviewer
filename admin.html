@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LEA Reviewer — Admin</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/theme.js"></script>
+<script src="assets/lea-confirm.js?v=1"></script>
+<script src="assets/icons.js?v=1"></script>
+<script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -16,12 +18,15 @@
     --line: rgba(111,168,207,0.20); --grid-line: rgba(111,168,207,0.09);
     --font-head: 'Big Shoulders Display', sans-serif; --font-body: 'Space Grotesk', sans-serif; --font-mono: 'IBM Plex Mono', monospace;
   }
-  body.light-mode{
-    --ink:#182028; --bg-deep:#eef2f3; --bg-panel:#ffffff; --bg-panel-deep:#f3f6f7;
-    --gold:#b5791f; --gold-bright:#8f5f16;
-    --rose:#2f6c95; --rose-bright:#1f5478; --muted:#5c6975; --good:#2f8a55; --bad:#b23d2f;
-    --line: rgba(47,108,149,0.20); --grid-line: rgba(47,108,149,0.09);
+  body.light-mode, :root.light-mode{
+    --ink:#16202b; --bg-deep:#d3dee6; --bg-panel:#ffffff; --bg-panel-deep:#e9eff4;
+    --gold:#b5791f; --gold-bright:#7d520c;
+    --rose:#2f6c95; --rose-bright:#1b4a6b; --muted:#4f5d6a; --good:#206b3c; --bad:#a1372a;
+    --line: rgba(47,108,149,0.28); --grid-line: rgba(47,108,149,0.11);
   }
+  /* inline SVG icons sitting inside a text label */
+  .btn-ico{ display:inline-flex; vertical-align:-2px; margin-right:2px; }
+  .btn-ico svg{ width:15px; height:15px; }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
@@ -78,6 +83,19 @@
   .q-card{border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:14px;background:var(--bg-panel-deep);}
   .q-opts{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:center;margin-top:6px;}
   .hidden{display:none;}
+  .q-row{cursor:pointer;}
+  .q-row .qr-text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .q-row .qr-hidden-tag{color:var(--muted);font-style:italic;}
+  .report-badge{font-size:11px;padding:3px 8px;border-radius:20px;background:rgba(226,96,74,0.15);border:1px solid var(--bad);color:var(--bad);white-space:nowrap;}
+  .filter-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:13px;color:var(--muted);}
+  .report-card{border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px;background:var(--bg-panel-deep);}
+  .report-card .rc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px;}
+  .report-card .rc-loc{font-family:var(--font-mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;}
+  .report-card .rc-count{font-size:11px;padding:3px 8px;border-radius:20px;background:rgba(226,96,74,0.15);border:1px solid var(--bad);color:var(--bad);white-space:nowrap;flex-shrink:0;}
+  .report-card .rc-question{font-size:14px;margin:6px 0 10px;}
+  .report-card .rc-reasons{font-size:12.5px;color:var(--muted);margin-bottom:6px;line-height:1.6;}
+  .report-card .rc-reasons b{color:var(--ink);}
+  .report-card .rc-comment{font-size:12.5px;color:var(--ink);background:var(--bg-panel);border-radius:6px;padding:8px 10px;margin:4px 0;}
 </style>
 </head>
 <body>
@@ -92,10 +110,12 @@
       <button class="tab-btn active" data-tab="subjects">Subjects</button>
       <button class="tab-btn" data-tab="pages">Pages &amp; Quizzes</button>
       <button class="tab-btn" data-tab="upload">Add Module</button>
+      <button class="tab-btn" data-tab="reports">Reports</button>
     </div>
     <div id="tab-subjects"></div>
     <div id="tab-pages" class="hidden"></div>
     <div id="tab-upload" class="hidden"></div>
+    <div id="tab-reports" class="hidden"></div>
   </div>
 </div>
 
@@ -114,16 +134,71 @@ const panelEl = document.getElementById('panel');
 const tabSubjectsEl = document.getElementById('tab-subjects');
 const tabPagesEl = document.getElementById('tab-pages');
 const tabUploadEl = document.getElementById('tab-upload');
+const tabReportsEl = document.getElementById('tab-reports');
 
 let subjects = [];
-let sources = [];
 let rawIndexHtml = '';
 let accessToken = '';
-let fileTree = [];        // list of {path} for every .html file in the repo
+let fileTree = [];        // list of {path} for every editable file in the repo (.html pages + data/*/*.json module files)
 let currentFilePath = '';
 let currentFileRaw = '';
 let currentQuestions = null; // parsed QUESTIONS array, or null if this file doesn't have one
+let currentIsJsonFile = false; // true when currentFilePath is a data/*/*.json module file, not an .html page
 let currentDoc = null;       // parsed Document, used by the generic text editor
+let expandedQIdx = new Set(); // which question rows are expanded in the current file's editor
+
+// ---- Manifest (data/subjects.json) — used to resolve a report's question_ref
+// (subjectId/moduleId/qIndex) to an actual file, and to annotate the file
+// list with report counts. Loaded once, lazily, the first time it's needed.
+let manifestSubjects = null;
+async function loadManifest(){
+  // A failed load used to be cached as [] — which is truthy, so this early
+  // return fired forever after and the Reports tab stayed stuck showing raw
+  // subject/module/index refs for the rest of the session. Only keep a
+  // result that actually has something in it, so a blip retries.
+  if(manifestSubjects && manifestSubjects.length) return manifestSubjects;
+  try{
+    const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/data/subjects.json?t=${Date.now()}`;
+    const resp = await fetch(url);
+    manifestSubjects = resp.ok ? JSON.parse(await resp.text()) : [];
+  }catch(e){ manifestSubjects = []; }
+  return manifestSubjects;
+}
+function findModuleInManifest(subjectId, moduleId){
+  const list = manifestSubjects || [];
+  const subject = list.find(s => s.id === subjectId);
+  const mod = subject && (subject.modules || []).find(m => m.id === moduleId);
+  return mod ? { subject, mod } : null;
+}
+
+// ---- Reports (Supabase `reports` table, grouped by question_ref) ----
+let openReports = [];          // raw rows, status='open'
+let reportsByQuestionRef = {}; // question_ref -> [report, ...]
+let reportsLoadError = null;
+
+async function loadReports(){
+  const { data, error } = await sb.from('reports').select('*').eq('status', 'open').order('created_at', { ascending: false });
+  // A failed query used to fall through to `data || []`, which renders the
+  // "no open reports" all-clear — the worst possible lie on the one screen
+  // whose job is surfacing problems. Keep the error so the tab can say so.
+  reportsLoadError = error ? (error.message || String(error)) : null;
+  openReports = data || [];
+  reportsByQuestionRef = {};
+  openReports.forEach(r => { (reportsByQuestionRef[r.question_ref] = reportsByQuestionRef[r.question_ref] || []).push(r); });
+}
+// Report counts for whatever file is currently open in the Pages editor, keyed by question index.
+function reportCountsForCurrentFile(){
+  const counts = {};
+  if(!currentModuleRef) return counts;
+  Object.keys(reportsByQuestionRef).forEach(ref => {
+    const parts = ref.split('/');
+    if(parts[0] === currentModuleRef.subjectId && parts[1] === currentModuleRef.moduleId){
+      counts[parts[2]] = reportsByQuestionRef[ref].length;
+    }
+  });
+  return counts;
+}
+let currentModuleRef = null; // { subjectId, moduleId } for whatever quiz file is open, when known from the manifest
 
 // ---- "Add Module" (drag & drop upload) tab state ----
 let uploadedFileText = null;
@@ -175,11 +250,14 @@ async function init(){
       tabSubjectsEl.classList.toggle('hidden', btn.dataset.tab !== 'subjects');
       tabPagesEl.classList.toggle('hidden', btn.dataset.tab !== 'pages');
       tabUploadEl.classList.toggle('hidden', btn.dataset.tab !== 'upload');
+      tabReportsEl.classList.toggle('hidden', btn.dataset.tab !== 'reports');
       if(btn.dataset.tab === 'pages' && fileTree.length === 0) loadFileTree();
       if(btn.dataset.tab === 'upload') renderUploadTab();
+      if(btn.dataset.tab === 'reports') openReportsTab();
     });
   });
 
+  await loadManifest();
   await loadSubjects();
 }
 
@@ -197,9 +275,6 @@ async function loadSubjects(){
     if(!match) throw new Error('Could not find the SUBJECTS list inside index.html.');
 
     subjects = new Function('return ' + match[1])();
-
-    const srcMatch = rawIndexHtml.match(/const SOURCES = (\[[\s\S]*?\]);/);
-    sources = srcMatch ? new Function('return ' + srcMatch[1])() : [];
 
     renderSubjectsTab();
   }catch(e){
@@ -249,16 +324,19 @@ function renderSubjectsTab(){
     btn.addEventListener('click', () => { const i=+btn.dataset.idx; [subjects[i+1],subjects[i]]=[subjects[i],subjects[i+1]]; renderSubjectsTab(); });
   });
   tabSubjectsEl.querySelectorAll('button[data-action="delete"]').forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', async () => {
       const i = +btn.dataset.idx;
-      if(confirm(`Delete "${subjects[i].name}" from the subject list? (This only removes it from the menu — it does not delete any quiz files.)`)){
-        subjects.splice(i, 1);
-        renderSubjectsTab();
-      }
+      const ok = await LEAConfirm(
+        `Delete "${subjects[i].name}" from the subject list? (This only removes it from the menu — it does not delete any quiz files.)`,
+        { title: 'Remove subject', yes: 'Remove from list' }
+      );
+      if(!ok) return;
+      subjects.splice(i, 1);
+      renderSubjectsTab();
     });
   });
-  document.getElementById('addSubjectBtn').addEventListener('click', () => {
-    const name = prompt('Name of the new subject:');
+  document.getElementById('addSubjectBtn').addEventListener('click', async () => {
+    const name = await LEAPrompt('Name of the new subject:', { title: 'Add subject', yes: 'Add subject' });
     if(!name) return;
     const slug = slugify(name);
     subjects.push({ id: slug, name: name, href: `subjects/${slug}.html`, ready: false });
@@ -308,42 +386,79 @@ async function loadFileTree(){
     const resp = await fetch(url);
     if(!resp.ok) throw new Error('Could not list files (status ' + resp.status + ')');
     const data = await resp.json();
-    fileTree = (data.tree || []).filter(item => item.type === 'blob' && item.path.endsWith('.html'));
+    fileTree = (data.tree || []).filter(item => item.type === 'blob' &&
+      (item.path.endsWith('.html') || /^data\/[^/]+\/[^/]+\.json$/.test(item.path)));
     renderPagesTab();
   }catch(e){
     tabPagesEl.innerHTML = '<div class="card msg error">' + escapeHtml(e.message) + '</div>';
   }
 }
 
-function renderPagesTab(filterText){
+function moduleRefForFilePath(path){
+  const list = manifestSubjects || [];
+  for(const subject of list){
+    for(const mod of (subject.modules || [])){
+      if(mod.file === path) return { subjectId: subject.id, moduleId: mod.id };
+    }
+  }
+  return null;
+}
+function fileReportCount(path){
+  const ref = moduleRefForFilePath(path);
+  if(!ref) return 0;
+  let count = 0;
+  Object.keys(reportsByQuestionRef).forEach(qref => {
+    const parts = qref.split('/');
+    if(parts[0] === ref.subjectId && parts[1] === ref.moduleId) count += reportsByQuestionRef[qref].length;
+  });
+  return count;
+}
+function fileItemHtml(f){
+  const count = fileReportCount(f.path);
+  return `<div class="file-item" data-path="${escapeHtml(f.path)}">` +
+    `<span>${escapeHtml(f.path)}</span>` +
+    (count ? `<span class="report-badge">${count} reported</span>` : '') +
+  `</div>`;
+}
+
+function renderPagesTab(filterText, onlyReported){
   filterText = (filterText || '').toLowerCase();
-  const filtered = fileTree.filter(f => f.path.toLowerCase().includes(filterText));
+  let filtered = fileTree.filter(f => f.path.toLowerCase().includes(filterText));
+  if(onlyReported) filtered = filtered.filter(f => fileReportCount(f.path) > 0);
 
   tabPagesEl.innerHTML = `
     <div class="card">
       <input type="text" id="fileSearch" placeholder="Search for a page, e.g. Structural_Quiz1 or building-laws" value="${escapeHtml(filterText)}">
+      <label class="filter-row"><input type="checkbox" id="onlyReportedFilter" style="width:auto;" ${onlyReported ? 'checked' : ''}> Only reported</label>
       <div class="file-list" id="fileList">
-        ${filtered.map(f => `<div class="file-item" data-path="${escapeHtml(f.path)}">${escapeHtml(f.path)}</div>`).join('') || '<div class="msg info">No matches.</div>'}
+        ${filtered.map(fileItemHtml).join('') || '<div class="msg info">No matches.</div>'}
       </div>
     </div>
     <div id="editorArea"></div>
   `;
 
-  document.getElementById('fileSearch').addEventListener('input', (e) => {
-    const val = e.target.value;
+  function reFilterAndWire(){
+    const val = document.getElementById('fileSearch').value;
+    const onlyRep = document.getElementById('onlyReportedFilter').checked;
+    let matches = fileTree.filter(f => f.path.toLowerCase().includes(val.toLowerCase()));
+    if(onlyRep) matches = matches.filter(f => fileReportCount(f.path) > 0);
     const list = document.getElementById('fileList');
-    const matches = fileTree.filter(f => f.path.toLowerCase().includes(val.toLowerCase()));
-    list.innerHTML = matches.map(f => `<div class="file-item" data-path="${escapeHtml(f.path)}">${escapeHtml(f.path)}</div>`).join('') || '<div class="msg info">No matches.</div>';
+    list.innerHTML = matches.map(fileItemHtml).join('') || '<div class="msg info">No matches.</div>';
     list.querySelectorAll('.file-item').forEach(el => el.addEventListener('click', () => openFile(el.dataset.path)));
-  });
+  }
+
+  document.getElementById('fileSearch').addEventListener('input', reFilterAndWire);
+  document.getElementById('onlyReportedFilter').addEventListener('change', reFilterAndWire);
 
   tabPagesEl.querySelectorAll('.file-item').forEach(el => {
     el.addEventListener('click', () => openFile(el.dataset.path));
   });
 }
 
-async function openFile(path){
+async function openFile(path, focusQIdx){
   currentFilePath = path;
+  currentModuleRef = moduleRefForFilePath(path);
+  expandedQIdx = new Set(focusQIdx != null ? [focusQIdx] : []);
   const editorArea = document.getElementById('editorArea');
   editorArea.innerHTML = '<div class="card msg info">Loading ' + escapeHtml(path) + '…</div>';
   try{
@@ -352,6 +467,13 @@ async function openFile(path){
     if(!resp.ok) throw new Error('Could not load file (status ' + resp.status + ')');
     currentFileRaw = await resp.text();
 
+    if(path.endsWith('.json')){
+      currentIsJsonFile = true;
+      currentQuestions = JSON.parse(currentFileRaw);
+      renderQuizEditor(path);
+      return;
+    }
+    currentIsJsonFile = false;
     const qMatch = currentFileRaw.match(/const QUESTIONS = (\[[\s\S]*?\]);/);
     if(qMatch){
       try{ currentQuestions = JSON.parse(qMatch[1]); }
@@ -373,13 +495,14 @@ function renderQuizEditor(path){
   const headingText = h1Match ? h1Match[1] : '';
 
   const editorArea = document.getElementById('editorArea');
-  editorArea.innerHTML = `
+  editorArea.innerHTML = (currentIsJsonFile ? '' : `
     <div class="card">
       <div class="field-label">Browser tab title</div>
       <input type="text" id="pageTitleInput" value="${escapeHtml(pageTitle)}">
       <div class="field-label">Heading shown on the page</div>
       <input type="text" id="headingInput" value="${escapeHtml(headingText)}">
     </div>
+  `) + `
     <div id="questionsList"></div>
     <div class="actions">
       <button id="addQuestionBtn">+ Add question</button>
@@ -392,42 +515,87 @@ function renderQuizEditor(path){
   renderQuestionsList();
 
   document.getElementById('addQuestionBtn').addEventListener('click', () => {
+    // Appended at the end only — engine-spec.md §4 requires append-only so
+    // existing mastered[] index arrays never point at the wrong question.
     currentQuestions.push({ s:'', q:'New question text', o:['Option A','Option B','Option C','Option D'], c:0, ref:'', n:'' });
+    expandedQIdx.add(currentQuestions.length - 1);
     renderQuestionsList();
   });
   document.getElementById('saveQuizBtn').addEventListener('click', () => saveQuizFile(path));
 }
 
+// Collapsed by default (5b) — a module can have 200+ questions, and opening
+// every one as a full form made finding the reported one mean scrolling
+// past all the rest. Each row expands to the full q-card in place.
 function renderQuestionsList(){
   const listEl = document.getElementById('questionsList');
-  listEl.innerHTML = currentQuestions.map((q, i) => `
-    <div class="q-card" data-idx="${i}">
-      <div class="field-label">Question ${i+1} — topic/section</div>
-      <input type="text" data-field="s" data-idx="${i}" value="${escapeHtml(q.s || '')}">
-      <div class="field-label">Question text</div>
-      <textarea data-field="q" data-idx="${i}" rows="2">${escapeHtml(q.q || '')}</textarea>
-      <div class="field-label">Answer choices (mark the correct one)</div>
-      <div class="q-opts">
-        ${(q.o || []).map((opt, oi) => `
-          <input type="radio" name="correct-${i}" data-correct-idx="${oi}" data-idx="${i}" ${q.c === oi ? 'checked' : ''}>
-          <input type="text" data-field="o" data-oidx="${oi}" data-idx="${i}" value="${escapeHtml(opt)}">
-        `).join('')}
-      </div>
-      <div class="field-label">Reference (optional)</div>
-      <input type="text" data-field="ref" data-idx="${i}" value="${escapeHtml(q.ref || '')}">
-      <div class="field-label">Explanation note (optional)</div>
-      <textarea data-field="n" data-idx="${i}" rows="2">${escapeHtml(q.n || '')}</textarea>
-      <div class="actions">
-        <button class="danger" data-action="deleteQ" data-idx="${i}">Delete this question</button>
-      </div>
-    </div>
-  `).join('');
+  const reportCounts = reportCountsForCurrentFile();
 
+  listEl.innerHTML = currentQuestions.map((q, i) => {
+    const count = reportCounts[i] || 0;
+    if(!expandedQIdx.has(i)){
+      const preview = (q.q || '').replace(/\s+/g, ' ').trim().slice(0, 70);
+      return `
+        <div class="row q-row" data-idx="${i}">
+          <span class="qr-text">Q${i+1} — ${escapeHtml(preview)}${q.hidden ? ' <span class="qr-hidden-tag">(hidden)</span>' : ''}</span>
+          ${count ? `<span class="report-badge">${count} reported</span>` : ''}
+        </div>
+      `;
+    }
+    const stepsVal = Array.isArray(q.steps) ? q.steps.join('\n') : '';
+    return `
+      <div class="q-card" data-idx="${i}">
+        <div class="row" style="padding-top:0;border-bottom:none;justify-content:space-between;">
+          <b>Question ${i+1}</b>
+          ${count ? `<span class="report-badge">${count} reported</span>` : ''}
+          <button data-action="collapseQ" data-idx="${i}">Collapse</button>
+        </div>
+        <div class="field-label">Question ${i+1} — topic/section</div>
+        <input type="text" data-field="s" data-idx="${i}" value="${escapeHtml(q.s || '')}">
+        <div class="field-label">Question text</div>
+        <textarea data-field="q" data-idx="${i}" rows="2">${escapeHtml(q.q || '')}</textarea>
+        <div class="field-label">Answer choices (mark the correct one)</div>
+        <div class="q-opts">
+          ${(q.o || []).map((opt, oi) => `
+            <input type="radio" name="correct-${i}" data-correct-idx="${oi}" data-idx="${i}" ${q.c === oi ? 'checked' : ''}>
+            ${typeof opt === 'string'
+              ? `<input type="text" data-field="o" data-oidx="${oi}" data-idx="${i}" value="${escapeHtml(opt)}">`
+              : `<input type="text" value="Auto-generated (${escapeHtml(opt.tpl || '')}) — not editable here" disabled title="This option is computed from the others at run time and can't be edited as text.">`}
+          `).join('')}
+        </div>
+        <div class="field-label">Reference (optional)</div>
+        <input type="text" data-field="ref" data-idx="${i}" value="${escapeHtml(q.ref || '')}">
+        <div class="field-label">Explanation note (optional)</div>
+        <textarea data-field="n" data-idx="${i}" rows="2">${escapeHtml(q.n || '')}</textarea>
+        <div class="field-label">Solution steps (optional — one per line)</div>
+        <textarea data-field="steps" data-idx="${i}" rows="3">${escapeHtml(stepsVal)}</textarea>
+        <label class="filter-row" style="margin-top:10px;">
+          <input type="checkbox" data-action="toggleHidden" data-idx="${i}" style="width:auto;" ${q.hidden ? 'checked' : ''}>
+          Hide this question
+        </label>
+        <div class="save-status" style="margin-top:0;">Hiding keeps its slot so saved progress isn't affected — it just stops being served. It doesn't delete or renumber anything.</div>
+      </div>
+    `;
+  }).join('');
+
+  listEl.querySelectorAll('.q-row').forEach(row => {
+    row.addEventListener('click', () => { expandedQIdx.add(+row.dataset.idx); renderQuestionsList(); });
+  });
+  listEl.querySelectorAll('button[data-action="collapseQ"]').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.stopPropagation(); expandedQIdx.delete(+btn.dataset.idx); renderQuestionsList(); });
+  });
   listEl.querySelectorAll('input[data-field="s"], input[data-field="ref"]').forEach(el => {
     el.addEventListener('input', () => { currentQuestions[+el.dataset.idx][el.dataset.field] = el.value; });
   });
   listEl.querySelectorAll('textarea[data-field="q"], textarea[data-field="n"]').forEach(el => {
     el.addEventListener('input', () => { currentQuestions[+el.dataset.idx][el.dataset.field] = el.value; });
+  });
+  listEl.querySelectorAll('textarea[data-field="steps"]').forEach(el => {
+    el.addEventListener('input', () => {
+      const lines = el.value.split('\n').map(s => s.trim()).filter(Boolean);
+      const q = currentQuestions[+el.dataset.idx];
+      if(lines.length) q.steps = lines; else delete q.steps;
+    });
   });
   listEl.querySelectorAll('input[data-field="o"]').forEach(el => {
     el.addEventListener('input', () => { currentQuestions[+el.dataset.idx].o[+el.dataset.oidx] = el.value; });
@@ -435,12 +603,11 @@ function renderQuestionsList(){
   listEl.querySelectorAll('input[data-correct-idx]').forEach(el => {
     el.addEventListener('change', () => { currentQuestions[+el.dataset.idx].c = +el.dataset.correctIdx; });
   });
-  listEl.querySelectorAll('button[data-action="deleteQ"]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if(confirm('Delete this question?')){
-        currentQuestions.splice(+btn.dataset.idx, 1);
-        renderQuestionsList();
-      }
+  listEl.querySelectorAll('input[data-action="toggleHidden"]').forEach(el => {
+    el.addEventListener('click', (e) => e.stopPropagation());
+    el.addEventListener('change', () => {
+      const q = currentQuestions[+el.dataset.idx];
+      if(el.checked) q.hidden = true; else delete q.hidden;
     });
   });
 }
@@ -452,16 +619,22 @@ async function saveQuizFile(path){
   statusEl.className = 'save-status';
   statusEl.textContent = 'Saving…';
   try{
-    let newText = currentFileRaw;
-    const newTitle = document.getElementById('pageTitleInput').value;
-    const newHeading = document.getElementById('headingInput').value;
-    newText = newText.replace(/<title>[^<]*<\/title>/, `<title>${newTitle}</title>`);
-    newText = newText.replace(/<h1>[^<]*<\/h1>/, `<h1>${newHeading}</h1>`);
-    const newQuestionsText = JSON.stringify(currentQuestions, null, 0)
-      .replace(/^\[/, '[\n')
-      .replace(/\},\{/g, '},\n{')
-      .replace(/\]$/, '\n]');
-    newText = newText.replace(/const QUESTIONS = \[[\s\S]*?\];/, `const QUESTIONS = ${newQuestionsText};`);
+    let newText;
+    if(currentIsJsonFile){
+      // data/<subject>/<module>.json — the whole file IS the question array.
+      newText = JSON.stringify(currentQuestions, null, 2) + '\n';
+    } else {
+      newText = currentFileRaw;
+      const newTitle = document.getElementById('pageTitleInput').value;
+      const newHeading = document.getElementById('headingInput').value;
+      newText = newText.replace(/<title>[^<]*<\/title>/, `<title>${newTitle}</title>`);
+      newText = newText.replace(/<h1>[^<]*<\/h1>/, `<h1>${newHeading}</h1>`);
+      const newQuestionsText = JSON.stringify(currentQuestions, null, 0)
+        .replace(/^\[/, '[\n')
+        .replace(/\},\{/g, '},\n{')
+        .replace(/\]$/, '\n]');
+      newText = newText.replace(/const QUESTIONS = \[[\s\S]*?\];/, `const QUESTIONS = ${newQuestionsText};`);
+    }
 
     await callSave(path, newText, `Admin: update quiz — ${path}`);
     currentFileRaw = newText;
@@ -566,8 +739,8 @@ async function saveTextFile(path){
 //      styling and behavior are left untouched.
 //   2. The subject's index.html — a new module card is added (or the subject
 //      page is created from scratch if it's a brand-new subject).
-//   3. The main index.html — the subject's totals (and the source, if new)
-//      are registered in SUBJECTS / SOURCES so it shows up on the home page.
+//   3. The main index.html — the subject's totals are registered in SUBJECTS
+//      so it shows up on the home page.
 //
 // Two quiz formats are auto-detected:
 //   "native"    — the site's own quiz template (const QUESTIONS = [...], and
@@ -641,9 +814,9 @@ function parseQuizFile(text){
 }
 
 function buildAdaptedQuizHtml(raw, format, opts){
-  const { subjectId, moduleId, subjectName, sourceId, includeBackLink } = opts;
+  const { subjectId, moduleId, subjectName, includeBackLink } = opts;
   let out = raw;
-  const assetPath = '../../../assets/module-progress.js';
+  const assetPath = '../../../assets/module-progress.js?v=1';
 
   if(format === 'native'){
     out = out.replace(/const LEA_SUBJECT_ID\s*=\s*'[^']*';/, `const LEA_SUBJECT_ID = '${subjectId}';`);
@@ -735,7 +908,7 @@ function buildAdaptedQuizHtml(raw, format, opts){
 
   if(includeBackLink){
     const backLinkHtml = `<div style="max-width:760px;margin:0 auto 12px;font:12px 'IBM Plex Mono',monospace;">` +
-      `<a href="../index.html?source=${sourceId}" style="color:#8fc4ea;text-decoration:underline;">&larr; Back to ${escapeHtml(subjectName)}</a>` +
+      `<a href="../index.html" style="color:#8fc4ea;text-decoration:underline;">&larr; Back to ${escapeHtml(subjectName)}</a>` +
       `</div>\n`;
     out = out.replace('<body>', '<body>\n' + backLinkHtml);
   }
@@ -753,11 +926,11 @@ const SUBJECT_PAGE_STYLE = `
     --line: rgba(111,168,207,0.20); --grid-line: rgba(111,168,207,0.09);
     --font-head:'Big Shoulders Display', sans-serif; --font-body:'Space Grotesk', sans-serif; --font-mono:'IBM Plex Mono', monospace;
   }
-  body.light-mode{
-    --ink:#182028; --bg-deep:#eef2f3; --bg-panel:#ffffff; --bg-panel-deep:#f3f6f7;
-    --gold:#b5791f; --gold-bright:#8f5f16; --blue:#2f6c95; --blue-bright:#1f5478;
-    --sand:#5c6975; --good:#2f8a55; --bad:#b23d2f;
-    --line: rgba(47,108,149,0.20); --grid-line: rgba(47,108,149,0.09);
+  body.light-mode, :root.light-mode{
+    --ink:#16202b; --bg-deep:#d3dee6; --bg-panel:#ffffff; --bg-panel-deep:#e9eff4;
+    --gold:#b5791f; --gold-bright:#7d520c; --blue:#2f6c95; --blue-bright:#1b4a6b;
+    --sand:#4f5d6a; --good:#206b3c; --bad:#a1372a;
+    --line: rgba(47,108,149,0.28); --grid-line: rgba(47,108,149,0.11);
   }
   *{box-sizing:border-box;} html,body{margin:0;padding:0;}
   body{
@@ -838,7 +1011,7 @@ function modulesArrayLiteral(modules){
 
 // Builds a brand-new subject index.html (or a full rebuild for a legacy page
 // that's being migrated onto the generic, loop-driven module template).
-function buildSubjectIndexHtml({ subjectId, subjectName, tagline, sourceId, modules }){
+function buildSubjectIndexHtml({ subjectId, subjectName, tagline, modules }){
   const moduleCards = modules.map((m, i) => moduleCardHtml(m, i + 1)).join('');
   return `<!DOCTYPE html>
 <!-- LEA-ADMIN:GENERIC-SUBJECT-V1 -->
@@ -857,16 +1030,16 @@ function buildSubjectIndexHtml({ subjectId, subjectName, tagline, sourceId, modu
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>${SUBJECT_PAGE_STYLE}</style>
-<script src="../../assets/presence.js"><\/script>
-<script src="../../assets/theme.js"><\/script>
+<link rel="stylesheet" href="assets/blueprint.css?v=1">
+<script src="../../assets/presence.js?v=1"><\/script>
+<script src="../../assets/theme.js?v=1"><\/script>
 </head>
 <body>
 <div class="wrap">
   <div class="auth-bar">
-    <div><a class="auth-link" href="../../index.html?source=${sourceId}">&larr; All subjects</a> &nbsp;&middot;&nbsp; <span id="authStatus">Checking session…</span></div>
-    <button class="auth-link" id="openLeaderboardBtn">🏆 Leaderboard</button>
-    <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">☀️</button>
-<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }<\/script>
+    <div><a class="auth-link" href="../../index.html">&larr; All subjects</a> &nbsp;&middot;&nbsp; <span id="authStatus">Checking session…</span></div>
+    <button class="auth-link" id="openLeaderboardBtn"><span class="btn-ico" data-icon="trophy"></span> Leaderboard</button>
+    <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }<\/script>
   </div>
 
   <div class="masthead">
@@ -889,14 +1062,14 @@ ${moduleCards}
 <div class="modal-overlay hidden" id="leaderboardModalOverlay">
   <div class="modal-box">
     <button class="modal-close" id="leaderboardModalClose">&times;</button>
-    <h2>🏆 Leaderboard</h2>
+    <h2><span class="btn-ico" data-icon="trophy"></span> Leaderboard</h2>
     <div class="leaderboard-list" id="leaderboardList">
       <div class="leaderboard-empty">Loading…</div>
     </div>
   </div>
 </div>
 
-<script src="../../assets/module-progress.js"><\/script>
+<script src="../../assets/module-progress.js?v=1"><\/script>
 <script>
 const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
@@ -1018,12 +1191,7 @@ function migrateLegacySubjectHtml(rawHtml){
   };
 }
 
-function sourcesToJsLiteral(list){
-  const lines = list.map(s => `  { id: ${JSON.stringify(s.id)}, name: ${JSON.stringify(s.name)}, ready: ${s.ready ? 'true' : 'false'}, blurb: ${JSON.stringify(s.blurb || '')} },`);
-  return `[\n${lines.join('\n')}\n]`;
-}
-
-function upsertSubjectInIndexHtml(rawIndex, { id, name, href, sourceId, addQuestions, addModules }){
+function upsertSubjectInIndexHtml(rawIndex, { id, name, href, addQuestions, addModules }){
   const match = rawIndex.match(/const SUBJECTS = (\[[\s\S]*?\]);/);
   const list = new Function('return ' + match[1])();
   const existing = list.find(s => s.id === id);
@@ -1032,29 +1200,21 @@ function upsertSubjectInIndexHtml(rawIndex, { id, name, href, sourceId, addQuest
     existing.totalModules = (existing.totalModules || 0) + addModules;
     existing.ready = true;
   } else {
-    list.push({ id, name, href, ready: true, source: sourceId, totalQuestions: addQuestions, totalModules: addModules });
+    list.push({ id, name, href, ready: true, totalQuestions: addQuestions, totalModules: addModules });
   }
   return rawIndex.replace(/const SUBJECTS = \[[\s\S]*?\];/, `const SUBJECTS = ${subjectsToJsLiteral(list)};`);
-}
-
-function upsertSourceInIndexHtml(rawIndex, { id, name }){
-  const match = rawIndex.match(/const SOURCES = (\[[\s\S]*?\]);/);
-  const list = match ? new Function('return ' + match[1])() : [];
-  if(!list.find(s => s.id === id)) list.push({ id, name, ready: true, blurb: '' });
-  return rawIndex.replace(/const SOURCES = \[[\s\S]*?\];/, `const SOURCES = ${sourcesToJsLiteral(list)};`);
 }
 
 /* ---------------- Rendering the tab + handling the drop/submit ---------------- */
 
 function renderUploadTab(){
-  const subjectOptions = subjects.map(s => `<option value="${escapeHtml(s.id)}">${escapeHtml(s.name)}${s.source ? ' (' + escapeHtml(s.source) + ')' : ''}</option>`).join('');
-  const sourceOptions = sources.map(s => `<option value="${escapeHtml(s.id)}">${escapeHtml(s.name)}</option>`).join('');
+  const subjectOptions = subjects.map(s => `<option value="${escapeHtml(s.id)}">${escapeHtml(s.name)}</option>`).join('');
 
   tabUploadEl.innerHTML = `
     <div class="card msg info">
       Drop in a self-contained quiz/module HTML file (its own design, its own questions).
       Its look stays exactly the same — this just wires its scoring into the site's shared
-      progress tracker, and adds it to a subject (new or existing) under a source (new or existing).
+      progress tracker, and adds it to a subject (new or existing).
     </div>
 
     <div class="card">
@@ -1077,16 +1237,6 @@ function renderUploadTab(){
         <input type="text" id="newSubjectName" placeholder="e.g. Architectural Design">
         <div class="field-label">Tagline / short description (optional)</div>
         <input type="text" id="newSubjectTagline" placeholder="Shown under the subject title">
-      </div>
-
-      <div class="field-label">Source (library)</div>
-      <select id="uploadSourceSelect">
-        <option value="__new__">+ New source…</option>
-        ${sourceOptions}
-      </select>
-      <div id="newSourceFields" style="display:none;">
-        <div class="field-label">New source name</div>
-        <input type="text" id="newSourceName" placeholder="e.g. Source E">
       </div>
 
       <div class="field-label">Module title</div>
@@ -1126,9 +1276,6 @@ function renderUploadTab(){
 
   document.getElementById('uploadSubjectSelect').addEventListener('change', (e) => {
     document.getElementById('newSubjectFields').style.display = e.target.value === '__new__' ? 'block' : 'none';
-  });
-  document.getElementById('uploadSourceSelect').addEventListener('change', (e) => {
-    document.getElementById('newSourceFields').style.display = e.target.value === '__new__' ? 'block' : 'none';
   });
   document.getElementById('uploadSubmitBtn').addEventListener('click', handleAddModule);
 }
@@ -1194,20 +1341,6 @@ async function handleAddModule(){
       subjectId = s.id; subjectName = s.name;
     }
 
-    // ---- Resolve source ----
-    const sourceSelectVal = document.getElementById('uploadSourceSelect').value;
-    let sourceId, sourceName, isNewSource = false;
-    if(sourceSelectVal === '__new__'){
-      sourceName = document.getElementById('newSourceName').value.trim();
-      if(!sourceName) throw new Error('Enter a name for the new source.');
-      sourceId = slugify(sourceName);
-      isNewSource = true;
-    } else {
-      const s = sources.find(s => s.id === sourceSelectVal);
-      if(!s) throw new Error('Pick a source.');
-      sourceId = s.id; sourceName = s.name;
-    }
-
     const moduleTitle = document.getElementById('uploadModuleTitle').value.trim() || uploadedParsed.suggestedTitle || 'Untitled Module';
     const moduleId = slugify(document.getElementById('uploadModuleId').value.trim() || moduleTitle);
     const moduleSub = document.getElementById('uploadModuleSub').value.trim();
@@ -1218,7 +1351,7 @@ async function handleAddModule(){
 
     log('Preparing quiz file…');
     const adaptedHtml = buildAdaptedQuizHtml(uploadedFileText, uploadedParsed.format, {
-      subjectId, moduleId, subjectName, sourceId, includeBackLink
+      subjectId, moduleId, subjectName, includeBackLink
     });
 
     const quizPath = `subjects/${subjectId}/quizzes/${fileName}`;
@@ -1238,7 +1371,7 @@ async function handleAddModule(){
     const newModuleDef = { id: moduleId, total: uploadedParsed.questionCount, title: moduleTitle, sub: moduleSub, file: fileName };
     let newSubjectHtml;
     if(!subjectRaw){
-      newSubjectHtml = buildSubjectIndexHtml({ subjectId, subjectName, tagline: subjectTagline, sourceId, modules: [newModuleDef] });
+      newSubjectHtml = buildSubjectIndexHtml({ subjectId, subjectName, tagline: subjectTagline, modules: [newModuleDef] });
     } else if(/LEAProgress\.renderModuleBadge/.test(subjectRaw)){
       newSubjectHtml = appendModuleToGenericSubjectHtml(subjectRaw, newModuleDef);
     } else {
@@ -1248,13 +1381,12 @@ async function handleAddModule(){
         subjectId,
         subjectName: migrated.subjectName || subjectName,
         tagline: migrated.tagline,
-        sourceId,
         modules: migrated.modules.concat([newModuleDef])
       });
     }
     await callSave(subjectIndexPath, newSubjectHtml, `Admin: add module "${moduleTitle}" to ${subjectId}`);
 
-    // ---- Main index.html (SUBJECTS / SOURCES) ----
+    // ---- Main index.html (SUBJECTS) ----
     log('Updating main subjects list…');
     let idx = rawIndexHtml;
     if(!idx){
@@ -1262,10 +1394,9 @@ async function handleAddModule(){
       const resp = await fetch(url);
       idx = await resp.text();
     }
-    if(isNewSource) idx = upsertSourceInIndexHtml(idx, { id: sourceId, name: sourceName });
     idx = upsertSubjectInIndexHtml(idx, {
       id: subjectId, name: subjectName, href: `subjects/${subjectId}/index.html`,
-      sourceId, addQuestions: uploadedParsed.questionCount, addModules: 1
+      addQuestions: uploadedParsed.questionCount, addModules: 1
     });
     await callSave(INDEX_PATH, idx, `Admin: register module "${moduleTitle}" under ${subjectId}`);
     rawIndexHtml = idx;
@@ -1283,7 +1414,175 @@ async function handleAddModule(){
   }
 }
 
+/* ================= REPORTS TAB ================= */
+
+function reasonSummary(reports){
+  const counts = {};
+  reports.forEach(r => { counts[r.reason] = (counts[r.reason] || 0) + 1; });
+  return Object.keys(counts).map(reason => (counts[reason] > 1 ? counts[reason] + '× ' : '') + reason).join(', ');
+}
+
+async function openReportsTab(){
+  tabReportsEl.innerHTML = '<div class="card msg info">Loading reports…</div>';
+  await loadManifest();
+  await loadReports();
+  renderReportsTab();
+}
+
+function renderReportsTab(){
+  if(reportsLoadError){
+    tabReportsEl.innerHTML =
+      '<div class="card msg error"><b>Couldn\'t load reports.</b><br>' +
+      escapeHtml(reportsLoadError) +
+      '<br><br>Reports submitted from the app are being held in each reader\'s browser until this is fixed — none are lost, but none are visible here either.</div>';
+    return;
+  }
+  const refs = Object.keys(reportsByQuestionRef);
+  if(refs.length === 0){
+    tabReportsEl.innerHTML = '<div class="card msg info">No open reports. Nice.</div>';
+    return;
+  }
+  // Newest report in each group first, so the freshest problems surface at the top.
+  refs.sort((a, b) => {
+    const la = Math.max(...reportsByQuestionRef[a].map(r => new Date(r.created_at).getTime()));
+    const lb = Math.max(...reportsByQuestionRef[b].map(r => new Date(r.created_at).getTime()));
+    return lb - la;
+  });
+
+  tabReportsEl.innerHTML = refs.map(ref => {
+    const reports = reportsByQuestionRef[ref];
+    const [subjectId, moduleId, qIndexStr] = ref.split('/');
+    const qIndex = parseInt(qIndexStr, 10);
+    const found = findModuleInManifest(subjectId, moduleId);
+    const loc = found ? `${found.subject.name} · ${found.mod.title} · Q${qIndex + 1}` : ref;
+    const comments = reports.filter(r => r.comment).map(r => escapeHtml(r.comment));
+    return `
+      <div class="report-card" data-ref="${escapeHtml(ref)}">
+        <div class="rc-top">
+          <div class="rc-loc">${escapeHtml(loc)}</div>
+          <div class="rc-count">${reports.length} report${reports.length === 1 ? '' : 's'}</div>
+        </div>
+        <div class="rc-reasons"><b>Reasons:</b> ${escapeHtml(reasonSummary(reports))}</div>
+        ${comments.map(c => `<div class="rc-comment">"${c}"</div>`).join('')}
+        <div class="actions">
+          <button class="primary" data-action="editQ" data-ref="${escapeHtml(ref)}">Edit question</button>
+          <button class="danger" data-action="hideQ" data-ref="${escapeHtml(ref)}">Hide item</button>
+          <button data-action="dismissQ" data-ref="${escapeHtml(ref)}">Dismiss</button>
+        </div>
+        <div class="save-status" id="status-${cssEscapeRef(ref)}"></div>
+      </div>
+    `;
+  }).join('');
+
+  tabReportsEl.querySelectorAll('button[data-action="editQ"]').forEach(btn => {
+    btn.addEventListener('click', () => openReportInEditor(btn.dataset.ref));
+  });
+  tabReportsEl.querySelectorAll('button[data-action="hideQ"]').forEach(btn => {
+    btn.addEventListener('click', () => hideReportedQuestion(btn.dataset.ref));
+  });
+  tabReportsEl.querySelectorAll('button[data-action="dismissQ"]').forEach(btn => {
+    btn.addEventListener('click', () => dismissReportGroup(btn.dataset.ref));
+  });
+}
+
+// "Change key" isn't a one-click action here (unlike Hide) — a report only
+// ever carries a fixed reason + free-text comment, never a structured "the
+// right answer is X" field, so there's nothing safe to act on without a
+// human reading the question. That case routes through "Edit question"
+// instead, opening the real form with this question expanded.
+async function hideReportedQuestion(ref){
+  const statusEl = document.getElementById('status-' + cssEscapeRef(ref));
+  const [subjectId, moduleId, qIndexStr] = ref.split('/');
+  const qIndex = parseInt(qIndexStr, 10);
+  const found = findModuleInManifest(subjectId, moduleId);
+  if(!found){ await LEAAlert('Could not find this question in the current manifest.'); return; }
+  const okHide = await LEAConfirm(
+    'Hide Q' + (qIndex + 1) + ' in "' + found.mod.title + '"? It keeps its slot and stops being served — this does not delete or renumber anything, so saved progress is unaffected.',
+    { title: 'Hide question', yes: 'Hide question' }
+  );
+  if(!okHide) return;
+  if(statusEl){ statusEl.className = 'save-status'; statusEl.textContent = 'Hiding…'; }
+  try{
+    const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${found.mod.file}?t=${Date.now()}`;
+    const resp = await fetch(url);
+    if(!resp.ok) throw new Error('Could not load the module file');
+    const raw = await resp.text();
+    let questions, newText;
+    if(found.mod.file.endsWith('.json')){
+      questions = JSON.parse(raw);
+      questions[qIndex].hidden = true;
+      newText = JSON.stringify(questions, null, 2) + '\n';
+    } else {
+      const qMatch = raw.match(/const QUESTIONS = (\[[\s\S]*?\]);/);
+      if(!qMatch) throw new Error('Could not find this file’s question list');
+      try{ questions = JSON.parse(qMatch[1]); }catch(e){ questions = new Function('return ' + qMatch[1])(); }
+      questions[qIndex].hidden = true;
+      const newQuestionsText = JSON.stringify(questions, null, 0).replace(/^\[/, '[\n').replace(/\},\{/g, '},\n{').replace(/\]$/, '\n]');
+      newText = raw.replace(/const QUESTIONS = \[[\s\S]*?\];/, `const QUESTIONS = ${newQuestionsText};`);
+    }
+    await callSave(found.mod.file, newText, `Admin: hide Q${qIndex+1} in ${found.mod.file} (from report)`);
+    if(statusEl){ statusEl.className = 'save-status ok'; statusEl.textContent = 'Hidden.'; }
+  }catch(e){
+    if(statusEl){ statusEl.className = 'save-status err'; statusEl.textContent = 'Error: ' + e.message; }
+  }
+}
+
+function cssEscapeRef(ref){ return ref.replace(/[^a-zA-Z0-9]/g, '_'); }
+
+// Jumps to the Pages & Quizzes tab, opens the right file, and expands the
+// exact reported question — this IS the "Change key" / "Hide" path (5a):
+// both are just edits made in the normal question form, not separate
+// one-click actions, since a report only carries a reason + free-text
+// comment, never a structured "the answer should be X" field to act on
+// blindly.
+function openReportInEditor(ref){
+  const [subjectId, moduleId, qIndexStr] = ref.split('/');
+  const qIndex = parseInt(qIndexStr, 10);
+  const found = findModuleInManifest(subjectId, moduleId);
+  if(!found){
+    LEAAlert('Could not find this question in the current manifest — it may belong to a module not yet listed in data/subjects.json.');
+    return;
+  }
+  document.querySelector('.tab-btn[data-tab="pages"]').click();
+  if(fileTree.length === 0){
+    loadFileTree().then(() => openFile(found.mod.file, qIndex));
+  } else {
+    openFile(found.mod.file, qIndex);
+  }
+}
+
+async function dismissReportGroup(ref){
+  const statusEl = document.getElementById('status-' + cssEscapeRef(ref));
+  const reports = reportsByQuestionRef[ref] || [];
+  const okDismiss = await LEAConfirm(
+    'Dismiss ' + reports.length + ' report' + (reports.length === 1 ? '' : 's') + ' for this question? This marks them resolved without changing the question.',
+    { title: 'Dismiss reports', yes: 'Dismiss' }
+  );
+  if(!okDismiss) return;
+  if(statusEl){ statusEl.className = 'save-status'; statusEl.textContent = 'Dismissing…'; }
+  try{
+    const ids = reports.map(r => r.id);
+    const { error } = await sb.from('reports').update({ status: 'dismissed' }).in('id', ids);
+    if(error) throw error;
+    await loadReports();
+    renderReportsTab();
+  }catch(e){
+    if(statusEl){ statusEl.className = 'save-status err'; statusEl.textContent = 'Error: ' + e.message; }
+  }
+}
+
 init();
+</script>
+<script>
+// Paint any inline SVG icons declared as <span class="btn-ico" data-icon="…">.
+// Done once at load; these labels are static markup, not re-rendered.
+(function(){
+  if(!window.LEAIcons) return;
+  document.querySelectorAll('.btn-ico[data-icon]').forEach(function(el){
+    var fn = LEAIcons[el.getAttribute('data-icon')];
+    if(fn) el.innerHTML = fn(15);
+  });
+})();
 </script>
 </body>
 </html>

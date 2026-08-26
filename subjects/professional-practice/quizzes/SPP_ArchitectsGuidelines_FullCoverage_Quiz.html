@@ -24,7 +24,7 @@
     --bad:#c1594a;
     --line: rgba(200,180,120,0.22);
   }
-  body.light-mode{
+  body.light-mode, :root.light-mode{
     --ink:#1c2a20;
     --bg-deep:#f5f2e6;
     --bg-panel:#ffffff;
@@ -35,7 +35,7 @@
     --bad:#a1402f;
     --line: rgba(156,122,46,0.25);
   }
-  body.light-mode{
+  body.light-mode, :root.light-mode{
     background:
       repeating-linear-gradient(0deg, rgba(156,122,46,0.045) 0px, rgba(156,122,46,0.045) 1px, transparent 1px, transparent 30px),
       repeating-linear-gradient(90deg, rgba(156,122,46,0.045) 0px, rgba(156,122,46,0.045) 1px, transparent 1px, transparent 30px),
@@ -278,11 +278,12 @@
     letter-spacing:0.01em !important;
   }
 </style>
+<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=1">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="../../../assets/presence.js"></script>
-<script src="../../../assets/module-progress.js"></script>
-<script src="../../../assets/theme.js"></script>
-<script src="../../../assets/sfx.js"></script>
+<script src="../../../assets/presence.js?v=1"></script>
+<script src="../../../assets/module-progress.js?v=1"></script>
+<script src="../../../assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="../../../assets/sfx.js?v=1"></script>
 </head>
 <body>
 <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
@@ -866,7 +867,7 @@ document.getElementById('orderShuffleBtn').addEventListener('click', () => {
 buildTesserae();
 renderQuestion();
 </script>
-<script src="../../../assets/quiz-resume.js"></script>
+<script src="../../../assets/quiz-resume.js?v=1"></script>
 <script>
 (function(){
   var LEA_RESUME_SUBJECT = 'professional-practice';

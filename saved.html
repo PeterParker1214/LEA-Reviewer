@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saved — LEA Reviewer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Architects+Daughter&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-2:#0a1520;
+    --gold:#e0a83f; --gold-bright:#f0c268; --blue:#6fa8cf; --blue-bright:#8fc4ea;
+    --muted:#8b98a5; --good:#5fbf82; --bad:#e2604a;
+    --line: rgba(111,168,207,0.20); --grid-line: rgba(111,168,207,0.09);
+    --font-display: 'Big Shoulders Display', sans-serif;
+    --font-hand: 'Architects Daughter', cursive;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+  body.light-mode, :root.light-mode{
+    --ink:#16202b; --bg-deep:#d3dee6; --bg-panel:#ffffff; --bg-panel-2:#e9eff4;
+    --gold:#b5791f; --gold-bright:#7d520c; --blue:#2f6c95; --blue-bright:#1b4a6b;
+    --muted:#4f5d6a; --good:#206b3c; --bad:#a1372a;
+    --line: rgba(47,108,149,0.28); --grid-line: rgba(47,108,149,0.11);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      var(--bg-deep);
+    color:var(--ink); font-family:var(--font-body); min-height:100vh;
+    display:flex; justify-content:center; padding:20px 16px 64px;
+  }
+  .wrap{width:100%; max-width:520px;}
+  a{color:inherit;}
+  button{font-family:inherit;}
+
+  .run-header{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .icon-btn-44{
+    width:44px; height:44px; border-radius:10px; background:var(--bg-panel); border:1px solid var(--line);
+    color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+  }
+  .icon-btn-44 svg{ width:19px; height:19px; }
+  .page-title{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; }
+
+  .tabs-row{ display:flex; gap:8px; margin-bottom:16px; }
+  .tab-btn{
+    flex:1; font-family:var(--font-mono); font-size:12px; letter-spacing:.03em; text-transform:uppercase;
+    background:var(--bg-panel); border:1px solid var(--line); color:var(--muted);
+    padding:11px; border-radius:10px; cursor:pointer;
+  }
+  .tab-btn.active{ border-color:var(--gold); color:var(--gold-bright); background:rgba(224,168,63,0.08); }
+
+  .drill-all-btn{
+    display:block; width:100%; background:var(--gold); color:#1a1206; border:none; border-radius:10px;
+    padding:14px; text-align:center; font-family:var(--font-display); font-weight:700; font-size:15px;
+    text-transform:uppercase; text-decoration:none; margin-bottom:16px; cursor:pointer;
+  }
+
+  .saved-card{ background:var(--bg-panel); border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:10px; padding:14px 16px; margin-bottom:12px; }
+  .saved-card .sc-loc{ font-family:var(--font-mono); font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.03em; margin-bottom:6px; }
+  .saved-card .sc-text{ font-size:14px; line-height:1.5; margin-bottom:10px; }
+  /* Frame 3f: a blue-tinted quote block with a gold left rule, not a gold fill. */
+  .saved-card .sc-note{ font-family:var(--font-hand); font-size:14px; line-height:1.5; color:#c9d2da;
+    background:rgba(111,168,207,0.06); border-left:2px solid rgba(224,168,63,0.5); border-radius:0;
+    padding:9px 11px; margin-bottom:10px; }
+  body.light-mode .saved-card .sc-note, :root.light-mode .saved-card .sc-note{ color:var(--ink); }
+  .saved-card .sc-note-edit{ width:100%; min-height:60px; background:var(--bg-panel-2); border:1px solid var(--line); border-radius:8px; color:var(--ink); font-family:var(--font-hand); font-size:15px; padding:10px 12px; margin-bottom:8px; resize:vertical; }
+  .sc-actions{ display:flex; gap:8px; flex-wrap:wrap; }
+  .sc-actions button{
+    font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.03em;
+    background:var(--bg-panel-2); border:1px solid var(--line); color:var(--ink); padding:7px 12px; border-radius:8px; cursor:pointer;
+  }
+  .sc-actions button:hover{ border-color:var(--gold); }
+  .sc-actions button.unflag{ color:var(--bad); }
+
+  .state-note{ font-family:var(--font-mono); font-size:12px; color:var(--muted); text-align:center; padding:40px 0; }
+  .theme-toggle{
+    position:fixed; top:16px; right:16px; z-index:50;
+    background:var(--bg-panel); border:1px solid var(--line); color:var(--gold-bright);
+    font-size:15px; width:34px; height:34px;
+    border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
+  }
+</style>
+<link rel="stylesheet" href="assets/blueprint.css?v=1">
+<script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=1"></script>
+<script src="assets/module-progress.js?v=1"></script>
+<script src="assets/offline.js?v=1"></script>
+</head>
+<body>
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
+<div class="wrap">
+  <div class="run-header">
+    <a class="icon-btn-44" href="index.html" title="Back home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </a>
+    <div class="page-title">Saved</div>
+  </div>
+
+  <div class="tabs-row" id="tabsRow"></div>
+  <div id="contentArea"><div class="state-note">Loading…</div></div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+function escapeHtml(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+let FULL_INDEX = null;
+let activeTab = 'flagged';
+
+async function buildSavedIndex(){
+  if(FULL_INDEX) return FULL_INDEX;
+  let subjects;
+  try{ const res = await fetch('data/subjects.json'); subjects = await res.json(); }catch(e){ subjects = []; }
+
+  const cells = [];
+  for(const subject of subjects){
+    if(!subject.ready) continue;
+    for(const mod of (subject.modules || [])){
+      const p = LEAProgress.load(subject.id, mod.id);
+      const flagged = p.flagged || [];
+      const notes = p.notes || {};
+      if(flagged.length === 0 && Object.keys(notes).length === 0) continue;
+
+      // Anything you flagged is worth showing back, whatever format the
+      // module happens to be stored as — see assets/quiz-source.js.
+      const arr = await LEAQuizSource.loadModuleQuestions(mod);
+      if(!arr) continue;
+
+      const flagSet = new Set(flagged);
+      const qIndexes = new Set([...flagged.map(Number), ...Object.keys(notes).map(Number)]);
+      qIndexes.forEach(qIndex => {
+        if(!arr[qIndex] || arr[qIndex].hidden) return;
+        cells.push({
+          subjectId: subject.id, subjectName: subject.name, moduleId: mod.id, moduleTitle: mod.title, qIndex,
+          text: arr[qIndex].q || '', flagged: flagSet.has(qIndex), note: notes[qIndex] || ''
+        });
+      });
+    }
+  }
+  FULL_INDEX = cells;
+  return cells;
+}
+
+function renderTabs(counts){
+  document.getElementById('tabsRow').innerHTML =
+    '<button class="tab-btn' + (activeTab === 'flagged' ? ' active' : '') + '" data-tab="flagged">Flagged · ' + counts.flagged + '</button>' +
+    '<button class="tab-btn' + (activeTab === 'notes' ? ' active' : '') + '" data-tab="notes">Notes · ' + counts.notes + '</button>';
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => { activeTab = btn.dataset.tab; render(); });
+  });
+}
+
+function subjectLabel(name){ return escapeHtml(name.replace(/[\p{Extended_Pictographic}\p{Emoji_Modifier}\u{200D}\u{FE0F}]+/gu,'').trim()); }
+
+async function render(){
+  const index = await buildSavedIndex();
+  const flagged = index.filter(c => c.flagged);
+  const noted = index.filter(c => c.note);
+  renderTabs({ flagged: flagged.length, notes: noted.length });
+
+  const area = document.getElementById('contentArea');
+  const list = activeTab === 'flagged' ? flagged : noted;
+
+  if(list.length === 0){
+    area.innerHTML = '<div class="state-note">' + (activeTab === 'flagged' ? 'Nothing flagged yet.' : 'No notes yet.') + '</div>';
+    return;
+  }
+
+  const drillBtn = activeTab === 'flagged'
+    ? '<a class="drill-all-btn" href="run.html?mode=drill&scope=flagged">Drill all ' + flagged.length + ' flagged</a>'
+    : '';
+
+  area.innerHTML = drillBtn + list.map((c, i) => {
+    const cardId = 'card' + i;
+    return (
+      '<div class="saved-card" data-subject="' + escapeHtml(c.subjectId) + '" data-module="' + escapeHtml(c.moduleId) + '" data-qidx="' + c.qIndex + '">' +
+        '<div class="sc-loc">' + subjectLabel(c.subjectName) + ' · ' + escapeHtml(c.moduleTitle) + ' · Q' + (c.qIndex + 1) + '</div>' +
+        '<div class="sc-text">' + escapeHtml(c.text) + '</div>' +
+        (c.note ? '<div class="sc-note" id="' + cardId + '-view">' + escapeHtml(c.note) + '</div>' : '') +
+        '<textarea class="sc-note-edit hidden" id="' + cardId + '-edit" placeholder="Your note…">' + escapeHtml(c.note) + '</textarea>' +
+        '<div class="sc-actions">' +
+          '<a href="run.html?s=' + encodeURIComponent(c.subjectId) + '&m=' + encodeURIComponent(c.moduleId) + '&mode=drill"><button type="button">Drill it</button></a>' +
+          '<button type="button" data-action="editNote" data-card="' + cardId + '">Edit note</button>' +
+          (c.flagged ? '<button type="button" class="unflag" data-action="unflag" data-card="' + cardId + '">Unflag</button>' : '') +
+        '</div>' +
+      '</div>'
+    );
+  }).join('');
+
+  wireCardActions();
+}
+
+function wireCardActions(){
+  document.querySelectorAll('[data-action="editNote"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.saved-card');
+      const editEl = card.querySelector('textarea');
+      const viewEl = card.querySelector('.sc-note');
+      if(editEl.classList.contains('hidden')){
+        editEl.classList.remove('hidden');
+        if(viewEl) viewEl.style.display = 'none';
+        btn.textContent = 'Save note';
+      } else {
+        const subjectId = card.dataset.subject, moduleId = card.dataset.module, qIndex = parseInt(card.dataset.qidx, 10);
+        const p = LEAProgress.load(subjectId, moduleId);
+        const val = editEl.value.trim();
+        p.notes = p.notes || {};
+        if(val) p.notes[qIndex] = val; else delete p.notes[qIndex];
+        LEAProgress.save(subjectId, moduleId, p);
+        FULL_INDEX = null; // saved state changed — rebuild next render
+        render();
+      }
+    });
+  });
+  document.querySelectorAll('[data-action="unflag"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.saved-card');
+      const subjectId = card.dataset.subject, moduleId = card.dataset.module, qIndex = parseInt(card.dataset.qidx, 10);
+      const p = LEAProgress.load(subjectId, moduleId);
+      p.flagged = (p.flagged || []).filter(i => i !== qIndex);
+      LEAProgress.save(subjectId, moduleId, p);
+      FULL_INDEX = null;
+      render();
+    });
+  });
+}
+
+(async function boot(){
+  const { data: { session } } = await sb.auth.getSession();
+  if(!session){ window.location.href = 'index.html'; return; }
+  await render();
+})();
+</script>
+</body>
+</html>

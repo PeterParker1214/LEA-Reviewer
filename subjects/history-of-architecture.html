@@ -34,7 +34,7 @@
     --font-head: 'Cinzel', serif;
     --font-body: 'Bitter', serif;
   }
-  body.light-mode{
+  body.light-mode, :root.light-mode{
     --ink:#2b2013; --bg-deep:#f3ead9; --bg-panel:#fffaf0; --bg-glow1:#efdfc2; --bg-glow2:#f7ecd6;
     --clay:#b5502e; --clay-bright:#a13d1a; --turq:#1f8577; --turq-bright:#1c7267; --sand:#6b5a44;
     --good:#2f7a4f; --bad:#a13d2e; --line: rgba(43,32,19,0.18); --bg-panel-deep:#ecdfc3;
@@ -484,9 +484,9 @@
     letter-spacing:0.01em !important;
   }
 </style>
-<script src="../assets/presence.js"></script>
-<script src="../assets/theme.js"></script>
-<script src="../assets/sfx.js"></script>
+<script src="../assets/presence.js?v=1"></script>
+<script src="../assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="../assets/sfx.js?v=1"></script>
 </head>
 <body>
 <div class="wrap">

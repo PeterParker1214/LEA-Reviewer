@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LEA Reviewer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="assets/theme.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Architects+Daughter&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#eef1e9;
+    --bg-deep:#0a1218;
+    --bg-panel:#0e1c28;
+    --bg-panel-2:#0a1520;
+    --gold:#e0a83f;
+    --gold-bright:#f0c268;
+    --blue:#6fa8cf;
+    --blue-bright:#8fc4ea;
+    --muted:#8b98a5;
+    --good:#5fbf82;
+    --bad:#e2604a;
+    --line: rgba(111,168,207,0.20);
+    --grid-line: rgba(111,168,207,0.09);
+    --font-display: 'Big Shoulders Display', sans-serif;
+    --font-hand: 'Architects Daughter', cursive;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+  body.light-mode{
+    --ink:#182028;
+    --bg-deep:#eef2f3;
+    --bg-panel:#ffffff;
+    --bg-panel-2:#f3f6f7;
+    --gold:#b5791f;
+    --gold-bright:#8f5f16;
+    --blue:#2f6c95;
+    --blue-bright:#1f5478;
+    --muted:#5c6975;
+    --good:#2f8a55;
+    --bad:#b23d2f;
+    --line: rgba(47,108,149,0.20);
+    --grid-line: rgba(47,108,149,0.09);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      var(--bg-deep);
+    color:var(--ink);
+    font-family:var(--font-body);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:36px 16px 64px;
+    transition: background-color .2s ease, color .2s ease;
+  }
+  .theme-toggle{
+    position:fixed; top:16px; right:16px; z-index:50;
+    background:var(--bg-panel); border:1px solid var(--line); color:var(--gold-bright);
+    font-family:var(--font-body); font-size:15px; width:34px; height:34px;
+    border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
+  }
+  .theme-toggle:hover{ border-color:var(--gold-bright); }
+  .wrap{width:100%; max-width:720px;}
+  a{color:inherit;}
+  .hidden{display:none !important;}
+  .sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
+
+  /* ===== masthead ===== */
+  .masthead{ text-align:center; margin-bottom:26px; }
+  .masthead .eyebrow{
+    font-family:var(--font-mono); letter-spacing:0.24em; font-size:11px; text-transform:uppercase;
+    color:var(--gold-bright);
+  }
+  .masthead h1{
+    font-family:var(--font-display); font-weight:800; font-size:64px; line-height:0.9;
+    margin:10px 0 14px; color:var(--ink); text-transform:uppercase; letter-spacing:0.01em;
+  }
+  .masthead .rule{ height:2px; width:120px; background:var(--gold); margin:0 auto 16px; opacity:.85; }
+  .masthead .sub{
+    font-family:var(--font-hand); color:var(--ink); opacity:.92; font-size:17px; max-width:480px;
+    margin:0 auto; line-height:1.6;
+  }
+  .masthead .sub b{ color:var(--gold-bright); font-weight:400; }
+
+  /* ===== panel (shared card look, with drafting-corner brackets) ===== */
+  .panel{
+    position:relative;
+    background: var(--bg-panel);
+    border:1px solid var(--line);
+    padding:30px 26px;
+    margin-bottom:20px;
+  }
+  .panel::before, .panel::after{
+    content:""; position:absolute; width:14px; height:14px; border:2px solid var(--gold); opacity:.9;
+  }
+  .panel::before{ top:-2px; left:-2px; border-width:2px 0 0 2px; }
+  .panel::after{ bottom:-2px; right:-2px; border-width:0 2px 2px 0; }
+
+  /* ===== auth panel ===== */
+  .auth-heading{
+    font-family:var(--font-display); font-weight:700; font-size:24px; text-transform:uppercase;
+    text-align:center; margin-bottom:8px; color:var(--ink);
+  }
+  .intro-note{ font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:22px; text-align:center; }
+  .auth-tabs{
+    display:flex; gap:0; margin-bottom:20px; max-width:340px; margin-left:auto; margin-right:auto;
+    border:1px solid var(--line); border-radius:12px; overflow:hidden;
+  }
+  .auth-tab{
+    flex:1; text-align:center;
+    font-family:var(--font-mono); font-weight:600; font-size:13px; letter-spacing:0.04em; text-transform:uppercase;
+    padding:12px 16px; border:none; color:var(--muted); cursor:pointer;
+    transition: all .18s ease; background:transparent;
+  }
+  .auth-tab.active{ background:var(--gold); color:#1a1206; }
+  .auth-form{ display:flex; flex-direction:column; gap:12px; max-width:340px; margin:0 auto; }
+  .auth-form.hidden{ display:none; }
+  .auth-form input{
+    background: var(--bg-panel-2); border:1px solid var(--line); color:var(--ink);
+    padding:14px 16px; border-radius:12px; font-family:var(--font-body); font-size:14px;
+    transition: border-color .15s ease, box-shadow .15s ease;
+    width:100%;
+  }
+  .auth-form input::placeholder{ color:var(--muted); }
+  .auth-form input:focus{ outline:none; border-color:var(--gold); box-shadow: 0 0 0 3px rgba(224,168,63,0.16); }
+  .field-wrap{ position:relative; }
+  .field-eye{
+    position:absolute; right:14px; top:50%; transform:translateY(-50%);
+    background:none; border:none; color:var(--muted); cursor:pointer; font-size:15px; padding:2px;
+  }
+  .field-eye:hover{ color:var(--gold-bright); }
+  .auth-form button[type="submit"]{
+    background: var(--gold); color:#1a1206; font-weight:700;
+    font-family:var(--font-mono); letter-spacing:0.03em; text-transform:uppercase;
+    font-size:14px; border:none; padding:15px 18px; border-radius:12px; cursor:pointer; margin-top:6px;
+    transition: transform .12s ease, background .12s ease;
+  }
+  .auth-form button[type="submit"]:hover{ background:var(--gold-bright); transform: translateY(-1px); }
+  .auth-divider{ text-align:center; color:var(--muted); font-size:12px; margin:16px 0; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.1em; }
+  .google-btn{
+    display:block; width:100%; max-width:340px; margin:0 auto;
+    background: var(--bg-panel-2); border:1px solid var(--line); color:var(--ink);
+    padding:13px 18px; border-radius:12px; cursor:pointer; font-family:var(--font-body); font-size:14px;
+    transition: border-color .15s ease;
+  }
+  .google-btn:hover{ border-color:var(--blue-bright); }
+  .auth-error{ color:var(--bad); font-size:12.5px; min-height:16px; text-align:center; }
+  .auth-msg{ color:var(--good); font-size:12.5px; min-height:16px; text-align:center; }
+
+  /* ===== signed-in top bar ===== */
+  .top-bar{
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+    margin-bottom:18px;
+  }
+  .icon-btn{
+    background:var(--bg-panel); border:1px solid var(--line); color:var(--gold-bright);
+    width:36px; height:36px; border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    font-size:16px; flex-shrink:0;
+  }
+  .icon-btn:hover{ border-color:var(--gold-bright); }
+  .top-bar-user{
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--ink); text-align:center; border-bottom:1px solid var(--line); padding-bottom:6px;
+  }
+  .top-bar .leaderboard-open{
+    background:var(--bg-panel); border:1px solid var(--line); color:var(--gold-bright);
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.04em; text-transform:uppercase;
+    padding:0 12px; height:36px; border-radius:8px; cursor:pointer; white-space:nowrap;
+  }
+  .top-bar .leaderboard-open:hover{ border-color:var(--gold-bright); }
+
+  /* ===== online presence ===== */
+  .online-bar{
+    display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+    font-family:var(--font-mono); font-size:11.5px; color:var(--muted); margin-bottom:18px;
+    background:var(--bg-panel-2); border:1px solid var(--line);
+    border-radius:8px; padding:9px 14px;
+  }
+  .online-dot{
+    width:7px; height:7px; border-radius:50%; background:var(--good); flex-shrink:0;
+    box-shadow:0 0 6px var(--good);
+  }
+  .online-count{ color:var(--ink); font-weight:600; flex-shrink:0; }
+  .online-names-wrap{
+    flex:1 1 auto; min-width:0; height:1.4em; overflow:hidden; position:relative;
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 20px, #000 calc(100% - 20px), transparent 100%);
+    mask-image:linear-gradient(90deg, transparent 0, #000 20px, #000 calc(100% - 20px), transparent 100%);
+  }
+  .online-names{
+    color:var(--muted); opacity:0.9; white-space:nowrap;
+    position:absolute; left:0; top:0;
+    animation:online-scroll 16s linear infinite;
+  }
+  .online-names.no-scroll{ position:static; animation:none; }
+  .online-bar:hover .online-names{ animation-play-state:paused; }
+  @keyframes online-scroll{
+    from{ transform:translateX(100%); }
+    to{ transform:translateX(-100%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .online-names{ position:static; animation:none; }
+  }
+
+  /* ===== source list (stacked pill buttons) ===== */
+  .source-intro, .subject-intro{
+    text-align:center; font-family:var(--font-mono); font-size:11.5px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--muted); margin:26px 0 16px;
+    display:flex; align-items:center; gap:12px;
+  }
+  .source-intro::before, .source-intro::after,
+  .subject-intro::before, .subject-intro::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .source-grid{ display:flex; flex-direction:column; gap:12px; margin-bottom:8px; }
+  .source-card{
+    display:flex; justify-content:space-between; align-items:center; gap:10px;
+    background: var(--gold); color:#1a1206;
+    border:1px solid var(--gold); border-radius:12px;
+    padding:16px 20px; cursor:pointer; text-decoration:none;
+    font-family:var(--font-display); font-weight:700; font-size:17px; text-transform:uppercase; letter-spacing:.02em;
+    transition: transform .12s ease;
+    width:100%; text-align:left;
+  }
+  .source-card:hover{ transform:translateY(-1px); }
+  .source-card .source-status{ display:none; }
+  .source-card.placeholder{
+    background:transparent; color:var(--muted); border:1px solid var(--line);
+  }
+  .source-card.placeholder:hover{ transform:none; border-color:var(--gold); color:var(--gold-bright); }
+
+  .back-link{
+    background:none; border:none; color:var(--gold-bright); cursor:pointer;
+    font-family:var(--font-mono); font-size:12.5px; text-decoration:underline; padding:0;
+    margin-bottom:18px; display:inline-block; text-transform:uppercase; letter-spacing:.05em;
+  }
+  .back-link:hover{ color:var(--blue-bright); }
+  .coming-soon-panel{ text-align:center; }
+  .coming-soon-panel .icon{ font-size:30px; margin-bottom:12px; }
+  .coming-soon-panel h2{ font-family:var(--font-display); font-size:22px; text-transform:uppercase; margin:0 0 8px; color:var(--ink); }
+  .coming-soon-panel p{ color:var(--muted); font-size:13.5px; line-height:1.6; max-width:420px; margin:0 auto; }
+
+  /* ===== ready-for-the-board ring card ===== */
+  .ring-card{
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:14px;
+    padding:22px 22px 18px; margin-bottom:14px; display:flex; align-items:center; gap:20px; flex-wrap:wrap;
+  }
+  .ring{
+    width:106px; height:106px; border-radius:50%; flex-shrink:0; position:relative;
+    background: conic-gradient(var(--blue-bright) calc(var(--pct,0)*1%), var(--bg-panel-2) 0);
+  }
+  .ring::before{ content:""; position:absolute; inset:9px; border-radius:50%; background:var(--bg-panel); }
+  .ring .ring-pct{
+    position:relative; z-index:1; width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-mono); font-weight:600; font-size:21px; color:var(--ink);
+  }
+  .ring-info{ flex:1; min-width:180px; }
+  .ring-info h2{ font-family:var(--font-display); font-weight:700; font-size:24px; text-transform:uppercase; margin:0 0 8px; color:var(--ink); line-height:1; }
+  .ring-info .rule{ height:1px; background:var(--gold); opacity:.6; margin-bottom:10px; }
+  .ring-info .best-sub{ font-size:13px; color:var(--muted); }
+  .ring-info .best-sub b{ color:var(--ink); font-weight:600; }
+  .ring-info .best-sub .pct-tag{ color:var(--blue-bright); font-family:var(--font-mono); font-size:11.5px; }
+  .ring-last{ font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-top:12px; width:100%; }
+
+  /* ===== weak subject + mastered-count duo ===== */
+  .stat-duo{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:8px; }
+  .stat-box{
+    background:var(--bg-panel-2); border:1px solid var(--line); border-radius:14px;
+    padding:18px 16px; text-align:center;
+  }
+  .stat-box .lbl{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  .stat-box .val{ font-family:var(--font-display); font-weight:700; font-size:17px; color:var(--ink); text-transform:uppercase; margin:6px 0 12px; line-height:1.15; }
+  .stat-box .val .pct-tag{ display:block; font-family:var(--font-mono); font-size:11px; color:var(--blue-bright); text-transform:none; margin-top:4px; }
+  .stat-box .cap{ font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+  .stat-box .big{ font-family:var(--font-mono); font-weight:600; font-size:26px; color:var(--gold-bright); }
+  .stat-box.alt .num{ font-family:var(--font-mono); font-weight:600; font-size:30px; color:var(--gold-bright); line-height:1.15; }
+  .stat-box.alt .num.total{ color:var(--blue-bright); }
+  .stat-box.alt .lbl{ margin-top:6px; }
+
+  /* ===== per-subject progress badge on each card ===== */
+  .subject-progress{ margin-top:12px; }
+  .subject-progress .bar-track{ height:6px; border-radius:3px; background: var(--bg-panel-2); overflow:hidden; }
+  .subject-progress .bar-fill{ height:100%; border-radius:3px; background: linear-gradient(90deg, var(--gold-bright), var(--gold) 70%, rgba(224,168,63,0.25)); }
+  .subject-progress .cap{ font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-top:6px; }
+
+  /* ===== subject cards ===== */
+  .subject-grid{ display:flex; flex-direction:column; gap:12px; }
+  .subject-card{
+    display:block;
+    background: var(--bg-panel-2);
+    border:1px solid var(--line);
+    border-radius: 14px;
+    padding:18px 20px;
+    text-decoration:none;
+    transition: border-color .15s ease;
+  }
+  .subject-card:hover{ border-color: var(--gold); }
+  .subject-card .top-row{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+  .subject-card .name{
+    font-family:var(--font-display); font-weight:700; font-size:19px; color:var(--ink); text-transform:uppercase; line-height:1.1;
+  }
+  .subject-card .arrow{ font-family:var(--font-mono); font-size:17px; color:var(--gold-bright); flex-shrink:0; }
+  .subject-card .status{
+    font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-top:6px;
+  }
+  .subject-card .status.ready{ color:var(--good); }
+  .subject-card.placeholder{ opacity:0.65; }
+  .subject-card.placeholder .arrow{ color:var(--muted); }
+
+  .footer-note{
+    text-align:center; font-family:var(--font-mono); font-size:11px; color:var(--muted); opacity:0.75; margin-top:24px;
+  }
+  .brand-footer{
+    text-align:center; margin-top:34px; opacity:.8;
+  }
+  .brand-footer .bf-eyebrow{ font-family:var(--font-mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+  .brand-footer .bf-title{ font-family:var(--font-display); font-weight:700; font-size:20px; text-transform:uppercase; color:var(--ink); margin-top:4px; }
+
+  /* ===== leaderboard modal ===== */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(0,0,0,0.6);
+    display:flex; align-items:center; justify-content:center;
+    padding:16px; z-index:100;
+  }
+  .modal-overlay.hidden{ display:none; }
+  .modal-box{
+    width:100%; max-width:400px; max-height:86vh; overflow-y:auto;
+    background:var(--bg-panel); border:1px solid var(--line);
+    border-radius:14px; padding:26px 22px; position:relative;
+  }
+  .modal-close{
+    position:absolute; top:14px; right:16px; background:none; border:none;
+    color:var(--muted); font-size:20px; cursor:pointer; line-height:1;
+  }
+  .modal-box h2{ font-family:var(--font-display); font-weight:700; font-size:24px; text-transform:uppercase; margin:0 0 4px; color:var(--ink); }
+  .modal-box .modal-sub{ font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:.04em; }
+  .modal-box .rule{ height:1px; background:var(--gold); opacity:.6; margin-bottom:16px; }
+  .leaderboard-list{ display:flex; flex-direction:column; gap:2px; margin-top:4px; }
+  .leaderboard-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:11px 4px; border-bottom:1px solid var(--line); font-size:14px;
+  }
+  .leaderboard-row .lb-rank{ font-family:var(--font-mono); color:var(--muted); font-weight:600; width:34px; }
+  .leaderboard-row .lb-name{ flex:1; color:var(--ink); font-family:var(--font-body); }
+  .leaderboard-row .lb-stats{ color:var(--muted); font-size:11px; text-align:right; font-family:var(--font-mono); }
+  .leaderboard-empty{ color:var(--muted); font-style:italic; text-align:center; padding:12px 0; }
+
+  .leaderboard-row.lb-top1 .lb-rank{ font-family:var(--font-display); font-size:26px; color:var(--gold-bright); width:36px; }
+  .leaderboard-row.lb-top1 .lb-name{ font-family:var(--font-display); font-weight:700; font-size:18px; text-transform:uppercase; color:var(--ink); }
+  .leaderboard-row.lb-top2 .lb-rank{ font-family:var(--font-display); font-size:22px; color:var(--ink); width:36px; }
+  .leaderboard-row.lb-top2 .lb-name{ font-family:var(--font-display); font-weight:700; font-size:16px; text-transform:uppercase; }
+  .leaderboard-row.lb-top3 .lb-rank{ font-family:var(--font-display); font-size:22px; color:var(--gold); width:36px; }
+  .leaderboard-row.lb-top3 .lb-name{ font-family:var(--font-display); font-weight:700; font-size:16px; text-transform:uppercase; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <button class="theme-toggle" id="themeToggleBtn" title="Toggle dark / light mode">☀️</button>
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark', buttonId:'themeToggleBtn' }); }</script>
+
+  <div class="masthead">
+    <div class="eyebrow">Peter Parker's</div>
+    <h1>LEA Reviewer</h1>
+    <div class="rule"></div>
+    <div class="sub"><b>Log in</b> to track your mastery, pick up where you left off, and see where you stand on the leaderboard. AYAW BOARD</div>
+  </div>
+
+  <!-- ===================== SIGNED-OUT: AUTH PANEL ===================== -->
+  <div id="authPanel" class="panel hidden">
+    <div class="auth-heading">Sign in to continue</div>
+    <div class="intro-note">An account is required — progress and scores are saved to your profile, not this device.</div>
+    <div class="auth-tabs">
+      <div class="auth-tab active" id="loginTab">Log in</div>
+      <div class="auth-tab" id="signupTab">Sign up</div>
+    </div>
+
+    <form class="auth-form" id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Email" required autocomplete="email">
+      <div class="field-wrap">
+        <input type="password" id="loginPassword" placeholder="Password" required autocomplete="current-password">
+        <button type="button" class="field-eye" data-target="loginPassword">👁</button>
+      </div>
+      <div class="auth-error" id="loginError"></div>
+      <button type="submit">Log in</button>
+    </form>
+
+    <form class="auth-form hidden" id="signupForm">
+      <input type="text" id="signupUsername" placeholder="Username (shown on leaderboard)" required maxlength="24">
+      <input type="email" id="signupEmail" placeholder="Email" required autocomplete="email">
+      <div class="field-wrap">
+        <input type="password" id="signupPassword" placeholder="Password (min 6 characters)" required minlength="6" autocomplete="new-password">
+        <button type="button" class="field-eye" data-target="signupPassword">👁</button>
+      </div>
+      <div class="auth-error" id="signupError"></div>
+      <div class="auth-msg" id="signupMsg"></div>
+      <button type="submit">Create account</button>
+    </form>
+
+    <div class="auth-divider">or</div>
+    <button class="google-btn" id="googleBtn">Continue with Google</button>
+  </div>
+
+  <!-- ===================== SIGNED-IN SHELL ===================== -->
+  <div id="signedInShell" class="hidden">
+    <div class="top-bar">
+      <button class="icon-btn" id="logoutBtn" title="Log out" aria-label="Log out">⏻</button>
+      <div class="top-bar-user" id="welcomeName"></div>
+      <button class="leaderboard-open" id="openMainLeaderboardBtn">🏆 Leaderboard</button>
+    </div>
+
+    <div class="online-bar">
+      <span class="online-dot"></span>
+      <span><span class="online-count" id="onlineCount">0</span> online</span>
+      <span class="online-names-wrap"><span class="online-names" id="onlineNames">—</span></span>
+    </div>
+
+    <!-- ===== SOURCE FOLDERS ===== -->
+    <div id="sourcePanel">
+      <div class="source-intro">Choose a source</div>
+      <div class="source-grid" id="sourceGrid"></div>
+    </div>
+
+    <!-- ===== SUBJECT GRID (within a source) ===== -->
+    <div id="subjectPanel" class="hidden">
+      <button class="back-link" id="backToSourcesBtn">&larr; All sources</button>
+
+      <div class="ring-card">
+        <div class="ring" id="readinessRing"><div class="ring-pct" id="readinessPct">0%</div></div>
+        <div class="ring-info">
+          <h2>Ready for the board!</h2>
+          <div class="rule"></div>
+          <div class="best-sub">Best Subject: <b id="strongSubjectName">—</b> <span class="pct-tag" id="strongSubjectPct"></span></div>
+        </div>
+        <div class="ring-last"><span id="readinessSub">0 quizzes completed</span> · Last: <span id="lastQuizName">—</span> <span id="lastQuizSub"></span></div>
+      </div>
+
+      <div class="stat-duo">
+        <div class="stat-box">
+          <div class="lbl">Weak Subject</div>
+          <div class="val" id="weakSubjectName">—<span class="pct-tag" id="weakSubjectPct"></span></div>
+          <div class="cap">Subjects Fully Mastered</div>
+          <div class="big" id="overallSubjectsDone">0 / 0</div>
+        </div>
+        <div class="stat-box alt">
+          <div class="num" id="overallMasteredNum">0</div>
+          <div class="num total"><span id="overallTotalNum">0</span></div>
+          <div class="lbl">Questions mastered</div>
+        </div>
+      </div>
+
+      <div class="sr-only">
+        <div class="overall-bar-track"><div class="overall-bar-fill" id="overallBarFill"></div></div>
+        <span id="overallBarCaption"></span>
+        <span id="overallBarPct"></span>
+      </div>
+
+      <div class="subject-intro">Choose a subject</div>
+      <div class="subject-grid" id="subjectGrid"></div>
+
+      <div class="footer-note">More subjects are added as they're compiled — check back for updates.</div>
+    </div>
+
+    <!-- ===== COMING SOON (other sources) ===== -->
+    <div id="comingSoonPanel" class="hidden panel coming-soon-panel">
+      <div class="icon">🚧</div>
+      <h2 id="comingSoonTitle">Coming soon</h2>
+      <p id="comingSoonText">This source isn't set up yet.</p>
+      <button class="back-link" id="backToSourcesBtn2">&larr; All sources</button>
+    </div>
+
+    <div class="brand-footer">
+      <div class="bf-eyebrow">Peter Parker's</div>
+      <div class="bf-title">LEA Reviewer</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===================== MAIN LEADERBOARD MODAL ===================== -->
+<div class="modal-overlay hidden" id="leaderboardModalOverlay">
+  <div class="modal-box">
+    <button class="modal-close" id="leaderboardModalClose">&times;</button>
+    <h2>Main Leaderboard</h2>
+    <div class="modal-sub">Combined ranking across every subject</div>
+    <div class="rule"></div>
+    <div class="leaderboard-list" id="leaderboardList">
+      <div class="leaderboard-empty">Loading…</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ---- Supabase setup (shared with all subject pages) ----
+const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// ---- Subjects list ----
+// totalQuestions/totalModules are only meaningful for "ready" subjects — they
+// mirror the MODULES defined in that subject's own page, used here purely to
+// show a mastered/total badge without loading each subject's full quiz data.
+const SUBJECTS = [
+  { id: "history", name: "History of Architecture 📜⌛🏛️🏺", href: "subjects/history-of-architecture.html", ready: true, totalQuestions: 1552, totalModules: 12, source: "jpt" },
+  { id: "building-utilities", name: "Building Utilities 💧⚡⚙️💡", href: "subjects/building-utilities/index.html", ready: true, totalQuestions: 255, totalModules: 4, source: "jpt" },
+  { id: "building-technology", name: "Building Technology", href: "subjects/building-technology.html", ready: false, source: "jpt" },
+  { id: "structural", name: "Structural 🏗️🧱👷🏗", href: "subjects/structural/index.html", ready: true, totalQuestions: 230, totalModules: 2, source: "jpt" },
+  { id: "building-laws", name: "Building Laws 🏢⚖👮⚖️", href: "subjects/building-laws/index.html", ready: true, totalQuestions: 270, totalModules: 5, source: "jpt" },
+  { id: "professional-practice", name: "Professional Practice 💼👨🏻‍💼👔👷🏻‍♂️", href: "subjects/professional-practice/index.html", ready: true, totalQuestions: 436, totalModules: 5, source: "jpt" },
+  { id: "theory-of-architecture-and-planning", name: "Theory of Architecture and Principles of Planning", href: "subjects/theory-of-architecture-and-planning/index.html", ready: true, totalQuestions: 95, totalModules: 2, source: "jpt" },
+  { id: "architectural-design", name: "Architectural Design", href: "subjects/architectural-design.html", ready: false, source: "jpt" },
+  { id: "professional-planning", name: "Professional Planning", href: "subjects/professional-planning.html", ready: false, source: "jpt" },
+  { id: "architectural-sites-proponents-styles", name: "Architectural Sites, Proponents, & Styles", href: "subjects/architectural-sites-proponents-styles/index.html", ready: true, totalQuestions: 1294, totalModules: 3, source: "mst" },
+];
+const READY_SUBJECTS = SUBJECTS.filter(s => s.ready);
+
+// ---- Source folders (top-level, sit above Subjects) ----
+// All current subjects live under Source A. The others are placeholders until
+// their own subject libraries are compiled.
+const SOURCES = [
+  { id: "jpt", name: "Source A", ready: true, blurb: "" },
+  { id: "mst", name: "Source B", ready: true, blurb: "" },
+  { id: "toplab", name: "Source C", ready: false, blurb: "This library isn't set up yet — it'll appear here once it's ready." },
+  { id: "freesource", name: "Source D", ready: false, blurb: "This library isn't set up yet — it'll appear here once it's ready." },
+];
+
+const authPanel = document.getElementById('authPanel');
+const signedInShell = document.getElementById('signedInShell');
+const sourcePanel = document.getElementById('sourcePanel');
+const sourceGrid = document.getElementById('sourceGrid');
+const subjectPanel = document.getElementById('subjectPanel');
+const subjectGrid = document.getElementById('subjectGrid');
+const comingSoonPanel = document.getElementById('comingSoonPanel');
+const welcomeName = document.getElementById('welcomeName');
+let currentSourceId = null;
+
+// ---- Source navigation ----
+function renderSourceGrid(){
+  sourceGrid.innerHTML = SOURCES.map(s => `
+    <button class="source-card${s.ready ? '' : ' placeholder'}" data-source="${s.id}">
+      <div class="source-name">${s.name}</div>
+      <div class="source-status${s.ready ? ' ready' : ''}">${s.ready ? 'Available' : 'Coming soon'}</div>
+    </button>
+  `).join('');
+  sourceGrid.querySelectorAll('.source-card').forEach(btn => {
+    btn.addEventListener('click', () => openSource(btn.dataset.source));
+  });
+}
+renderSourceGrid();
+
+function openSource(sourceId){
+  const source = SOURCES.find(s => s.id === sourceId);
+  sourcePanel.classList.add('hidden');
+  if(source.ready){
+    currentSourceId = sourceId;
+    renderSubjectGrid();
+    subjectPanel.classList.remove('hidden');
+    comingSoonPanel.classList.add('hidden');
+    try{ localStorage.setItem('leaLastSource', sourceId); }catch(e){}
+  } else {
+    comingSoonPanel.classList.remove('hidden');
+    subjectPanel.classList.add('hidden');
+    document.getElementById('comingSoonTitle').textContent = source.name + ' — coming soon';
+    document.getElementById('comingSoonText').textContent = source.blurb;
+  }
+}
+
+function backToSources(){
+  subjectPanel.classList.add('hidden');
+  comingSoonPanel.classList.add('hidden');
+  sourcePanel.classList.remove('hidden');
+  try{ localStorage.removeItem('leaLastSource'); }catch(e){}
+}
+document.getElementById('backToSourcesBtn').addEventListener('click', backToSources);
+document.getElementById('backToSourcesBtn2').addEventListener('click', backToSources);
+
+// Namespaced progress blob shared with every subject page:
+// { history: { moduleId: {mastered:[], bestCorrect, bestTotal, attempts} }, "building-laws": {...} }
+let FULL_DATA = {};
+
+function subjectStats(subjectId, totalQuestions){
+  const subjData = FULL_DATA[subjectId] || {};
+  let mastered = 0, scoreSum = 0, scoreCount = 0;
+  Object.values(subjData).forEach(mp => {
+    mastered += (mp.mastered || []).length;
+    if(mp.bestTotal > 0){ scoreSum += (mp.bestCorrect / mp.bestTotal); scoreCount++; }
+  });
+  // Guard against a stale/inflated count exceeding the known total.
+  if(totalQuestions) mastered = Math.min(mastered, totalQuestions);
+  return { mastered, avgScore: scoreCount > 0 ? (scoreSum / scoreCount) : null };
+}
+
+function renderSubjectGrid(){
+  subjectGrid.innerHTML = SUBJECTS.filter(s => s.source === currentSourceId).map(s => {
+    let progressHtml = '';
+    if(s.ready && s.totalQuestions){
+      const { mastered } = subjectStats(s.id, s.totalQuestions);
+      const pct = Math.round((mastered / s.totalQuestions) * 100);
+      progressHtml = `
+        <div class="subject-progress">
+          <div class="bar-track"><div class="bar-fill" style="width:${pct}%;"></div></div>
+          <div class="cap">${mastered} / ${s.totalQuestions} mastered</div>
+        </div>`;
+    }
+    return `
+    <a class="subject-card${s.ready ? '' : ' placeholder'}" href="${s.href}">
+      <div class="top-row">
+        <div class="name">${s.name}</div>
+        <div class="arrow">&rarr;</div>
+      </div>
+      <div class="status${s.ready ? ' ready' : ''}">${s.ready ? 'Available' : 'Coming soon'}</div>
+      ${progressHtml}
+    </a>
+  `;
+  }).join('');
+}
+renderSubjectGrid();
+
+function renderOverallTracker(){
+  let totalMastered = 0, totalQuestions = 0, subjectsDone = 0;
+  READY_SUBJECTS.forEach(s => {
+    const { mastered } = subjectStats(s.id, s.totalQuestions);
+    totalMastered += mastered;
+    totalQuestions += s.totalQuestions;
+    if(mastered === s.totalQuestions) subjectsDone++;
+  });
+  const pct = totalQuestions > 0 ? Math.round((totalMastered / totalQuestions) * 100) : 0;
+  document.getElementById('overallMasteredNum').textContent = totalMastered;
+  document.getElementById('overallTotalNum').textContent = totalQuestions;
+  document.getElementById('overallSubjectsDone').textContent = subjectsDone + ' / ' + READY_SUBJECTS.length;
+  document.getElementById('overallBarFill').style.width = pct + '%';
+  document.getElementById('overallBarCaption').textContent = totalMastered + ' of ' + totalQuestions + ' questions mastered across every subject';
+  document.getElementById('overallBarPct').textContent = pct + '%';
+}
+
+// ---- "Ready for the Board" tracker + Quick Subject Insight ribbon ----
+function countCompletedQuizzes(){
+  let count = 0;
+  Object.entries(FULL_DATA).forEach(([key, subjData]) => {
+    if(key === '__meta') return; // last-activity marker, not a subject's progress
+    Object.values(subjData || {}).forEach(mp => { if(mp && mp.bestTotal > 0) count++; });
+  });
+  return count;
+}
+
+function computeSubjectInsights(){
+  // Strong subject: the best average quiz score, among subjects that have at
+  // least one completed quiz.
+  const scored = READY_SUBJECTS.map(s => {
+    const { avgScore } = subjectStats(s.id, s.totalQuestions);
+    return { id: s.id, name: s.name, avgScore };
+  }).filter(s => s.avgScore !== null);
+  let strong = null;
+  if(scored.length){
+    strong = scored[0];
+    scored.forEach(s => { if(s.avgScore > strong.avgScore) strong = s; });
+  }
+
+  // Needs work: the least-progressed subject by mastery percentage, regardless
+  // of quiz score — so a subject that's barely been touched surfaces ahead of
+  // one you've already scored well on (and this can differ from Strong Subject,
+  // rather than just echoing it when only one subject has been attempted).
+  let weak = null;
+  const progressed = READY_SUBJECTS.map(s => {
+    const { mastered } = subjectStats(s.id, s.totalQuestions);
+    const total = s.totalQuestions || 0;
+    const pct = total > 0 ? mastered / total : 0;
+    return { id: s.id, name: s.name, mastered, total, pct };
+  }).filter(s => s.total > 0);
+  if(progressed.length){
+    weak = progressed[0];
+    progressed.forEach(s => {
+      // Lower % mastered wins; ties broken toward the subject with more
+      // total questions left to cover.
+      if(s.pct < weak.pct || (s.pct === weak.pct && s.total > weak.total)) weak = s;
+    });
+  }
+
+  return { strong, weak };
+}
+
+function timeAgo(iso){
+  const diffMs = Date.now() - new Date(iso).getTime();
+  const mins = Math.floor(diffMs / 60000);
+  if(mins < 1) return 'Just now';
+  if(mins < 60) return mins + (mins === 1 ? ' minute ago' : ' minutes ago');
+  const hrs = Math.floor(mins / 60);
+  if(hrs < 24) return hrs + (hrs === 1 ? ' hour ago' : ' hours ago');
+  const days = Math.floor(hrs / 24);
+  if(days < 30) return days + (days === 1 ? ' day ago' : ' days ago');
+  const months = Math.floor(days / 30);
+  if(months < 12) return months + (months === 1 ? ' month ago' : ' months ago');
+  const years = Math.floor(months / 12);
+  return years + (years === 1 ? ' year ago' : ' years ago');
+}
+
+function renderReadinessAndInsights(){
+  let totalMastered = 0, totalQuestions = 0;
+  READY_SUBJECTS.forEach(s => {
+    const { mastered } = subjectStats(s.id, s.totalQuestions);
+    totalMastered += mastered;
+    totalQuestions += s.totalQuestions;
+  });
+  const pct = totalQuestions > 0 ? Math.round((totalMastered / totalQuestions) * 100) : 0;
+  const completedCount = countCompletedQuizzes();
+  document.getElementById('readinessPct').textContent = pct + '%';
+  document.getElementById('readinessRing').style.setProperty('--pct', pct);
+  document.getElementById('readinessSub').textContent =
+    completedCount + (completedCount === 1 ? ' quiz completed' : ' quizzes completed');
+
+  const { strong, weak } = computeSubjectInsights();
+  document.getElementById('strongSubjectName').innerHTML = strong ? strong.name : 'Not enough data yet';
+  document.getElementById('strongSubjectPct').textContent = strong ? Math.round(strong.avgScore * 100) + '% avg score' : '';
+  document.getElementById('weakSubjectName').innerHTML = weak ? weak.name : 'Not enough data yet';
+  document.getElementById('weakSubjectPct').textContent = weak ? Math.round(weak.pct * 100) + '% mastered' : '';
+
+  const meta = FULL_DATA.__meta;
+  const lastNameEl = document.getElementById('lastQuizName');
+  const lastSubEl = document.getElementById('lastQuizSub');
+  if(meta && meta.at){
+    const subject = SUBJECTS.find(s => s.id === meta.subjectId);
+    lastNameEl.innerHTML = meta.moduleTitle || 'A quiz';
+    lastSubEl.textContent = (subject ? subject.name : meta.subjectId) + ' · ' + timeAgo(meta.at);
+  } else {
+    lastNameEl.textContent = 'No quizzes yet';
+    lastSubEl.textContent = '';
+  }
+}
+
+async function loadFullProgress(user){
+  const { data: row } = await sb.from('progress').select('data').eq('user_id', user.id).single();
+  FULL_DATA = (row && row.data) || {};
+  renderSubjectGrid();
+  renderOverallTracker();
+  renderReadinessAndInsights();
+}
+
+// ---- Main (global) leaderboard ----
+const leaderboardModalOverlay = document.getElementById('leaderboardModalOverlay');
+document.getElementById('openMainLeaderboardBtn').addEventListener('click', async () => {
+  leaderboardModalOverlay.classList.remove('hidden');
+  const listEl = document.getElementById('leaderboardList');
+  listEl.innerHTML = '<div class="leaderboard-empty">Loading…</div>';
+  const { data, error } = await sb.rpc('get_leaderboard');
+  if(error || !data || data.length === 0){
+    listEl.innerHTML = '<div class="leaderboard-empty">No scores yet — be the first!</div>';
+    return;
+  }
+  const top10 = data.slice(0, 10);
+  const medals = { 1: '1ST', 2: '2ND', 3: '3RD' };
+  listEl.innerHTML = top10.map((row, i) => {
+    const rank = i + 1;
+    const rowClass = rank <= 3 ? 'leaderboard-row lb-top' + rank : 'leaderboard-row';
+    const rankDisplay = medals[rank] || rank;
+    return (
+      '<div class="' + rowClass + '">' +
+        '<span class="lb-rank">' + rankDisplay + '</span>' +
+        '<span class="lb-name">' + row.username + '</span>' +
+        '<span class="lb-stats">' + row.total_mastered + ' mastered · ' + Math.round((row.avg_best_score||0)*100) + '% avg</span>' +
+      '</div>'
+    );
+  }).join('');
+});
+document.getElementById('leaderboardModalClose').addEventListener('click', () => leaderboardModalOverlay.classList.add('hidden'));
+leaderboardModalOverlay.addEventListener('click', (e) => { if(e.target === leaderboardModalOverlay) leaderboardModalOverlay.classList.add('hidden'); });
+
+// ---- Auth tabs ----
+const loginTab = document.getElementById('loginTab');
+const signupTab = document.getElementById('signupTab');
+const loginForm = document.getElementById('loginForm');
+const signupForm = document.getElementById('signupForm');
+loginTab.addEventListener('click', () => {
+  loginTab.classList.add('active'); signupTab.classList.remove('active');
+  loginForm.classList.remove('hidden'); signupForm.classList.add('hidden');
+});
+signupTab.addEventListener('click', () => {
+  signupTab.classList.add('active'); loginTab.classList.remove('active');
+  signupForm.classList.remove('hidden'); loginForm.classList.add('hidden');
+});
+
+// ---- Password visibility toggles ----
+document.querySelectorAll('.field-eye').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.getElementById(btn.dataset.target);
+    if(!target) return;
+    const showing = target.type === 'text';
+    target.type = showing ? 'password' : 'text';
+    btn.textContent = showing ? '👁' : '🙈';
+  });
+});
+
+document.getElementById('googleBtn').addEventListener('click', async () => {
+  await sb.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.href } });
+});
+
+loginForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+  const errEl = document.getElementById('loginError');
+  errEl.textContent = '';
+  const { error } = await sb.auth.signInWithPassword({ email, password });
+  if(error){ errEl.textContent = error.message; return; }
+});
+
+signupForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const username = document.getElementById('signupUsername').value.trim();
+  const email = document.getElementById('signupEmail').value.trim();
+  const password = document.getElementById('signupPassword').value;
+  const errEl = document.getElementById('signupError');
+  const msgEl = document.getElementById('signupMsg');
+  errEl.textContent = ''; msgEl.textContent = '';
+  const { data, error } = await sb.auth.signUp({
+    email, password, options: { data: { username } }
+  });
+  if(error){ errEl.textContent = error.message; return; }
+  if(!data.session){
+    msgEl.textContent = 'Account created! Check your email to confirm, then log in.';
+  }
+});
+
+document.getElementById('logoutBtn').addEventListener('click', async () => {
+  await sb.auth.signOut();
+});
+
+// ---- Online presence (who's online right now) ----
+let presenceChannel = null;
+const onlineCountEl = document.getElementById('onlineCount');
+const onlineNamesEl = document.getElementById('onlineNames');
+
+function renderOnline(names){
+  const uniq = Array.from(new Set(names));
+  onlineCountEl.textContent = uniq.length;
+  onlineNamesEl.textContent = uniq.length ? uniq.join(', ') : '—';
+  onlineNamesEl.classList.toggle('no-scroll', uniq.length === 0);
+}
+
+function startPresence(username){
+  if(presenceChannel) return;
+  presenceChannel = sb.channel('online-users', {
+    config: { presence: { key: (crypto.randomUUID ? crypto.randomUUID() : String(Math.random())) } }
+  });
+  presenceChannel.on('presence', { event: 'sync' }, () => {
+    const state = presenceChannel.presenceState();
+    const names = Object.values(state).flat().map(p => p.username).filter(Boolean);
+    renderOnline(names);
+  });
+  presenceChannel.subscribe(async (status) => {
+    if(status === 'SUBSCRIBED'){
+      await presenceChannel.track({ username, online_at: new Date().toISOString() });
+    }
+  });
+}
+
+function stopPresence(){
+  if(presenceChannel){
+    sb.removeChannel(presenceChannel);
+    presenceChannel = null;
+  }
+  renderOnline([]);
+}
+
+// ---- Session-driven view state ----
+async function showSignedIn(user){
+  let username = (user.email || '').split('@')[0];
+  const { data: profile } = await sb.from('profiles').select('username').eq('id', user.id).single();
+  if(profile && profile.username) username = profile.username;
+  welcomeName.textContent = username;
+  authPanel.classList.add('hidden');
+  signedInShell.classList.remove('hidden');
+
+  // A link like index.html?source=jpt (used by subject/quiz pages) always
+  // wins over local storage, so "All subjects" works even if this browser
+  // never recorded a previous source click (new device, cleared storage,
+  // private browsing, a bookmarked/shared quiz link, etc).
+  let urlSourceId = null;
+  try{ urlSourceId = new URLSearchParams(window.location.search).get('source'); }catch(e){}
+
+  let lastSourceId = urlSourceId;
+  if(!lastSourceId){
+    try{ lastSourceId = localStorage.getItem('leaLastSource'); }catch(e){}
+  }
+  const lastSource = SOURCES.find(s => s.id === lastSourceId && s.ready);
+  if(lastSource){
+    currentSourceId = lastSource.id;
+    renderSubjectGrid();
+    sourcePanel.classList.add('hidden');
+    subjectPanel.classList.remove('hidden');
+    comingSoonPanel.classList.add('hidden');
+    try{ localStorage.setItem('leaLastSource', lastSource.id); }catch(e){}
+  } else {
+    sourcePanel.classList.remove('hidden');
+    subjectPanel.classList.add('hidden');
+    comingSoonPanel.classList.add('hidden');
+  }
+
+  startPresence(username);
+  await loadFullProgress(user);
+}
+
+function showSignedOut(){
+  stopPresence();
+  signedInShell.classList.add('hidden');
+  authPanel.classList.remove('hidden');
+}
+
+sb.auth.onAuthStateChange((event, session) => {
+  if(event === 'SIGNED_IN' && session) showSignedIn(session.user);
+  if(event === 'SIGNED_OUT') showSignedOut();
+});
+
+(async function initApp(){
+  const { data: { session } } = await sb.auth.getSession();
+  if(session){ await showSignedIn(session.user); } else { showSignedOut(); }
+})();
+
+</script>
+</body>
+</html>

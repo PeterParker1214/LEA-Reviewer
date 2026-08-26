@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profile — LEA Reviewer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Architects+Daughter&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-2:#0a1520;
+    --gold:#e0a83f; --gold-bright:#f0c268; --blue:#6fa8cf; --blue-bright:#8fc4ea;
+    --muted:#8b98a5; --good:#5fbf82; --bad:#e2604a;
+    --line: rgba(111,168,207,0.20); --line-soft: rgba(111,168,207,0.14);
+    --grid-line: rgba(111,168,207,0.09);
+    --font-display:'Big Shoulders Display',sans-serif;
+    --font-hand:'Architects Daughter',cursive;
+    --font-body:'Space Grotesk',sans-serif;
+    --font-mono:'IBM Plex Mono',monospace;
+  }
+  body.light-mode, :root.light-mode{
+    --ink:#16202b; --bg-deep:#d3dee6; --bg-panel:#ffffff; --bg-panel-2:#e9eff4;
+    --gold:#b5791f; --gold-bright:#7d520c; --blue:#2f6c95; --blue-bright:#1b4a6b;
+    --muted:#4f5d6a; --good:#206b3c; --bad:#a1372a;
+    --line: rgba(47,108,149,0.28); --line-soft: rgba(47,108,149,0.20);
+    --grid-line: rgba(47,108,149,0.11);
+  }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      var(--bg-deep);
+    color:var(--ink); font-family:var(--font-body); min-height:100vh;
+    display:flex; justify-content:center; padding:14px 16px 24px;
+  }
+  .wrap{ width:100%; max-width:390px; }
+  button{ font-family:inherit; }
+
+  .pf-head{ display:flex; align-items:center; gap:8px; margin-bottom:20px; }
+  .icon-btn-44{
+    width:44px; height:44px; border-radius:8px; background:var(--bg-panel); border:1px solid var(--line);
+    color:var(--gold-bright); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+  }
+  .icon-btn-44 svg{ width:18px; height:18px; }
+  .pf-title{ flex:1; font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; line-height:1; }
+  .pf-save{
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--gold-bright); background:none; border:0; cursor:pointer; padding:8px 4px;
+  }
+  .pf-save:hover{ text-decoration:underline; }
+  /* The name row is an input, so it should look like one. Without this it
+     reads as a static row and nobody discovers it can be typed in. */
+  .pf-field:focus-within{ border-color:var(--gold); }
+  .pf-field:hover{ border-color:rgba(224,168,63,0.45); }
+
+  /* Identity card — blueprint corner marks, same as the frame. */
+  .pf-id{
+    position:relative; background:var(--bg-panel); border:1px solid var(--line);
+    padding:20px; margin-bottom:16px; display:flex; gap:16px; align-items:center;
+  }
+  .pf-id::before, .pf-id::after{
+    content:''; position:absolute; width:12px; height:12px; border:2px solid var(--gold); opacity:.9;
+  }
+  .pf-id::before{ top:-1px; left:-1px; border-width:2px 0 0 2px; }
+  .pf-id::after{ bottom:-1px; right:-1px; border-width:0 2px 2px 0; }
+
+  .pf-avatar{
+    position:relative; width:88px; height:88px; flex-shrink:0; background:var(--bg-panel-2);
+    border:1px solid rgba(224,168,63,0.5); display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-weight:800; font-size:34px; color:var(--gold-bright);
+    overflow:hidden;
+  }
+  .pf-avatar img{ width:100%; height:100%; object-fit:cover; }
+  .pf-meta{ flex:1; min-width:0; }
+  .pf-name{ font-family:var(--font-display); font-weight:700; font-size:24px; text-transform:uppercase; line-height:1; overflow:hidden; text-overflow:ellipsis; }
+  .pf-stats{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); margin-top:6px; line-height:1.6; }
+
+  .pf-pic{ display:flex; gap:8px; margin-bottom:8px; }
+  .pic-btn{
+    flex:1; text-align:center; font-family:var(--font-mono); font-size:11px; letter-spacing:.05em;
+    text-transform:uppercase; padding:13px 6px; border:1px solid var(--line);
+    background:none; color:var(--gold-bright); cursor:pointer;
+  }
+  .pic-btn.primary{ background:var(--gold); border-color:var(--gold); color:#1a1206; font-weight:600; }
+  body.light-mode .pic-btn.primary, :root.light-mode .pic-btn.primary{ color:#fff; }
+  .pic-btn:last-child{ color:var(--muted); }
+  .pic-btn[disabled]{ opacity:.45; cursor:default; }
+  .pic-btn:not([disabled]):hover{ border-color:var(--gold-bright); }
+
+  .pf-label{ font-family:var(--font-mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+  .pf-note{ font-family:var(--font-mono); font-size:9.5px; color:var(--muted); line-height:1.6; margin-bottom:18px; }
+
+  .pf-field{
+    display:flex; align-items:center; gap:10px; min-height:50px; background:var(--bg-panel);
+    border:1px solid var(--line); padding:0 14px; font-size:16px; margin-bottom:8px;
+  }
+  .pf-field input{
+    flex:1; min-width:0; background:none; border:0; color:var(--ink);
+    font-family:var(--font-body); font-size:16px; padding:0;
+  }
+  .pf-field input:focus{ outline:none; }
+  .pf-count{ font-family:var(--font-mono); font-size:10px; color:var(--muted); flex-shrink:0; }
+  .pf-status{ font-family:var(--font-mono); font-size:9.5px; margin-bottom:18px; min-height:14px; color:var(--muted); }
+  .pf-status.err{ color:var(--bad); }
+  .pf-status.ok{ color:var(--good); }
+
+  .pf-callout{
+    background:var(--bg-panel); border:1px solid var(--line); border-left:3px solid var(--blue-bright);
+    padding:13px 15px; margin-bottom:16px; font-family:var(--font-mono); font-size:10.5px;
+    color:var(--muted); line-height:1.7;
+  }
+  .pf-row{ display:flex; gap:8px; }
+  .pf-row a, .pf-row button{
+    flex:1; min-height:50px; display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line); color:var(--muted); background:none; cursor:pointer;
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase;
+    text-decoration:none;
+  }
+  .pf-row .danger{ border-color:rgba(226,96,74,0.4); color:var(--bad); }
+
+  /* Choose the crop before it is saved — a centre crop guesses, and faces are
+     rarely in the middle of a photo. */
+  .crop-sheet{ position:fixed; inset:0; z-index:130; background:rgba(4,9,13,0.96); display:flex; align-items:center; justify-content:center; padding:20px; }
+  .crop-sheet.hidden{ display:none; }
+  .crop-box{ width:100%; max-width:340px; }
+  .crop-head{ font-family:var(--font-mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; text-align:center; }
+  .crop-frame{
+    position:relative; width:100%; aspect-ratio:1/1; overflow:hidden;
+    background:var(--bg-panel-2); border:1px solid rgba(224,168,63,0.5);
+    touch-action:none; cursor:grab; margin:0 auto;
+  }
+  .crop-frame.dragging{ cursor:grabbing; }
+  .crop-frame img{ position:absolute; left:50%; top:50%; transform-origin:center center; will-change:transform; user-select:none; -webkit-user-drag:none; }
+  /* Thirds, so there is something to line a face up against. */
+  .crop-grid{ position:absolute; inset:0; pointer-events:none; }
+  .crop-grid::before, .crop-grid::after{
+    content:''; position:absolute; inset:0;
+    background-image:linear-gradient(to right, transparent 33.33%, rgba(255,255,255,0.16) 33.33%, rgba(255,255,255,0.16) calc(33.33% + 1px), transparent calc(33.33% + 1px), transparent 66.66%, rgba(255,255,255,0.16) 66.66%, rgba(255,255,255,0.16) calc(66.66% + 1px), transparent calc(66.66% + 1px));
+  }
+  .crop-grid::after{ transform:rotate(90deg); }
+  .crop-zoom{ display:flex; align-items:center; gap:10px; margin:14px 0 12px; }
+  .crop-zoom input{ flex:1; accent-color:var(--gold); }
+  .crop-zoom span{ font-family:var(--font-mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+  .crop-actions{ display:flex; gap:8px; }
+  .crop-actions button{
+    flex:1; min-height:48px; font-family:var(--font-mono); font-size:11px; letter-spacing:.05em;
+    text-transform:uppercase; border:1px solid var(--line); background:none; color:var(--gold-bright); cursor:pointer;
+  }
+  .crop-actions .save{ background:var(--gold); border-color:var(--gold); color:#1a1206; font-weight:600; }
+  body.light-mode .crop-actions .save, :root.light-mode .crop-actions .save{ color:#fff; }
+  .crop-actions button[disabled]{ opacity:.5; cursor:default; }
+  .crop-hint{ font-family:var(--font-mono); font-size:9.5px; color:var(--muted); text-align:center; margin-top:10px; line-height:1.6; }
+  .pf-row a:hover, .pf-row button:hover{ border-color:var(--gold); }
+</style>
+<link rel="stylesheet" href="assets/blueprint.css?v=1">
+<script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=1"></script>
+<script src="assets/avatar.js?v=5"></script>
+<script src="assets/module-progress.js?v=1"></script>
+<script src="assets/offline.js?v=1"></script>
+</head>
+<body>
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
+<div class="wrap" id="pfWrap"><div class="pf-note">Loading…</div></div>
+
+<div class="crop-sheet hidden" id="cropSheet" role="dialog" aria-modal="true" aria-label="Position your picture">
+  <div class="crop-box">
+    <div class="crop-head">Position your picture</div>
+    <div class="crop-frame" id="cropFrame">
+      <img id="cropImg" alt="">
+      <div class="crop-grid"></div>
+    </div>
+    <div class="crop-zoom">
+      <span>Zoom</span>
+      <input type="range" id="cropZoom" min="100" max="300" value="100" aria-label="Zoom">
+    </div>
+    <div class="crop-actions">
+      <button type="button" id="cropCancel">Cancel</button>
+      <button type="button" class="save" id="cropSave">Save picture</button>
+    </div>
+    <div class="crop-hint">Drag to move · pinch or use the slider to zoom</div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const NAME_MAX = 24;
+
+function escapeHtml(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// One definition of initials for the whole app, so Profile and the
+// leaderboard can never disagree about someone's face.
+const initialsOf = LEAAvatar.initialsOf;
+
+function monthYear(iso){
+  if(!iso) return null;
+  const d = new Date(iso);
+  if(isNaN(d)) return null;
+  const now = new Date();
+  const month = d.toLocaleString('en-GB', { month: 'long' });
+  return d.getFullYear() === now.getFullYear() ? month : (month + ' ' + d.getFullYear());
+}
+
+const state = {
+  userId: null, email: null, username: '', joined: null,
+  rank: null, mastered: null, streak: null, dirty: false,
+  avatarUrl: null, canUpload: false
+};
+
+// Every line here is a real number or it is absent. Rank and mastered come
+// from the same RPC the standings page uses; streak is the stored daily-drill
+// counter; joined is the account's own creation date. Anything that fails to
+// load is dropped from the line rather than guessed at.
+function statsLines(){
+  const first = [];
+  if(state.rank != null) first.push('#' + state.rank + ' overall');
+  if(state.mastered != null) first.push(state.mastered.toLocaleString('en-GB') + ' mastered');
+  const second = [];
+  if(state.streak && state.streak.current > 0){
+    second.push(state.streak.current + '-day streak');
+  }
+  const joined = monthYear(state.joined);
+  if(joined) second.push('joined ' + joined);
+  return [first.join(' · '), second.join(' · ')].filter(Boolean);
+}
+
+function render(){
+  const lines = statsLines();
+  document.getElementById('pfWrap').innerHTML =
+    '<div class="pf-head">' +
+      '<a class="icon-btn-44" href="index.html" title="Back home">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>' +
+      '</a>' +
+      '<div class="pf-title">Profile</div>' +
+      '<button class="pf-save" id="pfSave">Save</button>' +
+    '</div>' +
+
+    '<div class="pf-id">' +
+      '<div class="pf-avatar" id="pfAvatar">' + LEAAvatar.faceHtml(state.avatarUrl, state.username) + '</div>' +
+      '<div class="pf-meta">' +
+        '<div class="pf-name" id="pfName">' + escapeHtml(state.username || '—') + '</div>' +
+        '<div class="pf-stats">' + lines.map(escapeHtml).join('<br>') + '</div>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="pf-label">Picture</div>' +
+    // The controls appear only where they can actually work. capability()
+    // asks this deployment whether the bucket and column exist rather than
+    // assuming, so running avatars-setup.sql turns them on with no redeploy —
+    // and until then nothing offers a button that would fail.
+    (state.canUpload
+      ? '<div class="pf-pic">' +
+          '<button class="pic-btn primary" id="pfUpload">Upload</button>' +
+          '<button class="pic-btn" id="pfInitials"' + (state.avatarUrl ? '' : ' disabled') + '>Initials</button>' +
+          '<button class="pic-btn" id="pfRemove"' + (state.avatarUrl ? '' : ' disabled') + '>Remove</button>' +
+          '<input type="file" id="pfFile" accept="image/*" hidden>' +
+        '</div>' +
+        '<div class="pf-note" id="pfPicNote">Square, up to 5 MB. Shown on the leaderboard.</div>'
+      : '<div class="pf-note">Your initials, in gold. Photo uploads aren’t switched on yet — when they are, this is where they’ll go. Shown on the leaderboard.</div>') +
+
+    '<div class="pf-label">Display name</div>' +
+    '<div class="pf-field">' +
+      '<input id="pfNameInput" type="text" maxlength="' + NAME_MAX + '" value="' + escapeHtml(state.username) + '" autocomplete="off" spellcheck="false">' +
+      '<span class="pf-count" id="pfCount">' + state.username.length + ' / ' + NAME_MAX + '</span>' +
+    '</div>' +
+    '<div class="pf-status" id="pfStatus"></div>' +
+
+    '<div class="pf-callout">Everyone on the leaderboard and the online strip. No opt-out — the batch studies together.</div>' +
+
+    '<div class="pf-row">' +
+      '<a href="reminders.html">Reminders</a>' +
+      '<button class="danger" id="pfLogout">Log out</button>' +
+    '</div>';
+
+  wire();
+}
+
+function wire(){
+  const input = document.getElementById('pfNameInput');
+  const count = document.getElementById('pfCount');
+  const save = document.getElementById('pfSave');
+  const status = document.getElementById('pfStatus');
+
+  input.addEventListener('input', () => {
+    const v = input.value;
+    count.textContent = v.length + ' / ' + NAME_MAX;
+    status.textContent = '';
+    status.className = 'pf-status';
+    // The initials follow the field as you type, so they are never a surprise
+    // after saving — but only while initials are what is actually shown. With
+    // a picture uploaded, the box keeps the picture.
+    if(!state.avatarUrl){
+      document.getElementById('pfAvatar').textContent = initialsOf(v.trim() || state.username);
+    }
+  });
+
+  // Save used to sit disabled whenever there was nothing to save, which is
+  // honest but silent: pressing it did nothing at all and read as a broken
+  // button. It is always pressable now and always says what happened.
+  save.addEventListener('click', async () => {
+    const next = input.value.trim();
+    if(next === state.username){
+      status.className = 'pf-status';
+      status.textContent = 'Nothing to change — your name is already ' + state.username + '.';
+      return;
+    }
+    if(next.length < 3){
+      status.className = 'pf-status err';
+      status.textContent = 'Names need at least 3 characters.';
+      return;
+    }
+    save.disabled = true;
+    status.className = 'pf-status';
+    status.textContent = 'Saving…';
+    const { error } = await sb.from('profiles').update({ username: next }).eq('id', state.userId);
+    if(error){
+      // A unique-violation is the common case and deserves its own words.
+      const taken = /duplicate|unique/i.test(error.message || '');
+      status.className = 'pf-status err';
+      status.textContent = taken ? 'That name is taken — try another.' : 'Couldn’t save — try again.';
+      save.disabled = false;
+      return;
+    }
+    save.disabled = false;
+    state.username = next;
+    status.className = 'pf-status ok';
+    status.textContent = 'Saved.';
+    document.getElementById('pfName').textContent = next;
+    if(!state.avatarUrl) document.getElementById('pfAvatar').textContent = initialsOf(next);
+  });
+
+  const picNote = document.getElementById('pfPicNote');
+  function picSay(msg, cls){
+    if(!picNote) return;
+    picNote.textContent = msg;
+    picNote.style.color = cls === 'err' ? 'var(--bad)' : '';
+  }
+  function repaintAvatar(){
+    document.getElementById('pfAvatar').innerHTML = LEAAvatar.faceHtml(state.avatarUrl, state.username);
+  }
+
+  const fileInput = document.getElementById('pfFile');
+  if(fileInput){
+    document.getElementById('pfUpload').addEventListener('click', () => fileInput.click());
+    // Open the crop step rather than uploading straight away: a centre crop
+    // guesses, and faces are rarely in the middle of a photo.
+    fileInput.addEventListener('change', async () => {
+      const file = fileInput.files && fileInput.files[0];
+      if(!file) return;
+      try{
+        openCrop(await LEAAvatar.loadImage(file), picSay, repaintAvatar);
+      }catch(err){
+        const m = String((err && err.message) || err);
+        picSay(
+          m === 'too-big' ? 'That file is over 5 MB — pick a smaller one.' :
+          m === 'not-an-image' ? 'That isn’t an image file.' :
+          'Couldn’t read that image.', 'err');
+      }
+      fileInput.value = '';
+    });
+    // "Initials" and "Remove" both end with initials showing. They differ in
+    // what happens to the file: Initials leaves it in storage so switching
+    // back is instant, Remove deletes it.
+    document.getElementById('pfInitials').addEventListener('click', async () => {
+      picSay('Switching…');
+      const { error } = await sb.from('profiles').update({ avatar_url: null }).eq('id', state.userId);
+      if(error){ picSay('Couldn’t switch — try again.', 'err'); return; }
+      state.avatarUrl = null;
+      render();
+      picSay('Showing your initials.');
+    });
+    document.getElementById('pfRemove').addEventListener('click', async () => {
+      picSay('Removing…');
+      try{
+        await LEAAvatar.remove(sb, state.userId);
+        state.avatarUrl = null;
+        render();
+        picSay('Picture removed.');
+      }catch(e){ picSay('Couldn’t remove — try again.', 'err'); }
+    });
+  }
+
+  document.getElementById('pfLogout').addEventListener('click', async () => {
+    await sb.auth.signOut();
+    window.location.href = 'index.html';
+  });
+}
+
+// ================= Crop sheet =================
+// Pan and zoom are held as a transform on the shown image; the same numbers
+// are inverted at save time to cut the matching square out of the original,
+// so what is framed is exactly what is stored.
+let cropState = null;
+
+function openCrop(img, say, repaint){
+  const sheet = document.getElementById('cropSheet');
+  const frameEl = document.getElementById('cropFrame');
+  const imgEl = document.getElementById('cropImg');
+  const zoomEl = document.getElementById('cropZoom');
+
+  imgEl.src = img.src;
+  cropState = { img, zoom: 1, tx: 0, ty: 0, say, repaint };
+  zoomEl.value = 100;
+  sheet.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  // Wait a frame so the frame has a measured width to scale against.
+  requestAnimationFrame(() => { layoutCrop(); paintCrop(); });
+}
+
+function cropView(){
+  const frameEl = document.getElementById('cropFrame');
+  return { frame: frameEl.clientWidth, zoom: cropState.zoom, tx: cropState.tx, ty: cropState.ty };
+}
+
+function layoutCrop(){
+  const frameEl = document.getElementById('cropFrame');
+  const imgEl = document.getElementById('cropImg');
+  const img = cropState.img;
+  const F = frameEl.clientWidth;
+  // Cover the frame at zoom 1, so there is never a gap at any offset.
+  const base = Math.max(F / img.naturalWidth, F / img.naturalHeight);
+  imgEl.style.width = (img.naturalWidth * base) + 'px';
+  imgEl.style.height = (img.naturalHeight * base) + 'px';
+}
+
+function clampCrop(){
+  const lim = LEAAvatar.panLimits(cropState.img, cropView());
+  cropState.tx = Math.max(-lim.x, Math.min(lim.x, cropState.tx));
+  cropState.ty = Math.max(-lim.y, Math.min(lim.y, cropState.ty));
+}
+
+function paintCrop(){
+  clampCrop();
+  const imgEl = document.getElementById('cropImg');
+  imgEl.style.transform =
+    'translate(-50%,-50%) translate(' + cropState.tx + 'px,' + cropState.ty + 'px) scale(' + cropState.zoom + ')';
+}
+
+function closeCrop(){
+  document.getElementById('cropSheet').classList.add('hidden');
+  document.body.style.overflow = '';
+  const imgEl = document.getElementById('cropImg');
+  imgEl.removeAttribute('src');
+  if(cropState) LEAAvatar.releaseImage(cropState.img);
+  cropState = null;
+}
+
+(function wireCrop(){
+  const frameEl = document.getElementById('cropFrame');
+  const zoomEl = document.getElementById('cropZoom');
+  let dragging = false, lastX = 0, lastY = 0, pts = new Map(), startDist = 0, startZoom = 1;
+
+  zoomEl.addEventListener('input', () => {
+    if(!cropState) return;
+    cropState.zoom = Number(zoomEl.value) / 100;
+    paintCrop();
+  });
+
+  frameEl.addEventListener('pointerdown', (e) => {
+    if(!cropState) return;
+    pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if(pts.size === 2){
+      const [a, b] = [...pts.values()];
+      startDist = Math.hypot(a.x - b.x, a.y - b.y);
+      startZoom = cropState.zoom;
+    } else {
+      dragging = true; lastX = e.clientX; lastY = e.clientY;
+      frameEl.classList.add('dragging');
+      frameEl.setPointerCapture(e.pointerId);
+    }
+  });
+  frameEl.addEventListener('pointermove', (e) => {
+    if(!cropState || !pts.has(e.pointerId)) return;
+    pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if(pts.size === 2 && startDist > 0){
+      const [a, b] = [...pts.values()];
+      cropState.zoom = Math.min(3, Math.max(1, startZoom * (Math.hypot(a.x - b.x, a.y - b.y) / startDist)));
+      zoomEl.value = Math.round(cropState.zoom * 100);
+      paintCrop();
+      return;
+    }
+    if(!dragging) return;
+    cropState.tx += e.clientX - lastX;
+    cropState.ty += e.clientY - lastY;
+    lastX = e.clientX; lastY = e.clientY;
+    paintCrop();
+  });
+  function release(e){
+    pts.delete(e.pointerId);
+    if(pts.size < 2) startDist = 0;
+    if(pts.size === 0){ dragging = false; frameEl.classList.remove('dragging'); }
+  }
+  frameEl.addEventListener('pointerup', release);
+  frameEl.addEventListener('pointercancel', release);
+  frameEl.addEventListener('wheel', (e) => {
+    if(!cropState) return;
+    e.preventDefault();
+    cropState.zoom = Math.min(3, Math.max(1, cropState.zoom * (e.deltaY < 0 ? 1.08 : 1/1.08)));
+    zoomEl.value = Math.round(cropState.zoom * 100);
+    paintCrop();
+  }, { passive: false });
+
+  document.getElementById('cropCancel').addEventListener('click', closeCrop);
+  document.addEventListener('keydown', (e) => {
+    if(cropState && e.key === 'Escape') closeCrop();
+  });
+
+  document.getElementById('cropSave').addEventListener('click', async () => {
+    if(!cropState) return;
+    const btn = document.getElementById('cropSave');
+    const say = cropState.say, repaint = cropState.repaint;
+    btn.disabled = true;
+    btn.textContent = 'Saving…';
+    try{
+      const blob = await LEAAvatar.cropToBlob(cropState.img, cropView());
+      const url = await LEAAvatar.uploadBlob(sb, state.userId, blob);
+      state.avatarUrl = url;
+      closeCrop();
+      render();
+      say('Picture updated.');
+    }catch(err){
+      say('Couldn’t upload — try again.', 'err');
+      closeCrop();
+    }
+    btn.disabled = false;
+    btn.textContent = 'Save picture';
+  });
+})();
+
+(async function boot(){
+  const { data: { session } } = await sb.auth.getSession();
+  if(!session){ window.location.href = 'index.html'; return; }
+  state.userId = session.user.id;
+  state.email = session.user.email || '';
+  state.joined = session.user.created_at || null;
+
+  const { data: profile } = await sb.from('profiles').select('username').eq('id', state.userId).single();
+  state.username = (profile && profile.username) || state.email.split('@')[0] || '';
+
+  const cap = await LEAAvatar.capability(sb, state.userId);
+  state.canUpload = cap.ready;
+  if(cap.column){
+    const { data: av } = await sb.from('profiles').select('avatar_url').eq('id', state.userId).single();
+    state.avatarUrl = (av && av.avatar_url) || null;
+  }
+
+  state.streak = LEAProgress.loadMeta('streak') || null;
+
+  // Rank and mastered total, from the same source the standings page reads.
+  // Left null — and therefore off the card — if the call fails.
+  try{
+    const { data, error } = await sb.rpc('get_leaderboard');
+    if(!error && data){
+      const rows = data.slice().sort((a,b) => (b.total_mastered||0) - (a.total_mastered||0));
+      const idx = rows.findIndex(r => r.username === state.username);
+      if(idx !== -1){
+        state.rank = idx + 1;
+        state.mastered = rows[idx].total_mastered || 0;
+      }
+    }
+  }catch(e){}
+
+  render();
+})();
+</script>
+</body>
+</html>

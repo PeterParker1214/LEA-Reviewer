@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Subject — LEA Reviewer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Architects+Daughter&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#eef1e9;
+    --bg-deep:#0a1218;
+    --bg-panel:#0e1c28;
+    --bg-panel-2:#0a1520;
+    --gold:#e0a83f;
+    --gold-bright:#f0c268;
+    --blue:#6fa8cf;
+    --blue-bright:#8fc4ea;
+    --muted:#8b98a5;
+    --good:#5fbf82;
+    --bad:#e2604a;
+    --line: rgba(111,168,207,0.20);
+    /* Softer rule the topics block draws between rows, and the dimmer grey its
+       trailing note sits in — both distinct from --line/--muted in the frame. */
+    --line-soft: rgba(111,168,207,0.14);
+    --muted-dim:#6f7d8a;
+    --panel-hover:#12222f;
+    --grid-line: rgba(111,168,207,0.09);
+    --font-display: 'Big Shoulders Display', sans-serif;
+    --font-hand: 'Architects Daughter', cursive;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+  body.light-mode, :root.light-mode{
+    --ink:#16202b;
+    --bg-deep:#d3dee6;
+    --bg-panel:#ffffff;
+    --bg-panel-2:#e9eff4;
+    --gold:#b5791f;
+    --gold-bright:#7d520c;
+    --blue:#2f6c95;
+    --blue-bright:#1b4a6b;
+    --muted:#4f5d6a;
+    --good:#206b3c;
+    --bad:#a1372a;
+    --line: rgba(47,108,149,0.28);
+    --line-soft: rgba(47,108,149,0.20);
+    --muted-dim:#6b7885;
+    --panel-hover:#f4f8fb;
+    --grid-line: rgba(47,108,149,0.11);
+  }
+  /* inline SVG icons sitting inside a text label */
+  .btn-ico{ display:inline-flex; vertical-align:-2px; margin-right:2px; }
+  .btn-ico svg{ width:15px; height:15px; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      var(--bg-deep);
+    color:var(--ink);
+    font-family:var(--font-body);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:36px 16px 64px;
+    transition: background-color .2s ease, color .2s ease;
+  }
+  .theme-toggle{
+    background:var(--bg-panel); border:1px solid var(--line); color:var(--gold-bright);
+    font-family:var(--font-body); font-size:14px; width:32px; height:32px;
+    border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
+    flex-shrink:0;
+  }
+  .theme-toggle:hover{ border-color:var(--gold-bright); }
+  .wrap{width:100%; max-width:720px;}
+  a{color:inherit;}
+  .hidden{display:none !important;}
+
+  /* Frame 2b's header: a gold "Home" link on the left, two 44px buttons on
+     the right. It used to carry "Logged in as … — Log out" as running text,
+     which the frame never had; signing out lives on Home's account sheet. */
+  .auth-bar{ display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:16px; }
+  .auth-bar .back{
+    display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:11px;
+    letter-spacing:.05em; text-transform:uppercase; color:var(--gold-bright); text-decoration:underline;
+  }
+  .auth-bar .back svg{ width:18px; height:18px; }
+  .bar-actions{ display:flex; gap:8px; }
+  .icon-btn-44{
+    width:44px; height:44px; border-radius:8px; background:var(--bg-panel); border:1px solid var(--line);
+    color:var(--gold-bright); display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .icon-btn-44:hover{ border-color:var(--gold-bright); }
+  .icon-btn-44 .btn-ico{ margin:0; }
+  .icon-btn-44 .btn-ico svg{ width:18px; height:18px; }
+  .auth-link{ background:none; border:none; color:var(--gold-bright); cursor:pointer; font-family:var(--font-mono); font-size:12px; text-decoration:underline; padding:0; text-transform:uppercase; letter-spacing:.03em; }
+  .auth-link:hover{ color:var(--blue-bright); }
+
+  /* ===== masthead ===== */
+  .masthead{ text-align:center; margin-bottom:24px; }
+  .masthead .eyebrow{ font-family:var(--font-mono); letter-spacing:0.22em; font-size:10px; text-transform:uppercase; color:var(--gold-bright); opacity:0.95; }
+  .masthead h1{ font-family:var(--font-display); font-weight:800; font-size:38px; margin:10px 0 8px; color:var(--ink); letter-spacing:0.01em; text-transform:uppercase; line-height:1; }
+  .marquee-wrap{
+    max-width:480px; margin:0 auto; overflow:hidden; white-space:nowrap;
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+    mask-image:linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+  }
+  .marquee-wrap.ellipsis{ text-overflow:ellipsis; -webkit-mask-image:none; mask-image:none; }
+  .marquee-text{
+    display:inline-block; font-family:var(--font-hand); color:var(--ink); opacity:.92; font-size:15px; line-height:1.5;
+  }
+  .marquee-wrap.ellipsis .marquee-text{ display:block; overflow:hidden; text-overflow:ellipsis; }
+  .marquee-wrap.animate .marquee-text{ animation: marquee-scroll 14s linear infinite; padding-left:100%; }
+  .marquee-wrap:hover .marquee-text{ animation-play-state:paused; }
+  @keyframes marquee-scroll{
+    0%, 12%{ transform:translateX(0); }
+    88%, 100%{ transform:translateX(-100%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .marquee-wrap.animate .marquee-text{ animation:none; padding-left:0; }
+    .marquee-wrap.animate{ text-overflow:ellipsis; }
+    .marquee-wrap.animate .marquee-text{ display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  }
+  .step-frieze{ height:2px; background:var(--gold); margin:16px 0 0; opacity:.85; }
+
+  /* ===== overall progress card ===== */
+  .overall-card{
+    position:relative; background: var(--bg-panel); border:1px solid var(--line);
+    border-radius:14px; padding:24px 24px 20px; margin-bottom:16px;
+  }
+  .overall-title{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--muted); margin-bottom:16px;
+    display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;
+  }
+  .overall-title .reset-all{
+    font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.04em; font-size:10.5px;
+    color:var(--bad); background:none; border:1px solid rgba(226,96,74,0.4);
+    padding:5px 11px; border-radius:6px; cursor:pointer;
+  }
+  .overall-title .reset-all:hover{ background: rgba(226,96,74,0.12); }
+  .overall-stats-row{ display:flex; justify-content:space-between; gap:14px; margin-bottom:18px; }
+  .overall-stat .num{ font-family:var(--font-mono); font-size:26px; font-weight:600; color:var(--gold-bright); line-height:1; }
+  .overall-stat .lbl{ font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-top:5px; }
+  .overall-bar-track{ height:8px; border-radius:4px; background: var(--bg-panel-2); overflow:hidden; }
+  .overall-bar-fill{ height:100%; border-radius:4px; background: linear-gradient(90deg, var(--gold-bright), var(--blue-bright)); transition: width .4s ease; }
+  .overall-bar-caption{ display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-top:8px; letter-spacing:0.02em; }
+
+  /* ===== mode rows ===== */
+  .mode-rows{ display:flex; flex-direction:column; gap:8px; margin-bottom:20px; }
+  .mode-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 16px; border-radius:12px; border:1px solid var(--line); gap:12px;
+    background: var(--bg-panel-2); cursor:pointer; text-align:left; width:100%;
+    font-family:var(--font-body); color:var(--ink);
+  }
+  /* The frame keeps the index in its own 22px column rather than running it
+     into the title, and colours it per row. */
+  .mode-row .mode-no{ font-family:var(--font-mono); font-size:11px; font-weight:600; width:22px; flex-shrink:0; }
+  .mode-row[data-mode="exam"] .mode-no{ color:var(--blue-bright); }
+  .mode-row[data-mode="drill"] .mode-no{ color:var(--bad); }
+  .mode-row.selected .mode-no{ color:#1a1206; }
+  .mode-row .mode-lbl{ display:flex; flex-direction:column; gap:3px; flex:1; min-width:0; }
+  .mode-row .mode-name{ font-family:var(--font-display); font-weight:700; font-size:16px; text-transform:uppercase; letter-spacing:.01em; }
+  .mode-row .mode-cap{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); letter-spacing:.03em; }
+  .mode-row .mode-num{ font-family:var(--font-mono); font-size:22px; font-weight:600; color:var(--blue-bright); flex-shrink:0; }
+  .mode-row.selected{ background: var(--gold); border-color: var(--gold); color:#1a1206; }
+  .mode-row.selected .mode-cap{ color:rgba(26,18,6,0.7); }
+  .mode-row.selected .mode-num{ color:#1a1206; }
+  .mode-row.disabled{ opacity:.5; cursor:default; }
+  .mode-row:not(.disabled):hover{ border-color: var(--gold); }
+
+  /* ===== topics block — folded bottom section =====
+     Chrome family: it frames the reading, so it keeps a radius. The fold is a
+     layout affordance only; nothing about it is lazy, so the header and the
+     rows are always computed from the same pass. */
+  .topics-card{
+    background: var(--bg-panel); border:1px solid var(--line); border-radius:14px;
+    overflow:hidden; margin-bottom:16px;
+  }
+  .topics-head{
+    display:flex; align-items:center; gap:12px; padding:14px 16px;
+    width:100%; text-align:left; background:none; border:0; color:inherit;
+    font-family:inherit; cursor:pointer; user-select:none;
+  }
+  .topics-head:hover{ background:var(--panel-hover); }
+  .th-lines{ flex:1; min-width:0; }
+  .th-count{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+  /* Real topic names run far longer than the frame's example, and the whole
+     line would ellipsise away the percentage — which is half the claim. The
+     name truncates; the percentage never does. */
+  .th-weakest{ display:flex; font-family:var(--font-mono); font-size:11px; color:var(--bad); margin-top:5px; }
+  .thw-name{ min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .thw-pct{ flex-shrink:0; white-space:pre; }
+  .th-sign{ font-family:var(--font-mono); font-size:16px; color:var(--gold-bright); width:18px; text-align:center; flex-shrink:0; }
+  .topics-body{ padding:0 16px; border-top:1px solid var(--line-soft); }
+  .topic-row{
+    display:flex; align-items:center; gap:12px; padding:12px 0;
+    border-bottom:1px solid var(--line-soft); text-decoration:none; color:inherit;
+  }
+  .topic-row:hover .topic-name{ color:var(--gold-bright); }
+  .topic-name{ flex:1; font-size:13.5px; color:var(--ink); min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .topic-bar-track{ width:64px; height:5px; border-radius:3px; background:var(--line-soft); overflow:hidden; flex-shrink:0; }
+  .topic-bar-fill{ height:100%; }
+  .topic-pct{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); width:30px; text-align:right; flex-shrink:0; }
+  .topic-pct.done{ color:var(--good); }
+  .topic-arrow{ font-family:var(--font-mono); font-size:13px; color:var(--gold-bright); flex-shrink:0; }
+  .topics-more{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    width:100%; padding:12px 0; background:none; border:0;
+    border-bottom:1px solid var(--line-soft);
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--gold-bright); cursor:pointer;
+  }
+  /* Sits where the tail sat, so it takes the tail's shape — but it states a
+     fact rather than offering an action, so it is muted, not gold. */
+  .topics-status{
+    display:flex; align-items:center; justify-content:center; padding:12px 0;
+    border-bottom:1px solid var(--line-soft);
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--muted);
+  }
+  .topics-note{ padding:11px 0 13px; font-family:var(--font-mono); font-size:10px; line-height:1.65; color:var(--muted-dim); }
+  /* Whatever ends up last has no rule under it — otherwise it doubles up
+     against the card's own bottom border. */
+  .topics-body > *:last-child{ border-bottom:none; }
+
+  /* ===== modules list ===== */
+  .section-label{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin:4px 0 10px; }
+  .mp-bar-track{ height:6px; border-radius:3px; background: var(--bg-panel-2); overflow:hidden; margin-top:12px; }
+  .mp-bar-fill{ height:100%; border-radius:3px; background: linear-gradient(90deg, var(--gold-bright), var(--gold) 70%, rgba(224,168,63,0.25)); transition: width .3s ease; }
+  .mp-cap{ font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-top:6px; }
+  .module-grid{ display:flex; flex-direction:column; gap:12px; }
+  .module-card{
+    position:relative; display:block; text-decoration:none;
+    background: var(--bg-panel-2); border:1px solid var(--line); border-radius:14px; padding:18px 20px;
+    transition: border-color .15s ease;
+  }
+  .module-card:hover{ border-color: var(--gold); }
+  .module-card.in-progress{ border-left:3px solid var(--gold); }
+  .module-card.disabled{ opacity:.55; pointer-events:none; }
+  .module-num{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue-bright); margin-bottom:6px; }
+  /* Long module titles used to wrap onto a second line and push the card
+     out of shape. They stay on one line now and scroll if they must, the
+     same treatment the subject blurb already gets. */
+  .module-title{
+    font-family:var(--font-display); font-size:19px; font-weight:700; color:var(--ink);
+    margin-bottom:6px; text-transform:uppercase; line-height:1.1;
+    overflow:hidden; white-space:nowrap;
+    -webkit-mask-image:linear-gradient(90deg, #000 calc(100% - 22px), transparent 100%);
+    mask-image:linear-gradient(90deg, #000 calc(100% - 22px), transparent 100%);
+  }
+  .module-title .mt-run{ display:inline-block; }
+  .module-card:hover .module-title.scrolls .mt-run{ animation: module-scroll 9s linear infinite; }
+  @keyframes module-scroll{
+    0%, 10%{ transform:translateX(0); }
+    90%, 100%{ transform:translateX(var(--mt-shift, 0px)); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .module-card:hover .module-title.scrolls .mt-run{ animation:none; }
+  }
+  .module-meta{ font-family:var(--font-mono); font-size:11px; color:var(--muted); letter-spacing:0.04em; display:flex; justify-content:space-between; align-items:center; text-transform:uppercase; }
+  .module-arrow{ font-size:16px; color:var(--gold-bright); }
+  .module-resume{ font-family:var(--font-mono); font-size:10.5px; color:var(--gold-bright); margin-top:8px; text-transform:uppercase; letter-spacing:.03em; }
+
+  .note-panel{
+    margin-top:22px; background: var(--bg-panel); border:1px solid var(--line);
+    border-radius:12px; padding:16px 20px; font-family:var(--font-mono); font-size:11.5px; color:var(--muted); line-height:1.6;
+  }
+  .state-card{
+    background: var(--bg-panel); border:1px solid var(--line); border-radius:14px;
+    padding:28px 22px; text-align:center; color:var(--muted); font-family:var(--font-mono); font-size:13px; line-height:1.7;
+  }
+
+  .modal-overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; padding:16px; z-index:100; }
+  .modal-overlay.hidden{ display:none; }
+  .modal-box{ width:100%; max-width:380px; max-height:86vh; overflow-y:auto; background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:24px 22px; position:relative; }
+  .modal-close{ position:absolute; top:12px; right:14px; background:none; border:none; color:var(--muted); font-size:20px; cursor:pointer; line-height:1; }
+  .modal-box h2{ font-family:var(--font-display); font-weight:700; font-size:22px; text-transform:uppercase; margin:0 0 16px; color:var(--ink); }
+  .leaderboard-list{ display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+  .leaderboard-row{ display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border-radius:8px; background:var(--bg-panel-2); border:1px solid var(--line); font-size:13px; }
+  .leaderboard-row .lb-rank{ font-family:var(--font-mono); color:var(--gold-bright); font-weight:700; width:24px; }
+  .leaderboard-row .lb-name{ flex:1; color:var(--ink); }
+  .leaderboard-row .lb-stats{ color:var(--muted); font-size:11.5px; text-align:right; font-family:var(--font-mono); }
+  .leaderboard-empty{ color:var(--muted); font-style:italic; text-align:center; padding:12px 0; }
+</style>
+<link rel="stylesheet" href="assets/blueprint.css?v=1">
+<script src="assets/presence.js?v=1"></script>
+<script src="assets/lea-confirm.js?v=1"></script>
+<script src="assets/quiz-source.js?v=1"></script>
+<script src="assets/module-progress.js?v=1"></script>
+<script src="assets/offline.js?v=1"></script>
+<script src="assets/quiz-resume.js?v=1"></script>
+<script src="assets/icons.js?v=1"></script>
+<script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="auth-bar">
+    <a class="auth-link back" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+      Home
+    </a>
+    <div class="bar-actions">
+      <button class="icon-btn-44" id="openLeaderboardBtn" title="Standings" aria-label="Standings"><span class="btn-ico" data-icon="trophy"></span></button>
+      <button class="icon-btn-44" id="themeBtn" title="Switch theme" aria-label="Switch theme"><span class="btn-ico" data-icon="sun"></span></button>
+    </div>
+    <span id="authStatus" hidden></span>
+    <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
+  </div>
+
+  <div id="pageBody">
+    <div class="state-card">Loading…</div>
+  </div>
+</div>
+
+<!-- ===================== LEADERBOARD MODAL ===================== -->
+<div class="modal-overlay hidden" id="leaderboardModalOverlay">
+  <div class="modal-box">
+    <button class="modal-close" id="leaderboardModalClose">&times;</button>
+    <h2><span class="btn-ico" data-icon="trophy"></span> Leaderboard</h2>
+    <div class="leaderboard-list" id="leaderboardList">
+      <div class="leaderboard-empty">Loading…</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ================= Auth (same pattern every subject page uses) =================
+const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+if (window.LEAPresence) { LEAPresence.init({ client: sb }); }
+const authStatus = document.getElementById('authStatus');
+
+async function onSignedIn(user){
+  let username = (user.email || '').split('@')[0];
+  const { data: profile } = await sb.from('profiles').select('username').eq('id', user.id).single();
+  if(profile && profile.username) username = profile.username;
+  authStatus.innerHTML = 'Logged in as <b>' + username + '</b> — <button class="auth-link" id="logoutBtn">Log out</button>';
+  document.getElementById('logoutBtn').addEventListener('click', async () => { await sb.auth.signOut(); });
+}
+
+sb.auth.onAuthStateChange((event, session) => {
+  if(event === 'SIGNED_OUT') window.location.href = 'index.html';
+});
+
+let LEA_SUBJECT_ID_PAGE = null;
+
+(async function initApp(){
+  const { data: { session } } = await sb.auth.getSession();
+  if(session){ await onSignedIn(session.user); } else { window.location.href = 'index.html'; return; }
+  await boot();
+})();
+
+// ---- Leaderboard, scoped to this subject ----
+const leaderboardModalOverlay = document.getElementById('leaderboardModalOverlay');
+document.getElementById('openLeaderboardBtn').addEventListener('click', async () => {
+  leaderboardModalOverlay.classList.remove('hidden');
+  const listEl = document.getElementById('leaderboardList');
+  listEl.innerHTML = '<div class="leaderboard-empty">Loading…</div>';
+  const { data, error } = await sb.rpc('get_leaderboard', { p_subject: LEA_SUBJECT_ID_PAGE });
+  if(error || !data || data.length === 0){
+    listEl.innerHTML = '<div class="leaderboard-empty">No scores yet — be the first!</div>';
+    return;
+  }
+  listEl.innerHTML = data.map((row, i) =>
+    '<div class="leaderboard-row">' +
+      '<span class="lb-rank">' + (i+1) + '</span>' +
+      '<span class="lb-name">' + row.username + '</span>' +
+      '<span class="lb-stats">' + row.total_mastered + ' mastered · ' + Math.round((row.avg_best_score||0)*100) + '% avg</span>' +
+    '</div>'
+  ).join('');
+});
+document.getElementById('leaderboardModalClose').addEventListener('click', () => leaderboardModalOverlay.classList.add('hidden'));
+leaderboardModalOverlay.addEventListener('click', (e) => { if(e.target === leaderboardModalOverlay) leaderboardModalOverlay.classList.add('hidden'); });
+
+// ================= Helpers =================
+function escapeHtml(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// Subject-page mastheads show a clean title without the emoji used on the
+// compact home-page subject rows.
+function stripEmoji(str){
+  return String(str || '')
+    .replace(/[\p{Extended_Pictographic}\p{Emoji_Modifier}\u{200D}\u{FE0F}]+/gu, '')
+    .trim();
+}
+
+// Balanced-bracket scan so embedded quiz text containing brackets/quotes
+// can't break the extraction (same approach used to build data/*.json).
+function extractBalanced(text, startIdx){
+  const openCh = text[startIdx];
+  const pairs = { '[': ']', '{': '}', '(': ')' };
+  const closeCh = pairs[openCh];
+  let depth = 0, inString = null;
+  for(let i = startIdx; i < text.length; i++){
+    const ch = text[i];
+    if(inString){
+      if(ch === '\\'){ i++; continue; }
+      if(ch === inString) inString = null;
+      continue;
+    }
+    if(ch === "'" || ch === '"' || ch === '`'){ inString = ch; continue; }
+    if(ch === '/' && text[i+1] === '/'){ const nl = text.indexOf('\n', i); i = (nl === -1 ? text.length : nl); continue; }
+    if(ch === '/' && text[i+1] === '*'){ const end = text.indexOf('*/', i+2); i = (end === -1 ? text.length : end+1); continue; }
+    if(ch === openCh) depth++;
+    else if(ch === closeCh){ depth--; if(depth === 0) return i+1; }
+  }
+  return -1;
+}
+
+function extractArrayLiteral(html, varName){
+  const marker = 'const ' + varName + ' = ';
+  const idx = html.indexOf(marker);
+  if(idx === -1) return null;
+  const start = idx + marker.length;
+  if(html[start] !== '[') return null;
+  const end = extractBalanced(html, start);
+  if(end === -1) return null;
+  try{ return new Function('return ' + html.slice(start, end))(); }catch(e){ return null; }
+}
+
+// ---- Per-module topic list: fetched once per session, cached in sessionStorage.
+// Returns an array of topic strings (one per question, in order), or null if
+// this module's source has no per-question topic field at all (some
+// "QUIZ_DATA" blueprint-format quizzes don't tag questions by topic).
+// One extractor for the whole app now lives in assets/quiz-source.js, so this
+// page and the cross-subject index can never disagree about what a module
+// contains or what order its questions are in.
+async function loadModuleTopics(mod){
+  return LEAQuizSource.loadModuleTopics(mod);
+}
+
+// ================= Boot =================
+async function boot(){
+  const params = new URLSearchParams(window.location.search);
+  const subjectId = params.get('s');
+  const body = document.getElementById('pageBody');
+
+  let subjects;
+  try{
+    const res = await fetch('data/subjects.json');
+    subjects = await res.json();
+  }catch(e){
+    body.innerHTML = '<div class="state-card">Couldn’t load the subjects catalogue. Try reloading.</div>';
+    return;
+  }
+
+  const subject = subjects.find(s => s.id === subjectId);
+  if(!subject){
+    body.innerHTML = '<div class="state-card">Unknown subject' + (subjectId ? ': "' + escapeHtml(subjectId) + '"' : '') + '.<br>Go back and pick one from the list.</div>';
+    return;
+  }
+
+  LEA_SUBJECT_ID_PAGE = subject.id;
+  document.title = stripEmoji(subject.name) + ' — LEA Reviewer';
+
+  if(!subject.ready || !subject.modules || subject.modules.length === 0){
+    body.innerHTML =
+      renderMastheadHtml(subject) +
+      '<div class="state-card">This subject isn’t compiled yet — check back once it’s ready.</div>';
+    initMarquee();
+    return;
+  }
+
+  render(subject);
+  window.leaOnProgressReset = () => render(subject);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) render(subject); });
+  window.addEventListener('pageshow', () => render(subject));
+}
+
+function renderMastheadHtml(subject){
+  return (
+    '<div class="masthead">' +
+      '<div class="eyebrow">Module Compendium</div>' +
+      '<h1>' + escapeHtml(stripEmoji(subject.name)) + '</h1>' +
+      '<div class="marquee-wrap" id="marqueeWrap"><span class="marquee-text" id="marqueeText">' + escapeHtml(subject.blurb || '') + '</span></div>' +
+      '<div class="step-frieze"></div>' +
+    '</div>'
+  );
+}
+
+function initMarquee(){
+  const wrap = document.getElementById('marqueeWrap');
+  const text = document.getElementById('marqueeText');
+  if(!wrap || !text) return;
+  if(!text.textContent.trim()){ wrap.classList.add('ellipsis'); return; }
+  const overflow = text.scrollWidth - wrap.clientWidth;
+  if(overflow > 24){ wrap.classList.add('animate'); }
+  else{ wrap.classList.add('ellipsis'); }
+}
+
+// Only titles that actually overflow get the scroll, and each one scrolls
+// exactly as far as it overruns — measured, not guessed.
+function initModuleTitleMarquees(){
+  document.querySelectorAll('.module-title').forEach(el => {
+    const run = el.querySelector('.mt-run');
+    if(!run) return;
+    const overflow = run.scrollWidth - el.clientWidth;
+    if(overflow > 4){
+      el.classList.add('scrolls');
+      el.style.setProperty('--mt-shift', (-overflow - 6) + 'px');
+    }
+  });
+}
+
+// ================= Mode selection (persisted per subject) =================
+function getMode(subjectId){
+  try{ return localStorage.getItem('lea_mode_' + subjectId) || 'study'; }catch(e){ return 'study'; }
+}
+function setMode(subjectId, mode){
+  try{ localStorage.setItem('lea_mode_' + subjectId, mode); }catch(e){}
+}
+
+// ================= Progress rollups =================
+function moduleProgress(subjectId, mod){
+  const p = LEAProgress.load(subjectId, mod.id);
+  const masteredSet = new Set(p.mastered || []);
+  const flaggedSet = new Set(p.flagged || []);
+  const mastered = Math.min(masteredSet.size, mod.total);
+  const toDrillSet = new Set(flaggedSet);
+  for(let i = 0; i < mod.total; i++){ if(!masteredSet.has(i)) toDrillSet.add(i); }
+  return { p, masteredSet, flaggedSet, mastered, toDrill: toDrillSet.size };
+}
+
+function subjectRollup(subject){
+  let mastered = 0, total = 0, modulesDone = 0, flagged = 0, toDrill = 0;
+  subject.modules.forEach(mod => {
+    const mp = moduleProgress(subject.id, mod);
+    mastered += mp.mastered;
+    total += mod.total;
+    flagged += mp.flaggedSet.size;
+    toDrill += mp.toDrill;
+    if(mod.total > 0 && mp.mastered >= mod.total) modulesDone++;
+  });
+  return { mastered, total, modulesDone, flagged, toDrill };
+}
+
+// ================= Render =================
+async function render(subject){
+  const body = document.getElementById('pageBody');
+  const rollup = subjectRollup(subject);
+  const pct = rollup.total > 0 ? Math.round((rollup.mastered / rollup.total) * 100) : 0;
+  const mode = getMode(subject.id);
+
+  body.innerHTML =
+    renderMastheadHtml(subject) +
+    renderOverallCard(rollup, pct) +
+    renderModeRows(subject, rollup, mode) +
+    '<div class="section-label">Modules</div>' +
+    renderModulesList(subject, mode) +
+    '<div class="note-panel">Progress is saved to your account and synced across devices.</div>' +
+    // Topics last: a 12-topic subject used to push the modules off the screen,
+    // and modules are what you act on. Topics are diagnostic, so they fold.
+    '<div id="topicsSlot"></div>';
+
+  initMarquee();
+  initModuleTitleMarquees();
+  wireOverallReset(subject);
+  wireModeRows(subject);
+
+  // Topics card: async, since it may need to fetch/scrape question data.
+  renderTopicsCard(subject).then(html => {
+    const slot = document.getElementById('topicsSlot');
+    if(!slot) return;
+    slot.innerHTML = html;
+    wireTopicsBlock();
+  });
+}
+
+function renderOverallCard(rollup, pct){
+  return (
+    '<div class="overall-card">' +
+      '<div class="overall-title"><span>Overall progress</span>' +
+      '<button class="reset-all" id="resetAllBtn">Reset all progress</button></div>' +
+      '<div class="overall-stats-row">' +
+        '<div class="overall-stat"><div class="num">' + rollup.mastered + '</div><div class="lbl">Mastered</div></div>' +
+        '<div class="overall-stat"><div class="num">' + rollup.modulesDone + ' / ' + '<span id="ovModCount"></span></div><div class="lbl">Modules done</div></div>' +
+        '<div class="overall-stat"><div class="num">' + rollup.flagged + '</div><div class="lbl">Flagged</div></div>' +
+      '</div>' +
+      '<div class="overall-bar-track"><div class="overall-bar-fill" style="width:' + pct + '%;"></div></div>' +
+      '<div class="overall-bar-caption"><span>' + rollup.mastered + ' of ' + rollup.total + ' questions mastered</span><span>' + pct + '%</span></div>' +
+    '</div>'
+  );
+}
+
+function wireOverallReset(subject){
+  const btn = document.getElementById('resetAllBtn');
+  const countEl = document.getElementById('ovModCount');
+  if(countEl) countEl.textContent = subject.modules.length;
+  if(btn){
+    btn.addEventListener('click', async () => {
+      const ok = await LEAConfirm(
+        'Reset all progress for this subject? This clears mastered questions, flags, and best scores for every module.',
+        { title: 'Reset all progress', yes: 'Reset progress' }
+      );
+      if(!ok) return;
+      LEAProgress.resetSubject(subject.id, subject.modules.map(m => m.id));
+      render(subject);
+    });
+  }
+}
+
+function renderModeRows(subject, rollup, mode){
+  const rows = [
+    { id:'study', no:'01', name:'Study mode', cap:'Answer → explanation, no clock', num: (rollup.total > 0 ? Math.round((rollup.mastered/rollup.total)*100) + '%' : '—'), disabled:false },
+    { id:'exam', no:'02', name:'Mock exam', cap:'Full 200 · 5 h, or a 50-item sim', num: String(subject.modules.length), disabled:false },
+    { id:'drill', no:'03', name:'Drill my misses', cap: rollup.toDrill > 0 ? (rollup.total - rollup.mastered) + ' unmastered · ' + rollup.flagged + ' flagged' : 'All caught up', num: String(rollup.toDrill), disabled: rollup.toDrill === 0 }
+  ];
+  return '<div class="mode-rows">' + rows.map(r =>
+    '<button type="button" class="mode-row' + (r.id === mode ? ' selected' : '') + (r.disabled ? ' disabled' : '') + '" data-mode="' + r.id + '"' + (r.disabled ? ' disabled' : '') + '>' +
+      '<div class="mode-no">' + r.no + '</div>' +
+      '<div class="mode-lbl"><div class="mode-name">' + escapeHtml(r.name) + '</div><div class="mode-cap">' + escapeHtml(r.cap) + '</div></div>' +
+      '<div class="mode-num">' + escapeHtml(r.num) + '</div>' +
+    '</button>'
+  ).join('') + '</div>';
+}
+
+function wireModeRows(subject){
+  document.querySelectorAll('.mode-row[data-mode]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if(btn.disabled) return;
+      setMode(subject.id, btn.getAttribute('data-mode'));
+      render(subject);
+    });
+  });
+}
+
+function renderModulesList(subject, mode){
+  return '<div class="module-grid">' + subject.modules.map(mod => {
+    const mp = moduleProgress(subject.id, mod);
+    const resume = LEAResume.load(subject.id, mod.id);
+    const inProgress = !!(resume && resume.total && resume.answeredCount > 0 && resume.answeredCount < resume.total);
+    // Every module opens in the run engine now, whatever format it is stored
+    // as. It used to fall back to the module's own legacy quiz page, which
+    // meant 17 of 33 modules — 61% of the questions — opened in the old design
+    // even though the rest of the app had been rebuilt around them.
+    const href = 'run.html?s=' + encodeURIComponent(subject.id) + '&m=' + encodeURIComponent(mod.id) + '&mode=' + mode;
+    const disabled = mode === 'drill' && mp.toDrill === 0;
+
+    let metaLeft;
+    if(mode === 'study'){ metaLeft = mp.mastered + ' / ' + mod.total + ' mastered'; }
+    else if(mode === 'exam'){ metaLeft = mod.total + ' questions' + (mp.p.bestTotal ? ' · best ' + mp.p.bestCorrect + '/' + mp.p.bestTotal : ''); }
+    else { metaLeft = disabled ? 'Nothing to drill' : mp.toDrill + ' to drill'; }
+
+    let pct = mod.total > 0 ? Math.round((mp.mastered / mod.total) * 100) : 0;
+    if(mode === 'drill'){ pct = mod.total > 0 ? Math.round(((mod.total - mp.toDrill) / mod.total) * 100) : 0; }
+
+    return (
+      '<a class="module-card' + (inProgress ? ' in-progress' : '') + (disabled ? ' disabled' : '') + '" href="' + escapeHtml(href) + '">' +
+        '<div class="module-num">' + escapeHtml(mod.no) + (mod.hard ? ' · Advanced' : '') + '</div>' +
+        '<div class="module-title"><span class="mt-run">' + escapeHtml(mod.title) + '</span></div>' +
+        '<div class="module-meta"><span>' + escapeHtml(metaLeft) + '</span><span class="module-arrow">&rarr;</span></div>' +
+        '<div class="mp-bar-track"><div class="mp-bar-fill" style="width:' + pct + '%;"></div></div>' +
+        (inProgress ? '<div class="module-resume">Resume Q' + resume.position + ' &rarr;</div>' : '') +
+      '</a>'
+    );
+  }).join('') + '</div>';
+}
+
+// ================= Topics block (async — needs question data) =================
+//
+// Only genuinely tagged topics count. A module whose source carries no
+// per-question topic field is excluded outright rather than grouped under its
+// own title: a module-title bucket is not a topic, it is the module restated,
+// and being the largest bucket it would win "weakest" on size alone. Excluded
+// modules are named in the trailing note instead. A subject with nothing
+// tagged renders no block at all — the Modules list above already covers it.
+const TOPICS_VISIBLE = 5;
+// The tail expands to a slice, not to everything. History has 302 tagged
+// topics; listing them recreates the problem the fold solves, one tap deeper.
+// Weakest 24 is the actionable slice — finding the 200th is a search problem.
+const TOPICS_EXPANDED_MAX = 24;
+// A topic needs this many items before its percentage means anything. One
+// question can only read 0% or 100%, two gives quartiles at best, and either
+// churns on every answer — so small buckets would win "weakest" on noise.
+// Applies to the header's claim only; every tagged topic still gets a row.
+const TOPICS_WEAKEST_MIN_ITEMS = 4;
+let topicsView = null;   // { subjectId, rows, note, open, expanded }
+
+function topicsOpenKey(subjectId){ return 'lea_topics_open_' + subjectId + '_v1'; }
+function readTopicsOpen(subjectId){
+  // Per-device UI state, so it stays in localStorage and out of the synced
+  // progress blob. Collapsed is the default.
+  try{ return localStorage.getItem(topicsOpenKey(subjectId)) === '1'; }catch(e){ return false; }
+}
+function writeTopicsOpen(subjectId, open){
+  try{ localStorage.setItem(topicsOpenKey(subjectId), open ? '1' : '0'); }catch(e){}
+}
+
+async function renderTopicsCard(subject){
+  const topicTotals = {};
+  const topicMastered = {};
+  const untagged = [];
+
+  for(const mod of subject.modules){
+    const mp = moduleProgress(subject.id, mod);
+    const topics = await loadModuleTopics(mod);
+    if(!topics || topics.length !== mod.total){
+      untagged.push(mod);
+      continue;
+    }
+    for(let i = 0; i < mod.total; i++){
+      const t = topics[i];
+      if(!t) continue;
+      topicTotals[t] = (topicTotals[t] || 0) + 1;
+      if(mp.masteredSet.has(i)) topicMastered[t] = (topicMastered[t] || 0) + 1;
+    }
+  }
+
+  const names = Object.keys(topicTotals);
+  if(names.length === 0) return '';
+
+  // Weakest first, so the topic the folded header names is the first row you
+  // see on opening — the header and the list visibly agree. Larger buckets
+  // break ties, since a percentage over more questions is the firmer reading.
+  const rows = names.map(name => {
+    const total = topicTotals[name];
+    const mastered = topicMastered[name] || 0;
+    return { name, total, pct: total > 0 ? Math.round((mastered / total) * 100) : 0 };
+  }).sort((a, b) => (a.pct - b.pct) || (b.total - a.total) || a.name.localeCompare(b.name));
+
+  topicsView = {
+    subjectId: subject.id,
+    rows: rows,
+    note: untaggedNote(untagged),
+    open: readTopicsOpen(subject.id),
+    expanded: false
+  };
+  return topicsBlockHtml();
+}
+
+// "Module 02 doesn't tag questions by topic, so its 15 items aren't counted
+// here" — naming the module and its size, because generic phrasing left the
+// reader wondering which one. Plural when more than one module is excluded.
+function untaggedNote(untagged){
+  if(!untagged.length) return '';
+  const items = untagged.reduce((n, m) => n + (m.total || 0), 0);
+  const nos = untagged.map(m => String(m.no));
+  if(nos.length === 1){
+    return 'Module ' + nos[0] + ' doesn’t tag questions by topic, so its ' + items +
+      ' items aren’t counted here — open it from Modules instead.';
+  }
+  const list = nos.slice(0, -1).join(', ') + ' and ' + nos[nos.length - 1];
+  return 'Modules ' + list + ' don’t tag questions by topic, so their ' + items +
+    ' items aren’t counted here — open them from Modules instead.';
+}
+
+function topicsBlockHtml(){
+  const v = topicsView;
+  if(!v) return '';
+  // Rows are already weakest-first, so the first one clearing the floor is the
+  // weakest topic worth naming. If nothing clears it, the line is dropped
+  // rather than softened — on those subjects the claim was never worth making.
+  const weakest = v.rows.find(r => r.total >= TOPICS_WEAKEST_MIN_ITEMS) || null;
+  const capped = v.rows.length > TOPICS_EXPANDED_MAX;
+  const shown = v.expanded
+    ? v.rows.slice(0, TOPICS_EXPANDED_MAX)
+    : v.rows.slice(0, TOPICS_VISIBLE);
+
+  const rowsHtml = shown.map(r => {
+    const color = r.pct >= 100 ? 'var(--good)' : r.pct >= 70 ? 'var(--gold)' : 'var(--bad)';
+    // A topic-scoped drill already exists and is what Home's weak-topics sheet
+    // links to, so the arrow points at real behaviour rather than decorating.
+    return (
+      '<a class="topic-row" href="run.html?mode=drill&topic=' + encodeURIComponent(r.name) + '">' +
+        '<div class="topic-name">' + escapeHtml(r.name) + '</div>' +
+        '<div class="topic-bar-track"><div class="topic-bar-fill" style="width:' + r.pct + '%;background:' + color + ';"></div></div>' +
+        '<div class="topic-pct' + (r.pct >= 100 ? ' done' : '') + '">' + r.pct + '%</div>' +
+        '<div class="topic-arrow">&rarr;</div>' +
+      '</a>'
+    );
+  }).join('');
+
+  // The tail must not promise more than tapping it delivers, so above the cap
+  // it names the slice instead of the total. Expanded, a status line states
+  // the full count so the number is never hidden, only the rows.
+  let more = '';
+  if(!v.expanded && v.rows.length > TOPICS_VISIBLE){
+    more = '<button class="topics-more" id="topicsMoreBtn">' +
+      (capped ? 'Show ' + TOPICS_EXPANDED_MAX + ' weakest' : 'Show all ' + v.rows.length) +
+      ' &rarr;</button>';
+  } else if(v.expanded && capped){
+    more = '<div class="topics-status">' + v.rows.length + ' topics · showing the ' +
+      TOPICS_EXPANDED_MAX + ' weakest</div>';
+  }
+
+  return (
+    '<div class="topics-card">' +
+      '<button class="topics-head" id="topicsHeadBtn" aria-expanded="' + (v.open ? 'true' : 'false') + '">' +
+        '<div class="th-lines">' +
+          '<div class="th-count">Topics · ' + v.rows.length + ' tagged</div>' +
+          (weakest
+            ? '<div class="th-weakest">' +
+                '<span class="thw-name">Weakest — ' + escapeHtml(weakest.name) + '</span>' +
+                '<span class="thw-pct"> ' + weakest.pct + '%</span>' +
+              '</div>'
+            : '') +
+        '</div>' +
+        '<div class="th-sign">' + (v.open ? '−' : '+') + '</div>' +
+      '</button>' +
+      (v.open
+        ? '<div class="topics-body">' + rowsHtml + more +
+            (v.note ? '<div class="topics-note">' + escapeHtml(v.note) + '</div>' : '') +
+          '</div>'
+        : '') +
+    '</div>'
+  );
+}
+
+function paintTopicsBlock(){
+  const slot = document.getElementById('topicsSlot');
+  if(!slot) return;
+  slot.innerHTML = topicsBlockHtml();
+  wireTopicsBlock();
+}
+
+function wireTopicsBlock(){
+  const head = document.getElementById('topicsHeadBtn');
+  if(head) head.addEventListener('click', () => {
+    topicsView.open = !topicsView.open;
+    if(!topicsView.open) topicsView.expanded = false;
+    writeTopicsOpen(topicsView.subjectId, topicsView.open);
+    paintTopicsBlock();
+  });
+  const more = document.getElementById('topicsMoreBtn');
+  if(more) more.addEventListener('click', () => { topicsView.expanded = true; paintTopicsBlock(); });
+}
+</script>
+<script>
+// Paint any inline SVG icons declared as <span class="btn-ico" data-icon="…">.
+// Done once at load; these labels are static markup, not re-rendered.
+(function(){
+  if(!window.LEAIcons) return;
+  document.querySelectorAll('.btn-ico[data-icon]').forEach(function(el){
+    var fn = LEAIcons[el.getAttribute('data-icon')];
+    if(fn) el.innerHTML = fn(15);
+  });
+
+  // The theme button shows the mode you would switch TO, per the handoff's
+  // note on where the theme control lives — sun while dark, moon while light.
+  var themeBtn = document.getElementById('themeBtn');
+  if(!themeBtn || !window.LEATheme) return;
+  function paintTheme(){
+    var isLight = document.documentElement.classList.contains('light-mode') ||
+                  document.body.classList.contains('light-mode');
+    var icon = isLight ? 'moon' : 'sun';
+    var span = themeBtn.querySelector('.btn-ico');
+    span.setAttribute('data-icon', icon);
+    if(LEAIcons[icon]) span.innerHTML = LEAIcons[icon](18);
+    themeBtn.title = isLight ? 'Switch to dark' : 'Switch to light';
+    themeBtn.setAttribute('aria-label', themeBtn.title);
+  }
+  paintTheme();
+  themeBtn.addEventListener('click', function(){
+    LEATheme.toggle();
+    paintTheme();
+  });
+})();
+</script>
+</body>
+</html>

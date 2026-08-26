@@ -26,7 +26,7 @@
     --bad:#a53c3c;
     --line: rgba(122,42,42,0.22);
   }
-  body.dark-mode{
+  body.dark-mode, :root.dark-mode{
     --paper:#211a13;
     --paper-card:#2b2118;
     --ink:#f1e6d3;
@@ -54,7 +54,7 @@
     padding:32px 16px 64px;
     transition: background-color .2s ease, color .2s ease;
   }
-  body.dark-mode{
+  body.dark-mode, :root.dark-mode{
     background:
       radial-gradient(ellipse at 10% 0%, rgba(216,172,82,0.07) 0%, transparent 45%),
       radial-gradient(ellipse at 95% 100%, rgba(111,163,131,0.07) 0%, transparent 50%),
@@ -455,10 +455,11 @@
     letter-spacing:0.01em !important;
   }
 </style>
+<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=1">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="../../../assets/presence.js"></script>
-<script src="../../../assets/theme.js"></script>
-<script src="../../../assets/sfx.js"></script>
+<script src="../../../assets/presence.js?v=1"></script>
+<script src="../../../assets/theme.js?v=1" data-alt-class="dark-mode" data-default-is="light"></script>
+<script src="../../../assets/sfx.js?v=1"></script>
 </head>
 <body>
 <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
@@ -932,7 +933,7 @@ sb.auth.onAuthStateChange((event, session) => {
   renderQuestion();
 })();
 </script>
-<script src="../../../assets/quiz-resume.js"></script>
+<script src="../../../assets/quiz-resume.js?v=1"></script>
 <script>
 (function(){
   var LEA_RESUME_SUBJECT = 'building-laws';

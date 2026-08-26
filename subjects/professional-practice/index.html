@@ -22,11 +22,11 @@
     --line: rgba(111,168,207,0.20); --grid-line: rgba(111,168,207,0.09);
     --font-head:'Big Shoulders Display', sans-serif; --font-body:'Space Grotesk', sans-serif; --font-mono:'IBM Plex Mono', monospace;
   }
-  body.light-mode{
-    --ink:#182028; --bg-deep:#eef2f3; --bg-panel:#ffffff; --bg-panel-deep:#f3f6f7;
-    --gold:#b5791f; --gold-bright:#8f5f16; --blue:#2f6c95; --blue-bright:#1f5478;
-    --sand:#5c6975; --good:#2f8a55; --bad:#b23d2f;
-    --line: rgba(47,108,149,0.20); --grid-line: rgba(47,108,149,0.09);
+  body.light-mode, :root.light-mode{
+    --ink:#16202b; --bg-deep:#d3dee6; --bg-panel:#ffffff; --bg-panel-deep:#e9eff4;
+    --gold:#b5791f; --gold-bright:#7d520c; --blue:#2f6c95; --blue-bright:#1b4a6b;
+    --sand:#4f5d6a; --good:#206b3c; --bad:#a1372a;
+    --line: rgba(47,108,149,0.28); --grid-line: rgba(47,108,149,0.11);
   }
   *{box-sizing:border-box;} html,body{margin:0;padding:0;}
   body{
@@ -89,8 +89,8 @@
   .leaderboard-row .lb-stats{ color:var(--sand); font-size:11.5px; text-align:right; font-family:var(--font-mono); }
   .leaderboard-empty{ color:var(--sand); font-style:italic; text-align:center; padding:12px 0; }
 </style>
-<script src="../../assets/presence.js"></script>
-<script src="../../assets/theme.js"></script>
+<script src="../../assets/presence.js?v=1"></script>
+<script src="../../assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
 </head>
 <body>
 <div class="wrap">
@@ -156,7 +156,7 @@
   </div>
 </div>
 
-<script src="../../assets/module-progress.js"></script>
+<script src="../../assets/module-progress.js?v=1"></script>
 <script>
 const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';

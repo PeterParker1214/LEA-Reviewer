@@ -1,0 +1,9 @@
+# The reviewer itself is fine to index.
+User-agent: *
+Allow: /
+
+# The design handoff is tracked for history and backup, not for readers. It is
+# still publicly reachable — GitHub Pages serves everything in the repo — this
+# only keeps the design board and the superseded page copies inside it out of
+# search results, where they would compete with the real app.
+Disallow: /design_handoff_lea_reviewer/

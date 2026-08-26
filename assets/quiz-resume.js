@@ -58,23 +58,33 @@ window.LEAResume = (function () {
       'display:flex;align-items:center;justify-content:center;z-index:99999;padding:20px;' +
       'font-family:inherit;animation:leaResumeFade .15s ease;}' +
       '@keyframes leaResumeFade{from{opacity:0;}to{opacity:1;}}' +
-      '.lea-resume-modal{background:var(--paper-card,#1f2020);color:var(--ink,#f2efe2);' +
-      'border:1px solid var(--line,rgba(242,239,226,0.22));border-radius:10px;max-width:420px;' +
+      // --paper-card / --ink-soft / --primary are dead tokens: no page in the
+      // site defines them, so this modal always fell through to the hardcoded
+      // warm-grey-and-orange defaults and matched nothing. Every page that
+      // loads this script does define --bg-panel / --ink / --line / --gold,
+      // so key off those and let each page's own palette (and light/dark
+      // theme) apply.
+      '.lea-resume-modal{background:var(--bg-panel,#0e1c28);color:var(--ink,#eef1e9);' +
+      'border:1px solid var(--line,rgba(111,168,207,0.20));border-radius:10px;max-width:420px;' +
       'width:100%;padding:26px 24px;box-shadow:0 24px 60px rgba(0,0,0,0.5);}' +
       '.lea-resume-title{font-size:18px;font-weight:700;margin:0 0 10px;}' +
-      '.lea-resume-text{font-size:14px;line-height:1.55;color:var(--ink-soft,#c9c5b6);margin:0 0 22px;}' +
+      '.lea-resume-text{font-size:14px;line-height:1.55;color:var(--muted,#8b98a5);margin:0 0 22px;}' +
       '.lea-resume-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;}' +
       '.lea-resume-btn{padding:10px 18px;border-radius:5px;font-size:13px;font-weight:700;' +
-      'cursor:pointer;border:1px solid var(--line,rgba(242,239,226,0.25));background:none;' +
-      'color:var(--ink,#f2efe2);font-family:inherit;}' +
+      'cursor:pointer;border:1px solid var(--line,rgba(111,168,207,0.25));background:none;' +
+      'color:var(--ink,#eef1e9);font-family:inherit;}' +
       '.lea-resume-btn:hover{background:rgba(255,255,255,0.08);}' +
-      '.lea-resume-primary{background:var(--primary,#ef5a24);border-color:var(--primary,#ef5a24);color:#1c1c1c;}' +
-      '.lea-resume-primary:hover{filter:brightness(1.1);background:var(--primary,#ef5a24);}';
+      '.lea-resume-primary{background:var(--gold,#e0a83f);border-color:var(--gold,#e0a83f);color:#1a1206;}' +
+      '.lea-resume-primary:hover{filter:brightness(1.1);background:var(--gold,#e0a83f);}';
     document.head.appendChild(s);
   }
 
   function showModal(cfg) {
     injectStyles();
+    // Never stack: a second prompt behind the first would leave an
+    // undismissable overlay if the page ever double-calls this.
+    const stale = document.querySelector('.lea-resume-overlay');
+    if (stale) stale.remove();
     const overlay = document.createElement('div');
     overlay.className = 'lea-resume-overlay';
     overlay.innerHTML =
@@ -103,9 +113,13 @@ window.LEAResume = (function () {
       if (rec) clear(subjectId, moduleId);
       return;
     }
-    const pos = rec.position || rec.answeredCount;
+    // Coerced to numbers before reaching the modal's innerHTML — these come
+    // back out of localStorage, which anything running on the page (or a
+    // browser extension) can write, and they'd otherwise be interpolated raw.
+    const num = v => (Number.isFinite(Number(v)) ? Number(v) : 0);
+    const pos = num(rec.position || rec.answeredCount);
     showModal({
-      message: 'You left off at question ' + pos + ' of ' + rec.total + ' (' + rec.answeredCount + ' answered so far).',
+      message: 'You left off at question ' + pos + ' of ' + num(rec.total) + ' (' + num(rec.answeredCount) + ' answered so far).',
       onResume: function () { opts.onResume(rec.payload); },
       onStartOver: function () {
         clear(subjectId, moduleId);
