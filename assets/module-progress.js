@@ -98,19 +98,44 @@ window.LEAProgress = (function () {
     return { totalMastered: totalMastered, avgScore: scoreCount > 0 ? (scoreSum / scoreCount) : 0 };
   }
 
+  function doPush() {
+    if (!syncUser || !sbClient || !fullData) return;
+    const totals = computeGlobalTotals(fullData);
+    sbClient.from('progress').upsert({
+      user_id: syncUser.id,
+      data: fullData,
+      total_mastered: totals.totalMastered,
+      avg_best_score: totals.avgScore,
+      updated_at: new Date().toISOString()
+    }).then(function () {});
+  }
+
   function pushRemote() {
     if (!syncUser || !sbClient || !fullData) return;
     clearTimeout(saveTimer);
-    saveTimer = setTimeout(function () {
-      const totals = computeGlobalTotals(fullData);
-      sbClient.from('progress').upsert({
-        user_id: syncUser.id,
-        data: fullData,
-        total_mastered: totals.totalMastered,
-        avg_best_score: totals.avgScore,
-        updated_at: new Date().toISOString()
-      }).then(function () {});
-    }, 600);
+    saveTimer = setTimeout(function () { saveTimer = null; doPush(); }, 600);
+  }
+
+  // A debounced write still pending when the page goes away used to be dropped
+  // on the floor: answer the last question, close the tab within 600ms, and
+  // that write never happened. Progress survives in the local cache and gets
+  // folded back up by the migration on a later load, but meta values (streak,
+  // mock-exam history) read remote-first and would simply lose the update.
+  // Flush on the way out. visibilitychange:hidden is the signal that actually
+  // fires on mobile, where 'unload' frequently never does.
+  function flushPendingPush() {
+    if (!saveTimer) return;
+    clearTimeout(saveTimer);
+    saveTimer = null;
+    doPush();
+  }
+  if (typeof window !== 'undefined' && window.addEventListener) {
+    window.addEventListener('pagehide', flushPendingPush);
+  }
+  if (typeof document !== 'undefined' && document.addEventListener) {
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') flushPendingPush();
+    });
   }
 
   // One-time catch-up for a browser that built up local progress before this
@@ -133,22 +158,72 @@ window.LEAProgress = (function () {
       }
       const mergedMastered = Array.from(new Set((remote.mastered || []).concat(local.mastered || [])));
       const localBetter = (local.bestCorrect || 0) > (remote.bestCorrect || 0);
-      if (mergedMastered.length !== (remote.mastered || []).length || localBetter) {
-        fullData[subjectId][moduleId] = {
+
+      // Flags and notes are per-question annotations living in this same
+      // object. The merged record used to be rebuilt from four named fields
+      // only, which silently dropped both: flag a question on your phone,
+      // then open a laptop whose cache knew one extra mastered question, and
+      // the merge would push a stripped record back and destroy the flags and
+      // notes on every device. Union them instead, and keep any other field
+      // the record happens to carry by building on top of `remote`.
+      const mergedFlagged = Array.from(new Set((remote.flagged || []).concat(local.flagged || [])));
+      // On a same-question conflict the already-synced value wins: another
+      // device deliberately saved it, and there's no timestamp to judge by.
+      // Local-only notes still get rescued.
+      const mergedNotes = Object.assign({}, local.notes || {}, remote.notes || {});
+
+      const gainedFlags = mergedFlagged.length !== (remote.flagged || []).length;
+      const gainedNotes = Object.keys(mergedNotes).length !== Object.keys(remote.notes || {}).length;
+
+      if (mergedMastered.length !== (remote.mastered || []).length || localBetter || gainedFlags || gainedNotes) {
+        const merged = Object.assign({}, remote, {
           mastered: mergedMastered,
           bestCorrect: localBetter ? local.bestCorrect : remote.bestCorrect,
           bestTotal: localBetter ? local.bestTotal : remote.bestTotal,
           attempts: Math.max(remote.attempts || 0, local.attempts || 0)
-        };
+        });
+        if (mergedFlagged.length) merged.flagged = mergedFlagged;
+        if (Object.keys(mergedNotes).length) merged.notes = mergedNotes;
+        fullData[subjectId][moduleId] = merged;
         changed = true;
       }
     });
     return changed;
   }
 
+  // lastRenderCtx only ever covers the one subject whose overall card was
+  // rendered — and subject.html draws its own, so the JSON subjects never
+  // register one at all. Scan the local cache directly instead: work done
+  // while the remote row was unreachable would otherwise sit in localStorage
+  // unused, invisible from the moment a later load replaced it with the
+  // server's copy. Keys are `lea_progress_<subjectId>_<moduleId>_v1`, and no
+  // id contains an underscore, so the split is unambiguous.
+  function migrateAllLocalIntoRemote() {
+    if (!fullData) return false;
+    const bySubject = {};
+    let n = 0;
+    try { n = localStorage.length; } catch (e) { return false; }
+    for (let i = 0; i < n; i++) {
+      let k = null;
+      try { k = localStorage.key(i); } catch (e) { continue; }
+      if (!k || k.indexOf(STORAGE_PREFIX) !== 0 || k.slice(-3) !== '_v1') continue;
+      const body = k.slice(STORAGE_PREFIX.length, -3);
+      const us = body.indexOf('_');
+      if (us <= 0 || us === body.length - 1) continue;
+      const subjectId = body.slice(0, us);
+      const moduleId = body.slice(us + 1);
+      (bySubject[subjectId] = bySubject[subjectId] || []).push(moduleId);
+    }
+    let changed = false;
+    Object.keys(bySubject).forEach(function (subjectId) {
+      if (migrateLocalIntoRemote(subjectId, bySubject[subjectId])) changed = true;
+    });
+    return changed;
+  }
+
   function runPendingMigration() {
-    if (!lastRenderCtx || !fullData) return;
-    if (migrateLocalIntoRemote(lastRenderCtx.subjectId, lastRenderCtx.moduleIds)) pushRemote();
+    if (!fullData) return;
+    if (migrateAllLocalIntoRemote()) pushRemote();
   }
 
   function loadRow(user) {
@@ -194,6 +269,30 @@ window.LEAProgress = (function () {
         if (session) loadRow(session.user);
       });
     });
+  }
+
+  // ---- Top-level meta keys (streak, mock-exam history, etc) ----
+  // Same blob as subject/module progress (a sibling of __meta), so it rides
+  // the same local-cache + debounced-remote-sync plumbing above with no new
+  // storage mechanism. Local cache is a read-through bridge before sync
+  // finishes, not a full offline merge — a value written locally while
+  // signed out (or before the first sync completes) can be superseded by
+  // whatever the remote row has once it loads, same as any other cold start.
+  function loadMeta(key) {
+    if (fullData && fullData[key] !== undefined) return fullData[key];
+    try {
+      const raw = localStorage.getItem('lea_meta_v1_' + key);
+      if (raw) return JSON.parse(raw);
+    } catch (e) {}
+    return null;
+  }
+
+  function saveMeta(key, value) {
+    try { localStorage.setItem('lea_meta_v1_' + key, JSON.stringify(value)); } catch (e) {}
+    if (fullData) {
+      fullData[key] = value;
+      pushRemote();
+    }
   }
 
   // ---- Public, sync-aware read/write (same signatures as before) ----
@@ -283,12 +382,20 @@ window.LEAProgress = (function () {
       '<div class="overall-bar-caption"><span>' + t.totalMastered + ' of ' + t.totalQuestions + ' questions mastered across all modules</span><span>' + pct + '%</span></div>';
     const btn = container.querySelector('#leaResetAllBtn');
     if (btn) {
-      btn.addEventListener('click', function () {
-        if (confirm('Reset all progress for this subject? This clears mastered questions and best scores for every module.')) {
-          resetSubject(subjectId, modules.map(function (m) { return m.id; }));
-          renderOverallCard(container, subjectId, modules);
-          if (typeof window.leaOnProgressReset === 'function') window.leaOnProgressReset();
-        }
+      btn.addEventListener('click', async function () {
+        const message = 'Reset all progress for this subject? This clears mastered questions and best scores for every module.';
+        // Pages that include assets/lea-confirm.js get the in-page sheet,
+        // which also works in the embedded browsers that silently suppress
+        // native confirm(). The rest fall back to confirm() — same behaviour
+        // they had before, so including the helper is an upgrade, not a
+        // requirement.
+        const ok = window.LEAConfirm
+          ? await window.LEAConfirm(message, { title: 'Reset all progress', yes: 'Reset progress' })
+          : confirm(message);
+        if (!ok) return;
+        resetSubject(subjectId, modules.map(function (m) { return m.id; }));
+        renderOverallCard(container, subjectId, modules);
+        if (typeof window.leaOnProgressReset === 'function') window.leaOnProgressReset();
       });
     }
   }
@@ -315,6 +422,8 @@ window.LEAProgress = (function () {
     subjectTotals: subjectTotals,
     renderOverallCard: renderOverallCard,
     renderModuleBadge: renderModuleBadge,
+    loadMeta: loadMeta,
+    saveMeta: saveMeta,
     key: key,
     initSync: initSync
   };
