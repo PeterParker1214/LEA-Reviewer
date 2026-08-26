@@ -12,6 +12,7 @@
 <title>LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="assets/icons.js?v=1"></script>
+<script src="assets/countdown.js?v=1"></script>
 <script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
 <script src="assets/module-progress.js?v=1"></script>
 <script src="assets/quiz-resume.js?v=1"></script>
@@ -89,6 +90,57 @@
     margin:0 auto; line-height:1.6;
   }
   .masthead .sub b{ color:var(--gold-bright); font-weight:400; }
+
+  /* ===== 2e Sign in ===== */
+  /* Frame padding is 34px 20px 26px and the frame clips its own decoration,
+     so the shell owns both rather than the page body. */
+  #signedOutShell{ position:relative; overflow:hidden; padding:34px 20px 26px; }
+  .signin-body{ position:relative; }
+
+  .signin-geo{ position:absolute; inset:0; pointer-events:none; }
+  .signin-geo span{ position:absolute; pointer-events:none; }
+  .geo-arc{ border-radius:50%; }
+  .geo-arc-1{ top:-120px; right:-130px; width:330px; height:330px; border:1px solid rgba(224,168,63,0.22); }
+  .geo-arc-2{ top:-60px; right:-70px; width:210px; height:210px; border:1px solid rgba(111,168,207,0.18); }
+  .geo-square{ bottom:70px; left:-90px; width:250px; height:250px; border:1px dashed rgba(111,168,207,0.14); transform:rotate(18deg); }
+  .geo-plus{ font-family:var(--font-mono); font-size:15px; }
+  .geo-plus-1{ top:34px; right:26px; color:rgba(224,168,63,0.5); }
+  .geo-plus-2{ bottom:120px; left:22px; color:rgba(111,168,207,0.35); }
+
+  .signin-eyebrow{ font-family:var(--font-mono); letter-spacing:.28em; font-size:10px; text-transform:uppercase; color:var(--muted); }
+  .signin-wordmark{ font-family:var(--font-display); font-weight:800; font-size:60px; line-height:.86; margin:8px 0 0; text-transform:uppercase; letter-spacing:.01em; }
+  .signin-rule{ height:2px; width:64px; background:var(--gold); margin:16px 0 14px; }
+  .signin-tagline{ font-family:var(--font-hand); font-size:16px; line-height:1.65; color:#c9d2da; }
+  body.light-mode .signin-tagline, :root.light-mode .signin-tagline{ color:var(--muted); }
+
+  .signin-clock{ display:flex; align-items:center; gap:10px; margin:22px 0 20px; }
+  .sc-units{ display:flex; gap:6px; }
+  .sc-unit{ text-align:center; }
+  .sc-unit b{ display:block; font-family:var(--font-display); font-weight:800; font-size:26px; line-height:1; }
+  .sc-unit span{ display:block; font-family:var(--font-mono); font-size:8.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:4px; }
+  .sc-sep{ font-family:var(--font-display); font-weight:800; font-size:26px; line-height:1; color:#3d4d5c; }
+  .sc-divider{ width:1px; height:34px; background:rgba(111,168,207,0.25); }
+  .sc-label{ font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); line-height:1.6; }
+
+  .field{ display:block; }
+  .field-label{ display:block; font-family:var(--font-mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:7px; }
+  .signin-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .keepme{ display:flex; align-items:center; gap:9px; font-size:13px; color:#c9d2da; cursor:pointer; }
+  body.light-mode .keepme, :root.light-mode .keepme{ color:var(--ink); }
+  .keepme input{ position:absolute; opacity:0; width:0; height:0; }
+  .keepme-box{ width:20px; height:20px; flex-shrink:0; border:1px solid var(--gold); display:flex; align-items:center; justify-content:center; }
+  .keepme input:checked + .keepme-box{ background:var(--gold); }
+  .keepme input:checked + .keepme-box::after{ content:"\2713"; color:#1a1206; font-size:13px; line-height:1; }
+  .keepme input:focus-visible + .keepme-box{ outline:2px solid var(--gold-bright); outline-offset:2px; }
+  .forgot-link{ background:none; border:none; font-family:var(--font-mono); font-size:10px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); cursor:pointer; padding:0; }
+  .forgot-link:hover{ color:var(--gold-bright); }
+
+  .signin-primary{ display:flex; align-items:center; justify-content:center; gap:10px; width:100%; background:var(--gold); color:#1a1206; border:none; font-family:var(--font-mono); font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:15px 18px; cursor:pointer; }
+  .signin-primary:hover{ background:var(--gold-bright); }
+
+  .signin-presence{ display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:10px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); padding-top:16px; margin-top:20px; border-top:1px solid rgba(111,168,207,0.18); }
+  .signin-presence b{ color:var(--ink); font-weight:600; }
+  .sp-dot{ width:6px; height:6px; border-radius:50%; background:var(--good); flex-shrink:0; }
 
   /* ===== panel (shared card look, with drafting-corner brackets) ===== */
   .panel{
@@ -447,45 +499,95 @@
 
   <!-- ===================== SIGNED-OUT: MASTHEAD + AUTH PANEL ===================== -->
   <div id="signedOutShell">
-    <div class="masthead">
-      <div class="eyebrow">Peter Parker's</div>
-      <h1>LEA Reviewer</h1>
-      <div class="rule"></div>
-      <div class="sub"><b>Log in</b> to track your mastery, pick up where you left off, and see where you stand on the leaderboard.</div>
+    <!-- 2e. Decorative drafting geometry: two arcs off the top-right, a rotated
+         dashed square bottom-left, and two registration crosses. Purely
+         atmospheric, so it is aria-hidden and cannot take a pointer. -->
+    <div class="signin-geo" aria-hidden="true">
+      <span class="geo-arc geo-arc-1"></span>
+      <span class="geo-arc geo-arc-2"></span>
+      <span class="geo-square"></span>
+      <span class="geo-plus geo-plus-1">+</span>
+      <span class="geo-plus geo-plus-2">+</span>
     </div>
 
-    <div id="authPanel" class="panel hidden">
-      <div class="auth-heading">Sign in to continue</div>
-      <div class="intro-note">An account is required — progress and scores are saved to your profile, not this device.</div>
+    <div class="signin-body">
+      <div class="signin-eyebrow">Peter Parker&rsquo;s</div>
+      <h1 class="signin-wordmark">LEA Reviewer</h1>
+      <div class="signin-rule"></div>
+      <div class="signin-tagline">Track what you&rsquo;ve actually mastered &mdash; not what you&rsquo;ve merely read.</div>
+
+      <!-- Same clock as Home, from assets/countdown.js. Seconds are omitted
+           here by design; the frame shows days : hrs : min only. -->
+      <div class="signin-clock">
+        <div class="sc-units">
+          <div class="sc-unit"><b id="scDays">0</b><span>days</span></div>
+          <div class="sc-sep">:</div>
+          <div class="sc-unit"><b id="scHrs">00</b><span>hrs</span></div>
+          <div class="sc-sep">:</div>
+          <div class="sc-unit"><b id="scMins">00</b><span>min</span></div>
+        </div>
+        <div class="sc-divider"></div>
+        <div class="sc-label">until the<br>LEA &middot; 17 Jan 2027</div>
+      </div>
+
       <div class="auth-tabs">
-        <div class="auth-tab active" id="loginTab">Log in</div>
-        <div class="auth-tab" id="signupTab">Sign up</div>
+        <button type="button" class="auth-tab active" id="loginTab">Log in</button>
+        <button type="button" class="auth-tab" id="signupTab">Sign up</button>
       </div>
 
       <form class="auth-form" id="loginForm">
-        <input type="email" id="loginEmail" placeholder="Email" required autocomplete="email">
-        <div class="field-wrap">
-          <input type="password" id="loginPassword" placeholder="Password" required autocomplete="current-password">
-          <button type="button" class="field-eye" data-target="loginPassword" aria-label="Show password"></button>
+        <label class="field">
+          <span class="field-label">Email</span>
+          <input type="email" id="loginEmail" required autocomplete="email">
+        </label>
+        <label class="field">
+          <span class="field-label">Password</span>
+          <span class="field-wrap">
+            <input type="password" id="loginPassword" required autocomplete="current-password">
+            <button type="button" class="field-eye" data-target="loginPassword" aria-label="Show password"></button>
+          </span>
+        </label>
+        <div class="signin-row">
+          <label class="keepme">
+            <input type="checkbox" id="keepSignedIn" checked>
+            <span class="keepme-box" aria-hidden="true"></span>
+            <span>Keep me signed in</span>
+          </label>
+          <button type="button" class="forgot-link" id="forgotBtn">Forgot?</button>
         </div>
         <div class="auth-error" id="loginError"></div>
-        <button type="submit">Log in</button>
+        <button type="submit" class="signin-primary">Start reviewing &rarr;</button>
       </form>
 
       <form class="auth-form hidden" id="signupForm">
-        <input type="text" id="signupUsername" placeholder="Username (shown on leaderboard)" required maxlength="24">
-        <input type="email" id="signupEmail" placeholder="Email" required autocomplete="email">
-        <div class="field-wrap">
-          <input type="password" id="signupPassword" placeholder="Password (min 6 characters)" required minlength="6" autocomplete="new-password">
-          <button type="button" class="field-eye" data-target="signupPassword" aria-label="Show password"></button>
-        </div>
+        <label class="field">
+          <span class="field-label">Display name</span>
+          <input type="text" id="signupUsername" required maxlength="24">
+        </label>
+        <label class="field">
+          <span class="field-label">Email</span>
+          <input type="email" id="signupEmail" required autocomplete="email">
+        </label>
+        <label class="field">
+          <span class="field-label">Password</span>
+          <span class="field-wrap">
+            <input type="password" id="signupPassword" required minlength="6" autocomplete="new-password">
+            <button type="button" class="field-eye" data-target="signupPassword" aria-label="Show password"></button>
+          </span>
+        </label>
         <div class="auth-error" id="signupError"></div>
         <div class="auth-msg" id="signupMsg"></div>
-        <button type="submit">Create account</button>
+        <button type="submit" class="signin-primary">Create account &rarr;</button>
       </form>
 
-      <div class="auth-divider">or</div>
       <button class="google-btn" id="googleBtn">Continue with Google</button>
+
+      <!-- Real presence, read from the same channel Home uses. A signed-out
+           client can subscribe without tracking itself, so it never inflates
+           the number it reports. Hidden until a count actually arrives. -->
+      <div class="signin-presence hidden" id="signinPresence">
+        <span class="sp-dot"></span><b id="signinPresenceCount">0</b>&nbsp;reviewees studying right now
+      </div>
     </div>
   </div>
 
@@ -523,7 +625,28 @@
 // ---- Supabase setup (shared with all subject/run pages) ----
 const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
-const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// "Keep me signed in" has to mean something, so the auth token's home is
+// chosen at write time rather than baked in: localStorage survives the
+// browser closing, sessionStorage does not. The flag is read on every write,
+// so ticking the box before signing in is what decides it.
+let leaPersistSession = true;
+const leaAuthStorage = {
+  getItem(k){
+    try{ return localStorage.getItem(k) ?? sessionStorage.getItem(k); }catch(e){ return null; }
+  },
+  setItem(k, v){
+    try{
+      if(leaPersistSession){ localStorage.setItem(k, v); sessionStorage.removeItem(k); }
+      else { sessionStorage.setItem(k, v); localStorage.removeItem(k); }
+    }catch(e){}
+  },
+  removeItem(k){
+    try{ localStorage.removeItem(k); sessionStorage.removeItem(k); }catch(e){}
+  }
+};
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  auth: { storage: leaAuthStorage, persistSession: true, autoRefreshToken: true }
+});
 
 function escapeHtml(s){
   return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -533,7 +656,6 @@ function stripEmoji(str){ return String(str||'').replace(/[\p{Extended_Pictograp
 const signedOutShell = document.getElementById('signedOutShell');
 const signedInShell = document.getElementById('signedInShell');
 const homeBody = document.getElementById('homeBody');
-const authPanel = document.getElementById('authPanel');
 let currentUsername = '';
 let SUBJECTS_ALL = [];
 
@@ -572,18 +694,14 @@ function timeAgo(iso){
 }
 
 // ================= Countdown =================
-const EXAM_DATE = new Date('2027-01-17T00:00:00+08:00');
-function renderCountdown(){
-  const diff = Math.max(0, EXAM_DATE.getTime() - Date.now());
-  const totalSec = Math.floor(diff / 1000);
-  const days = Math.floor(totalSec / 86400);
-  const hrs = Math.floor((totalSec % 86400) / 3600);
-  const mins = Math.floor((totalSec % 3600) / 60);
-  const secs = totalSec % 60;
-  const set = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = String(v).padStart(2,'0'); };
+// The clock itself lives in assets/countdown.js, shared with Sign in (2e).
+// This only paints Home's split-flap panels from the numbers it hands over.
+function renderCountdown(p){
+  p = p || LEACountdown.parts();
+  const set = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = LEACountdown.pad2(v); };
   const daysEl = document.getElementById('cdDays');
-  if(daysEl) daysEl.textContent = days;
-  set('cdHrs', hrs); set('cdMins', mins); set('cdSecs', secs);
+  if(daysEl) daysEl.textContent = p.days;
+  set('cdHrs', p.hrs); set('cdMins', p.mins); set('cdSecs', p.secs);
 }
 let countdownTimer = null;
 
@@ -779,9 +897,8 @@ function renderHome(){
     if(q) window.location.href = 'search.html?q=' + encodeURIComponent(q);
   });
 
-  renderCountdown();
-  if(countdownTimer) clearInterval(countdownTimer);
-  countdownTimer = setInterval(renderCountdown, 1000);
+  if(countdownTimer) countdownTimer();
+  countdownTimer = LEACountdown.subscribe(renderCountdown);
   fillDesktopRail();
 }
 
@@ -985,6 +1102,9 @@ loginForm.addEventListener('submit', async (e) => {
   const password = document.getElementById('loginPassword').value;
   const errEl = document.getElementById('loginError');
   errEl.textContent = '';
+  // Read the box before the token is written, not after.
+  const keep = document.getElementById('keepSignedIn');
+  leaPersistSession = keep ? keep.checked : true;
   const { error } = await sb.auth.signInWithPassword({ email, password });
   if(error){ errEl.textContent = error.message; return; }
 });
@@ -1056,6 +1176,7 @@ async function showSignedIn(user){
     return;
   }
   currentUsername = username;
+  stopSignInScreen();
   signedOutShell.classList.add('hidden');
   signedInShell.classList.remove('hidden');
   startPresence(username);
@@ -1066,10 +1187,85 @@ async function showSignedIn(user){
 
 function showSignedOut(){
   stopPresence();
-  if(countdownTimer){ clearInterval(countdownTimer); countdownTimer = null; }
+  // countdownTimer holds the unsubscribe returned by LEACountdown.subscribe.
+  if(countdownTimer){ countdownTimer(); countdownTimer = null; }
   signedInShell.classList.add('hidden');
   signedOutShell.classList.remove('hidden');
-  authPanel.classList.remove('hidden');
+  startSignInScreen();
+}
+
+// ================= 2e Sign in =================
+let signInClockStop = null;
+let signInPresenceChannel = null;
+
+// Forgot?: sends Supabase's own reset mail to whatever is in the email field.
+// It reports what happened either way rather than silently doing nothing —
+// and it does not reveal whether the address has an account, which is why the
+// success copy is deliberately non-committal.
+async function requestPasswordReset(){
+  const emailEl = document.getElementById('loginEmail');
+  const errEl = document.getElementById('loginError');
+  const email = (emailEl && emailEl.value || '').trim();
+  if(!email){
+    if(errEl) errEl.textContent = 'Enter your email above first, then tap Forgot.';
+    if(emailEl) emailEl.focus();
+    return;
+  }
+  const btn = document.getElementById('forgotBtn');
+  if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+  try{
+    await sb.auth.resetPasswordForEmail(email, { redirectTo: window.location.origin + window.location.pathname });
+    if(errEl) errEl.textContent = 'If that address has an account, a reset link is on its way.';
+  }catch(e){
+    if(errEl) errEl.textContent = 'Could not send a reset link just now — try again shortly.';
+  }
+  if(btn){ btn.disabled = false; btn.textContent = 'Forgot?'; }
+}
+
+function startSignInScreen(){
+  // Same clock as Home — one source, two renderings. Seconds are deliberately
+  // absent here: the frame shows days : hrs : min.
+  if(signInClockStop) signInClockStop();
+  signInClockStop = LEACountdown.subscribe(p => {
+    const set = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = v; };
+    set('scDays', p.days);
+    set('scHrs', LEACountdown.pad2(p.hrs));
+    set('scMins', LEACountdown.pad2(p.mins));
+  });
+  startSignInPresence();
+  const forgotBtn = document.getElementById('forgotBtn');
+  if(forgotBtn && !forgotBtn.dataset.wired){
+    forgotBtn.dataset.wired = '1';
+    forgotBtn.addEventListener('click', requestPasswordReset);
+  }
+}
+
+// Real presence, not a placeholder. A signed-out client may subscribe to the
+// same channel Home uses and read its state; it never calls track(), so it
+// cannot inflate the number it reports. The row stays hidden until a real
+// count arrives, and hides again at zero — "0 reviewees studying right now"
+// is worse than saying nothing.
+function startSignInPresence(){
+  if(signInPresenceChannel) return;
+  const row = document.getElementById('signinPresence');
+  const num = document.getElementById('signinPresenceCount');
+  if(!row || !num) return;
+  try{
+    const ch = sb.channel('online-users', { config: { presence: { key: 'signin-' + Math.random().toString(36).slice(2) } } });
+    signInPresenceChannel = ch;
+    ch.on('presence', { event: 'sync' }, () => {
+      const names = Object.values(ch.presenceState()).flat().map(p => p.username).filter(Boolean);
+      const n = new Set(names).size;
+      num.textContent = n;
+      row.classList.toggle('hidden', n === 0);
+    });
+    ch.subscribe();
+  }catch(e){ /* leave the row hidden */ }
+}
+
+function stopSignInScreen(){
+  if(signInClockStop){ signInClockStop(); signInClockStop = null; }
+  if(signInPresenceChannel){ try{ sb.removeChannel(signInPresenceChannel); }catch(e){} signInPresenceChannel = null; }
 }
 
 sb.auth.onAuthStateChange((event, session) => {
