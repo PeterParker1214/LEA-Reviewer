@@ -104,7 +104,10 @@
   /* Phone: the wrapper takes no part in layout, so text and figure stack
      exactly as they always did. Desktop re-forms it as a row. */
   .q-body{ display:contents; }
-  .qimg-wrap{ margin-bottom:14px; display:none; position:relative; }
+  /* Centred: figures are rarely the card's full width, and left-aligning
+     them left a ragged gap beside every one. justify/align live on the class
+     because the inline style only sets display. */
+  .qimg-wrap{ margin-bottom:14px; display:none; position:relative; justify-content:center; align-items:center; }
   .qimg-wrap img{ max-width:100%; border-radius:8px; border:1px solid var(--line); display:block; cursor:zoom-in; }
   /* A figure is often the whole question — a truss, a load diagram, a plan.
      At 390px it is unreadable without opening it. */
@@ -311,9 +314,9 @@
   .rail-bar-fill{ height:100%; background:linear-gradient(90deg, var(--gold), var(--blue-bright)); }
 
   /* ===== 2d Results ===== */
-  .dd-mark{ width:62px; height:62px; border-radius:50%; background:var(--good); color:#0a1218; display:flex; align-items:center; justify-content:center; margin:4px auto 14px; font-size:28px; }
-  .dd-title{ font-family:var(--font-display); font-weight:800; font-size:26px; text-transform:uppercase; text-align:center; color:var(--good); line-height:1; }
-  .dd-day{ font-family:var(--font-hand); font-size:16px; color:var(--ink); text-align:center; margin-top:8px; }
+  /* .dd-mark / the old .dd-title and .dd-day are superseded by the 3b block
+     further down, which follows the frame: an outlined gold ring, an ink
+     title, and the handwritten day line in the softer body ink. */
   .dd-streak{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); text-align:center; margin:6px 0 18px; }
   .dd-split{ grid-template-columns:repeat(auto-fit, minmax(0, 1fr)); }
   .res-saved{ font-family:var(--font-mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--good); margin-bottom:10px; }
@@ -364,9 +367,95 @@
   }
 
   /* ===== results ===== */
-  .results-card{ text-align:center; }
-  .results-score{ font-family:var(--font-display); font-weight:800; font-size:52px; color:var(--gold-bright); margin:6px 0; }
-  .results-score span{ font-size:24px; color:var(--muted); }
+  .results-card{ text-align:center; padding:22px 18px; }
+  .results-score{ font-family:var(--font-display); font-weight:800; font-size:72px; line-height:1; color:var(--ink); margin:10px 0 2px; }
+  .results-score span{ font-size:32px; color:var(--muted); }
+
+  /* --- 2d ------------------------------------------------------------- */
+  .res-topbar{ display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:16px; }
+  .res-back{
+    display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:0 12px;
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:8px;
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--gold-bright); cursor:pointer; text-decoration:none;
+  }
+  .res-back:hover{ border-color:var(--gold); }
+  .res-back svg{ width:18px; height:18px; flex-shrink:0; }
+  .res-kicker{ font-family:var(--font-mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-bright); }
+
+  /* One segment per question - right first, then missed, as the frame groups
+     them. flex:1 keeps a 200-item exam from overflowing the card. */
+  .res-segs{ display:flex; gap:2px; margin:16px 0 8px; }
+  .res-segs i{ flex:1; min-width:1px; height:10px; }
+  .res-segs i.ok{ background:var(--good); }
+  .res-segs i.no{ background:var(--bad); }
+  .res-counts{
+    display:flex; justify-content:space-between;
+    font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);
+  }
+  .res-counts b{ font-weight:400; }
+  .res-counts .n-ok{ color:var(--good); }
+  .res-counts .n-no{ color:var(--bad); }
+  .res-rule{ height:1px; background:var(--line); margin:16px 0 14px; }
+  .res-newly-row{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    font-family:var(--font-mono); font-size:11px; color:var(--muted);
+  }
+  .res-newly-row b{ font-family:var(--font-display); font-weight:700; font-size:22px; color:var(--gold-bright); line-height:1; }
+  .res-newly-row span{ letter-spacing:.04em; text-transform:uppercase; }
+
+  .res-sec-head{
+    display:flex; align-items:center; gap:12px; margin:0 0 12px;
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);
+  }
+  .res-sec-head::before, .res-sec-head::after{ content:''; flex:1; height:1px; background:var(--line); }
+  .res-topics{ background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:6px 16px; margin-bottom:16px; text-align:left; }
+  .res-topic{ display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid rgba(111,168,207,0.14); }
+  .res-topic:last-child{ border-bottom:none; }
+  .rt-bar{ width:56px; height:5px; border-radius:3px; background:rgba(111,168,207,0.14); flex-shrink:0; display:block; overflow:hidden; }
+  .rt-frac{ font-family:var(--font-mono); font-size:11px; color:var(--muted); width:34px; text-align:right; flex-shrink:0; }
+  .rt-frac.full{ color:var(--good); }
+
+  /* What you missed - the question, what you picked, what was right. */
+  .miss-card{
+    background:var(--bg-panel-2); border:1px solid var(--line); border-left:3px solid var(--bad);
+    padding:14px 16px; margin-bottom:10px; text-align:left;
+  }
+  .miss-head{
+    display:flex; justify-content:space-between; align-items:center; gap:10px;
+    font-family:var(--font-mono); font-size:9.5px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--gold-bright); margin-bottom:8px;
+  }
+  .miss-q{ font-size:14.5px; font-weight:600; line-height:1.45; margin-bottom:10px; }
+  .miss-you{ font-family:var(--font-mono); font-size:11px; color:var(--bad); margin-bottom:3px; }
+  .miss-ans{ font-family:var(--font-mono); font-size:11px; color:var(--good); margin-bottom:10px; }
+  .miss-why{ font-size:13px; color:var(--muted); line-height:1.6; }
+  .miss-more{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); padding:6px 0 2px; }
+
+  /* --- 3b daily drill done -------------------------------------------- */
+  .dd-topbar{ display:flex; justify-content:flex-end; margin-bottom:8px; }
+  .dd-card{ text-align:center; padding:26px 18px 22px; }
+  .dd-ring{
+    width:62px; height:62px; margin:0 auto 14px; border:2px solid var(--gold); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; color:var(--gold-bright);
+  }
+  .dd-title{ font-family:var(--font-display); font-weight:800; font-size:36px; text-transform:uppercase; line-height:1; }
+  .dd-day{ font-family:var(--font-hand); font-size:15px; color:var(--body-ink, #c9d2da); margin-top:8px; }
+  .dd-ticks{ display:flex; gap:5px; margin:18px 0 8px; }
+  .dd-ticks i{ flex:1; height:8px; background:rgba(111,168,207,0.18); }
+  .dd-ticks i.done{ background:var(--gold); }
+  .dd-ticks i.today{ background:var(--gold-bright); box-shadow:0 0 8px rgba(240,194,104,0.6); }
+  .dd-streak{ font-family:var(--font-mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  .dd-stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:16px; }
+  .dd-stat{ background:var(--bg-panel-2); border:1px solid var(--line); padding:14px 8px; text-align:center; }
+  .dd-stat b{ display:block; font-family:var(--font-mono); font-weight:600; font-size:22px; }
+  .dd-stat b.ok{ color:var(--good); }
+  .dd-stat b.no{ color:var(--bad); }
+  .dd-stat b.gold{ color:var(--gold-bright); }
+  .dd-stat span{
+    display:block; font-family:var(--font-mono); font-size:9px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--muted); margin-top:5px;
+  }
   .results-actions{ display:flex; gap:10px; margin-top:18px; }
   .results-actions .footer-btn{ flex:1; }
 </style>
@@ -499,14 +588,22 @@ let examPrevBestPct = null;   // standing best %, captured before submit overwri
 // resume payload. Null means "never captured", which omits the line rather
 // than reporting a wrong number.
 let masteredAtStart = null;
+// Counted one answer at a time, never by diffing stored totals across the
+// run. The diff raced the sync: on a cold load the "before" read hit an empty
+// local cache while the "after" read the full synced figure, so a 5-of-15 run
+// once reported "+15 questions newly mastered". Asking whether THIS question
+// was already mastered, at the moment it is answered, cannot drift.
+let newlyMasteredThisRun = 0;
 function captureMasteredAtStart(){
+  masteredAtStart = 0;          // a run is now in progress; the count is live
+  newlyMasteredThisRun = 0;
+}
+function noteMastered(qIndex){
   const p = LEAProgress.load(SUBJECT.id, MODULE.id);
-  masteredAtStart = (p.mastered || []).length;
+  if((p.mastered || []).indexOf(qIndex) === -1) newlyMasteredThisRun++;
 }
 function newlyMasteredCount(){
-  if(masteredAtStart === null) return null;
-  const p = LEAProgress.load(SUBJECT.id, MODULE.id);
-  return Math.max(0, (p.mastered || []).length - masteredAtStart);
+  return masteredAtStart === null ? null : newlyMasteredThisRun;
 }
 let examTimerHandle = null;
 
@@ -847,7 +944,7 @@ function submitExam(auto){
     const item = QUESTIONS[order[p]];
     const selected = (a && a.selected != null) ? a.selected : -1;
     const isCorrect = selected !== -1 && selected === item.c;
-    if(isCorrect) LEAProgress.markMastered(SUBJECT.id, MODULE.id, order[p]);
+    if(isCorrect){ noteMastered(order[p]); LEAProgress.markMastered(SUBJECT.id, MODULE.id, order[p]); }
     // Blanks still score as misses, but review mode must be able to tell
     // "I answered and got it wrong" from "I ran out of time and never saw
     // this" — without the flag both paint the same red in the counts row,
@@ -914,6 +1011,31 @@ function resultsByTopic(){
   }).sort((a, b) => a.pct - b.pct);
 }
 
+// The questions you got wrong, with what you picked beside what was right.
+//
+// Option order is shuffled per attempt, so the letter you saw ("C") is not
+// the letter in the source. Printing one would be a claim about your own
+// answer that is wrong most of the time, so the option text stands alone.
+function resultsMistakes(){
+  const out = [];
+  answersLog.forEach((a, p) => {
+    if(!a) return;
+    if(!a.skipped && a.isCorrect) return;
+    const item = QUESTIONS[order[p]];
+    if(!item) return;
+    out.push({
+      topic: ((item.s || '') + '').trim(),
+      q: item.q || '',
+      you: a.skipped ? null : (item.o || [])[a.selected],
+      answer: (item.o || [])[item.c],
+      why: item.n || ''
+    });
+  });
+  return out;
+}
+
+const MISTAKES_SHOWN = 5;
+
 function renderResultsCard(opts){
   const correct = opts.correct, total = opts.total, missed = opts.missed;
   const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
@@ -927,37 +1049,74 @@ function renderResultsCard(opts){
 
   // Absent, not zero, when the attempt began without a capture.
   const newly = opts.newlyMastered;
-  const newlyLine = (newly === null || newly === undefined) ? ''
-    : '<div class="res-newly"><b>+' + newly + '</b> question' + (newly === 1 ? '' : 's') + ' newly mastered</div>';
+  const newlyRow = (newly === null || newly === undefined) ? ''
+    : '<div class="res-rule"></div>' +
+      '<div class="res-newly-row"><b>+' + newly + '</b>' +
+        '<span>question' + (newly === 1 ? '' : 's') + ' newly mastered</span></div>';
+
+  // One segment per question, right first then missed - the frame groups them
+  // rather than showing them in the order they were answered.
+  const segs = total > 0
+    ? '<div class="res-segs">' +
+        new Array(correct).fill('<i class="ok"></i>').join('') +
+        new Array(Math.max(0, total - correct)).fill('<i class="no"></i>').join('') +
+      '</div>'
+    : '';
 
   const topicRows = resultsByTopic().map(t =>
     '<div class="res-topic">' +
       '<span class="rt-name">' + escapeHtml(t.name) + '</span>' +
-      '<span class="rt-bar"><span style="width:' + t.pct + '%;"></span></span>' +
-      '<span class="rt-pct' + (t.pct < 70 ? ' low' : (t.pct === 100 ? ' full' : '')) + '">' + t.pct + '%</span>' +
+      '<span class="rt-bar"><span style="width:' + t.pct + '%;background:' +
+        (t.pct >= 100 ? 'var(--good)' : t.pct >= 70 ? 'var(--gold)' : 'var(--bad)') + ';"></span></span>' +
+      '<span class="rt-frac' + (t.right === t.total ? ' full' : '') + '">' + t.right + '/' + t.total + '</span>' +
     '</div>').join('');
 
+  const misses = resultsMistakes();
+  const missHtml = misses.slice(0, MISTAKES_SHOWN).map(m =>
+    '<div class="miss-card">' +
+      (m.topic ? '<div class="miss-head"><span>' + escapeHtml(m.topic) + '</span></div>' : '') +
+      '<div class="miss-q">' + escapeHtml(m.q) + '</div>' +
+      (m.you ? '<div class="miss-you">You: ' + escapeHtml(m.you) + '</div>'
+             : '<div class="miss-you">Skipped</div>') +
+      (m.answer ? '<div class="miss-ans">Answer: ' + escapeHtml(m.answer) + '</div>' : '') +
+      (m.why ? '<div class="miss-why">' + escapeHtml(m.why) + '</div>' : '') +
+    '</div>').join('');
+  const missTail = misses.length > MISTAKES_SHOWN
+    ? '<div class="miss-more">' + misses.length + ' missed \u00b7 showing the first ' + MISTAKES_SHOWN + '</div>'
+    : '';
+
+  const subjName = SUBJECT ? stripEmoji(SUBJECT.name) : 'Back';
+  const subjId = SUBJECT ? SUBJECT.id : '';
+
   return (
+    '<div class="res-topbar">' +
+      '<a class="res-back" href="subject.html?s=' + encodeURIComponent(subjId) + '">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>' +
+        escapeHtml(subjName) +
+      '</a>' +
+      '<div class="res-saved">\u2713 Saved</div>' +
+    '</div>' +
     '<div class="bp-card results-card">' +
-      '<span class="section-tag">' + escapeHtml(opts.kicker) + '</span>' +
+      '<div class="res-kicker">' + escapeHtml(opts.kicker) + '</div>' +
       (opts.auto ? '<div class="counts-text" style="color:var(--bad);margin:10px 0;">Time\u2019s up \u2014 submitted automatically.</div>' : '') +
-      '<div class="res-saved">✓ Saved</div>' +
       '<div class="results-score">' + correct + '<span> / ' + total + '</span></div>' +
       bestLine +
-      newlyLine +
-      '<div class="res-split">' +
-        '<div class="rs-cell"><b>' + correct + '</b><span>right</span></div>' +
-        '<div class="rs-cell"><b>' + missed + '</b><span>to revisit</span></div>' +
+      segs +
+      '<div class="res-counts">' +
+        '<span><b class="n-ok">' + correct + '</b> right</span>' +
+        '<span><b class="n-no">' + missed + '</b> to revisit</span>' +
       '</div>' +
-      (missed > 0
-        ? '<button class="res-primary" id="drillMissesBtn"><span class="rp-title">Drill the ' + missed + ' now</span><span class="rp-go">\u2192</span></button>'
-        : '<div class="res-clean">Nothing to revisit \u2014 every item correct.</div>') +
-      '<div class="res-secondary">' +
-        '<button class="res-alt" id="retakeTimedBtn">Retake timed</button>' +
-        '<button class="res-alt" id="backToSubjectBtn">Back to subject</button>' +
-      '</div>' +
-      (topicRows ? '<div class="res-topics-head">By topic</div><div class="res-topics">' + topicRows + '</div>' : '') +
-    '</div>'
+      newlyRow +
+    '</div>' +
+    (missed > 0
+      ? '<button class="res-primary" id="drillMissesBtn"><span class="rp-title">Drill the ' + missed + ' now</span><span class="rp-go">\u2192</span></button>'
+      : '<div class="res-clean">Nothing to revisit \u2014 every item correct.</div>') +
+    '<div class="res-secondary">' +
+      '<button class="res-alt" id="retakeTimedBtn">Retake timed</button>' +
+      '<button class="res-alt" id="backToSubjectBtn">Back to subject</button>' +
+    '</div>' +
+    (topicRows ? '<div class="res-sec-head">By topic</div><div class="res-topics">' + topicRows + '</div>' : '') +
+    (missHtml ? '<div class="res-sec-head">What you missed</div>' + missHtml + missTail : '')
   );
 }
 
@@ -1187,7 +1346,7 @@ function selectAnswer(item, origIdx){
   if(answersLog[pos]) return;
   const isCorrect = origIdx === item.c;
   answersLog[pos] = { selected: origIdx, isCorrect };
-  if(isCorrect) LEAProgress.markMastered(SUBJECT.id, MODULE.id, order[pos]);
+  if(isCorrect){ noteMastered(order[pos]); LEAProgress.markMastered(SUBJECT.id, MODULE.id, order[pos]); }
   if(pos === frontier && frontier < order.length - 1) frontier = pos + 1;
   else if(pos === frontier) frontier = pos;
   saveResumeState();
@@ -1768,12 +1927,16 @@ function captureMultiMasteredAtStart(){
   multiMasteredAtStart = tally;
 }
 function multiNewlyMasteredCount(){
-  if(!multiMasteredAtStart) return null;
+  // Counted from this run's own answers, never from a before/after diff of
+  // stored totals. The diff raced the sync — on a cold load the "before" read
+  // hit an empty local cache and the "after" read the full synced figure, so a
+  // 20-question drill once reported "+259 now mastered".
+  if(!Array.isArray(pool) || !Array.isArray(answersLog)) return null;
   let gained = 0;
-  Object.keys(multiMasteredAtStart).forEach(k => {
-    const slash = k.indexOf('/');
-    const now = (LEAProgress.load(k.slice(0, slash), k.slice(slash + 1)).mastered || []).length;
-    gained += Math.max(0, now - multiMasteredAtStart[k]);
+  answersLog.forEach((a, p) => {
+    if(!a || a.skipped || !a.isCorrect) return;
+    const cell = pool[p];
+    if(cell && !cell.mastered) gained++;
   });
   return gained;
 }
@@ -2065,18 +2228,31 @@ function showDailyDrillDone(correct, attempted){
     ? streak.current + ' day' + (streak.current === 1 ? '' : 's') + ' running \u00b7 best ' + streak.best
     : streak.current + ' day' + (streak.current === 1 ? '' : 's') + ' running';
 
+
+  // Seven ticks, filled from the left, with today lit — the same reading as
+  // Home's streak card so the two never disagree.
+  const ddTicks = Array.from({length: 7}, (_, i) => {
+    const done = i < Math.min(streak.current, 7);
+    const today = i === Math.min(streak.current, 7) - 1;
+    return '<i class="' + (today ? 'today' : (done ? 'done' : '')) + '"></i>';
+  }).join('');
+
   body.innerHTML =
-    '<div class="bp-card results-card">' +
-      '<div class="res-saved">\u2713 Saved</div>' +
-      '<div class="dd-mark">\u2713</div>' +
+    '<div class="dd-topbar"><div class="res-saved">\u2713 Saved</div></div>' +
+    '<div class="bp-card dd-card">' +
+      '<div class="dd-ring">' +
+        '<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>' +
+      '</div>' +
       '<div class="dd-title">Done for today</div>' +
       '<div class="dd-day">Day ' + streak.current + ' in the bag.</div>' +
+      '<div class="dd-ticks">' + ddTicks + '</div>' +
       '<div class="dd-streak">' + streakLine + '</div>' +
-      '<div class="res-split dd-split">' +
-        '<div class="rs-cell"><b>' + correct + '</b><span>right</span></div>' +
-        '<div class="rs-cell"><b>' + misses + '</b><span>to revisit</span></div>' +
-        (newly === null ? '' : '<div class="rs-cell"><b>+' + newly + '</b><span>now mastered</span></div>') +
-      '</div>' +
+    '</div>' +
+    '<div class="dd-stats">' +
+      '<div class="dd-stat"><b class="ok">' + correct + '</b><span>Right</span></div>' +
+      '<div class="dd-stat"><b class="no">' + misses + '</b><span>To revisit</span></div>' +
+      (newly === null ? '' : '<div class="dd-stat"><b class="gold">+' + newly + '</b><span>Now mastered</span></div>') +
+    '</div>' +
       (misses > 0
         ? '<button class="res-primary" id="reviewMissesBtn"><span class="rp-title">Review today\u2019s ' + misses + ' misses</span><span class="rp-go">\u2192</span></button>'
         : '<div class="res-clean">Every one correct \u2014 nothing to revisit.</div>') +
