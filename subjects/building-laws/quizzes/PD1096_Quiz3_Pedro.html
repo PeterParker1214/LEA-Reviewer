@@ -25,7 +25,7 @@
     --bad:#e2554a;
     --line: rgba(255,194,60,0.22);
   }
-  body.light-mode{
+  body.light-mode, :root.light-mode{
     --ink:#1f1b12;
     --bg-deep:#faf6ec;
     --bg-panel:#ffffff;
@@ -37,7 +37,7 @@
     --bad:#b0392c;
     --line: rgba(184,134,11,0.25);
   }
-  body.light-mode{
+  body.light-mode, :root.light-mode{
     background:
       repeating-linear-gradient(135deg, rgba(184,134,11,0.05) 0px, rgba(184,134,11,0.05) 14px, transparent 14px, transparent 28px),
       radial-gradient(ellipse at 10% 0%, #f3ecd6 0%, transparent 55%),
@@ -448,9 +448,9 @@
   }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="../../../assets/presence.js"></script>
-<script src="../../../assets/theme.js"></script>
-<script src="../../../assets/sfx.js"></script>
+<script src="../../../assets/presence.js?v=1"></script>
+<script src="../../../assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="../../../assets/sfx.js?v=1"></script>
 </head>
 <body>
 <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
@@ -865,7 +865,7 @@ document.getElementById('orderShuffleBtn').addEventListener('click', () => {
 buildTesserae();
 renderQuestion();
 </script>
-<script src="../../../assets/quiz-resume.js"></script>
+<script src="../../../assets/quiz-resume.js?v=1"></script>
 <script>
 (function(){
   var LEA_RESUME_SUBJECT = 'building-laws';

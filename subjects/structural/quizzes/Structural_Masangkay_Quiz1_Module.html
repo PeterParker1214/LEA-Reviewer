@@ -26,7 +26,7 @@
     --line: rgba(242,239,226,0.22);
     --chalk-dash: rgba(242,239,226,0.35);
   }
-  body.dark-mode{
+  body.dark-mode, :root.dark-mode{
     --paper:#17181a;
     --paper-card:#1f2020;
     --ink:#f2efe2;
@@ -59,7 +59,7 @@
     padding:32px 16px 64px;
     transition: background-color .2s ease, color .2s ease;
   }
-  body.dark-mode{
+  body.dark-mode, :root.dark-mode{
     background:
       radial-gradient(circle at 12% 18%, rgba(255,255,255,0.03) 0%, transparent 2%),
       radial-gradient(circle at 78% 42%, rgba(0,0,0,0.35) 0%, transparent 3%),
@@ -505,10 +505,10 @@
   }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="../../../assets/presence.js"></script>
-<script src="../../../assets/module-progress.js"></script>
-<script src="../../../assets/theme.js"></script>
-<script src="../../../assets/sfx.js"></script>
+<script src="../../../assets/presence.js?v=1"></script>
+<script src="../../../assets/module-progress.js?v=1"></script>
+<script src="../../../assets/theme.js?v=1" data-alt-class="dark-mode" data-default-is="light"></script>
+<script src="../../../assets/sfx.js?v=1"></script>
 </head>
 <body>
 <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
@@ -1010,7 +1010,7 @@ if (window.LEATheme) { LEATheme.init({ altClass:'dark-mode', defaultIs:'light', 
 buildTesserae();
 renderQuestion();
 </script>
-<script src="../../../assets/quiz-resume.js"></script>
+<script src="../../../assets/quiz-resume.js?v=1"></script>
 <script>
 (function(){
   var LEA_RESUME_SUBJECT = 'structural';

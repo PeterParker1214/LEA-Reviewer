@@ -20,7 +20,7 @@
     --line: rgba(34,48,63,0.14);
     --dash: rgba(15,110,94,0.35);
   }
-  body.dark-mode{
+  body.dark-mode, :root.dark-mode{
     --paper:#12181c;
     --paper-card:#1a2228;
     --ink:#eef2f0;
@@ -311,10 +311,10 @@
   }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="../../../assets/presence.js"></script>
-<script src="../../../assets/module-progress.js"></script>
-<script src="../../../assets/theme.js"></script>
-<script src="../../../assets/sfx.js"></script>
+<script src="../../../assets/presence.js?v=1"></script>
+<script src="../../../assets/module-progress.js?v=1"></script>
+<script src="../../../assets/theme.js?v=1" data-alt-class="dark-mode" data-default-is="light"></script>
+<script src="../../../assets/sfx.js?v=1"></script>
 </head>
 <body>
 <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
@@ -743,7 +743,7 @@ if (window.LEATheme) { LEATheme.init({ altClass:'dark-mode', defaultIs:'light', 
 buildTesserae();
 renderQuestion();
 </script>
-<script src="../../../assets/quiz-resume.js"></script>
+<script src="../../../assets/quiz-resume.js?v=1"></script>
 <script>
 (function(){
   var LEA_RESUME_SUBJECT = 'architectural-sites-proponents-styles';
