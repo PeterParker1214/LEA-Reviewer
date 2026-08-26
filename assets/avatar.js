@@ -32,13 +32,28 @@
     var col = sb.from('profiles').select('avatar_url').eq('id', userId).limit(1)
       .then(function (r) { return !r.error; })
       .catch(function () { return false; });
-    // getBucket(), not list(). Listing a bucket that does not exist returns an
-    // empty array with no error, so it cannot tell "no bucket" from "no files"
-    // — it reported the feature ready on a project that had never had one.
-    // getBucket answers the question that was actually asked.
-    var bucket = sb.storage.getBucket(BUCKET)
-      .then(function (r) { return !r.error && !!r.data; })
-      .catch(function () { return false; });
+    // Detecting the bucket took three attempts; the first two were both wrong,
+    // in opposite directions, and both would have shipped:
+    //
+    //   storage.list()      — returns an empty array and NO error for a bucket
+    //                         that does not exist. Reported ready on a project
+    //                         with no bucket: a button that fails on first use.
+    //   storage.getBucket() — an admin endpoint. The app's public key cannot
+    //                         read it, so it answers "Bucket not found" even
+    //                         when the bucket is there. Hid a working feature.
+    //
+    // Asking the public URL for an object that cannot exist needs no special
+    // permission and is unambiguous: a real bucket says the OBJECT is missing,
+    // a missing bucket says the BUCKET is. That is the question being asked.
+    var bucket = fetch(
+      sb.storage.from(BUCKET).getPublicUrl('__probe__').data.publicUrl,
+      { cache: 'no-store' }
+    ).then(function (r) {
+      return r.text().then(function (body) {
+        if (r.ok) return true;
+        return body.indexOf('NoSuchBucket') === -1 && body.indexOf('Bucket not found') === -1;
+      });
+    }).catch(function () { return false; });
     return Promise.all([col, bucket]).then(function (both) {
       return { column: both[0], bucket: both[1], ready: both[0] && both[1] };
     });

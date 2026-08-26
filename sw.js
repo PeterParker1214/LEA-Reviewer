@@ -43,7 +43,7 @@ const SHELL_URLS = [
   'reminders.html',
   'assets/module-progress.js?v=1',
   'assets/quiz-source.js?v=1',
-  'assets/avatar.js?v=2',
+  'assets/avatar.js?v=3',
   'assets/quiz-resume.js?v=1',
   'assets/lea-confirm.js?v=1',
   'assets/theme.js?v=1',
