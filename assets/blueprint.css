@@ -1,0 +1,221 @@
+/*
+ * LEA Reviewer — shared object layer.
+ *
+ * WHAT THIS IS
+ * Radius, padding and type for the named objects the design frames specify.
+ * Nothing else. It does not set colour beyond what a radius/border rule
+ * requires, it does not lay out screens, and it never touches content or
+ * copy — those stay per-screen edits made against the frame.
+ *
+ * WHY IT EXISTS
+ * These screens were originally built from the README's prose rather than
+ * from the frames, and drifted the same way on every screen: radius added to
+ * objects the design draws square, and paddings and type sizes a few px off.
+ * Fixing that per screen would have meant twenty patches that drift again.
+ *
+ *
+ * THE TWO FAMILIES
+ * Every object belongs to exactly one. To style something new, answer one
+ * question — is this blueprint, or is it chrome? — and take the radius from
+ * the family. Do not re-decide per element.
+ *
+ *   BLUEPRINT  the learner's drafting surface: question card, options,
+ *              section tags, state chips, action chips, tick strip, figure
+ *              placeholders, split-flap panels, and the card-like rows on
+ *              Search and Saved.
+ *              RADIUS 0, always. Square by intent.
+ *
+ *   CHROME     everything that frames or administers the surface rather than
+ *              being part of it: home cards, icon buttons, and the whole of
+ *              admin.
+ *              ROUNDED, on the scale in --r-* below.
+ *
+ * The families are not a light/heavy distinction and not a learner/admin one
+ * — home cards are chrome and they are on a learner screen. The test is
+ * whether the object is part of the drafting surface being read.
+ *
+ *
+ * BREAKPOINT
+ * The question card has exactly two paddings: one phone, one desktop. It is
+ * keyed off the breakpoint only and never off the run mode — study, drill and
+ * exam are identical at a given width.
+ */
+
+:root {
+  /* Chrome radius scale. Blueprint takes none of these — it is 0 by family. */
+  --r-card:   12px;   /* admin card, home tiles, drill, resume, subject card */
+  --r-qcard:  10px;   /* admin question card */
+  --r-input:   8px;   /* admin input, icon button */
+  --r-tab:     8px;   /* admin tab, top corners only */
+  --r-pill:   20px;   /* admin status pill */
+  --r-row:     6px;   /* admin file row */
+  --r-panel:  14px;   /* home readiness and streak cards */
+
+  /* Split-flap interior. These invert in light mode — see the block at the
+     end, which is where the next light screen should look for them. */
+  --flap-sheen: rgba(255,255,255,0.045);
+  --flap-seam:  rgba(0,0,0,0.55);
+}
+
+/* ============================================================
+   BLUEPRINT — radius 0, always
+   ============================================================ */
+
+.bp-card,
+.section-tag,
+.clock-chip,
+.opt,
+.explain,
+.chip-btn,
+.flap,
+.tick,
+.qimg-wrap,
+.filter-chip,
+.result-card,
+.saved-card,
+.tab-btn,
+.countdown-card {
+  border-radius: 0;
+}
+
+/* Question card — phone value. The desktop value is the only override. */
+.bp-card { padding: 20px 18px 18px; }
+
+/* Section tag: gold fill, dark text. */
+.section-tag {
+  padding: 5px 11px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* State chip: dashed, grey by default. `.blue` is the variant the drill and
+   exam frames use for run-state notes ("due today", "no feedback yet"). */
+.clock-chip {
+  padding: 4px 9px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border: 1px dashed var(--line);
+  color: var(--muted);
+}
+.clock-chip.blue {
+  border-color: rgba(143,196,234,0.5);
+  color: var(--blue-bright);
+}
+
+/* Options. Unanswered is a dashed outline on a barely-there wash; every
+   resolved state swaps the border to solid and tints the fill. */
+.opt {
+  padding: 12px 14px;
+  font-size: 15.5px;
+  border: 1.5px dashed var(--line);
+  background: rgba(111,168,207,0.04);
+}
+.opt.correct   { border-style: solid; border-color: var(--good); background: rgba(95,191,130,0.12); }
+.opt.incorrect { border-style: solid; border-color: var(--bad);  background: rgba(226,96,74,0.12); }
+.opt.chosen-tag{ border-style: solid; border-color: var(--gold); background: rgba(224,168,63,0.10); }
+.opt.dim       { opacity: .6; }
+
+/* Explanation panel: 3px left border in the verdict colour over an 8% tint
+   of the same. The verdict class carries both. */
+.explain { padding: 14px; }
+
+/* Action chips (Steps / Note / Drill). */
+.chip-btn {
+  padding: 10px 6px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  border: 1px solid rgba(224,168,63,0.5);
+  color: var(--gold-bright);
+}
+
+/* Split-flap panels. The sheen and seam are drawn by the page's own
+   pseudo-elements; this points them at the variables so the light-mode
+   block at the end can invert them in one place. */
+.flap { padding: 10px 4px 8px; }
+.flap::before { background: linear-gradient(var(--flap-sheen), transparent); }
+.flap::after  { background: var(--flap-seam); }
+.tick-strip { gap: 3px; }
+
+/* Figure placeholder / image frame. */
+.qimg-wrap { border: 1.5px dashed var(--line); }
+
+/* Search filter chips. */
+.filter-chip {
+  padding: 8px 11px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+/* Saved tabs. */
+.tab-btn {
+  padding: 12px 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* Card-like rows on Search and Saved. */
+.result-card { padding: 13px 14px; }
+.saved-card  { padding: 14px; }
+
+/* ============================================================
+   CHROME — rounded, from the scale
+   ============================================================ */
+
+.readiness-card,
+.streak-card              { border-radius: var(--r-panel); }
+
+.drill-card,
+.tile,
+.resume-card,
+.subject-grid .subject-row,
+.card                     { border-radius: var(--r-card); }
+
+.q-card                   { border-radius: var(--r-qcard); }
+
+.icon-btn,
+.icon-btn-44,
+.avatar-btn-44,
+.admin-input,
+input[type="text"].admin,
+.rail-card                { border-radius: var(--r-input); }
+
+.tab                      { border-radius: var(--r-tab) var(--r-tab) 0 0; }
+.status-tag,
+.pill                     { border-radius: var(--r-pill); }
+.file-row                 { border-radius: var(--r-row); }
+
+/* ============================================================
+   DESKTOP (1120px) — the question card's second value, and the
+   option sizing that goes with the wider card
+   ============================================================ */
+
+@media (min-width: 1120px) {
+  .bp-card { padding: 28px 30px 24px; }
+  .opt     { padding: 12px 16px; font-size: 16px; }
+  .clock-chip { padding: 9px 12px; font-size: 10.5px; }
+}
+
+/* ============================================================
+   LIGHT MODE
+   The only light-specific structure in the frames: the split-flap
+   sheen and seam invert, because a white panel cannot take a white
+   highlight or a black seam at dark-mode strength. Everything else
+   in light mode is the token swap and needs nothing here.
+   ============================================================ */
+
+body.light-mode, :root.light-mode {
+  --flap-sheen: rgba(0,0,0,0.035);
+  --flap-seam:  rgba(24,32,40,0.18);
+}

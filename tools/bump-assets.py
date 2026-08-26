@@ -35,7 +35,7 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Shared scripts whose staleness actually matters.
 ASSETS = ['module-progress', 'quiz-resume', 'theme', 'lea-confirm', 'presence', 'icons', 'sfx',
-          'legacy-desktop']
+          'legacy-desktop', 'blueprint']
 
 # Matches assets/<name>.js, optionally already versioned, when followed by a
 # quote (a src="…" attribute or a JS string). The trailing-quote anchor is what
