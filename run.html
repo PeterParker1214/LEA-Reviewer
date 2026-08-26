@@ -257,6 +257,11 @@
   .rail-bar-fill{ height:100%; background:linear-gradient(90deg, var(--gold), var(--blue-bright)); }
 
   /* ===== 2d Results ===== */
+  .dd-mark{ width:62px; height:62px; border-radius:50%; background:var(--good); color:#0a1218; display:flex; align-items:center; justify-content:center; margin:4px auto 14px; font-size:28px; }
+  .dd-title{ font-family:var(--font-display); font-weight:800; font-size:26px; text-transform:uppercase; text-align:center; color:var(--good); line-height:1; }
+  .dd-day{ font-family:var(--font-hand); font-size:16px; color:var(--ink); text-align:center; margin-top:8px; }
+  .dd-streak{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); text-align:center; margin:6px 0 18px; }
+  .dd-split{ grid-template-columns:repeat(auto-fit, minmax(0, 1fr)); }
   .res-saved{ font-family:var(--font-mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--good); margin-bottom:10px; }
   .res-newly{ font-family:var(--font-mono); font-size:11.5px; color:var(--muted); margin:-8px 0 16px; }
   .res-newly b{ color:var(--good); font-size:13px; }
@@ -1682,8 +1687,33 @@ async function bootMulti(subjects, drillParams){
 }
 
 // ---- Drill-kind (daily / topic) run: immediate feedback, no clock ----
+// Cross-subject equivalent of masteredAtStart. A pool spans modules, so the
+// snapshot is a per-module tally taken before the run and diffed after. Same
+// reasoning as the single-module case: markMastered runs during the attempt,
+// so the earlier state has to be captured up front or it is unrecoverable.
+let multiMasteredAtStart = null;
+function captureMultiMasteredAtStart(){
+  const tally = {};
+  pool.forEach(cell => {
+    const k = cell.subjectId + '/' + cell.moduleId;
+    if(tally[k] === undefined) tally[k] = (LEAProgress.load(cell.subjectId, cell.moduleId).mastered || []).length;
+  });
+  multiMasteredAtStart = tally;
+}
+function multiNewlyMasteredCount(){
+  if(!multiMasteredAtStart) return null;
+  let gained = 0;
+  Object.keys(multiMasteredAtStart).forEach(k => {
+    const slash = k.indexOf('/');
+    const now = (LEAProgress.load(k.slice(0, slash), k.slice(slash + 1)).mastered || []).length;
+    gained += Math.max(0, now - multiMasteredAtStart[k]);
+  });
+  return gained;
+}
+
 function startMultiRun(kind){
   multiKind = kind;
+  captureMultiMasteredAtStart();
   answersLog = new Array(pool.length).fill(null);
   pos = 0; frontier = 0;
   renderMultiRun();
@@ -1935,19 +1965,57 @@ function bumpStreak(){
   return streak;
 }
 
+// 3b Daily drill done.
+//
+// The frame's "Tomorrow" block is deliberately absent: naming tomorrow's
+// queue needs due dates, and nothing schedules anything. Its third line —
+// "extra practice won't change tomorrow's queue" — is actually inverted
+// under the current selection, since mastering more removes questions from
+// the pool. That block returns with SRS; approximating it now would be a
+// claim the reader disproves by coming back tomorrow, and substituting a
+// weaker true sentence would bury the gap.
 function showDailyDrillDone(correct, attempted){
   const streak = bumpStreak();
   const misses = pool.length - correct;
+  const newly = multiNewlyMasteredCount();
   const body = document.getElementById('pageBody');
+
+  const streakLine = streak.best > streak.current
+    ? streak.current + ' day' + (streak.current === 1 ? '' : 's') + ' running \u00b7 best ' + streak.best
+    : streak.current + ' day' + (streak.current === 1 ? '' : 's') + ' running';
+
   body.innerHTML =
     '<div class="bp-card results-card">' +
-      '<div style="width:62px;height:62px;border-radius:50%;background:var(--good);color:#0a1218;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:28px;">✓</div>' +
-      '<div class="verdict" style="font-size:24px;color:var(--good);">Done for today</div>' +
-      '<div class="counts-text" style="margin:10px 0 18px;">' + correct + ' / ' + pool.length + ' right · ' + misses + ' to revisit · ' + streak.current + '-day streak</div>' +
-      '<div class="results-actions">' +
-        '<button class="footer-btn skip" id="backHomeBtn">Back home</button>' +
+      '<div class="res-saved">\u2713 Saved</div>' +
+      '<div class="dd-mark">\u2713</div>' +
+      '<div class="dd-title">Done for today</div>' +
+      '<div class="dd-day">Day ' + streak.current + ' in the bag.</div>' +
+      '<div class="dd-streak">' + streakLine + '</div>' +
+      '<div class="res-split dd-split">' +
+        '<div class="rs-cell"><b>' + correct + '</b><span>right</span></div>' +
+        '<div class="rs-cell"><b>' + misses + '</b><span>to revisit</span></div>' +
+        (newly === null ? '' : '<div class="rs-cell"><b>+' + newly + '</b><span>now mastered</span></div>') +
+      '</div>' +
+      (misses > 0
+        ? '<button class="res-primary" id="reviewMissesBtn"><span class="rp-title">Review today\u2019s ' + misses + ' misses</span><span class="rp-go">\u2192</span></button>'
+        : '<div class="res-clean">Every one correct \u2014 nothing to revisit.</div>') +
+      '<div class="res-secondary">' +
+        '<button class="res-alt" id="keepGoingBtn">Keep going anyway</button>' +
+        '<button class="res-alt" id="backHomeBtn">Back home</button>' +
       '</div>' +
     '</div>';
+
+  const review = document.getElementById('reviewMissesBtn');
+  if(review) review.addEventListener('click', () => {
+    const firstMiss = answersLog.findIndex(a => a && (a.skipped || !a.isCorrect));
+    pos = firstMiss === -1 ? 0 : firstMiss;
+    renderMultiRun();
+  });
+  // "Keep going" starts a fresh daily-drill pool. It cannot promise anything
+  // about tomorrow, so it says nothing about it.
+  document.getElementById('keepGoingBtn').addEventListener('click', () => {
+    window.location.href = 'run.html?mode=daily-drill';
+  });
   document.getElementById('backHomeBtn').addEventListener('click', () => { window.location.href = 'index.html'; });
 }
 
@@ -2025,6 +2093,7 @@ function renderMultiExamStart(index){
 function startMultiExam(index, count){
   multiKind = 'exam';
   pool = buildMockExamPool(index, count);
+  captureMultiMasteredAtStart();
   answersLog = new Array(pool.length).fill(null);
   pos = 0; frontier = pool.length - 1;
   examSubmitted = false;
