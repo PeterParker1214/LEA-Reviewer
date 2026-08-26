@@ -256,6 +256,38 @@
   .rail-bar{ height:5px; border-radius:3px; background:var(--bg-panel-2); overflow:hidden; }
   .rail-bar-fill{ height:100%; background:linear-gradient(90deg, var(--gold), var(--blue-bright)); }
 
+  /* ===== 2d Results ===== */
+  .res-best{ font-family:var(--font-mono); font-size:13px; color:var(--gold-bright); margin:6px 0 16px; }
+  .res-best.muted{ color:var(--muted); }
+  .res-best span{ color:var(--muted); }
+  .res-split{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px; }
+  .rs-cell{ background:var(--bg-panel-2); border:1px solid var(--line); padding:13px 14px; text-align:center; }
+  .rs-cell b{ display:block; font-family:var(--font-display); font-weight:800; font-size:28px; line-height:1; }
+  .rs-cell span{ display:block; font-family:var(--font-mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:6px; }
+  .res-primary{
+    display:flex; align-items:center; justify-content:space-between; gap:10px; width:100%;
+    background:var(--gold); color:#1a1206; border:none; padding:15px 16px; cursor:pointer; margin-bottom:10px;
+  }
+  .res-primary:hover{ background:var(--gold-bright); }
+  .res-primary .rp-title{ font-family:var(--font-display); font-weight:700; font-size:18px; text-transform:uppercase; }
+  .res-primary .rp-go{ font-family:var(--font-mono); font-size:16px; }
+  .res-clean{ font-family:var(--font-mono); font-size:11px; letter-spacing:.04em; text-transform:uppercase; color:var(--good); padding:12px 0; text-align:center; }
+  .res-secondary{ display:flex; gap:10px; margin-bottom:18px; }
+  .res-alt{
+    flex:1; background:var(--bg-panel-2); border:1px solid var(--line); color:var(--gold-bright);
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase;
+    padding:13px 10px; cursor:pointer;
+  }
+  .res-alt:hover{ border-color:var(--gold-bright); }
+  .res-topics-head{ font-family:var(--font-mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+  .res-topic{ display:flex; align-items:center; gap:10px; padding:7px 0; }
+  .rt-name{ flex:1; font-size:12.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .rt-bar{ width:64px; height:5px; background:rgba(111,168,207,0.14); flex-shrink:0; display:block; }
+  .rt-bar span{ display:block; height:100%; background:var(--gold); }
+  .rt-pct{ font-family:var(--font-mono); font-size:10.5px; color:var(--gold); width:34px; text-align:right; flex-shrink:0; }
+  .rt-pct.low{ color:var(--bad); }
+  .rt-pct.full{ color:var(--good); }
+
   .state-card{
     background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:28px 22px;
     text-align:center; color:var(--muted); font-family:var(--font-mono); font-size:13px; line-height:1.7;
@@ -373,6 +405,7 @@ const EXAM_MS_PER_ITEM = (5 * 60 * 60 * 1000) / 200; // 90s/item — the real 20
 let examLengthChoice = null; // 'full' | 'sim50'
 let examEndAt = 0;
 let examSubmitted = false;
+let examPrevBestPct = null;   // standing best %, captured before submit overwrites it
 let examTimerHandle = null;
 
 async function boot(){
@@ -715,6 +748,9 @@ function submitExam(auto){
     return selected === -1 ? { selected, isCorrect, skipped: true } : { selected, isCorrect };
   });
   const correct = answersLog.filter(a => a.isCorrect).length;
+  // Read the standing best BEFORE recordRunScore replaces it, or the results
+  // screen has nothing to compare this attempt against.
+  examPrevBestPct = previousBestPct();
   LEAProgress.recordRunScore(SUBJECT.id, MODULE.id, correct, order.length);
   LEAResume.clear(SUBJECT.id, resumeKey());
   frontier = order.length - 1;
@@ -722,27 +758,109 @@ function submitExam(auto){
   showExamResults(auto);
 }
 
-function showExamResults(auto){
-  const body = document.getElementById('pageBody');
-  const correct = answersLog.filter(a => a.isCorrect).length;
-  const attempted = answersLog.filter(a => a.selected !== -1).length;
-  const pct = order.length > 0 ? Math.round((correct / order.length) * 100) : 0;
-  body.innerHTML =
+
+// ================= 2d Results =================
+// Built only from data that exists. Three elements the frame draws are left
+// out rather than stubbed:
+//   - "+N newly mastered" needs the pre-attempt mastered[] set, which nothing
+//     captures. Cheap to add, but it is a data change, not this one.
+//   - "Queue for tomorrow" is an SRS action and there are no SRS boxes.
+//   - "Saved / synced" needs a sync status module-progress.js does not expose;
+//     pushRemote() is fire-and-forget.
+// The drill action also carries no time estimate: the only pace constant in
+// the app is EXAM_MS_PER_ITEM (90s, the real exam's pace), which is not drill
+// pace, and inventing a drill constant to fill the line would be a made-up
+// number on a screen about the reader's own performance.
+
+// The standing best, read BEFORE recordRunScore overwrites it. Null when
+// there is nothing to compare against, so a first attempt claims nothing.
+function previousBestPct(){
+  const p = LEAProgress.load(SUBJECT.id, MODULE.id);
+  if(!p || !p.bestTotal || !(p.attempts > 0)) return null;
+  return Math.round((p.bestCorrect / p.bestTotal) * 100);
+}
+
+// Per-topic split of this run, from q.s — present on every question in every
+// module, so this needs no new data.
+function resultsByTopic(){
+  const byTopic = {};
+  answersLog.forEach((a, p) => {
+    if(!a || a.skipped) return;
+    const item = QUESTIONS[order[p]];
+    const topic = ((item && item.s) || '').trim() || 'Untagged';
+    const t = byTopic[topic] || (byTopic[topic] = { right: 0, total: 0 });
+    t.total++;
+    if(a.isCorrect) t.right++;
+  });
+  return Object.keys(byTopic).map(name => {
+    const t = byTopic[name];
+    return { name: name, right: t.right, total: t.total, pct: Math.round((t.right / t.total) * 100) };
+  }).sort((a, b) => a.pct - b.pct);
+}
+
+function renderResultsCard(opts){
+  const correct = opts.correct, total = opts.total, missed = opts.missed;
+  const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
+  const prev = opts.prevBestPct;
+
+  let bestLine;
+  if(prev === null)      bestLine = '<div class="res-best muted">' + pct + '%</div>';
+  else if(pct > prev)    bestLine = '<div class="res-best">' + pct + '% \u2014 your best yet<span>, was ' + prev + '%</span></div>';
+  else if(pct === prev)  bestLine = '<div class="res-best">' + pct + '% \u2014 matches your best</div>';
+  else                   bestLine = '<div class="res-best muted">' + pct + '%<span> \u00b7 your best is ' + prev + '%</span></div>';
+
+  const topicRows = resultsByTopic().map(t =>
+    '<div class="res-topic">' +
+      '<span class="rt-name">' + escapeHtml(t.name) + '</span>' +
+      '<span class="rt-bar"><span style="width:' + t.pct + '%;"></span></span>' +
+      '<span class="rt-pct' + (t.pct < 70 ? ' low' : (t.pct === 100 ? ' full' : '')) + '">' + t.pct + '%</span>' +
+    '</div>').join('');
+
+  return (
     '<div class="bp-card results-card">' +
-      '<span class="section-tag">' + escapeHtml(MODULE.title) + ' · Mock exam</span>' +
-      (auto ? '<div class="counts-text" style="color:var(--bad);margin:10px 0;">Time’s up — submitted automatically.</div>' : '') +
-      '<div class="results-score">' + correct + '<span> / ' + order.length + '</span></div>' +
-      '<div class="counts-text">' + attempted + ' answered · ' + (order.length - attempted) + ' left blank · ' + pct + '%</div>' +
-      '<div class="results-actions">' +
-        '<button class="footer-btn skip" id="backToSubjectBtn">Back to subject</button>' +
-        '<button class="footer-btn next" id="reviewAnswersBtn">Review answers →</button>' +
+      '<span class="section-tag">' + escapeHtml(opts.kicker) + '</span>' +
+      (opts.auto ? '<div class="counts-text" style="color:var(--bad);margin:10px 0;">Time\u2019s up \u2014 submitted automatically.</div>' : '') +
+      '<div class="results-score">' + correct + '<span> / ' + total + '</span></div>' +
+      bestLine +
+      '<div class="res-split">' +
+        '<div class="rs-cell"><b>' + correct + '</b><span>right</span></div>' +
+        '<div class="rs-cell"><b>' + missed + '</b><span>to revisit</span></div>' +
       '</div>' +
-    '</div>';
+      (missed > 0
+        ? '<button class="res-primary" id="drillMissesBtn"><span class="rp-title">Drill the ' + missed + ' now</span><span class="rp-go">\u2192</span></button>'
+        : '<div class="res-clean">Nothing to revisit \u2014 every item correct.</div>') +
+      '<div class="res-secondary">' +
+        '<button class="res-alt" id="retakeTimedBtn">Retake timed</button>' +
+        '<button class="res-alt" id="backToSubjectBtn">Back to subject</button>' +
+      '</div>' +
+      (topicRows ? '<div class="res-topics-head">By topic</div><div class="res-topics">' + topicRows + '</div>' : '') +
+    '</div>'
+  );
+}
+
+function wireResultsCard(onDrill){
+  const drill = document.getElementById('drillMissesBtn');
+  if(drill) drill.addEventListener('click', onDrill);
+  const retake = document.getElementById('retakeTimedBtn');
+  if(retake) retake.addEventListener('click', () => {
+    window.location.href = 'run.html?s=' + encodeURIComponent(SUBJECT.id) + '&m=' + encodeURIComponent(MODULE.id) + '&mode=exam';
+  });
   document.getElementById('backToSubjectBtn').addEventListener('click', () => {
     window.location.href = 'subject.html?s=' + encodeURIComponent(SUBJECT.id);
   });
-  document.getElementById('reviewAnswersBtn').addEventListener('click', () => {
-    pos = 0;
+}
+
+function showExamResults(auto){
+  const body = document.getElementById('pageBody');
+  const correct = answersLog.filter(a => a.isCorrect).length;
+  body.innerHTML = renderResultsCard({
+    kicker: MODULE.title + ' \u00b7 Mock exam',
+    correct: correct, total: order.length, missed: order.length - correct,
+    prevBestPct: examPrevBestPct, auto: auto
+  });
+  wireResultsCard(() => {
+    const firstMiss = answersLog.findIndex(a => a && !a.isCorrect);
+    pos = firstMiss === -1 ? 0 : firstMiss;
     renderRun();
   });
 }
@@ -1010,26 +1128,20 @@ function finishRun(){
   if(MODE === 'exam' && examSubmitted){ showExamResults(false); return; }
   LEAResume.clear(SUBJECT.id, resumeKey());
   const correct = answersLog.filter(a => a && !a.skipped && a.isCorrect).length;
-  const attempted = answersLog.filter(a => a && !a.skipped).length;
+  const answeredWrong = answersLog.filter(a => a && !a.skipped && !a.isCorrect).length;
+  const skipped = answersLog.filter(a => a && a.skipped).length;
+  // Same reason as the exam path: read the standing best first.
+  const prevBest = previousBestPct();
   LEAProgress.recordRunScore(SUBJECT.id, MODULE.id, correct, order.length);
 
   const body = document.getElementById('pageBody');
-  const pct = order.length > 0 ? Math.round((correct / order.length) * 100) : 0;
-  body.innerHTML =
-    '<div class="bp-card results-card">' +
-      '<span class="section-tag">' + escapeHtml(MODULE.title) + (MODE === 'drill' ? ' · Drill' : '') + '</span>' +
-      '<div class="results-score">' + correct + '<span> / ' + order.length + '</span></div>' +
-      '<div class="counts-text">' + attempted + ' answered · ' + (order.length - attempted) + ' skipped · ' + pct + '%</div>' +
-      '<div class="results-actions">' +
-        '<button class="footer-btn skip" id="backToSubjectBtn">Back to subject</button>' +
-        '<button class="footer-btn next" id="reviewMistakesBtn">Review mistakes →</button>' +
-      '</div>' +
-    '</div>';
-  document.getElementById('backToSubjectBtn').addEventListener('click', () => {
-    window.location.href = 'subject.html?s=' + encodeURIComponent(SUBJECT.id);
+  body.innerHTML = renderResultsCard({
+    kicker: MODULE.title + (MODE === 'drill' ? ' \u00b7 Drill' : ''),
+    correct: correct, total: order.length, missed: answeredWrong + skipped,
+    prevBestPct: prevBest, auto: false
   });
-  document.getElementById('reviewMistakesBtn').addEventListener('click', () => {
-    const firstMiss = answersLog.findIndex(a => a && !a.skipped && !a.isCorrect);
+  wireResultsCard(() => {
+    const firstMiss = answersLog.findIndex(a => a && (a.skipped || !a.isCorrect));
     pos = firstMiss === -1 ? 0 : firstMiss;
     renderRun();
   });

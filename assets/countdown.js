@@ -16,6 +16,15 @@
  * subscribe() fires immediately and then once a second, and returns a
  * function that stops it. Callers that re-render should call that function
  * before subscribing again, or they will stack timers.
+ *
+ * FIXED HERE: Home used to call setInterval(renderCountdown, 1000) inside
+ * renderHome(). renderHome() runs again on every progress reset, sync
+ * callback and account-sheet change, so each re-render started another timer
+ * and none of the old ones were cleared — a real leak that grew for as long
+ * as the tab stayed open, with every surviving timer repainting the same
+ * four elements once a second. Returning the stopper from subscribe() is
+ * what makes the fix impossible to forget: there is no way to start the
+ * clock without being handed the means to stop it.
  */
 window.LEACountdown = (function () {
   // Philippine time: the exam sits on a date, not a moment in the reader's
