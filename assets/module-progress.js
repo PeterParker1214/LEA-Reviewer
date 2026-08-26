@@ -153,7 +153,20 @@ window.LEAProgress = (function () {
 
   function loadRow(user) {
     syncUser = user;
-    sbClient.from('progress').select('data').eq('user_id', user.id).single().then(function (res) {
+    // maybeSingle(), not single(): a missing row must be distinguishable from
+    // a failed read. single() reports both as an error with data:null, so a
+    // transient network blip or RLS hiccup looked exactly like a brand-new
+    // user — fullData was set to {}, every read went empty, and the next
+    // write upserted that empty blob straight over the real row, wiping all
+    // of the user's progress on every device. maybeSingle() gives
+    // {data:null, error:null} only when the row genuinely isn't there.
+    sbClient.from('progress').select('data').eq('user_id', user.id).maybeSingle().then(function (res) {
+      if (res && res.error) {
+        // Couldn't read it. Leave fullData null so reads fall back to the
+        // local cache and nothing can push over remote progress we haven't
+        // seen. The next sign-in or page load retries.
+        return;
+      }
       if (res && res.data) {
         fullData = res.data.data || {};
       } else {
