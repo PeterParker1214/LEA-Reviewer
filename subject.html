@@ -27,6 +27,11 @@
     --good:#5fbf82;
     --bad:#e2604a;
     --line: rgba(111,168,207,0.20);
+    /* Softer rule the topics block draws between rows, and the dimmer grey its
+       trailing note sits in — both distinct from --line/--muted in the frame. */
+    --line-soft: rgba(111,168,207,0.14);
+    --muted-dim:#6f7d8a;
+    --panel-hover:#12222f;
     --grid-line: rgba(111,168,207,0.09);
     --font-display: 'Big Shoulders Display', sans-serif;
     --font-hand: 'Architects Daughter', cursive;
@@ -46,6 +51,9 @@
     --good:#206b3c;
     --bad:#a1372a;
     --line: rgba(47,108,149,0.28);
+    --line-soft: rgba(47,108,149,0.20);
+    --muted-dim:#6b7885;
+    --panel-hover:#f4f8fb;
     --grid-line: rgba(47,108,149,0.11);
   }
   /* inline SVG icons sitting inside a text label */
@@ -149,20 +157,52 @@
   .mode-row.disabled{ opacity:.5; cursor:default; }
   .mode-row:not(.disabled):hover{ border-color: var(--gold); }
 
-  /* ===== topics card ===== */
+  /* ===== topics block — folded bottom section =====
+     Chrome family: it frames the reading, so it keeps a radius. The fold is a
+     layout affordance only; nothing about it is lazy, so the header and the
+     rows are always computed from the same pass. */
   .topics-card{
     background: var(--bg-panel); border:1px solid var(--line); border-radius:14px;
-    padding:18px 20px 14px; margin-bottom:16px;
+    overflow:hidden; margin-bottom:16px;
   }
-  .topics-card .card-title{ font-family:var(--font-mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
-  .topic-row{ display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--line); }
-  .topic-row:last-child{ border-bottom:none; }
+  .topics-head{
+    display:flex; align-items:center; gap:12px; padding:14px 16px;
+    width:100%; text-align:left; background:none; border:0; color:inherit;
+    font-family:inherit; cursor:pointer; user-select:none;
+  }
+  .topics-head:hover{ background:var(--panel-hover); }
+  .th-lines{ flex:1; min-width:0; }
+  .th-count{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+  /* Real topic names run far longer than the frame's example, and the whole
+     line would ellipsise away the percentage — which is half the claim. The
+     name truncates; the percentage never does. */
+  .th-weakest{ display:flex; font-family:var(--font-mono); font-size:11px; color:var(--bad); margin-top:5px; }
+  .thw-name{ min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .thw-pct{ flex-shrink:0; white-space:pre; }
+  .th-sign{ font-family:var(--font-mono); font-size:16px; color:var(--gold-bright); width:18px; text-align:center; flex-shrink:0; }
+  .topics-body{ padding:0 16px; border-top:1px solid var(--line-soft); }
+  .topic-row{
+    display:flex; align-items:center; gap:12px; padding:12px 0;
+    border-bottom:1px solid var(--line-soft); text-decoration:none; color:inherit;
+  }
+  .topic-row:hover .topic-name{ color:var(--gold-bright); }
   .topic-name{ flex:1; font-size:13.5px; color:var(--ink); min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .topic-bar-track{ width:64px; height:6px; border-radius:3px; background:var(--bg-panel-2); overflow:hidden; flex-shrink:0; }
-  .topic-bar-fill{ height:100%; border-radius:3px; }
-  .topic-pct{ font-family:var(--font-mono); font-size:11px; width:34px; text-align:right; flex-shrink:0; }
-  .topic-arrow{ font-family:var(--font-mono); font-size:13px; color:var(--muted); flex-shrink:0; }
-  .topics-note{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); margin-top:8px; line-height:1.5; }
+  .topic-bar-track{ width:64px; height:5px; border-radius:3px; background:var(--line-soft); overflow:hidden; flex-shrink:0; }
+  .topic-bar-fill{ height:100%; }
+  .topic-pct{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); width:30px; text-align:right; flex-shrink:0; }
+  .topic-pct.done{ color:var(--good); }
+  .topic-arrow{ font-family:var(--font-mono); font-size:13px; color:var(--gold-bright); flex-shrink:0; }
+  .topics-more{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    width:100%; padding:12px 0; background:none; border:0;
+    border-bottom:1px solid var(--line-soft);
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--gold-bright); cursor:pointer;
+  }
+  .topics-note{ padding:11px 0 13px; font-family:var(--font-mono); font-size:10px; line-height:1.65; color:var(--muted-dim); }
+  /* Whatever ends up last has no rule under it — otherwise it doubles up
+     against the card's own bottom border. */
+  .topics-body > *:last-child{ border-bottom:none; }
 
   /* ===== modules list ===== */
   .section-label{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin:4px 0 10px; }
@@ -469,10 +509,12 @@ async function render(subject){
     renderMastheadHtml(subject) +
     renderOverallCard(rollup, pct) +
     renderModeRows(subject, rollup, mode) +
-    '<div id="topicsSlot"></div>' +
     '<div class="section-label">Modules</div>' +
     renderModulesList(subject, mode) +
-    '<div class="note-panel">Progress is saved to your account and synced across devices.</div>';
+    '<div class="note-panel">Progress is saved to your account and synced across devices.</div>' +
+    // Topics last: a 12-topic subject used to push the modules off the screen,
+    // and modules are what you act on. Topics are diagnostic, so they fold.
+    '<div id="topicsSlot"></div>';
 
   initMarquee();
   wireOverallReset(subject);
@@ -481,7 +523,9 @@ async function render(subject){
   // Topics card: async, since it may need to fetch/scrape question data.
   renderTopicsCard(subject).then(html => {
     const slot = document.getElementById('topicsSlot');
-    if(slot) slot.innerHTML = html;
+    if(!slot) return;
+    slot.innerHTML = html;
+    wireTopicsBlock();
   });
 }
 
@@ -572,23 +616,42 @@ function renderModulesList(subject, mode){
   }).join('') + '</div>';
 }
 
-// ================= Topics card (async — needs question data) =================
+// ================= Topics block (async — needs question data) =================
+//
+// Only genuinely tagged topics count. A module whose source carries no
+// per-question topic field is excluded outright rather than grouped under its
+// own title: a module-title bucket is not a topic, it is the module restated,
+// and being the largest bucket it would win "weakest" on size alone. Excluded
+// modules are named in the trailing note instead. A subject with nothing
+// tagged renders no block at all — the Modules list above already covers it.
+const TOPICS_VISIBLE = 5;
+let topicsView = null;   // { subjectId, rows, note, open, expanded }
+
+function topicsOpenKey(subjectId){ return 'lea_topics_open_' + subjectId + '_v1'; }
+function readTopicsOpen(subjectId){
+  // Per-device UI state, so it stays in localStorage and out of the synced
+  // progress blob. Collapsed is the default.
+  try{ return localStorage.getItem(topicsOpenKey(subjectId)) === '1'; }catch(e){ return false; }
+}
+function writeTopicsOpen(subjectId, open){
+  try{ localStorage.setItem(topicsOpenKey(subjectId), open ? '1' : '0'); }catch(e){}
+}
+
 async function renderTopicsCard(subject){
   const topicTotals = {};
   const topicMastered = {};
-  let anyRealTopics = false;
+  const untagged = [];
 
   for(const mod of subject.modules){
     const mp = moduleProgress(subject.id, mod);
-    let topics = await loadModuleTopics(mod);
-    if(topics && topics.length === mod.total) anyRealTopics = true;
+    const topics = await loadModuleTopics(mod);
     if(!topics || topics.length !== mod.total){
-      // No per-question topic field available for this module's source —
-      // fall back to grouping its questions under the module's own title.
-      topics = new Array(mod.total).fill(mod.title);
+      untagged.push(mod);
+      continue;
     }
     for(let i = 0; i < mod.total; i++){
       const t = topics[i];
+      if(!t) continue;
       topicTotals[t] = (topicTotals[t] || 0) + 1;
       if(mp.masteredSet.has(i)) topicMastered[t] = (topicMastered[t] || 0) + 1;
     }
@@ -597,34 +660,103 @@ async function renderTopicsCard(subject){
   const names = Object.keys(topicTotals);
   if(names.length === 0) return '';
 
+  // Weakest first, so the topic the folded header names is the first row you
+  // see on opening — the header and the list visibly agree. Larger buckets
+  // break ties, since a percentage over more questions is the firmer reading.
   const rows = names.map(name => {
     const total = topicTotals[name];
     const mastered = topicMastered[name] || 0;
-    const pct = total > 0 ? Math.round((mastered / total) * 100) : 0;
-    const color = pct >= 100 ? 'var(--good)' : pct >= 70 ? 'var(--gold)' : 'var(--bad)';
+    return { name, total, pct: total > 0 ? Math.round((mastered / total) * 100) : 0 };
+  }).sort((a, b) => (a.pct - b.pct) || (b.total - a.total) || a.name.localeCompare(b.name));
+
+  topicsView = {
+    subjectId: subject.id,
+    rows: rows,
+    note: untaggedNote(untagged),
+    open: readTopicsOpen(subject.id),
+    expanded: false
+  };
+  return topicsBlockHtml();
+}
+
+// "Module 02 doesn't tag questions by topic, so its 15 items aren't counted
+// here" — naming the module and its size, because generic phrasing left the
+// reader wondering which one. Plural when more than one module is excluded.
+function untaggedNote(untagged){
+  if(!untagged.length) return '';
+  const items = untagged.reduce((n, m) => n + (m.total || 0), 0);
+  const nos = untagged.map(m => String(m.no));
+  if(nos.length === 1){
+    return 'Module ' + nos[0] + ' doesn’t tag questions by topic, so its ' + items +
+      ' items aren’t counted here — open it from Modules instead.';
+  }
+  const list = nos.slice(0, -1).join(', ') + ' and ' + nos[nos.length - 1];
+  return 'Modules ' + list + ' don’t tag questions by topic, so their ' + items +
+    ' items aren’t counted here — open them from Modules instead.';
+}
+
+function topicsBlockHtml(){
+  const v = topicsView;
+  if(!v) return '';
+  const weakest = v.rows[0];
+  const shown = v.expanded ? v.rows : v.rows.slice(0, TOPICS_VISIBLE);
+
+  const rowsHtml = shown.map(r => {
+    const color = r.pct >= 100 ? 'var(--good)' : r.pct >= 70 ? 'var(--gold)' : 'var(--bad)';
+    // A topic-scoped drill already exists and is what Home's weak-topics sheet
+    // links to, so the arrow points at real behaviour rather than decorating.
     return (
-      '<div class="topic-row">' +
-        '<div class="topic-name">' + escapeHtml(name) + '</div>' +
-        '<div class="topic-bar-track"><div class="topic-bar-fill" style="width:' + pct + '%;background:' + color + ';"></div></div>' +
-        '<div class="topic-pct" style="color:' + color + ';">' + pct + '%</div>' +
+      '<a class="topic-row" href="run.html?mode=drill&topic=' + encodeURIComponent(r.name) + '">' +
+        '<div class="topic-name">' + escapeHtml(r.name) + '</div>' +
+        '<div class="topic-bar-track"><div class="topic-bar-fill" style="width:' + r.pct + '%;background:' + color + ';"></div></div>' +
+        '<div class="topic-pct' + (r.pct >= 100 ? ' done' : '') + '">' + r.pct + '%</div>' +
         '<div class="topic-arrow">&rarr;</div>' +
-      '</div>'
+      '</a>'
     );
   }).join('');
 
-  const note = anyRealTopics
-    ? (names.length && Object.values(topicTotals).length !== subject.modules.length && names.some(n => subject.modules.some(m => m.title === n))
-        ? 'Some modules don’t tag questions by topic, so they’re grouped under the module name instead.'
-        : '')
-    : 'This subject’s questions aren’t tagged by topic yet, so modules are listed as-is.';
+  const more = (!v.expanded && v.rows.length > TOPICS_VISIBLE)
+    ? '<button class="topics-more" id="topicsMoreBtn">Show all ' + v.rows.length + ' &rarr;</button>'
+    : '';
 
   return (
     '<div class="topics-card">' +
-      '<div class="card-title">Topics</div>' +
-      rows +
-      (note ? '<div class="topics-note">' + escapeHtml(note) + '</div>' : '') +
+      '<button class="topics-head" id="topicsHeadBtn" aria-expanded="' + (v.open ? 'true' : 'false') + '">' +
+        '<div class="th-lines">' +
+          '<div class="th-count">Topics · ' + v.rows.length + ' tagged</div>' +
+          '<div class="th-weakest">' +
+            '<span class="thw-name">Weakest — ' + escapeHtml(weakest.name) + '</span>' +
+            '<span class="thw-pct"> ' + weakest.pct + '%</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="th-sign">' + (v.open ? '−' : '+') + '</div>' +
+      '</button>' +
+      (v.open
+        ? '<div class="topics-body">' + rowsHtml + more +
+            (v.note ? '<div class="topics-note">' + escapeHtml(v.note) + '</div>' : '') +
+          '</div>'
+        : '') +
     '</div>'
   );
+}
+
+function paintTopicsBlock(){
+  const slot = document.getElementById('topicsSlot');
+  if(!slot) return;
+  slot.innerHTML = topicsBlockHtml();
+  wireTopicsBlock();
+}
+
+function wireTopicsBlock(){
+  const head = document.getElementById('topicsHeadBtn');
+  if(head) head.addEventListener('click', () => {
+    topicsView.open = !topicsView.open;
+    if(!topicsView.open) topicsView.expanded = false;
+    writeTopicsOpen(topicsView.subjectId, topicsView.open);
+    paintTopicsBlock();
+  });
+  const more = document.getElementById('topicsMoreBtn');
+  if(more) more.addEventListener('click', () => { topicsView.expanded = true; paintTopicsBlock(); });
 }
 </script>
 <script>

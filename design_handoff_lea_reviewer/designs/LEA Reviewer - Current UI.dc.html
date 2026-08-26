@@ -1617,10 +1617,38 @@
         </div>
 
         <div style="display:flex;align-items:center;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#8b98a5;margin:0 0 12px">
-          <span style="flex:1;height:1px;background:rgba(111,168,207,0.20)"></span>Topics<span style="flex:1;height:1px;background:rgba(111,168,207,0.20)"></span>
+          <span style="flex:1;height:1px;background:rgba(111,168,207,0.20)"></span>Modules<span style="flex:1;height:1px;background:rgba(111,168,207,0.20)"></span>
         </div>
 
-        <div style="background:#0e1c28;border:1px solid rgba(111,168,207,0.20);border-radius:14px;padding:6px 16px;margin-bottom:16px">
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+          <div style="background:#0a1520;border:1px solid rgba(111,168,207,0.20);border-radius:12px;padding:14px 16px;cursor:pointer" style-hover="border-color:#e0a83f">
+            <div style="display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8fc4ea;margin-bottom:6px"><span>Module 01 · 30 items</span><span style="color:#5fbf82">28 / 30</span></div>
+            <div style="font-family:'Big Shoulders Display',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;line-height:1.1">Mechanics &amp; Strength of Materials</div>
+            <div style="height:5px;border-radius:3px;background:rgba(111,168,207,0.14);overflow:hidden;margin-top:10px"><div style="height:100%;width:93%;background:linear-gradient(90deg,#f0c268,#e0a83f 70%,rgba(224,168,63,0.25))"></div></div>
+          </div>
+          <div style="background:#0a1520;border:1px solid rgba(111,168,207,0.20);border-left:3px solid #e0a83f;border-radius:12px;padding:14px 16px;cursor:pointer" style-hover="border-color:#e0a83f">
+            <div style="display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8fc4ea;margin-bottom:6px"><span>Module 02 · 200 items</span><span style="color:#f0c268">In progress</span></div>
+            <div style="font-family:'Big Shoulders Display',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;line-height:1.1">RC Design &amp; NSCP Provisions</div>
+            <div style="height:5px;border-radius:3px;background:rgba(111,168,207,0.14);overflow:hidden;margin-top:10px"><div style="height:100%;width:70%;background:linear-gradient(90deg,#f0c268,#e0a83f 70%,rgba(224,168,63,0.25))"></div></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8b98a5"><span>140 / 200 mastered</span><span style="color:#f0c268;text-transform:uppercase;letter-spacing:.05em;font-weight:600">Resume Q84 →</span></div>
+          </div><div onClick="{{ toggleTopics }}" style="display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none" style-hover="background:#12222f">
+            <div style="flex:1">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8b98a5">Topics · 12 tagged</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#e2604a;margin-top:5px">Weakest — Statics of Structures 52%</div>
+            </div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:16px;color:#f0c268;width:18px;text-align:center">
+              <sc-if value="{{ topicsOpen }}" hint-placeholder-val="{{ false }}">−</sc-if>
+              <sc-if value="{{ topicsClosed }}" hint-placeholder-val="{{ true }}">+</sc-if>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#0e1c28;border:1px solid rgba(111,168,207,0.20);border-radius:12px;padding:14px 16px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8b98a5;line-height:1.7;margin-bottom:16px">Progress syncs to your account. The last 3 modules you opened stay cached, so they work offline.</div>
+
+        <div data-comment-anchor="subject-topics" style="background:#0e1c28;border:1px solid rgba(111,168,207,0.20);border-radius:14px;overflow:hidden">
+          
+          <sc-if value="{{ topicsOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:0 16px;border-top:1px solid rgba(111,168,207,0.14)">
           <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(111,168,207,0.14)">
             <div style="flex:1;font-size:13.5px">Statics of Structures</div>
             <div style="width:64px;height:5px;border-radius:3px;background:rgba(111,168,207,0.14);overflow:hidden"><div style="height:100%;width:52%;background:#e2604a"></div></div>
@@ -1639,35 +1667,25 @@
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8b98a5;width:30px;text-align:right">89%</div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f0c268;cursor:pointer">→</div>
           </div>
-          <div style="display:flex;align-items:center;gap:12px;padding:12px 0">
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(111,168,207,0.14)">
             <div style="flex:1;font-size:13.5px">Stress-Strain Behavior</div>
             <div style="width:64px;height:5px;border-radius:3px;background:rgba(111,168,207,0.14);overflow:hidden"><div style="height:100%;width:100%;background:#5fbf82"></div></div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#5fbf82;width:30px;text-align:right">100%</div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f0c268;cursor:pointer">→</div>
           </div>
-        </div>
-
-        <div style="display:flex;align-items:center;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#8b98a5;margin:0 0 12px">
-          <span style="flex:1;height:1px;background:rgba(111,168,207,0.20)"></span>Modules<span style="flex:1;height:1px;background:rgba(111,168,207,0.20)"></span>
-        </div>
-
-        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
-          <div style="background:#0a1520;border:1px solid rgba(111,168,207,0.20);border-radius:12px;padding:14px 16px;cursor:pointer" style-hover="border-color:#e0a83f">
-            <div style="display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8fc4ea;margin-bottom:6px"><span>Module 01 · 30 items</span><span style="color:#5fbf82">28 / 30</span></div>
-            <div style="font-family:'Big Shoulders Display',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;line-height:1.1">Mechanics &amp; Strength of Materials</div>
-            <div style="height:5px;border-radius:3px;background:rgba(111,168,207,0.14);overflow:hidden;margin-top:10px"><div style="height:100%;width:93%;background:linear-gradient(90deg,#f0c268,#e0a83f 70%,rgba(224,168,63,0.25))"></div></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(111,168,207,0.14)">
+            <div style="flex:1;font-size:13.5px">Beam Deflection</div>
+            <div style="width:64px;height:5px;border-radius:3px;background:rgba(111,168,207,0.14);overflow:hidden"><div style="height:100%;width:41%;background:#e2604a"></div></div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8b98a5;width:30px;text-align:right">41%</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f0c268;cursor:pointer">→</div>
           </div>
-          <div style="background:#0a1520;border:1px solid rgba(111,168,207,0.20);border-left:3px solid #e0a83f;border-radius:12px;padding:14px 16px;cursor:pointer" style-hover="border-color:#e0a83f">
-            <div style="display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8fc4ea;margin-bottom:6px"><span>Module 02 · 200 items</span><span style="color:#f0c268">In progress</span></div>
-            <div style="font-family:'Big Shoulders Display',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;line-height:1.1">RC Design &amp; NSCP Provisions</div>
-            <div style="height:5px;border-radius:3px;background:rgba(111,168,207,0.14);overflow:hidden;margin-top:10px"><div style="height:100%;width:70%;background:linear-gradient(90deg,#f0c268,#e0a83f 70%,rgba(224,168,63,0.25))"></div></div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8b98a5"><span>140 / 200 mastered</span><span style="color:#f0c268;text-transform:uppercase;letter-spacing:.05em;font-weight:600">Resume Q84 →</span></div>
+          <div style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 0;border-bottom:1px solid rgba(111,168,207,0.14);font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#f0c268;cursor:pointer">Show all 12 →</div>
+          <div style="padding:11px 0 13px;font-family:'IBM Plex Mono',monospace;font-size:10px;line-height:1.65;color:#6f7d8a">Module 02 doesn't tag questions by topic, so its 200 items aren't counted here — open it from Modules instead.</div>
           </div>
+          </sc-if>
         </div>
-
-        <div style="background:#0e1c28;border:1px solid rgba(111,168,207,0.20);border-radius:12px;padding:14px 16px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8b98a5;line-height:1.7">Progress syncs to your account. The last 3 modules you opened stay cached, so they work offline.</div>
       </div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;line-height:1.8;color:#8b98a5;letter-spacing:.02em">One subject template + a module manifest, so History of Architecture stops being its own 500 KB planet. Topic rows are the new thing: they turn "weak subject" into something you can actually tap.</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;line-height:1.8;color:#8b98a5;letter-spacing:.02em">One subject template + a module manifest, so History of Architecture stops being its own 500 KB planet. Topics fold shut at the bottom — twelve of them were pushing the modules off the screen, and modules are what you act on. Folded, the header still names the weakest topic, which is the one thing worth knowing without opening it. Only <em style="font-style:normal;color:#eef1e9">tagged</em> topics count: an untagged module would otherwise show up as one giant pseudo-topic and win "weakest" on size alone, so those are excluded and named in the note instead. A subject with nothing tagged shows no topics block at all.</div>
     </div>
 
     <!-- ===== 2c QUIZ ===== -->
@@ -2218,7 +2236,9 @@ class Component extends DCLogic {
   blurbTrack = React.createRef();
   blurbClone = React.createRef();
 
-  state = { now: Date.now() };
+  state = { now: Date.now(), topicsOpen: false };
+
+  toggleTopics = () => this.setState(s => ({ topicsOpen: !s.topicsOpen }));
 
   componentDidMount(){
     this.fitBlurb();
@@ -2266,6 +2286,7 @@ class Component extends DCLogic {
     const cd = this.countdown();
     return {
       blurbBox: this.blurbBox, blurbTrack: this.blurbTrack, blurbClone: this.blurbClone,
+      topicsOpen: this.state.topicsOpen, topicsClosed: !this.state.topicsOpen, toggleTopics: this.toggleTopics,
       cdD: cd.d, cdH: cd.h, cdM: cd.m, cdS: cd.s,
       examLabel: this.props.examLabel ?? 'LEA · 17 January 2027'
     };
