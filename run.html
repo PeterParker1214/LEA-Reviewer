@@ -58,9 +58,11 @@
   .header-title .h-main{ font-family:var(--font-display); font-weight:700; font-size:15px; text-transform:uppercase; color:var(--ink); margin-top:2px; }
 
   /* ===== tick strip ===== */
-  .tick-strip{ display:flex; gap:3px; overflow-x:auto; padding-bottom:2px; margin-bottom:8px; scrollbar-width:none; }
-  .tick-strip::-webkit-scrollbar{ display:none; }
-  .tick{ width:7px; height:7px; border-radius:1px; background:var(--bg-panel-2); border:1px solid var(--line); flex-shrink:0; }
+  /* The frame gives every tick flex:1 so the strip spans the card, rather
+     than a fixed 7px each that leaves a ragged tail and scrolls on long
+     modules. min-width keeps a 200-item exam's ticks from vanishing. */
+  .tick-strip{ display:flex; gap:3px; margin-bottom:8px; }
+  .tick{ flex:1; min-width:2px; height:7px; border-radius:1px; background:var(--bg-panel-2); border:1px solid var(--line); }
   .tick.correct{ background:var(--good); border-color:var(--good); }
   .tick.incorrect{ background:var(--bad); border-color:var(--bad); }
   .tick.skipped{ background:var(--blue-bright); border-color:var(--blue-bright); }
@@ -127,8 +129,14 @@
   .explain.right .verdict{ color:var(--good); }
   .explain.wrong .verdict{ color:var(--bad); }
   .explain .reason{ font-size:13.5px; line-height:1.6; color:var(--ink); margin-bottom:10px; }
-  .explain .meta-row{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); margin-bottom:4px; }
-  .explain .meta-row b{ color:var(--ink); text-transform:uppercase; letter-spacing:.05em; margin-right:6px; }
+  /* Frame 2c: label in blue, value in muted and NOT uppercased, the two
+     separated by a 10px gap rather than a margin on the label. */
+  .explain .meta-row{
+    display:flex; gap:10px; align-items:flex-start;
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:.04em;
+    text-transform:uppercase; color:var(--blue-bright); margin-bottom:8px;
+  }
+  .explain .meta-row span{ flex:1; color:var(--muted); text-transform:none; letter-spacing:0; }
   .explain .steps-list{ margin:8px 0 0; padding-left:18px; font-size:13px; color:var(--ink); line-height:1.7; }
   .chip-row{ display:flex; gap:8px; margin-top:12px; }
   .chip-btn{
@@ -1073,7 +1081,7 @@ function renderCard(){
       '<div class="explain ' + verdictClass + '">' +
         '<div class="verdict">' + verdictText + '</div>' +
         '<div class="reason">' + escapeHtml(item.o[item.c]) + '.' + (item.n ? ' ' + escapeHtml(item.n) : '') + '</div>' +
-        (item.ref ? '<div class="meta-row"><b>Rule</b>' + escapeHtml(item.ref) + '</div>' : '') +
+        (item.ref ? '<div class="meta-row">Source<span>' + escapeHtml(item.ref) + '</span></div>' : '') +
         '<div class="chip-row">' +
           (item.steps && item.steps.length ? '<button class="chip-btn" id="stepsChip">＋ Steps</button>' : '<div style="flex:1;"></div>') +
           '<button class="chip-btn" id="noteChip">✎ Note</button>' +
@@ -1873,7 +1881,7 @@ function renderMultiCard(){
       '<div class="explain ' + verdictClass + '">' +
         '<div class="verdict">' + verdictText + '</div>' +
         '<div class="reason">' + escapeHtml(item.o[item.c]) + '.' + (item.n ? ' ' + escapeHtml(item.n) : '') + '</div>' +
-        (item.ref ? '<div class="meta-row"><b>Rule</b>' + escapeHtml(item.ref) + '</div>' : '') +
+        (item.ref ? '<div class="meta-row">Source<span>' + escapeHtml(item.ref) + '</span></div>' : '') +
       '</div>';
   } else if(logged && logged.skipped){
     explainHtml = '<div class="explain" style="border-left-color:var(--blue-bright);"><div class="verdict" style="color:var(--blue-bright);">Skipped</div><div class="reason">Answer it now, or come back later from the question map.</div></div>';

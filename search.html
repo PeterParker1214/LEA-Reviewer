@@ -243,8 +243,18 @@ async function runSearch(query){
     }).join('');
 }
 
-document.getElementById('searchForm').addEventListener('submit', (e) => {
-  e.preventDefault();
+// Search ran on submit only. A single-field form is supposed to submit on
+// Enter, but it did not fire reliably here, so typing a query and pressing
+// Enter did nothing at all and the page looked broken. It now searches as you
+// type — debounced, because the index is 4,132 questions — and the submit
+// handler stays for Enter and for arriving with ?q= in the URL.
+let searchDebounce = null;
+document.getElementById('searchInput').addEventListener('input', () => {
+  clearTimeout(searchDebounce);
+  searchDebounce = setTimeout(runSearchFromField, 180);
+});
+
+function runSearchFromField(){
   const q = document.getElementById('searchInput').value.trim();
   // Frame 3f/3e: the field carries a gold border while it holds a query.
   document.getElementById('searchForm').classList.toggle('active', !!q);
@@ -252,6 +262,12 @@ document.getElementById('searchForm').addEventListener('submit', (e) => {
   if(q) url.searchParams.set('q', q); else url.searchParams.delete('q');
   window.history.replaceState({}, '', url);
   runSearch(q);
+}
+
+document.getElementById('searchForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  clearTimeout(searchDebounce);
+  runSearchFromField();
 });
 
 (async function boot(){
