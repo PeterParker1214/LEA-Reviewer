@@ -2,22 +2,19 @@
 
 ## Icon
 
-**Bahay kubo** — the app icon (`favicon.svg`) — by **Loritas Medina**, from
-[the Noun Project](https://thenounproject.com/). Recoloured to the app's gold
-and set on a dark plate; the artwork itself is unchanged.
+`favicon.svg` — a bahay kubo, drawn for this project. Original work: no
+third-party artwork, no licence obligations, nothing to attribute.
 
-> **Check your licence.** Noun Project icons downloaded on the free tier are
-> Creative Commons BY, which requires this credit to be **visible to users**,
-> not only in the repository. A Noun Project Pro subscription licenses the
-> same icon royalty-free with no attribution required.
->
-> If this one came from the free tier, the line above needs to appear
-> somewhere in the app — the Profile screen or a small About row would do —
-> and it is a two-minute change. It has deliberately not been added to a
-> screen yet, because doing so is only necessary under one of the two
-> licences and only the account holder can tell which applies.
+It is built from solid shapes rather than line work because a favicon is read
+at 16px, where a 4× downscale thins any stroke to a grey smudge; filled masses
+keep their edges. The window and the gaps between the posts are cut back to
+the plate colour for the same reason.
+
+> A Noun Project icon (CC BY 3.0) was used briefly during development and has
+> been removed entirely — file, markup and the visible credit it required.
+> Nothing in the app derives from it.
 
 ## Typefaces
 
 Big Shoulders Display, Space Grotesk, IBM Plex Mono and Architects Daughter,
-all served from Google Fonts under the SIL Open Font License.
+served from Google Fonts under the SIL Open Font License.
