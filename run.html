@@ -490,15 +490,11 @@ async function boot(){
     body.innerHTML = '<div class="state-card">Unknown module.<br><br><a href="index.html" style="color:var(--gold-bright);">&larr; All subjects</a></div>';
     return;
   }
-  if(MODULE.format !== 'json'){
-    body.innerHTML = '<div class="state-card">This module isn’t wired into the new run engine yet.<br><br><a href="subject.html?s=' + encodeURIComponent(subjectId) + '" style="color:var(--gold-bright);">&larr; Back to subject</a></div>';
-    return;
-  }
-
-  try{
-    const res = await fetch(MODULE.file);
-    QUESTIONS = await res.json();
-  }catch(e){
+  // Same reader as the cross-subject index, so a module behaves identically
+  // whether you open it directly or meet it in a drill — and so mastered[]
+  // indices mean the same thing on both paths. See assets/quiz-source.js.
+  QUESTIONS = await LEAQuizSource.loadModuleQuestions(MODULE);
+  if(!QUESTIONS){
     body.innerHTML = '<div class="state-card">Couldn’t load this module’s questions. Try reloading.</div>';
     return;
   }
