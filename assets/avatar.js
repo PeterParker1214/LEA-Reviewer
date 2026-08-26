@@ -103,20 +103,79 @@
   // the storage policies key on, so nobody can write over anyone else.
   function pathFor(userId) { return userId + '/avatar.jpg'; }
 
-  function upload(sb, userId, file) {
-    return toSquareBlob(file).then(function (blob) {
-      return sb.storage.from(BUCKET).upload(pathFor(userId), blob, {
-        upsert: true, contentType: 'image/jpeg', cacheControl: '3600'
-      }).then(function (res) {
-        if (res.error) throw res.error;
-        var pub = sb.storage.from(BUCKET).getPublicUrl(pathFor(userId));
-        // The path never changes, so without this the browser keeps showing
-        // the picture it already cached. A new stamp each upload is a new URL.
-        var url = pub.data.publicUrl + '?v=' + Date.now();
-        return sb.from('profiles').update({ avatar_url: url }).eq('id', userId)
-          .then(function (r) { if (r.error) throw r.error; return url; });
-      });
+  /**
+   * Load a file into an <img>, so a caller can show it before deciding the
+   * crop. Rejects with the same reasons toSquareBlob uses.
+   */
+  function loadImage(file) {
+    return new Promise(function (resolve, reject) {
+      if (!file || String(file.type || '').indexOf('image/') !== 0) return reject(new Error('not-an-image'));
+      if (file.size > MAX_BYTES) return reject(new Error('too-big'));
+      var url = URL.createObjectURL(file);
+      var img = new Image();
+      // Deliberately NOT revoked here. The caller shows this image in a crop
+      // frame, and revoking on load leaves that <img> pointing at nothing —
+      // the frame came up empty. The URL is handed back for the caller to
+      // release when it closes the sheet.
+      img.onload = function () { img.objectUrl = url; resolve(img); };
+      img.onerror = function () { URL.revokeObjectURL(url); reject(new Error('unreadable')); };
+      img.src = url;
     });
+  }
+
+  /**
+   * The square the viewer framed, as a blob.
+   *
+   * `view` describes how the image is being shown: a square frame of `frame`
+   * CSS px, the image scaled to cover it and then nudged by (tx, ty) and
+   * zoomed by `zoom`. Inverting that gives the source square to cut.
+   */
+  function cropToBlob(img, view) {
+    var frame = view.frame, zoom = view.zoom, tx = view.tx, ty = view.ty;
+    var base = Math.max(frame / img.naturalWidth, frame / img.naturalHeight);
+    var k = base * zoom;                       // natural px -> screen px
+    var cx = img.naturalWidth / 2, cy = img.naturalHeight / 2;
+    var srcSize = frame / k;
+    var sx = cx - (frame / 2 + tx) / k;
+    var sy = cy - (frame / 2 + ty) / k;
+    // Never sample outside the image, whatever rounding did.
+    sx = Math.max(0, Math.min(sx, img.naturalWidth - srcSize));
+    sy = Math.max(0, Math.min(sy, img.naturalHeight - srcSize));
+
+    var canvas = document.createElement('canvas');
+    canvas.width = OUT_SIZE; canvas.height = OUT_SIZE;
+    canvas.getContext('2d').drawImage(img, sx, sy, srcSize, srcSize, 0, 0, OUT_SIZE, OUT_SIZE);
+    return new Promise(function (resolve, reject) {
+      canvas.toBlob(function (b) { b ? resolve(b) : reject(new Error('encode-failed')); }, 'image/jpeg', 0.85);
+    });
+  }
+
+  /** How far the image may be nudged before the frame stops being covered. */
+  function panLimits(img, view) {
+    var base = Math.max(view.frame / img.naturalWidth, view.frame / img.naturalHeight);
+    var k = base * view.zoom;
+    return {
+      x: Math.max(0, k * (img.naturalWidth / 2) - view.frame / 2),
+      y: Math.max(0, k * (img.naturalHeight / 2) - view.frame / 2)
+    };
+  }
+
+  function uploadBlob(sb, userId, blob) {
+    return sb.storage.from(BUCKET).upload(pathFor(userId), blob, {
+      upsert: true, contentType: 'image/jpeg', cacheControl: '3600'
+    }).then(function (res) {
+      if (res.error) throw res.error;
+      var pub = sb.storage.from(BUCKET).getPublicUrl(pathFor(userId));
+      // The path never changes, so without this the browser keeps showing the
+      // picture it already cached. A new stamp each upload is a new URL.
+      var url = pub.data.publicUrl + '?v=' + Date.now();
+      return sb.from('profiles').update({ avatar_url: url }).eq('id', userId)
+        .then(function (r) { if (r.error) throw r.error; return url; });
+    });
+  }
+
+  function upload(sb, userId, file) {
+    return toSquareBlob(file).then(function (blob) { return uploadBlob(sb, userId, blob); });
   }
 
   function remove(sb, userId) {
@@ -136,10 +195,20 @@
     return initialsOf(name).replace(/[&<>]/g, '');
   }
 
+  /** Release the blob URL loadImage handed back. Safe to call twice. */
+  function releaseImage(img) {
+    if (img && img.objectUrl) { try { URL.revokeObjectURL(img.objectUrl); } catch (e) {} img.objectUrl = null; }
+  }
+
   window.LEAAvatar = {
     initialsOf: initialsOf,
+    releaseImage: releaseImage,
     capability: capability,
     upload: upload,
+    uploadBlob: uploadBlob,
+    loadImage: loadImage,
+    cropToBlob: cropToBlob,
+    panLimits: panLimits,
     remove: remove,
     faceHtml: faceHtml,
     MAX_BYTES: MAX_BYTES,

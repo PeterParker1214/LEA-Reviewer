@@ -124,18 +124,70 @@
     text-decoration:none;
   }
   .pf-row .danger{ border-color:rgba(226,96,74,0.4); color:var(--bad); }
+
+  /* Choose the crop before it is saved — a centre crop guesses, and faces are
+     rarely in the middle of a photo. */
+  .crop-sheet{ position:fixed; inset:0; z-index:130; background:rgba(4,9,13,0.96); display:flex; align-items:center; justify-content:center; padding:20px; }
+  .crop-sheet.hidden{ display:none; }
+  .crop-box{ width:100%; max-width:340px; }
+  .crop-head{ font-family:var(--font-mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; text-align:center; }
+  .crop-frame{
+    position:relative; width:100%; aspect-ratio:1/1; overflow:hidden;
+    background:var(--bg-panel-2); border:1px solid rgba(224,168,63,0.5);
+    touch-action:none; cursor:grab; margin:0 auto;
+  }
+  .crop-frame.dragging{ cursor:grabbing; }
+  .crop-frame img{ position:absolute; left:50%; top:50%; transform-origin:center center; will-change:transform; user-select:none; -webkit-user-drag:none; }
+  /* Thirds, so there is something to line a face up against. */
+  .crop-grid{ position:absolute; inset:0; pointer-events:none; }
+  .crop-grid::before, .crop-grid::after{
+    content:''; position:absolute; inset:0;
+    background-image:linear-gradient(to right, transparent 33.33%, rgba(255,255,255,0.16) 33.33%, rgba(255,255,255,0.16) calc(33.33% + 1px), transparent calc(33.33% + 1px), transparent 66.66%, rgba(255,255,255,0.16) 66.66%, rgba(255,255,255,0.16) calc(66.66% + 1px), transparent calc(66.66% + 1px));
+  }
+  .crop-grid::after{ transform:rotate(90deg); }
+  .crop-zoom{ display:flex; align-items:center; gap:10px; margin:14px 0 12px; }
+  .crop-zoom input{ flex:1; accent-color:var(--gold); }
+  .crop-zoom span{ font-family:var(--font-mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+  .crop-actions{ display:flex; gap:8px; }
+  .crop-actions button{
+    flex:1; min-height:48px; font-family:var(--font-mono); font-size:11px; letter-spacing:.05em;
+    text-transform:uppercase; border:1px solid var(--line); background:none; color:var(--gold-bright); cursor:pointer;
+  }
+  .crop-actions .save{ background:var(--gold); border-color:var(--gold); color:#1a1206; font-weight:600; }
+  body.light-mode .crop-actions .save, :root.light-mode .crop-actions .save{ color:#fff; }
+  .crop-actions button[disabled]{ opacity:.5; cursor:default; }
+  .crop-hint{ font-family:var(--font-mono); font-size:9.5px; color:var(--muted); text-align:center; margin-top:10px; line-height:1.6; }
   .pf-row a:hover, .pf-row button:hover{ border-color:var(--gold); }
 </style>
 <link rel="stylesheet" href="assets/blueprint.css?v=1">
 <script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
 <script src="assets/quiz-source.js?v=1"></script>
-<script src="assets/avatar.js?v=3"></script>
+<script src="assets/avatar.js?v=5"></script>
 <script src="assets/module-progress.js?v=1"></script>
 <script src="assets/offline.js?v=1"></script>
 </head>
 <body>
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
 <div class="wrap" id="pfWrap"><div class="pf-note">Loading…</div></div>
+
+<div class="crop-sheet hidden" id="cropSheet" role="dialog" aria-modal="true" aria-label="Position your picture">
+  <div class="crop-box">
+    <div class="crop-head">Position your picture</div>
+    <div class="crop-frame" id="cropFrame">
+      <img id="cropImg" alt="">
+      <div class="crop-grid"></div>
+    </div>
+    <div class="crop-zoom">
+      <span>Zoom</span>
+      <input type="range" id="cropZoom" min="100" max="300" value="100" aria-label="Zoom">
+    </div>
+    <div class="crop-actions">
+      <button type="button" id="cropCancel">Cancel</button>
+      <button type="button" class="save" id="cropSave">Save picture</button>
+    </div>
+    <div class="crop-hint">Drag to move · pinch or use the slider to zoom</div>
+  </div>
+</div>
 
 <script>
 const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
@@ -302,22 +354,19 @@ function wire(){
   const fileInput = document.getElementById('pfFile');
   if(fileInput){
     document.getElementById('pfUpload').addEventListener('click', () => fileInput.click());
+    // Open the crop step rather than uploading straight away: a centre crop
+    // guesses, and faces are rarely in the middle of a photo.
     fileInput.addEventListener('change', async () => {
       const file = fileInput.files && fileInput.files[0];
       if(!file) return;
-      picSay('Uploading…');
       try{
-        state.avatarUrl = await LEAAvatar.upload(sb, state.userId, file);
-        repaintAvatar();
-        render();
-        picSay('Picture updated.');
+        openCrop(await LEAAvatar.loadImage(file), picSay, repaintAvatar);
       }catch(err){
         const m = String((err && err.message) || err);
         picSay(
           m === 'too-big' ? 'That file is over 5 MB — pick a smaller one.' :
           m === 'not-an-image' ? 'That isn’t an image file.' :
-          m === 'unreadable' ? 'Couldn’t read that image.' :
-          'Couldn’t upload — try again.', 'err');
+          'Couldn’t read that image.', 'err');
       }
       fileInput.value = '';
     });
@@ -348,6 +397,147 @@ function wire(){
     window.location.href = 'index.html';
   });
 }
+
+// ================= Crop sheet =================
+// Pan and zoom are held as a transform on the shown image; the same numbers
+// are inverted at save time to cut the matching square out of the original,
+// so what is framed is exactly what is stored.
+let cropState = null;
+
+function openCrop(img, say, repaint){
+  const sheet = document.getElementById('cropSheet');
+  const frameEl = document.getElementById('cropFrame');
+  const imgEl = document.getElementById('cropImg');
+  const zoomEl = document.getElementById('cropZoom');
+
+  imgEl.src = img.src;
+  cropState = { img, zoom: 1, tx: 0, ty: 0, say, repaint };
+  zoomEl.value = 100;
+  sheet.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  // Wait a frame so the frame has a measured width to scale against.
+  requestAnimationFrame(() => { layoutCrop(); paintCrop(); });
+}
+
+function cropView(){
+  const frameEl = document.getElementById('cropFrame');
+  return { frame: frameEl.clientWidth, zoom: cropState.zoom, tx: cropState.tx, ty: cropState.ty };
+}
+
+function layoutCrop(){
+  const frameEl = document.getElementById('cropFrame');
+  const imgEl = document.getElementById('cropImg');
+  const img = cropState.img;
+  const F = frameEl.clientWidth;
+  // Cover the frame at zoom 1, so there is never a gap at any offset.
+  const base = Math.max(F / img.naturalWidth, F / img.naturalHeight);
+  imgEl.style.width = (img.naturalWidth * base) + 'px';
+  imgEl.style.height = (img.naturalHeight * base) + 'px';
+}
+
+function clampCrop(){
+  const lim = LEAAvatar.panLimits(cropState.img, cropView());
+  cropState.tx = Math.max(-lim.x, Math.min(lim.x, cropState.tx));
+  cropState.ty = Math.max(-lim.y, Math.min(lim.y, cropState.ty));
+}
+
+function paintCrop(){
+  clampCrop();
+  const imgEl = document.getElementById('cropImg');
+  imgEl.style.transform =
+    'translate(-50%,-50%) translate(' + cropState.tx + 'px,' + cropState.ty + 'px) scale(' + cropState.zoom + ')';
+}
+
+function closeCrop(){
+  document.getElementById('cropSheet').classList.add('hidden');
+  document.body.style.overflow = '';
+  const imgEl = document.getElementById('cropImg');
+  imgEl.removeAttribute('src');
+  if(cropState) LEAAvatar.releaseImage(cropState.img);
+  cropState = null;
+}
+
+(function wireCrop(){
+  const frameEl = document.getElementById('cropFrame');
+  const zoomEl = document.getElementById('cropZoom');
+  let dragging = false, lastX = 0, lastY = 0, pts = new Map(), startDist = 0, startZoom = 1;
+
+  zoomEl.addEventListener('input', () => {
+    if(!cropState) return;
+    cropState.zoom = Number(zoomEl.value) / 100;
+    paintCrop();
+  });
+
+  frameEl.addEventListener('pointerdown', (e) => {
+    if(!cropState) return;
+    pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if(pts.size === 2){
+      const [a, b] = [...pts.values()];
+      startDist = Math.hypot(a.x - b.x, a.y - b.y);
+      startZoom = cropState.zoom;
+    } else {
+      dragging = true; lastX = e.clientX; lastY = e.clientY;
+      frameEl.classList.add('dragging');
+      frameEl.setPointerCapture(e.pointerId);
+    }
+  });
+  frameEl.addEventListener('pointermove', (e) => {
+    if(!cropState || !pts.has(e.pointerId)) return;
+    pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if(pts.size === 2 && startDist > 0){
+      const [a, b] = [...pts.values()];
+      cropState.zoom = Math.min(3, Math.max(1, startZoom * (Math.hypot(a.x - b.x, a.y - b.y) / startDist)));
+      zoomEl.value = Math.round(cropState.zoom * 100);
+      paintCrop();
+      return;
+    }
+    if(!dragging) return;
+    cropState.tx += e.clientX - lastX;
+    cropState.ty += e.clientY - lastY;
+    lastX = e.clientX; lastY = e.clientY;
+    paintCrop();
+  });
+  function release(e){
+    pts.delete(e.pointerId);
+    if(pts.size < 2) startDist = 0;
+    if(pts.size === 0){ dragging = false; frameEl.classList.remove('dragging'); }
+  }
+  frameEl.addEventListener('pointerup', release);
+  frameEl.addEventListener('pointercancel', release);
+  frameEl.addEventListener('wheel', (e) => {
+    if(!cropState) return;
+    e.preventDefault();
+    cropState.zoom = Math.min(3, Math.max(1, cropState.zoom * (e.deltaY < 0 ? 1.08 : 1/1.08)));
+    zoomEl.value = Math.round(cropState.zoom * 100);
+    paintCrop();
+  }, { passive: false });
+
+  document.getElementById('cropCancel').addEventListener('click', closeCrop);
+  document.addEventListener('keydown', (e) => {
+    if(cropState && e.key === 'Escape') closeCrop();
+  });
+
+  document.getElementById('cropSave').addEventListener('click', async () => {
+    if(!cropState) return;
+    const btn = document.getElementById('cropSave');
+    const say = cropState.say, repaint = cropState.repaint;
+    btn.disabled = true;
+    btn.textContent = 'Saving…';
+    try{
+      const blob = await LEAAvatar.cropToBlob(cropState.img, cropView());
+      const url = await LEAAvatar.uploadBlob(sb, state.userId, blob);
+      state.avatarUrl = url;
+      closeCrop();
+      render();
+      say('Picture updated.');
+    }catch(err){
+      say('Couldn’t upload — try again.', 'err');
+      closeCrop();
+    }
+    btn.disabled = false;
+    btn.textContent = 'Save picture';
+  });
+})();
 
 (async function boot(){
   const { data: { session } } = await sb.auth.getSession();
