@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -330,6 +331,24 @@
     padding:9px 14px; margin-bottom:12px; font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--muted);
   }
   .presence-strip .online-dot{ width:9px; height:9px; border-radius:50%; background:var(--good); box-shadow:0 0 6px var(--good); display:inline-block; margin-right:6px; }
+  /* Who is here, not just how many. The names scroll only when they overrun,
+     and the strip keeps its height either way so the page does not jump as
+     people come and go. */
+  .presence-strip .who{
+    flex:1; min-width:0; overflow:hidden; white-space:nowrap; color:var(--muted);
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 10px, #000 calc(100% - 14px), transparent 100%);
+    mask-image:linear-gradient(90deg, transparent 0, #000 10px, #000 calc(100% - 14px), transparent 100%);
+  }
+  .presence-strip .who i{ display:inline-block; font-style:normal; padding-left:10px; }
+  .presence-strip .who.scrolls i{ animation: who-scroll 16s linear infinite; }
+  .presence-strip .who b{ color:var(--ink); font-weight:400; }
+  @keyframes who-scroll{
+    0%, 8%{ transform:translateX(0); }
+    92%, 100%{ transform:translateX(var(--who-shift, 0px)); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .presence-strip .who.scrolls i{ animation:none; }
+  }
   .presence-strip .offline-ready{ color:var(--blue-bright); }
 
   /* ===== split-flap countdown ===== */
@@ -590,7 +609,7 @@
           <div class="sc-unit"><b id="scMins">00</b><span>min</span></div>
         </div>
         <div class="sc-divider"></div>
-        <div class="sc-label">until the<br>LEA &middot; 17 Jan 2027</div>
+        <div class="sc-label">until the<br>LEA (Unofficial) &middot; 17 Jan 2027</div>
       </div>
 
       <div class="auth-tabs">
@@ -823,6 +842,9 @@ function findMostRecentResume(){
 
 // ================= Render: Home (2a) =================
 function renderHome(){
+  // Whatever this render rebuilds, the strip gets the current list back at
+  // the end of it (see lastOnlineNames).
+  setTimeout(() => renderOnline(lastOnlineNames), 0);
   const readiness = computeReadiness();
   const streak = getStreak();
   const drillPreview = computeDailyDrillPreview();
@@ -897,6 +919,7 @@ function renderHome(){
 
     '<div class="presence-strip">' +
       '<span><span class="online-dot"></span><span id="onlineCount">0</span> online</span>' +
+      '<span class="who" id="onlineWho"><i></i></span>' +
       '<span class="offline-ready">◎ Offline-ready</span>' +
     '</div>' +
 
@@ -914,7 +937,7 @@ function renderHome(){
     '<div class="col-left">' +
 
     '<div class="countdown-card">' +
-      '<div class="countdown-label">Until the LEA · 17 January 2027</div>' +
+      '<div class="countdown-label">Until the LEA (Unofficial) · 17 January 2027</div>' +
       '<div class="flap-grid">' +
         '<div class="flap"><div class="flap-val" id="cdDays">0</div><div class="flap-lbl">Days</div></div>' +
         '<div class="flap"><div class="flap-val" id="cdHrs">00</div><div class="flap-lbl">Hrs</div></div>' +
@@ -1194,10 +1217,45 @@ signupForm.addEventListener('submit', async (e) => {
 
 // ================= Online presence =================
 let presenceChannel = null;
+// Remembered, because renderHome() rebuilds the strip from scratch — on a
+// progress reset, a sync callback, an account-sheet change — and the fresh
+// markup starts at "0 online". Presence only pushes on change, so without
+// replaying the last known list the strip sat at zero until someone else
+// happened to arrive or leave.
+let lastOnlineNames = [];
+
 function renderOnline(names){
-  const uniq = Array.from(new Set(names));
+  lastOnlineNames = names;
+  const uniq = Array.from(new Set(names)).sort((a, b) => a.localeCompare(b));
   const el = document.getElementById('onlineCount');
   if(el) el.textContent = uniq.length;
+
+  const who = document.getElementById('onlineWho');
+  if(!who) return;
+  const run = who.querySelector('i');
+  if(uniq.length === 0){
+    run.textContent = '';
+    who.classList.remove('scrolls');
+    return;
+  }
+  // Your own name reads better as "you", and sits first.
+  const mine = uniq.filter(n => n === currentUsername);
+  const others = uniq.filter(n => n !== currentUsername);
+  run.innerHTML =
+    (mine.length ? '<b>you</b>' + (others.length ? ' · ' : '') : '') +
+    others.map(n => escapeHtml(n)).join(' · ');
+
+  // Scroll only if the names actually overrun, and only as far as they do.
+  requestAnimationFrame(() => {
+    const overflow = run.scrollWidth - who.clientWidth;
+    if(overflow > 4){
+      who.classList.add('scrolls');
+      who.style.setProperty('--who-shift', (-overflow - 12) + 'px');
+    } else {
+      who.classList.remove('scrolls');
+      who.style.removeProperty('--who-shift');
+    }
+  });
 }
 function startPresence(username){
   if(presenceChannel) return;

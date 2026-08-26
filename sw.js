@@ -52,6 +52,7 @@ const SHELL_URLS = [
   'assets/blueprint.css?v=1',
   'assets/legacy-desktop.css?v=1',
   'data/subjects.json',
+  'favicon.svg',
   'favicon-32x32.png',
   'favicon-16x16.png',
   'apple-touch-icon.png',
