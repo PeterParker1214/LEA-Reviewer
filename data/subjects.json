@@ -150,7 +150,16 @@
     "name": "Building Technology",
     "blurb": "How a building actually goes together.",
     "ready": false,
-    "modules": []
+    "modules": [
+      {
+        "id": "building-technology-01",
+        "no": "01",
+        "title": "tapp preboard",
+        "total": 200,
+        "file": "data/building-technology/01.json",
+        "format": "json"
+      }
+    ]
   },
   {
     "id": "structural",
@@ -388,15 +397,6 @@
     "name": "PREBOARDS",
     "blurb": "Temporary only",
     "ready": true,
-    "modules": [
-      {
-        "id": "preboards-01",
-        "no": "01",
-        "title": "tapp preboard",
-        "total": 200,
-        "file": "data/preboards/01.json",
-        "format": "json"
-      }
-    ]
+    "modules": []
   }
 ]
