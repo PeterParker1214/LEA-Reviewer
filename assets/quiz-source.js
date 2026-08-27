@@ -71,19 +71,28 @@
 
   function extractArrayLiteral(html, varName) { return extractLiteral(html, varName, '['); }
 
-  // A third way a quiz page stores its pictures. Instead of a path on every
-  // question, some pages keep one lookup table and have each question name a
-  // key into it — which is how a single figure sheet ("A B C D E") is shared
-  // by the five questions that ask about it:
+  // Some quiz pages keep one lookup table of pictures and have each question
+  // name a key into it, rather than repeating a path on every question. That
+  // is how a single figure sheet ("A B C D E") is shared by the five questions
+  // that ask about it:
   //
   //   const FIGURES = { "pump": "img/q0001.jpg", ... };
   //   { q: "Identify a Centrifugal Pump", fig: "pump", ... }
   //
-  // Until this existed the reader only looked for `img`, so 41 questions in
-  // Building Utilities' preboard rendered with no figure at all while asking
-  // "from the figures above…". The images were in the repository the whole
-  // time; nothing knew how to find them.
-  function extractFigures(html) { return extractLiteral(html, 'FIGURES', '{') || null; }
+  // The table is not always called the same thing — FIGURES in Building
+  // Utilities, IMAGES in the Structural exam — so every known name is tried.
+  // Getting this wrong is expensive twice over: the questions render with no
+  // figure, AND anything scanning for unused images calls the files orphans
+  // and offers to delete them. Both have happened. Add a name here rather
+  // than teaching any one page a special case.
+  var FIGURE_TABLES = ['FIGURES', 'IMAGES'];
+  function extractFigures(html) {
+    for (var i = 0; i < FIGURE_TABLES.length; i++) {
+      var t = extractLiteral(html, FIGURE_TABLES[i], '{');
+      if (t) return t;
+    }
+    return null;
+  }
 
   // Images are written relative to the quiz page that declares them
   // ("img/q0001.jpg"), but the engine renders from the site root, where that

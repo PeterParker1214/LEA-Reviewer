@@ -50,6 +50,11 @@ nearest candidates are ductile *tensile* breaks, whose fracture face is flat
 and square to the axis. The question turns entirely on the spiral surface, so
 a photograph of the wrong failure mode would have contradicted it.
 
+Note that `q0001.png` and `q0002.png` stay in `subjects/structural/quizzes/img/`
+even though Quiz 1 now uses drawings instead. The Structural *exam* shares that
+folder and still points at both through its own lookup table, so they are in
+use; only Quiz 1 stopped needing them.
+
 ### Still outstanding
 
 Seven product sheets in Building Utilities are still the review centre's:

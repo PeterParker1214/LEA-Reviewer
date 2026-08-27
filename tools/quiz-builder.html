@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiz Builder — LEA Reviewer</title>
+<style>
+:root{
+  --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-deep:#0a1520;
+  --gold:#e0a83f; --gold-bright:#f0c268;
+  --rose:#6fa8cf; --rose-bright:#8fc4ea; --muted:#8b98a5; --good:#5fbf82; --bad:#e2604a;
+  --line:rgba(238,241,233,.14);
+  --font-head:'Big Shoulders Display',Impact,sans-serif;
+  --font-body:'Space Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+:root.light{
+  --ink:#16202b; --bg-deep:#d3dee6; --bg-panel:#ffffff; --bg-panel-deep:#e9eff4;
+  --gold:#b5791f; --gold-bright:#7d520c;
+  --rose:#2f6c95; --rose-bright:#1b4a6b; --muted:#4f5d6a; --good:#206b3c; --bad:#a1372a;
+  --line:rgba(22,32,43,.16);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg-deep);color:var(--ink);font-family:var(--font-body);
+  min-height:100vh;padding:28px 16px 80px;line-height:1.5}
+.wrap{max-width:1000px;margin:0 auto}
+h1{font-family:var(--font-head);font-weight:800;font-size:34px;text-transform:uppercase;
+  letter-spacing:.01em;margin:0 0 4px}
+.sub{color:var(--muted);font-size:14px;margin-bottom:22px}
+.card{background:var(--bg-panel);border:1px solid var(--line);border-radius:12px;
+  padding:20px;margin-bottom:18px}
+.card h2{font-family:var(--font-head);text-transform:uppercase;letter-spacing:.04em;
+  font-size:19px;margin:0 0 4px;color:var(--gold-bright)}
+.card .hint{color:var(--muted);font-size:13px;margin:0 0 14px}
+label{display:block;font-size:12px;color:var(--muted);margin:10px 0 4px;
+  font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.08em}
+input[type=text],input[type=number],select,textarea{
+  background:var(--bg-panel-deep);border:1px solid var(--line);color:var(--ink);
+  padding:9px 11px;border-radius:8px;font-family:var(--font-body);font-size:14px;width:100%}
+textarea{font-family:var(--font-mono);font-size:12px;min-height:120px;resize:vertical}
+.row{display:flex;gap:14px;flex-wrap:wrap}
+.row>div{flex:1 1 190px}
+.btn{font-family:var(--font-body);cursor:pointer;border-radius:8px;border:1px solid var(--line);
+  background:var(--bg-panel-deep);color:var(--ink);padding:9px 16px;font-size:14px}
+.btn:hover{border-color:var(--gold)}
+.btn.primary{background:var(--gold);border-color:var(--gold);color:#12202b;font-weight:600}
+.btn.primary:hover{background:var(--gold-bright)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.drop{border:2px dashed var(--line);border-radius:10px;padding:26px;text-align:center;
+  color:var(--muted);font-size:14px;cursor:pointer;transition:border-color .15s}
+.drop:hover,.drop.over{border-color:var(--gold);color:var(--ink)}
+.msg{padding:10px 14px;border-radius:8px;font-size:13px;margin-top:12px}
+.msg.ok{background:rgba(95,191,130,.13);border:1px solid var(--good);color:var(--good)}
+.msg.error{background:rgba(226,96,74,.13);border:1px solid var(--bad);color:var(--bad)}
+.msg.info{background:rgba(224,168,63,.1);border:1px solid var(--line);color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px}
+th,td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;
+  letter-spacing:.09em;color:var(--muted)}
+td.n{text-align:right;font-family:var(--font-mono)}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:14px}
+.stat{background:var(--bg-panel-deep);border:1px solid var(--line);border-radius:9px;padding:11px 13px}
+.stat b{display:block;font-size:22px;font-family:var(--font-mono);color:var(--gold-bright)}
+.stat span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
+code,pre{font-family:var(--font-mono);font-size:12px}
+pre{background:var(--bg-panel-deep);border:1px solid var(--line);border-radius:8px;
+  padding:12px;overflow-x:auto}
+.was{color:var(--muted);text-decoration:line-through}
+.now{color:var(--good)}
+.skipwhy{color:var(--muted);font-size:11px;font-family:var(--font-mono)}
+.hidden{display:none!important}
+.topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+details>summary{cursor:pointer;color:var(--gold-bright);font-size:13px;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div>
+      <h1>Quiz Builder</h1>
+      <p class="sub">Restructure and re-sequence an existing question set, then export it as a
+        <code>data/&lt;subject&gt;/NN.json</code> module. Runs entirely in your browser — no upload, no internet.</p>
+    </div>
+    <button class="btn" id="themeBtn" title="Light / dark">◐</button>
+  </div>
+
+  <div class="card">
+    <h2>1 · Load questions</h2>
+    <p class="hint">Accepts a site <code>data/*.json</code> module, a blueprint quiz page
+      (<code>const QUIZ_DATA</code>), a site quiz page (<code>const QUESTIONS</code>), or pasted JSON.</p>
+    <div class="drop" id="drop">Drop a .json or .html file here, or click to choose</div>
+    <input type="file" id="file" accept=".json,.html,.htm" class="hidden">
+    <details>
+      <summary>…or paste JSON</summary>
+      <textarea id="paste" placeholder='[{"s":"Subtopic","q":"Question?","o":["a","b","c","d"],"c":0,"ref":"Source","n":"Explanation"}]'></textarea>
+      <div class="actions"><button class="btn" id="pasteBtn">Load pasted JSON</button></div>
+    </details>
+    <div id="loadMsg"></div>
+  </div>
+
+  <div class="card hidden" id="optionsCard">
+    <h2>2 · Transform</h2>
+    <p class="hint">Every option below is deterministic. Nothing here invents content or changes an answer.</p>
+
+    <div class="row">
+      <div>
+        <label>Restructure stems</label>
+        <select id="optRewrite">
+          <option value="on" selected>On — safe frames only</option>
+          <option value="off">Off — leave wording untouched</option>
+        </select>
+      </div>
+      <div>
+        <label>Shuffle choices</label>
+        <select id="optShuffleOpts">
+          <option value="on" selected>On — key moves with it</option>
+          <option value="off">Off</option>
+        </select>
+      </div>
+      <div>
+        <label>Re-sequence questions</label>
+        <select id="optReorder">
+          <option value="on" selected>On — maximise distance</option>
+          <option value="off">Off — keep source order</option>
+        </select>
+      </div>
+      <div>
+        <label>Seed</label>
+        <input type="number" id="optSeed" value="42" min="1">
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label>Module title</label>
+        <input type="text" id="metaTitle" placeholder="PD 1096 — Permits &amp; Definitions">
+      </div>
+      <div>
+        <label>Subject folder</label>
+        <input type="text" id="metaSubject" placeholder="building-laws">
+      </div>
+      <div>
+        <label>Module number</label>
+        <input type="text" id="metaNo" placeholder="05">
+      </div>
+      <div>
+        <label>Module id</label>
+        <input type="text" id="metaId" placeholder="pd1096-q5">
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" id="runBtn">Build module</button>
+      <button class="btn" id="resetBtn">Start over</button>
+    </div>
+    <div id="runMsg"></div>
+  </div>
+
+  <div class="card hidden" id="resultCard">
+    <h2>3 · Result</h2>
+    <div class="stat-grid" id="stats"></div>
+    <div id="report"></div>
+    <div class="actions">
+      <button class="btn primary" id="dlJson">Download module .json</button>
+      <button class="btn" id="copySnippet">Copy subjects.json entry</button>
+    </div>
+    <details open id="snippetBox">
+      <summary>Register it in <code>data/subjects.json</code></summary>
+      <pre id="snippet"></pre>
+      <p class="hint">Paste this into the subject's <code>modules</code> array, and put the
+        downloaded file at the <code>file</code> path shown. <code>run.html</code> picks it up
+        with the site's own design and progress tracking — no adapter needed.</p>
+    </details>
+  </div>
+
+</div>
+
+<script>
+/* ------------------------------------------------------------------ *
+ * Quiz Builder — deterministic, offline.
+ *
+ * A NOTE ON WHAT THIS DOES NOT DO.
+ * It does not paraphrase. Real paraphrase means restating an idea, which
+ * needs a language model. What a rule engine can do without wrecking the
+ * prose is change SENTENCE FRAMES - turning a question into a statement
+ * with a trailing colon, or "What is the RPF" into "Compute the RPF" - and
+ * REFUSE when the stem does not match a frame it knows. That refusal is the
+ * important part: a synonym-swapping engine would rewrite everything and
+ * make it all read like a thesaurus accident. Anything skipped is listed in
+ * the report so you can rewrite it yourself.
+ * ------------------------------------------------------------------ */
+
+const $ = id => document.getElementById(id);
+let LOADED = null;   // canonical [{s,q,o,c,ref,n}]
+let RESULT = null;
+
+/* ---------------- rng ---------------- */
+function mulberry(seed){
+  let a = seed >>> 0;
+  return function(){
+    a |= 0; a = a + 0x6D2B79F5 | 0;
+    let t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+function shuffled(arr, rnd){
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(rnd() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/* ---------------- import ---------------- */
+function balanced(text, start, open){
+  const close = open === '[' ? ']' : '}';
+  let depth = 0, i = start, inStr = false, esc = false;
+  for(; i < text.length; i++){
+    const c = text[i];
+    if(inStr){
+      if(esc) esc = false;
+      else if(c === '\\') esc = true;
+      else if(c === '"') inStr = false;
+      continue;
+    }
+    if(c === '"') inStr = true;
+    else if(c === open) depth++;
+    else if(c === close){ depth--; if(!depth) return text.slice(start, i + 1); }
+  }
+  return null;
+}
+function arrayLiteral(html, varName){
+  const re = new RegExp('(?:const|let|var)\\s+' + varName + '\\s*=\\s*\\[');
+  const m = re.exec(html);
+  if(!m) return null;
+  return balanced(html, m.index + m[0].length - 1, '[');
+}
+function parseAny(text, filename){
+  const trimmed = text.trim();
+  let arr = null, kind = '';
+  if(trimmed.startsWith('[') || trimmed.startsWith('{')){
+    arr = JSON.parse(trimmed);
+    if(!Array.isArray(arr) && Array.isArray(arr.questions)) arr = arr.questions;
+    kind = 'json';
+  } else {
+    for(const [v, k] of [['QUIZ_DATA','blueprint'],['QUESTIONS','site quiz']]){
+      const lit = arrayLiteral(text, v);
+      if(lit){ arr = JSON.parse(lit); kind = k; break; }
+    }
+  }
+  if(!Array.isArray(arr) || !arr.length)
+    throw new Error('No question array found in ' + (filename || 'that input') + '.');
+  return { rows: arr.map(canonical).filter(Boolean), kind };
+}
+/** Everything becomes the site's own {s,q,o,c,ref,n} shape. */
+function canonical(r){
+  if(!r || typeof r !== 'object') return null;
+  let q = r.q !== undefined ? r.q : r.question;
+  let opts = r.o || r.options;
+  if(!q || !Array.isArray(opts) || opts.length < 2) return null;
+  let letters = null;
+  // Blueprint options are {letter,text}. Site options are plain strings EXCEPT
+  // the templated {ref,tpl} kind ("Both A and B"), whose ref[] holds ORIGINAL
+  // option indices that run.html resolves at render time. Those objects must
+  // survive untouched, or the answer silently points somewhere else.
+  if(opts[0] && typeof opts[0] === 'object' && opts[0].text !== undefined){
+    letters = opts.map(o => o.letter);
+    opts = opts.map(o => o.text);
+  }
+  let c = r.c;
+  if(typeof c !== 'number'){
+    const corr = r.correct;
+    if(typeof corr === 'number') c = corr;
+    else if(typeof corr === 'string' && letters) c = letters.indexOf(corr);
+    else if(typeof corr === 'string') c = corr.toUpperCase().charCodeAt(0) - 65;
+  }
+  if(typeof c !== 'number' || c < 0 || c >= opts.length) return null;
+
+  let n = r.n !== undefined ? r.n : (r.explanation || '');
+  let ref = r.ref || '';
+  // Blueprint files carry the source inside the explanation as "[Source: x]".
+  const m = String(n).match(/\[Source:\s*([^\]]+)\]\s*$/i);
+  if(m){ if(!ref) ref = m[1].trim(); n = n.slice(0, m.index).trim(); }
+
+  const out = { s: r.s || r.subtopic || '', q: String(q).trim(),
+                o: opts.map(x => (x && typeof x === 'object') ? x : String(x).trim()),
+                c: c, ref: ref, n: String(n).trim() };
+  if(r.img) out.img = r.img;
+  if(r.hidden) out.hidden = true;
+  return out;
+}
+
+/* ---------------- stem restructuring ---------------- */
+/* Each rule is high-precision by design: a tight pattern, and a guard that
+   makes it decline rather than mangle. Order matters - first match wins. */
+const NUMERIC = /[0-9₱%]/;
+const lower1 = s => s ? s.charAt(0).toLowerCase() + s.slice(1) : s;
+const upper1 = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+
+const RULES = [
+  {
+    name: 'compute',
+    // "What is the PCC?" -> "Compute the PCC." Only for items that actually
+    // ask for a figure; otherwise "compute" is nonsense.
+    test: s => /^What (?:is|are) (the .+?)\?$/i.test(s) && NUMERIC.test(s),
+    apply: s => 'Compute ' + s.match(/^What (?:is|are) (the .+?)\?$/i)[1].trim() + '.'
+  },
+  {
+    name: 'nominalise',
+    // "What is the recommended fee for X?" -> "The recommended fee for X is:"
+    test: s => /^What (is|are) (the .+?)\?$/i.test(s),
+    apply: s => { const m = s.match(/^What (is|are) (the .+?)\?$/i);
+                  return upper1(m[2].trim()) + ' ' + m[1].toLowerCase() + ':'; }
+  },
+  {
+    name: 'passive-agent',
+    // "Who prepares Change Orders during construction?"
+    //   -> "Change Orders are prepared by the:"
+    test: s => /^Who (prepares|pays|issues|approves|signs|bears|shoulders) (.+?)\?$/i.test(s),
+    apply: s => { const m = s.match(/^Who (prepares|pays|issues|approves|signs|bears|shoulders) (.+?)\?$/i);
+                  const verb = { prepares:'prepared', pays:'paid', issues:'issued',
+                                 approves:'approved', signs:'signed', bears:'borne',
+                                 shoulders:'borne' }[m[1].toLowerCase()];
+                  return upper1(m[2].trim()) + ' ' + (/s$/.test(m[2].trim()) ? 'are' : 'is')
+                       + ' ' + verb + ' by the:'; }
+  },
+  {
+    name: 'when-upon',
+    // "When is the final payment released?" -> "The final payment is released upon:"
+    test: s => /^When (is|are) (.+?) (released|due|payable|paid|issued)\?$/i.test(s),
+    apply: s => { const m = s.match(/^When (is|are) (.+?) (released|due|payable|paid|issued)\?$/i);
+                  return upper1(m[2].trim()) + ' ' + m[1].toLowerCase() + ' '
+                       + m[3].toLowerCase() + ' upon:'; }
+  },
+  {
+    name: 'trailing-colon',
+    // "Travel compensation beyond X generally includes:" is already the target
+    // shape; this catches "X generally includes what?" style tails.
+    test: s => /^(.+?) (includes|covers|requires|means) what\?$/i.test(s),
+    apply: s => { const m = s.match(/^(.+?) (includes|covers|requires|means) what\?$/i);
+                  return upper1(m[1].trim()) + ' ' + m[2].toLowerCase() + ':'; }
+  }
+];
+
+function restructure(stem){
+  const s = (stem || '').trim();
+  if(!s) return { text: stem, rule: null, why: 'empty' };
+  if(s.length > 240) return { text: s, rule: null, why: 'long scenario — rewrite by hand' };
+  for(const r of RULES){
+    if(r.test(s)){
+      let out;
+      try { out = r.apply(s); } catch(e){ continue; }
+      // Guards: never emit something shorter than half the input, never
+      // double punctuation, never leave a dangling article.
+      if(!out || out.length < s.length * 0.45) continue;
+      if(/[?:.]{2,}$/.test(out)) continue;
+      // Reject a dangling article or preposition - except "by the:", which is
+      // the natural ending for an agent question ("...are prepared by the:").
+      if(/\b(?:a|an|of|for|to)\s*[:.]$/i.test(out)) continue;
+      if(/\bthe\s*[:.]$/i.test(out) && !/\bby the\s*[:.]$/i.test(out)) continue;
+      return { text: out, rule: r.name, why: null };
+    }
+  }
+  return { text: s, rule: null, why: 'no safe frame matched' };
+}
+
+/* ---------------- re-sequencing ---------------- */
+function scoreOrder(perm, minGap){
+  const n = perm.length, where = new Array(n);
+  perm.forEach((orig, pos) => { where[orig] = pos; });
+  let close = 0, sum = 0, adj = 0;
+  for(let i = 0; i < n; i++){
+    const d = Math.abs(where[i] - i);
+    sum += d; if(d < minGap) close++;
+    if(i < n - 1 && Math.abs(where[i] - where[i + 1]) === 1) adj++;
+  }
+  return { bad: close * 10 + adj * 6 - sum / n,
+           mean: +(sum / n).toFixed(1),
+           min: Math.min(...perm.map((o, p) => Math.abs(p - where[o]))),
+           close, adj };
+}
+function bestOrder(n, rnd){
+  if(n < 3) return { perm: [...Array(n).keys()], stats: scoreOrder([...Array(n).keys()], 1) };
+  const minGap = Math.max(2, Math.floor(n / 10));
+  let best = null, bestBad = Infinity, bestStats = null;
+  const gcd = (a, b) => b ? gcd(b, a % b) : a;
+  for(let t = 0; t < 400; t++){
+    let perm;
+    if(t % 2 === 0){
+      const step = 2 + Math.floor(rnd() * Math.max(1, n - 2));
+      if(gcd(step, n) !== 1) continue;
+      const rot = Math.floor(rnd() * n);
+      perm = [...Array(n).keys()].map(j => (rot + j * step) % n);
+    } else {
+      perm = shuffled([...Array(n).keys()], rnd);
+    }
+    const st = scoreOrder(perm, minGap);
+    if(st.bad < bestBad){ bestBad = st.bad; best = perm; bestStats = st; }
+  }
+  return { perm: best, stats: bestStats };
+}
+
+/* ---------------- build ---------------- */
+function build(){
+  const rnd = mulberry(parseInt($('optSeed').value, 10) || 42);
+  const doRewrite  = $('optRewrite').value === 'on';
+  const doShuffle  = $('optShuffleOpts').value === 'on';
+  const doReorder  = $('optReorder').value === 'on';
+
+  const rewritten = [], skipped = [];
+  let rows = LOADED.map((r, i) => {
+    const out = Object.assign({}, r);
+    if(doRewrite){
+      const res = restructure(r.q);
+      if(res.rule){ out.q = res.text; rewritten.push({ i, from: r.q, to: res.text, rule: res.rule }); }
+      else skipped.push({ i, q: r.q, why: res.why });
+    }
+    if(doShuffle && Array.isArray(out.o) && out.o.length > 1){
+      const idx = shuffled([...Array(out.o.length).keys()], rnd);  // newPos -> oldPos
+      const oldToNew = new Array(idx.length);
+      idx.forEach((oldPos, newPos) => { oldToNew[oldPos] = newPos; });
+      out.o = idx.map(k => {
+        const opt = r.o[k];
+        if(opt && typeof opt === 'object' && Array.isArray(opt.ref)){
+          // ref[] indexes the option list. Rebase it onto the new positions,
+          // otherwise "Both A and B" ends up naming the wrong two options.
+          const copy = Object.assign({}, opt);
+          copy.ref = opt.ref.map(x => oldToNew[x]).sort((a, b) => a - b);
+          return copy;
+        }
+        return opt;
+      });
+      out.c = oldToNew[r.c];
+    }
+    return out;
+  });
+
+  let stats = null;
+  if(doReorder){
+    const { perm, stats: st } = bestOrder(rows.length, rnd);
+    const seq = new Array(rows.length);
+    perm.forEach((orig, pos) => { seq[pos] = rows[orig]; });
+    rows = seq; stats = st;
+  }
+
+  // Integrity: after all that moving, the key must still select the same
+  // answer it did on the way in. Templated options are compared by the SET of
+  // options they point at, since their indices are meant to change.
+  const answerOf = (row) => {
+    const opt = row.o[row.c];
+    if(opt && typeof opt === 'object' && Array.isArray(opt.ref))
+      return opt.tpl + ':' + opt.ref.map(i => JSON.stringify(row.o[i])).sort().join('|');
+    return JSON.stringify(opt);
+  };
+  let checked = 0, keyOk = rows.length === LOADED.length;
+  if(keyOk){
+    const pool = LOADED.slice();
+    for(const r of rows){
+      const k = pool.findIndex(x => x.n === r.n && x.ref === r.ref && x.q.length === r.q.length
+                                    || (x.n === r.n && x.ref === r.ref));
+      if(k === -1) continue;
+      const src = pool.splice(k, 1)[0];
+      checked++;
+      if(answerOf(src) !== answerOf(r)){ keyOk = false; break; }
+    }
+  }
+
+  const templated = rows.filter(r => r.o.some(o => o && typeof o === 'object')).length;
+  RESULT = { rows, rewritten, skipped, stats, keyOk, checked, templated };
+  render();
+}
+
+function render(){
+  const { rows, rewritten, skipped, stats, keyOk, checked, templated } = RESULT;
+  const subs = new Set(rows.map(r => r.s).filter(Boolean));
+  $('stats').innerHTML =
+    stat(rows.length, 'questions') +
+    stat(subs.size || '—', 'subtopics') +
+    stat(rewritten.length, 'stems restructured') +
+    stat(skipped.length, 'left as written') +
+    (stats ? stat(stats.mean, 'mean displacement') + stat(stats.adj, 'adjacent kept') : '');
+
+  let html = '';
+  html += '<div class="msg ' + (keyOk ? 'ok' : 'error') + '">' +
+    (keyOk ? 'Answer key verified on ' + checked + ' of ' + rows.length +
+             ' question(s) — each still selects the same answer it did before.' +
+             (templated ? ' ' + templated + ' templated "Both A and B" option(s) had their ' +
+                          'index references rebased onto the new order.' : '')
+           : 'Answer key mismatch detected. Do not ship this file — reload and retry.') + '</div>';
+
+  if(rewritten.length){
+    html += '<details open><summary>' + rewritten.length + ' stem(s) restructured</summary><table>' +
+      '<tr><th>#</th><th>Before → after</th><th>Rule</th></tr>' +
+      rewritten.map(r => '<tr><td class="n">' + (r.i + 1) + '</td><td>' +
+        '<div class="was">' + esc(r.from) + '</div><div class="now">' + esc(r.to) + '</div></td>' +
+        '<td class="skipwhy">' + r.rule + '</td></tr>').join('') + '</table></details>';
+  }
+  if(skipped.length){
+    html += '<details><summary>' + skipped.length +
+      ' stem(s) left exactly as written — these still read as the source did</summary>' +
+      '<p class="hint">A rule engine can only restructure frames it recognises. These need a ' +
+      'real rewrite by hand (or by an assistant) if that matters to you.</p><table>' +
+      '<tr><th>#</th><th>Stem</th><th>Why</th></tr>' +
+      skipped.map(r => '<tr><td class="n">' + (r.i + 1) + '</td><td>' + esc(r.q) +
+        '</td><td class="skipwhy">' + esc(r.why) + '</td></tr>').join('') + '</table></details>';
+  }
+  $('report').innerHTML = html;
+
+  const subject = ($('metaSubject').value || 'subject').trim();
+  const no = ($('metaNo').value || '01').trim();
+  const entry = {
+    id: ($('metaId').value || 'module-' + no).trim(),
+    no: no,
+    title: ($('metaTitle').value || 'Untitled Module').trim(),
+    total: rows.length,
+    file: 'data/' + subject + '/' + no + '.json',
+    format: 'json'
+  };
+  $('snippet').textContent = JSON.stringify(entry, null, 2);
+  $('resultCard').classList.remove('hidden');
+  $('resultCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+const stat = (v, l) => '<div class="stat"><b>' + v + '</b><span>' + l + '</span></div>';
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]));
+
+/* ---------------- wiring ---------------- */
+function loadText(text, name){
+  try{
+    const { rows, kind } = parseAny(text, name);
+    if(!rows.length) throw new Error('Parsed the file but found no usable questions.');
+    LOADED = rows;
+    const subs = new Set(rows.map(r => r.s).filter(Boolean));
+    $('loadMsg').innerHTML = '<div class="msg ok">Loaded ' + rows.length +
+      ' question(s)' + (subs.size ? ' across ' + subs.size + ' subtopic(s)' : '') +
+      ' from a ' + kind + ' source.' +
+      (subs.size ? '' : ' <em>No subtopic field found — the module will have one flat group.</em>') +
+      '</div>';
+    $('optionsCard').classList.remove('hidden');
+    if(!$('metaTitle').value && name) $('metaTitle').value = name.replace(/\.(json|html?)$/i, '');
+  }catch(e){
+    $('loadMsg').innerHTML = '<div class="msg error">' + esc(e.message) + '</div>';
+  }
+}
+$('drop').addEventListener('click', () => $('file').click());
+$('drop').addEventListener('dragover', e => { e.preventDefault(); $('drop').classList.add('over'); });
+$('drop').addEventListener('dragleave', () => $('drop').classList.remove('over'));
+$('drop').addEventListener('drop', e => {
+  e.preventDefault(); $('drop').classList.remove('over');
+  const f = e.dataTransfer.files[0]; if(f) readFile(f);
+});
+$('file').addEventListener('change', e => { const f = e.target.files[0]; if(f) readFile(f); });
+function readFile(f){
+  const r = new FileReader();
+  r.onload = () => loadText(r.result, f.name);
+  r.readAsText(f);
+}
+$('pasteBtn').addEventListener('click', () => loadText($('paste').value, 'pasted JSON'));
+$('runBtn').addEventListener('click', () => {
+  try{ build(); }
+  catch(e){ $('runMsg').innerHTML = '<div class="msg error">' + esc(e.message) + '</div>'; }
+});
+$('resetBtn').addEventListener('click', () => {
+  LOADED = RESULT = null;
+  $('optionsCard').classList.add('hidden');
+  $('resultCard').classList.add('hidden');
+  $('loadMsg').innerHTML = ''; $('paste').value = '';
+});
+$('dlJson').addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(RESULT.rows, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = (($('metaNo').value || '01').trim()) + '.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+});
+$('copySnippet').addEventListener('click', () => {
+  navigator.clipboard.writeText($('snippet').textContent).then(
+    () => { $('copySnippet').textContent = 'Copied'; setTimeout(() => $('copySnippet').textContent = 'Copy subjects.json entry', 1400); },
+    () => {}
+  );
+});
+$('themeBtn').addEventListener('click', () => {
+  document.documentElement.classList.toggle('light');
+});
+</script>
+</body>
+</html>
