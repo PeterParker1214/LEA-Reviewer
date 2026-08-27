@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 300" role="img"
+     aria-label="Bending moment diagram for a continuous beam between supports C and D, with negative moment over the supports, positive moment at midspan, and the two points of inflection where the moment crosses zero">
+  <!-- Bending moment diagram between two supports. Drawn for this app.
+       The two zero crossings are the answer to the question, so they are the
+       thing the drawing points at. -->
+  <style>
+    .beam{ fill:#b9c6d2; stroke:#1b2a38; stroke-width:2.2; }
+    .sup{ fill:#8a5a1c; stroke:#1b2a38; stroke-width:1.8; }
+    .axis{ fill:none; stroke:#1b2a38; stroke-width:2; }
+    .neg{ fill:#cbd7c2; stroke:#1b2a38; stroke-width:2; }
+    .pos{ fill:#b9c6d2; stroke:#1b2a38; stroke-width:2; }
+    .drop{ fill:none; stroke:#5d6f80; stroke-width:1.4; stroke-dasharray:5 4; }
+    .call{ fill:none; stroke:#8a1f14; stroke-width:1.8; }
+    .t{ font-family:Georgia,'Times New Roman',serif; font-size:17px; font-weight:700; fill:#1b2a38; text-anchor:middle; }
+    .ti{ font-family:Georgia,'Times New Roman',serif; font-size:15px; font-style:italic; font-weight:700; fill:#8a1f14; text-anchor:middle; }
+    .cap{ font-family:Georgia,'Times New Roman',serif; font-size:13px; fill:#8a1f14; text-anchor:middle; }
+    .lab{ font-family:Georgia,'Times New Roman',serif; font-size:13px; fill:#5d6f80; text-anchor:middle; }
+  </style>
+
+  <rect width="620" height="300" fill="#f5f3ed"/>
+
+  <!-- the beam and its two supports -->
+  <rect class="beam" x="60" y="36" width="500" height="20"/>
+  <rect class="sup" x="96" y="56" width="22" height="12"/>
+  <rect class="sup" x="502" y="56" width="22" height="12"/>
+  <text class="t" x="86" y="82">C</text>
+  <text class="t" x="534" y="82">D</text>
+
+  <!-- zero axis -->
+  <line class="axis" x1="40" y1="196" x2="580" y2="196"/>
+
+  <!-- negative moment over each support, above the axis -->
+  <path class="neg" d="M40 196 Q 82 196 107 132 Q 132 196 107 196 z"/>
+  <path class="neg" d="M580 196 Q 538 196 513 132 Q 488 196 513 196 z"/>
+
+  <!-- positive sag between the inflection points, below the axis -->
+  <path class="pos" d="M168 196 Q 310 292 452 196 z"/>
+
+  <!-- the supports dropped onto the diagram -->
+  <line class="drop" x1="107" y1="68" x2="107" y2="132"/>
+  <line class="drop" x1="513" y1="68" x2="513" y2="132"/>
+
+  <!-- the zero crossings: what the question is asking for -->
+  <circle cx="168" cy="196" r="4.5" fill="#8a1f14"/>
+  <circle cx="452" cy="196" r="4.5" fill="#8a1f14"/>
+  <text class="ti" x="164" y="216">R</text>
+  <text class="ti" x="456" y="216">S</text>
+  <path class="call" d="M212 152 Q 190 152 172 190"/>
+  <path class="call" d="M408 152 Q 430 152 448 190"/>
+  <text class="cap" x="310" y="148">points of inflection — zero moment</text>
+
+  <text class="lab" x="310" y="286">bending moment diagram</text>
+</svg>

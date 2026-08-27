@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" role="img"
+     aria-label="Two planks pulled apart by a bolt in single shear, and three planks pulled apart by a bolt in double shear">
+  <!-- A bolted lap joint pulled apart. Drawn for this app.
+       Top: two planks, one shear plane — single shear.
+       Bottom: three planks, two shear planes — double shear.
+       The shear planes are drawn as dashed lines because they are what the
+       question is actually about; the source figure left them implied. -->
+  <style>
+    .plank{ fill:#d8b98a; stroke:#1b2a38; stroke-width:2.2; }
+    .bolt{ fill:#c3ccd4; stroke:#1b2a38; stroke-width:2; }
+    .pull{ fill:#a8382c; }
+    .plane{ fill:none; stroke:#8a1f14; stroke-width:2; stroke-dasharray:6 4; }
+    .t{ font-family:Georgia,'Times New Roman',serif; font-size:14px; fill:#1b2a38; text-anchor:middle; }
+    .tp{ font-family:Georgia,'Times New Roman',serif; font-size:12px; fill:#8a1f14; text-anchor:middle; }
+  </style>
+  <rect width="520" height="300" fill="#f5f3ed"/>
+
+  <!-- ===== single shear ===== -->
+  <g>
+    <!-- upper plank runs to the right, lower plank to the left; they lap -->
+    <rect class="plank" x="228" y="62" width="184" height="26"/>
+    <rect class="plank" x="108" y="88" width="184" height="26"/>
+    <!-- bolt through the lap -->
+    <rect class="bolt" x="248" y="34" width="34" height="18"/>
+    <rect class="bolt" x="254" y="52" width="22" height="80"/>
+    <!-- one shear plane, where the two planks slide past each other -->
+    <line class="plane" x1="232" y1="88" x2="298" y2="88"/>
+    <text class="tp" x="330" y="105">one shear plane</text>
+    <!-- the pull -->
+    <path class="pull" d="M96 101 L60 84 L60 94 L18 94 L18 108 L60 108 L60 118 z"/>
+    <path class="pull" d="M424 75 L460 58 L460 68 L502 68 L502 82 L460 82 L460 92 z"/>
+  </g>
+  <text class="t" x="260" y="152">Single shear</text>
+
+  <!-- ===== double shear ===== -->
+  <g>
+    <rect class="plank" x="108" y="196" width="184" height="24"/>
+    <rect class="plank" x="228" y="220" width="184" height="24"/>
+    <rect class="plank" x="108" y="244" width="184" height="24"/>
+    <rect class="bolt" x="248" y="170" width="34" height="18"/>
+    <rect class="bolt" x="254" y="188" width="22" height="96"/>
+    <!-- two shear planes -->
+    <line class="plane" x1="232" y1="220" x2="298" y2="220"/>
+    <line class="plane" x1="232" y1="244" x2="298" y2="244"/>
+    <text class="tp" x="342" y="200">two shear planes</text>
+    <path class="pull" d="M96 208 L60 191 L60 201 L18 201 L18 215 L60 215 L60 225 z"/>
+    <path class="pull" d="M96 256 L60 239 L60 249 L18 249 L18 263 L60 263 L60 273 z"/>
+    <path class="pull" d="M424 232 L460 215 L460 225 L502 225 L502 239 L460 239 L460 249 z"/>
+  </g>
+  <text class="t" x="260" y="290">Double shear</text>
+</svg>

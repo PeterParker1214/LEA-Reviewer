@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 892 176" role="img"
+     aria-label="Three path-space relationships: pass through spaces, pass by spaces, terminate in a space">
+  <!--
+    Path-space relationships, drawn for this app. Original work.
+
+    A — pass THROUGH a space: the path cuts across it, creating patterns of
+        rest and movement inside.
+    B — pass BY spaces: the path keeps its own integrity and the spaces are
+        reached off it, which is what makes the configuration flexible.
+    C — TERMINATE in a space: the path ends at the space, the approach used
+        for functionally or symbolically important rooms.
+
+    Lettering matches the stored answer key, so no answer had to change.
+  -->
+  <style>
+    .plate{ fill:#f5f3ed; stroke:#c3ccd4; stroke-width:1; }
+    .ink{ fill:none; stroke:#1b2a38; stroke-width:2.2; stroke-linejoin:round; }
+    .cell{ fill:#ffffff; stroke:#1b2a38; stroke-width:2; }
+    .solid{ fill:#b9c6d2; stroke:#1b2a38; stroke-width:2.2; stroke-linejoin:round; }
+    .path{ fill:none; stroke:#1b2a38; stroke-width:3.4; stroke-linecap:round; }
+    .lbl{ font-family:Georgia,'Times New Roman',serif; font-size:17px; font-weight:700;
+          fill:#1b2a38; text-anchor:middle; }
+  </style>
+
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1b2a38"/>
+    </marker>
+    <marker id="ar2" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M10 0 L0 5 L10 10 z" fill="#1b2a38"/>
+    </marker>
+  </defs>
+
+  <rect width="892" height="176" fill="#f5f3ed"/>
+
+  <!-- A — the path passes through the space -->
+  <text class="lbl" x="150" y="22">A</text>
+  <rect class="plate" x="14" y="32" width="272" height="130"/>
+  <rect class="solid" x="104" y="60" width="92" height="74"/>
+  <line class="path" x1="34" y1="97" x2="266" y2="97" marker-start="url(#ar2)" marker-end="url(#ar)"/>
+  <!-- the rest that the crossing creates, either side of the path -->
+  <rect class="cell" x="120" y="68" width="26" height="20"/>
+  <rect class="cell" x="154" y="106" width="26" height="20"/>
+
+  <!-- B — the path passes by the spaces -->
+  <text class="lbl" x="446" y="22">B</text>
+  <rect class="plate" x="310" y="32" width="272" height="130"/>
+  <line class="path" x1="330" y1="97" x2="562" y2="97" marker-start="url(#ar2)" marker-end="url(#ar)"/>
+  <g>
+    <rect class="cell" x="352" y="46" width="46" height="36"/>
+    <rect class="cell" x="414" y="46" width="46" height="36"/>
+    <rect class="cell" x="476" y="46" width="46" height="36"/>
+    <rect class="cell" x="382" y="112" width="46" height="36"/>
+    <rect class="cell" x="446" y="112" width="46" height="36"/>
+  </g>
+  <!-- short spurs off the path: the spaces are entered from it, not crossed -->
+  <g class="ink">
+    <line x1="375" y1="82" x2="375" y2="97"/>
+    <line x1="437" y1="82" x2="437" y2="97"/>
+    <line x1="499" y1="82" x2="499" y2="97"/>
+    <line x1="405" y1="97" x2="405" y2="112"/>
+    <line x1="469" y1="97" x2="469" y2="112"/>
+  </g>
+
+  <!-- C — the path terminates in the space -->
+  <text class="lbl" x="742" y="22">C</text>
+  <rect class="plate" x="606" y="32" width="272" height="130"/>
+  <line class="path" x1="626" y1="97" x2="768" y2="97" marker-start="url(#ar2)"/>
+  <rect class="solid" x="768" y="52" width="90" height="90"/>
+  <circle cx="813" cy="97" r="16" fill="#ffffff" stroke="#1b2a38" stroke-width="2"/>
+</svg>

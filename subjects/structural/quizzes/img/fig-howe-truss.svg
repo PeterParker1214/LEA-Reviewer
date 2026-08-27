@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 300" role="img"
+     aria-label="A double Howe roof truss loaded with 20 kN at each interior joint on the top and bottom chords, with the extreme joints unloaded and one vertical web member marked A">
+  <!--
+    Double Howe truss. Drawn for this app.
+
+    This replaces a stock illustration that showed the truss and nothing else:
+    no loads, and no mark on "the indicated bar A" that the question asks
+    about. The reader had no way to answer it. This draws what the question
+    actually describes — 20 kN at every interior joint on both chords, the two
+    extreme joints unloaded — and marks bar A.
+
+    A is the vertical at the first interior bottom joint. Only the two bottom
+    chord segments and this vertical meet there, so summing vertical forces at
+    that joint gives the vertical exactly the 20 kN hanging from it, in
+    tension. That is the stored answer.
+  -->
+  <style>
+    .chord{ fill:none; stroke:#1b2a38; stroke-width:4; stroke-linejoin:round; stroke-linecap:round; }
+    .web{ fill:none; stroke:#1b2a38; stroke-width:2.4; stroke-linecap:round; }
+    .barA{ fill:none; stroke:#a8382c; stroke-width:5; stroke-linecap:round; }
+    .joint{ fill:#f5f3ed; stroke:#1b2a38; stroke-width:2; }
+    .load{ fill:none; stroke:#1b2a38; stroke-width:1.8; }
+    .sup{ fill:#b9c6d2; stroke:#1b2a38; stroke-width:2; }
+    .t{ font-family:Georgia,'Times New Roman',serif; font-size:13px; fill:#1b2a38; text-anchor:middle; }
+    .ta{ font-family:Georgia,'Times New Roman',serif; font-size:17px; font-weight:700; font-style:italic; fill:#a8382c; text-anchor:middle; }
+    .cap{ font-family:Georgia,'Times New Roman',serif; font-size:13px; fill:#5d6f80; text-anchor:middle; }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1b2a38"/>
+    </marker>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#5d6f80" stroke-width="1.4"/>
+    </pattern>
+  </defs>
+
+  <rect width="620" height="300" fill="#f5f3ed"/>
+
+  <!-- loads on the top chord: 20 kN at each interior joint -->
+  <g class="load" marker-end="url(#a)">
+    <line x1="143" y1="112" x2="143" y2="140"/>
+    <line x1="227" y1="68" x2="227" y2="96"/>
+    <line x1="310" y1="26" x2="310" y2="53"/>
+    <line x1="393" y1="68" x2="393" y2="96"/>
+    <line x1="477" y1="112" x2="477" y2="140"/>
+  </g>
+  <text class="t" x="310" y="18">20 kN at every interior joint, top and bottom</text>
+
+  <!-- chords -->
+  <path class="chord" d="M60 190 L310 60 L560 190"/>
+  <path class="chord" d="M60 190 L560 190"/>
+
+  <!-- web: verticals at each interior panel point -->
+  <g class="web">
+    <line x1="227" y1="103" x2="227" y2="190"/>
+    <line x1="310" y1="60"  x2="310" y2="190"/>
+    <line x1="393" y1="103" x2="393" y2="190"/>
+    <line x1="477" y1="147" x2="477" y2="190"/>
+    <!-- Howe diagonals, sloping down toward the centre -->
+    <line x1="143" y1="147" x2="227" y2="190"/>
+    <line x1="227" y1="103" x2="310" y2="190"/>
+    <line x1="477" y1="147" x2="393" y2="190"/>
+    <line x1="393" y1="103" x2="310" y2="190"/>
+  </g>
+
+  <!-- bar A: the vertical at the first interior bottom joint -->
+  <line class="barA" x1="143" y1="147" x2="143" y2="190"/>
+  <text class="ta" x="124" y="174">A</text>
+
+  <!-- loads on the bottom chord -->
+  <g class="load" marker-end="url(#a)">
+    <line x1="143" y1="204" x2="143" y2="230"/>
+    <line x1="227" y1="204" x2="227" y2="230"/>
+    <line x1="310" y1="204" x2="310" y2="230"/>
+    <line x1="393" y1="204" x2="393" y2="230"/>
+    <line x1="477" y1="204" x2="477" y2="230"/>
+  </g>
+
+  <!-- joints -->
+  <g class="joint">
+    <circle cx="143" cy="147" r="4"/><circle cx="227" cy="103" r="4"/>
+    <circle cx="310" cy="60"  r="4"/><circle cx="393" cy="103" r="4"/>
+    <circle cx="477" cy="147" r="4"/>
+    <circle cx="143" cy="190" r="4"/><circle cx="227" cy="190" r="4"/>
+    <circle cx="310" cy="190" r="4"/><circle cx="393" cy="190" r="4"/>
+    <circle cx="477" cy="190" r="4"/>
+    <circle cx="60"  cy="190" r="4"/><circle cx="560" cy="190" r="4"/>
+  </g>
+
+  <!-- supports at the two unloaded extreme joints -->
+  <path class="sup" d="M60 192 L44 220 L76 220 z"/>
+  <rect x="36" y="220" width="48" height="10" fill="url(#hatch)" stroke="#5d6f80" stroke-width="1.4"/>
+  <path class="sup" d="M560 192 L544 216 L576 216 z"/>
+  <circle class="sup" cx="551" cy="222" r="6"/>
+  <circle class="sup" cx="569" cy="222" r="6"/>
+  <rect x="536" y="228" width="48" height="10" fill="url(#hatch)" stroke="#5d6f80" stroke-width="1.4"/>
+
+  <text class="cap" x="310" y="268">Double Howe truss — extreme joints unloaded</text>
+</svg>
