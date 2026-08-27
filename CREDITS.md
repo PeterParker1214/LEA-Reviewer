@@ -55,6 +55,21 @@ even though Quiz 1 now uses drawings instead. The Structural *exam* shares that
 folder and still points at both through its own lookup table, so they are in
 use; only Quiz 1 stopped needing them.
 
+### Replacing them yourself
+
+The admin's question editor now takes a picture directly: click, drop a file,
+or focus the box and press Ctrl+V. There are two slots per question — one for
+the figure shown with the question, one for the figure shown with the
+explanation after it is answered.
+
+Pasted pictures are stored inline in the question rather than as files. They
+are shrunk to 1400px and encoded as whichever of PNG or JPEG comes out
+smaller, which is usually a few tens of kilobytes. Being inline, they cannot
+be orphaned by a sweep for unused files — the failure that has now bitten this
+project twice.
+
+Provenance is yours to record here when you add one.
+
 ### Still outstanding
 
 Seven product sheets in Building Utilities are still the review centre's:

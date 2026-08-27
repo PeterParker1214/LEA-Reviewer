@@ -14,7 +14,8 @@
 <!-- The same reader the app uses, so what the editor sees is exactly what a
      reader gets. Its balanced-bracket scan also survives question text that a
      regex would truncate. -->
-<script src="assets/quiz-source.js?v=4"></script>
+<script src="assets/quiz-source.js?v=5"></script>
+<script src="assets/image-intake.js?v=1"></script>
 <script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -73,6 +74,24 @@
   /* Left free to wrap. Some subject IDs run to 35 characters, and nowrap
      pushed the whole page sideways on a narrow window. */
   .subj-meta{font-size:11px;color:var(--muted);font-family:'IBM Plex Mono',monospace;}
+
+  /* ===== picture on a question ===== */
+  .q-img{
+    display:flex; align-items:center; gap:12px; padding:10px;
+    border:2px dashed var(--line); border-radius:10px; cursor:pointer;
+    background:var(--bg-panel-2); margin-bottom:4px;
+  }
+  .q-img:hover, .q-img:focus{ border-color:var(--gold); outline:none; }
+  .q-img.over{ border-color:var(--gold); background:rgba(224,168,63,0.08); }
+  .q-img img{ max-width:150px; max-height:90px; border-radius:6px; display:block; background:#fff; }
+  .q-img .q-img-say{ flex:1; font-size:12px; color:var(--muted); line-height:1.6; }
+  .q-img .q-img-say b{ color:var(--ink); font-weight:600; }
+  .q-img .q-img-say .warn{ color:var(--bad); }
+  .q-img-drop{ margin-bottom:10px; }
+  .q-img-drop .drop-x{
+    background:none; border:none; color:var(--bad); cursor:pointer; font-size:11px;
+    text-transform:uppercase; letter-spacing:.05em; padding:4px 8px; flex-shrink:0;
+  }
   .row:last-child{border-bottom:none;}
   input[type="text"], textarea, select{
     background:var(--bg-panel-deep); border:1px solid var(--line); color:var(--ink);
@@ -286,6 +305,7 @@ function quizDataToEditor(rows){
       // rendering from the site root; rebasing here and writing back would
       // double the prefix on every save.
       img: row.img,
+      nimg: row.nimg,
       hidden: !!row.hidden
     };
   });
@@ -325,6 +345,7 @@ function editorToQuizData(edited, originals){
     // block on the subject page.
     if(q.s) row.s = q.s; else delete row.s;
     if(q.img) row.img = q.img; else delete row.img;
+    if(q.nimg) row.nimg = q.nimg; else delete row.nimg;
     if(q.hidden) row.hidden = true; else delete row.hidden;
     return row;
   });
@@ -734,6 +755,39 @@ function renderQuizEditor(path){
 // Collapsed by default (5b) — a module can have 200+ questions, and opening
 // every one as a full form made finding the reported one mean scrolling
 // past all the rest. Each row expands to the full q-card in place.
+// One picture slot. `field` is 'img' for the question's figure or 'nimg' for
+// the explanation's. A value that is not a data: URI is a path into the
+// module's own img/ folder — those are shown but left alone, since replacing
+// one would affect every question that shares the file.
+function imgFieldHtml(i, field, value){
+  const isData = typeof value === 'string' && value.indexOf('data:') === 0;
+  const has = !!value;
+  const preview = has
+    ? '<img src="' + escapeHtml(isData ? value : resolveImgPath(value)) + '" alt="">'
+    : '';
+  const say = has
+    ? (isData
+        ? '<b>Pasted image.</b><br>Click, drop or paste to replace it.'
+        : '<b>' + escapeHtml(String(value)) + '</b><br>A file in the module folder, shared with any other question using it. Click, drop or paste to replace it on this question only.')
+    : '<b>No figure.</b><br>Click to browse, drop a file here, or focus this box and press Ctrl+V.';
+  return `
+    <div class="q-img-drop">
+      <div class="q-img" data-imgfield="${field}" data-idx="${i}">
+        ${preview}
+        <div class="q-img-say" data-say>${say}</div>
+        ${has ? `<button class="drop-x" data-imgclear="${field}" data-idx="${i}">Remove</button>` : ''}
+      </div>
+    </div>`;
+}
+
+// A stored path is relative to the quiz file; the admin previews from the repo
+// root, so it needs the same rebasing the app does.
+function resolveImgPath(v){
+  if(!currentFilePath || /^(data:|https?:|\/)/.test(v)) return v;
+  const slash = currentFilePath.lastIndexOf('/');
+  return slash === -1 ? v : currentFilePath.slice(0, slash + 1) + v;
+}
+
 function renderQuestionsList(){
   const listEl = document.getElementById('questionsList');
   const reportCounts = reportCountsForCurrentFile();
@@ -770,10 +824,14 @@ function renderQuestionsList(){
               : `<input type="text" value="Auto-generated (${escapeHtml(opt.tpl || '')}) — not editable here" disabled title="This option is computed from the others at run time and can't be edited as text.">`}
           `).join('')}
         </div>
+        <div class="field-label">Figure shown with the question (optional)</div>
+        ${imgFieldHtml(i, 'img', q.img)}
         <div class="field-label">Reference (optional)</div>
         <input type="text" data-field="ref" data-idx="${i}" value="${escapeHtml(q.ref || '')}">
         <div class="field-label">Explanation note (optional)</div>
         <textarea data-field="n" data-idx="${i}" rows="2">${escapeHtml(q.n || '')}</textarea>
+        <div class="field-label">Figure shown with the explanation (optional)</div>
+        ${imgFieldHtml(i, 'nimg', q.nimg)}
         <div class="field-label">Solution steps (optional — one per line)</div>
         <textarea data-field="steps" data-idx="${i}" rows="3">${escapeHtml(stepsVal)}</textarea>
         <label class="filter-row" style="margin-top:10px;">
@@ -784,6 +842,41 @@ function renderQuestionsList(){
       </div>
     `;
   }).join('');
+
+  // Picture slots. Re-rendering the whole list on every change would collapse
+  // the card being edited, so the box updates itself in place.
+  listEl.querySelectorAll('.q-img').forEach(box => {
+    const idx = +box.dataset.idx;
+    const field = box.dataset.imgfield;
+    const say = box.querySelector('[data-say]');
+    LEAImageIntake.attach(box, {
+      onStart(){ say.innerHTML = 'Working…'; },
+      onError(msg){ say.innerHTML = '<span class="warn">' + escapeHtml(msg) + '</span>'; },
+      onImage(res){
+        currentQuestions[idx][field] = res.dataUrl;
+        let note = '<b>Pasted image.</b> ' + res.width + '×' + res.height + ' ' + res.type +
+                   ', ' + LEAImageIntake.readable(res.bytes) +
+                   (res.scaled ? ' (shrunk to fit)' : '');
+        if(res.heavy){
+          note += '<br><span class="warn">That is large for a question — it is stored ' +
+                  'inside the module file, so a few of these add up. Crop it if you can.</span>';
+        }
+        note += '<br>Remember to press <b>Save to site</b>.';
+        let img = box.querySelector('img');
+        if(!img){ img = document.createElement('img'); box.insertBefore(img, say); }
+        img.src = res.dataUrl;
+        say.innerHTML = note;
+        if(!box.querySelector('.drop-x')) renderQuestionsList();
+      }
+    });
+  });
+  listEl.querySelectorAll('button[data-imgclear]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();   // the box itself opens a file picker on click
+      delete currentQuestions[+btn.dataset.idx][btn.dataset.imgclear];
+      renderQuestionsList();
+    });
+  });
 
   listEl.querySelectorAll('.q-row').forEach(row => {
     row.addEventListener('click', () => { expandedQIdx.add(+row.dataset.idx); renderQuestionsList(); });
