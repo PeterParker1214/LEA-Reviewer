@@ -9,17 +9,17 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <title>LEA Reviewer — Admin</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/lea-confirm.js?v=9"></script>
-<script src="assets/icons.js?v=9"></script>
+<script src="assets/lea-confirm.js?v=10"></script>
+<script src="assets/icons.js?v=10"></script>
 <!-- The same reader the app uses, so what the editor sees is exactly what a
      reader gets. Its balanced-bracket scan also survives question text that a
      regex would truncate. -->
-<script src="assets/quiz-source.js?v=9"></script>
-<script src="assets/quiz-rework.js?v=9"></script>
-<script src="assets/quiz-reframe-ai.js?v=9"></script>
-<script src="assets/docx-quiz.js?v=9"></script>
-<script src="assets/image-intake.js?v=9"></script>
-<script src="assets/theme.js?v=9" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=10"></script>
+<script src="assets/quiz-rework.js?v=10"></script>
+<script src="assets/quiz-reframe-ai.js?v=10"></script>
+<script src="assets/docx-quiz.js?v=10"></script>
+<script src="assets/image-intake.js?v=10"></script>
+<script src="assets/theme.js?v=10" data-alt-class="light-mode" data-default-is="dark"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -188,6 +188,7 @@
   .rw-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;}
   .rw-table th,.rw-table td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
   .rw-table th{font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);font-weight:600;}
+  .rw-pre{background:var(--bg-panel-deep);border:1px solid var(--line);border-radius:8px;padding:10px;overflow-x:auto;font-size:12px;font-family:var(--font-mono);}
   #tab-rework details{margin-top:12px;}
   #tab-rework details>summary{cursor:pointer;color:var(--gold-bright);font-size:13px;}
 
@@ -1489,7 +1490,7 @@ function parseQuizFile(text){
 function buildAdaptedQuizHtml(raw, format, opts){
   const { subjectId, moduleId, subjectName, includeBackLink } = opts;
   let out = raw;
-  const assetPath = '../../../assets/module-progress.js?v=9';
+  const assetPath = '../../../assets/module-progress.js?v=10';
 
   if(format === 'native'){
     out = out.replace(/const LEA_SUBJECT_ID\s*=\s*'[^']*';/, `const LEA_SUBJECT_ID = '${subjectId}';`);
@@ -2384,6 +2385,51 @@ function renderReworkReport(){
   document.getElementById('rwSaveBtn').disabled = !keyOk;
 }
 
+
+// Shown when the backend refuses to create a new file. Everything needed to
+// land the module by hand is right here: the file, and the one line that
+// registers it.
+function offerManualSave(path, moduleJson, entry){
+  const box = document.getElementById('rwStatus');
+  const blobUrl = URL.createObjectURL(new Blob([moduleJson], { type: 'application/json' }));
+  const wrap = document.createElement('div');
+  wrap.className = 'card';
+  wrap.style.marginTop = '14px';
+  wrap.innerHTML =
+    '<div class="msg info">The module is built and its answer key checks out — the site just ' +
+    'cannot create a brand-new file yet. Two steps and it is done:</div>' +
+    '<p class="field-note">1 — Download it and put it at <code>' + escapeHtml(path) + '</code> ' +
+    'in the repository.</p>' +
+    '<p class="field-note">2 — Add this to that subject\'s <code>modules</code> list in ' +
+    '<code>' + escapeHtml(MANIFEST_PATH) + '</code>, then commit both.</p>' +
+    '<pre class="rw-pre">' + escapeHtml(JSON.stringify(entry, null, 2)) + '</pre>';
+
+  const dl = document.createElement('button');
+  dl.className = 'primary';
+  dl.textContent = 'Download ' + path.split('/').pop();
+  dl.addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.href = blobUrl; a.download = path.split('/').pop();
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+
+  const copy = document.createElement('button');
+  copy.textContent = 'Copy the manifest line';
+  copy.style.marginLeft = '8px';
+  copy.addEventListener('click', () => {
+    navigator.clipboard.writeText(JSON.stringify(entry, null, 2)).then(() => {
+      copy.textContent = 'Copied';
+      setTimeout(() => copy.textContent = 'Copy the manifest line', 1400);
+    }, () => {});
+  });
+
+  const row = document.createElement('div');
+  row.style.marginTop = '10px';
+  row.appendChild(dl); row.appendChild(copy);
+  wrap.appendChild(row);
+  box.parentNode.insertBefore(wrap, box.nextSibling);
+}
+
 async function saveRework(){
   const btn = document.getElementById('rwSaveBtn');
   const statusEl = document.getElementById('rwStatus');
@@ -2419,8 +2465,26 @@ async function saveRework(){
       throw new Error(path + ' is already used by another module. Pick a different number.');
 
     log('Writing ' + path + ' …');
-    await callSave(path, JSON.stringify(reworkResult.rows, null, 2) + '\n',
-      'Admin: rework "' + title + '" into ' + subjectId);
+    const moduleJson = JSON.stringify(reworkResult.rows, null, 2) + '\n';
+    try{
+      await callSave(path, moduleJson, 'Admin: rework "' + title + '" into ' + subjectId);
+    }catch(err){
+      // admin-save-file reads a file's current contents to get the SHA that
+      // GitHub needs for an update. On a path that does not exist yet the read
+      // 404s and it gives up, so it can edit files but not create them. Every
+      // reworked module is a new file, so this is not an edge case here — it is
+      // the normal path. Rather than lose the work, hand it over as a download
+      // plus the manifest line, which is exactly what a manual commit needs.
+      if(/could not read current file|not found|404/i.test(err.message || '')){
+        offerManualSave(path, moduleJson, {
+          id: moduleId, no: no, title: title,
+          total: reworkResult.rows.length, file: path, format: 'json'
+        });
+        throw new Error('The site can only update files that already exist, not ' +
+          'create new ones — see the box above to finish this by hand.');
+      }
+      throw err;
+    }
 
     log('Adding it to ' + MANIFEST_PATH + ' …');
     subject.modules.push({ id: moduleId, no: no, title: title,
