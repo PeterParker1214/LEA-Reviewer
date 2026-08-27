@@ -9,16 +9,17 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <title>LEA Reviewer — Admin</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/lea-confirm.js?v=8"></script>
-<script src="assets/icons.js?v=8"></script>
+<script src="assets/lea-confirm.js?v=9"></script>
+<script src="assets/icons.js?v=9"></script>
 <!-- The same reader the app uses, so what the editor sees is exactly what a
      reader gets. Its balanced-bracket scan also survives question text that a
      regex would truncate. -->
-<script src="assets/quiz-source.js?v=8"></script>
-<script src="assets/quiz-rework.js?v=8"></script>
-<script src="assets/docx-quiz.js?v=8"></script>
-<script src="assets/image-intake.js?v=8"></script>
-<script src="assets/theme.js?v=8" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=9"></script>
+<script src="assets/quiz-rework.js?v=9"></script>
+<script src="assets/quiz-reframe-ai.js?v=9"></script>
+<script src="assets/docx-quiz.js?v=9"></script>
+<script src="assets/image-intake.js?v=9"></script>
+<script src="assets/theme.js?v=9" data-alt-class="light-mode" data-default-is="dark"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -1488,7 +1489,7 @@ function parseQuizFile(text){
 function buildAdaptedQuizHtml(raw, format, opts){
   const { subjectId, moduleId, subjectName, includeBackLink } = opts;
   let out = raw;
-  const assetPath = '../../../assets/module-progress.js?v=8';
+  const assetPath = '../../../assets/module-progress.js?v=9';
 
   if(format === 'native'){
     out = out.replace(/const LEA_SUBJECT_ID\s*=\s*'[^']*';/, `const LEA_SUBJECT_ID = '${subjectId}';`);
@@ -2047,9 +2048,11 @@ function renderReworkTab(){
         <div>
           <div class="field-label">Restructure stems</div>
           <select id="rwRewrite">
-            <option value="on" selected>On — recognised patterns only</option>
+            <option value="ai" selected>Local model — reframes nearly all</option>
+            <option value="on">Patterns only — no model needed</option>
             <option value="off">Off — leave wording alone</option>
           </select>
+          <div class="field-note" id="rwAiStatus" style="margin-top:4px;"></div>
         </div>
         <div>
           <div class="field-label">Move answer choices</div>
@@ -2150,6 +2153,20 @@ function renderReworkTab(){
   });
 
   document.getElementById('rwPreviewBtn').addEventListener('click', previewRework);
+
+  // Say plainly whether a local model is available, rather than letting the
+  // first preview fail to explain it.
+  LEAReframeAI.available().then(st => {
+    const el = document.getElementById('rwAiStatus');
+    if(!el) return;
+    if(st.ok && st.models.length){
+      el.innerHTML = '✓ local model ready (' + escapeHtml(st.models[0]) + ') — nothing leaves this machine';
+    } else if(st.ok){
+      el.innerHTML = '⚠ Ollama is running but has no model. Run <code>ollama pull llama3.1:8b</code>.';
+    } else {
+      el.innerHTML = '⚠ no local model running — start Ollama, or choose “Patterns only”';
+    }
+  });
   document.getElementById('rwSaveBtn').addEventListener('click', saveRework);
   ['rwDestSubject','rwDestNo','rwDestId'].forEach(id => {
     const el = document.getElementById(id);
@@ -2246,14 +2263,57 @@ function refreshDestDefaults(){
   });
 }
 
-function previewRework(){
+let reworkAiReport = null;   // what the local model did, when it was used
+
+async function previewRework(){
   const msg = document.getElementById('rwPreviewMsg');
+  const btn = document.getElementById('rwPreviewBtn');
   msg.innerHTML = '';
+  reworkAiReport = null;
   if(!reworkLoaded){ msg.innerHTML = '<div class="msg error">Load a module or a file first.</div>'; return; }
+
+  const mode = document.getElementById('rwRewrite').value;
+  const seed = parseInt(document.getElementById('rwSeed').value, 10) || 42;
+  let rowsForBuild = reworkLoaded;
+
+  if(mode === 'ai'){
+    const status = await LEAReframeAI.available();
+    if(!status.ok){
+      msg.innerHTML = '<div class="msg error">No local model is running. Start Ollama, or ' +
+        'switch “Restructure stems” to “Patterns only”.</div>';
+      return;
+    }
+    const model = status.models.find(m => /llama3|qwen|mistral|phi/i.test(m)) || status.models[0];
+    if(!model){
+      msg.innerHTML = '<div class="msg error">Ollama is running but has no model installed. ' +
+        'Run <code>ollama pull llama3.1:8b</code> first.</div>';
+      return;
+    }
+    btn.disabled = true;
+    msg.innerHTML = '<div class="msg info" id="rwAiProgress">Reframing with ' +
+      escapeHtml(model) + ' — 0 of ' + reworkLoaded.length + '…</div>';
+    try{
+      const res = await LEAReframeAI.reframeAll(reworkLoaded, {
+        model, seed,
+        onProgress: (done, total) => {
+          const el = document.getElementById('rwAiProgress');
+          if(el) el.textContent = 'Reframing with ' + model + ' — ' + done + ' of ' + total + '…';
+        }
+      });
+      reworkAiReport = { model, accepted: res.accepted, rejected: res.rejected, stems: res.stems };
+      rowsForBuild = reworkLoaded.map((r, i) => Object.assign({}, r, { q: res.stems[i] }));
+      msg.innerHTML = '';
+    }catch(err){
+      msg.innerHTML = '<div class="msg error">' + escapeHtml(err.message) + '</div>';
+      btn.disabled = false; return;
+    }
+    btn.disabled = false;
+  }
+
   try{
-    reworkResult = LEAQuizRework.build(reworkLoaded, {
-      seed: document.getElementById('rwSeed').value,
-      rewrite: document.getElementById('rwRewrite').value === 'on',
+    reworkResult = LEAQuizRework.build(rowsForBuild, {
+      seed: seed,
+      rewrite: mode === 'on',
       shuffleOptions: document.getElementById('rwShuffle').value === 'on',
       reorder: document.getElementById('rwReorder').value === 'on'
     });
@@ -2282,6 +2342,27 @@ function renderReworkReport(){
     skipped.length + ' left as written' +
     (stats ? ' · moved ' + stats.mean + ' places on average, ' + stats.adj + ' neighbouring pairs still together' : '') +
     '</p>';
+
+  if(reworkAiReport){
+    const ai = reworkAiReport;
+    html += '<p class="field-note">Reframed by <code>' + escapeHtml(ai.model) + '</code>: ' +
+      '<b>' + ai.accepted + '</b> of ' + rows.length + ' accepted, ' +
+      ai.rejected.length + ' rejected and left as written.</p>';
+    const shown = reworkLoaded.slice(0, 8).map((r, i) =>
+      r.q !== ai.stems[i]
+        ? '<tr><td style="color:var(--muted);">' + escapeHtml(r.q) + '</td><td style="color:var(--good);">' +
+          escapeHtml(ai.stems[i]) + '</td></tr>' : '').filter(Boolean).join('');
+    if(shown) html += '<details open><summary>Sample of what changed</summary>' +
+      '<table class="rw-table"><tr><th>Before</th><th>After</th></tr>' + shown + '</table></details>';
+    if(ai.rejected.length) html += '<details><summary>' + ai.rejected.length +
+      ' rejected — the model\'s reply was not safe to use</summary>' +
+      '<p class="field-note">A reply is thrown away if it loses a number, a citation or a unit, ' +
+      'answers the question, or drifts too far in length. The original stem is kept.</p>' +
+      '<table class="rw-table"><tr><th>#</th><th>Why</th><th>It said</th></tr>' +
+      ai.rejected.slice(0, 20).map(r => '<tr><td class="n">' + (r.i + 1) + '</td><td class="field-note">' +
+        escapeHtml(r.why) + '</td><td class="field-note">' + escapeHtml(r.got) + '</td></tr>').join('') +
+      '</table></details>';
+  }
 
   if(rewritten.length){
     html += '<details open><summary>' + rewritten.length + ' stem(s) restructured</summary>' +
