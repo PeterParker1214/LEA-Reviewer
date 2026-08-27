@@ -33,9 +33,18 @@ import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Shared scripts whose staleness actually matters.
-ASSETS = ['module-progress', 'quiz-resume', 'theme', 'lea-confirm', 'presence', 'icons', 'sfx',
-          'legacy-desktop', 'blueprint', 'countdown']
+# Every shared script and stylesheet, read from the folder rather than kept by
+# hand. The hand-kept list went stale: quiz-source.js, image-intake.js and
+# others were never bumped, so the one thing this script exists to prevent —
+# a reader running a stale copy — was still happening for them. A list that
+# has to be remembered is a list that will be forgotten.
+ASSETS = sorted(
+    os.path.splitext(f)[0]
+    for f in os.listdir(os.path.join(REPO, 'assets'))
+    if f.endswith(('.js', '.css'))
+)
+if not ASSETS:
+    sys.exit('No .js/.css found in assets/ — refusing to rewrite nothing.')
 
 # Matches assets/<name>.js, optionally already versioned, when followed by a
 # quote (a src="…" attribute or a JS string). The trailing-quote anchor is what
@@ -47,7 +56,10 @@ PATTERN = re.compile(
 
 def iter_html():
     for root, dirs, files in os.walk(REPO):
-        if 'design_handoff_lea_reviewer' in root or '.git' in root or 'tools' in root:
+        # tools/ used to be skipped because it held only Python. It now holds
+        # quiz-builder.html, a real page that loads the shared assets — and it
+        # was the one page left running a stale copy of them.
+        if 'design_handoff_lea_reviewer' in root or '.git' in root:
             continue
         for fn in files:
             if fn.endswith('.html'):

@@ -236,14 +236,11 @@ window.LEAQuizRework = (function () {
         return upper1(noDot(m[1])) + ' is best described as:';
       }
     },
-    {
-      name: 'why-reason',
-      test: function (s) { return /^Why (?:is|are|did|do|does) (.+?)\?$/i.test(s); },
-      apply: function (s) {
-        var m = s.match(/^Why (is|are|did|do|does) (.+?)\?$/i);
-        return 'The reason ' + noDot(m[2]) + ' ' + (/^(is|are)$/i.test(m[1]) ? m[1].toLowerCase() + ' so' : 'is') + ':';
-      }
-    },
+    // A "why-reason" rule used to live here and has been removed. Turning
+    // "Why is X historically significant?" into a statement needs the verb put
+    // back between the subject and the predicate, and a regex cannot find that
+    // boundary — it produced "The reason the Tabon Cave Complex historically
+    // significant is so:". Leaving these stems alone is the correct outcome.
     {
       name: 'where-located',
       test: function (s) { return /^Where (is|are) (.+?)(?: located)?\?$/i.test(s); },
@@ -448,6 +445,12 @@ window.LEAQuizRework = (function () {
     var rows = loaded.map(function (r, i) {
       var out = {};
       for (var k in r) if (Object.prototype.hasOwnProperty.call(r, k)) out[k] = r[k];
+      // Carry the source position through, so the answer-key check can compare
+      // each row against the one it actually came from. Matching on content
+      // instead looked fine until a module turned up with no explanations and
+      // no sources at all — 182 identical keys, and every comparison wrong.
+      // Stripped again before this leaves the function.
+      out.__src = i;
 
       if (doRewrite) {
         var res = restructure(r.q, r.o);
@@ -493,20 +496,18 @@ window.LEAQuizRework = (function () {
         return opt.tpl + ':' + opt.ref.map(function (i) { return JSON.stringify(row.o[i]); }).sort().join('|');
       return JSON.stringify(opt);
     }
-    var pool = loaded.slice(), checked = 0, keyOk = rows.length === loaded.length;
+    var checked = 0, keyOk = rows.length === loaded.length, failedAt = -1;
     if (keyOk) {
       for (var a = 0; a < rows.length; a++) {
         var r3 = rows[a];
-        var k3 = -1;
-        for (var b = 0; b < pool.length; b++) {
-          if (pool[b].n === r3.n && pool[b].ref === r3.ref) { k3 = b; break; }
-        }
-        if (k3 === -1) continue;
-        var src = pool.splice(k3, 1)[0];
+        var src = loaded[r3.__src];
+        if (!src) { keyOk = false; failedAt = a; break; }
         checked++;
-        if (answerOf(src) !== answerOf(r3)) { keyOk = false; break; }
+        if (answerOf(src) !== answerOf(r3)) { keyOk = false; failedAt = a; break; }
       }
     }
+    // The tracking index is ours, not the site's — never let it reach a file.
+    rows.forEach(function (r5) { delete r5.__src; });
 
     var templated = rows.filter(function (r4) {
       return r4.o.some(function (o) { return o && typeof o === 'object'; });
