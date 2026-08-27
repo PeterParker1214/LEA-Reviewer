@@ -58,16 +58,32 @@
     return -1;
   }
 
-  function extractArrayLiteral(html, varName) {
+  function extractLiteral(html, varName, openCh) {
     var marker = 'const ' + varName + ' = ';
     var idx = html.indexOf(marker);
     if (idx === -1) return null;
     var start = idx + marker.length;
-    if (html[start] !== '[') return null;
+    if (html[start] !== openCh) return null;
     var end = extractBalanced(html, start);
     if (end === -1) return null;
     try { return new Function('return ' + html.slice(start, end))(); } catch (e) { return null; }
   }
+
+  function extractArrayLiteral(html, varName) { return extractLiteral(html, varName, '['); }
+
+  // A third way a quiz page stores its pictures. Instead of a path on every
+  // question, some pages keep one lookup table and have each question name a
+  // key into it — which is how a single figure sheet ("A B C D E") is shared
+  // by the five questions that ask about it:
+  //
+  //   const FIGURES = { "pump": "img/q0001.jpg", ... };
+  //   { q: "Identify a Centrifugal Pump", fig: "pump", ... }
+  //
+  // Until this existed the reader only looked for `img`, so 41 questions in
+  // Building Utilities' preboard rendered with no figure at all while asking
+  // "from the figures above…". The images were in the repository the whole
+  // time; nothing knew how to find them.
+  function extractFigures(html) { return extractLiteral(html, 'FIGURES', '{') || null; }
 
   // Images are written relative to the quiz page that declares them
   // ("img/q0001.jpg"), but the engine renders from the site root, where that
@@ -89,7 +105,15 @@
   // pseudo-topic back in and let it win "weakest" on size. The cross-subject
   // index applies its own `q.s || mod.title` fallback where a label is needed
   // for grouping; that is the index's business, not the source's.
-  function fromQuizData(arr, modFile) {
+  // Where a question's picture comes from, whichever way this file stores it:
+  // directly on the question, or via a key into the page's FIGURES table.
+  function imgFor(row, modFile, figures) {
+    var src = row.img;
+    if (!src && row.fig && figures) src = figures[row.fig];
+    return src ? rebaseImg(src, modFile) : undefined;
+  }
+
+  function fromQuizData(arr, modFile, figures) {
     var out = [];
     for (var i = 0; i < arr.length; i++) {
       var row = arr[i] || {};
@@ -113,28 +137,31 @@
         c: correctIdx,
         n: row.explanation || row.n || undefined,
         ref: row.ref || undefined,
-        img: rebaseImg(row.img, modFile),
+        img: imgFor(row, modFile, figures),
         hidden: !!row.hidden
       });
     }
     return out;
   }
 
-  function normalize(arr, mod) {
+  function normalize(arr, mod, figures) {
     if (!Array.isArray(arr) || arr.length === 0) return null;
     var first = arr[0] || {};
     var isQuizData = (first.question !== undefined || first.options !== undefined) && first.q === undefined;
-    if (isQuizData) return fromQuizData(arr, mod.file);
-    // Already canonical. Copy only to rebase images; otherwise pass through so
+    if (isQuizData) return fromQuizData(arr, mod.file, figures);
+    // Already canonical. Copy only to resolve images; otherwise pass through so
     // nothing about order or content can drift.
-    var needsRebase = false;
-    for (var i = 0; i < arr.length; i++) { if (arr[i] && arr[i].img) { needsRebase = true; break; } }
-    if (!needsRebase) return arr;
+    var needsWork = false;
+    for (var i = 0; i < arr.length; i++) {
+      var q = arr[i];
+      if (q && (q.img || (q.fig && figures))) { needsWork = true; break; }
+    }
+    if (!needsWork) return arr;
     return arr.map(function (q) {
-      if (!q || !q.img) return q;
+      if (!q || (!q.img && !q.fig)) return q;
       var copy = {};
       for (var k in q) if (Object.prototype.hasOwnProperty.call(q, k)) copy[k] = q[k];
-      copy.img = rebaseImg(q.img, mod.file);
+      copy.img = imgFor(q, mod.file, figures);
       return copy;
     });
   }
@@ -156,12 +183,16 @@
     } catch (e) { /* unreadable cache is just a cache miss */ }
 
     return fetch(mod.file).then(function (res) {
-      if (mod.format === 'json') return res.json();
+      if (mod.format === 'json') return res.json().then(function (a) { return { arr: a, figures: null }; });
       return res.text().then(function (html) {
-        return extractArrayLiteral(html, 'QUESTIONS') || extractArrayLiteral(html, 'QUIZ_DATA');
+        return {
+          arr: extractArrayLiteral(html, 'QUESTIONS') || extractArrayLiteral(html, 'QUIZ_DATA'),
+          figures: extractFigures(html)
+        };
       });
-    }).then(function (arr) {
-      var out = normalize(arr, mod);
+    }).then(function (got) {
+      var arr = got.arr;
+      var out = normalize(arr, mod, got.figures);
       if (out) {
         // Quota is finite and these arrays are large; a failed write costs a
         // refetch, never correctness.
@@ -203,6 +234,7 @@
     loadModuleQuestions: loadModuleQuestions,
     loadModuleTopics: loadModuleTopics,
     extractArrayLiteral: extractArrayLiteral,
+    extractFigures: extractFigures,
     replaceArrayLiteral: replaceArrayLiteral,
     CACHE_PREFIX: CACHE_PREFIX
   };
