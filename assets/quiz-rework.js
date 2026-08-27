@@ -127,46 +127,169 @@ window.LEAQuizRework = (function () {
     return { rows: rows, kind: kind };
   }
 
-  /* ---------------- stem restructuring ---------------- */
+  /* ---------------- stem reframing ---------------- */
+  //
+  // REFRAMING, NOT PARAPHRASING. Every rule below moves the sentence into a
+  // different frame while keeping its words: "How is water categorised?"
+  // becomes "On what basis is water categorised?". No synonym is ever
+  // substituted, because that is how you end up with thesaurus prose.
+  //
+  // Each rule is a tight pattern plus guards, and the whole set REFUSES on
+  // anything it does not recognise rather than guessing. Skipped stems are
+  // reported so they can be reworded by hand.
+
   var NUMERIC = /[0-9₱%]/;
+
+  // Whether an item actually asks for a figure. Judged from the CHOICES, not
+  // the stem: "an R2 project" has a digit in it and asks for no arithmetic.
+  function optionsAreNumeric(opts) {
+    if (!opts || !opts.length) return false;
+    var numeric = opts.filter(function (o) {
+      if (o && typeof o === 'object') return false;
+      return /^[^A-Za-z]*[\d][\d,.\s]*(?:mm|cm|m|m2|sqm|sq\.?m|ha|%|hrs?|hours?|days?|pcs|sets?|units?|storeys?|floors?|persons?|pesos?|million|billion|M|B)?[^A-Za-z]*$/i.test(String(o).trim());
+    }).length;
+    return numeric >= Math.ceil(opts.length * 0.75);
+  }
+
   function upper1(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
 
+  // Lowercase the first letter ONLY when it is capitalised merely for being
+  // first. "Any physical change" -> "any physical change", but "PD 1096",
+  // "RA 9266" and "Architect" keep their capitals.
+  function softLower(s) {
+    if (!s) return s;
+    var first = s.split(/\s+/)[0].replace(/[^\w-]/g, '');
+    if (!/^[A-Z][a-z]+$/.test(first)) return s;         // acronym / all-caps / mixed
+    var PROPER = /^(Architect|Owner|Client|Contractor|Building|Code|Rule|Section|Philippine|National|Supplier|Manila)$/;
+    if (PROPER.test(first)) return s;
+    return s.charAt(0).toLowerCase() + s.slice(1);
+  }
+
+  function strip(s) { return String(s || '').trim().replace(/\s+/g, ' '); }
+  function noDot(s) { return strip(s).replace(/[.?:]+$/, ''); }
+
   var RULES = [
+    // ---- questions that stay questions, reframed ----
+    {
+      name: 'how-basis',
+      // "How does one categorize water potability?" ->
+      // "On what basis is water potability categorized?"
+      test: function (s) { return /^How (?:does one|do you|do we|is|are) .+\?$/i.test(s); },
+      apply: function (s) {
+        var m = s.match(/^How (?:does one|do you|do we) (\w+)\s+(.+)\?$/i);
+        if (m) return 'On what basis is ' + noDot(m[2]) + ' ' + m[1].toLowerCase() +
+                      (/e$/i.test(m[1]) ? 'd' : 'ed') + '?';
+        m = s.match(/^How (is|are) (.+?) (\w+ed)\?$/i);
+        if (m) return 'On what basis ' + m[1].toLowerCase() + ' ' + noDot(m[2]) + ' ' + m[3].toLowerCase() + '?';
+        return null;
+      }
+    },
+    {
+      name: 'according-to',
+      // "According to the NBC, what is the maximum cost of X?" ->
+      // "Under the NBC, the maximum cost of X is:"
+      test: function (s) { return /^(?:According to|Under|Per) (.+?), what (?:is|are) (the .+?)\?$/i.test(s); },
+      apply: function (s) {
+        var m = s.match(/^(?:According to|Under|Per) (.+?), what (is|are) (the .+?)\?$/i);
+        return 'Under ' + noDot(m[1]) + ', ' + softLower(noDot(m[3])) + ' ' + m[2].toLowerCase() + ':';
+      }
+    },
+    {
+      name: 'requires-which',
+      // "Which of the following requires a building permit?" ->
+      // "A building permit is required for which of the following?"
+      test: function (s) { return /^Which of the following (requires?|needs?|is exempt from|are exempt from) (.+?)\?$/i.test(s); },
+      apply: function (s) {
+        var m = s.match(/^Which of the following (requires?|needs?|is exempt from|are exempt from) (.+?)\?$/i);
+        var verb = m[1].toLowerCase();
+        var obj = noDot(m[2]);
+        if (/exempt/.test(verb)) return 'Exemption from ' + softLower(obj) + ' applies to which of the following?';
+        return upper1(obj) + ' is ' + (/^require/.test(verb) ? 'required' : 'needed') +
+               ' for which of the following?';
+      }
+    },
+    {
+      name: 'this-person',
+      // "This person is tasked with X. He/she does Y." -> "Who is tasked with X?"
+      test: function (s) { return /^This (?:person|official|professional) is (tasked with|responsible for|charged with) /i.test(s); },
+      apply: function (s) {
+        var m = s.match(/^This (?:person|official|professional) is (tasked with|responsible for|charged with) (.+)$/i);
+        var rest = m[2].split(/\.\s+/)[0];
+        return 'Who is ' + m[1].toLowerCase() + ' ' + noDot(rest) + '?';
+      }
+    },
+    {
+      name: 'except-list',
+      // "The following are X EXCEPT:" -> "Which of these is NOT X?"
+      test: function (s) { return /^(?:The following|All of the following) (?:are|is) (.+?)\s+EXCEPT/i.test(s); },
+      apply: function (s) {
+        var m = s.match(/^(?:The following|All of the following) (?:are|is) (.+?)\s+EXCEPT/i);
+        return 'Which of these is NOT ' + softLower(noDot(m[1])) + '?';
+      }
+    },
+    {
+      name: 'best-describes',
+      // "Which best describes X?" -> "X is best described as:"
+      test: function (s) { return /^Which (?:one )?best describes (.+?)\?$/i.test(s); },
+      apply: function (s) {
+        var m = s.match(/^Which (?:one )?best describes (.+?)\?$/i);
+        return upper1(noDot(m[1])) + ' is best described as:';
+      }
+    },
+    {
+      name: 'why-reason',
+      test: function (s) { return /^Why (?:is|are|did|do|does) (.+?)\?$/i.test(s); },
+      apply: function (s) {
+        var m = s.match(/^Why (is|are|did|do|does) (.+?)\?$/i);
+        return 'The reason ' + noDot(m[2]) + ' ' + (/^(is|are)$/i.test(m[1]) ? m[1].toLowerCase() + ' so' : 'is') + ':';
+      }
+    },
+    {
+      name: 'where-located',
+      test: function (s) { return /^Where (is|are) (.+?)(?: located)?\?$/i.test(s); },
+      apply: function (s) {
+        var m = s.match(/^Where (is|are) (.+?)(?: located)?\?$/i);
+        return upper1(noDot(m[2])) + ' ' + m[1].toLowerCase() + ' found:';
+      }
+    },
     {
       name: 'compute',
-      // "What is the PCC?" -> "Compute the PCC." Only where a figure is asked
-      // for; elsewhere "compute" is nonsense.
-      test: function (s) { return /^What (?:is|are) (the .+?)\?$/i.test(s) && NUMERIC.test(s); },
-      apply: function (s) { return 'Compute ' + s.match(/^What (?:is|are) (the .+?)\?$/i)[1].trim() + '.'; }
+      test: function (s, opts) { return /^What (?:is|are) (the .+?)\?$/i.test(s) && optionsAreNumeric(opts); },
+      apply: function (s) { return 'Compute ' + noDot(s.match(/^What (?:is|are) (the .+?)\?$/i)[1]) + '.'; }
     },
     {
       name: 'nominalise',
-      // "What is the recommended fee for X?" -> "The recommended fee for X is:"
       test: function (s) { return /^What (is|are) (the .+?)\?$/i.test(s); },
       apply: function (s) {
         var m = s.match(/^What (is|are) (the .+?)\?$/i);
-        return upper1(m[2].trim()) + ' ' + m[1].toLowerCase() + ':';
+        var body = noDot(m[2]);
+        // Move a trailing ", according to X" to the front, or the sentence ends
+        // "...handrails, according to the Building Code is:" — missing a comma
+        // and reading as nonsense.
+        var tail = body.match(/^(.+?),\s*(?:according to|per|under)\s+(.+)$/i);
+        if (tail) return 'Under ' + noDot(tail[2]) + ', ' + softLower(noDot(tail[1])) + ' ' + m[1].toLowerCase() + ':';
+        if (/,\s*\w/.test(body.slice(-40))) return null;   // other trailing clause: leave alone
+        return upper1(body) + ' ' + m[1].toLowerCase() + ':';
       }
     },
     {
       name: 'passive-agent',
-      // "Who prepares Change Orders?" -> "Change Orders are prepared by the:"
-      test: function (s) { return /^Who (prepares|pays|issues|approves|signs|bears|shoulders) (.+?)\?$/i.test(s); },
+      test: function (s) { return /^Who (prepares|pays|issues|approves|signs|bears|shoulders|enforces|prepares for) (.+?)\?$/i.test(s); },
       apply: function (s) {
-        var m = s.match(/^Who (prepares|pays|issues|approves|signs|bears|shoulders) (.+?)\?$/i);
+        var m = s.match(/^Who (prepares|pays|issues|approves|signs|bears|shoulders|enforces) (.+?)\?$/i);
+        if (!m) return null;
         var past = { prepares: 'prepared', pays: 'paid', issues: 'issued', approves: 'approved',
-                     signs: 'signed', bears: 'borne', shoulders: 'borne' }[m[1].toLowerCase()];
-        var subj = m[2].trim();
-        return upper1(subj) + ' ' + (/s$/.test(subj) ? 'are' : 'is') + ' ' + past + ' by the:';
+                     signs: 'signed', bears: 'borne', shoulders: 'borne', enforces: 'enforced' }[m[1].toLowerCase()];
+        var subj = noDot(m[2]);
+        return upper1(subj) + ' ' + (/s$/.test(subj) && !/ss$/.test(subj) ? 'are' : 'is') + ' ' + past + ' by the:';
       }
     },
     {
       name: 'when-upon',
-      // "When is the final payment released?" -> "The final payment is released upon:"
-      test: function (s) { return /^When (is|are) (.+?) (released|due|payable|paid|issued)\?$/i.test(s); },
+      test: function (s) { return /^When (is|are) (.+?) (released|due|payable|paid|issued|required|granted)\?$/i.test(s); },
       apply: function (s) {
-        var m = s.match(/^When (is|are) (.+?) (released|due|payable|paid|issued)\?$/i);
-        return upper1(m[2].trim()) + ' ' + m[1].toLowerCase() + ' ' + m[3].toLowerCase() + ' upon:';
+        var m = s.match(/^When (is|are) (.+?) (released|due|payable|paid|issued|required|granted)\?$/i);
+        return upper1(noDot(m[2])) + ' ' + m[1].toLowerCase() + ' ' + m[3].toLowerCase() + ' upon:';
       }
     },
     {
@@ -174,25 +297,100 @@ window.LEAQuizRework = (function () {
       test: function (s) { return /^(.+?) (includes|covers|requires|means) what\?$/i.test(s); },
       apply: function (s) {
         var m = s.match(/^(.+?) (includes|covers|requires|means) what\?$/i);
-        return upper1(m[1].trim()) + ' ' + m[2].toLowerCase() + ':';
+        return upper1(noDot(m[1])) + ' ' + m[2].toLowerCase() + ':';
+      }
+    },
+    {
+      name: 'how-many-much',
+      // "How many sets of plans must be submitted?" ->
+      // "The number of sets of plans that must be submitted is:"
+      test: function (s) { return /^How (many|much) (.+?)\?$/i.test(s); },
+      apply: function (s) {
+        var m = s.match(/^How (many|much) (.+?)\?$/i);
+        var head = m[1].toLowerCase() === 'many' ? 'The number of ' : 'The amount of ';
+        return head + noDot(m[2]) + ' is:';
+      }
+    },
+    {
+      name: 'in-context',
+      // "In X, what is Y?" -> "Within X, Y is:"
+      test: function (s) { return /^In (.+?), what (?:is|are) (.+?)\?$/i.test(s); },
+      apply: function (s) {
+        var m = s.match(/^In (.+?), what (is|are) (.+?)\?$/i);
+        return 'Within ' + noDot(m[1]) + ', ' + softLower(noDot(m[3])) + ' ' + m[2].toLowerCase() + ':';
+      }
+    },
+
+    // ---- statements that become questions ----
+    {
+      name: 'definition-to-question',
+      // Review banks state definitions flat: "Any physical change made on a
+      // building to increase its value." -> "Which term refers to any physical
+      // change made on a building to increase its value?"
+      // "This type of construction is four-hour fire-resistive." becomes
+      // "Which type of construction is four-hour fire-resistive?" — reusing the
+      // noun the sentence already names, rather than stacking a second lead-in
+      // on top of one that is already there.
+      test: function (s) {
+        return !/\?$/.test(s) && !/:$/.test(s) &&
+               /^(?:Any|A|An|The|This|These|It|Refers to|Term for)/i.test(s) &&
+               s.split(/\s+/).length >= 5 && s.split(/\s+/).length <= 45;
+      },
+      apply: function (s) {
+        var body = noDot(s);
+        // "This/The <noun phrase> is|are ..." -> "Which <noun phrase> is|are ...?"
+        var m = body.match(/^(?:This|These|The)\s+((?:\w+\s+){0,3}?\w+)\s+(is|are)\s+(.+)$/i);
+        if (m && !/^term/i.test(m[1])) {
+          return 'Which ' + m[1].toLowerCase() + ' ' + m[2].toLowerCase() + ' ' + m[3] + '?';
+        }
+        // Peel any existing "(This) term refers to" lead-in before adding ours.
+        body = body.replace(/^(?:this\s+|the\s+)?term\s+refers\s+to\s+/i, '')
+                   .replace(/^refers\s+to\s+/i, '');
+        return 'Which term refers to ' + softLower(body) + '?';
+      }
+    },
+    {
+      name: 'statement-to-question',
+      // A declarative statement of fact -> "Which of these is correct?" is
+      // useless, so instead turn a trailing definition-ish statement into an
+      // identification prompt only when it names no subject of its own.
+      test: function (s) {
+        return !/\?$/.test(s) && !/:$/.test(s) &&
+               /(is|are)/.test(s) &&
+               s.split(/\s+/).length >= 6 && s.split(/\s+/).length <= 40 &&
+               /^(?:Compensation|Payment|Fees?|Charges?|Services?|Work|Plans?|Permits?)/i.test(s);
+      },
+      apply: function (s) {
+        var body = noDot(s);
+        var m = body.match(/^(.+?)\s+(?:is|are)\s+(.+)$/i);
+        if (!m) return null;
+        return upper1(m[1]) + ' — which of the following applies?';
       }
     }
   ];
 
-  function restructure(stem) {
-    var s = String(stem || '').trim();
+  function restructure(stem, opts) {
+    var s = strip(stem);
     if (!s) return { text: stem, rule: null, why: 'empty' };
-    if (s.length > 240) return { text: s, rule: null, why: 'long scenario — rewrite by hand' };
+    if (s.length > 300) return { text: s, rule: null, why: 'long scenario — rewrite by hand' };
+
     for (var i = 0; i < RULES.length; i++) {
-      if (!RULES[i].test(s)) continue;
+      if (!RULES[i].test(s, opts)) continue;
       var out;
       try { out = RULES[i].apply(s); } catch (e) { continue; }
-      if (!out || out.length < s.length * 0.45) continue;
-      if (/[?:.]{2,}$/.test(out)) continue;
-      // Reject a dangling article or preposition — except "by the:", which is
-      // the natural ending for an agent question.
-      if (/\b(?:a|an|of|for|to)\s*[:.]$/i.test(out)) continue;
-      if (/\bthe\s*[:.]$/i.test(out) && !/\bby the\s*[:.]$/i.test(out)) continue;
+      if (!out) continue;
+      out = strip(out);
+
+      // ---- guards: refuse anything that came out malformed ----
+      if (out === s) continue;                                   // no-op
+      if (out.length < s.length * 0.4) continue;                 // lost content
+      if (out.length > s.length * 2.2) continue;                 // ballooned
+      if (/[?:.]{2,}$/.test(out)) continue;                      // doubled punctuation
+      if (/\s[?:.]/.test(out)) continue;                         // floating punctuation
+      if (/(?:a|an|of|for|to|and|or|with|in|on)\s*[:.?]$/i.test(out)) continue;
+      if (/the\s*[:.?]$/i.test(out) && !/by the\s*[:.?]$/i.test(out)) continue;
+      if (/(is|are|was|were)\s+(is|are|was|were)/i.test(out)) continue;  // "is is"
+      if (/\?\s*\w/.test(out)) continue;                          // text after the ?
       return { text: out, rule: RULES[i].name, why: null };
     }
     return { text: s, rule: null, why: 'no safe frame matched' };
@@ -249,7 +447,7 @@ window.LEAQuizRework = (function () {
       for (var k in r) if (Object.prototype.hasOwnProperty.call(r, k)) out[k] = r[k];
 
       if (doRewrite) {
-        var res = restructure(r.q);
+        var res = restructure(r.q, r.o);
         if (res.rule) { out.q = res.text; rewritten.push({ i: i, from: r.q, to: res.text, rule: res.rule }); }
         else skipped.push({ i: i, q: r.q, why: res.why });
       }
