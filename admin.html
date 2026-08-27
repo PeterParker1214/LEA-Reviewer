@@ -89,6 +89,20 @@
   .q-img .q-img-say b{ color:var(--ink); font-weight:600; }
   .q-img .q-img-say .warn{ color:var(--bad); }
   .q-img-drop{ margin-bottom:10px; }
+  /* A figure that still came from the review centre. Marked so it can be
+     found and replaced; the mark disappears by itself once a picture is
+     pasted over it, because a pasted picture is stored inline rather than
+     as a file. Nothing to tick off by hand. */
+  .q-img.from-rc{ border-color:var(--bad); background:rgba(226,96,74,0.07); }
+  .q-img .rc-tag{
+    display:inline-block; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--bad); border:1px solid var(--bad); border-radius:20px; padding:2px 7px; margin-bottom:4px;
+  }
+  .rc-banner{
+    background:rgba(226,96,74,0.12); border:1px solid var(--bad); color:var(--ink);
+    border-radius:10px; padding:12px 14px; margin-bottom:14px; font-size:13px; line-height:1.6;
+  }
+  .rc-banner b{ color:var(--bad); }
   .q-img-drop .drop-x{
     background:none; border:none; color:var(--bad); cursor:pointer; font-size:11px;
     text-transform:uppercase; letter-spacing:.05em; padding:4px 8px; flex-shrink:0;
@@ -772,6 +786,27 @@ function renderQuizEditor(path){
 // Collapsed by default (5b) — a module can have 200+ questions, and opening
 // every one as a full form made finding the reported one mean scrolling
 // past all the rest. Each row expands to the full q-card in place.
+/**
+ * Is this picture still the review centre's?
+ *
+ * Derived rather than stored, so there is no flag to keep in step:
+ *   - a data: URI was pasted in by the owner, so it is theirs
+ *   - fig-*.svg was drawn for this project
+ *   - the architectural-sites bank is the project's own photography
+ *   - anything else that is a file came in with the review-centre material
+ *
+ * Paste a replacement and the value becomes a data: URI, so the mark clears
+ * itself. Nothing to tick off by hand.
+ */
+function isReviewCentreImg(value){
+  if(typeof value !== 'string' || !value) return false;
+  if(value.indexOf('data:') === 0) return false;
+  const full = resolveImgPath(value);
+  if(/\/fig-[^/]*$/.test(full)) return false;
+  if(full.indexOf('architectural-sites-proponents-styles') !== -1) return false;
+  return true;
+}
+
 // One picture slot. `field` is 'img' for the question's figure or 'nimg' for
 // the explanation's. A value that is not a data: URI is a path into the
 // module's own img/ folder — those are shown but left alone, since replacing
@@ -782,14 +817,16 @@ function imgFieldHtml(i, field, value){
   const preview = has
     ? '<img src="' + escapeHtml(isData ? value : resolveImgPath(value)) + '" alt="">'
     : '';
+  const fromRC = isReviewCentreImg(value);
   const say = has
     ? (isData
         ? '<b>Pasted image.</b><br>Click, drop or paste to replace it.'
-        : '<b>' + escapeHtml(String(value)) + '</b><br>A file in the module folder, shared with any other question using it. Click, drop or paste to replace it on this question only.')
+        : (fromRC ? '<span class="rc-tag">From the review centre</span><br>' : '') +
+          '<b>' + escapeHtml(String(value)) + '</b><br>A file in the module folder, shared with any other question using it. Click, drop or paste to replace it on this question only.')
     : '<b>No figure.</b><br>Click to browse, drop a file here, or focus this box and press Ctrl+V.';
   return `
     <div class="q-img-drop">
-      <div class="q-img" data-imgfield="${field}" data-idx="${i}">
+      <div class="q-img${fromRC ? ' from-rc' : ''}" data-imgfield="${field}" data-idx="${i}">
         ${preview}
         <div class="q-img-say" data-say>${say}</div>
         ${has ? `<button class="drop-x" data-imgclear="${field}" data-idx="${i}">Remove</button>` : ''}
@@ -809,7 +846,26 @@ function renderQuestionsList(){
   const listEl = document.getElementById('questionsList');
   const reportCounts = reportCountsForCurrentFile();
 
-  listEl.innerHTML = currentQuestions.map((q, i) => {
+  // Which questions in this file still show a review-centre picture, and how
+  // many distinct files that is — several questions usually share one sheet.
+  const rcQuestions = [];
+  const rcFiles = new Set();
+  currentQuestions.forEach((q, i) => {
+    let hit = false;
+    ['img', 'nimg'].forEach(f => {
+      if(isReviewCentreImg(q[f])){ hit = true; rcFiles.add(String(q[f])); }
+    });
+    if(hit) rcQuestions.push(i + 1);
+  });
+  const rcBanner = rcQuestions.length ? `
+    <div class="rc-banner">
+      <b>${rcFiles.size} figure${rcFiles.size === 1 ? '' : 's'} here still came from the review centre</b>,
+      shown on ${rcQuestions.length} question${rcQuestions.length === 1 ? '' : 's'}:
+      Q${rcQuestions.slice(0, 12).join(', Q')}${rcQuestions.length > 12 ? ' and ' + (rcQuestions.length - 12) + ' more' : ''}.
+      Each is outlined in red below. Paste your own picture over one and the mark clears itself.
+    </div>` : '';
+
+  listEl.innerHTML = rcBanner + currentQuestions.map((q, i) => {
     const count = reportCounts[i] || 0;
     if(!expandedQIdx.has(i)){
       const preview = (q.q || '').replace(/\s+/g, ' ').trim().slice(0, 70);
