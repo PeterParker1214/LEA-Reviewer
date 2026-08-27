@@ -1,0 +1,2957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TAPP Pre-Board Exam Reviewer</title>
+<style>
+  :root {
+    --correct: #1e7e34;
+    --incorrect: #c0392b;
+    --accent: #2c5282;
+    --bg: #f7f8fa;
+  }
+  body {
+    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: #1a1a1a;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 24px 16px 80px;
+    line-height: 1.5;
+  }
+  h1 { font-size: 1.5rem; margin-bottom: 4px; }
+  .subtitle { color: #666; margin-bottom: 32px; }
+  .subtopic-heading {
+    font-size: 1.15rem;
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 6px;
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+  .question-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+  }
+  .question-text { font-weight: 600; margin-bottom: 12px; }
+  .question-image { max-width: 100%; border-radius: 6px; margin-bottom: 12px; display: block; }
+  .choice {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    border: 1px solid #d0d0d0;
+    border-radius: 8px;
+    background: #fafafa;
+    cursor: pointer;
+    font-size: 0.98rem;
+  }
+  .choice:hover:not(:disabled) { background: #eef2f7; }
+  .choice:disabled { cursor: default; }
+  .choice.correct { background: #e6f4ea; border-color: var(--correct); color: var(--correct); font-weight: 600; }
+  .choice.incorrect { background: #fbe9e7; border-color: var(--incorrect); color: var(--incorrect); }
+  .explanation {
+    display: none;
+    margin-top: 12px;
+    padding: 12px 14px;
+    background: #f0f4f8;
+    border-left: 3px solid var(--accent);
+    font-style: italic;
+    font-size: 0.94rem;
+    border-radius: 0 6px 6px 0;
+  }
+  .explanation.show { display: block; }
+  .source { font-style: normal; font-weight: 600; color: var(--accent); }
+  #progress {
+    position: sticky; top: 0; background: var(--bg);
+    padding: 8px 0; font-size: 0.9rem; color: #555;
+    border-bottom: 1px solid #ddd; z-index: 10;
+  }
+</style>
+</head>
+<body>
+<div style="max-width:760px;margin:0 auto 12px;font:12px 'IBM Plex Mono',monospace;"><a href="../index.html" style="color:#8fc4ea;text-decoration:underline;">&larr; Back to PREBOARDS</a></div>
+
+  <h1>TAPP Pre-Board Exam Reviewer</h1>
+  <div class="subtitle">Architecture Pre-Board Review — 200 Questions (click an answer to check it)</div>
+  <div id="progress"></div>
+  <div id="quiz-root"></div>
+
+<script>
+// Replace this array with the generated questions.
+// Keep questions in the source document's original subtopic order —
+// the renderer groups consecutive questions under a subtopic heading
+// whenever `subtopic` changes from the previous question.
+const QUIZ_DATA = [
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "An Axis is the most fundamental means of organizing forms and spaces in architecture. Which of the following best describes the operational requirement for a linear axis to effectively structure a spatial composition?",
+    "image": null,
+    "choices": [
+      "By acting as a continuous line, plane, or volume that links, gathers, and anchors disparate elements through its structural and visual continuity.",
+      "It is an imaginary, straight line that possesses qualities of length and direction, demanding terminating elements at both ends to anchor its visual force.",
+      "By utilizing the laws of physics, balancing elements of smaller visual mass at great distances from a virtual center against elements of larger visual mass closer to the center.",
+      "By acting as a continuous line, plane, or volume that links, gathers, and anchors disparate elements through its structural and visual continuity."
+    ],
+    "correctIndex": 1,
+    "explanation": "Ching: an axis is an imaginary line of length and direction that requires terminating elements at both ends to anchor its visual force.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q1"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "A Datum is described as a powerful organizing principle. What is the fundamental mechanism by which a datum brings order to a scattered, heterogeneous collection of forms and spaces?",
+    "image": null,
+    "choices": [
+      "By acting as a continuous line, plane, or volume that links, gathers, and anchors disparate elements through its structural and visual continuity.",
+      "It is an imaginary, straight line that possesses qualities of length and direction, demanding terminating elements at both ends to anchor its visual force.",
+      "By utilizing the laws of physics, balancing elements of smaller visual mass at great distances from a virtual center against elements of larger visual mass closer to the center.",
+      "By acting as a continuous line, plane, or volume that links, gathers, and anchors disparate elements through its structural and visual continuity."
+    ],
+    "correctIndex": 0,
+    "explanation": "Ching: a datum is a continuous line, plane, or volume whose regularity gathers and organizes a scattered set of forms.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q2"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "When analyzing Hierarchy as an ordering principle, It is important to note that an architectural element can achieve dominance within a composition through three primary methods. Which of the following is not one of these methods?",
+    "image": null,
+    "choices": [
+      "Dominance by exceptional size or massing.",
+      "Dominance by a unique, highly contrasting geometric shape.",
+      "Dominance by strategic placement at a critical cul-de-sac or focal point.",
+      "Dominance by ensuring the element is completely concealed from exterior view."
+    ],
+    "correctIndex": 3,
+    "explanation": "Ching's three ways an element achieves hierarchical dominance are by size, shape, and strategic placement — concealment is the opposite of dominance.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q3"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Rhythm as a manifestation of repetition. What condition must be met to transform simple, generic repetition into an active architectural rhythm?",
+    "image": null,
+    "choices": [
+      "The repeating modules must change material composition with every iteration.",
+      "The repeated elements must be arranged across an undulating curved plane.",
+      "The repeated elements must form a structured sequence, or alternating patterns that choreograph the eye’s movement.",
+      "The repetition must be limited to exactly three structural components."
+    ],
+    "correctIndex": 2,
+    "explanation": "Simple repetition becomes rhythm only when the repeated elements form a structured or alternating sequence that guides the eye.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q4"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What is the primary objective of the principle of 'Transformation' in architectural design morphology?",
+    "image": null,
+    "choices": [
+      "Taking a basic shape and changing it step-by-step, but without keeping the original structure recognizable.",
+      "To modify a basic architectural form through a series of geometric changes while preserving its foundational grid and identity.",
+      "Systematically altering a basic form (primitive volume) by losing its core structure or identity.",
+      "To ensure that a building's interior layout completely disorients users when viewed from the outside."
+    ],
+    "correctIndex": 1,
+    "explanation": "Transformation is the incremental alteration of a form while its underlying grid/identity remains recognizable, per Ching's design vocabulary.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q5"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Under what condition can an asymmetrical spatial composition still achieve a sense of balance and order?",
+    "image": null,
+    "choices": [
+      "By Achieving compositional balance by placing lighter visual masses near the central axis and heavier visual masses farther out",
+      "Balancing a heavy element near the center by shifting a lighter element way out to the edge.",
+      "Balancing a large visual weight close to the center and eliminating lighter elements",
+      "Asymmetry can never achieve genuine architectural balance or design order."
+    ],
+    "correctIndex": 1,
+    "explanation": "Asymmetrical balance works like a lever: a small mass far from the center can balance a large mass near it.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q6"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "How does the principle of transformation help an architect manage a historic preservation project where a modern wing must be added to a classical masonry library?",
+    "image": null,
+    "choices": [
+      "Studying an old building's grid, patterns, and proportions, then using those exact rules to create a modern design.",
+      "By demolishing the historic building and rebuilding it out of mirror glass.",
+      "By improving the structural bays, rhythms, and volumetric proportions of the historic structure, then transforming the classical masonry library into another function.",
+      "Transformation states that the new wing must be a perfect, un-evolved replica of the original building."
+    ],
+    "correctIndex": 0,
+    "explanation": "In adaptive reuse, architects study the historic grid, rhythm, and proportion of the old structure and extend those same rules into the new design.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q7"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Which of the following spatial configurations represents Radial Symmetry?",
+    "image": null,
+    "choices": [
+      "A central circular altar wrapped in a series of identical, outward-radiating structural stone piers and seating segments.",
+      "A long, narrow hospital wing with identical patient rooms branching off to the left and right sides.",
+      "A dynamic skyscraper that twists 90 degrees as it rises into the air.",
+      "A random cluster of timber huts arranged along a winding mountain riverbank."
+    ],
+    "correctIndex": 0,
+    "explanation": "Radial symmetry is a central element with identical parts repeating outward around it, as in a circular altar with radiating piers.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q8"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Proportion is defined as the clear mathematical or visual relationship between the dimensions of a component and the rest of a structure. What constitutes the fundamental difference between 'Proportion' and 'Scale'?",
+    "image": null,
+    "choices": [
+      "Proportion is how big it is compared to a person while scale is part-to-whole ratio.",
+      "Proportion requires metric units, while scale can only be calculated using imperial measurements.",
+      "Proportion is how an object’s part relates to each other, while scale is how the object’s size relates to an external standard.",
+      "Scale is determined by structural engineers, while proportion is chosen by clients."
+    ],
+    "correctIndex": 2,
+    "explanation": "Proportion is the relationship of parts to each other and the whole; scale compares an object's size to an external reference, usually the human body.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q9"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In the Classical Orders of architecture,what serves as the fundamental unit of measurement—the module—from which all column heights, entablatures, and structural spacings are derived?",
+    "image": null,
+    "choices": [
+      "The standardized length of a Royal Egyptian cubit rod.",
+      "The total height of the client's entrance portal.",
+      "The base diameter of the column shaft",
+      "A random dimension chosen by the head mason on the morning of construction."
+    ],
+    "correctIndex": 2,
+    "explanation": "In the Classical Orders, the module is the base diameter of the column shaft, from which all other dimensions are derived.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q10"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Renaissance architects like Andrea Palladio developed proportioning systems rooted in musical consonances. What was the underlying philosophical belief that drove this approach?",
+    "image": null,
+    "choices": [
+      "They believed that buildings needed deep hollow walls to amplify the sound of interior string orchestras.",
+      "They believed that the same mathematical ratios governing art and science represented a cosmic order that should be applied to spatial dimensions.",
+      "Applying the mathematical ratios of musical harmony to building dimensions to reflect a divine order.",
+      "Musical ratios were chosen simply to confuse competing builders who lacked musical training."
+    ],
+    "correctIndex": 2,
+    "explanation": "Renaissance theorists like Palladio believed musical harmonic ratios reflected a divine, cosmic order and translated those ratios directly into building proportions.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q11"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What is the primary baseline focus of 'Anthropometry' as a proportioning system in spatial design?",
+    "image": null,
+    "choices": [
+      "The study of how historical monuments weather over centuries.",
+      "The measurement of the physical dimensions, operational reach, and clearance requirements of the human body.",
+      "The tracking of microclimatic humidity shifts inside standard concrete rooms.",
+      "The mathematical calculation of structural wind shear on skyscraper facades."
+    ],
+    "correctIndex": 1,
+    "explanation": "Anthropometry is the study of human body dimensions, reach, and clearance requirements used to size architectural elements.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q12"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The Fibonacci sequence ($1, 1, 2, 3, 5, 8, 13, 21….) is deeply linked to which architectural proportioning system?",
+    "image": null,
+    "choices": [
+      "The Classical Tuscan Order",
+      "The Golden Section",
+      "The Inaka-ma Fixed Column Grid",
+      "The Anthropometric Clearance Matrix"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Fibonacci sequence approximates the Golden Ratio, the basis of the Golden Section proportioning system.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q13"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Le Corbusier developed a universal scaling system based on the Golden Ratio and the proportions of the human body. What is the name of this system?",
+    "image": null,
+    "choices": [
+      "The Golden Section",
+      "The Modulor",
+      "The Ken",
+      "The Anthropometric Matrix"
+    ],
+    "correctIndex": 1,
+    "explanation": "Le Corbusier's Modulor combined the Golden Ratio with human body proportions into a universal scale.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q14"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Which of the Vitruvian triad properties represents utility, spatial function, and the efficient arrangement of a building’s programmatic requirements?",
+    "image": null,
+    "choices": [
+      "Firmitas",
+      "Venustas",
+      "Utilitas",
+      "Commoditas"
+    ],
+    "correctIndex": 2,
+    "explanation": "In the Vitruvian triad, Utilitas refers to function/utility, Firmitas to structure, and Venustas to beauty.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q15"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Which spatial relationship occurs when a larger space acts as a three-dimensional field that fully encloses a smaller space within its boundaries?",
+    "image": null,
+    "choices": [
+      "Space within a space",
+      "Interlocking spaces",
+      "Adjacent spaces",
+      "Spaces linked by a common space"
+    ],
+    "correctIndex": 0,
+    "explanation": "'Space within a space' occurs when a larger volume fully contains and encloses a smaller one.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q16"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Which spatial layout features a central, dominant space from which a series of linear organizations extend outward like spokes on a wheel?",
+    "image": null,
+    "choices": [
+      "Centralized organization",
+      "Radial organization",
+      "Cluster organization",
+      "Grid organization"
+    ],
+    "correctIndex": 1,
+    "explanation": "Radial organization extends linear arms outward from a dominant central space, like spokes on a wheel.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q17"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What spatial organizing system relies on a continuous, repeating three-dimensional matrix of structural bays to regulate the placement, forms, and programmatic boundaries of a project?",
+    "image": null,
+    "choices": [
+      "Linear organization",
+      "Centralized organization",
+      "Grid organization",
+      "Clustered organization"
+    ],
+    "correctIndex": 2,
+    "explanation": "Grid organization uses a repeating three-dimensional matrix of bays to regulate form and layout.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q18"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What term coined by Edward T. Hall describes the study of human spatial behavior, specifically the psychological and cultural distances people naturally maintain in various social settings?",
+    "image": null,
+    "choices": [
+      "Ergonomics",
+      "Anthropometrics",
+      "Proxemics",
+      "Kinesics"
+    ],
+    "correctIndex": 2,
+    "explanation": "Edward T. Hall coined 'proxemics' for the study of culturally determined personal spatial distances.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q19"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Which theoretical zone of personal space, as defined by proxemics, spans from 1.5 to 4 feet and is typically reserved for interactions between close friends and family members?",
+    "image": null,
+    "choices": [
+      "Intimate Distance",
+      "Personal Distance",
+      "Social Distance",
+      "Public Distance"
+    ],
+    "correctIndex": 1,
+    "explanation": "Hall's Personal Distance zone (about 1.5–4 ft) is reserved for close friends and family.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q20"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What traditional Japanese module of proportion serves a dual purpose, regulating both the layout of structural timber columns and the standardized sizing of floor mats?",
+    "image": null,
+    "choices": [
+      "Tatami",
+      "Ken",
+      "Shaku",
+      "Tokonoma"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Ken is a Japanese modular unit that governs both the structural column grid and standard tatami mat sizes.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q21"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In structural aesthetics, what is the term for a beam or slab that extends horizontally past its vertical support column, relying on internal counterweights and tension to float over open space?",
+    "image": null,
+    "choices": [
+      "Portal Frame",
+      "Cantilever",
+      "Truss",
+      "Tie-Rod"
+    ],
+    "correctIndex": 1,
+    "explanation": "A cantilever is a horizontal member that projects beyond its support, held by internal tension/counterbalance rather than an end support.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q22"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What design principle is achieved when all the visual and physical elements of an architectural composition are harmonized, ensuring that no single part distracts from the overarching concept?",
+    "image": null,
+    "choices": [
+      "Contrast",
+      "Contrast and Variety",
+      "Unity",
+      "Emphasis"
+    ],
+    "correctIndex": 2,
+    "explanation": "Unity is achieved when all compositional elements are harmonized around one overarching concept, with nothing distracting from it.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q23"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In design composition, what type of rhythm is generated by slightly and continuously changing an element's size, color, or shape across a sequence of spaces? The visual sequence where an element's size, shape, or interval changes in a predictable, step-by-step way.",
+    "image": null,
+    "choices": [
+      "Alternating rhythm",
+      "Progressive rhythm",
+      "Monotonous rhythm",
+      "Static rhythm"
+    ],
+    "correctIndex": 1,
+    "explanation": "Progressive rhythm is created by a step-by-step, predictable change in an element's size, shape, or spacing.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q24"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What type of scale describes a building design whose massive size makes individuals feel small, intentionally projecting the power of an institution, state, or religion?",
+    "image": null,
+    "choices": [
+      "Human Scale",
+      "Intimate Scale",
+      "Monumental Scale",
+      "Anthropometric Scale"
+    ],
+    "correctIndex": 2,
+    "explanation": "Monumental scale intentionally overwhelms the individual to project institutional, state, or religious power.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q25"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What primary element of design marks a position in space, lacks length, width, or depth, and serves as the ultimate generator of all architectural forms?",
+    "image": null,
+    "choices": [
+      "Line",
+      "Plane",
+      "Point",
+      "Volume"
+    ],
+    "correctIndex": 2,
+    "explanation": "A point marks a position in space with no dimension, and is the primitive generator of line, plane, and volume.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q26"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In architectural graphics and form theory, what property describes the degree of concentration and stability of a form, determined by its shape, orientation, and relationship to the ground plane?",
+    "image": null,
+    "choices": [
+      "Visual Scale",
+      "Visual Inertia",
+      "Surface Articulation",
+      "Volumetric Proportion"
+    ],
+    "correctIndex": 1,
+    "explanation": "Visual inertia describes a form's degree of stability/concentration, based on its shape, orientation, and relation to the ground.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q27"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "When a basic geometric form is altered by removing a portion of its original volume while still retaining its overarching formal identity, it has undergone what type of transformation?",
+    "image": null,
+    "choices": [
+      "Dimensional Transformation",
+      "Additive Transformation",
+      "Subtractive Transformation",
+      "Parametric Transformation"
+    ],
+    "correctIndex": 2,
+    "explanation": "Removing volume from a primary solid while its overall identity remains recognizable is a subtractive transformation.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q28"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "An elevated base plane creates a distinct spatial zone. Psychologically and visually, what type of spatial relationship is established between the elevated plane and the surrounding lower ground?",
+    "image": null,
+    "choices": [
+      "A highly introverted, hidden pocket of space",
+      "A clear sense of detachment, prominence, and territorial domain",
+      "Total spatial continuity with no visual boundary",
+      "An unstable, weak architectural zone"
+    ],
+    "correctIndex": 1,
+    "explanation": "An elevated plane visually and psychologically separates itself, creating a sense of prominence, detachment, and territory.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q29"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Conversely, what is the spatial effect of a depressed base plane relative to the surrounding ground level?",
+    "image": null,
+    "choices": [
+      "It acts as a monumental marker visible from great distances",
+      "It maximizes structural tension across the site",
+      "It eliminates social activities in the surrounding",
+      "It forms an introverted, and localized field of space that feels enclosed and distinct"
+    ],
+    "correctIndex": 3,
+    "explanation": "A depressed plane forms an introverted, sheltered field of space distinct from — but continuous with — the surrounding ground.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q30"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What architectural term defines the characteristic outline or surface configuration of a particular form, serving as the primary mechanism by which we recognize and identify three-dimensional volumes?",
+    "image": null,
+    "choices": [
+      "Texture",
+      "Size",
+      "Shape",
+      "Position"
+    ],
+    "correctIndex": 2,
+    "explanation": "Shape is the characteristic outline/contour that lets us identify and distinguish a form.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q31"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "When a primary shape like a triangle is rotated around its vertical apex axis, it generates which three-dimensional primitive volume?",
+    "image": null,
+    "choices": [
+      "Cylinder",
+      "Cone",
+      "Sphere",
+      "Pyramid"
+    ],
+    "correctIndex": 1,
+    "explanation": "Rotating a triangle about its vertical apex axis sweeps out a cone.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q32"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What terminology describes the unique visual and emotional character of a specific place, rooted in its geography, history, and architectural form—often translated as the \"Spirit of the Place\"?",
+    "image": null,
+    "choices": [
+      "Zeitgeist",
+      "Parti Pris",
+      "Partis",
+      "Genius Loci"
+    ],
+    "correctIndex": 3,
+    "explanation": "'Genius loci,' Latin for 'spirit of place,' describes the unique character rooted in a site's geography, history, and form.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q33"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In design psychology, how does a highly polished, reflective floor surface alter the spatial perception of a lobby?",
+    "image": null,
+    "choices": [
+      "It makes the space feel dark and cramped",
+      "It visually stabilizes the heavy columns by absorbing light",
+      "To articulate the form, emphasizing its three-dimensional volume and making its geometric contours clear to the human eye",
+      "It creates an optical illusion of added vertical depth by mirroring the ceiling plane, making the room feel taller than its physical height."
+    ],
+    "correctIndex": 3,
+    "explanation": "A polished reflective floor mirrors the ceiling plane, creating an illusion of greater vertical height.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q34"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In color theory, how is a \"Tone\" produced?",
+    "image": null,
+    "choices": [
+      "By adding white to a pure hue",
+      "By adding black to a pure hue",
+      "By adding grey to a pure hue",
+      "By mixing two secondary colors together"
+    ],
+    "correctIndex": 2,
+    "explanation": "In color theory a tone is produced by adding grey (a mix of black and white) to a pure hue.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q35"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What term describes a color that has been mixed with black to reduce its value, making it darker than its pure parent hue?",
+    "image": null,
+    "choices": [
+      "Tint",
+      "Tone",
+      "Shade",
+      "Intensity"
+    ],
+    "correctIndex": 2,
+    "explanation": "A shade is a hue mixed with black, which lowers its value and darkens it.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q36"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In color psychology, which color has been clinically proven to lower human blood pressure, slow respiration rates, and create a highly sociofugal, calm environment suitable for healthcare recovery suites?",
+    "image": null,
+    "choices": [
+      "High-saturation Orange",
+      "Low-chroma Blue",
+      "High-value Red",
+      "Low-value Yellow"
+    ],
+    "correctIndex": 1,
+    "explanation": "Low-chroma/desaturated blue is documented to calm the nervous system, lowering blood pressure and respiration — useful in healing environments.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q37"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "If an interior space utilizes a \"Split-Complementary\" color scheme based around the hue Yellow, what are the other two balancing colors used in the composition?",
+    "image": null,
+    "choices": [
+      "Violet and Blue-Violet",
+      "Red-Violet and Blue-Violet",
+      "Red and Blue",
+      "Green and Orange"
+    ],
+    "correctIndex": 1,
+    "explanation": "Yellow's complement is violet; a split-complementary scheme pairs yellow with the two hues flanking violet — red-violet and blue-violet.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q38"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What type of color harmony is created by picking two hues that sit directly opposite each other on the 12-part color wheel?",
+    "image": null,
+    "choices": [
+      "Analogous Harmony",
+      "Monochromatic Harmony",
+      "Complementary Harmony",
+      "Triadic Harmony"
+    ],
+    "correctIndex": 2,
+    "explanation": "Complementary harmony pairs hues directly opposite each other on the color wheel.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q39"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In commercial kitchen design, what ergonomically calculated layout path forms the ultimate blueprint for efficiency, linking the sink, refrigerator, and cooking range?",
+    "image": null,
+    "choices": [
+      "The Linear Assembly",
+      "The Work Triangle",
+      "The Circulation Spine",
+      "The Concentric Ring"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Work Triangle links the sink, refrigerator, and range/stove for efficient kitchen circulation.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q40"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In commercial kitchen design, what planning clearance must be maintained between two facing rows of low cabinets or cooking appliances to allow two chefs to work back-to-back safely with open oven doors?",
+    "image": null,
+    "choices": [
+      "900 mm",
+      "1200 mm",
+      "1500 mm",
+      "1800 mm"
+    ],
+    "correctIndex": 2,
+    "explanation": "Commercial kitchen guidelines call for roughly 1500 mm between facing equipment rows when staff must pass back-to-back with oven doors open.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q41"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In space planning clearances, what is the absolute minimum clearance width required for a secondary residential corridor to allow two average-sized adults to walk past each other comfortably without turning sideways?",
+    "image": null,
+    "choices": [
+      "900 mm",
+      "1200 mm",
+      "1500 mm",
+      "1800 mm"
+    ],
+    "correctIndex": 1,
+    "explanation": "Building/space-planning standards set about 1200 mm as the minimum secondary corridor width for two people to pass comfortably.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q42"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In environmental psychology, what is the fundamental conceptual difference between \"Personal Space\" and \"Territoriality\"?",
+    "image": null,
+    "choices": [
+      "Personal space requires legal ownership documents, while territoriality does not",
+      "Personal space applies only to interior design, while territoriality applies only to urban planning",
+      "Personal space is not a portable psychological bubble it is a fixed geographic area, whereas territoriality is a mobile personal bubble.",
+      "Personal space is an invisible bubble that moves with you, while territoriality is a fixed physical space you claim."
+    ],
+    "correctIndex": 3,
+    "explanation": "Personal space is a portable psychological 'bubble' that travels with a person, while territoriality is a fixed area someone claims and defends.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q43"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Alan Westin identified four distinct states of privacy. Which state describes a condition where an individual is out in a public crowd (such as a busy city square or café) but enjoys freedom from identification and surveillance because they merge into the background?",
+    "image": null,
+    "choices": [
+      "Solitude",
+      "Intimacy",
+      "Anonymity",
+      "Reserve"
+    ],
+    "correctIndex": 2,
+    "explanation": "Alan Westin's 'anonymity' describes being unidentified and unobserved while present in a public crowd.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q44"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Under universal design guidelines and local accessibility codes (like BP 344), what is the primary purpose of enforcing high-contrast color values between doors, architectural wayfinding signage, and adjacent wall surfaces?",
+    "image": null,
+    "choices": [
+      "To minimize the cost of interior graphic branding",
+      "To absorb structural noise reflections along public evacuation routes",
+      "To match the strict minimalist aesthetic lines of the International Style",
+      "To guide low-vision individuals to paths of travel and emergency exits using clear visual cues."
+    ],
+    "correctIndex": 3,
+    "explanation": "High-contrast signage/door colors under codes like BP 344 help low-vision users identify paths of travel and exits.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q45"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In the environmental psychology of workspaces, how can an interior architect utilize color selection to influence thermal comfort and optimize building energy use?",
+    "image": null,
+    "choices": [
+      "By painting spaces bright pink to block all HVAC drafts",
+      "By utilizing cool colors to lower perceived temperatures in hot tropical zones",
+      "Color choice has zero impact on a user's psychological or physical perception of room temperature",
+      "By using high-gloss neon paint to physically trap cool air molecules against the wall plane"
+    ],
+    "correctIndex": 1,
+    "explanation": "Cool colors (blues/greens) can lower a room's perceived temperature, helping thermal comfort in hot climates.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q46"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "To optimize a fast-casual restaurant layout for high customer turnover and immediate appetite stimulation, what color psychology combination should dominate the primary dining zone?",
+    "image": null,
+    "choices": [
+      "High-Saturation Colors to stimulate appetite while inducing slight restlessness to encourage fast customer turnover",
+      "Low saturated, low-chroma, which stimulate the autonomic nervous system to boost appetite while subtly increasing restlessness to prevent overstaying",
+      "Pure monochromatic deep blacks and charcoal grays to prevent slow movement",
+      "Pastel lavenders and desaturated sky blues to stimulate hunger and restlessness"
+    ],
+    "correctIndex": 0,
+    "explanation": "High-saturation warm colors stimulate appetite while producing mild restlessness, encouraging quick turnover in fast-casual dining.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q47"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In the architectural timeline of Ancient Egypt, what structural evolution dictates the chronological transition from the Old Kingdom to the New Kingdom regarding royal burial monuments?",
+    "image": null,
+    "choices": [
+      "A shift from open-air limestone columns to brick-formed zigguart platforms",
+      "The integration of Roman-style concrete vaults into temple layouts",
+      "The total abandonment of stone masonry in favor of monumental timber post-and-lintel framing",
+      "A transition from above-ground, highly visible monuments to hidden, rock-cut cliff tombs prevent tomb raiding"
+    ],
+    "correctIndex": 3,
+    "explanation": "Egyptian royal burials shifted from visible Old Kingdom pyramids to hidden, rock-cut New Kingdom tombs (Valley of the Kings) to deter raiders.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q48"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The transition from classical Greek architecture to Roman architecture represents a massive paradigm shift in structural engineering. What technological breakthrough enabled this timeline leap?",
+    "image": null,
+    "choices": [
+      "The discovery of high-tensile structural steel alloys",
+      "The transition from a strictly trabeated system to the development of opus caementicium and the true arch",
+      "The transition from semi-circular arch and barrel vault to the development of pointed arch and ribbed vault",
+      "The shift from marble columns to lightweight bamboo framing"
+    ],
+    "correctIndex": 1,
+    "explanation": "Rome's development of opus caementicium (concrete) and the true arch freed architecture from the strictly post-and-lintel Greek trabeated system.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q49"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Hosted in London in 1851, the Great Exhibition featured Joseph Paxton’s Crystal Palace. Why is this event considered a monumental watershed moment on the architectural timeline?",
+    "image": null,
+    "choices": [
+      "It was the first public building to utilize hand-carved classical marble orders since antiquity",
+      "It marked the definitive end of urban planning regulations in Europe",
+      "It proved massive structures could be built rapidly using modular, prefabricated iron and glass.",
+      "It introduced the first operational electric elevator system to the public"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Crystal Palace proved that a massive building could be rapidly assembled from prefabricated, modular iron-and-glass components.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q50"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Arrange the following historical design movements in their correct chronological order on the architectural timeline:",
+    "image": null,
+    "choices": [
+      "Gothic → Baroque → Renaissance → Art Nouveau → Modernism",
+      "Gothic → Renaissance → Baroque → Art Nouveau → Modernism",
+      "Renaissance → Gothic → Baroque → Modernism → Art Nouveau",
+      "Baroque → Gothic → Renaissance → Modernism → Art Nouveau"
+    ],
+    "correctIndex": 1,
+    "explanation": "The correct historical order is Gothic → Renaissance → Baroque → Art Nouveau → Modernism.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q51"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Louis Sullivan’s famous dictum 'form follows function' was originally articulated in his 1896 essay 'The Tall Office Building Artistically Considered.' Which architectural element did Sullivan explicitly use to express the tri-partite division of a skyscraper, analogous to a classical column?",
+    "image": null,
+    "choices": [
+      "A decorative, non-structural steel curtain wall spanning all intermediate floors.",
+      "A clearer articulation of a classic tripartite design; base, shaft and top cornice.",
+      "An uninterrupted glass facade that exposes the interior structural core and MEP systems.",
+      "A system of structural buttresses that diminish in thickness as the building ascends."
+    ],
+    "correctIndex": 1,
+    "explanation": "Sullivan described the skyscraper's tripartite division — base, shaft, and cornice/top — echoing a classical column.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q52"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Le Corbusier’s 'Five Points of Architecture' represented a total rupture from traditional load-bearing masonry construction. Which of these structural elements is essential to unlock the freedom of both the 'free plan' (plan libre) and the 'free facade' (façade libre)?",
+    "image": null,
+    "choices": [
+      "Load bearing reinforced concrete perimeter walls.",
+      "The use of pilotis to elevate the building volume, combined with an internal reinforced concrete column grid and cantilevered floor slabs.",
+      "A central structural masonry core that carries all lateral and gravity loads.",
+      "Heavy timber post-and-beam joinery that eliminates the need for deep foundations."
+    ],
+    "correctIndex": 1,
+    "explanation": "Pilotis, an internal reinforced-concrete column grid, and cantilevered slabs free both the plan and facade from load-bearing walls.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q53"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Frank Lloyd Wright coined the term 'Organic Architecture.' Which of the following best defines how this concept was implemented in his masterwork, Fallingwater (the Kaufmann House)?",
+    "image": null,
+    "choices": [
+      "The mimicking of biological forms, such as skeletal structures and leaf vein patterns, within the structural frame.",
+      "The absolute use of biodegradable, locally sourced organic materials to ensure the building decomposes over time.",
+      "Concrete terraces blended into the topography, mimicking natural rock ledges over the waterfall.",
+      "The design of a perfectly circular plan that avoids any harsh, artificial geometric right angles."
+    ],
+    "correctIndex": 2,
+    "explanation": "Fallingwater's cantilevered concrete terraces echo the natural rock ledges of the site, embodying Wright's organic architecture.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q54"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The Bauhaus school building in Dessau, designed by Walter Gropius, is an iconic emblem of the International Style. Which design strategy did Gropius use to emphasize the weightless, transparent quality of the workshop wing?",
+    "image": null,
+    "choices": [
+      "A continuous glass curtain wall independent of a recessed structural grid.",
+      "Thick load-bearing brick masonry walls punctuated by small, rhythmic punch windows.",
+      "An asymmetrical arrangement of heavy stone pilasters that flank the main entrance.",
+      "A structural system composed entirely of tensile fabric membranes and steel cables."
+    ],
+    "correctIndex": 0,
+    "explanation": "Gropius wrapped the Dessau workshop wing in a continuous glass curtain wall set free of the recessed structural grid, expressing weightlessness.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q55"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Mies van der Rohe’s philosophy of 'Less is more' found its ultimate corporate expression in the Seagram Building in New York City. To express the internal steel structure on the building’s exterior while complying with local fire codes, which ingenious architectural solution did Mies’s employ?",
+    "image": null,
+    "choices": [
+      "He left the structural steel columns entirely exposed on the exterior without fireproofing.",
+      "He use of non-structural bronze I-beams on exterior mullions to simulate structural rhythm.",
+      "He designed a structural glass fin system that eliminated the need for vertical metal mullions.",
+      "He cast the exterior curtain wall entirely out of raw, board-formed concrete."
+    ],
+    "correctIndex": 1,
+    "explanation": "Fire codes required Mies to fireproof the Seagram Building's real steel frame, so he applied non-structural bronze I-beam mullions to express structural rhythm.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q56"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Alvar Aalto’s design for the Paimio Sanatorium in Finland marked a departure from the rigid, orthogonal rationalism of early Central European modernism. How did Aalto integrate humanistic and psychological factors into his design?",
+    "image": null,
+    "choices": [
+      "By utilizing monumental, symmetrical neo-classical facades to instill a sense of civic authority.",
+      "By designing custom, glare-free lighting fixtures, curved splash-less sinks, and selecting soothing interior colors tailored to bedridden tuberculosis patients.",
+      "By employing harsh, raw Brutalist concrete finishes to symbolize the sterile cleanliness of the medical institution.",
+      "By organizing the entire plan around a central panopticon to allow doctors to always monitor patients."
+    ],
+    "correctIndex": 1,
+    "explanation": "Aalto tailored Paimio Sanatorium's fixtures, sinks, and colors specifically to the psychological and physical needs of bedridden patients.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q57"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Robert Venturi’s famous counter-dictum, 'Less is a bore,' served as a theoretical catalyst for Postmodernism. In which landmark text did he argue that architecture should embrace complexity, contradiction, and historical allusion over modernism's purism?",
+    "image": null,
+    "choices": [
+      "Towards a New Architecture",
+      "The Language of Post-Modern Architecture",
+      "Complexity and Contradiction in Architecture",
+      "Delirious New York"
+    ],
+    "correctIndex": 2,
+    "explanation": "Venturi's 1966 book 'Complexity and Contradiction in Architecture' argued for embracing ambiguity over modernist purism.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q58"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The Pompidou Center in Paris, designed by Renzo Piano and Richard Rogers, is a premier manifestation of the High-Tech (or Structural Expressionist) architectural style. What is the defining operational and aesthetic strategy of this building?",
+    "image": null,
+    "choices": [
+      "Concealing all structural and mechanical systems within a thick stone-clad envelope to respect the Parisian context.",
+      "Exposing and color-coding the building's structural steel frame and mechanical, electrical, and plumbing (MEP) systems on the exterior facade.",
+      "Using highly ornamental, organic Art Nouveau steel filigree to decorate the exterior escalators.",
+      "Constructing the entire building underground to preserve an open civic plaza above."
+    ],
+    "correctIndex": 1,
+    "explanation": "The Pompidou Center exposes and color-codes its structural and MEP systems on the exterior, the hallmark of High-Tech design.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q59"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Deconstructivism emerged in the late 1980s as a challenge to structural stability and geometric purism. Which of the following projects, characterized by its fragmented, undulating titanium-clad volumes, brought Deconstructivism into mainstream global prominence?",
+    "image": null,
+    "choices": [
+      "The Wexner Center for the Arts by Peter Eisenman",
+      "The Parc de la Villette by Bernard Tschumi",
+      "The Jewish Museum Berlin by Daniel Libeskind",
+      "The Guggenheim Museum Bilbao by Frank Gehry"
+    ],
+    "correctIndex": 3,
+    "explanation": "Gehry's titanium-clad, fragmented Guggenheim Bilbao brought Deconstructivism to mainstream global attention.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q60"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The Unité d'Habitation in Marseille, France, designed by Le Corbusier, is widely considered the foundational project of Brutalism. What material reality gave rise to the term 'Brutalism' during the execution of this project?",
+    "image": null,
+    "choices": [
+      "The aggressive, anti-social layout of the interior apartment micro-units.",
+      "The use of raw, unpolished steel beams that were left exposed to rust over time.",
+      "Rough, unrefined concrete left raw as cast from timber shuttering, termed 'béton brut.",
+      "The demolition of historic neighborhoods using brutal, non-negotiable eminent domain tactics."
+    ],
+    "correctIndex": 2,
+    "explanation": "'Brutalism' derives from 'béton brut' — raw concrete left exposed as cast, seen at Le Corbusier's Unité d'Habitation.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q61"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Oscar Niemeyer was a pioneer in expanding the formal vocabulary of modern architecture. His works in Brasília, such as the National Congress and the Cathedral of Brasília, departed from European functionalism primarily through what formal intervention?",
+    "image": null,
+    "choices": [
+      "The strict adherence to the rigid, right-angled grids championed by the International Style.",
+      "The integration of historical Portuguese Baroque ornamentation onto the building facades.",
+      "Sculptural reinforced concrete curves inspired by the geography of Brazil.",
+      "The exclusive use of traditional tensile thatched roofs supported by local bamboo poles."
+    ],
+    "correctIndex": 2,
+    "explanation": "Niemeyer's Brasília works used sculptural, curving reinforced concrete inspired by Brazil's landscape, diverging from rigid European functionalism.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q62"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Zaha Hadid’s Heydar Aliyev Center in Baku, Azerbaijan, represents a milestone in Parametric Design and contemporary fluid formalisms. What is the primary spatial and experiential objective of the building's undulating skin?",
+    "image": null,
+    "choices": [
+      "To clearly demarcate where the ground plaza ends and where the building facade begins using sharp material transitions.",
+      "A fluid design where the public plaza folds upward to continuously form the building's walls and roof.",
+      "To create a highly efficient, modular matrix of identical triangular panels that can be easily mass-produced.",
+      "To mimic the structural logic of traditional Islamic mud-brick fortifications."
+    ],
+    "correctIndex": 1,
+    "explanation": "Hadid's Heydar Aliyev Center dissolves the ground/building boundary, letting the plaza fold upward to become walls and roof.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q63"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Philip Johnson’s Glass House in New Canaan, Connecticut, and Mies van der Rohe’s Farnsworth House are often compared due to their shared minimalist glass envelopes. However, what is a fundamental spatial and contextual difference between the two?",
+    "image": null,
+    "choices": [
+      "The Glass House is elevated on high steel stilts above a floodplain, whereas the Farnsworth House sits directly flat on a solid concrete foundation bed.",
+      "The Glass House sits on the ground with a circular brick core, while the Farnsworth House is elevated on steel columns.",
+      "The Farnsworth House uses an opaque timber envelope, whereas the Glass House is completely transparent.",
+      "The Glass House uses a complex system of load-bearing stone arches, while the Farnsworth House uses a structural steel space frame."
+    ],
+    "correctIndex": 1,
+    "explanation": "The Glass House sits on the ground with a solid brick core, while the Farnsworth House is elevated on steel columns above the floodplain.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q64"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The architectural movement known as 'Metabolism,' which originated in Japan in the late 1950s under figures like Kisho Kurokawa, conceptualized buildings through which of the following frameworks?",
+    "image": null,
+    "choices": [
+      "Buildings designed as biological organisms, featuring a fixed structural spine with replaceable, plug-in modular units.",
+      "As static, unyielding monuments designed to resist all forms of societal or technological change.",
+      "As dynamic aerodynamic vehicles capable of physical movement across urban territories via mechanical tracks.",
+      "As purely subterranean networks designed to safeguard cities against atomic warfare."
+    ],
+    "correctIndex": 0,
+    "explanation": "Metabolism envisioned buildings as organisms with a fixed structural core and replaceable, plug-in capsule/module units.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q65"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The Villa Savoye in Poissy, France, is Le Corbusier’s ultimate manifesto of modern domesticity. Which of the 'Five Points of Architecture' is directly responsible for creating the continuous, elevated open-air outdoor living room on the upper level?",
+    "image": null,
+    "choices": [
+      "Pilotis",
+      "Free Façade",
+      "Ribbon Window",
+      "Roof Garden"
+    ],
+    "correctIndex": 3,
+    "explanation": "The Roof Garden is the Five Points element that creates Villa Savoye's open-air living space on the upper level.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q66"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Tadao Ando’s Church of the Light in Ibaraki, Osaka, achieves its spiritual power through an extreme economy of means. What is the primary architectural intervention that defines the focal point of the chapel's interior?",
+    "image": null,
+    "choices": [
+      "A massive, gilded alter decorated with intricate wooden relief carvings.",
+      "An illuminated stained-glass rose window depicting biblical narratives.",
+      "A cruciform void cut into a raw concrete altar wall to admit natural light.",
+      "A series of floating fabric panels suspended from the ceiling that catch artificial light projections."
+    ],
+    "correctIndex": 2,
+    "explanation": "Tadao Ando cuts a cruciform void into the raw concrete altar wall of the Church of the Light to admit natural light.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q67"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The international style was formally debuted and classified during an exhibition at the Museum of Modern Art (MoMA) in 1932. Who were the two influential curators responsible for organizing this exhibition and authoring its accompanying book?",
+    "image": null,
+    "choices": [
+      "Nikolaus Pevsner and Kenneth Frampton",
+      "Henry-Russell Hitchcock and Philip Johnson",
+      "Sigfried Giedion and Reyner Banham",
+      "Lewis Mumford and Jane Jacobs"
+    ],
+    "correctIndex": 1,
+    "explanation": "Henry-Russell Hitchcock and Philip Johnson curated MoMA's 1932 exhibition that named and defined the International Style.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q68"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The AT&T Building (now 550 Madison Avenue) in New York City, designed by Philip Johnson and John Burgee in 1984, shocked the architectural world and officially signaled the mainstream acceptance of Postmodernism. What specific historicist detail on the building's apex drew the most intense debate?",
+    "image": null,
+    "choices": [
+      "An open, broken pediment resembling a classical Chippendale furniture top.",
+      "A soaring, Gothic-style pointed spire clad in gold leaf.",
+      "A fully functional, exterior steel cage elevator painted bright orange.",
+      "A series of raw, unpolished concrete columns left exposed to weathering."
+    ],
+    "correctIndex": 0,
+    "explanation": "The AT&T Building's open, broken pediment resembling Chippendale furniture became the most debated Postmodern gesture of its time.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q69"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The structural design of the Sydney Opera House by Jørn Utzon faced crippling mathematical and engineering crises during its design phase. What geometric breakthrough allowed Utzon and engineering firm Ove Arup to systematically fabricate the concrete shells?",
+    "image": null,
+    "choices": [
+      "They realized every single shell segment could be derived from the exact same surface geometry of a single theoretical sphere.",
+      "They abandoned concrete and built the shells out of lightweight structural canvas stretched over steel frames.",
+      "They shifted the design from curves to a series of intersecting flat, orthogonal triangles.",
+      "They utilized computer-guided artificial intelligence to generate thousands of completely random, irregular forms."
+    ],
+    "correctIndex": 0,
+    "explanation": "Utzon and Ove Arup discovered every Sydney Opera House shell could be cut from the surface of one common sphere, enabling standardized fabrication.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q70"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The Jewish Museum Berlin by Daniel Libeskind is a profound example of Deconstructivism used for historical narrative and memory. What is the symbolic and geometric basis of the building’s zigzagging plan?",
+    "image": null,
+    "choices": [
+      "A transcription of an acoustic sound wave of a traditional German symphony.",
+      "An imitation of the path of traditional military trenches used during the Franco-Prussian War.",
+      "The optimized path of an energy efficiency model designed to capture morning sunlight.",
+      "A distorted Star of David geometry generated by Berlin addresses, intersected by a linear void representing absence."
+    ],
+    "correctIndex": 3,
+    "explanation": "Libeskind's zigzag plan derives from a distorted Star of David linking Berlin addresses, cut through by a linear void of absence.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q71"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The Barcelona Pavilion, designed by Mies van der Rohe for the 1929 International Exposition, is celebrated for its radical fluid spatial layout. How did Mies achieve this sense of boundless, open flow?",
+    "image": null,
+    "choices": [
+      "By utilizing load-bearing marble partitions that enclose private, cellular rooms.",
+      "By isolating the structural support entirely within a grid of slender, chrome-plated cruciform steel columns, freeing the rich material planes (onyx, travertine, tinted glass) to act as independent dividers.",
+      "By using a geodesic dome structure that made all interior columns redundant.",
+      "By sloping the floor plates at continuous angles to dissolve separate floor levels."
+    ],
+    "correctIndex": 1,
+    "explanation": "Slender cruciform steel columns carry all structural load in the Barcelona Pavilion, freeing the stone and glass planes to float independently.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q72"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Which modernist master architect is responsible for formulating the 'Modulor'—an anthropometric scale of proportions based on the human body and the Golden Ratio, intended to standardize industrial and architectural design?",
+    "image": null,
+    "choices": [
+      "Walter Gropius",
+      "Frank Lloyd Wright",
+      "Le Corbusier",
+      "Mies van der Rohe"
+    ],
+    "correctIndex": 2,
+    "explanation": "Le Corbusier devised the Modulor, an anthropometric scale based on human proportions and the Golden Ratio.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q73"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The Nakagin Capsule Tower in Tokyo stood as the primary physical monument of Japanese Metabolism. What major design failure and material reality ultimately led to its controversial demolition in 2022?",
+    "image": null,
+    "choices": [
+      "The steel capsules began to detach spontaneously and fall into the street due to windstorms.",
+      "The building lacked a central concrete core, causing it to lean dangerously over time.",
+      "The structural decay of a capsule building due to unreplaced modular units, rusted joints, burst pipes, and hazardous asbestos.",
+      "The tower was built on illegal municipal parklands without proper zoning permits."
+    ],
+    "correctIndex": 2,
+    "explanation": "The Nakagin Capsule Tower was demolished after decades of unreplaced capsules led to rusted joints, burst pipes, and asbestos hazards.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q74"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The Trans World Flight Center (TWA Flight Center) at JFK Airport, New York, designed by Eero Saarinen, is a masterwork of Expressionist Modernism. What formal imagery did Saarinen seek to evoke through its thin-shell reinforced concrete vaults?",
+    "image": null,
+    "choices": [
+      "The rigid, mechanical efficiency of an assembly-line factory engine.",
+      "An abstracted bird or airplane in flight, capturing the optimism, dynamism, and drama of early commercial jet travel.",
+      "A historical gothic cathedral spire adapted for an industrial airfield.",
+      "A subterranean cavern designed to shield passengers from noise pollution."
+    ],
+    "correctIndex": 1,
+    "explanation": "Saarinen shaped the TWA Flight Center's thin-shell vaults to evoke a bird or airplane in flight, capturing jet-age optimism.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q75"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The Vanna Venturi House, designed by Robert Venturi for his mother in Chestnut Hill, Pennsylvania, is considered the first physical monument of Postmodern architecture. Which detail on the front facade directly subverts the functionalist logic of Modernism?",
+    "image": null,
+    "choices": [
+      "A completely transparent curtain wall that exposes the bedrooms to the street.",
+      "A large, non-structural pitched gable facade with a split central lintel and an ornamental, non-functional molding applied above a flat doorway opening.",
+      "A massive steel column placed right in the middle of the driveway entrance path.",
+      "An exterior skin made entirely from industrial corrugated steel panels left unpainted."
+    ],
+    "correctIndex": 1,
+    "explanation": "The Vanna Venturi House's oversized, non-structural gable with a split lintel and applied molding mocks Modernist functionalist honesty.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q76"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Shigeru Ban is renowned for his innovative use of unconventional materials, particularly recycled paper and cardboard tubes. What structural and humanitarian breakthrough did this material selection allow him to achieve?",
+    "image": null,
+    "choices": [
+      "The creation of cheap, automated luxury hotels for mid-income families worldwide.",
+      "The rapid deployment of structurally sound, low-cost disaster relief housing and temporary structures for refugees and victims of natural disasters worldwide.",
+      "The replacement of steel in the construction of supertall skyscrapers globally.",
+      "The design of underwater research stations that are fully biodegradable."
+    ],
+    "correctIndex": 1,
+    "explanation": "Shigeru Ban's paper/cardboard-tube structures enabled fast, low-cost disaster-relief shelters for refugees and disaster victims.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q77"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Art Nouveau represented a radical departure from 19th-century eclecticism by rejecting historical copyism. How did the style structurally integrate its characteristic organic ornamentation, as exemplified by Victor Horta's Hôtel Tassel?",
+    "image": null,
+    "choices": [
+      "Iron and steel structural elements sculpted into biomorphic curves, blending load-bearing functions with decoration.",
+      "Ornamentation was applied as superficial plaster reliefs onto traditional brick load-bearing perimeter walls.",
+      "Structural elements were completely hidden behind heavy concrete slabs to allow unencumbered canvas paintings.",
+      "The style eliminated structural metals entirely, relying exclusively on hand-carved local timber joinery."
+    ],
+    "correctIndex": 0,
+    "explanation": "Victor Horta's Hôtel Tassel fused Art Nouveau ornament directly into structural iron and steel, sculpted into biomorphic curves.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q78"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The Art Deco style of the 1920s and 1930s celebrated the machine age and luxury. How did the zoning laws of New York City in 1916 directly shape the stylistic profile of Art Deco skyscrapers like the Chrysler Building?",
+    "image": null,
+    "choices": [
+      "They mandated that all buildings utilize a flat, unornamented concrete box facade.",
+      "Zoning regulations requiring progressive building setbacks based on a 'sky exposure plane,' creating a 'wedding cake' silhouette.",
+      "They made it illegal to use steel frames above the tenth floor plate.",
+      "They forced developers to build circular towers to minimize wind drag."
+    ],
+    "correctIndex": 1,
+    "explanation": "NYC's 1916 zoning law required setbacks along a 'sky exposure plane,' producing the tiered 'wedding cake' Art Deco skyscraper profile.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q79"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Erich Mendelsohn’s Einstein Tower in Potsdam is a premier masterpiece of Expressionist architecture. What formal and material tension defines the physical reality of this iconic structure's execution?",
+    "image": null,
+    "choices": [
+      "It was designed to look like a perfectly rigid, orthogonal machine but constructed entirely from organic timber logs.",
+      "Designed to look like fluid concrete, material shortages forced builders to use brick covered in smooth stucco instead.",
+      "It was built entirely of prefabricated glass units that collapsed immediately after completion.",
+      "It relied entirely on ancient Egyptian stone-stacking configurations without using mortar."
+    ],
+    "correctIndex": 1,
+    "explanation": "Material shortages forced Mendelsohn's Einstein Tower to be built in brick and stucco rather than the fluid poured concrete he intended.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q80"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The International Style was codified in 1932 by Hitchcock and Johnson. Which three stylistic criteria did they establish to define this universal modern architecture?",
+    "image": null,
+    "choices": [
+      "Symmetrical massing, heavy applied ornamentation, and reliance on regional masonry techniques.",
+      "The emphasis on volume rather than mass, regularity rather than axial symmetry, and the absolute rejection of applied ornament.",
+      "Biomorphic curvature, kinetic structural members, and polychromatic material palettes.",
+      "Tri-partite corporate stacking, classical column modules, and structural concealment."
+    ],
+    "correctIndex": 1,
+    "explanation": "Hitchcock and Johnson's three criteria were volume over mass, regularity over axial symmetry, and rejection of applied ornament.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q81"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Le Corbusier’s post-WWII shift to Brutalism is permanently captured in the design of the Chapel of Notre-Dame du Haut at Ronchamp. How does this building challenge the functionalist stylistic paradigms of his own early International Style works?",
+    "image": null,
+    "choices": [
+      "It adheres strictly to the right-angled modular framework, deploying a regularized column-and-slab system that mirrors Le Corbusier's Maison Dom-Ino prototype.",
+      "It replaces reinforced concrete entirely with a traditional timber post-and-beam system.",
+      "It introduces mass-produced industrial glass panels that wrap around steel column grids.",
+      "It abandons the rigid, weightless white-cube geometry in favor of irregular window punctures, heavy concrete walls, and a crab-shell-shaped roof."
+    ],
+    "correctIndex": 3,
+    "explanation": "Ronchamp abandons Corbusier's earlier white-cube rationalism for irregular window punctures, thick sculptural walls, and a curved crab-shell roof.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q82"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The Bauhaus style underwent a major shift when moving from Weimar to Dessau under Walter Gropius. What theoretical transformation did this shift reflect?",
+    "image": null,
+    "choices": [
+      "A shift from individual craftsmanship toward industrial standardization and mass production.",
+      "An abandonment of modern steel frames in favor of classical Roman stone arch methods.",
+      "The mandatory enforcement of religious and spiritual artwork on all functional objects.",
+      "Sinking the entire workshop school underground to avoid municipal tax codes."
+    ],
+    "correctIndex": 0,
+    "explanation": "The Bauhaus's move to Dessau reflected Gropius's turn from individual craft toward industrial standardization and mass production.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q83"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Michael Graves’ Portland Building in Oregon is a key monument of civic Postmodernism. How does its facade actively break with the tenets of the International Style?",
+    "image": null,
+    "choices": [
+      "By reintroducing a classical tripartite division featuring polychromatic surface graphics, oversized abstracted pilasters, and a decorative ribbon.",
+      "By utilizing a completely transparent glass skin with zero columns.",
+      "By turning the building inside out and hanging all mechanical utilities on the exterior.",
+      "By sloping the perimeter walls at a 45-degree angle to mimic an Egyptian pyramid."
+    ],
+    "correctIndex": 0,
+    "explanation": "Graves' Portland Building reintroduces a classical tripartite facade with polychrome graphics, oversized pilasters, and a decorative ribbon.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q84"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In their book *Learning from Las Vegas* (1972), Venturi, Scott Brown, and Izenour categorized commercial architecture into 'Ducks' and 'Decorated Sheds.' Which of the following defines a 'Decorated Shed'?",
+    "image": null,
+    "choices": [
+      "A building where the structural form itself is deformed into a literal sculptural symbol or sign, matching its internal function.",
+      "A building constructed entirely underground out of raw, board-formed concrete.",
+      "A simple functional building with applied signs and decorative emblems used to communicate meaning.",
+      "A structure that utilizes advanced kinetic engineering to shift its geometry dynamically."
+    ],
+    "correctIndex": 2,
+    "explanation": "Venturi, Scott Brown, and Izenour defined a 'Decorated Shed' as a plain functional building carrying applied signs/ornament to communicate meaning.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q85"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Moshe Safdie's Habitat 67 in Montreal applied a modular layout to multi-family housing. What structural method forms the basis of this architectural composition?",
+    "image": null,
+    "choices": [
+      "A single continuous concrete wall that divides the entire complex into two halves.",
+      "A modular housing project made of 354 prefabricated concrete boxes stacked in an asymmetric, terraced layout.",
+      "A network of lightweight timber frames wrapped in thin canvas panels.",
+      "Sinking individual living spaces into deep underground limestone shafts."
+    ],
+    "correctIndex": 1,
+    "explanation": "Habitat 67 stacks 354 prefabricated concrete housing modules in an irregular, terraced arrangement.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q86"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The Hongkong and Shanghai Banking Corporation (HSBC) HQ in Hong Kong by Norman Foster is an icon of High-Tech architecture. What unique structural system carries the building's interior floors?",
+    "image": null,
+    "choices": [
+      "Thick perimeter load-bearing masonry walls that eliminate all glass window openings.",
+      "Exterior steel masts and suspension trusses that support floors to create a column-free interior atrium.",
+      "A grid of central timber posts carved from local sustainable bamboo forests.",
+      "A series of subterranean concrete piles that expand telescopically during high winds."
+    ],
+    "correctIndex": 1,
+    "explanation": "The HSBC HQ hangs its floors from exterior steel masts and suspension trusses, freeing the interior of columns.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q87"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The style of 'Biomorphic Architecture,' seen in Santiago Calatrava's Milwaukee Art Museum addition, achieves its unique formal language through which engineering technique?",
+    "image": null,
+    "choices": [
+      "Building heavy masonry structures that copy the silhouette of Egyptian pyramids.",
+      "An operable, Burke Brise Soleil that dynamically controls solar heat gain.",
+      "Hiding all structural columns behind a flat sheet of blue glass panels.",
+      "Constructing walls from cast-off biological agricultural waste materials."
+    ],
+    "correctIndex": 1,
+    "explanation": "Calatrava's Milwaukee Art Museum addition uses the operable Burke Brise Soleil, a movable sunshade 'wing', to control solar gain.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q88"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "How does the transition from 20th-century Modernist linearity to 21st-century Parametric fluidity reflect the broader evolution of architectural styles?",
+    "image": null,
+    "choices": [
+      "A complete abandonment of safety standards to maximize building decoration options.",
+      "By limiting all contemporary skyscraper’s podium to a maximum height of ten stories.",
+      "A shift from computer aided drafting to artificial intelligence language to create a design solution that will consider all parameters.",
+      "A shift from industrial standardization to flexible, computer-guided, and context-responsive design systems."
+    ],
+    "correctIndex": 3,
+    "explanation": "The shift to Parametricism reflects a move from standardized industrial forms toward flexible, computer-guided, context-responsive design.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q89"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In the \"Earthquake Baroque\" style of the Paoay Church, what is the exact mechanical purpose of the massive side buttresses?",
+    "image": null,
+    "choices": [
+      "To maximize interior floor area by moving supports outside",
+      "To provide thick walls which is highly defensive against invaders and absorb moisture during the rainy season.",
+      "To resist the lateral forces and ground shaking caused by seismic activity by transferring loads diagonally to the ground",
+      "To prevent ground shaking caused by seismic activity"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Earthquake Baroque buttresses of Paoay Church resist lateral seismic forces, channeling loads diagonally down to the ground.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q90"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Which building designed by Juan Arellano is considered a masterpiece of Philippine Art Deco design, utilizing stylized native flora motifs and a colorful, theatrical facade?",
+    "image": null,
+    "choices": [
+      "Legislative Building",
+      "Manila Metropolitan Theater",
+      "Manila Central Post Office",
+      "National Museum of Fine Arts"
+    ],
+    "correctIndex": 1,
+    "explanation": "Juan Arellano's Manila Metropolitan Theater is the landmark Philippine Art Deco building with stylized native floral motifs.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q91"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "When analyzing the mid-century civic works of Juan Nakpil, such as the SSS Building, what primary design shift is evident compared to pre-war colonial styles?",
+    "image": null,
+    "choices": [
+      "A rejection of functionalism in favor of heavily ornamented facades to showcase wealth and power during the commonwealth era.",
+      "The integration of structural expressionism and clean geometric lines optimized for corporate efficiency",
+      "A reliance on wood and load-bearing masonry to replace concrete",
+      "The total abandonment of climate-responsive features"
+    ],
+    "correctIndex": 1,
+    "explanation": "Nakpil's postwar civic works, like the SSS Building, moved toward structural expressionism and clean corporate geometry.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q92"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Why did colonial and Commonwealth architects like Antonio Toledo utilize the Neoclassical style for major public institutions like the Finance and Agriculture Buildings?",
+    "image": null,
+    "choices": [
+      "Because the style used inexpensive, lightweight local timber components",
+      "Because the style naturally maximized horizontal cross-ventilation across the entire urban grid",
+      "Due to western influence which understands that neoclassical buildings signify integrity, wealth and power.",
+      "To visually project democratic authority, institutional stability, and civic order through monumental stone columns and symmetrical proportions"
+    ],
+    "correctIndex": 3,
+    "explanation": "Neoclassicism's monumental columns and symmetry were used on colonial civic buildings to project democratic authority and institutional stability.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q93"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "As the first registered architect in the Philippines, Tomas Mapua’s early 20th-century work reflected a rigorous transition toward professionalized building practices. What did this transition primarily mean?",
+    "image": null,
+    "choices": [
+      "Moving away from standardized building codes toward speculative hand-drawn craft",
+      "The institutionalization of formal engineering calculations, material testing, and academic architectural training.",
+      "Introducing a standardized design of civic buildings and domestic residential that will be more suitable in the country.",
+      "Prioritizing domestic residential commissions over public infrastructure projects"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mapua's practice reflected the shift toward formal engineering calculation, material testing, and academic training in Philippine architecture.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q94"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Pablo Antonio’s campus designs, such as Far Eastern University, are celebrated for their early modern climate consciousness. What passive cooling technique did he prioritize?",
+    "image": null,
+    "choices": [
+      "The installation of deep mechanical cooling shafts beneath the foundations",
+      "The use of wide, unobstructed corridors, expansive windows, and strategic building orientations to maximize natural cross-ventilation",
+      "facilitates stack-ventilation, allowing cooler ambient air from the street or courtyard to sweep across the floor level where occupants sit",
+      "The use of wide shaded arcades, deep structural verandas, and high ceilings to mitigate heat while utilizing durable concrete to survive earthquakes and fires."
+    ],
+    "correctIndex": 1,
+    "explanation": "Pablo Antonio's FEU campus uses wide corridors, expansive windows, and orientation to maximize natural cross-ventilation.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q95"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Carlos Arguelles’ design for the Philamlife Building modified the classic Western International Style curtain wall for Manila. What was this specific modification?",
+    "image": null,
+    "choices": [
+      "He added a theater inside the building which is unusual that time.",
+      "He added pitched, thatched overhanging eaves to the top of the skyscraper",
+      "He was inspired by the building of Eero Saarinend but made the entire building envelope airtight and placed it completely below ground level",
+      "He integrated large, exterior aluminum sun-shading louvers to shield the glass facade while keeping the modernism aesthetic"
+    ],
+    "correctIndex": 3,
+    "explanation": "Carlos Arguelles adapted the International Style curtain wall for Manila's climate with exterior aluminum sun-shading louvers.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q96"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Leandro Locsin’s design for the Tanghalang Pambansa (CCP) uses a massive, cantilevered concrete block over a recessed glass base. What aesthetic and structural dialogue does this create?",
+    "image": null,
+    "choices": [
+      "It efficiently directs structural compression forces down the curve of the shell to the foundations, eliminating the need for internal columns or tie-rods",
+      "Integrating historical monuments into a continuous network of shaded pedestrian walkways, open civic lawns, and water features designed for community wellness",
+      "It creates a powerful illusion of weightlessness, making a massive concrete volume appear to float, balanced by a internal cantilever system.",
+      "It demonstrates that thin glass walls can carry the structural weight of heavy concrete floors"
+    ],
+    "correctIndex": 2,
+    "explanation": "Locsin's cantilevered CCP theater block creates a striking illusion of a massive concrete volume floating above the glass base.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q97"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The San Miguel Corporation Building by the Mañosa brothers is a pioneering example of green architecture in the Philippines. How does its stepped, terraced geometry function environmentally?",
+    "image": null,
+    "choices": [
+      "Synthesizing monumental modern structural forms with classical spatial hierarchies to evoke a powerful sense of spiritual scale and permanence.",
+      "It allowed for a column-free interior layout with minimal material thickness, maximizing sightlines toward the central altar.",
+      "It utilizes self-shading floors and integrated landscaping to block direct vertical solar heat gain, significantly lowering cooling loads",
+      "The use of wide shaded arcades, deep structural verandas, and high ceilings to mitigate heat while utilizing durable concrete to survive earthquakes and fires"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Mañosa brothers' terraced San Miguel building self-shades its floors and integrates landscaping to cut solar heat gain.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q98"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The ecclesiastical designs of Jose Maria Zaragoza, such as the Santo Domingo Church, demonstrate a mastery of what theoretical approach?",
+    "image": null,
+    "choices": [
+      "Synthesizing monumental modern structural forms with classical spatial hierarchies to evoke a powerful sense of spiritual scale and permanence.",
+      "It allowed for a column-free interior layout with minimal material thickness, maximizing sightlines toward the central altar",
+      "It utilizes self-shading floors and integrated landscaping to block direct vertical solar heat gain, significantly lowering cooling loads",
+      "The use of wide shaded arcades, deep structural verandas, and high ceilings to mitigate heat while utilizing durable concrete to survive earthquakes and fires."
+    ],
+    "correctIndex": 0,
+    "explanation": "Zaragoza's Santo Domingo Church blends modern structural forms with classical spatial hierarchy to evoke spiritual scale.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q99"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "William Parsons, during the American colonial period, adapted reinforced concrete to the tropics in buildings like the Manila Hotel. What was a key element of his adaptive design methodology?",
+    "image": null,
+    "choices": [
+      "Synthesizing monumental modern structural forms with classical spatial hierarchies to evoke a powerful sense of spiritual scale and permanence.",
+      "It allowed for a column-free interior layout with minimal material thickness, maximizing sightlines toward the central altar",
+      "It utilizes self-shading floors and integrated landscaping to block direct vertical solar heat gain, significantly lowering cooling loads",
+      "The use of wide shaded arcades, deep structural verandas, and high ceilings to mitigate heat while utilizing durable concrete to survive earthquakes and fires."
+    ],
+    "correctIndex": 3,
+    "explanation": "Parsons adapted Manila Hotel's concrete construction to the tropics with shaded arcades, deep verandas, and high ceilings.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q100"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The thin-shell concrete dome of the Church of the Holy Sacrifice in UP Diliman represents a milestone in Philippine structural design. What spatial and structural advantage did this engineering approach offer?",
+    "image": null,
+    "choices": [
+      "Synthesizing monumental modern structural forms with classical spatial hierarchies to evoke a powerful sense of spiritual scale and permanence.",
+      "It allowed for a column-free interior layout with minimal material thickness, maximizing sightlines toward the central altar",
+      "It utilizes self-shading floors and integrated landscaping to block direct vertical solar heat gain, significantly lowering cooling loads",
+      "The use of wide shaded arcades, deep structural verandas, and high ceilings to mitigate heat while utilizing durable concrete to survive earthquakes and fires."
+    ],
+    "correctIndex": 1,
+    "explanation": "The Church of the Holy Sacrifice's thin-shell dome eliminates interior columns, opening sightlines toward the central altar.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q101"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Which macroclimate classification defines the overall meteorological condition of the Philippine archipelago?",
+    "image": null,
+    "choices": [
+      "Hot-Arid",
+      "Maritime Tropical",
+      "Continental Sub-Tropical",
+      "Composite Mediterranean"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Philippines' overall climate classification is Maritime Tropical.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q102"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "During the Philippine winter months (November to February), what seasonal wind current blows predominantly from a Northeast direction, bringing cooler, relatively dry air masses to the Luzon landmass?",
+    "image": null,
+    "choices": [
+      "Habagat",
+      "Amihan",
+      "Timog",
+      "Salatan"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Amihan is the cool, dry northeast wind that dominates the Philippines from roughly November to February.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q103"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Conversely, which wind current dominates the Philippine meteorological timeline from June to October, blowing from the Southwest and carrying high-velocity, moisture-saturated monsoon air?",
+    "image": null,
+    "choices": [
+      "Habagat",
+      "Amihan",
+      "Timog",
+      "Salatan"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Habagat is the moist southwest monsoon wind that dominates from about June to October.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q104"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In tropical design physics, why does high relative humidity make an interior space feel significantly hotter to a human occupant than the actual ambient thermometer temperature reading?",
+    "image": null,
+    "choices": [
+      "High humidity increases the speed of radiant heat transfer from walls to skin",
+      "High humidity causes air molecules to compress, generating friction heat",
+      "It drops the oxygen content of the room, forcing blood pressure to spike",
+      "High humidity stops sweat from drying, trapping body heat."
+    ],
+    "correctIndex": 3,
+    "explanation": "High humidity slows sweat evaporation, trapping body heat and making the same temperature feel hotter.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q105"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What term describes the thermal phenomenon where high-density cities like Manila experience ambient temperatures 2°C to 5°C warmer than nearby rural open fields due to dark asphalt, concrete mass, and a lack of softscapes?",
+    "image": null,
+    "choices": [
+      "Atmospheric Inversion",
+      "Microclimate Stratification",
+      "Urban Heat Island Effect",
+      "Greenhouse Concentricity"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Urban Heat Island Effect describes dense cities running measurably warmer than surrounding rural land due to dark, hard surfaces.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q106"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In tropical climate zones, what is the fundamental functional problem associated with a very small diurnal temperature range (the difference between daytime maximum and nighttime minimum temperatures)?",
+    "image": null,
+    "choices": [
+      "Warm night air fails to flush out the solar heat trapped inside heavy concrete walls during the day.",
+      "It causes rapid physical cracking in external timber assemblies",
+      "It eliminates all wind movement across the landscape",
+      "It causes daily solar power generation to drop"
+    ],
+    "correctIndex": 0,
+    "explanation": "A small diurnal range means nights don't cool enough to flush the solar heat that concrete/masonry walls absorbed during the day.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q107"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Which Philippine wind condition represents a localized, daily thermal cycle where cool air over the ocean moves inland during the afternoon to replace hot rising air over the landmass?",
+    "image": null,
+    "choices": [
+      "Land Breeze (Tungkasan)",
+      "Sea Breeze (Ambon)",
+      "Katabatic Mountain Wind",
+      "Cyclonic Monsoon Core"
+    ],
+    "correctIndex": 1,
+    "explanation": "A sea breeze is the daily cycle where cooler ocean air moves inland in the afternoon as land air heats and rises.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q108"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "To keep a building as cool as possible in the hot Philippine climate, which direction should the building stretch (its long axis) so its largest walls avoid the direct morning and afternoon sun?",
+    "image": null,
+    "choices": [
+      "East-to-West",
+      "North-to-South",
+      "Angled diagonally at 45 degrees",
+      "Perpendicular to the closest coastline"
+    ],
+    "correctIndex": 0,
+    "explanation": "Stretching a building's long axis East-to-West minimizes the exposed wall area facing the intense low-angle morning/afternoon sun.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q109"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Which facade orientations in the Philippines receive the most intense, low-angle solar heat loading, making them the most difficult to shade using simple horizontal overhangs?",
+    "image": null,
+    "choices": [
+      "North and South facades",
+      "East and West facades",
+      "Northeast and Southwest facades",
+      "Only the true North façade"
+    ],
+    "correctIndex": 1,
+    "explanation": "East and West facades receive intense, low-angle sun that horizontal overhangs (better suited to high-angle sun) can't easily block.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q110"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What type of external solar shading device is most effective for protecting a true North or true South window facade from the high-angle noon sun in the Philippines?",
+    "image": null,
+    "choices": [
+      "Vertical louvers or vertical fins",
+      "Deep horizontal overhangs or canopy slabs",
+      "Eggcrate shading panels painted pitch black",
+      "Double-pane reflective tinted glass mirroring"
+    ],
+    "correctIndex": 1,
+    "explanation": "Deep horizontal overhangs/canopies are most effective at blocking the high-angle noon sun typical on North/South facades.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q111"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What external solar shading device layout is best suited for blocking the low-angle morning and afternoon sun on East and West building facades?",
+    "image": null,
+    "choices": [
+      "Vertical louvers or vertical fins",
+      "Deep horizontal overhangs or canopy slabs",
+      "Eggcrate shading panels painted pitch black",
+      "Double-pane reflective tinted glass mirroring"
+    ],
+    "correctIndex": 0,
+    "explanation": "Vertical louvers or fins are best suited to block the low, raking morning/afternoon sun on East/West facades.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q112"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "If a building design features a massive, unshaded concrete roof slab in a tropical climate, what thermal issue will occur during the late evening hours?",
+    "image": null,
+    "choices": [
+      "The roof will instantly turn freezing cold, causing internal condensation",
+      "The roof slab will physically deflect downward due to structural contraction",
+      "Stored daytime solar heat radiates downward from concrete slabs at night",
+      "The building will experience a total drop in natural cross-ventilation velocity"
+    ],
+    "correctIndex": 2,
+    "explanation": "A massive unshaded concrete roof stores solar heat during the day and re-radiates it downward into the interior at night.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q113"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What roof pitch configuration is ideal for a tropical building to shed torrential monsoon rain quickly while encouraging hot air to pool near the peak away from occupants?",
+    "image": null,
+    "choices": [
+      "Completely flat roof with deep concrete parapet walls",
+      "Low-angle sawtooth roof facing due West",
+      "Steeply pitched roof with generous overhanging eaves",
+      "Mono-sloped roof sloping down toward the primary windward inlet"
+    ],
+    "correctIndex": 2,
+    "explanation": "A steep roof pitch with generous eaves sheds heavy monsoon rain fast while letting hot air rise and pool near the peak, away from occupants.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q114"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What is the primary function of a \"Breeze Sole\" or \"Breeze Block\" screen wall within a tropical building envelope?",
+    "image": null,
+    "choices": [
+      "To provide a sunshade while blocking the breeze to pass through",
+      "To act as a load-bearing column system for multi-story towers",
+      "To reduce direct solar glare while still allowing natural air currents to pass through",
+      "To increase heat gain while allowing air to pass through"
+    ],
+    "correctIndex": 2,
+    "explanation": "Breeze blocks perforate a wall to cut direct glare while still letting natural airflow pass through.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q115"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In solar geometry calculations, what does the term \"Azimuth\" represent?",
+    "image": null,
+    "choices": [
+      "The angle of the sun vertically above the flat horizon line",
+      "The thickness of the atmospheric ozone layer over a project site",
+      "The vertical distance of the sun measured along the horizon",
+      "The horizontal angular distance of the sun measured along the horizon"
+    ],
+    "correctIndex": 3,
+    "explanation": "Azimuth is the sun's horizontal angular position measured along the horizon; altitude is its vertical angle.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q116"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "To minimize heat transfer into a building's interior, what thermal transmission property (U-value) should external wall insulation materials possess?",
+    "image": null,
+    "choices": [
+      "A very high U-value",
+      "A low U-value, indicating high resistance to heat flow",
+      "A U-value of exactly 1.0",
+      "U-value has no impact on tropical heat transfers"
+    ],
+    "correctIndex": 1,
+    "explanation": "Good insulation should have a low U-value, meaning high resistance to heat flow.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q117"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Why should high-gloss, highly reflective external building finishes be used with caution in dense Philippine urban neighborhoods?",
+    "image": null,
+    "choices": [
+      "They absorb too much moisture during typhoons",
+      "They absorb intense heat directly into adjacent structures",
+      "They reflect intense solar glare and heat, creating thermal problems for neighbors",
+      "They attract insects during seasonal monsoon shifts"
+    ],
+    "correctIndex": 2,
+    "explanation": "Highly reflective finishes can bounce intense solar glare and heat onto neighboring buildings and streets.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q118"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What aerodynamic principle explains how air velocity increases when a natural wind current is forced through a narrowed opening or neck within a building layout?",
+    "image": null,
+    "choices": [
+      "The Stack Effect",
+      "The Venturi Effect",
+      "The Doppler Shift",
+      "Archimedes' Principle"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Venturi Effect explains why air speeds up when forced through a narrowed opening.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q119"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "To maximize the velocity and volume of natural cross-ventilation through a room, what is the optimum sizing relationship between the windward air inlet and the leeward air outlet?",
+    "image": null,
+    "choices": [
+      "An air inlet smaller than or equal to the outlet creates a pressure differential that increases indoor air velocity.",
+      "An air inlet larger than or equal to the outlet creates a pressure differential that increases indoor air velocity.",
+      "Both openings must be placed at the exact same height on the same wall plane",
+      "The outlet window must be positioned directly facing the floor plane"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sizing the inlet smaller than the outlet creates a pressure differential (like a nozzle) that speeds up indoor air movement.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q120"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What passive ventilation mechanism relies on temperature and air density differences, where warm, low-density indoor air rises and escapes through high roof vents, pulling cooler outdoor air in through low wall inlets?",
+    "image": null,
+    "choices": [
+      "The Stack Effect",
+      "The Venturi Effect",
+      "The Doppler Shift",
+      "Archimedes' Principle"
+    ],
+    "correctIndex": 0,
+    "explanation": "The stack effect relies on warm, buoyant air rising and exiting high vents, drawing cooler air in through low openings.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q121"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What type of window configuration allows for 100% ventilation opening area while providing built-in rain protection during typical tropical downpours?",
+    "image": null,
+    "choices": [
+      "Casement windows",
+      "Fixed glass curtain walls",
+      "Jalousie windows",
+      "hopper windows"
+    ],
+    "correctIndex": 2,
+    "explanation": "Jalousie windows open to nearly 100% of their area while their angled glass slats still shed rain.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q122"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What landscape architecture feature can be positioned directly upwind of a building's primary air inlet to lower the temperature of incoming air currents?",
+    "image": null,
+    "choices": [
+      "A large asphalt parking lot with zero tree cover",
+      "A hedge to serve as a natural fence",
+      "A closely planted shrubs to cover planted in below the openings",
+      "A lawn paired with an open water feature facilitate localized evaporative cooling"
+    ],
+    "correctIndex": 3,
+    "explanation": "A water feature or lawn placed upwind of an inlet cools incoming air through evaporative cooling.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q123"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What is the passive cooling benefit of incorporating wide, overhanging open-air verandas into a tropical resort design?",
+    "image": null,
+    "choices": [
+      "They completely seal the core building from storm wind dynamics",
+      "They shade the building's main perimeter walls from direct solar heat while protecting from the rain",
+      "They increase the longevity of the building and preventing the exterior materials from decay",
+      "They act as heavy structural counterweights against severe seismic movements"
+    ],
+    "correctIndex": 1,
+    "explanation": "Wide overhanging verandas shade a building's perimeter walls from direct sun while sheltering them from rain.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q124"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "To reduce the solar heat gain coefficient (SHGC) of a window assembly without using external shading devices, what glass technology can an architect specify?",
+    "image": null,
+    "choices": [
+      "Clear 6mm single-pane float glass",
+      "Wire-reinforced clear fire-rated glass",
+      "High-transparency structural acoustic glass panels",
+      "Low-Emissivity reflective double-glazed units"
+    ],
+    "correctIndex": 3,
+    "explanation": "Low-Emissivity, reflective double-glazed units reduce a window's solar heat gain coefficient without needing external shading.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q125"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The traditional Bahay Kubo stands as a classic template for tropical passive design. What primary material choice ensures that the structure does not store heat?",
+    "image": null,
+    "choices": [
+      "Massive load-bearing coral stone blocks",
+      "Lightweight, porous organic materials that have low thermal mass",
+      "Poured reinforced concrete frames clad in volcanic tuff panels",
+      "Elevated on stilts and lightweight wooden panels to absorb heat"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Bahay Kubo's light, porous natural materials (bamboo, nipa) have low thermal mass, so the structure doesn't store heat.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q126"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Why is the floor plane of a traditional Bahay Kubo elevated off the ground on wooden stilts?",
+    "image": null,
+    "choices": [
+      "To protect occupants from flooding and pests",
+      "To provide a high-security vantage point during local tribal wars",
+      "To maximize the structural rigidity of the roof trusses during typhoons",
+      "To isolate the building entirely from cross-ventilation currents"
+    ],
+    "correctIndex": 0,
+    "explanation": "Elevating the Bahay Kubo on stilts protects occupants and the structure from floodwater and ground pests.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q127"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In a Spanish-colonial Bahay na Bato, what spatial and structural feature combines the climate-conscious lightweight wood logic of the Bahay Kubo with heavy European stone construction?",
+    "image": null,
+    "choices": [
+      "A heavy stone upper floor resting on top of a lightweight bamboo ground floor",
+      "A heavy masonry ground floor topped by a timber upper residential story",
+      "A building envelope constructed entirely out of imported sheet metal",
+      "The elimination of all windows on the upper residential levels"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Bahay na Bato pairs a heavy masonry ground floor with a lighter timber upper residential story.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q128"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What structural element in a Bahay na Bato consists of a delicate, pierced wooden screen located right below the ceiling line, designed to let hot air flow freely between internal rooms?",
+    "image": null,
+    "choices": [
+      "Calado",
+      "Ventanilla",
+      "Volada",
+      "Zaguan"
+    ],
+    "correctIndex": 0,
+    "explanation": "The calado is a pierced wooden screen near the ceiling that lets hot air circulate freely between rooms.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q129"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What is the functional and environmental purpose of the ventanilla sliding panels located beneath the main windowsills in a Bahay na Bato?",
+    "image": null,
+    "choices": [
+      "To allow low-level cross-ventilation to sweep across the floor plane",
+      "To let hot air flow freely between internal rooms",
+      "To serve as escape hatches during structural collapse events",
+      "To serve as a decorative element while allowing the air to pass through"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ventanilla sliding panels beneath the windowsill admit low-level cross-ventilation across the floor where occupants sit.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q130"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Translucent Capiz shells were widely used in the window sashes of the Bahay na Bato instead of heavy glass panes. What is their primary advantage in tropical design?",
+    "image": null,
+    "choices": [
+      "They are completely soundproof and block street noise",
+      "They filter diffused indoor light while holding up against typhoon wind",
+      "They actively lower the relative humidity of incoming air",
+      "They act as a firewall to block the spread of municipal fires"
+    ],
+    "correctIndex": 1,
+    "explanation": "Capiz shell panes diffuse soft interior light while remaining durable enough to withstand typhoon winds.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q131"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "When reading a site map, what do contour lines that are drawn very close together indicate?",
+    "image": null,
+    "choices": [
+      "A perfectly flat open field",
+      "A steep slope or cliff",
+      "A high flood risk zone",
+      "An underground utility pipeline"
+    ],
+    "correctIndex": 1,
+    "explanation": "Closely spaced contour lines indicate a steep slope or cliff.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q132"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What does soil bearing capacity tell an architect during a site analysis?",
+    "image": null,
+    "choices": [
+      "How much water the soil can hold during a heavy storm",
+      "The percentage of organic compost inside the dirt",
+      "The required depth of the foundation of the building",
+      "How much weight the soil can safely support before a building foundation sinks"
+    ],
+    "correctIndex": 3,
+    "explanation": "Soil bearing capacity tells an architect how much load the ground can safely carry before a foundation sinks.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q133"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In site grading, what does a \"cut and fill\" strategy aim to achieve?",
+    "image": null,
+    "choices": [
+      "Cutting down all trees and replacing them with gravel fill",
+      "Minimizing the cost of hauling soil away or buying new soil",
+      "Digging deep trenches to look for hidden historic artifacts",
+      "Balancing the soil level to prevent possible soil erosion or landslide"
+    ],
+    "correctIndex": 1,
+    "explanation": "Cut-and-fill grading balances excavated and needed soil on site, minimizing the cost of hauling material away or importing it.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q134"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What is a \"bioswale\" in sustainable site planning?",
+    "image": null,
+    "choices": [
+      "A mechanical pump used to clear sewage",
+      "A plastic tank buried underground to store drinking water",
+      "A drainage system or a surface trench drain to protect properties from flooding and erosion by safely channeling rainwater",
+      "A shallow, landscaped ditch filled with plants designed to naturally capture, slow down, and filter stormwater runoff"
+    ],
+    "correctIndex": 3,
+    "explanation": "A bioswale is a shallow, planted depression designed to capture, slow, and filter stormwater runoff.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q135"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "If a site has a \"high water table,\" what design challenge does the architect face?",
+    "image": null,
+    "choices": [
+      "High water table is not safe and will make it more difficult to excavate soil.",
+      "Shallow groundwater makes basements highly prone to flooding",
+      "The air over the site will remain completely dry year-round",
+      "The building must be built out of lightweight timber frames"
+    ],
+    "correctIndex": 1,
+    "explanation": "A high water table means shallow groundwater, making basements especially prone to flooding and requiring waterproofing.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q136"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In site design, what distinguishes a \"vista\" from a \"panorama\"?",
+    "image": null,
+    "choices": [
+      "A vista is a wide, 360-degree unblocked view, while a panorama is hidden",
+      "A vista is a framed view, while a panorama is a wide, open view in all directions",
+      "A vista can only be seen at night, while a panorama is seen by day",
+      "There is no difference; they are identical terms"
+    ],
+    "correctIndex": 1,
+    "explanation": "A vista is a framed, directed view (often along an axis), while a panorama is a wide, open view in all directions.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q137"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Why is it recommended to align outdoor parking lanes in a North-to-South direction rather than East-to-West?",
+    "image": null,
+    "choices": [
+      "It minimizes the time cars are exposed to the low-angle, keeping vehicle cooler",
+      "It is more economical and easier for the driver to park the car",
+      "It aligns the cars with the Earth's magnetic core to prevent battery drainage",
+      "It lets more cars fit into a single parking lot layout"
+    ],
+    "correctIndex": 0,
+    "explanation": "Orienting parking rows North–South limits how long parked cars sit exposed to the low, direct East/West sun, keeping them cooler.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q138"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Why is choosing native plants over imported exotic plants preferred in sustainable landscape architecture?",
+    "image": null,
+    "choices": [
+      "Native plants are significantly less water, fertilizers, and maintenance",
+      "Native plants look grows faster than exotic plants",
+      "Native plants grow to the same height as the building roof line",
+      "Native plants are completely immune to direct solar radiation"
+    ],
+    "correctIndex": 0,
+    "explanation": "Native plants are adapted to local conditions and typically need far less water, fertilizer, and maintenance than exotic species.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q139"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What is the best site element to use if you need to block loud traffic noise from a nearby highway from reaching a residential building?",
+    "image": null,
+    "choices": [
+      "A thin chain-link fence",
+      "A wide lawn with no trees paired with concrete fence with espalier",
+      "An earth berm paired with a thick layer of dense shrubs and trees",
+      "Painting the building exterior a bright reflective white"
+    ],
+    "correctIndex": 2,
+    "explanation": "An earth berm combined with dense shrubs and trees is an effective passive barrier against highway traffic noise.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q140"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In site analysis, what is the \"microclimate\"?",
+    "image": null,
+    "choices": [
+      "A localized area where the climate—such as temperature, humidity, wind, and rainfall—differs significantly from the surrounding regional climate",
+      "The localized climate conditions of a local region or geographic area, typically spanning tens to hundreds of kilometers.",
+      "The localized climate conditions of a specific small site, influenced by its unique topography, trees, water features, and surrounding structures",
+      "A weather forecast that changes every five minutes"
+    ],
+    "correctIndex": 0,
+    "explanation": "A microclimate is a localized area whose temperature, humidity, wind, or rainfall differs notably from the surrounding regional climate.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q141"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What is the primary purpose of conducting a \"site inventory\" during the early stages of a project?",
+    "image": null,
+    "choices": [
+      "To order the final building construction materials",
+      "To calculate the final rental price of the building spaces",
+      "To create a checklist of all existing physical features of the site",
+      "To choose the existing elements of the site and check the cost of it"
+    ],
+    "correctIndex": 2,
+    "explanation": "A site inventory catalogs all existing physical features of a site as a baseline before design begins.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q142"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Why is removing all existing mature trees from a sloped site hazardous to the surrounding development?",
+    "image": null,
+    "choices": [
+      "Removing trees will violate the ecosystem",
+      "Tree roots hold soil together and absorb rainwater; removing them leads to severe soil erosion and landslide risks during heavy storms",
+      "Removing the tree would damage the soil quality and will lead to weaken the bearing capacity of the soil which leads to soil erosion and landslide",
+      "It drops the overall water table levels too quickly"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mature tree roots stabilize slope soil and absorb rainwater; removing them raises the risk of erosion and landslides.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q143"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In landscape design, what is an \"earth berm\"?",
+    "image": null,
+    "choices": [
+      "A soil used to collect rainwater",
+      "A decorative stone fountain",
+      "A deep trench used to drain sewage",
+      "A raised, intentional mound of soil"
+    ],
+    "correctIndex": 3,
+    "explanation": "An earth berm is a raised, intentionally shaped mound of soil used for screening, shading, or noise control.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q144"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What is the main design advantage of utilizing deciduous trees for solar shading along the southern facade of a building?",
+    "image": null,
+    "choices": [
+      "They block 100% of the wind year-round",
+      "They act as essential food and shelter for wildlife, enhance biodiversity, and help prevent soil erosion",
+      "They act as vital natural windbreaks and privacy screens, offer excellent erosion control, and support local ecosystems by providing habitats for birds and mammals.",
+      "They provide thick shade during hot summer months, but shed leaves in cold seasons to allow natural sunlight to pass through and warm the building"
+    ],
+    "correctIndex": 3,
+    "explanation": "Deciduous trees shade a south facade in summer heat and drop their leaves in winter, letting sunlight through when it's wanted.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q145"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What terminology describes a broad, paved public walkway located along a scenic waterfront, beach, or riverbank, designed primarily for leisurely walking?",
+    "image": null,
+    "choices": [
+      "Pleached walkway",
+      "Esplanade",
+      "Cul-de-sac",
+      "Alleyway"
+    ],
+    "correctIndex": 1,
+    "explanation": "An esplanade is a broad, paved public walkway along a waterfront meant for leisurely strolling.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q146"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What outdoor structure features an open timber framework of columns and cross-beams, often covered with climbing vines, used to frame a garden pathway or create a shaded seating pocket?",
+    "image": null,
+    "choices": [
+      "Pergola",
+      "Gazebo",
+      "Trellis",
+      "Vestibule"
+    ],
+    "correctIndex": 0,
+    "explanation": "A pergola is an open timber framework of posts and cross-beams, often planted with vines, that frames a path or shaded seating area.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q147"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What landscape design element uses a continuous, tightly packed row of thick shrubs or small trees to form a living wall that defines property boundaries or blocks unwanted views?",
+    "image": null,
+    "choices": [
+      "Fence line",
+      "Hedge",
+      "Bushes",
+      "Parterre"
+    ],
+    "correctIndex": 1,
+    "explanation": "A hedge is a dense, continuous planted row that forms a living wall marking boundaries or screening views.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q148"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What is the definition of \"hardscape\" versus \"softscape\" in landscape architecture?",
+    "image": null,
+    "choices": [
+      "Hardscape comprises non-living elements, while softscape comprises all living plant materials",
+      "Hardscape comprises living elements, while softscape comprises all non-living elements",
+      "Hardscape is built by architects, while softscape is managed only by civil engineers",
+      "Hardscape handles water systems, while softscape handles lighting layouts"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hardscape refers to non-living built elements (paving, walls), while softscape refers to living plant materials.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q149"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Ebenezer Howard introduced the Garden City concept in 1898. What was the core layout of this urban model?",
+    "image": null,
+    "choices": [
+      "A continuous, endless line of skyscrapers built along a greenbelt",
+      "A grid system dedicated entirely to automobile traffic with no parks",
+      "A giant industrial factory complex with housing units placed directly on the roofs",
+      "Self-contained, walkable towns surrounded by a greenbelt"
+    ],
+    "correctIndex": 3,
+    "explanation": "Howard's Garden City model proposed self-contained, walkable towns encircled by a protective greenbelt.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q150"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What is the primary goal of Transit-Oriented Development (TOD) in modern urban planning?",
+    "image": null,
+    "choices": [
+      "To build massive highways that let cars travel across cities faster",
+      "To focus high-density housing, offices, and shops within short walking distances of public transportation hubs",
+      "To focus more on public transportation to make future developments scattered and further from the existing districts",
+      "To move all public transit networks completely underground"
+    ],
+    "correctIndex": 1,
+    "explanation": "Transit-Oriented Development clusters dense housing, offices, and retail within easy walking distance of transit hubs.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q151"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What does the term \"urban sprawl\" describe?",
+    "image": null,
+    "choices": [
+      "The vertical growth of a city using high-rise skyscrapers",
+      "The conversion of old factories into public libraries",
+      "The uncontrolled, uncoordinated outward growth of a city",
+      "The planting of forests inside a downtown commercial core"
+    ],
+    "correctIndex": 2,
+    "explanation": "Urban sprawl describes the uncontrolled, low-density, outward expansion of a city.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q152"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The \"New Urbanism\" movement champions which design layout for modern neighborhoods?",
+    "image": null,
+    "choices": [
+      "Sprawling, car-dependent cul-de-sacs with large front lawns",
+      "Walkable, human-scaled neighborhoods",
+      "Mega-blocks separated by twelve-lane highways",
+      "Moving all residential communities into high-altitude mountain zones"
+    ],
+    "correctIndex": 1,
+    "explanation": "New Urbanism promotes walkable, human-scaled neighborhoods in place of car-dependent sprawl.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q153"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In urban models, how does the Concentric Zone Model describe the growth of a city?",
+    "image": null,
+    "choices": [
+      "A series of pie-shaped slices growing outward along major transit routes",
+      "A set of target-like concentric rings radiating outward from a single central business district",
+      "It organizes land use in pie-shaped sectors or wedges that grow outward along major transportation corridors",
+      "A city grows by developing around several independent focal points or specialized hubs."
+    ],
+    "correctIndex": 1,
+    "explanation": "The Concentric Zone Model (Burgess) describes a city as a series of rings expanding outward from a central business district.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q154"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Conversely, how does the Sector Model (Hoyt Model) map out urban land use?",
+    "image": null,
+    "choices": [
+      "A series of pie-shaped slices growing outward along major transit routes",
+      "A set of target-like concentric rings radiating outward from a single central business district",
+      "It organizes land use in pie-shaped sectors or wedges that grow outward along major transportation corridors",
+      "A city grows by developing around several independent focal points or specialized hubs."
+    ],
+    "correctIndex": 2,
+    "explanation": "The Sector Model (Hoyt) describes land use radiating outward in pie-shaped wedges along transportation corridors.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q155"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "The \"Multiple Nuclei Model\" describes modern metropolitan growth by making what claim?",
+    "image": null,
+    "choices": [
+      "A series of pie-shaped slices growing outward along major transit routes",
+      "A set of target-like concentric rings radiating outward from a single central business district",
+      "It organizes land use in pie-shaped sectors or wedges that grow outward along major transportation corridors",
+      "A city grows by developing around several independent focal points or specialized hubs."
+    ],
+    "correctIndex": 3,
+    "explanation": "The Multiple Nuclei Model holds that cities grow around several independent, specialized focal points rather than one center.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q156"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What is \"gentrification\" in an urban context?",
+    "image": null,
+    "choices": [
+      "The structural reinforcement of old bridges against earthquakes",
+      "The influx of wealthier residents into a lower-income urban neighborhood, driving up property values and rents, which often displaces the original community",
+      "The process of planting trees along public highway medians",
+      "The forced or coerced removal of people from their native areas or homes, typically due to war, violence, or natural disasters"
+    ],
+    "correctIndex": 1,
+    "explanation": "Gentrification is the influx of wealthier residents into a lower-income neighborhood, raising costs and often displacing the original community.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q157"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What is a \"Mega-city\"?",
+    "image": null,
+    "choices": [
+      "A continuous urban metropolitan area with a total population exceeding 100 thousand people",
+      "A continuous urban metropolitan area with a total population exceeding 1 million people",
+      "A continuous urban metropolitan area with a total population exceeding 10 million people",
+      "A continuous urban metropolitan area with a total population exceeding 100 million people"
+    ],
+    "correctIndex": 2,
+    "explanation": "A megacity is a continuous metropolitan area with a population exceeding 10 million.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q158"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What is the function of a \"Greenbelt\" in metropolitan planning?",
+    "image": null,
+    "choices": [
+      "A line of green paint used to mark bicycle lanes on roads",
+      "A method of piping recycled water to protect public parks and green spaces",
+      "A lawn area placed in front of corporate office buildings",
+      "A protected ring of open space to contain urban sprawl and preserve natural habits"
+    ],
+    "correctIndex": 3,
+    "explanation": "A greenbelt is a protected ring of open land encircling a city to contain sprawl and preserve natural habitat.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q159"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What was a common criticism of mid-20th-century Urban Renewal programs that focused on total slum clearance?",
+    "image": null,
+    "choices": [
+      "They did not spend enough money on decorative monuments",
+      "They frequently demolished historic neighborhoods and displaced low-income communities without providing proper housing alternatives",
+      "The influx of wealthier residents into a lower-income urban neighborhood, driving up property values and rents, which often displaces the original community",
+      "The forced or coerced removal of people from their native areas or homes, typically due to war, violence, or natural disasters"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mid-century Urban Renewal was criticized for demolishing historic, low-income neighborhoods without providing adequate replacement housing.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q160"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What is \"urban blight\" or \"urban decay\"?",
+    "image": null,
+    "choices": [
+      "Converting old, abandoned urban assets into new public amenities like parks, markets, and cultural hubs",
+      "They frequently demolished historic neighborhoods and displaced low-income communities without providing proper housing alternatives",
+      "The functional deterioration, abandonment, and economic decline of inner-city buildings and public infrastructure",
+      "A design trend that prioritizes raw unpolished concrete facades"
+    ],
+    "correctIndex": 2,
+    "explanation": "Urban blight/decay refers to the functional deterioration, abandonment, and economic decline of inner-city buildings and infrastructure.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q161"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "How is residential density usually measured and expressed in urban planning maps?",
+    "image": null,
+    "choices": [
+      "The number of windows per building facade",
+      "The number of individual dwelling units per unit of land area",
+      "The total weight of residential buildings divided by road lengths",
+      "The number of cars parked along a single residential street"
+    ],
+    "correctIndex": 1,
+    "explanation": "Residential density is expressed as the number of dwelling units per unit of land area.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q162"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What is a \"Planned Unit Development\" (PUD)?",
+    "image": null,
+    "choices": [
+      "A standard housing community where every lot must follow identical setback distances",
+      "A flexible master-planned development category that allows a mix of uses, diverse housing types, and unique setbacks on a single large parcel, bypassing rigid zoning blocks",
+      "A mechanical engineering blueprint for municipal water treatment facilities",
+      "An urban park consisting entirely of identical playground equipment units"
+    ],
+    "correctIndex": 1,
+    "explanation": "A Planned Unit Development is a flexible master-planned zoning category allowing mixed uses and housing types on one large parcel.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q163"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What is the fundamental difference between the terms \"land use\" and \"zoning\"?",
+    "image": null,
+    "choices": [
+      "Land use tracks what is currently happening on the ground, while zoning is the legal tool and set of regulations that dictates what can be built there in the future",
+      "Land use is handled by private developers, while zoning is handled only by structural engineers",
+      "Land use applies to rural areas, while zoning applies strictly to inner-city downtown blocks",
+      "There is no difference; they are identical legal terms in urban planning documents"
+    ],
+    "correctIndex": 0,
+    "explanation": "Land use describes what is actually on the ground now; zoning is the legal regulation controlling what may be built there.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q164"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In Kevin Lynch’s Image of the City, what term describes strategic focal points or busy gathering places where major paths cross, such as a central train station or a bustling public square?",
+    "image": null,
+    "choices": [
+      "Districts",
+      "Landmarks",
+      "Nodes",
+      "Edges"
+    ],
+    "correctIndex": 2,
+    "explanation": "Kevin Lynch's 'nodes' are strategic, busy focal points, such as where major paths intersect.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q165"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "According to Kevin Lynch, what is an \"Edge\" within a person’s mental map of a city?",
+    "image": null,
+    "choices": [
+      "A major highway that pedestrians use to travel across town",
+      "A linear boundary that acts as a barrier or structural break",
+      "A specialized neighborhood known for its unique architectural style",
+      "A towering skyscraper visible from any point in the city"
+    ],
+    "correctIndex": 1,
+    "explanation": "Lynch defines an 'edge' as a linear boundary that acts as a barrier or break between districts.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q166"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "How does Kevin Lynch define a \"District\" in urban mapping terms?",
+    "image": null,
+    "choices": [
+      "A linear boundary that acts as a barrier or structural break",
+      "A medium-to-large section of a city that has a distinct, shared visual character that a person can mentally enter \"inside\" of",
+      "A sharp boundary fence separating two private properties",
+      "A single prominent statue located at a major road intersection"
+    ],
+    "correctIndex": 1,
+    "explanation": "Lynch's 'district' is a medium-to-large area with a distinct, shared identity a person can mentally enter.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q167"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Urban activist Jane Jacobs introduced the concept of \"eyes on the street.\" What does this mean for neighborhood safety?",
+    "image": null,
+    "choices": [
+      "Buildings should have windows and active storefronts facing the sidewalk, so residents naturally watch over and protect the street",
+      "Cities should install high-tech CCTV cameras on every single power pole",
+      "Police stations should be built on every residential block",
+      "Streets should be kept completely empty of pedestrians at night"
+    ],
+    "correctIndex": 0,
+    "explanation": "Jane Jacobs's 'eyes on the street' means active windows and storefronts facing the sidewalk let residents naturally watch over it.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q168"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Daniel Burnham spearheaded the \"City Beautiful\" movement in the early 1900s. What was his core philosophy for improving chaotic urban centers?",
+    "image": null,
+    "choices": [
+      "Creating monumental civic centers, wide boulevards, and classical beauty to inspire civic pride and order",
+      "Moving all commercial shops underground to keep streets quiet",
+      "Replacing all public parks with high-efficiency vehicle parking decks",
+      "Leaving the city layout completely organic without any central planning rules"
+    ],
+    "correctIndex": 0,
+    "explanation": "Burnham's City Beautiful movement pursued monumental civic centers, wide boulevards, and classical grandeur to inspire civic order and pride.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q169"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Popularized in the 2020s, Carlos Moreno’s \"15-Minute City\" concept aims to restructure modern urban life around which daily schedule?",
+    "image": null,
+    "choices": [
+      "Forcing all citizens to spend 15 minutes a day planting trees in public parks",
+      "Ensuring that high-speed commuter trains arrive at platforms every 15 minutes",
+      "Ensuring that a resident’s daily necessities are accessible within a 15-minute walk or bike ride from home",
+      "Ensuring that a resident’s daily necessities are accessible within a 15-minute automobile drive"
+    ],
+    "correctIndex": 2,
+    "explanation": "Moreno's 15-Minute City aims to put daily necessities within a 15-minute walk or bike ride of home.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q170"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Urban planner Patrick Geddes introduced the phrase \"Survey before plan.\" What does this rule mandate an architect or planner to do?",
+    "image": null,
+    "choices": [
+      "Thoroughly study a site’s unique geography, history, culture, and existing population before drawing any new city layout blueprints",
+      "Calculate the total financial profit of a project before purchasing the land",
+      "Interview neighboring city mayors to align zoning tax laws",
+      "Pour the concrete road foundations before assigning building zone uses"
+    ],
+    "correctIndex": 0,
+    "explanation": "Geddes's 'survey before plan' calls for thoroughly studying a site's geography, history, culture, and people before laying out any plan.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q171"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Ebenezer Howard's \"Three Magnets\" diagram illustrated the forces that pull human populations toward different environments. What was his ideal destination magnet?",
+    "image": null,
+    "choices": [
+      "The Town (characterized by high wages but severe pollution and overcrowding)",
+      "The Town-Country (combining the economic opportunities of the city with the fresh air and open spaces of nature)",
+      "The Country (offering natural beauty but absolute economic isolation and lack of infrastructure)",
+      "The Wilderness (completely devoid of any human infrastructure or roads)"
+    ],
+    "correctIndex": 1,
+    "explanation": "Howard's ideal 'Town-Country' magnet combined the economic opportunity of the city with the open space and nature of the countryside.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q172"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Futuristic \"Floating City\" concepts (such as the United Nations-backed Oceanix project) are explicitly engineered to protect coastal populations from which global threat?",
+    "image": null,
+    "choices": [
+      "High-velocity tornado wind damage",
+      "Extreme volcanic ash fallout events",
+      "Severe underground tectonic earthquake shaking",
+      "Rising sea levels and severe coastal storm flooding caused by climate change"
+    ],
+    "correctIndex": 3,
+    "explanation": "Floating city concepts like Oceanix are designed to protect coastal populations from rising seas and climate-driven storm flooding.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q173"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Le Corbusier designed the master plan for Chandigarh, India, using an analogy based on the human anatomy. How did he map out the city's functional sectors?",
+    "image": null,
+    "choices": [
+      "The government capitol building was the \"Head,\" the central green parks were the \"Lungs,\" and the commercial center was the \"Heart\"",
+      "The industrial factories were the \"Brain,\" and residential homes were the \"Feet\"",
+      "The public highway systems were the \"Stomach,\" and schools were the \"Eyes\"",
+      "The entire city layout was shaped like a giant skeletal arm crossing a river"
+    ],
+    "correctIndex": 0,
+    "explanation": "Le Corbusier mapped Chandigarh's capitol as the 'Head,' its green parks as the 'Lungs,' and its commercial center as the 'Heart.'",
+    "source": "TAPP Pre-Board Exam Reviewer, Q174"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What does Kevin Lynch mean by the term \"urban legibility\"?",
+    "image": null,
+    "choices": [
+      "The ease with which city zoning laws can be read and understood by lawyers",
+      "The font size used on public highway wayfinding signs",
+      "The ease with which a city’s parts can be recognized and organized by its residents into a coherent, understandable mental map",
+      "The number of historic books stored inside a central public library"
+    ],
+    "correctIndex": 2,
+    "explanation": "Urban legibility is how easily residents can recognize and organize a city's parts into a coherent mental map.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q175"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Constantinos Doxiadis defined five core elements that make up any human settlement. Which element represents the actual physical structures, houses, and buildings that shelter people?",
+    "image": null,
+    "choices": [
+      "Shells",
+      "Networks",
+      "Society",
+      "Nature"
+    ],
+    "correctIndex": 0,
+    "explanation": "Of Doxiadis's five ekistic elements, 'Shells' are the physical buildings and structures that house people.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q176"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Before Spanish colonization, what was the most common geographic layout for native Filipino barangay settlements?",
+    "image": null,
+    "choices": [
+      "Massive, high-density stone cities hidden deep inside mountain valleys",
+      "A rigid geometric gridiron system centered around stone palaces",
+      "Linear footprints running along coastlines and riverbanks for easy transit, fishing, and trade",
+      "Concentric circular rings expanding outward from a central temple"
+    ],
+    "correctIndex": 2,
+    "explanation": "Pre-colonial barangays typically formed linear settlements along coasts and rivers for transit, fishing, and trade.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q177"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What was the typical population size and social structure of a pre-colonial Philippine barangay unit?",
+    "image": null,
+    "choices": [
+      "A massive empire containing millions of citizens ruled by a single remote emperor",
+      "A temporary camp of 5 to 10 nomadic hunters who moved every single day",
+      "A dense network of industrial factory workers living in stone barracks",
+      "A small, self-sufficient, kinship-based community of 30 to 100 families led by a local chief called a Datu"
+    ],
+    "correctIndex": 3,
+    "explanation": "A pre-colonial barangay was a small, kinship-based community of roughly 30–100 families led by a Datu.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q178"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What was the primary objective of the Spanish colonial government's Reducción policy implemented across the Philippines?",
+    "image": null,
+    "choices": [
+      "To reduce the amount of physical space a family could use for farming",
+      "To systematically group scattered, independent native communities into centralized towns to make religious conversion and tax collection easier",
+      "To decrease the total population of native settlements through forced migration",
+      "To replace all timber buildings with lightweight bamboo structures"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Reducción policy resettled scattered native communities into centralized towns to ease religious conversion and tax collection.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q179"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In 1573, King Philip II issued a comprehensive set of planning directives that dictated how all new Spanish colonial towns across the Americas and the Philippines must be laid out. What is this historic document called?",
+    "image": null,
+    "choices": [
+      "The Burnham Manifesto",
+      "The Tordesillas Urban Accord",
+      "The Gridiron Mandate",
+      "The Laws of the Indies"
+    ],
+    "correctIndex": 3,
+    "explanation": "King Philip II's 1573 planning code for Spanish colonial towns is known as the Laws of the Indies.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q180"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In a standard Philippine colonial plaza complex layout, where were the grand houses of the wealthy elite (Principalia) legally mandated to be built?",
+    "image": null,
+    "choices": [
+      "Directly facing or situated immediately adjacent to the central plaza marketplace",
+      "Hidden miles away in agricultural rural zones to maintain privacy",
+      "Built exclusively on floating river rafts behind the municipal courthouse",
+      "Stacked vertically on top of the church bell tower"
+    ],
+    "correctIndex": 0,
+    "explanation": "Colonial plaza complexes required the Principalia's grand houses to face or sit adjacent to the central plaza.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q181"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What is the fundamental scientific definition of the field of \"Ekistics\"?",
+    "image": null,
+    "choices": [
+      "The comprehensive, multidisciplinary study of human settlements, examining their growth, scales, and structural elements",
+      "The engineering study of deep underground concrete foundations",
+      "The historical analysis of ancient Roman masonry equations",
+      "The architectural styling of interior residential furniture layouts"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ekistics is the comprehensive, multidisciplinary study of human settlements and their scale, growth, and structure.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q182"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Which prominent American architect and urban planner visited the Philippines in 1904 to design the City Beautiful master plans for modern Manila and Baguio City?",
+    "image": null,
+    "choices": [
+      "Robert Moses",
+      "Louis Sullivan",
+      "Frank Lloyd Wright",
+      "Daniel Burnham"
+    ],
+    "correctIndex": 3,
+    "explanation": "Daniel Burnham visited the Philippines in 1904 to prepare City Beautiful master plans for Manila and Baguio.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q183"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What was the Parian in Spanish colonial Manila?",
+    "image": null,
+    "choices": [
+      "A highly regulated commercial neighborhood located outside the walls of Intramuros, designated specifically for Chinese merchants and artisans",
+      "The private residential palace of the Spanish Governor-General",
+      "A stone aqueduct system that carried fresh drinking water to the city center",
+      "The main cemetery located behind the grand cathedral"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Parian was the regulated commercial district outside Intramuros's walls designated for Chinese merchants and artisans.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q184"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In 1939, the Commonwealth government initiated the planning of Quezon City to serve as the new nation's capital. What design movement heavily inspired its wide avenues, massive civic circles, and generous public park spaces?",
+    "image": null,
+    "choices": [
+      "The City Beautiful movement, which prioritized monumental axes, grand public circles, and sprawling green parkways",
+      "Brutalism, which prioritized raw, exposed concrete mega-blocks with no open spaces",
+      "Deconstructivism, which prioritized fragmented, chaotic street grids and asymmetrical paths",
+      "The New Urbanism movement, which focused exclusively on narrow, low-density rural carriage lanes"
+    ],
+    "correctIndex": 0,
+    "explanation": "Quezon City's 1939 plan of wide avenues and civic circles was directly inspired by the City Beautiful movement.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q185"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Constantinos Doxiadis predicted a future, ultimate evolution of human settlements where all cities on Earth would eventually expand and connect into one single worldwide urban network. What term did he give to this global city concept?",
+    "image": null,
+    "choices": [
+      "Megalopolis",
+      "Ecumenopolis",
+      "Metropolis",
+      "Necropolis"
+    ],
+    "correctIndex": 1,
+    "explanation": "Doxiadis called his hypothetical future of one continuous, planet-spanning city 'Ecumenopolis.'",
+    "source": "TAPP Pre-Board Exam Reviewer, Q186"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Which of Kevin Lynch’s five elements forms the primary network of a city's mental map, described as the channels along which people regularly travel?",
+    "image": null,
+    "choices": [
+      "Nodes",
+      "Edges",
+      "Paths",
+      "Landmarks"
+    ],
+    "correctIndex": 2,
+    "explanation": "Lynch's 'paths' are the channels — streets, walkways — along which people habitually travel.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q187"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Tony Garnier designed the \"Industrial City\" (Cité Industrielle) concept in 1904. What major zoning milestone did this model introduce to modern planning history?",
+    "image": null,
+    "choices": [
+      "It was the first model to strictly separate areas for work from areas for living to protect public health",
+      "It mandated that all residential structures be built out of cast-iron framing",
+      "It banned the use of electricity in public commercial zones",
+      "It concentrated the entire city population inside a single royal palace ground"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tony Garnier's Cité Industrielle (1904) was among the first plans to strictly zone work areas apart from living areas.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q188"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Which iconic modernist master architect wrote the provocative statement, \"A house is a machine for living in,\" viewing architecture as a highly functional, engineered tool?",
+    "image": null,
+    "choices": [
+      "Le Corbusier",
+      "Walter Gropius",
+      "Kenzo Tange",
+      "Tadao Ando"
+    ],
+    "correctIndex": 0,
+    "explanation": "Le Corbusier wrote that 'a house is a machine for living in' in Vers une architecture.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q189"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "If a historic public building features grand columns, a triangular pediment over the entrance, and a formal, symmetrical stone facade that mimics ancient Greek and Roman temples, what style is it?",
+    "image": null,
+    "choices": [
+      "Bauhaus",
+      "Gothic Revival",
+      "Neoclassical",
+      "Rococo"
+    ],
+    "correctIndex": 2,
+    "explanation": "Grand columns, a pediment, and symmetrical stone facades echoing Greek/Roman temples define the Neoclassical style.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q190"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "When an architect designs public benches, door handles, stair steps, and ceiling heights to perfectly match the comfortable reach and proportions of the human body, what principle are they applying?",
+    "image": null,
+    "choices": [
+      "Human Scale",
+      "Monumental Scale",
+      "Asymmetrical Contrast",
+      "Axial Symmetry"
+    ],
+    "correctIndex": 0,
+    "explanation": "Designing fixtures and dimensions to match comfortable human reach and proportion is the principle of Human Scale.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q191"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What planning strategy isolates quiet residential houses from the noise and danger of fast vehicles by placing heavy, high-speed traffic on perimeter roads around a large block?",
+    "image": null,
+    "choices": [
+      "Ribbon Sprawl Layout",
+      "Concentric Business Rings",
+      "Spot Zoning Plan",
+      "Superblock Design"
+    ],
+    "correctIndex": 3,
+    "explanation": "Superblock design routes fast traffic around the perimeter of a large block, keeping the quiet residential interior free of through-traffic.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q192"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What was the core philosophy of the Postmodern architecture movement that emerged in the late 1960s and 1970s?",
+    "image": null,
+    "choices": [
+      "Banning all color and forcing buildings to look like raw factory warehouses",
+      "Making all buildings completely round to mimic natural organic shapes",
+      "Breaking strict modernist rules by bringing back historical decorations, color, irony, and playful shapes",
+      "Moving all human residential spaces into deep underground cave networks"
+    ],
+    "correctIndex": 2,
+    "explanation": "Postmodernism reintroduced historical ornament, color, irony, and playful form in reaction against strict Modernist rules.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q193"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In urban master planning, what is the primary benefit of designing a centralized park system or interconnected greenway corridors?",
+    "image": null,
+    "choices": [
+      "It concentrates all industrial factories into a single zone",
+      "It increases the density of high-rise commercial office towers",
+      "It acts as the city's \"green lungs,\" cleaning the air, handling heavy storm drainage, and offering public recreation spaces",
+      "It maximizes the space available for wide multi-lane highways"
+    ],
+    "correctIndex": 2,
+    "explanation": "A connected park/greenway system serves as a city's 'green lungs,' managing stormwater, air quality, and recreation.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q194"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What design style from the 1920s and 30s features geometric patterns, bold sunburst shapes, chevron lines, and sleek metallic outlines, as seen on the top of New York's Chrysler Building?",
+    "image": null,
+    "choices": [
+      "Baroque",
+      "Art Nouveau",
+      "Neoclassical",
+      "Art Deco"
+    ],
+    "correctIndex": 3,
+    "explanation": "Geometric sunbursts, chevrons, and sleek metallic lines atop buildings like the Chrysler Building define Art Deco.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q195"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "What geometric proportion system uses a mathematical ratio found throughout nature (roughly 1 to 1.618) to create visually pleasing relationships between a building's width and height?",
+    "image": null,
+    "choices": [
+      "The Golden Section",
+      "The Ken Dimension",
+      "The Modular Grid",
+      "The Ergonomic Metric"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Golden Section is the roughly 1:1.618 ratio found throughout nature and applied to pleasing architectural proportions.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q196"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In neighborhood space planning, what is the primary traffic-safety benefit of a \"cul-de-sac\" (dead-end street with a circular turnaround)?",
+    "image": null,
+    "choices": [
+      "It increases the speed of cross-town vehicular commutes",
+      "It eliminates fast, dangerous through-traffic from cutting through quiet residential blocks",
+      "It cuts down the physical cost of installing public sewers",
+      "It maximizes the amount of commercial retail space available along the road"
+    ],
+    "correctIndex": 1,
+    "explanation": "A cul-de-sac's dead-end turnaround keeps fast through-traffic from cutting through quiet residential streets.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q197"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Which urban road layout features a traditional rectangular grid pattern but adds diagonal avenues that intersect at central public squares or monumental civic circles?",
+    "image": null,
+    "choices": [
+      "Linear Network",
+      "Concentric Ring Plan",
+      "Radial-Gridiron Plan",
+      "Multi-Nuclei Mesh"
+    ],
+    "correctIndex": 2,
+    "explanation": "A Radial-Gridiron plan overlays diagonal boulevards onto a rectangular grid, meeting at civic circles or squares.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q198"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "Known as the \"Queen of the Curve,\" which famous architect designed futuristic, fluid structures like the Heydar Aliyev Center in Baku using advanced digital modeling?",
+    "image": null,
+    "choices": [
+      "Maya Lin",
+      "Kazuyo Sejima",
+      "Zaha Hadid",
+      "Neri Oxman"
+    ],
+    "correctIndex": 2,
+    "explanation": "Zaha Hadid, nicknamed the 'Queen of the Curve,' designed the fluid, digitally modeled Heydar Aliyev Center.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q199"
+  },
+  {
+    "subtopic": "Architecture Pre-Board Review",
+    "question": "In a traditional Bahay na Bato, what is the \"Volada\"?",
+    "image": null,
+    "choices": [
+      "A solid stone foundation wall that completely seals off the ground floor storage area",
+      "A secret underground drainage tunnel used to flush out water during torrential rainstorms",
+      "An overhanging, enclosed wooden gallery or corridor on the second floor that shades the lower floor and allows air to circulate around the house",
+      "The decorative iron grillwork installed on windows to protect the family from intruders"
+    ],
+    "correctIndex": 2,
+    "explanation": "The volada is an overhanging, enclosed second-floor wooden gallery that shades the ground floor and allows air to circulate.",
+    "source": "TAPP Pre-Board Exam Reviewer, Q200"
+  }
+];
+
+const root = document.getElementById('quiz-root');
+const progressEl = document.getElementById('progress');
+let answered = 0;
+
+function updateProgress() {
+  progressEl.textContent = `${answered} / ${QUIZ_DATA.length} answered`;
+}
+
+let lastSubtopic = null;
+QUIZ_DATA.forEach((q, qIndex) => {
+  if (q.subtopic !== lastSubtopic) {
+    const h = document.createElement('h2');
+    h.className = 'subtopic-heading';
+    h.textContent = q.subtopic;
+    root.appendChild(h);
+    lastSubtopic = q.subtopic;
+  }
+
+  const card = document.createElement('div');
+  card.className = 'question-card';
+
+  const qText = document.createElement('div');
+  qText.className = 'question-text';
+  qText.textContent = `${qIndex + 1}. ${q.question}`;
+  card.appendChild(qText);
+
+  if (q.image) {
+    const img = document.createElement('img');
+    img.src = q.image;
+    img.className = 'question-image';
+    img.alt = 'Figure for question ' + (qIndex + 1);
+    card.appendChild(img);
+  }
+
+  const explanation = document.createElement('div');
+  explanation.className = 'explanation';
+  explanation.innerHTML = `${q.explanation} <span class="source">(${q.source})</span>`;
+
+  q.choices.forEach((choiceText, cIndex) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice';
+    btn.textContent = choiceText;
+    btn.addEventListener('click', () => {
+      const allBtns = card.querySelectorAll('.choice');
+      allBtns.forEach(b => b.disabled = true);
+      if (cIndex === q.correctIndex) {
+        btn.classList.add('correct');
+      } else {
+        btn.classList.add('incorrect');
+        allBtns[q.correctIndex].classList.add('correct');
+      }
+      explanation.classList.add('show');
+      answered++;
+      updateProgress();
+    });
+    card.appendChild(btn);
+  });
+
+  card.appendChild(explanation);
+  root.appendChild(card);
+});
+
+updateProgress();
+</script>
+</body>
+</html>
