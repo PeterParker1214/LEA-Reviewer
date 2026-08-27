@@ -16,6 +16,7 @@
      regex would truncate. -->
 <script src="assets/quiz-source.js?v=5"></script>
 <script src="assets/quiz-rework.js?v=1"></script>
+<script src="assets/docx-quiz.js?v=1"></script>
 <script src="assets/image-intake.js?v=1"></script>
 <script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1727,8 +1728,8 @@ function renderReworkTab(){
       </select>
 
       <div style="margin:10px 0 4px;color:var(--muted);font-size:13px;">…or load a file instead</div>
-      <div id="rwDrop" style="border:2px dashed var(--line);border-radius:10px;padding:24px;text-align:center;cursor:pointer;color:var(--muted);transition:border-color .15s ease;">Drop a .json or .html quiz here, or click to choose</div>
-      <input type="file" id="rwFile" accept=".json,.html,.htm" style="display:none;">
+      <div id="rwDrop" style="border:2px dashed var(--line);border-radius:10px;padding:24px;text-align:center;cursor:pointer;color:var(--muted);transition:border-color .15s ease;">Drop a .docx answer key, or a .json / .html quiz — or click to choose</div>
+      <input type="file" id="rwFile" accept=".docx,.json,.html,.htm" style="display:none;">
 
       <div id="rwLoadMsg"></div>
     </div>
@@ -1851,6 +1852,28 @@ function renderReworkTab(){
 
 function readReworkFile(f){
   const msg = document.getElementById('rwLoadMsg');
+
+  // A .docx is a zip, not text — it takes the reader that knows the house
+  // layout (bold choice = the answer, italics = explanation and source).
+  if(/\.docx$/i.test(f.name)){
+    msg.innerHTML = '<div class="msg info">Reading ' + escapeHtml(f.name) + '…</div>';
+    LEADocxQuiz.read(f).then(res => {
+      const rows = res.rows.map(LEAQuizRework.canonical).filter(Boolean);
+      if(!rows.length) throw new Error('No usable questions in that document.');
+      acceptRows(rows, f.name, res.rows.length);
+      if(res.warnings.length){
+        document.getElementById('rwLoadMsg').innerHTML +=
+          '<div class="msg info">' + res.warnings.length + ' item(s) were skipped:<br>' +
+          res.warnings.map(escapeHtml).join('<br>') + '</div>';
+      }
+      const t = document.getElementById('rwDestTitle');
+      if(t && !t.value) t.value = f.name.replace(/\.docx$/i, '');
+    }).catch(err => {
+      msg.innerHTML = '<div class="msg error">' + escapeHtml(err.message) + '</div>';
+    });
+    return;
+  }
+
   const reader = new FileReader();
   reader.onload = () => {
     try{

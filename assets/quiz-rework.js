@@ -221,9 +221,9 @@ window.LEAQuizRework = (function () {
     {
       name: 'except-list',
       // "The following are X EXCEPT:" -> "Which of these is NOT X?"
-      test: function (s) { return /^(?:The following|All of the following) (?:are|is) (.+?)\s+EXCEPT/i.test(s); },
+      test: function (s) { return /^(?:The following|All of the following) (?:are|is) (.+?)\s+EXCEPT\b/i.test(s); },
       apply: function (s) {
-        var m = s.match(/^(?:The following|All of the following) (?:are|is) (.+?)\s+EXCEPT/i);
+        var m = s.match(/^(?:The following|All of the following) (?:are|is) (.+?)\s+EXCEPT\b/i);
         return 'Which of these is NOT ' + softLower(noDot(m[1])) + '?';
       }
     },
@@ -269,6 +269,9 @@ window.LEAQuizRework = (function () {
         var tail = body.match(/^(.+?),\s*(?:according to|per|under)\s+(.+)$/i);
         if (tail) return 'Under ' + noDot(tail[2]) + ', ' + softLower(noDot(tail[1])) + ' ' + m[1].toLowerCase() + ':';
         if (/,\s*\w/.test(body.slice(-40))) return null;   // other trailing clause: leave alone
+        // "...if the occupant load is 15" + " is:" reads as "15 is:". Leave
+        // stems that already end mid-clause alone.
+        if (/\d$/.test(body) || /\b(is|are|was|were)\s+\S+$/i.test(body)) return null;
         return upper1(body) + ' ' + m[1].toLowerCase() + ':';
       }
     },
@@ -333,14 +336,14 @@ window.LEAQuizRework = (function () {
       // on top of one that is already there.
       test: function (s) {
         return !/\?$/.test(s) && !/:$/.test(s) &&
-               /^(?:Any|A|An|The|This|These|It|Refers to|Term for)/i.test(s) &&
+               /^(?:Any|A|An|The|This|These|It|Refers to|Term for)\b/i.test(s) &&
                s.split(/\s+/).length >= 5 && s.split(/\s+/).length <= 45;
       },
       apply: function (s) {
         var body = noDot(s);
         // "This/The <noun phrase> is|are ..." -> "Which <noun phrase> is|are ...?"
         var m = body.match(/^(?:This|These|The)\s+((?:\w+\s+){0,3}?\w+)\s+(is|are)\s+(.+)$/i);
-        if (m && !/^term/i.test(m[1])) {
+        if (m && !/^term\b/i.test(m[1])) {
           return 'Which ' + m[1].toLowerCase() + ' ' + m[2].toLowerCase() + ' ' + m[3] + '?';
         }
         // Peel any existing "(This) term refers to" lead-in before adding ours.
@@ -356,9 +359,9 @@ window.LEAQuizRework = (function () {
       // identification prompt only when it names no subject of its own.
       test: function (s) {
         return !/\?$/.test(s) && !/:$/.test(s) &&
-               /(is|are)/.test(s) &&
+               /\b(is|are)\b/.test(s) &&
                s.split(/\s+/).length >= 6 && s.split(/\s+/).length <= 40 &&
-               /^(?:Compensation|Payment|Fees?|Charges?|Services?|Work|Plans?|Permits?)/i.test(s);
+               /^(?:Compensation|Payment|Fees?|Charges?|Services?|Work|Plans?|Permits?)\b/i.test(s);
       },
       apply: function (s) {
         var body = noDot(s);
@@ -387,9 +390,9 @@ window.LEAQuizRework = (function () {
       if (out.length > s.length * 2.2) continue;                 // ballooned
       if (/[?:.]{2,}$/.test(out)) continue;                      // doubled punctuation
       if (/\s[?:.]/.test(out)) continue;                         // floating punctuation
-      if (/(?:a|an|of|for|to|and|or|with|in|on)\s*[:.?]$/i.test(out)) continue;
-      if (/the\s*[:.?]$/i.test(out) && !/by the\s*[:.?]$/i.test(out)) continue;
-      if (/(is|are|was|were)\s+(is|are|was|were)/i.test(out)) continue;  // "is is"
+      if (/\b(?:a|an|of|for|to|and|or|with|in|on)\s*[:.?]$/i.test(out)) continue;
+      if (/\bthe\s*[:.?]$/i.test(out) && !/\bby the\s*[:.?]$/i.test(out)) continue;
+      if (/\b(is|are|was|were)\s+(is|are|was|were)\b/i.test(out)) continue;  // "is is"
       if (/\?\s*\w/.test(out)) continue;                          // text after the ?
       return { text: out, rule: RULES[i].name, why: null };
     }

@@ -37,6 +37,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Quiz Builder — LEA Reviewer</title>
 <script src="../assets/quiz-rework.js?v=1"></script>
+<script src="../assets/docx-quiz.js?v=1"></script>
 <style>
 :root{
   --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-deep:#0a1520;
@@ -123,8 +124,8 @@ details>summary{cursor:pointer;color:var(--gold-bright);font-size:13px;margin-to
     <h2>1 · Load questions</h2>
     <p class="hint">Accepts a site <code>data/*.json</code> module, a blueprint quiz page
       (<code>const QUIZ_DATA</code>), a site quiz page (<code>const QUESTIONS</code>), or pasted JSON.</p>
-    <div class="drop" id="drop">Drop a .json or .html file here, or click to choose</div>
-    <input type="file" id="file" accept=".json,.html,.htm" class="hidden">
+    <div class="drop" id="drop">Drop a .docx answer key, or a .json / .html quiz</div>
+    <input type="file" id="file" accept=".docx,.json,.html,.htm" class="hidden">
     <details>
       <summary>…or paste JSON</summary>
       <textarea id="paste" placeholder='[{"s":"Subtopic","q":"Question?","o":["a","b","c","d"],"c":0,"ref":"Source","n":"Explanation"}]'></textarea>
@@ -329,6 +330,24 @@ $('drop').addEventListener('drop', e => {
 });
 $('file').addEventListener('change', e => { const f = e.target.files[0]; if(f) readFile(f); });
 function readFile(f){
+  // A .docx is a zip of XML, not text — it needs the reader that understands
+  // the house layout (bold choice = the answer, italics = explanation/source).
+  if(/\.docx$/i.test(f.name)){
+    LEADocxQuiz.read(f).then(res => {
+      LOADED = res.rows.map(LEAQuizRework.canonical).filter(Boolean);
+      const subs = new Set(LOADED.map(r => r.s).filter(Boolean));
+      $('loadMsg').innerHTML = '<div class="msg ok">Loaded ' + LOADED.length +
+        ' question(s)' + (subs.size ? ' across ' + subs.size + ' subtopic(s)' : '') +
+        ' from ' + esc(f.name) + '.</div>' +
+        (res.warnings.length ? '<div class="msg info">' + res.warnings.length +
+          ' skipped:<br>' + res.warnings.map(esc).join('<br>') + '</div>' : '');
+      $('optionsCard').classList.remove('hidden');
+      if(!$('metaTitle').value) $('metaTitle').value = f.name.replace(/\.docx$/i, '');
+    }).catch(e => {
+      $('loadMsg').innerHTML = '<div class="msg error">' + esc(e.message) + '</div>';
+    });
+    return;
+  }
   const r = new FileReader();
   r.onload = () => loadText(r.result, f.name);
   r.readAsText(f);
