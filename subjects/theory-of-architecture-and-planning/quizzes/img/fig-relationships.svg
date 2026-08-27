@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 716 208" role="img"
+     aria-label="Four spatial relationships: space within a space, interlocking spaces, adjacent spaces, spaces linked by a common space">
+  <!--
+    Spatial relationships, drawn for this app. Original work.
+
+    The four relationships themselves are standard architectural vocabulary
+    and belong to nobody; only a particular drawing of them can. This replaces
+    a scanned pencil sketch that came from a review centre.
+
+    LETTERING IS DELIBERATE. Each concept sits at the letter the stored answer
+    key already expects — A within, B interlocking, C adjacent, D linked — so
+    no answer had to change. The sketch this replaces had C and D the other way
+    round, which is why those two questions marked the right answer wrong.
+
+    B offsets its two squares diagonally rather than side by side: overlapped
+    horizontally they read as three vertical bands, which looks like C.
+  -->
+  <style>
+    .plate{ fill:#f5f3ed; stroke:#c3ccd4; stroke-width:1; }
+    .ink{ fill:#ffffff; stroke:#1b2a38; stroke-width:2.2; stroke-linejoin:round; }
+    .solid{ fill:#b9c6d2; stroke:#1b2a38; stroke-width:2.2; stroke-linejoin:round; }
+    .lbl{ font-family:Georgia,'Times New Roman',serif; font-size:17px; font-weight:700;
+          fill:#1b2a38; text-anchor:middle; }
+  </style>
+
+  <rect width="716" height="208" fill="#f5f3ed"/>
+
+  <!-- A — a space contained within the volume of a larger space -->
+  <text class="lbl" x="94" y="22">A</text>
+  <rect class="plate" x="14" y="32" width="160" height="160"/>
+  <rect class="ink" x="34" y="52" width="120" height="120"/>
+  <rect class="solid" x="76" y="94" width="36" height="36"/>
+
+  <!-- B — the field of one space overlaps the volume of another -->
+  <text class="lbl" x="270" y="22">B</text>
+  <rect class="plate" x="190" y="32" width="160" height="160"/>
+  <rect class="ink" x="206" y="52" width="84" height="84"/>
+  <rect class="ink" x="250" y="88" width="84" height="84"/>
+  <!-- the shared field: what the two have in common, so it is the solid one -->
+  <rect class="solid" x="250" y="88" width="40" height="48"/>
+
+  <!-- C — two spaces share a common border -->
+  <text class="lbl" x="446" y="22">C</text>
+  <rect class="plate" x="366" y="32" width="160" height="160"/>
+  <rect class="ink" x="386" y="66" width="60" height="92"/>
+  <rect class="ink" x="446" y="66" width="60" height="92"/>
+  <!-- the border they share, thickened: it is the whole point of this one -->
+  <line x1="446" y1="66" x2="446" y2="158" stroke="#1b2a38" stroke-width="6" stroke-linecap="square"/>
+
+  <!-- D — two spaces rely on an intermediary space for their relationship -->
+  <text class="lbl" x="622" y="22">D</text>
+  <rect class="plate" x="542" y="32" width="160" height="160"/>
+  <rect class="ink" x="552" y="76" width="42" height="72"/>
+  <rect class="ink" x="650" y="76" width="42" height="72"/>
+  <!-- the intermediary reaches both, so the link is drawn rather than implied -->
+  <circle class="solid" cx="622" cy="112" r="32"/>
+</svg>

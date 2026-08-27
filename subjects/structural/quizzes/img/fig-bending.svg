@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 190" role="img"
+     aria-label="A beam element under a bending moment, a sagging curve representing positive bending, and a hogging curve representing negative bending">
+  <!--
+    Bending curvature. Drawn for this app.
+
+    LETTERING IS DELIBERATE: B is the sagging curve, because the stored answer
+    to "which curve represents positive bending?" is B. Sagging is positive by
+    the usual sign convention — the beam is concave upward and the bottom
+    fibres are in tension.
+  -->
+  <style>
+    .plate{ fill:#f5f3ed; stroke:#c3ccd4; stroke-width:1; }
+    .el{ fill:#e0a86a; stroke:#1b2a38; stroke-width:2.2; stroke-linejoin:round; }
+    .ink{ fill:none; stroke:#1b2a38; stroke-width:2; stroke-linecap:round; }
+    .dash{ fill:none; stroke:#5d6f80; stroke-width:1.4; stroke-dasharray:6 4; }
+    .lbl{ font-family:Georgia,'Times New Roman',serif; font-size:17px; font-weight:700; fill:#1b2a38; text-anchor:middle; }
+    .cap{ font-family:Georgia,'Times New Roman',serif; font-size:13px; fill:#5d6f80; text-anchor:middle; }
+    .ti{ font-family:Georgia,'Times New Roman',serif; font-size:16px; font-style:italic; font-weight:700; fill:#1b2a38; }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1b2a38"/>
+    </marker>
+  </defs>
+
+  <rect width="720" height="190" fill="#f5f3ed"/>
+
+  <!-- A — the unbent element, with the moment that acts on it -->
+  <text class="lbl" x="120" y="22">A</text>
+  <rect class="plate" x="14" y="32" width="212" height="122"/>
+  <rect class="el" x="52" y="72" width="120" height="42"/>
+  <path class="ink" d="M182 106 A 30 30 0 0 0 182 80" marker-end="url(#a)"/>
+  <text class="ti" x="192" y="76">M</text>
+  <text class="cap" x="120" y="172">beam element</text>
+
+  <!-- B — sagging: concave upward, the positive case -->
+  <text class="lbl" x="366" y="22">B</text>
+  <rect class="plate" x="260" y="32" width="212" height="122"/>
+  <line class="dash" x1="284" y1="93" x2="448" y2="93"/>
+  <path class="el" d="M288 66 Q 366 132 444 66 L444 92 Q 366 158 288 92 z"/>
+  <text class="cap" x="366" y="172">concave upward</text>
+
+  <!-- C — hogging: convex upward, the negative case -->
+  <text class="lbl" x="612" y="22">C</text>
+  <rect class="plate" x="506" y="32" width="212" height="122"/>
+  <line class="dash" x1="530" y1="93" x2="694" y2="93"/>
+  <path class="el" d="M534 120 Q 612 54 690 120 L690 94 Q 612 28 534 94 z"/>
+  <text class="cap" x="612" y="172">convex upward</text>
+</svg>

@@ -14,6 +14,46 @@ the plate colour for the same reason.
 > been removed entirely — file, markup and the visible credit it required.
 > Nothing in the app derives from it.
 
+## Question figures
+
+The image bank in **Architectural Sites, Proponents & Styles** (629 files) is
+the project's own and carries no third-party claim.
+
+Figures elsewhere came from a review centre. Eighteen of them have been
+replaced with drawings made for this app — `subjects/*/quizzes/img/fig-*.svg`:
+
+| Drawing | Replaces | Subject |
+|---|---|---|
+| `fig-relationships.svg` | 4 copies of one sheet | Theory — spatial relationships |
+| `fig-organizations.svg` | 5 copies of one sheet | Theory — spatial organizations |
+| `fig-circulation.svg` | 3 copies of one sheet | Theory — path-space relationships |
+| `fig-howe-truss.svg` | `q0001.png` | Structural |
+| `fig-beam-udl.svg` | `q0002.png` | Structural |
+| `fig-triangular-load.svg` | `q0003.png` | Structural |
+| `fig-bolt-shear.svg` | `q0004.png` | Structural |
+| `fig-bending.svg` | `q0006.png` | Structural |
+| `fig-moment-diagram.svg` | `q0007.png` | Structural |
+
+All are original vector work. What they depict — a Howe truss, a uniform load,
+Ching's spatial taxonomy — is standard architectural and engineering
+vocabulary that belongs to nobody; only a particular drawing of it can be
+owned, so these are drawn from scratch rather than traced. The replaced files
+are deleted, not merely unreferenced.
+
+Thirteen further review-centre images that no question displayed were deleted
+outright.
+
+### Still outstanding
+
+Eight photographs cannot be redrawn and are still the review centre's:
+
+- `subjects/structural/quizzes/img/q0005.png` — a torsional fracture
+- `subjects/building-utilities/quizzes/img/q0001.jpg` … `q0007.png` — seven
+  product sheets (pumps, lamps, ducts, drains, acoustic materials, luminaires)
+
+These need Creative Commons replacements, with attribution recorded here when
+they land.
+
 ## Typefaces
 
 Big Shoulders Display, Space Grotesk, IBM Plex Mono and Architects Daughter,

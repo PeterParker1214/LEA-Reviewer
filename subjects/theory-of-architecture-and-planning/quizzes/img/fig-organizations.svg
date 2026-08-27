@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 892 208" role="img"
+     aria-label="Five spatial organizations: linear, grid, centralized, radial, clustered">
+  <!--
+    Spatial organizations, drawn for this app. Original work.
+
+    Lettering matches the stored answer key exactly — A linear, B grid,
+    C centralized, D radial, E clustered — so no answer had to change. The
+    scanned sketch this replaces had them in a different order, which is why
+    four of these five questions marked the right answer wrong.
+  -->
+  <style>
+    .plate{ fill:#f5f3ed; stroke:#c3ccd4; stroke-width:1; }
+    .ink{ fill:none; stroke:#1b2a38; stroke-width:2.2; stroke-linejoin:round; }
+    .cell{ fill:#ffffff; stroke:#1b2a38; stroke-width:2; }
+    .solid{ fill:#b9c6d2; stroke:#1b2a38; stroke-width:2.2; stroke-linejoin:round; }
+    .lbl{ font-family:Georgia,'Times New Roman',serif; font-size:17px; font-weight:700;
+          fill:#1b2a38; text-anchor:middle; }
+  </style>
+
+  <rect width="892" height="208" fill="#f5f3ed"/>
+
+  <!-- A — linear: a sequence of spaces repeated along a line -->
+  <text class="lbl" x="94" y="22">A</text>
+  <rect class="plate" x="14" y="32" width="160" height="160"/>
+  <g>
+    <rect class="cell" x="32" y="96" width="24" height="32"/>
+    <rect class="cell" x="58" y="96" width="24" height="32"/>
+    <rect class="cell" x="84" y="96" width="24" height="32"/>
+    <rect class="cell" x="110" y="96" width="24" height="32"/>
+    <rect class="cell" x="136" y="96" width="24" height="32"/>
+  </g>
+
+  <!-- B — grid: spaces organized within the field of a structural grid -->
+  <text class="lbl" x="270" y="22">B</text>
+  <rect class="plate" x="190" y="32" width="160" height="160"/>
+  <g>
+    <rect class="cell" x="212" y="54" width="26" height="26"/><rect class="cell" x="244" y="54" width="26" height="26"/>
+    <rect class="cell" x="276" y="54" width="26" height="26"/><rect class="cell" x="308" y="54" width="26" height="26"/>
+    <rect class="cell" x="212" y="86" width="26" height="26"/><rect class="cell" x="244" y="86" width="26" height="26"/>
+    <rect class="cell" x="276" y="86" width="26" height="26"/><rect class="cell" x="308" y="86" width="26" height="26"/>
+    <rect class="cell" x="212" y="118" width="26" height="26"/><rect class="cell" x="244" y="118" width="26" height="26"/>
+    <rect class="cell" x="276" y="118" width="26" height="26"/><rect class="cell" x="308" y="118" width="26" height="26"/>
+    <rect class="cell" x="212" y="150" width="26" height="26"/><rect class="cell" x="244" y="150" width="26" height="26"/>
+    <rect class="cell" x="276" y="150" width="26" height="26"/><rect class="cell" x="308" y="150" width="26" height="26"/>
+  </g>
+
+  <!-- C — centralized: a dominant central space, secondary spaces grouped about it -->
+  <text class="lbl" x="446" y="22">C</text>
+  <rect class="plate" x="366" y="32" width="160" height="160"/>
+  <rect class="solid" x="418" y="84" width="56" height="56"/>
+  <rect class="cell" x="430" y="46" width="32" height="26"/>
+  <rect class="cell" x="430" y="152" width="32" height="26"/>
+  <rect class="cell" x="382" y="99" width="26" height="26"/>
+  <rect class="cell" x="484" y="99" width="26" height="26"/>
+
+  <!-- D — radial: linear organizations extending outward from a central space -->
+  <text class="lbl" x="622" y="22">D</text>
+  <rect class="plate" x="542" y="32" width="160" height="160"/>
+  <g class="ink">
+    <line x1="622" y1="94" x2="622" y2="48"/>
+    <line x1="622" y1="130" x2="622" y2="176"/>
+    <line x1="604" y1="112" x2="558" y2="112"/>
+    <line x1="640" y1="112" x2="686" y2="112"/>
+  </g>
+  <g>
+    <rect class="cell" x="610" y="42" width="24" height="20"/>
+    <rect class="cell" x="610" y="162" width="24" height="20"/>
+    <rect class="cell" x="552" y="102" width="20" height="22"/>
+    <rect class="cell" x="672" y="102" width="20" height="22"/>
+  </g>
+  <circle class="solid" cx="622" cy="112" r="20"/>
+
+  <!-- E — clustered: grouped by proximity or a shared visual trait -->
+  <text class="lbl" x="798" y="22">E</text>
+  <rect class="plate" x="718" y="32" width="160" height="160"/>
+  <rect class="cell" x="744" y="62" width="40" height="34"/>
+  <rect class="cell" x="790" y="74" width="28" height="28"/>
+  <rect class="cell" x="758" y="104" width="34" height="30"/>
+  <rect class="cell" x="800" y="110" width="36" height="24"/>
+  <rect class="cell" x="772" y="140" width="30" height="26"/>
+  <rect class="cell" x="738" y="106" width="16" height="22"/>
+</svg>
