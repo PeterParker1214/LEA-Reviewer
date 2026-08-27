@@ -24,7 +24,7 @@
  *   local cache and queue the write. A cached API response would look like a
  *   successful sync that never happened.
  */
-const VERSION = 'lea-v2';
+const VERSION = 'lea-v3';
 const SHELL = VERSION + '-shell';
 const DATA = VERSION + '-data';
 const VENDOR = VERSION + '-vendor';
@@ -42,7 +42,7 @@ const SHELL_URLS = [
   'profile.html',
   'reminders.html',
   'assets/module-progress.js?v=2',
-  'assets/quiz-source.js?v=2',
+  'assets/quiz-source.js?v=3',
   'assets/avatar.js?v=5',
   'assets/quiz-resume.js?v=1',
   'assets/lea-confirm.js?v=1',
