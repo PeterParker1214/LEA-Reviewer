@@ -50,6 +50,8 @@ const SHELL_URLS = [
   'assets/icons.js?v=1',
   'assets/countdown.js?v=1',
   'assets/blueprint.css?v=1',
+  'assets/leaderboard.css?v=1',
+  'assets/leaderboard.js?v=1',
   'assets/legacy-desktop.css?v=1',
   'data/subjects.json',
   'favicon.svg?v=5',
