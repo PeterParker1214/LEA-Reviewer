@@ -33,6 +33,7 @@ replaced with drawings made for this app — `subjects/*/quizzes/img/fig-*.svg`:
 | `fig-bolt-shear.svg` | `q0004.png` | Structural |
 | `fig-bending.svg` | `q0006.png` | Structural |
 | `fig-moment-diagram.svg` | `q0007.png` | Structural |
+| `fig-torsional-fracture.svg` | `q0005.png` | Structural |
 
 All are original vector work. What they depict — a Howe truss, a uniform load,
 Ching's spatial taxonomy — is standard architectural and engineering
@@ -43,16 +44,19 @@ are deleted, not merely unreferenced.
 Thirteen further review-centre images that no question displayed were deleted
 outright.
 
+The torsional fracture was drawn rather than photographed on purpose.
+Wikimedia Commons holds no photograph of an actual torsional failure; its
+nearest candidates are ductile *tensile* breaks, whose fracture face is flat
+and square to the axis. The question turns entirely on the spiral surface, so
+a photograph of the wrong failure mode would have contradicted it.
+
 ### Still outstanding
 
-Eight photographs cannot be redrawn and are still the review centre's:
+Seven product sheets in Building Utilities are still the review centre's:
+`subjects/building-utilities/quizzes/img/q0001.jpg` … `q0007.png` — pumps,
+lamps, ducts, drains, acoustic materials and luminaires.
 
-- `subjects/structural/quizzes/img/q0005.png` — a torsional fracture
-- `subjects/building-utilities/quizzes/img/q0001.jpg` … `q0007.png` — seven
-  product sheets (pumps, lamps, ducts, drains, acoustic materials, luminaires)
-
-These need Creative Commons replacements, with attribution recorded here when
-they land.
+Attribution goes here when they are replaced.
 
 ## Typefaces
 
