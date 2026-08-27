@@ -287,6 +287,25 @@
 
   .modal-overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; padding:16px; z-index:100; }
   .modal-overlay.hidden{ display:none; }
+
+  /* ===== scrollbars =====
+     The platform scrollbar is a light slab with a boxed track and arrow
+     buttons; on a dark panel it reads as a sticker stuck to the page rather
+     than part of it. This leaves just a thin thumb in the palette, quiet at
+     rest and brightening on hover so it stays easy to grab.
+
+     Chrome ignores ::-webkit-scrollbar entirely the moment scrollbar-width is
+     set, so the standard properties sit behind @supports for Firefox, which
+     is the engine with no webkit pseudo-elements. */
+  .modal-box::-webkit-scrollbar{ width:8px; height:8px; }
+  .modal-box::-webkit-scrollbar-track{ background:transparent; }
+  .modal-box::-webkit-scrollbar-button{ display:none; width:0; height:0; }
+  .modal-box::-webkit-scrollbar-thumb{ background:var(--muted); border-radius:4px; border:2px solid transparent; background-clip:content-box; }
+  .modal-box::-webkit-scrollbar-thumb:hover{ background:var(--blue-bright); background-clip:content-box; }
+  @supports not selector(::-webkit-scrollbar){
+    .modal-box{ scrollbar-width:thin; scrollbar-color:var(--muted) transparent; }
+  }
+
   .modal-box{ width:100%; max-width:380px; max-height:86vh; overflow-y:auto; background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:24px 22px; position:relative; }
   .modal-close{ position:absolute; top:12px; right:14px; background:none; border:none; color:var(--muted); font-size:20px; cursor:pointer; line-height:1; }
   .modal-box h2{ font-family:var(--font-display); font-weight:700; font-size:22px; text-transform:uppercase; margin:0 0 16px; color:var(--ink); }
