@@ -90,28 +90,20 @@
      the right. It used to carry "Logged in as … — Log out" as running text,
      which the frame never had; signing out lives on Home's account sheet. */
   .auth-bar{ display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:16px; }
-  /* A real button, matching the two on the right: same 44px height, panel
-     fill, border, radius and hover. It keeps its label because unlike the
-     other two it says where it goes, and a bare arrow would not.
-
-     The frame draws this as underlined running text; this is a deliberate
-     departure from it, not a build that drifted. */
-  .auth-bar .back{
-    display:inline-flex; align-items:center; gap:8px;
-    height:44px; padding:0 15px; border-radius:8px;
-    background:var(--bg-panel); border:1px solid var(--line);
-    font-family:var(--font-mono); font-size:11px;
-    letter-spacing:.05em; text-transform:uppercase; color:var(--gold-bright);
-    text-decoration:none;
-  }
-  .auth-bar .back:hover{ border-color:var(--gold-bright); color:var(--gold-bright); }
-  .auth-bar .back svg{ width:18px; height:18px; }
   .bar-actions{ display:flex; gap:8px; }
-  .icon-btn-44{
+  /* All three controls on this bar share one definition — Back on the left,
+     Standings and theme on the right — so they cannot drift apart later.
+     Back is an <a>, hence text-decoration.
+
+     Note the frame draws Back as underlined running text; this is a
+     deliberate departure from it, not a build that drifted. */
+  .icon-btn-44, .auth-bar .back{
     width:44px; height:44px; border-radius:8px; background:var(--bg-panel); border:1px solid var(--line);
     color:var(--gold-bright); display:flex; align-items:center; justify-content:center; cursor:pointer;
+    text-decoration:none; flex-shrink:0;
   }
-  .icon-btn-44:hover{ border-color:var(--gold-bright); }
+  .icon-btn-44:hover, .auth-bar .back:hover{ border-color:var(--gold-bright); }
+  .auth-bar .back svg{ width:18px; height:18px; }
   .icon-btn-44 .btn-ico{ margin:0; }
   .icon-btn-44 .btn-ico svg{ width:18px; height:18px; }
   .auth-link{ background:none; border:none; color:var(--gold-bright); cursor:pointer; font-family:var(--font-mono); font-size:12px; text-decoration:underline; padding:0; text-transform:uppercase; letter-spacing:.03em; }
@@ -318,9 +310,8 @@
 <body>
 <div class="wrap">
   <div class="auth-bar">
-    <a class="back" href="index.html">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-      Home
+    <a class="back" href="index.html" title="Home" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
     </a>
     <div class="bar-actions">
       <button class="icon-btn-44" id="openLeaderboardBtn" title="Standings" aria-label="Standings"><span class="btn-ico" data-icon="trophy"></span></button>
