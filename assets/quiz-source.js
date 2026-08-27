@@ -25,7 +25,9 @@
  *
  * CANONICAL SHAPE
  * ---------------
- *   { s, q, o[], c, ref?, n?, img?, hidden? }
+ *   { s, q, o[], c, ref?, n?, img?, nimg?, hidden? }
+ * `img` is the figure shown with the question; `nimg` the one shown with the
+ * explanation, after it has been answered.
  * `QUESTIONS`-format quiz pages already use exactly this shape, so they need no
  * conversion. `QUIZ_DATA`-format pages use an older shape and are mapped.
  */

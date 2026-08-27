@@ -197,6 +197,11 @@
   }
   .explain .meta-row span{ flex:1; color:var(--muted); text-transform:none; letter-spacing:0; }
   .explain .steps-list{ margin:8px 0 0; padding-left:18px; font-size:13px; color:var(--ink); line-height:1.7; }
+  /* A figure that belongs to the explanation rather than the question — a
+     worked solution or a marked-up detail, which would give the answer away
+     if it were shown before the reader commits. Same zoom affordance as the
+     question figure, since it is just as likely to be unreadable at 390px. */
+  .explain .qimg-wrap{ display:flex; margin:0 0 10px; }
   .chip-row{ display:flex; gap:8px; margin-top:12px; }
   .chip-btn{
     flex:1; font-family:var(--font-mono); font-size:11px; letter-spacing:.03em; text-transform:uppercase;
@@ -514,7 +519,7 @@
 </style>
 <link rel="stylesheet" href="assets/blueprint.css?v=1">
 <script src="assets/lea-confirm.js?v=1"></script>
-<script src="assets/quiz-source.js?v=4"></script>
+<script src="assets/quiz-source.js?v=5"></script>
 <script src="assets/module-progress.js?v=2"></script>
 <script src="assets/offline.js?v=1"></script>
 <script src="assets/presence.js?v=2"></script>
@@ -648,6 +653,14 @@ let masteredAtStart = null;
 // local cache while the "after" read the full synced figure, so a 5-of-15 run
 // once reported "+15 questions newly mastered". Asking whether THIS question
 // was already mastered, at the moment it is answered, cannot drift.
+// One place that decides what an explanation figure looks like, so the two
+// card renderers cannot drift.
+function explainImgHtml(item){
+  if(!item || !item.nimg) return '';
+  return '<div class="qimg-wrap"><img src="' + escapeHtml(item.nimg) +
+         '" alt="Figure explaining the answer"><span class="qimg-hint">Tap to zoom</span></div>';
+}
+
 let newlyMasteredThisRun = 0;
 function captureMasteredAtStart(){
   masteredAtStart = 0;          // a run is now in progress; the count is live
@@ -1348,6 +1361,7 @@ function renderCard(){
       '<div class="explain ' + verdictClass + '">' +
         '<div class="verdict">' + verdictText + '</div>' +
         '<div class="reason">' + escapeHtml(item.o[item.c]) + '.' + (item.n ? ' ' + escapeHtml(item.n) : '') + '</div>' +
+        explainImgHtml(item) +
         (item.ref ? '<div class="meta-row">Source<span>' + escapeHtml(item.ref) + '</span></div>' : '') +
         '<div class="chip-row">' +
           (item.steps && item.steps.length ? '<button class="chip-btn" id="stepsChip">＋ Steps</button>' : '<div style="flex:1;"></div>') +
@@ -2209,6 +2223,7 @@ function renderMultiCard(){
       '<div class="explain ' + verdictClass + '">' +
         '<div class="verdict">' + verdictText + '</div>' +
         '<div class="reason">' + escapeHtml(item.o[item.c]) + '.' + (item.n ? ' ' + escapeHtml(item.n) : '') + '</div>' +
+        explainImgHtml(item) +
         (item.ref ? '<div class="meta-row">Source<span>' + escapeHtml(item.ref) + '</span></div>' : '') +
       '</div>';
   } else if(logged && logged.skipped){
