@@ -1,0 +1,60 @@
+/* LEA Reviewer — the leaderboard row, in one place.
+ *
+ * The standings page and the subject page's leaderboard modal used to draw
+ * their own rows. The subject one was plainer, had no faces, no online dots
+ * and no podium, and its names ran into the stats beside them because it had
+ * nothing to truncate with. Two copies of one list is what let them diverge,
+ * so there is now one.
+ *
+ * Loaded by standings.html and subject.html. Both already carry the palette
+ * tokens this uses, so it themes itself. */
+
+.lb-list{ display:flex; flex-direction:column; gap:8px; margin-bottom:4px; }
+
+.lb-row{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:12px 14px; border-radius:10px;
+  background:var(--bg-panel-2); border:1px solid var(--line);
+}
+.lb-row.mine{ border-color:var(--gold); background:rgba(224,168,63,0.12); }
+.lb-row.top1{ background:rgba(224,168,63,0.1); border-color:var(--gold); }
+
+.lb-rank{ font-family:var(--font-mono); color:var(--muted); font-weight:700; width:30px; flex-shrink:0; }
+.lb-row.top1 .lb-rank{ font-family:var(--font-display); font-size:26px; color:var(--gold-bright); }
+.lb-row.top2 .lb-rank{ font-family:var(--font-display); font-size:22px; color:var(--ink); }
+.lb-row.top3 .lb-rank{ font-family:var(--font-display); font-size:22px; color:var(--gold); }
+.lb-row.top1 .lb-rank, .lb-row.top2 .lb-rank, .lb-row.top3 .lb-rank{ font-weight:800; }
+
+/* Faces. Initials by default, so every row has one and the list never looks
+   half-filled while people upload pictures. */
+.lb-face{
+  width:30px; height:30px; flex-shrink:0; background:var(--bg-panel-2);
+  border:1px solid rgba(224,168,63,0.45); display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display); font-weight:800; font-size:12.5px; color:var(--gold-bright);
+  overflow:hidden; margin-right:10px;
+}
+.lb-face img{ width:100%; height:100%; object-fit:cover; }
+
+/* .lb-name is a flex container so the online dot can sit beside the name, and
+   a flex container cannot ellipsis its own bare text — hence the inner span
+   that actually gets truncated. */
+.lb-name{ flex:1; min-width:0; display:flex; align-items:center; font-family:var(--font-body); font-size:14px; }
+.lb-name .who{ min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+/* The top three read as one group rather than three sizes: the same face as
+   everyone else, one step larger, bold and gold. Three descending display-font
+   sizes made the podium look like three different lists. */
+.lb-row.top1 .lb-name,
+.lb-row.top2 .lb-name,
+.lb-row.top3 .lb-name{ font-size:16px; font-weight:700; color:var(--gold); }
+
+/* A green dot beside anyone online right now, sized and glowing the same as
+   Home's so the two read as one signal. */
+.lb-live{
+  width:8px; height:8px; border-radius:50%; background:var(--good);
+  box-shadow:0 0 6px var(--good); flex-shrink:0; margin-left:8px;
+}
+
+.lb-stats{ font-family:var(--font-mono); font-size:11px; color:var(--muted); text-align:right; flex-shrink:0; margin-left:10px; }
+
+.lb-empty{ font-family:var(--font-mono); font-size:12px; color:var(--muted); text-align:center; padding:24px 0; line-height:1.7; }

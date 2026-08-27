@@ -306,18 +306,18 @@
     .modal-box{ scrollbar-width:thin; scrollbar-color:var(--muted) transparent; }
   }
 
-  .modal-box{ width:100%; max-width:380px; max-height:86vh; overflow-y:auto; background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:24px 22px; position:relative; }
+  .modal-box{ width:100%; max-width:440px; max-height:86vh; overflow-y:auto; background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:24px 22px; position:relative; }
   .modal-close{ position:absolute; top:12px; right:14px; background:none; border:none; color:var(--muted); font-size:20px; cursor:pointer; line-height:1; }
   .modal-box h2{ font-family:var(--font-display); font-weight:700; font-size:22px; text-transform:uppercase; margin:0 0 16px; color:var(--ink); }
-  .leaderboard-list{ display:flex; flex-direction:column; gap:8px; margin-top:4px; }
-  .leaderboard-row{ display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border-radius:8px; background:var(--bg-panel-2); border:1px solid var(--line); font-size:13px; }
-  .leaderboard-row .lb-rank{ font-family:var(--font-mono); color:var(--gold-bright); font-weight:700; width:24px; }
-  .leaderboard-row .lb-name{ flex:1; color:var(--ink); }
-  .leaderboard-row .lb-stats{ color:var(--muted); font-size:11.5px; text-align:right; font-family:var(--font-mono); }
-  .leaderboard-empty{ color:var(--muted); font-style:italic; text-align:center; padding:12px 0; }
+  /* Rows come from assets/leaderboard.css — the same ones the standings page
+     draws. Only the modal needs a little more width to hold a face, a name and
+     the stats without crowding. */
 </style>
 <link rel="stylesheet" href="assets/blueprint.css?v=1">
+<link rel="stylesheet" href="assets/leaderboard.css?v=1">
 <script src="assets/presence.js?v=2"></script>
+<script src="assets/avatar.js?v=5"></script>
+<script src="assets/leaderboard.js?v=1"></script>
 <script src="assets/lea-confirm.js?v=1"></script>
 <script src="assets/quiz-source.js?v=2"></script>
 <script src="assets/module-progress.js?v=2"></script>
@@ -350,8 +350,8 @@
   <div class="modal-box">
     <button class="modal-close" id="leaderboardModalClose">&times;</button>
     <h2><span class="btn-ico" data-icon="trophy"></span> Leaderboard</h2>
-    <div class="leaderboard-list" id="leaderboardList">
-      <div class="leaderboard-empty">Loading…</div>
+    <div id="leaderboardList">
+      <div class="lb-empty">Loading…</div>
     </div>
   </div>
 </div>
@@ -386,22 +386,34 @@ let LEA_SUBJECT_ID_PAGE = null;
 
 // ---- Leaderboard, scoped to this subject ----
 const leaderboardModalOverlay = document.getElementById('leaderboardModalOverlay');
+
+// Fetched once and kept — the modal can be opened repeatedly, and neither the
+// faces nor your own name change while the page is open.
+let lbAvatars = null;
+let lbMyUsername = null;
+
 document.getElementById('openLeaderboardBtn').addEventListener('click', async () => {
   leaderboardModalOverlay.classList.remove('hidden');
   const listEl = document.getElementById('leaderboardList');
-  listEl.innerHTML = '<div class="leaderboard-empty">Loading…</div>';
-  const { data, error } = await sb.rpc('get_leaderboard', { p_subject: LEA_SUBJECT_ID_PAGE });
-  if(error || !data || data.length === 0){
-    listEl.innerHTML = '<div class="leaderboard-empty">No scores yet — be the first!</div>';
-    return;
+  listEl.innerHTML = '<div class="lb-empty">Loading…</div>';
+
+  if(lbMyUsername === null){
+    try{
+      const { data: { user } } = await sb.auth.getUser();
+      if(user){
+        const { data: prof } = await sb.from('profiles').select('username').eq('id', user.id).single();
+        lbMyUsername = (prof && prof.username) || '';
+      } else { lbMyUsername = ''; }
+    }catch(e){ lbMyUsername = ''; }
   }
-  listEl.innerHTML = data.map((row, i) =>
-    '<div class="leaderboard-row">' +
-      '<span class="lb-rank">' + (i+1) + '</span>' +
-      '<span class="lb-name">' + row.username + '</span>' +
-      '<span class="lb-stats">' + row.total_mastered + ' mastered · ' + Math.round((row.avg_best_score||0)*100) + '% avg</span>' +
-    '</div>'
-  ).join('');
+  if(lbAvatars === null) lbAvatars = await LEALeaderboard.loadAvatars(sb);
+
+  const { data, error } = await sb.rpc('get_leaderboard', { p_subject: LEA_SUBJECT_ID_PAGE });
+  listEl.innerHTML = LEALeaderboard.listHtml(error ? [] : data, {
+    myUsername: lbMyUsername || null,
+    avatars: lbAvatars,
+    stats: LEALeaderboard.overallStats
+  });
 });
 document.getElementById('leaderboardModalClose').addEventListener('click', () => leaderboardModalOverlay.classList.add('hidden'));
 leaderboardModalOverlay.addEventListener('click', (e) => { if(e.target === leaderboardModalOverlay) leaderboardModalOverlay.classList.add('hidden'); });

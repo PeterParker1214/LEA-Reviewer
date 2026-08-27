@@ -52,23 +52,8 @@
   }
   .icon-btn-44 svg{ width:19px; height:19px; }
   .page-title{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; flex:1; }
-  /* Faces on the leaderboard. Initials by default, so every row has one and
-     the list never looks half-filled while people upload pictures. */
-  .lb-face{
-    width:30px; height:30px; flex-shrink:0; background:var(--bg-panel-2);
-    border:1px solid rgba(224,168,63,0.45); display:flex; align-items:center; justify-content:center;
-    font-family:var(--font-display); font-weight:800; font-size:12.5px; color:var(--gold-bright);
-    overflow:hidden; margin-right:10px;
-  }
-  .lb-face img{ width:100%; height:100%; object-fit:cover; }
-  /* A green dot beside anyone who is online right now. Sized and glowing the
-     same as Home's, so the two read as one signal. */
-  .lb-live{
-    width:8px; height:8px; border-radius:50%; background:var(--good);
-    box-shadow:0 0 6px var(--good); flex-shrink:0; margin-left:8px;
-  }
-  .lb-name{ display:flex; align-items:center; }
-  .lb-name .who{ min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  /* Rows, faces and dots come from assets/leaderboard.css, shared with the
+     subject page's leaderboard modal. */
   .rv-face{
     width:44px; height:44px; margin:0 0 8px; border:1px solid rgba(224,168,63,0.45);
     background:var(--bg-panel-2); display:flex; align-items:center; justify-content:center;
@@ -117,27 +102,6 @@
   .rival-bar-them{ background:var(--blue-bright); height:100%; }
   .rival-note{ font-family:var(--font-hand); font-size:16px; color:var(--ink); }
 
-  .lb-list{ display:flex; flex-direction:column; gap:8px; margin-bottom:4px; }
-  .lb-row{ display:flex; justify-content:space-between; align-items:center; padding:12px 14px; border-radius:10px; background:var(--bg-panel-2); border:1px solid var(--line); }
-  .lb-row.top1{ background:rgba(224,168,63,0.1); border-color:var(--gold); }
-  .lb-row.top1 .lb-rank{ font-family:var(--font-display); font-size:26px; color:var(--gold-bright); }
-  .lb-row.top2 .lb-rank{ font-family:var(--font-display); font-size:22px; color:var(--ink); }
-  .lb-row.top3 .lb-rank{ font-family:var(--font-display); font-size:22px; color:var(--gold); }
-  .lb-row.mine{ border-color:var(--gold); background:rgba(224,168,63,0.12); }
-  .lb-rank{ font-family:var(--font-mono); color:var(--muted); font-weight:700; width:30px; flex-shrink:0; }
-  .lb-name{ flex:1; font-family:var(--font-body); font-size:14px; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  /* The frame sets the top three in the display face at descending sizes, so
-     the podium reads as a podium rather than as three more rows. */
-  /* The top three read as one group rather than three sizes: the same face
-     as everyone else, one step larger, bold and gold. Three descending
-     display-font sizes made the podium look like three different lists. */
-  .lb-row.top1 .lb-name,
-  .lb-row.top2 .lb-name,
-  .lb-row.top3 .lb-name{
-    font-family:var(--font-body); font-size:16px; font-weight:700; color:var(--gold);
-  }
-  .lb-row.top1 .lb-rank, .lb-row.top2 .lb-rank, .lb-row.top3 .lb-rank{ font-weight:800; }
-  .lb-stats{ font-family:var(--font-mono); font-size:11px; color:var(--muted); text-align:right; }
 
   .state-note{ font-family:var(--font-mono); font-size:12px; color:var(--muted); text-align:center; padding:40px 0; line-height:1.7; }
   .theme-toggle{
@@ -148,8 +112,10 @@
   }
 </style>
 <link rel="stylesheet" href="assets/blueprint.css?v=1">
+<link rel="stylesheet" href="assets/leaderboard.css?v=1">
 <script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
 <script src="assets/avatar.js?v=5"></script>
+<script src="assets/leaderboard.js?v=1"></script>
 <script src="assets/offline.js?v=1"></script>
 <script src="assets/presence.js?v=2"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
@@ -210,35 +176,18 @@ let avatarByUsername = {};
 function avatarFor(username){ return avatarByUsername[username] || null; }
 
 async function loadAvatars(){
-  try{
-    const { data, error } = await sb.from('profiles').select('username, avatar_url');
-    if(error || !data) return;
-    const map = {};
-    data.forEach(r => { if(r.username && r.avatar_url) map[r.username] = r.avatar_url; });
-    avatarByUsername = map;
-  }catch(e){}
+  avatarByUsername = await LEALeaderboard.loadAvatars(sb);
 }
 
-// Marked only where it is known to be true: LEAPresence reports who is on
-// the channel right now, and anyone absent simply gets no dot rather than an
-// "offline" claim we cannot make about someone who may just be on a page
-// that has not connected yet.
-function onlineDot(username){
-  return (window.LEAPresence && LEAPresence.isOnline(username))
-    ? '<span class="lb-live" title="Online now"></span>'
-    : '';
-}
+const onlineDot = (username) => LEALeaderboard.onlineDot(username);
 
+// Both boards draw the same row; only the stats line differs, so that is the
+// only thing passed in. The markup itself is assets/leaderboard.js, shared
+// with the subject page's leaderboard modal.
 function lbRowHtml(row, rank, isMine){
-  const cls = 'lb-row' + (rank <= 3 ? ' top' + rank : '') + (isMine ? ' mine' : '');
-  return (
-    '<div class="' + cls + '">' +
-      '<div class="lb-rank">' + rank + '</div>' +
-      '<div class="lb-face">' + LEAAvatar.faceHtml(avatarFor(row.username), row.username) + '</div>' +
-      '<div class="lb-name"><span class="who">' + escapeHtml(row.username) + (isMine ? ' (you)' : '') + '</span>' + onlineDot(row.username) + '</div>' +
-      '<div class="lb-stats">' + (row.total_mastered||0) + ' mastered · ' + Math.round((row.avg_best_score||0)*100) + '% avg</div>' +
-    '</div>'
-  );
+  return LEALeaderboard.rowHtml(row, rank, {
+    stats: LEALeaderboard.overallStats(row), isMine, avatars: avatarByUsername
+  });
 }
 
 async function renderOverall(){
@@ -349,15 +298,9 @@ async function renderWeek(){
 }
 
 function weekRowHtml(row, rank, isMine){
-  const cls = 'lb-row' + (rank <= 3 ? ' top' + rank : '') + (isMine ? ' mine' : '');
-  return (
-    '<div class="' + cls + '">' +
-      '<div class="lb-rank">' + rank + '</div>' +
-      '<div class="lb-face">' + LEAAvatar.faceHtml(avatarFor(row.username), row.username) + '</div>' +
-      '<div class="lb-name"><span class="who">' + escapeHtml(row.username) + (isMine ? ' (you)' : '') + '</span>' + onlineDot(row.username) + '</div>' +
-      '<div class="lb-stats">' + row.mastered + ' this week</div>' +
-    '</div>'
-  );
+  return LEALeaderboard.rowHtml(row, rank, {
+    stats: row.mastered + ' this week', isMine, avatars: avatarByUsername
+  });
 }
 
 async function renderRivals(){
