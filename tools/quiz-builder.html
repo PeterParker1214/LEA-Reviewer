@@ -1,4 +1,36 @@
 <!DOCTYPE html>
+<!--
+  QUIZ BUILDER — for reworking question sets that already exist.
+
+  WHAT IT IS
+  Open this file in a browser. Load a quiz you already have — a data/*.json
+  module, or one of the standalone quiz pages — and it hands back a fresh
+  data/<subject>/NN.json module: same questions, but re-sequenced, with the
+  answer choices moved into new positions and some question wording
+  restructured. Drop the file into data/, paste the entry it gives you into
+  data/subjects.json, and run.html picks it up with the site's own look and
+  progress tracking. Nothing else to wire up.
+
+  WHY IT EXISTS
+  Reshuffling questions you already wrote should not need an AI. This runs
+  entirely inside the browser — no internet, no upload, nothing leaves the
+  page — so it costs nothing and works on a laptop with no signal.
+
+  WHAT IT DELIBERATELY DOES NOT DO
+  It does not write new questions, and it does not really paraphrase. It
+  rewrites sentence patterns it recognises ("Who pays X?" becomes "X is paid
+  by the:") and leaves everything else exactly as it found it, then lists what
+  it skipped. A rule can only reshape a frame; genuine rewording still needs a
+  person. Refusing is the point — a program that reworded everything would
+  turn the whole set into thesaurus soup.
+
+  IT CHECKS ITS OWN WORK
+  After all the moving about, it re-verifies that every question still selects
+  the same correct answer it did before — including the "Both A and B" style
+  options, whose internal references have to be renumbered when the choices
+  around them move. If that check ever fails it says so and tells you not to
+  ship the file.
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
