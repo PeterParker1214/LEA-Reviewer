@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 250" role="img"
+     aria-label="A round bar twisted to failure, broken along a helical surface running at forty-five degrees to its axis, with torque applied at both ends">
+  <!--
+    Torsional failure of a round bar. Drawn for this app.
+
+    This replaces a photograph from a review centre. Wikimedia Commons has no
+    photograph of an actual torsional fracture — the nearest candidates are
+    ductile TENSILE breaks, whose fracture face is flat and square to the axis.
+    Using one would have contradicted the question, which turns entirely on the
+    spiral surface. A drawing states the distinction instead of blurring it.
+
+    The 45 degree helix is the point: in torsion the principal tensile stress
+    acts on a plane at 45 degrees to the axis, so a brittle bar tears along a
+    helical surface rather than straight across.
+  -->
+  <style>
+    .bar{ fill:#c3ccd4; stroke:#1b2a38; stroke-width:2.2; stroke-linejoin:round; }
+    .face{ fill:#96a6b4; stroke:#1b2a38; stroke-width:2.2; stroke-linejoin:round; }
+    .end{ fill:#dfe5ea; stroke:#1b2a38; stroke-width:2.2; }
+    .tq{ fill:none; stroke:#a8382c; stroke-width:3.4; stroke-linecap:round; }
+    .gd{ fill:none; stroke:#5d6f80; stroke-width:1.4; stroke-dasharray:5 4; }
+    .t{ font-family:Georgia,'Times New Roman',serif; font-size:14px; fill:#1b2a38; text-anchor:middle; }
+    .tr{ font-family:Georgia,'Times New Roman',serif; font-size:15px; font-style:italic; font-weight:700; fill:#a8382c; text-anchor:middle; }
+    .cap{ font-family:Georgia,'Times New Roman',serif; font-size:13px; fill:#5d6f80; text-anchor:middle; }
+  </style>
+  <defs>
+    <marker id="tq" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a8382c"/>
+    </marker>
+  </defs>
+
+  <rect width="620" height="250" fill="#f5f3ed"/>
+
+  <!-- left half of the bar, ending in the helical tear -->
+  <path class="bar" d="M60 88 L286 88 L322 118 L286 148 L60 148 Z"/>
+  <ellipse class="end" cx="60" cy="118" rx="13" ry="30"/>
+
+  <!-- the fracture surface itself, seen edge-on as a slanted face -->
+  <path class="face" d="M286 88 L322 118 L286 148 L300 118 Z"/>
+
+  <!-- right half, its matching face pulled clear so the spiral reads -->
+  <path class="bar" d="M356 88 L560 88 L560 148 L356 148 L392 118 Z"/>
+  <ellipse class="end" cx="560" cy="118" rx="13" ry="30"/>
+  <path class="face" d="M356 88 L392 118 L356 148 L370 118 Z"/>
+
+  <!-- torque, applied in opposite senses at the two ends -->
+  <path class="tq" d="M60 66 A 30 26 0 0 1 104 76" marker-end="url(#tq)"/>
+  <path class="tq" d="M560 170 A 30 26 0 0 1 516 160" marker-end="url(#tq)"/>
+  <text class="tr" x="82" y="52">T</text>
+  <text class="tr" x="538" y="196">T</text>
+
+  <!-- the angle the surface makes with the axis -->
+  <line class="gd" x1="286" y1="118" x2="392" y2="118"/>
+  <text class="cap" x="339" y="140">45°</text>
+
+  <text class="t" x="310" y="222">The break follows a helix at 45° to the axis</text>
+  <text class="cap" x="310" y="240">a flat, square break across the bar would mean tension, not torsion</text>
+</svg>
