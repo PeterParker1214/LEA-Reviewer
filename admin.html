@@ -9,16 +9,16 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <title>LEA Reviewer — Admin</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/lea-confirm.js?v=1"></script>
-<script src="assets/icons.js?v=1"></script>
+<script src="assets/lea-confirm.js?v=8"></script>
+<script src="assets/icons.js?v=8"></script>
 <!-- The same reader the app uses, so what the editor sees is exactly what a
      reader gets. Its balanced-bracket scan also survives question text that a
      regex would truncate. -->
-<script src="assets/quiz-source.js?v=5"></script>
-<script src="assets/quiz-rework.js?v=1"></script>
-<script src="assets/docx-quiz.js?v=1"></script>
-<script src="assets/image-intake.js?v=1"></script>
-<script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=8"></script>
+<script src="assets/quiz-rework.js?v=8"></script>
+<script src="assets/docx-quiz.js?v=8"></script>
+<script src="assets/image-intake.js?v=8"></script>
+<script src="assets/theme.js?v=8" data-alt-class="light-mode" data-default-is="dark"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -1182,7 +1182,7 @@ function parseQuizFile(text){
 function buildAdaptedQuizHtml(raw, format, opts){
   const { subjectId, moduleId, subjectName, includeBackLink } = opts;
   let out = raw;
-  const assetPath = '../../../assets/module-progress.js?v=2';
+  const assetPath = '../../../assets/module-progress.js?v=8';
 
   if(format === 'native'){
     out = out.replace(/const LEA_SUBJECT_ID\s*=\s*'[^']*';/, `const LEA_SUBJECT_ID = '${subjectId}';`);
@@ -1905,6 +1905,19 @@ function acceptRows(rows, label, rawCount){
   refreshDestDefaults();
 }
 
+// A subject's data folder is NOT always its id — "history" keeps its modules
+// in data/history-of-architecture/. Read the folder off the modules that are
+// already there, so a new one lands beside its siblings instead of creating a
+// second folder that only differs in name.
+function subjectFolder(subject){
+  const mods = subject.modules || [];
+  for(const m of mods){
+    const f = m.file || '';
+    if(f.startsWith('data/') && f.split('/').length >= 3) return f.split('/')[1];
+  }
+  return subject.id;
+}
+
 function refreshDestDefaults(){
   const sel = document.getElementById('rwDestSubject');
   if(!sel) return;
@@ -1914,10 +1927,12 @@ function refreshDestDefaults(){
   const idEl = document.getElementById('rwDestId');
   if(noEl && !noEl.dataset.touched) noEl.value = nextModuleNo(subject);
   if(idEl && !idEl.dataset.touched) idEl.value = subject.id + '-' + (noEl ? noEl.value : '01');
+  const folder = subjectFolder(subject);
   const pathEl = document.getElementById('rwDestPath');
   if(pathEl) pathEl.innerHTML = 'Will be written to <code>data/' +
-    escapeHtml(subject.id) + '/' + escapeHtml(noEl ? noEl.value : '01') +
-    '.json</code> and added to <code>' + escapeHtml(MANIFEST_PATH) + '</code>.';
+    escapeHtml(folder) + '/' + escapeHtml(noEl ? noEl.value : '01') +
+    '.json</code> and added to <code>' + escapeHtml(MANIFEST_PATH) + '</code>.' +
+    (folder !== subject.id ? ' <em>(this subject\'s folder is named differently from its id)</em>' : '');
   ['rwDestNo','rwDestId'].forEach(id => {
     const el = document.getElementById(id);
     if(el && !el._wired){ el._wired = true; el.addEventListener('input', () => { el.dataset.touched = '1'; }); }
@@ -2011,7 +2026,7 @@ async function saveRework(){
     if(subject.modules.some(m => m.id === moduleId))
       throw new Error('A module with id "' + moduleId + '" already exists in that subject.');
 
-    const path = 'data/' + subjectId + '/' + no + '.json';
+    const path = 'data/' + subjectFolder(subject) + '/' + no + '.json';
     if(subject.modules.some(m => m.file === path))
       throw new Error(path + ' is already used by another module. Pick a different number.');
 
