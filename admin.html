@@ -15,6 +15,7 @@
      reader gets. Its balanced-bracket scan also survives question text that a
      regex would truncate. -->
 <script src="assets/quiz-source.js?v=5"></script>
+<script src="assets/quiz-rework.js?v=1"></script>
 <script src="assets/image-intake.js?v=1"></script>
 <script src="assets/theme.js?v=1" data-alt-class="light-mode" data-default-is="dark"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -143,6 +144,17 @@
   .q-card{border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:14px;background:var(--bg-panel-deep);}
   .q-opts{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:center;margin-top:6px;}
   .hidden{display:none;}
+
+  /* Rework Module tab */
+  .field-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0 14px;}
+  .field-note{font-size:13px;color:var(--muted);margin:6px 0 0;line-height:1.5;}
+  .msg.ok-msg{background:rgba(95,191,130,0.12);border:1px solid var(--good);color:var(--good);}
+  .rw-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;}
+  .rw-table th,.rw-table td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  .rw-table th{font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);font-weight:600;}
+  #tab-rework details{margin-top:12px;}
+  #tab-rework details>summary{cursor:pointer;color:var(--gold-bright);font-size:13px;}
+
   .q-row{cursor:pointer;}
   .q-row .qr-text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .q-row .qr-hidden-tag{color:var(--muted);font-style:italic;}
@@ -170,11 +182,13 @@
       <button class="tab-btn active" data-tab="subjects">Subjects</button>
       <button class="tab-btn" data-tab="pages">Pages &amp; Quizzes</button>
       <button class="tab-btn" data-tab="upload">Add Module</button>
+      <button class="tab-btn" data-tab="rework">Rework Module</button>
       <button class="tab-btn" data-tab="reports">Reports</button>
     </div>
     <div id="tab-subjects"></div>
     <div id="tab-pages" class="hidden"></div>
     <div id="tab-upload" class="hidden"></div>
+    <div id="tab-rework" class="hidden"></div>
     <div id="tab-reports" class="hidden"></div>
   </div>
 </div>
@@ -198,6 +212,7 @@ const panelEl = document.getElementById('panel');
 const tabSubjectsEl = document.getElementById('tab-subjects');
 const tabPagesEl = document.getElementById('tab-pages');
 const tabUploadEl = document.getElementById('tab-upload');
+const tabReworkEl = document.getElementById('tab-rework');
 const tabReportsEl = document.getElementById('tab-reports');
 
 let subjects = [];
@@ -466,9 +481,11 @@ async function init(){
       tabSubjectsEl.classList.toggle('hidden', btn.dataset.tab !== 'subjects');
       tabPagesEl.classList.toggle('hidden', btn.dataset.tab !== 'pages');
       tabUploadEl.classList.toggle('hidden', btn.dataset.tab !== 'upload');
+      tabReworkEl.classList.toggle('hidden', btn.dataset.tab !== 'rework');
       tabReportsEl.classList.toggle('hidden', btn.dataset.tab !== 'reports');
       if(btn.dataset.tab === 'pages' && fileTree.length === 0) loadFileTree();
       if(btn.dataset.tab === 'upload') renderUploadTab();
+      if(btn.dataset.tab === 'rework') renderReworkTab();
       if(btn.dataset.tab === 'reports') openReportsTab();
     });
   });
@@ -1607,6 +1624,343 @@ init();
     if(fn) el.innerHTML = fn(15);
   });
 })();
+
+/* ---------------- "Rework Module" tab ---------------- */
+//
+// Takes a question set that already exists — one of the site's own modules, or
+// a file — reshapes it (restructured stems, choices moved, questions
+// re-sequenced) and writes the result straight into the site as a new
+// data/<subject>/NN.json module, registered in data/subjects.json.
+//
+// The reshaping itself lives in assets/quiz-rework.js, shared with
+// tools/quiz-builder.html so the two can never disagree. What is here is the
+// part that only makes sense inside the admin: picking a source module,
+// choosing where the result lands, and saving it.
+//
+// Nothing is written until the integrity check passes. If a question stops
+// selecting the same answer it selected before, saving is refused outright —
+// a quiz that scores wrongly is worse than no quiz.
+
+let reworkLoaded = null;   // canonical rows read in
+let reworkResult = null;   // what build() produced
+let reworkOrigin = '';     // human description of where the rows came from
+
+function renderReworkTab(){
+  const subjectOptions = subjects.map(s =>
+    `<option value="${escapeHtml(s.id)}">${escapeHtml(s.name)}</option>`).join('');
+
+  const moduleOptions = subjects.map(s => {
+    const mods = (s.modules || []).map(m =>
+      `<option value="${escapeHtml(s.id)}::${escapeHtml(m.id)}">${escapeHtml(m.no)} — ${escapeHtml(m.title)} (${m.total || '?'})</option>`
+    ).join('');
+    return mods ? `<optgroup label="${escapeHtml(s.name)}">${mods}</optgroup>` : '';
+  }).join('');
+
+  tabReworkEl.innerHTML = `
+    <div class="card">
+      <h2 style="margin-top:0;">Rework an existing module</h2>
+      <p class="field-note">Reshapes questions you already have — it does not write new ones.
+        Stems it recognises get restructured, answer choices move to new positions, and the
+        running order is pushed away from the original. The result is saved as a new module;
+        the one you started from is left alone.</p>
+
+      <div class="field-label">Start from a module on the site</div>
+      <select id="rwSource">
+        <option value="">— choose a module —</option>
+        ${moduleOptions}
+      </select>
+
+      <div style="margin:10px 0 4px;color:var(--muted);font-size:13px;">…or load a file instead</div>
+      <div id="rwDrop" style="border:2px dashed var(--line);border-radius:10px;padding:24px;text-align:center;cursor:pointer;color:var(--muted);transition:border-color .15s ease;">Drop a .json or .html quiz here, or click to choose</div>
+      <input type="file" id="rwFile" accept=".json,.html,.htm" style="display:none;">
+
+      <div id="rwLoadMsg"></div>
+    </div>
+
+    <div class="card hidden" id="rwOptionsCard">
+      <h2 style="margin-top:0;">What to change</h2>
+      <div class="field-grid">
+        <div>
+          <div class="field-label">Restructure stems</div>
+          <select id="rwRewrite">
+            <option value="on" selected>On — recognised patterns only</option>
+            <option value="off">Off — leave wording alone</option>
+          </select>
+        </div>
+        <div>
+          <div class="field-label">Move answer choices</div>
+          <select id="rwShuffle">
+            <option value="on" selected>On — key moves with them</option>
+            <option value="off">Off</option>
+          </select>
+        </div>
+        <div>
+          <div class="field-label">Re-sequence questions</div>
+          <select id="rwReorder">
+            <option value="on" selected>On</option>
+            <option value="off">Off — keep original order</option>
+          </select>
+        </div>
+        <div>
+          <div class="field-label">Seed</div>
+          <input type="number" id="rwSeed" value="42" min="1">
+        </div>
+      </div>
+      <div style="margin-top:12px;">
+        <button class="primary" id="rwPreviewBtn">Preview the result</button>
+      </div>
+      <div id="rwPreviewMsg"></div>
+    </div>
+
+    <div class="card hidden" id="rwResultCard">
+      <h2 style="margin-top:0;">Result</h2>
+      <div id="rwReport"></div>
+
+      <h3 style="margin:18px 0 6px;font-size:15px;">Save it as</h3>
+      <div class="field-grid">
+        <div>
+          <div class="field-label">Subject</div>
+          <select id="rwDestSubject">${subjectOptions}</select>
+        </div>
+        <div>
+          <div class="field-label">Module number</div>
+          <input type="text" id="rwDestNo" placeholder="auto">
+        </div>
+        <div>
+          <div class="field-label">Module id</div>
+          <input type="text" id="rwDestId" placeholder="auto">
+        </div>
+        <div>
+          <div class="field-label">Title</div>
+          <input type="text" id="rwDestTitle" placeholder="Module title">
+        </div>
+      </div>
+      <p class="field-note" id="rwDestPath" style="margin-top:8px;"></p>
+      <div style="margin-top:12px;">
+        <button class="primary" id="rwSaveBtn">Save to the site</button>
+      </div>
+      <div class="save-status" id="rwStatus"></div>
+    </div>
+  `;
+
+  // --- source: an existing module ---
+  document.getElementById('rwSource').addEventListener('change', async (e) => {
+    const val = e.target.value;
+    if(!val) return;
+    const [subjectId, moduleId] = val.split('::');
+    const subject = subjects.find(s => s.id === subjectId);
+    const mod = subject && (subject.modules || []).find(m => m.id === moduleId);
+    if(!mod) return;
+    const msg = document.getElementById('rwLoadMsg');
+    msg.innerHTML = '<div class="msg info">Loading ' + escapeHtml(mod.title) + '…</div>';
+    try{
+      // Same reader the site itself uses, so every module format it can run,
+      // this can rework.
+      const arr = await LEAQuizSource.loadModuleQuestions(mod);
+      if(!arr || !arr.length) throw new Error('That module could not be read.');
+      const rows = arr.map(LEAQuizRework.canonical).filter(Boolean);
+      if(!rows.length) throw new Error('Read the module but found no usable questions.');
+      reworkOrigin = subject.name + ' — ' + mod.title;
+      acceptRows(rows, reworkOrigin, arr.length);
+      const t = document.getElementById('rwDestTitle');
+      if(t && !t.value) t.value = mod.title + ' II';
+      const ds = document.getElementById('rwDestSubject');
+      if(ds) { ds.value = subjectId; refreshDestDefaults(); }
+    }catch(err){
+      msg.innerHTML = '<div class="msg error">' + escapeHtml(err.message) + '</div>';
+    }
+  });
+
+  // --- source: a file ---
+  const drop = document.getElementById('rwDrop');
+  const fileInput = document.getElementById('rwFile');
+  drop.addEventListener('click', () => fileInput.click());
+  drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('over'); });
+  drop.addEventListener('dragleave', () => drop.classList.remove('over'));
+  drop.addEventListener('drop', e => {
+    e.preventDefault(); drop.classList.remove('over');
+    const f = e.dataTransfer.files[0]; if(f) readReworkFile(f);
+  });
+  fileInput.addEventListener('change', e => {
+    const f = e.target.files[0]; if(f) readReworkFile(f);
+  });
+
+  document.getElementById('rwPreviewBtn').addEventListener('click', previewRework);
+  document.getElementById('rwSaveBtn').addEventListener('click', saveRework);
+  ['rwDestSubject','rwDestNo','rwDestId'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.addEventListener('change', refreshDestDefaults);
+  });
+}
+
+function readReworkFile(f){
+  const msg = document.getElementById('rwLoadMsg');
+  const reader = new FileReader();
+  reader.onload = () => {
+    try{
+      const { rows, kind } = LEAQuizRework.parseAny(reader.result, f.name);
+      reworkOrigin = f.name;
+      acceptRows(rows, f.name + ' (' + kind + ')', rows.length);
+      const t = document.getElementById('rwDestTitle');
+      if(t && !t.value) t.value = f.name.replace(/\.(json|html?)$/i, '');
+    }catch(err){
+      msg.innerHTML = '<div class="msg error">' + escapeHtml(err.message) + '</div>';
+    }
+  };
+  reader.readAsText(f);
+}
+
+function acceptRows(rows, label, rawCount){
+  reworkLoaded = rows;
+  reworkResult = null;
+  const subs = new Set(rows.map(r => r.s).filter(Boolean));
+  let note = 'Loaded ' + rows.length + ' question(s)';
+  if(subs.size) note += ' across ' + subs.size + ' subtopic(s)';
+  note += ' from ' + label + '.';
+  if(rawCount && rawCount !== rows.length){
+    note += ' ' + (rawCount - rows.length) + ' row(s) were skipped as unreadable.';
+  }
+  document.getElementById('rwLoadMsg').innerHTML = '<div class="msg ok-msg">' + escapeHtml(note) + '</div>';
+  document.getElementById('rwOptionsCard').classList.remove('hidden');
+  document.getElementById('rwResultCard').classList.add('hidden');
+  refreshDestDefaults();
+}
+
+function refreshDestDefaults(){
+  const sel = document.getElementById('rwDestSubject');
+  if(!sel) return;
+  const subject = subjects.find(s => s.id === sel.value);
+  if(!subject) return;
+  const noEl = document.getElementById('rwDestNo');
+  const idEl = document.getElementById('rwDestId');
+  if(noEl && !noEl.dataset.touched) noEl.value = nextModuleNo(subject);
+  if(idEl && !idEl.dataset.touched) idEl.value = subject.id + '-' + (noEl ? noEl.value : '01');
+  const pathEl = document.getElementById('rwDestPath');
+  if(pathEl) pathEl.innerHTML = 'Will be written to <code>data/' +
+    escapeHtml(subject.id) + '/' + escapeHtml(noEl ? noEl.value : '01') +
+    '.json</code> and added to <code>' + escapeHtml(MANIFEST_PATH) + '</code>.';
+  ['rwDestNo','rwDestId'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el && !el._wired){ el._wired = true; el.addEventListener('input', () => { el.dataset.touched = '1'; }); }
+  });
+}
+
+function previewRework(){
+  const msg = document.getElementById('rwPreviewMsg');
+  msg.innerHTML = '';
+  if(!reworkLoaded){ msg.innerHTML = '<div class="msg error">Load a module or a file first.</div>'; return; }
+  try{
+    reworkResult = LEAQuizRework.build(reworkLoaded, {
+      seed: document.getElementById('rwSeed').value,
+      rewrite: document.getElementById('rwRewrite').value === 'on',
+      shuffleOptions: document.getElementById('rwShuffle').value === 'on',
+      reorder: document.getElementById('rwReorder').value === 'on'
+    });
+  }catch(err){
+    msg.innerHTML = '<div class="msg error">' + escapeHtml(err.message) + '</div>'; return;
+  }
+  renderReworkReport();
+  document.getElementById('rwResultCard').classList.remove('hidden');
+  document.getElementById('rwResultCard').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+function renderReworkReport(){
+  const { rows, rewritten, skipped, stats, keyOk, checked, templated } = reworkResult;
+  let html = '';
+
+  html += '<div class="msg ' + (keyOk ? 'ok-msg' : 'error') + '">' +
+    (keyOk
+      ? 'Answer key verified on ' + checked + ' of ' + rows.length +
+        ' question(s) — each still selects the same answer it did before.' +
+        (templated ? ' ' + templated + ' “Both A and B” option(s) had their internal references renumbered.' : '')
+      : 'Answer key mismatch — a question no longer selects the answer it started with. Saving is blocked.') +
+    '</div>';
+
+  html += '<p class="field-note" style="margin-top:10px;">' +
+    rows.length + ' questions · ' + rewritten.length + ' stems restructured · ' +
+    skipped.length + ' left as written' +
+    (stats ? ' · moved ' + stats.mean + ' places on average, ' + stats.adj + ' neighbouring pairs still together' : '') +
+    '</p>';
+
+  if(rewritten.length){
+    html += '<details open><summary>' + rewritten.length + ' stem(s) restructured</summary>' +
+      '<table class="rw-table"><tr><th>Before</th><th>After</th></tr>' +
+      rewritten.map(r => '<tr><td style="color:var(--muted);">' + escapeHtml(r.from) +
+        '</td><td style="color:var(--good);">' + escapeHtml(r.to) + '</td></tr>').join('') +
+      '</table></details>';
+  }
+  if(skipped.length){
+    html += '<details><summary>' + skipped.length +
+      ' stem(s) left exactly as they were</summary>' +
+      '<p class="field-note">These did not match a pattern it knows how to reshape safely, so it left ' +
+      'them alone rather than guess. Reword them by hand if it matters.</p>' +
+      '<table class="rw-table"><tr><th>Stem</th><th>Why</th></tr>' +
+      skipped.map(r => '<tr><td>' + escapeHtml(r.q) + '</td><td class="field-note">' +
+        escapeHtml(r.why) + '</td></tr>').join('') + '</table></details>';
+  }
+  document.getElementById('rwReport').innerHTML = html;
+  document.getElementById('rwSaveBtn').disabled = !keyOk;
+}
+
+async function saveRework(){
+  const btn = document.getElementById('rwSaveBtn');
+  const statusEl = document.getElementById('rwStatus');
+  function log(msg){ statusEl.innerHTML += '<div>' + escapeHtml(msg) + '</div>'; }
+
+  statusEl.className = 'save-status';
+  statusEl.innerHTML = '';
+  btn.disabled = true;
+
+  try{
+    if(!reworkResult) throw new Error('Preview the result first.');
+    if(!reworkResult.keyOk)
+      throw new Error('The answer-key check failed — this will not be saved.');
+
+    const subjectId = document.getElementById('rwDestSubject').value;
+    const no = (document.getElementById('rwDestNo').value || '').trim();
+    const moduleId = (document.getElementById('rwDestId').value || '').trim();
+    const title = (document.getElementById('rwDestTitle').value || '').trim();
+    if(!subjectId) throw new Error('Choose a subject.');
+    if(!/^\d{2}$/.test(no)) throw new Error('Module number should be two digits, like 05.');
+    if(!moduleId) throw new Error('Give the module an id.');
+    if(!title) throw new Error('Give the module a title.');
+
+    const manifest = await fetchManifest();
+    const subject = manifest.find(s => s.id === subjectId);
+    if(!subject) throw new Error('That subject is no longer in the manifest.');
+    subject.modules = subject.modules || [];
+    if(subject.modules.some(m => m.id === moduleId))
+      throw new Error('A module with id "' + moduleId + '" already exists in that subject.');
+
+    const path = 'data/' + subjectId + '/' + no + '.json';
+    if(subject.modules.some(m => m.file === path))
+      throw new Error(path + ' is already used by another module. Pick a different number.');
+
+    log('Writing ' + path + ' …');
+    await callSave(path, JSON.stringify(reworkResult.rows, null, 2) + '\n',
+      'Admin: rework "' + title + '" into ' + subjectId);
+
+    log('Adding it to ' + MANIFEST_PATH + ' …');
+    subject.modules.push({ id: moduleId, no: no, title: title,
+                           total: reworkResult.rows.length, file: path, format: 'json' });
+    await callSave(MANIFEST_PATH, manifestToJson(manifest),
+      'Admin: add reworked module "' + title + '" to ' + subjectId);
+
+    manifestSubjects = manifest;
+    subjects = manifest;
+
+    statusEl.className = 'save-status ok';
+    log('Done. "' + title + '" is live with ' + reworkResult.rows.length +
+        ' questions — it will appear under ' + subject.name + ' on the site.');
+    log('It runs through the site’s own quiz engine, so progress and mastery are tracked already.');
+  }catch(err){
+    statusEl.className = 'save-status err';
+    log('Failed: ' + err.message);
+  }finally{
+    btn.disabled = false;
+  }
+}
+
 </script>
 </body>
 </html>

@@ -36,6 +36,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Quiz Builder — LEA Reviewer</title>
+<script src="../assets/quiz-rework.js?v=1"></script>
 <style>
 :root{
   --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-deep:#0a1520;
@@ -228,281 +229,23 @@ const $ = id => document.getElementById(id);
 let LOADED = null;   // canonical [{s,q,o,c,ref,n}]
 let RESULT = null;
 
-/* ---------------- rng ---------------- */
-function mulberry(seed){
-  let a = seed >>> 0;
-  return function(){
-    a |= 0; a = a + 0x6D2B79F5 | 0;
-    let t = Math.imul(a ^ a >>> 15, 1 | a);
-    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
-    return ((t ^ t >>> 14) >>> 0) / 4294967296;
-  };
-}
-function shuffled(arr, rnd){
-  const a = arr.slice();
-  for(let i = a.length - 1; i > 0; i--){
-    const j = Math.floor(rnd() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
+/* ---------------- the engine ---------------- */
+// All the actual reshaping lives in assets/quiz-rework.js, shared with
+// admin.html's "Rework Module" tab. Keeping one copy means the two can never
+// disagree about what a rework does — which matters, because one of them
+// writes straight to the live site.
+//
+// Note this makes the page need its sibling assets/ folder. It still works
+// offline from a double-click inside the repo; it is just no longer a single
+// file you can email on its own.
 
-/* ---------------- import ---------------- */
-function balanced(text, start, open){
-  const close = open === '[' ? ']' : '}';
-  let depth = 0, i = start, inStr = false, esc = false;
-  for(; i < text.length; i++){
-    const c = text[i];
-    if(inStr){
-      if(esc) esc = false;
-      else if(c === '\\') esc = true;
-      else if(c === '"') inStr = false;
-      continue;
-    }
-    if(c === '"') inStr = true;
-    else if(c === open) depth++;
-    else if(c === close){ depth--; if(!depth) return text.slice(start, i + 1); }
-  }
-  return null;
-}
-function arrayLiteral(html, varName){
-  const re = new RegExp('(?:const|let|var)\\s+' + varName + '\\s*=\\s*\\[');
-  const m = re.exec(html);
-  if(!m) return null;
-  return balanced(html, m.index + m[0].length - 1, '[');
-}
-function parseAny(text, filename){
-  const trimmed = text.trim();
-  let arr = null, kind = '';
-  if(trimmed.startsWith('[') || trimmed.startsWith('{')){
-    arr = JSON.parse(trimmed);
-    if(!Array.isArray(arr) && Array.isArray(arr.questions)) arr = arr.questions;
-    kind = 'json';
-  } else {
-    for(const [v, k] of [['QUIZ_DATA','blueprint'],['QUESTIONS','site quiz']]){
-      const lit = arrayLiteral(text, v);
-      if(lit){ arr = JSON.parse(lit); kind = k; break; }
-    }
-  }
-  if(!Array.isArray(arr) || !arr.length)
-    throw new Error('No question array found in ' + (filename || 'that input') + '.');
-  return { rows: arr.map(canonical).filter(Boolean), kind };
-}
-/** Everything becomes the site's own {s,q,o,c,ref,n} shape. */
-function canonical(r){
-  if(!r || typeof r !== 'object') return null;
-  let q = r.q !== undefined ? r.q : r.question;
-  let opts = r.o || r.options;
-  if(!q || !Array.isArray(opts) || opts.length < 2) return null;
-  let letters = null;
-  // Blueprint options are {letter,text}. Site options are plain strings EXCEPT
-  // the templated {ref,tpl} kind ("Both A and B"), whose ref[] holds ORIGINAL
-  // option indices that run.html resolves at render time. Those objects must
-  // survive untouched, or the answer silently points somewhere else.
-  if(opts[0] && typeof opts[0] === 'object' && opts[0].text !== undefined){
-    letters = opts.map(o => o.letter);
-    opts = opts.map(o => o.text);
-  }
-  let c = r.c;
-  if(typeof c !== 'number'){
-    const corr = r.correct;
-    if(typeof corr === 'number') c = corr;
-    else if(typeof corr === 'string' && letters) c = letters.indexOf(corr);
-    else if(typeof corr === 'string') c = corr.toUpperCase().charCodeAt(0) - 65;
-  }
-  if(typeof c !== 'number' || c < 0 || c >= opts.length) return null;
-
-  let n = r.n !== undefined ? r.n : (r.explanation || '');
-  let ref = r.ref || '';
-  // Blueprint files carry the source inside the explanation as "[Source: x]".
-  const m = String(n).match(/\[Source:\s*([^\]]+)\]\s*$/i);
-  if(m){ if(!ref) ref = m[1].trim(); n = n.slice(0, m.index).trim(); }
-
-  const out = { s: r.s || r.subtopic || '', q: String(q).trim(),
-                o: opts.map(x => (x && typeof x === 'object') ? x : String(x).trim()),
-                c: c, ref: ref, n: String(n).trim() };
-  if(r.img) out.img = r.img;
-  if(r.hidden) out.hidden = true;
-  return out;
-}
-
-/* ---------------- stem restructuring ---------------- */
-/* Each rule is high-precision by design: a tight pattern, and a guard that
-   makes it decline rather than mangle. Order matters - first match wins. */
-const NUMERIC = /[0-9₱%]/;
-const lower1 = s => s ? s.charAt(0).toLowerCase() + s.slice(1) : s;
-const upper1 = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
-
-const RULES = [
-  {
-    name: 'compute',
-    // "What is the PCC?" -> "Compute the PCC." Only for items that actually
-    // ask for a figure; otherwise "compute" is nonsense.
-    test: s => /^What (?:is|are) (the .+?)\?$/i.test(s) && NUMERIC.test(s),
-    apply: s => 'Compute ' + s.match(/^What (?:is|are) (the .+?)\?$/i)[1].trim() + '.'
-  },
-  {
-    name: 'nominalise',
-    // "What is the recommended fee for X?" -> "The recommended fee for X is:"
-    test: s => /^What (is|are) (the .+?)\?$/i.test(s),
-    apply: s => { const m = s.match(/^What (is|are) (the .+?)\?$/i);
-                  return upper1(m[2].trim()) + ' ' + m[1].toLowerCase() + ':'; }
-  },
-  {
-    name: 'passive-agent',
-    // "Who prepares Change Orders during construction?"
-    //   -> "Change Orders are prepared by the:"
-    test: s => /^Who (prepares|pays|issues|approves|signs|bears|shoulders) (.+?)\?$/i.test(s),
-    apply: s => { const m = s.match(/^Who (prepares|pays|issues|approves|signs|bears|shoulders) (.+?)\?$/i);
-                  const verb = { prepares:'prepared', pays:'paid', issues:'issued',
-                                 approves:'approved', signs:'signed', bears:'borne',
-                                 shoulders:'borne' }[m[1].toLowerCase()];
-                  return upper1(m[2].trim()) + ' ' + (/s$/.test(m[2].trim()) ? 'are' : 'is')
-                       + ' ' + verb + ' by the:'; }
-  },
-  {
-    name: 'when-upon',
-    // "When is the final payment released?" -> "The final payment is released upon:"
-    test: s => /^When (is|are) (.+?) (released|due|payable|paid|issued)\?$/i.test(s),
-    apply: s => { const m = s.match(/^When (is|are) (.+?) (released|due|payable|paid|issued)\?$/i);
-                  return upper1(m[2].trim()) + ' ' + m[1].toLowerCase() + ' '
-                       + m[3].toLowerCase() + ' upon:'; }
-  },
-  {
-    name: 'trailing-colon',
-    // "Travel compensation beyond X generally includes:" is already the target
-    // shape; this catches "X generally includes what?" style tails.
-    test: s => /^(.+?) (includes|covers|requires|means) what\?$/i.test(s),
-    apply: s => { const m = s.match(/^(.+?) (includes|covers|requires|means) what\?$/i);
-                  return upper1(m[1].trim()) + ' ' + m[2].toLowerCase() + ':'; }
-  }
-];
-
-function restructure(stem){
-  const s = (stem || '').trim();
-  if(!s) return { text: stem, rule: null, why: 'empty' };
-  if(s.length > 240) return { text: s, rule: null, why: 'long scenario — rewrite by hand' };
-  for(const r of RULES){
-    if(r.test(s)){
-      let out;
-      try { out = r.apply(s); } catch(e){ continue; }
-      // Guards: never emit something shorter than half the input, never
-      // double punctuation, never leave a dangling article.
-      if(!out || out.length < s.length * 0.45) continue;
-      if(/[?:.]{2,}$/.test(out)) continue;
-      // Reject a dangling article or preposition - except "by the:", which is
-      // the natural ending for an agent question ("...are prepared by the:").
-      if(/\b(?:a|an|of|for|to)\s*[:.]$/i.test(out)) continue;
-      if(/\bthe\s*[:.]$/i.test(out) && !/\bby the\s*[:.]$/i.test(out)) continue;
-      return { text: out, rule: r.name, why: null };
-    }
-  }
-  return { text: s, rule: null, why: 'no safe frame matched' };
-}
-
-/* ---------------- re-sequencing ---------------- */
-function scoreOrder(perm, minGap){
-  const n = perm.length, where = new Array(n);
-  perm.forEach((orig, pos) => { where[orig] = pos; });
-  let close = 0, sum = 0, adj = 0;
-  for(let i = 0; i < n; i++){
-    const d = Math.abs(where[i] - i);
-    sum += d; if(d < minGap) close++;
-    if(i < n - 1 && Math.abs(where[i] - where[i + 1]) === 1) adj++;
-  }
-  return { bad: close * 10 + adj * 6 - sum / n,
-           mean: +(sum / n).toFixed(1),
-           min: Math.min(...perm.map((o, p) => Math.abs(p - where[o]))),
-           close, adj };
-}
-function bestOrder(n, rnd){
-  if(n < 3) return { perm: [...Array(n).keys()], stats: scoreOrder([...Array(n).keys()], 1) };
-  const minGap = Math.max(2, Math.floor(n / 10));
-  let best = null, bestBad = Infinity, bestStats = null;
-  const gcd = (a, b) => b ? gcd(b, a % b) : a;
-  for(let t = 0; t < 400; t++){
-    let perm;
-    if(t % 2 === 0){
-      const step = 2 + Math.floor(rnd() * Math.max(1, n - 2));
-      if(gcd(step, n) !== 1) continue;
-      const rot = Math.floor(rnd() * n);
-      perm = [...Array(n).keys()].map(j => (rot + j * step) % n);
-    } else {
-      perm = shuffled([...Array(n).keys()], rnd);
-    }
-    const st = scoreOrder(perm, minGap);
-    if(st.bad < bestBad){ bestBad = st.bad; best = perm; bestStats = st; }
-  }
-  return { perm: best, stats: bestStats };
-}
-
-/* ---------------- build ---------------- */
 function build(){
-  const rnd = mulberry(parseInt($('optSeed').value, 10) || 42);
-  const doRewrite  = $('optRewrite').value === 'on';
-  const doShuffle  = $('optShuffleOpts').value === 'on';
-  const doReorder  = $('optReorder').value === 'on';
-
-  const rewritten = [], skipped = [];
-  let rows = LOADED.map((r, i) => {
-    const out = Object.assign({}, r);
-    if(doRewrite){
-      const res = restructure(r.q);
-      if(res.rule){ out.q = res.text; rewritten.push({ i, from: r.q, to: res.text, rule: res.rule }); }
-      else skipped.push({ i, q: r.q, why: res.why });
-    }
-    if(doShuffle && Array.isArray(out.o) && out.o.length > 1){
-      const idx = shuffled([...Array(out.o.length).keys()], rnd);  // newPos -> oldPos
-      const oldToNew = new Array(idx.length);
-      idx.forEach((oldPos, newPos) => { oldToNew[oldPos] = newPos; });
-      out.o = idx.map(k => {
-        const opt = r.o[k];
-        if(opt && typeof opt === 'object' && Array.isArray(opt.ref)){
-          // ref[] indexes the option list. Rebase it onto the new positions,
-          // otherwise "Both A and B" ends up naming the wrong two options.
-          const copy = Object.assign({}, opt);
-          copy.ref = opt.ref.map(x => oldToNew[x]).sort((a, b) => a - b);
-          return copy;
-        }
-        return opt;
-      });
-      out.c = oldToNew[r.c];
-    }
-    return out;
+  RESULT = LEAQuizRework.build(LOADED, {
+    seed: $('optSeed').value,
+    rewrite: $('optRewrite').value === 'on',
+    shuffleOptions: $('optShuffleOpts').value === 'on',
+    reorder: $('optReorder').value === 'on'
   });
-
-  let stats = null;
-  if(doReorder){
-    const { perm, stats: st } = bestOrder(rows.length, rnd);
-    const seq = new Array(rows.length);
-    perm.forEach((orig, pos) => { seq[pos] = rows[orig]; });
-    rows = seq; stats = st;
-  }
-
-  // Integrity: after all that moving, the key must still select the same
-  // answer it did on the way in. Templated options are compared by the SET of
-  // options they point at, since their indices are meant to change.
-  const answerOf = (row) => {
-    const opt = row.o[row.c];
-    if(opt && typeof opt === 'object' && Array.isArray(opt.ref))
-      return opt.tpl + ':' + opt.ref.map(i => JSON.stringify(row.o[i])).sort().join('|');
-    return JSON.stringify(opt);
-  };
-  let checked = 0, keyOk = rows.length === LOADED.length;
-  if(keyOk){
-    const pool = LOADED.slice();
-    for(const r of rows){
-      const k = pool.findIndex(x => x.n === r.n && x.ref === r.ref && x.q.length === r.q.length
-                                    || (x.n === r.n && x.ref === r.ref));
-      if(k === -1) continue;
-      const src = pool.splice(k, 1)[0];
-      checked++;
-      if(answerOf(src) !== answerOf(r)){ keyOk = false; break; }
-    }
-  }
-
-  const templated = rows.filter(r => r.o.some(o => o && typeof o === 'object')).length;
-  RESULT = { rows, rewritten, skipped, stats, keyOk, checked, templated };
   render();
 }
 
@@ -562,7 +305,7 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&':'&amp;','<':'&lt;','>'
 /* ---------------- wiring ---------------- */
 function loadText(text, name){
   try{
-    const { rows, kind } = parseAny(text, name);
+    const { rows, kind } = LEAQuizRework.parseAny(text, name);
     if(!rows.length) throw new Error('Parsed the file but found no usable questions.');
     LOADED = rows;
     const subs = new Set(rows.map(r => r.s).filter(Boolean));
