@@ -95,6 +95,8 @@
   .unlisted-row .u-path{font-family:var(--font-mono);font-size:12px;flex:1 1 100%;word-break:break-all;}
   .unlisted-row .u-path button{padding:1px 7px;font-size:11px;margin-left:6px;}
   .u-peek-out{flex:1 1 100%;font-size:12px;color:var(--muted);margin:-2px 0 2px;}
+  .unlisted-row.done{opacity:.75;}
+  .u-done{flex:1 1 100%;font-size:13px;color:var(--good);}
   .unlisted-row input[type="text"]{flex:2 1 200px;min-width:0;margin:0;}
   .unlisted-row select{flex:1 1 160px;min-width:0;margin:0;}
 
@@ -815,15 +817,16 @@ async function scanUnlistedFiles(){
     out.innerHTML =
       '<div class="msg info" style="margin:14px 0;">' + unlisted.length + ' file' +
       (unlisted.length === 1 ? ' is' : 's are') + ' in the repository but on no subject. ' +
-      'Give each one a title, pick where it belongs, and add it — then press ' +
-      '<b>Save to site</b> above. Leave the ones you do not want; they stay invisible.</div>' +
+      'Give each one a title, pick where it belongs, and press the button. ' +
+      'That publishes it on its own — there is nothing else to press afterwards. ' +
+      'Leave the ones you do not want; they stay invisible.</div>' +
       unlisted.map(path =>
         '<div class="unlisted-row" data-path="' + escapeHtml(path) + '">' +
           '<span class="u-path">' + escapeHtml(path) +
             ' <button data-action="u-peek">what is in it?</button></span>' +
           '<input type="text" data-role="u-title" placeholder="Title readers will see">' +
           '<select data-role="u-subject">' + options + '</select>' +
-          '<button data-action="u-add">Add to site</button>' +
+          '<button class="primary" data-action="u-add">Put it back on the site</button>' +
         '</div>').join('');
 
     out.querySelectorAll('.unlisted-row').forEach(row => {
@@ -869,6 +872,12 @@ async function readModuleFile(path){
   return rows;
 }
 
+// One press puts the file back on the site. This used to only add the entry
+// to the list on screen and leave the publishing to the "Save to site" button
+// further up — and the panel redrew on the way, taking the note that said so
+// off screen with it. The button said the work was done and the site never
+// heard about it, which is the same shape of failure this whole tab exists to
+// clean up after. It publishes on its own now.
 async function addUnlistedFile(row){
   const btn = row.querySelector('button[data-action="u-add"]');
   const path = row.dataset.path;
@@ -876,32 +885,55 @@ async function addUnlistedFile(row){
   const subjectId = row.querySelector('select[data-role="u-subject"]').value;
   if(!title){ await LEAAlert('Give it a title first — that is what readers see.'); return; }
 
-  const subject = subjects.find(s => s.id === subjectId);
-  if(!subject){ await LEAAlert('That subject is no longer here. Reload from GitHub.'); return; }
-
   btn.disabled = true;
   const original = btn.textContent;
-  btn.textContent = 'Reading…';
   try{
+    btn.textContent = 'Reading…';
     // The question count has to be right — the site reports mastery as a
     // fraction of it, so a guessed number would misreport everyone's progress.
     const rows = await readModuleFile(path);
 
-    subject.modules = subject.modules || [];
+    btn.textContent = 'Publishing…';
+    // Through the guard, like every other write, so putting one file back can
+    // never be what knocks another off.
+    const manifest = await fetchManifestForWrite();
+    const target = manifest.find(x => x.id === subjectId);
+    if(!target) throw new Error('That subject is no longer on the site. Press "Reload from GitHub" and scan again.');
+    target.modules = target.modules || [];
+    if(target.modules.some(m => m.file === path))
+      throw new Error('Something already points at ' + path + ' — it is on the site. Scan again to refresh this list.');
+
     // The number in the filename is the one the file was written under, and
     // reusing it keeps the file and the entry describing each other.
-    const no = (path.split('/').pop().replace(/\.json$/, '') || nextModuleNo(subject)).padStart(2, '0');
-    let id = subject.id + '-' + no;
-    while(subject.modules.some(m => m.id === id)) id = id + 'b';
+    const no = (path.split('/').pop().replace(/\.json$/, '') || nextModuleNo(target)).padStart(2, '0');
+    let id = target.id + '-' + no;
+    while(target.modules.some(m => m.id === id)) id = id + 'b';
 
-    subject.modules.push({ id, no, title, total: rows.length, file: path, format: 'json' });
-    removedModuleKeys.delete(subject.id + '|' + id);
-    if(!subject.ready) subject.ready = true;
-    renderSubjectsTab();
-    const status = document.getElementById('subjectsSaveStatus');
-    status.className = 'save-status';
-    status.textContent = 'Added "' + title + '" (' + rows.length + ' questions) to ' + subject.name +
-      '. Press "Save to site" to publish it.';
+    const entry = { id, no, title, total: rows.length, file: path, format: 'json' };
+    target.modules.push(entry);
+    // A subject nobody can reach would hide the file all over again.
+    if(!target.ready) target.ready = true;
+
+    await callSave(MANIFEST_PATH, manifestToJson(manifest),
+      'Admin: put "' + title + '" back on ' + subjectId);
+    rememberManifest(manifest);
+
+    // The copy the Subjects tab is showing gets the same entry, so the counts
+    // above stay honest — without replacing the array, which would throw away
+    // any renaming or removing not yet saved.
+    const onScreen = subjects.find(x => x.id === subjectId);
+    if(onScreen){
+      onScreen.modules = onScreen.modules || [];
+      if(!onScreen.modules.some(m => m.file === path)) onScreen.modules.push(entry);
+      if(!onScreen.ready) onScreen.ready = true;
+    }
+    removedModuleKeys.delete(subjectId + '|' + id);
+
+    row.className = 'unlisted-row done';
+    row.innerHTML = '<span class="u-path">' + escapeHtml(path) + '</span>' +
+      '<div class="u-done">&#10003; "' + escapeHtml(title) + '" is on the site now &mdash; ' +
+      rows.length + ' questions under ' + escapeHtml(target.name) + '. ' +
+      'Give GitHub a minute, then reload the site.</div>';
   }catch(e){
     await LEAAlert(e.message);
     btn.disabled = false;
