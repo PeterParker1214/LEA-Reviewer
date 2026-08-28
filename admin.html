@@ -9,16 +9,17 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <title>LEA Reviewer — Admin</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/lea-confirm.js?v=8"></script>
-<script src="assets/icons.js?v=8"></script>
+<script src="assets/lea-confirm.js?v=12"></script>
+<script src="assets/icons.js?v=12"></script>
 <!-- The same reader the app uses, so what the editor sees is exactly what a
      reader gets. Its balanced-bracket scan also survives question text that a
      regex would truncate. -->
-<script src="assets/quiz-source.js?v=8"></script>
-<script src="assets/quiz-rework.js?v=8"></script>
-<script src="assets/docx-quiz.js?v=8"></script>
-<script src="assets/image-intake.js?v=8"></script>
-<script src="assets/theme.js?v=8" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=12"></script>
+<script src="assets/quiz-rework.js?v=12"></script>
+<script src="assets/quiz-reframe-ai.js?v=12"></script>
+<script src="assets/docx-quiz.js?v=12"></script>
+<script src="assets/image-intake.js?v=12"></script>
+<script src="assets/theme.js?v=12" data-alt-class="light-mode" data-default-is="dark"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -187,6 +188,7 @@
   .rw-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;}
   .rw-table th,.rw-table td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
   .rw-table th{font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);font-weight:600;}
+  .rw-pre{background:var(--bg-panel-deep);border:1px solid var(--line);border-radius:8px;padding:10px;overflow-x:auto;font-size:12px;font-family:var(--font-mono);}
   #tab-rework details{margin-top:12px;}
   #tab-rework details>summary{cursor:pointer;color:var(--gold-bright);font-size:13px;}
 
@@ -1488,7 +1490,7 @@ function parseQuizFile(text){
 function buildAdaptedQuizHtml(raw, format, opts){
   const { subjectId, moduleId, subjectName, includeBackLink } = opts;
   let out = raw;
-  const assetPath = '../../../assets/module-progress.js?v=8';
+  const assetPath = '../../../assets/module-progress.js?v=12';
 
   if(format === 'native'){
     out = out.replace(/const LEA_SUBJECT_ID\s*=\s*'[^']*';/, `const LEA_SUBJECT_ID = '${subjectId}';`);
@@ -2047,9 +2049,11 @@ function renderReworkTab(){
         <div>
           <div class="field-label">Restructure stems</div>
           <select id="rwRewrite">
-            <option value="on" selected>On — recognised patterns only</option>
+            <option value="on" selected>Patterns only — safe, changes few</option>
+            <option value="ai">Local model — EXPERIMENTAL, check every line</option>
             <option value="off">Off — leave wording alone</option>
           </select>
+          <div class="field-note" id="rwAiStatus" style="margin-top:4px;"></div>
         </div>
         <div>
           <div class="field-label">Move answer choices</div>
@@ -2150,6 +2154,20 @@ function renderReworkTab(){
   });
 
   document.getElementById('rwPreviewBtn').addEventListener('click', previewRework);
+
+  // Say plainly whether a local model is available, rather than letting the
+  // first preview fail to explain it.
+  LEAReframeAI.available().then(st => {
+    const el = document.getElementById('rwAiStatus');
+    if(!el) return;
+    if(st.ok && st.models.length){
+      el.innerHTML = '✓ local model ready (' + escapeHtml(st.models[0]) + ') — nothing leaves this machine';
+    } else if(st.ok){
+      el.innerHTML = '⚠ Ollama is running but has no model. Run <code>ollama pull llama3.1:8b</code>.';
+    } else {
+      el.innerHTML = '⚠ no local model running — start Ollama, or choose “Patterns only”';
+    }
+  });
   document.getElementById('rwSaveBtn').addEventListener('click', saveRework);
   ['rwDestSubject','rwDestNo','rwDestId'].forEach(id => {
     const el = document.getElementById(id);
@@ -2246,14 +2264,73 @@ function refreshDestDefaults(){
   });
 }
 
-function previewRework(){
+let reworkAiReport = null;   // what the local model did, when it was used
+
+async function previewRework(){
   const msg = document.getElementById('rwPreviewMsg');
+  const btn = document.getElementById('rwPreviewBtn');
   msg.innerHTML = '';
+  reworkAiReport = null;
   if(!reworkLoaded){ msg.innerHTML = '<div class="msg error">Load a module or a file first.</div>'; return; }
+
+  const mode = document.getElementById('rwRewrite').value;
+  const seed = parseInt(document.getElementById('rwSeed').value, 10) || 42;
+  let rowsForBuild = reworkLoaded;
+
+  if(mode === 'ai'){
+    const status = await LEAReframeAI.available();
+    if(!status.ok){
+      msg.innerHTML = '<div class="msg error">No local model is running. Start Ollama, or ' +
+        'switch “Restructure stems” to “Patterns only”.</div>';
+      return;
+    }
+    const model = status.models.find(m => /llama3|qwen|mistral|phi/i.test(m)) || status.models[0];
+    if(!model){
+      msg.innerHTML = '<div class="msg error">Ollama is running but has no model installed. ' +
+        'Run <code>ollama pull llama3.1:8b</code> first.</div>';
+      return;
+    }
+    // Tested on a 60-question module: every stem came back "accepted", and the
+    // output still had an option pasted into a stem, two different questions
+    // collapsed into the same wording, and 37 of 60 opening with the same two
+    // phrases. The reply check guards numbers, citations and units — it cannot
+    // tell that a question now asks something else. Until it also checks for
+    // leaked options, duplicate stems and content drift, this stays opt-in and
+    // says so.
+    if(!confirm('The local model rewrites every stem, and the safety check cannot tell '
+      + 'when it changes what a question asks.\n\n'
+      + 'In testing it pasted an answer into one stem, collapsed two different '
+      + 'questions into the same wording, and started 37 of 60 with the same two '
+      + 'phrases — while reporting all 60 as fine.\n\n'
+      + 'Read every line in the preview before saving. Continue?')){
+      msg.innerHTML = '';
+      return;
+    }
+    btn.disabled = true;
+    msg.innerHTML = '<div class="msg info" id="rwAiProgress">Reframing with ' +
+      escapeHtml(model) + ' — 0 of ' + reworkLoaded.length + '…</div>';
+    try{
+      const res = await LEAReframeAI.reframeAll(reworkLoaded, {
+        model, seed,
+        onProgress: (done, total) => {
+          const el = document.getElementById('rwAiProgress');
+          if(el) el.textContent = 'Reframing with ' + model + ' — ' + done + ' of ' + total + '…';
+        }
+      });
+      reworkAiReport = { model, accepted: res.accepted, rejected: res.rejected, stems: res.stems };
+      rowsForBuild = reworkLoaded.map((r, i) => Object.assign({}, r, { q: res.stems[i] }));
+      msg.innerHTML = '';
+    }catch(err){
+      msg.innerHTML = '<div class="msg error">' + escapeHtml(err.message) + '</div>';
+      btn.disabled = false; return;
+    }
+    btn.disabled = false;
+  }
+
   try{
-    reworkResult = LEAQuizRework.build(reworkLoaded, {
-      seed: document.getElementById('rwSeed').value,
-      rewrite: document.getElementById('rwRewrite').value === 'on',
+    reworkResult = LEAQuizRework.build(rowsForBuild, {
+      seed: seed,
+      rewrite: mode === 'on',
       shuffleOptions: document.getElementById('rwShuffle').value === 'on',
       reorder: document.getElementById('rwReorder').value === 'on'
     });
@@ -2277,11 +2354,37 @@ function renderReworkReport(){
       : 'Answer key mismatch — a question no longer selects the answer it started with. Saving is blocked.') +
     '</div>';
 
+  // In model mode the rule engine never runs, so its counters are both zero —
+  // reporting "0 stems restructured" next to fourteen reframed questions reads
+  // as a failure. Count whichever actually did the work.
+  const reframedCount = reworkAiReport ? reworkAiReport.accepted : rewritten.length;
+  const untouchedCount = reworkAiReport ? reworkAiReport.rejected.length : skipped.length;
   html += '<p class="field-note" style="margin-top:10px;">' +
-    rows.length + ' questions · ' + rewritten.length + ' stems restructured · ' +
-    skipped.length + ' left as written' +
+    rows.length + ' questions · ' + reframedCount + ' reframed · ' +
+    untouchedCount + ' left as written' +
     (stats ? ' · moved ' + stats.mean + ' places on average, ' + stats.adj + ' neighbouring pairs still together' : '') +
     '</p>';
+
+  if(reworkAiReport){
+    const ai = reworkAiReport;
+    html += '<p class="field-note">Reframed by <code>' + escapeHtml(ai.model) + '</code>: ' +
+      '<b>' + ai.accepted + '</b> of ' + rows.length + ' accepted, ' +
+      ai.rejected.length + ' rejected and left as written.</p>';
+    const shown = reworkLoaded.slice(0, 8).map((r, i) =>
+      r.q !== ai.stems[i]
+        ? '<tr><td style="color:var(--muted);">' + escapeHtml(r.q) + '</td><td style="color:var(--good);">' +
+          escapeHtml(ai.stems[i]) + '</td></tr>' : '').filter(Boolean).join('');
+    if(shown) html += '<details open><summary>Sample of what changed</summary>' +
+      '<table class="rw-table"><tr><th>Before</th><th>After</th></tr>' + shown + '</table></details>';
+    if(ai.rejected.length) html += '<details><summary>' + ai.rejected.length +
+      ' rejected — the model\'s reply was not safe to use</summary>' +
+      '<p class="field-note">A reply is thrown away if it loses a number, a citation or a unit, ' +
+      'answers the question, or drifts too far in length. The original stem is kept.</p>' +
+      '<table class="rw-table"><tr><th>#</th><th>Why</th><th>It said</th></tr>' +
+      ai.rejected.slice(0, 20).map(r => '<tr><td class="n">' + (r.i + 1) + '</td><td class="field-note">' +
+        escapeHtml(r.why) + '</td><td class="field-note">' + escapeHtml(r.got) + '</td></tr>').join('') +
+      '</table></details>';
+  }
 
   if(rewritten.length){
     html += '<details open><summary>' + rewritten.length + ' stem(s) restructured</summary>' +
@@ -2301,6 +2404,51 @@ function renderReworkReport(){
   }
   document.getElementById('rwReport').innerHTML = html;
   document.getElementById('rwSaveBtn').disabled = !keyOk;
+}
+
+
+// Shown when the backend refuses to create a new file. Everything needed to
+// land the module by hand is right here: the file, and the one line that
+// registers it.
+function offerManualSave(path, moduleJson, entry){
+  const box = document.getElementById('rwStatus');
+  const blobUrl = URL.createObjectURL(new Blob([moduleJson], { type: 'application/json' }));
+  const wrap = document.createElement('div');
+  wrap.className = 'card';
+  wrap.style.marginTop = '14px';
+  wrap.innerHTML =
+    '<div class="msg info">The module is built and its answer key checks out — the site just ' +
+    'cannot create a brand-new file yet. Two steps and it is done:</div>' +
+    '<p class="field-note">1 — Download it and put it at <code>' + escapeHtml(path) + '</code> ' +
+    'in the repository.</p>' +
+    '<p class="field-note">2 — Add this to that subject\'s <code>modules</code> list in ' +
+    '<code>' + escapeHtml(MANIFEST_PATH) + '</code>, then commit both.</p>' +
+    '<pre class="rw-pre">' + escapeHtml(JSON.stringify(entry, null, 2)) + '</pre>';
+
+  const dl = document.createElement('button');
+  dl.className = 'primary';
+  dl.textContent = 'Download ' + path.split('/').pop();
+  dl.addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.href = blobUrl; a.download = path.split('/').pop();
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+
+  const copy = document.createElement('button');
+  copy.textContent = 'Copy the manifest line';
+  copy.style.marginLeft = '8px';
+  copy.addEventListener('click', () => {
+    navigator.clipboard.writeText(JSON.stringify(entry, null, 2)).then(() => {
+      copy.textContent = 'Copied';
+      setTimeout(() => copy.textContent = 'Copy the manifest line', 1400);
+    }, () => {});
+  });
+
+  const row = document.createElement('div');
+  row.style.marginTop = '10px';
+  row.appendChild(dl); row.appendChild(copy);
+  wrap.appendChild(row);
+  box.parentNode.insertBefore(wrap, box.nextSibling);
 }
 
 async function saveRework(){
@@ -2338,8 +2486,26 @@ async function saveRework(){
       throw new Error(path + ' is already used by another module. Pick a different number.');
 
     log('Writing ' + path + ' …');
-    await callSave(path, JSON.stringify(reworkResult.rows, null, 2) + '\n',
-      'Admin: rework "' + title + '" into ' + subjectId);
+    const moduleJson = JSON.stringify(reworkResult.rows, null, 2) + '\n';
+    try{
+      await callSave(path, moduleJson, 'Admin: rework "' + title + '" into ' + subjectId);
+    }catch(err){
+      // admin-save-file reads a file's current contents to get the SHA that
+      // GitHub needs for an update. On a path that does not exist yet the read
+      // 404s and it gives up, so it can edit files but not create them. Every
+      // reworked module is a new file, so this is not an edge case here — it is
+      // the normal path. Rather than lose the work, hand it over as a download
+      // plus the manifest line, which is exactly what a manual commit needs.
+      if(/could not read current file|not found|404/i.test(err.message || '')){
+        offerManualSave(path, moduleJson, {
+          id: moduleId, no: no, title: title,
+          total: reworkResult.rows.length, file: path, format: 'json'
+        });
+        throw new Error('The site can only update files that already exist, not ' +
+          'create new ones — see the box above to finish this by hand.');
+      }
+      throw err;
+    }
 
     log('Adding it to ' + MANIFEST_PATH + ' …');
     subject.modules.push({ id: moduleId, no: no, title: title,
