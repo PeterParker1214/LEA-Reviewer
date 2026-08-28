@@ -9,17 +9,17 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <title>LEA Reviewer — Admin</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/lea-confirm.js?v=10"></script>
-<script src="assets/icons.js?v=10"></script>
+<script src="assets/lea-confirm.js?v=12"></script>
+<script src="assets/icons.js?v=12"></script>
 <!-- The same reader the app uses, so what the editor sees is exactly what a
      reader gets. Its balanced-bracket scan also survives question text that a
      regex would truncate. -->
-<script src="assets/quiz-source.js?v=10"></script>
-<script src="assets/quiz-rework.js?v=10"></script>
-<script src="assets/quiz-reframe-ai.js?v=10"></script>
-<script src="assets/docx-quiz.js?v=10"></script>
-<script src="assets/image-intake.js?v=10"></script>
-<script src="assets/theme.js?v=10" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=12"></script>
+<script src="assets/quiz-rework.js?v=12"></script>
+<script src="assets/quiz-reframe-ai.js?v=12"></script>
+<script src="assets/docx-quiz.js?v=12"></script>
+<script src="assets/image-intake.js?v=12"></script>
+<script src="assets/theme.js?v=12" data-alt-class="light-mode" data-default-is="dark"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -1490,7 +1490,7 @@ function parseQuizFile(text){
 function buildAdaptedQuizHtml(raw, format, opts){
   const { subjectId, moduleId, subjectName, includeBackLink } = opts;
   let out = raw;
-  const assetPath = '../../../assets/module-progress.js?v=10';
+  const assetPath = '../../../assets/module-progress.js?v=12';
 
   if(format === 'native'){
     out = out.replace(/const LEA_SUBJECT_ID\s*=\s*'[^']*';/, `const LEA_SUBJECT_ID = '${subjectId}';`);
@@ -2049,8 +2049,8 @@ function renderReworkTab(){
         <div>
           <div class="field-label">Restructure stems</div>
           <select id="rwRewrite">
-            <option value="ai" selected>Local model — reframes nearly all</option>
-            <option value="on">Patterns only — no model needed</option>
+            <option value="on" selected>Patterns only — safe, changes few</option>
+            <option value="ai">Local model — EXPERIMENTAL, check every line</option>
             <option value="off">Off — leave wording alone</option>
           </select>
           <div class="field-note" id="rwAiStatus" style="margin-top:4px;"></div>
@@ -2290,6 +2290,22 @@ async function previewRework(){
         'Run <code>ollama pull llama3.1:8b</code> first.</div>';
       return;
     }
+    // Tested on a 60-question module: every stem came back "accepted", and the
+    // output still had an option pasted into a stem, two different questions
+    // collapsed into the same wording, and 37 of 60 opening with the same two
+    // phrases. The reply check guards numbers, citations and units — it cannot
+    // tell that a question now asks something else. Until it also checks for
+    // leaked options, duplicate stems and content drift, this stays opt-in and
+    // says so.
+    if(!confirm('The local model rewrites every stem, and the safety check cannot tell '
+      + 'when it changes what a question asks.\n\n'
+      + 'In testing it pasted an answer into one stem, collapsed two different '
+      + 'questions into the same wording, and started 37 of 60 with the same two '
+      + 'phrases — while reporting all 60 as fine.\n\n'
+      + 'Read every line in the preview before saving. Continue?')){
+      msg.innerHTML = '';
+      return;
+    }
     btn.disabled = true;
     msg.innerHTML = '<div class="msg info" id="rwAiProgress">Reframing with ' +
       escapeHtml(model) + ' — 0 of ' + reworkLoaded.length + '…</div>';
@@ -2338,9 +2354,14 @@ function renderReworkReport(){
       : 'Answer key mismatch — a question no longer selects the answer it started with. Saving is blocked.') +
     '</div>';
 
+  // In model mode the rule engine never runs, so its counters are both zero —
+  // reporting "0 stems restructured" next to fourteen reframed questions reads
+  // as a failure. Count whichever actually did the work.
+  const reframedCount = reworkAiReport ? reworkAiReport.accepted : rewritten.length;
+  const untouchedCount = reworkAiReport ? reworkAiReport.rejected.length : skipped.length;
   html += '<p class="field-note" style="margin-top:10px;">' +
-    rows.length + ' questions · ' + rewritten.length + ' stems restructured · ' +
-    skipped.length + ' left as written' +
+    rows.length + ' questions · ' + reframedCount + ' reframed · ' +
+    untouchedCount + ' left as written' +
     (stats ? ' · moved ' + stats.mean + ' places on average, ' + stats.adj + ' neighbouring pairs still together' : '') +
     '</p>';
 
