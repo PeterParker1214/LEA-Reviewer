@@ -146,7 +146,7 @@ async function buildSearchIndex(){
   if(FULL_INDEX) return FULL_INDEX;
   let subjects;
   try{
-    const res = await fetch('data/subjects.json');
+    const res = await fetch('data/subjects.json', { cache: 'no-cache' });
     subjects = await res.json();
   }catch(e){ subjects = []; }
 

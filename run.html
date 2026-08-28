@@ -690,7 +690,7 @@ async function boot(){
 
   let subjects;
   try{
-    const res = await fetch('data/subjects.json');
+    const res = await fetch('data/subjects.json', { cache: 'no-cache' });
     subjects = await res.json();
   }catch(e){
     body.innerHTML = '<div class="state-card">Couldn’t load the subjects catalogue. Try reloading.</div>';

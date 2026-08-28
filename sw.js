@@ -87,6 +87,14 @@ self.addEventListener('activate', (event) => {
 function isQuestionData(url) {
   return url.pathname.indexOf('/data/') !== -1 || url.pathname.indexOf('/subjects/') !== -1;
 }
+// data/subjects.json is the list of what exists, not a module's questions.
+// Served cache-first like the rest of /data/, a subject or module added today
+// stayed invisible until the visit after next — the cached copy was returned
+// and the fresh one only put aside for later. It is a few kilobytes, so the
+// network is always worth waiting for; the cache is the offline fallback.
+function isManifest(url) {
+  return url.pathname.endsWith('/data/subjects.json');
+}
 function isVendor(url) {
   return url.hostname === 'cdn.jsdelivr.net' ||
          url.hostname === 'fonts.googleapis.com' ||
@@ -149,6 +157,10 @@ self.addEventListener('fetch', (event) => {
     return;
   }
   if (url.origin !== self.location.origin) return;
+  if (isManifest(url)) {
+    event.respondWith(networkFirst(request, SHELL));
+    return;
+  }
   if (isQuestionData(url)) {
     event.respondWith(cacheFirst(request, DATA));
     return;

@@ -763,7 +763,7 @@ let SUBJECTS_ALL = [];
 
 async function loadSubjectsCatalogue(){
   try{
-    const res = await fetch('data/subjects.json');
+    const res = await fetch('data/subjects.json', { cache: 'no-cache' });
     SUBJECTS_ALL = await res.json();
   }catch(e){ SUBJECTS_ALL = []; }
 }
@@ -905,7 +905,10 @@ function renderHome(){
       '</a>'
     : '';
 
-  const subjectRows = readySubjects.slice(0, 7).map(s => {
+  // Every available subject, not the first seven. The cap was invisible until
+  // there were eight: adding one looked like adding nothing, because the new
+  // one was the one cut.
+  const subjectRows = readySubjects.map(s => {
     const m = subjectMastery(s);
     const low = m.pct < 10;
     return (

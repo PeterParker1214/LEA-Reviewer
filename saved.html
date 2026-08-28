@@ -129,7 +129,7 @@ let activeTab = 'flagged';
 async function buildSavedIndex(){
   if(FULL_INDEX) return FULL_INDEX;
   let subjects;
-  try{ const res = await fetch('data/subjects.json'); subjects = await res.json(); }catch(e){ subjects = []; }
+  try{ const res = await fetch('data/subjects.json', { cache: 'no-cache' }); subjects = await res.json(); }catch(e){ subjects = []; }
 
   const cells = [];
   for(const subject of subjects){

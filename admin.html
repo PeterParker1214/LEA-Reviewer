@@ -76,6 +76,26 @@
   /* Left free to wrap. Some subject IDs run to 35 characters, and nowrap
      pushed the whole page sideways on a narrow window. */
   .subj-meta{font-size:11px;color:var(--muted);font-family:'IBM Plex Mono',monospace;}
+  .subj-mods{padding:0 0 12px;}
+  .subj-mods summary{cursor:pointer;font-size:12px;color:var(--muted);font-family:var(--font-mono);}
+  .subj-mods summary:hover{color:var(--ink);}
+  .mod-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+           padding:6px 0 6px 12px;margin-top:6px;border-left:2px solid var(--line);}
+  /* Title and the button share the first line whatever the title's length;
+     the path goes underneath, so the button never wanders mid-column. */
+  .mod-no{font-family:var(--font-mono);font-size:11px;color:var(--muted);min-width:20px;order:0;}
+  .mod-title{flex:1 1 120px;min-width:0;font-size:13px;order:1;}
+  .mod-row button{padding:3px 9px;font-size:11px;margin-left:auto;order:2;}
+  .mod-file{font-family:var(--font-mono);font-size:11px;color:var(--muted);
+            flex:1 1 100%;order:3;padding-left:30px;word-break:break-all;}
+  .mod-none{font-size:12px;color:var(--muted);padding:6px 0 0 12px;}
+  .unlisted-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+                padding:10px 0;border-bottom:1px solid var(--line);}
+  .unlisted-row .u-path{font-family:var(--font-mono);font-size:12px;flex:1 1 100%;word-break:break-all;}
+  .unlisted-row .u-path button{padding:1px 7px;font-size:11px;margin-left:6px;}
+  .u-peek-out{flex:1 1 100%;font-size:12px;color:var(--muted);margin:-2px 0 2px;}
+  .unlisted-row input[type="text"]{flex:2 1 200px;min-width:0;margin:0;}
+  .unlisted-row select{flex:1 1 160px;min-width:0;margin:0;}
 
   /* ===== picture on a question ===== */
   .q-img{
@@ -254,13 +274,97 @@ let expandedQIdx = new Set(); // which question rows are expanded in the current
 // would drift the moment either saved.
 let manifestSubjects = null;
 
-async function fetchManifest(){
-  const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${MANIFEST_PATH}?t=${Date.now()}`;
-  const resp = await fetch(url);
-  if(!resp.ok) throw new Error('Could not fetch ' + MANIFEST_PATH + ' (status ' + resp.status + ')');
-  const parsed = JSON.parse(await resp.text());
+function parseManifestText(text){
+  const parsed = JSON.parse(text);
   if(!Array.isArray(parsed)) throw new Error(MANIFEST_PATH + ' is not a list of subjects.');
   return parsed;
+}
+
+// raw.githubusercontent.com is a CDN, and it kept serving the previous commit
+// for minutes after a save. Every save here is "read the manifest, append to
+// it, write it back", so a stale read wrote back a list missing whatever the
+// save before it had added — silently, under a success message. Fourteen
+// modules were committed to the repository and dropped from the site that
+// way. The contents API reads the branch itself and does not lag, so it is
+// asked first; raw is only the fallback for when it is unavailable.
+async function fetchManifest(){
+  try{
+    const api = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${MANIFEST_PATH}?ref=${GITHUB_BRANCH}&t=${Date.now()}`;
+    const resp = await fetch(api, { cache: 'no-store', headers: { 'Accept': 'application/vnd.github.raw' } });
+    // A 403 here is the unauthenticated rate limit (60 an hour), not a real
+    // failure — fall through rather than locking the admin out of saving.
+    if(resp.ok) return parseManifestText(await resp.text());
+  }catch(e){ /* offline, blocked, or rate-limited — fall through to raw */ }
+
+  const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${MANIFEST_PATH}?t=${Date.now()}`;
+  const resp = await fetch(url, { cache: 'no-store' });
+  if(!resp.ok) throw new Error('Could not fetch ' + MANIFEST_PATH + ' (status ' + resp.status + ')');
+  return parseManifestText(await resp.text());
+}
+
+/* ---- Never write a manifest that would drop a module ---------------------
+ * Belt and braces for the above. Every module the site is known to have is
+ * remembered on this device as "subjectId|moduleId". A manifest that comes
+ * back missing one of them is a read that has not caught up, not a deletion,
+ * and must never be used as the base for a write. Removing something on
+ * purpose records it in removedModuleKeys first, so a deliberate delete does
+ * not trip the guard.
+ */
+const MANIFEST_KNOWN_KEY = 'lea-admin-known-modules';
+const removedModuleKeys = new Set();
+
+function manifestKeys(list){
+  const out = [];
+  (list || []).forEach(s => (s.modules || []).forEach(m => out.push(s.id + '|' + m.id)));
+  return out;
+}
+function readKnownModules(){
+  try{
+    const v = JSON.parse(localStorage.getItem(MANIFEST_KNOWN_KEY));
+    return Array.isArray(v) ? v : [];
+  }catch(e){ return []; }
+}
+// After a write, or when the admin explicitly asks for a fresh copy: this is
+// exactly what the site holds now, so replace what was remembered.
+function rememberManifest(list){
+  try{ localStorage.setItem(MANIFEST_KNOWN_KEY, JSON.stringify(manifestKeys(list))); }catch(e){}
+}
+// After an ordinary read, which might itself be the stale copy this whole
+// guard exists to catch. Only ever adds, so a stale read cannot quietly
+// shrink the list and disarm the check.
+function noteManifestSeen(list){
+  const merged = new Set(readKnownModules());
+  manifestKeys(list).forEach(k => merged.add(k));
+  try{ localStorage.setItem(MANIFEST_KNOWN_KEY, JSON.stringify([...merged])); }catch(e){}
+}
+function missingFromManifest(list){
+  const have = new Set(manifestKeys(list));
+  return readKnownModules().filter(k => !have.has(k) && !removedModuleKeys.has(k));
+}
+const waitMs = ms => new Promise(r => setTimeout(r, ms));
+
+// The only read allowed to be the base of a write. Polls until GitHub is
+// serving everything we already know is on the site, then refuses rather than
+// writing a list that would delete someone's work.
+async function fetchManifestForWrite(log){
+  let manifest = null, missing = [];
+  for(let attempt = 0; attempt < 6; attempt++){
+    manifest = await fetchManifest();
+    missing = missingFromManifest(manifest);
+    if(!missing.length) return manifest;
+    if(log) log('GitHub is still catching up — ' + missing.length + ' module' +
+                (missing.length === 1 ? ' it already has is' : 's it already has are') +
+                ' not in the copy it just handed back. Waiting…');
+    await waitMs(2500);
+  }
+  throw new Error(
+    'GitHub is still serving an out-of-date ' + MANIFEST_PATH + ' — ' + missing.length +
+    ' module' + (missing.length === 1 ? ' is' : 's are') + ' missing from it (' +
+    missing.slice(0, 3).join(', ') + (missing.length > 3 ? ', and more' : '') +
+    '). Nothing was written: saving on top of that copy would have removed ' +
+    (missing.length === 1 ? 'it' : 'them') + ' from the site. Wait a minute and try again. ' +
+    'If ' + (missing.length === 1 ? 'it was' : 'they were') + ' removed on purpose from ' +
+    'somewhere else, press "Reload from GitHub" on the Subjects tab first.');
 }
 
 async function loadManifest(){
@@ -272,6 +376,7 @@ async function loadManifest(){
   try{
     manifestSubjects = await fetchManifest();
     subjects = manifestSubjects;
+    noteManifestSeen(manifestSubjects);
   }catch(e){ manifestSubjects = []; }
   return manifestSubjects;
 }
@@ -511,11 +616,14 @@ async function init(){
 
 /* ================= SUBJECTS TAB ================= */
 
-async function loadSubjects(){
+async function loadSubjects(fromReloadButton){
   tabSubjectsEl.innerHTML = '<div class="card msg info">Loading current subjects from GitHub…</div>';
   try{
     subjects = await fetchManifest();
     manifestSubjects = subjects;   // one array, two names — see loadManifest
+    if(fromReloadButton) rememberManifest(subjects);
+    else noteManifestSeen(subjects);
+    removedModuleKeys.clear();     // a fresh load is the new starting point
     renderSubjectsTab();
   }catch(e){
     tabSubjectsEl.innerHTML = '<div class="card msg error">' + escapeHtml(e.message) + '</div>';
@@ -524,6 +632,22 @@ async function loadSubjects(){
 
 function slugify(name){
   return name.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+// One row per module, each with a way to take it off the site. Removing is
+// deliberately only an edit to the list on screen — nothing is written until
+// "Save to site", the same as renaming a subject, so a misclick costs nothing.
+function moduleRowsHtml(subject, subjectIdx){
+  const mods = subject.modules || [];
+  if(!mods.length) return '<div class="mod-none">Add one from the <b>Add Module</b> or <b>Rework Module</b> tab.</div>';
+  return mods.map(m => `
+    <div class="mod-row">
+      <span class="mod-no">${escapeHtml(m.no || '')}</span>
+      <span class="mod-title">${escapeHtml(m.title || m.id)}</span>
+      <span class="mod-file">${Number(m.total) || 0} q &middot; ${escapeHtml(m.file || '')}</span>
+      <button class="danger" data-action="mod-del" data-idx="${subjectIdx}" data-mid="${escapeHtml(m.id)}">Remove</button>
+    </div>
+  `).join('');
 }
 
 function renderSubjectsTab(){
@@ -544,6 +668,10 @@ function renderSubjectsTab(){
                placeholder="One line shown under the subject title — left blank, that line stays empty">
         <span class="subj-meta">${escapeHtml(s.id)} &middot; ${mods} module${mods===1?'':'s'} &middot; ${qs.toLocaleString()} question${qs===1?'':'s'}</span>
       </div>
+      <details class="subj-mods">
+        <summary>${mods ? 'Modules in this subject (' + mods + ')' : 'No modules in this subject yet'}</summary>
+        ${moduleRowsHtml(s, i)}
+      </details>
     </div>
   `;}).join('');
 
@@ -564,6 +692,19 @@ function renderSubjectsTab(){
       <button id="reloadSubjectsBtn">Reload from GitHub</button>
     </div>
     <div class="save-status" id="subjectsSaveStatus"></div>
+
+    <div class="card">
+      <b>Question files no subject lists</b>
+      <p style="font-size:13px;color:var(--muted);margin:8px 0 0;">
+        A quiz file can sit in the repository without being on the site &mdash; that is what
+        an upload which reported success but never appeared looks like. Scanning finds them,
+        and adding one back here puts it in front of readers again.
+      </p>
+      <div class="actions">
+        <button id="scanUnlistedBtn">Scan for unlisted files</button>
+      </div>
+      <div id="unlistedOut"></div>
+    </div>
   `;
 
   tabSubjectsEl.querySelectorAll('input[data-field="name"]').forEach(inp => {
@@ -611,8 +752,159 @@ function renderSubjectsTab(){
     subjects.push({ id: slug, name: name, blurb: '', ready: false, modules: [] });
     renderSubjectsTab();
   });
+  tabSubjectsEl.querySelectorAll('button[data-action="mod-del"]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const i = +btn.dataset.idx;
+      const subject = subjects[i];
+      const mod = (subject.modules || []).find(m => m.id === btn.dataset.mid);
+      if(!mod) return;
+      const ok = await LEAConfirm(
+        `Take "${mod.title || mod.id}" off ${subject.name}?` +
+        ' Readers will no longer see it. The question file stays in the repository, so it can be' +
+        ' put back from the scan below, and anyone who already answered keeps their progress.' +
+        ' Nothing changes on the site until you press "Save to site".',
+        { title: 'Remove module', yes: 'Remove from site' }
+      );
+      if(!ok) return;
+      // Recorded before the splice so the stale-read guard knows this one is
+      // gone on purpose and does not block the save that follows.
+      removedModuleKeys.add(subject.id + '|' + mod.id);
+      subject.modules = (subject.modules || []).filter(m => m.id !== mod.id);
+      renderSubjectsTab();
+    });
+  });
   document.getElementById('saveSubjectsBtn').addEventListener('click', saveSubjects);
-  document.getElementById('reloadSubjectsBtn').addEventListener('click', loadSubjects);
+  document.getElementById('reloadSubjectsBtn').addEventListener('click', () => loadSubjects(true));
+  document.getElementById('scanUnlistedBtn').addEventListener('click', scanUnlistedFiles);
+}
+
+/* ---- Files in the repository that no subject points at -------------------
+ * Every module the site can reach is named in data/subjects.json. Anything
+ * under data/ that nothing names is invisible to readers however good it is,
+ * so list those and offer to put them back.
+ */
+async function scanUnlistedFiles(){
+  const out = document.getElementById('unlistedOut');
+  out.innerHTML = '<div class="msg info" style="margin-top:14px;">Reading the file list from GitHub…</div>';
+  try{
+    const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/git/trees/${GITHUB_BRANCH}?recursive=1`;
+    const resp = await fetch(url, { cache: 'no-store' });
+    if(!resp.ok) throw new Error('Could not list the files (status ' + resp.status + ')');
+    const data = await resp.json();
+
+    const listed = new Set();
+    subjects.forEach(s => (s.modules || []).forEach(m => listed.add(m.file)));
+
+    const unlisted = (data.tree || [])
+      .filter(it => it.type === 'blob' && /^data\/[^/]+\/[^/]+\.json$/.test(it.path))
+      .map(it => it.path)
+      .filter(path => path !== MANIFEST_PATH && !listed.has(path))
+      .sort();
+
+    if(!unlisted.length){
+      out.innerHTML = '<div class="msg ok-msg" style="margin-top:14px;">' +
+        'Every question file under <code>data/</code> is on the site. Nothing is stranded.</div>';
+      return;
+    }
+
+    const options = subjects.map(s =>
+      '<option value="' + escapeHtml(s.id) + '">' + escapeHtml(s.name) + '</option>').join('');
+
+    out.innerHTML =
+      '<div class="msg info" style="margin:14px 0;">' + unlisted.length + ' file' +
+      (unlisted.length === 1 ? ' is' : 's are') + ' in the repository but on no subject. ' +
+      'Give each one a title, pick where it belongs, and add it — then press ' +
+      '<b>Save to site</b> above. Leave the ones you do not want; they stay invisible.</div>' +
+      unlisted.map(path =>
+        '<div class="unlisted-row" data-path="' + escapeHtml(path) + '">' +
+          '<span class="u-path">' + escapeHtml(path) +
+            ' <button data-action="u-peek">what is in it?</button></span>' +
+          '<input type="text" data-role="u-title" placeholder="Title readers will see">' +
+          '<select data-role="u-subject">' + options + '</select>' +
+          '<button data-action="u-add">Add to site</button>' +
+        '</div>').join('');
+
+    out.querySelectorAll('.unlisted-row').forEach(row => {
+      const folder = row.dataset.path.split('/')[1];
+      const guess = subjects.find(s => subjectFolder(s) === folder) || subjects.find(s => s.id === folder);
+      if(guess) row.querySelector('select[data-role="u-subject"]').value = guess.id;
+      row.querySelector('button[data-action="u-add"]').addEventListener('click', () => addUnlistedFile(row));
+      row.querySelector('button[data-action="u-peek"]').addEventListener('click', () => peekUnlistedFile(row));
+    });
+  }catch(e){
+    out.innerHTML = '<div class="msg error" style="margin-top:14px;">' + escapeHtml(e.message) + '</div>';
+  }
+}
+
+// A path is not enough to decide by. One question out of the file says what
+// it is, which is the difference between putting it back and guessing.
+async function peekUnlistedFile(row){
+  const btn = row.querySelector('button[data-action="u-peek"]');
+  btn.disabled = true;
+  btn.textContent = 'reading…';
+  try{
+    const rows = await readModuleFile(row.dataset.path);
+    const first = rows[0] || {};
+    const stem = first.q || first.question || first.stem || first.text || '';
+    row.querySelector('.u-peek-out') ||
+      row.querySelector('.u-path').insertAdjacentHTML('afterend',
+        '<div class="u-peek-out">' + rows.length + ' questions &middot; first one: ' +
+        escapeHtml(String(stem).slice(0, 160)) + (String(stem).length > 160 ? '…' : '') + '</div>');
+    btn.remove();
+  }catch(e){
+    btn.disabled = false;
+    btn.textContent = 'what is in it?';
+    await LEAAlert(e.message);
+  }
+}
+
+async function readModuleFile(path){
+  const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${path}?t=${Date.now()}`;
+  const resp = await fetch(url, { cache: 'no-store' });
+  if(!resp.ok) throw new Error('Could not read ' + path + ' (status ' + resp.status + ')');
+  const rows = JSON.parse(await resp.text());
+  if(!Array.isArray(rows) || !rows.length) throw new Error(path + ' does not hold a list of questions.');
+  return rows;
+}
+
+async function addUnlistedFile(row){
+  const btn = row.querySelector('button[data-action="u-add"]');
+  const path = row.dataset.path;
+  const title = (row.querySelector('input[data-role="u-title"]').value || '').trim();
+  const subjectId = row.querySelector('select[data-role="u-subject"]').value;
+  if(!title){ await LEAAlert('Give it a title first — that is what readers see.'); return; }
+
+  const subject = subjects.find(s => s.id === subjectId);
+  if(!subject){ await LEAAlert('That subject is no longer here. Reload from GitHub.'); return; }
+
+  btn.disabled = true;
+  const original = btn.textContent;
+  btn.textContent = 'Reading…';
+  try{
+    // The question count has to be right — the site reports mastery as a
+    // fraction of it, so a guessed number would misreport everyone's progress.
+    const rows = await readModuleFile(path);
+
+    subject.modules = subject.modules || [];
+    // The number in the filename is the one the file was written under, and
+    // reusing it keeps the file and the entry describing each other.
+    const no = (path.split('/').pop().replace(/\.json$/, '') || nextModuleNo(subject)).padStart(2, '0');
+    let id = subject.id + '-' + no;
+    while(subject.modules.some(m => m.id === id)) id = id + 'b';
+
+    subject.modules.push({ id, no, title, total: rows.length, file: path, format: 'json' });
+    removedModuleKeys.delete(subject.id + '|' + id);
+    if(!subject.ready) subject.ready = true;
+    renderSubjectsTab();
+    const status = document.getElementById('subjectsSaveStatus');
+    status.className = 'save-status';
+    status.textContent = 'Added "' + title + '" (' + rows.length + ' questions) to ' + subject.name +
+      '. Press "Save to site" to publish it.';
+  }catch(e){
+    await LEAAlert(e.message);
+    btn.disabled = false;
+    btn.textContent = original;
+  }
 }
 
 // Serialised the way the checked-in file is written, so a save from here
@@ -628,7 +920,21 @@ async function saveSubjects(){
   statusEl.className = 'save-status';
   statusEl.textContent = 'Saving…';
   try{
+    // This tab may have been open a while, and a module added from another
+    // tab since. Writing what is on screen would delete it, so compare
+    // against the site first and stop rather than lose it.
+    const remote = await fetchManifest();
+    const onScreen = new Set(manifestKeys(subjects));
+    const wouldLose = manifestKeys(remote).filter(k => !onScreen.has(k) && !removedModuleKeys.has(k));
+    if(wouldLose.length){
+      throw new Error(wouldLose.length + ' module' + (wouldLose.length === 1 ? '' : 's') +
+        ' added since this tab loaded (' + wouldLose.slice(0, 3).join(', ') +
+        (wouldLose.length > 3 ? ', and more' : '') + ') would be removed by this save. ' +
+        'Nothing was written — press "Reload from GitHub", redo your edits, and save again.');
+    }
     await callSave(MANIFEST_PATH, manifestToJson(subjects), 'Admin: update subjects');
+    rememberManifest(subjects);
+    removedModuleKeys.clear();
     statusEl.className = 'save-status ok';
     statusEl.textContent = 'Saved! It may take a minute or two for GitHub Pages to update the live site.';
   }catch(e){
@@ -1461,7 +1767,7 @@ async function handleAddModule(){
     // rather than trusting what this tab loaded minutes ago, so two admins
     // working at once cannot silently drop each other's subject.
     log('Updating ' + MANIFEST_PATH + '…');
-    const manifest = await fetchManifest();
+    const manifest = await fetchManifestForWrite(log);
 
     let subject = manifest.find(x => x.id === subjectId);
     if(!subject){
@@ -1500,6 +1806,7 @@ async function handleAddModule(){
     }
 
     await callSave(MANIFEST_PATH, manifestToJson(manifest), `Admin: add module "${moduleTitle}" to ${subjectId}`);
+    rememberManifest(manifest);
 
     statusEl.className = 'save-status ok';
     log('✅ Done! "' + moduleTitle + '" is module ' + moduleEntry.no + ' of ' + subject.name +
@@ -2019,7 +2326,7 @@ async function saveRework(){
     if(!moduleId) throw new Error('Give the module an id.');
     if(!title) throw new Error('Give the module a title.');
 
-    const manifest = await fetchManifest();
+    const manifest = await fetchManifestForWrite(log);
     const subject = manifest.find(s => s.id === subjectId);
     if(!subject) throw new Error('That subject is no longer in the manifest.');
     subject.modules = subject.modules || [];
@@ -2039,6 +2346,7 @@ async function saveRework(){
                            total: reworkResult.rows.length, file: path, format: 'json' });
     await callSave(MANIFEST_PATH, manifestToJson(manifest),
       'Admin: add reworked module "' + title + '" to ' + subjectId);
+    rememberManifest(manifest);
 
     manifestSubjects = manifest;
     subjects = manifest;
