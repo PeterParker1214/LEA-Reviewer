@@ -58,11 +58,73 @@ window.LEAReframeAI = (function () {
 
   var CHATTER = /^(sure|here|okay|ok|certainly|of course|rewritten|question:|answer:)\b/i;
 
+  function norm(s) {
+    return String(s || '').toLowerCase().replace(/[^a-z0-9 ]+/g, ' ')
+      .replace(/\s+/g, ' ').trim();
+  }
+
+  var STOP = ' the a an of to in for on at by with and or is are was were be been this that which what who whom how when where why it its as from not all any each ';
+  function contentWords(s) {
+    var out = {};
+    norm(s).split(' ').forEach(function (w) {
+      if (w.length > 3 && STOP.indexOf(' ' + w + ' ') === -1) out[w] = 1;
+    });
+    return out;
+  }
+
+  /**
+   * Did the reply swallow one of the answer choices?
+   *
+   * This is the failure that made an EXCEPT question unanswerable: the model
+   * appended "the use of a dome in a mosque" — one of the options — onto the
+   * stem. The choices are never SENT to the model, but they are exactly what
+   * is needed to notice this, so they are used here.
+   */
+  function leakedOption(original, reply, options) {
+    if (!options || !options.length) return null;
+    var before = norm(original), after = norm(reply);
+    for (var i = 0; i < options.length; i++) {
+      var o = options[i];
+      if (!o || typeof o === 'object') continue;      // templated {ref,tpl}
+      var t = norm(o);
+      if (t.split(' ').length < 3) continue;          // too short to be telling
+      if (after.indexOf(t) !== -1 && before.indexOf(t) === -1) return t;
+    }
+    return null;
+  }
+
+  /**
+   * Did the reply wander off the original's subject?
+   *
+   * "Which statement describes Islamic domestic buildings?" came back as a
+   * question about architectural style — same length, every number intact, and
+   * asking something else entirely. Requiring most of the original's content
+   * words to survive catches that; anchors alone never could.
+   */
+  function driftedTooFar(original, reply) {
+    var a = contentWords(original), b = contentWords(reply);
+    var keys = Object.keys(a);
+    if (keys.length < 3) return null;                 // too short to judge
+    var kept = keys.filter(function (w) { return b[w]; }).length;
+    var ratio = kept / keys.length;
+    return ratio < 0.5
+      ? 'drifted — only ' + Math.round(ratio * 100) + '% of the subject words survived'
+      : null;
+  }
+
+  /** A signature for spotting two stems that collapsed into the same question. */
+  function signature(s) {
+    var w = norm(s).split(' ').filter(function (x) {
+      return x.length > 3 && STOP.indexOf(' ' + x + ' ') === -1;
+    });
+    return w.slice(0, 5).sort().join(' ');
+  }
+
   /**
    * Decide whether a reply may replace the original. Returns null when it is
    * acceptable, or a short reason when it is not.
    */
-  function reject(original, reply) {
+  function reject(original, reply, options) {
     var r = String(reply || '').trim();
     if (!r) return 'empty reply';
     // Models like to wrap answers in quotes; unwrap once before judging.
@@ -79,6 +141,13 @@ window.LEAReframeAI = (function () {
     for (var i = 0; i < want.length; i++) {
       if (got.indexOf(want[i]) === -1) return 'lost "' + want[i] + '"';
     }
+
+    var leak = leakedOption(original, r, options);
+    if (leak) return 'swallowed an answer choice — "' + leak.slice(0, 40) + '"';
+
+    var drift = driftedTooFar(original, r);
+    if (drift) return drift;
+
     return null;
   }
 
@@ -128,7 +197,13 @@ window.LEAReframeAI = (function () {
     var seed = opts.seed || 42;
     var onProgress = opts.onProgress || function () {};
     var stems = rows.map(function (r) { return r.q; });
-    var accepted = 0, rejected = [];
+    var accepted = 0, rejected = [], seenSignatures = {};
+    // Stems that are staying as they are still occupy their wording, so a
+    // reframe must not collide with them either.
+    rows.forEach(function (r, n) {
+      var sig = signature(r.q);
+      if (sig && seenSignatures[sig] === undefined) seenSignatures[sig] = n;
+    });
 
     var i = 0;
     function step() {
@@ -139,9 +214,26 @@ window.LEAReframeAI = (function () {
       var original = rows[idx].q;
       return askOne(original, model, seed + idx)
         .then(function (reply) {
-          var why = reject(original, reply);
-          if (why) rejected.push({ i: idx, why: why, got: clean(reply).slice(0, 90) });
-          else { stems[idx] = clean(reply); accepted++; }
+          var why = reject(original, reply, rows[idx].o);
+          var text = clean(reply);
+          // Two questions collapsing into one wording is only visible across
+          // the set: a pendentives question and a squinches question both came
+          // back as "What type of structural support…", and each looked fine
+          // on its own. Keep the first, refuse the twin.
+          if (!why) {
+            var sig = signature(text);
+            var owner = sig ? seenSignatures[sig] : undefined;
+            // owner === idx means it matched its OWN original, which is what a
+            // faithful reframe should do. Only a clash with a DIFFERENT
+            // question is a collapse.
+            if (sig && owner !== undefined && owner !== idx) {
+              why = 'same wording as Q' + (owner + 1) + ' — the two questions would stop being distinct';
+            } else if (sig) {
+              seenSignatures[sig] = idx;
+            }
+          }
+          if (why) rejected.push({ i: idx, why: why, got: text.slice(0, 90) });
+          else { stems[idx] = text; accepted++; }
         })
         .catch(function (e) { rejected.push({ i: idx, why: e.message, got: '' }); })
         .then(function () { onProgress(idx + 1, rows.length); return step(); });
