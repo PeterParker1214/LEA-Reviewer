@@ -9,17 +9,17 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <title>LEA Reviewer — Admin</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/lea-confirm.js?v=13"></script>
-<script src="assets/icons.js?v=13"></script>
+<script src="assets/lea-confirm.js?v=14"></script>
+<script src="assets/icons.js?v=14"></script>
 <!-- The same reader the app uses, so what the editor sees is exactly what a
      reader gets. Its balanced-bracket scan also survives question text that a
      regex would truncate. -->
-<script src="assets/quiz-source.js?v=13"></script>
-<script src="assets/quiz-rework.js?v=13"></script>
-<script src="assets/quiz-reframe-ai.js?v=13"></script>
-<script src="assets/docx-quiz.js?v=13"></script>
-<script src="assets/image-intake.js?v=13"></script>
-<script src="assets/theme.js?v=13" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=14"></script>
+<script src="assets/quiz-rework.js?v=14"></script>
+<script src="assets/quiz-reframe-ai.js?v=14"></script>
+<script src="assets/docx-quiz.js?v=14"></script>
+<script src="assets/image-intake.js?v=14"></script>
+<script src="assets/theme.js?v=14" data-alt-class="light-mode" data-default-is="dark"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -1668,7 +1668,7 @@ function parseQuizFile(text){
 function buildAdaptedQuizHtml(raw, format, opts){
   const { subjectId, moduleId, subjectName, includeBackLink } = opts;
   let out = raw;
-  const assetPath = '../../../assets/module-progress.js?v=13';
+  const assetPath = '../../../assets/module-progress.js?v=14';
 
   if(format === 'native'){
     out = out.replace(/const LEA_SUBJECT_ID\s*=\s*'[^']*';/, `const LEA_SUBJECT_ID = '${subjectId}';`);

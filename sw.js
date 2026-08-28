@@ -24,7 +24,13 @@
  *   local cache and queue the write. A cached API response would look like a
  *   successful sync that never happened.
  */
-const VERSION = 'lea-v5';
+// Bumped whenever a cached thing changes meaning, not just when this file
+// changes. activate deletes every cache not named for the current version, so
+// a bump is what actually clears out what readers are already holding — and
+// the last change (the subject list moving to network-first) shipped without
+// one, which left the old copy sitting in the old cache on every device that
+// had visited before.
+const VERSION = 'lea-v6';
 const SHELL = VERSION + '-shell';
 const DATA = VERSION + '-data';
 const VENDOR = VERSION + '-vendor';

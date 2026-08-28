@@ -11,8 +11,27 @@
   // file:// has no service-worker scope, and registering there throws.
   if (location.protocol !== 'http:' && location.protocol !== 'https:') return;
 
+  // Whether a worker was already in charge when this page started. A first
+  // visit has none, and reloading there would be a pointless flash; an update
+  // replacing an existing worker is the case worth reloading for.
+  var hadController = !!navigator.serviceWorker.controller;
+  var reloaded = false;
+
+  navigator.serviceWorker.addEventListener('controllerchange', function () {
+    if (!hadController || reloaded) return;
+    reloaded = true;
+    // The page on screen was built from what the old worker served. A new one
+    // taking over means that content is out of date, and asking the reader to
+    // refresh is asking them to know that.
+    location.reload();
+  });
+
   window.addEventListener('load', function () {
-    navigator.serviceWorker.register('sw.js').catch(function () {});
+    navigator.serviceWorker.register('sw.js').then(function (reg) {
+      // Registering checks for a new worker, but only on a load. A tab left
+      // open all day would never look again, so ask on a timer as well.
+      setInterval(function () { reg.update().catch(function () {}); }, 60 * 60 * 1000);
+    }).catch(function () {});
   });
 
   // Exposed so a page can tell the reader what is actually available offline
