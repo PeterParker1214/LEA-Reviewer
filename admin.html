@@ -96,7 +96,10 @@
   .unlisted-row .u-path button{padding:1px 7px;font-size:11px;margin-left:6px;}
   .u-peek-out{flex:1 1 100%;font-size:12px;color:var(--muted);margin:-2px 0 2px;}
   .unlisted-row.done{opacity:.75;}
+  .unlisted-row.was-hidden{opacity:.55;}
   .u-done{flex:1 1 100%;font-size:13px;color:var(--good);}
+  /* A title that was recovered rather than typed, so it is obvious which is which. */
+  input.u-title-found{border-color:var(--good);}
   .unlisted-row input[type="text"]{flex:2 1 200px;min-width:0;margin:0;}
   .unlisted-row select{flex:1 1 160px;min-width:0;margin:0;}
 
@@ -799,15 +802,25 @@ async function scanUnlistedFiles(){
     const listed = new Set();
     subjects.forEach(s => (s.modules || []).forEach(m => listed.add(m.file)));
 
+    const hidden = readHiddenFiles();
     const unlisted = (data.tree || [])
       .filter(it => it.type === 'blob' && /^data\/[^/]+\/[^/]+\.json$/.test(it.path))
       .map(it => it.path)
       .filter(path => path !== MANIFEST_PATH && !listed.has(path))
+      .filter(path => showHiddenFiles || hidden.indexOf(path) === -1)
       .sort();
+
+    const hiddenNote = hidden.length
+      ? '<div class="actions"><button id="toggleHiddenBtn">' +
+        (showHiddenFiles ? 'hide the hidden ones again' : 'show the ' + hidden.length + ' hidden one' +
+          (hidden.length === 1 ? '' : 's')) + '</button></div>'
+      : '';
 
     if(!unlisted.length){
       out.innerHTML = '<div class="msg ok-msg" style="margin-top:14px;">' +
-        'Every question file under <code>data/</code> is on the site. Nothing is stranded.</div>';
+        'Every question file under <code>data/</code> is on the site or hidden. Nothing is stranded.</div>' +
+        hiddenNote;
+      wireHiddenToggle(out);
       return;
     }
 
@@ -817,28 +830,141 @@ async function scanUnlistedFiles(){
     out.innerHTML =
       '<div class="msg info" style="margin:14px 0;">' + unlisted.length + ' file' +
       (unlisted.length === 1 ? ' is' : 's are') + ' in the repository but on no subject. ' +
-      'Give each one a title, pick where it belongs, and press the button. ' +
+      'The title each one was uploaded under is filled in for you; change it if ' +
+      'you want something different, check the subject, and press the button. ' +
       'That publishes it on its own — there is nothing else to press afterwards. ' +
-      'Leave the ones you do not want; they stay invisible.</div>' +
+      'Press <b>not wanted</b> on the ones you are never going to use and they ' +
+      'stop being offered.<div id="titleLookupNote" style="margin-top:8px;"></div></div>' +
       unlisted.map(path =>
-        '<div class="unlisted-row" data-path="' + escapeHtml(path) + '">' +
+        '<div class="unlisted-row' + (hidden.indexOf(path) !== -1 ? ' was-hidden' : '') +
+          '" data-path="' + escapeHtml(path) + '">' +
           '<span class="u-path">' + escapeHtml(path) +
-            ' <button data-action="u-peek">what is in it?</button></span>' +
-          '<input type="text" data-role="u-title" placeholder="Title readers will see">' +
+            ' <button data-action="u-peek">what is in it?</button>' +
+            ' <button data-action="u-hide">not wanted</button></span>' +
+          '<input type="text" data-role="u-title" placeholder="Looking up the title…">' +
           '<select data-role="u-subject">' + options + '</select>' +
           '<button class="primary" data-action="u-add">Put it back on the site</button>' +
-        '</div>').join('');
+        '</div>').join('') +
+      hiddenNote;
 
-    out.querySelectorAll('.unlisted-row').forEach(row => {
+    const rows = [...out.querySelectorAll('.unlisted-row')];
+    rows.forEach(row => {
       const folder = row.dataset.path.split('/')[1];
       const guess = subjects.find(s => subjectFolder(s) === folder) || subjects.find(s => s.id === folder);
       if(guess) row.querySelector('select[data-role="u-subject"]').value = guess.id;
       row.querySelector('button[data-action="u-add"]').addEventListener('click', () => addUnlistedFile(row));
       row.querySelector('button[data-action="u-peek"]').addEventListener('click', () => peekUnlistedFile(row));
+      row.querySelector('button[data-action="u-hide"]').addEventListener('click', () => hideUnlistedFile(row));
     });
+    wireHiddenToggle(out);
+    fillInKnownTitles(rows);
   }catch(e){
     out.innerHTML = '<div class="msg error" style="margin-top:14px;">' + escapeHtml(e.message) + '</div>';
   }
+}
+
+/* The title each file was uploaded under is still in the commit that created
+ * it — "Admin: rework \"FAMOUS ARCHITECTS\" into ..." — so asking for it again
+ * was asking for something already written down. Looked up once per file and
+ * kept, because the unauthenticated API allows sixty calls an hour and a
+ * rescan should not spend them twice.
+ */
+const TITLE_CACHE_KEY = 'lea-admin-file-titles';
+
+function readTitleCache(){
+  try{ return JSON.parse(localStorage.getItem(TITLE_CACHE_KEY)) || {}; }catch(e){ return {}; }
+}
+function writeTitleCache(map){
+  try{ localStorage.setItem(TITLE_CACHE_KEY, JSON.stringify(map)); }catch(e){}
+}
+
+async function titleForFile(path){
+  const cache = readTitleCache();
+  if(cache[path] !== undefined) return cache[path];
+  try{
+    const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/commits` +
+                `?path=${encodeURIComponent(path)}&per_page=1`;
+    const resp = await fetch(url, { cache: 'no-store' });
+    // Only an answer gets remembered. A refused or rate-limited call is not an
+    // answer, and caching it as "this file has no title" would leave the field
+    // blank for good — the exact thing this lookup exists to avoid.
+    if(!resp.ok) return '';
+    const commits = await resp.json();
+    const message = (commits[0] && commits[0].commit && commits[0].commit.message) || '';
+    // Both the upload and the rework tab quote the title in the message.
+    const quoted = message.match(/"([^"]+)"/);
+    const title = quoted ? quoted[1] : '';
+    cache[path] = title;
+    writeTitleCache(cache);
+    return title;
+  }catch(e){
+    return '';   // offline or blocked: the admin types it, as before
+  }
+}
+
+// Fills the titles in once the rows are on screen. A few at a time: one after
+// another took the best part of a minute over fourteen files, and all at once
+// is a burst at an API that allows sixty calls an hour. Rows already typed
+// into are left alone.
+async function fillInKnownTitles(rows){
+  const queue = rows.filter(r => {
+    const input = r.querySelector('input[data-role="u-title"]');
+    return input && !input.value.trim();
+  });
+  const note = document.getElementById('titleLookupNote');
+  if(note && queue.length) note.textContent = 'Looking up what each of these was called…';
+
+  let next = 0;
+  async function worker(){
+    while(next < queue.length){
+      const row = queue[next++];
+      const input = row.querySelector('input[data-role="u-title"]');
+      const title = await titleForFile(row.dataset.path);
+      if(input.value.trim()) continue;          // typed into while we were away
+      if(title){
+        input.value = title;
+        input.classList.add('u-title-found');
+      }else{
+        input.placeholder = 'Title readers will see';
+      }
+    }
+  }
+  await Promise.all([worker(), worker(), worker()]);
+  if(note) note.textContent = '';
+}
+
+/* ---- 1. Files worth nothing should stop being offered --------------------
+ * Trial-and-error left duplicates behind, and there is no point being asked
+ * about them at every scan. Hiding one keeps it out of this list for good.
+ * The file itself stays in the repository — readers cannot reach it either
+ * way — and "show the hidden ones" brings them all back.
+ */
+const HIDDEN_FILES_KEY = 'lea-admin-hidden-files';
+let showHiddenFiles = false;
+
+function readHiddenFiles(){
+  try{
+    const v = JSON.parse(localStorage.getItem(HIDDEN_FILES_KEY));
+    return Array.isArray(v) ? v : [];
+  }catch(e){ return []; }
+}
+function writeHiddenFiles(list){
+  try{ localStorage.setItem(HIDDEN_FILES_KEY, JSON.stringify(list)); }catch(e){}
+}
+async function hideUnlistedFile(row){
+  const path = row.dataset.path;
+  const ok = await LEAConfirm(
+    'Stop offering ' + path + '?\n\n' +
+    'It will not appear in this list again. The file stays in the repository — ' +
+    'nothing on the site points at it either way — and "show the hidden ones" ' +
+    'below brings it back.',
+    { title: 'Hide this file', yes: 'Hide it' }
+  );
+  if(!ok) return;
+  const hidden = readHiddenFiles();
+  if(hidden.indexOf(path) === -1) hidden.push(path);
+  writeHiddenFiles(hidden);
+  scanUnlistedFiles();
 }
 
 // A path is not enough to decide by. One question out of the file says what
@@ -878,6 +1004,11 @@ async function readModuleFile(path){
 // off screen with it. The button said the work was done and the site never
 // heard about it, which is the same shape of failure this whole tab exists to
 // clean up after. It publishes on its own now.
+function wireHiddenToggle(out){
+  const btn = out.querySelector('#toggleHiddenBtn');
+  if(btn) btn.addEventListener('click', () => { showHiddenFiles = !showHiddenFiles; scanUnlistedFiles(); });
+}
+
 async function addUnlistedFile(row){
   const btn = row.querySelector('button[data-action="u-add"]');
   const path = row.dataset.path;
@@ -943,8 +1074,23 @@ async function addUnlistedFile(row){
 
 // Serialised the way the checked-in file is written, so a save from here
 // produces a readable diff rather than one enormous line.
+//
+// The order of a subject's modules is the order readers see, and it had been
+// drifting away from the numbers printed on them: modules were appended as
+// they arrived, so 05 could sit after 33 and a recovered 06 landed at the
+// very end. Sorting on the way out means every save leaves the whole site in
+// number order, whatever put the entries there.
 function manifestToJson(list){
-  return JSON.stringify(list, null, 2) + '\n';
+  const ordered = (list || []).map(s => Object.assign({}, s, {
+    modules: (s.modules || []).slice().sort((a, b) => {
+      const na = parseInt(a.no, 10), nb = parseInt(b.no, 10);
+      if(isNaN(na) && isNaN(nb)) return 0;
+      if(isNaN(na)) return 1;          // anything unnumbered goes last
+      if(isNaN(nb)) return -1;
+      return na - nb;
+    })
+  }));
+  return JSON.stringify(ordered, null, 2) + '\n';
 }
 
 async function saveSubjects(){
