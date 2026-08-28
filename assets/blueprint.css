@@ -219,3 +219,51 @@ body.light-mode, :root.light-mode {
   --flap-sheen: rgba(0,0,0,0.035);
   --flap-seam:  rgba(24,32,40,0.18);
 }
+
+
+/* ============================================================
+   MODULE COLOURS
+   A colour an admin puts on a module, so a run of related modules
+   reads as a group in a long list instead of as thirty identical
+   cards.
+
+   One value per colour, not one per theme. These are mid-tone on
+   purpose: light enough to hold their own against the dark panel,
+   dark enough to stay visible on the white one, so a subject does
+   not have to be recoloured when a reader switches theme.
+
+   The colour is a band and a fill, never small text. Eight hues
+   that must stay apart from each other cannot all clear a text
+   contrast bar in both themes, and a group marker does not need
+   to be read — it needs to be seen.
+   ============================================================ */
+
+.mod-c-amber  { --mod: #d99a2b; }
+.mod-c-orange { --mod: #d97b3c; }
+.mod-c-red    { --mod: #cf5b52; }
+.mod-c-rose   { --mod: #d4607d; }
+.mod-c-violet { --mod: #8b7ac9; }
+.mod-c-blue   { --mod: #4a8fc4; }
+.mod-c-teal   { --mod: #3d9b96; }
+.mod-c-green  { --mod: #4f9e63; }
+
+/* The card wears it as a spine down the left and a wash that fades
+   out well before the text, so the title keeps the page's own
+   contrast whatever colour is set. */
+.module-card.mod-tinted {
+  border-left: 4px solid var(--mod);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--mod) 14%, transparent), transparent 45%),
+    var(--bg-panel-2);
+}
+.module-card.mod-tinted:hover { border-color: var(--mod); }
+.module-card.mod-tinted .mp-bar-fill { background: var(--mod); }
+/* in-progress paints its own left border — the module's colour wins. */
+.module-card.mod-tinted.in-progress { border-left: 4px solid var(--mod); }
+
+/* The quiz page wears it as a rule across the top: present on every
+   screen of the run, and nowhere near the questions. */
+.mod-strip {
+  position: fixed; top: 0; left: 0; right: 0; height: 4px;
+  background: var(--mod); z-index: 60; pointer-events: none;
+}

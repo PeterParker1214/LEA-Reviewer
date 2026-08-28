@@ -313,18 +313,18 @@
      draws. Only the modal needs a little more width to hold a face, a name and
      the stats without crowding. */
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=14">
-<link rel="stylesheet" href="assets/leaderboard.css?v=14">
-<script src="assets/presence.js?v=14"></script>
-<script src="assets/avatar.js?v=14"></script>
-<script src="assets/leaderboard.js?v=14"></script>
-<script src="assets/lea-confirm.js?v=14"></script>
-<script src="assets/quiz-source.js?v=14"></script>
-<script src="assets/module-progress.js?v=14"></script>
-<script src="assets/offline.js?v=14"></script>
-<script src="assets/quiz-resume.js?v=14"></script>
-<script src="assets/icons.js?v=14"></script>
-<script src="assets/theme.js?v=14" data-alt-class="light-mode" data-default-is="dark"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=15">
+<link rel="stylesheet" href="assets/leaderboard.css?v=15">
+<script src="assets/presence.js?v=15"></script>
+<script src="assets/avatar.js?v=15"></script>
+<script src="assets/leaderboard.js?v=15"></script>
+<script src="assets/lea-confirm.js?v=15"></script>
+<script src="assets/quiz-source.js?v=15"></script>
+<script src="assets/module-progress.js?v=15"></script>
+<script src="assets/offline.js?v=15"></script>
+<script src="assets/quiz-resume.js?v=15"></script>
+<script src="assets/icons.js?v=15"></script>
+<script src="assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
 </head>
 <body>
 <div class="wrap">
@@ -419,6 +419,15 @@ document.getElementById('leaderboardModalClose').addEventListener('click', () =>
 leaderboardModalOverlay.addEventListener('click', (e) => { if(e.target === leaderboardModalOverlay) leaderboardModalOverlay.classList.add('hidden'); });
 
 // ================= Helpers =================
+/* An admin-set colour on a module, or nothing. Unknown names fall through to
+ * nothing rather than to a default, so a typo in the manifest shows up as a
+ * plain card instead of quietly colouring the wrong group. */
+const MODULE_COLOURS = ['amber','orange','red','rose','violet','blue','teal','green'];
+function moduleColourClass(mod){
+  const c = mod && mod.color;
+  return (c && MODULE_COLOURS.indexOf(c) !== -1) ? ' mod-tinted mod-c-' + c : '';
+}
+
 function escapeHtml(s){
   return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
@@ -692,7 +701,8 @@ function renderModulesList(subject, mode){
     if(mode === 'drill'){ pct = mod.total > 0 ? Math.round(((mod.total - mp.toDrill) / mod.total) * 100) : 0; }
 
     return (
-      '<a class="module-card' + (inProgress ? ' in-progress' : '') + (disabled ? ' disabled' : '') + '" href="' + escapeHtml(href) + '">' +
+      '<a class="module-card' + (inProgress ? ' in-progress' : '') + (disabled ? ' disabled' : '') +
+        moduleColourClass(mod) + '" href="' + escapeHtml(href) + '">' +
         '<div class="module-num">' + escapeHtml(mod.no) + (mod.hard ? ' · Advanced' : '') + '</div>' +
         '<div class="module-title"><span class="mt-run">' + escapeHtml(mod.title) + '</span></div>' +
         '<div class="module-meta"><span>' + escapeHtml(metaLeft) + '</span><span class="module-arrow">&rarr;</span></div>' +

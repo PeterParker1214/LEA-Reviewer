@@ -9,17 +9,17 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <title>LEA Reviewer — Admin</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/lea-confirm.js?v=14"></script>
-<script src="assets/icons.js?v=14"></script>
+<script src="assets/lea-confirm.js?v=15"></script>
+<script src="assets/icons.js?v=15"></script>
 <!-- The same reader the app uses, so what the editor sees is exactly what a
      reader gets. Its balanced-bracket scan also survives question text that a
      regex would truncate. -->
-<script src="assets/quiz-source.js?v=14"></script>
-<script src="assets/quiz-rework.js?v=14"></script>
-<script src="assets/quiz-reframe-ai.js?v=14"></script>
-<script src="assets/docx-quiz.js?v=14"></script>
-<script src="assets/image-intake.js?v=14"></script>
-<script src="assets/theme.js?v=14" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=15"></script>
+<script src="assets/quiz-rework.js?v=15"></script>
+<script src="assets/quiz-reframe-ai.js?v=15"></script>
+<script src="assets/docx-quiz.js?v=15"></script>
+<script src="assets/image-intake.js?v=15"></script>
+<script src="assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -90,6 +90,14 @@
   .mod-file{font-family:var(--font-mono);font-size:11px;color:var(--muted);
             flex:1 1 100%;order:3;padding-left:30px;word-break:break-all;}
   .mod-none{font-size:12px;color:var(--muted);padding:6px 0 0 12px;}
+  .mod-colours{display:flex;gap:5px;flex:1 1 100%;order:4;padding-left:30px;margin-top:2px;}
+  .swatch{width:19px;height:19px;padding:0;border-radius:50%;border:1px solid var(--line);cursor:pointer;}
+  .swatch.none{background:transparent;position:relative;}
+  /* A line through the empty circle, so "no colour" does not read as
+     "a colour that has not loaded". */
+  .swatch.none::after{content:'';position:absolute;left:3px;right:3px;top:8px;
+                      height:1px;background:var(--muted);transform:rotate(-45deg);}
+  .swatch.on{outline:2px solid var(--ink);outline-offset:1px;}
   .unlisted-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
                 padding:10px 0;border-bottom:1px solid var(--line);}
   .unlisted-row .u-path{font-family:var(--font-mono);font-size:12px;flex:1 1 100%;word-break:break-all;}
@@ -641,6 +649,35 @@ function slugify(name){
   return name.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
 
+// The palette the site paints modules with — assets/blueprint.css holds the
+// same eight, and the two have to move together. A colour marks a group in a
+// long list, so what matters is that they stay apart from one another.
+const MODULE_COLOURS = [
+  { id: 'amber',  hex: '#d99a2b', name: 'Amber'  },
+  { id: 'orange', hex: '#d97b3c', name: 'Orange' },
+  { id: 'red',    hex: '#cf5b52', name: 'Red'    },
+  { id: 'rose',   hex: '#d4607d', name: 'Rose'   },
+  { id: 'violet', hex: '#8b7ac9', name: 'Violet' },
+  { id: 'blue',   hex: '#4a8fc4', name: 'Blue'   },
+  { id: 'teal',   hex: '#3d9b96', name: 'Teal'   },
+  { id: 'green',  hex: '#4f9e63', name: 'Green'  },
+];
+
+function swatchesHtml(subjectIdx, mod){
+  const current = mod.color || '';
+  return '<div class="mod-colours">' +
+    '<button class="swatch none' + (current ? '' : ' on') + '" title="No colour"' +
+      ' data-action="mod-colour" data-idx="' + subjectIdx + '"' +
+      ' data-mid="' + escapeHtml(mod.id) + '" data-colour=""></button>' +
+    MODULE_COLOURS.map(c =>
+      '<button class="swatch' + (current === c.id ? ' on' : '') + '"' +
+        ' style="background:' + c.hex + ';" title="' + c.name + '"' +
+        ' data-action="mod-colour" data-idx="' + subjectIdx + '"' +
+        ' data-mid="' + escapeHtml(mod.id) + '" data-colour="' + c.id + '"></button>'
+    ).join('') +
+  '</div>';
+}
+
 // One row per module, each with a way to take it off the site. Removing is
 // deliberately only an edit to the list on screen — nothing is written until
 // "Save to site", the same as renaming a subject, so a misclick costs nothing.
@@ -653,6 +690,7 @@ function moduleRowsHtml(subject, subjectIdx){
       <span class="mod-title">${escapeHtml(m.title || m.id)}</span>
       <span class="mod-file">${Number(m.total) || 0} q &middot; ${escapeHtml(m.file || '')}</span>
       <button class="danger" data-action="mod-del" data-idx="${subjectIdx}" data-mid="${escapeHtml(m.id)}">Remove</button>
+      ${swatchesHtml(subjectIdx, m)}
     </div>
   `).join('');
 }
@@ -758,6 +796,22 @@ function renderSubjectsTab(){
     // 0% row on Home, which reads as broken rather than as "coming".
     subjects.push({ id: slug, name: name, blurb: '', ready: false, modules: [] });
     renderSubjectsTab();
+  });
+  tabSubjectsEl.querySelectorAll('button[data-action="mod-colour"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const subject = subjects[+btn.dataset.idx];
+      const mod = (subject.modules || []).find(m => m.id === btn.dataset.mid);
+      if(!mod) return;
+      const chosen = btn.dataset.colour;
+      // Picking the colour a module already has clears it, so there is a way
+      // back to plain without a ninth button that only means "undo".
+      if(chosen && mod.color !== chosen) mod.color = chosen;
+      else delete mod.color;
+      renderSubjectsTab();
+      const status = document.getElementById('subjectsSaveStatus');
+      status.className = 'save-status';
+      status.textContent = 'Colours changed. Press "Save to site" to publish them.';
+    });
   });
   tabSubjectsEl.querySelectorAll('button[data-action="mod-del"]').forEach(btn => {
     btn.addEventListener('click', async () => {
@@ -1668,7 +1722,7 @@ function parseQuizFile(text){
 function buildAdaptedQuizHtml(raw, format, opts){
   const { subjectId, moduleId, subjectName, includeBackLink } = opts;
   let out = raw;
-  const assetPath = '../../../assets/module-progress.js?v=14';
+  const assetPath = '../../../assets/module-progress.js?v=15';
 
   if(format === 'native'){
     out = out.replace(/const LEA_SUBJECT_ID\s*=\s*'[^']*';/, `const LEA_SUBJECT_ID = '${subjectId}';`);

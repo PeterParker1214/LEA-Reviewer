@@ -517,15 +517,15 @@
   .results-actions{ display:flex; gap:10px; margin-top:18px; }
   .results-actions .footer-btn{ flex:1; }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=14">
-<script src="assets/lea-confirm.js?v=14"></script>
-<script src="assets/quiz-source.js?v=14"></script>
-<script src="assets/module-progress.js?v=14"></script>
-<script src="assets/offline.js?v=14"></script>
-<script src="assets/presence.js?v=14"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=15">
+<script src="assets/lea-confirm.js?v=15"></script>
+<script src="assets/quiz-source.js?v=15"></script>
+<script src="assets/module-progress.js?v=15"></script>
+<script src="assets/offline.js?v=15"></script>
+<script src="assets/presence.js?v=15"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
-<script src="assets/quiz-resume.js?v=14"></script>
-<script src="assets/theme.js?v=14" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-resume.js?v=15"></script>
+<script src="assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
 </head>
 <body>
 <!-- The rail is a sibling of #pageBody, not a child: every render replaces
@@ -595,6 +595,26 @@ sb.auth.onAuthStateChange((event, session) => {
 })();
 
 // ================= Helpers =================
+// The colour lives above every screen of the run rather than inside one,
+// because the body is rebuilt from scratch for the question, the review and
+// the results, and anything drawn inside a screen goes with it.
+function showModuleColour(){
+  const cls = moduleColourClass(MODULE);
+  if(!cls) return;
+  const strip = document.createElement('div');
+  strip.className = 'mod-strip' + cls.replace(' mod-tinted', '');
+  document.body.appendChild(strip);
+}
+
+/* An admin-set colour on a module, or nothing. Unknown names fall through to
+ * nothing rather than to a default, so a typo in the manifest shows up as a
+ * plain card instead of quietly colouring the wrong group. */
+const MODULE_COLOURS = ['amber','orange','red','rose','violet','blue','teal','green'];
+function moduleColourClass(mod){
+  const c = mod && mod.color;
+  return (c && MODULE_COLOURS.indexOf(c) !== -1) ? ' mod-tinted mod-c-' + c : '';
+}
+
 function escapeHtml(s){
   return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
@@ -724,6 +744,7 @@ async function boot(){
   }
 
   document.title = MODULE.title + ' — LEA Reviewer';
+  showModuleColour();
 
   const p = LEAProgress.load(SUBJECT.id, MODULE.id);
   flaggedSet = new Set(p.flagged || []);
