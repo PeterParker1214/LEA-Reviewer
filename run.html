@@ -516,10 +516,26 @@
   }
   .results-actions{ display:flex; gap:10px; margin-top:18px; }
   .results-actions .footer-btn{ flex:1; }
+
+  /* ===== history etymology ===== */
+  .etymology-word{color:inherit;text-decoration:underline dotted var(--clay-bright);text-decoration-thickness:1px;text-underline-offset:3px;cursor:pointer;border-radius:3px;transition:background .15s ease,color .15s ease;}
+  .etymology-word:hover,.etymology-word:focus-visible,.etymology-word.active{color:var(--clay-bright);background:rgba(212,163,115,.10);outline:none;}
+  .etymology-tooltip{position:fixed;z-index:10000;max-width:360px;padding:14px 15px 13px;border:1px solid var(--line);border-top:3px solid var(--clay-bright);border-radius:9px;background:linear-gradient(180deg,var(--bg-panel),var(--bg-panel-deep));color:var(--ink);box-shadow:0 16px 40px rgba(0,0,0,.42);font-family:var(--font-body);}
+  .etymology-tooltip-kicker{font-family:var(--font-head);color:var(--clay-bright);font-size:9px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:4px;}
+  .etymology-tooltip-word{font-family:var(--font-head);font-size:20px;line-height:1.15;margin-bottom:2px;}
+  .etymology-tooltip-origin{color:var(--sand);font-size:11px;letter-spacing:.03em;margin-bottom:8px;}
+  .etymology-tooltip-breakdown{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:11px;color:var(--turq-bright);background:rgba(42,157,143,.09);border:1px solid rgba(42,157,143,.22);border-radius:6px;padding:6px 8px;margin-bottom:8px;line-height:1.45;}
+  .etymology-tooltip-meaning{font-size:13px;color:var(--ink);margin-bottom:8px;font-style:italic;}
+  .etymology-tooltip-note{font-size:12px;line-height:1.55;color:var(--ink);opacity:.92;}
+  .etymology-tooltip-source{display:inline-block;margin-top:9px;color:var(--clay-bright);font-size:10px;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;}
+  .etymology-tooltip-source:hover{text-decoration:underline;}
+  .etymology-card-hint{display:inline-block;margin:0 8px 0 6px;color:var(--sand);font-size:10px;letter-spacing:.04em;font-style:italic;opacity:.85;}
+  @media (max-width:600px){.etymology-tooltip{max-width:calc(100vw - 24px);padding:13px 14px 12px}.etymology-tooltip-word{font-size:18px}}
 </style>
 <link rel="stylesheet" href="assets/blueprint.css?v=15">
 <script src="assets/lea-confirm.js?v=15"></script>
 <script src="assets/quiz-source.js?v=15"></script>
+<script src="assets/etymology.js?v=1"></script>
 <script src="assets/module-progress.js?v=15"></script>
 <script src="assets/offline.js?v=15"></script>
 <script src="assets/presence.js?v=15"></script>
@@ -992,6 +1008,7 @@ function renderExamCardUngraded(){
   slot.querySelectorAll('.opt[data-idx]').forEach(btn => {
     btn.addEventListener('click', () => selectExamAnswer(parseInt(btn.getAttribute('data-idx'), 10)));
   });
+  if(window.LEAEtymology) LEAEtymology.decorate(slot, SUBJECT && SUBJECT.id);
 }
 
 function selectExamAnswer(origIdx){
@@ -1399,6 +1416,7 @@ function renderCard(){
   slot.innerHTML =
     '<div class="bp-card">' +
       sectionTagHtml(item) +
+      (SUBJECT && SUBJECT.id === 'history-of-architecture' ? '<span class="etymology-card-hint">click underlined terms for etymology</span>' : '') +
       '<span class="clock-chip">' + (MODE === 'exam' ? 'Reviewing · mock exam' : MODE === 'drill' ? 'No clock · drilling your misses' : 'No clock · study mode') + '</span>' +
       '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
       '<div class="options">' + optsHtml + '</div>' +
@@ -1406,6 +1424,7 @@ function renderCard(){
     '</div>';
 
   wireCard(item);
+  if(window.LEAEtymology) LEAEtymology.decorate(slot, SUBJECT && SUBJECT.id);
 }
 
 function wireCard(item){
@@ -2263,6 +2282,7 @@ function renderMultiCard(){
   slot.querySelectorAll('.opt[data-idx]').forEach(btn => {
     btn.addEventListener('click', () => selectMultiAnswer(item, parseInt(btn.getAttribute('data-idx'), 10)));
   });
+  if(window.LEAEtymology) LEAEtymology.decorate(slot, cell.subjectId);
 }
 
 function selectMultiAnswer(item, origIdx){
@@ -2582,6 +2602,7 @@ function renderMultiExamCardUngraded(){
   slot.querySelectorAll('.opt[data-idx]').forEach(btn => {
     btn.addEventListener('click', () => selectMultiExamAnswer(parseInt(btn.getAttribute('data-idx'), 10)));
   });
+  if(window.LEAEtymology) LEAEtymology.decorate(slot, cell.subjectId);
 }
 
 function selectMultiExamAnswer(origIdx){
