@@ -25,9 +25,11 @@
  *
  * CANONICAL SHAPE
  * ---------------
- *   { s, q, o[], c, ref?, n?, img?, nimg?, hidden? }
+ *   { s, q, o[], c, ref?, n?, img?, nimg?, scenario?, hidden? }
  * `img` is the figure shown with the question; `nimg` the one shown with the
- * explanation, after it has been answered.
+ * explanation, after it has been answered. `scenario` is shared reference
+ * text — a text figure — usually repeated across a run of consecutive
+ * questions.
  * `QUESTIONS`-format quiz pages already use exactly this shape, so they need no
  * conversion. `QUIZ_DATA`-format pages use an older shape and are mapped.
  */
@@ -149,6 +151,7 @@
         n: row.explanation || row.n || undefined,
         ref: row.ref || undefined,
         img: imgFor(row, modFile, figures),
+        scenario: row.scenario || undefined,
         hidden: !!row.hidden
       });
     }

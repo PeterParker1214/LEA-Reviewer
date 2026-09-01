@@ -15,10 +15,13 @@
  * worse than leaving it alone.
  *
  * Canonical row shape is the site's own:
- *   { s, q, o[], c, ref, n }   plus optional img / hidden
+ *   { s, q, o[], c, ref, n }   plus optional img / scenario / hidden
  * An option may be a plain string OR the templated {ref:[i,j], tpl:'both'}
  * kind, whose ref[] indexes the option list — those indices are rebased
  * whenever choices move, or "Both A and B" silently names the wrong two.
+ * `scenario` is shared reference text — a text figure — usually repeated
+ * verbatim across a run of consecutive questions; it plays no part in
+ * reworking and is only ever carried through untouched.
  */
 window.LEAQuizRework = (function () {
   'use strict';
@@ -65,6 +68,23 @@ window.LEAQuizRework = (function () {
     return m ? balanced(html, m.index + m[0].length - 1, '[') : null;
   }
 
+  /* ---------------- scenario detection ---------------- */
+  // Some sources carry the scenario inline inside the question text rather
+  // than as its own field — "Scenario: <ref text>" followed by either an
+  // explicit "Question:" marker or a blank line, then the real question.
+  // Only ever split on that explicit convention: a stem that merely happens
+  // to start with the word "Scenario" some other way is left exactly as
+  // written, so nothing in the existing bank (none of it starts this way)
+  // can be clipped by accident.
+  var SCENARIO_INLINE_RE = /^Scenario\s*:\s*([\s\S]+?)(?:\n\s*\n+|\bQuestion\s*:\s*)([\s\S]+)$/i;
+  function splitEmbeddedScenario(text) {
+    var m = SCENARIO_INLINE_RE.exec(String(text || '').trim());
+    if (!m) return null;
+    var scenario = m[1].trim(), question = m[2].trim();
+    if (!scenario || !question) return null;
+    return { scenario: scenario, q: question };
+  }
+
   /** Everything becomes the site's {s,q,o,c,ref,n} shape, or null if unusable. */
   function canonical(r) {
     if (!r || typeof r !== 'object') return null;
@@ -102,6 +122,12 @@ window.LEAQuizRework = (function () {
       c: c, ref: ref, n: String(n).trim()
     };
     if (r.img) out.img = r.img;
+    if (r.scenario) {
+      out.scenario = String(r.scenario).trim();
+    } else {
+      var inline = splitEmbeddedScenario(out.q);
+      if (inline) { out.scenario = inline.scenario; out.q = inline.q; }
+    }
     if (r.hidden) out.hidden = true;
     return out;
   }
@@ -518,5 +544,6 @@ window.LEAQuizRework = (function () {
   }
 
   return { canonical: canonical, parseAny: parseAny, restructure: restructure,
-           build: build, mulberry: mulberry, shuffled: shuffled };
+           build: build, mulberry: mulberry, shuffled: shuffled,
+           splitEmbeddedScenario: splitEmbeddedScenario };
 })();

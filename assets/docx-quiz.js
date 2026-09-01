@@ -13,6 +13,24 @@
  * read a key at all without being told one: Word keeps the formatting, and a
  * plain-text read would throw it away.
  *
+ * SCENARIO (situational sets)
+ * ----------------------------
+ * A block that opens with a paragraph starting "Scenario" (optionally
+ * followed by ":" and its first line of text) reads as shared reference text
+ * — a text figure — for every numbered question that follows, until the next
+ * Scenario block, the next subtopic Heading, or the end of the document.
+ * One scenario commonly precedes several consecutive questions, but it can
+ * also precede just one:
+ *
+ *     Scenario: A five-storey mixed-use building is proposed on a 1,200 sqm
+ *     corner lot in a commercial zone…
+ *     1. Question text
+ *     A. wrong   B. **right**
+ *     2. Question text
+ *     A. wrong   B. **right**
+ *
+ * Both questions above carry that same scenario text.
+ *
  * No libraries. A .docx is a zip of XML, so this unzips it with the browser's
  * own DecompressionStream and parses the XML with DOMParser. Everything stays
  * on the machine — nothing is uploaded to read a file.
@@ -110,9 +128,12 @@ window.LEADocxQuiz = (function () {
   /* ---------------- turn paragraphs into questions ---------------- */
   var NUM_RE = /^(\d{1,3})[.)]\s+(.+)$/;
   var OPT_RE = /^\(?([A-H])[.)]\s+(.+)$/;
+  var SCENARIO_RE = /^Scenario\s*:?\s*(.*)$/i;
 
   function parseParagraphs(paras) {
     var rows = [], cur = null, subtopic = '', warnings = [];
+    var scenario = '';       // reference text carried onto the next question(s)
+    var inScenario = false;  // collecting scenario paragraphs right now
 
     function flush() {
       if (!cur) return;
@@ -129,7 +150,7 @@ window.LEADocxQuiz = (function () {
       if (/^Heading/i.test(p.style) || /^Title$/i.test(p.style)) {
         flush();
         // Heading 1 is the subtopic; a Title is the document name, not a topic.
-        if (/^Heading[12]$/i.test(p.style)) subtopic = p.text;
+        if (/^Heading[12]$/i.test(p.style)) { subtopic = p.text; scenario = ''; inScenario = false; }
         continue;
       }
 
@@ -143,10 +164,25 @@ window.LEADocxQuiz = (function () {
         continue;
       }
 
+      var ms = SCENARIO_RE.exec(p.text);
+      if (ms) {
+        flush();
+        scenario = ms[1].trim();
+        inScenario = true;
+        continue;
+      }
+
       var mn = NUM_RE.exec(p.text);
       if (mn && !mo) {
         flush();
-        cur = { s: subtopic, q: mn[2].trim(), o: [], c: -1, ref: '', n: '', _n: mn[1] };
+        inScenario = false;
+        cur = { s: subtopic, q: mn[2].trim(), o: [], c: -1, ref: '', n: '', scenario: scenario, _n: mn[1] };
+        continue;
+      }
+
+      if (inScenario) {
+        // Scenario text can run several paragraphs before the first question.
+        scenario = scenario ? scenario + '\n' + p.text : p.text;
         continue;
       }
 

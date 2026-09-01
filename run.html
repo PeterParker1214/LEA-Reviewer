@@ -119,6 +119,16 @@
     padding:4px 9px; border-radius:20px;
   }
   .qtext{ font-size:17px; font-weight:450; line-height:1.6; color:var(--ink); margin:0 0 14px; }
+  /* Scenario: shared reference text for the question(s) that follow — a
+     text figure. Sits above q-body so it always spans the full card width,
+     even on desktop where q-body becomes a text+image row. */
+  .scenario-box{
+    background:var(--bg-panel-deep,rgba(255,255,255,.04)); border:1px solid var(--line);
+    border-left:3px solid var(--gold); border-radius:6px; padding:12px 14px;
+    margin:0 0 14px; font-size:14.5px; line-height:1.6; color:var(--muted); white-space:pre-line;
+  }
+  .scenario-box b{ display:block; font-family:var(--font-mono); font-size:10px; letter-spacing:.09em;
+    text-transform:uppercase; color:var(--gold-bright); margin-bottom:6px; font-weight:600; }
   /* Phone: the wrapper takes no part in layout, so text and figure stack
      exactly as they always did. Desktop re-forms it as a row. */
   .q-body{ display:contents; }
@@ -696,6 +706,13 @@ function explainImgHtml(item){
   return '<div class="qimg-wrap"><img src="' + escapeHtml(item.nimg) +
          '" alt="Figure explaining the answer"><span class="qimg-hint">Tap to zoom</span></div>';
 }
+// A scenario is shared reference text for the question — a text figure,
+// same idea as item.img but words instead of a picture. Sits above q-body
+// so it isn't squeezed into the desktop text+image row.
+function scenarioHtml(item){
+  if(!item || !item.scenario) return '';
+  return '<div class="scenario-box"><b>Scenario</b>' + escapeHtml(item.scenario) + '</div>';
+}
 
 let newlyMasteredThisRun = 0;
 function captureMasteredAtStart(){
@@ -1001,6 +1018,7 @@ function renderExamCardUngraded(){
   slot.innerHTML =
     '<div class="bp-card">' +
       sectionTagHtml(item) +
+      scenarioHtml(item) +
       '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
       '<div class="options">' + optsHtml + '</div>' +
     '</div>';
@@ -1418,6 +1436,7 @@ function renderCard(){
       sectionTagHtml(item) +
       (SUBJECT && SUBJECT.id === 'history-of-architecture' ? '<span class="etymology-card-hint">click underlined terms for etymology</span>' : '') +
       '<span class="clock-chip">' + (MODE === 'exam' ? 'Reviewing · mock exam' : MODE === 'drill' ? 'No clock · drilling your misses' : 'No clock · study mode') + '</span>' +
+      scenarioHtml(item) +
       '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
       '<div class="options">' + optsHtml + '</div>' +
       explainHtml +
@@ -2274,6 +2293,7 @@ function renderMultiCard(){
     '<div class="bp-card">' +
       sectionTagHtml(item) +
       '<span class="clock-chip">' + escapeHtml(cell.moduleTitle) + '</span>' +
+      scenarioHtml(item) +
       '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
       '<div class="options">' + optsHtml + '</div>' +
       explainHtml +
@@ -2596,6 +2616,7 @@ function renderMultiExamCardUngraded(){
     '<div class="bp-card">' +
       sectionTagHtml(item) +
       '<span class="clock-chip">' + escapeHtml(stripEmoji(cell.subjectName)) + '</span>' +
+      scenarioHtml(item) +
       '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
       '<div class="options">' + optsHtml + '</div>' +
     '</div>';

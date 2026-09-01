@@ -456,6 +456,7 @@ function quizDataToEditor(rows){
       // double the prefix on every save.
       img: row.img,
       nimg: row.nimg,
+      scenario: row.scenario || '',
       hidden: !!row.hidden
     };
   });
@@ -496,6 +497,7 @@ function editorToQuizData(edited, originals){
     if(q.s) row.s = q.s; else delete row.s;
     if(q.img) row.img = q.img; else delete row.img;
     if(q.nimg) row.nimg = q.nimg; else delete row.nimg;
+    if(q.scenario) row.scenario = q.scenario; else delete row.scenario;
     if(q.hidden) row.hidden = true; else delete row.hidden;
     return row;
   });
@@ -1427,6 +1429,8 @@ function renderQuestionsList(){
         </div>
         <div class="field-label">Question ${i+1} — topic/section</div>
         <input type="text" data-field="s" data-idx="${i}" value="${escapeHtml(q.s || '')}">
+        <div class="field-label">Scenario — reference text shown before the question (optional; often shared by several questions in a row)</div>
+        <textarea data-field="scenario" data-idx="${i}" rows="3">${escapeHtml(q.scenario || '')}</textarea>
         <div class="field-label">Question text</div>
         <textarea data-field="q" data-idx="${i}" rows="2">${escapeHtml(q.q || '')}</textarea>
         <div class="field-label">Answer choices (mark the correct one)</div>
@@ -1501,7 +1505,7 @@ function renderQuestionsList(){
   listEl.querySelectorAll('input[data-field="s"], input[data-field="ref"]').forEach(el => {
     el.addEventListener('input', () => { currentQuestions[+el.dataset.idx][el.dataset.field] = el.value; });
   });
-  listEl.querySelectorAll('textarea[data-field="q"], textarea[data-field="n"]').forEach(el => {
+  listEl.querySelectorAll('textarea[data-field="q"], textarea[data-field="n"], textarea[data-field="scenario"]').forEach(el => {
     el.addEventListener('input', () => { currentQuestions[+el.dataset.idx][el.dataset.field] = el.value; });
   });
   listEl.querySelectorAll('textarea[data-field="steps"]').forEach(el => {
