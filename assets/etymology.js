@@ -156,7 +156,7 @@
 
   window.LEAEtymology = {
     decorate(root, subjectId){
-      if(subjectId !== 'history-of-architecture') return;
+      if(subjectId !== 'history') return;
       initDelegation();
       loadGlossary().then(items => decorate(root, items));
     }
