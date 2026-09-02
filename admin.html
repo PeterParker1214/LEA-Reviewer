@@ -233,12 +233,14 @@
       <button class="tab-btn" data-tab="pages">Pages &amp; Quizzes</button>
       <button class="tab-btn" data-tab="upload">Add Module</button>
       <button class="tab-btn" data-tab="rework">Rework Module</button>
+      <button class="tab-btn" data-tab="deleted">Deleted Modules</button>
       <button class="tab-btn" data-tab="reports">Reports</button>
     </div>
     <div id="tab-subjects"></div>
     <div id="tab-pages" class="hidden"></div>
     <div id="tab-upload" class="hidden"></div>
     <div id="tab-rework" class="hidden"></div>
+    <div id="tab-deleted" class="hidden"></div>
     <div id="tab-reports" class="hidden"></div>
   </div>
 </div>
@@ -263,6 +265,7 @@ const tabSubjectsEl = document.getElementById('tab-subjects');
 const tabPagesEl = document.getElementById('tab-pages');
 const tabUploadEl = document.getElementById('tab-upload');
 const tabReworkEl = document.getElementById('tab-rework');
+const tabDeletedEl = document.getElementById('tab-deleted');
 const tabReportsEl = document.getElementById('tab-reports');
 
 let subjects = [];
@@ -624,10 +627,12 @@ async function init(){
       tabPagesEl.classList.toggle('hidden', btn.dataset.tab !== 'pages');
       tabUploadEl.classList.toggle('hidden', btn.dataset.tab !== 'upload');
       tabReworkEl.classList.toggle('hidden', btn.dataset.tab !== 'rework');
+      tabDeletedEl.classList.toggle('hidden', btn.dataset.tab !== 'deleted');
       tabReportsEl.classList.toggle('hidden', btn.dataset.tab !== 'reports');
       if(btn.dataset.tab === 'pages' && fileTree.length === 0) loadFileTree();
       if(btn.dataset.tab === 'upload') renderUploadTab();
       if(btn.dataset.tab === 'rework') renderReworkTab();
+      if(btn.dataset.tab === 'deleted') scanDeletedModules();
       if(btn.dataset.tab === 'reports') openReportsTab();
     });
   });
@@ -1130,6 +1135,145 @@ async function addUnlistedFile(row){
       '<div class="u-done">&#10003; "' + escapeHtml(title) + '" is on the site now &mdash; ' +
       rows.length + ' questions under ' + escapeHtml(target.name) + '. ' +
       'Give GitHub a minute, then reload the site.</div>';
+  }catch(e){
+    await LEAAlert(e.message);
+    btn.disabled = false;
+    btn.textContent = original;
+  }
+}
+
+/* ================= DELETED MODULES TAB =================
+ * Every module removed since the archive-on-delete feature shipped has its
+ * content copied to data/_deleted/ before its old slot is blanked (see
+ * saveSubjects). Nothing here can be reached by a reader — this tab is only
+ * a way to browse those copies and, on purpose, publish one back under a
+ * new module id, number, and title. It never reuses the old identity: a
+ * fresh id/no is required every time, so this can never collide with
+ * whatever new module has since taken the old slot.
+ */
+async function scanDeletedModules(){
+  tabDeletedEl.innerHTML = '<div class="card msg info">Reading the archive from GitHub…</div>';
+  try{
+    const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/git/trees/${GITHUB_BRANCH}?recursive=1`;
+    const resp = await fetch(url, { cache: 'no-store' });
+    if(!resp.ok) throw new Error('Could not list the files (status ' + resp.status + ')');
+    const data = await resp.json();
+
+    const archived = (data.tree || [])
+      .filter(it => it.type === 'blob' && it.path.startsWith('data/_deleted/') && it.path.endsWith('.json'))
+      .map(it => it.path)
+      .sort().reverse(); // most recently deleted first (timestamp is in the filename)
+
+    if(!archived.length){
+      tabDeletedEl.innerHTML = '<div class="card msg info">Nothing archived yet. Removing a module ' +
+        '(Subjects tab) and pressing "Save to site" is what puts a copy here.</div>';
+      return;
+    }
+
+    const options = subjects.map(s =>
+      '<option value="' + escapeHtml(s.id) + '">' + escapeHtml(s.name) + '</option>').join('');
+
+    tabDeletedEl.innerHTML =
+      '<div class="card msg info">' + archived.length + ' archived module file' +
+      (archived.length === 1 ? '' : 's') + '. Publishing one writes a fresh copy of its questions ' +
+      'under a new number and takes effect immediately &mdash; there is nothing else to press ' +
+      'afterwards. The archived copy is left exactly as is either way.' +
+      '<div id="deletedTitleNote" style="margin-top:8px;"></div></div>' +
+      '<div class="card">' + archived.map(path => `
+        <div class="unlisted-row" data-path="${escapeHtml(path)}">
+          <span class="u-path">${escapeHtml(path)} <button data-action="d-peek">what is in it?</button></span>
+          <input type="text" data-role="u-title" placeholder="Looking up its old title…">
+          <select data-role="d-subject">${options}</select>
+          <input type="text" data-role="d-no" placeholder="New number, e.g. 05" maxlength="2" style="width:110px;">
+          <input type="text" data-role="d-id" placeholder="New module id">
+          <button class="primary" data-action="d-publish">Publish again</button>
+        </div>`).join('') + '</div>';
+
+    const rows = [...tabDeletedEl.querySelectorAll('.unlisted-row')];
+    rows.forEach(row => {
+      row.querySelector('button[data-action="d-peek"]').addEventListener('click', () => peekUnlistedFile(row));
+      row.querySelector('button[data-action="d-publish"]').addEventListener('click', () => publishArchivedFile(row));
+      // Prefills a subject guess and a free number the moment a subject is
+      // picked — typed over freely, this is a starting point, not a rule.
+      const subjSel = row.querySelector('select[data-role="d-subject"]');
+      const noInput = row.querySelector('input[data-role="d-no"]');
+      const fillNo = () => {
+        if(noInput.value.trim()) return;
+        const s = subjects.find(x => x.id === subjSel.value);
+        if(s) noInput.value = nextModuleNo(s);
+      };
+      subjSel.addEventListener('change', fillNo);
+      fillNo();
+    });
+
+    // Re-uses the same lookup as "unlisted files": the commit that created
+    // the archive copy quotes the module's old title, same as an upload does.
+    const note = document.getElementById('deletedTitleNote');
+    if(note) note.textContent = 'Looking up what each of these used to be called…';
+    await fillInKnownTitles(rows);
+    if(note) note.textContent = '';
+  }catch(e){
+    tabDeletedEl.innerHTML = '<div class="card msg error">' + escapeHtml(e.message) + '</div>';
+  }
+}
+
+async function publishArchivedFile(row){
+  const btn = row.querySelector('button[data-action="d-publish"]');
+  const path = row.dataset.path;
+  const title = (row.querySelector('input[data-role="d-title"]').value || '').trim();
+  const subjectId = row.querySelector('select[data-role="d-subject"]').value;
+  const no = (row.querySelector('input[data-role="d-no"]').value || '').trim();
+  const moduleId = (row.querySelector('input[data-role="d-id"]').value || '').trim();
+
+  if(!title){ await LEAAlert('Give it a title first — that is what readers see.'); return; }
+  if(!/^\d{2}$/.test(no)){ await LEAAlert('Module number should be two digits, like 05.'); return; }
+  if(!moduleId){ await LEAAlert('Give it a module id.'); return; }
+
+  btn.disabled = true;
+  const original = btn.textContent;
+  try{
+    btn.textContent = 'Reading…';
+    const rows = await readModuleFile(path);
+
+    btn.textContent = 'Publishing…';
+    const manifest = await fetchManifestForWrite();
+    const subject = manifest.find(x => x.id === subjectId);
+    if(!subject) throw new Error('That subject is no longer on the site. Reload and try again.');
+    subject.modules = subject.modules || [];
+    if(subject.modules.some(m => m.id === moduleId))
+      throw new Error('"' + subject.name + '" already has a module with the id "' + moduleId + '". Pick another.');
+
+    const newPath = 'data/' + subjectFolder(subject) + '/' + no + '.json';
+    if(subject.modules.some(m => m.file === newPath))
+      throw new Error(newPath + ' is already used by another module. Pick a different number.');
+
+    // A fresh copy at a real slot, not a manifest entry pointing back into
+    // data/_deleted/ — the archive stays untouched as a pure backup, and the
+    // live module lives exactly where every other module does.
+    await callSave(newPath, JSON.stringify(rows, null, 2) + '\n',
+      'Admin: publish "' + title + '" from archive into ' + subjectId);
+
+    const entry = { id: moduleId, no, title, total: rows.length, file: newPath, format: 'json' };
+    subject.modules.push(entry);
+    if(!subject.ready) subject.ready = true;
+
+    await callSave(MANIFEST_PATH, manifestToJson(manifest),
+      'Admin: add "' + title + '" (from archive) to ' + subjectId);
+    rememberManifest(manifest);
+
+    const onScreen = subjects.find(x => x.id === subjectId);
+    if(onScreen){
+      onScreen.modules = onScreen.modules || [];
+      if(!onScreen.modules.some(m => m.file === newPath)) onScreen.modules.push(entry);
+      if(!onScreen.ready) onScreen.ready = true;
+    }
+    removedModuleKeys.delete(subjectId + '|' + moduleId);
+
+    row.className = 'unlisted-row done';
+    row.innerHTML = '<span class="u-path">' + escapeHtml(path) + '</span>' +
+      '<div class="u-done">&#10003; "' + escapeHtml(title) + '" is on the site again as ' + no +
+      ' under ' + escapeHtml(subject.name) + '. Give GitHub a minute, then reload the site. ' +
+      'The archive copy is untouched.</div>';
   }catch(e){
     await LEAAlert(e.message);
     btn.disabled = false;
