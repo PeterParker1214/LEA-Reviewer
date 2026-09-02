@@ -327,6 +327,11 @@ async function fetchManifest(){
  */
 const MANIFEST_KNOWN_KEY = 'lea-admin-known-modules';
 const removedModuleKeys = new Set();
+// Modules removed on screen this session, waiting for "Save to site" to
+// actually archive their file content and free their number. Kept separate
+// from removedModuleKeys (which only guards the stale-manifest check) because
+// this one needs the full module object, not just its id.
+let pendingModuleArchives = [];
 
 function manifestKeys(list){
   const out = [];
@@ -832,6 +837,9 @@ function renderSubjectsTab(){
       // Recorded before the splice so the stale-read guard knows this one is
       // gone on purpose and does not block the save that follows.
       removedModuleKeys.add(subject.id + '|' + mod.id);
+      // Remembered so "Save to site" can archive its file content and free
+      // its number/id for reuse — see saveSubjects().
+      pendingModuleArchives.push({ subjectId: subject.id, mod });
       subject.modules = (subject.modules || []).filter(m => m.id !== mod.id);
       renderSubjectsTab();
     });
@@ -863,6 +871,7 @@ async function scanUnlistedFiles(){
       .filter(it => it.type === 'blob' && /^data\/[^/]+\/[^/]+\.json$/.test(it.path))
       .map(it => it.path)
       .filter(path => path !== MANIFEST_PATH && !listed.has(path))
+      .filter(path => !path.startsWith('data/_deleted/')) // deliberate archives, not stranded uploads
       .filter(path => showHiddenFiles || hidden.indexOf(path) === -1)
       .sort();
 
@@ -1149,6 +1158,16 @@ function manifestToJson(list){
   return JSON.stringify(ordered, null, 2) + '\n';
 }
 
+// Reads a file's current raw content straight from the branch. Used to copy a
+// module's content out before it gets blanked — a plain unauthenticated GET,
+// same as the manifest's raw fallback, so it works for any public file.
+async function fetchRawFile(path){
+  const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${encodeURIComponent(path).replace(/%2F/g, '/')}?t=${Date.now()}`;
+  const resp = await fetch(url, { cache: 'no-store' });
+  if(!resp.ok) throw new Error('Could not read ' + path + ' (status ' + resp.status + ')');
+  return await resp.text();
+}
+
 async function saveSubjects(){
   const statusEl = document.getElementById('subjectsSaveStatus');
   const saveBtn = document.getElementById('saveSubjectsBtn');
@@ -1168,11 +1187,48 @@ async function saveSubjects(){
         (wouldLose.length > 3 ? ', and more' : '') + ') would be removed by this save. ' +
         'Nothing was written — press "Reload from GitHub", redo your edits, and save again.');
     }
+
+    // Only .json-backed modules (Rework tab) have a fixed number->path, so
+    // only those can collide on reuse. HTML-uploaded modules pick their own
+    // filename each time and are left alone.
+    const toArchive = pendingModuleArchives.filter(p => p.mod.format === 'json' && p.mod.file);
+
+    // Copy each removed module's real content out to data/_deleted/ BEFORE
+    // touching anything live, so a failure here leaves the site exactly as
+    // it was — nothing blanked, nothing unlisted yet.
+    for(const { subjectId, mod } of toArchive){
+      statusEl.textContent = 'Archiving "' + (mod.title || mod.id) + '"…';
+      const content = await fetchRawFile(mod.file);
+      const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+      const archivePath = `data/_deleted/${subjectId}-${mod.no || mod.id}-${stamp}.json`;
+      await callSave(archivePath, content,
+        'Admin: archive "' + (mod.title || mod.id) + '" removed from ' + subjectId);
+      mod._archivePath = archivePath; // remembered for the status message only
+    }
+
+    statusEl.textContent = 'Saving…';
     await callSave(MANIFEST_PATH, manifestToJson(subjects), 'Admin: update subjects');
     rememberManifest(subjects);
     removedModuleKeys.clear();
+
+    // Only now, with the module fully unlisted, blank its old file so the
+    // number/id is a clean slate — the real content already lives safely
+    // under data/_deleted/. Not fatal if this step fails; worst case the
+    // number just overwrites the (already-archived) old content next time
+    // it's reused, same as before this feature existed.
+    for(const { mod } of toArchive){
+      try{
+        await callSave(mod.file, '[]\n',
+          'Admin: clear ' + mod.file + ' — archived to ' + mod._archivePath);
+      }catch(e){ /* see comment above */ }
+    }
+    pendingModuleArchives = pendingModuleArchives.filter(p => toArchive.indexOf(p) === -1);
+
     statusEl.className = 'save-status ok';
-    statusEl.textContent = 'Saved! It may take a minute or two for GitHub Pages to update the live site.';
+    statusEl.textContent = 'Saved!' +
+      (toArchive.length ? ' Archived ' + toArchive.length + ' removed module file' +
+        (toArchive.length === 1 ? '' : 's') + ' to data/_deleted/ and freed its number for reuse.' : '') +
+      ' It may take a minute or two for GitHub Pages to update the live site.';
   }catch(e){
     statusEl.className = 'save-status err';
     statusEl.textContent = 'Error: ' + e.message;
