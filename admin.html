@@ -218,6 +218,53 @@
   .report-card .rc-reasons{font-size:12.5px;color:var(--muted);margin-bottom:6px;line-height:1.6;}
   .report-card .rc-reasons b{color:var(--ink);}
   .report-card .rc-comment{font-size:12.5px;color:var(--ink);background:var(--bg-panel);border-radius:6px;padding:8px 10px;margin:4px 0;}
+
+  /* ===== Reports tab =====
+     A report opens where it sits. The old card had an "Edit question" button
+     that threw you into the Pages tab and left you to find the question
+     yourself; everything needed to settle a report is now in the card. */
+  .rep-head-strip{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+  .rep-head-strip h2{font-family:var(--font-body);font-size:17px;font-weight:600;margin:0;}
+  .rep-head-strip .note{font-size:13px;color:var(--muted);}
+  .rep-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+  .rep-chip{font-size:13px;padding:6px 12px;border-radius:20px;background:transparent;}
+  .rep-chip.on{background:var(--gold);color:var(--bg-deep);border-color:var(--gold);font-weight:600;}
+
+  .rep{border:1px solid var(--line);border-radius:12px;background:var(--bg-panel-deep);margin-bottom:14px;overflow:hidden;}
+  .rep.open{border-color:var(--gold);}
+  .rep.done{opacity:.55;}
+  .rep-head{display:flex;gap:14px;align-items:flex-start;padding:16px;cursor:pointer;}
+  .rep-head:hover{background:rgba(111,168,207,0.05);}
+  .rep-caret{color:var(--muted);font-size:13px;line-height:1.5;flex-shrink:0;width:12px;transition:transform .15s ease;}
+  .rep.open .rep-caret{transform:rotate(90deg);}
+  .rep-main{flex:1;min-width:0;}
+  .rep-where{font-size:12.5px;color:var(--muted);margin-bottom:5px;}
+  .rep-q{font-size:14.5px;line-height:1.5;margin-bottom:8px;}
+  .rep-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--muted);}
+  .rep-meta .by b{color:var(--ink);font-weight:600;}
+  .rep-tag{font-size:12px;padding:3px 10px;border-radius:20px;border:1px solid var(--line);}
+  .rep-tag.key{color:var(--bad);border-color:var(--bad);background:rgba(226,96,74,.12);}
+  .rep-tag.wording{color:var(--gold-bright);border-color:var(--gold);background:rgba(224,168,63,.12);}
+
+  .rep-body{padding:0 16px 16px;border-top:1px solid var(--line);}
+  .rep-sec{margin-top:18px;}
+  .rep-sec-title{font-size:13px;font-weight:600;margin-bottom:8px;}
+  .rep-sec-title span{color:var(--muted);font-weight:400;}
+  .rep-said{background:var(--bg-panel);border-radius:8px;padding:12px 14px;font-size:13.5px;line-height:1.6;margin-bottom:8px;}
+  .rep-said .who{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;}
+  .rep-choice{display:flex;gap:10px;align-items:center;margin-bottom:8px;}
+  .rep-choice input[type="radio"]{width:17px;height:17px;flex-shrink:0;accent-color:var(--good);cursor:pointer;}
+  .rep-choice input[type="text"]{flex:1;}
+  .rep-choice.correct input[type="text"]{border-color:var(--good);}
+  .rep-choice .mark{font-size:12px;color:var(--good);width:56px;flex-shrink:0;}
+  .rep-hint{font-size:12.5px;color:var(--muted);margin:6px 0 0;line-height:1.55;}
+  .rep-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;}
+  .rep-btns .spacer{flex:1;}
+  .rep-reply{margin-top:12px;}
+  @media (max-width:560px){
+    .rep-head{padding:14px;gap:10px;}
+    .rep-choice .mark{display:none;}
+  }
 </style>
 </head>
 <body>
@@ -552,6 +599,20 @@ let openReports = [];          // raw rows, status='open'
 let reportsByQuestionRef = {}; // question_ref -> [report, ...]
 let reportsLoadError = null;
 
+let reporterNames = {};   // user_id -> username, filled from `profiles`
+
+// reports.user_id has its foreign key on auth.users, not profiles, so
+// PostgREST will not join the two in one select. The names come from a second
+// read of profiles, which is publicly readable.
+async function loadReporterNames(){
+  const ids = [...new Set(openReports.map(r => r.user_id).filter(Boolean))]
+    .filter(id => !(id in reporterNames));
+  if(!ids.length) return;
+  const { data } = await sb.from('profiles').select('id,username').in('id', ids);
+  (data || []).forEach(p => { reporterNames[p.id] = p.username; });
+}
+function reporterName(r){ return reporterNames[r.user_id] || 'someone'; }
+
 async function loadReports(){
   const { data, error } = await sb.from('reports').select('*').eq('status', 'open').order('created_at', { ascending: false });
   // A failed query used to fall through to `data || []`, which renders the
@@ -561,6 +622,7 @@ async function loadReports(){
   openReports = data || [];
   reportsByQuestionRef = {};
   openReports.forEach(r => { (reportsByQuestionRef[r.question_ref] = reportsByQuestionRef[r.question_ref] || []).push(r); });
+  await loadReporterNames();
 }
 // Report counts for whatever file is currently open in the Pages editor, keyed by question index.
 function reportCountsForCurrentFile(){
@@ -2262,16 +2324,71 @@ async function handleAddModule(){
 
 /* ================= REPORTS TAB ================= */
 
-function reasonSummary(reports){
-  const counts = {};
-  reports.forEach(r => { counts[r.reason] = (counts[r.reason] || 0) + 1; });
-  return Object.keys(counts).map(reason => (counts[reason] > 1 ? counts[reason] + '× ' : '') + reason).join(', ');
+// The reasons the reader-facing form offers are phrased for a reader mid-quiz.
+// On this screen they are labels on a to-do list, so they get shorter names.
+const REASON_LABELS = {
+  'Answer key looks wrong': { text: 'Wrong answer', cls: 'key' },
+  'Typo or unclear wording': { text: 'Wording', cls: 'wording' }
+};
+function reasonLabel(reason){
+  return REASON_LABELS[reason] || { text: reason, cls: 'wording' };
+}
+function shortWhen(iso){
+  const d = new Date(iso);
+  return isNaN(d) ? '' : d.toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
+}
+
+let reportOpenRef = null;   // the one report card expanded right now
+let reportFilter = 'all';   // 'all', or a reason string
+const reportFileCache = {}; // module file path -> { raw, source }
+const reportQ = {};         // question_ref -> { file, qIndex, row, where } or { error }
+
+async function fetchModuleSource(file){
+  if(reportFileCache[file]) return reportFileCache[file];
+  const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${file}?t=${Date.now()}`;
+  const resp = await fetch(url);
+  if(!resp.ok) throw new Error('Could not load ' + file);
+  const raw = await resp.text();
+  const source = readQuestionSource(file, raw);
+  if(!source) throw new Error('Could not find a question list in ' + file);
+  reportFileCache[file] = { raw, source };
+  return reportFileCache[file];
+}
+
+// Every reported question is pulled up front, so a collapsed card can show the
+// question itself rather than a path only its author would recognise. One
+// fetch per file, however many reports point into it.
+async function prefetchReportedQuestions(){
+  const refs = Object.keys(reportsByQuestionRef).filter(ref => !reportQ[ref]);
+  await Promise.all(refs.map(async ref => {
+    const [subjectId, moduleId, qIndexStr] = ref.split('/');
+    const qIndex = parseInt(qIndexStr, 10);
+    const found = findModuleInManifest(subjectId, moduleId);
+    if(!found){
+      reportQ[ref] = { error: 'This question belongs to a module that is no longer listed in data/subjects.json.' };
+      return;
+    }
+    try{
+      const { source } = await fetchModuleSource(found.mod.file);
+      const row = source.editable[qIndex];
+      if(!row) throw new Error('This module has no question ' + (qIndex + 1) + ' any more — the report is probably older than an edit.');
+      reportQ[ref] = {
+        file: found.mod.file,
+        qIndex,
+        row,
+        where: found.subject.name + ' \u00b7 ' + found.mod.title + ' \u00b7 Question ' + (qIndex + 1)
+      };
+    }catch(e){
+      reportQ[ref] = { error: e.message };
+    }
+  }));
 }
 
 async function openReportsTab(){
-  tabReportsEl.innerHTML = '<div class="card msg info">Loading reports…</div>';
+  tabReportsEl.innerHTML = '<div class="card msg info">Loading reports\u2026</div>';
   await loadManifest();
   await loadReports();
+  await prefetchReportedQuestions();
   renderReportsTab();
 }
 
@@ -2280,137 +2397,357 @@ function renderReportsTab(){
     tabReportsEl.innerHTML =
       '<div class="card msg error"><b>Couldn\'t load reports.</b><br>' +
       escapeHtml(reportsLoadError) +
-      '<br><br>Reports submitted from the app are being held in each reader\'s browser until this is fixed — none are lost, but none are visible here either.</div>';
+      '<br><br>Reports sent from the app are being held in each reader\'s browser until this is fixed \u2014 none are lost, but none are visible here either.</div>';
     return;
   }
-  const refs = Object.keys(reportsByQuestionRef);
-  if(refs.length === 0){
-    tabReportsEl.innerHTML = '<div class="card msg info">No open reports. Nice.</div>';
+  const allRefs = Object.keys(reportsByQuestionRef);
+  if(allRefs.length === 0){
+    tabReportsEl.innerHTML =
+      '<div class="card"><div class="empty" style="text-align:center;padding:40px 20px;color:var(--muted);font-size:14px;line-height:1.6;">' +
+      'All clear \u2014 nothing waiting.<br>Questions readers flag in the app land here.</div></div>';
     return;
   }
+
   // Newest report in each group first, so the freshest problems surface at the top.
-  refs.sort((a, b) => {
+  allRefs.sort((a, b) => {
     const la = Math.max(...reportsByQuestionRef[a].map(r => new Date(r.created_at).getTime()));
     const lb = Math.max(...reportsByQuestionRef[b].map(r => new Date(r.created_at).getTime()));
     return lb - la;
   });
 
-  tabReportsEl.innerHTML = refs.map(ref => {
-    const reports = reportsByQuestionRef[ref];
-    const [subjectId, moduleId, qIndexStr] = ref.split('/');
-    const qIndex = parseInt(qIndexStr, 10);
-    const found = findModuleInManifest(subjectId, moduleId);
-    const loc = found ? `${found.subject.name} · ${found.mod.title} · Q${qIndex + 1}` : ref;
-    const comments = reports.filter(r => r.comment).map(r => escapeHtml(r.comment));
-    return `
-      <div class="report-card" data-ref="${escapeHtml(ref)}">
-        <div class="rc-top">
-          <div class="rc-loc">${escapeHtml(loc)}</div>
-          <div class="rc-count">${reports.length} report${reports.length === 1 ? '' : 's'}</div>
-        </div>
-        <div class="rc-reasons"><b>Reasons:</b> ${escapeHtml(reasonSummary(reports))}</div>
-        ${comments.map(c => `<div class="rc-comment">"${c}"</div>`).join('')}
-        <div class="actions">
-          <button class="primary" data-action="editQ" data-ref="${escapeHtml(ref)}">Edit question</button>
-          <button class="danger" data-action="hideQ" data-ref="${escapeHtml(ref)}">Hide item</button>
-          <button data-action="dismissQ" data-ref="${escapeHtml(ref)}">Dismiss</button>
-        </div>
-        <div class="save-status" id="status-${cssEscapeRef(ref)}"></div>
-      </div>
-    `;
-  }).join('');
+  const reasons = [...new Set(allRefs.map(ref => reportsByQuestionRef[ref][0].reason))];
+  const chips = ['all'].concat(reasons).map(v =>
+    '<button class="rep-chip' + (reportFilter === v ? ' on' : '') + '" data-filter="' + escapeHtml(v) + '">' +
+    (v === 'all' ? 'All' : escapeHtml(reasonLabel(v).text)) + '</button>').join('');
 
-  tabReportsEl.querySelectorAll('button[data-action="editQ"]').forEach(btn => {
-    btn.addEventListener('click', () => openReportInEditor(btn.dataset.ref));
+  const refs = allRefs.filter(ref => reportFilter === 'all' || reportsByQuestionRef[ref][0].reason === reportFilter);
+
+  tabReportsEl.innerHTML =
+    '<div class="card">' +
+      '<div class="rep-head-strip">' +
+        '<h2>' + allRefs.length + ' question' + (allRefs.length === 1 ? '' : 's') + ' need' + (allRefs.length === 1 ? 's' : '') + ' a look</h2>' +
+        '<div class="note">Fix it here, then tell the person who flagged it.</div>' +
+      '</div>' +
+      '<div class="rep-chips">' + chips + '</div>' +
+      (refs.length ? refs.map(repCardHtml).join('')
+                   : '<div style="color:var(--muted);font-size:14px;padding:20px 0;">Nothing under this filter.</div>') +
+    '</div>';
+
+  wireReportsTab();
+}
+
+function repCardHtml(ref){
+  const reports = reportsByQuestionRef[ref];
+  const info = reportQ[ref] || {};
+  const isOpen = reportOpenRef === ref;
+  const label = reasonLabel(reports[0].reason);
+  const names = [...new Set(reports.map(reporterName))];
+  const stem = info.row ? info.row.q : (info.error || ref);
+
+  return '' +
+  '<div class="rep' + (isOpen ? ' open' : '') + '" data-ref="' + escapeHtml(ref) + '">' +
+    '<div class="rep-head" data-head="' + escapeHtml(ref) + '">' +
+      '<div class="rep-caret">&#9656;</div>' +
+      '<div class="rep-main">' +
+        '<div class="rep-where">' + escapeHtml(info.where || ref) + '</div>' +
+        '<div class="rep-q">' + escapeHtml(stem) + '</div>' +
+        '<div class="rep-meta">' +
+          '<span class="rep-tag ' + label.cls + '">' + escapeHtml(label.text) + '</span>' +
+          '<span class="by">Reported by <b>' + escapeHtml(names[0]) + '</b>' +
+            (names.length > 1 ? ' and ' + (names.length - 1) + ' other' + (names.length > 2 ? 's' : '') : '') + '</span>' +
+          '<span>' + escapeHtml(shortWhen(reports[0].created_at)) + '</span>' +
+        '</div>' +
+      '</div>' +
+    '</div>' +
+    (isOpen ? repBodyHtml(ref) : '') +
+  '</div>';
+}
+
+function repBodyHtml(ref){
+  const reports = reportsByQuestionRef[ref];
+  const info = reportQ[ref] || {};
+  const k = cssEscapeRef(ref);
+  const who = [...new Set(reports.map(reporterName))].join(' and ');
+
+  const said = reports.map(r =>
+    '<div class="rep-said">' +
+      '<span class="who">' + escapeHtml(reporterName(r)) + ', ' + escapeHtml(shortWhen(r.created_at)) +
+        ' \u00b7 ' + escapeHtml(r.reason) + '</span>' +
+      (r.comment ? escapeHtml(r.comment) : '<span style="color:var(--muted);">No comment left.</span>') +
+    '</div>').join('');
+
+  if(info.error){
+    return '<div class="rep-body">' +
+      '<div class="rep-sec"><div class="rep-sec-title">What they said</div>' + said + '</div>' +
+      '<div class="msg error" style="margin-top:18px;">' + escapeHtml(info.error) + '</div>' +
+      '<div class="rep-btns">' +
+        '<button data-act="dismiss" data-ref="' + escapeHtml(ref) + '">Dismiss</button>' +
+      '</div>' +
+      '<div class="save-status" id="status-' + k + '"></div>' +
+    '</div>';
+  }
+
+  const row = info.row;
+  const choices = (row.o || []).map((c, i) =>
+    '<div class="rep-choice' + (i === row.c ? ' correct' : '') + '">' +
+      '<input type="radio" name="rq-ans-' + k + '" value="' + i + '"' + (i === row.c ? ' checked' : '') + '>' +
+      '<input type="text" value="' + escapeHtml(c) + '">' +
+      '<span class="mark">' + (i === row.c ? 'Correct' : '') + '</span>' +
+    '</div>').join('');
+
+  return '<div class="rep-body">' +
+    '<div class="rep-sec"><div class="rep-sec-title">What they said</div>' + said + '</div>' +
+
+    '<div class="rep-sec">' +
+      '<div class="rep-sec-title">The question</div>' +
+      '<textarea id="rq-stem-' + k + '" rows="3">' + escapeHtml(row.q || '') + '</textarea>' +
+      '<p class="rep-hint">Topic shown on screen above this question: ' +
+        (row.s ? escapeHtml(row.s) : 'none') + '</p>' +
+    '</div>' +
+
+    '<div class="rep-sec">' +
+      '<div class="rep-sec-title">Choices <span>\u2014 tick the right one</span></div>' +
+      '<div id="rq-opts-' + k + '">' + choices + '</div>' +
+    '</div>' +
+
+    '<div class="rep-sec">' +
+      '<div class="rep-sec-title">Why it\'s the answer <span>(shown after they answer)</span></div>' +
+      '<textarea id="rq-note-' + k + '" rows="2" placeholder="Leave blank if there is nothing to explain.">' +
+        escapeHtml(row.n || '') + '</textarea>' +
+    '</div>' +
+
+    '<div class="rep-sec">' +
+      '<div class="rep-sec-title">Message to ' + escapeHtml(who) + ' <span>(optional)</span></div>' +
+      '<textarea id="rq-reply-' + k + '" class="rep-reply" rows="2" ' +
+        'placeholder="They see this in the app. Sent with a reply, or with Mark solved."></textarea>' +
+    '</div>' +
+
+    '<div class="rep-btns">' +
+      '<button class="primary" data-act="saveSolve" data-ref="' + escapeHtml(ref) + '">Save fix &amp; tell ' + escapeHtml(who) + '</button>' +
+      '<button data-act="save" data-ref="' + escapeHtml(ref) + '">Save without closing</button>' +
+      '<button data-act="reply" data-ref="' + escapeHtml(ref) + '">Send reply only</button>' +
+      '<span class="spacer"></span>' +
+      '<button data-act="open" data-ref="' + escapeHtml(ref) + '">Open in full editor</button>' +
+      '<button data-act="hide" data-ref="' + escapeHtml(ref) + '">Hide question</button>' +
+      '<button class="danger" data-act="dismiss" data-ref="' + escapeHtml(ref) + '">Dismiss</button>' +
+    '</div>' +
+    '<div class="save-status" id="status-' + k + '"></div>' +
+  '</div>';
+}
+
+function wireReportsTab(){
+  tabReportsEl.querySelectorAll('.rep-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      reportFilter = chip.dataset.filter;
+      renderReportsTab();
+    });
   });
-  tabReportsEl.querySelectorAll('button[data-action="hideQ"]').forEach(btn => {
-    btn.addEventListener('click', () => hideReportedQuestion(btn.dataset.ref));
+
+  tabReportsEl.querySelectorAll('[data-head]').forEach(el => {
+    el.addEventListener('click', () => {
+      const ref = el.dataset.head;
+      reportOpenRef = (reportOpenRef === ref) ? null : ref;
+      renderReportsTab();
+    });
   });
-  tabReportsEl.querySelectorAll('button[data-action="dismissQ"]').forEach(btn => {
-    btn.addEventListener('click', () => dismissReportGroup(btn.dataset.ref));
+
+  // Ticking a different answer restages the highlight straight away, so the
+  // key you are about to save is the one you can see.
+  tabReportsEl.querySelectorAll('.rep-choice input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      const body = radio.closest('.rep-body');
+      body.querySelectorAll('.rep-choice').forEach(c => {
+        const on = c.querySelector('input[type="radio"]').checked;
+        c.classList.toggle('correct', on);
+        c.querySelector('.mark').textContent = on ? 'Correct' : '';
+      });
+    });
+  });
+
+  const acts = {
+    saveSolve: saveAndSolve,
+    save: saveReportedQuestion,
+    solve: markReportSolved,
+    reply: sendReportReply,
+    open: openReportInEditor,
+    hide: hideReportedQuestion,
+    dismiss: dismissReportGroup
+  };
+  tabReportsEl.querySelectorAll('button[data-act]').forEach(btn => {
+    btn.addEventListener('click', () => acts[btn.dataset.act](btn.dataset.ref));
   });
 }
 
-// "Change key" isn't a one-click action here (unlike Hide) — a report only
-// ever carries a fixed reason + free-text comment, never a structured "the
-// right answer is X" field, so there's nothing safe to act on without a
-// human reading the question. That case routes through "Edit question"
-// instead, opening the real form with this question expanded.
+function repStatus(ref, text, kind){
+  const el = document.getElementById('status-' + cssEscapeRef(ref));
+  if(!el) return;
+  el.className = 'save-status' + (kind ? ' ' + kind : '');
+  el.textContent = text;
+}
+
+async function saveReportedQuestion(ref){
+  const info = reportQ[ref];
+  if(!info || !info.row) return false;
+  const k = cssEscapeRef(ref);
+  const stem = document.getElementById('rq-stem-' + k).value.trim();
+  const note = document.getElementById('rq-note-' + k).value.trim();
+  const opts = [...document.querySelectorAll('#rq-opts-' + k + ' input[type="text"]')].map(i => i.value.trim());
+  const picked = document.querySelector('input[name="rq-ans-' + k + '"]:checked');
+
+  if(!stem){ repStatus(ref, 'The question cannot be empty.', 'err'); return false; }
+  if(opts.some(o => !o)){ repStatus(ref, 'Every choice needs some text.', 'err'); return false; }
+  if(!picked){ repStatus(ref, 'Tick which choice is the right one.', 'err'); return false; }
+
+  repStatus(ref, 'Saving\u2026');
+  try{
+    // info.row IS source.editable[qIndex], so writing here is writing into the
+    // array that gets serialised — no copy to keep in step.
+    info.row.q = stem;
+    info.row.o = opts;
+    info.row.c = Number(picked.value);
+    info.row.n = note;
+
+    const cached = reportFileCache[info.file];
+    const newText = writeQuestionSource(
+      cached.source.kind, cached.source.varName, cached.raw, cached.source.rows, cached.source.editable);
+    await callSave(info.file, newText, 'Admin: fix Q' + (info.qIndex + 1) + ' in ' + info.file + ' (from report)');
+    // Keep the cache in step with what is now on the site, so a second save in
+    // the same sitting does not rewrite from a stale copy.
+    cached.raw = newText;
+    repStatus(ref, 'Saved to the site.', 'ok');
+    return true;
+  }catch(e){
+    repStatus(ref, 'Error: ' + e.message, 'err');
+    return false;
+  }
+}
+
+// The everyday path: write the fix, then close the report and tell whoever
+// raised it. The two stay separate underneath so a failed save can never
+// send someone a "fixed" notice about a question that did not change.
+async function saveAndSolve(ref){
+  const info = reportQ[ref];
+  if(!info || !info.row) return;
+  const saved = await saveReportedQuestion(ref);
+  if(!saved) return;
+  await markReportSolved(ref);
+}
+
+// Closes the report AND tells whoever raised it. The message is whatever is in
+// the reply box, or nothing — the reader still sees that it was dealt with.
+async function markReportSolved(ref){
+  const reports = reportsByQuestionRef[ref] || [];
+  const who = [...new Set(reports.map(reporterName))].join(' and ');
+  const k = cssEscapeRef(ref);
+  const replyEl = document.getElementById('rq-reply-' + k);
+  const message = replyEl ? replyEl.value.trim() : '';
+
+  const ok = await LEAConfirm(
+    'Close ' + reports.length + ' report' + (reports.length === 1 ? '' : 's') + ' on this question and tell ' + who + ' it is fixed?',
+    { title: 'Mark solved', yes: 'Mark solved' }
+  );
+  if(!ok) return;
+
+  repStatus(ref, 'Closing\u2026');
+  try{
+    const now = new Date().toISOString();
+    const patch = { status: 'solved', resolved_at: now, seen_by_reporter: false };
+    if(message){ patch.admin_reply = message; patch.replied_at = now; }
+    const { error } = await sb.from('reports').update(patch).in('id', reports.map(r => r.id));
+    if(error) throw error;
+    reportOpenRef = null;
+    await loadReports();
+    await prefetchReportedQuestions();
+    renderReportsTab();
+  }catch(e){
+    repStatus(ref, 'Error: ' + e.message, 'err');
+  }
+}
+
+// A reply without closing anything, for when you need to ask something back.
+async function sendReportReply(ref){
+  const reports = reportsByQuestionRef[ref] || [];
+  const k = cssEscapeRef(ref);
+  const replyEl = document.getElementById('rq-reply-' + k);
+  const message = replyEl ? replyEl.value.trim() : '';
+  if(!message){ repStatus(ref, 'Write a message first.', 'err'); return; }
+
+  repStatus(ref, 'Sending\u2026');
+  try{
+    const now = new Date().toISOString();
+    const { error } = await sb.from('reports')
+      .update({ admin_reply: message, replied_at: now, seen_by_reporter: false })
+      .in('id', reports.map(r => r.id));
+    if(error) throw error;
+    repStatus(ref, 'Sent. The report stays open.', 'ok');
+  }catch(e){
+    repStatus(ref, 'Error: ' + e.message, 'err');
+  }
+}
+
+// Hiding keeps the question's slot and stops it being served, so saved
+// progress and question numbering are unaffected.
 async function hideReportedQuestion(ref){
-  const statusEl = document.getElementById('status-' + cssEscapeRef(ref));
-  const [subjectId, moduleId, qIndexStr] = ref.split('/');
-  const qIndex = parseInt(qIndexStr, 10);
-  const found = findModuleInManifest(subjectId, moduleId);
-  if(!found){ await LEAAlert('Could not find this question in the current manifest.'); return; }
+  const info = reportQ[ref];
+  if(!info || !info.row){ await LEAAlert('This question could not be loaded, so there is nothing to hide.'); return; }
   const okHide = await LEAConfirm(
-    'Hide Q' + (qIndex + 1) + ' in "' + found.mod.title + '"? It keeps its slot and stops being served — this does not delete or renumber anything, so saved progress is unaffected.',
+    'Hide question ' + (info.qIndex + 1) + '? It keeps its slot and stops being served \u2014 this does not delete or renumber anything, so saved progress is unaffected.',
     { title: 'Hide question', yes: 'Hide question' }
   );
   if(!okHide) return;
-  if(statusEl){ statusEl.className = 'save-status'; statusEl.textContent = 'Hiding…'; }
+  repStatus(ref, 'Hiding\u2026');
   try{
-    const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${found.mod.file}?t=${Date.now()}`;
-    const resp = await fetch(url);
-    if(!resp.ok) throw new Error('Could not load the module file');
-    const raw = await resp.text();
-    const source = readQuestionSource(found.mod.file, raw);
-    if(!source) throw new Error('Could not find this file’s question list');
-    if(!source.rows[qIndex]) throw new Error('This module has no Q' + (qIndex + 1) + ' — the report may predate an edit.');
-    // Set on the file's own row, not the editor copy: hiding is the one edit
-    // that means the same thing in every format, so there is nothing to map.
-    source.rows[qIndex].hidden = true;
-    const newText = (source.kind === 'json')
-      ? JSON.stringify(source.rows, null, 2) + '\n'
-      : LEAQuizSource.replaceArrayLiteral(raw, source.varName, arrayToLiteralText(source.rows));
-    if(newText === null) throw new Error('Could not rewrite this file’s question list');
-    await callSave(found.mod.file, newText, `Admin: hide Q${qIndex+1} in ${found.mod.file} (from report)`);
-    if(statusEl){ statusEl.className = 'save-status ok'; statusEl.textContent = 'Hidden.'; }
+    info.row.hidden = true;
+    const cached = reportFileCache[info.file];
+    const newText = writeQuestionSource(
+      cached.source.kind, cached.source.varName, cached.raw, cached.source.rows, cached.source.editable);
+    await callSave(info.file, newText, 'Admin: hide Q' + (info.qIndex + 1) + ' in ' + info.file + ' (from report)');
+    cached.raw = newText;
+    repStatus(ref, 'Hidden.', 'ok');
   }catch(e){
-    if(statusEl){ statusEl.className = 'save-status err'; statusEl.textContent = 'Error: ' + e.message; }
+    repStatus(ref, 'Error: ' + e.message, 'err');
   }
 }
 
 function cssEscapeRef(ref){ return ref.replace(/[^a-zA-Z0-9]/g, '_'); }
 
-// Jumps to the Pages & Quizzes tab, opens the right file, and expands the
-// exact reported question — this IS the "Change key" / "Hide" path (5a):
-// both are just edits made in the normal question form, not separate
-// one-click actions, since a report only carries a reason + free-text
-// comment, never a structured "the answer should be X" field to act on
-// blindly.
+// Still here for the times a report turns out to be about the module rather
+// than the one question — it opens the whole file with this question expanded.
 function openReportInEditor(ref){
-  const [subjectId, moduleId, qIndexStr] = ref.split('/');
-  const qIndex = parseInt(qIndexStr, 10);
-  const found = findModuleInManifest(subjectId, moduleId);
-  if(!found){
-    LEAAlert('Could not find this question in the current manifest — it may belong to a module not yet listed in data/subjects.json.');
+  const info = reportQ[ref];
+  if(!info || !info.file){
+    LEAAlert('Could not find this question in the current manifest \u2014 it may belong to a module not listed in data/subjects.json.');
     return;
   }
   document.querySelector('.tab-btn[data-tab="pages"]').click();
   if(fileTree.length === 0){
-    loadFileTree().then(() => openFile(found.mod.file, qIndex));
+    loadFileTree().then(() => openFile(info.file, info.qIndex));
   } else {
-    openFile(found.mod.file, qIndex);
+    openFile(info.file, info.qIndex);
   }
 }
 
+// Dismiss leaves the question exactly as it is and closes the report unread by
+// the reader — used when the report is mistaken, not when it is fixed.
 async function dismissReportGroup(ref){
-  const statusEl = document.getElementById('status-' + cssEscapeRef(ref));
   const reports = reportsByQuestionRef[ref] || [];
   const okDismiss = await LEAConfirm(
-    'Dismiss ' + reports.length + ' report' + (reports.length === 1 ? '' : 's') + ' for this question? This marks them resolved without changing the question.',
+    'Dismiss ' + reports.length + ' report' + (reports.length === 1 ? '' : 's') + ' on this question? The question is left as it is.',
     { title: 'Dismiss reports', yes: 'Dismiss' }
   );
   if(!okDismiss) return;
-  if(statusEl){ statusEl.className = 'save-status'; statusEl.textContent = 'Dismissing…'; }
+  repStatus(ref, 'Dismissing\u2026');
   try{
-    const ids = reports.map(r => r.id);
-    const { error } = await sb.from('reports').update({ status: 'dismissed' }).in('id', ids);
+    const { error } = await sb.from('reports')
+      .update({ status: 'dismissed', resolved_at: new Date().toISOString() })
+      .in('id', reports.map(r => r.id));
     if(error) throw error;
+    reportOpenRef = null;
     await loadReports();
+    await prefetchReportedQuestions();
     renderReportsTab();
   }catch(e){
-    if(statusEl){ statusEl.className = 'save-status err'; statusEl.textContent = 'Error: ' + e.message; }
+    repStatus(ref, 'Error: ' + e.message, 'err');
   }
 }
 

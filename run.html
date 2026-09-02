@@ -630,7 +630,75 @@ sb.auth.onAuthStateChange((event, session) => {
   currentUserId = session.user.id;
   if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }
   await boot();
+  checkReportUpdates();
 })();
+
+// ================= Answers to questions this reader reported =================
+// A report used to be a one-way send: you flagged a question and never heard
+// anything back. The admin panel now closes a report with a note, so the note
+// has to arrive somewhere. This runs after boot rather than blocking it — an
+// update is worth seeing, but never worth delaying the quiz for.
+async function checkReportUpdates(){
+  try{
+    const { data, error } = await sb.from('reports')
+      .select('id,question_ref,status,admin_reply,resolved_at')
+      .eq('user_id', currentUserId)
+      .eq('seen_by_reporter', false)
+      .or('admin_reply.not.is.null,resolved_at.not.is.null');
+    if(error || !data || !data.length) return;
+    showReportUpdates(data);
+  }catch(e){ /* never let this break the run */ }
+}
+
+function showReportUpdates(rows){
+  // Several reports on the same question produce several rows carrying the
+  // same note; the reader should see it once.
+  const seen = new Set();
+  const items = rows.filter(r => {
+    const key = r.question_ref + '|' + (r.admin_reply || '') + '|' + (r.status || '');
+    if(seen.has(key)) return false;
+    seen.add(key); return true;
+  });
+
+  const box = document.createElement('div');
+  box.id = 'reportUpdates';
+  box.style.cssText =
+    'position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:2600;' +
+    'width:min(440px, calc(100% - 24px));background:var(--bg-panel);border:1px solid var(--line);' +
+    'border-left:3px solid var(--good);border-radius:12px;padding:16px;' +
+    'box-shadow:0 8px 30px rgba(0,0,0,0.45);font-size:13.5px;line-height:1.6;color:var(--ink);';
+
+  const head = items.length === 1
+    ? 'There is news on a question you reported'
+    : 'There is news on ' + items.length + ' questions you reported';
+
+  box.innerHTML =
+    '<div style="font-weight:600;margin-bottom:10px;">' + head + '</div>' +
+    items.map(r => {
+      const fixed = r.status === 'solved';
+      return '<div style="background:var(--bg-panel-deep);border-radius:8px;padding:10px 12px;margin-bottom:8px;">' +
+        '<div style="color:' + (fixed ? 'var(--good)' : 'var(--muted)') + ';font-size:12px;margin-bottom:4px;">' +
+          (fixed ? 'Fixed' : 'Reply from the admin') + '</div>' +
+        (r.admin_reply ? escapeForUpdate(r.admin_reply)
+                       : 'This question has been corrected. Thanks for flagging it.') +
+      '</div>';
+    }).join('') +
+    '<button id="reportUpdatesOk" style="width:100%;margin-top:4px;padding:9px;border-radius:8px;' +
+      'border:none;background:var(--gold);color:var(--bg-deep);font-family:var(--font-body);' +
+      'font-weight:600;font-size:13px;cursor:pointer;">Got it</button>';
+
+  document.body.appendChild(box);
+  document.getElementById('reportUpdatesOk').addEventListener('click', async () => {
+    box.remove();
+    // Readers cannot write to reports directly, so the seen flag is flipped by
+    // a function that only ever touches their own rows.
+    try{ await sb.rpc('mark_reports_seen'); }catch(e){}
+  });
+}
+
+function escapeForUpdate(s){
+  return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+}
 
 // ================= Helpers =================
 // The colour lives above every screen of the run rather than inside one,
@@ -2780,12 +2848,42 @@ function svgFlame(){
   return '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>';
 }
 
+// A topic label that contains the answer is worse than no label: "Louis
+// Sullivan \u00b7 Examples" sitting above a question whose answer is "Louis
+// Sullivan" hands it over. Rather than rewriting several hundred topic strings
+// by hand \u2014 and having to police every module added afterwards \u2014 the tag is
+// checked against its own answer and dropped when it gives the game away.
+//
+// The test is on content words, so "Saleable Ratio \u00b7 PD 957" still shows above a
+// question answered by a percentage, while a topic that simply restates the
+// answer does not. Partial overlap is fine; near-total overlap is the tell.
+const TAG_STOP_WORDS = new Set(
+  'the a an of and or in on to for is are was were with by at from as which what that this it its'.split(' '));
+
+function tagWords(str){
+  return String(str || '').toLowerCase()
+    .replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim()
+    .split(' ').filter(w => w.length > 3 && !TAG_STOP_WORDS.has(w));
+}
+
+function topicGivesAwayAnswer(item){
+  if(!item || !item.s || !Array.isArray(item.o)) return false;
+  const answer = item.o[item.c];
+  if(typeof answer !== 'string') return false;
+  const aw = tagWords(answer);
+  if(!aw.length) return false;
+  const tw = new Set(tagWords(item.s));
+  const shared = aw.filter(w => tw.has(w)).length;
+  return (shared / aw.length) >= 0.8;
+}
+
 // Not every module tags its questions by topic (the older QUIZ_DATA quizzes
 // carry no topic field at all). Omit the tag entirely in that case rather than
 // drawing an empty gold chip.
 function sectionTagHtml(item){
   const s = item && item.s ? String(item.s).trim() : '';
-  return s ? '<span class="section-tag">' + escapeHtml(s) + '</span>' : '';
+  if(!s || topicGivesAwayAnswer(item)) return '';
+  return '<span class="section-tag">' + escapeHtml(s) + '</span>';
 }
 
 function svgArrowLeft(){
