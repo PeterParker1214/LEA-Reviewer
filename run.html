@@ -203,6 +203,13 @@
   .explain.right .verdict{ color:var(--good); }
   .explain.wrong .verdict{ color:var(--bad); }
   .explain .reason{ font-size:13.5px; line-height:1.6; color:var(--ink); margin-bottom:10px; }
+  .q-stat{
+    display:flex; align-items:center; gap:6px; font-family:var(--font-mono);
+    font-size:11px; letter-spacing:.02em; color:var(--muted);
+    margin-bottom:10px; padding-bottom:10px; border-bottom:1px dashed var(--line);
+  }
+  .q-stat::before{ content:"📊"; font-size:11px; }
+  .q-stat.hidden{ display:none; }
   /* Frame 2c: label in blue, value in muted and NOT uppercased, the two
      separated by a 10px gap rather than a margin on the label. */
   .explain .meta-row{
@@ -1080,6 +1087,13 @@ function submitExam(auto){
     // tick strip, and question map.
     return selected === -1 ? { selected, isCorrect, skipped: true } : { selected, isCorrect };
   });
+  // Exam answers are graded in bulk here rather than one at a time through
+  // selectAnswer(), so this is the only place to feed them into the crowd
+  // stats. Skipped/blank questions carry no real "selected" option, so they
+  // are left out rather than logged as a fake answer.
+  answersLog.forEach((a, p) => {
+    if(!a.skipped) logQuestionAnswer(SUBJECT.id + '/' + MODULE.id + '/' + order[p], a.selected, a.isCorrect);
+  });
   const correct = answersLog.filter(a => a.isCorrect).length;
   // Read the standing best BEFORE recordRunScore replaces it, or the results
   // screen has nothing to compare this attempt against.
@@ -1421,6 +1435,7 @@ function renderCard(){
     explainHtml =
       '<div class="explain ' + verdictClass + '">' +
         '<div class="verdict">' + verdictText + '</div>' +
+        '<div class="q-stat hidden" id="qStat"></div>' +
         '<div class="reason">' + escapeHtml(item.o[item.c]) + '.' + (item.n ? ' ' + escapeHtml(item.n) : '') + '</div>' +
         explainImgHtml(item) +
         (item.ref ? '<div class="meta-row">Source<span>' + escapeHtml(item.ref) + '</span></div>' : '') +
@@ -1449,6 +1464,10 @@ function renderCard(){
 
   wireCard(item);
   if(window.LEAEtymology) LEAEtymology.decorate(slot, SUBJECT && SUBJECT.id);
+  if(logged && !logged.skipped){
+    const qIndexAtCall = order[pos];
+    loadQuestionStats(SUBJECT.id + '/' + MODULE.id + '/' + qIndexAtCall, item, () => order[pos] !== qIndexAtCall);
+  }
 }
 
 function wireCard(item){
@@ -1486,7 +1505,59 @@ function selectAnswer(item, origIdx){
   if(pos === frontier && frontier < order.length - 1) frontier = pos + 1;
   else if(pos === frontier) frontier = pos;
   saveResumeState();
+  logQuestionAnswer(SUBJECT.id + '/' + MODULE.id + '/' + order[pos], origIdx, isCorrect);
   renderRun();
+}
+
+// ================= Question stats (crowd answer data) =================
+// Fire-and-forget insert — a failed write here should never block the quiz
+// flow, so errors are swallowed the same way flushReportQueue() does.
+async function logQuestionAnswer(questionRef, selected, isCorrect){
+  try{
+    await sb.from('question_answers').insert({
+      question_ref: questionRef,
+      selected: selected,
+      is_correct: isCorrect,
+      user_id: currentUserId,
+      created_at: new Date().toISOString()
+    });
+  }catch(e){ /* stats are best-effort; never surface this to the reader */ }
+}
+
+// Renders the "N% of reviewers got this right" line inside the already-
+// painted explain box. Runs after the fact (async) rather than blocking
+// renderCard(), and checks isStale() right before touching the DOM so a
+// fast Next-click while the fetch is in flight can't write a stat for the
+// wrong question.
+async function loadQuestionStats(questionRef, item, isStale){
+  try{
+    const { data, error } = await sb.from('question_answers').select('selected,is_correct').eq('question_ref', questionRef);
+    if(error || !data || isStale()) return;
+    const el = document.getElementById('qStat');
+    if(!el) return;
+    const MIN_SAMPLE = 5; // below this, a percentage is more misleading than useful
+    if(data.length < MIN_SAMPLE) return;
+    const total = data.length;
+    const correctCount = data.filter(d => d.is_correct).length;
+    const pctCorrect = Math.round((correctCount / total) * 100);
+    let line;
+    if(pctCorrect >= 50){
+      line = pctCorrect + '% of reviewers got this one right.';
+    } else {
+      // Most-picked WRONG option — quote its text rather than a letter,
+      // since options are shuffled per reader and "B" means nothing shared.
+      const counts = {};
+      data.forEach(d => { if(!d.is_correct) counts[d.selected] = (counts[d.selected] || 0) + 1; });
+      let topIdx = null, topCount = -1;
+      Object.keys(counts).forEach(k => { if(counts[k] > topCount){ topCount = counts[k]; topIdx = parseInt(k, 10); } });
+      const topPct = topIdx == null ? 0 : Math.round((topCount / total) * 100);
+      line = topIdx == null
+        ? (100 - pctCorrect) + '% of reviewers missed this one.'
+        : (100 - pctCorrect) + '% of reviewers missed this — ' + topPct + '% picked "' + item.o[topIdx] + '" instead.';
+    }
+    el.textContent = line;
+    el.classList.remove('hidden');
+  }catch(e){ /* leave the placeholder hidden on any failure */ }
 }
 
 function toggleFlag(){
@@ -2286,6 +2357,7 @@ function renderMultiCard(){
     explainHtml =
       '<div class="explain ' + verdictClass + '">' +
         '<div class="verdict">' + verdictText + '</div>' +
+        '<div class="q-stat hidden" id="qStat"></div>' +
         '<div class="reason">' + escapeHtml(item.o[item.c]) + '.' + (item.n ? ' ' + escapeHtml(item.n) : '') + '</div>' +
         explainImgHtml(item) +
         (item.ref ? '<div class="meta-row">Source<span>' + escapeHtml(item.ref) + '</span></div>' : '') +
@@ -2308,6 +2380,10 @@ function renderMultiCard(){
     btn.addEventListener('click', () => selectMultiAnswer(item, parseInt(btn.getAttribute('data-idx'), 10)));
   });
   if(window.LEAEtymology) LEAEtymology.decorate(slot, cell.subjectId);
+  if(logged && !logged.skipped){
+    const cellAtCall = cell;
+    loadQuestionStats(cellAtCall.subjectId + '/' + cellAtCall.moduleId + '/' + cellAtCall.qIndex, item, () => pool[pos] !== cellAtCall);
+  }
 }
 
 function selectMultiAnswer(item, origIdx){
@@ -2317,6 +2393,7 @@ function selectMultiAnswer(item, origIdx){
   answersLog[pos] = { selected: origIdx, isCorrect };
   if(isCorrect) LEAProgress.markMastered(cell.subjectId, cell.moduleId, cell.qIndex);
   if(pos === frontier && frontier < pool.length - 1) frontier = pos + 1;
+  logQuestionAnswer(cell.subjectId + '/' + cell.moduleId + '/' + cell.qIndex, origIdx, isCorrect);
   renderMultiRun();
 }
 
@@ -2660,6 +2737,11 @@ function submitMultiExam(auto){
     // See the note in submitExam — blanks stay misses for scoring but are
     // flagged so review mode can distinguish them from real wrong answers.
     return selected === -1 ? { selected, isCorrect, skipped: true } : { selected, isCorrect };
+  });
+  // Same reasoning as submitExam() — bulk-graded here, so this is where
+  // these answers get fed into the crowd stats.
+  answersLog.forEach((a, p) => {
+    if(!a.skipped){ const cell = pool[p]; logQuestionAnswer(cell.subjectId + '/' + cell.moduleId + '/' + cell.qIndex, a.selected, a.isCorrect); }
   });
   const correct = answersLog.filter(a => a.isCorrect).length;
   // A mixed exam spans modules, so its score can't live under any one
