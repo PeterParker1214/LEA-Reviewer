@@ -1,72 +1,67 @@
 [
   {
     "s": "",
-    "q": "Based on the lot's total area and its frontage, how deep is the lot, in meters?",
+    "q": "Which side of the house is best suited for placing the Toilet and Bath?",
     "o": [
-      "10",
-      "15",
-      "18",
-      "20"
+      "North",
+      "South",
+      "East",
+      "West"
     ],
     "c": 3,
     "ref": "",
-    "n": "Dividing the 200-square-meter lot area by its 10-meter frontage gives a depth of 20 meters.",
-    "scenario": "You've been retained as project architect by a family building a high-end, two-storey single-detached home inside a gated subdivision in Makati City. The parcel is an interior lot with a total area of 200 square meters and a 10.00-meter frontage facing a two-lane, two-way road right-of-way running along the lot's southern edge. Existing three-storey single-detached houses flank the property on the west and east. To the north lies a creekside area subject to the easement provisions of Presidential Decree 1067, and the ground slopes gently — roughly 2% — toward that creek."
+    "n": "The west absorbs the strongest afternoon sun, which is acceptable for a wet, briefly-occupied service area but poorly suited to spaces meant for longer, comfortable occupancy — per the source document."
   },
   {
     "s": "",
-    "q": "For the same R-1 building type, the National Building Code sets a 4.50-meter front setback, a local ordinance sets 5 meters, and the subdivision's own deed restrictions set 6 meters. Which figure applies?",
+    "q": "Where is the ideal location on a site for the septic tank?",
     "o": [
-      "6 meters",
-      "4.5 meters",
-      "5 meters",
-      "The average of 4.5 and 6 meters"
-    ],
-    "c": 0,
-    "ref": "",
-    "n": "When several regulations set different minimums for the same requirement, the most restrictive figure governs — here, the subdivision's 6-meter setback.",
-    "scenario": "You've been retained as project architect by a family building a high-end, two-storey single-detached home inside a gated subdivision in Makati City. The parcel is an interior lot with a total area of 200 square meters and a 10.00-meter frontage facing a two-lane, two-way road right-of-way running along the lot's southern edge. Existing three-storey single-detached houses flank the property on the west and east. To the north lies a creekside area subject to the easement provisions of Presidential Decree 1067, and the ground slopes gently — roughly 2% — toward that creek."
-  },
-  {
-    "s": "",
-    "q": "The National Building Code caps single-detached residential (R-1) buildings at three storeys, while a local ordinance caps the same building type at two storeys. Which limit governs?",
-    "o": [
-      "Two storeys",
-      "Either applies equally, so it makes no difference",
-      "It is left to the Office of the Building Official to decide",
-      "Three storeys"
-    ],
-    "c": 0,
-    "ref": "",
-    "n": "Where a local ordinance imposes a stricter limit than the National Building Code, the stricter local standard controls — here, the two-storey cap.",
-    "scenario": "You've been retained as project architect by a family building a high-end, two-storey single-detached home inside a gated subdivision in Makati City. The parcel is an interior lot with a total area of 200 square meters and a 10.00-meter frontage facing a two-lane, two-way road right-of-way running along the lot's southern edge. Existing three-storey single-detached houses flank the property on the west and east. To the north lies a creekside area subject to the easement provisions of Presidential Decree 1067, and the ground slopes gently — roughly 2% — toward that creek."
-  },
-  {
-    "s": "",
-    "q": "Given that the rear of the lot borders the creekside area, what must legally be provided or maintained along that edge?",
-    "o": [
-      "An esplanade",
-      "The lot's boundary line",
-      "A legally mandated easement",
-      "A public promenade"
+      "Northeast",
+      "Southeast",
+      "Southwest",
+      "Northwest"
     ],
     "c": 2,
     "ref": "",
-    "n": "PD 1067 (Water Code of the Philippines) requires a mandatory easement along land bordering a creek, so an easement — not a promenade, esplanade, or the plain boundary line — applies here.",
-    "scenario": "You've been retained as project architect by a family building a high-end, two-storey single-detached home inside a gated subdivision in Makati City. The parcel is an interior lot with a total area of 200 square meters and a 10.00-meter frontage facing a two-lane, two-way road right-of-way running along the lot's southern edge. Existing three-storey single-detached houses flank the property on the west and east. To the north lies a creekside area subject to the easement provisions of Presidential Decree 1067, and the ground slopes gently — roughly 2% — toward that creek."
+    "n": "The southwest keeps the tank clear of habitable-space areas and supports the soil drainage and percolation associated with that side of the lot — per the source document."
   },
   {
     "s": "",
-    "q": "Because the site is flood-prone, the family patriarch — who is 65 years old — wants the finished floor raised 1 meter above natural grade, reached by a single-flight ramp. Following Batas Pambansa Blg. 344, what horizontal run, in meters, should that ramp have?",
+    "q": "Which of the following is generally discouraged along the southern edge of a lot?",
     "o": [
-      "15",
-      "13.5",
-      "12",
-      "6"
+      "Shallow-rooted trees",
+      "Utility lines",
+      "Brick wall",
+      "Arboreal (large, deep-rooted) trees"
+    ],
+    "c": 3,
+    "ref": "",
+    "n": "Large arboreal trees develop wide, deep root systems that can eventually undermine foundations and utility lines as they mature, so planting them near the southern boundary is discouraged — per the source document."
+  },
+  {
+    "s": "",
+    "q": "Under typical Philippine climate conditions, which cardinal direction is the most suitable orientation for the Master Bedroom?",
+    "o": [
+      "East",
+      "North",
+      "West",
+      "South"
     ],
     "c": 1,
     "ref": "",
-    "n": "BP 344 caps ramp slope at 1:12, and factoring in the required level landing at the top of a 1-meter rise brings the total horizontal run to 13.5 meters.",
-    "scenario": "You've been retained as project architect by a family building a high-end, two-storey single-detached home inside a gated subdivision in Makati City. The parcel is an interior lot with a total area of 200 square meters and a 10.00-meter frontage facing a two-lane, two-way road right-of-way running along the lot's southern edge. Existing three-storey single-detached houses flank the property on the west and east. To the north lies a creekside area subject to the easement provisions of Presidential Decree 1067, and the ground slopes gently — roughly 2% — toward that creek."
+    "n": "A north-facing room gets soft, indirect daylight and avoids the intense afternoon heat gain of a west or south exposure, keeping it cooler for rest — per the source document."
+  },
+  {
+    "s": "",
+    "q": "To make the most of a site's natural features while still controlling heat on the southern side, which design strategy is most advisable in a Philippine setting?",
+    "o": [
+      "Ceramic coating or tint",
+      "Polycarbonate canopy",
+      "Brise soleil",
+      "Light shelf canopy"
+    ],
+    "c": 3,
+    "ref": "",
+    "n": "A light shelf canopy shades the opening below it from harsh southern sun while bouncing daylight deeper into the interior, capturing illumination without the heat load — per the source document."
   }
 ]
