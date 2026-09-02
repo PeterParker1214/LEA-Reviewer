@@ -603,6 +603,86 @@ index 58bd02e..e2f3587 100644
    }
  }
  
+diff --git a/data/theory-of-architecture-and-planning/11.json b/data/theory-of-architecture-and-planning/11.json
+index 2a2e5d3..aae45b2 100644
+--- a/data/theory-of-architecture-and-planning/11.json
++++ b/data/theory-of-architecture-and-planning/11.json
+@@ -520,13 +520,13 @@
+     "n": "Tertiary colors are created by mixing a primary color with a neighboring secondary color: Red + Orange = Red Orange, Yellow + Green = Yellow Green."
+   },
+   {
+-    "s": "Defensible Space — Characteristic (a)",
++    "s": "Defensible Space",
+     "q": "Which characteristic of a defensible-space layout involves a clear hierarchical definition of territories, from public to semi-public, semi-private to private?",
+     "o": [
+-      "Characteristic (b)",
+-      "Characteristic (d)",
+-      "Characteristic (c)",
+-      "Characteristic (a)"
++      "Natural surveillance",
++      "Milieu",
++      "Image",
++      "Territoriality"
+     ],
+     "c": 3,
+     "ref": "",
+@@ -546,13 +546,13 @@
+     "n": "Semi-private privacy is limited access within private settings, e.g., living rooms."
+   },
+   {
+-    "s": "Characteristics of Defensible Space",
++    "s": "Defensible Space",
+     "q": "Which characteristic of a defensible-space layout involves the positioning of doors and windows to provide natural surveillance over entrances and open spaces?",
+     "o": [
+-      "Characteristic (b)",
+-      "Characteristic (a)",
+-      "Characteristic (c)",
+-      "Characteristic (d)"
++      "Natural surveillance",
++      "Territoriality",
++      "Image",
++      "Milieu"
+     ],
+     "c": 0,
+     "ref": "",
+@@ -1014,13 +1014,13 @@
+     "n": "Public distance (12 to 25+ ft) covers formal speeches, public figures, or strangers."
+   },
+   {
+-    "s": "Defensible Space — Characteristic (d)",
++    "s": "Defensible Space",
+     "q": "Which characteristic of a defensible-space layout involves locating residential developments in 'functionally sympathetic' areas where residents are not threatened?",
+     "o": [
+-      "Characteristic (c)",
+-      "Characteristic (b)",
+-      "Characteristic (a)",
+-      "Characteristic (d)"
++      "Image",
++      "Natural surveillance",
++      "Territoriality",
++      "Milieu"
+     ],
+     "c": 3,
+     "ref": "",
+@@ -1157,13 +1157,13 @@
+     "n": "Semi-public privacy is limited to groups or members, e.g., office lounges and waiting areas."
+   },
+   {
+-    "s": "Defensible Space — Characteristic (c)",
++    "s": "Defensible Space",
+     "q": "Which characteristic of a defensible-space layout involves using building forms and materials that are not associated peculiarly with vulnerable populations?",
+     "o": [
+-      "Characteristic (d)",
+-      "Characteristic (a)",
+-      "Characteristic (c)",
+-      "Characteristic (b)"
++      "Milieu",
++      "Territoriality",
++      "Image",
++      "Natural surveillance"
+     ],
+     "c": 2,
+     "ref": "",
 diff --git a/run.html b/run.html
 index db34cc9..1a241cd 100644
 --- a/run.html
@@ -728,6 +808,86 @@ index db34cc9..1a241cd 100644
  }
  
  function svgArrowLeft(){
+diff --git a/subjects/building-utilities/quizzes/Utilities_AR_Annie_Exam1_Module.html b/subjects/building-utilities/quizzes/Utilities_AR_Annie_Exam1_Module.html
+index 7fd6159..cf68f95 100644
+--- a/subjects/building-utilities/quizzes/Utilities_AR_Annie_Exam1_Module.html
++++ b/subjects/building-utilities/quizzes/Utilities_AR_Annie_Exam1_Module.html
+@@ -730,15 +730,15 @@ const QUESTIONS = [
+ {"s":"Lighting Types & Elevators","q":"A standard elevator has two (2) separate door systems. What do you call the interior door which travels up and down along with the elevator and opens and closes automatically when the elevator arrives at a floor?","o":["Shaft Door","Cab Door","Landing Door","Safety Door"],"c":3},
+ {"s":"Lighting Types & Elevators","q":"What do you call the exterior door of an elevator which are designed to keep people from falling into the elevator shaft when the elevator is not present.","o":["Shaft Door","Cab Door","Landing Door","Safety Door"],"c":0},
+ {"s":"Lighting Types & Elevators","q":"Which component of an elevator is responsible for sealing the interior of an elevator and moves with it as it travels between floors?","o":["Hoistway Door","Shaft Door","Cab Door","Landing Door"],"c":2},
+-{"s":"LED Lighting & HVAC Ducts","q":"From the figures above, what do you call Figure A which is used in LED lighting?","o":["Driver","Transistor","Ballast","Transformer"],"c":0,"fig":"led"},
+-{"s":"LED Lighting & HVAC Ducts","q":"From the figures above, how do you use Figure B?","o":["Pool accent lighting","Spot lighting","Exterior ground lighting","Wall uplighter"],"c":2,"fig":"led"},
+-{"s":"LED Lighting & HVAC Ducts","q":"From the figures above, what is Figure C?","o":["PAR 38","PL","CFL","LED"],"c":3,"fig":"led"},
+-{"s":"LED Lighting & HVAC Ducts","q":"From the figures above, which figure or figures are energy saving lighting?","o":["Figure C only","Figure D only","Figure B and D","Figure C and D"],"c":3,"fig":"led"},
++{"s":"LED Lighting & HVAC Ducts","q":"From the figures above, what do you call Figure A which is used in LED lighting?","o":["Driver","Transistor","Ballast","Transformer"],"c":0,"fig":"led","img":"img/q0002.png"},
++{"s":"LED Lighting & HVAC Ducts","q":"From the figures above, how do you use Figure B?","o":["Pool accent lighting","Spot lighting","Exterior ground lighting","Wall uplighter"],"c":2,"fig":"led","img":"img/q0002.png"},
++{"s":"LED Lighting & HVAC Ducts","q":"From the figures above, what is Figure C?","o":["PAR 38","PL","CFL","LED"],"c":3,"fig":"led","img":"img/q0002.png"},
++{"s":"LED Lighting & HVAC Ducts","q":"From the figures above, which figure or figures are energy saving lighting?","o":["Figure C only","Figure D only","Figure B and D","Figure C and D"],"c":3,"fig":"led","img":"img/q0002.png"},
+ {"s":"LED Lighting & HVAC Ducts","q":"What is the necessary component for Figure D to enable it to light up?","o":["Circuit Driver","Electronic Ballast","Circuit Transistor","Electronic Transformer"],"c":1,"fig":"led"},
+-{"s":"LED Lighting & HVAC Ducts","q":"From the figures above, what is the function of Figure A?","o":["Commercial and industrial grade exhaust duct","Removes unwanted air from inside to outside of the building","Bring in air conditioning to any part of the building","Stops or regulates the flow of air in the building"],"c":3,"fig":"duct"},
+-{"s":"LED Lighting & HVAC Ducts","q":"From the figures above, what is the function of Figure B?","o":["Solar Attic Fan","Sun Roof","Electric Vent","Solar Lighting"],"c":0,"fig":"duct"},
+-{"s":"LED Lighting & HVAC Ducts","q":"From the figures above, it is a device installed at the end of ductwork to distribute conditioned air evenly throughout a room","o":["HVAC Damper","Return Air Vent","Air Duct Cover","Air Diffuser"],"c":3,"fig":"duct"},
+-{"s":"LED Lighting & HVAC Ducts","q":"From the figures above, what is the function of Figure D?","o":["Transformer","Air Interchanger","Generator","Air-conditioner"],"c":1,"fig":"duct"},
++{"s":"LED Lighting & HVAC Ducts","q":"From the figures above, what is the function of Figure A?","o":["Commercial and industrial grade exhaust duct","Removes unwanted air from inside to outside of the building","Bring in air conditioning to any part of the building","Stops or regulates the flow of air in the building"],"c":3,"fig":"duct","img":"img/q0003.png"},
++{"s":"LED Lighting & HVAC Ducts","q":"From the figures above, what is the function of Figure B?","o":["Solar Attic Fan","Sun Roof","Electric Vent","Solar Lighting"],"c":0,"fig":"duct","img":"img/q0003.png"},
++{"s":"LED Lighting & HVAC Ducts","q":"From the figures above, it is a device installed at the end of ductwork to distribute conditioned air evenly throughout a room","o":["HVAC Damper","Return Air Vent","Air Duct Cover","Air Diffuser"],"c":3,"fig":"duct","img":"img/q0003.png"},
++{"s":"LED Lighting & HVAC Ducts","q":"From the figures above, what is the function of Figure D?","o":["Transformer","Air Interchanger","Generator","Air-conditioner"],"c":1,"fig":"duct","img":"img/q0003.png"},
+ {"s":"LED Lighting & HVAC Ducts","q":"Which of the following is an effective and specialized solution for reducing noise transmission in air ducts?","o":["Increasing duct diameter to lower air velocity","Using a sound attenuator to specifically dampen noise","Adding insulation around ducts to absorb sound and reduce vibration","Installing airflow dampers to regulate pressure changes"],"c":1},
+ {"s":"Brands & Fixture Boxes","q":"Brand name for bathtub manufacturer","o":["Emerald","Koten","Hafele","HoeCheng Group"],"c":3},
+ {"s":"Brands & Fixture Boxes","q":"Brand name for Faucets","o":["Grohe","Delta","Moen","All of the above"],"c":3},
+@@ -750,11 +750,11 @@ const QUESTIONS = [
+ {"s":"Brands & Fixture Boxes","q":"It allows long wiring runs to be installed in shorter intervals and does not have wiring connections inside.","o":["Pullout Box","Junction Box","NEMA Box","Panel Box"],"c":0},
+ {"s":"Brands & Fixture Boxes","q":"Which should I use as a conduit for telephone wires?","o":["EMT","IMC","PVC","None"],"c":1},
+ {"s":"Brands & Fixture Boxes","q":"An electrical fixture box that protects electrical wires at their splicing and tapping points.","o":["Pullout Box","Junction Box","NEMA Box","Panel Box"],"c":1},
+-{"s":"Drain Fixtures & Elevator Indicators","q":"From the figures above, which one is used at the driveway or garage?","o":["A","B","C","D"],"c":2,"fig":"drainfix"},
+-{"s":"Drain Fixtures & Elevator Indicators","q":"From the figures above, which one is used at the bathroom shower area?","o":["B","C","D","E"],"c":2,"fig":"drainfix"},
+-{"s":"Drain Fixtures & Elevator Indicators","q":"From the figures above, which one is used at the gutter?","o":["A","B","C","E"],"c":1,"fig":"drainfix"},
+-{"s":"Drain Fixtures & Elevator Indicators","q":"From the figures above, which one is used at the roof deck parapet?","o":["A","B","C","D"],"c":0,"fig":"drainfix"},
+-{"s":"Drain Fixtures & Elevator Indicators","q":"From the figures above, which one is used at hard to reach areas?","o":["B","C","D","E"],"c":3,"fig":"drainfix"},
++{"s":"Drain Fixtures & Elevator Indicators","q":"From the figures above, which one is used at the driveway or garage?","o":["A","B","C","D"],"c":2,"fig":"drainfix","img":"img/q0004.png"},
++{"s":"Drain Fixtures & Elevator Indicators","q":"From the figures above, which one is used at the bathroom shower area?","o":["B","C","D","E"],"c":2,"fig":"drainfix","img":"img/q0004.png"},
++{"s":"Drain Fixtures & Elevator Indicators","q":"From the figures above, which one is used at the gutter?","o":["A","B","C","E"],"c":1,"fig":"drainfix","img":"img/q0004.png"},
++{"s":"Drain Fixtures & Elevator Indicators","q":"From the figures above, which one is used at the roof deck parapet?","o":["A","B","C","D"],"c":0,"fig":"drainfix","img":"img/q0004.png"},
++{"s":"Drain Fixtures & Elevator Indicators","q":"From the figures above, which one is used at hard to reach areas?","o":["B","C","D","E"],"c":3,"fig":"drainfix","img":"img/q0004.png"},
+ {"s":"Drain Fixtures & Elevator Indicators","q":"Also called position indicators, they are used to notify elevator riders that their elevator is arriving and what direction it will be traveling.","o":["Up/Down Button","Hall Indicator (hall lantern)","Call Button","Floor Designation Buttons"],"c":0},
+ {"s":"Wattage & Green Building Standards","q":"Wattage for Airconditioner","o":["800-2000","1000-2500","3000-4500","3500-6000"],"c":2},
+ {"s":"Wattage & Green Building Standards","q":"Wattage for Single Point Water Heater","o":["800-2000","1000-2500","3000-4500","3500-6000"],"c":3},
+@@ -782,20 +782,20 @@ const QUESTIONS = [
+ {"s":"Acoustic Insulation Materials","q":"Identify from among the illustrations a Mineral Wool","o":["FIGURE D","FIGURE A","FIGURE B","FIGURE C"],"c":3,"fig":"acoustic"},
+ {"s":"Acoustic Insulation Materials","q":"Identify from among the illustrations a Glass Wool","o":["FIGURE D","FIGURE A","FIGURE B","FIGURE C"],"c":1,"fig":"acoustic"},
+ {"s":"Acoustic Insulation Materials","q":"Identify from among the illustrations a Drywall","o":["FIGURE D","FIGURE A","FIGURE B","FIGURE C"],"c":0,"fig":"acoustic"},
+-{"s":"Lighting Fixture Types","q":"From the figures above, which will you use for 8m ceilings?","o":["A","B","C","E"],"c":1,"fig":"lightfix"},
+-{"s":"Lighting Fixture Types","q":"From the figures above, which lighting is most efficient?","o":["B","C","D","E"],"c":2,"fig":"lightfix"},
+-{"s":"Lighting Fixture Types","q":"From the figures above, which will you use for wide area?","o":["B","C","D","E"],"c":3,"fig":"lightfix"},
+-{"s":"Lighting Fixture Types","q":"From the figures above, which lighting is suitable for outdoor commercial purposes?","o":["B","C","D","E"],"c":2,"fig":"lightfix"},
+-{"s":"Lighting Fixture Types","q":"From the figures above, which is required by the building code?","o":["A","B","C","D"],"c":0,"fig":"lightfix"},
+-{"s":"Lighting Fixture Types","q":"From the figures above, which will you use to highlight a building?","o":["A","B","D","E"],"c":2,"fig":"lightfix"},
+-{"s":"Lighting Fixture Types","q":"From the figures above, which lighting has built-in batteries?","o":["A","B","C","D"],"c":0,"fig":"lightfix"},
+-{"s":"Lighting Fixture Types","q":"From the figures above, which is used as accent light?","o":["B","C","D","E"],"c":0,"fig":"lightfix"},
+-{"s":"Lighting Fixture Types","q":"From the figures above, which will you least use in an office?","o":["A","B","C","D"],"c":2,"fig":"lightfix"},
+-{"s":"Lighting Fixture Types","q":"From the figure above, which is used as a lighting for a supermarket?","o":["B","C","D","E"],"c":3,"fig":"lightfix"},
+-{"s":"Lighting Fixture Types","q":"From the figures above, which is used at stairs?","o":["A","B","C","D"],"c":0,"fig":"lightfix"},
+-{"s":"Lighting Fixture Types","q":"From the figures above, which is used for the exterior?","o":["A","B","C","D"],"c":3,"fig":"lightfix"},
+-{"s":"Lighting Fixture Types","q":"From the figures above, which are used at bar lounge/clubs?","o":["D and E","B and C","B and D","C and E"],"c":1,"fig":"lightfix"},
+-{"s":"Lighting Fixture Types","q":"From the figures above, which are used at warehouses?","o":["A and B","A and C","A and D","A and E"],"c":3,"fig":"lightfix"},
++{"s":"Lighting Fixture Types","q":"From the figures above, which will you use for 8m ceilings?","o":["A","B","C","E"],"c":1,"fig":"lightfix","img":"img/q0007.png"},
++{"s":"Lighting Fixture Types","q":"From the figures above, which lighting is most efficient?","o":["B","C","D","E"],"c":2,"fig":"lightfix","img":"img/q0007.png"},
++{"s":"Lighting Fixture Types","q":"From the figures above, which will you use for wide area?","o":["B","C","D","E"],"c":3,"fig":"lightfix","img":"img/q0007.png"},
++{"s":"Lighting Fixture Types","q":"From the figures above, which lighting is suitable for outdoor commercial purposes?","o":["B","C","D","E"],"c":2,"fig":"lightfix","img":"img/q0007.png"},
++{"s":"Lighting Fixture Types","q":"From the figures above, which is required by the building code?","o":["A","B","C","D"],"c":0,"fig":"lightfix","img":"img/q0007.png"},
++{"s":"Lighting Fixture Types","q":"From the figures above, which will you use to highlight a building?","o":["A","B","D","E"],"c":2,"fig":"lightfix","img":"img/q0007.png"},
++{"s":"Lighting Fixture Types","q":"From the figures above, which lighting has built-in batteries?","o":["A","B","C","D"],"c":0,"fig":"lightfix","img":"img/q0007.png"},
++{"s":"Lighting Fixture Types","q":"From the figures above, which is used as accent light?","o":["B","C","D","E"],"c":0,"fig":"lightfix","img":"img/q0007.png"},
++{"s":"Lighting Fixture Types","q":"From the figures above, which will you least use in an office?","o":["A","B","C","D"],"c":2,"fig":"lightfix","img":"img/q0007.png"},
++{"s":"Lighting Fixture Types","q":"From the figure above, which is used as a lighting for a supermarket?","o":["B","C","D","E"],"c":3,"fig":"lightfix","img":"img/q0007.png"},
++{"s":"Lighting Fixture Types","q":"From the figures above, which is used at stairs?","o":["A","B","C","D"],"c":0,"fig":"lightfix","img":"img/q0007.png"},
++{"s":"Lighting Fixture Types","q":"From the figures above, which is used for the exterior?","o":["A","B","C","D"],"c":3,"fig":"lightfix","img":"img/q0007.png"},
++{"s":"Lighting Fixture Types","q":"From the figures above, which are used at bar lounge/clubs?","o":["D and E","B and C","B and D","C and E"],"c":1,"fig":"lightfix","img":"img/q0007.png"},
++{"s":"Lighting Fixture Types","q":"From the figures above, which are used at warehouses?","o":["A and B","A and C","A and D","A and E"],"c":3,"fig":"lightfix","img":"img/q0007.png"},
+ {"s":"Lighting Fixture Types","q":"A kind of lighting designed for both indoor and outdoor applications. Also known as tape or ribbon lights, it is very flexible and can be easily cut into the desired length.","o":["Recessed Light","Flood Light","Strip Light","Emergency Light"],"c":2},
+ {"s":"Air Conditioning & Ventilation","q":"Process of treating air to control its temperature","o":["Refrigeration","Cooling","Air Conditioning","Heating"],"c":2},
+ {"s":"Air Conditioning & Ventilation","q":"Installed 2.10m on top of a wall","o":["WACU","Diffuser","Ceiling Register","Wall Register"],"c":0},
 diff --git a/sw.js b/sw.js
 index 7cdac71..c7a9b09 100644
 --- a/sw.js
