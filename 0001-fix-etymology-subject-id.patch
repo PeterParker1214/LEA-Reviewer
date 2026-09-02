@@ -1,0 +1,1216 @@
+From 69695ec30df559c4a8c2abcac4670b98474a66bd Mon Sep 17 00:00:00 2001
+From: Claude <claude@anthropic.com>
+Date: Wed, 2 Sep 2026 00:14:54 +0000
+Subject: [PATCH] Fix etymology feature: subject id mismatch broke it site-wide
+
+LEAEtymology.decorate() and the etymology hint in run.html checked the
+subject id against 'history-of-architecture', but the actual id in
+data/subjects.json is 'history' (the data folder is named
+history-of-architecture, the id isn't). That mismatch meant the check
+never passed, so no term was ever decorated on any History module.
+
+Also bump the shared-asset cache-busting version to ?v=16 (was still
+?v=1 on etymology.js while everything else sat at ?v=15) so this isn't
+stuck behind GitHub Pages' 10-minute asset cache after deploy.
+---
+ admin.html                                    | 18 +++++++-------
+ assets/etymology.js                           |  2 +-
+ index.html                                    | 18 +++++++-------
+ onboarding.html                               | 12 +++++-----
+ profile.html                                  | 14 +++++------
+ reminders.html                                |  4 ++--
+ run.html                                      | 20 ++++++++--------
+ saved.html                                    | 12 +++++-----
+ search.html                                   | 12 +++++-----
+ standings.html                                | 14 +++++------
+ subject.html                                  | 24 +++++++++----------
+ subjects/architectural-design.html            |  4 ++--
+ .../index.html                                |  6 ++---
+ .../quizzes/Identify_Architect_Module.html    | 12 +++++-----
+ .../quizzes/Identify_Structure_Module.html    | 12 +++++-----
+ .../quizzes/Identify_Style_Module.html        | 12 +++++-----
+ subjects/building-laws/index.html             |  4 ++--
+ subjects/building-laws/modules/index.html     |  4 ++--
+ .../BLDG_LAWS_Pedro_Quiz5_6_BP220_PD957.html  |  8 +++----
+ .../quizzes/PD1096_Quiz1_Pedro.html           |  8 +++----
+ .../quizzes/PD1096_Quiz2_Pedro.html           |  8 +++----
+ .../quizzes/PD1096_Quiz3_Pedro.html           |  8 +++----
+ .../PP_BldgLaws_Preboard_Quiz_Pedro.html      | 10 ++++----
+ subjects/building-technology.html             |  4 ++--
+ subjects/building-utilities/index.html        |  6 ++---
+ .../Utilities_AR_Annie_Exam1_Module.html      | 12 +++++-----
+ .../Utilities_AR_Annie_Quiz1_Module.html      | 12 +++++-----
+ .../Utilities_AR_Annie_Quiz2_Module.html      | 12 +++++-----
+ .../Utilities_AR_Annie_Quiz3_Module.html      | 12 +++++-----
+ subjects/history-of-architecture.html         |  6 ++---
+ subjects/professional-planning.html           |  4 ++--
+ subjects/professional-practice/index.html     |  6 ++---
+ ...tects_SPP_Fees_Quiz_Blueprint_updated.html |  4 ++--
+ ...al_Computation_Quiz_Blueprint_updated.html |  4 ++--
+ .../PP_BldgLaws_Preboard_Quiz_Pedro.html      |  4 ++--
+ ...rchitectsGuidelines_FullCoverage_Quiz.html | 12 +++++-----
+ .../SPP_Fees_MCQ_Reviewer_Situational.html    |  4 ++--
+ subjects/structural/index.html                |  6 ++---
+ .../Structural_Masangkay_Quiz1_Module.html    | 12 +++++-----
+ .../Structural_Veron_Exam1_Module.html        | 12 +++++-----
+ .../theory-of-architecture-and-planning.html  |  4 ++--
+ .../index.html                                |  6 ++---
+ .../quizzes/TAPP_Zhardei_PreBoard_Module.html | 12 +++++-----
+ .../quizzes/TAPP_Zhardei_Quiz2_Module.html    | 12 +++++-----
+ ..._of_Architecture_Zhardei_Quiz1_Module.html | 12 +++++-----
+ tools/quiz-builder.html                       |  4 ++--
+ welcome.html                                  |  8 +++----
+ 47 files changed, 218 insertions(+), 218 deletions(-)
+
+diff --git a/admin.html b/admin.html
+index 71c4837..d018c74 100644
+--- a/admin.html
++++ b/admin.html
+@@ -9,17 +9,17 @@
+ <link rel="icon" href="favicon.ico" sizes="any">
+ <title>LEA Reviewer — Admin</title>
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+-<script src="assets/lea-confirm.js?v=15"></script>
+-<script src="assets/icons.js?v=15"></script>
++<script src="assets/lea-confirm.js?v=16"></script>
++<script src="assets/icons.js?v=16"></script>
+ <!-- The same reader the app uses, so what the editor sees is exactly what a
+      reader gets. Its balanced-bracket scan also survives question text that a
+      regex would truncate. -->
+-<script src="assets/quiz-source.js?v=15"></script>
+-<script src="assets/quiz-rework.js?v=15"></script>
+-<script src="assets/quiz-reframe-ai.js?v=15"></script>
+-<script src="assets/docx-quiz.js?v=15"></script>
+-<script src="assets/image-intake.js?v=15"></script>
+-<script src="assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="assets/quiz-source.js?v=16"></script>
++<script src="assets/quiz-rework.js?v=16"></script>
++<script src="assets/quiz-reframe-ai.js?v=16"></script>
++<script src="assets/docx-quiz.js?v=16"></script>
++<script src="assets/image-intake.js?v=16"></script>
++<script src="assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+ <style>
+@@ -1726,7 +1726,7 @@ function parseQuizFile(text){
+ function buildAdaptedQuizHtml(raw, format, opts){
+   const { subjectId, moduleId, subjectName, includeBackLink } = opts;
+   let out = raw;
+-  const assetPath = '../../../assets/module-progress.js?v=15';
++  const assetPath = '../../../assets/module-progress.js?v=16';
+ 
+   if(format === 'native'){
+     out = out.replace(/const LEA_SUBJECT_ID\s*=\s*'[^']*';/, `const LEA_SUBJECT_ID = '${subjectId}';`);
+diff --git a/assets/etymology.js b/assets/etymology.js
+index 4bef530..b65b4be 100644
+--- a/assets/etymology.js
++++ b/assets/etymology.js
+@@ -156,7 +156,7 @@
+ 
+   window.LEAEtymology = {
+     decorate(root, subjectId){
+-      if(subjectId !== 'history-of-architecture') return;
++      if(subjectId !== 'history') return;
+       initDelegation();
+       loadGlossary().then(items => decorate(root, items));
+     }
+diff --git a/index.html b/index.html
+index af3cf7c..d8c1a7c 100644
+--- a/index.html
++++ b/index.html
+@@ -12,14 +12,14 @@
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>LEA Reviewer</title>
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+-<script src="assets/icons.js?v=15"></script>
+-<script src="assets/countdown.js?v=15"></script>
+-<script src="assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
+-<script src="assets/quiz-source.js?v=15"></script>
+-<script src="assets/avatar.js?v=15"></script>
+-<script src="assets/module-progress.js?v=15"></script>
+-<script src="assets/offline.js?v=15"></script>
+-<script src="assets/quiz-resume.js?v=15"></script>
++<script src="assets/icons.js?v=16"></script>
++<script src="assets/countdown.js?v=16"></script>
++<script src="assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="assets/quiz-source.js?v=16"></script>
++<script src="assets/avatar.js?v=16"></script>
++<script src="assets/module-progress.js?v=16"></script>
++<script src="assets/offline.js?v=16"></script>
++<script src="assets/quiz-resume.js?v=16"></script>
+ <script>
+ // Coming back to Home from anywhere in the app used to flash the sign-in
+ // screen for about half a second: the signed-out shell is what the document
+@@ -586,7 +586,7 @@
+       border-left:3px solid var(--blue-bright); padding:13px 15px; border-radius:10px; }
+   }
+ </style>
+-<link rel="stylesheet" href="assets/blueprint.css?v=15">
++<link rel="stylesheet" href="assets/blueprint.css?v=16">
+ </head>
+ <body>
+ <div class="wrap">
+diff --git a/onboarding.html b/onboarding.html
+index 71a1894..554c09d 100644
+--- a/onboarding.html
++++ b/onboarding.html
+@@ -89,12 +89,12 @@
+     text-transform:uppercase; color:var(--muted); margin-top:12px;
+   }
+ </style>
+-<link rel="stylesheet" href="assets/blueprint.css?v=15">
+-<script src="assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
+-<script src="assets/quiz-source.js?v=15"></script>
+-<script src="assets/module-progress.js?v=15"></script>
+-<script src="assets/offline.js?v=15"></script>
+-<script src="assets/presence.js?v=15"></script>
++<link rel="stylesheet" href="assets/blueprint.css?v=16">
++<script src="assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="assets/quiz-source.js?v=16"></script>
++<script src="assets/module-progress.js?v=16"></script>
++<script src="assets/offline.js?v=16"></script>
++<script src="assets/presence.js?v=16"></script>
+ <script>if(window.LEAPresence) LEAPresence.init({});</script>
+ </head>
+ <body>
+diff --git a/profile.html b/profile.html
+index afb01a1..762a3c9 100644
+--- a/profile.html
++++ b/profile.html
+@@ -164,13 +164,13 @@
+   .crop-hint{ font-family:var(--font-mono); font-size:9.5px; color:var(--muted); text-align:center; margin-top:10px; line-height:1.6; }
+   .pf-row a:hover, .pf-row button:hover{ border-color:var(--gold); }
+ </style>
+-<link rel="stylesheet" href="assets/blueprint.css?v=15">
+-<script src="assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
+-<script src="assets/quiz-source.js?v=15"></script>
+-<script src="assets/avatar.js?v=15"></script>
+-<script src="assets/module-progress.js?v=15"></script>
+-<script src="assets/offline.js?v=15"></script>
+-<script src="assets/presence.js?v=15"></script>
++<link rel="stylesheet" href="assets/blueprint.css?v=16">
++<script src="assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="assets/quiz-source.js?v=16"></script>
++<script src="assets/avatar.js?v=16"></script>
++<script src="assets/module-progress.js?v=16"></script>
++<script src="assets/offline.js?v=16"></script>
++<script src="assets/presence.js?v=16"></script>
+ <script>if(window.LEAPresence) LEAPresence.init({});</script>
+ </head>
+ <body>
+diff --git a/reminders.html b/reminders.html
+index 9b6a935..fcae889 100644
+--- a/reminders.html
++++ b/reminders.html
+@@ -22,8 +22,8 @@
+   p{ color:var(--muted); font-size:13px; line-height:1.7; margin:0 0 20px; }
+   a{ color:var(--gold-bright); }
+ </style>
+-<script src="assets/offline.js?v=15"></script>
+-<script src="assets/presence.js?v=15"></script>
++<script src="assets/offline.js?v=16"></script>
++<script src="assets/presence.js?v=16"></script>
+ <script>if(window.LEAPresence) LEAPresence.init({});</script>
+ </head>
+ <body>
+diff --git a/run.html b/run.html
+index 12c960f..c202c21 100644
+--- a/run.html
++++ b/run.html
+@@ -542,16 +542,16 @@
+   .etymology-card-hint{display:inline-block;margin:0 8px 0 6px;color:var(--sand);font-size:10px;letter-spacing:.04em;font-style:italic;opacity:.85;}
+   @media (max-width:600px){.etymology-tooltip{max-width:calc(100vw - 24px);padding:13px 14px 12px}.etymology-tooltip-word{font-size:18px}}
+ </style>
+-<link rel="stylesheet" href="assets/blueprint.css?v=15">
+-<script src="assets/lea-confirm.js?v=15"></script>
+-<script src="assets/quiz-source.js?v=15"></script>
+-<script src="assets/etymology.js?v=1"></script>
+-<script src="assets/module-progress.js?v=15"></script>
+-<script src="assets/offline.js?v=15"></script>
+-<script src="assets/presence.js?v=15"></script>
++<link rel="stylesheet" href="assets/blueprint.css?v=16">
++<script src="assets/lea-confirm.js?v=16"></script>
++<script src="assets/quiz-source.js?v=16"></script>
++<script src="assets/etymology.js?v=16"></script>
++<script src="assets/module-progress.js?v=16"></script>
++<script src="assets/offline.js?v=16"></script>
++<script src="assets/presence.js?v=16"></script>
+ <script>if(window.LEAPresence) LEAPresence.init({});</script>
+-<script src="assets/quiz-resume.js?v=15"></script>
+-<script src="assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="assets/quiz-resume.js?v=16"></script>
++<script src="assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
+ </head>
+ <body>
+ <!-- The rail is a sibling of #pageBody, not a child: every render replaces
+@@ -1434,7 +1434,7 @@ function renderCard(){
+   slot.innerHTML =
+     '<div class="bp-card">' +
+       sectionTagHtml(item) +
+-      (SUBJECT && SUBJECT.id === 'history-of-architecture' ? '<span class="etymology-card-hint">click underlined terms for etymology</span>' : '') +
++      (SUBJECT && SUBJECT.id === 'history' ? '<span class="etymology-card-hint">click underlined terms for etymology</span>' : '') +
+       '<span class="clock-chip">' + (MODE === 'exam' ? 'Reviewing · mock exam' : MODE === 'drill' ? 'No clock · drilling your misses' : 'No clock · study mode') + '</span>' +
+       scenarioHtml(item) +
+       '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
+diff --git a/saved.html b/saved.html
+index afa118b..d2f7212 100644
+--- a/saved.html
++++ b/saved.html
+@@ -92,12 +92,12 @@
+     border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
+   }
+ </style>
+-<link rel="stylesheet" href="assets/blueprint.css?v=15">
+-<script src="assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
+-<script src="assets/quiz-source.js?v=15"></script>
+-<script src="assets/module-progress.js?v=15"></script>
+-<script src="assets/offline.js?v=15"></script>
+-<script src="assets/presence.js?v=15"></script>
++<link rel="stylesheet" href="assets/blueprint.css?v=16">
++<script src="assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="assets/quiz-source.js?v=16"></script>
++<script src="assets/module-progress.js?v=16"></script>
++<script src="assets/offline.js?v=16"></script>
++<script src="assets/presence.js?v=16"></script>
+ <script>if(window.LEAPresence) LEAPresence.init({});</script>
+ </head>
+ <body>
+diff --git a/search.html b/search.html
+index 0f12e3e..5a4af26 100644
+--- a/search.html
++++ b/search.html
+@@ -97,12 +97,12 @@
+     border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
+   }
+ </style>
+-<link rel="stylesheet" href="assets/blueprint.css?v=15">
+-<script src="assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
+-<script src="assets/quiz-source.js?v=15"></script>
+-<script src="assets/module-progress.js?v=15"></script>
+-<script src="assets/offline.js?v=15"></script>
+-<script src="assets/presence.js?v=15"></script>
++<link rel="stylesheet" href="assets/blueprint.css?v=16">
++<script src="assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="assets/quiz-source.js?v=16"></script>
++<script src="assets/module-progress.js?v=16"></script>
++<script src="assets/offline.js?v=16"></script>
++<script src="assets/presence.js?v=16"></script>
+ <script>if(window.LEAPresence) LEAPresence.init({});</script>
+ </head>
+ <body>
+diff --git a/standings.html b/standings.html
+index ebd4089..f69ec68 100644
+--- a/standings.html
++++ b/standings.html
+@@ -111,13 +111,13 @@
+     border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
+   }
+ </style>
+-<link rel="stylesheet" href="assets/blueprint.css?v=15">
+-<link rel="stylesheet" href="assets/leaderboard.css?v=15">
+-<script src="assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
+-<script src="assets/avatar.js?v=15"></script>
+-<script src="assets/leaderboard.js?v=15"></script>
+-<script src="assets/offline.js?v=15"></script>
+-<script src="assets/presence.js?v=15"></script>
++<link rel="stylesheet" href="assets/blueprint.css?v=16">
++<link rel="stylesheet" href="assets/leaderboard.css?v=16">
++<script src="assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="assets/avatar.js?v=16"></script>
++<script src="assets/leaderboard.js?v=16"></script>
++<script src="assets/offline.js?v=16"></script>
++<script src="assets/presence.js?v=16"></script>
+ <script>if(window.LEAPresence) LEAPresence.init({});</script>
+ </head>
+ <body>
+diff --git a/subject.html b/subject.html
+index 436429a..2643be5 100644
+--- a/subject.html
++++ b/subject.html
+@@ -313,18 +313,18 @@
+      draws. Only the modal needs a little more width to hold a face, a name and
+      the stats without crowding. */
+ </style>
+-<link rel="stylesheet" href="assets/blueprint.css?v=15">
+-<link rel="stylesheet" href="assets/leaderboard.css?v=15">
+-<script src="assets/presence.js?v=15"></script>
+-<script src="assets/avatar.js?v=15"></script>
+-<script src="assets/leaderboard.js?v=15"></script>
+-<script src="assets/lea-confirm.js?v=15"></script>
+-<script src="assets/quiz-source.js?v=15"></script>
+-<script src="assets/module-progress.js?v=15"></script>
+-<script src="assets/offline.js?v=15"></script>
+-<script src="assets/quiz-resume.js?v=15"></script>
+-<script src="assets/icons.js?v=15"></script>
+-<script src="assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
++<link rel="stylesheet" href="assets/blueprint.css?v=16">
++<link rel="stylesheet" href="assets/leaderboard.css?v=16">
++<script src="assets/presence.js?v=16"></script>
++<script src="assets/avatar.js?v=16"></script>
++<script src="assets/leaderboard.js?v=16"></script>
++<script src="assets/lea-confirm.js?v=16"></script>
++<script src="assets/quiz-source.js?v=16"></script>
++<script src="assets/module-progress.js?v=16"></script>
++<script src="assets/offline.js?v=16"></script>
++<script src="assets/quiz-resume.js?v=16"></script>
++<script src="assets/icons.js?v=16"></script>
++<script src="assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
+ </head>
+ <body>
+ <div class="wrap">
+diff --git a/subjects/architectural-design.html b/subjects/architectural-design.html
+index b4bf49a..b9a74bf 100644
+--- a/subjects/architectural-design.html
++++ b/subjects/architectural-design.html
+@@ -142,8 +142,8 @@
+   .panel h2{ font-family:var(--font-head); font-weight:700; font-size:22px; text-transform:uppercase; color:var(--ink); margin:0 0 10px; }
+   .panel p{ color:var(--sand); font-size:13.5px; line-height:1.6; max-width:420px; margin:0 auto; }
+ </style>
+-<script src="../assets/presence.js?v=15"></script>
+-<script src="../assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="../assets/presence.js?v=16"></script>
++<script src="../assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
+ </head>
+ <body>
+ <div class="wrap">
+diff --git a/subjects/architectural-sites-proponents-styles/index.html b/subjects/architectural-sites-proponents-styles/index.html
+index b573fd8..a84c2fb 100644
+--- a/subjects/architectural-sites-proponents-styles/index.html
++++ b/subjects/architectural-sites-proponents-styles/index.html
+@@ -129,9 +129,9 @@
+   .leaderboard-row .lb-stats{ color:var(--sand); font-size:11.5px; text-align:right; font-family:var(--font-mono); }
+   .leaderboard-empty{ color:var(--sand); font-style:italic; text-align:center; padding:12px 0; }
+ </style>
+-<script src="../../assets/presence.js?v=15"></script>
+-<script src="../../assets/module-progress.js?v=15"></script>
+-<script src="../../assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="../../assets/presence.js?v=16"></script>
++<script src="../../assets/module-progress.js?v=16"></script>
++<script src="../../assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
+ </head>
+ <body>
+ <div class="wrap">
+diff --git a/subjects/architectural-sites-proponents-styles/quizzes/Identify_Architect_Module.html b/subjects/architectural-sites-proponents-styles/quizzes/Identify_Architect_Module.html
+index 4dd1e65..8f83cc5 100644
+--- a/subjects/architectural-sites-proponents-styles/quizzes/Identify_Architect_Module.html
++++ b/subjects/architectural-sites-proponents-styles/quizzes/Identify_Architect_Module.html
+@@ -310,12 +310,12 @@
+     letter-spacing:0.01em !important;
+   }
+ </style>
+-<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=15">
++<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=16">
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/module-progress.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15" data-alt-class="dark-mode" data-default-is="light"></script>
+-<script src="../../../assets/sfx.js?v=15"></script>
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/module-progress.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16" data-alt-class="dark-mode" data-default-is="light"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
+ </head>
+ <body data-desk="2col">
+ <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+@@ -744,7 +744,7 @@ if (window.LEATheme) { LEATheme.init({ altClass:'dark-mode', defaultIs:'light',
+ buildTesserae();
+ renderQuestion();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'architectural-sites-proponents-styles';
+diff --git a/subjects/architectural-sites-proponents-styles/quizzes/Identify_Structure_Module.html b/subjects/architectural-sites-proponents-styles/quizzes/Identify_Structure_Module.html
+index 8927bbe..4f51085 100644
+--- a/subjects/architectural-sites-proponents-styles/quizzes/Identify_Structure_Module.html
++++ b/subjects/architectural-sites-proponents-styles/quizzes/Identify_Structure_Module.html
+@@ -310,12 +310,12 @@
+     letter-spacing:0.01em !important;
+   }
+ </style>
+-<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=15">
++<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=16">
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/module-progress.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15" data-alt-class="dark-mode" data-default-is="light"></script>
+-<script src="../../../assets/sfx.js?v=15"></script>
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/module-progress.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16" data-alt-class="dark-mode" data-default-is="light"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
+ </head>
+ <body data-desk="2col">
+ <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+@@ -744,7 +744,7 @@ if (window.LEATheme) { LEATheme.init({ altClass:'dark-mode', defaultIs:'light',
+ buildTesserae();
+ renderQuestion();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'architectural-sites-proponents-styles';
+diff --git a/subjects/architectural-sites-proponents-styles/quizzes/Identify_Style_Module.html b/subjects/architectural-sites-proponents-styles/quizzes/Identify_Style_Module.html
+index 13807ff..7482b99 100644
+--- a/subjects/architectural-sites-proponents-styles/quizzes/Identify_Style_Module.html
++++ b/subjects/architectural-sites-proponents-styles/quizzes/Identify_Style_Module.html
+@@ -310,12 +310,12 @@
+     letter-spacing:0.01em !important;
+   }
+ </style>
+-<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=15">
++<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=16">
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/module-progress.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15" data-alt-class="dark-mode" data-default-is="light"></script>
+-<script src="../../../assets/sfx.js?v=15"></script>
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/module-progress.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16" data-alt-class="dark-mode" data-default-is="light"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
+ </head>
+ <body data-desk="2col">
+ <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+@@ -744,7 +744,7 @@ if (window.LEATheme) { LEATheme.init({ altClass:'dark-mode', defaultIs:'light',
+ buildTesserae();
+ renderQuestion();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'architectural-sites-proponents-styles';
+diff --git a/subjects/building-laws/index.html b/subjects/building-laws/index.html
+index 14adb8a..0a4fb51 100644
+--- a/subjects/building-laws/index.html
++++ b/subjects/building-laws/index.html
+@@ -472,8 +472,8 @@
+     letter-spacing:0.01em !important;
+   }
+ </style>
+-<script src="../../assets/presence.js?v=15"></script>
+-<script src="../../assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="../../assets/presence.js?v=16"></script>
++<script src="../../assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
+ </head>
+ <body>
+ <div class="wrap">
+diff --git a/subjects/building-laws/modules/index.html b/subjects/building-laws/modules/index.html
+index 43256b5..6331b9e 100644
+--- a/subjects/building-laws/modules/index.html
++++ b/subjects/building-laws/modules/index.html
+@@ -51,8 +51,8 @@
+   .panel p{ color:var(--sand); font-size:13.5px; line-height:1.6; }
+ </style>
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
+ </head>
+ <body>
+ <script>
+diff --git a/subjects/building-laws/quizzes/BLDG_LAWS_Pedro_Quiz5_6_BP220_PD957.html b/subjects/building-laws/quizzes/BLDG_LAWS_Pedro_Quiz5_6_BP220_PD957.html
+index 4e0a215..e9cf49d 100644
+--- a/subjects/building-laws/quizzes/BLDG_LAWS_Pedro_Quiz5_6_BP220_PD957.html
++++ b/subjects/building-laws/quizzes/BLDG_LAWS_Pedro_Quiz5_6_BP220_PD957.html
+@@ -472,9 +472,9 @@
+   }
+ </style>
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15" data-alt-class="dark-mode" data-default-is="light"></script>
+-<script src="../../../assets/sfx.js?v=15"></script>
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16" data-alt-class="dark-mode" data-default-is="light"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
+ </head>
+ <body>
+ <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+@@ -899,7 +899,7 @@ document.getElementById('orderShuffleBtn').addEventListener('click', () => {
+ buildTesserae();
+ renderQuestion();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'building-laws';
+diff --git a/subjects/building-laws/quizzes/PD1096_Quiz1_Pedro.html b/subjects/building-laws/quizzes/PD1096_Quiz1_Pedro.html
+index f953564..f87f1a9 100644
+--- a/subjects/building-laws/quizzes/PD1096_Quiz1_Pedro.html
++++ b/subjects/building-laws/quizzes/PD1096_Quiz1_Pedro.html
+@@ -442,9 +442,9 @@
+   }
+ </style>
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
+-<script src="../../../assets/sfx.js?v=15"></script>
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
+ </head>
+ <body>
+ <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+@@ -857,7 +857,7 @@ document.getElementById('orderShuffleBtn').addEventListener('click', () => {
+ buildTesserae();
+ renderQuestion();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'building-laws';
+diff --git a/subjects/building-laws/quizzes/PD1096_Quiz2_Pedro.html b/subjects/building-laws/quizzes/PD1096_Quiz2_Pedro.html
+index b35c596..8c74946 100644
+--- a/subjects/building-laws/quizzes/PD1096_Quiz2_Pedro.html
++++ b/subjects/building-laws/quizzes/PD1096_Quiz2_Pedro.html
+@@ -450,9 +450,9 @@
+   }
+ </style>
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15" data-alt-class="dark-mode" data-default-is="light"></script>
+-<script src="../../../assets/sfx.js?v=15"></script>
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16" data-alt-class="dark-mode" data-default-is="light"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
+ </head>
+ <body>
+ <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+@@ -866,7 +866,7 @@ document.getElementById('orderShuffleBtn').addEventListener('click', () => {
+ buildTesserae();
+ renderQuestion();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'building-laws';
+diff --git a/subjects/building-laws/quizzes/PD1096_Quiz3_Pedro.html b/subjects/building-laws/quizzes/PD1096_Quiz3_Pedro.html
+index 336b538..93abdd0 100644
+--- a/subjects/building-laws/quizzes/PD1096_Quiz3_Pedro.html
++++ b/subjects/building-laws/quizzes/PD1096_Quiz3_Pedro.html
+@@ -448,9 +448,9 @@
+   }
+ </style>
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
+-<script src="../../../assets/sfx.js?v=15"></script>
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
+ </head>
+ <body>
+ <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+@@ -865,7 +865,7 @@ document.getElementById('orderShuffleBtn').addEventListener('click', () => {
+ buildTesserae();
+ renderQuestion();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'building-laws';
+diff --git a/subjects/building-laws/quizzes/PP_BldgLaws_Preboard_Quiz_Pedro.html b/subjects/building-laws/quizzes/PP_BldgLaws_Preboard_Quiz_Pedro.html
+index 970ad21..cb07f64 100644
+--- a/subjects/building-laws/quizzes/PP_BldgLaws_Preboard_Quiz_Pedro.html
++++ b/subjects/building-laws/quizzes/PP_BldgLaws_Preboard_Quiz_Pedro.html
+@@ -455,11 +455,11 @@
+     letter-spacing:0.01em !important;
+   }
+ </style>
+-<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=15">
++<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=16">
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15" data-alt-class="dark-mode" data-default-is="light"></script>
+-<script src="../../../assets/sfx.js?v=15"></script>
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16" data-alt-class="dark-mode" data-default-is="light"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
+ </head>
+ <body>
+ <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+@@ -933,7 +933,7 @@ sb.auth.onAuthStateChange((event, session) => {
+   renderQuestion();
+ })();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'building-laws';
+diff --git a/subjects/building-technology.html b/subjects/building-technology.html
+index 43bb2fa..da76d3b 100644
+--- a/subjects/building-technology.html
++++ b/subjects/building-technology.html
+@@ -142,8 +142,8 @@
+   .panel h2{ font-family:var(--font-head); font-weight:700; font-size:22px; text-transform:uppercase; color:var(--ink); margin:0 0 10px; }
+   .panel p{ color:var(--sand); font-size:13.5px; line-height:1.6; max-width:420px; margin:0 auto; }
+ </style>
+-<script src="../assets/presence.js?v=15"></script>
+-<script src="../assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="../assets/presence.js?v=16"></script>
++<script src="../assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
+ </head>
+ <body>
+ <div class="wrap">
+diff --git a/subjects/building-utilities/index.html b/subjects/building-utilities/index.html
+index 3e05258..45bd9bf 100644
+--- a/subjects/building-utilities/index.html
++++ b/subjects/building-utilities/index.html
+@@ -129,9 +129,9 @@
+   .leaderboard-row .lb-stats{ color:var(--sand); font-size:11.5px; text-align:right; font-family:var(--font-mono); }
+   .leaderboard-empty{ color:var(--sand); font-style:italic; text-align:center; padding:12px 0; }
+ </style>
+-<script src="../../assets/presence.js?v=15"></script>
+-<script src="../../assets/module-progress.js?v=15"></script>
+-<script src="../../assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="../../assets/presence.js?v=16"></script>
++<script src="../../assets/module-progress.js?v=16"></script>
++<script src="../../assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
+ </head>
+ <body>
+ <div class="wrap">
+diff --git a/subjects/building-utilities/quizzes/Utilities_AR_Annie_Exam1_Module.html b/subjects/building-utilities/quizzes/Utilities_AR_Annie_Exam1_Module.html
+index ba54b59..7fd6159 100644
+--- a/subjects/building-utilities/quizzes/Utilities_AR_Annie_Exam1_Module.html
++++ b/subjects/building-utilities/quizzes/Utilities_AR_Annie_Exam1_Module.html
+@@ -529,12 +529,12 @@
+     letter-spacing:0.01em !important;
+   }
+ </style>
+-<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=15">
++<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=16">
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/module-progress.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15" data-alt-class="dark-mode" data-default-is="light"></script>
+-<script src="../../../assets/sfx.js?v=15"></script>
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/module-progress.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16" data-alt-class="dark-mode" data-default-is="light"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
+ </head>
+ <body data-desk="2col">
+ <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+@@ -1206,7 +1206,7 @@ if (window.LEATheme) { LEATheme.init({ altClass:'dark-mode', defaultIs:'light',
+ buildTesserae();
+ renderQuestion();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'building-utilities';
+diff --git a/subjects/building-utilities/quizzes/Utilities_AR_Annie_Quiz1_Module.html b/subjects/building-utilities/quizzes/Utilities_AR_Annie_Quiz1_Module.html
+index 0e75e6a..d8103c1 100644
+--- a/subjects/building-utilities/quizzes/Utilities_AR_Annie_Quiz1_Module.html
++++ b/subjects/building-utilities/quizzes/Utilities_AR_Annie_Quiz1_Module.html
+@@ -474,12 +474,12 @@
+     letter-spacing:0.01em !important;
+   }
+ </style>
+-<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=15">
++<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=16">
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/module-progress.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15" data-alt-class="dark-mode" data-default-is="light"></script>
+-<script src="../../../assets/sfx.js?v=15"></script>
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/module-progress.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16" data-alt-class="dark-mode" data-default-is="light"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
+ </head>
+ <body data-desk="2col">
+ <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+@@ -962,7 +962,7 @@ if (window.LEATheme) { LEATheme.init({ altClass:'dark-mode', defaultIs:'light',
+ buildTesserae();
+ renderQuestion();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'building-utilities';
+diff --git a/subjects/building-utilities/quizzes/Utilities_AR_Annie_Quiz2_Module.html b/subjects/building-utilities/quizzes/Utilities_AR_Annie_Quiz2_Module.html
+index 63ba7c9..12daa27 100644
+--- a/subjects/building-utilities/quizzes/Utilities_AR_Annie_Quiz2_Module.html
++++ b/subjects/building-utilities/quizzes/Utilities_AR_Annie_Quiz2_Module.html
+@@ -475,12 +475,12 @@
+     letter-spacing:0.01em !important;
+   }
+ </style>
+-<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=15">
++<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=16">
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/module-progress.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15" data-alt-class="dark-mode" data-default-is="light"></script>
+-<script src="../../../assets/sfx.js?v=15"></script>
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/module-progress.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16" data-alt-class="dark-mode" data-default-is="light"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
+ </head>
+ <body data-desk="2col">
+ <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+@@ -953,7 +953,7 @@ if (window.LEATheme) { LEATheme.init({ altClass:'dark-mode', defaultIs:'light',
+ buildTesserae();
+ renderQuestion();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'building-utilities';
+diff --git a/subjects/building-utilities/quizzes/Utilities_AR_Annie_Quiz3_Module.html b/subjects/building-utilities/quizzes/Utilities_AR_Annie_Quiz3_Module.html
+index 11bf35b..7b3c3cf 100644
+--- a/subjects/building-utilities/quizzes/Utilities_AR_Annie_Quiz3_Module.html
++++ b/subjects/building-utilities/quizzes/Utilities_AR_Annie_Quiz3_Module.html
+@@ -481,12 +481,12 @@
+     letter-spacing:0.01em !important;
+   }
+ </style>
+-<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=15">
++<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=16">
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/module-progress.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15" data-alt-class="dark-mode" data-default-is="light"></script>
+-<script src="../../../assets/sfx.js?v=15"></script>
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/module-progress.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16" data-alt-class="dark-mode" data-default-is="light"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
+ </head>
+ <body data-desk="2col">
+ <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+@@ -959,7 +959,7 @@ if (window.LEATheme) { LEATheme.init({ altClass:'dark-mode', defaultIs:'light',
+ buildTesserae();
+ renderQuestion();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'building-utilities';
+diff --git a/subjects/history-of-architecture.html b/subjects/history-of-architecture.html
+index 2b717f1..4b90a61 100644
+--- a/subjects/history-of-architecture.html
++++ b/subjects/history-of-architecture.html
+@@ -484,9 +484,9 @@
+     letter-spacing:0.01em !important;
+   }
+ </style>
+-<script src="../assets/presence.js?v=15"></script>
+-<script src="../assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
+-<script src="../assets/sfx.js?v=15"></script>
++<script src="../assets/presence.js?v=16"></script>
++<script src="../assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="../assets/sfx.js?v=16"></script>
+ </head>
+ <body>
+ <div class="wrap">
+diff --git a/subjects/professional-planning.html b/subjects/professional-planning.html
+index 0230ce2..da15081 100644
+--- a/subjects/professional-planning.html
++++ b/subjects/professional-planning.html
+@@ -142,8 +142,8 @@
+   .panel h2{ font-family:var(--font-head); font-weight:700; font-size:22px; text-transform:uppercase; color:var(--ink); margin:0 0 10px; }
+   .panel p{ color:var(--sand); font-size:13.5px; line-height:1.6; max-width:420px; margin:0 auto; }
+ </style>
+-<script src="../assets/presence.js?v=15"></script>
+-<script src="../assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="../assets/presence.js?v=16"></script>
++<script src="../assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
+ </head>
+ <body>
+ <div class="wrap">
+diff --git a/subjects/professional-practice/index.html b/subjects/professional-practice/index.html
+index 20ad3c1..fe44463 100644
+--- a/subjects/professional-practice/index.html
++++ b/subjects/professional-practice/index.html
+@@ -89,8 +89,8 @@
+   .leaderboard-row .lb-stats{ color:var(--sand); font-size:11.5px; text-align:right; font-family:var(--font-mono); }
+   .leaderboard-empty{ color:var(--sand); font-style:italic; text-align:center; padding:12px 0; }
+ </style>
+-<script src="../../assets/presence.js?v=15"></script>
+-<script src="../../assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="../../assets/presence.js?v=16"></script>
++<script src="../../assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
+ </head>
+ <body>
+ <div class="wrap">
+@@ -156,7 +156,7 @@
+   </div>
+ </div>
+ 
+-<script src="../../assets/module-progress.js?v=15"></script>
++<script src="../../assets/module-progress.js?v=16"></script>
+ <script>
+ const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
+ const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
+diff --git a/subjects/professional-practice/quizzes/Architects_SPP_Fees_Quiz_Blueprint_updated.html b/subjects/professional-practice/quizzes/Architects_SPP_Fees_Quiz_Blueprint_updated.html
+index c1b5578..c5c94e7 100644
+--- a/subjects/professional-practice/quizzes/Architects_SPP_Fees_Quiz_Blueprint_updated.html
++++ b/subjects/professional-practice/quizzes/Architects_SPP_Fees_Quiz_Blueprint_updated.html
+@@ -1017,7 +1017,7 @@ render();
+ 
+ </script>
+ 
+-<script src="../../../assets/module-progress.js?v=15"></script>
++<script src="../../../assets/module-progress.js?v=16"></script>
+ <script>
+ // ---- Auto-generated by the admin "Add Module" tool: reports this quiz's ----
+ // ---- answers into the shared LEAProgress tracker, without touching the  ----
+@@ -1051,7 +1051,7 @@ render();
+   }
+ })();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'professional-practice';
+diff --git a/subjects/professional-practice/quizzes/MOC_Situational_Computation_Quiz_Blueprint_updated.html b/subjects/professional-practice/quizzes/MOC_Situational_Computation_Quiz_Blueprint_updated.html
+index b35a404..ab16d89 100644
+--- a/subjects/professional-practice/quizzes/MOC_Situational_Computation_Quiz_Blueprint_updated.html
++++ b/subjects/professional-practice/quizzes/MOC_Situational_Computation_Quiz_Blueprint_updated.html
+@@ -1015,7 +1015,7 @@ render();
+ 
+ </script>
+ 
+-<script src="../../../assets/module-progress.js?v=15"></script>
++<script src="../../../assets/module-progress.js?v=16"></script>
+ <script>
+ // ---- Auto-generated by the admin "Add Module" tool: reports this quiz's ----
+ // ---- answers into the shared LEAProgress tracker, without touching the  ----
+@@ -1049,7 +1049,7 @@ render();
+   }
+ })();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'professional-practice';
+diff --git a/subjects/professional-practice/quizzes/PP_BldgLaws_Preboard_Quiz_Pedro.html b/subjects/professional-practice/quizzes/PP_BldgLaws_Preboard_Quiz_Pedro.html
+index b196042..4c39535 100644
+--- a/subjects/professional-practice/quizzes/PP_BldgLaws_Preboard_Quiz_Pedro.html
++++ b/subjects/professional-practice/quizzes/PP_BldgLaws_Preboard_Quiz_Pedro.html
+@@ -445,7 +445,7 @@
+     letter-spacing:0.01em !important;
+   }
+ </style>
+-<script src="../../../assets/sfx.js?v=15"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
+ </head>
+ <body>
+ <div style="max-width:900px;margin:0 auto;padding:14px 16px 0;font-family:sans-serif;font-size:13px;">
+@@ -858,7 +858,7 @@ initTheme();
+ buildTesserae();
+ renderQuestion();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'professional-practice';
+diff --git a/subjects/professional-practice/quizzes/SPP_ArchitectsGuidelines_FullCoverage_Quiz.html b/subjects/professional-practice/quizzes/SPP_ArchitectsGuidelines_FullCoverage_Quiz.html
+index bcafdeb..5fa0916 100644
+--- a/subjects/professional-practice/quizzes/SPP_ArchitectsGuidelines_FullCoverage_Quiz.html
++++ b/subjects/professional-practice/quizzes/SPP_ArchitectsGuidelines_FullCoverage_Quiz.html
+@@ -278,12 +278,12 @@
+     letter-spacing:0.01em !important;
+   }
+ </style>
+-<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=15">
++<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=16">
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/module-progress.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
+-<script src="../../../assets/sfx.js?v=15"></script>
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/module-progress.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
+ </head>
+ <body>
+ <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+@@ -867,7 +867,7 @@ document.getElementById('orderShuffleBtn').addEventListener('click', () => {
+ buildTesserae();
+ renderQuestion();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'professional-practice';
+diff --git a/subjects/professional-practice/quizzes/SPP_Fees_MCQ_Reviewer_Situational.html b/subjects/professional-practice/quizzes/SPP_Fees_MCQ_Reviewer_Situational.html
+index df91959..683b76f 100644
+--- a/subjects/professional-practice/quizzes/SPP_Fees_MCQ_Reviewer_Situational.html
++++ b/subjects/professional-practice/quizzes/SPP_Fees_MCQ_Reviewer_Situational.html
+@@ -1013,7 +1013,7 @@ render();
+ 
+ </script>
+ 
+-<script src="../../../assets/module-progress.js?v=15"></script>
++<script src="../../../assets/module-progress.js?v=16"></script>
+ <script>
+ // ---- Auto-generated by the admin "Add Module" tool: reports this quiz's ----
+ // ---- answers into the shared LEAProgress tracker, without touching the  ----
+@@ -1047,7 +1047,7 @@ render();
+   }
+ })();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'professional-practice';
+diff --git a/subjects/structural/index.html b/subjects/structural/index.html
+index bf21ec7..a83269b 100644
+--- a/subjects/structural/index.html
++++ b/subjects/structural/index.html
+@@ -129,9 +129,9 @@
+   .leaderboard-row .lb-stats{ color:var(--sand); font-size:11.5px; text-align:right; font-family:var(--font-mono); }
+   .leaderboard-empty{ color:var(--sand); font-style:italic; text-align:center; padding:12px 0; }
+ </style>
+-<script src="../../assets/presence.js?v=15"></script>
+-<script src="../../assets/module-progress.js?v=15"></script>
+-<script src="../../assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="../../assets/presence.js?v=16"></script>
++<script src="../../assets/module-progress.js?v=16"></script>
++<script src="../../assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
+ </head>
+ <body>
+ <div class="wrap">
+diff --git a/subjects/structural/quizzes/Structural_Masangkay_Quiz1_Module.html b/subjects/structural/quizzes/Structural_Masangkay_Quiz1_Module.html
+index b0c157b..1f73886 100644
+--- a/subjects/structural/quizzes/Structural_Masangkay_Quiz1_Module.html
++++ b/subjects/structural/quizzes/Structural_Masangkay_Quiz1_Module.html
+@@ -504,12 +504,12 @@
+     letter-spacing:0.01em !important;
+   }
+ </style>
+-<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=15">
++<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=16">
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/module-progress.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15" data-alt-class="dark-mode" data-default-is="light"></script>
+-<script src="../../../assets/sfx.js?v=15"></script>
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/module-progress.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16" data-alt-class="dark-mode" data-default-is="light"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
+ </head>
+ <body data-desk="2col">
+ <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+@@ -1011,7 +1011,7 @@ if (window.LEATheme) { LEATheme.init({ altClass:'dark-mode', defaultIs:'light',
+ buildTesserae();
+ renderQuestion();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'structural';
+diff --git a/subjects/structural/quizzes/Structural_Veron_Exam1_Module.html b/subjects/structural/quizzes/Structural_Veron_Exam1_Module.html
+index f72ef7c..24fa21e 100644
+--- a/subjects/structural/quizzes/Structural_Veron_Exam1_Module.html
++++ b/subjects/structural/quizzes/Structural_Veron_Exam1_Module.html
+@@ -488,11 +488,11 @@
+     letter-spacing:0.01em !important;
+   }
+ </style>
+-<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=15">
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15"></script>
+-<script src="../../../assets/sfx.js?v=15"></script>
+-<script src="../../../assets/module-progress.js?v=15"></script>
++<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=16">
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
++<script src="../../../assets/module-progress.js?v=16"></script>
+ </head>
+ <body data-desk="2col">
+ <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+@@ -1189,7 +1189,7 @@ initTheme();
+ buildTesserae();
+ renderQuestion();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'structural';
+diff --git a/subjects/theory-of-architecture-and-planning.html b/subjects/theory-of-architecture-and-planning.html
+index ebbaf93..fb519c4 100644
+--- a/subjects/theory-of-architecture-and-planning.html
++++ b/subjects/theory-of-architecture-and-planning.html
+@@ -69,8 +69,8 @@
+   .panel h2{ font-family:var(--font-head); font-size:20px; color:var(--ink); margin:0 0 10px; }
+   .panel p{ color:var(--sand); font-size:13.5px; line-height:1.6; max-width:420px; margin:0 auto; }
+ </style>
+-<script src="../assets/presence.js?v=15"></script>
+-<script src="../assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="../assets/presence.js?v=16"></script>
++<script src="../assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
+ </head>
+ <body>
+ <div class="wrap">
+diff --git a/subjects/theory-of-architecture-and-planning/index.html b/subjects/theory-of-architecture-and-planning/index.html
+index bc8cf85..b8ae07c 100644
+--- a/subjects/theory-of-architecture-and-planning/index.html
++++ b/subjects/theory-of-architecture-and-planning/index.html
+@@ -129,9 +129,9 @@
+   .leaderboard-row .lb-stats{ color:var(--sand); font-size:11.5px; text-align:right; font-family:var(--font-mono); }
+   .leaderboard-empty{ color:var(--sand); font-style:italic; text-align:center; padding:12px 0; }
+ </style>
+-<script src="../../assets/presence.js?v=15"></script>
+-<script src="../../assets/module-progress.js?v=15"></script>
+-<script src="../../assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="../../assets/presence.js?v=16"></script>
++<script src="../../assets/module-progress.js?v=16"></script>
++<script src="../../assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
+ </head>
+ <body>
+ <div class="wrap">
+diff --git a/subjects/theory-of-architecture-and-planning/quizzes/TAPP_Zhardei_PreBoard_Module.html b/subjects/theory-of-architecture-and-planning/quizzes/TAPP_Zhardei_PreBoard_Module.html
+index 480eebc..c21e7e2 100644
+--- a/subjects/theory-of-architecture-and-planning/quizzes/TAPP_Zhardei_PreBoard_Module.html
++++ b/subjects/theory-of-architecture-and-planning/quizzes/TAPP_Zhardei_PreBoard_Module.html
+@@ -420,11 +420,11 @@
+     letter-spacing:0.01em !important;
+   }
+ </style>
+-<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=15">
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15"></script>
+-<script src="../../../assets/sfx.js?v=15"></script>
+-<script src="../../../assets/module-progress.js?v=15"></script>
++<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=16">
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
++<script src="../../../assets/module-progress.js?v=16"></script>
+ </head>
+ <body>
+ <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+@@ -909,7 +909,7 @@ initTheme();
+ buildTesserae();
+ renderQuestion();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'theory-of-architecture-and-planning';
+diff --git a/subjects/theory-of-architecture-and-planning/quizzes/TAPP_Zhardei_Quiz2_Module.html b/subjects/theory-of-architecture-and-planning/quizzes/TAPP_Zhardei_Quiz2_Module.html
+index 967f934..9cad534 100644
+--- a/subjects/theory-of-architecture-and-planning/quizzes/TAPP_Zhardei_Quiz2_Module.html
++++ b/subjects/theory-of-architecture-and-planning/quizzes/TAPP_Zhardei_Quiz2_Module.html
+@@ -420,11 +420,11 @@
+     letter-spacing:0.01em !important;
+   }
+ </style>
+-<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=15">
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15"></script>
+-<script src="../../../assets/sfx.js?v=15"></script>
+-<script src="../../../assets/module-progress.js?v=15"></script>
++<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=16">
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
++<script src="../../../assets/module-progress.js?v=16"></script>
+ </head>
+ <body data-desk="2col">
+ <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+@@ -955,7 +955,7 @@ initTheme();
+ buildTesserae();
+ renderQuestion();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'theory-of-architecture-and-planning';
+diff --git a/subjects/theory-of-architecture-and-planning/quizzes/Theory_of_Architecture_Zhardei_Quiz1_Module.html b/subjects/theory-of-architecture-and-planning/quizzes/Theory_of_Architecture_Zhardei_Quiz1_Module.html
+index f7af3f7..a6cbffb 100644
+--- a/subjects/theory-of-architecture-and-planning/quizzes/Theory_of_Architecture_Zhardei_Quiz1_Module.html
++++ b/subjects/theory-of-architecture-and-planning/quizzes/Theory_of_Architecture_Zhardei_Quiz1_Module.html
+@@ -504,11 +504,11 @@
+     letter-spacing:0.01em !important;
+   }
+ </style>
+-<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=15">
+-<script src="../../../assets/presence.js?v=15"></script>
+-<script src="../../../assets/theme.js?v=15"></script>
+-<script src="../../../assets/sfx.js?v=15"></script>
+-<script src="../../../assets/module-progress.js?v=15"></script>
++<link rel="stylesheet" href="../../../assets/legacy-desktop.css?v=16">
++<script src="../../../assets/presence.js?v=16"></script>
++<script src="../../../assets/theme.js?v=16"></script>
++<script src="../../../assets/sfx.js?v=16"></script>
++<script src="../../../assets/module-progress.js?v=16"></script>
+ </head>
+ <body data-desk="2col">
+ <script>if (window.LEAPresence) { LEAPresence.init(); }</script>
+@@ -1033,7 +1033,7 @@ initTheme();
+ buildTesserae();
+ renderQuestion();
+ </script>
+-<script src="../../../assets/quiz-resume.js?v=15"></script>
++<script src="../../../assets/quiz-resume.js?v=16"></script>
+ <script>
+ (function(){
+   var LEA_RESUME_SUBJECT = 'theory-of-architecture-and-planning';
+diff --git a/tools/quiz-builder.html b/tools/quiz-builder.html
+index 1f6d493..68a7d40 100644
+--- a/tools/quiz-builder.html
++++ b/tools/quiz-builder.html
+@@ -36,8 +36,8 @@
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>Quiz Builder — LEA Reviewer</title>
+-<script src="../assets/quiz-rework.js?v=15"></script>
+-<script src="../assets/docx-quiz.js?v=15"></script>
++<script src="../assets/quiz-rework.js?v=16"></script>
++<script src="../assets/docx-quiz.js?v=16"></script>
+ <style>
+ :root{
+   --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-deep:#0a1520;
+diff --git a/welcome.html b/welcome.html
+index f6addae..ba575a8 100644
+--- a/welcome.html
++++ b/welcome.html
+@@ -79,10 +79,10 @@
+ 
+   .footnote{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); text-align:center; margin-top:16px; }
+ </style>
+-<link rel="stylesheet" href="assets/blueprint.css?v=15">
+-<script src="assets/theme.js?v=15" data-alt-class="light-mode" data-default-is="dark"></script>
+-<script src="assets/offline.js?v=15"></script>
+-<script src="assets/presence.js?v=15"></script>
++<link rel="stylesheet" href="assets/blueprint.css?v=16">
++<script src="assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
++<script src="assets/offline.js?v=16"></script>
++<script src="assets/presence.js?v=16"></script>
+ <script>if(window.LEAPresence) LEAPresence.init({});</script>
+ </head>
+ <body>
+-- 
+2.43.0
+
