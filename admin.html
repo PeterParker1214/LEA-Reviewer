@@ -16,7 +16,6 @@
      regex would truncate. -->
 <script src="assets/quiz-source.js?v=16"></script>
 <script src="assets/quiz-rework.js?v=16"></script>
-<script src="assets/quiz-reframe-ai.js?v=16"></script>
 <script src="assets/docx-quiz.js?v=16"></script>
 <script src="assets/image-intake.js?v=16"></script>
 <script src="assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
@@ -218,6 +217,38 @@
   .report-card .rc-reasons{font-size:12.5px;color:var(--muted);margin-bottom:6px;line-height:1.6;}
   .report-card .rc-reasons b{color:var(--ink);}
   .report-card .rc-comment{font-size:12.5px;color:var(--ink);background:var(--bg-panel);border-radius:6px;padding:8px 10px;margin:4px 0;}
+
+  /* ===== Rework tab ===== */
+  .rw-drop{border:2px dashed var(--line);border-radius:12px;padding:32px 20px;text-align:center;
+    cursor:pointer;color:var(--muted);transition:border-color .15s ease, background .15s ease;}
+  .rw-drop:hover,.rw-drop.over{border-color:var(--gold);background:rgba(224,168,63,.06);}
+  .rw-drop b{color:var(--ink);font-size:15px;display:inline-block;margin-bottom:4px;}
+  .rw-drop span{font-size:13px;}
+  .rw-more{margin-top:12px;}
+  .rw-more summary{cursor:pointer;font-size:13px;color:var(--muted);}
+  .rw-more summary:hover{color:var(--gold-bright);}
+
+  .rw-job-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+  .rw-state{font-size:12.5px;color:var(--muted);white-space:nowrap;}
+  .rw-state.ok{color:var(--good);}
+  .rw-state.bad{color:var(--bad);}
+  .rw-job-btns{display:flex;gap:8px;align-items:center;margin-top:14px;flex-wrap:wrap;}
+
+  /* The question preview: what a reader will actually see, not a stats table. */
+  .rw-peek{margin-top:14px;border:1px solid var(--line);border-radius:10px;
+    padding:16px;background:var(--bg-panel-deep);}
+  .rw-peek-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;
+    margin-bottom:14px;font-size:13px;color:var(--muted);}
+  .rw-peek-topic{font-size:12px;color:var(--gold-bright);margin-bottom:6px;}
+  .rw-peek-stem{font-size:15px;line-height:1.55;margin-bottom:14px;}
+  .rw-choice{display:flex;gap:10px;align-items:baseline;padding:9px 12px;margin-bottom:6px;
+    border:1px solid var(--line);border-radius:8px;font-size:14px;line-height:1.5;}
+  .rw-choice.right{border-color:var(--good);background:rgba(95,191,130,.10);}
+  .rw-letter{color:var(--muted);font-size:12.5px;width:16px;flex-shrink:0;}
+  .rw-choice.right .rw-letter{color:var(--good);}
+  .rw-right-tag{margin-left:auto;color:var(--good);font-size:12px;flex-shrink:0;}
+  .rw-peek-why{margin-top:12px;font-size:13px;line-height:1.6;color:var(--ink);}
+  .rw-peek-why.muted{color:var(--muted);}
 
   /* ===== Reports tab =====
      A report opens where it sits. The old card had an "Edit question" button
@@ -2780,228 +2811,24 @@ init();
 // selecting the same answer it selected before, saving is refused outright —
 // a quiz that scores wrongly is worse than no quiz.
 
-let reworkLoaded = null;   // canonical rows read in
-let reworkResult = null;   // what build() produced
-let reworkOrigin = '';     // human description of where the rows came from
 
-function renderReworkTab(){
-  const subjectOptions = subjects.map(s =>
-    `<option value="${escapeHtml(s.id)}">${escapeHtml(s.name)}</option>`).join('');
-
-  const moduleOptions = subjects.map(s => {
-    const mods = (s.modules || []).map(m =>
-      `<option value="${escapeHtml(s.id)}::${escapeHtml(m.id)}">${escapeHtml(m.no)} — ${escapeHtml(m.title)} (${m.total || '?'})</option>`
-    ).join('');
-    return mods ? `<optgroup label="${escapeHtml(s.name)}">${mods}</optgroup>` : '';
-  }).join('');
-
-  tabReworkEl.innerHTML = `
-    <div class="card">
-      <h2 style="margin-top:0;">Rework an existing module</h2>
-      <p class="field-note">Reshapes questions you already have — it does not write new ones.
-        Stems it recognises get restructured, answer choices move to new positions, and the
-        running order is pushed away from the original. The result is saved as a new module;
-        the one you started from is left alone.</p>
-
-      <div class="field-label">Start from a module on the site</div>
-      <select id="rwSource">
-        <option value="">— choose a module —</option>
-        ${moduleOptions}
-      </select>
-
-      <div style="margin:10px 0 4px;color:var(--muted);font-size:13px;">…or load a file instead</div>
-      <div id="rwDrop" style="border:2px dashed var(--line);border-radius:10px;padding:24px;text-align:center;cursor:pointer;color:var(--muted);transition:border-color .15s ease;">Drop a .docx answer key, or a .json / .html quiz — or click to choose</div>
-      <input type="file" id="rwFile" accept=".docx,.json,.html,.htm" style="display:none;">
-
-      <div id="rwLoadMsg"></div>
-    </div>
-
-    <div class="card hidden" id="rwOptionsCard">
-      <h2 style="margin-top:0;">What to change</h2>
-      <div class="field-grid">
-        <div>
-          <div class="field-label">Restructure stems</div>
-          <select id="rwRewrite">
-            <option value="on" selected>Patterns only — safe, changes few</option>
-            <option value="ai">Local model — EXPERIMENTAL, check every line</option>
-            <option value="off">Off — leave wording alone</option>
-          </select>
-          <div class="field-note" id="rwAiStatus" style="margin-top:4px;"></div>
-        </div>
-        <div>
-          <div class="field-label">Move answer choices</div>
-          <select id="rwShuffle">
-            <option value="on" selected>On — key moves with them</option>
-            <option value="off">Off</option>
-          </select>
-        </div>
-        <div>
-          <div class="field-label">Re-sequence questions</div>
-          <select id="rwReorder">
-            <option value="on" selected>On</option>
-            <option value="off">Off — keep original order</option>
-          </select>
-        </div>
-        <div>
-          <div class="field-label">Seed</div>
-          <input type="number" id="rwSeed" value="42" min="1">
-        </div>
-      </div>
-      <div style="margin-top:12px;">
-        <button class="primary" id="rwPreviewBtn">Preview the result</button>
-      </div>
-      <div id="rwPreviewMsg"></div>
-    </div>
-
-    <div class="card hidden" id="rwResultCard">
-      <h2 style="margin-top:0;">Result</h2>
-      <div id="rwReport"></div>
-
-      <h3 style="margin:18px 0 6px;font-size:15px;">Save it as</h3>
-      <div class="field-grid">
-        <div>
-          <div class="field-label">Subject</div>
-          <select id="rwDestSubject">${subjectOptions}</select>
-        </div>
-        <div>
-          <div class="field-label">Module number</div>
-          <input type="text" id="rwDestNo" placeholder="auto">
-        </div>
-        <div>
-          <div class="field-label">Module id</div>
-          <input type="text" id="rwDestId" placeholder="auto">
-        </div>
-        <div>
-          <div class="field-label">Title</div>
-          <input type="text" id="rwDestTitle" placeholder="Module title">
-        </div>
-      </div>
-      <p class="field-note" id="rwDestPath" style="margin-top:8px;"></p>
-      <div style="margin-top:12px;">
-        <button class="primary" id="rwSaveBtn">Save to the site</button>
-      </div>
-      <div class="save-status" id="rwStatus"></div>
-    </div>
-  `;
-
-  // --- source: an existing module ---
-  document.getElementById('rwSource').addEventListener('change', async (e) => {
-    const val = e.target.value;
-    if(!val) return;
-    const [subjectId, moduleId] = val.split('::');
-    const subject = subjects.find(s => s.id === subjectId);
-    const mod = subject && (subject.modules || []).find(m => m.id === moduleId);
-    if(!mod) return;
-    const msg = document.getElementById('rwLoadMsg');
-    msg.innerHTML = '<div class="msg info">Loading ' + escapeHtml(mod.title) + '…</div>';
-    try{
-      // Same reader the site itself uses, so every module format it can run,
-      // this can rework.
-      const arr = await LEAQuizSource.loadModuleQuestions(mod);
-      if(!arr || !arr.length) throw new Error('That module could not be read.');
-      const rows = arr.map(LEAQuizRework.canonical).filter(Boolean);
-      if(!rows.length) throw new Error('Read the module but found no usable questions.');
-      reworkOrigin = subject.name + ' — ' + mod.title;
-      acceptRows(rows, reworkOrigin, arr.length);
-      const t = document.getElementById('rwDestTitle');
-      if(t && !t.value) t.value = mod.title + ' II';
-      const ds = document.getElementById('rwDestSubject');
-      if(ds) { ds.value = subjectId; refreshDestDefaults(); }
-    }catch(err){
-      msg.innerHTML = '<div class="msg error">' + escapeHtml(err.message) + '</div>';
-    }
-  });
-
-  // --- source: a file ---
-  const drop = document.getElementById('rwDrop');
-  const fileInput = document.getElementById('rwFile');
-  drop.addEventListener('click', () => fileInput.click());
-  drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('over'); });
-  drop.addEventListener('dragleave', () => drop.classList.remove('over'));
-  drop.addEventListener('drop', e => {
-    e.preventDefault(); drop.classList.remove('over');
-    const f = e.dataTransfer.files[0]; if(f) readReworkFile(f);
-  });
-  fileInput.addEventListener('change', e => {
-    const f = e.target.files[0]; if(f) readReworkFile(f);
-  });
-
-  document.getElementById('rwPreviewBtn').addEventListener('click', previewRework);
-
-  // Say plainly whether a local model is available, rather than letting the
-  // first preview fail to explain it.
-  LEAReframeAI.available().then(st => {
-    const el = document.getElementById('rwAiStatus');
-    if(!el) return;
-    if(st.ok && st.models.length){
-      el.innerHTML = '✓ local model ready (' + escapeHtml(st.models[0]) + ') — nothing leaves this machine';
-    } else if(st.ok){
-      el.innerHTML = '⚠ Ollama is running but has no model. Run <code>ollama pull llama3.1:8b</code>.';
-    } else {
-      el.innerHTML = '⚠ no local model running — start Ollama, or choose “Patterns only”';
-    }
-  });
-  document.getElementById('rwSaveBtn').addEventListener('click', saveRework);
-  ['rwDestSubject','rwDestNo','rwDestId'].forEach(id => {
-    const el = document.getElementById(id);
-    if(el) el.addEventListener('change', refreshDestDefaults);
-  });
-}
-
-function readReworkFile(f){
-  const msg = document.getElementById('rwLoadMsg');
-
-  // A .docx is a zip, not text — it takes the reader that knows the house
-  // layout (bold choice = the answer, italics = explanation and source).
-  if(/\.docx$/i.test(f.name)){
-    msg.innerHTML = '<div class="msg info">Reading ' + escapeHtml(f.name) + '…</div>';
-    LEADocxQuiz.read(f).then(res => {
-      const rows = res.rows.map(LEAQuizRework.canonical).filter(Boolean);
-      if(!rows.length) throw new Error('No usable questions in that document.');
-      acceptRows(rows, f.name, res.rows.length);
-      if(res.warnings.length){
-        document.getElementById('rwLoadMsg').innerHTML +=
-          '<div class="msg info">' + res.warnings.length + ' item(s) were skipped:<br>' +
-          res.warnings.map(escapeHtml).join('<br>') + '</div>';
-      }
-      const t = document.getElementById('rwDestTitle');
-      if(t && !t.value) t.value = f.name.replace(/\.docx$/i, '');
-    }).catch(err => {
-      msg.innerHTML = '<div class="msg error">' + escapeHtml(err.message) + '</div>';
-    });
-    return;
-  }
-
-  const reader = new FileReader();
-  reader.onload = () => {
-    try{
-      const { rows, kind } = LEAQuizRework.parseAny(reader.result, f.name);
-      reworkOrigin = f.name;
-      acceptRows(rows, f.name + ' (' + kind + ')', rows.length);
-      const t = document.getElementById('rwDestTitle');
-      if(t && !t.value) t.value = f.name.replace(/\.(json|html?)$/i, '');
-    }catch(err){
-      msg.innerHTML = '<div class="msg error">' + escapeHtml(err.message) + '</div>';
-    }
-  };
-  reader.readAsText(f);
-}
-
-function acceptRows(rows, label, rawCount){
-  reworkLoaded = rows;
-  reworkResult = null;
-  const subs = new Set(rows.map(r => r.s).filter(Boolean));
-  let note = 'Loaded ' + rows.length + ' question(s)';
-  if(subs.size) note += ' across ' + subs.size + ' subtopic(s)';
-  note += ' from ' + label + '.';
-  if(rawCount && rawCount !== rows.length){
-    note += ' ' + (rawCount - rows.length) + ' row(s) were skipped as unreadable.';
-  }
-  document.getElementById('rwLoadMsg').innerHTML = '<div class="msg ok-msg">' + escapeHtml(note) + '</div>';
-  document.getElementById('rwOptionsCard').classList.remove('hidden');
-  document.getElementById('rwResultCard').classList.add('hidden');
-  refreshDestDefaults();
-}
+// ===========================================================================
+// Rework tab
+//
+// Rebuilt around a queue. It used to hold exactly one file: drop a second and
+// the first was gone, so twelve modules meant twelve full passes through load,
+// preview, name, save. Now every dropped file becomes a job with its own
+// destination, they are checked together, and the manifest is written once at
+// the end instead of once per module.
+//
+// The "local model" rewrite option is gone. It rewrote every stem through
+// Ollama and reported all of them fine, while in testing it pasted an answer
+// into a stem, collapsed two different questions into the same wording, and
+// opened 37 of 60 with the same two phrases. It also only ever worked on a
+// machine running Ollama, which is not the phone this panel is usually opened
+// on. assets/quiz-reframe-ai.js is left in place, unreferenced, in case it is
+// ever worth revisiting.
+// ===========================================================================
 
 // A subject's data folder is NOT always its id — "history" keeps its modules
 // in data/history-of-architecture/. Read the folder off the modules that are
@@ -3016,287 +2843,451 @@ function subjectFolder(subject){
   return subject.id;
 }
 
-function refreshDestDefaults(){
-  const sel = document.getElementById('rwDestSubject');
-  if(!sel) return;
-  const subject = subjects.find(s => s.id === sel.value);
-  if(!subject) return;
-  const noEl = document.getElementById('rwDestNo');
-  const idEl = document.getElementById('rwDestId');
-  if(noEl && !noEl.dataset.touched) noEl.value = nextModuleNo(subject);
-  if(idEl && !idEl.dataset.touched) idEl.value = subject.id + '-' + (noEl ? noEl.value : '01');
-  const folder = subjectFolder(subject);
-  const pathEl = document.getElementById('rwDestPath');
-  if(pathEl) pathEl.innerHTML = 'Will be written to <code>data/' +
-    escapeHtml(folder) + '/' + escapeHtml(noEl ? noEl.value : '01') +
-    '.json</code> and added to <code>' + escapeHtml(MANIFEST_PATH) + '</code>.' +
-    (folder !== subject.id ? ' <em>(this subject\'s folder is named differently from its id)</em>' : '');
-  ['rwDestNo','rwDestId'].forEach(id => {
-    const el = document.getElementById(id);
-    if(el && !el._wired){ el._wired = true; el.addEventListener('input', () => { el.dataset.touched = '1'; }); }
-  });
-}
+let rwJobs = [];      // one per file or module loaded
+let rwJobSeq = 0;
 
-let reworkAiReport = null;   // what the local model did, when it was used
+function rwJob(id){ return rwJobs.find(j => j.id === id); }
 
-async function previewRework(){
-  const msg = document.getElementById('rwPreviewMsg');
-  const btn = document.getElementById('rwPreviewBtn');
-  msg.innerHTML = '';
-  reworkAiReport = null;
-  if(!reworkLoaded){ msg.innerHTML = '<div class="msg error">Load a module or a file first.</div>'; return; }
+function renderReworkTab(){
+  const subjectOptions = subjects.map(s =>
+    '<option value="' + escapeHtml(s.id) + '">' + escapeHtml(s.name) + '</option>').join('');
 
-  const mode = document.getElementById('rwRewrite').value;
-  const seed = parseInt(document.getElementById('rwSeed').value, 10) || 42;
-  let rowsForBuild = reworkLoaded;
+  const moduleOptions = subjects.map(s => {
+    const mods = (s.modules || []).map(m =>
+      '<option value="' + escapeHtml(s.id) + '::' + escapeHtml(m.id) + '">' +
+      escapeHtml(m.no) + ' — ' + escapeHtml(m.title) + ' (' + (m.total || '?') + ')</option>').join('');
+    return mods ? '<optgroup label="' + escapeHtml(s.name) + '">' + mods + '</optgroup>' : '';
+  }).join('');
 
-  if(mode === 'ai'){
-    const status = await LEAReframeAI.available();
-    if(!status.ok){
-      msg.innerHTML = '<div class="msg error">No local model is running. Start Ollama, or ' +
-        'switch “Restructure stems” to “Patterns only”.</div>';
-      return;
-    }
-    const model = status.models.find(m => /llama3|qwen|mistral|phi/i.test(m)) || status.models[0];
-    if(!model){
-      msg.innerHTML = '<div class="msg error">Ollama is running but has no model installed. ' +
-        'Run <code>ollama pull llama3.1:8b</code> first.</div>';
-      return;
-    }
-    // Tested on a 60-question module: every stem came back "accepted", and the
-    // output still had an option pasted into a stem, two different questions
-    // collapsed into the same wording, and 37 of 60 opening with the same two
-    // phrases. The reply check guards numbers, citations and units — it cannot
-    // tell that a question now asks something else. Until it also checks for
-    // leaked options, duplicate stems and content drift, this stays opt-in and
-    // says so.
-    if(!confirm('The local model rewrites every stem, and the safety check cannot tell '
-      + 'when it changes what a question asks.\n\n'
-      + 'In testing it pasted an answer into one stem, collapsed two different '
-      + 'questions into the same wording, and started 37 of 60 with the same two '
-      + 'phrases — while reporting all 60 as fine.\n\n'
-      + 'Read every line in the preview before saving. Continue?')){
-      msg.innerHTML = '';
-      return;
-    }
-    btn.disabled = true;
-    msg.innerHTML = '<div class="msg info" id="rwAiProgress">Reframing with ' +
-      escapeHtml(model) + ' — 0 of ' + reworkLoaded.length + '…</div>';
-    try{
-      const res = await LEAReframeAI.reframeAll(reworkLoaded, {
-        model, seed,
-        onProgress: (done, total) => {
-          const el = document.getElementById('rwAiProgress');
-          if(el) el.textContent = 'Reframing with ' + model + ' — ' + done + ' of ' + total + '…';
-        }
-      });
-      reworkAiReport = { model, accepted: res.accepted, rejected: res.rejected, stems: res.stems };
-      rowsForBuild = reworkLoaded.map((r, i) => Object.assign({}, r, { q: res.stems[i] }));
-      msg.innerHTML = '';
-    }catch(err){
-      msg.innerHTML = '<div class="msg error">' + escapeHtml(err.message) + '</div>';
-      btn.disabled = false; return;
-    }
-    btn.disabled = false;
-  }
+  tabReworkEl.innerHTML =
+    '<div class="card">' +
+      '<h2 style="margin-top:0;">Add quizzes</h2>' +
+      '<p class="field-note">Drop in answer keys or quiz files and they become modules on the site. ' +
+        'Questions get shuffled so the new module is not a copy of the file you started from. ' +
+        'Nothing you already have is changed.</p>' +
 
-  try{
-    reworkResult = LEAQuizRework.build(rowsForBuild, {
-      seed: seed,
-      rewrite: mode === 'on',
-      shuffleOptions: document.getElementById('rwShuffle').value === 'on',
-      reorder: document.getElementById('rwReorder').value === 'on'
-    });
-  }catch(err){
-    msg.innerHTML = '<div class="msg error">' + escapeHtml(err.message) + '</div>'; return;
-  }
-  renderReworkReport();
-  document.getElementById('rwResultCard').classList.remove('hidden');
-  document.getElementById('rwResultCard').scrollIntoView({ behavior:'smooth', block:'start' });
-}
+      '<div id="rwDrop" class="rw-drop">' +
+        '<b>Drop your files here</b><br>' +
+        '<span>Word documents, or .json / .html quizzes. Several at once is fine.</span>' +
+      '</div>' +
+      '<input type="file" id="rwFile" accept=".docx,.json,.html,.htm" multiple style="display:none;">' +
 
-function renderReworkReport(){
-  const { rows, rewritten, skipped, stats, keyOk, checked, templated } = reworkResult;
-  let html = '';
+      '<details class="rw-more"><summary>Or start from a quiz already on the site</summary>' +
+        '<select id="rwSource" style="margin-top:10px;">' +
+          '<option value="">— choose a module —</option>' + moduleOptions +
+        '</select>' +
+      '</details>' +
 
-  html += '<div class="msg ' + (keyOk ? 'ok-msg' : 'error') + '">' +
-    (keyOk
-      ? 'Answer key verified on ' + checked + ' of ' + rows.length +
-        ' question(s) — each still selects the same answer it did before.' +
-        (templated ? ' ' + templated + ' “Both A and B” option(s) had their internal references renumbered.' : '')
-      : 'Answer key mismatch — a question no longer selects the answer it started with. Saving is blocked.') +
+      '<div id="rwLoadMsg"></div>' +
+    '</div>' +
+
+    '<div class="card hidden" id="rwOptionsCard">' +
+      '<h2 style="margin-top:0;">How to shuffle them</h2>' +
+      '<p class="field-note">These apply to everything in the list below.</p>' +
+      '<div class="field-grid">' +
+        '<div>' +
+          '<div class="field-label">Reword the questions</div>' +
+          '<select id="rwRewrite">' +
+            '<option value="on" selected>Yes, where it is safe</option>' +
+            '<option value="off">No, leave the wording alone</option>' +
+          '</select>' +
+          '<div class="field-note">Only reshapes sentences it recognises. It never touches the choices.</div>' +
+        '</div>' +
+        '<div>' +
+          '<div class="field-label">Move the choices around</div>' +
+          '<select id="rwShuffle">' +
+            '<option value="on" selected>Yes</option>' +
+            '<option value="off">No</option>' +
+          '</select>' +
+          '<div class="field-note">The right answer moves with them.</div>' +
+        '</div>' +
+        '<div>' +
+          '<div class="field-label">Change the question order</div>' +
+          '<select id="rwReorder">' +
+            '<option value="on" selected>Yes</option>' +
+            '<option value="off">No, keep the original order</option>' +
+          '</select>' +
+        '</div>' +
+      '</div>' +
+      '<details class="rw-more"><summary>Advanced</summary>' +
+        '<div class="field-label" style="margin-top:10px;">Shuffle seed</div>' +
+        '<input type="number" id="rwSeed" value="42" min="1" style="max-width:140px;">' +
+        '<div class="field-note">The same seed shuffles the same way every time. Change it to get a different arrangement.</div>' +
+      '</details>' +
+      '<div style="margin-top:14px;">' +
+        '<button class="primary" id="rwPreviewBtn">Check them all</button>' +
+      '</div>' +
+      '<div id="rwPreviewMsg"></div>' +
+    '</div>' +
+
+    '<div id="rwJobs"></div>' +
+
+    '<div class="card hidden" id="rwSaveCard">' +
+      '<button class="primary" id="rwSaveBtn">Save everything to the site</button>' +
+      '<div class="save-status" id="rwStatus"></div>' +
     '</div>';
 
-  // In model mode the rule engine never runs, so its counters are both zero —
-  // reporting "0 stems restructured" next to fourteen reframed questions reads
-  // as a failure. Count whichever actually did the work.
-  const reframedCount = reworkAiReport ? reworkAiReport.accepted : rewritten.length;
-  const untouchedCount = reworkAiReport ? reworkAiReport.rejected.length : skipped.length;
-  html += '<p class="field-note" style="margin-top:10px;">' +
-    rows.length + ' questions · ' + reframedCount + ' reframed · ' +
-    untouchedCount + ' left as written' +
-    (stats ? ' · moved ' + stats.mean + ' places on average, ' + stats.adj + ' neighbouring pairs still together' : '') +
-    '</p>';
+  document.getElementById('rwSource').addEventListener('change', loadModuleAsJob);
 
-  if(reworkAiReport){
-    const ai = reworkAiReport;
-    html += '<p class="field-note">Reframed by <code>' + escapeHtml(ai.model) + '</code>: ' +
-      '<b>' + ai.accepted + '</b> of ' + rows.length + ' accepted, ' +
-      ai.rejected.length + ' rejected and left as written.</p>';
-    const shown = reworkLoaded.slice(0, 8).map((r, i) =>
-      r.q !== ai.stems[i]
-        ? '<tr><td style="color:var(--muted);">' + escapeHtml(r.q) + '</td><td style="color:var(--good);">' +
-          escapeHtml(ai.stems[i]) + '</td></tr>' : '').filter(Boolean).join('');
-    if(shown) html += '<details open><summary>Sample of what changed</summary>' +
-      '<table class="rw-table"><tr><th>Before</th><th>After</th></tr>' + shown + '</table></details>';
-    if(ai.rejected.length) html += '<details><summary>' + ai.rejected.length +
-      ' rejected — the model\'s reply was not safe to use</summary>' +
-      '<p class="field-note">A reply is thrown away if it loses a number, a citation or a unit, ' +
-      'answers the question, or drifts too far in length. The original stem is kept.</p>' +
-      '<table class="rw-table"><tr><th>#</th><th>Why</th><th>It said</th></tr>' +
-      ai.rejected.slice(0, 20).map(r => '<tr><td class="n">' + (r.i + 1) + '</td><td class="field-note">' +
-        escapeHtml(r.why) + '</td><td class="field-note">' + escapeHtml(r.got) + '</td></tr>').join('') +
-      '</table></details>';
+  const drop = document.getElementById('rwDrop');
+  const fileInput = document.getElementById('rwFile');
+  drop.addEventListener('click', () => fileInput.click());
+  drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('over'); });
+  drop.addEventListener('dragleave', () => drop.classList.remove('over'));
+  drop.addEventListener('drop', e => {
+    e.preventDefault(); drop.classList.remove('over');
+    [...e.dataTransfer.files].forEach(readReworkFile);
+  });
+  fileInput.addEventListener('change', e => {
+    [...e.target.files].forEach(readReworkFile);
+    e.target.value = '';       // so dropping the same file twice still fires
+  });
+
+  document.getElementById('rwPreviewBtn').addEventListener('click', previewAllJobs);
+  document.getElementById('rwSaveBtn').addEventListener('click', saveAllJobs);
+
+  renderJobs();
+}
+
+// ---------------------------------------------------------------- loading ---
+
+async function loadModuleAsJob(e){
+  const val = e.target.value;
+  if(!val) return;
+  e.target.value = '';
+  const [subjectId, moduleId] = val.split('::');
+  const subject = subjects.find(s => s.id === subjectId);
+  const mod = subject && (subject.modules || []).find(m => m.id === moduleId);
+  if(!mod) return;
+  const msg = document.getElementById('rwLoadMsg');
+  msg.innerHTML = '<div class="msg info">Reading ' + escapeHtml(mod.title) + '…</div>';
+  try{
+    const arr = await LEAQuizSource.loadModuleQuestions(mod);
+    if(!arr || !arr.length) throw new Error('That module could not be read.');
+    const rows = arr.map(LEAQuizRework.canonical).filter(Boolean);
+    if(!rows.length) throw new Error('Read the module but found no usable questions.');
+    addJob(subject.name + ' — ' + mod.title, rows, arr.length, mod.title + ' II', subjectId);
+    msg.innerHTML = '';
+  }catch(err){
+    msg.innerHTML = '<div class="msg error">' + escapeHtml(err.message) + '</div>';
+  }
+}
+
+function readReworkFile(f){
+  const msg = document.getElementById('rwLoadMsg');
+  const niceTitle = f.name.replace(/\.(docx|json|html?)$/i, '').replace(/[_-]+/g, ' ').trim();
+
+  if(/\.docx$/i.test(f.name)){
+    msg.innerHTML += '<div class="msg info">Reading ' + escapeHtml(f.name) + '…</div>';
+    LEADocxQuiz.read(f).then(res => {
+      const rows = res.rows.map(LEAQuizRework.canonical).filter(Boolean);
+      if(!rows.length) throw new Error('No usable questions in ' + f.name + '.');
+      addJob(f.name, rows, res.rows.length, niceTitle, null, res.warnings);
+    }).catch(err => {
+      msg.innerHTML += '<div class="msg error">' + escapeHtml(f.name + ': ' + err.message) + '</div>';
+    });
+    return;
   }
 
-  if(rewritten.length){
-    html += '<details open><summary>' + rewritten.length + ' stem(s) restructured</summary>' +
+  const reader = new FileReader();
+  reader.onload = () => {
+    try{
+      const { rows, kind } = LEAQuizRework.parseAny(reader.result, f.name);
+      addJob(f.name + ' (' + kind + ')', rows, rows.length, niceTitle);
+    }catch(err){
+      msg.innerHTML += '<div class="msg error">' + escapeHtml(f.name + ': ' + err.message) + '</div>';
+    }
+  };
+  reader.readAsText(f);
+}
+
+function addJob(label, rows, rawCount, title, subjectId, warnings){
+  const job = {
+    id: ++rwJobSeq,
+    label, rows,
+    skippedOnRead: rawCount && rawCount > rows.length ? rawCount - rows.length : 0,
+    warnings: warnings || [],
+    result: null,
+    previewIndex: 0,
+    previewOpen: false,
+    saved: false,
+    dest: {
+      subjectId: subjectId || (subjects[0] && subjects[0].id) || '',
+      no: '', moduleId: '', title: title || label,
+      noTouched: false, idTouched: false
+    }
+  };
+  rwJobs.push(job);
+  autoNumberJobs();
+  document.getElementById('rwOptionsCard').classList.remove('hidden');
+  document.getElementById('rwLoadMsg').innerHTML = '';
+  renderJobs();
+}
+
+// Two files headed for the same subject would otherwise both claim the next
+// free number and the second would fail at save with "already used". Numbering
+// counts what is already queued, not just what is on the site.
+function autoNumberJobs(){
+  const taken = {};
+  subjects.forEach(s => {
+    taken[s.id] = new Set((s.modules || []).map(m => String(m.no)));
+  });
+  rwJobs.forEach(job => {
+    const sid = job.dest.subjectId;
+    if(!taken[sid]) taken[sid] = new Set();
+    if(job.dest.noTouched && job.dest.no){ taken[sid].add(job.dest.no); return; }
+    let n = 1;
+    while(taken[sid].has(String(n).padStart(2, '0'))) n++;
+    job.dest.no = String(n).padStart(2, '0');
+    taken[sid].add(job.dest.no);
+    if(!job.dest.idTouched) job.dest.moduleId = sid + '-' + job.dest.no;
+  });
+}
+
+// ---------------------------------------------------------------- drawing ---
+
+function renderJobs(){
+  const box = document.getElementById('rwJobs');
+  if(!box) return;
+  if(!rwJobs.length){ box.innerHTML = ''; document.getElementById('rwSaveCard').classList.add('hidden'); return; }
+  box.innerHTML = rwJobs.map(jobCardHtml).join('');
+  wireJobs();
+  const ready = rwJobs.some(j => j.result && j.result.keyOk && !j.saved);
+  document.getElementById('rwSaveCard').classList.toggle('hidden', !ready);
+}
+
+function jobCardHtml(job){
+  const subjectOptions = subjects.map(s =>
+    '<option value="' + escapeHtml(s.id) + '"' + (s.id === job.dest.subjectId ? ' selected' : '') + '>' +
+    escapeHtml(s.name) + '</option>').join('');
+
+  const subject = subjects.find(s => s.id === job.dest.subjectId);
+  const path = subject ? 'data/' + subjectFolder(subject) + '/' + job.dest.no + '.json' : '';
+
+  let state = '<span class="rw-state">' + job.rows.length + ' questions</span>';
+  if(job.saved)                       state = '<span class="rw-state ok">Saved</span>';
+  else if(job.result && job.result.keyOk)  state = '<span class="rw-state ok">Checked · ' + job.rows.length + ' questions</span>';
+  else if(job.result && !job.result.keyOk) state = '<span class="rw-state bad">Answer key problem</span>';
+
+  return '<div class="card rw-job" data-job="' + job.id + '">' +
+    '<div class="rw-job-head">' +
+      '<div><b>' + escapeHtml(job.dest.title || job.label) + '</b>' +
+        '<div class="field-note">from ' + escapeHtml(job.label) + '</div></div>' +
+      state +
+    '</div>' +
+
+    (job.skippedOnRead ? '<div class="msg info">' + job.skippedOnRead +
+      ' row(s) in the file could not be read as questions and were left out.</div>' : '') +
+    (job.warnings.length ? '<details class="rw-more"><summary>' + job.warnings.length +
+      ' item(s) skipped while reading</summary><p class="field-note">' +
+      job.warnings.map(escapeHtml).join('<br>') + '</p></details>' : '') +
+
+    '<div class="field-grid" style="margin-top:12px;">' +
+      '<div><div class="field-label">Subject</div>' +
+        '<select data-f="subjectId">' + subjectOptions + '</select></div>' +
+      '<div><div class="field-label">Title</div>' +
+        '<input type="text" data-f="title" value="' + escapeHtml(job.dest.title) + '"></div>' +
+      '<div><div class="field-label">Number</div>' +
+        '<input type="text" data-f="no" value="' + escapeHtml(job.dest.no) + '"></div>' +
+      '<div><div class="field-label">Id</div>' +
+        '<input type="text" data-f="moduleId" value="' + escapeHtml(job.dest.moduleId) + '"></div>' +
+    '</div>' +
+    '<p class="field-note" style="margin-top:8px;">Saved as <code>' + escapeHtml(path) + '</code></p>' +
+
+    (job.result ? jobResultHtml(job) : '') +
+
+    '<div class="rw-job-btns">' +
+      (job.result ? '<button data-act="peek" data-job="' + job.id + '">' +
+        (job.previewOpen ? 'Hide the questions' : 'Look at the questions') + '</button>' : '') +
+      '<span style="flex:1;"></span>' +
+      '<button class="danger" data-act="drop" data-job="' + job.id + '">Remove</button>' +
+    '</div>' +
+
+    (job.previewOpen ? questionPeekHtml(job) : '') +
+  '</div>';
+}
+
+function jobResultHtml(job){
+  const r = job.result;
+  if(!r.keyOk){
+    return '<div class="msg error" style="margin-top:12px;">A question no longer points at the answer it ' +
+      'started with, so this one will not be saved. Remove it and check the source file.</div>';
+  }
+  const moved = r.rewritten.length;
+  return '<div class="msg ok-msg" style="margin-top:12px;">' +
+      'Checked. All ' + r.checked + ' answers still point at the same choice they did in the original.' +
+    '</div>' +
+    '<p class="field-note">' + moved + ' question' + (moved === 1 ? '' : 's') + ' reworded' +
+      (r.skipped.length ? ', ' + r.skipped.length + ' left as written' : '') + '.</p>' +
+    (moved ? '<details class="rw-more"><summary>See the rewording</summary>' +
       '<table class="rw-table"><tr><th>Before</th><th>After</th></tr>' +
-      rewritten.map(r => '<tr><td style="color:var(--muted);">' + escapeHtml(r.from) +
-        '</td><td style="color:var(--good);">' + escapeHtml(r.to) + '</td></tr>').join('') +
-      '</table></details>';
-  }
-  if(skipped.length){
-    html += '<details><summary>' + skipped.length +
-      ' stem(s) left exactly as they were</summary>' +
-      '<p class="field-note">These did not match a pattern it knows how to reshape safely, so it left ' +
-      'them alone rather than guess. Reword them by hand if it matters.</p>' +
-      '<table class="rw-table"><tr><th>Stem</th><th>Why</th></tr>' +
-      skipped.map(r => '<tr><td>' + escapeHtml(r.q) + '</td><td class="field-note">' +
-        escapeHtml(r.why) + '</td></tr>').join('') + '</table></details>';
-  }
-  document.getElementById('rwReport').innerHTML = html;
-  document.getElementById('rwSaveBtn').disabled = !keyOk;
+      r.rewritten.slice(0, 40).map(x => '<tr><td style="color:var(--muted);">' + escapeHtml(x.from) +
+        '</td><td style="color:var(--good);">' + escapeHtml(x.to) + '</td></tr>').join('') +
+      '</table></details>' : '');
 }
 
+// The old preview reported counts and averages — useful for trusting the
+// shuffle, useless for judging whether the questions are any good. This shows
+// the questions the way a reader will meet them.
+function questionPeekHtml(job){
+  const rows = job.result.rows;
+  const i = Math.max(0, Math.min(job.previewIndex, rows.length - 1));
+  const q = rows[i];
+  const letters = ['A','B','C','D','E','F','G','H'];
 
-// Shown when the backend refuses to create a new file. Everything needed to
-// land the module by hand is right here: the file, and the one line that
-// registers it.
-function offerManualSave(path, moduleJson, entry){
-  const box = document.getElementById('rwStatus');
-  const blobUrl = URL.createObjectURL(new Blob([moduleJson], { type: 'application/json' }));
-  const wrap = document.createElement('div');
-  wrap.className = 'card';
-  wrap.style.marginTop = '14px';
-  wrap.innerHTML =
-    '<div class="msg info">The module is built and its answer key checks out — the site just ' +
-    'cannot create a brand-new file yet. Two steps and it is done:</div>' +
-    '<p class="field-note">1 — Download it and put it at <code>' + escapeHtml(path) + '</code> ' +
-    'in the repository.</p>' +
-    '<p class="field-note">2 — Add this to that subject\'s <code>modules</code> list in ' +
-    '<code>' + escapeHtml(MANIFEST_PATH) + '</code>, then commit both.</p>' +
-    '<pre class="rw-pre">' + escapeHtml(JSON.stringify(entry, null, 2)) + '</pre>';
+  const choices = (q.o || []).map((o, n) => {
+    const text = typeof o === 'string' ? o : (o.tpl ? '(combined choice)' : String(o));
+    return '<div class="rw-choice' + (n === q.c ? ' right' : '') + '">' +
+      '<span class="rw-letter">' + (letters[n] || (n + 1)) + '</span>' +
+      '<span>' + escapeHtml(text) + '</span>' +
+      (n === q.c ? '<span class="rw-right-tag">Correct</span>' : '') +
+    '</div>';
+  }).join('');
 
-  const dl = document.createElement('button');
-  dl.className = 'primary';
-  dl.textContent = 'Download ' + path.split('/').pop();
-  dl.addEventListener('click', () => {
-    const a = document.createElement('a');
-    a.href = blobUrl; a.download = path.split('/').pop();
-    document.body.appendChild(a); a.click(); a.remove();
-  });
-
-  const copy = document.createElement('button');
-  copy.textContent = 'Copy the manifest line';
-  copy.style.marginLeft = '8px';
-  copy.addEventListener('click', () => {
-    navigator.clipboard.writeText(JSON.stringify(entry, null, 2)).then(() => {
-      copy.textContent = 'Copied';
-      setTimeout(() => copy.textContent = 'Copy the manifest line', 1400);
-    }, () => {});
-  });
-
-  const row = document.createElement('div');
-  row.style.marginTop = '10px';
-  row.appendChild(dl); row.appendChild(copy);
-  wrap.appendChild(row);
-  box.parentNode.insertBefore(wrap, box.nextSibling);
+  return '<div class="rw-peek">' +
+    '<div class="rw-peek-nav">' +
+      '<button data-act="prev" data-job="' + job.id + '"' + (i === 0 ? ' disabled' : '') + '>Back</button>' +
+      '<span>Question ' + (i + 1) + ' of ' + rows.length + '</span>' +
+      '<button data-act="next" data-job="' + job.id + '"' + (i >= rows.length - 1 ? ' disabled' : '') + '>Next</button>' +
+    '</div>' +
+    (q.s ? '<div class="rw-peek-topic">' + escapeHtml(q.s) + '</div>' : '') +
+    '<div class="rw-peek-stem">' + escapeHtml(q.q || '') + '</div>' +
+    choices +
+    (q.n ? '<div class="rw-peek-why"><b>Why:</b> ' + escapeHtml(q.n) + '</div>'
+         : '<div class="rw-peek-why muted">No explanation on this one.</div>') +
+  '</div>';
 }
 
-async function saveRework(){
+function wireJobs(){
+  document.querySelectorAll('.rw-job').forEach(card => {
+    const job = rwJob(Number(card.dataset.job));
+    if(!job) return;
+    card.querySelectorAll('[data-f]').forEach(el => {
+      el.addEventListener('change', () => {
+        const f = el.dataset.f;
+        job.dest[f] = el.value.trim();
+        if(f === 'no') job.dest.noTouched = true;
+        if(f === 'moduleId') job.dest.idTouched = true;
+        if(f === 'subjectId'){ job.dest.noTouched = false; job.dest.idTouched = false; autoNumberJobs(); }
+        renderJobs();
+      });
+    });
+  });
+
+  document.querySelectorAll('#rwJobs button[data-act]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const job = rwJob(Number(btn.dataset.job));
+      if(!job) return;
+      const a = btn.dataset.act;
+      if(a === 'drop'){ rwJobs = rwJobs.filter(j => j !== job); autoNumberJobs(); }
+      if(a === 'peek') job.previewOpen = !job.previewOpen;
+      if(a === 'prev') job.previewIndex = Math.max(0, job.previewIndex - 1);
+      if(a === 'next') job.previewIndex = job.previewIndex + 1;
+      renderJobs();
+    });
+  });
+}
+
+// --------------------------------------------------------------- checking ---
+
+function previewAllJobs(){
+  const msg = document.getElementById('rwPreviewMsg');
+  msg.innerHTML = '';
+  if(!rwJobs.length){ msg.innerHTML = '<div class="msg error">Nothing loaded yet.</div>'; return; }
+
+  const seed = parseInt(document.getElementById('rwSeed').value, 10) || 42;
+  const rewrite = document.getElementById('rwRewrite').value === 'on';
+  const shuffleOptions = document.getElementById('rwShuffle').value === 'on';
+  const reorder = document.getElementById('rwReorder').value === 'on';
+
+  let bad = 0;
+  rwJobs.forEach((job, n) => {
+    if(job.saved) return;
+    try{
+      // A different seed per job, so two files loaded together do not come out
+      // shuffled into the same order as each other.
+      job.result = LEAQuizRework.build(job.rows, { seed: seed + n, rewrite, shuffleOptions, reorder });
+      if(!job.result.keyOk) bad++;
+    }catch(err){
+      job.result = null;
+      bad++;
+      msg.innerHTML += '<div class="msg error">' + escapeHtml(job.label + ': ' + err.message) + '</div>';
+    }
+  });
+
+  renderJobs();
+  if(!bad) msg.innerHTML += '<div class="msg ok-msg">All checked. Look through the questions, then save.</div>';
+}
+
+// ----------------------------------------------------------------- saving ---
+
+// The manifest is fetched once, every module is added to the copy in memory,
+// and it is written once at the end. Writing it per module would mean each
+// save racing the last one's commit.
+async function saveAllJobs(){
   const btn = document.getElementById('rwSaveBtn');
   const statusEl = document.getElementById('rwStatus');
-  function log(msg){ statusEl.innerHTML += '<div>' + escapeHtml(msg) + '</div>'; }
+  function log(m){ statusEl.innerHTML += '<div>' + escapeHtml(m) + '</div>'; }
 
   statusEl.className = 'save-status';
   statusEl.innerHTML = '';
   btn.disabled = true;
 
+  const todo = rwJobs.filter(j => j.result && j.result.keyOk && !j.saved);
+  if(!todo.length){
+    statusEl.className = 'save-status err';
+    log('Nothing is ready to save. Press "Check them all" first.');
+    btn.disabled = false;
+    return;
+  }
+
   try{
-    if(!reworkResult) throw new Error('Preview the result first.');
-    if(!reworkResult.keyOk)
-      throw new Error('The answer-key check failed — this will not be saved.');
-
-    const subjectId = document.getElementById('rwDestSubject').value;
-    const no = (document.getElementById('rwDestNo').value || '').trim();
-    const moduleId = (document.getElementById('rwDestId').value || '').trim();
-    const title = (document.getElementById('rwDestTitle').value || '').trim();
-    if(!subjectId) throw new Error('Choose a subject.');
-    if(!/^\d{2}$/.test(no)) throw new Error('Module number should be two digits, like 05.');
-    if(!moduleId) throw new Error('Give the module an id.');
-    if(!title) throw new Error('Give the module a title.');
-
     const manifest = await fetchManifestForWrite(log);
-    const subject = manifest.find(s => s.id === subjectId);
-    if(!subject) throw new Error('That subject is no longer in the manifest.');
-    subject.modules = subject.modules || [];
-    if(subject.modules.some(m => m.id === moduleId))
-      throw new Error('A module with id "' + moduleId + '" already exists in that subject.');
+    const planned = [];
 
-    const path = 'data/' + subjectFolder(subject) + '/' + no + '.json';
-    if(subject.modules.some(m => m.file === path))
-      throw new Error(path + ' is already used by another module. Pick a different number.');
-
-    log('Writing ' + path + ' …');
-    const moduleJson = JSON.stringify(reworkResult.rows, null, 2) + '\n';
-    try{
-      await callSave(path, moduleJson, 'Admin: rework "' + title + '" into ' + subjectId);
-    }catch(err){
-      // admin-save-file reads a file's current contents to get the SHA that
-      // GitHub needs for an update. On a path that does not exist yet the read
-      // 404s and it gives up, so it can edit files but not create them. Every
-      // reworked module is a new file, so this is not an edge case here — it is
-      // the normal path. Rather than lose the work, hand it over as a download
-      // plus the manifest line, which is exactly what a manual commit needs.
-      if(/could not read current file|not found|404/i.test(err.message || '')){
-        offerManualSave(path, moduleJson, {
-          id: moduleId, no: no, title: title,
-          total: reworkResult.rows.length, file: path, format: 'json'
-        });
-        throw new Error('The site can only update files that already exist, not ' +
-          'create new ones — see the box above to finish this by hand.');
-      }
-      throw err;
+    // Validate everything before writing anything, so a bad title on the last
+    // file does not leave the first four already committed.
+    for(const job of todo){
+      const d = job.dest;
+      const subject = manifest.find(s => s.id === d.subjectId);
+      if(!subject) throw new Error(job.label + ': that subject is not in the manifest.');
+      if(!/^\d{2}$/.test(d.no)) throw new Error(job.label + ': the number should be two digits, like 05.');
+      if(!d.moduleId) throw new Error(job.label + ': give it an id.');
+      if(!d.title) throw new Error(job.label + ': give it a title.');
+      subject.modules = subject.modules || [];
+      const path = 'data/' + subjectFolder(subject) + '/' + d.no + '.json';
+      if(subject.modules.some(m => m.id === d.moduleId))
+        throw new Error(job.label + ': the id "' + d.moduleId + '" is already used in ' + subject.name + '.');
+      if(subject.modules.some(m => m.file === path) || planned.some(p => p.path === path))
+        throw new Error(job.label + ': ' + path + ' is already taken. Change its number.');
+      planned.push({ job, subject, path, entry: {
+        id: d.moduleId, no: d.no, title: d.title,
+        total: job.result.rows.length, file: path, format: 'json'
+      }});
     }
 
-    log('Adding it to ' + MANIFEST_PATH + ' …');
-    subject.modules.push({ id: moduleId, no: no, title: title,
-                           total: reworkResult.rows.length, file: path, format: 'json' });
-    await callSave(MANIFEST_PATH, manifestToJson(manifest),
-      'Admin: add reworked module "' + title + '" to ' + subjectId);
-    rememberManifest(manifest);
+    for(const p of planned){
+      log('Writing ' + p.path + ' …');
+      await callSave(p.path, JSON.stringify(p.job.result.rows, null, 2) + '\n',
+        'Admin: add "' + p.entry.title + '" to ' + p.subject.id);
+      p.subject.modules.push(p.entry);
+      p.job.saved = true;
+    }
 
+    log('Adding ' + planned.length + ' module(s) to the list of subjects …');
+    await callSave(MANIFEST_PATH, manifestToJson(manifest),
+      'Admin: add ' + planned.length + ' reworked module(s)');
+    rememberManifest(manifest);
     manifestSubjects = manifest;
     subjects = manifest;
 
     statusEl.className = 'save-status ok';
-    log('Done. "' + title + '" is live with ' + reworkResult.rows.length +
-        ' questions — it will appear under ' + subject.name + ' on the site.');
-    log('It runs through the site’s own quiz engine, so progress and mastery are tracked already.');
+    log('Done. ' + planned.length + ' module(s) are live and will show up on the site.');
+    renderJobs();
   }catch(err){
     statusEl.className = 'save-status err';
-    log('Failed: ' + err.message);
+    log('Stopped: ' + err.message);
+    log('Anything already written above is saved; the rest was not attempted.');
   }finally{
     btn.disabled = false;
   }
