@@ -62,34 +62,53 @@
   .msg.info{background:rgba(201,154,70,0.12);border:1px solid var(--line);color:var(--muted);}
   a{color:var(--gold-bright);}
   .row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);}
-  /* A subject is two lines now — name and controls, then the blurb and a
-     read-only count — so the divider belongs to the pair, not to the row.
-     Drawn between blocks rather than under each one: the card ends with an
-     "+ Add subject" row, so :last-of-type never matches the final block. */
-  .subj-block + .subj-block{border-top:1px solid var(--line);}
-  /* Five controls plus a text field do not fit a narrow window side by side;
-     without this the name box collapsed to about five characters. */
-  .subj-block .row{flex-wrap:wrap;}
-  .subj-block .row input[type="text"]{flex:1 1 200px;min-width:0;}
-  .subj-extra{display:flex;align-items:center;gap:10px;padding:0 0 12px;flex-wrap:wrap;}
-  .subj-extra input[type="text"]{flex:1 1 220px;min-width:0;margin:0;}
-  /* Left free to wrap. Some subject IDs run to 35 characters, and nowrap
-     pushed the whole page sideways on a narrow window. */
-  .subj-meta{font-size:11px;color:var(--muted);font-family:'IBM Plex Mono',monospace;}
-  .subj-mods{padding:0 0 12px;}
-  .subj-mods summary{cursor:pointer;font-size:12px;color:var(--muted);font-family:var(--font-mono);}
-  .subj-mods summary:hover{color:var(--ink);}
-  .mod-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;
-           padding:6px 0 6px 12px;margin-top:6px;border-left:2px solid var(--line);}
-  /* Title and the button share the first line whatever the title's length;
-     the path goes underneath, so the button never wanders mid-column. */
-  .mod-no{font-family:var(--font-mono);font-size:11px;color:var(--muted);min-width:20px;order:0;}
-  .mod-title{flex:1 1 120px;min-width:0;font-size:13px;order:1;}
-  .mod-row button{padding:3px 9px;font-size:11px;margin-left:auto;order:2;}
-  .mod-file{font-family:var(--font-mono);font-size:11px;color:var(--muted);
-            flex:1 1 100%;order:3;padding-left:30px;word-break:break-all;}
-  .mod-none{font-size:12px;color:var(--muted);padding:6px 0 0 12px;}
-  .mod-colours{display:flex;gap:5px;flex:1 1 100%;order:4;padding-left:30px;margin-top:2px;}
+  /* Subjects — one collapsed card each, opened to edit. Same shape as the
+     report cards (.rep-*): a head you tap, a body that unfolds beneath it.
+     At rest the whole tab is a short list of names, which is the point:
+     it mostly gets read on a phone. */
+  .subj{border:1px solid var(--line);border-radius:12px;background:var(--bg-panel-deep);
+        margin-bottom:12px;overflow:hidden;}
+  .subj.open{border-color:var(--gold);}
+  .subj-head{display:flex;gap:12px;align-items:flex-start;padding:15px 16px;cursor:pointer;}
+  .subj-head:hover{background:rgba(111,168,207,0.05);}
+  .subj-caret{color:var(--muted);font-size:13px;line-height:1.5;flex-shrink:0;width:12px;transition:transform .15s ease;}
+  .subj.open .subj-caret{transform:rotate(90deg);}
+  .subj-main{flex:1;min-width:0;}
+  /* Subject names run long ("Professional Practice and Ethics"); breaking is
+     better than a head that pushes the status pill off the screen edge. */
+  .subj-name{font-size:15px;font-weight:600;line-height:1.4;word-break:break-word;}
+  .subj-count{font-size:12.5px;color:var(--muted);margin-top:4px;}
+  .subj-pill{font-size:12px;padding:3px 10px;border-radius:20px;border:1px solid var(--line);
+             color:var(--muted);flex-shrink:0;white-space:nowrap;}
+  .subj-pill.live{color:var(--good);border-color:var(--good);background:rgba(95,191,130,.12);}
+
+  .subj-body{padding:0 16px 16px;border-top:1px solid var(--line);}
+  .subj-field{margin-top:16px;}
+  .subj-field > label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;}
+  .subj-field > label span{color:var(--muted);font-weight:400;}
+  .subj-field input[type="text"]{width:100%;margin:0;}
+  /* Move/Delete sit below everything the card can edit, fenced off, so the
+     destructive one is never the button next to the name field. */
+  .subj-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;padding-top:16px;
+             border-top:1px solid var(--line);}
+  .subj-btns .spacer{flex:1;}
+  .subj-more{margin-top:4px;}
+  .subj-more summary{cursor:pointer;font-size:13px;color:var(--muted);}
+  .subj-more summary:hover{color:var(--gold-bright);}
+
+  /* One module per row: what it is on the first line, what you can do to it
+     on the second. The file path lives in the Pages tab and is not repeated
+     here — it was the longest thing on the row and the least often needed. */
+  .mod-row{padding:10px 0;border-bottom:1px solid var(--line);}
+  .mod-row:last-child{border-bottom:none;}
+  .mod-line{display:flex;gap:10px;align-items:baseline;}
+  .mod-no{font-family:var(--font-mono);font-size:11px;color:var(--muted);min-width:20px;flex-shrink:0;}
+  .mod-title{flex:1;min-width:0;font-size:13.5px;line-height:1.45;word-break:break-word;}
+  .mod-count{font-size:12px;color:var(--muted);flex-shrink:0;white-space:nowrap;}
+  .mod-foot{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px;padding-left:30px;}
+  .mod-colours{display:flex;gap:5px;}
+  .mod-row button.mod-x{padding:4px 11px;font-size:11px;margin-left:auto;}
+  .mod-none{font-size:13px;color:var(--muted);margin-top:8px;}
   .swatch{width:19px;height:19px;padding:0;border-radius:50%;border:1px solid var(--line);cursor:pointer;}
   .swatch.none{background:transparent;position:relative;}
   /* A line through the empty circle, so "no colour" does not read as
@@ -303,6 +322,11 @@
   @media (max-width:560px){
     .rep-head{padding:14px;gap:10px;}
     .rep-choice .mark{display:none;}
+    .subj-head{padding:14px 13px;gap:9px;}
+    .subj-body{padding:0 13px 14px;}
+    /* The swatch strip is already 8 circles wide; indenting it too tips the
+       row into a horizontal scroll on a 320px screen. */
+    .mod-foot{padding-left:0;}
   }
 </style>
 </head>
@@ -796,54 +820,90 @@ function swatchesHtml(subjectIdx, mod){
 // "Save to site", the same as renaming a subject, so a misclick costs nothing.
 function moduleRowsHtml(subject, subjectIdx){
   const mods = subject.modules || [];
-  if(!mods.length) return '<div class="mod-none">Add one from the <b>Add Module</b> or <b>Rework Module</b> tab.</div>';
-  return mods.map(m => `
+  if(!mods.length) return '<div class="mod-none">Nothing here yet. Add one from the <b>Add Module</b> or <b>Rework Module</b> tab.</div>';
+  return mods.map(m => {
+    const total = Number(m.total) || 0;
+    return `
     <div class="mod-row">
-      <span class="mod-no">${escapeHtml(m.no || '')}</span>
-      <span class="mod-title">${escapeHtml(m.title || m.id)}</span>
-      <span class="mod-file">${Number(m.total) || 0} q &middot; ${escapeHtml(m.file || '')}</span>
-      <button class="danger" data-action="mod-del" data-idx="${subjectIdx}" data-mid="${escapeHtml(m.id)}">Remove</button>
-      ${swatchesHtml(subjectIdx, m)}
+      <div class="mod-line">
+        <span class="mod-no">${escapeHtml(m.no || '')}</span>
+        <span class="mod-title">${escapeHtml(m.title || m.id)}</span>
+        <span class="mod-count">${total} question${total===1?'':'s'}</span>
+      </div>
+      <div class="mod-foot">
+        ${swatchesHtml(subjectIdx, m)}
+        <button class="danger mod-x" data-action="mod-del" data-idx="${subjectIdx}" data-mid="${escapeHtml(m.id)}">Remove</button>
+      </div>
     </div>
-  `).join('');
+  `;}).join('');
 }
 
+// Which subject cards are unfolded. Keyed by subject id rather than by index
+// so that re-rendering after a toggle, a colour change or a Move up leaves
+// the card you were working in open — an index would follow the wrong card
+// the moment two subjects swap places.
+const openSubjects = new Set();
+
 function renderSubjectsTab(){
-  let rowsHtml = subjects.map((s, i) => {
+  let cardsHtml = subjects.map((s, i) => {
     const mods = (s.modules || []).length;
     const qs = subjectQuestionCount(s);
+    const open = openSubjects.has(s.id);
+    const count = mods
+      ? `${mods} module${mods===1?'':'s'} &middot; ${qs.toLocaleString()} question${qs===1?'':'s'}`
+      : 'No modules yet';
+    const body = !open ? '' : `
+      <div class="subj-body">
+        <div class="subj-field">
+          <label for="subjName${i}">Subject name</label>
+          <input type="text" id="subjName${i}" value="${escapeHtml(s.name)}" data-field="name" data-idx="${i}">
+        </div>
+        <div class="subj-field">
+          <label for="subjBlurb${i}">Short line under the name <span>&mdash; optional</span></label>
+          <input type="text" id="subjBlurb${i}" value="${escapeHtml(s.blurb || '')}" data-field="blurb" data-idx="${i}"
+                 placeholder="Left blank, that line stays empty">
+        </div>
+        <div class="subj-field">
+          <label>Show to readers</label>
+          <button class="toggle-btn ${s.ready ? 'on' : ''}" data-action="toggle" data-idx="${i}">${s.ready ? 'Yes &mdash; available now' : 'No &mdash; coming soon'}</button>
+        </div>
+        <div class="subj-field">
+          <label>Modules <span>&mdash; ${mods}</span></label>
+          ${moduleRowsHtml(s, i)}
+        </div>
+        <div class="subj-btns">
+          <button data-action="up" data-idx="${i}" ${i===0 ? 'disabled' : ''}>Move up</button>
+          <button data-action="down" data-idx="${i}" ${i===subjects.length-1 ? 'disabled' : ''}>Move down</button>
+          <span class="spacer"></span>
+          <button class="danger" data-action="delete" data-idx="${i}">Delete subject</button>
+        </div>
+      </div>`;
     return `
-    <div class="subj-block" data-idx="${i}">
-      <div class="row" style="border-bottom:none;">
-        <input type="text" value="${escapeHtml(s.name)}" data-field="name" data-idx="${i}">
-        <button class="toggle-btn ${s.ready ? 'on' : ''}" data-action="toggle" data-idx="${i}">${s.ready ? 'Available' : 'Coming soon'}</button>
-        <button data-action="up" data-idx="${i}" ${i===0 ? 'disabled' : ''}>&uarr;</button>
-        <button data-action="down" data-idx="${i}" ${i===subjects.length-1 ? 'disabled' : ''}>&darr;</button>
-        <button class="danger" data-action="delete" data-idx="${i}">Delete</button>
+    <div class="subj ${open ? 'open' : ''}" data-idx="${i}" data-sid="${escapeHtml(s.id)}">
+      <div class="subj-head" data-action="open" data-idx="${i}">
+        <span class="subj-caret">&#9656;</span>
+        <div class="subj-main">
+          <div class="subj-name">${escapeHtml(s.name) || 'Untitled subject'}</div>
+          <div class="subj-count">${count}</div>
+        </div>
+        <span class="subj-pill ${s.ready ? 'live' : ''}">${s.ready ? 'Available' : 'Coming soon'}</span>
       </div>
-      <div class="subj-extra">
-        <input type="text" value="${escapeHtml(s.blurb || '')}" data-field="blurb" data-idx="${i}"
-               placeholder="One line shown under the subject title — left blank, that line stays empty">
-        <span class="subj-meta">${escapeHtml(s.id)} &middot; ${mods} module${mods===1?'':'s'} &middot; ${qs.toLocaleString()} question${qs===1?'':'s'}</span>
-      </div>
-      <details class="subj-mods">
-        <summary>${mods ? 'Modules in this subject (' + mods + ')' : 'No modules in this subject yet'}</summary>
-        ${moduleRowsHtml(s, i)}
-      </details>
+      ${body}
     </div>
   `;}).join('');
 
   tabSubjectsEl.innerHTML = `
-    <div class="card msg info">
-      This is <code>${escapeHtml(MANIFEST_PATH)}</code> &mdash; the list the live site reads.
-      Renaming, reordering, and the blurb take effect everywhere at once.
-      Modules are added from the <b>Add Module</b> tab.
+    <div class="rep-head-strip">
+      <h2>Subjects</h2>
+      <span class="note">Tap a subject to edit it</span>
     </div>
-    <div class="card">
-      ${rowsHtml}
-      <div class="actions">
-        <button id="addSubjectBtn">+ Add subject</button>
-      </div>
+    <div class="card msg info">
+      This is the list readers see on the home screen, top to bottom.
+      Nothing here changes the live site until you press <b>Save to site</b>.
+    </div>
+    ${cardsHtml}
+    <div class="actions">
+      <button id="addSubjectBtn">+ Add subject</button>
     </div>
     <div class="actions">
       <button class="primary" id="saveSubjectsBtn">Save to site</button>
@@ -852,20 +912,41 @@ function renderSubjectsTab(){
     <div class="save-status" id="subjectsSaveStatus"></div>
 
     <div class="card">
-      <b>Question files no subject lists</b>
-      <p style="font-size:13px;color:var(--muted);margin:8px 0 0;">
-        A quiz file can sit in the repository without being on the site &mdash; that is what
-        an upload which reported success but never appeared looks like. Scanning finds them,
-        and adding one back here puts it in front of readers again.
-      </p>
-      <div class="actions">
-        <button id="scanUnlistedBtn">Scan for unlisted files</button>
-      </div>
-      <div id="unlistedOut"></div>
+      <details class="subj-more">
+        <summary>Find quiz files that aren&rsquo;t on the site</summary>
+        <p style="font-size:13px;color:var(--muted);margin:10px 0 0;">
+          A quiz file can sit in the repository without being on the site &mdash; that is what
+          an upload which reported success but never appeared looks like. Scanning finds them,
+          and adding one back here puts it in front of readers again.
+        </p>
+        <div class="actions">
+          <button id="scanUnlistedBtn">Scan for unlisted files</button>
+        </div>
+        <div id="unlistedOut"></div>
+      </details>
     </div>
   `;
 
+  // Re-render, then put the named card back under the thumb. Used after a
+  // move, where the card the owner is holding onto changes position.
+  function revealSubject(sid){
+    const el = tabSubjectsEl.querySelector('.subj[data-sid="' + CSS.escape(sid) + '"]');
+    if(el) el.scrollIntoView({ block: 'nearest' });
+  }
+
+  tabSubjectsEl.querySelectorAll('.subj-head').forEach(head => {
+    head.addEventListener('click', () => {
+      const sid = subjects[+head.dataset.idx].id;
+      if(openSubjects.has(sid)) openSubjects.delete(sid);
+      else openSubjects.add(sid);
+      renderSubjectsTab();
+      revealSubject(sid);
+    });
+  });
   tabSubjectsEl.querySelectorAll('input[data-field="name"]').forEach(inp => {
+    // The head above shows this name too, but it is deliberately not
+    // re-rendered on every keystroke: that would tear the field out from
+    // under the caret mid-word.
     inp.addEventListener('input', () => { subjects[+inp.dataset.idx].name = inp.value; });
   });
   tabSubjectsEl.querySelectorAll('input[data-field="blurb"]').forEach(inp => {
@@ -875,10 +956,18 @@ function renderSubjectsTab(){
     btn.addEventListener('click', () => { const i=+btn.dataset.idx; subjects[i].ready=!subjects[i].ready; renderSubjectsTab(); });
   });
   tabSubjectsEl.querySelectorAll('button[data-action="up"]').forEach(btn => {
-    btn.addEventListener('click', () => { const i=+btn.dataset.idx; [subjects[i-1],subjects[i]]=[subjects[i],subjects[i-1]]; renderSubjectsTab(); });
+    btn.addEventListener('click', () => {
+      const i=+btn.dataset.idx, sid=subjects[i].id;
+      [subjects[i-1],subjects[i]]=[subjects[i],subjects[i-1]];
+      renderSubjectsTab(); revealSubject(sid);
+    });
   });
   tabSubjectsEl.querySelectorAll('button[data-action="down"]').forEach(btn => {
-    btn.addEventListener('click', () => { const i=+btn.dataset.idx; [subjects[i+1],subjects[i]]=[subjects[i],subjects[i+1]]; renderSubjectsTab(); });
+    btn.addEventListener('click', () => {
+      const i=+btn.dataset.idx, sid=subjects[i].id;
+      [subjects[i+1],subjects[i]]=[subjects[i],subjects[i+1]];
+      renderSubjectsTab(); revealSubject(sid);
+    });
   });
   tabSubjectsEl.querySelectorAll('button[data-action="delete"]').forEach(btn => {
     btn.addEventListener('click', async () => {
@@ -893,6 +982,7 @@ function renderSubjectsTab(){
         { title: 'Remove subject', yes: 'Remove from site' }
       );
       if(!ok) return;
+      openSubjects.delete(subjects[i].id);
       subjects.splice(i, 1);
       renderSubjectsTab();
     });
@@ -908,7 +998,11 @@ function renderSubjectsTab(){
     // Starts empty and not ready: a subject with no modules would show as a
     // 0% row on Home, which reads as broken rather than as "coming".
     subjects.push({ id: slug, name: name, blurb: '', ready: false, modules: [] });
+    // Opened straight away — a new subject is always about to be edited.
+    openSubjects.add(slug);
     renderSubjectsTab();
+    const fresh = tabSubjectsEl.querySelector('.subj[data-sid="' + CSS.escape(slug) + '"]');
+    if(fresh) fresh.scrollIntoView({ block: 'nearest' });
   });
   tabSubjectsEl.querySelectorAll('button[data-action="mod-colour"]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -935,8 +1029,8 @@ function renderSubjectsTab(){
       const ok = await LEAConfirm(
         `Take "${mod.title || mod.id}" off ${subject.name}?` +
         ' Readers will no longer see it. The question file stays in the repository, so it can be' +
-        ' put back from the scan below, and anyone who already answered keeps their progress.' +
-        ' Nothing changes on the site until you press "Save to site".',
+        ' put back from the scan at the bottom of this tab, and anyone who already answered keeps' +
+        ' their progress. Nothing changes on the site until you press "Save to site".',
         { title: 'Remove module', yes: 'Remove from site' }
       );
       if(!ok) return;
