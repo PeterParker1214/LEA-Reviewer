@@ -247,8 +247,16 @@
   .rw-letter{color:var(--muted);font-size:12.5px;width:16px;flex-shrink:0;}
   .rw-choice.right .rw-letter{color:var(--good);}
   .rw-right-tag{margin-left:auto;color:var(--good);font-size:12px;flex-shrink:0;}
-  .rw-peek-why{margin-top:12px;font-size:13px;line-height:1.6;color:var(--ink);}
-  .rw-peek-why.muted{color:var(--muted);}
+  .rw-peek input[type="text"],.rw-peek textarea{width:100%;}
+  .rw-peek .rw-choice{gap:9px;align-items:center;}
+  .rw-peek .rw-choice input[type="radio"]{width:16px;height:16px;flex-shrink:0;accent-color:var(--good);cursor:pointer;margin:0;}
+  .rw-opt{flex:1;min-width:0;}
+  .rw-x{border:none;background:transparent;color:var(--muted);font-size:18px;line-height:1;
+    padding:2px 6px;flex-shrink:0;}
+  .rw-x:hover{color:var(--bad);}
+  .rw-peek-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;
+    margin-top:16px;flex-wrap:wrap;}
+  .rw-state.warn{color:var(--gold-bright);}
 
   /* ===== Reports tab =====
      A report opens where it sits. The old card had an "Edit question" button
@@ -3128,40 +3136,107 @@ function jobResultHtml(job){
 
 // The old preview reported counts and averages — useful for trusting the
 // shuffle, useless for judging whether the questions are any good. This shows
-// the questions the way a reader will meet them.
+// the questions the way a reader will meet them, and lets you fix them here
+// rather than saving something wrong and repairing it from the Pages tab.
+//
+// Edits write straight into job.result.rows, which is what gets saved. The
+// answer-key check ran before any of this, so a question you have touched is
+// no longer covered by it — the card says so.
 function questionPeekHtml(job){
   const rows = job.result.rows;
+  if(!rows.length) return '<div class="rw-peek"><p class="field-note">Every question was removed.</p></div>';
   const i = Math.max(0, Math.min(job.previewIndex, rows.length - 1));
   const q = rows[i];
   const letters = ['A','B','C','D','E','F','G','H'];
+  const edited = job.editedIdx && job.editedIdx.has(i);
 
   const choices = (q.o || []).map((o, n) => {
-    const text = typeof o === 'string' ? o : (o.tpl ? '(combined choice)' : String(o));
+    const isObj = typeof o !== 'string';
     return '<div class="rw-choice' + (n === q.c ? ' right' : '') + '">' +
+      '<input type="radio" name="rwc-' + job.id + '" value="' + n + '"' +
+        (n === q.c ? ' checked' : '') + ' data-e="c" title="Mark as the right answer">' +
       '<span class="rw-letter">' + (letters[n] || (n + 1)) + '</span>' +
-      '<span>' + escapeHtml(text) + '</span>' +
-      (n === q.c ? '<span class="rw-right-tag">Correct</span>' : '') +
+      (isObj
+        ? '<span class="field-note" style="flex:1;">Combined choice (“Both A and B”) — edit this one in the Pages tab.</span>'
+        : '<input type="text" class="rw-opt" data-e="o" data-i="' + n + '" value="' + escapeHtml(o) + '">') +
+      ((q.o.length > 2 && !isObj)
+        ? '<button class="rw-x" data-act="delopt" data-job="' + job.id + '" data-i="' + n + '" title="Remove this choice">&times;</button>'
+        : '') +
     '</div>';
   }).join('');
 
   return '<div class="rw-peek">' +
     '<div class="rw-peek-nav">' +
       '<button data-act="prev" data-job="' + job.id + '"' + (i === 0 ? ' disabled' : '') + '>Back</button>' +
-      '<span>Question ' + (i + 1) + ' of ' + rows.length + '</span>' +
+      '<span>Question ' + (i + 1) + ' of ' + rows.length +
+        (edited ? ' · <span style="color:var(--gold-bright);">edited</span>' : '') + '</span>' +
       '<button data-act="next" data-job="' + job.id + '"' + (i >= rows.length - 1 ? ' disabled' : '') + '>Next</button>' +
     '</div>' +
-    (q.s ? '<div class="rw-peek-topic">' + escapeHtml(q.s) + '</div>' : '') +
-    '<div class="rw-peek-stem">' + escapeHtml(q.q || '') + '</div>' +
+
+    '<div class="field-label">Topic <span style="font-weight:400;color:var(--muted);">(shown above the question)</span></div>' +
+    '<input type="text" data-e="s" value="' + escapeHtml(q.s || '') + '" placeholder="Leave blank for none">' +
+
+    '<div class="field-label" style="margin-top:12px;">Question</div>' +
+    '<textarea data-e="q" rows="3">' + escapeHtml(q.q || '') + '</textarea>' +
+
+    '<div class="field-label" style="margin-top:12px;">Choices <span style="font-weight:400;color:var(--muted);">— tick the right one</span></div>' +
     choices +
-    (q.n ? '<div class="rw-peek-why"><b>Why:</b> ' + escapeHtml(q.n) + '</div>'
-         : '<div class="rw-peek-why muted">No explanation on this one.</div>') +
+    '<button data-act="addopt" data-job="' + job.id + '" style="margin-top:4px;">Add a choice</button>' +
+
+    '<div class="field-label" style="margin-top:14px;">Why it\'s the answer</div>' +
+    '<textarea data-e="n" rows="2" placeholder="Leave blank if there is nothing to explain.">' +
+      escapeHtml(q.n || '') + '</textarea>' +
+
+    '<div class="rw-peek-foot">' +
+      '<span class="field-note">Changes are kept as you type. Nothing is written to the site until you save.</span>' +
+      '<button class="danger" data-act="delq" data-job="' + job.id + '">Delete this question</button>' +
+    '</div>' +
   '</div>';
+}
+
+// Text edits update the row without redrawing, or the field would lose focus on
+// every keystroke. Only changes that alter the layout redraw.
+function wirePeek(card, job){
+  const rows = job.result && job.result.rows;
+  if(!rows || !rows.length) return;
+  const i = Math.max(0, Math.min(job.previewIndex, rows.length - 1));
+  const q = rows[i];
+  job.editedIdx = job.editedIdx || new Set();
+
+  card.querySelectorAll('.rw-peek [data-e]').forEach(el => {
+    const field = el.dataset.e;
+    if(field === 'c'){
+      el.addEventListener('change', () => {
+        q.c = Number(el.value);
+        job.editedIdx.add(i);
+        renderJobs();
+      });
+      return;
+    }
+    el.addEventListener('input', () => {
+      if(field === 'o') q.o[Number(el.dataset.i)] = el.value;
+      else q[field] = el.value;
+      job.editedIdx.add(i);
+      markJobEdited(job);
+    });
+  });
+}
+
+// The key check ran before the edits, so once a question is touched the card
+// should stop implying the check still covers it.
+function markJobEdited(job){
+  const card = document.querySelector('.rw-job[data-job="' + job.id + '"] .rw-state');
+  if(card && !card.classList.contains('warn')){
+    card.className = 'rw-state warn';
+    card.textContent = 'Edited by you · ' + job.result.rows.length + ' questions';
+  }
 }
 
 function wireJobs(){
   document.querySelectorAll('.rw-job').forEach(card => {
     const job = rwJob(Number(card.dataset.job));
     if(!job) return;
+    if(job.previewOpen && job.result) wirePeek(card, job);
     card.querySelectorAll('[data-f]').forEach(el => {
       el.addEventListener('change', () => {
         const f = el.dataset.f;
@@ -3179,10 +3254,28 @@ function wireJobs(){
       const job = rwJob(Number(btn.dataset.job));
       if(!job) return;
       const a = btn.dataset.act;
+      const rows = job.result && job.result.rows;
+      const i = rows ? Math.max(0, Math.min(job.previewIndex, rows.length - 1)) : 0;
       if(a === 'drop'){ rwJobs = rwJobs.filter(j => j !== job); autoNumberJobs(); }
       if(a === 'peek') job.previewOpen = !job.previewOpen;
       if(a === 'prev') job.previewIndex = Math.max(0, job.previewIndex - 1);
       if(a === 'next') job.previewIndex = job.previewIndex + 1;
+      if(a === 'addopt'){ rows[i].o.push(''); job.editedIdx = job.editedIdx || new Set(); job.editedIdx.add(i); }
+      if(a === 'delopt'){
+        const n = Number(btn.dataset.i);
+        rows[i].o.splice(n, 1);
+        // Removing a choice above the answer shifts it down; removing the
+        // answer itself leaves the key pointing at whatever slid into its place,
+        // so it falls back to the first choice and the card flags it as edited.
+        if(rows[i].c === n) rows[i].c = 0;
+        else if(rows[i].c > n) rows[i].c--;
+        job.editedIdx = job.editedIdx || new Set(); job.editedIdx.add(i);
+      }
+      if(a === 'delq'){
+        rows.splice(i, 1);
+        job.previewIndex = Math.min(i, Math.max(0, rows.length - 1));
+        job.editedIdx = new Set();   // indices have all shifted
+      }
       renderJobs();
     });
   });

@@ -86,9 +86,21 @@ window.LEAQuizRework = (function () {
   }
 
   /** Everything becomes the site's {s,q,o,c,ref,n} shape, or null if unusable. */
+  // Source documents number their questions, and that numbering comes through
+  // the .docx reader inside the stem: "36. A foreign architect wants to...".
+  // On the site it is wrong twice over — the runner shows its own position, and
+  // reworking reorders the questions, so a stem numbered 36 turns up ninth.
+  //
+  // Only a small integer followed by a dot or bracket AND a space is taken as
+  // numbering, so "3.5 m" and "1987 Constitution" are left alone.
+  function stripLeadingNumber(text) {
+    return String(text == null ? '' : text).replace(/^\s*\(?\d{1,3}\s*[.)]\s+/, '');
+  }
+
   function canonical(r) {
     if (!r || typeof r !== 'object') return null;
     var q = r.q !== undefined ? r.q : r.question;
+    q = stripLeadingNumber(q);
     var opts = r.o || r.options;
     if (!q || !Object.prototype.toString.call(opts).match(/Array/) || opts.length < 2) return null;
 
@@ -543,7 +555,7 @@ window.LEAQuizRework = (function () {
              keyOk: keyOk, checked: checked, templated: templated };
   }
 
-  return { canonical: canonical, parseAny: parseAny, restructure: restructure,
+  return { canonical: canonical, stripLeadingNumber: stripLeadingNumber, parseAny: parseAny, restructure: restructure,
            build: build, mulberry: mulberry, shuffled: shuffled,
            splitEmbeddedScenario: splitEmbeddedScenario };
 })();
