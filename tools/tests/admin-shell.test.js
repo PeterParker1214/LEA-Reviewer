@@ -207,6 +207,37 @@ check('the three rebuilt tabs share one card base', () => {
   });
 });
 
+check('a restored module gets its id derived, not typed', () => {
+  const { api } = scene();
+  assert(api.derivedModuleId('building-laws', '05') === 'building-laws-5',
+    'got ' + api.derivedModuleId('building-laws', '05'));
+  assert(api.derivedModuleId('professional-practice', '12') === 'professional-practice-12',
+    'got ' + api.derivedModuleId('professional-practice', '12'));
+});
+
+check('a restore that would collide is refused, naming the module in the way', () => {
+  const { api } = scene();
+  const subject = { id:'building-laws', name:'Building Laws', modules:[
+    { id:'building-laws-5', no:'5', title:'PD 1096' } ] };
+  assert(api.moduleIdTaken(subject, 'building-laws-5') === true, 'collision not detected');
+  assert(api.moduleIdTaken(subject, 'building-laws-6') === false, 'false collision');
+});
+
+check('the deleted list shows module names, not archive paths, as the headline', () => {
+  const { doc, api } = scene();
+  api.renderDeletedCards([
+    { path:'data/_deleted/building-laws-2-1734021882.json', title:'RA 9514 — Fire Code',
+      subjectName:'Building Laws', no:'2', total:150, removedAt:'12 Dec' },
+  ]);
+  const card = doc.querySelector('#tab-deleted .panel-card');
+  assert(card, 'no card rendered');
+  const head = card.querySelector('.del-title').textContent;
+  assert(head.includes('RA 9514'), 'headline is not the module title: ' + head);
+  assert(!head.includes('data/_deleted'), 'the archive path is still the headline');
+  assert(card.textContent.includes('Put it back'), 'no restore button');
+  assert(!card.querySelector('[data-role="d-id"]'), 'the module id box should be gone');
+});
+
 check('no repository paths in the shell copy', () => {
   const { w } = scene();
   const shellText = w.document.getElementById('nav').textContent;

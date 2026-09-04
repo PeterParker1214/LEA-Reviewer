@@ -76,6 +76,7 @@ function boot(adminPath) {
     openReportCount,
     renderReportsTab,
     markReportSolved, dismissReportGroup,
+    derivedModuleId, moduleIdTaken, renderDeletedCards,
     spyRenderNav(fn){ renderNav = fn; },
     spyLoadReports(fn){ loadReports = fn; },
     setReports(rows){

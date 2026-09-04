@@ -30,7 +30,9 @@ explanation.
   with its own destination, shared shuffle options, per-question editor, and a
   single save pass that writes the manifest once at the end.
 - **Add Module tab deleted** — it only added back the HTML format that was just
-  removed.
+  removed. (This was written before the tab was actually removed; it is now
+  gone — `grep -n "tab-btn\|tabUploadEl\|renderUploadTab" admin.html` returns
+  nothing.)
 - Source numbering ("36. A foreign architect...") is now stripped on import by
   `stripLeadingNumber` in `assets/quiz-rework.js`.
 - `run.html` hides a topic label when it gives away its own answer
@@ -53,15 +55,17 @@ is working in open, and an index would follow the wrong card the moment two
 subjects swap places. Nothing about the manifest, the removal bookkeeping
 (`removedModuleKeys`, `pendingModuleArchives`) or `saveSubjects` changed.
 
-### 2. The shell
-Five tabs (Subjects, Pages & Quizzes, Rework, Deleted, Reports), inconsistent
-card styles, and jargon throughout. Owner's brief for the whole panel: "more
-user friendly, organized, intuitive, no complex wordings, easy to use." Mostly
-opens on a phone, so treat narrow screens as the default, not an afterthought.
-
-The Reports and Rework tabs were rebuilt to that brief already — match their
-patterns (`.rep-*` and `.rw-*` in the stylesheet) rather than inventing a
-third style.
+### 2. The shell — done
+Five tabs (Subjects, Pages & Quizzes, Rework, Deleted, Reports), one nav
+(bottom bar under 720px, sidebar above it), one `.panel-card` base every
+family (`.rep-*`, `.rw-*`, `.subj`, and now the Deleted tab's cards) opts
+into. Jargon and file paths are out of the tab copy; the Add Module tab and
+its `tab-btn` markup are gone. The Deleted tab's headline is the module's own
+name instead of the archive filename, restoring one is a single "Put it
+back" button, and the module id is derived as `<subject-id>-<no>` rather
+than typed — a restore that would collide is refused, never silently
+renumbered. See `.superpowers/sdd/2026-09-04-admin-shell/` for the
+task-by-task plan and reports.
 
 ### 3. Optional
 Seven `.html` files in `subjects/*/quizzes/` are in no manifest and never were,
