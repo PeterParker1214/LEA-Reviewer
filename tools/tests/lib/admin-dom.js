@@ -63,7 +63,9 @@ function boot(adminPath) {
     get subjects(){ return subjects; },
     get manifestSubjects(){ return manifestSubjects; },
     renderSubjectsTab, manifestToJson, openSubjects,
-    removedModuleKeys, pendingModuleArchives
+    removedModuleKeys, pendingModuleArchives,
+    SECTIONS, showSection, renderNav,
+    get currentSectionId(){ return currentSectionId; },
   })`, ctx);
 
   return { dom, window: w, ctx, api };

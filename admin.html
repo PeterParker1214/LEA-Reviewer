@@ -338,18 +338,14 @@
   <div id="gate" class="card msg info">Checking your session…</div>
 
   <div id="panel" style="display:none;">
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="subjects">Subjects</button>
-      <button class="tab-btn" data-tab="pages">Pages &amp; Quizzes</button>
-      <button class="tab-btn" data-tab="rework">Rework Module</button>
-      <button class="tab-btn" data-tab="deleted">Deleted Modules</button>
-      <button class="tab-btn" data-tab="reports">Reports</button>
+    <nav id="nav"></nav>
+    <div id="sections">
+      <div id="tab-subjects"></div>
+      <div id="tab-pages" class="hidden"></div>
+      <div id="tab-rework" class="hidden"></div>
+      <div id="tab-deleted" class="hidden"></div>
+      <div id="tab-reports" class="hidden"></div>
     </div>
-    <div id="tab-subjects"></div>
-    <div id="tab-pages" class="hidden"></div>
-    <div id="tab-rework" class="hidden"></div>
-    <div id="tab-deleted" class="hidden"></div>
-    <div id="tab-reports" class="hidden"></div>
   </div>
 </div>
 
@@ -374,6 +370,67 @@ const tabPagesEl = document.getElementById('tab-pages');
 const tabReworkEl = document.getElementById('tab-rework');
 const tabDeletedEl = document.getElementById('tab-deleted');
 const tabReportsEl = document.getElementById('tab-reports');
+
+/* ---- The five sections -------------------------------------------------
+ * Written once. The bottom bar, the sidebar and showSection() all read this,
+ * so the phone and the laptop cannot disagree about what exists or what it
+ * is called. Renaming a section is one edit here; so is removing one.
+ *
+ * `once: true` means the section's render runs the first time it is opened
+ * and not again — the file tree is expensive and does not change under us.
+ * `once: false` re-renders on every open, which is what these tabs did when
+ * each had its own line in the click handler.
+ */
+const SECTIONS = [
+  { id:'subjects', label:'Subjects',   icon:'grid',   once:false, render:() => renderSubjectsTab() },
+  { id:'pages',    label:'Questions',  icon:'pencil', once:true,  render:() => loadFileTree() },
+  { id:'rework',   label:'New module', short:'New',
+                   icon:'plus',   once:false, render:() => renderReworkTab() },
+  { id:'deleted',  label:'Deleted',    icon:'undo',   once:false, render:() => scanDeletedModules() },
+  { id:'reports',  label:'Reports',    icon:'flag',   once:false, render:() => openReportsTab() },
+];
+
+let currentSectionId = 'subjects';
+const sectionsRendered = new Set();
+
+function navItemsHtml(placement){
+  return SECTIONS.map(s => {
+    const text = placement === 'bar' ? (s.short || s.label) : s.label;
+    return '<button class="nav-item' + (s.id === currentSectionId ? ' on' : '') + '"' +
+      ' data-section="' + s.id + '">' +
+      '<span class="nav-ico">' + LEAIcons[s.icon](20) + '</span>' +
+      '<span class="nav-label">' + escapeHtml(text) + '</span>' +
+      '</button>';
+  }).join('');
+}
+
+function renderNav(){
+  document.getElementById('nav').innerHTML =
+    '<div id="navSide" class="nav-side">' +
+      '<div class="nav-brand"><h1>Admin</h1><div class="sub">LEA Reviewer</div></div>' +
+      navItemsHtml('side') +
+    '</div>' +
+    '<div id="navBar" class="nav-bar">' + navItemsHtml('bar') + '</div>';
+
+  document.querySelectorAll('#nav [data-section]').forEach(btn => {
+    btn.addEventListener('click', () => showSection(btn.dataset.section));
+  });
+}
+
+// Called from a tap and from code alike — "open this question" in a report
+// comes through here too, so it must always run the section's render.
+function showSection(id){
+  const section = SECTIONS.find(s => s.id === id);
+  if(!section) return;
+  currentSectionId = id;
+  SECTIONS.forEach(s => {
+    document.getElementById('tab-' + s.id).classList.toggle('hidden', s.id !== id);
+  });
+  renderNav();
+  if(section.once && sectionsRendered.has(id)) return;
+  sectionsRendered.add(id);
+  section.render();
+}
 
 let subjects = [];
 let accessToken = '';
@@ -737,21 +794,7 @@ async function init(){
   gateEl.style.display = 'none';
   panelEl.style.display = 'block';
 
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      tabSubjectsEl.classList.toggle('hidden', btn.dataset.tab !== 'subjects');
-      tabPagesEl.classList.toggle('hidden', btn.dataset.tab !== 'pages');
-      tabReworkEl.classList.toggle('hidden', btn.dataset.tab !== 'rework');
-      tabDeletedEl.classList.toggle('hidden', btn.dataset.tab !== 'deleted');
-      tabReportsEl.classList.toggle('hidden', btn.dataset.tab !== 'reports');
-      if(btn.dataset.tab === 'pages' && fileTree.length === 0) loadFileTree();
-      if(btn.dataset.tab === 'rework') renderReworkTab();
-      if(btn.dataset.tab === 'deleted') scanDeletedModules();
-      if(btn.dataset.tab === 'reports') openReportsTab();
-    });
-  });
+  renderNav();
 
   // loadSubjects() populates the manifest too — they are one array.
   await loadSubjects();
@@ -2421,7 +2464,7 @@ function openReportInEditor(ref){
     LEAAlert('Could not find this question in the current manifest \u2014 it may belong to a module not listed in data/subjects.json.');
     return;
   }
-  document.querySelector('.tab-btn[data-tab="pages"]').click();
+  showSection('pages');
   if(fileTree.length === 0){
     loadFileTree().then(() => openFile(info.file, info.qIndex));
   } else {

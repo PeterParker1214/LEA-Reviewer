@@ -1,0 +1,106 @@
+// The shell: one list of sections, two places it is drawn, one switcher.
+const { boot } = require('./lib/admin-dom.js');
+
+let failures = 0;
+const queued = [];
+function check(name, fn) { queued.push([name, fn]); }
+async function runAll() {
+  for (const [name, fn] of queued) {
+    try { await fn(); console.log('  PASS  ' + name); }
+    catch (e) { failures++; console.log('  FAIL  ' + name + '\n        ' + ((e && e.message) || e)); }
+  }
+}
+const assert = (c, m) => { if (!c) throw new Error(m); };
+
+function scene() {
+  const { window: w, api } = boot('admin.html');
+  api.setSubjects([{ id: 'building-laws', name: 'Building Laws', ready: true, modules: [] }]);
+  api.renderNav();
+  return { w, api, doc: w.document };
+}
+
+console.log('\nAdmin shell\n');
+
+check('there are five sections, in order, and Add Module is not one of them', () => {
+  const { api } = scene();
+  assert(api.SECTIONS.map(s => s.id).join() === 'subjects,pages,rework,deleted,reports',
+    'wrong sections: ' + api.SECTIONS.map(s => s.id).join());
+  assert(!api.SECTIONS.some(s => s.id === 'upload'), 'Add Module is still in the list');
+});
+
+check('the phone bar and the sidebar draw the same ids in the same order', () => {
+  const { doc } = scene();
+  const ids = sel => [...doc.querySelectorAll(sel)].map(el => el.dataset.section).join();
+  const bar = ids('#navBar [data-section]');
+  const side = ids('#navSide [data-section]');
+  assert(bar.length, 'the bottom bar rendered nothing');
+  assert(bar === side, 'bar and sidebar disagree:\n  bar:  ' + bar + '\n  side: ' + side);
+});
+
+check('showSection leaves exactly one section panel visible', () => {
+  const { w, api, doc } = scene();
+  api.showSection('deleted');
+  const shown = api.SECTIONS.filter(s => !doc.getElementById('tab-' + s.id).classList.contains('hidden'));
+  assert(shown.length === 1, shown.length + ' panels visible, expected 1');
+  assert(shown[0].id === 'deleted', 'showed ' + shown[0].id);
+  assert(api.currentSectionId === 'deleted', 'currentSectionId not updated');
+});
+
+check('both nav placements mark the same item current', () => {
+  const { api, doc } = scene();
+  api.showSection('reports');
+  const on = [...doc.querySelectorAll('[data-section].on')].map(el => el.dataset.section);
+  assert(on.length === 2, 'expected the item marked in both placements, got ' + on.length);
+  assert(on.every(id => id === 'reports'), 'marked ' + on.join());
+});
+
+check('a "once" section renders on first open only', () => {
+  const { api } = scene();
+  let runs = 0;
+  const pages = api.SECTIONS.find(s => s.id === 'pages');
+  assert(pages.once === true, 'pages should be a once-only section');
+  pages.render = () => { runs++; };
+  api.showSection('pages');
+  api.showSection('subjects');
+  api.showSection('pages');
+  assert(runs === 1, 'render ran ' + runs + ' times, expected 1');
+});
+
+check('an every-open section renders every time', () => {
+  const { api } = scene();
+  let runs = 0;
+  const deleted = api.SECTIONS.find(s => s.id === 'deleted');
+  assert(deleted.once === false, 'deleted should re-render on every open');
+  deleted.render = () => { runs++; };
+  api.showSection('deleted');
+  api.showSection('subjects');
+  api.showSection('deleted');
+  assert(runs === 2, 'render ran ' + runs + ' times, expected 2');
+});
+
+check('tapping a nav item switches section', () => {
+  const { api, doc } = scene();
+  doc.querySelector('#navBar [data-section="rework"]').click();
+  assert(api.currentSectionId === 'rework', 'tap did not switch, at ' + api.currentSectionId);
+});
+
+check('the old tab-btn markup is gone', () => {
+  const { doc } = scene();
+  assert(!doc.querySelector('.tab-btn'), '.tab-btn still exists — the code that jumps to Pages relies on it');
+});
+
+check('walking every section leaves the manifest byte-identical', () => {
+  const { api } = scene();
+  api.renderSubjectsTab();
+  const before = api.manifestToJson(api.subjects);
+  api.SECTIONS.forEach(s => { s.render = () => {}; });
+  api.SECTIONS.forEach(s => api.showSection(s.id));
+  api.SECTIONS.slice().reverse().forEach(s => api.showSection(s.id));
+  assert(api.manifestToJson(api.subjects) === before,
+    'moving between sections changed what would be written to the site');
+});
+
+runAll().then(() => {
+  console.log(failures ? `\n${failures} failing\n` : '\nall passing\n');
+  process.exitCode = failures ? 1 : 0;
+});
