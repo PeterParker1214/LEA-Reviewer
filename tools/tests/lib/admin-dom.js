@@ -66,6 +66,12 @@ function boot(adminPath) {
     removedModuleKeys, pendingModuleArchives,
     SECTIONS, showSection, renderNav,
     get currentSectionId(){ return currentSectionId; },
+    openReportCount,
+    setReports(rows){
+      openReports = rows;
+      reportsByQuestionRef = {};
+      rows.forEach(r => { (reportsByQuestionRef[r.question_ref] = reportsByQuestionRef[r.question_ref] || []).push(r); });
+    },
   })`, ctx);
 
   return { dom, window: w, ctx, api };

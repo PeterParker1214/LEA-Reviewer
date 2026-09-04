@@ -336,6 +336,17 @@
   .nav-item.on{color:var(--gold-bright); font-weight:600;}
   .nav-ico{display:inline-flex; flex-shrink:0;}
   .nav-ico svg{width:20px; height:20px;}
+  .nav-badge{
+    background:var(--bad); color:var(--bg-deep); font-size:11px; font-weight:700;
+    border-radius:10px; padding:1px 6px; margin-left:auto; line-height:1.5;
+  }
+  @media (max-width:719px){
+    /* On the bar the item is a column, so the badge rides the icon instead. */
+    .nav-bar .nav-item{position:relative;}
+    .nav-bar .nav-badge{
+      position:absolute; top:2px; left:50%; margin-left:6px; font-size:10px; padding:0 5px;
+    }
+  }
 
   .nav-brand{padding:0 14px 14px; border-bottom:1px solid var(--line); margin-bottom:10px;}
   .nav-brand h1{font-size:28px; margin:0 0 2px;}
@@ -439,10 +450,12 @@ const sectionsRendered = new Set();
 function navItemsHtml(placement){
   return SECTIONS.map(s => {
     const text = placement === 'bar' ? (s.short || s.label) : s.label;
+    const n = s.id === 'reports' ? openReportCount() : 0;
+    const badge = n ? '<span class="nav-badge">' + n + '</span>' : '';
     return '<button class="nav-item' + (s.id === currentSectionId ? ' on' : '') + '"' +
       ' data-section="' + s.id + '">' +
       '<span class="nav-ico">' + LEAIcons[s.icon](20) + '</span>' +
-      '<span class="nav-label">' + escapeHtml(text) + '</span>' +
+      '<span class="nav-label">' + escapeHtml(text) + '</span>' + badge +
       '</button>';
   }).join('');
 }
@@ -767,6 +780,13 @@ let openReports = [];          // raw rows, status='open'
 let reportsByQuestionRef = {}; // question_ref -> [report, ...]
 let reportsLoadError = null;
 
+// The number on the Reports nav item. Counts distinct questions, not reports,
+// because that is what the Reports tab's own heading counts ("3 questions need
+// a look") — two numbers for the same thing that disagree is worse than none.
+function openReportCount(){
+  return Object.keys(reportsByQuestionRef).length;
+}
+
 let reporterNames = {};   // user_id -> username, filled from `profiles`
 
 // reports.user_id has its foreign key on auth.users, not profiles, so
@@ -849,6 +869,11 @@ async function init(){
 
   // loadSubjects() populates the manifest too — they are one array.
   await loadSubjects();
+
+  // The badge has to know before you visit the tab. A failed count is not a
+  // reason to keep the panel from loading — the badge just does not appear.
+  try{ await loadReports(); renderNav(); }
+  catch(e){ console.warn('Could not count open reports:', e); }
 }
 
 /* ================= SUBJECTS TAB ================= */

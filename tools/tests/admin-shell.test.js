@@ -136,6 +136,28 @@ check('walking every section leaves the manifest byte-identical', () => {
     'moving between sections changed what would be written to the site');
 });
 
+check('the badge counts distinct questions, matching the Reports heading', () => {
+  const { api, doc } = scene();
+  api.setReports([
+    { question_ref: 'building-laws/building-laws-1/3', reason: 'key',     created_at: '2026-01-01' },
+    { question_ref: 'building-laws/building-laws-1/3', reason: 'wording', created_at: '2026-01-02' },
+    { question_ref: 'building-laws/building-laws-1/9', reason: 'key',     created_at: '2026-01-03' },
+  ]);
+  assert(api.openReportCount() === 2, 'two questions, three reports — got ' + api.openReportCount());
+  api.renderNav();
+  const badges = [...doc.querySelectorAll('.nav-badge')];
+  assert(badges.length === 2, 'badge should appear in both placements, got ' + badges.length);
+  assert(badges.every(b => b.textContent.trim() === '2'), 'badge text: ' + badges.map(b => b.textContent).join());
+});
+
+check('no badge at all when nothing is open', () => {
+  const { api, doc } = scene();
+  api.setReports([]);
+  api.renderNav();
+  assert(api.openReportCount() === 0, 'count should be 0');
+  assert(!doc.querySelector('.nav-badge'), 'a zero badge was rendered — it should be absent, not "0"');
+});
+
 runAll().then(() => {
   console.log(failures ? `\n${failures} failing\n` : '\nall passing\n');
   process.exitCode = failures ? 1 : 0;
