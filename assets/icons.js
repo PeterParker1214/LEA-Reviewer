@@ -59,6 +59,31 @@ window.LEAIcons = (function () {
     },
     power: function (s) {
       return wrap(s || 18, '<path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.77.04"/>');
+    },
+    grid: function (s) {
+      return wrap(s || 18,
+        '<rect x="3" y="3" width="7" height="7" rx="1"/>' +
+        '<rect x="14" y="3" width="7" height="7" rx="1"/>' +
+        '<rect x="3" y="14" width="7" height="7" rx="1"/>' +
+        '<rect x="14" y="14" width="7" height="7" rx="1"/>');
+    },
+    pencil: function (s) {
+      return wrap(s || 18,
+        '<path d="M21.17 6.83a2.83 2.83 0 0 0-4-4L3 17v4h4Z"/>' +
+        '<path d="m15 5 4 4"/>');
+    },
+    plus: function (s) {
+      return wrap(s || 18, '<path d="M12 5v14"/><path d="M5 12h14"/>');
+    },
+    undo: function (s) {
+      return wrap(s || 18,
+        '<path d="M3 7v6h6"/>' +
+        '<path d="M3.51 13a9 9 0 1 0 2.13-9.36L3 7"/>');
+    },
+    flag: function (s) {
+      return wrap(s || 18,
+        '<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V4s-1 1-4 1-5-2-8-2-4 1-4 1Z"/>' +
+        '<path d="M4 22v-7"/>');
     }
   };
 })();
