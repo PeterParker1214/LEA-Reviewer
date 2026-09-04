@@ -38,7 +38,10 @@ function boot(adminPath) {
   const noop = () => {};
   w.supabase = { createClient: () => ({
     auth: { getSession: async () => ({ data: { session: null } }), onAuthStateChange: noop },
-    from: () => ({ select: () => ({ eq: () => ({ order: async () => ({ data: [], error: null }) }) }) }),
+    from: () => ({
+      select: () => ({ eq: () => ({ order: async () => ({ data: [], error: null }) }) }),
+      update: () => ({ in: async () => ({ error: null }) }),
+    }),
     rpc: async () => ({ data: null, error: null }),
   }) };
   w.LEAQuizSource = { load: async () => ({ questions: [] }) };
@@ -68,6 +71,9 @@ function boot(adminPath) {
     get currentSectionId(){ return currentSectionId; },
     openReportCount,
     renderReportsTab,
+    markReportSolved, dismissReportGroup,
+    spyRenderNav(fn){ renderNav = fn; },
+    spyLoadReports(fn){ loadReports = fn; },
     setReports(rows){
       openReports = rows;
       reportsByQuestionRef = {};
