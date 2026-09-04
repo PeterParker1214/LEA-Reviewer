@@ -1298,14 +1298,21 @@ async function scanDeletedModules(){
       // picked — typed over freely, this is a starting point, not a rule.
       const subjSel = row.querySelector('select[data-role="d-subject"]');
       const noInput = row.querySelector('input[data-role="d-no"]');
+      const idInput = row.querySelector('input[data-role="d-id"]');
       const fillNo = () => {
         if(noInput.value.trim()) return;
         const s = subjects.find(x => x.id === subjSel.value);
-        if(s) noInput.value = nextModuleNo(s);
+        if(!s) return;
+        noInput.value = nextModuleNo(s);
+        if(!idInput.value.trim()) idInput.value = s.id + '-' + noInput.value;
       };
       subjSel.addEventListener('change', fillNo);
       fillNo();
-    });
+      noInput.addEventListener('input', () => {
+        const s = subjects.find(x => x.id === subjSel.value);
+        if(s && !idInput.dataset.touched) idInput.value = s.id + '-' + noInput.value.trim();
+      });
+      idInput.addEventListener('input', () => { idInput.dataset.touched = '1'; });    
 
     // Re-uses the same lookup as "unlisted files": the commit that created
     // the archive copy quotes the module's old title, same as an upload does.
