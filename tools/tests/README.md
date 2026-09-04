@@ -17,3 +17,13 @@ stay cache-first so the site still works offline.
 `module-order.test.js` checks that saving the manifest puts every subject's
 modules back in module-number order, including against the live manifest, and
 that sorting neither loses a module nor changes anything else.
+
+`subjects-tab.test.js` and `admin-shell.test.js` drive `admin.html` inside a
+real DOM, so they need one dependency the other tests do not:
+
+    npm install jsdom
+    node tools/tests/subjects-tab.test.js
+    node tools/tests/admin-shell.test.js
+
+They boot the page through `lib/admin-dom.js`, which runs both inline script
+blocks against a jsdom context and hands back the panel's own bindings.
