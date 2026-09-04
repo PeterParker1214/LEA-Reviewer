@@ -64,9 +64,6 @@
     border:1px solid var(--line); border-radius:12px; background:var(--bg-panel-deep);
     margin-bottom:14px; overflow:hidden;
   }
-  .panel-card-head{display:flex; gap:14px; align-items:flex-start; padding:16px; cursor:pointer;}
-  .panel-card-head:hover{background:rgba(111,168,207,0.05);}
-  .panel-card-body{padding:0 16px 16px; border-top:1px solid var(--line);}
 
   /* Subjects — one collapsed card each, opened to edit. Same shape as the
      report cards (.rep-*): a head you tap, a body that unfolds beneath it.
@@ -299,6 +296,9 @@
   .rep-chip{font-size:13px;padding:6px 12px;border-radius:20px;background:transparent;}
   .rep-chip.on{background:var(--gold);color:var(--bg-deep);border-color:var(--gold);font-weight:600;}
 
+  /* .rep is kept empty: its shape properties now come from .panel-card,
+     and the selector stays so the class name survives for the render
+     functions and the test that guards against renaming it. */
   .rep{}
   .rep.open{border-color:var(--gold);}
   .rep.done{opacity:.55;}
