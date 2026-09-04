@@ -1312,7 +1312,8 @@ async function scanDeletedModules(){
         const s = subjects.find(x => x.id === subjSel.value);
         if(s && !idInput.dataset.touched) idInput.value = s.id + '-' + noInput.value.trim();
       });
-      idInput.addEventListener('input', () => { idInput.dataset.touched = '1'; });    
+      idInput.addEventListener('input', () => { idInput.dataset.touched = '1'; });
+  });
 
     // Re-uses the same lookup as "unlisted files": the commit that created
     // the archive copy quotes the module's old title, same as an upload does.
