@@ -158,6 +158,32 @@ check('no badge at all when nothing is open', () => {
   assert(!doc.querySelector('.nav-badge'), 'a zero badge was rendered — it should be absent, not "0"');
 });
 
+check('badge updates when reports are resolved or dismissed', async () => {
+  const { api, doc } = scene();
+  // Seed reports for two distinct questions
+  api.setReports([
+    { question_ref: 'building-laws/building-laws-1/3', user_id: 'u1', reason: 'key', created_at: '2026-01-01', id: 'r1', status: 'open' },
+    { question_ref: 'building-laws/building-laws-1/9', user_id: 'u2', reason: 'wording', created_at: '2026-01-02', id: 'r2', status: 'open' },
+  ]);
+  api.renderNav();
+  const badges1 = [...doc.querySelectorAll('.nav-badge')];
+  assert(badges1.length === 2, 'expected 2 badges for 2 nav placements, got ' + badges1.length);
+  assert(badges1.every(b => b.textContent.trim() === '2'), 'badge should show 2 questions: ' + badges1.map(b => b.textContent).join());
+
+  // Simulate the code path of markReportSolved/dismissReportGroup:
+  // 1. loadReports() is called, which shrinks reportsByQuestionRef
+  // 2. (with the fix) renderNav() is called to update the badge
+  // 3. renderReportsTab() updates the heading
+  api.setReports([
+    { question_ref: 'building-laws/building-laws-1/9', user_id: 'u2', reason: 'wording', created_at: '2026-01-02', id: 'r2', status: 'open' },
+  ]);
+  api.renderNav();  // This is what the fix adds to markReportSolved/dismissReportGroup
+  api.renderReportsTab();
+  // With the fix: renderNav is called after shrinking reports, so badges show 1
+  const badges2 = [...doc.querySelectorAll('.nav-badge')];
+  assert(badges2.every(b => b.textContent.trim() === '1'), 'after resolving one report, badge should show 1: ' + badges2.map(b => b.textContent).join());
+});
+
 runAll().then(() => {
   console.log(failures ? `\n${failures} failing\n` : '\nall passing\n');
   process.exitCode = failures ? 1 : 0;

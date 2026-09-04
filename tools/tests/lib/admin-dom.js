@@ -67,6 +67,7 @@ function boot(adminPath) {
     SECTIONS, showSection, renderNav,
     get currentSectionId(){ return currentSectionId; },
     openReportCount,
+    renderReportsTab,
     setReports(rows){
       openReports = rows;
       reportsByQuestionRef = {};

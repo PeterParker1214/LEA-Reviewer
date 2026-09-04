@@ -2209,6 +2209,7 @@ async function openReportsTab(){
   tabReportsEl.innerHTML = '<div class="card msg info">Loading reports\u2026</div>';
   await loadManifest();
   await loadReports();
+  renderNav();
   await prefetchReportedQuestions();
   renderReportsTab();
 }
@@ -2478,6 +2479,7 @@ async function markReportSolved(ref){
     if(error) throw error;
     reportOpenRef = null;
     await loadReports();
+    renderNav();
     await prefetchReportedQuestions();
     renderReportsTab();
   }catch(e){
@@ -2565,6 +2567,7 @@ async function dismissReportGroup(ref){
     if(error) throw error;
     reportOpenRef = null;
     await loadReports();
+    renderNav();
     await prefetchReportedQuestions();
     renderReportsTab();
   }catch(e){
