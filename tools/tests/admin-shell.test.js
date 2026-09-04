@@ -196,6 +196,24 @@ check('dismissReportGroup calls renderNav after closing the report', async () =>
     'renderNav must run after loadReports so it sees the fresh count, got order: ' + order.join(','));
 });
 
+check('the three rebuilt tabs share one card base', () => {
+  const { w } = scene();
+  const css = [...w.document.querySelectorAll('style')].map(s => s.textContent).join('\n');
+  assert(/\.panel-card\s*\{/.test(css), 'no .panel-card base rule');
+  // Each family opts in rather than redeclaring the same border/radius/background.
+  ['.rep', '.rw-job', '.subj'].forEach(sel => {
+    const re = new RegExp('\\' + sel + '[,\\s{]');
+    assert(re.test(css), sel + ' is gone — do not rename the rebuilt tabs\' classes');
+  });
+});
+
+check('no repository paths in the shell copy', () => {
+  const { w } = scene();
+  const shellText = w.document.getElementById('nav').textContent;
+  assert(!/data\/|\.json|subjects\.json/.test(shellText),
+    'a file path leaked into the navigation copy');
+});
+
 runAll().then(() => {
   console.log(failures ? `\n${failures} failing\n` : '\nall passing\n');
   process.exitCode = failures ? 1 : 0;

@@ -56,12 +56,23 @@
   .msg.info{background:rgba(201,154,70,0.12);border:1px solid var(--line);color:var(--muted);}
   a{color:var(--gold-bright);}
   .row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);}
+  /* One card shape. The Reports and Rework rebuilds arrived at the same thing
+     independently — a bordered panel with a head you tap and a body that
+     unfolds — and the Subjects rebuild copied it a third time. Declared once
+     here; the three families keep their own names and add only what differs. */
+  .panel-card{
+    border:1px solid var(--line); border-radius:12px; background:var(--bg-panel-deep);
+    margin-bottom:14px; overflow:hidden;
+  }
+  .panel-card-head{display:flex; gap:14px; align-items:flex-start; padding:16px; cursor:pointer;}
+  .panel-card-head:hover{background:rgba(111,168,207,0.05);}
+  .panel-card-body{padding:0 16px 16px; border-top:1px solid var(--line);}
+
   /* Subjects — one collapsed card each, opened to edit. Same shape as the
      report cards (.rep-*): a head you tap, a body that unfolds beneath it.
      At rest the whole tab is a short list of names, which is the point:
      it mostly gets read on a phone. */
-  .subj{border:1px solid var(--line);border-radius:12px;background:var(--bg-panel-deep);
-        margin-bottom:12px;overflow:hidden;}
+  .subj{margin-bottom:12px;}
   .subj.open{border-color:var(--gold);}
   .subj-head{display:flex;gap:12px;align-items:flex-start;padding:15px 16px;cursor:pointer;}
   .subj-head:hover{background:rgba(111,168,207,0.05);}
@@ -241,6 +252,12 @@
   .rw-more summary{cursor:pointer;font-size:13px;color:var(--muted);}
   .rw-more summary:hover{color:var(--gold-bright);}
 
+  /* Unlike .rep and .subj, a job card is not a tap-to-open accordion — it's
+     always fully shown, uses the generic .card padding/background, and has
+     no head/body split. That's a different shape, so it keeps its own rule
+     rather than opting into .panel-card. */
+  .rw-job{background:var(--bg-panel);border:1px solid var(--line);border-radius:12px;
+    padding:20px;margin-bottom:20px;}
   .rw-job-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
   .rw-state{font-size:12.5px;color:var(--muted);white-space:nowrap;}
   .rw-state.ok{color:var(--good);}
@@ -282,7 +299,7 @@
   .rep-chip{font-size:13px;padding:6px 12px;border-radius:20px;background:transparent;}
   .rep-chip.on{background:var(--gold);color:var(--bg-deep);border-color:var(--gold);font-weight:600;}
 
-  .rep{border:1px solid var(--line);border-radius:12px;background:var(--bg-panel-deep);margin-bottom:14px;overflow:hidden;}
+  .rep{}
   .rep.open{border-color:var(--gold);}
   .rep.done{opacity:.55;}
   .rep-head{display:flex;gap:14px;align-items:flex-start;padding:16px;cursor:pointer;}
@@ -879,7 +896,7 @@ async function init(){
 /* ================= SUBJECTS TAB ================= */
 
 async function loadSubjects(fromReloadButton){
-  tabSubjectsEl.innerHTML = '<div class="card msg info">Loading current subjects from GitHub…</div>';
+  tabSubjectsEl.innerHTML = '<div class="card msg info">Loading your subjects…</div>';
   try{
     subjects = await fetchManifest();
     manifestSubjects = subjects;   // one array, two names — see loadManifest
@@ -989,7 +1006,7 @@ function renderSubjectsTab(){
         </div>
       </div>`;
     return `
-    <div class="subj ${open ? 'open' : ''}" data-idx="${i}" data-sid="${escapeHtml(s.id)}">
+    <div class="subj panel-card ${open ? 'open' : ''}" data-idx="${i}" data-sid="${escapeHtml(s.id)}">
       <div class="subj-head" data-action="open" data-idx="${i}">
         <span class="subj-caret">&#9656;</span>
         <div class="subj-main">
@@ -1457,7 +1474,7 @@ async function addUnlistedFile(row){
  * whatever new module has since taken the old slot.
  */
 async function scanDeletedModules(){
-  tabDeletedEl.innerHTML = '<div class="card msg info">Reading the archive from GitHub…</div>';
+  tabDeletedEl.innerHTML = '<div class="card msg info">Looking for removed modules…</div>';
   try{
     const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/git/trees/${GITHUB_BRANCH}?recursive=1`;
     const resp = await fetch(url, { cache: 'no-store' });
@@ -1470,8 +1487,8 @@ async function scanDeletedModules(){
       .sort().reverse(); // most recently deleted first (timestamp is in the filename)
 
     if(!archived.length){
-      tabDeletedEl.innerHTML = '<div class="card msg info">Nothing archived yet. Removing a module ' +
-        '(Subjects tab) and pressing "Save to site" is what puts a copy here.</div>';
+      tabDeletedEl.innerHTML = '<div class="card msg info">Nothing here yet. When you remove a module ' +
+        'from a subject and press "Save to site", a copy is kept here so you can put it back.</div>';
       return;
     }
 
@@ -2267,7 +2284,7 @@ function repCardHtml(ref){
   const stem = info.row ? info.row.q : (info.error || ref);
 
   return '' +
-  '<div class="rep' + (isOpen ? ' open' : '') + '" data-ref="' + escapeHtml(ref) + '">' +
+  '<div class="rep panel-card' + (isOpen ? ' open' : '') + '" data-ref="' + escapeHtml(ref) + '">' +
     '<div class="rep-head" data-head="' + escapeHtml(ref) + '">' +
       '<div class="rep-caret">&#9656;</div>' +
       '<div class="rep-main">' +
@@ -2862,7 +2879,7 @@ function jobCardHtml(job){
   else if(job.result && job.result.keyOk)  state = '<span class="rw-state ok">Checked · ' + job.rows.length + ' questions</span>';
   else if(job.result && !job.result.keyOk) state = '<span class="rw-state bad">Answer key problem</span>';
 
-  return '<div class="card rw-job" data-job="' + job.id + '">' +
+  return '<div class="rw-job" data-job="' + job.id + '">' +
     '<div class="rw-job-head">' +
       '<div><b>' + escapeHtml(job.dest.title || job.label) + '</b>' +
         '<div class="field-note">from ' + escapeHtml(job.label) + '</div></div>' +

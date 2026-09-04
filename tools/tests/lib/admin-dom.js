@@ -30,7 +30,11 @@ function boot(adminPath) {
 
   // The panel's own <body>, so the code finds the ids it expects.
   const bodyMatch = src.slice(src.indexOf('<body>'), src.indexOf('<script>', src.indexOf('<body>')));
-  const dom = new JSDOM('<!doctype html><html><body>' + bodyMatch.replace('<body>', '') + '</body></html>',
+  // The <style> block lives in <head>, ahead of <body> — carry it along so
+  // tests can inspect the CSS the panel actually ships.
+  const styleMatch = src.slice(src.indexOf('<style>'), src.indexOf('</style>') + '</style>'.length);
+  const dom = new JSDOM('<!doctype html><html><head>' + styleMatch + '</head><body>' +
+    bodyMatch.replace('<body>', '') + '</body></html>',
     { runScripts: 'outside-only', url: 'https://example.test/admin.html' });
   const ctx = dom.getInternalVMContext();
   const w = dom.window;
