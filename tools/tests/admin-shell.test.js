@@ -1,6 +1,12 @@
 // The shell: one list of sections, two places it is drawn, one switcher.
 const { boot } = require('./lib/admin-dom.js');
 
+// showSection() deliberately does not swallow a render's rejection (that is
+// the fix under test: the error must still surface). This test file isn't
+// asserting *where* it surfaces, only that a failed render is retried — so
+// keep Node from treating the expected rejection as a crash.
+process.on('unhandledRejection', () => {});
+
 let failures = 0;
 const queued = [];
 function check(name, fn) { queued.push([name, fn]); }
@@ -82,6 +88,36 @@ check('tapping a nav item switches section', () => {
   const { api, doc } = scene();
   doc.querySelector('#navBar [data-section="rework"]').click();
   assert(api.currentSectionId === 'rework', 'tap did not switch, at ' + api.currentSectionId);
+});
+
+check('a "once" section whose render fails the first time is retried on the next open', async () => {
+  const { api } = scene();
+  let runs = 0;
+  const pages = api.SECTIONS.find(s => s.id === 'pages');
+  pages.render = () => {
+    runs++;
+    return runs === 1 ? Promise.reject(new Error('network error')) : Promise.resolve();
+  };
+  api.showSection('subjects'); // reset currentSectionId so the second call below is a real "open"
+  api.showSection('pages');
+  await new Promise(r => setTimeout(r, 0));
+  api.showSection('subjects');
+  api.showSection('pages');
+  await new Promise(r => setTimeout(r, 0));
+  assert(runs === 2, 'render ran ' + runs + ' times, expected 2 (failure must not stick)');
+});
+
+check('a "once" section whose render succeeds still only runs once', async () => {
+  const { api } = scene();
+  let runs = 0;
+  const pages = api.SECTIONS.find(s => s.id === 'pages');
+  pages.render = () => { runs++; return Promise.resolve(); };
+  api.showSection('pages');
+  await new Promise(r => setTimeout(r, 0));
+  api.showSection('subjects');
+  api.showSection('pages');
+  await new Promise(r => setTimeout(r, 0));
+  assert(runs === 1, 'render ran ' + runs + ' times, expected 1 (success must still be remembered)');
 });
 
 check('the old tab-btn markup is gone', () => {

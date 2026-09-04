@@ -428,8 +428,16 @@ function showSection(id){
   });
   renderNav();
   if(section.once && sectionsRendered.has(id)) return;
-  sectionsRendered.add(id);
-  section.render();
+  // Marked only on success: a render that throws or rejects (loadFileTree
+  // hitting a network error) must stay retryable, or the section is stuck
+  // empty until the page is reloaded. This is what the old handler's
+  // `fileTree.length === 0` test did.
+  const out = section.render();
+  if(out && typeof out.then === 'function'){
+    out.then(() => { sectionsRendered.add(id); });
+  } else {
+    sectionsRendered.add(id);
+  }
 }
 
 let subjects = [];
