@@ -341,14 +341,12 @@
     <div class="tabs">
       <button class="tab-btn active" data-tab="subjects">Subjects</button>
       <button class="tab-btn" data-tab="pages">Pages &amp; Quizzes</button>
-      <button class="tab-btn" data-tab="upload">Add Module</button>
       <button class="tab-btn" data-tab="rework">Rework Module</button>
       <button class="tab-btn" data-tab="deleted">Deleted Modules</button>
       <button class="tab-btn" data-tab="reports">Reports</button>
     </div>
     <div id="tab-subjects"></div>
     <div id="tab-pages" class="hidden"></div>
-    <div id="tab-upload" class="hidden"></div>
     <div id="tab-rework" class="hidden"></div>
     <div id="tab-deleted" class="hidden"></div>
     <div id="tab-reports" class="hidden"></div>
@@ -373,7 +371,6 @@ const gateEl = document.getElementById('gate');
 const panelEl = document.getElementById('panel');
 const tabSubjectsEl = document.getElementById('tab-subjects');
 const tabPagesEl = document.getElementById('tab-pages');
-const tabUploadEl = document.getElementById('tab-upload');
 const tabReworkEl = document.getElementById('tab-rework');
 const tabDeletedEl = document.getElementById('tab-deleted');
 const tabReportsEl = document.getElementById('tab-reports');
@@ -701,10 +698,6 @@ function reportCountsForCurrentFile(){
 }
 let currentModuleRef = null; // { subjectId, moduleId } for whatever quiz file is open, when known from the manifest
 
-// ---- "Add Module" (drag & drop upload) tab state ----
-let uploadedFileText = null;
-let uploadedParsed = null;   // { format: 'native'|'blueprint'|'unknown', questionCount, suggestedTitle }
-
 function showGate(html, isError){
   gateEl.style.display = 'block';
   gateEl.className = 'card msg ' + (isError ? 'error' : 'info');
@@ -750,12 +743,10 @@ async function init(){
       btn.classList.add('active');
       tabSubjectsEl.classList.toggle('hidden', btn.dataset.tab !== 'subjects');
       tabPagesEl.classList.toggle('hidden', btn.dataset.tab !== 'pages');
-      tabUploadEl.classList.toggle('hidden', btn.dataset.tab !== 'upload');
       tabReworkEl.classList.toggle('hidden', btn.dataset.tab !== 'rework');
       tabDeletedEl.classList.toggle('hidden', btn.dataset.tab !== 'deleted');
       tabReportsEl.classList.toggle('hidden', btn.dataset.tab !== 'reports');
       if(btn.dataset.tab === 'pages' && fileTree.length === 0) loadFileTree();
-      if(btn.dataset.tab === 'upload') renderUploadTab();
       if(btn.dataset.tab === 'rework') renderReworkTab();
       if(btn.dataset.tab === 'deleted') scanDeletedModules();
       if(btn.dataset.tab === 'reports') openReportsTab();
@@ -820,7 +811,7 @@ function swatchesHtml(subjectIdx, mod){
 // "Save to site", the same as renaming a subject, so a misclick costs nothing.
 function moduleRowsHtml(subject, subjectIdx){
   const mods = subject.modules || [];
-  if(!mods.length) return '<div class="mod-none">Nothing here yet. Add one from the <b>Add Module</b> or <b>Rework Module</b> tab.</div>';
+  if(!mods.length) return '<div class="mod-none">Nothing here yet. Add one from the <b>Rework Module</b> tab.</div>';
   return mods.map(m => {
     const total = Number(m.total) || 0;
     return `
@@ -2030,428 +2021,6 @@ async function saveTextFile(path){
     statusEl.textContent = 'Error: ' + e.message;
   }finally{
     saveBtn.disabled = false;
-  }
-}
-
-/* ================= ADD MODULE (DRAG & DROP UPLOAD) TAB ================= */
-//
-// Lets an admin drop in a self-contained quiz/module HTML file (built with its
-// own design, own CSS, own question data) and have it wired into the site's
-// three "layers" automatically:
-//   1. The quiz file itself — saved under subjects/<subject>/quizzes/, with a
-//      small invisible adapter appended so its answers report into the shared
-//      LEAProgress tracker (assets/module-progress.js). The quiz's own markup,
-//      styling and behavior are left untouched.
-//   2. The subject's index.html — a new module card is added (or the subject
-//      page is created from scratch if it's a brand-new subject).
-//   3. The main index.html — the subject's totals are registered in SUBJECTS
-//      so it shows up on the home page.
-//
-// Two quiz formats are auto-detected:
-//   "native"    — the site's own quiz template (const QUESTIONS = [...], and
-//                  already calls LEAProgress itself) — just re-point its
-//                  LEA_SUBJECT_ID / LEA_MODULE_ID at the chosen module.
-//   "blueprint" — the standalone "QUIZ_DATA" reviewer template (const
-//                  QUIZ_DATA = [...], function selectOption(...), function
-//                  showResults(...)) — gets a small adapter script appended
-//                  that hooks those functions to report mastery/scores.
-
-function parseQuizFile(text){
-  const titleMatch = text.match(/<title>([^<]*)<\/title>/);
-  const h1Match = text.match(/<h1>([^<]*)<\/h1>/);
-  const suggestedTitle = (h1Match && h1Match[1].trim()) || (titleMatch && titleMatch[1].trim()) || '';
-
-  function countArray(re){
-    const m = text.match(re);
-    if(!m) return 0;
-    try{ return JSON.parse(m[1]).length; }catch(e){}
-    try{ return new Function('return ' + m[1])().length; }catch(e){}
-    return 0;
-  }
-
-  if(/const QUESTIONS\s*=\s*\[/.test(text) && /LEAProgress/.test(text)){
-    return { format:'native', questionCount: countArray(/const QUESTIONS = (\[[\s\S]*?\]);/), suggestedTitle };
-  }
-  if(/const QUIZ_DATA\s*=\s*\[/.test(text) && /function\s+selectOption\s*\(/.test(text) && /function\s+showResults\s*\(/.test(text)){
-    return { format:'blueprint', questionCount: countArray(/const QUIZ_DATA = (\[[\s\S]*?\]);/), suggestedTitle };
-  }
-
-  // "practice" template — a third self-built quiz shape (seen in e.g. the
-  // PreBoard Practice Set style files): const QUESTIONS = [...] with each
-  // item's correct option at item.c, plus its own selectAnswer(i, btn) /
-  // showResults() functions and a per-run answersLog/order array. Distinct
-  // enough from native (needs LEAProgress) and blueprint (needs QUIZ_DATA +
-  // selectOption) that it's safe to recognize by name and wire up properly,
-  // instead of falling through to the untracked generic case below.
-  if(/const QUESTIONS\s*=\s*\[/.test(text) && /function\s+selectAnswer\s*\(/.test(text) && /function\s+showResults\s*\(/.test(text) && /\banswersLog\b/.test(text)){
-    return { format:'practice', questionCount: countArray(/const QUESTIONS = (\[[\s\S]*?\]);/), suggestedTitle };
-  }
-
-  // Fallback for self-contained quiz files that don't match either known
-  // template exactly (different variable/function names, different question
-  // object shape, etc). Rather than reject the file, scan every top-level
-  // `const NAME = [ ... ];` array literal in the file and accept the first
-  // one that "looks like" a set of quiz questions — each item is an object
-  // with at least one array property (the options) with 2+ entries. This
-  // can't safely wire up LEAProgress (we don't know the file's own
-  // answer-checking function names), so it's embedded as-is: no adapter
-  // script is appended, progress just won't be tracked for it.
-  function looksLikeQuestionArray(arr){
-    if(!Array.isArray(arr) || !arr.length) return false;
-    return arr.every(item => {
-      if(!item || typeof item !== 'object') return false;
-      return Object.values(item).some(v => Array.isArray(v) && v.length >= 2);
-    });
-  }
-  const genericRe = /const\s+([A-Za-z_$][\w$]*)\s*=\s*(\[[\s\S]*?\]);/g;
-  let genericMatch;
-  while((genericMatch = genericRe.exec(text))){
-    const literal = genericMatch[2];
-    let arr = null;
-    try{ arr = JSON.parse(literal); }catch(e){}
-    if(!arr){ try{ arr = new Function('return ' + literal)(); }catch(e){} }
-    if(looksLikeQuestionArray(arr)){
-      return { format:'generic', questionCount: arr.length, suggestedTitle };
-    }
-  }
-
-  return { format:'unknown', questionCount:0, suggestedTitle };
-}
-
-function buildAdaptedQuizHtml(raw, format, opts){
-  const { subjectId, moduleId, subjectName, includeBackLink } = opts;
-  let out = raw;
-  const assetPath = '../../../assets/module-progress.js?v=16';
-
-  if(format === 'native'){
-    out = out.replace(/const LEA_SUBJECT_ID\s*=\s*'[^']*';/, `const LEA_SUBJECT_ID = '${subjectId}';`);
-    out = out.replace(/const LEA_MODULE_ID\s*=\s*'[^']*';/, `const LEA_MODULE_ID = '${moduleId}';`);
-    if(!/module-progress\.js/.test(out)){
-      out = out.replace('</body>', `<script src="${assetPath}"><\/script>\n</body>`);
-    }
-  } else if(format === 'blueprint'){
-    const adapter = `
-<script src="${assetPath}"><\/script>
-<script>
-// ---- Auto-generated by the admin "Add Module" tool: reports this quiz's ----
-// ---- answers into the shared LEAProgress tracker, without touching the  ----
-// ---- quiz's own markup, styling, or behavior.                           ----
-(function(){
-  var LEA_SUBJECT_ID = ${JSON.stringify(subjectId)};
-  var LEA_MODULE_ID = ${JSON.stringify(moduleId)};
-  if (typeof selectOption === 'function') {
-    var _leaOrigSelectOption = selectOption;
-    selectOption = function(origIdx){
-      _leaOrigSelectOption(origIdx);
-      try {
-        var r = results[current];
-        if (r && r.isCorrect && window.LEAProgress) {
-          LEAProgress.markMastered(LEA_SUBJECT_ID, LEA_MODULE_ID, order[current]);
-        }
-      } catch(e){}
-    };
-  }
-  if (typeof showResults === 'function') {
-    var _leaOrigShowResults = showResults;
-    showResults = function(){
-      _leaOrigShowResults();
-      try {
-        if (window.LEAProgress) {
-          var correctCount = results.filter(function(r){ return r && r.isCorrect; }).length;
-          LEAProgress.recordRunScore(LEA_SUBJECT_ID, LEA_MODULE_ID, correctCount, order.length);
-        }
-      } catch(e){}
-    };
-  }
-})();
-<\/script>
-`;
-    out = out.replace('</body>', adapter + '</body>');
-  } else if(format === 'practice'){
-    const adapter = `
-<script src="${assetPath}"><\/script>
-<script>
-// ---- Auto-generated by the admin "Add Module" tool: reports this quiz's ----
-// ---- answers into the shared LEAProgress tracker, without touching the  ----
-// ---- quiz's own markup, styling, or behavior.                           ----
-(function(){
-  var LEA_SUBJECT_ID = ${JSON.stringify(subjectId)};
-  var LEA_MODULE_ID = ${JSON.stringify(moduleId)};
-  if (typeof selectAnswer === 'function') {
-    var _leaOrigSelectAnswer = selectAnswer;
-    selectAnswer = function(i, btn){
-      var alreadyAnswered = !!answersLog[pos];
-      var qIdx = order[pos];
-      _leaOrigSelectAnswer(i, btn);
-      try {
-        if (!alreadyAnswered) {
-          var logged = answersLog[pos];
-          if (logged && logged.isCorrect && window.LEAProgress) {
-            LEAProgress.markMastered(LEA_SUBJECT_ID, LEA_MODULE_ID, qIdx);
-          }
-        }
-      } catch(e){}
-    };
-  }
-  if (typeof showResults === 'function') {
-    var _leaOrigShowResults = showResults;
-    showResults = function(){
-      _leaOrigShowResults();
-      try {
-        if (window.LEAProgress) {
-          var correctCount = answersLog.filter(function(a){ return a && a.isCorrect; }).length;
-          LEAProgress.recordRunScore(LEA_SUBJECT_ID, LEA_MODULE_ID, correctCount, order.length);
-        }
-      } catch(e){}
-    };
-  }
-})();
-<\/script>
-`;
-    out = out.replace('</body>', adapter + '</body>');
-  }
-
-  if(includeBackLink){
-    const backLinkHtml = `<div style="max-width:760px;margin:0 auto 12px;font:12px 'IBM Plex Mono',monospace;">` +
-      `<a href="../index.html" style="color:#8fc4ea;text-decoration:underline;">&larr; Back to ${escapeHtml(subjectName)}</a>` +
-      `</div>\n`;
-    out = out.replace('<body>', '<body>\n' + backLinkHtml);
-  }
-  return out;
-}
-
-// NOTE — what used to live here.
-//
-// This tool once generated a whole subject page per subject
-// (subjects/<id>/index.html), plus helpers to append a module card to one and
-// to migrate a hand-built page onto that template. Nothing links to those
-// pages any more: the site routes every subject through subject.html and
-// every quiz through run.html, both driven by data/subjects.json. Generating
-// them was writing files no reader could reach, so the generators are gone
-// rather than left to rot. Adding a module is now a manifest edit.
-
-/* ---------------- Rendering the tab + handling the drop/submit ---------------- */
-
-function renderUploadTab(){
-  const subjectOptions = subjects.map(s => `<option value="${escapeHtml(s.id)}">${escapeHtml(s.name)}</option>`).join('');
-
-  tabUploadEl.innerHTML = `
-    <div class="card msg info">
-      Drop in a self-contained quiz/module HTML file (its own design, its own questions).
-      Its look stays exactly the same — this just wires its scoring into the site's shared
-      progress tracker, and adds it to a subject (new or existing).
-    </div>
-
-    <div class="card">
-      <div class="field-label">Quiz / module file</div>
-      <div id="dropZone" style="border:2px dashed var(--line); border-radius:10px; padding:28px; text-align:center; cursor:pointer; color:var(--muted); transition:border-color .15s ease;">
-        <div id="dropZoneText">Drag &amp; drop an .html file here, or click to browse</div>
-        <input type="file" id="fileInput" accept=".html,text/html" style="display:none;">
-      </div>
-      <div id="fileInfo" class="save-status"></div>
-    </div>
-
-    <div class="card" id="uploadFormCard" style="display:none;">
-      <div class="field-label">Subject</div>
-      <select id="uploadSubjectSelect">
-        <option value="__new__">+ New subject…</option>
-        ${subjectOptions}
-      </select>
-      <div id="newSubjectFields" style="display:none;">
-        <div class="field-label">New subject name</div>
-        <input type="text" id="newSubjectName" placeholder="e.g. Architectural Design">
-        <div class="field-label">Blurb (optional)</div>
-        <input type="text" id="newSubjectTagline" placeholder="One line shown under the subject title">
-      </div>
-
-      <div class="field-label">Module title</div>
-      <input type="text" id="uploadModuleTitle">
-      <div class="field-label" style="margin-top:14px;">
-        <label style="display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-size:13px;color:var(--ink);">
-          <input type="checkbox" id="uploadHardChk" style="width:auto;">
-          Mark as advanced (adds &ldquo;&middot; Advanced&rdquo; beside the module number)
-        </label>
-      </div>
-      <div class="field-label">Module ID (internal — used for progress tracking, keep unique within the subject)</div>
-      <input type="text" id="uploadModuleId">
-      <div class="field-label">Quiz file name</div>
-      <input type="text" id="uploadFileName">
-
-      <div class="field-label" style="margin-top:16px;">
-        <label style="display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-size:13px;color:var(--ink);">
-          <input type="checkbox" id="uploadBackLinkChk" checked style="width:auto;">
-          Add a small "&larr; Back to subject" link (the rest of the quiz's design is left untouched)
-        </label>
-      </div>
-
-      <div class="actions">
-        <button class="primary" id="uploadSubmitBtn">Add module to site</button>
-      </div>
-      <div class="save-status" id="uploadStatus"></div>
-    </div>
-  `;
-
-  const dropZone = document.getElementById('dropZone');
-  const fileInput = document.getElementById('fileInput');
-  dropZone.addEventListener('click', () => fileInput.click());
-  dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = 'var(--gold)'; });
-  dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = 'var(--line)'; });
-  dropZone.addEventListener('drop', (e) => {
-    e.preventDefault();
-    dropZone.style.borderColor = 'var(--line)';
-    if(e.dataTransfer.files && e.dataTransfer.files[0]) handleUploadedFile(e.dataTransfer.files[0]);
-  });
-  fileInput.addEventListener('change', (e) => { if(e.target.files[0]) handleUploadedFile(e.target.files[0]); });
-
-  document.getElementById('uploadSubjectSelect').addEventListener('change', (e) => {
-    document.getElementById('newSubjectFields').style.display = e.target.value === '__new__' ? 'block' : 'none';
-  });
-  document.getElementById('uploadSubmitBtn').addEventListener('click', handleAddModule);
-}
-
-function handleUploadedFile(file){
-  const reader = new FileReader();
-  reader.onload = () => {
-    uploadedFileText = reader.result;
-    uploadedParsed = parseQuizFile(uploadedFileText);
-    document.getElementById('dropZoneText').textContent = 'Loaded: ' + file.name;
-    const fileInfoEl = document.getElementById('fileInfo');
-    const formCard = document.getElementById('uploadFormCard');
-
-    if(uploadedParsed.format === 'unknown' || !uploadedParsed.questionCount){
-      fileInfoEl.className = 'save-status err';
-      fileInfoEl.textContent = 'Couldn\u2019t recognize a supported question set in this file (looked for the site\u2019s own quiz template or the standalone "QUIZ_DATA" reviewer template).';
-      formCard.style.display = 'none';
-      return;
-    }
-
-    fileInfoEl.className = 'save-status ok';
-    const formatLabel = uploadedParsed.format === 'native' ? "LEA site quiz template"
-      : uploadedParsed.format === 'blueprint' ? 'Standalone "QUIZ_DATA" reviewer template'
-      : uploadedParsed.format === 'practice' ? '"Practice set" reviewer template'
-      : 'Self-contained quiz file (progress tracking will not be wired up for this one)';
-    fileInfoEl.textContent = `Detected ${uploadedParsed.questionCount} question(s) — format: ${formatLabel}.`;
-    formCard.style.display = 'block';
-
-    const suggestedTitle = uploadedParsed.suggestedTitle || file.name.replace(/\.html?$/i, '');
-    document.getElementById('uploadModuleTitle').value = suggestedTitle;
-    document.getElementById('uploadModuleId').value = slugify(suggestedTitle);
-    document.getElementById('uploadFileName').value = file.name.replace(/\s+/g, '_');
-  };
-  reader.readAsText(file);
-}
-
-async function handleAddModule(){
-  const statusEl = document.getElementById('uploadStatus');
-  const btn = document.getElementById('uploadSubmitBtn');
-  function log(msg){ statusEl.innerHTML += '<div>' + escapeHtml(msg) + '</div>'; }
-
-  btn.disabled = true;
-  statusEl.className = 'save-status';
-  statusEl.innerHTML = '';
-
-  try{
-    if(!uploadedFileText || !uploadedParsed || !uploadedParsed.questionCount){
-      throw new Error('Drop or choose a supported quiz HTML file first.');
-    }
-
-    // ---- Resolve subject ----
-    const subjectSelectVal = document.getElementById('uploadSubjectSelect').value;
-    let subjectId, subjectName, subjectTagline = '', isNewSubject = false;
-    if(subjectSelectVal === '__new__'){
-      subjectName = document.getElementById('newSubjectName').value.trim();
-      if(!subjectName) throw new Error('Enter a name for the new subject.');
-      subjectId = slugify(subjectName);
-      subjectTagline = document.getElementById('newSubjectTagline').value.trim();
-      isNewSubject = true;
-    } else {
-      const s = subjects.find(s => s.id === subjectSelectVal);
-      if(!s) throw new Error('Pick a subject.');
-      subjectId = s.id; subjectName = s.name;
-    }
-
-    const moduleTitle = document.getElementById('uploadModuleTitle').value.trim() || uploadedParsed.suggestedTitle || 'Untitled Module';
-    const moduleId = slugify(document.getElementById('uploadModuleId').value.trim() || moduleTitle);
-    const moduleHard = document.getElementById('uploadHardChk').checked;
-    const fileName = (document.getElementById('uploadFileName').value.trim() || (slugify(moduleTitle) + '.html')).replace(/[^a-zA-Z0-9_.-]/g, '_');
-    const includeBackLink = document.getElementById('uploadBackLinkChk').checked;
-
-    if(!moduleId) throw new Error('Enter a module ID.');
-
-    // Checked before anything is written. A duplicate module ID would collide
-    // in every reader's stored progress, which is not recoverable by editing
-    // the manifest afterwards.
-    const existingSubject = subjects.find(x => x.id === subjectId);
-    if(existingSubject && (existingSubject.modules || []).some(m => m.id === moduleId)){
-      throw new Error('"' + subjectName + '" already has a module with the ID "' + moduleId + '". Pick another.');
-    }
-
-    log('Preparing quiz file…');
-    const adaptedHtml = buildAdaptedQuizHtml(uploadedFileText, uploadedParsed.format, {
-      subjectId, moduleId, subjectName, includeBackLink
-    });
-
-    const quizPath = `subjects/${subjectId}/quizzes/${fileName}`;
-    log('Saving quiz file to ' + quizPath + '…');
-    await callSave(quizPath, adaptedHtml, `Admin: add module "${moduleTitle}" to ${subjectId}`);
-
-    // ---- data/subjects.json ----
-    // The single place the site looks. Re-fetched immediately before the edit
-    // rather than trusting what this tab loaded minutes ago, so two admins
-    // working at once cannot silently drop each other's subject.
-    log('Updating ' + MANIFEST_PATH + '…');
-    const manifest = await fetchManifestForWrite(log);
-
-    let subject = manifest.find(x => x.id === subjectId);
-    if(!subject){
-      subject = { id: subjectId, name: subjectName, blurb: subjectTagline, ready: true, modules: [] };
-      manifest.push(subject);
-      log('Added a new subject: ' + subjectName + '.');
-    }
-    if(!Array.isArray(subject.modules)) subject.modules = [];
-
-    // Re-checked against the just-fetched copy, not the stale one.
-    if(subject.modules.some(m => m.id === moduleId)){
-      throw new Error('"' + subject.name + '" already has a module with the ID "' + moduleId +
-                      '" — the quiz file was saved, but nothing was added to the site. Rename the module ID and try again.');
-    }
-
-    const moduleEntry = {
-      id: moduleId,
-      no: nextModuleNo(subject),
-      title: moduleTitle,
-      total: uploadedParsed.questionCount,
-      file: quizPath,
-      format: 'html'
-    };
-    if(moduleHard) moduleEntry.hard = true;
-
-    // Appended, never inserted. Readers' progress is keyed on module id, but
-    // the order here is the order they see, and a module that appears in the
-    // middle of a list they know reads as a mistake.
-    subject.modules.push(moduleEntry);
-
-    // A subject with modules is reachable; leaving ready:false would hide the
-    // module that was just added.
-    if(!subject.ready){
-      subject.ready = true;
-      log('Marked "' + subject.name + '" as available.');
-    }
-
-    await callSave(MANIFEST_PATH, manifestToJson(manifest), `Admin: add module "${moduleTitle}" to ${subjectId}`);
-    rememberManifest(manifest);
-
-    statusEl.className = 'save-status ok';
-    log('✅ Done! "' + moduleTitle + '" is module ' + moduleEntry.no + ' of ' + subject.name +
-        ', with ' + moduleEntry.total + ' questions. It may take a minute or two for GitHub Pages to update the live site.');
-
-    await loadSubjects();
-    renderUploadTab();
-  }catch(e){
-    statusEl.className = 'save-status err';
-    log('Error: ' + e.message);
-  }finally{
-    btn.disabled = false;
   }
 }
 
