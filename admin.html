@@ -135,6 +135,9 @@
      the headline; the archive path moves inside the disclosure. */
   .del-title{font-size:15px; font-weight:600; line-height:1.4; word-break:break-word;}
   .del-meta{font-size:12.5px; color:var(--muted); margin-top:5px;}
+  /* Said out loud, not left for the admin to notice: putting a module back
+     under a different number is a change to how readers find it. */
+  .del-moved{color:var(--gold-bright); display:inline-block; margin-top:4px;}
   .del-path{font-family:var(--font-mono); font-size:11px; color:var(--muted);
             word-break:break-all; margin-top:12px;}
 
@@ -1475,9 +1478,12 @@ async function addUnlistedFile(row){
  * content copied to data/_deleted/ before its old slot is blanked (see
  * saveSubjects). Nothing here can be reached by a reader — this tab is only
  * a way to browse those copies and, on purpose, publish one back under a
- * new module id, number, and title. It never reuses the old identity: a
- * fresh id/no is required every time, so this can never collide with
- * whatever new module has since taken the old slot.
+ * derived module id and a number that is free right now — which may or may
+ * not be the number it used to have, since that slot can have been reused
+ * since. The title comes from the same commit-message lookup the "unlisted
+ * files" scanner uses. None of that stops a restore from landing on a
+ * number another module already has now; publishArchivedFile still checks
+ * for that and refuses rather than silently colliding.
  */
 function subjectOptionsHtml(selectedId){
   return subjects.map(s =>
@@ -1485,15 +1491,69 @@ function subjectOptionsHtml(selectedId){
     escapeHtml(s.name) + '</option>').join('');
 }
 
-// Module ids are <subject-id>-<no> everywhere in the manifest, so restoring
-// derives one rather than asking for it. The old blank "New module id" box
-// could be filled with anything, including something inconsistent with the
-// rest of the subject.
+// The manifest is NOT consistently <subject-id>-<no>: of the modules on the
+// live site, some are that shape, some keep a free slug (e.g. "prehistoric"),
+// and some pad the number ("architectural-design-05"). There is no single
+// convention to follow. This derivation is still the reasonable default for
+// a *restore* — the admin never typed an id for the original module, so
+// there is nothing better to reuse — but moduleIdTaken() below has to be
+// tolerant of the zero-padded form or a collision against a padded id would
+// go undetected.
 function derivedModuleId(subjectId, no){
   return subjectId + '-' + String(Number(no));
 }
+// "05" and "5" name the same trailing module number, so normalize before
+// comparing — otherwise a collision against a zero-padded id (which is real,
+// live data: see data/subjects.json) silently passes.
+function normalizeModuleId(id){
+  return String(id).replace(/-(\d+)$/, (full, digits) => '-' + String(Number(digits)));
+}
 function moduleIdTaken(subject, id){
-  return (subject.modules || []).some(m => m.id === id);
+  const norm = normalizeModuleId(id);
+  return (subject.modules || []).some(m => normalizeModuleId(m.id) === norm);
+}
+
+// Archive filenames are <subject-id>-<no>-<removed-at-unix-ms>.json (see
+// saveSubjects). Parsing this is the only way the Deleted cards can know
+// which subject and module number a file used to belong to — nothing else
+// in the archive copy records it. Kept defensive: a filename that doesn't
+// match (hand-placed file, format change down the line) returns null so the
+// card falls back to asking the admin to choose, instead of throwing and
+// blanking the whole section.
+const ARCHIVE_PATH_RE = /^data\/_deleted\/(.+)-(\d{1,2})-(\d+)\.json$/;
+function parseArchivePath(path){
+  const m = ARCHIVE_PATH_RE.exec(path);
+  if(!m) return null;
+  return { subjectId: m[1], no: m[2], removedAtMs: Number(m[3]) };
+}
+
+// Everything a card shows, worked out from the archive's own filename. Without
+// this the card reads "unknown subject · was module ?" and the subject box
+// quietly falls back to whichever subject happens to sort first — so pressing
+// "Put it back" could file a module under someone else's subject.
+function deletedItemFor(path){
+  const parsed = parseArchivePath(path);
+  const item = { path, title: '' };
+  if(!parsed) return item;   // hand-placed file: the admin says where it goes
+  item.oldNo = parsed.no;
+  item.removedAt = shortWhen(parsed.removedAtMs);
+  const subject = subjects.find(s => s.id === parsed.subjectId);
+  if(!subject){
+    // Its subject has since been deleted, so there is no obvious place to put
+    // it back. Say so rather than defaulting to somebody else's.
+    item.subjectGone = true;
+    return item;
+  }
+  item.subjectId = parsed.subjectId;
+  item.subjectName = subject.name;
+  // Its old number may have been handed to another module since it left. Offer
+  // the old one while it is still free, the next free one when it is not, and
+  // tell the admin which — moving a module's number quietly is how a reader
+  // loses track of it.
+  const clash = (subject.modules || []).find(m => Number(m.no) === Number(parsed.no));
+  item.no = clash ? nextModuleNo(subject) : parsed.no;
+  item.numberMoved = !!clash;
+  return item;
 }
 
 // Cards render from this array (indexed by data-idx), not by re-reading the
@@ -1506,10 +1566,16 @@ function renderDeletedCards(items){
     <div class="panel-card" data-path="${escapeHtml(it.path)}">
       <div class="panel-card-body" style="border-top:none;padding-top:16px;">
         <div class="del-title">${escapeHtml(it.title || 'Untitled module')}</div>
-        <div class="del-meta">${escapeHtml(it.subjectName || 'unknown subject')}
-          &middot; was module ${escapeHtml(it.no || '?')}
-          ${it.total ? '&middot; ' + it.total + ' question' + (it.total === 1 ? '' : 's') : ''}
-          ${it.removedAt ? '&middot; removed ' + escapeHtml(it.removedAt) : ''}</div>
+        <div class="del-meta">${
+          it.subjectGone ? 'Its subject no longer exists &mdash; choose one below'
+          : it.subjectName ? escapeHtml(it.subjectName)
+          : 'Choose a subject below'
+        }${it.oldNo ? ' &middot; was module ' + escapeHtml(it.oldNo) : ''}${
+          it.removedAt ? ' &middot; removed ' + escapeHtml(it.removedAt) : ''
+        }${
+          it.numberMoved ? '<br><span class="del-moved">Number ' + escapeHtml(it.oldNo) +
+            ' is taken now, so it goes back as ' + escapeHtml(it.no) + '.</span>' : ''
+        }</div>
         <div class="actions">
           <button class="primary" data-action="d-publish" data-idx="${i}">Put it back</button>
           <button data-action="d-peek" data-idx="${i}">Preview</button>
@@ -1518,7 +1584,7 @@ function renderDeletedCards(items){
           <summary>Change where it goes&hellip;</summary>
           <div class="subj-field">
             <label>Subject</label>
-            <select data-role="d-subject">${subjectOptionsHtml()}</select>
+            <select data-role="d-subject">${subjectOptionsHtml(it.subjectId)}</select>
           </div>
           <div class="subj-field">
             <label>Module number</label>
@@ -1595,7 +1661,7 @@ async function scanDeletedModules(){
       return;
     }
 
-    deletedItems = archived.map(path => ({ path, title: '' }));
+    deletedItems = archived.map(deletedItemFor);
     renderDeletedCards(deletedItems);
     tabDeletedEl.insertAdjacentHTML('afterbegin',
       '<div class="msg info" style="margin-bottom:14px;">' + archived.length + ' archived module file' +

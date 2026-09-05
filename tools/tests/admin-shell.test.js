@@ -245,6 +245,108 @@ check('no repository paths in the shell copy', () => {
     'a file path leaked into the navigation copy');
 });
 
+// These drive deletedItemFor — the real function scanDeletedModules maps over —
+// rather than handing renderDeletedCards a pre-filled literal. A card built from
+// a literal is what let "unknown subject · was module ?" ship.
+check('an archived module knows which subject and number it came from', () => {
+  const { api } = scene();
+  api.setSubjects([
+    { id: 'building-laws', name: 'Building Laws', ready: true, modules: [
+      { id: 'building-laws-1', no: '1', title: 'PD 1096', total: 100, file: 'data/building-laws/1.json' } ] },
+  ]);
+  const it = api.deletedItemFor('data/_deleted/building-laws-2-1734021882000.json');
+  assert(it.subjectId === 'building-laws', 'subjectId: ' + it.subjectId);
+  assert(it.subjectName === 'Building Laws', 'subjectName: ' + it.subjectName);
+  assert(it.oldNo === '2', 'oldNo: ' + it.oldNo);
+  assert(it.no === '2', 'number 2 is free, so it should go back as 2 — got ' + it.no);
+  assert(it.numberMoved === false, 'should not claim the number moved');
+  assert(it.removedAt, 'no removal date derived from the timestamp');
+});
+
+check('the card shows that subject and preselects it', () => {
+  const { api, doc } = scene();
+  api.setSubjects([
+    { id: 'other', name: 'Other Subject', ready: true, modules: [] },
+    { id: 'building-laws', name: 'Building Laws', ready: true, modules: [] },
+  ]);
+  api.renderDeletedCards([api.deletedItemFor('data/_deleted/building-laws-2-1734021882000.json')]);
+  const card = doc.querySelector('#tab-deleted .panel-card');
+  assert(card, 'no card rendered');
+  assert(/Building Laws/.test(card.textContent), 'subject not shown: ' + card.textContent.trim());
+  assert(!/unknown subject/.test(card.textContent), 'still says "unknown subject"');
+  // The bug: nothing selected meant the browser fell back to the first option.
+  const sel = card.querySelector('select[data-role="d-subject"]');
+  assert(sel.value === 'building-laws',
+    'subject dropdown defaulted to "' + sel.value + '" — a restore would go to the wrong subject');
+  assert(card.querySelector('input[data-role="d-no"]').value === '2', 'number box not prefilled');
+});
+
+check('a taken number moves to the next free one, and says so', () => {
+  const { api, doc } = scene();
+  api.setSubjects([
+    { id: 'building-laws', name: 'Building Laws', ready: true, modules: [
+      { id: 'building-laws-2', no: '2', title: 'Something else', total: 10, file: 'data/building-laws/2.json' } ] },
+  ]);
+  const it = api.deletedItemFor('data/_deleted/building-laws-2-1734021882000.json');
+  assert(it.no === '03', 'should offer the next free number, got ' + it.no);
+  assert(it.numberMoved === true, 'should record that the number moved');
+  api.renderDeletedCards([it]);
+  const text = doc.querySelector('#tab-deleted .panel-card').textContent;
+  assert(/is taken now/.test(text), 'the card does not tell the admin the number moved: ' + text.trim());
+});
+
+check('an archive whose subject is gone says so instead of picking one', () => {
+  const { api, doc } = scene();
+  api.setSubjects([{ id: 'still-here', name: 'Still Here', ready: true, modules: [] }]);
+  const it = api.deletedItemFor('data/_deleted/deleted-subject-2-1734021882000.json');
+  assert(it.subjectGone === true, 'should flag the missing subject');
+  assert(!it.subjectName, 'should not name a subject it does not belong to');
+  api.renderDeletedCards([it]);
+  assert(/no longer exists/.test(doc.querySelector('#tab-deleted .panel-card').textContent),
+    'the card does not say the subject is gone');
+});
+
+check('a filename that does not parse still renders a usable card', () => {
+  const { api, doc } = scene();
+  api.setSubjects([{ id: 'building-laws', name: 'Building Laws', ready: true, modules: [] }]);
+  const it = api.deletedItemFor('data/_deleted/hand-placed-file.json');
+  assert(it.path === 'data/_deleted/hand-placed-file.json', 'path lost');
+  assert(!it.subjectGone, 'an unparseable name is not a missing subject');
+  api.renderDeletedCards([it]);
+  const card = doc.querySelector('#tab-deleted .panel-card');
+  assert(card, 'no card rendered for an unparseable filename');
+  assert(/Choose a subject below/.test(card.textContent),
+    'should ask the admin to choose: ' + card.textContent.trim());
+});
+
+// The one above test deletedItemFor itself; this one pins that the scan
+// actually USES it. Without this, reverting the scan to its old
+// `archived.map(path => ({ path, title: '' }))` passes every other case.
+check('the real scan builds its cards through deletedItemFor', async () => {
+  const { w, api } = scene();
+  api.setSubjects([
+    { id: 'other', name: 'Other Subject', ready: true, modules: [] },
+    { id: 'building-laws', name: 'Building Laws', ready: true, modules: [] },
+  ]);
+  w.fetch = async (url) => {
+    // The file tree; anything else (the commit lookup behind the title) is a
+    // miss, which titleForFile already treats as "no title known".
+    if (/git\/trees/.test(url)) {
+      return { ok: true, json: async () => ({ tree: [
+        { type: 'blob', path: 'data/_deleted/building-laws-2-1734021882000.json' },
+      ] }) };
+    }
+    return { ok: false, status: 403, json: async () => ([]) };
+  };
+  await api.scanDeletedModules();
+  const items = api.deletedItems;
+  assert(items.length === 1, 'expected one archived item, got ' + items.length);
+  assert(items[0].subjectName === 'Building Laws',
+    'the scan did not resolve the subject — it is not using deletedItemFor. Got: ' +
+    JSON.stringify(items[0]));
+  assert(items[0].no === '2', 'the scan did not resolve the number, got ' + items[0].no);
+});
+
 runAll().then(() => {
   console.log(failures ? `\n${failures} failing\n` : '\nall passing\n');
   process.exitCode = failures ? 1 : 0;
