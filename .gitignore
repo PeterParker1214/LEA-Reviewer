@@ -1,0 +1,9 @@
+# Node dependencies. The site itself has no build step and ships as plain
+# files — this exists only because the admin-panel tests need jsdom, installed
+# with `npm install jsdom` (see tools/tests/README.md).
+node_modules/
+package.json
+package-lock.json
+
+# Local scratch from the planning/brainstorming tools. Never part of the site.
+.superpowers/
