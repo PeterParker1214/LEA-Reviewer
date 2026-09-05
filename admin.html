@@ -1298,14 +1298,22 @@ async function scanDeletedModules(){
       // picked — typed over freely, this is a starting point, not a rule.
       const subjSel = row.querySelector('select[data-role="d-subject"]');
       const noInput = row.querySelector('input[data-role="d-no"]');
+      const idInput = row.querySelector('input[data-role="d-id"]');
       const fillNo = () => {
         if(noInput.value.trim()) return;
         const s = subjects.find(x => x.id === subjSel.value);
-        if(s) noInput.value = nextModuleNo(s);
+        if(!s) return;
+        noInput.value = nextModuleNo(s);
+        if(!idInput.value.trim()) idInput.value = s.id + '-' + noInput.value;
       };
       subjSel.addEventListener('change', fillNo);
       fillNo();
-    });
+      noInput.addEventListener('input', () => {
+        const s = subjects.find(x => x.id === subjSel.value);
+        if(s && !idInput.dataset.touched) idInput.value = s.id + '-' + noInput.value.trim();
+      });
+      idInput.addEventListener('input', () => { idInput.dataset.touched = '1'; });
+  });
 
     // Re-uses the same lookup as "unlisted files": the commit that created
     // the archive copy quotes the module's old title, same as an upload does.
@@ -2527,12 +2535,23 @@ function repBodyHtml(ref){
   }
 
   const row = info.row;
-  const choices = (row.o || []).map((c, i) =>
-    '<div class="rep-choice' + (i === row.c ? ' correct' : '') + '">' +
+  // A choice can be computed rather than written — the {ref,tpl} shape that
+  // renders "Both A and C" from whatever order the reader actually saw. It has
+  // no text to edit, and putting it in a text box printed "[object Object]"
+  // and then saved that string over the option. Shown read-only instead, and
+  // carried through the save untouched (see the writeback in saveReportFix).
+  const choices = (row.o || []).map((c, i) => {
+    const computed = c && typeof c === 'object';
+    const field = computed
+      ? '<input type="text" disabled data-computed="1" value="' +
+          escapeHtml('Built from the other choices (' + (c.tpl || 'list') + ') — edit those instead') + '">'
+      : '<input type="text" value="' + escapeHtml(c) + '">';
+    return '<div class="rep-choice' + (i === row.c ? ' correct' : '') + '">' +
       '<input type="radio" name="rq-ans-' + k + '" value="' + i + '"' + (i === row.c ? ' checked' : '') + '>' +
-      '<input type="text" value="' + escapeHtml(c) + '">' +
+      field +
       '<span class="mark">' + (i === row.c ? 'Correct' : '') + '</span>' +
-    '</div>').join('');
+    '</div>';
+  }).join('');
 
   return '<div class="rep-body">' +
     '<div class="rep-sec"><div class="rep-sec-title">What they said</div>' + said + '</div>' +
@@ -2630,7 +2649,11 @@ async function saveReportedQuestion(ref){
   const k = cssEscapeRef(ref);
   const stem = document.getElementById('rq-stem-' + k).value.trim();
   const note = document.getElementById('rq-note-' + k).value.trim();
-  const opts = [...document.querySelectorAll('#rq-opts-' + k + ' input[type="text"]')].map(i => i.value.trim());
+  // A computed choice keeps whatever object it already held — its text box is
+  // only a label, so reading .value would write "Built from the other choices…"
+  // into the data.
+  const opts = [...document.querySelectorAll('#rq-opts-' + k + ' input[type="text"]')]
+    .map((el, i) => el.dataset.computed ? info.row.o[i] : el.value.trim());
   const picked = document.querySelector('input[name="rq-ans-' + k + '"]:checked');
 
   if(!stem){ repStatus(ref, 'The question cannot be empty.', 'err'); return false; }
