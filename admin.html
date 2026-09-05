@@ -60,6 +60,10 @@
      independently — a bordered panel with a head you tap and a body that
      unfolds — and the Subjects rebuild copied it a third time. Declared once
      here; the three families keep their own names and add only what differs. */
+  /* The card's contents. Every card that uses this today is body-only — there
+     is no head above it — so it is plain padding on all four sides. A card
+     that grows a tappable head later wants a top border here too. */
+  .panel-card-body{padding:16px;}
   .panel-card{
     border:1px solid var(--line); border-radius:12px; background:var(--bg-panel-deep);
     margin-bottom:14px; overflow:hidden;
@@ -957,7 +961,7 @@ function swatchesHtml(subjectIdx, mod){
 // "Save to site", the same as renaming a subject, so a misclick costs nothing.
 function moduleRowsHtml(subject, subjectIdx){
   const mods = subject.modules || [];
-  if(!mods.length) return '<div class="mod-none">Nothing here yet. Add one from the <b>Rework Module</b> tab.</div>';
+  if(!mods.length) return '<div class="mod-none">Nothing here yet. Add one from the <b>New module</b> tab.</div>';
   return mods.map(m => {
     const total = Number(m.total) || 0;
     return `
@@ -1564,7 +1568,7 @@ let deletedItems = [];
 function renderDeletedCards(items){
   document.getElementById('tab-deleted').innerHTML = items.map((it, i) => `
     <div class="panel-card" data-path="${escapeHtml(it.path)}">
-      <div class="panel-card-body" style="border-top:none;padding-top:16px;">
+      <div class="panel-card-body">
         <div class="del-title">${escapeHtml(it.title || 'Untitled module')}</div>
         <div class="del-meta">${
           it.subjectGone ? 'Its subject no longer exists &mdash; choose one below'
@@ -1752,7 +1756,7 @@ async function publishArchivedFile(card, item){
     // Rewrites the card's own contents rather than reassigning its class —
     // `.panel-card` is what gives it a border and background, and this must
     // not lose that the moment a restore succeeds.
-    card.innerHTML = '<div class="panel-card-body" style="border-top:none;padding-top:16px;">' +
+    card.innerHTML = '<div class="panel-card-body">' +
       '<div class="del-title">&#10003; "' + escapeHtml(title) + '" is on the site again as ' +
       escapeHtml(no) + ' under ' + escapeHtml(subject.name) + '.</div>' +
       '<div class="del-meta">Give GitHub a minute, then reload the site. The archive copy is untouched.</div>' +
