@@ -867,11 +867,15 @@ async function boot(){
     // Hidden questions (admin's "Hide this question", engine-spec §4) keep
     // their slot forever — mastered[] indices must never shift — they just
     // stop being served.
-    order = QUESTIONS.map((_, i) => i).filter(i => !QUESTIONS[i].hidden);
+    // Shuffled for this attempt only. `order` holds the questions' real array
+    // indices and mastery is recorded against those, so changing the order you
+    // meet them in cannot disturb anyone's progress — which is why this is done
+    // here and not by reordering the data file.
+    order = shuffleArr(QUESTIONS.map((_, i) => i).filter(i => !QUESTIONS[i].hidden));
     answersLog = new Array(order.length).fill(null);
     pos = 0; frontier = 0;
     captureMasteredAtStart();
-    tryResume();
+    tryResume();   // a half-finished run restores its own saved order
   } else if(MODE === 'exam'){
     tryResumeExam();
   } else if(MODE === 'drill'){
@@ -880,7 +884,7 @@ async function boot(){
     // anything flagged, and runs it exactly like study mode (immediate
     // feedback, no clock). See engine-spec.md §5.1.
     const masteredSet = new Set(p.mastered || []);
-    order = QUESTIONS.map((_, i) => i).filter(i => !QUESTIONS[i].hidden && (!masteredSet.has(i) || flaggedSet.has(i)));
+    order = shuffleArr(QUESTIONS.map((_, i) => i).filter(i => !QUESTIONS[i].hidden && (!masteredSet.has(i) || flaggedSet.has(i))));
     if(order.length === 0){
       body.innerHTML = '<div class="state-card">Nothing to drill here — every question in this module is mastered and nothing’s flagged.<br><br><a href="subject.html?s=' + encodeURIComponent(subjectId) + '" style="color:var(--gold-bright);">&larr; Back to subject</a></div>';
       return;
@@ -1016,11 +1020,11 @@ function renderExamStart(){
 function startExam(choice){
   captureMasteredAtStart();
   examLengthChoice = choice;
-  let idxs = visibleQIndexes();
-  if(choice === 'sim50' && idxs.length > 50){
-    for(let i = idxs.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [idxs[i], idxs[j]] = [idxs[j], idxs[i]]; }
-    idxs = idxs.slice(0, 50);
-  }
+  // Shuffled for every exam, not only the 50-item simulation — a full exam
+  // used to run in file order every time. Order is presentation only; mastery
+  // is keyed to the questions' real array indices.
+  let idxs = shuffleArr(visibleQIndexes());
+  if(choice === 'sim50' && idxs.length > 50) idxs = idxs.slice(0, 50);
   order = idxs;
   answersLog = new Array(order.length).fill(null);
   optOrders = {};
@@ -1365,15 +1369,30 @@ function persistFlags(){
   LEAProgress.save(SUBJECT.id, MODULE.id, p);
 }
 
+// "All of the above" / "None of the above" only mean anything as the LAST
+// choice. Options are reshuffled for every reader on every attempt, so one of
+// these landing at B reads as nonsense — and it was landing anywhere, because
+// nothing held it back. Detected by wording rather than by a flag on the
+// question, so it covers the whole bank without editing 50 files.
+const ABOVE_OPTION_RE = /\b(all|none)\s+of\s+the\s+(above|these|foregoing)\b/i;
+function isAboveOption(o){
+  return typeof o === 'string' && ABOVE_OPTION_RE.test(o);
+}
+
 function getOptOrder(p, itemOverride){
   if(!optOrders[p]){
     const item = itemOverride || QUESTIONS[order[p]];
-    const idxs = item.o.map((_, i) => i);
+    const all = item.o.map((_, i) => i);
+    // Shuffle only the ordinary choices; the "above" ones keep their relative
+    // order and sit at the end, so "None of the above" can never precede the
+    // options it is talking about.
+    const idxs = all.filter(i => !isAboveOption(item.o[i]));
+    const tail = all.filter(i => isAboveOption(item.o[i]));
     for(let i = idxs.length - 1; i > 0; i--){
       const j = Math.floor(Math.random() * (i + 1));
       [idxs[i], idxs[j]] = [idxs[j], idxs[i]];
     }
-    optOrders[p] = idxs;
+    optOrders[p] = idxs.concat(tail);
   }
   return optOrders[p];
 }
