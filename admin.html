@@ -1569,8 +1569,25 @@ function deletedItemFor(path){
 // archive is which.
 let deletedItems = [];
 
-function renderDeletedCards(items){
-  document.getElementById('tab-deleted').innerHTML = items.map((it, i) => `
+// Which cards have "Change where it goes" open, keyed by archive path — the
+// list is redrawn once the title lookups land, and a disclosure the admin
+// opened in the meantime should not shut under them.
+const openDeletedCards = new Set();
+
+function renderDeletedCards(items, lookingUpTitles){
+  const n = items.length;
+  // Drawn here rather than prepended by the caller: this function redraws the
+  // whole section, so a banner inserted from outside is wiped moments later.
+  const banner = '<div class="msg info" style="margin-bottom:14px;">' +
+    n + ' removed module' + (n === 1 ? '' : 's') + ' kept here. Putting one back ' +
+    'writes a fresh copy of its questions and takes effect immediately &mdash; ' +
+    'there is nothing else to press afterwards. The copy kept here is left ' +
+    'exactly as it is either way.' +
+    (lookingUpTitles ? '<div style="margin-top:8px;">Looking up what each of these ' +
+      'used to be called&hellip;</div>' : '') +
+    '</div>';
+
+  document.getElementById('tab-deleted').innerHTML = banner + items.map((it, i) => `
     <div class="panel-card" data-path="${escapeHtml(it.path)}">
       <div class="panel-card-body">
         <div class="del-title">${escapeHtml(it.title || 'Untitled module')}</div>
@@ -1588,7 +1605,7 @@ function renderDeletedCards(items){
           <button class="primary" data-action="d-publish" data-idx="${i}">Put it back</button>
           <button data-action="d-peek" data-idx="${i}">Preview</button>
         </div>
-        <details class="subj-more">
+        <details class="subj-more"${openDeletedCards.has(it.path) ? ' open' : ''}>
           <summary>Change where it goes&hellip;</summary>
           <div class="subj-field">
             <label>Subject</label>
@@ -1612,6 +1629,13 @@ function wireDeletedCards(){
       .addEventListener('click', () => publishArchivedFile(card, item));
     const peekBtn = card.querySelector('button[data-action="d-peek"]');
     if(peekBtn) peekBtn.addEventListener('click', () => peekArchivedFile(card, peekBtn, item));
+    // Remembered so the redraw after the title lookups does not shut a
+    // disclosure the admin opened while waiting.
+    const more = card.querySelector('details.subj-more');
+    if(more) more.addEventListener('toggle', () => {
+      if(more.open) openDeletedCards.add(item.path);
+      else openDeletedCards.delete(item.path);
+    });
     // Prefills a free number the moment a subject is picked — typed over
     // freely, this is a starting point, not a rule.
     const subjSel = card.querySelector('select[data-role="d-subject"]');
@@ -1670,13 +1694,7 @@ async function scanDeletedModules(){
     }
 
     deletedItems = archived.map(deletedItemFor);
-    renderDeletedCards(deletedItems);
-    tabDeletedEl.insertAdjacentHTML('afterbegin',
-      '<div class="msg info" style="margin-bottom:14px;">' + archived.length + ' archived module file' +
-      (archived.length === 1 ? '' : 's') + '. Publishing one writes a fresh copy of its questions ' +
-      'under a new number and takes effect immediately &mdash; there is nothing else to press ' +
-      'afterwards. The archived copy is left exactly as is either way.' +
-      '<div id="deletedTitleNote" style="margin-top:8px;">Looking up what each of these used to be called&hellip;</div></div>');
+    renderDeletedCards(deletedItems, true);
     wireDeletedCards();
 
     // Re-uses the same lookup as "unlisted files": the commit that created
@@ -1704,7 +1722,12 @@ async function publishArchivedFile(card, item){
   const noRaw = (card.querySelector('input[data-role="d-no"]').value || '').trim();
 
   if(!subjectId){ await LEAAlert('Pick a subject under "Change where it goes" first.'); return; }
-  if(!/^\d{1,2}$/.test(noRaw)){ await LEAAlert('Module number should be a number, like 5.'); return; }
+  // Zero is excluded deliberately: modules are numbered from 1, and "0" would
+  // pad to "00" and write a 00.json nothing else in the subject matches.
+  if(!/^\d{1,2}$/.test(noRaw) || Number(noRaw) < 1){
+    await LEAAlert('Module number should be a number from 1 upwards, like 5.');
+    return;
+  }
   const no = noRaw.padStart(2, '0');
 
   btn.disabled = true;

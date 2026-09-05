@@ -376,6 +376,44 @@ check('the real scan builds its cards through deletedItemFor', async () => {
   assert(items[0].no === '2', 'the scan did not resolve the number, got ' + items[0].no);
 });
 
+// Module numbers are written "05" in some subjects and "5" in others, so an
+// exact id compare would miss the clash and let two modules share a slot.
+check('a collision is caught even when the existing id is zero-padded', () => {
+  const { api } = scene();
+  api.setSubjects([
+    { id: 'architectural-design', name: 'Architectural Design', ready: true, modules: [
+      { id: 'architectural-design-05', no: '05', title: 'Site Planning', file: 'a.json' } ] },
+  ]);
+  const subject = api.subjects[0];
+  const id = api.derivedModuleId('architectural-design', '05');
+  assert(id === 'architectural-design-5', 'derived id: ' + id);
+  assert(api.moduleIdTaken(subject, id) === true,
+    'the padded id "architectural-design-05" was not recognised as taken by "' + id + '"');
+  assert(api.moduleIdTaken(subject, api.derivedModuleId('architectural-design', '06')) === false,
+    'a free number was reported as taken');
+});
+
+check('the explanation survives the redraw when titles arrive', () => {
+  const { api, doc } = scene();
+  api.setSubjects([{ id: 'building-laws', name: 'Building Laws', ready: true, modules: [] }]);
+  const items = [api.deletedItemFor('data/_deleted/building-laws-2-1734021882000.json')];
+
+  api.renderDeletedCards(items, true);
+  let text = doc.getElementById('tab-deleted').textContent;
+  assert(/nothing else to press/.test(text), 'the explanation is missing on the first draw');
+  assert(/used to be called/.test(text), 'the "looking up titles" line is missing');
+
+  // The redraw that used to wipe it.
+  items[0].title = 'RA 9514';
+  api.renderDeletedCards(items);
+  text = doc.getElementById('tab-deleted').textContent;
+  assert(/nothing else to press/.test(text),
+    'the explanation was wiped by the redraw');
+  assert(!/used to be called/.test(text),
+    'the "looking up titles" line should be gone once the titles are in');
+  assert(/RA 9514/.test(text), 'the looked-up title did not make it onto the card');
+});
+
 runAll().then(() => {
   console.log(failures ? `\n${failures} failing\n` : '\nall passing\n');
   process.exitCode = failures ? 1 : 0;

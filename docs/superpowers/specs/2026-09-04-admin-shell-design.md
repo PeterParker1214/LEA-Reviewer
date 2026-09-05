@@ -176,11 +176,28 @@ The file path moves out of the headline; it stays available inside the
 disclosure, because it is the only unambiguous identifier when two archived
 copies share a title.
 
-**The "New module id" box is removed.** Module ids are already
-`<subject-id>-<no>` throughout the manifest (`building-laws-1`), so the id is
-derived from the chosen subject and number rather than typed. This is the one
-behaviour change in this task beyond navigation; it removes a field that could
-previously be filled with something inconsistent with the rest of the manifest.
+**The "New module id" box is removed**, and the id is derived from the chosen
+subject and number as `<subject-id>-<no>` rather than typed. This is the one
+behaviour change in this task beyond navigation.
+
+An earlier draft of this spec claimed ids are already `<subject-id>-<no>`
+"throughout the manifest". **That is wrong, and the correction matters.** Of the
+76 modules in `data/subjects.json`, 27 match that shape. The rest are either
+free slugs carried over from the old hand-built pages (`prehistoric`, `ecbr`,
+`grb`) or zero-padded (`architectural-design-05`). There is no single
+convention, and this task does not impose one on modules that already exist.
+
+The derivation is a reasonable default for a *newly restored* module — it is
+the shape the most modules use, and it is predictable — but it is not a
+description of what is there. Two consequences follow, and both are handled:
+
+- The collision check compares ids with any zero-padding normalised away, so
+  restoring at number `05` is correctly refused when `architectural-design-05`
+  already holds that slot. An exact string compare would have missed it.
+- A restore into a free slot mints `<sid>-5` where its siblings may read
+  `<sid>-05`. That is cosmetic — ids are never shown to readers, only used as
+  manifest keys — and it is not worth renaming existing modules to tidy, since
+  their ids are part of the key that saved progress hangs on.
 
 If the derived id collides with a module already in that subject, the restore
 stops and says so, naming the module in the way — it does not silently pick
