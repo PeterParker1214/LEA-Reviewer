@@ -519,9 +519,13 @@ function showSection(id){
   // hitting a network error) must stay retryable, or the section is stuck
   // empty until the page is reloaded. This is what the old handler's
   // `fileTree.length === 0` test did.
+  // A `once` render signals failure by rejecting; anything that handles its own
+  // error must still rethrow, or the failure is remembered as a success.
   const out = section.render();
   if(out && typeof out.then === 'function'){
-    out.then(() => { sectionsRendered.add(id); });
+    // The rejection is already on screen — the render drew it. Swallowing it
+    // here only stops it becoming an unhandled rejection in the console.
+    out.then(() => { sectionsRendered.add(id); }, () => {});
   } else {
     sectionsRendered.add(id);
   }
@@ -1881,7 +1885,13 @@ async function loadFileTree(){
       (item.path.endsWith('.html') || /^data\/[^/]+\/[^/]+\.json$/.test(item.path)));
     renderPagesTab();
   }catch(e){
-    tabPagesEl.innerHTML = '<div class="card msg error">' + escapeHtml(e.message) + '</div>';
+    tabPagesEl.innerHTML = '<div class="card msg error">' + escapeHtml(e.message) +
+      '<br>Open this tab again to try once more.</div>';
+    // Shown to the reader AND rethrown. showSection only remembers a section as
+    // loaded when its render settles cleanly, so swallowing this here would
+    // record the failure as a success and leave the tab stuck on the error
+    // until the whole page is reloaded.
+    throw e;
   }
 }
 

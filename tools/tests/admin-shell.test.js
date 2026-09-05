@@ -1,11 +1,9 @@
 // The shell: one list of sections, two places it is drawn, one switcher.
 const { boot } = require('./lib/admin-dom.js');
 
-// showSection() deliberately does not swallow a render's rejection (that is
-// the fix under test: the error must still surface). This test file isn't
-// asserting *where* it surfaces, only that a failed render is retried — so
-// keep Node from treating the expected rejection as a crash.
-process.on('unhandledRejection', () => {});
+// No unhandledRejection suppressor here on purpose. showSection now attaches a
+// rejection handler of its own, so a failing render does not leak — and a
+// blanket suppressor would hide the day one genuinely does.
 
 let failures = 0;
 const queued = [];
@@ -105,6 +103,37 @@ check('a "once" section whose render fails the first time is retried on the next
   api.showSection('pages');
   await new Promise(r => setTimeout(r, 0));
   assert(runs === 2, 'render ran ' + runs + ' times, expected 2 (failure must not stick)');
+});
+
+// The case above uses a stub that rejects. This one uses the REAL Questions
+// render against a failing fetch, which is the shape production actually
+// produces — loadFileTree draws its own error card, and the bug was that it
+// then resolved, so the failure was remembered as a success.
+check('the real Questions section retries after a failed load', async () => {
+  const { w, api, doc } = scene();
+  let calls = 0;
+  w.fetch = async () => {
+    calls++;
+    if (calls === 1) return { ok: false, status: 503, json: async () => ({}) };
+    return { ok: true, json: async () => ({ tree: [
+      { type: 'blob', path: 'data/building-laws/1.json' },
+    ] }) };
+  };
+
+  api.showSection('subjects');
+  api.showSection('pages');
+  await new Promise(r => setTimeout(r, 0));
+  assert(/503|Could not list/.test(doc.getElementById('tab-pages').textContent),
+    'expected the error card after the first, failing load');
+  assert(api.fileTree.length === 0, 'file tree should be empty after a failed load');
+
+  // Open it again — this is the tap that used to do nothing.
+  api.showSection('subjects');
+  api.showSection('pages');
+  await new Promise(r => setTimeout(r, 0));
+  assert(calls === 2, 'the second open did not retry the load (fetch calls: ' + calls + ')');
+  assert(api.fileTree.length === 1,
+    'the retry did not populate the file tree — the section is still stuck on the error');
 });
 
 check('a "once" section whose render succeeds still only runs once', async () => {
