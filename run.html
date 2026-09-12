@@ -224,6 +224,21 @@
      if it were shown before the reader commits. Same zoom affordance as the
      question figure, since it is just as likely to be unreadable at 390px. */
   .explain .qimg-wrap{ display:flex; margin:0 0 10px; }
+  /* A mnemonic from mnemonics.html that covers this question. Collapsed to its
+     hook, so it never pushes the chips far down; the full list opens in place
+     rather than linking away mid-run. */
+  .mnemo-hint{ margin:0 0 10px; border:1px dashed rgba(224,168,63,0.45); border-radius:8px; background:rgba(224,168,63,0.06); }
+  .mnemo-hint summary{ list-style:none; cursor:pointer; padding:9px 12px; }
+  .mnemo-hint summary::-webkit-details-marker{ display:none; }
+  .mnemo-label{ display:block; font-family:var(--font-mono); font-size:10.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:3px; }
+  .mnemo-label::after{ content:" ▾"; }
+  .mnemo-hint[open] .mnemo-label::after{ content:" ▴"; }
+  .mnemo-hook{ display:block; font-family:var(--font-hand); font-size:14.5px; line-height:1.45; color:var(--ink); }
+  .mnemo-hint b{ color:var(--gold-bright); }
+  .mnemo-items{ list-style:none; margin:0; padding:0 12px 10px; font-size:13px; line-height:1.55; }
+  .mnemo-items li{ display:flex; gap:10px; padding:3px 0; }
+  .mnemo-items .k{ flex-shrink:0; min-width:3.2em; font-family:var(--font-mono); font-size:11.5px; color:var(--blue-bright); padding-top:1px; }
+  .mnemo-more{ display:block; padding:0 12px 10px; font-family:var(--font-mono); font-size:10.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--blue-bright); }
   .chip-row{ display:flex; gap:8px; margin-top:12px; }
   .chip-btn{
     flex:1; font-family:var(--font-mono); font-size:11px; letter-spacing:.03em; text-transform:uppercase;
@@ -723,6 +738,54 @@ const MODULE_COLOURS = ['amber','orange','red','rose','violet','blue','teal','gr
 function moduleColourClass(mod){
   const c = mod && mod.color;
   return (c && MODULE_COLOURS.indexOf(c) !== -1) ? ' mod-tinted mod-c-' + c : '';
+}
+
+// ================= Mnemonic hints =================
+// data/mnemonics.json (the cards on mnemonics.html) tags each mnemonic with
+// names and terms. When a question, its answer or its explanation says one of
+// them, the explanation carries that mnemonic. Fetched once at load; if it
+// fails, questions simply show no hint.
+let MNEMONICS = [];
+fetch('data/mnemonics.json').then(r => r.json()).then(list => { MNEMONICS = list; }).catch(() => {});
+
+const mnemonicTagRes = {};
+function mnemonicTagRe(tag){
+  if(!mnemonicTagRes[tag]){
+    const src = tag.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    // Whole words only, so "ionic" never fires inside "cationic".
+    mnemonicTagRes[tag] = new RegExp('(^|[^\\p{L}\\p{N}])' + src + '($|[^\\p{L}\\p{N}])', 'u');
+  }
+  return mnemonicTagRes[tag];
+}
+
+function findMnemonic(item){
+  if(!MNEMONICS.length) return null;
+  const text = [item.q, item.o && item.o[item.c], item.n].join(' ').toLowerCase();
+  let best = null, bestHits = 0;
+  MNEMONICS.forEach(m => {
+    const hits = (m.tags || []).filter(tag => mnemonicTagRe(tag).test(text)).length;
+    if(hits > bestHits){ best = m; bestHits = hits; }
+  });
+  return best;
+}
+
+function mnemonicMark(s){
+  return escapeHtml(s).replace(/\[([^\]]+)\]/g, '<b>$1</b>');
+}
+
+function mnemonicHtml(item){
+  const m = findMnemonic(item);
+  if(!m) return '';
+  return (
+    '<details class="mnemo-hint">' +
+      '<summary><span class="mnemo-label">💡 Mnemonic · ' + escapeHtml(m.title) + '</span>' +
+      '<span class="mnemo-hook">' + mnemonicMark(m.hook) + '</span></summary>' +
+      '<ul class="mnemo-items">' + m.items.map(it =>
+        '<li><span class="k">' + escapeHtml(it.k.replace(/[\[\]]/g, '')) + '</span><span>' + mnemonicMark(it.v) + '</span></li>'
+      ).join('') + '</ul>' +
+      '<a class="mnemo-more" href="mnemonics.html#' + encodeURIComponent(m.id) + '" target="_blank" rel="noopener">All mnemonics ↗</a>' +
+    '</details>'
+  );
 }
 
 function escapeHtml(s){
@@ -1529,6 +1592,7 @@ function renderCard(){
         '<div class="q-stat hidden" id="qStat"></div>' +
         '<div class="reason">' + escapeHtml(item.o[item.c]) + '.' + (item.n ? ' ' + escapeHtml(item.n) : '') + '</div>' +
         explainImgHtml(item) +
+        mnemonicHtml(item) +
         (item.ref ? '<div class="meta-row">Source<span>' + escapeHtml(item.ref) + '</span></div>' : '') +
         '<div class="chip-row">' +
           (item.steps && item.steps.length ? '<button class="chip-btn" id="stepsChip">＋ Steps</button>' : '<div style="flex:1;"></div>') +
@@ -2451,6 +2515,7 @@ function renderMultiCard(){
         '<div class="q-stat hidden" id="qStat"></div>' +
         '<div class="reason">' + escapeHtml(item.o[item.c]) + '.' + (item.n ? ' ' + escapeHtml(item.n) : '') + '</div>' +
         explainImgHtml(item) +
+        mnemonicHtml(item) +
         (item.ref ? '<div class="meta-row">Source<span>' + escapeHtml(item.ref) + '</span></div>' : '') +
       '</div>';
   } else if(logged && logged.skipped){

@@ -1038,6 +1038,10 @@ function renderDesktopRail(savedCounts){
       '<a class="rail-stat" href="saved.html"><span>Flagged</span><b>' + savedCounts.flagged + '</b></a>' +
       '<a class="rail-stat" href="saved.html"><span>With notes</span><b>' + savedCounts.notes + '</b></a>' +
     '</div>' +
+    '<div class="rail-card">' +
+      '<div class="rail-head">Memory aids</div>' +
+      '<a class="rail-stat" href="mnemonics.html"><span>Mnemonics</span><b>→</b></a>' +
+    '</div>' +
     '<div class="rail-note">◎ Offline-ready — cached modules work without a connection</div>'
   );
 }
@@ -1124,6 +1128,7 @@ function openAccountSheet(){
   body.innerHTML =
     '<a class="account-row" href="profile.html"><div><div class="ar-label">Profile</div><div class="ar-sub">' + escapeHtml(currentUsername) + '</div></div><span>→</span></a>' +
     '<a class="account-row" href="saved.html"><div><div class="ar-label">Saved</div><div class="ar-sub">' + counts.flagged + ' flagged · ' + counts.notes + ' note' + (counts.notes === 1 ? '' : 's') + '</div></div><span>→</span></a>' +
+    '<a class="account-row" href="mnemonics.html"><div><div class="ar-label">Mnemonics</div><div class="ar-sub">Memory hooks from the LEA Discord</div></div><span>→</span></a>' +
     '<a class="account-row" href="reminders.html"><div><div class="ar-label">Reminders</div></div><span>→</span></a>' +
     // Appearance lives here rather than as a floating button over the page:
     // it's a set-once preference, and the sheet is where the other ones are.

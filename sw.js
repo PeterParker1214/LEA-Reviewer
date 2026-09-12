@@ -42,6 +42,7 @@ const SHELL_URLS = [
   'run.html',
   'search.html',
   'saved.html',
+  'mnemonics.html',
   'standings.html',
   'onboarding.html',
   'welcome.html',

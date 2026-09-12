@@ -1,0 +1,424 @@
+[
+  {
+    "id": "admin-violations",
+    "cat": "laws",
+    "title": "Administrative Violations — Fines",
+    "hook": "Light [PAD] · Less Grave [OIL] · Grave [FADE]",
+    "items": [
+      { "k": "P", "v": "Light (₱5K) — [P]osting failure: permit or Certificate of Occupancy not displayed" },
+      { "k": "A", "v": "Light (₱5K) — [A]ccess or safety gear missing: no nets or guards for workers and the public" },
+      { "k": "D", "v": "Light (₱5K) — [D]efective maintenance: minor repairs neglected" },
+      { "k": "O", "v": "Less Grave (₱8K) — [O]ccupying early: moving in without a Certificate of Occupancy" },
+      { "k": "I", "v": "Less Grave (₱8K) — [I]gnoring temporary orders: working on after being told to pause" },
+      { "k": "L", "v": "Less Grave (₱8K) — [L]ack of notification: restarting a suspended project without telling the Building Official" },
+      { "k": "F", "v": "Grave (₱10K) — [F]ire rating downgrade: approved materials changed to less fire-resistive ones" },
+      { "k": "A", "v": "Grave (₱10K) — [A]dding unauthorized extensions: major deviations from the signed plans" },
+      { "k": "D", "v": "Grave (₱10K) — [D]emolition refusal: ignoring an order to tear down a dangerous structure" },
+      { "k": "E", "v": "Grave (₱10K) — [E]xcavation abandoned: a deep hole left unattended for more than 120 days" }
+    ],
+    "note": "Quick logic: missing sign or fence → Light. Moving in too early or ignoring a mild order → Less Grave. Structural change, fire risk, or 120-day abandonment → Grave.",
+    "tags": ["light violation", "light violations", "less grave", "grave violation", "grave violations", "administrative fine", "administrative fines", "administrative violation", "administrative violations"]
+  },
+  {
+    "id": "ra9266-parts",
+    "cat": "laws",
+    "title": "RA 9266 — Parts of the Law",
+    "hook": "Find the number in each title: prov[I]sions · regula[TWO]ry · regis[THREE]tion · [FOR] practice · pro[V]isions",
+    "items": [
+      { "k": "I", "v": "General Prov[I]sions — Sec. 1–3" },
+      { "k": "II", "v": "Professional Regula[TWO]ry Board of Architecture — Sec. 4–11" },
+      { "k": "III", "v": "Examination, Regis[THREE]tion and Licensure — Sec. 12–24" },
+      { "k": "IV", "v": "Practice of Architecture ([FOR] = 4) — Sec. 25–39" },
+      { "k": "V", "v": "Final Pro[V]isions — Sec. 40–47" }
+    ],
+    "tags": ["articles of ra 9266", "parts of ra 9266", "article iv of ra 9266"]
+  },
+  {
+    "id": "spp-phases",
+    "cat": "laws",
+    "title": "SPP — Project Phases",
+    "hook": "[P]-[S]-[D]-[C]-[B]-[C]",
+    "items": [
+      { "k": "P", "v": "[P]roject Definition Phase" },
+      { "k": "S", "v": "[S]chematic Design Phase" },
+      { "k": "D", "v": "[D]esign Development Phase" },
+      { "k": "C", "v": "[C]ontract Document Phase" },
+      { "k": "B", "v": "[B]idding or Negotiation Phase" },
+      { "k": "C", "v": "[C]onstruction Phase" }
+    ],
+    "tags": ["project definition phase", "schematic design phase", "design development phase", "contract document phase", "contract documents phase"]
+  },
+  {
+    "id": "spp-documents",
+    "cat": "laws",
+    "title": "SPP Documents 201–209",
+    "hook": "[Pe][De] [S]a [F]o[C]al [P]oint [C] [D][A][P]ney",
+    "items": [
+      { "k": "201", "v": "[Pre]-Design Services" },
+      { "k": "202", "v": "[De]sign Services" },
+      { "k": "203", "v": "[S]pecialized Architectural Services" },
+      { "k": "204-A", "v": "[F]ull-time Construction Supervision Services" },
+      { "k": "204-B", "v": "[C]onstruction Management Services" },
+      { "k": "205", "v": "[P]ost-Construction Services" },
+      { "k": "206", "v": "[C]omprehensive Architectural Services" },
+      { "k": "207", "v": "[D]esign-Build Services" },
+      { "k": "208", "v": "[A]rchitectural Design Competition" },
+      { "k": "209", "v": "[P]rofessional Architectural Consulting Services" }
+    ],
+    "tags": ["spp 201", "spp 202", "spp 203", "spp 204", "spp 204-a", "spp 204-b", "spp 205", "spp 206", "spp 207", "spp 208", "spp 209", "doc 201", "doc 202", "doc 203", "doc 205", "doc 206", "doc 207", "doc 208", "doc 209"]
+  },
+  {
+    "id": "moc-groups",
+    "cat": "laws",
+    "title": "Groups of Buildings (Methods of Compensation)",
+    "hook": "[Si] [Mo]n ay [Ex] ni [Re]y[Mon] [Re]ally [H]urts [A]ng [Re]lationship ng [Co]uple",
+    "items": [
+      { "k": "1", "v": "[Si]mple" },
+      { "k": "2", "v": "[Mo]derate" },
+      { "k": "3", "v": "[Ex]ceptional" },
+      { "k": "4", "v": "[Re]sidences" },
+      { "k": "5", "v": "[Mon]umental" },
+      { "k": "6", "v": "[Re]petitive (except residences)" },
+      { "k": "7", "v": "[H]ousing" },
+      { "k": "8", "v": "[A]rchitectural Interiors" },
+      { "k": "9", "v": "[Re]novation" },
+      { "k": "10", "v": "[Co]nsultancy" }
+    ],
+    "tags": ["groups of buildings", "group of buildings", "building groups", "building group", "simple structures", "exceptional character"]
+  },
+  {
+    "id": "pensionados",
+    "cat": "history",
+    "title": "First Batch of Pensionados",
+    "hook": "[Ma]-[Ba]-[To]-[Ar]",
+    "items": [
+      { "k": "Ma", "v": "Tomás [Ma]púa — 1st registered architect (1921)" },
+      { "k": "Ba", "v": "Carlos [Ba]rretto — 2nd registered architect" },
+      { "k": "To", "v": "Antonio [To]ledo — 3rd registered architect" },
+      { "k": "Ar", "v": "Juan [Ar]ellano" }
+    ],
+    "tags": ["pensionado", "pensionados"]
+  },
+  {
+    "id": "filipino-architects",
+    "cat": "history",
+    "title": "Filipino Architects & Their Works",
+    "hook": "Hear the architect's name inside the building's name",
+    "items": [
+      { "k": "Iloilo City Hall", "v": "Juan Arellano — [1]LO[1]LO: number 1 (Juan) = [O]ne Arellan[O]" },
+      { "k": "Capitol Theater", "v": "Juan Nakpil — Capi[TOL]: [NAK]mak[TOL]" },
+      { "k": "SSS Building", "v": "Juan Nakpil — p[SSS]t a[NAK], bili ka toyo" },
+      { "k": "Paco Train Station", "v": "William Parsons — [PA]co = [PA]rsons" },
+      { "k": "Legislative Building", "v": "Antonio Toledo — Legis-legis ganun. E si Antonio nagsabong, ayun, na [TALO]. Antonio [TALO]do" },
+      { "k": "Galaxy Theater", "v": "Pablo Antonio — [POBLA]cion bars in Makati: kapag nasa bar ka, para kang nasa [GALAXY]" },
+      { "k": "Meralco Building", "v": "José María Zaragoza — Meralco = lightning; [Z]aragoza = the Z shape of lightning (Zeus)" },
+      { "k": "Bonifacio High Street City Center", "v": "Altoon + Porter — sa BGC, diba may Portal or [Porter]" },
+      { "k": "Batasang Pambansa", "v": "Felipe Mendoza — [Felip], [BATA] kapa para mag yosi (Philips)" },
+      { "k": "Philam Life Theater", "v": "Carlos Arguelles — [A]rguelles = [A]merican: [PHIL-AM] = Phil-America" }
+    ],
+    "tags": ["iloilo city hall", "capitol theater", "capitol theatre", "sss building", "paco train station", "paco station", "legislative building", "galaxy theater", "galaxy theatre", "meralco building", "bonifacio high street", "batasang pambansa", "philam life", "juan arellano", "juan nakpil", "william parsons", "antonio toledo", "pablo antonio", "jose maria zaragoza", "josé maría zaragoza", "felipe mendoza", "carlos arguelles"]
+  },
+  {
+    "id": "roman-thermae",
+    "cat": "history",
+    "title": "Parts of the Roman Thermae",
+    "hook": "Hear a Filipino word in each room: [TEPID] aircon · [CAL]dero · [FRIG]ider · [SU]n · [APO] · [PALA]ro",
+    "items": [
+      { "k": "Tepidarium", "v": "Warm room — [TEPID] sa aircon, kaya warm ang room" },
+      { "k": "Caldarium", "v": "Hot room — [CAL]dero, mainit, nakakapaso" },
+      { "k": "Frigidarium", "v": "Cold room — [FRIG]ider: malamig loob ng ref" },
+      { "k": "Sudatorium", "v": "Dry sweating room — [SU] = sun, dry kasi mainit" },
+      { "k": "Apodyterium", "v": "Changing room — [APO]: si apo mahilig maglaro, lagi pawisan, lagi nagbibihis" },
+      { "k": "Palaestra", "v": "Exercise court — [PALA]ro = physical" },
+      { "k": "Unctuarium", "v": "Room for oils and perfumes — no hook, it just sounds like pabango" },
+      { "k": "Sphaeristerium", "v": "Ball-game room — [SPA]ce room for gaming" }
+    ],
+    "note": "The original post called the apodyterium a sweating room. It is the changing room; the sudatorium is the sweating room.",
+    "tags": ["thermae", "roman baths", "tepidarium", "caldarium", "frigidarium", "sudatorium", "apodyterium", "palaestra", "unctuarium", "sphaeristerium"]
+  },
+  {
+    "id": "column-proportions",
+    "cat": "history",
+    "title": "Proportion of the Orders",
+    "hook": "Hear the number: Dori-[8] · Io-[nine] · Corin-[ten] · [7]uscan · Compos-[ten]",
+    "items": [
+      { "k": "Doric", "v": "[8]D — Dori-8" },
+      { "k": "Ionic", "v": "[9]D — Io-nine" },
+      { "k": "Corinthian", "v": "[10]D — Corin-ten" },
+      { "k": "Tuscan", "v": "[7]D — 7uscan" },
+      { "k": "Composite", "v": "[10]D — Compos-ten" }
+    ],
+    "note": "Column height in lower diameters (D).",
+    "tags": ["lower diameter", "lower diameters", "column height"]
+  },
+  {
+    "id": "corbusier-five-points",
+    "cat": "history",
+    "title": "Le Corbusier — Five Points of Modern Architecture",
+    "hook": "[FOR PROOF]",
+    "items": [
+      { "k": "F", "v": "[F]ree facade" },
+      { "k": "O", "v": "[O]pen floor plan" },
+      { "k": "R", "v": "[R]ibbon windows" },
+      { "k": "P", "v": "[P]ilotis" },
+      { "k": "ROOF", "v": "[Roof] garden" }
+    ],
+    "tags": ["five points", "5 points", "pilotis", "ribbon window", "ribbon windows", "roof garden", "free facade", "free façade", "free plan", "open floor plan"]
+  },
+  {
+    "id": "lynch-image-of-city",
+    "cat": "history",
+    "title": "Kevin Lynch — The Image of the City",
+    "hook": "[PLEND]",
+    "items": [
+      { "k": "P", "v": "[P]aths" },
+      { "k": "L", "v": "[L]andmarks" },
+      { "k": "E", "v": "[E]dges" },
+      { "k": "N", "v": "[N]odes" },
+      { "k": "D", "v": "[D]istricts" }
+    ],
+    "tags": ["kevin lynch", "lynch", "image of the city"]
+  },
+  {
+    "id": "dictums",
+    "cat": "history",
+    "title": "Architects' Dictums",
+    "hook": "Koolhaas → [KILL]haas · Adolf Loos → think of Adolf Hitler: [crime] and [tombs]",
+    "items": [
+      { "k": "Koolhaas", "v": "“Kill the skyscraper” — swap KOOL for [KILL]: KILLHAAS, a hater of skyscrapers" },
+      { "k": "Loos", "v": "“Ornament is crime” — Adolf Hitler committed many [crime]s. Adolf → Loos" },
+      { "k": "Loos", "v": "“Only a small part of architecture belongs to art: the tomb and the monument” — Hitler caused many deaths, so many [tomb]s" }
+    ],
+    "tags": ["kill the skyscraper", "adolf loos", "ornament is crime", "ornament and crime", "tomb and the monument"]
+  },
+  {
+    "id": "pritzker-1-jo",
+    "cat": "history",
+    "title": "Pritzker 1979–1985 · The JO Tribe",
+    "hook": "[JO]-[BA]-[STI]-[RO]-[PEI]-[MEI]-[HOL]",
+    "items": [
+      { "k": "1979", "v": "[JO]hnson, Philip" },
+      { "k": "1980", "v": "[BA]rragán, Luis" },
+      { "k": "1981", "v": "[STI]rling, James" },
+      { "k": "1982", "v": "[RO]che, Kevin" },
+      { "k": "1983", "v": "[PEI], I. M." },
+      { "k": "1984", "v": "[MEI]er, Richard" },
+      { "k": "1985", "v": "[HOL]lein, Hans" }
+    ],
+    "note": "Group 1 of 7. The groups go [JO]-[BO]-[VEN]-[MON]-[HE]-[RO]-[MOU].",
+    "tags": ["philip johnson", "barragán", "barragan", "james stirling", "kevin roche", "i. m. pei", "i.m. pei", "richard meier", "hollein"]
+  },
+  {
+    "id": "pritzker-2-bo",
+    "cat": "history",
+    "title": "Pritzker 1986–1990 · The BO Tribe",
+    "hook": "[BO]-[TA]-[BUN]/[NIE]-[GEH]-[ROS]",
+    "items": [
+      { "k": "1986", "v": "[BÖ]hm, Gottfried" },
+      { "k": "1987", "v": "[TA]nge, Kenzo" },
+      { "k": "1988", "v": "[BUN]shaft, Gordon and [NIE]meyer, Oscar (shared)" },
+      { "k": "1989", "v": "[GEH]ry, Frank" },
+      { "k": "1990", "v": "[ROS]si, Aldo" }
+    ],
+    "note": "Group 2 of 7. The groups go [JO]-[BO]-[VEN]-[MON]-[HE]-[RO]-[MOU].",
+    "tags": ["gottfried böhm", "gottfried bohm", "kenzo tange", "bunshaft", "niemeyer", "gehry", "aldo rossi"]
+  },
+  {
+    "id": "pritzker-3-ven",
+    "cat": "history",
+    "title": "Pritzker 1991–1995 · The VEN Tribe",
+    "hook": "[VEN]-[SIZ]-[MAK]-[POR]-[AN]",
+    "items": [
+      { "k": "1991", "v": "[VEN]turi, Robert" },
+      { "k": "1992", "v": "[SIZ]a, Álvaro" },
+      { "k": "1993", "v": "[MAK]i, Fumihiko" },
+      { "k": "1994", "v": "[POR]tzamparc, Christian de" },
+      { "k": "1995", "v": "[AN]do, Tadao" }
+    ],
+    "note": "Group 3 of 7. The groups go [JO]-[BO]-[VEN]-[MON]-[HE]-[RO]-[MOU].",
+    "tags": ["venturi", "álvaro siza", "alvaro siza", "fumihiko maki", "portzamparc", "tadao ando"]
+  },
+  {
+    "id": "pritzker-4-mon",
+    "cat": "history",
+    "title": "Pritzker 1996–2000 · The MON Tribe",
+    "hook": "[MON]-[FEH]-[PIA]-[FOS]-[KOOL]",
+    "items": [
+      { "k": "1996", "v": "[MON]eo, Rafael" },
+      { "k": "1997", "v": "[FEH]n, Sverre" },
+      { "k": "1998", "v": "[PIA]no, Renzo" },
+      { "k": "1999", "v": "[FOS]ter, Norman" },
+      { "k": "2000", "v": "[KOOL]haas, Rem" }
+    ],
+    "note": "Group 4 of 7. The groups go [JO]-[BO]-[VEN]-[MON]-[HE]-[RO]-[MOU].",
+    "tags": ["moneo", "sverre fehn", "renzo piano", "norman foster", "rem koolhaas"]
+  },
+  {
+    "id": "pritzker-5-he",
+    "cat": "history",
+    "title": "Pritzker 2001–2005 · The HE Tribe",
+    "hook": "[HE]-[MEU]-[MUR]-[UT]-[HAD]-[MAY]",
+    "items": [
+      { "k": "2001", "v": "[HE]rzog & de [MEU]ron" },
+      { "k": "2002", "v": "[MUR]cutt, Glenn" },
+      { "k": "2003", "v": "[UT]zon, Jørn" },
+      { "k": "2004", "v": "[HAD]id, Zaha" },
+      { "k": "2005", "v": "[MAY]ne, Thom" }
+    ],
+    "note": "Group 5 of 7. The groups go [JO]-[BO]-[VEN]-[MON]-[HE]-[RO]-[MOU].",
+    "tags": ["herzog", "de meuron", "murcutt", "utzon", "zaha hadid", "hadid", "thom mayne"]
+  },
+  {
+    "id": "pritzker-6-ro",
+    "cat": "history",
+    "title": "Pritzker 2006–2010 · The RO Tribe",
+    "hook": "[RO]-[ROG]-[NOU]-[ZU]-[SEJ]-[NIS]",
+    "items": [
+      { "k": "2006", "v": "[RO]cha, Paulo Mendes da" },
+      { "k": "2007", "v": "[ROG]ers, Richard" },
+      { "k": "2008", "v": "[NOU]vel, Jean" },
+      { "k": "2009", "v": "[ZU]mthor, Peter" },
+      { "k": "2010", "v": "[SEJ]ima & [NIS]hizawa (SANAA)" }
+    ],
+    "note": "Group 6 of 7. The groups go [JO]-[BO]-[VEN]-[MON]-[HE]-[RO]-[MOU].",
+    "tags": ["mendes da rocha", "richard rogers", "jean nouvel", "zumthor", "sanaa", "sejima", "nishizawa"]
+  },
+  {
+    "id": "pritzker-7-mou",
+    "cat": "history",
+    "title": "Pritzker 2011–2026 · The MOU Tribe",
+    "hook": "[MOU]-[SHU]-[ITO]-[BAN]-[OTTO]-[ARA]-[RCR]-[DOS]-[ISO]-[GRA]-[LAC/VAS]-[KER]-[CHIP]-[YAM]-[JIA]-[RAD]",
+    "items": [
+      { "k": "2011", "v": "Souto de [MOU]ra, Eduardo" },
+      { "k": "2012", "v": "Wang [SHU]" },
+      { "k": "2013", "v": "[ITO], Toyo" },
+      { "k": "2014", "v": "[BAN], Shigeru" },
+      { "k": "2015", "v": "[OTTO], Frei" },
+      { "k": "2016", "v": "[ARA]vena, Alejandro" },
+      { "k": "2017", "v": "[RCR] Arquitectes" },
+      { "k": "2018", "v": "[DOS]hi, Balkrishna" },
+      { "k": "2019", "v": "[ISO]zaki, Arata" },
+      { "k": "2020", "v": "[GRA]fton Architects" },
+      { "k": "2021", "v": "[LAC]aton & [VAS]sal" },
+      { "k": "2022", "v": "[KER]é, Francis" },
+      { "k": "2023", "v": "[CHIP]perfield, David" },
+      { "k": "2024", "v": "[YAM]amoto, Riken" },
+      { "k": "2025", "v": "Liu [JIA]kun" },
+      { "k": "2026", "v": "[RAD]ić, Smiljan" }
+    ],
+    "note": "Group 7 of 7, the modern era — use the “social” hook. The groups go [JO]-[BO]-[VEN]-[MON]-[HE]-[RO]-[MOU].",
+    "tags": ["souto de moura", "wang shu", "toyo ito", "shigeru ban", "frei otto", "aravena", "rcr arquitectes", "doshi", "isozaki", "grafton architects", "lacaton", "vassal", "kéré", "kere", "chipperfield", "riken yamamoto", "liu jiakun", "smiljan radić", "radic"]
+  },
+  {
+    "id": "csi-divisions",
+    "cat": "tech",
+    "title": "CSI MasterFormat — 16 Divisions (1995)",
+    "hook": "[G]ood [S]trong [C]erveza [M]akes [M]e [W]ant [T]o [D]ate [F]at [S]eñoritas [E]ven [F]at [S]eñoritas [C]overed in [M]easles [E]verywhere",
+    "items": [
+      { "k": "01", "v": "[G]eneral Requirements" },
+      { "k": "02", "v": "[S]ite Conditions" },
+      { "k": "03", "v": "[C]oncrete" },
+      { "k": "04", "v": "[M]asonry" },
+      { "k": "05", "v": "[M]etals" },
+      { "k": "06", "v": "[W]ood and Plastics" },
+      { "k": "07", "v": "[T]hermal and Moisture Protection" },
+      { "k": "08", "v": "[D]oors and Windows" },
+      { "k": "09", "v": "[F]inishes" },
+      { "k": "10", "v": "[S]pecialties" },
+      { "k": "11", "v": "[E]quipment" },
+      { "k": "12", "v": "[F]urnishings" },
+      { "k": "13", "v": "[S]pecial Construction" },
+      { "k": "14", "v": "[C]onveying Systems" },
+      { "k": "15", "v": "[M]echanical / Plumbing" },
+      { "k": "16", "v": "[E]lectrical" }
+    ],
+    "tags": ["masterformat", "csi format", "csi division", "csi divisions", "16 divisions", "sixteen divisions", "construction specifications institute"]
+  },
+  {
+    "id": "stress-strain",
+    "cat": "tech",
+    "title": "Stress–Strain Curve Points",
+    "hook": "[O]-[P]-[E]-[Y]-[U]-[R]",
+    "items": [
+      { "k": "O", "v": "[O]rigin — stress and strain are both zero" },
+      { "k": "P", "v": "[P]roportional limit — highest stress where stress and strain stay linear" },
+      { "k": "E", "v": "[E]lastic limit — most stress the material takes and still returns to its shape" },
+      { "k": "Y", "v": "[Y]ield point — permanent (plastic) deformation begins" },
+      { "k": "U", "v": "[U]ltimate tensile strength — most stress it supports before it starts to neck" },
+      { "k": "R", "v": "[R]upture (fracture) point — the material breaks" }
+    ],
+    "tags": ["stress-strain", "stress strain", "proportional limit", "elastic limit", "yield point", "yield strength", "ultimate tensile strength", "ultimate strength", "rupture point", "fracture point"]
+  },
+  {
+    "id": "metal-properties",
+    "cat": "tech",
+    "title": "Properties of Metal",
+    "hook": "[M]etals to [M]at · [D]rawn into [D]irection · rubber band · Play-Doh · diamond · glass · shield",
+    "items": [
+      { "k": "Malleability", "v": "[M]etals to [M]at — flattened into sheets, like aluminum foil" },
+      { "k": "Ductility", "v": "[D]rawn into [D]irection — pulled into wires, like copper wiring" },
+      { "k": "Elasticity", "v": "[Rubber band] — snaps back to its original shape" },
+      { "k": "Plasticity", "v": "[Play-Doh] — stays bent in its new shape" },
+      { "k": "Hardness", "v": "[Diamond] — resists scratches and dents" },
+      { "k": "Brittleness", "v": "[Glass] — shatters without bending first" },
+      { "k": "Toughness", "v": "[Shield] — absorbs a hammer blow without breaking" }
+    ],
+    "tags": ["malleability", "malleable", "ductility", "ductile", "elasticity", "plasticity", "brittleness", "brittle", "toughness"]
+  },
+  {
+    "id": "rectifier-inverter",
+    "cat": "tech",
+    "title": "Rectifier vs Inverter",
+    "hook": "[RAD] and [IDA]",
+    "items": [
+      { "k": "RAD", "v": "[R]ectifier = [A]C to [D]C" },
+      { "k": "IDA", "v": "[I]nverter = [D]C to [A]C" }
+    ],
+    "tags": ["rectifier", "inverter"]
+  },
+  {
+    "id": "pgbc-swemis",
+    "cat": "tech",
+    "title": "PGBC — 6 Performance Standards",
+    "hook": "[SWEMIS]",
+    "items": [
+      { "k": "S", "v": "[S]ite Sustainability" },
+      { "k": "W", "v": "[W]ater Efficiency" },
+      { "k": "E", "v": "[E]nergy Efficiency" },
+      { "k": "M", "v": "[M]aterial Sustainability" },
+      { "k": "I", "v": "[I]ndoor Environmental Quality" },
+      { "k": "S", "v": "[S]olid Waste Management" }
+    ],
+    "tags": ["site sustainability", "material sustainability", "indoor environmental quality", "pgbc performance standards"]
+  },
+  {
+    "id": "paint-units",
+    "cat": "tech",
+    "title": "Paint Estimate Conversion",
+    "hook": "[P]-[T]-[G]-[L]-[Q] · 1-1-4-16-16",
+    "items": [
+      { "k": "P", "v": "[P]ail = 1" },
+      { "k": "T", "v": "[T]in = 1" },
+      { "k": "G", "v": "[G]allon = 4" },
+      { "k": "L", "v": "[L]iter = 16" },
+      { "k": "Q", "v": "[Q]uart = 16" }
+    ],
+    "note": "Read it as one line: 1 pail = 1 tin = 4 gallons ≈ 16 liters ≈ 16 quarts.",
+    "tags": ["paint estimate", "gallons of paint", "gallon of paint", "liters of paint", "quarts"]
+  },
+  {
+    "id": "dining-area",
+    "cat": "tech",
+    "title": "Dining Area by Number of Persons",
+    "hook": "Width stays [300] cm · length starts at [360] and adds [60] for every 2 more persons",
+    "items": [
+      { "k": "4", "v": "300 × [360] cm → 10.80 m²" },
+      { "k": "6", "v": "300 × [420] cm → 12.60 m²" },
+      { "k": "8", "v": "300 × [480] cm → 14.40 m²" },
+      { "k": "10", "v": "300 × [540] cm → 16.20 m²" },
+      { "k": "12", "v": "300 × [600] cm → 18.00 m²" }
+    ],
+    "note": "The area goes up 1.80 m² for every 2 persons.",
+    "tags": ["dining area"]
+  }
+]
