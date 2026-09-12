@@ -1,12 +1,12 @@
 [
   {
     "s": "Setbacks & Encroachments · Rule X",
-    "q": "A footing buried 600mm below grade may project how far toward a public sidewalk?",
+    "q": "A foundation footing whose top sits 600mm below the established grade may encroach into a public sidewalk by what maximum width?",
     "o": [
+      "600mm",
       "300mm",
-      "450mm",
       "500mm",
-      "600mm"
+      "450mm"
     ],
     "c": 2,
     "ref": "IRR Rule X, §1002(c) — Projection into Alleys or Streets",
@@ -14,12 +14,12 @@
   },
   {
     "s": "Site Safety · Rule XI",
-    "q": "What is the least height allowed for the fence around a construction or demolition site?",
+    "q": "What is the minimum height required for a fence enclosing a construction or demolition site?",
     "o": [
-      "2.00 m",
+      "3.60 m",
       "2.40 m",
-      "3.00 m",
-      "3.60 m"
+      "2.00 m",
+      "3.00 m"
     ],
     "c": 1,
     "ref": "IRR Rule XI, §1106(c) — Pedestrian Protection, Fences",
@@ -27,51 +27,51 @@
   },
   {
     "s": "Site Safety · Rule XI",
-    "q": "Where the distance from the outermost face of the building to the inner edge of the sidewalk equals the building height, what is required?",
+    "q": "When the distance from a building's outermost face to the inner edge of the sidewalk equals the building's height, what pedestrian protection must be provided?",
     "o": [
-      "A fence only",
+      "A fence and a temporary walkway",
       "A fence and a canopy",
-      "A fence, a canopy, and a net",
-      "A fence and a temporary walkway"
+      "A fence only",
+      "A fence, a canopy, and a net"
     ],
-    "c": 0,
+    "c": 2,
     "ref": "IRR Rule XI, §1106 — Pedestrian Protection",
     "n": "Only a fence is required because the setback is already more than half of the building height — the threshold at which canopies and nets start being triggered under Table 1106-A."
   },
   {
     "s": "Occupant Load · Rule XII",
-    "q": "Using the occupant load factors in Rule 12, what is the least floor area for a classroom holding 30 students and one teacher?",
+    "q": "Applying the occupant load factors in Rule 12, what is the minimum floor area required for a classroom seating 30 students plus one teacher?",
     "o": [
+      "138.00 sqm",
       "54.00 sqm",
       "55.80 sqm",
-      "138.00 sqm",
       "142.60 sqm"
     ],
-    "c": 1,
+    "c": 2,
     "ref": "IRR Rule XII, §1207 — Occupant Load Factors (Educational)",
     "n": "31 persons × 1.80 sqm/person (classroom occupant load factor) = 55.80 sqm."
   },
   {
     "s": "Occupant Load · Rule XII",
-    "q": "Under Rule 12, what is the occupant load factor for hotels?",
+    "q": "Per Rule 12, what occupant load factor is applied to hotels?",
     "o": [
-      "28.00 sqm/person",
-      "18.60 sqm/person",
+      "None of these",
       "8.40 sqm/person",
-      "None of these"
+      "18.60 sqm/person",
+      "28.00 sqm/person"
     ],
-    "c": 1,
+    "c": 2,
     "ref": "IRR Rule XII, §1207 — Occupant Load Factors (Residential)",
     "n": "Hotels, apartment buildings, and lodging or rooming houses are factored at 18.60 sqm/person. 28.00 sqm/person is the figure for detached single and two-family dwellings instead."
   },
   {
     "s": "Means of Egress · Rule XII",
-    "q": "A floor carrying an occupant load of 700 requires at least how many exits?",
+    "q": "A storey with an occupant load of 700 must be provided with at least how many exits?",
     "o": [
-      "2",
+      "5",
       "3",
-      "4",
-      "5"
+      "2",
+      "4"
     ],
     "c": 1,
     "ref": "IRR Rule XII, §1210 — Number of Exits",
@@ -79,12 +79,12 @@
   },
   {
     "s": "Means of Egress · Rule XII",
-    "q": "Where a building has an automatic fire extinguishing system, how far may the travel distance to an exit reach?",
+    "q": "In a building fitted with an automatic fire extinguishing system, what is the maximum travel distance permitted to reach an exit?",
     "o": [
-      "30 meters",
       "45 meters",
+      "75 meters",
       "60 meters",
-      "75 meters"
+      "30 meters"
     ],
     "c": 2,
     "ref": "IRR Rule XII, §1210 — Distance to Exits",
@@ -92,12 +92,12 @@
   },
   {
     "s": "Doors · Rule XII",
-    "q": "What is the least door height the Building Code allows?",
+    "q": "What is the minimum door height permitted under the Building Code?",
     "o": [
-      "1.80 meters",
       "1.90 meters",
+      "2.10 meters",
       "2.00 meters",
-      "2.10 meters"
+      "1.80 meters"
     ],
     "c": 2,
     "ref": "IRR Rule XII, §1211 — Doors",
@@ -105,12 +105,12 @@
   },
   {
     "s": "Stairs · Rule XII",
-    "q": "For an occupant load of 15, what stair width is required at least?",
+    "q": "For a stairway serving an occupant load of 15 persons, what is the minimum width required?",
     "o": [
-      "750mm",
+      "1200mm",
       "900mm",
-      "1100mm",
-      "1200mm"
+      "750mm",
+      "1100mm"
     ],
     "c": 1,
     "ref": "IRR Rule XII, §1207(5)(a) — Stairs",
@@ -118,12 +118,12 @@
   },
   {
     "s": "Stairs · Rule XII",
-    "q": "At what height must handrails be mounted under the Building Code?",
+    "q": "At what height range above the tread nosing must stair handrails be mounted?",
     "o": [
-      "700-800mm",
+      "800-1000mm",
       "800-900mm",
-      "700-900mm",
-      "800-1000mm"
+      "700-800mm",
+      "700-900mm"
     ],
     "c": 1,
     "ref": "IRR Rule XII, §1207 — Stairs, Handrails",
@@ -131,25 +131,25 @@
   },
   {
     "s": "Elevators · Rule XII",
-    "q": "What is the least depth allowed for an elevator pit?",
+    "q": "What is the minimum depth allowed for an elevator hoistway pit?",
     "o": [
-      "600mm",
-      "800mm",
       "850mm",
-      "1000mm"
+      "1000mm",
+      "600mm",
+      "800mm"
     ],
-    "c": 0,
+    "c": 2,
     "ref": "IRR Rule XII, §1217 — Elevators",
     "n": "The minimum depth of a hoistway pit, measured from the underside of the elevator car, is 600mm."
   },
   {
     "s": "Seating & Aisles · Rule XII",
-    "q": "How many seats at most may sit between two aisles?",
+    "q": "What is the maximum number of seats permitted in a row running from one aisle to another aisle?",
     "o": [
-      "7 seats",
+      "30 seats",
       "10 seats",
       "14 seats",
-      "30 seats"
+      "7 seats"
     ],
     "c": 2,
     "ref": "IRR Rule XII, §1209 — Aisles",
@@ -157,12 +157,12 @@
   },
   {
     "s": "Glass & Glazing · Rule XVIII",
-    "q": "What least thickness is required for a glass panel measuring 2.50 x 2.50 m?",
+    "q": "For a glass panel measuring 2.50m x 2.50m, what is the minimum thickness required?",
     "o": [
+      "15mm",
       "8mm",
-      "10mm",
       "12mm",
-      "15mm"
+      "10mm"
     ],
     "c": 2,
     "ref": "IRR Rule XVIII, §1801 — Glass and Glazing",
@@ -170,27 +170,27 @@
   },
   {
     "s": "Doors · Rule XII",
-    "q": "What is the greatest width allowed for a door leaf?",
+    "q": "What is the maximum width permitted for a single door leaf?",
     "o": [
-      "There is no maximum width for a door leaf",
-      "800mm",
       "900mm",
+      "800mm",
+      "There is no maximum width for a door leaf",
       "1200mm"
     ],
-    "c": 0,
+    "c": 2,
     "ref": "IRR Rule XII, §1211 — Doors",
     "n": "Remember: while there is no maximum width for the doorway or the door opening, each door leaf or door panel can only be 1200mm long at the most — so the doorway itself has no cap, but each individual leaf does."
   },
   {
     "s": "Seating & Aisles · Rule XII",
-    "q": "How many seats at most may sit between a wall and an aisle?",
+    "q": "What is the maximum number of seats permitted in a row running from a wall to an aisle?",
     "o": [
-      "7 seats",
       "10 seats",
       "14 seats",
+      "7 seats",
       "30 seats"
     ],
-    "c": 0,
+    "c": 2,
     "ref": "IRR Rule XII, §1209 — Aisles",
     "n": "“The maximum number of seats in any row extending from one aisle to a wall shall be seven” — exactly half the 14-seat limit that applies between two aisles."
   }

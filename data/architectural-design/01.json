@@ -1,21 +1,21 @@
 [
   {
     "s": "",
-    "q": "Based on the lot's total area and its frontage, how deep is the lot, in meters?",
+    "q": "Using the lot's total area and its frontage, what is the lot's depth, in meters?",
     "o": [
-      "10",
       "15",
       "18",
-      "20"
+      "20",
+      "10"
     ],
-    "c": 3,
+    "c": 2,
     "ref": "",
     "n": "Dividing the 200-square-meter lot area by its 10-meter frontage gives a depth of 20 meters.",
-    "scenario": "You've been retained as project architect by a family building a high-end, two-storey single-detached home inside a gated subdivision in Makati City. The parcel is an interior lot with a total area of 200 square meters and a 10.00-meter frontage facing a two-lane, two-way road right-of-way running along the lot's southern edge. Existing three-storey single-detached houses flank the property on the west and east. To the north lies a creekside area subject to the easement provisions of Presidential Decree 1067, and the ground slopes gently — roughly 2% — toward that creek."
+    "scenario": "A family has hired you as project architect for their upscale, two-storey single-detached residence within a gated subdivision in Makati City. Their interior lot totals 200 square meters, with a 10.00-meter frontage along a two-lane, two-way road right-of-way that runs along the lot's southern edge. Three-storey single-detached homes already stand on the neighboring lots to the west and east. The lot's northern edge borders a creek area governed by the easement rules of Presidential Decree 1067, and the ground slopes gently — about 2% — down toward that creek."
   },
   {
     "s": "",
-    "q": "For the same R-1 building type, the National Building Code sets a 4.50-meter front setback, a local ordinance sets 5 meters, and the subdivision's own deed restrictions set 6 meters. Which figure applies?",
+    "q": "For this R-1 building type, the National Building Code requires a 4.50-meter front setback, the local ordinance requires 5 meters, and the subdivision's deed restrictions require 6 meters. Which of these governs?",
     "o": [
       "6 meters",
       "4.5 meters",
@@ -25,49 +25,49 @@
     "c": 0,
     "ref": "",
     "n": "When several regulations set different minimums for the same requirement, the most restrictive figure governs — here, the subdivision's 6-meter setback.",
-    "scenario": "You've been retained as project architect by a family building a high-end, two-storey single-detached home inside a gated subdivision in Makati City. The parcel is an interior lot with a total area of 200 square meters and a 10.00-meter frontage facing a two-lane, two-way road right-of-way running along the lot's southern edge. Existing three-storey single-detached houses flank the property on the west and east. To the north lies a creekside area subject to the easement provisions of Presidential Decree 1067, and the ground slopes gently — roughly 2% — toward that creek."
+    "scenario": "A family has hired you as project architect for their upscale, two-storey single-detached residence within a gated subdivision in Makati City. Their interior lot totals 200 square meters, with a 10.00-meter frontage along a two-lane, two-way road right-of-way that runs along the lot's southern edge. Three-storey single-detached homes already stand on the neighboring lots to the west and east. The lot's northern edge borders a creek area governed by the easement rules of Presidential Decree 1067, and the ground slopes gently — about 2% — down toward that creek."
   },
   {
     "s": "",
-    "q": "The National Building Code caps single-detached residential (R-1) buildings at three storeys, while a local ordinance caps the same building type at two storeys. Which limit governs?",
+    "q": "The National Building Code limits R-1 single-detached buildings to three storeys, but a local ordinance limits the same type to two storeys. Which limit controls?",
     "o": [
+      "Three storeys",
       "Two storeys",
       "Either applies equally, so it makes no difference",
-      "It is left to the Office of the Building Official to decide",
-      "Three storeys"
+      "It is left to the Office of the Building Official to decide"
+    ],
+    "c": 1,
+    "ref": "",
+    "n": "Where a local ordinance imposes a stricter limit than the National Building Code, the stricter local standard controls — here, the two-storey cap.",
+    "scenario": "A family has hired you as project architect for their upscale, two-storey single-detached residence within a gated subdivision in Makati City. Their interior lot totals 200 square meters, with a 10.00-meter frontage along a two-lane, two-way road right-of-way that runs along the lot's southern edge. Three-storey single-detached homes already stand on the neighboring lots to the west and east. The lot's northern edge borders a creek area governed by the easement rules of Presidential Decree 1067, and the ground slopes gently — about 2% — down toward that creek."
+  },
+  {
+    "s": "",
+    "q": "Since the lot's rear edge borders the creek area, what must be legally provided or maintained along that boundary?",
+    "o": [
+      "A legally mandated easement",
+      "A public promenade",
+      "An esplanade",
+      "The lot's boundary line"
     ],
     "c": 0,
     "ref": "",
-    "n": "Where a local ordinance imposes a stricter limit than the National Building Code, the stricter local standard controls — here, the two-storey cap.",
-    "scenario": "You've been retained as project architect by a family building a high-end, two-storey single-detached home inside a gated subdivision in Makati City. The parcel is an interior lot with a total area of 200 square meters and a 10.00-meter frontage facing a two-lane, two-way road right-of-way running along the lot's southern edge. Existing three-storey single-detached houses flank the property on the west and east. To the north lies a creekside area subject to the easement provisions of Presidential Decree 1067, and the ground slopes gently — roughly 2% — toward that creek."
-  },
-  {
-    "s": "",
-    "q": "Given that the rear of the lot borders the creekside area, what must legally be provided or maintained along that edge?",
-    "o": [
-      "An esplanade",
-      "The lot's boundary line",
-      "A legally mandated easement",
-      "A public promenade"
-    ],
-    "c": 2,
-    "ref": "",
     "n": "PD 1067 (Water Code of the Philippines) requires a mandatory easement along land bordering a creek, so an easement — not a promenade, esplanade, or the plain boundary line — applies here.",
-    "scenario": "You've been retained as project architect by a family building a high-end, two-storey single-detached home inside a gated subdivision in Makati City. The parcel is an interior lot with a total area of 200 square meters and a 10.00-meter frontage facing a two-lane, two-way road right-of-way running along the lot's southern edge. Existing three-storey single-detached houses flank the property on the west and east. To the north lies a creekside area subject to the easement provisions of Presidential Decree 1067, and the ground slopes gently — roughly 2% — toward that creek."
+    "scenario": "A family has hired you as project architect for their upscale, two-storey single-detached residence within a gated subdivision in Makati City. Their interior lot totals 200 square meters, with a 10.00-meter frontage along a two-lane, two-way road right-of-way that runs along the lot's southern edge. Three-storey single-detached homes already stand on the neighboring lots to the west and east. The lot's northern edge borders a creek area governed by the easement rules of Presidential Decree 1067, and the ground slopes gently — about 2% — down toward that creek."
   },
   {
     "s": "",
-    "q": "Because the site is flood-prone, the family patriarch — who is 65 years old — wants the finished floor raised 1 meter above natural grade, reached by a single-flight ramp. Following Batas Pambansa Blg. 344, what horizontal run, in meters, should that ramp have?",
+    "q": "Because the site floods easily, the family patriarch — age 65 — wants the finished floor level raised 1 meter above natural grade, accessed by a single-flight ramp. Under Batas Pambansa Blg. 344, what horizontal run, in meters, must that ramp have?",
     "o": [
-      "16.8",
       "21.8",
       "15",
-      "20"
+      "20",
+      "16.8"
     ],
-    "c": 1,
+    "c": 0,
     "ref": "[Source: Batas Pambansa Blg. 344, as amended by the 2024 Revised Implementing Rules and Regulations, published in the Official Gazette, July 8, 2024 — Accessible Ramps, Sec. A.1.2 (Maximum Slope) and Sec. A.1.2(e) (Level Landing Requirement)]",
     "n": "Under the 2024 Revised IRR of BP 344, the maximum ramp slope is 1:20, with a steeper 1:15 exception allowed only for ramps with a maximum length of 10.50m and a maximum rise of 700mm. Since this ramp's rise is 1,000mm — above the 700mm cap — the 1:15 exception does not apply, and the ramp must follow the general 1:20 maximum slope. At 1:20, a 1-meter rise requires a 20-meter horizontal run. Adding the mandatory 1,800mm (1.8m) level landing at the ramp's upper end brings the total horizontal run to 21.8 meters.",
-    "scenario": "You've been retained as project architect by a family building a high-end, two-storey single-detached home inside a gated subdivision in Makati City. The parcel is an interior lot with a total area of 200 square meters and a 10.00-meter frontage facing a two-lane, two-way road right-of-way running along the lot's southern edge. Existing three-storey single-detached houses flank the property on the west and east. To the north lies a creekside area subject to the easement provisions of Presidential Decree 1067, and the ground slopes gently — roughly 2% — toward that creek.",
+    "scenario": "A family has hired you as project architect for their upscale, two-storey single-detached residence within a gated subdivision in Makati City. Their interior lot totals 200 square meters, with a 10.00-meter frontage along a two-lane, two-way road right-of-way that runs along the lot's southern edge. Three-storey single-detached homes already stand on the neighboring lots to the west and east. The lot's northern edge borders a creek area governed by the easement rules of Presidential Decree 1067, and the ground slopes gently — about 2% — down toward that creek.",
     "steps": [
       "Rise = 1.00 m",
       "Max slope = 1:20 → Run = 20 × 1.00 m = 20.00 m",

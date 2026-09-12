@@ -1,25 +1,25 @@
 [
   {
     "s": "Foundations & Units",
-    "q": "Which discipline does NSCP 2015 Volume 1 define as the analysis and design of structures so they safely carry their loads, including those from natural forces?",
+    "q": "According to NSCP 2015 Volume 1, what term refers to the branch of engineering focused on designing and analyzing structures to safely withstand all imposed loads, including those from natural forces, over their service life?",
     "o": [
-      "Building or Bridge Engineering",
-      "Infrastructure Engineering",
       "Geotechnical Engineering",
-      "Structural Engineering"
+      "Structural Engineering",
+      "Infrastructure Engineering",
+      "Building or Bridge Engineering"
     ],
-    "c": 3,
+    "c": 1,
     "ref": "NSCP 2015 Vol. 1 — Definitions",
     "n": "NSCP defines Structural Engineering as the branch concerned with analyzing and designing structures so they safely resist all imposed loads, including natural forces, through their intended lifespan."
   },
   {
     "s": "Foundations & Units",
-    "q": "Which engineering materials are taken not to deform under load?",
+    "q": "In mechanics, what term is given to a material idealized as undergoing absolutely no deformation whatsoever when loaded?",
     "o": [
-      "Reinforced concretes",
+      "Elastic solids",
       "Rigid bodies",
       "Hard materials",
-      "Rocks"
+      "Reinforced concrete elements"
     ],
     "c": 1,
     "ref": "Mechanics — idealized bodies",
@@ -27,25 +27,25 @@
   },
   {
     "s": "Foundations & Units",
-    "q": "The expression bh³/12 gives the centroidal moment of inertia of which beam section?",
+    "q": "For which cross-sectional shape does the formula bh³/12 give the moment of inertia about the centroidal axis?",
     "o": [
-      "Circular Section",
-      "Triangular Section",
+      "Trapezoidal Section",
       "Rectangular Section",
-      "Trapezoidal Section"
+      "Circular Section",
+      "Triangular Section"
     ],
-    "c": 2,
+    "c": 1,
     "ref": "Section properties — moment of inertia",
     "n": "For a rectangle of base b and height h, the centroidal moment of inertia about the horizontal axis is I = bh³/12."
   },
   {
     "s": "Foundations & Units",
-    "q": "Which discipline does NSCP 2015 Volume 1 define as applying soil and rock mechanics to the investigation, evaluation and design of civil works, earth materials and foundations?",
+    "q": "NSCP 2015 Volume 1 defines which field as the application of soil and rock mechanics to investigating, evaluating, and designing civil works, earth materials, and foundations?",
     "o": [
+      "Structural Engineering",
       "Building or Bridge Engineering",
-      "Infrastructure Engineering",
       "Geotechnical Engineering",
-      "Structural Engineering"
+      "Infrastructure Engineering"
     ],
     "c": 2,
     "ref": "NSCP 2015 Vol. 1 — Definitions",
@@ -53,25 +53,25 @@
   },
   {
     "s": "Foundations & Units",
-    "q": "Which of these equalities is wrong?",
+    "q": "Which of the following SI stress-unit conversions is INCORRECT?",
     "o": [
-      "1 MPa = 1 x 10⁶ N/m²",
-      "1 kPa = 1 x 10³ N/m²",
       "1 Pa = 1 N/m²",
-      "1 GPa = 1 x 10⁸ N/m²"
+      "1 GPa = 1 x 10⁸ N/m²",
+      "1 kPa = 1 x 10³ N/m²",
+      "1 MPa = 1 x 10⁶ N/m²"
     ],
-    "c": 3,
+    "c": 1,
     "ref": "SI unit conversions — stress",
     "n": "A gigapascal is 10⁹ pascals, not 10⁸. The other three conversions (MPa, kPa, Pa) are correct as written."
   },
   {
     "s": "Statics of Structures",
-    "q": "A rectangular block weighing 100 N rests on a smooth surface. What normal reaction develops at its base?",
+    "q": "A 100 N rectangular block rests on a frictionless (smooth) horizontal surface. What is the magnitude of the normal reaction developing at its base?",
     "o": [
-      "95% of the weight",
+      "Zero",
       "100 N",
-      "100 lbs",
-      "Zero"
+      "95% of the weight",
+      "100 lbs"
     ],
     "c": 1,
     "ref": "Statics — equilibrium of a resting body",
@@ -79,35 +79,35 @@
   },
   {
     "s": "Statics of Structures",
-    "q": "The truss carries 20 kN at every top-chord joint and 20 kN at every bottom-chord joint, its extreme joints unloaded. What force does bar A carry?",
+    "q": "In the truss shown, every top-chord joint carries a 20 kN load and every bottom-chord joint carries a 20 kN load, with the end joints left unloaded. What force develops in member A?",
     "img": "../../subjects/structural/quizzes/img/fig-howe-truss.svg",
     "o": [
-      "20 kN (Tension)",
       "10 kN (Compression)",
-      "25 kN (Tension)",
-      "Zero"
+      "20 kN (Tension)",
+      "Zero",
+      "25 kN (Tension)"
     ],
-    "c": 0,
+    "c": 1,
     "ref": "Truss analysis — method of joints",
     "n": "Analyzing the loaded end panel of this Double Howe truss under the given joint loads gives a bar force of 20 kN in tension at the indicated top-chord member."
   },
   {
     "s": "Statics of Structures",
-    "q": "A simply supported beam carries a uniform load w = 1000 kN/m over a 6 m span. What reaction develops at the roller?",
+    "q": "A simple beam spans 6 m and carries a uniformly distributed load of w = 1000 kN/m over its full length. What reaction develops at the roller support?",
     "img": "../../subjects/structural/quizzes/img/fig-beam-udl.svg",
     "o": [
-      "3000 kN",
-      "6000 kN",
+      "Zero",
       "100 kN",
-      "Zero"
+      "3000 kN",
+      "6000 kN"
     ],
-    "c": 0,
+    "c": 2,
     "ref": "Beam reactions — UDL on simple span",
     "n": "Total load = w·L = 1000 × 6 = 6000 kN. By symmetry, each simple support carries half of the total load, so the roller reaction is 3000 kN."
   },
   {
     "s": "Statics of Structures",
-    "q": "A structure whose unknown reactions number no more than the equations of static equilibrium, so statics alone will solve it, is:",
+    "q": "What term describes a structure whose unknown reactions do not exceed the number of available static-equilibrium equations, so it can be fully solved by statics alone?",
     "o": [
       "Any structure",
       "Statically indeterminate",
@@ -120,13 +120,13 @@
   },
   {
     "s": "Statics of Structures",
-    "q": "A triangular load on a 6 m beam runs from zero at the left to 60 kN/m at the right. What resultant W acts at its centroid?",
+    "q": "A 6 m beam carries a triangularly distributed load that increases from zero at the left end to 60 kN/m at the right end. What is the magnitude of the resultant W, acting through the load diagram's centroid?",
     "img": "../../subjects/structural/quizzes/img/fig-triangular-load.svg",
     "o": [
-      "150 kN",
+      "360 kN",
       "180 kN/m",
-      "200 kN/m",
-      "360 kN"
+      "150 kN",
+      "200 kN/m"
     ],
     "c": 1,
     "ref": "Equivalent resultant of a triangular load",
@@ -134,38 +134,38 @@
   },
   {
     "s": "Structural Terminology",
-    "q": "Which stress is the shear per unit nominal surface area of a reinforcing bar, acting along the bar where it meets the concrete, through adhesion, friction and mechanical resistance?",
+    "q": "What term names the shear stress per unit of nominal bar surface area developing at the interface between a reinforcing bar and the surrounding concrete, arising from adhesion, friction, and mechanical interlock?",
     "o": [
-      "Circumferential stress",
-      "Bearing stress",
       "Tensile stress",
-      "Bond stress"
+      "Bond stress",
+      "Circumferential stress",
+      "Bearing stress"
     ],
-    "c": 3,
+    "c": 1,
     "ref": "Reinforced concrete — rebar interaction",
     "n": "Bond stress is the interface shear stress between reinforcing steel and the surrounding concrete that keeps the bar and concrete acting together."
   },
   {
     "s": "Structural Terminology",
-    "q": "The twisting of an object under an applied torque is:",
+    "q": "What is the term for the twisting deformation a member undergoes when subjected to an applied torque?",
     "o": [
-      "Moment",
-      "Couple",
+      "Rotation",
       "Torsion",
-      "Rotation"
+      "Moment",
+      "Couple"
     ],
-    "c": 2,
+    "c": 1,
     "ref": "Mechanics of materials — torsion",
     "n": "Torsion is the response of a member (typically a shaft) twisting about its longitudinal axis when subjected to an applied torque."
   },
   {
     "s": "Structural Terminology",
-    "q": "Which ratio is effective length divided by radius of gyration, kl/r?",
+    "q": "The ratio of a compression member's effective length to its radius of gyration (kl/r) is known as its:",
     "o": [
-      "Poisson's ratio",
+      "Deflection",
       "Slenderness ratio",
-      "Water-cement ratio",
-      "Deflection"
+      "Poisson's ratio",
+      "Water-cement ratio"
     ],
     "c": 1,
     "ref": "Column design — buckling parameters",
@@ -173,25 +173,25 @@
   },
   {
     "s": "Structural Terminology",
-    "q": "Which term describes the bowing of an elastic body under a transverse force, found by multiplying that force by its moment arm to the centre of moment?",
+    "q": "What term describes the transverse bending of an elastic member under a lateral force, found by multiplying the force by its moment arm to the center of moments?",
     "o": [
-      "Settlement",
-      "Drift",
+      "Bending moment",
       "Deflection",
-      "Bending moment"
+      "Settlement",
+      "Drift"
     ],
-    "c": 2,
+    "c": 1,
     "ref": "Beam behavior — serviceability",
     "n": "Deflection is the transverse displacement of a beam under load; it is often evaluated alongside the bending moment produced by the applied force and its moment arm."
   },
   {
     "s": "Structural Terminology",
-    "q": "Which beam spans openings such as portals, doors, windows and fireplaces, and may serve as a decorative element besides?",
+    "q": "Which structural member spans over openings such as doors, windows, portals, and fireplaces, and can also serve as a decorative feature?",
     "o": [
-      "Girt",
+      "Tie beam",
       "Lintel beam",
-      "Girder",
-      "Tie beam"
+      "Girt",
+      "Girder"
     ],
     "c": 1,
     "ref": "Structural members — openings",
@@ -199,89 +199,89 @@
   },
   {
     "s": "Structural Terminology",
-    "q": "On a stress-strain diagram, which portion runs from zero stress to the elastic limit, where stress stays proportional to strain and deformation fully recovers?",
+    "q": "On a stress-strain diagram, which segment runs from zero stress up to the elastic limit, where stress stays proportional to strain and all deformation is recoverable?",
     "o": [
+      "Ultimate Stress",
       "Elastic Region",
-      "Plastic Region",
       "Elastic Limit",
-      "Ultimate Stress"
+      "Plastic Region"
     ],
-    "c": 0,
+    "c": 1,
     "ref": "Stress-strain diagram — regions",
     "n": "The elastic region is the initial straight-line portion of the stress-strain curve where deformation is proportional and fully recovers once the load is removed."
   },
   {
     "s": "Structural Terminology",
-    "q": "Which stress deforms a material by slippage along planes parallel to it, and bears on downslope movement of earth and on earthquakes?",
+    "q": "Which type of stress deforms a material through slippage along a plane parallel to the applied force, and underlies phenomena such as landslides and fault movement during earthquakes?",
     "o": [
-      "Axial stress",
-      "Flexural stress",
+      "Tensile stress",
       "Shear stress",
-      "Tensile stress"
+      "Axial stress",
+      "Flexural stress"
     ],
-    "c": 2,
+    "c": 1,
     "ref": "Mechanics of materials — shear",
     "n": "Shear stress acts along a plane parallel to the applied force, causing layers of material to slide past one another — the mechanism behind slope failures and fault slip."
   },
   {
     "s": "Structural Terminology",
-    "q": "What is the point on a beam’s elastic curve where the curvature reverses and the moment falls to zero?",
+    "q": "What is the name for the location on a beam's elastic curve where curvature reverses direction and the bending moment equals zero?",
     "o": [
-      "Centroid",
-      "Elastic Limit",
       "Yield Point",
-      "Point of Contra-flexure"
+      "Point of Contra-flexure",
+      "Centroid",
+      "Elastic Limit"
     ],
-    "c": 3,
+    "c": 1,
     "ref": "Beam bending — moment diagrams",
     "n": "The point of contra-flexure is where the bending moment changes sign (crosses zero), marking the transition between concave and convex curvature along the beam."
   },
   {
     "s": "Structural Terminology",
-    "q": "Which member is built from straight lengths of metal or timber forming a series of triangles in one plane?",
+    "q": "What is the name for a structural framework made of straight metal or timber members arranged into a series of triangles within a single plane?",
     "o": [
-      "Frame",
-      "Building Frame",
       "Building",
-      "Truss"
+      "Truss",
+      "Frame",
+      "Building Frame"
     ],
-    "c": 3,
+    "c": 1,
     "ref": "Structural systems — trusses",
     "n": "A truss is an assembly of straight members arranged into triangular units in one plane, carrying loads primarily through axial tension and compression in each member."
   },
   {
     "s": "Stress-Strain Behavior",
-    "q": "What does steel usually do when stressed?",
+    "q": "Under increasing stress, what is the typical initial behavior of steel, being a ductile material?",
     "o": [
+      "Rupture",
       "Deform",
-      "Crack",
       "Break",
-      "Rupture"
+      "Crack"
     ],
-    "c": 0,
+    "c": 1,
     "ref": "Material behavior — ductile response",
     "n": "As a ductile material, steel primarily deforms (elastically, then plastically) under increasing stress before eventually reaching rupture at much higher stress levels."
   },
   {
     "s": "Stress-Strain Behavior",
-    "q": "Which is the Imperial unit of stress?",
+    "q": "In the Imperial (English) system of units, stress is commonly expressed in:",
     "o": [
-      "Pascal",
-      "N/m²",
+      "Grains",
       "Pound per square inch (psi)",
-      "Grains"
+      "Pascal",
+      "N/m²"
     ],
-    "c": 2,
+    "c": 1,
     "ref": "Unit systems — stress",
     "n": "In the Imperial (English) system, stress is expressed in pounds per square inch (psi), the counterpart to the SI pascal (N/m²)."
   },
   {
     "s": "Stress-Strain Behavior",
-    "q": "On the stress-strain diagram, what is the greatest stress at which a material still returns to its original length, shape and size once the load comes off?",
+    "q": "What is the highest stress a material can sustain and still fully recover its original length, shape, and size once the load is removed?",
     "o": [
-      "Proportional Limit",
-      "Elastic Limit",
       "Atterberg Limit",
+      "Elastic Limit",
+      "Proportional Limit",
       "Plastic Limit"
     ],
     "c": 1,
@@ -290,51 +290,51 @@
   },
   {
     "s": "Stress-Strain Behavior",
-    "q": "Which point marks the stress at which strain increases without any increase in stress?",
+    "q": "Which point on the stress-strain curve marks where strain keeps increasing without any further increase in stress?",
     "o": [
-      "Proportional Limit",
-      "Elastic Limit",
+      "Ultimate Stress",
       "Yield Point",
-      "Ultimate Stress"
+      "Proportional Limit",
+      "Elastic Limit"
     ],
-    "c": 2,
+    "c": 1,
     "ref": "Stress-strain diagram — yielding",
     "n": "The yield point marks where the material continues to strain under essentially constant stress — the onset of significant plastic deformation."
   },
   {
     "s": "Friction, Stress & Yield",
-    "q": "What is the contact resistance one body raises against another when a force moves, or tends to move, the two past each other?",
+    "q": "What is the general term for the contact resistance one surface offers against another when relative sliding motion occurs, or tends to occur, between them?",
     "o": [
-      "Shear Force",
-      "Static Friction",
       "Kinetic Friction",
-      "Friction"
+      "Friction",
+      "Static Friction",
+      "Shear Force"
     ],
-    "c": 3,
+    "c": 1,
     "ref": "Mechanics — contact resistance",
     "n": "Friction, in general, is the contact resistance that opposes the relative sliding motion (or tendency to slide) between two surfaces in contact."
   },
   {
     "s": "Friction, Stress & Yield",
-    "q": "What does NSCP define as force per unit area?",
+    "q": "Force per unit area is defined by NSCP as:",
     "o": [
-      "Shear Force",
       "Strain",
+      "Stress",
       "Strength of Materials",
-      "Stress"
+      "Shear Force"
     ],
-    "c": 3,
+    "c": 1,
     "ref": "NSCP 2015 Vol. 1 — Definitions",
     "n": "NSCP defines stress simply as force per unit area — the internal resistance a material develops in response to an externally applied load."
   },
   {
     "s": "Friction, Stress & Yield",
-    "q": "What is the unit deformation of a material under load?",
+    "q": "What term refers to the unit deformation a material undergoes under an applied load?",
     "o": [
-      "Shear Force",
+      "Stress",
       "Strain",
       "Strength of Materials",
-      "Stress"
+      "Shear Force"
     ],
     "c": 1,
     "ref": "Mechanics of materials — deformation",
@@ -342,35 +342,35 @@
   },
   {
     "s": "Friction, Stress & Yield",
-    "q": "Two planks are pulled apart with a bolt joining them. What stress develops in the bolt between them?",
+    "q": "Two planks joined by a single bolt are pulled in opposite directions. What type of stress develops in the bolt along the plane between the planks?",
     "img": "../../subjects/structural/quizzes/img/fig-bolt-shear.svg",
     "o": [
-      "Shear Stress",
-      "Bond Stress",
       "Tensile Stress",
-      "Bending Stress"
+      "Shear Stress",
+      "Bending Stress",
+      "Bond Stress"
     ],
-    "c": 0,
+    "c": 1,
     "ref": "Fastener design — bolted connections",
     "n": "When the planks slide relative to each other along the joint, the bolt resists this slippage across its cross-section — a classic case of shear stress in a fastener."
   },
   {
     "s": "Friction, Stress & Yield",
-    "q": "A metal rod has fractured along a twisted, spiral surface. Which stress caused it?",
+    "q": "A metal rod fails along a spiral, twisted fracture surface. Which stress is responsible for this failure pattern?",
     "img": "../../subjects/structural/quizzes/img/fig-torsional-fracture.svg",
     "o": [
-      "Shear Stress",
       "Compressive Stress",
+      "Torsional Stress",
       "Tensile Stress",
-      "Torsional Stress"
+      "Shear Stress"
     ],
-    "c": 3,
+    "c": 1,
     "ref": "Failure modes — torsion",
     "n": "A spiral, twisted fracture surface is characteristic of a torsional (shear-dominated) failure caused by excessive applied torque, not by simple tension or compression."
   },
   {
     "s": "Bending & Moment Diagrams",
-    "q": "The figure shows transverse loading producing either concave or convex curvature. Which curve is positive bending?",
+    "q": "The figure shows transverse loading producing both concave and convex curvature along the beam. Which labeled curve represents positive bending?",
     "img": "../../subjects/structural/quizzes/img/fig-bending.svg",
     "o": [
       "A",
@@ -384,15 +384,15 @@
   },
   {
     "s": "Bending & Moment Diagrams",
-    "q": "The moment diagram of a loaded beam between supports C and D is shown. Where on it does the moment fall to zero?",
+    "q": "In the moment diagram for a beam segment between supports C and D, what is the name for the location where the bending moment crosses zero?",
     "img": "../../subjects/structural/quizzes/img/fig-moment-diagram.svg",
     "o": [
-      "Maximum Shear Point",
       "Zero Stress Point",
-      "Point of No Return",
-      "Inflection Point"
+      "Inflection Point",
+      "Maximum Shear Point",
+      "Point of No Return"
     ],
-    "c": 3,
+    "c": 1,
     "ref": "Beam bending — moment diagrams",
     "n": "Where the moment diagram crosses the baseline (moment = 0) is called the inflection point — the same location where the beam's curvature reverses."
   }
