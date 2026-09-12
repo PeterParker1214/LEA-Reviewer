@@ -1,11 +1,11 @@
 [
   {
     "s": "Yards & Projections",
-    "q": "What is the least distance allowed between roof eaves and the rear or side property line?",
+    "q": "What is the minimum clearance required between roof eaves and a rear or side property line?",
     "o": [
-      "500mm",
-      "750mm",
       "1000mm",
+      "750mm",
+      "500mm",
       "1500mm"
     ],
     "c": 1,
@@ -14,11 +14,11 @@
   },
   {
     "s": "Firewalls · R-1",
-    "q": "Firewalls are barred from R1 developments, but an abutment is allowed up to what height, provided the part above 1.50m is perforated concrete block?",
+    "q": "Although true firewalls are not permitted for R-1 projects, an abutment/fence-type wall is allowed up to what maximum height, with the portion above 1.50m required to be perforated concrete block?",
     "o": [
+      "3.00m",
       "2.00m",
       "2.70m",
-      "3.00m",
       "3.20m"
     ],
     "c": 3,
@@ -27,12 +27,12 @@
   },
   {
     "s": "Building Height",
-    "q": "On a sloping lot with a 4.00m difference between its highest and lowest points, where is the established grade line taken for building height?",
+    "q": "On a sloping lot where the elevation between its highest and lowest points differs by 4.00m, where is the established grade line for computing building height taken from?",
     "o": [
-      "The lowest point of the lot",
       "The highest point of the lot",
-      "The average between the two points",
-      "None of the above"
+      "None of the above",
+      "The average of the two points",
+      "The lowest point of the lot"
     ],
     "c": 2,
     "ref": "IRR Rule VII — Building Height Limit (established grade line)",
@@ -40,64 +40,64 @@
   },
   {
     "s": "Parking",
-    "q": "What is the smallest parking slot allowed for an articulated truck?",
+    "q": "What is the minimum parking stall size prescribed for an articulated truck?",
     "o": [
-      "2.50m x 5.00m",
-      "3.00 x 9.00m",
-      "3.60 x 18.00m",
-      "3.60 x 22.00m"
+      "3.60m x 22.00m",
+      "3.60m x 18.00m",
+      "3.00m x 9.00m",
+      "2.50m x 5.00m"
     ],
-    "c": 2,
+    "c": 1,
     "ref": "IRR Rule VII, Table VII.4 — Parking Slot Requirements",
     "n": "Table VII.4 sets 3.60m x 18.00m as the minimum bay size for an articulated truck, distinct from the smaller stalls prescribed for cars, jeepneys/vans, and standard trucks."
   },
   {
     "s": "Site Development Terms",
-    "q": "Adding the ISA to the USA gives you:",
+    "q": "What value results from adding the Impervious Surface Area (ISA) to the Unpaved Surface Area (USA)?",
     "o": [
-      "TOSL",
       "PSO",
-      "MACA",
-      "AMBF"
+      "AMBF",
+      "TOSL",
+      "MACA"
     ],
-    "c": 0,
+    "c": 2,
     "ref": "IRR Rule VIII, Table VIII.1 — PSO / ISA / USA / TOSL",
     "n": "Total Open Space within Lot (TOSL) is made up of Impervious Surface Area (ISA) plus Unpaved Surface Area (USA): TOSL = ISA + USA."
   },
   {
     "s": "Site Development Terms",
-    "q": "Subtracting the ISA from the construction area gives you:",
+    "q": "What value results from subtracting the Impervious Surface Area (ISA) from the Construction Area?",
     "o": [
-      "TOSL",
-      "PSO",
+      "BHL",
       "USA",
-      "BHL"
+      "PSO",
+      "TOSL"
     ],
-    "c": 1,
+    "c": 2,
     "ref": "IRR Rule VIII, Table VIII.1 — PSO / ISA / USA / TOSL",
     "n": "Maximum Allowable Construction Area (MACA/CA) is PSO + ISA, so rearranging gives CA − ISA = PSO (Percentage of Site Occupancy, expressed as footprint area)."
   },
   {
     "s": "Light & Ventilation",
-    "q": "Under the National Building Code, what is the least floor area allowed for a habitable room?",
+    "q": "According to the National Building Code, what is the minimum floor area allowed for a room intended for human habitation?",
     "o": [
-      "1.20 sqm",
-      "3.00 sqm",
+      "12.00 sqm",
       "6.00 sqm",
-      "12.00 sqm"
+      "3.00 sqm",
+      "1.20 sqm"
     ],
-    "c": 2,
+    "c": 1,
     "ref": "PD 1096, §806 — Size and Dimensions of Rooms",
     "n": "Section 806 sets 6.00 square meters as the minimum floor area for rooms for human habitation (with 2.00m as the least horizontal dimension) — larger than the 3.00 sqm minimum for kitchens."
   },
   {
     "s": "Light & Ventilation",
-    "q": "What air space must a habitable room provide per person?",
+    "q": "How much air space per occupant must a habitable room provide?",
     "o": [
+      "18 cubic meters",
       "3.00 cubic meters",
-      "12.00 cubic meters",
       "14 cubic meters",
-      "18 cubic meters"
+      "12.00 cubic meters"
     ],
     "c": 2,
     "ref": "PD 1096, §807 — Air Space Requirements",
@@ -105,12 +105,12 @@
   },
   {
     "s": "Light & Ventilation",
-    "q": "What ceiling height is required on the seventh floor of an artificially ventilated building?",
+    "q": "In an artificially ventilated building, what ceiling clearance is required on the seventh floor?",
     "o": [
-      "1.80m",
+      "2.70m",
       "2.10m",
-      "2.40m",
-      "2.70m"
+      "1.80m",
+      "2.40m"
     ],
     "c": 1,
     "ref": "PD 1096, §805 — Ceiling Heights",
@@ -118,25 +118,25 @@
   },
   {
     "s": "Easements",
-    "q": "In forest areas, what easement does the NBC require on each side of a waterway?",
+    "q": "For a waterway running through forest areas, what easement width does the NBC require on each bank?",
     "o": [
-      "3.00m",
       "10.00m",
-      "20.00m",
-      "40.00m"
+      "40.00m",
+      "3.00m",
+      "20.00m"
     ],
-    "c": 3,
+    "c": 1,
     "ref": "PD 1067 (Water Code of the Philippines), Art. 51",
     "n": "The public-use easement along waterway banks is 3m in urban areas, 20m in agricultural areas, and 40m in forest areas — a Water Code rule the Building Laws reviewer folds into site-easement questions."
   },
   {
     "s": "Zoning Classification",
-    "q": "Rowhouses of one to three storeys fall under which zoning classification?",
+    "q": "Rowhouse developments of one to three storeys fall under which zoning classification?",
     "o": [
-      "R-2",
+      "C-1",
       "R-3",
       "GI",
-      "C-1"
+      "R-2"
     ],
     "c": 1,
     "ref": "IRR Rule VII — Zoning Classification Tables",
@@ -144,11 +144,11 @@
   },
   {
     "s": "Firewalls · R-2",
-    "q": "Where may firewalls be placed on an R2 project?",
+    "q": "For an R-2 project, on which side(s) of the property may a firewall be built?",
     "o": [
-      "Allowed on one side of property",
-      "Allowed on both sides of the property",
-      "Allowed on one side and the rear",
+      "Only on one side of the property",
+      "On both sides of the property",
+      "On one side plus the rear",
       {
         "ref": [
           1,
@@ -163,40 +163,40 @@
   },
   {
     "s": "Firewalls · R-4",
-    "q": "Firewalls on an R-4 project, allowed on both sides of the property, may run to what maximum height?",
+    "q": "When an R-4 project's firewalls run along both sides of the property, what is the maximum height allowed?",
     "o": [
-      "2 floors high only",
-      "3 floors high only",
       "4 floors high only",
-      "14 meters high only"
+      "14 meters high only",
+      "3 floors high only",
+      "2 floors high only"
     ],
-    "c": 1,
+    "c": 2,
     "ref": "IRR Rule VII, §704.4 — Firewall Provisions",
     "n": "R-4 firewalls on both sides of the property are capped at 3 storeys, beyond which a firewall configuration is no longer allowed and a yard/setback must be used instead."
   },
   {
     "s": "Building Footprint · TGFA",
-    "q": "All of these affect the maximum total gross floor area in Table 7.1 except:",
+    "q": "Which of the following is NOT one of the factors affecting the maximum Total Gross Floor Area (TGFA) in Table 7.1?",
     "o": [
-      "Zoning designation of the property",
-      "Use or non-use of firewalls for the project",
       "Lot type",
-      "Width of the road"
+      "Width of the road",
+      "Zoning designation of the property",
+      "Whether firewalls are used for the project"
     ],
-    "c": 3,
+    "c": 1,
     "ref": "IRR Rule VII, Table VII.1 — Allowable Maximum TGFA",
     "n": "Table VII.1 keys the maximum TGFA to the zoning designation, lot type, and firewall use (which drive the allowable PSO), but road width is not a factor in the TGFA table itself — it affects other checks, like BHL from Table VIII.2/8.3, but not TGFA."
   },
   {
     "s": "Building Height Limit",
-    "q": "A property zoned R1 fronts only a 5-metre road. What building height is allowed?",
+    "q": "An R-1 zoned property fronts only a 5-meter road. To what building height is it limited?",
     "o": [
-      "2 floors only",
-      "2.5 floors only",
       "3 floors only",
-      "5 floors only"
+      "5 floors only",
+      "2.5 floors only",
+      "2 floors only"
     ],
-    "c": 1,
+    "c": 2,
     "ref": "IRR Rule VII/VIII — Building Height Limit by Road Width & Zoning",
     "n": "For an R-1 lot fronting only a 5-meter road, the Building Height Limit tables cap the project at 2.5 storeys — narrow road frontage constrains height even where the zoning would otherwise allow more."
   }

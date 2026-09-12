@@ -1,37 +1,37 @@
 [
   {
     "s": "Water Potability & Hazard",
-    "q": "On what basis is water judged potable?",
+    "q": "What standard determines whether water qualifies as potable?",
     "o": [
-      "By its chlorine content",
-      "By its clarity",
-      "By the chemical treatment applied",
-      "By a required passing score"
+      "How chemically treated it is",
+      "How clear it appears",
+      "Whether it meets a required passing score on water quality tests",
+      "Its chlorine content"
     ],
-    "c": 3,
+    "c": 2,
     "ref": "National Plumbing Code — Water Supply, potability standards",
     "n": "Potability is judged against a required passing score on water quality tests, not by appearance or treatment method alone."
   },
   {
     "s": "Water Potability & Hazard",
-    "q": "Water is described as non-potable when it is:",
+    "q": "What makes water classified as non-potable?",
     "o": [
-      "Unfit for human consumption",
-      "Clear to the eye",
+      "Filtered through sand and gravel",
       "Chemically treated",
-      "Filtered through sand and gravel"
+      "Unfit for human consumption",
+      "Clear to the eye"
     ],
-    "c": 0,
+    "c": 2,
     "ref": "National Plumbing Code — Definitions",
     "n": "Non-potable water is simply water unsafe or unsuitable for drinking and food preparation — clarity or treatment alone doesn't decide that."
   },
   {
     "s": "Water Potability & Hazard",
-    "q": "Water quality is considered High Hazard when it contains:",
+    "q": "A cross-connection is classified as High Hazard when the water carries what?",
     "o": [
-      "Toxic waste",
       "Liquid waste",
       "Polluted matters",
+      "Toxic waste",
       "Contaminated matters"
     ],
     "c": 3,
@@ -40,24 +40,24 @@
   },
   {
     "s": "Water Potability & Hazard",
-    "q": "Water quality is considered Low Hazard when it contains only:",
+    "q": "A cross-connection is classified as Low Hazard when the water carries only what?",
     "o": [
-      "Polluted matters",
-      "Liquid waste",
       "Toxic waste",
-      "Contaminated matters"
+      "Contaminated matters",
+      "Polluted matters",
+      "Liquid waste"
     ],
-    "c": 0,
+    "c": 2,
     "ref": "Cross-connection control — hazard classification",
     "n": "Low-hazard connections involve merely polluted (aesthetically or mildly degraded) water rather than toxic or contaminated matter."
   },
   {
     "s": "Water Sources",
-    "q": "Rivers, lakes and seas fall under which class of water?",
+    "q": "Bodies of water such as rivers, lakes, and seas are classified as what type of water?",
     "o": [
-      "Storm water",
-      "Rain water",
       "Ground water",
+      "Rain water",
+      "Storm water",
       "Surface water"
     ],
     "c": 3,
@@ -66,7 +66,7 @@
   },
   {
     "s": "Water Sources",
-    "q": "Water standing in or moving through the ground may be called:",
+    "q": "What terms can all refer to water held in or moving through the ground?",
     "o": [
       "Aquifer",
       "Water table",
@@ -79,20 +79,20 @@
   },
   {
     "s": "Water Sources",
-    "q": "Which well is formed by hammering a pointed pipe into the ground with a maul or pile driver?",
+    "q": "What type of well is created by pounding a pointed pipe into the earth with a maul or pile driver?",
     "o": [
-      "Driven well",
-      "Drilled well",
+      "Bored well",
       "Shallow well",
-      "Bored well"
+      "Drilled well",
+      "Driven well"
     ],
-    "c": 0,
+    "c": 3,
     "ref": "Water well types — plumbing trade terminology",
     "n": "A driven well is formed by hammering a pointed pipe (well point) into the ground with a maul or pile driver, unlike drilled or bored wells."
   },
   {
     "s": "Water Service Levels",
-    "q": "What level of water service applies when water is taken from a main water line?",
+    "q": "Under LWUA's classification of water service, tapping a connection directly off the main water line corresponds to which level?",
     "o": [
       "Level 1",
       "Level 2",
@@ -105,12 +105,12 @@
   },
   {
     "s": "Water Treatment",
-    "q": "At which treatment stage do suspended particles sink to the bottom of the tank?",
+    "q": "During which water-treatment step do suspended solids settle to the bottom of the tank?",
     "o": [
+      "Coagulation",
       "Aeration",
-      "Chlorination",
       "Sedimentation",
-      "Coagulation"
+      "Chlorination"
     ],
     "c": 2,
     "ref": "Water treatment process sequence",
@@ -118,11 +118,11 @@
   },
   {
     "s": "Water Treatment",
-    "q": "The main use of chlorine is:",
+    "q": "What is chlorine primarily added to water for?",
     "o": [
+      "Filtration",
       "Aeration",
       "Chlorination",
-      "Filtration",
       "Disinfection"
     ],
     "c": 3,
@@ -131,33 +131,33 @@
   },
   {
     "s": "Water Treatment",
-    "q": "Which treatment adds a chemical to adjust hardness, pH and alkalinity?",
+    "q": "Which process introduces a chemical dose to correct hardness, pH, and alkalinity levels?",
     "o": [
-      "Aeration",
-      "Fluoridation",
+      "Disinfection",
       "Filtration",
-      "Disinfection"
+      "Fluoridation",
+      "Aeration"
     ],
-    "c": 1,
+    "c": 2,
     "ref": "Water treatment process sequence",
     "n": "In this set of terms, fluoridation is grouped as the chemical-dosing step that adjusts hardness, pH, and alkalinity."
   },
   {
     "s": "Ground Water",
-    "q": "Which minerals is ground water most likely to carry?",
+    "q": "Groundwater commonly carries dissolved traces of which minerals?",
     "o": [
-      "Iron and magnesium",
-      "Ferrous bicarbonate",
       "Calcium",
-      "Calcitrate"
+      "Calcitrate",
+      "Iron and magnesium",
+      "Ferrous bicarbonate"
     ],
-    "c": 0,
+    "c": 2,
     "ref": "Groundwater chemistry — plumbing reference",
     "n": "Groundwater commonly carries dissolved iron and magnesium, which is why untreated well water can stain fixtures or taste metallic."
   },
   {
     "s": "Faucets & Valves",
-    "q": "Besides faucet, a bibb also goes by the name:",
+    "q": "Aside from \"faucet,\" what other names is a bibb also known by?",
     "o": [
       "Cock",
       "Plug",
@@ -170,24 +170,24 @@
   },
   {
     "s": "Faucets & Valves",
-    "q": "Which faucet is adapted for use in a pantry sink?",
+    "q": "What type of faucet, with a tall curved spout for clearance, is designed for pantry sink use?",
     "o": [
+      "Compression cock",
       "Key cock",
       "Gooseneck faucet",
-      "Self-closing faucet",
-      "Compression cock"
+      "Self-closing faucet"
     ],
-    "c": 1,
+    "c": 2,
     "ref": "Plumbing trade terminology — fixtures & fittings",
     "n": "The gooseneck faucet's high, curved spout gives clearance for filling tall pots and pans, which is why it's the pantry-sink standard."
   },
   {
     "s": "Pipe Layout",
-    "q": "A pipe run laterally at roughly a 2% slope is known as a:",
+    "q": "What term names a horizontal pipe run sloped at approximately 2 percent?",
     "o": [
-      "Vertical pipe",
-      "Riser",
       "Stack",
+      "Riser",
+      "Vertical pipe",
       "Branch"
     ],
     "c": 3,
