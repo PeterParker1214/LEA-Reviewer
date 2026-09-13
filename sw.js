@@ -30,7 +30,7 @@
 // the last change (the subject list moving to network-first) shipped without
 // one, which left the old copy sitting in the old cache on every device that
 // had visited before.
-const VERSION = 'lea-v26';
+const VERSION = 'lea-v27';
 const SHELL = VERSION + '-shell';
 const DATA = VERSION + '-data';
 const VENDOR = VERSION + '-vendor';
@@ -179,4 +179,27 @@ self.addEventListener('fetch', (event) => {
     return;
   }
   event.respondWith(cacheFirst(request, SHELL));
+});
+
+// ---- Phone/browser notifications (sent by the send-push edge function) ----
+self.addEventListener('push', (event) => {
+  let data = {};
+  try { data = event.data ? event.data.json() : {}; } catch (e) {}
+  event.waitUntil(self.registration.showNotification(data.title || 'LEA Reviewer', {
+    body: data.body || '',
+    icon: 'apple-touch-icon.png',
+    badge: 'favicon-32x32.png',
+    data: { url: data.url || 'notifications.html' }
+  }));
+});
+
+// Tapping a notification focuses an open LEA tab, or opens one.
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  const target = new URL((event.notification.data && event.notification.data.url) || 'notifications.html', self.registration.scope).href;
+  event.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((wins) => {
+    const open = wins.find((w) => w.url.indexOf(self.registration.scope) === 0);
+    if (open) return open.navigate(target).then((w) => (w || open).focus());
+    return self.clients.openWindow(target);
+  }));
 });

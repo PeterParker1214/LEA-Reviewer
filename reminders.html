@@ -95,7 +95,14 @@
   <div class="section-label">Remind me about</div>
   <div class="panel" id="toggles"></div>
 
-  <p class="foot">Reminders show up in the bell on Home. Your choices are saved to your account, so they follow you to other devices. Phone notifications are coming later.</p>
+  <div class="section-label">Phone notifications</div>
+  <div class="panel" style="padding:14px 16px;">
+    <div class="tr-label">Get notified when the site is closed</div>
+    <div class="tr-sub" id="pushNote">Messages from the admin and replies to your reports, sent to this device.</div>
+    <button type="button" class="now-open" id="pushBtn" style="margin-top:10px;font-size:12px;" hidden></button>
+  </div>
+
+  <p class="foot">Reminders show up in the bell on Home. Your choices are saved to your account, so they follow you to other devices. Phone notifications are set per device.</p>
 </div>
 
 <script>
@@ -133,12 +140,70 @@ async function renderNow(){
   el.querySelectorAll('[data-refresh]').forEach(b => b.addEventListener('click', () => LEAReminders.hardRefresh()));
 }
 
+// ---- Phone notifications (Web Push) ----
+const VAPID_PUBLIC = 'BHetCAX_x8qvcdpuQJjOGiGChIssuiWVgsogVNKK4EM67sUm0ve0pvioHOVwgltedIRtfb7E8Fjo_BN0a9LxoZc';
+function keyBytes(b64){
+  const s = atob((b64 + '='.repeat((4 - b64.length % 4) % 4)).replace(/-/g, '+').replace(/_/g, '/'));
+  return Uint8Array.from(s, c => c.charCodeAt(0));
+}
+async function paintPush(){
+  const btn = document.getElementById('pushBtn');
+  const note = document.getElementById('pushNote');
+  const supported = 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
+  if(!supported){
+    const ios = /iPhone|iPad|iPod/.test(navigator.userAgent);
+    note.textContent = ios
+      ? 'On iPhone: tap Share, then “Add to Home Screen”, open LEA Reviewer from there, and come back to this page.'
+      : 'This browser cannot receive notifications.';
+    btn.hidden = true;
+    return;
+  }
+  if(Notification.permission === 'denied'){
+    note.textContent = 'Notifications are blocked for this site. Allow them in your browser settings, then reload.';
+    btn.hidden = true;
+    return;
+  }
+  const reg = await navigator.serviceWorker.ready;
+  const sub = await reg.pushManager.getSubscription();
+  btn.hidden = false;
+  btn.textContent = sub ? 'Turn off on this device' : 'Turn on for this device →';
+  note.textContent = sub
+    ? 'On for this device: messages from the admin and replies to your reports.'
+    : 'Messages from the admin and replies to your reports, sent to this device.';
+}
+async function togglePush(){
+  const btn = document.getElementById('pushBtn');
+  btn.disabled = true;
+  try{
+    const reg = await navigator.serviceWorker.ready;
+    const existing = await reg.pushManager.getSubscription();
+    if(existing){
+      await sb.from('push_subscriptions').delete().eq('endpoint', existing.endpoint);
+      await existing.unsubscribe();
+    } else {
+      if(await Notification.requestPermission() !== 'granted'){ await paintPush(); return; }
+      const sub = (await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyBytes(VAPID_PUBLIC) })).toJSON();
+      const { error } = await sb.from('push_subscriptions').upsert(
+        { endpoint: sub.endpoint, user_id: userId, p256dh: sub.keys.p256dh, auth: sub.keys.auth },
+        { onConflict: 'endpoint' });
+      if(error) throw error;
+    }
+  }catch(e){
+    document.getElementById('pushNote').textContent = 'Could not change notifications: ' + (e.message || e);
+  }finally{
+    btn.disabled = false;
+  }
+  await paintPush();
+}
+document.getElementById('pushBtn').addEventListener('click', togglePush);
+
 (async function boot(){
   const { data: { session } } = await sb.auth.getSession();
   if(!session){ window.location.href = 'index.html'; return; }
   userId = session.user.id;
   renderToggles();
   renderNow();
+  paintPush().catch(() => {});
   // Saved choices arrive with the progress sync; redraw when they do.
   window.leaOnProgressReset = () => { renderToggles(); renderNow(); };
 })();

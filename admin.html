@@ -2722,6 +2722,7 @@ async function markReportSolved(ref){
     if(message){ patch.admin_reply = message; patch.replied_at = now; }
     const { error } = await sb.from('reports').update(patch).in('id', reports.map(r => r.id));
     if(error) throw error;
+    sendPush('A question you reported was fixed', message || 'Thanks for flagging it.', 'notifications.html?show=report', [...new Set(reports.map(r => r.user_id))]);
     reportOpenRef = null;
     await loadReports();
     await prefetchReportedQuestions();
@@ -2746,6 +2747,7 @@ async function sendReportReply(ref){
       .update({ admin_reply: message, replied_at: now, seen_by_reporter: false })
       .in('id', reports.map(r => r.id));
     if(error) throw error;
+    sendPush('Reply to your report', message, 'notifications.html?show=report', [...new Set(reports.map(r => r.user_id))]);
     repStatus(ref, 'Sent. The report stays open.', 'ok');
   }catch(e){
     repStatus(ref, 'Error: ' + e.message, 'err');
@@ -2847,6 +2849,16 @@ function msgStatus(text, kind){
   el.style.color = kind === 'err' ? 'var(--bad)' : kind === 'ok' ? 'var(--good)' : 'var(--muted)';
 }
 
+// Phone/browser push to readers who turned it on (edge function send-push).
+// Fire-and-forget: the bell already holds the item, so a failed push loses nothing.
+function sendPush(title, body, url, userIds){
+  fetch(`${SUPABASE_URL}/functions/v1/send-push`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${accessToken}` },
+    body: JSON.stringify({ title, body, url, userIds })
+  }).catch(() => {});
+}
+
 async function sendMessage(){
   const title = document.getElementById('msgTitle').value.trim();
   const body = document.getElementById('msgBody').value.trim();
@@ -2860,6 +2872,7 @@ async function sendMessage(){
   try{
     const { error } = await sb.from('messages').insert({ title, body, link: link || null });
     if(error) throw error;
+    sendPush(title, body, 'notifications.html?show=message');
     document.getElementById('msgTitle').value = '';
     document.getElementById('msgBody').value = '';
     document.getElementById('msgLink').value = '';
