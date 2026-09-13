@@ -30,7 +30,7 @@
 // the last change (the subject list moving to network-first) shipped without
 // one, which left the old copy sitting in the old cache on every device that
 // had visited before.
-const VERSION = 'lea-v23';
+const VERSION = 'lea-v24';
 const SHELL = VERSION + '-shell';
 const DATA = VERSION + '-data';
 const VENDOR = VERSION + '-vendor';
@@ -50,6 +50,7 @@ const SHELL_URLS = [
   'reminders.html',
   'notifications.html',
   'assets/notifications.js?v=1',
+  'assets/reminders.js?v=1',
   'assets/module-progress.js?v=2',
   'assets/quiz-source.js?v=5',
   'assets/avatar.js?v=5',
@@ -102,7 +103,9 @@ function isQuestionData(url) {
 // and the fresh one only put aside for later. It is a few kilobytes, so the
 // network is always worth waiting for; the cache is the offline fallback.
 function isManifest(url) {
-  return url.pathname.endsWith('/data/subjects.json');
+  // site-version.json is how an open page learns a newer build exists, so a
+  // cached copy would hide exactly the update it is meant to announce.
+  return url.pathname.endsWith('/data/subjects.json') || url.pathname.endsWith('/data/site-version.json');
 }
 function isVendor(url) {
   return url.hostname === 'cdn.jsdelivr.net' ||

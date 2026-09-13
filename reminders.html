@@ -12,29 +12,136 @@
 <title>Reminders — LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{ --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --line:rgba(111,168,207,0.20); --gold-bright:#f0c268; --muted:#8b98a5; --font-display:'Big Shoulders Display',sans-serif; --font-mono:'IBM Plex Mono',monospace; }
-  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
-  body{ background:var(--bg-deep); color:var(--ink); font-family:var(--font-mono); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px; }
-  .card{ max-width:380px; text-align:center; background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:32px 24px; }
-  h1{ font-family:var(--font-display); font-weight:800; font-size:24px; text-transform:uppercase; margin:0 0 12px; }
-  p{ color:var(--muted); font-size:13px; line-height:1.7; margin:0 0 20px; }
-  a{ color:var(--gold-bright); }
+  :root{
+    --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-2:#0a1520;
+    --gold:#e0a83f; --gold-bright:#f0c268; --blue-bright:#8fc4ea;
+    --muted:#8b98a5; --good:#5fbf82; --bad:#e2604a; --violet:#b59be8;
+    --line: rgba(111,168,207,0.20); --grid-line: rgba(111,168,207,0.09);
+    --font-display: 'Big Shoulders Display', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+  body.light-mode, :root.light-mode{
+    --ink:#16202b; --bg-deep:#d3dee6; --bg-panel:#ffffff; --bg-panel-2:#e9eff4;
+    --gold:#b5791f; --gold-bright:#7d520c; --blue-bright:#1b4a6b;
+    --muted:#4f5d6a; --good:#206b3c; --bad:#a1372a; --violet:#6a4fb0;
+    --line: rgba(47,108,149,0.28); --grid-line: rgba(47,108,149,0.11);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      var(--bg-deep);
+    color:var(--ink); font-family:var(--font-body); min-height:100vh;
+    display:flex; justify-content:center; padding:20px 16px 64px;
+  }
+  .wrap{width:100%; max-width:560px;}
+  a{color:inherit;}
+  .run-header{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .icon-btn-44{ width:44px; height:44px; border-radius:10px; background:var(--bg-panel); border:1px solid var(--line);
+    color:var(--ink); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .icon-btn-44 svg{ width:19px; height:19px; }
+  .page-title{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; }
+  .section-label{ font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:22px 0 8px; }
+
+  .panel{ background:var(--bg-panel); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .toggle-row{ display:flex; align-items:center; gap:12px; padding:13px 16px; border-bottom:1px solid var(--line); cursor:pointer; }
+  .toggle-row:last-child{ border-bottom:none; }
+  .toggle-row .tr-text{ flex:1; }
+  .tr-label{ font-weight:600; font-size:14px; }
+  .tr-sub{ font-size:12.5px; color:var(--muted); margin-top:2px; line-height:1.45; }
+  .switch{ position:relative; width:42px; height:24px; flex-shrink:0; }
+  .switch input{ position:absolute; opacity:0; width:100%; height:100%; margin:0; cursor:pointer; }
+  .switch .track{ position:absolute; inset:0; border-radius:12px; background:var(--bg-panel-2); border:1px solid var(--line); transition:background .15s; }
+  .switch .knob{ position:absolute; top:3px; left:3px; width:18px; height:18px; border-radius:50%; background:var(--muted); transition:transform .15s, background .15s; }
+  .switch input:checked ~ .track{ background:rgba(224,168,63,0.22); border-color:var(--gold); }
+  .switch input:checked ~ .knob{ transform:translateX(18px); background:var(--gold-bright); }
+  .switch input:focus-visible ~ .track{ outline:2px solid var(--gold-bright); outline-offset:2px; }
+
+  .now-card{ background:var(--bg-panel); border:1px solid var(--line); border-left:3px solid var(--violet); border-radius:10px; padding:12px 16px; margin-bottom:8px; }
+  .now-title{ font-weight:600; font-size:14px; margin-bottom:3px; }
+  .now-body{ font-size:13px; line-height:1.5; opacity:.9; }
+  .now-open{ display:inline-block; margin-top:6px; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; color:var(--gold-bright); text-decoration:none; background:none; border:none; padding:0; cursor:pointer; }
+  .state-note{ font-family:var(--font-mono); font-size:12px; color:var(--muted); text-align:center; padding:22px 0; }
+  .foot{ font-size:12px; color:var(--muted); line-height:1.6; margin-top:18px; }
+  .foot a{ color:var(--gold-bright); }
 </style>
+<link rel="stylesheet" href="assets/blueprint.css?v=16">
+<script src="assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
 <script src="assets/offline.js?v=16"></script>
 <script src="assets/presence.js?v=16"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
+<script src="assets/module-progress.js?v=16"></script>
+<script src="assets/countdown.js?v=16"></script>
+<script src="assets/reminders.js?v=1"></script>
 </head>
 <body>
-<div class="card">
-  <h1>Reminders</h1>
-  <p>Notification preferences (screen 5d — daily drill and streak-at-risk reminders) isn't built yet — this page is just a real entry point so the account sheet doesn't dead-end.</p>
-  <a href="index.html">&larr; Back home</a>
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
+<div class="wrap">
+  <div class="run-header">
+    <a class="icon-btn-44" href="notifications.html" title="Back to notifications">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </a>
+    <div class="page-title">Reminders</div>
+  </div>
+
+  <div class="section-label">Right now</div>
+  <div id="nowList"><div class="state-note">Checking…</div></div>
+
+  <div class="section-label">Remind me about</div>
+  <div class="panel" id="toggles"></div>
+
+  <p class="foot">Reminders show up in the bell on Home. Your choices are saved to your account, so they follow you to other devices. Phone notifications are coming later.</p>
 </div>
+
 <script>
 const sb = supabase.createClient('https://rjrrprbvsmflzncojbtq.supabase.co', 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y');
-(async () => { const { data: { session } } = await sb.auth.getSession(); if(!session) window.location.href = 'index.html'; })();
+let userId = null;
+
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function renderToggles(){
+  const p = LEAReminders.prefs();
+  document.getElementById('toggles').innerHTML = LEAReminders.TYPES.map(t =>
+    '<label class="toggle-row">' +
+      '<div class="tr-text"><div class="tr-label">' + esc(t.label) + '</div><div class="tr-sub">' + esc(t.sub) + '</div></div>' +
+      '<span class="switch"><input type="checkbox" data-type="' + t.id + '"' + (p[t.id] ? ' checked' : '') + ' aria-label="' + esc(t.label) + '"><span class="track"></span><span class="knob"></span></span>' +
+    '</label>'
+  ).join('');
+  document.querySelectorAll('#toggles input').forEach(input => input.addEventListener('change', () => {
+    const next = LEAReminders.prefs();
+    next[input.dataset.type] = input.checked;
+    LEAReminders.savePrefs(next);
+    renderNow();
+  }));
+}
+
+async function renderNow(){
+  const items = await LEAReminders.load(sb, userId);
+  const el = document.getElementById('nowList');
+  if(!items.length){ el.innerHTML = '<div class="state-note">Nothing to remind you about right now.</div>'; return; }
+  el.innerHTML = items.map((i, n) =>
+    '<div class="now-card"><div class="now-title">' + esc(i.title) + '</div><div class="now-body">' + esc(i.body) + '</div>' +
+      (i.href ? '<a class="now-open" href="' + esc(i.href) + '">Open →</a>' : '') +
+      (i.action === 'refresh' ? '<button class="now-open" type="button" data-refresh>Refresh now →</button>' : '') +
+    '</div>'
+  ).join('');
+  el.querySelectorAll('[data-refresh]').forEach(b => b.addEventListener('click', () => LEAReminders.hardRefresh()));
+}
+
+(async function boot(){
+  const { data: { session } } = await sb.auth.getSession();
+  if(!session){ window.location.href = 'index.html'; return; }
+  userId = session.user.id;
+  renderToggles();
+  renderNow();
+  // Saved choices arrive with the progress sync; redraw when they do.
+  window.leaOnProgressReset = () => { renderToggles(); renderNow(); };
+})();
 </script>
 </body>
 </html>

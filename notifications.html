@@ -75,6 +75,9 @@
   .nf-body{ font-size:13.5px; line-height:1.55; color:var(--ink); opacity:.9; white-space:pre-wrap; overflow-wrap:anywhere; }
   .nf-open{ display:inline-block; margin-top:8px; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--gold-bright); text-decoration:none; }
   .nf-open:hover{ text-decoration:underline; }
+  button.nf-open{ background:none; border:none; padding:0; cursor:pointer; }
+  .nf-settings{ margin-left:auto; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); text-decoration:none; }
+  .nf-settings:hover{ color:var(--gold-bright); }
 
   .state-note{ font-family:var(--font-mono); font-size:12px; color:var(--muted); text-align:center; padding:40px 0; line-height:1.7; }
   .err-note{ font-family:var(--font-mono); font-size:11px; color:var(--bad); margin-bottom:12px; }
@@ -85,6 +88,9 @@
 <script src="assets/presence.js?v=16"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
 <script src="assets/notifications.js?v=1"></script>
+<script src="assets/module-progress.js?v=16"></script>
+<script src="assets/countdown.js?v=16"></script>
+<script src="assets/reminders.js?v=1"></script>
 </head>
 <body>
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
@@ -94,6 +100,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
     </a>
     <div class="page-title">Notifications</div>
+    <a class="nf-settings" href="reminders.html">Reminder settings</a>
   </div>
 
   <div class="chips" id="chips"></div>
@@ -167,21 +174,34 @@ function render(){
       '<div class="nf-title">' + esc(i.title) + '</div>' +
       '<div class="nf-body">' + esc(i.body) + '</div>' +
       (href ? '<a class="nf-open" href="' + esc(href) + '"' + (external ? ' target="_blank" rel="noopener noreferrer"' : '') + '>Open →</a>' : '') +
+      (i.action === 'refresh' ? '<button class="nf-open" type="button" data-refresh>Refresh now →</button>' : '') +
     '</div>';
   }).join('');
+  document.querySelectorAll('[data-refresh]').forEach(b => b.addEventListener('click', () => {
+    b.textContent = 'Refreshing…';
+    if(window.LEAReminders) LEAReminders.hardRefresh(); else location.reload();
+  }));
 }
 
 (async function boot(){
   const { data: { session } } = await sb.auth.getSession();
   if(!session){ window.location.href = 'index.html'; return; }
   const userId = session.user.id;
-  const result = await LEANotify.load(sb, userId);
-  ITEMS = result.items;
-  ERRORS = result.errors;
-  render();
-  // The unread marks stay on screen for this visit, so the reader can still
-  // see what was new; they are saved as read in the background.
-  LEANotify.markRead(sb, userId, ITEMS);
+  async function refresh(){
+    const result = await LEANotify.load(sb, userId);
+    // Unread marks stay on screen for this visit, so the reader can still see
+    // what was new; they are saved as read in the background.
+    const shownUnread = new Set(ITEMS.filter(i => i.unread).map(i => i.kind + ':' + i.id));
+    result.items.forEach(i => { if(shownUnread.has(i.kind + ':' + i.id)) i.unread = true; });
+    ITEMS = result.items;
+    ERRORS = result.errors;
+    render();
+    LEANotify.markRead(sb, userId, ITEMS);
+  }
+  // Reminders read study progress, which finishes syncing after the page
+  // loads; recompute once it has.
+  window.leaOnProgressReset = refresh;
+  await refresh();
 })();
 </script>
 </body>
