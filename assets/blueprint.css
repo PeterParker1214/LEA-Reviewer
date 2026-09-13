@@ -267,3 +267,52 @@ body.light-mode, :root.light-mode {
   position: fixed; top: 0; left: 0; right: 0; height: 4px;
   background: var(--mod); z-index: 60; pointer-events: none;
 }
+
+/* ============================================================
+   Touch feel — press feedback, no zoom on focus, sheets that slide.
+   ============================================================ */
+:root {
+  --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* A tap shrinks what was tapped a touch, so the page visibly heard it. The
+   grey flash phones paint over tapped things goes, since this replaces it. */
+button, .opt, .module-card, .mode-row, .drill-card, .resume-card, .tile, .map-cell {
+  -webkit-tap-highlight-color: transparent;
+}
+button { transition: scale 160ms var(--ease-out); }
+button:not(:disabled):active,
+.opt:not(.locked):active,
+.mode-row:not(.disabled):active,
+.map-cell:active { scale: 0.97; }
+/* Big cards shrink less, or the whole screen seems to lurch. */
+.module-card:active, .drill-card:active, .resume-card:active, .tile:active { scale: 0.99; }
+
+/* iPhone zooms the page into any text box under 16px and leaves it zoomed.
+   Touch screens only, so desktop type stays as designed. */
+@media (pointer: coarse) {
+  input:not([type="checkbox"]):not([type="radio"]), textarea, select { font-size: 16px !important; }
+}
+
+/* Bottom sheets and modals were display:none, so they popped in and out.
+   The pages still toggle .hidden exactly as before (their global .hidden is
+   display:none !important, hence the !important here); hidden now means
+   invisible and untouchable instead of removed, so there is something to
+   animate. Closing is quicker than opening. */
+.sheet-overlay, .modal-overlay {
+  transition: opacity 250ms ease, visibility 0s;
+}
+.sheet-overlay.hidden, .modal-overlay.hidden {
+  display: flex !important; opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 180ms ease, visibility 0s linear 180ms;
+}
+.sheet { transition: transform 300ms var(--ease-drawer); }
+.sheet-overlay.hidden .sheet { transform: translateY(100%); transition-duration: 180ms; }
+.modal-box { transition: transform 200ms var(--ease-out); }
+.modal-overlay.hidden .modal-box { transform: scale(0.95); transition-duration: 150ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet, .modal-box, button { transition: none; }
+  .sheet-overlay.hidden .sheet, .modal-overlay.hidden .modal-box { transform: none; }
+}

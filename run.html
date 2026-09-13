@@ -179,7 +179,7 @@
     min-height:56px; text-align:left; padding:13px 16px; border-radius:10px;
     border:1.5px dashed var(--line); background:var(--bg-panel-2); color:var(--ink);
     font-family:var(--font-body); font-size:14.5px; line-height:1.4; cursor:pointer;
-    display:flex; align-items:center; gap:10px; transition:border-color .12s ease;
+    display:flex; align-items:center; gap:10px; transition:border-color .12s ease, scale 160ms var(--ease-out);
   }
   .opt:hover:not(.locked){ border-style:solid; border-color:var(--blue-bright); }
   .opt .letter{ font-family:var(--font-mono); color:var(--blue-bright); flex-shrink:0; }
@@ -575,7 +575,7 @@
   .etymology-card-hint{display:inline-block;margin:0 8px 0 6px;color:var(--sand);font-size:10px;letter-spacing:.04em;font-style:italic;opacity:.85;}
   @media (max-width:600px){.etymology-tooltip{max-width:calc(100vw - 24px);padding:13px 14px 12px}.etymology-tooltip-word{font-size:18px}}
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=22">
+<link rel="stylesheet" href="assets/blueprint.css?v=23">
 <script src="assets/lea-confirm.js?v=22"></script>
 <script src="assets/quiz-source.js?v=22"></script>
 <script src="assets/etymology.js?v=22"></script>

@@ -225,7 +225,7 @@
     flex:1; text-align:center;
     font-family:var(--font-mono); font-weight:600; font-size:13px; letter-spacing:0.04em; text-transform:uppercase;
     padding:12px 16px; border:none; color:var(--muted); cursor:pointer;
-    transition: all .18s ease; background:transparent;
+    transition: background-color .18s ease, color .18s ease, scale 160ms var(--ease-out); background:transparent;
   }
   .auth-tab.active{ background:var(--gold); color:#1a1206; }
   .auth-form{ display:flex; flex-direction:column; gap:12px; max-width:340px; margin:0 auto; }
@@ -248,9 +248,9 @@
     background: var(--gold); color:#1a1206; font-weight:700;
     font-family:var(--font-mono); letter-spacing:0.03em; text-transform:uppercase;
     font-size:14px; border:none; padding:15px 18px; border-radius:12px; cursor:pointer; margin-top:6px;
-    transition: transform .12s ease, background .12s ease;
+    transition: scale 160ms var(--ease-out), background .12s ease;
   }
-  .auth-form button[type="submit"]:hover{ background:var(--gold-bright); transform: translateY(-1px); }
+  .auth-form button[type="submit"]:hover{ background:var(--gold-bright); }
   .auth-divider{ text-align:center; color:var(--muted); font-size:12px; margin:16px 0; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.1em; }
   .google-btn{
     display:block; width:100%; max-width:340px; margin:0 auto;
@@ -597,7 +597,7 @@
       border-left:3px solid var(--blue-bright); padding:13px 15px; border-radius:10px; }
   }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=22">
+<link rel="stylesheet" href="assets/blueprint.css?v=23">
 </head>
 <body>
 <div class="wrap">
