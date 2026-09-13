@@ -1,0 +1,116 @@
+[
+  {
+    "term": "stress",
+    "kind": "definition",
+    "aliases": ["stress", "stresses"],
+    "meaning": "Internal force per unit area inside a material: stress = force ÷ area.",
+    "note": "Measured in pascals (N/m²), usually MPa for concrete and steel.",
+    "hook": "Stress is what the material feels; strain is how much it stretches."
+  },
+  {
+    "term": "strain",
+    "kind": "definition",
+    "aliases": ["strain", "strains"],
+    "meaning": "How much a member deforms compared with its original size: strain = change in length ÷ original length.",
+    "note": "A ratio, so it has no unit.",
+    "hook": "Strain = stretch ratio."
+  },
+  {
+    "term": "shear",
+    "kind": "definition",
+    "aliases": ["shear", "shearing"],
+    "meaning": "A force that makes one part of a material slide past the part next to it.",
+    "note": "In beams, shear is highest near the supports.",
+    "hook": "Think of shears (scissors): two blades sliding past each other."
+  },
+  {
+    "term": "bending moment",
+    "kind": "definition",
+    "aliases": ["bending moment", "moment", "moments"],
+    "meaning": "The turning or bending effect of a force: force × perpendicular distance to the point.",
+    "note": "A simply supported beam under a uniform load has its largest moment at midspan.",
+    "hook": "A wrench: longer handle, same push, more turning."
+  },
+  {
+    "term": "torsion",
+    "kind": "definition",
+    "aliases": ["torsion", "torsional"],
+    "meaning": "Twisting of a member about its own long axis.",
+    "hook": "Wringing a wet towel."
+  },
+  {
+    "term": "buckling",
+    "kind": "definition",
+    "aliases": ["buckling", "buckle", "buckles"],
+    "meaning": "Sudden sideways bowing of a slender member under compression, before the material itself crushes.",
+    "note": "Longer and thinner members buckle at lower loads.",
+    "hook": "Push a plastic ruler end to end — it bows out sideways."
+  },
+  {
+    "term": "creep",
+    "kind": "definition",
+    "aliases": ["creep"],
+    "meaning": "Slow, permanent deformation of a material under a load that stays on for a long time.",
+    "note": "Important in concrete: beams and slabs keep sagging slightly for years.",
+    "hook": "Creep creeps — slowly, over time, under constant load."
+  },
+  {
+    "term": "deflection",
+    "kind": "definition",
+    "aliases": ["deflection", "deflections"],
+    "meaning": "How far a beam or slab moves out of place (sags) under load.",
+    "hook": "Deflect = bend away."
+  },
+  {
+    "term": "yield strength",
+    "kind": "definition",
+    "aliases": ["yield strength", "yield point", "yield stress"],
+    "meaning": "The stress at which a material stops springing back and begins to deform permanently.",
+    "note": "Reinforcing bar grades are named by their yield strength.",
+    "hook": "Yield = give in. Past this point it will not return to shape."
+  },
+  {
+    "term": "elastic limit",
+    "kind": "definition",
+    "aliases": ["elastic limit"],
+    "meaning": "The largest stress a material can take and still return fully to its original shape when unloaded.",
+    "hook": "Like a rubber band: inside the limit it snaps back."
+  },
+  {
+    "term": "tension",
+    "kind": "definition",
+    "aliases": ["tension", "tensile"],
+    "meaning": "A pulling force that tries to stretch a member.",
+    "note": "Concrete is weak in tension, which is why steel bars are added.",
+    "hook": "Tug-of-war rope."
+  },
+  {
+    "term": "compression",
+    "kind": "definition",
+    "aliases": ["compression", "compressive"],
+    "meaning": "A pushing force that tries to shorten or crush a member.",
+    "note": "Concrete and masonry are strong in compression.",
+    "hook": "Squeeze = compress."
+  },
+  {
+    "term": "footing",
+    "kind": "definition",
+    "aliases": ["footing", "footings"],
+    "meaning": "The widened base under a column or wall that spreads its load over enough soil to carry it.",
+    "hook": "The building's foot: a wider foot sinks less."
+  },
+  {
+    "term": "tendon",
+    "kind": "definition",
+    "aliases": ["tendon", "tendons"],
+    "meaning": "A high-strength steel strand, wire, or bar that is tensioned in prestressed concrete.",
+    "hook": "Like a body's tendon: it pulls to hold things together."
+  },
+  {
+    "term": "lateral load",
+    "kind": "definition",
+    "aliases": ["lateral load", "lateral loads", "lateral force", "lateral forces"],
+    "meaning": "A sideways (horizontal) load on a structure, mainly from wind and earthquakes.",
+    "hook": "Lateral = side."
+  }
+]

@@ -567,6 +567,8 @@
   .etymology-tooltip-origin{color:var(--sand);font-size:11px;letter-spacing:.03em;margin-bottom:8px;}
   .etymology-tooltip-breakdown{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:11px;color:var(--turq-bright);background:rgba(42,157,143,.09);border:1px solid rgba(42,157,143,.22);border-radius:6px;padding:6px 8px;margin-bottom:8px;line-height:1.45;}
   .etymology-tooltip-meaning{font-size:13px;color:var(--ink);margin-bottom:8px;font-style:italic;}
+  .etymology-tooltip:not(.is-etymology) .etymology-tooltip-meaning{font-style:normal;line-height:1.5;}
+  .etymology-tooltip-hook{margin:8px 0 0;}
   .etymology-tooltip-note{font-size:12px;line-height:1.55;color:var(--ink);opacity:.92;}
   .etymology-tooltip-source{display:inline-block;margin-top:9px;color:var(--clay-bright);font-size:10px;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;}
   .etymology-tooltip-source:hover{text-decoration:underline;}
@@ -576,7 +578,7 @@
 <link rel="stylesheet" href="assets/blueprint.css?v=16">
 <script src="assets/lea-confirm.js?v=16"></script>
 <script src="assets/quiz-source.js?v=16"></script>
-<script src="assets/etymology.js?v=16"></script>
+<script src="assets/etymology.js?v=17"></script>
 <script src="assets/module-progress.js?v=16"></script>
 <script src="assets/offline.js?v=16"></script>
 <script src="assets/presence.js?v=16"></script>
@@ -1609,7 +1611,6 @@ function renderCard(){
   slot.innerHTML =
     '<div class="bp-card">' +
       sectionTagHtml(item) +
-      (SUBJECT && SUBJECT.id === 'history' ? '<span class="etymology-card-hint">click underlined terms for etymology</span>' : '') +
       '<span class="clock-chip">' + (MODE === 'exam' ? 'Reviewing · mock exam' : MODE === 'drill' ? 'No clock · drilling your misses' : 'No clock · study mode') + '</span>' +
       scenarioHtml(item) +
       '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +

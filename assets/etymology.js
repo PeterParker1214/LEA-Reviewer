@@ -1,38 +1,63 @@
 /*
- * History etymology helper.
- * Terms are data-driven so the glossary can be expanded without touching
- * quiz rendering logic. The renderer decorates only text that is already
- * present in the question card, so answers/scoring remain untouched.
+ * Word helper: underlines terms in a question card and opens a small card on tap.
+ * Each subject has its own glossary in data/etymology/<subjectId>.json, listed in
+ * data/etymology/index.json so subjects without one never trigger a 404.
+ *
+ * Every entry has a kind:
+ *   etymology  - where the word comes from (the History glossary)
+ *   definition - what the term means, with an optional memory hook
+ *   memory     - a memory hook on its own
+ * A missing kind means etymology, so the original History file needs no change.
+ *
+ * Definitions and memory hooks can give the answer away ("which valve stops
+ * backflow?"), so those only appear once the question has been answered.
+ * Etymology stays visible before answering, as it always was. Only text already
+ * in the card is decorated, so answers and scoring are untouched.
  */
 (function(){
   'use strict';
-  let glossaryPromise = null;
+  const BASE = 'data/etymology/';
+  let indexPromise = null;
+  const glossaries = new Map();
   let activeTooltip = null;
   let activeTrigger = null;
+
+  const KICKER = { etymology:'Etymology', definition:'Definition', memory:'Memory hook' };
 
   function escapeHtml(s){
     return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   }
 
-  function loadGlossary(){
-    if(!glossaryPromise){
-      glossaryPromise = fetch('data/etymology/history.json', { cache:'no-cache' })
-        .then(r => { if(!r.ok) throw new Error('Etymology glossary failed to load'); return r.json(); })
-        .then(items => Array.isArray(items) ? items : [])
-        .catch(() => []);
+  function kindOf(item){ return item.kind || 'etymology'; }
+
+  function loadIndex(){
+    if(!indexPromise){
+      indexPromise = fetch(BASE + 'index.json', { cache:'no-cache' })
+        .then(r => { if(!r.ok) throw new Error('Glossary index failed to load'); return r.json(); })
+        .then(map => (map && typeof map === 'object') ? map : {})
+        .catch(() => ({}));
     }
-    return glossaryPromise;
+    return indexPromise;
   }
 
-  function makePattern(items){
-    const aliases = [];
-    items.forEach(item => (item.aliases || [item.term]).forEach(a => aliases.push({ text:a, item }))); 
-    aliases.sort((a,b) => b.text.length - a.text.length);
-    if(!aliases.length) return null;
-    return new RegExp('\\b(' + aliases.map(x => x.text.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')).join('|') + ')\\b', 'gi');
+  function loadGlossary(subjectId){
+    if(!subjectId) return Promise.resolve([]);
+    if(!glossaries.has(subjectId)){
+      glossaries.set(subjectId, loadIndex().then(index => {
+        const file = index[subjectId];
+        if(!file) return [];
+        return fetch(BASE + file, { cache:'no-cache' })
+          .then(r => { if(!r.ok) throw new Error('Glossary failed to load'); return r.json(); })
+          .then(items => Array.isArray(items) ? items : [])
+          .catch(() => []);
+      }));
+    }
+    return glossaries.get(subjectId);
   }
 
-  function decorateTextNode(node, pattern, lookup){
+  function escapeRegex(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+  function decorateTextNode(node, pattern, lookup, subjectId){
     const text = node.nodeValue || '';
     pattern.lastIndex = 0;
     if(!pattern.test(text)) return;
@@ -40,15 +65,17 @@
     const frag = document.createDocumentFragment();
     let last = 0, m;
     while((m = pattern.exec(text))){
-      if(m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
       const key = m[1];
-      const item = lookup(key.toLowerCase());
+      const item = lookup.get(key.toLowerCase());
+      if(!item) continue;
+      if(m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
       const span = document.createElement('span');
       span.className = 'etymology-word';
       span.setAttribute('role','button');
       span.setAttribute('tabindex','0');
-      span.setAttribute('aria-label','Show etymology for ' + key);
+      span.setAttribute('aria-label', KICKER[kindOf(item)] + ' for ' + key);
       span.dataset.etymologyKey = item.term;
+      span.dataset.etymologySubject = subjectId;
       span.textContent = key;
       frag.appendChild(span);
       last = m.index + key.length;
@@ -57,14 +84,24 @@
     node.parentNode.replaceChild(frag, node);
   }
 
-  function decorate(root, items){
+  function isAnswered(root){
+    return !!root.querySelector('.explain.right, .explain.wrong');
+  }
+
+  function decorate(root, items, subjectId){
     if(!root || !items.length) return;
+    const answered = isAnswered(root);
+    const usable = items.filter(item => kindOf(item) === 'etymology' || answered);
+    if(!usable.length) return;
+
     const aliases = [];
     const lookup = new Map();
-    items.forEach(item => (item.aliases || [item.term]).forEach(a => { aliases.push({ text:a, item }); lookup.set(a.toLowerCase(), item); }));
-    aliases.sort((a,b) => b.text.length - a.text.length);
-    const pattern = makePattern(items);
-    if(!pattern) return;
+    usable.forEach(item => (item.aliases || [item.term]).forEach(a => {
+      aliases.push(a);
+      lookup.set(a.toLowerCase(), item);
+    }));
+    aliases.sort((a,b) => b.length - a.length);
+    const pattern = new RegExp('\\b(' + aliases.map(escapeRegex).join('|') + ')\\b', 'gi');
 
     root.querySelectorAll('.qtext, .opt > span:last-child, .reason').forEach(el => {
       if(el.querySelector('.etymology-word')) return;
@@ -77,8 +114,24 @@
       });
       const nodes = [];
       while(walker.nextNode()) nodes.push(walker.currentNode);
-      nodes.forEach(n => decorateTextNode(n, pattern, key => lookup.get(key)));
+      nodes.forEach(n => decorateTextNode(n, pattern, lookup, subjectId));
     });
+
+    addHint(root);
+  }
+
+  // The hint only appears on a card that actually has an underlined word, so a
+  // subject with a glossary does not promise something a question cannot show.
+  function addHint(root){
+    const card = root.querySelector('.bp-card') || root;
+    const words = card.querySelectorAll('.etymology-word');
+    if(!words.length || card.querySelector('.etymology-card-hint')) return;
+    const onlyOrigins = Array.from(words).every(w => w.getAttribute('aria-label').indexOf(KICKER.etymology) === 0);
+    const hint = document.createElement('span');
+    hint.className = 'etymology-card-hint';
+    hint.textContent = onlyOrigins ? 'tap underlined words for their origin' : 'tap underlined words to learn them';
+    const chip = card.querySelector('.clock-chip');
+    if(chip) card.insertBefore(hint, chip); else card.insertBefore(hint, card.firstChild);
   }
 
   function closeTooltip(){
@@ -103,25 +156,48 @@
     tip.style.top = top + 'px';
   }
 
+  function tooltipBody(item, word){
+    const kind = kindOf(item);
+    let html =
+      '<div class="etymology-tooltip-kicker">' + KICKER[kind] + '</div>' +
+      '<div class="etymology-tooltip-word">' + escapeHtml(word) + '</div>';
+    if(kind === 'etymology'){
+      html +=
+        '<div class="etymology-tooltip-origin">' + escapeHtml(item.origin || '') + '</div>' +
+        (item.breakdown ? '<div class="etymology-tooltip-breakdown">' + escapeHtml(item.breakdown) + '</div>' : '') +
+        (item.meaning ? '<div class="etymology-tooltip-meaning">“' + escapeHtml(item.meaning) + '”</div>' : '');
+    } else {
+      html += item.meaning ? '<div class="etymology-tooltip-meaning">' + escapeHtml(item.meaning) + '</div>' : '';
+    }
+    html += item.note ? '<div class="etymology-tooltip-note">' + escapeHtml(item.note) + '</div>' : '';
+    if(kind !== 'etymology' && item.hook){
+      html += '<div class="etymology-tooltip-breakdown etymology-tooltip-hook">Remember: ' + escapeHtml(item.hook) + '</div>';
+    }
+    if(item.source){
+      html += '<a class="etymology-tooltip-source" href="' + escapeHtml(item.source) + '" target="_blank" rel="noopener noreferrer">Source ↗</a>';
+    }
+    return html;
+  }
+
   function openTooltip(trigger, item){
     if(activeTrigger === trigger){ closeTooltip(); return; }
     closeTooltip();
     const tip = document.createElement('div');
-    tip.className = 'etymology-tooltip';
+    tip.className = 'etymology-tooltip is-' + kindOf(item);
     tip.setAttribute('role','dialog');
-    tip.innerHTML =
-      '<div class="etymology-tooltip-kicker">ETYMOLOGY</div>' +
-      '<div class="etymology-tooltip-word">' + escapeHtml(trigger.textContent) + '</div>' +
-      '<div class="etymology-tooltip-origin">' + escapeHtml(item.origin || '') + '</div>' +
-      (item.breakdown ? '<div class="etymology-tooltip-breakdown">' + escapeHtml(item.breakdown) + '</div>' : '') +
-      (item.meaning ? '<div class="etymology-tooltip-meaning">“' + escapeHtml(item.meaning) + '”</div>' : '') +
-      '<div class="etymology-tooltip-note">' + escapeHtml(item.note || '') + '</div>' +
-      (item.source ? '<a class="etymology-tooltip-source" href="' + escapeHtml(item.source) + '" target="_blank" rel="noopener noreferrer">Source ↗</a>' : '');
+    tip.innerHTML = tooltipBody(item, trigger.textContent);
     document.body.appendChild(tip);
     activeTooltip = tip;
     activeTrigger = trigger;
     trigger.classList.add('active');
     positionTooltip(tip, trigger);
+  }
+
+  function openFor(trigger){
+    loadGlossary(trigger.dataset.etymologySubject).then(items => {
+      const item = items.find(x => x.term === trigger.dataset.etymologyKey);
+      if(item) openTooltip(trigger, item);
+    });
   }
 
   function initDelegation(){
@@ -130,24 +206,21 @@
     document.addEventListener('click', e => {
       const trigger = e.target.closest('.etymology-word');
       if(trigger){
+        // The word can sit inside an answer button; tapping it must not pick
+        // that answer.
         e.preventDefault();
-        loadGlossary().then(items => {
-          const item = items.find(x => x.term === trigger.dataset.etymologyKey);
-          if(item) openTooltip(trigger, item);
-        });
+        e.stopPropagation();
+        openFor(trigger);
         return;
       }
       if(activeTooltip && !e.target.closest('.etymology-tooltip')) closeTooltip();
-    });
+    }, true);
     document.addEventListener('keydown', e => {
       if(e.key === 'Escape') closeTooltip();
       const trigger = e.target.closest && e.target.closest('.etymology-word');
       if(trigger && (e.key === 'Enter' || e.key === ' ')){
         e.preventDefault();
-        loadGlossary().then(items => {
-          const item = items.find(x => x.term === trigger.dataset.etymologyKey);
-          if(item) openTooltip(trigger, item);
-        });
+        openFor(trigger);
       }
     });
     window.addEventListener('resize', () => { if(activeTooltip && activeTrigger) positionTooltip(activeTooltip, activeTrigger); });
@@ -156,9 +229,12 @@
 
   window.LEAEtymology = {
     decorate(root, subjectId){
-      if(subjectId !== 'history') return;
-      initDelegation();
-      loadGlossary().then(items => decorate(root, items));
+      if(!root || !subjectId) return;
+      loadIndex().then(index => {
+        if(!index[subjectId]) return;
+        initDelegation();
+        loadGlossary(subjectId).then(items => decorate(root, items, subjectId));
+      });
     }
   };
 })();
