@@ -1,317 +1,307 @@
 [
   {
     "s": "Housing Classifications",
-    "q": "As determined under RA 7279, housing units within the affordability level of average and low-income earners must not exceed what percentage of gross family income?",
-    "o": ["20%", "25%", "30%", "35%"],
+    "q": "RA 7279 sets an affordability cap for housing meant for average and low-income earners. Housing costs for such units should stay at or below what share of gross family income?",
+    "o": ["25%", "35%", "30%", "40%"],
     "c": 2,
     "ref": "BP 220 / RA 7279 — Affordability Level"
   },
   {
     "s": "Housing Classifications",
-    "q": "According to HLURB price ceilings, which housing classification covers PHP400,000 and below?",
-    "o": ["Socialized", "Economic", "Low-cost 1", "Medium-cost"],
+    "q": "Under HLURB price ceilings, housing priced at PHP400,000 or less falls under which classification?",
+    "o": ["Economic", "Socialized", "Medium-cost", "Low-cost 1"],
+    "c": 1,
+    "ref": "HLURB — Housing Price Ceilings"
+  },
+  {
+    "s": "Housing Classifications",
+    "q": "A housing unit priced between PHP300,000 and PHP1.25 million falls under which HLURB classification?",
+    "o": ["Socialized", "Low-cost 2", "Low-cost 1", "Open Market"],
+    "c": 2,
+    "ref": "HLURB — Housing Price Ceilings"
+  },
+  {
+    "s": "Housing Classifications",
+    "q": "PHP1.25 million up to PHP2 million is the price ceiling range for which HLURB housing classification?",
+    "o": ["Medium-cost", "Low-cost 1", "Open Market", "Low-cost 2"],
+    "c": 3,
+    "ref": "HLURB — Housing Price Ceilings"
+  },
+  {
+    "s": "Housing Classifications",
+    "q": "Complete the statement: the HLURB classification for housing priced from PHP2 million to PHP4 million is ___.",
+    "o": ["Medium-cost", "Low-cost 2", "Open Market", "Socialized"],
     "c": 0,
     "ref": "HLURB — Housing Price Ceilings"
   },
   {
     "s": "Housing Classifications",
-    "q": "Which HLURB housing classification has a price ceiling of PHP300,000 to PHP1.25 million?",
-    "o": ["Socialized", "Low-cost 1", "Low-cost 2", "Economic"],
-    "c": 1,
-    "ref": "HLURB — Housing Price Ceilings"
-  },
-  {
-    "s": "Housing Classifications",
-    "q": "Which HLURB housing classification has a price ceiling of PHP1.25 million to PHP2 million?",
-    "o": ["Low-cost 1", "Low-cost 2", "Medium-cost", "Economic"],
-    "c": 1,
-    "ref": "HLURB — Housing Price Ceilings"
-  },
-  {
-    "s": "Housing Classifications",
-    "q": "Which HLURB housing classification has a price ceiling of PHP2 million to PHP4 million?",
-    "o": ["Low-cost 2", "Medium-cost", "Open Market", "Economic"],
-    "c": 1,
-    "ref": "HLURB — Housing Price Ceilings"
-  },
-  {
-    "s": "Housing Classifications",
-    "q": "Which HLURB housing classification covers PHP4 million and above?",
-    "o": ["Medium-cost", "Open Market", "Low-cost 2", "Economic"],
-    "c": 1,
+    "q": "Housing priced at PHP4 million and above belongs to which HLURB classification?",
+    "o": ["Medium-cost", "Socialized", "Low-cost 2", "Open Market"],
+    "c": 3,
     "ref": "HLURB — Housing Price Ceilings"
   },
   {
     "s": "Basic Needs of Human Settlements",
-    "q": "Which of the following is NOT one of the basic needs of human settlements under BP 220?",
-    "o": ["Water supply", "Movement and circulation", "Parks and playgrounds", "Power"],
-    "c": 2,
+    "q": "BP 220 lists the basic needs of human settlements. Which item below is NOT on that list?",
+    "o": ["Power", "Parks and playgrounds", "Water supply", "Movement and circulation"],
+    "c": 1,
     "ref": "BP 220 — Basic Needs of Human Settlements",
     "n": "Parks and playgrounds are an open-space/community-facility requirement, separate from the basic-needs list (circulation, drainage, waste disposal, water supply, power)."
   },
   {
     "s": "Housing Definitions",
-    "q": "Housing projects undertaken by the government for underprivileged and homeless citizens are called what?",
-    "o": ["Socialized Housing", "Economic Housing", "Medium-cost Housing", "Open Market Housing"],
-    "c": 0,
+    "q": "What do you call housing projects the government carries out for underprivileged and homeless citizens?",
+    "o": ["Economic Housing", "Open Market Housing", "Socialized Housing", "Medium-cost Housing"],
+    "c": 2,
     "ref": "BP 220 — Definitions"
   },
   {
     "s": "Housing Definitions",
-    "q": "Housing projects provided to average-income families are called what?",
-    "o": ["Socialized Housing", "Economic Housing", "Medium-cost Housing", "Open Market Housing"],
+    "q": "Housing projects meant for families with average incomes are known as:",
+    "o": ["Socialized Housing", "Open Market Housing", "Medium-cost Housing", "Economic Housing"],
+    "c": 3,
+    "ref": "BP 220 — Definitions"
+  },
+  {
+    "s": "Housing Definitions",
+    "q": "Under RA 7279, what term refers to the most reasonable price given the needs and capacity of the beneficiaries?",
+    "o": ["Zonal Value", "Affordable Cost", "Fair Market Value", "Amortized Cost"],
     "c": 1,
-    "ref": "BP 220 — Definitions"
-  },
-  {
-    "s": "Housing Definitions",
-    "q": "The most reasonable price based on the needs and capabilities of beneficiaries, per RA 7279, is called what?",
-    "o": ["Affordable Cost", "Fair Market Value", "Amortized Cost", "Zonal Value"],
-    "c": 0,
     "ref": "RA 7279 — Affordable Cost"
   },
   {
     "s": "Dwelling Types",
-    "q": "A building designed or used as the residence of one or more families is called what?",
-    "o": ["Dwelling", "Tenement", "Housing Unit", "Shelter"],
-    "c": 0,
-    "ref": "BP 220 — Definitions"
-  },
-  {
-    "s": "Dwelling Types",
-    "q": "A dwelling for one family per lot is called what?",
-    "o": ["Single-family Dwelling", "Single-detached", "Duplex", "Rowhouse"],
-    "c": 0,
-    "ref": "BP 220 — Definitions"
-  },
-  {
-    "s": "Dwelling Types",
-    "q": "A dwelling on one lot with separate living units for multiple families, usually with common access, services, and use of land, is called what?",
-    "o": ["Multiple-family Dwelling", "Duplex", "Rowhouse", "Apartment"],
-    "c": 0,
-    "ref": "BP 220 — Definitions"
-  },
-  {
-    "s": "Community Facilities",
-    "q": "Facilities intended to serve common needs and for the benefit of the community are called what?",
-    "o": ["Community Facilities", "Public Utilities", "Open Space", "Amenities"],
-    "c": 0,
-    "ref": "BP 220 — Definitions"
-  },
-  {
-    "s": "Community Facilities",
-    "q": "Multi-purpose centers, schools, and drugstores are all examples of what?",
-    "o": ["Community Facilities", "Public Utilities", "Open Space", "Amenities"],
-    "c": 0,
-    "ref": "BP 220 — Definitions"
-  },
-  {
-    "s": "Dwelling Types",
-    "q": "A dwelling for one family completely surrounded by open space is called what?",
-    "o": ["Single-detached", "Single-family Dwelling", "Duplex", "Rowhouse"],
-    "c": 0,
-    "ref": "BP 220 — Definitions"
-  },
-  {
-    "s": "Dwelling Types",
-    "q": "A dwelling containing two or more separate living units separated by party walls or firewalls is called what?",
-    "o": ["Duplex/Single-attached", "Single-detached", "Rowhouse", "Multiple-family Dwelling"],
-    "c": 0,
-    "ref": "BP 220 — Definitions"
-  },
-  {
-    "s": "Dwelling Types",
-    "q": "A single-attached dwelling with three or more separate living units abutting each other at the sides, separated by party walls, is called what?",
-    "o": ["Rowhouse", "Duplex", "Single-attached", "Apartment"],
-    "c": 0,
-    "ref": "BP 220 — Definitions"
-  },
-  {
-    "s": "Dwelling Completion Stages",
-    "q": "A habitable dwelling unit that includes all exterior walls, floor, door and window openings, plumbing fixtures, and electrical wiring is called what?",
-    "o": ["Shell House", "Complete House", "Core House", "Starter House"],
-    "c": 0,
-    "ref": "BP 220 — Definitions"
-  },
-  {
-    "s": "Dwelling Completion Stages",
-    "q": "A Shell House plus all windows, doors, and partition walls is called what?",
-    "o": ["Complete House", "Shell House", "Core House", "Finished House"],
-    "c": 0,
-    "ref": "BP 220 — Definitions"
-  },
-  {
-    "s": "Walls",
-    "q": "Any wall which separates two abutting living units is called what?",
-    "o": ["Firewall", "Party Wall", "Partition Wall", "Load-bearing Wall"],
-    "c": 0,
-    "ref": "BP 220 — Definitions"
-  },
-  {
-    "s": "Walls",
-    "q": "A wall used jointly by two parties under an easement agreement is called what?",
-    "o": ["Party Wall", "Firewall", "Common Wall", "Boundary Wall"],
-    "c": 0,
-    "ref": "BP 220 — Definitions"
-  },
-  {
-    "s": "Walls",
-    "q": "A wall erected upon a line separating two parcels of land, each a separate real estate, is called what?",
-    "o": ["Party Wall", "Firewall", "Common Wall", "Boundary Wall"],
-    "c": 0,
-    "ref": "BP 220 — Definitions"
-  },
-  {
-    "s": "Blocks & Alleys",
-    "q": "A parcel of land bounded on the sides by streets and occupied by or intended for buildings is called what?",
-    "o": ["Block", "Lot", "Subdivision", "Parcel"],
-    "c": 0,
-    "ref": "BP 220 — Definitions"
-  },
-  {
-    "s": "Blocks & Alleys",
-    "q": "A 2.00-meter-wide public way intended to break a block, with both ends connecting to streets, is called what?",
-    "o": ["Alley", "Pathwalk", "Right-of-way", "Easement"],
-    "c": 0,
-    "ref": "BP 220 — Definitions"
-  },
-  {
-    "s": "Blocks & Alleys",
-    "q": "Which of the following BP 220 site elements is NOT intended to provide access to a property?",
-    "o": ["Pathwalk", "Road", "Alley", "Right-of-way"],
+    "q": "Which term describes a building designed or used as the home of one or more families?",
+    "o": ["Housing Unit", "Shelter", "Dwelling", "Residential Lot"],
     "c": 2,
+    "ref": "BP 220 — Definitions"
+  },
+  {
+    "s": "Dwelling Types",
+    "q": "What is a dwelling meant for only one family on each lot called?",
+    "o": ["Duplex", "Single-family Dwelling", "Rowhouse", "Multiple-family Dwelling"],
+    "c": 1,
+    "ref": "BP 220 — Definitions"
+  },
+  {
+    "s": "Dwelling Types",
+    "q": "One lot holds separate living units for several families, typically sharing access, services, and use of the land. What is this dwelling called?",
+    "o": ["Rowhouse", "Duplex", "Multiple-family Dwelling", "Single-family Dwelling"],
+    "c": 2,
+    "ref": "BP 220 — Definitions"
+  },
+  {
+    "s": "Community Facilities",
+    "q": "Facilities meant to serve shared needs and benefit the community as a whole are known as:",
+    "o": ["Public Utilities", "Open Space", "Amenities", "Community Facilities"],
+    "c": 3,
+    "ref": "BP 220 — Definitions"
+  },
+  {
+    "s": "Community Facilities",
+    "q": "Multi-purpose centers, schools, and drugstores all fall under which category?",
+    "o": ["Community Facilities", "Open Space", "Public Utilities", "Parks and Playgrounds"],
+    "c": 0,
+    "ref": "BP 220 — Definitions"
+  },
+  {
+    "s": "Dwelling Types",
+    "q": "A one-family dwelling with open space on all sides is called a:",
+    "o": ["Duplex", "Single-detached dwelling", "Rowhouse", "Single-attached dwelling"],
+    "c": 1,
+    "ref": "BP 220 — Definitions"
+  },
+  {
+    "s": "Dwelling Types",
+    "q": "Two or more separate living units divided by party walls or firewalls make up which type of dwelling?",
+    "o": ["Single-detached", "Rowhouse", "Duplex/Single-attached", "Multiple-family Dwelling"],
+    "c": 2,
+    "ref": "BP 220 — Definitions"
+  },
+  {
+    "s": "Dwelling Types",
+    "q": "Which dwelling type is a single-attached building of three or more separate living units joined side by side and divided by party walls?",
+    "o": ["Duplex", "Apartment", "Single-detached", "Rowhouse"],
+    "c": 3,
+    "ref": "BP 220 — Definitions"
+  },
+  {
+    "s": "Dwelling Completion Stages",
+    "q": "A livable dwelling unit that already has all exterior walls, the floor, door and window openings, plumbing fixtures, and electrical wiring is called a:",
+    "o": ["Core House", "Shell House", "Complete House", "Starter House"],
+    "c": 1,
+    "ref": "BP 220 — Definitions"
+  },
+  {
+    "s": "Dwelling Completion Stages",
+    "q": "What do you get when all windows, doors, and partition walls are added to a Shell House?",
+    "o": ["Complete House", "Core House", "Finished House", "Expanded House"],
+    "c": 0,
+    "ref": "BP 220 — Definitions"
+  },
+  {
+    "s": "Walls",
+    "q": "Under BP 220, what is the term for any wall that divides two adjoining living units?",
+    "o": ["Partition Wall", "Firewall", "Load-bearing Wall", "Curtain Wall"],
+    "c": 1,
+    "ref": "BP 220 — Definitions"
+  },
+  {
+    "s": "Walls",
+    "q": "A wall that two parties use together under an easement agreement is known as a:",
+    "o": ["Boundary Wall", "Firewall", "Party Wall", "Retaining Wall"],
+    "c": 2,
+    "ref": "BP 220 — Definitions"
+  },
+  {
+    "s": "Walls",
+    "q": "A wall built on the line dividing two parcels of land, each owned as separate real estate, is called a:",
+    "o": ["Firewall", "Party Wall", "Retaining Wall", "Curtain Wall"],
+    "c": 1,
+    "ref": "BP 220 — Definitions"
+  },
+  {
+    "s": "Blocks & Alleys",
+    "q": "Which term refers to a parcel of land bounded by streets on its sides and occupied by, or meant for, buildings?",
+    "o": ["Lot", "Subdivision", "Block", "Parcel"],
+    "c": 2,
+    "ref": "BP 220 — Definitions"
+  },
+  {
+    "s": "Blocks & Alleys",
+    "q": "A public way 2.00 meters wide that cuts through a block and connects to streets at both ends is called a(n):",
+    "o": ["Pathwalk", "Alley", "Easement", "Service Road"],
+    "c": 1,
+    "ref": "BP 220 — Definitions"
+  },
+  {
+    "s": "Blocks & Alleys",
+    "q": "Among these BP 220 site elements, which one is NOT meant to give access to a property?",
+    "o": ["Road", "Right-of-way", "Pathwalk", "Alley"],
+    "c": 3,
     "ref": "BP 220 — Alleys",
     "n": "An alley only breaks up a long block; it is not a permitted means of access to a property."
   },
   {
     "s": "Pathwalks",
-    "q": "A public way intended to be used only as pedestrian access to a property in a socialized housing project is called what?",
-    "o": ["Pathwalk", "Alley", "Sidewalk", "Right-of-way"],
-    "c": 0,
+    "q": "In a socialized housing project, what is the public way used only for pedestrian access to a property?",
+    "o": ["Alley", "Sidewalk", "Right-of-way", "Pathwalk"],
+    "c": 3,
     "ref": "BP 220 — Definitions"
   },
   {
     "s": "Pathwalks",
-    "q": "What is the minimum width of a pathwalk under BP 220?",
-    "o": ["1.50 meters", "2.00 meters", "3.00 meters", "4.00 meters"],
-    "c": 2,
+    "q": "BP 220 sets the narrowest a pathwalk may be at:",
+    "o": ["2.00 meters", "3.00 meters", "1.50 meters", "2.50 meters"],
+    "c": 1,
     "ref": "BP 220 — Pathwalks"
   },
   {
     "s": "Pathwalks",
-    "q": "What is the maximum length of a pathwalk under BP 220?",
-    "o": ["40.00 meters", "50.00 meters", "60.00 meters", "100.00 meters"],
-    "c": 2,
+    "q": "What is the longest a pathwalk may run under BP 220?",
+    "o": ["60.00 meters", "50.00 meters", "80.00 meters", "40.00 meters"],
+    "c": 0,
     "ref": "BP 220 — Pathwalks"
   },
   {
     "s": "Site Planning",
-    "q": "Trees with a caliper diameter of at least how much shall be preserved in subdivision development?",
-    "o": ["100 mm", "150 mm", "200 mm", "250 mm"],
-    "c": 2,
+    "q": "In subdivision development, trees with a caliper diameter of at least ___ must be preserved.",
+    "o": ["150 mm", "250 mm", "100 mm", "200 mm"],
+    "c": 3,
     "ref": "BP 220 — Site Preservation"
   },
   {
     "s": "Site Planning",
-    "q": "Which of the following is NOT a planning consideration for subdivision design under BP 220?",
-    "o": [
-      "Avoid areas subject to flooding/hazards",
-      "Follow easement requirements set by other codes",
-      "Provide major streets with extensions for future connections",
-      "None — all of the above are valid planning considerations"
-    ],
+    "q": "Which of these is NOT among BP 220's planning considerations for subdivision design?",
+    "o": ["Stay away from areas prone to flooding and other hazards", "Observe the easement requirements set by other codes", "Give major streets extensions for future connections", "None — all of the above are valid planning considerations"],
     "c": 3,
     "ref": "BP 220 — Planning Considerations",
     "n": "All three are legitimate BP 220 subdivision-planning considerations, so there is no exception among them."
   },
   {
     "s": "Lots & Saleability",
-    "q": "What ratio between saleable and non-saleable lots does BP 220 prescribe for socialized housing projects?",
-    "o": ["70:30", "60:40", "No fixed ratio", "50:50"],
-    "c": 2,
+    "q": "For socialized housing projects, what ratio of saleable to non-saleable lots does BP 220 require?",
+    "o": ["60:40", "No fixed ratio", "70:30", "50:50"],
+    "c": 1,
     "ref": "BP 220 — Saleable/Non-saleable Lots"
   },
   {
     "s": "Parks & Playgrounds",
-    "q": "What is the minimum gross project area at which parks and playgrounds are required?",
-    "o": ["0.5 hectare", "1 hectare and above", "2 hectares", "5 hectares"],
-    "c": 1,
+    "q": "Parks and playgrounds become required once a project's gross area reaches:",
+    "o": ["0.5 hectare", "2 hectares", "1 hectare and above", "3 hectares"],
+    "c": 2,
     "ref": "BP 220 — Parks & Playgrounds"
   },
   {
     "s": "Parks & Playgrounds",
-    "q": "Under BP 220, how do parks/playground areas and community facility areas relate to each other?",
-    "o": [
-      "Parks/playground area is part of the community facility area",
-      "Community facility area is part of the parks/playground area",
-      "They are allocated separately from each other",
-      "Either one may substitute for the other"
-    ],
-    "c": 2,
+    "q": "How does BP 220 treat the area for parks and playgrounds versus the area for community facilities?",
+    "o": ["The two are allocated separately", "Parks and playgrounds count as part of the community facility area", "Community facilities count as part of the parks and playground area", "One may be provided in place of the other"],
+    "c": 0,
     "ref": "BP 220 — Parks & Playgrounds",
     "n": "Parks and playgrounds are allocated separately from, not included within, community facility areas."
   },
   {
     "s": "Parks & Playgrounds",
-    "q": "Which of the following IS allowed as part of a project's parks and playground allocation?",
-    "o": ["Basketball court", "Commercial stall", "Chapel", "Parking building"],
-    "c": 0,
+    "q": "Which of these may be counted toward a project's parks and playground allocation?",
+    "o": ["Chapel", "Basketball court", "Commercial stall", "Parking building"],
+    "c": 1,
     "ref": "BP 220 — Parks & Playgrounds"
   },
   {
     "s": "Parks & Playgrounds",
-    "q": "What is the absolute minimum area required for parks and playgrounds?",
-    "o": ["100 sqm", "200 sqm", "500 sqm", "1,000 sqm"],
-    "c": 0,
+    "q": "What is the absolute smallest area permitted for parks and playgrounds?",
+    "o": ["500 sqm", "1,000 sqm", "200 sqm", "100 sqm"],
+    "c": 3,
     "ref": "BP 220 — Parks & Playgrounds"
   },
   {
     "s": "Parks & Playgrounds · Density Allocation",
-    "q": "3.5% of a project's gross area shall be allocated for parks and playgrounds at what density (persons/hectare)?",
-    "o": ["150 and below", "151 to 160", "161 to 175", "176 to 200"],
+    "q": "At what density (persons per hectare) must 3.5% of a project's gross area go to parks and playgrounds?",
+    "o": ["151 to 160", "150 and below", "176 to 200", "161 to 175"],
+    "c": 1,
+    "ref": "BP 220 — Parks & Playgrounds Density Table"
+  },
+  {
+    "s": "Parks & Playgrounds · Density Allocation",
+    "q": "A project with a density of how many persons per hectare must set aside 4% of its gross area for parks and playgrounds?",
+    "o": ["161 to 175", "150 and below", "151 to 160", "201 to 225"],
+    "c": 2,
+    "ref": "BP 220 — Parks & Playgrounds Density Table"
+  },
+  {
+    "s": "Parks & Playgrounds · Density Allocation",
+    "q": "Parks and playgrounds take up 5% of gross area when project density falls within which range (persons/hectare)?",
+    "o": ["161 to 175", "176 to 200", "151 to 160", "226 and above"],
     "c": 0,
     "ref": "BP 220 — Parks & Playgrounds Density Table"
   },
   {
     "s": "Parks & Playgrounds · Density Allocation",
-    "q": "4% of a project's gross area shall be allocated for parks and playgrounds at what density (persons/hectare)?",
-    "o": ["150 and below", "151 to 160", "161 to 175", "176 to 200"],
-    "c": 1,
+    "q": "Match the allocation: 6% of gross area for parks and playgrounds applies at a density (persons/hectare) of:",
+    "o": ["161 to 175", "201 to 225", "150 and below", "176 to 200"],
+    "c": 3,
     "ref": "BP 220 — Parks & Playgrounds Density Table"
   },
   {
     "s": "Parks & Playgrounds · Density Allocation",
-    "q": "5% of a project's gross area shall be allocated for parks and playgrounds at what density (persons/hectare)?",
-    "o": ["150 and below", "151 to 160", "161 to 175", "176 to 200"],
+    "q": "Which density range (persons/hectare) calls for 7% of a project's gross area as parks and playgrounds?",
+    "o": ["176 to 200", "226 and above", "201 to 225", "161 to 175"],
     "c": 2,
     "ref": "BP 220 — Parks & Playgrounds Density Table"
   },
   {
     "s": "Parks & Playgrounds · Density Allocation",
-    "q": "6% of a project's gross area shall be allocated for parks and playgrounds at what density (persons/hectare)?",
-    "o": ["151 to 160", "161 to 175", "176 to 200", "201 to 225"],
-    "c": 2,
-    "ref": "BP 220 — Parks & Playgrounds Density Table"
-  },
-  {
-    "s": "Parks & Playgrounds · Density Allocation",
-    "q": "7% of a project's gross area shall be allocated for parks and playgrounds at what density (persons/hectare)?",
-    "o": ["176 to 200", "201 to 225", "226 and above", "150 and below"],
-    "c": 1,
-    "ref": "BP 220 — Parks & Playgrounds Density Table"
-  },
-  {
-    "s": "Parks & Playgrounds · Density Allocation",
-    "q": "9% of a project's gross area shall be allocated for parks and playgrounds at what density (persons/hectare)?",
-    "o": ["201 to 225", "226 and above", "176 to 200", "151 to 160"],
-    "c": 1,
+    "q": "For a project at a density of how many persons per hectare is 9% of gross area required for parks and playgrounds?",
+    "o": ["226 and above", "201 to 225", "176 to 200", "161 to 175"],
+    "c": 0,
     "ref": "BP 220 — Parks & Playgrounds Density Table"
   },
   {
     "s": "Community Facilities",
-    "q": "What facility is also required for projects of 1 hectare or bigger, whether socialized or economic?",
-    "o": ["Multipurpose Center", "Community Center", "Barangay Hall", "Clubhouse"],
-    "c": 0,
+    "q": "Besides parks and playgrounds, which facility must also be provided in projects of 1 hectare or more, whether socialized or economic?",
+    "o": ["Barangay Hall", "Multipurpose Center", "Clubhouse", "Covered Court"],
+    "c": 1,
     "ref": "BP 220 — Community Facilities"
   }
 ]
