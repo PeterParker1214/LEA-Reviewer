@@ -321,6 +321,7 @@
       <button class="tab-btn" data-tab="rework">Rework Module</button>
       <button class="tab-btn" data-tab="deleted">Deleted Modules</button>
       <button class="tab-btn" data-tab="reports">Reports</button>
+      <button class="tab-btn" data-tab="messages">Messages</button>
     </div>
     <div id="tab-subjects"></div>
     <div id="tab-pages" class="hidden"></div>
@@ -328,6 +329,7 @@
     <div id="tab-rework" class="hidden"></div>
     <div id="tab-deleted" class="hidden"></div>
     <div id="tab-reports" class="hidden"></div>
+    <div id="tab-messages" class="hidden"></div>
   </div>
 </div>
 
@@ -353,6 +355,7 @@ const tabUploadEl = document.getElementById('tab-upload');
 const tabReworkEl = document.getElementById('tab-rework');
 const tabDeletedEl = document.getElementById('tab-deleted');
 const tabReportsEl = document.getElementById('tab-reports');
+const tabMessagesEl = document.getElementById('tab-messages');
 
 let subjects = [];
 let accessToken = '';
@@ -730,6 +733,8 @@ async function init(){
       tabReworkEl.classList.toggle('hidden', btn.dataset.tab !== 'rework');
       tabDeletedEl.classList.toggle('hidden', btn.dataset.tab !== 'deleted');
       tabReportsEl.classList.toggle('hidden', btn.dataset.tab !== 'reports');
+      tabMessagesEl.classList.toggle('hidden', btn.dataset.tab !== 'messages');
+      if(btn.dataset.tab === 'messages') openMessagesTab();
       if(btn.dataset.tab === 'pages' && fileTree.length === 0) loadFileTree();
       if(btn.dataset.tab === 'upload') renderUploadTab();
       if(btn.dataset.tab === 'rework') renderReworkTab();
@@ -2811,6 +2816,84 @@ async function dismissReportGroup(ref){
   }catch(e){
     repStatus(ref, 'Error: ' + e.message, 'err');
   }
+}
+
+// ================= Messages: admin to every reader =================
+// A message lands in every reader's notifications bell. There is no edit:
+// readers may already have seen the old text, so a correction is a new message.
+function openMessagesTab(){
+  tabMessagesEl.innerHTML =
+    '<div class="card">' +
+      '<div class="field-label" style="margin-top:0;">Title</div>' +
+      '<input type="text" id="msgTitle" maxlength="140" placeholder="e.g. New Structural modules are up">' +
+      '<div class="field-label">Message</div>' +
+      '<textarea id="msgBody" rows="5" maxlength="4000" placeholder="What readers should know"></textarea>' +
+      '<div class="field-label">Link (optional)</div>' +
+      '<input type="text" id="msgLink" placeholder="subject.html?s=structural or https://…">' +
+      '<p class="field-note">Every signed-in reader sees this in their bell. It cannot be edited after sending.</p>' +
+      '<div style="margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;">' +
+        '<button class="primary" id="msgSend" type="button">Send to everyone</button>' +
+        '<span id="msgStatus" class="field-note" style="margin:0;"></span>' +
+      '</div>' +
+    '</div>' +
+    '<div class="card"><div class="field-label" style="margin-top:0;">Sent messages</div><div id="msgList" class="field-note">Loading…</div></div>';
+  document.getElementById('msgSend').addEventListener('click', sendMessage);
+  loadSentMessages();
+}
+
+function msgStatus(text, kind){
+  const el = document.getElementById('msgStatus');
+  el.textContent = text;
+  el.style.color = kind === 'err' ? 'var(--bad)' : kind === 'ok' ? 'var(--good)' : 'var(--muted)';
+}
+
+async function sendMessage(){
+  const title = document.getElementById('msgTitle').value.trim();
+  const body = document.getElementById('msgBody').value.trim();
+  const link = document.getElementById('msgLink').value.trim();
+  if(!title || !body){ msgStatus('Write a title and a message first.', 'err'); return; }
+  const ok = await LEAConfirm('Send “' + title + '” to every reader?', { title: 'Send message', yes: 'Send' });
+  if(!ok) return;
+  const btn = document.getElementById('msgSend');
+  btn.disabled = true;
+  msgStatus('Sending…');
+  try{
+    const { error } = await sb.from('messages').insert({ title, body, link: link || null });
+    if(error) throw error;
+    document.getElementById('msgTitle').value = '';
+    document.getElementById('msgBody').value = '';
+    document.getElementById('msgLink').value = '';
+    msgStatus('Sent.', 'ok');
+    loadSentMessages();
+  }catch(e){
+    msgStatus('Error: ' + e.message, 'err');
+  }finally{
+    btn.disabled = false;
+  }
+}
+
+async function loadSentMessages(){
+  const listEl = document.getElementById('msgList');
+  const { data, error } = await sb.from('messages').select('id,title,body,link,created_at').order('created_at', { ascending: false }).limit(100);
+  if(error){ listEl.textContent = 'Could not load messages: ' + error.message; return; }
+  if(!data.length){ listEl.textContent = 'Nothing sent yet.'; return; }
+  listEl.innerHTML = data.map(m =>
+    '<div style="border-top:1px solid var(--line);padding:12px 0;color:var(--ink);">' +
+      '<div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start;">' +
+        '<div><b>' + escapeHtml(m.title) + '</b>' +
+          '<div style="font-size:12px;color:var(--muted);margin-top:2px;">' + new Date(m.created_at).toLocaleString() + (m.link ? ' · ' + escapeHtml(m.link) : '') + '</div></div>' +
+        '<button type="button" data-del-msg="' + m.id + '">Delete</button>' +
+      '</div>' +
+      '<div style="white-space:pre-wrap;font-size:13px;margin-top:6px;">' + escapeHtml(m.body) + '</div>' +
+    '</div>'
+  ).join('');
+  listEl.querySelectorAll('[data-del-msg]').forEach(b => b.addEventListener('click', async () => {
+    const ok = await LEAConfirm('Delete this message? Readers will no longer see it in their bell.', { title: 'Delete message', yes: 'Delete' });
+    if(!ok) return;
+    const { error: delErr } = await sb.from('messages').delete().eq('id', b.dataset.delMsg);
+    if(delErr){ await LEAAlert('Could not delete: ' + delErr.message); return; }
+    loadSentMessages();
+  }));
 }
 
 init();

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=5">
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notifications — LEA Reviewer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-2:#0a1520;
+    --gold:#e0a83f; --gold-bright:#f0c268; --blue:#6fa8cf; --blue-bright:#8fc4ea;
+    --muted:#8b98a5; --good:#5fbf82; --bad:#e2604a; --violet:#b59be8;
+    --line: rgba(111,168,207,0.20); --grid-line: rgba(111,168,207,0.09);
+    --font-display: 'Big Shoulders Display', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+  body.light-mode, :root.light-mode{
+    --ink:#16202b; --bg-deep:#d3dee6; --bg-panel:#ffffff; --bg-panel-2:#e9eff4;
+    --gold:#b5791f; --gold-bright:#7d520c; --blue:#2f6c95; --blue-bright:#1b4a6b;
+    --muted:#4f5d6a; --good:#206b3c; --bad:#a1372a; --violet:#6a4fb0;
+    --line: rgba(47,108,149,0.28); --grid-line: rgba(47,108,149,0.11);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      var(--bg-deep);
+    color:var(--ink); font-family:var(--font-body); min-height:100vh;
+    display:flex; justify-content:center; padding:20px 16px 64px;
+  }
+  .wrap{width:100%; max-width:560px;}
+  a{color:inherit;}
+  button{font-family:inherit;}
+
+  .run-header{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .icon-btn-44{
+    width:44px; height:44px; border-radius:10px; background:var(--bg-panel); border:1px solid var(--line);
+    color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+  }
+  .icon-btn-44 svg{ width:19px; height:19px; }
+  .page-title{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; }
+
+  .chips{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }
+  .chip{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.03em; text-transform:uppercase;
+    background:var(--bg-panel); border:1px solid var(--line); color:var(--muted);
+    padding:8px 11px; border-radius:999px; cursor:pointer;
+  }
+  .chip.active{ border-color:var(--gold); color:var(--gold-bright); background:rgba(224,168,63,0.08); }
+  .chip b{ font-weight:600; color:var(--gold-bright); margin-left:4px; }
+
+  .nf-card{ position:relative; background:var(--bg-panel); border:1px solid var(--line); border-left:3px solid var(--line);
+    border-radius:10px; padding:13px 16px; margin-bottom:10px; }
+  .nf-card.unread{ border-left-color:var(--gold); }
+  .nf-card.unread::after{ content:''; position:absolute; top:15px; right:14px; width:8px; height:8px; border-radius:50%; background:var(--gold); }
+  .nf-top{ display:flex; gap:8px; align-items:center; font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin-bottom:5px; padding-right:16px; }
+  .nf-kind{ font-weight:600; }
+  .k-message .nf-kind{ color:var(--gold-bright); }
+  .k-report .nf-kind{ color:var(--good); }
+  .k-update .nf-kind{ color:var(--blue-bright); }
+  .k-reminder .nf-kind{ color:var(--violet); }
+  .nf-title{ font-weight:600; font-size:14.5px; margin-bottom:4px; }
+  .nf-body{ font-size:13.5px; line-height:1.55; color:var(--ink); opacity:.9; white-space:pre-wrap; overflow-wrap:anywhere; }
+  .nf-open{ display:inline-block; margin-top:8px; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--gold-bright); text-decoration:none; }
+  .nf-open:hover{ text-decoration:underline; }
+
+  .state-note{ font-family:var(--font-mono); font-size:12px; color:var(--muted); text-align:center; padding:40px 0; line-height:1.7; }
+  .err-note{ font-family:var(--font-mono); font-size:11px; color:var(--bad); margin-bottom:12px; }
+</style>
+<link rel="stylesheet" href="assets/blueprint.css?v=16">
+<script src="assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/offline.js?v=16"></script>
+<script src="assets/presence.js?v=16"></script>
+<script>if(window.LEAPresence) LEAPresence.init({});</script>
+<script src="assets/notifications.js?v=1"></script>
+</head>
+<body>
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
+<div class="wrap">
+  <div class="run-header">
+    <a class="icon-btn-44" href="index.html" title="Back home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </a>
+    <div class="page-title">Notifications</div>
+  </div>
+
+  <div class="chips" id="chips"></div>
+  <div id="list"><div class="state-note">Loading…</div></div>
+</div>
+
+<script>
+const sb = supabase.createClient('https://rjrrprbvsmflzncojbtq.supabase.co', 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y');
+const esc = LEANotify.escapeHtml;
+
+const FILTERS = [
+  { id:'all',      label:'All' },
+  { id:'message',  label:'Messages' },
+  { id:'report',   label:'Reports' },
+  { id:'update',   label:'Updates' },
+  { id:'reminder', label:'Reminders' }
+];
+const KIND_LABEL = { message:'Message', report:'Report', update:'Update', reminder:'Reminder' };
+const EMPTY = {
+  all:'Nothing yet. Messages, report replies, site updates and reminders will show up here.',
+  message:'No messages from the admin yet.',
+  report:'No replies yet. When you report a question and it gets fixed, you will hear about it here.',
+  update:'No site updates yet.',
+  reminder:'No reminders right now.'
+};
+
+let ITEMS = [];
+let ERRORS = [];
+let filter = 'all';
+try{ filter = new URLSearchParams(location.search).get('show') || 'all'; }catch(e){}
+
+function timeAgo(iso){
+  if(!iso) return '';
+  const s = Math.max(0, (Date.now() - new Date(iso).getTime()) / 1000);
+  if(s < 60) return 'just now';
+  if(s < 3600) return Math.floor(s / 60) + 'm ago';
+  if(s < 86400) return Math.floor(s / 3600) + 'h ago';
+  if(s < 86400 * 7) return Math.floor(s / 86400) + 'd ago';
+  return new Date(iso).toLocaleDateString(undefined, { month:'short', day:'numeric', year:'numeric' });
+}
+
+// Only same-site pages and web links are opened; anything else is ignored.
+function safeHref(href){
+  if(!href) return null;
+  try{
+    const u = new URL(href, location.href);
+    return (u.protocol === 'https:' || u.protocol === 'http:') ? u.href : null;
+  }catch(e){ return null; }
+}
+
+function render(){
+  document.getElementById('chips').innerHTML = FILTERS.map(f => {
+    const n = ITEMS.filter(i => (f.id === 'all' || i.kind === f.id) && i.unread).length;
+    return '<button class="chip' + (filter === f.id ? ' active' : '') + '" data-f="' + f.id + '">' + f.label + (n ? '<b>' + n + '</b>' : '') + '</button>';
+  }).join('');
+  document.querySelectorAll('.chip').forEach(btn => btn.addEventListener('click', () => { filter = btn.dataset.f; render(); }));
+
+  const list = ITEMS.filter(i => filter === 'all' || i.kind === filter);
+  const errHtml = ERRORS.length ? '<div class="err-note">Some notifications could not load. Try again in a moment.</div>' : '';
+  if(!list.length){
+    document.getElementById('list').innerHTML = errHtml + '<div class="state-note">' + EMPTY[filter] + '</div>';
+    return;
+  }
+  document.getElementById('list').innerHTML = errHtml + list.map(i => {
+    const href = safeHref(i.href);
+    const external = href && new URL(href).origin !== location.origin;
+    return '<div class="nf-card k-' + i.kind + (i.unread ? ' unread' : '') + '">' +
+      '<div class="nf-top"><span class="nf-kind">' + KIND_LABEL[i.kind] + '</span>' +
+        (i.where ? '<span>· ' + esc(i.where) + '</span>' : '') +
+        '<span>· ' + timeAgo(i.at) + '</span></div>' +
+      '<div class="nf-title">' + esc(i.title) + '</div>' +
+      '<div class="nf-body">' + esc(i.body) + '</div>' +
+      (href ? '<a class="nf-open" href="' + esc(href) + '"' + (external ? ' target="_blank" rel="noopener noreferrer"' : '') + '>Open →</a>' : '') +
+    '</div>';
+  }).join('');
+}
+
+(async function boot(){
+  const { data: { session } } = await sb.auth.getSession();
+  if(!session){ window.location.href = 'index.html'; return; }
+  const userId = session.user.id;
+  const result = await LEANotify.load(sb, userId);
+  ITEMS = result.items;
+  ERRORS = result.errors;
+  render();
+  // The unread marks stay on screen for this visit, so the reader can still
+  // see what was new; they are saved as read in the background.
+  LEANotify.markRead(sb, userId, ITEMS);
+})();
+</script>
+</body>
+</html>

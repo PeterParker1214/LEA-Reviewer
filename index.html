@@ -20,6 +20,7 @@
 <script src="assets/module-progress.js?v=16"></script>
 <script src="assets/offline.js?v=16"></script>
 <script src="assets/quiz-resume.js?v=16"></script>
+<script src="assets/notifications.js?v=1"></script>
 <script>
 // Coming back to Home from anywhere in the app used to flash the sign-in
 // screen for about half a second: the signed-out shell is what the document
@@ -275,6 +276,11 @@
   }
   .avatar-btn-44 img{ width:100%; height:100%; object-fit:cover; display:block; }
   .avatar-btn-44:hover{ border-color:var(--gold-bright); }
+  .home-top-actions{ display:flex; gap:8px; }
+  .bell-btn{ position:relative; }
+  .bell-badge{ position:absolute; top:-5px; right:-5px; min-width:18px; height:18px; padding:0 5px; border-radius:9px;
+    background:var(--bad); color:#fff; font-family:var(--font-mono); font-size:10px; font-weight:600; line-height:18px; text-align:center;
+    border:2px solid var(--bg-deep); box-sizing:content-box; }
   .account-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:13px 4px; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); }
   .account-row:last-child{ border-bottom:none; }
   .account-row .ar-label{ font-family:var(--font-display); font-weight:700; font-size:15px; text-transform:uppercase; }
@@ -518,7 +524,7 @@
        the top bar, so the bar becomes display:contents and its children are
        placed directly onto this grid. No markup is duplicated: the phone keeps
        the single element it had, in the stack position it calls for. */
-    #homeBody{ display:grid; grid-template-columns:auto 1fr auto auto auto;
+    #homeBody{ display:grid; grid-template-columns:auto 1fr auto auto auto auto;
       align-items:center; column-gap:10px; }
     .home-top-bar{ display:contents; }
     .home-top-bar .home-wordmark{ grid-row:1; grid-column:1; text-align:left;
@@ -530,8 +536,11 @@
     #homeBody .search-field input{ height:40px; padding:0 14px 0 40px; }
     #homeBody .presence-strip{ grid-row:1; grid-column:3; width:auto; margin:0;
       height:40px; padding:0 12px; gap:7px; }
-    .home-top-bar .icon-btn-44{ grid-row:1; grid-column:4; width:40px; height:40px; }
-    .home-top-bar .avatar-btn-44{ grid-row:1; grid-column:5; width:40px; height:40px; }
+    .home-top-actions{ display:contents; }
+    .home-top-bar .icon-btn-44{ width:40px; height:40px; }
+    .home-top-bar .bell-btn{ grid-row:1; grid-column:4; }
+    .home-top-bar .trophy-btn{ grid-row:1; grid-column:5; }
+    .home-top-bar .avatar-btn-44{ grid-row:1; grid-column:6; width:40px; height:40px; }
     /* Offline-ready is stated in the right rail at this width. */
     #homeBody .presence-strip .offline-ready{ display:none; }
 
@@ -936,7 +945,11 @@ function renderHome(){
     '<div class="home-top-bar">' +
       '<button class="avatar-btn-44" id="openAccountBtn" title="Account">' + faceHtml + '</button>' +
       '<div class="home-wordmark"><div class="hw-eyebrow">Peter Parker’s</div><div class="hw-title">LEA Reviewer</div></div>' +
-      '<a class="icon-btn-44" href="standings.html" title="Standings">' + svgTrophy() + '</a>' +
+      '<div class="home-top-actions">' +
+        '<a class="icon-btn-44 bell-btn" href="notifications.html" title="Notifications" aria-label="Notifications">' +
+          (window.LEANotify ? LEANotify.bellSvg() : '') + '<span class="bell-badge" id="bellBadge" hidden></span></a>' +
+        '<a class="icon-btn-44 trophy-btn" href="standings.html" title="Standings">' + svgTrophy() + '</a>' +
+      '</div>' +
     '</div>' +
 
     '<div class="presence-strip">' +
@@ -1011,6 +1024,7 @@ function renderHome(){
     '</div>';           // /home-cols
 
   document.getElementById('openAccountBtn').addEventListener('click', openAccountSheet);
+  paintBell();
   document.getElementById('openTopicDrillBtn').addEventListener('click', openTopicSheet);
   document.getElementById('searchForm').addEventListener('submit', (e) => {
     e.preventDefault();
@@ -1451,6 +1465,29 @@ sb.auth.onAuthStateChange((event, session) => {
 })();
 
 // ---- SVGs (Lucide-style, stroke-width 1.5, matching the site's icon set) ----
+// Home re-renders often (presence, progress), and each render rebuilds the
+// badge. The last known count is painted every time; the network is asked at
+// most once a minute.
+let bellFetchedAt = 0;
+function setBellCount(n){
+  const el = document.getElementById('bellBadge');
+  if(!el) return;
+  el.textContent = n > 9 ? '9+' : String(n);
+  el.hidden = !(n > 0);
+}
+async function paintBell(){
+  if(!window.LEANotify) return;
+  try{ setBellCount(Number(sessionStorage.getItem('lea_notify_unread') || 0)); }catch(e){}
+  if(Date.now() - bellFetchedAt < 60000) return;
+  bellFetchedAt = Date.now();
+  try{
+    const { data: { session } } = await sb.auth.getSession();
+    if(!session) return;
+    const { unread } = await LEANotify.load(sb, session.user.id);
+    setBellCount(unread);
+  }catch(e){ /* the bell is never worth breaking Home for */ }
+}
+
 function svgTrophy(){
   return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M17 5h3a2 2 0 0 1-2 4h-1M7 5H4a2 2 0 0 0 2 4h1"/></svg>';
 }
