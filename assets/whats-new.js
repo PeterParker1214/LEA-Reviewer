@@ -50,10 +50,17 @@
       '.wn-title{font-weight:600;font-size:15px;color:var(--ink);margin-bottom:6px;}' +
       '.wn-items{margin:0;padding-left:18px;color:var(--ink);font-size:13.5px;line-height:1.55;}' +
       '.wn-items li{margin-bottom:3px;}' +
-      '.wn-overlay{position:fixed;inset:0;z-index:5000;background:rgba(4,8,12,.62);display:flex;align-items:center;justify-content:center;padding:16px;}' +
-      '.wn-sheet{width:min(460px,100%);max-height:calc(100vh - 32px);overflow:auto;background:var(--bg-deep);border:1px solid var(--line);border-radius:14px;padding:20px 18px 16px;box-shadow:0 18px 50px rgba(0,0,0,.5);}' +
-      '.wn-head{font-family:var(--font-display);font-weight:800;font-size:24px;text-transform:uppercase;color:var(--ink);margin:0 0 14px;}' +
-      '.wn-actions{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:6px;}' +
+      // One fixed box on every screen: the heading and buttons stay put and
+      // only the version list between them scrolls, so nothing can spill out.
+      '.wn-overlay{position:fixed;inset:0;z-index:5000;background:rgba(4,8,12,.62);display:flex;align-items:center;justify-content:center;padding:16px;overscroll-behavior:contain;}' +
+      '.wn-sheet{box-sizing:border-box;width:min(440px,100%);height:min(560px,calc(100vh - 32px));height:min(560px,calc(100dvh - 32px));display:flex;flex-direction:column;overflow:hidden;background:var(--bg-deep);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.5);}' +
+      '.wn-top-bar{flex:none;padding:18px 18px 12px;border-bottom:1px solid var(--line);}' +
+      '.wn-kicker{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:4px;}' +
+      '.wn-head{font-family:var(--font-display);font-weight:800;font-size:24px;line-height:1.05;text-transform:uppercase;color:var(--ink);margin:0;}' +
+      '.wn-scroll{flex:1;min-height:0;overflow-y:auto;padding:14px 18px 4px;overscroll-behavior:contain;}' +
+      '.wn-scroll .wn-version{margin-bottom:12px;}' +
+      '.wn-scroll .wn-version + .wn-version{border-left-color:var(--line);}' +
+      '.wn-actions{flex:none;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 18px 16px;border-top:1px solid var(--line);}' +
       '.wn-actions a{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--gold-bright);text-decoration:none;}' +
       '.wn-ok{background:var(--gold);color:#1a1206;border:none;border-radius:10px;padding:11px 22px;font-family:var(--font-display);font-weight:700;font-size:15px;text-transform:uppercase;cursor:pointer;}';
     document.head.appendChild(style);
@@ -88,8 +95,9 @@
     overlay.className = 'wn-overlay';
     overlay.innerHTML =
       '<div class="wn-sheet" role="dialog" aria-modal="true" aria-labelledby="wnHead">' +
-        '<h2 class="wn-head" id="wnHead">What’s new</h2>' +
-        versions.filter(v => v.build > seen).slice(0, 3).map(versionHtml).join('') +
+        '<div class="wn-top-bar"><div class="wn-kicker">What’s new · v' + esc(versions[0].version) + '</div>' +
+          '<h2 class="wn-head" id="wnHead">' + esc(versions[0].title) + '</h2></div>' +
+        '<div class="wn-scroll">' + versions.filter(v => v.build > seen).slice(0, 3).map(versionHtml).join('') + '</div>' +
         '<div class="wn-actions"><a href="profile.html?tab=versions">All versions</a><button type="button" class="wn-ok">Got it</button></div>' +
       '</div>';
     const close = () => {

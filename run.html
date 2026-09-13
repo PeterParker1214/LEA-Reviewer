@@ -575,16 +575,16 @@
   .etymology-card-hint{display:inline-block;margin:0 8px 0 6px;color:var(--sand);font-size:10px;letter-spacing:.04em;font-style:italic;opacity:.85;}
   @media (max-width:600px){.etymology-tooltip{max-width:calc(100vw - 24px);padding:13px 14px 12px}.etymology-tooltip-word{font-size:18px}}
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=19">
-<script src="assets/lea-confirm.js?v=19"></script>
-<script src="assets/quiz-source.js?v=19"></script>
-<script src="assets/etymology.js?v=19"></script>
-<script src="assets/module-progress.js?v=19"></script>
-<script src="assets/offline.js?v=19"></script>
-<script src="assets/presence.js?v=19"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=20">
+<script src="assets/lea-confirm.js?v=20"></script>
+<script src="assets/quiz-source.js?v=20"></script>
+<script src="assets/etymology.js?v=20"></script>
+<script src="assets/module-progress.js?v=20"></script>
+<script src="assets/offline.js?v=20"></script>
+<script src="assets/presence.js?v=20"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
-<script src="assets/quiz-resume.js?v=19"></script>
-<script src="assets/theme.js?v=19" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-resume.js?v=20"></script>
+<script src="assets/theme.js?v=20" data-alt-class="light-mode" data-default-is="dark"></script>
 </head>
 <body>
 <!-- The rail is a sibling of #pageBody, not a child: every render replaces
@@ -833,6 +833,7 @@ const EXAM_MS_PER_ITEM = (5 * 60 * 60 * 1000) / 200; // 90s/item — the real 20
 let examLengthChoice = null; // 'full' | 'sim50'
 let examEndAt = 0;
 let examSubmitted = false;
+let isRetake = false;  // a retake of just the missed questions — see retakeMisses()
 let examPrevBestPct = null;   // standing best %, captured before submit overwrites it
 
 // How many questions in this module were already mastered when the attempt
@@ -1002,6 +1003,9 @@ function tryResume(){
 }
 
 function saveResumeState(){
+  // A retake is a short side-run; saving it would overwrite the module's real
+  // resume slot with a partial order.
+  if(isRetake) return;
   const answeredCount = answersLog.filter(a => a && !a.skipped).length;
   LEAResume.save(SUBJECT.id, resumeKey(), {
     answeredCount, total: order.length, position: pos + 1,
@@ -1393,7 +1397,7 @@ function renderResultsCard(opts){
       newlyRow +
     '</div>' +
     (missed > 0
-      ? '<button class="res-primary" id="drillMissesBtn"><span class="rp-title">Drill the ' + missed + ' now</span><span class="rp-go">\u2192</span></button>'
+      ? '<button class="res-primary" id="drillMissesBtn"><span class="rp-title">Retake the ' + missed + ' you missed</span><span class="rp-go">\u2192</span></button>'
       : '<div class="res-clean">Nothing to revisit \u2014 every item correct.</div>') +
     '<div class="res-secondary">' +
       '<button class="res-alt" id="retakeTimedBtn">Retake timed</button>' +
@@ -1402,6 +1406,25 @@ function renderResultsCard(opts){
     (topicRows ? '<div class="res-sec-head">By topic</div><div class="res-topics">' + topicRows + '</div>' : '') +
     (missHtml ? '<div class="res-sec-head">What you missed</div>' + missHtml + missTail : '')
   );
+}
+
+// The results button used to jump back into the finished run, where every
+// answer is locked, so nothing could be answered again. This starts a fresh
+// run of only the questions missed or skipped: instant feedback, no clock,
+// mastery still recorded per answer, but no effect on the module's best score
+// or saved attempt.
+function retakeMisses(){
+  const missed = order.filter((_, p) => { const a = answersLog[p]; return !a || a.skipped || !a.isCorrect; });
+  if(!missed.length) return;
+  MODE = 'drill';
+  isRetake = true;
+  examSubmitted = false;
+  order = shuffleArr(missed);
+  answersLog = new Array(order.length).fill(null);
+  pos = 0; frontier = 0;
+  captureMasteredAtStart();
+  renderRun();
+  window.scrollTo(0, 0);
 }
 
 function wireResultsCard(onDrill){
@@ -1424,11 +1447,7 @@ function showExamResults(auto){
     correct: correct, total: order.length, missed: order.length - correct,
     prevBestPct: examPrevBestPct, newlyMastered: newlyMasteredCount(), auto: auto
   });
-  wireResultsCard(() => {
-    const firstMiss = answersLog.findIndex(a => a && !a.isCorrect);
-    pos = firstMiss === -1 ? 0 : firstMiss;
-    renderRun();
-  });
+  wireResultsCard(retakeMisses);
 }
 
 function persistFlags(){
@@ -1770,25 +1789,22 @@ function wireFooter(){
 
 function finishRun(){
   if(MODE === 'exam' && examSubmitted){ showExamResults(false); return; }
-  LEAResume.clear(SUBJECT.id, resumeKey());
+  if(!isRetake) LEAResume.clear(SUBJECT.id, resumeKey());
   const correct = answersLog.filter(a => a && !a.skipped && a.isCorrect).length;
   const answeredWrong = answersLog.filter(a => a && !a.skipped && !a.isCorrect).length;
   const skipped = answersLog.filter(a => a && a.skipped).length;
-  // Same reason as the exam path: read the standing best first.
-  const prevBest = previousBestPct(order.length);
-  LEAProgress.recordRunScore(SUBJECT.id, MODULE.id, correct, order.length);
+  // Same reason as the exam path: read the standing best first. A retake of a
+  // handful of misses is not a score for the module, so it records none.
+  const prevBest = isRetake ? null : previousBestPct(order.length);
+  if(!isRetake) LEAProgress.recordRunScore(SUBJECT.id, MODULE.id, correct, order.length);
 
   const body = document.getElementById('pageBody');
   body.innerHTML = renderResultsCard({
-    kicker: MODULE.title + (MODE === 'drill' ? ' \u00b7 Drill' : ''),
+    kicker: MODULE.title + (isRetake ? ' \u00b7 Retake' : MODE === 'drill' ? ' \u00b7 Drill' : ''),
     correct: correct, total: order.length, missed: answeredWrong + skipped,
     prevBestPct: prevBest, newlyMastered: newlyMasteredCount(), auto: false
   });
-  wireResultsCard(() => {
-    const firstMiss = answersLog.findIndex(a => a && (a.skipped || !a.isCorrect));
-    pos = firstMiss === -1 ? 0 : firstMiss;
-    renderRun();
-  });
+  wireResultsCard(retakeMisses);
 }
 
 // ================= Question map =================

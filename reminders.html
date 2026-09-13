@@ -70,14 +70,14 @@
   .foot{ font-size:12px; color:var(--muted); line-height:1.6; margin-top:18px; }
   .foot a{ color:var(--gold-bright); }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=19">
-<script src="assets/theme.js?v=19" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/offline.js?v=19"></script>
-<script src="assets/presence.js?v=19"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=20">
+<script src="assets/theme.js?v=20" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/offline.js?v=20"></script>
+<script src="assets/presence.js?v=20"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
-<script src="assets/module-progress.js?v=19"></script>
-<script src="assets/countdown.js?v=19"></script>
-<script src="assets/reminders.js?v=19"></script>
+<script src="assets/module-progress.js?v=20"></script>
+<script src="assets/countdown.js?v=20"></script>
+<script src="assets/reminders.js?v=20"></script>
 </head>
 <body>
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
@@ -100,6 +100,20 @@
     <div class="tr-label">Get notified when the site is closed</div>
     <div class="tr-sub" id="pushNote">Messages from the admin and replies to your reports, sent to this device.</div>
     <button type="button" class="now-open" id="pushBtn" style="margin-top:10px;font-size:12px;" hidden></button>
+    <div id="pushSchedule" hidden style="margin-top:14px;border-top:1px solid var(--line);padding-top:12px;">
+      <div class="tr-label">Study reminders on your phone</div>
+      <div class="tr-sub">Philippine time, in 15-minute steps. Up to 6 a day. Skipped on days you already did the Daily Drill.</div>
+      <div id="timeList" style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0;"></div>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <input type="time" id="timeInput" step="900" value="19:00" aria-label="Reminder time"
+          style="background:var(--bg-panel-2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-family:var(--font-mono);font-size:13px;color-scheme:dark;">
+        <button type="button" class="now-open" id="timeAdd" style="margin:0;font-size:12px;">Add time +</button>
+      </div>
+      <label class="toggle-row" style="padding:14px 0 0;border:none;">
+        <div class="tr-text"><div class="tr-label">Streak at risk</div><div class="tr-sub">A push at 8 PM when your streak would end at midnight</div></div>
+        <span class="switch"><input type="checkbox" id="streakPush" aria-label="Streak at risk push"><span class="track"></span><span class="knob"></span></span>
+      </label>
+    </div>
   </div>
 
   <p class="foot">Reminders show up in the bell on Home. Your choices are saved to your account, so they follow you to other devices. Phone notifications are set per device.</p>
@@ -168,9 +182,60 @@ async function paintPush(){
   btn.hidden = false;
   btn.textContent = sub ? 'Turn off on this device' : 'Turn on for this device →';
   note.textContent = sub
-    ? 'On for this device: messages from the admin and replies to your reports.'
-    : 'Messages from the admin and replies to your reports, sent to this device.';
+    ? 'On for this device: admin messages, report replies, and the reminders below.'
+    : 'Admin messages, report replies, study reminders and streak alerts, sent to this device.';
+  document.getElementById('pushSchedule').hidden = !sub;
+  if(sub) loadSchedule();
 }
+
+// ---- Phone reminder schedule (sent by the push-reminders job every 15 min) ----
+let schedule = { times: [], streak: true };
+function roundTime(v){
+  const [h, m] = String(v || '').split(':').map(Number);
+  if(isNaN(h) || isNaN(m)) return null;
+  return String(h).padStart(2, '0') + ':' + String(Math.floor(m / 15) * 15).padStart(2, '0');
+}
+function label12(t){
+  const [h, m] = t.split(':').map(Number);
+  return ((h % 12) || 12) + ':' + String(m).padStart(2, '0') + (h < 12 ? ' AM' : ' PM');
+}
+function paintSchedule(){
+  document.getElementById('timeList').innerHTML = schedule.times.length
+    ? schedule.times.map(t => '<span class="now-open" style="margin:0;border:1px solid var(--line);border-radius:999px;padding:5px 10px;">' + label12(t) +
+        ' <button type="button" data-remove="' + t + '" aria-label="Remove ' + label12(t) + '" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;padding:0 0 0 4px;">×</button></span>').join('')
+    : '<span class="tr-sub">No study times yet.</span>';
+  document.getElementById('streakPush').checked = schedule.streak;
+  document.getElementById('timeAdd').disabled = schedule.times.length >= 6;
+}
+async function loadSchedule(){
+  const { data } = await sb.from('push_reminder_prefs').select('times,streak').eq('user_id', userId).maybeSingle();
+  schedule = data ? { times: data.times || [], streak: data.streak } : { times: [], streak: true };
+  paintSchedule();
+}
+async function saveSchedule(){
+  schedule.times = Array.from(new Set(schedule.times)).sort();
+  paintSchedule();
+  const { error } = await sb.from('push_reminder_prefs').upsert(
+    { user_id: userId, times: schedule.times, streak: schedule.streak, updated_at: new Date().toISOString() },
+    { onConflict: 'user_id' });
+  if(error) document.getElementById('pushNote').textContent = 'Could not save your reminder times: ' + error.message;
+}
+document.getElementById('timeAdd').addEventListener('click', () => {
+  const t = roundTime(document.getElementById('timeInput').value);
+  if(!t || schedule.times.length >= 6) return;
+  schedule.times.push(t);
+  saveSchedule();
+});
+document.getElementById('timeList').addEventListener('click', e => {
+  const b = e.target.closest('[data-remove]');
+  if(!b) return;
+  schedule.times = schedule.times.filter(t => t !== b.dataset.remove);
+  saveSchedule();
+});
+document.getElementById('streakPush').addEventListener('change', e => {
+  schedule.streak = e.target.checked;
+  saveSchedule();
+});
 async function togglePush(){
   const btn = document.getElementById('pushBtn');
   btn.disabled = true;
@@ -187,6 +252,9 @@ async function togglePush(){
         { endpoint: sub.endpoint, user_id: userId, p256dh: sub.keys.p256dh, auth: sub.keys.auth },
         { onConflict: 'endpoint' });
       if(error) throw error;
+      // Streak alerts are on by default, so the reader gets them without
+      // having to open the schedule.
+      await sb.from('push_reminder_prefs').upsert({ user_id: userId }, { onConflict: 'user_id', ignoreDuplicates: true });
     }
   }catch(e){
     document.getElementById('pushNote').textContent = 'Could not change notifications: ' + (e.message || e);
