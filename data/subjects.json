@@ -150,7 +150,40 @@
     "name": "Building Technology",
     "blurb": "How a building actually goes together.",
     "ready": false,
-    "modules": []
+    "modules": [
+      {
+        "id": "building-technology-01",
+        "no": "01",
+        "title": "Materials and Systems Reviewer",
+        "total": 50,
+        "file": "data/building-technology/01.json",
+        "format": "json"
+      },
+      {
+        "id": "building-technology-02",
+        "no": "02",
+        "title": "Materials Terminology and Specifications Reviewer",
+        "total": 50,
+        "file": "data/building-technology/02.json",
+        "format": "json"
+      },
+      {
+        "id": "building-technology-03",
+        "no": "03",
+        "title": "Construction Practice and Estimating Reviewer",
+        "total": 50,
+        "file": "data/building-technology/03.json",
+        "format": "json"
+      },
+      {
+        "id": "building-technology-04",
+        "no": "04",
+        "title": "Industry Standards and Structural Concepts Reviewer",
+        "total": 50,
+        "file": "data/building-technology/04.json",
+        "format": "json"
+      }
+    ]
   },
   {
     "id": "structural",
