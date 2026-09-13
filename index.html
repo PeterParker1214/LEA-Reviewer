@@ -148,7 +148,7 @@
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     gap:10px; min-height:60vh; text-align:center;
   }
-  #bootHold .bh-kicker{ font-family:var(--font-mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+  #bootHold .bh-kicker{ font-family:var(--font-mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
   #bootHold .bh-word{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; color:var(--ink); line-height:1; }
   .signin-body{ position:relative; }
 
@@ -172,13 +172,13 @@
   .sc-units{ display:flex; gap:6px; }
   .sc-unit{ text-align:center; }
   .sc-unit b{ display:block; font-family:var(--font-display); font-weight:800; font-size:26px; line-height:1; }
-  .sc-unit span{ display:block; font-family:var(--font-mono); font-size:8.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:4px; }
-  .sc-sep{ font-family:var(--font-display); font-weight:800; font-size:26px; line-height:1; color:#3d4d5c; }
+  .sc-unit span{ display:block; font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:4px; }
+  .sc-sep{ font-family:var(--font-display); font-weight:800; font-size:26px; line-height:1; color:var(--muted); }
   .sc-divider{ width:1px; height:34px; background:rgba(111,168,207,0.25); }
   .sc-label{ font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); line-height:1.6; }
 
   .field{ display:block; }
-  .field-label{ display:block; font-family:var(--font-mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:7px; }
+  .field-label{ display:block; font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:7px; }
   .signin-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
   .keepme{ display:flex; align-items:center; gap:9px; font-size:13px; color:#c9d2da; cursor:pointer; }
   body.light-mode .keepme, :root.light-mode .keepme{ color:var(--ink); }
@@ -187,10 +187,12 @@
   .keepme input:checked + .keepme-box{ background:var(--gold); }
   .keepme input:checked + .keepme-box::after{ content:"\2713"; color:#1a1206; font-size:13px; line-height:1; }
   .keepme input:focus-visible + .keepme-box{ outline:2px solid var(--gold-bright); outline-offset:2px; }
-  .forgot-link{ background:none; border:none; font-family:var(--font-mono); font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); cursor:pointer; padding:0; }
+  .forgot-link{ background:none; border:none; font-family:var(--font-mono); font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); cursor:pointer; padding:0 4px; min-height:44px; }
   .forgot-link:hover{ color:var(--gold-bright); }
 
-  .signin-primary{ display:flex; align-items:center; justify-content:center; gap:10px; width:100%; background:var(--gold); color:#1a1206; border:none; font-family:var(--font-mono); font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:15px 18px; cursor:pointer; }
+  /* Buttons are square like the drafting panels; inputs keep their 12px
+     radius so fields and actions read as two different kinds of thing. */
+  .signin-primary{ display:flex; align-items:center; justify-content:center; gap:10px; width:100%; background:var(--gold); color:#1a1206; border:none; border-radius:0; font-family:var(--font-mono); font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:15px 18px; cursor:pointer; }
   .signin-primary:hover{ background:var(--gold-bright); }
 
   .signin-presence{ display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); padding-top:16px; margin-top:20px; border-top:1px solid rgba(111,168,207,0.18); }
@@ -219,7 +221,7 @@
   .intro-note{ font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:22px; text-align:center; }
   .auth-tabs{
     display:flex; gap:0; margin-bottom:20px; max-width:340px; margin-left:auto; margin-right:auto;
-    border:1px solid var(--line); border-radius:12px; overflow:hidden;
+    border:1px solid var(--line); border-radius:0; overflow:hidden;
   }
   .auth-tab{
     flex:1; text-align:center;
@@ -238,29 +240,34 @@
   }
   .auth-form input::placeholder{ color:var(--muted); }
   .auth-form input:focus{ outline:none; border-color:var(--gold); box-shadow: 0 0 0 3px rgba(224,168,63,0.16); }
-  .field-wrap{ position:relative; }
+  .field-wrap{ position:relative; display:block; }
+  .field-wrap input{ padding-right:52px; }
   .field-eye{
-    position:absolute; right:14px; top:50%; transform:translateY(-50%);
-    background:none; border:none; color:var(--muted); cursor:pointer; font-size:15px; padding:2px;
+    position:absolute; right:2px; top:50%; transform:translateY(-50%);
+    width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+    background:none; border:none; color:var(--muted); cursor:pointer; padding:0;
   }
   .field-eye:hover{ color:var(--gold-bright); }
   .auth-form button[type="submit"]{
     background: var(--gold); color:#1a1206; font-weight:700;
     font-family:var(--font-mono); letter-spacing:0.03em; text-transform:uppercase;
-    font-size:14px; border:none; padding:15px 18px; border-radius:12px; cursor:pointer; margin-top:6px;
+    font-size:14px; border:none; padding:15px 18px; border-radius:0; cursor:pointer; margin-top:6px;
     transition: scale 160ms var(--ease-out), background .12s ease;
   }
   .auth-form button[type="submit"]:hover{ background:var(--gold-bright); }
-  .auth-divider{ text-align:center; color:var(--muted); font-size:12px; margin:16px 0; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.1em; }
+  .auth-divider{ display:flex; align-items:center; gap:12px; color:var(--muted); font-size:12px; margin:16px auto; max-width:340px; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.1em; }
+  .auth-divider::before, .auth-divider::after{ content:""; flex:1; height:1px; background:var(--line); }
   .google-btn{
     display:block; width:100%; max-width:340px; margin:0 auto;
     background: var(--bg-panel-2); border:1px solid var(--line); color:var(--ink);
-    padding:13px 18px; border-radius:12px; cursor:pointer; font-family:var(--font-body); font-size:14px;
+    padding:13px 18px; border-radius:0; cursor:pointer; font-family:var(--font-body); font-size:14px;
     transition: border-color .15s ease;
   }
   .google-btn:hover{ border-color:var(--blue-bright); }
   .auth-error{ color:var(--bad); font-size:12.5px; min-height:16px; text-align:center; }
   .auth-msg{ color:var(--good); font-size:12.5px; min-height:16px; text-align:center; }
+  /* An empty message line would otherwise add a blank row plus two form gaps. */
+  .auth-error:empty, .auth-msg:empty{ display:none; }
 
   /* ===== 2a top bar ===== */
   .home-top-bar{ display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:12px; }
@@ -329,7 +336,7 @@
   .rail-stat b{ font-family:var(--font-mono); color:var(--gold-bright); }
   .rail-note{ font-family:var(--font-mono); font-size:11px; line-height:1.6; color:var(--muted); padding:0 2px; }
   .home-wordmark{ text-align:center; }
-  .home-wordmark .hw-eyebrow{ font-family:var(--font-mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+  .home-wordmark .hw-eyebrow{ font-family:var(--font-mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
   .home-wordmark .hw-title{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; color:var(--ink); line-height:1; margin-top:2px; }
 
   /* ===== presence strip ===== */
@@ -338,7 +345,7 @@
     background:var(--bg-panel-2); border:1px solid var(--line); border-radius:8px;
     padding:9px 14px; margin-bottom:12px; font-family:var(--font-mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--muted);
   }
-  .presence-strip .online-dot{ width:9px; height:9px; border-radius:50%; background:var(--good); box-shadow:0 0 6px var(--good); display:inline-block; margin-right:6px; }
+  .presence-strip .online-dot{ width:9px; height:9px; border-radius:50%; background:var(--good); display:inline-block; margin-right:6px; }
   /* Who is here, not just how many. The names scroll only when they overrun,
      and the strip keeps its height either way so the page does not jump as
      people come and go. */
@@ -378,7 +385,7 @@
   .flap.seconds{ border-color:var(--gold); }
   .flap .flap-val{ font-family:var(--font-display); font-weight:800; font-size:34px; color:var(--ink); line-height:1; position:relative; z-index:1; }
   .flap.seconds .flap-val{ color:var(--gold); }
-  .flap .flap-lbl{ font-family:var(--font-mono); font-size:8.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:4px; }
+  .flap .flap-lbl{ font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:4px; }
 
   /* ===== readiness ===== */
   .readiness-card{ background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:18px 18px 14px; margin-bottom:12px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
@@ -496,7 +503,7 @@
     border-top:2px solid var(--gold); border-radius:16px 16px 0 0; padding:22px 20px 26px;
     box-shadow:0 -24px 60px rgba(0,0,0,0.5);
   }
-  .sheet h3{ font-family:var(--font-display); font-weight:700; font-size:20px; text-transform:uppercase; margin:0 0 14px; }
+  .sheet h2{ font-family:var(--font-display); font-weight:700; font-size:20px; text-transform:uppercase; margin:0 0 14px; }
   .weak-topic-row{ display:flex; align-items:center; gap:10px; padding:11px 0; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); }
   .weak-topic-row:last-child{ border-bottom:none; }
   .weak-topic-row .wt-name{ flex:1; font-size:14px; }
@@ -507,6 +514,16 @@
     font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em; cursor:pointer;
   }
   .state-note{ font-family:var(--font-mono); font-size:11.5px; color:var(--muted); text-align:center; padding:16px 0; }
+
+  /* ---- Phone stack order ----
+     The column wrappers are display:contents below 1120px, so every card is a
+     flex item of #homeBody. Daily Drill, the two mode tiles and Resume move up
+     to sit right under the presence strip: the thing you came to do comes
+     first, and the countdown, readiness and streak follow as context. */
+  @media (max-width:1119px){
+    #homeBody .home-top-bar, #homeBody .presence-strip{ order:-2; }
+    #homeBody .drill-card, #homeBody .tiles-row, #homeBody .resume-card{ order:-1; }
+  }
 
   /* ---- Desktop (7a) lives last on purpose ----
      A media query adds no specificity, so these rules only beat the
@@ -639,7 +656,7 @@
           <div class="sc-unit"><b id="scMins">00</b><span>min</span></div>
         </div>
         <div class="sc-divider"></div>
-        <div class="sc-label">until the<br>LEA (Unofficial) &middot; 17 Jan 2027</div>
+        <div class="sc-label">until the LEA<br>17 Jan 2027 &middot; unofficial</div>
       </div>
 
       <div class="auth-tabs">
@@ -692,6 +709,7 @@
         <button type="submit" class="signin-primary">Create account &rarr;</button>
       </form>
 
+      <div class="auth-divider">or</div>
       <button class="google-btn" id="googleBtn">Continue with Google</button>
 
       <!-- Real presence, read from the same channel Home uses. A signed-out
@@ -718,7 +736,7 @@
 <!-- ===================== WEAK TOPICS SHEET ===================== -->
 <div class="sheet-overlay hidden" id="topicSheetOverlay">
   <div class="sheet">
-    <h3>Weak topics</h3>
+    <h2>Weak topics</h2>
     <div id="topicSheetBody"><div class="state-note">Finding your shakiest topics…</div></div>
     <button class="sheet-close" id="topicSheetClose">Close</button>
   </div>
@@ -727,7 +745,7 @@
 <!-- ===================== ACCOUNT SHEET ===================== -->
 <div class="sheet-overlay hidden" id="accountSheetOverlay">
   <div class="sheet">
-    <h3>Account</h3>
+    <h2>Account</h2>
     <div id="accountSheetBody"></div>
     <button class="sheet-close" id="accountSheetClose">Close</button>
   </div>
@@ -830,6 +848,14 @@ function computeReadiness(){
     });
   });
   return { mastered, total, pct: total > 0 ? Math.round((mastered/total)*100) : 0, completedQuizzes };
+}
+// The heading used to say "Ready for the board!" at every percentage, 0%
+// included. It now tracks the ring it sits beside.
+function readinessHeading(pct){
+  if(pct >= 80) return 'Ready for the board!';
+  if(pct >= 50) return 'Getting close';
+  if(pct >= 25) return 'Building momentum';
+  return 'Just getting started';
 }
 
 // ================= Streak =================
@@ -945,12 +971,12 @@ function renderHome(){
 
   homeBody.innerHTML =
     '<div class="home-top-bar">' +
-      '<button class="avatar-btn-44" id="openAccountBtn" title="Account">' + faceHtml + '</button>' +
+      '<button class="avatar-btn-44" id="openAccountBtn" title="Account" aria-label="Account">' + faceHtml + '</button>' +
       '<div class="home-wordmark"><div class="hw-eyebrow">Peter Parker’s</div><div class="hw-title">LEA Reviewer</div></div>' +
       '<div class="home-top-actions">' +
         '<a class="icon-btn-44 bell-btn" href="notifications.html" title="Notifications" aria-label="Notifications">' +
           (window.LEANotify ? LEANotify.bellSvg() : '') + '<span class="bell-badge" id="bellBadge" hidden></span></a>' +
-        '<a class="icon-btn-44 trophy-btn" href="standings.html" title="Standings">' + svgTrophy() + '</a>' +
+        '<a class="icon-btn-44 trophy-btn" href="standings.html" title="Standings" aria-label="Standings">' + svgTrophy() + '</a>' +
       '</div>' +
     '</div>' +
 
@@ -974,7 +1000,7 @@ function renderHome(){
     '<div class="col-left">' +
 
     '<div class="countdown-card">' +
-      '<div class="countdown-label">Until the LEA (Unofficial) · 17 January 2027</div>' +
+      '<div class="countdown-label">Until the LEA · 17 January 2027 (unofficial)</div>' +
       '<div class="flap-grid">' +
         '<div class="flap"><div class="flap-val" id="cdDays">0</div><div class="flap-lbl">Days</div></div>' +
         '<div class="flap"><div class="flap-val" id="cdHrs">00</div><div class="flap-lbl">Hrs</div></div>' +
@@ -986,7 +1012,7 @@ function renderHome(){
     '<div class="readiness-card">' +
       '<div class="readiness-ring" style="--pct:' + readiness.pct + ';"><div class="rr-pct">' + readiness.pct + '%</div></div>' +
       '<div class="readiness-info">' +
-        '<h2>Ready for the board!</h2>' +
+        '<h2>' + readinessHeading(readiness.pct) + '</h2>' +
         '<div class="rr-rule"></div>' +
         '<div class="rr-stats">' + readiness.mastered + ' / ' + readiness.total + ' mastered<br>' + readiness.completedQuizzes + ' quizzes completed</div>' +
       '</div>' +
@@ -1213,14 +1239,18 @@ signupTab.addEventListener('click', () => {
   signupForm.classList.remove('hidden'); loginForm.classList.add('hidden');
 });
 
+// The button shipped empty and only got an icon on first click, so nobody
+// could find it. It starts with the eye now, and the icon and label always
+// describe what the NEXT click does.
 document.querySelectorAll('.field-eye').forEach(btn => {
+  btn.innerHTML = LEAIcons.eye(17);
   btn.addEventListener('click', () => {
     const target = document.getElementById(btn.dataset.target);
     if(!target) return;
-    const showing = target.type === 'text';
-    target.type = showing ? 'password' : 'text';
-    btn.innerHTML = showing ? LEAIcons.eyeOff(17) : LEAIcons.eye(17);
-    btn.setAttribute('aria-label', showing ? 'Hide password' : 'Show password');
+    const wasShowing = target.type === 'text';
+    target.type = wasShowing ? 'password' : 'text';
+    btn.innerHTML = wasShowing ? LEAIcons.eye(17) : LEAIcons.eyeOff(17);
+    btn.setAttribute('aria-label', wasShowing ? 'Show password' : 'Hide password');
   });
 });
 
