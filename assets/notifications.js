@@ -13,6 +13,9 @@
  */
 (function(){
   'use strict';
+  // presence.js may load this file a second time; keep the first copy, which
+  // already holds the registered sources.
+  if(window.LEANotify) return;
   const sources = [];
   const BADGE_KEY = 'lea_notify_unread';
 
@@ -105,10 +108,80 @@
     el.hidden = !(n > 0);
   }
 
-  // Paints the cached count at once, then the real one when it arrives.
-  async function paintBadge(sb, userId, el){
-    try{ paintCount(el, Number(sessionStorage.getItem(BADGE_KEY) || 0)); }catch(e){}
-    try{ const { unread } = await load(sb, userId); paintCount(el, unread); }catch(e){}
+  // ---- Pop-up toasts for new notifications, on whatever page is open ----
+  const TOASTED_KEY = 'lea_notify_toasted';
+  const KIND_LABEL = { message:'Message', report:'Report', update:'Update', reminder:'Reminder' };
+  let watching = false;
+  let lastTick = 0;
+
+  function injectToastCss(){
+    if(document.getElementById('leaToastCss')) return;
+    const s = document.createElement('style');
+    s.id = 'leaToastCss';
+    s.textContent =
+      '.lea-toast{position:fixed;top:12px;left:50%;z-index:6000;width:min(420px,calc(100% - 24px));transform:translate(-50%,-150%);' +
+        'transition:transform .3s cubic-bezier(.2,.8,.2,1);display:block;text-decoration:none;color:var(--ink,#eef1e9);' +
+        'background:var(--bg-panel,#0e1c28);border:1px solid var(--line,rgba(111,168,207,.2));border-left:3px solid var(--gold,#e0a83f);' +
+        'border-radius:12px;padding:11px 40px 11px 14px;box-shadow:0 10px 30px rgba(0,0,0,.45);font-family:var(--font-body,system-ui,sans-serif);}' +
+      '.lea-toast.in{transform:translate(-50%,0);}' +
+      '.lea-toast-kicker{display:block;font-family:var(--font-mono,monospace);font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--gold-bright,#f0c268);margin-bottom:2px;}' +
+      '.lea-toast-title{display:block;font-weight:600;font-size:14px;line-height:1.35;}' +
+      '.lea-toast-body{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:12.5px;line-height:1.45;opacity:.85;margin-top:2px;white-space:pre-line;}' +
+      '.lea-toast-x{position:absolute;top:6px;right:6px;width:28px;height:28px;border:none;background:none;color:inherit;font-size:18px;cursor:pointer;opacity:.7;}' +
+      '@media (prefers-reduced-motion: reduce){.lea-toast{transition:none;}}';
+    document.head.appendChild(s);
+  }
+
+  function toast(items){
+    injectToastCss();
+    const one = items.length === 1 ? items[0] : null;
+    // Only same-site pages open straight from the toast; anything else goes
+    // through the notifications page, which handles outside links safely.
+    const href = one && one.href && /^[\w-]+\.html(\?|$)/.test(one.href) ? one.href : 'notifications.html';
+    document.querySelectorAll('.lea-toast').forEach(t => t.remove());
+    const el = document.createElement('a');
+    el.className = 'lea-toast';
+    el.href = href;
+    el.setAttribute('role', 'status');
+    el.innerHTML =
+      '<span class="lea-toast-kicker">' + (one ? KIND_LABEL[one.kind] || 'Notification' : 'Notifications') + '</span>' +
+      '<span class="lea-toast-title">' + escapeHtml(one ? one.title : items.length + ' new notifications') + '</span>' +
+      (one && one.body ? '<span class="lea-toast-body">' + escapeHtml(one.body) + '</span>' : '') +
+      '<button type="button" class="lea-toast-x" aria-label="Dismiss">×</button>';
+    document.body.appendChild(el);
+    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('in')));
+    const hide = () => { el.classList.remove('in'); setTimeout(() => el.remove(), 350); };
+    el.querySelector('.lea-toast-x').addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); hide(); });
+    setTimeout(hide, 8000);
+  }
+
+  // Checks once a minute while the tab is visible (and on coming back to it).
+  // Each unread item pops up once per device; a backlog, such as a first
+  // visit, becomes one summary toast. onCount receives the unread total.
+  function watch(sb, onCount){
+    if(watching) return;
+    watching = true;
+    const tick = async () => {
+      if(document.hidden || Date.now() - lastTick < 20000) return;
+      lastTick = Date.now();
+      try{
+        const { data: { session } } = await sb.auth.getSession();
+        if(!session) return;
+        const { items, unread } = await load(sb, session.user.id);
+        if(onCount) onCount(unread);
+        if(/notifications\.html$/.test(location.pathname)) return;
+        let done = [];
+        try{ done = JSON.parse(localStorage.getItem(TOASTED_KEY) || '[]'); }catch(e){}
+        const fresh = items.filter(i => i.unread && done.indexOf(i.kind + ':' + i.id) === -1);
+        if(!fresh.length) return;
+        done = done.concat(fresh.map(i => i.kind + ':' + i.id)).slice(-300);
+        try{ localStorage.setItem(TOASTED_KEY, JSON.stringify(done)); }catch(e){}
+        toast(fresh);
+      }catch(e){ /* a toast is never worth breaking the page for */ }
+    };
+    tick();
+    setInterval(tick, 60000);
+    document.addEventListener('visibilitychange', tick);
   }
 
   function bellSvg(){
@@ -117,5 +190,5 @@
 
   function registerSource(name, loadFn){ sources.push({ name, load:loadFn }); }
 
-  window.LEANotify = { load, markRead, paintBadge, bellSvg, registerSource, escapeHtml };
+  window.LEANotify = { load, markRead, watch, bellSvg, registerSource, escapeHtml };
 })();

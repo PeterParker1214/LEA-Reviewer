@@ -12,17 +12,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/icons.js?v=16"></script>
-<script src="assets/countdown.js?v=16"></script>
-<script src="assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/quiz-source.js?v=16"></script>
-<script src="assets/avatar.js?v=16"></script>
-<script src="assets/module-progress.js?v=16"></script>
-<script src="assets/offline.js?v=16"></script>
-<script src="assets/quiz-resume.js?v=16"></script>
-<script src="assets/notifications.js?v=1"></script>
-<script src="assets/reminders.js?v=2"></script>
-<script src="assets/whats-new.js?v=1"></script>
+<script src="assets/icons.js?v=18"></script>
+<script src="assets/countdown.js?v=18"></script>
+<script src="assets/theme.js?v=18" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=18"></script>
+<script src="assets/avatar.js?v=18"></script>
+<script src="assets/module-progress.js?v=18"></script>
+<script src="assets/offline.js?v=18"></script>
+<script src="assets/quiz-resume.js?v=18"></script>
+<script src="assets/notifications.js?v=18"></script>
+<script src="assets/reminders.js?v=18"></script>
+<script src="assets/whats-new.js?v=18"></script>
 <script>
 // Coming back to Home from anywhere in the app used to flash the sign-in
 // screen for about half a second: the signed-out shell is what the document
@@ -597,7 +597,7 @@
       border-left:3px solid var(--blue-bright); padding:13px 15px; border-radius:10px; }
   }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=16">
+<link rel="stylesheet" href="assets/blueprint.css?v=18">
 </head>
 <body>
 <div class="wrap">
@@ -1379,6 +1379,7 @@ function showSignedOut(){
   if(countdownTimer){ countdownTimer(); countdownTimer = null; }
   signedInShell.classList.add('hidden');
   signedOutShell.classList.remove('hidden');
+  ['accountSheetOverlay', 'topicSheetOverlay'].forEach(id => { const el = document.getElementById(id); if(el) el.classList.add('hidden'); });
   startSignInScreen();
 }
 
@@ -1468,27 +1469,22 @@ sb.auth.onAuthStateChange((event, session) => {
 
 // ---- SVGs (Lucide-style, stroke-width 1.5, matching the site's icon set) ----
 // Home re-renders often (presence, progress), and each render rebuilds the
-// badge. The last known count is painted every time; the network is asked at
-// most once a minute.
-let bellFetchedAt = 0;
+// badge. The last known count is painted every time; LEANotify.watch keeps it
+// fresh once a minute and pops up new notifications.
+let bellWatching = false;
 function setBellCount(n){
   const el = document.getElementById('bellBadge');
   if(!el) return;
   el.textContent = n > 9 ? '9+' : String(n);
   el.hidden = !(n > 0);
 }
-async function paintBell(){
+function paintBell(){
   if(window.LEAWhatsNew) LEAWhatsNew.popup();
   if(!window.LEANotify) return;
   try{ setBellCount(Number(sessionStorage.getItem('lea_notify_unread') || 0)); }catch(e){}
-  if(Date.now() - bellFetchedAt < 60000) return;
-  bellFetchedAt = Date.now();
-  try{
-    const { data: { session } } = await sb.auth.getSession();
-    if(!session) return;
-    const { unread } = await LEANotify.load(sb, session.user.id);
-    setBellCount(unread);
-  }catch(e){ /* the bell is never worth breaking Home for */ }
+  if(bellWatching) return;
+  bellWatching = true;
+  LEANotify.watch(sb, setBellCount);
 }
 
 function svgTrophy(){

@@ -14,7 +14,8 @@
  * Which ones a reader wants is saved in their progress (meta key
  * 'reminderPrefs'), so the choice follows them across devices.
  *
- * RELEASE STEP: bump BUILD here and "build" in data/site-version.json together.
+ * RELEASE STEP: see assets/whats-new.js. BUILD must equal the newest published
+ * build in data/changelog.json.
  */
 (function(){
   'use strict';
@@ -177,10 +178,10 @@
 
   // ---- new version ----
   async function updateReminders(){
-    const res = await fetch('data/site-version.json', { cache:'no-store' });
+    const res = await fetch('data/changelog.json', { cache:'no-store' });
     if(!res.ok) return [];
-    const info = await res.json();
-    const latest = Number(info && info.build);
+    const published = (await res.json()).filter(v => v.draft !== true);
+    const latest = published.length ? Number(published[0].build) : 0;
     if(!(latest > BUILD)) return [];
     return [reminder('update', String(latest), 'A new version of the site is out',
       'Refresh to load the latest fixes and features.', { action:'refresh', at: new Date().toISOString() })];

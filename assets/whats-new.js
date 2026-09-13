@@ -4,9 +4,15 @@
  *   listHtml()  - the full history, for Profile's Versions tab
  * It also feeds the notifications bell (kind 'update').
  *
- * RELEASE STEP: add an entry to data/changelog.json with the next build number,
- * set the same number in data/site-version.json and BUILD in assets/reminders.js,
- * and bump reminders.js's ?v= wherever it is loaded.
+ * WHEN TO ANNOUNCE
+ * Not every push is a version. Small pushes add their lines to the top entry
+ * with "draft": true — readers see nothing. When the draft adds up to something
+ * worth telling readers about, remove "draft" to publish it:
+ *   1. delete "draft": true from the top entry in data/changelog.json
+ *   2. set BUILD in assets/reminders.js to that entry's build
+ *   3. run python tools/bump-assets.py, then push
+ * Publishing triggers the popup, the bell, and the "refresh" reminder at once.
+ * Start the next draft with build + 1.
  */
 (function(){
   'use strict';
@@ -22,7 +28,7 @@
     if(!changelogPromise){
       changelogPromise = fetch('data/changelog.json', { cache:'no-cache' })
         .then(r => r.ok ? r.json() : [])
-        .then(v => Array.isArray(v) ? v : [])
+        .then(v => Array.isArray(v) ? v.filter(entry => entry.draft !== true) : [])
         .catch(() => []);
     }
     return changelogPromise;

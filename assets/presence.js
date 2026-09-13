@@ -72,14 +72,28 @@
         if (opts.onChange) opts.onChange([]);
       }
 
+      // New-notification toasts ride along with presence, since this file is
+      // already on every page. notifications.js is loaded from beside this
+      // file with the same ?v=, so tools/bump-assets.py keeps both in step.
+      function watchNotifications() {
+        if (/\/archive\//.test(location.pathname)) return;
+        if (window.LEANotify) { LEANotify.watch(sb); return; }
+        var self = document.querySelector('script[src*="presence.js"]');
+        if (!self) return;
+        var s = document.createElement('script');
+        s.src = self.getAttribute('src').replace('presence.js', 'notifications.js');
+        s.onload = function () { if (window.LEANotify) LEANotify.watch(sb); };
+        document.head.appendChild(s);
+      }
+
       sb.auth.onAuthStateChange(function (event, session) {
         if (event === 'SIGNED_OUT') stop();
-        if (event === 'SIGNED_IN' && session) resolveUsername(sb, session.user).then(start);
+        if (event === 'SIGNED_IN' && session) { resolveUsername(sb, session.user).then(start); watchNotifications(); }
       });
 
       sb.auth.getSession().then(function (res) {
         var session = res && res.data && res.data.session;
-        if (session) resolveUsername(sb, session.user).then(start);
+        if (session) { resolveUsername(sb, session.user).then(start); watchNotifications(); }
       });
     });
   }
