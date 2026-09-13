@@ -21,7 +21,8 @@
 <script src="assets/offline.js?v=16"></script>
 <script src="assets/quiz-resume.js?v=16"></script>
 <script src="assets/notifications.js?v=1"></script>
-<script src="assets/reminders.js?v=1"></script>
+<script src="assets/reminders.js?v=2"></script>
+<script src="assets/whats-new.js?v=1"></script>
 <script>
 // Coming back to Home from anywhere in the app used to flash the sign-in
 // screen for about half a second: the signed-out shell is what the document
@@ -1477,6 +1478,7 @@ function setBellCount(n){
   el.hidden = !(n > 0);
 }
 async function paintBell(){
+  if(window.LEAWhatsNew) LEAWhatsNew.popup();
   if(!window.LEANotify) return;
   try{ setBellCount(Number(sessionStorage.getItem('lea_notify_unread') || 0)); }catch(e){}
   if(Date.now() - bellFetchedAt < 60000) return;

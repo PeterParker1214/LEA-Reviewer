@@ -163,6 +163,10 @@
   .crop-actions button[disabled]{ opacity:.5; cursor:default; }
   .crop-hint{ font-family:var(--font-mono); font-size:9.5px; color:var(--muted); text-align:center; margin-top:10px; line-height:1.6; }
   .pf-row a:hover, .pf-row button:hover{ border-color:var(--gold); }
+  .pf-tabs{ display:flex; gap:8px; margin:0 0 16px; }
+  .pf-tabs button{ flex:1; font-family:var(--font-mono); font-size:12px; letter-spacing:.03em; text-transform:uppercase;
+    background:var(--bg-panel); border:1px solid var(--line); color:var(--muted); padding:10px; border-radius:10px; cursor:pointer; }
+  .pf-tabs button.active{ border-color:var(--gold); color:var(--gold-bright); }
 </style>
 <link rel="stylesheet" href="assets/blueprint.css?v=16">
 <script src="assets/theme.js?v=16" data-alt-class="light-mode" data-default-is="dark"></script>
@@ -172,6 +176,7 @@
 <script src="assets/offline.js?v=16"></script>
 <script src="assets/presence.js?v=16"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
+<script src="assets/whats-new.js?v=1"></script>
 </head>
 <body>
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
@@ -224,8 +229,42 @@ function monthYear(iso){
 const state = {
   userId: null, email: null, username: '', joined: null,
   rank: null, mastered: null, streak: null, dirty: false,
-  avatarUrl: null, canUpload: false
+  avatarUrl: null, canUpload: false,
+  tab: new URLSearchParams(location.search).get('tab') === 'versions' ? 'versions' : 'profile'
 };
+
+function tabsHtml(){
+  return '<div class="pf-tabs" role="tablist">' +
+    [['profile', 'Profile'], ['versions', 'Versions']].map(([id, label]) =>
+      '<button type="button" role="tab" data-pf-tab="' + id + '" aria-selected="' + (state.tab === id) + '"' +
+        (state.tab === id ? ' class="active"' : '') + '>' + label + '</button>'
+    ).join('') + '</div>';
+}
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('[data-pf-tab]');
+  if(!btn || btn.dataset.pfTab === state.tab) return;
+  state.tab = btn.dataset.pfTab;
+  history.replaceState(null, '', state.tab === 'versions' ? '?tab=versions' : location.pathname);
+  render();
+});
+
+async function renderVersions(){
+  const head =
+    '<div class="pf-head">' +
+      '<a class="icon-btn-44" href="index.html" title="Back home">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>' +
+      '</a>' +
+      '<div class="pf-title">Profile</div>' +
+    '</div>' + tabsHtml();
+  const wrap = document.getElementById('pfWrap');
+  wrap.innerHTML = head + '<div class="pf-note">Loading…</div>';
+  const versions = window.LEAWhatsNew ? await LEAWhatsNew.load() : [];
+  if(state.tab !== 'versions') return;
+  wrap.innerHTML = head + (versions.length
+    ? LEAWhatsNew.listHtml(versions)
+    : '<div class="pf-note">The version history could not be loaded. Try again in a moment.</div>');
+}
 
 // Every line here is a real number or it is absent. Rank and mastered come
 // from the same RPC the standings page uses; streak is the stored daily-drill
@@ -245,6 +284,7 @@ function statsLines(){
 }
 
 function render(){
+  if(state.tab === 'versions'){ renderVersions(); return; }
   const lines = statsLines();
   document.getElementById('pfWrap').innerHTML =
     '<div class="pf-head">' +
@@ -253,7 +293,7 @@ function render(){
       '</a>' +
       '<div class="pf-title">Profile</div>' +
       '<button class="pf-save" id="pfSave">Save</button>' +
-    '</div>' +
+    '</div>' + tabsHtml() +
 
     '<div class="pf-id">' +
       '<div class="pf-avatar" id="pfAvatar">' + LEAAvatar.faceHtml(state.avatarUrl, state.username) + '</div>' +
