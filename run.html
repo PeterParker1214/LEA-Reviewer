@@ -60,7 +60,7 @@
   .icon-btn svg{ width:19px; height:19px; }
   .icon-btn.flagged{ border-color:var(--gold); color:var(--gold); }
   .header-title{ text-align:center; flex:1; min-width:0; }
-  .header-title .h-sub{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+  .header-title .h-sub{ font-family:var(--font-mono); font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
   .header-title .h-main{ font-family:var(--font-display); font-weight:700; font-size:15px; text-transform:uppercase; color:var(--ink); margin-top:2px; }
 
   /* ===== tick strip ===== */
@@ -93,7 +93,7 @@
   .counts-row{ display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; gap:10px; flex-wrap:wrap; }
   /* Frame 2c colours each count by what it means — green right, red wrong,
      blue skipped, gold flagged — rather than one uniform ink. */
-  .counts-text{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); letter-spacing:.03em; }
+  .counts-text{ font-family:var(--font-mono); font-size:11.5px; color:var(--muted); letter-spacing:.03em; }
   .counts-text b{ color:var(--ink); }
   .counts-text .c-right{ color:var(--good); }
   .counts-text .c-wrong{ color:var(--bad); }
@@ -116,11 +116,11 @@
   .bp-card::after{ bottom:-2px; right:-2px; border-width:0 2px 2px 0; }
   .section-tag{
     display:inline-block; background:var(--gold); color:#1a1206; font-family:var(--font-mono);
-    font-size:10px; letter-spacing:.1em; text-transform:uppercase; padding:4px 10px; border-radius:3px; margin-bottom:12px;
+    font-size:11px; letter-spacing:.1em; text-transform:uppercase; padding:4px 10px; border-radius:3px; margin-bottom:12px;
   }
   .clock-chip{
     display:inline-block; margin-left:8px; border:1px dashed var(--line); color:var(--muted);
-    font-family:var(--font-mono); font-size:9.5px; letter-spacing:.04em; text-transform:uppercase;
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:.04em; text-transform:uppercase;
     padding:4px 9px; border-radius:20px;
   }
   .qtext{ font-size:17px; font-weight:450; line-height:1.6; color:var(--ink); margin:0 0 14px; }
@@ -132,7 +132,7 @@
     border-left:3px solid var(--gold); border-radius:6px; padding:12px 14px;
     margin:0 0 14px; font-size:14.5px; line-height:1.6; color:var(--muted); white-space:pre-line;
   }
-  .scenario-box b{ display:block; font-family:var(--font-mono); font-size:10px; letter-spacing:.09em;
+  .scenario-box b{ display:block; font-family:var(--font-mono); font-size:11px; letter-spacing:.09em;
     text-transform:uppercase; color:var(--gold-bright); margin-bottom:6px; font-weight:600; }
   /* Phone: the wrapper takes no part in layout, so text and figure stack
      exactly as they always did. Desktop re-forms it as a row. */
@@ -147,7 +147,7 @@
   .qimg-hint{
     position:absolute; right:8px; bottom:8px; pointer-events:none;
     background:rgba(10,18,24,0.82); color:var(--gold-bright);
-    font-family:var(--font-mono); font-size:9.5px; letter-spacing:.06em; text-transform:uppercase;
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;
     padding:4px 7px; border-radius:5px; border:1px solid var(--line);
   }
 
@@ -166,7 +166,7 @@
     justify-content:space-between; gap:10px; padding:12px 14px;
   }
   .imgview-bar .iv-note{
-    font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);
   }
   .imgview-bar button{
     width:44px; height:44px; border-radius:8px; background:var(--bg-panel); border:1px solid var(--line);
@@ -181,7 +181,7 @@
     font-family:var(--font-body); font-size:14.5px; line-height:1.4; cursor:pointer;
     display:flex; align-items:center; gap:10px; transition:border-color .12s ease, scale 160ms var(--ease-out);
   }
-  .opt:hover:not(.locked){ border-style:solid; border-color:var(--blue-bright); }
+  @media (hover:hover) and (pointer:fine){ .opt:hover:not(.locked){ border-style:solid; border-color:var(--blue-bright); } }
   .opt .letter{ font-family:var(--font-mono); color:var(--blue-bright); flex-shrink:0; }
   .opt.locked{ cursor:default; }
   .opt.correct{ border-style:solid; border-color:var(--good); background:rgba(95,191,130,0.12); }
@@ -214,7 +214,7 @@
      separated by a 10px gap rather than a margin on the label. */
   .explain .meta-row{
     display:flex; gap:10px; align-items:flex-start;
-    font-family:var(--font-mono); font-size:10.5px; letter-spacing:.04em;
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:.04em;
     text-transform:uppercase; color:var(--blue-bright); margin-bottom:8px;
   }
   .explain .meta-row span{ flex:1; color:var(--muted); text-transform:none; letter-spacing:0; }
@@ -230,7 +230,7 @@
   .mnemo-hint{ margin:0 0 10px; border:1px dashed rgba(224,168,63,0.45); border-radius:8px; background:rgba(224,168,63,0.06); }
   .mnemo-hint summary{ list-style:none; cursor:pointer; padding:9px 12px; }
   .mnemo-hint summary::-webkit-details-marker{ display:none; }
-  .mnemo-label{ display:block; font-family:var(--font-mono); font-size:10.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:3px; }
+  .mnemo-label{ display:block; font-family:var(--font-mono); font-size:11.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:3px; }
   .mnemo-label::after{ content:" ▾"; }
   .mnemo-hint[open] .mnemo-label::after{ content:" ▴"; }
   .mnemo-hook{ display:block; font-family:var(--font-hand); font-size:14.5px; line-height:1.45; color:var(--ink); }
@@ -238,7 +238,7 @@
   .mnemo-items{ list-style:none; margin:0; padding:0 12px 10px; font-size:13px; line-height:1.55; }
   .mnemo-items li{ display:flex; gap:10px; padding:3px 0; }
   .mnemo-items .k{ flex-shrink:0; min-width:3.2em; font-family:var(--font-mono); font-size:11.5px; color:var(--blue-bright); padding-top:1px; }
-  .mnemo-more{ display:block; padding:0 12px 10px; font-family:var(--font-mono); font-size:10.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--blue-bright); }
+  .mnemo-more{ display:block; padding:0 12px 10px; font-family:var(--font-mono); font-size:11.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--blue-bright); }
   .chip-row{ display:flex; gap:8px; margin-top:12px; }
   .chip-btn{
     flex:1; font-family:var(--font-mono); font-size:11px; letter-spacing:.03em; text-transform:uppercase;
@@ -253,7 +253,7 @@
     color:var(--ink); font-family:var(--font-hand); font-size:14px; padding:10px 12px; resize:vertical;
   }
   .note-box .note-save{
-    margin-top:6px; font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.04em;
+    margin-top:6px; font-family:var(--font-mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.04em;
     background:var(--gold); color:#1a1206; border:none; padding:7px 14px; border-radius:6px; cursor:pointer;
   }
 
@@ -289,7 +289,7 @@
   .sheet.report{ border-top-color:var(--bad); }
   .sheet h3{ font-family:var(--font-display); font-weight:700; font-size:20px; text-transform:uppercase; margin:0 0 14px; }
   .map-legend{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:14px; }
-  .map-legend .lg-item{ display:flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:10.5px; color:var(--muted); text-transform:uppercase; }
+  .map-legend .lg-item{ display:flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:11.5px; color:var(--muted); text-transform:uppercase; }
   .map-legend .lg-dot{ width:9px; height:9px; border-radius:2px; }
   .map-grid{ display:grid; grid-template-columns:repeat(8, 1fr); gap:6px; margin-bottom:16px; }
   .map-cell{
@@ -319,7 +319,7 @@
     width:100%; height:48px; border-radius:10px; background:var(--bad); color:#fff; border:none;
     font-family:var(--font-mono); font-size:12.5px; text-transform:uppercase; letter-spacing:.04em; cursor:pointer;
   }
-  .report-note{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); text-align:center; margin-top:10px; }
+  .report-note{ font-family:var(--font-mono); font-size:11.5px; color:var(--muted); text-align:center; margin-top:10px; }
   .sheet-close{
     display:block; margin:14px auto 0; background:none; border:none; color:var(--muted);
     font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em; cursor:pointer;
@@ -362,13 +362,13 @@
     .q-body .qimg-wrap img{ max-height:100%; width:auto; object-fit:contain; box-sizing:border-box; }
 
     .kbd-hint{ display:block; text-align:center; font-family:var(--font-mono);
-      font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;
+      font-size:11.5px; letter-spacing:.06em; text-transform:uppercase;
       color:var(--muted); margin-top:10px; }
   }
 
   /* Rail furniture */
   .rail-block{ background:var(--bg-panel); border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:14px; }
-  .rail-head{ font-family:var(--font-mono); font-size:9.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:10px; }
+  .rail-head{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:10px; }
   /* A full module runs to 200+ questions, which would push "To resolve" and
      the module stat far below the fold. Cap the grid and let it scroll so the
      rail stays a rail. */
@@ -406,7 +406,7 @@
   .resolve-row:last-of-type{ border-bottom:none; }
   .resolve-row:hover{ color:var(--gold-bright); }
   .resolve-row .rr-go{ color:var(--blue-bright); }
-  .rail-more{ font-family:var(--font-mono); font-size:10.5px; color:var(--muted); padding:6px 2px; }
+  .rail-more{ font-family:var(--font-mono); font-size:11.5px; color:var(--muted); padding:6px 2px; }
   .rail-stat-row{ display:flex; justify-content:space-between; align-items:baseline; font-family:var(--font-mono); font-size:11.5px; color:var(--muted); margin-bottom:8px; }
   .rail-stat-row b{ color:var(--gold-bright); font-size:14px; }
   .rail-bar{ height:5px; border-radius:3px; background:var(--bg-panel-2); overflow:hidden; }
@@ -416,9 +416,9 @@
   /* .dd-mark / the old .dd-title and .dd-day are superseded by the 3b block
      further down, which follows the frame: an outlined gold ring, an ink
      title, and the handwritten day line in the softer body ink. */
-  .dd-streak{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); text-align:center; margin:6px 0 18px; }
+  .dd-streak{ font-family:var(--font-mono); font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); text-align:center; margin:6px 0 18px; }
   .dd-split{ grid-template-columns:repeat(auto-fit, minmax(0, 1fr)); }
-  .res-saved{ font-family:var(--font-mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--good); margin-bottom:10px; }
+  .res-saved{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--good); margin-bottom:10px; }
   .res-newly{ font-family:var(--font-mono); font-size:11.5px; color:var(--muted); margin:-8px 0 16px; }
   .res-newly b{ color:var(--good); font-size:13px; }
   .res-best{ font-family:var(--font-mono); font-size:13px; color:var(--gold-bright); margin:6px 0 16px; }
@@ -439,16 +439,16 @@
   .res-secondary{ display:flex; gap:10px; margin-bottom:18px; }
   .res-alt{
     flex:1; background:var(--bg-panel-2); border:1px solid var(--line); color:var(--gold-bright);
-    font-family:var(--font-mono); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase;
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase;
     padding:13px 10px; cursor:pointer;
   }
   .res-alt:hover{ border-color:var(--gold-bright); }
-  .res-topics-head{ font-family:var(--font-mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+  .res-topics-head{ font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
   .res-topic{ display:flex; align-items:center; gap:10px; padding:7px 0; }
   .rt-name{ flex:1; font-size:12.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .rt-bar{ width:64px; height:5px; background:rgba(111,168,207,0.14); flex-shrink:0; display:block; }
   .rt-bar span{ display:block; height:100%; background:var(--gold); }
-  .rt-pct{ font-family:var(--font-mono); font-size:10.5px; color:var(--gold); width:34px; text-align:right; flex-shrink:0; }
+  .rt-pct{ font-family:var(--font-mono); font-size:11.5px; color:var(--gold); width:34px; text-align:right; flex-shrink:0; }
   .rt-pct.low{ color:var(--bad); }
   .rt-pct.full{ color:var(--good); }
 
@@ -480,7 +480,7 @@
   }
   .res-back:hover{ border-color:var(--gold); }
   .res-back svg{ width:18px; height:18px; flex-shrink:0; }
-  .res-kicker{ font-family:var(--font-mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-bright); }
+  .res-kicker{ font-family:var(--font-mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-bright); }
 
   /* One segment per question - right first, then missed, as the frame groups
      them. flex:1 keeps a 200-item exam from overflowing the card. */
@@ -490,7 +490,7 @@
   .res-segs i.no{ background:var(--bad); }
   .res-counts{
     display:flex; justify-content:space-between;
-    font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);
   }
   .res-counts b{ font-weight:400; }
   .res-counts .n-ok{ color:var(--good); }
@@ -505,7 +505,7 @@
 
   .res-sec-head{
     display:flex; align-items:center; gap:12px; margin:0 0 12px;
-    font-family:var(--font-mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);
   }
   .res-sec-head::before, .res-sec-head::after{ content:''; flex:1; height:1px; background:var(--line); }
   .res-topics{ background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:6px 16px; margin-bottom:16px; text-align:left; }
@@ -522,14 +522,14 @@
   }
   .miss-head{
     display:flex; justify-content:space-between; align-items:center; gap:10px;
-    font-family:var(--font-mono); font-size:9.5px; letter-spacing:.08em; text-transform:uppercase;
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
     color:var(--gold-bright); margin-bottom:8px;
   }
   .miss-q{ font-size:14.5px; font-weight:600; line-height:1.45; margin-bottom:10px; }
   .miss-you{ font-family:var(--font-mono); font-size:11px; color:var(--bad); margin-bottom:3px; }
   .miss-ans{ font-family:var(--font-mono); font-size:11px; color:var(--good); margin-bottom:10px; }
   .miss-why{ font-size:13px; color:var(--muted); line-height:1.6; }
-  .miss-more{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); padding:6px 0 2px; }
+  .miss-more{ font-family:var(--font-mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); padding:6px 0 2px; }
 
   /* --- 3b daily drill done -------------------------------------------- */
   .dd-topbar{ display:flex; justify-content:flex-end; margin-bottom:8px; }
@@ -544,7 +544,7 @@
   .dd-ticks i{ flex:1; height:8px; background:rgba(111,168,207,0.18); }
   .dd-ticks i.done{ background:var(--gold); }
   .dd-ticks i.today{ background:var(--gold-bright); box-shadow:0 0 8px rgba(240,194,104,0.6); }
-  .dd-streak{ font-family:var(--font-mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  .dd-streak{ font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
   .dd-stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:16px; }
   .dd-stat{ background:var(--bg-panel-2); border:1px solid var(--line); padding:14px 8px; text-align:center; }
   .dd-stat b{ display:block; font-family:var(--font-mono); font-weight:600; font-size:22px; }
@@ -570,12 +570,12 @@
   .etymology-tooltip:not(.is-etymology) .etymology-tooltip-meaning{font-style:normal;line-height:1.5;}
   .etymology-tooltip-hook{margin:8px 0 0;}
   .etymology-tooltip-note{font-size:12px;line-height:1.55;color:var(--ink);opacity:.92;}
-  .etymology-tooltip-source{display:inline-block;margin-top:9px;color:var(--clay-bright);font-size:10px;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;}
+  .etymology-tooltip-source{display:inline-block;margin-top:9px;color:var(--clay-bright);font-size:11px;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;}
   .etymology-tooltip-source:hover{text-decoration:underline;}
-  .etymology-card-hint{display:inline-block;margin:0 8px 0 6px;color:var(--sand);font-size:10px;letter-spacing:.04em;font-style:italic;opacity:.85;}
+  .etymology-card-hint{display:inline-block;margin:0 8px 0 6px;color:var(--sand);font-size:11px;letter-spacing:.04em;font-style:italic;opacity:.85;}
   @media (max-width:600px){.etymology-tooltip{max-width:calc(100vw - 24px);padding:13px 14px 12px}.etymology-tooltip-word{font-size:18px}}
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=23">
+<link rel="stylesheet" href="assets/blueprint.css?v=24">
 <script src="assets/lea-confirm.js?v=22"></script>
 <script src="assets/quiz-source.js?v=22"></script>
 <script src="assets/etymology.js?v=22"></script>
