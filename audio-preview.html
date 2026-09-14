@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LEA Reviewer — Audio Preview</title>
+  <style>
+    :root{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#172033;background:#f6f8fb}
+    body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;box-sizing:border-box}
+    .card{width:min(760px,100%);background:#fff;border:1px solid #dfe5ee;border-radius:20px;padding:28px;box-shadow:0 16px 50px rgba(25,45,80,.08)}
+    h1{margin:0 0 8px;font-size:28px}.sub{margin:0 0 24px;color:#667085}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+    button{border:1px solid #cfd7e5;background:#fff;border-radius:12px;padding:13px 14px;font:inherit;cursor:pointer;text-align:left}
+    button:hover{background:#f7f9fc}.primary{background:#172033;color:#fff;border-color:#172033}.primary:hover{background:#101827}
+    .section{padding:20px 0;border-top:1px solid #e8ecf2}.section:first-of-type{border-top:0;padding-top:0}
+    label{display:flex;justify-content:space-between;gap:16px;margin:12px 0 6px;font-size:14px;font-weight:600}
+    input[type=range]{width:100%}
+    .status{margin-top:18px;padding:12px 14px;border-radius:12px;background:#f3f5f8;color:#475467;font-size:14px}
+    code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>LEA Reviewer Audio Preview</h1>
+    <p class="sub">Preview the synthesized UI sounds and background study ambience. Nothing here changes <code>main</code>.</p>
+
+    <section class="section">
+      <h2>Sound effects</h2>
+      <div class="grid">
+        <button data-sfx="click">Click</button>
+        <button data-sfx="navigate">Navigate</button>
+        <button data-sfx="correct">Correct answer</button>
+        <button data-sfx="wrong">Wrong answer</button>
+        <button data-sfx="countdown">Countdown tick</button>
+        <button data-sfx="tick">Timer tick</button>
+        <button data-sfx="complete">Exam complete</button>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Background music</h2>
+      <div class="grid">
+        <button class="primary" id="startBgm">Start ambience</button>
+        <button id="stopBgm">Stop ambience</button>
+        <button id="mute">Mute / unmute</button>
+      </div>
+      <label for="musicVolume"><span>Music volume</span><span id="musicValue">18%</span></label>
+      <input id="musicVolume" type="range" min="0" max="1" step="0.01" value="0.18">
+      <label for="sfxVolume"><span>SFX volume</span><span id="sfxValue">55%</span></label>
+      <input id="sfxVolume" type="range" min="0" max="1" step="0.01" value="0.55">
+    </section>
+
+    <div class="status" id="status">Audio is ready. Click a sound to preview it.</div>
+  </main>
+
+  <script src="assets/audio.js?v=1"></script>
+  <script>
+    const statusEl = document.getElementById('status');
+    const musicVolume = document.getElementById('musicVolume');
+    const sfxVolume = document.getElementById('sfxVolume');
+    const musicValue = document.getElementById('musicValue');
+    const sfxValue = document.getElementById('sfxValue');
+
+    function setStatus(message){ statusEl.textContent = message; }
+    function pct(value){ return Math.round(Number(value) * 100) + '%'; }
+
+    LEAAudio.init();
+
+    document.querySelectorAll('[data-sfx]').forEach(button => {
+      button.addEventListener('click', () => {
+        const name = button.dataset.sfx;
+        LEAAudio.playSfx(name);
+        setStatus('Previewing: ' + name);
+      });
+    });
+
+    document.getElementById('startBgm').addEventListener('click', () => {
+      LEAAudio.startBgm();
+      setStatus('Background ambience is playing.');
+    });
+
+    document.getElementById('stopBgm').addEventListener('click', () => {
+      LEAAudio.stopBgm();
+      setStatus('Background ambience stopped.');
+    });
+
+    document.getElementById('mute').addEventListener('click', () => {
+      const settings = LEAAudio.toggleMute();
+      setStatus(settings.muted ? 'Audio muted.' : 'Audio unmuted.');
+    });
+
+    musicVolume.addEventListener('input', event => {
+      LEAAudio.setMusicVolume(event.target.value);
+      musicValue.textContent = pct(event.target.value);
+    });
+
+    sfxVolume.addEventListener('input', event => {
+      LEAAudio.setSfxVolume(event.target.value);
+      sfxValue.textContent = pct(event.target.value);
+    });
+  </script>
+</body>
+</html>
