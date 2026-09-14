@@ -390,6 +390,12 @@ html:active-view-transition-type(run-close)::view-transition-new(root) { animati
 @keyframes lea-vt-out { to   { opacity: 0; } }
 @keyframes lea-vt-in  { from { opacity: 0; } }
 
+/* Browsers without cross-page transitions (iPhones before iOS 18.2): the
+   arriving page still slides in (assets/nav.js adds the class). No fill
+   mode, so no transform lingers on body to trap fixed sheets afterwards. */
+html.lea-enter body      { animation: lea-page-in 320ms var(--ease-out); }
+html.lea-enter-back body { animation: lea-page-in-back 320ms var(--ease-out); }
+
 /* Opening a subject: the card itself opens up into the subject's progress
    card, its name flies up into the heading, and Home sinks back behind.
    Going back folds the page closed into its card again. */

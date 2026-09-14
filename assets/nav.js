@@ -27,6 +27,14 @@
   function read(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }
   function drop(k) { try { sessionStorage.removeItem(k); } catch (e) {} }
 
+  // Browsers that can't animate between pages (iPhones before iOS 18.2):
+  // the arriving page at least slides in from the side you're heading
+  // (html.lea-enter in blueprint.css).
+  if (!window.CSSViewTransitionRule && read(DIR_KEY)) {
+    document.documentElement.classList.add(read(DIR_KEY) === 'back' ? 'lea-enter-back' : 'lea-enter');
+    document.addEventListener('DOMContentLoaded', function () { drop(DIR_KEY); });
+  }
+
   function saveScroll() { store(key(), String(Math.round(window.scrollY))); }
   window.addEventListener('pagehide', saveScroll);
   document.addEventListener('visibilitychange', function () { if (document.hidden) saveScroll(); });
@@ -74,6 +82,7 @@
   // duplicate copy piles up), otherwise opens it.
   function goTo(target) {
     store(DIR_KEY, 'back');
+    store(TO_KEY, new URL(target, location.href).href);
     var nav = window.navigation;
     if (nav && nav.entries && nav.currentEntry) {
       var entries = nav.entries();
@@ -90,11 +99,11 @@
     var nav = window.navigation;
     if (nav && nav.entries && nav.currentEntry) {
       var prev = nav.entries()[nav.currentEntry.index - 1];
-      if (prev && okToStepBack(prev.url)) { history.back(); return; }
+      if (prev && okToStepBack(prev.url)) { store(TO_KEY, prev.url); history.back(); return; }
       goTo(fallback); return;
     }
     // Browsers without the Navigation API: the referrer is the best guess.
-    if (cameFromThisSite() && okToStepBack(document.referrer)) { history.back(); return; }
+    if (cameFromThisSite() && okToStepBack(document.referrer)) { store(TO_KEY, document.referrer); history.back(); return; }
     location.href = fallback;
   }
 
@@ -111,8 +120,14 @@
   // Any other same-site navigation is "forward".
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href]');
-    if (a && !a.hasAttribute('data-back') && a.origin === location.origin) store(DIR_KEY, 'forward');
+    if (a && !a.hasAttribute('data-back') && a.origin === location.origin) { store(DIR_KEY, 'forward'); store(TO_KEY, a.href); }
   }, true);
+
+  // Which two pages a transition runs between. Chrome says so itself
+  // (navigation.activation); Safari has no Navigation API, so the trip is
+  // written down here as it starts — without it Safari got no flying
+  // pieces and no subject/quiz motion, only the plain slide.
+  var TO_KEY = 'lea_nav_to', FROM_KEY = 'lea_nav_from';
 
   // Browser back/forward buttons and swipe-back count as "back".
   window.addEventListener('pageshow', function (e) {
@@ -127,9 +142,11 @@
     drop(DIR_KEY);
     if (e.viewTransition && e.viewTransition.types) e.viewTransition.types.add(dir);
     var act = window.navigation && navigation.activation;
-    if (e.viewTransition && e.viewTransition.types && act && act.from) {
+    var fromUrl = (act && act.from && act.from.url) || read(FROM_KEY);
+    drop(FROM_KEY); drop(TO_KEY);
+    if (e.viewTransition && e.viewTransition.types && fromUrl) {
       var types = e.viewTransition.types;
-      var here = pageName(location.href), there = pageName(act.from.url);
+      var here = pageName(location.href), there = pageName(fromUrl);
       // A quiz is a task laid over where you were, so it rises and falls
       // instead of sliding sideways.
       if (here === 'run' && there !== 'run') types.add('run-open');
@@ -138,7 +155,7 @@
       else if (there === 'home' && here === 'subject') types.add('drill-open');
       else if (there === 'subject' && here === 'home') types.add('drill-close');
     }
-    if (e.viewTransition && act && act.from) nameFor(act.from.url, e.viewTransition);
+    if (e.viewTransition && fromUrl) nameFor(fromUrl, e.viewTransition);
     if (e.viewTransition) {
       activeTransition = e.viewTransition;
       e.viewTransition.finished.then(endTransition, endTransition);
@@ -203,7 +220,9 @@
     vt.finished.then(done, done);
   }
   window.addEventListener('pageswap', function (e) {
-    if (e.viewTransition && e.activation && e.activation.entry) nameFor(e.activation.entry.url, e.viewTransition);
+    store(FROM_KEY, location.href);
+    var toUrl = (e.activation && e.activation.entry && e.activation.entry.url) || read(TO_KEY);
+    if (e.viewTransition && toUrl) nameFor(toUrl, e.viewTransition);
   });
   // A page brought back from the back/forward cache may still carry names.
   window.addEventListener('pageshow', function (e) { if (e.persisted) clearNames(); });
