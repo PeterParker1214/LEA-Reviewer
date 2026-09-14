@@ -47,15 +47,15 @@
 
   .run-header{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
   .icon-btn-44{
-    width:44px; height:44px; border-radius:10px; background:var(--bg-panel); border:1px solid var(--line);
+    width:44px; height:44px; border-radius:8px; background:var(--bg-panel); border:1px solid var(--line);
     color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
   }
   .icon-btn-44 svg{ width:19px; height:19px; }
-  .page-title{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; flex:1; }
+  .page-title{ font-family:var(--font-display); font-weight:800; font-size:28px; line-height:1; text-transform:uppercase; flex:1; }
   /* Rows, faces and dots come from assets/leaderboard.css, shared with the
      subject page's leaderboard modal. */
   .rv-face{
-    width:44px; height:44px; margin:0 0 8px; border:1px solid rgba(224,168,63,0.45);
+    width:44px; height:44px; margin:0 0 8px; border:1px solid color-mix(in srgb, var(--gold) 45%, transparent);
     background:var(--bg-panel-2); display:flex; align-items:center; justify-content:center;
     font-family:var(--font-display); font-weight:800; font-size:17px; color:var(--gold-bright); overflow:hidden;
   }
@@ -63,31 +63,30 @@
   .rv-face img{ width:100%; height:100%; object-fit:cover; }
 
   .week-note{
-    font-family:var(--font-mono); font-size:10.5px; line-height:1.7; color:var(--muted);
-    border-left:3px solid var(--blue-bright); background:var(--bg-panel);
-    border:1px solid var(--line); border-left-width:3px; padding:12px 14px; margin-top:14px;
+    font-family:var(--font-body); font-size:13px; line-height:1.6; color:var(--muted);
+    background:var(--bg-panel); border:1px solid var(--line); padding:12px 16px; margin-top:16px;
   }
-  .rank-chip{ font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+  .rank-chip{ font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); white-space:nowrap; }
 
   /* 3g Closest rival: two standings either side of a VS. */
   .rival-vs{ position:relative; background:var(--bg-panel); border:1px solid var(--line); padding:16px; margin-bottom:16px; }
-  .rv-kicker{ font-family:var(--font-mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+  .rv-kicker{ font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
   .rv-row{ display:flex; align-items:center; gap:12px; }
   .rv-side{ flex:1; min-width:0; }
   .rv-side.them{ text-align:right; }
   .rv-name{ font-family:var(--font-display); font-weight:700; font-size:20px; text-transform:uppercase; line-height:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .rv-mastered{ font-family:var(--font-mono); font-size:11px; color:var(--gold-bright); margin-top:6px; }
-  .rv-avg{ font-family:var(--font-mono); font-size:10px; color:var(--muted); margin-top:2px; }
-  .rv-vs{ font-family:var(--font-display); font-weight:800; font-size:26px; color:#3d4d5c; flex-shrink:0; }
+  .rv-mastered{ font-family:var(--font-body); font-weight:600; font-size:12px; letter-spacing:.04em; text-transform:uppercase; color:var(--gold-bright); margin-top:6px; white-space:nowrap; }
+  .rv-avg{ font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-top:3px; white-space:nowrap; }
+  .rv-vs{ font-family:var(--font-display); font-weight:800; font-size:28px; color:var(--muted); flex-shrink:0; }
   .rv-note{ font-family:var(--font-hand); font-size:14px; color:var(--muted); margin-top:14px; line-height:1.5; }
 
   .tabs-row{ display:flex; gap:8px; margin-bottom:16px; }
   .tab-btn{
-    flex:1; font-family:var(--font-mono); font-size:12px; letter-spacing:.03em; text-transform:uppercase;
+    flex:1; min-height:44px; font-family:var(--font-body); font-weight:600; font-size:12px; letter-spacing:.08em; text-transform:uppercase;
     background:var(--bg-panel); border:1px solid var(--line); color:var(--muted);
-    padding:11px 6px; border-radius:10px; cursor:pointer;
+    padding:0 6px; border-radius:0; cursor:pointer; white-space:nowrap;
   }
-  .tab-btn.active{ border-color:var(--gold); color:var(--gold-bright); background:rgba(224,168,63,0.08); }
+  .tab-btn.active{ border-color:var(--gold); color:var(--gold-bright); background:color-mix(in srgb, var(--gold) 8%, transparent); }
 
   .rival-card{
     position:relative; background:var(--bg-panel); border:1px solid var(--line); padding:20px; margin-bottom:18px;
@@ -95,15 +94,15 @@
   .rival-card::before, .rival-card::after{ content:""; position:absolute; width:12px; height:12px; border:2px solid var(--gold); opacity:.9; }
   .rival-card::before{ top:-2px; left:-2px; border-width:2px 0 0 2px; }
   .rival-card::after{ bottom:-2px; right:-2px; border-width:0 2px 2px 0; }
-  .rival-names{ display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:11px; color:var(--muted); text-transform:uppercase; margin-bottom:8px; }
+  .rival-names{ display:flex; justify-content:space-between; gap:12px; font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.08em; color:var(--muted); text-transform:uppercase; margin-bottom:8px; }
   .rival-names b{ color:var(--ink); }
-  .rival-bar-track{ height:10px; border-radius:5px; background:var(--bg-panel-2); overflow:hidden; display:flex; margin-bottom:10px; }
+  .rival-bar-track{ height:6px; border-radius:0; background:var(--bg-panel-2); overflow:hidden; display:flex; margin-bottom:10px; }
   .rival-bar-you{ background:var(--gold); height:100%; }
   .rival-bar-them{ background:var(--blue-bright); height:100%; }
   .rival-note{ font-family:var(--font-hand); font-size:16px; color:var(--ink); }
 
 
-  .state-note{ font-family:var(--font-mono); font-size:12px; color:var(--muted); text-align:center; padding:40px 0; line-height:1.7; }
+  .state-note{ font-family:var(--font-body); font-size:13px; color:var(--muted); text-align:center; padding:40px 0; line-height:1.6; }
   .theme-toggle{
     position:fixed; top:16px; right:16px; z-index:50;
     background:var(--bg-panel); border:1px solid var(--line); color:var(--gold-bright);
@@ -111,28 +110,29 @@
     border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
   }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=24">
-<link rel="stylesheet" href="assets/leaderboard.css?v=22">
-<script src="assets/theme.js?v=22" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/avatar.js?v=22"></script>
-<script src="assets/leaderboard.js?v=22"></script>
-<script src="assets/offline.js?v=22"></script>
-<script src="assets/presence.js?v=22"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=55">
+<link rel="stylesheet" href="assets/leaderboard.css?v=55">
+<script src="assets/theme.js?v=55" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=55"></script>
+<script src="assets/avatar.js?v=55"></script>
+<script src="assets/leaderboard.js?v=55"></script>
+<script src="assets/offline.js?v=55"></script>
+<script src="assets/presence.js?v=55"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
 </head>
 <body>
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
 <div class="wrap">
   <div class="run-header">
-    <a class="icon-btn-44" href="index.html" title="Back home">
+    <a class="icon-btn-44" href="index.html" title="Back" data-back>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
     </a>
-    <div class="page-title">Standings</div>
+    <div class="page-title" data-vt="lea-standings" data-vt-peer="index.html">Standings</div>
     <div class="rank-chip" id="rankChip"></div>
   </div>
 
   <div class="tabs-row" id="tabsRow"></div>
-  <div id="contentArea"><div class="state-note">Loading…</div></div>
+  <div id="contentArea"><script>document.write(LEANav.skel('rows', 6))</script></div>
 </div>
 
 <script>
@@ -202,9 +202,9 @@ async function renderOverall(){
   if(chip) chip.textContent = myIdx >= 0 ? ('You\u2019re #' + (myIdx + 1)) : '';
   const top10 = data.slice(0, 10);
   let html = rivalCardHtml(data, myIdx) +
-    '<div class="lb-list">' + top10.map((r, i) => lbRowHtml(r, i+1, i === myIdx)).join('') + '</div>';
+    '<div class="lb-list lea-stagger">' + LEALeaderboard.headHtml('Mastered · Avg') + top10.map((r, i) => lbRowHtml(r, i+1, i === myIdx)).join('') + '</div>';
   if(myIdx >= 10){
-    html += '<div class="lb-list" style="margin-top:10px;">' + lbRowHtml(data[myIdx], myIdx+1, true) + '</div>';
+    html += LEALeaderboard.gapHtml() + '<div class="lb-list">' + lbRowHtml(data[myIdx], myIdx+1, true) + '</div>';
   }
   area.innerHTML = html;
 }
@@ -218,7 +218,8 @@ function rivalCardHtml(data, myIdx){
   const gap = Math.max(0, (rival.total_mastered || 0) - (me.total_mastered || 0));
   // Daily Drill is a fixed 20 items, so "drills" is a real unit here rather
   // than an arbitrary one.
-  const drills = Math.round((gap / 20) * 10) / 10;
+  // Whole drills: "about 1.9 drills" read like a measurement nobody can do.
+  const drills = Math.max(1, Math.round(gap / 20));
   const side = (name, row) =>
     '<div class="rv-side' + (name === null ? ' them' : '') + '">' +
       '<div class="rv-face">' + LEAAvatar.faceHtml(avatarFor(row.username), row.username) + '</div>' +
@@ -243,7 +244,7 @@ function rivalCardHtml(data, myIdx){
 // footnote says so rather than letting a short first week read as a full one.
 async function renderWeek(){
   const area = document.getElementById('contentArea');
-  area.innerHTML = '<div class="state-note">Counting this week…</div>';
+  area.innerHTML = LEANav.skel('rows', 6);
 
   let payload = null, failed = false;
   try{
@@ -287,19 +288,19 @@ async function renderWeek(){
   if(chip) chip.textContent = myIdx >= 0 ? ('You’re #' + (myIdx + 1) + ' this week') : '';
 
   area.innerHTML =
-    '<div class="lb-list">' +
+    '<div class="lb-list lea-stagger">' + LEALeaderboard.headHtml('Mastered this week') +
       rows.slice(0, 10).map((r, i) =>
         weekRowHtml(r, i + 1, i === myIdx)
       ).join('') +
     '</div>' +
     // Your own row, pinned, when it falls outside the ten shown.
-    (myIdx >= 10 ? '<div class="lb-list" style="margin-top:10px;">' + weekRowHtml(rows[myIdx], myIdx + 1, true) + '</div>' : '') +
+    (myIdx >= 10 ? LEALeaderboard.gapHtml() + '<div class="lb-list">' + weekRowHtml(rows[myIdx], myIdx + 1, true) + '</div>' : '') +
     sinceNote;
 }
 
 function weekRowHtml(row, rank, isMine){
   return LEALeaderboard.rowHtml(row, rank, {
-    stats: row.mastered + ' this week', isMine, avatars: avatarByUsername
+    stats: String(row.mastered), isMine, avatars: avatarByUsername
   });
 }
 
@@ -322,20 +323,20 @@ async function renderRivals(){
   const me = data[myIdx];
   const rival = data[myIdx - 1];
   const gap = Math.max(0, (rival.total_mastered||0) - (me.total_mastered||0));
-  const drills = Math.round((gap / 20) * 10) / 10; // Daily Drill's fixed 20-item size, so this is a real unit, not an arbitrary one
+  const drills = Math.max(1, Math.round(gap / 20)); // whole Daily Drills (20 items each)
   const total = Math.max(1, (me.total_mastered||0) + (rival.total_mastered||0));
   const myShare = Math.round(((me.total_mastered||0) / total) * 100);
 
   // Same card the Overall tab shows, rather than a second design for the
   // same comparison.
   area.innerHTML = rivalCardHtml(data, myIdx) +
-    '<div class="lb-list">' + lbRowHtml(rival, myIdx, false) + lbRowHtml(me, myIdx+1, true) + '</div>';
+    '<div class="lb-list lea-stagger">' + LEALeaderboard.headHtml('Mastered · Avg') + lbRowHtml(rival, myIdx, false) + lbRowHtml(me, myIdx+1, true) + '</div>';
 }
 
 async function render(){
   renderTabs();
   const area = document.getElementById('contentArea');
-  area.innerHTML = '<div class="state-note">Loading…</div>';
+  area.innerHTML = LEANav.skel('rows', 6);
   if(activeTab === 'overall') await renderOverall();
   else if(activeTab === 'week') await renderWeek();
   else await renderRivals();

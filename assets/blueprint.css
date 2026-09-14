@@ -103,7 +103,7 @@
   color: var(--muted);
 }
 .clock-chip.blue {
-  border-color: rgba(143,196,234,0.5);
+  border-color: color-mix(in srgb, var(--blue-bright) 50%, transparent);
   color: var(--blue-bright);
 }
 
@@ -113,11 +113,11 @@
   padding: 12px 14px;
   font-size: 15.5px;
   border: 1.5px dashed var(--line);
-  background: rgba(111,168,207,0.04);
+  background: color-mix(in srgb, var(--blue) 4%, transparent);
 }
-.opt.correct   { border-style: solid; border-color: var(--good); background: rgba(95,191,130,0.12); }
-.opt.incorrect { border-style: solid; border-color: var(--bad);  background: rgba(226,96,74,0.12); }
-.opt.chosen-tag{ border-style: solid; border-color: var(--gold); background: rgba(224,168,63,0.10); }
+.opt.correct   { border-style: solid; border-color: var(--good); background: color-mix(in srgb, var(--good) 12%, transparent); }
+.opt.incorrect { border-style: solid; border-color: var(--bad);  background: color-mix(in srgb, var(--bad) 12%, transparent); }
+.opt.chosen-tag{ border-style: solid; border-color: var(--gold); background: color-mix(in srgb, var(--gold) 10%, transparent); }
 .opt.dim       { opacity: .6; }
 
 /* Explanation panel: 3px left border in the verdict colour over an 8% tint
@@ -131,7 +131,7 @@
   font-size: 9.5px;
   letter-spacing: .03em;
   text-transform: uppercase;
-  border: 1px solid rgba(224,168,63,0.5);
+  border: 1px solid color-mix(in srgb, var(--gold) 50%, transparent);
   color: var(--gold-bright);
 }
 
@@ -146,22 +146,25 @@
 /* Figure placeholder / image frame. */
 .qimg-wrap { border: 1.5px dashed var(--line); }
 
-/* Search filter chips. */
+/* Search filter chips. Body-font capitals, like every small label since the
+   Home type pass — this file loads after each page's own styles, so the font
+   has to be right here or it overrides the page. */
 .filter-chip {
-  padding: 8px 11px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: .05em;
+  padding: 0 14px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
   text-transform: uppercase;
 }
 
-/* Saved tabs. */
+/* Saved and Standings tabs. */
 .tab-btn {
-  padding: 12px 8px;
-  font-family: var(--font-mono);
-  font-size: 11px;
+  padding: 0 8px;
+  font-family: var(--font-body);
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: .06em;
+  letter-spacing: .08em;
   text-transform: uppercase;
 }
 
@@ -273,6 +276,7 @@ body.light-mode, :root.light-mode {
    ============================================================ */
 :root {
   --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
@@ -322,4 +326,350 @@ button:not(:disabled):active,
 :where(button, a, summary, [role="button"], [tabindex], .opt):focus-visible {
   outline: 2px solid var(--gold-bright);
   outline-offset: 2px;
+}
+
+/* ============================================================
+   PAGE TRANSITIONS
+   Moving between pages cross-fades the page and slides it a little in
+   the direction of travel: forward comes in from the right, back from
+   the left (assets/nav.js labels which one). Pieces that exist on both
+   pages are paired with data-vt / data-vt-peer and named by assets/nav.js
+   only for that trip, so they fly between them — the
+   search button grows into the search field, a subject's name becomes
+   that subject's heading, the bell and trophy become their page titles,
+   and the avatar becomes Profile's picture.
+   Browsers without cross-page transitions simply change page as before.
+   ============================================================ */
+
+@view-transition { navigation: auto; }
+
+/* The blur hides the moment both pages are half-visible. */
+::view-transition-group(*) { animation-duration: 300ms; animation-timing-function: var(--ease-in-out); }
+::view-transition-old(root) { animation: lea-page-out 160ms var(--ease-out) both; }
+::view-transition-new(root) { animation: lea-page-in 280ms var(--ease-out) both; }
+html:active-view-transition-type(back)::view-transition-old(root) { animation-name: lea-page-out-back; }
+html:active-view-transition-type(back)::view-transition-new(root) { animation-name: lea-page-in-back; }
+
+@keyframes lea-page-out      { to   { opacity: 0; transform: translateX(-18px); filter: blur(2px); } }
+@keyframes lea-page-in       { from { opacity: 0; transform: translateX(28px);  filter: blur(2px); } }
+@keyframes lea-page-out-back { to   { opacity: 0; transform: translateX(18px);  filter: blur(2px); } }
+@keyframes lea-page-in-back  { from { opacity: 0; transform: translateX(-28px); filter: blur(2px); } }
+
+/* Starting a quiz lays it over the page you were on; finishing lifts it off. */
+html:active-view-transition-type(run-open)::view-transition-old(root)  { animation: lea-recede 200ms var(--ease-out) both; }
+html:active-view-transition-type(run-open)::view-transition-new(root)  { animation: lea-rise 300ms var(--ease-drawer) both; }
+html:active-view-transition-type(run-close)::view-transition-old(root) { animation: lea-drop 200ms var(--ease-out) both; }
+html:active-view-transition-type(run-close)::view-transition-new(root) { animation: lea-come-forward 280ms var(--ease-out) both; }
+
+@keyframes lea-recede       { to   { opacity: 0; transform: scale(0.98); } }
+@keyframes lea-rise         { from { opacity: 0; transform: translateY(32px); } }
+@keyframes lea-drop         { to   { opacity: 0; transform: translateY(32px); } }
+@keyframes lea-come-forward { from { opacity: 0; transform: scale(0.98); } }
+
+/* Icons and titles are different shapes, so neither is stretched: the icon
+   fades and the title is uncovered as the box grows. */
+::view-transition-group(lea-search),
+::view-transition-group(lea-notifications),
+::view-transition-group(lea-standings) { overflow: clip; }
+
+::view-transition-old(lea-search), ::view-transition-new(lea-search),
+::view-transition-old(lea-notifications), ::view-transition-new(lea-notifications),
+::view-transition-old(lea-standings), ::view-transition-new(lea-standings) {
+  width: 100%; height: 100%;
+  object-fit: none; object-position: left center;
+}
+
+::view-transition-old(lea-search),
+::view-transition-old(lea-notifications),
+::view-transition-old(lea-standings) { animation: lea-vt-out 120ms var(--ease-out) both; }
+
+::view-transition-new(lea-search),
+::view-transition-new(lea-notifications),
+::view-transition-new(lea-standings) { animation: lea-vt-in 240ms var(--ease-out) 60ms both; }
+
+@keyframes lea-vt-out { to   { opacity: 0; } }
+@keyframes lea-vt-in  { from { opacity: 0; } }
+
+/* Opening a subject: the card itself opens up into the subject's progress
+   card, its name flies up into the heading, and Home sinks back behind.
+   Going back folds the page closed into its card again. */
+[data-vt^="card-"] { view-transition-class: subj-card; }
+[data-vt^="subj-"] { view-transition-class: subj-name; }
+
+/* Nothing just vanishes around the card: the page being left sinks away
+   out of focus, and the page arriving lifts or surfaces into place a beat
+   later, so the eye stays on the card the whole time. */
+html:active-view-transition-type(drill-open)::view-transition-old(root)  { animation: lea-sink 420ms var(--ease-out) both; }
+/* Opening: the name flies up first; the rest of the subject page (and the
+   inside of its progress card) only arrives once the name has settled. */
+html:active-view-transition-type(drill-open)::view-transition-new(root)  { animation: lea-lift-in 420ms var(--ease-out) 520ms both; }
+html:active-view-transition-type(drill-open)::view-transition-new(*.subj-card) { animation: lea-vt-in 320ms var(--ease-out) 520ms both; }
+html:active-view-transition-type(drill-close)::view-transition-old(root) { animation: lea-drop-away 340ms var(--ease-out) both; }
+html:active-view-transition-type(drill-close)::view-transition-new(root) { animation: lea-surface 480ms var(--ease-out) 80ms both; }
+
+@keyframes lea-sink      { to   { opacity: 0; transform: scale(0.94); filter: blur(6px); } }
+@keyframes lea-lift-in   { from { opacity: 0; transform: translateY(24px); } }
+@keyframes lea-drop-away { to   { opacity: 0; transform: translateY(28px); filter: blur(4px); } }
+@keyframes lea-surface   { from { opacity: 0; transform: scale(0.94); filter: blur(6px); } }
+
+::view-transition-group(*.subj-card),
+::view-transition-group(*.subj-name) { animation-duration: 520ms; }
+
+/* The panel is drawn by the group itself, so a real box grows or shrinks
+   between the two shapes; what is inside is never stretched, only uncovered. */
+::view-transition-group(*.subj-card) {
+  overflow: clip;
+  background: var(--bg-panel);
+  box-shadow: inset 0 0 0 1px var(--line), 0 18px 40px rgba(0, 0, 0, .28);
+}
+::view-transition-old(*.subj-card), ::view-transition-new(*.subj-card) {
+  width: 100%; height: 100%;
+  object-fit: none; object-position: left top;
+}
+::view-transition-old(*.subj-card) { animation: lea-vt-out 140ms var(--ease-out) both; }
+::view-transition-new(*.subj-card) { animation: lea-vt-in 260ms var(--ease-out) 160ms both; }
+
+/* The name scales evenly as it travels (never squashed), and the small
+   card-sized copy is gone within a few frames, so it reads as one word
+   growing into the heading rather than two words crossing. */
+::view-transition-old(*.subj-name), ::view-transition-new(*.subj-name) {
+  width: auto; height: 100%;
+}
+::view-transition-old(*.subj-name) { animation: lea-vt-out 90ms linear both; }
+::view-transition-new(*.subj-name) { animation: none; }
+/* Picking a theme: the new colours spread out in a circle from the swatch
+   you tapped (index.html sets --vt-x / --vt-y / --vt-r). */
+/* Slow on purpose: it's rare, and the change is worth watching. The old
+   theme dims a little as the new one takes over. */
+html.lea-theme-vt::view-transition-old(root) {
+  animation: lea-theme-dim 1200ms ease both; mix-blend-mode: normal;
+}
+html.lea-theme-vt::view-transition-new(root) {
+  animation: lea-theme-reveal 1200ms cubic-bezier(0.65, 0, 0.35, 1) both; mix-blend-mode: normal;
+}
+@keyframes lea-theme-dim { to { filter: brightness(0.6); } }
+@keyframes lea-theme-reveal {
+  from { clip-path: circle(0px at var(--vt-x, 50%) var(--vt-y, 50%)); }
+  to   { clip-path: circle(var(--vt-r, 150%) at var(--vt-x, 50%) var(--vt-y, 50%)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* No sliding, no flying pieces: shared elements jump straight to their new
+     place and the page only fades. */
+  ::view-transition-group(*) { animation-duration: 0s !important; }
+  ::view-transition-old(root),
+  html:active-view-transition-type(back, run-open, run-close, drill-open, drill-close)::view-transition-old(root) { animation: lea-vt-out 150ms ease both; }
+  ::view-transition-new(root),
+  html:active-view-transition-type(back, run-open, run-close, drill-open, drill-close)::view-transition-new(root) { animation: lea-vt-in 150ms ease both; }
+}
+
+/* ============================================================
+   SCROLLING WITHOUT SCROLLBARS
+   No bars down the side. Instead, whichever edge still has more beyond it
+   goes soft — dimmed and slightly out of focus — and sharpens as you reach
+   it. Pages get this at the top and bottom of the window; boxes that scroll
+   on their own (What's New's list) get it at their own edges.
+   Browsers without scroll-linked animation (Firefox) show neither.
+   ponytail: no JS fallback; add one if Firefox users need the hint.
+   ============================================================ */
+html, * { scrollbar-width: none; }
+::-webkit-scrollbar { display: none; }
+
+body::before, body::after {
+  content: ''; position: fixed; left: 0; right: 0; height: 96px; z-index: 150;
+  pointer-events: none; opacity: 0;
+  -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px);
+}
+body::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--bg-deep) 10%, color-mix(in srgb, var(--bg-deep) 60%, transparent) 55%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent); mask-image: linear-gradient(to bottom, #000 35%, transparent);
+}
+body::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--bg-deep) 10%, color-mix(in srgb, var(--bg-deep) 60%, transparent) 55%, transparent);
+  -webkit-mask-image: linear-gradient(to top, #000 35%, transparent); mask-image: linear-gradient(to top, #000 35%, transparent);
+}
+
+@property --lea-fade-t { syntax: '<length>'; inherits: false; initial-value: 0px; }
+@property --lea-fade-b { syntax: '<length>'; inherits: false; initial-value: 0px; }
+.wn-scroll, .lea-fade-scroll {
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 var(--lea-fade-t), #000 calc(100% - var(--lea-fade-b)), transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 var(--lea-fade-t), #000 calc(100% - var(--lea-fade-b)), transparent);
+}
+
+@supports (animation-timeline: scroll()) {
+  body::before { animation: lea-edge-in linear both; animation-timeline: scroll(root); animation-range: 0 96px; }
+  body::after  { animation: lea-edge-out linear both; animation-timeline: scroll(root); animation-range: calc(100% - 96px) 100%; }
+  .wn-scroll, .lea-fade-scroll {
+    animation: lea-fade-top linear both, lea-fade-bottom linear both;
+    animation-timeline: scroll(self), scroll(self);
+    animation-range: 0 48px, calc(100% - 48px) 100%;
+  }
+}
+@keyframes lea-edge-in     { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lea-edge-out    { from { opacity: 1; } to { opacity: 0; } }
+@keyframes lea-fade-top    { from { --lea-fade-t: 0px; }  to { --lea-fade-t: 48px; } }
+@keyframes lea-fade-bottom { from { --lea-fade-b: 48px; } to { --lea-fade-b: 0px; } }
+
+/* ============================================================
+   ENTRANCES AND SKELETONS
+   ============================================================ */
+
+/* Lists rise in one after another the first time a page draws them;
+   later redraws (a filter, a tab) just appear — assets/nav.js adds
+   .lea-settled once the first entrance has played. */
+.lea-stagger > * {
+  animation: lea-rise-in 560ms var(--ease-out) both;
+  animation-delay: calc(var(--lea-stagger-base, 0ms) + var(--i, 0) * 60ms);
+}
+.lea-stagger > :nth-child(2)  { --i: 1; }
+.lea-stagger > :nth-child(3)  { --i: 2; }
+.lea-stagger > :nth-child(4)  { --i: 3; }
+.lea-stagger > :nth-child(5)  { --i: 4; }
+.lea-stagger > :nth-child(6)  { --i: 5; }
+.lea-stagger > :nth-child(7)  { --i: 6; }
+.lea-stagger > :nth-child(8)  { --i: 7; }
+.lea-stagger > :nth-child(9)  { --i: 8; }
+.lea-stagger > :nth-child(n+10) { --i: 9; }
+/* The skeleton is not the entrance; the real list arriving is. */
+.lea-stagger > .skel-wrap,
+html.lea-settled .lea-stagger > *, html.lea-snap .lea-stagger > * { animation: none; }
+@keyframes lea-rise-in { from { opacity: 0; transform: translateY(18px); filter: blur(3px); } }
+
+/* Skeletons (LEANav.skel): grey blocks in the shape of what is coming. A
+   gold drafting rule slides down over them, like a parallel rule across a
+   drawing board, trailing a faint blue wash. */
+.skel-wrap { position: relative; overflow: hidden; }
+.skel-wrap::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to bottom,
+    transparent calc(100% - 90px),
+    color-mix(in srgb, var(--blue-bright) 9%, transparent) calc(100% - 2px),
+    color-mix(in srgb, var(--gold) 75%, transparent) calc(100% - 2px));
+  transform: translateY(-100%);
+  animation: lea-skel-rule 1.9s var(--ease-in-out) infinite;
+}
+@keyframes lea-skel-rule { to { transform: translateY(0); } }
+.skel {
+  display: block; height: 10px; margin: 0 0 10px;
+  background: color-mix(in srgb, var(--muted) 18%, transparent);
+  animation: lea-skel-breathe 1.9s ease-in-out infinite;
+}
+.skel:last-child { margin-bottom: 0; }
+@keyframes lea-skel-breathe { 50% { opacity: .5; } }
+.skel.s-kicker { width: 32%; height: 8px; }
+.skel.s-title  { width: 64%; height: 18px; }
+.skel.s-head   { width: 58%; height: 34px; margin-inline: auto; }
+.skel.s-mid    { width: 72%; }
+.skel.s-bar    { width: 100%; height: 6px; margin-top: 14px; }
+.skel.s-num    { width: 32px; height: 20px; margin: 0; flex: none; }
+.skel.s-face, .skel.s-icon { width: 44px; height: 44px; margin: 0; flex: none; }
+.skel.s-avatar { width: 88px; height: 88px; margin: 0; flex: none; }
+.skel.s-cell   { flex: 1; height: 34px; margin: 0; }
+.skel.s-flap   { flex: 1; height: 52px; margin: 0; }
+.skel-card { background: var(--bg-panel); border: 1px solid var(--line); padding: 14px 16px; margin-bottom: 8px; }
+.skel-card.s-tall, .skel-card.s-clock { padding: 16px; margin-bottom: 16px; }
+.skel-card.s-option { padding: 18px 16px; }
+.skel-card.s-module { padding: 16px; margin-bottom: 12px; }
+.skel-card.s-subject { height: 84px; margin: 0; display: flex; flex-direction: column; justify-content: space-between; }
+.skel-cells { display: flex; gap: 8px; margin: 12px 0; }
+.skel-grid  { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 16px; }
+@media (min-width: 560px) { .skel-grid { grid-template-columns: 1fr 1fr; } }
+.skel-top, .skel-row, .skel-id { display: flex; align-items: center; gap: 12px; }
+.skel-top { margin-bottom: 16px; }
+.skel-top .s-title { width: 40%; margin: 0; }
+.skel-row { background: var(--bg-panel); border: 1px solid var(--line); padding: 10px 16px; margin-bottom: 8px; }
+.skel-grow { flex: 1; min-width: 0; }
+.skel-mast { text-align: center; margin-bottom: 24px; }
+.skel-mast .skel { margin-inline: auto; }
+.skel-id { padding: 16px; }
+@media (prefers-reduced-motion: reduce) {
+  .skel-wrap::after { display: none; }
+  .lea-stagger > * { animation-name: lea-vt-in; }
+}
+
+/* ============================================================
+   PROGRESS PIECES — shared by Home and the subject page
+   A title block of labelled cells, then the % beside a measuring tape.
+   ============================================================ */
+
+/* Title block: the stamp in the corner of a drawing. */
+.cd-tb { display: grid; grid-template-columns: 1.5fr 1fr 1fr; margin-top: 12px; border: 1px solid var(--line); }
+.cd-tb > div { padding: 7px 9px 6px; min-width: 0; }
+.cd-tb > div + div { border-left: 1px solid var(--line); }
+.cd-tb small { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.cd-tb b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 18px; line-height: 1.1; margin-top: 2px; color: var(--ink); white-space: nowrap; }
+.cd-tb b span { font-size: 12px; font-weight: 700; color: var(--muted); }
+
+/* The % on the left, a caption and a measuring tape on the right. */
+.ready-row { display: flex; align-items: flex-end; gap: 16px; }
+.ready-row .rr-num { font-family: var(--font-display); font-weight: 800; font-size: 40px; line-height: .8; color: var(--ink); }
+.ready-row .rr-num small { font-size: 18px; }
+.ready-row .rr-scale { flex: 1; min-width: 0; }
+.ready-row .rr-cap { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 7px; }
+.ready-row .rr-cap b { font-family: var(--font-display); font-weight: 800; font-size: 16px; text-transform: uppercase; line-height: 1; color: var(--ink); }
+.ready-row .rr-cap span { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Tall ticks every 10%, small ticks every 2%, a 6px fill (the same weight as
+   the subject bars) and a marker.
+   The small ticks are drawn from --muted, not --line: in --line they all but
+   vanished on the dark themes. */
+.tape {
+  display: block; position: relative; height: 16px;
+  background:
+    repeating-linear-gradient(90deg, var(--muted) 0 1px, transparent 1px 10%) left bottom / calc(100% + 1px) 11px no-repeat,
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--muted) 50%, transparent) 0 1px, transparent 1px 2%) left bottom / 100% 6px no-repeat;
+}
+.tape::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: color-mix(in srgb, var(--muted) 22%, transparent); }
+.tape i { position: absolute; left: 0; bottom: 0; height: 6px; background: var(--blue-bright); transform-origin: left; animation: home-grow 1.1s cubic-bezier(.16,1,.3,1) .2s both; }
+.tape em { position: absolute; bottom: 0; width: 2px; height: 16px; margin-left: -1px; background: var(--blue-bright); animation: home-fade .3s ease 1s both; }
+@keyframes home-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes home-fade { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .tape i, .tape em { animation: none; }
+}
+
+/* ============================================================
+   THEMES
+   assets/theme.js writes <html data-theme="…">. Blueprint is each page's
+   own default palette, so it needs nothing here. The other three swap the
+   same tokens every page already uses.
+
+   Each block also targets `body`, because pages set their light palette on
+   `body.light-mode` and vellum keeps that class on. `:root[data-theme] body`
+   outranks `body.light-mode`, and this file loads after every page's own
+   <style>, so these values win on every page.
+   ============================================================ */
+
+/* Vellum: tracing paper on a drafting table. Replaces light mode. */
+:root[data-theme="vellum"], :root[data-theme="vellum"] body {
+  color-scheme: light;
+  --ink:#1e2a33; --bg-deep:#ece6d8; --bg-panel:#f8f4eb; --bg-panel-2:#f1ebdf; --bg-panel-deep:#e6dfd0;
+  --gold:#c98a2e; --gold-bright:#8f4f16; --blue:#2c5d8a; --blue-bright:#24507a;
+  --muted:#5f6a70; --muted-dim:#7a8286; --good:#2f7a4a; --bad:#a3402c;
+  --line:rgba(30,42,51,0.16); --line-soft:rgba(30,42,51,0.10); --grid-line:rgba(44,93,138,0.08);
+  --panel-hover:#fffdf8; --clay-bright:#9a5f22; --turq-bright:#1f7a6c; --sand:#6b5d45;
+  --body-ink:#2d3942; --track:rgba(30,42,51,0.14);
+}
+
+/* Lightbox: a night studio — warm charcoal, lit panels, amber ink. */
+:root[data-theme="lightbox"], :root[data-theme="lightbox"] body {
+  color-scheme: dark;
+  --ink:#f1ede4; --bg-deep:#131518; --bg-panel:#1b1e22; --bg-panel-2:#17191c; --bg-panel-deep:#101113;
+  --gold:#f2b447; --gold-bright:#f6c56b; --blue:#cfa55a; --blue-bright:#f2b447;
+  --muted:#a29e95; --muted-dim:#7f7b73; --good:#6cc58d; --bad:#e2735a;
+  --line:rgba(241,237,228,0.12); --line-soft:rgba(241,237,228,0.08); --grid-line:rgba(241,237,228,0.025);
+  --panel-hover:#212429; --clay-bright:#d4a373; --turq-bright:#5fb3a8; --sand:#c9b896;
+  --body-ink:#d9d4ca; --track:rgba(241,237,228,0.14);
+}
+
+/* Olive: a field notebook — deep olive, sage progress, brass marks. */
+:root[data-theme="olive"], :root[data-theme="olive"] body {
+  color-scheme: dark;
+  --ink:#eeefe0; --bg-deep:#1c2217; --bg-panel:#252c1e; --bg-panel-2:#20261a; --bg-panel-deep:#181d13;
+  --gold:#d9b45c; --gold-bright:#e6c77a; --blue:#93a86c; --blue-bright:#b5c98a;
+  --muted:#a8ad93; --muted-dim:#858a72; --good:#7fc28a; --bad:#e07a5f;
+  --line:rgba(206,214,168,0.16); --line-soft:rgba(206,214,168,0.10); --grid-line:rgba(206,214,168,0.05);
+  --panel-hover:#2a3222; --clay-bright:#d4a373; --turq-bright:#6fb3a0; --sand:#c9b896;
+  --body-ink:#d6d9c4; --track:rgba(206,214,168,0.18);
 }

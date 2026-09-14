@@ -46,50 +46,63 @@
 
   .run-header{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
   .icon-btn-44{
-    width:44px; height:44px; border-radius:10px; background:var(--bg-panel); border:1px solid var(--line);
+    width:44px; height:44px; border-radius:8px; background:var(--bg-panel); border:1px solid var(--line);
     color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
   }
   .icon-btn-44 svg{ width:19px; height:19px; }
-  .search-form.active{ border-color:rgba(224,168,63,0.45); }
+  .search-form.active{ border-color:color-mix(in srgb, var(--gold) 45%, transparent); }
   .search-form{ position:relative; flex:1; }
-  .search-form svg{ position:absolute; left:14px; top:50%; transform:translateY(-50%); width:15px; height:15px; color:var(--blue-bright); }
+  .search-form svg{ position:absolute; left:16px; top:50%; transform:translateY(-50%); width:16px; height:16px; color:var(--muted); }
   .search-form input{
-    width:100%; background:var(--bg-panel-2); border:1.5px solid var(--gold); border-radius:10px;
-    padding:12px 14px 12px 40px; color:var(--ink); font-family:var(--font-body); font-size:14px;
+    width:100%; min-height:44px; background:var(--bg-panel-2); border:1px solid var(--line); border-radius:12px;
+    padding:0 16px 0 42px; color:var(--ink); font-family:var(--font-body); font-size:15px;
   }
   .search-form input::placeholder{ color:var(--muted); }
   .search-form input:focus{ outline:none; border-color:var(--gold-bright); }
 
-  .chip-row{ display:flex; gap:8px; overflow-x:auto; margin-bottom:14px; padding-bottom:2px; }
+  /* One scrolling row with a faded right edge, like Notifications: a chip
+     running off the edge reads as "scroll", and no scrollbar line shows. */
+  .chip-row{ display:flex; gap:8px; overflow-x:auto; margin-bottom:14px; padding-bottom:2px; scrollbar-width:none;
+    -webkit-mask-image:linear-gradient(90deg, #000 calc(100% - 28px), transparent); mask-image:linear-gradient(90deg, #000 calc(100% - 28px), transparent); }
+  .chip-row::-webkit-scrollbar{ display:none; }
   .filter-chip{
-    flex-shrink:0; font-family:var(--font-mono); font-size:11px; letter-spacing:.03em; text-transform:uppercase;
+    flex-shrink:0; min-height:36px; font-family:var(--font-body); font-weight:600; font-size:11px; letter-spacing:.08em; text-transform:uppercase;
     background:var(--bg-panel); border:1px solid var(--line); color:var(--muted);
-    padding:8px 14px; border-radius:20px; cursor:pointer; white-space:nowrap;
+    padding:0 14px; border-radius:0; cursor:pointer; white-space:nowrap;
   }
-  .filter-chip.active{ border-color:var(--gold); color:var(--gold-bright); background:rgba(224,168,63,0.08); }
+  .filter-chip.active{ border-color:var(--gold); color:var(--gold-bright); background:color-mix(in srgb, var(--gold) 8%, transparent); }
 
   .results-summary{ display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; gap:10px; flex-wrap:wrap; }
-  .results-count{ font-family:var(--font-mono); font-size:12px; color:var(--muted); }
-  .drill-all-link{ font-family:var(--font-mono); font-size:12px; color:var(--gold-bright); text-decoration:none; white-space:nowrap; }
+  .results-count{ font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  .drill-all-link{ font-family:var(--font-body); font-weight:600; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold-bright); text-decoration:none; white-space:nowrap; }
   .drill-all-link:hover{ text-decoration:underline; }
 
   .result-card{
-    background:var(--bg-panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px;
-    margin-bottom:10px; text-decoration:none; color:var(--ink); display:block;
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:0; padding:14px 16px;
+    margin-bottom:8px; text-decoration:none; color:var(--ink); display:block;
   }
   .result-card:hover{ border-color:var(--gold); }
-  .result-card .rc-meta{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:6px; }
-  .result-card .rc-loc{ font-family:var(--font-mono); font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.03em; }
-  .result-card .rc-status{ font-family:var(--font-mono); font-size:10px; text-transform:uppercase; padding:2px 8px; border-radius:20px; white-space:nowrap; }
+  .result-card .rc-meta{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:8px; }
+  .result-card .rc-loc{ min-width:0; font-family:var(--font-body); font-weight:500; font-size:11px; line-height:1.4; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
+  .result-card .rc-status{ flex-shrink:0; font-family:var(--font-body); font-weight:600; font-size:11px; letter-spacing:.06em; text-transform:uppercase; padding:2px 8px; border-radius:0; white-space:nowrap; }
   .result-card .rc-status.mastered{ color:var(--good); border:1px solid var(--good); }
   .result-card .rc-status.flagged{ color:var(--gold-bright); border:1px solid var(--gold); }
   .result-card .rc-status.unmastered{ color:var(--muted); border:1px solid var(--line); }
-  .result-card .rc-status.unseen{ color:var(--blue-bright); border:1px solid rgba(143,196,234,0.5); }
+  .result-card .rc-status.unseen{ color:var(--blue-bright); border:1px solid color-mix(in srgb, var(--blue-bright) 50%, transparent); }
   .result-card .rc-text{ font-size:14px; line-height:1.5; }
   .result-card .rc-text b{ color:var(--gold-bright); font-weight:700; }
 
-  .footer-note{ font-family:var(--font-mono); font-size:11px; color:var(--muted); text-align:center; margin-top:20px; line-height:1.6; }
-  .state-note{ font-family:var(--font-mono); font-size:12px; color:var(--muted); text-align:center; padding:30px 0; }
+  /* Empty state: recent searches, then every subject, then one line of help. */
+  .es-label{ font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:8px 0 10px; }
+  .es-recent{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+  .es-recent button{ min-height:36px; padding:0 12px; background:var(--bg-panel); border:1px solid var(--line); border-radius:0; color:var(--ink); font-family:var(--font-body); font-size:14px; cursor:pointer; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .es-recent button:hover{ border-color:var(--gold); }
+  .es-subjects{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:20px; }
+  .es-subjects a{ display:flex; align-items:center; min-height:52px; padding:8px 12px; background:var(--bg-panel); border:1px solid var(--line); text-decoration:none; color:var(--ink);
+    font-family:var(--font-display); font-weight:700; font-size:15px; line-height:1.1; text-transform:uppercase; text-wrap:balance; }
+  .es-subjects a:hover{ border-color:var(--gold); }
+  .es-help{ font-family:var(--font-body); font-size:13px; color:var(--muted); line-height:1.6; }
+  .state-note{ font-family:var(--font-body); font-size:13px; color:var(--muted); text-align:center; padding:30px 0; }
   .theme-toggle{
     position:fixed; top:16px; right:16px; z-index:50;
     background:var(--bg-panel); border:1px solid var(--line); color:var(--gold-bright);
@@ -97,31 +110,30 @@
     border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
   }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=24">
-<script src="assets/theme.js?v=22" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/quiz-source.js?v=22"></script>
-<script src="assets/module-progress.js?v=22"></script>
-<script src="assets/offline.js?v=22"></script>
-<script src="assets/presence.js?v=22"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=55">
+<script src="assets/theme.js?v=55" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=55"></script>
+<script src="assets/quiz-source.js?v=55"></script>
+<script src="assets/module-progress.js?v=55"></script>
+<script src="assets/offline.js?v=55"></script>
+<script src="assets/presence.js?v=55"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
 </head>
 <body>
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
 <div class="wrap">
   <div class="run-header">
-    <a class="icon-btn-44" href="index.html" title="Back home">
+    <a class="icon-btn-44" href="index.html" title="Back" data-back>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
     </a>
-    <form class="search-form" id="searchForm">
+    <form class="search-form" id="searchForm" data-vt="lea-search" data-vt-peer="index.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
       <input type="text" id="searchInput" placeholder="Search questions">
     </form>
   </div>
 
   <div class="chip-row" id="chipRow"></div>
-  <div id="resultsArea"><div class="state-note">Loading…</div></div>
-
-  <div class="footer-note">Searches every question in every ready subject. Results are cached for the rest of this session.</div>
+  <div id="resultsArea" class="lea-stagger"><script>document.write(LEANav.skel('cards', 3))</script></div>
 </div>
 
 <script>
@@ -186,6 +198,39 @@ function applyFilter(results, filter){
   return results;
 }
 
+// Recent searches, kept on this device only. Saved on Enter and when a result
+// is opened, never on each keystroke, so half-typed words do not pile up.
+const RECENT_KEY = 'lea_recent_searches';
+function loadRecent(){ try{ return JSON.parse(localStorage.getItem(RECENT_KEY) || '[]').filter(s => typeof s === 'string'); }catch(e){ return []; } }
+function saveRecent(q){
+  q = (q || '').trim();
+  if(q.length < 2) return;
+  const list = [q].concat(loadRecent().filter(s => s.toLowerCase() !== q.toLowerCase())).slice(0, 6);
+  try{ localStorage.setItem(RECENT_KEY, JSON.stringify(list)); }catch(e){}
+}
+
+async function renderEmpty(){
+  const area = document.getElementById('resultsArea');
+  const recent = loadRecent();
+  let subjects = [];
+  try{ subjects = (await (await fetch('data/subjects.json', { cache: 'no-cache' })).json()).filter(s => s.ready); }catch(e){}
+  const clean = n => String(n || '').replace(/[\p{Extended_Pictographic}\p{Emoji_Modifier}\u{200D}\u{FE0F}]+/gu, '').trim();
+  area.innerHTML =
+    (recent.length
+      ? '<div class="es-label">Recent</div><div class="es-recent">' +
+          recent.map(r => '<button type="button" data-q="' + escapeHtml(r) + '">' + escapeHtml(r) + '</button>').join('') + '</div>'
+      : '') +
+    (subjects.length
+      ? '<div class="es-label">Browse a subject</div><div class="es-subjects">' +
+          subjects.map(s => '<a href="subject.html?s=' + encodeURIComponent(s.id) + '">' + escapeHtml(clean(s.name)) + '</a>').join('') + '</div>'
+      : '') +
+    '<div class="es-help">Type to search every question in every ready subject, or pick a filter above.</div>';
+  area.querySelectorAll('[data-q]').forEach(b => b.addEventListener('click', () => {
+    document.getElementById('searchInput').value = b.dataset.q;
+    runSearchFromField();
+  }));
+}
+
 function renderChips(query){
   const chips = [
     { key: 'all', label: 'All' },
@@ -205,10 +250,10 @@ async function runSearch(query){
   renderChips(query);
   const area = document.getElementById('resultsArea');
   if(!query){
-    area.innerHTML = '<div class="state-note">Type something to search, or pick a filter to browse everything.</div>';
+    await renderEmpty();
     return;
   }
-  area.innerHTML = '<div class="state-note">Searching…</div>';
+  area.innerHTML = LEANav.skel('cards', 3);
   const index = await buildSearchIndex();
   const q = query.toLowerCase();
   let matches = index.filter(c => c.text.toLowerCase().includes(q));
@@ -235,7 +280,8 @@ async function runSearch(query){
       const status = r.flagged ? 'flagged' : r.mastered ? 'mastered' : (r.moduleUnattempted ? 'unseen' : 'unmastered');
       const statusLabel = r.flagged ? 'Flagged' : r.mastered ? 'Mastered' : (r.moduleUnattempted ? 'Unseen' : 'Not mastered');
       return (
-        '<a class="result-card" href="run.html?s=' + encodeURIComponent(r.subjectId) + '&m=' + encodeURIComponent(r.moduleId) + '&mode=study">' +
+        // qi opens this exact question, not the module from question 1.
+        '<a class="result-card" href="run.html?s=' + encodeURIComponent(r.subjectId) + '&m=' + encodeURIComponent(r.moduleId) + '&mode=study&qi=' + r.qIndex + '">' +
           '<div class="rc-meta">' +
             '<div class="rc-loc">' + escapeHtml(r.subjectName.replace(/[\p{Extended_Pictographic}\p{Emoji_Modifier}\u{200D}\u{FE0F}]+/gu,'').trim()) + ' · ' + escapeHtml(r.moduleTitle) + '</div>' +
             '<div class="rc-status ' + status + '">' + statusLabel + '</div>' +
@@ -270,7 +316,11 @@ function runSearchFromField(){
 document.getElementById('searchForm').addEventListener('submit', (e) => {
   e.preventDefault();
   clearTimeout(searchDebounce);
+  saveRecent(document.getElementById('searchInput').value);
   runSearchFromField();
+});
+document.getElementById('resultsArea').addEventListener('click', (e) => {
+  if(e.target.closest('.result-card, .drill-all-link')) saveRecent(document.getElementById('searchInput').value);
 });
 
 (async function boot(){

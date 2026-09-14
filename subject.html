@@ -75,13 +75,6 @@
     padding:36px 16px 64px;
     transition: background-color .2s ease, color .2s ease;
   }
-  .theme-toggle{
-    background:var(--bg-panel); border:1px solid var(--line); color:var(--gold-bright);
-    font-family:var(--font-body); font-size:14px; width:32px; height:32px;
-    border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
-    flex-shrink:0;
-  }
-  .theme-toggle:hover{ border-color:var(--gold-bright); }
   .wrap{width:100%; max-width:720px;}
   a{color:inherit;}
   .hidden{display:none !important;}
@@ -112,7 +105,9 @@
   /* ===== masthead ===== */
   .masthead{ text-align:center; margin-bottom:24px; }
   .masthead .eyebrow{ font-family:var(--font-mono); letter-spacing:0.22em; font-size:11px; text-transform:uppercase; color:var(--gold-bright); opacity:0.95; }
-  .masthead h1{ font-family:var(--font-display); font-weight:800; font-size:38px; margin:10px 0 8px; color:var(--ink); letter-spacing:0.01em; text-transform:uppercase; line-height:1; }
+  /* Only as wide as its words, and painted above the progress card, so the
+     subject name can fly into it cleanly (blueprint.css PAGE TRANSITIONS). */
+  .masthead h1{ width:fit-content; position:relative; z-index:1; font-family:var(--font-display); font-weight:800; font-size:38px; margin:10px auto 8px; color:var(--ink); letter-spacing:0.01em; text-transform:uppercase; line-height:1; }
   .marquee-wrap{
     max-width:480px; margin:0 auto; overflow:hidden; white-space:nowrap;
     -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
@@ -137,49 +132,47 @@
   .step-frieze{ height:2px; background:var(--gold); margin:16px 0 0; opacity:.85; }
 
   /* ===== overall progress card ===== */
+  /* Same pieces as Home's clock card: drafting-corner panel, a title block of
+     labelled cells, then the % beside a measuring tape (assets/blueprint.css). */
   .overall-card{
     position:relative; background: var(--bg-panel); border:1px solid var(--line);
-    border-radius:14px; padding:24px 24px 20px; margin-bottom:16px;
+    padding:16px 16px 18px; margin-bottom:16px;
   }
+  .overall-card::before, .overall-card::after{ content:""; position:absolute; width:12px; height:12px; border:2px solid var(--gold); opacity:.9; }
+  .overall-card::before{ top:-2px; left:-2px; border-width:2px 0 0 2px; }
+  .overall-card::after{ bottom:-2px; right:-2px; border-width:0 2px 2px 0; }
   .overall-title{
     font-family:var(--font-mono); font-size:11px; letter-spacing:0.12em;
-    text-transform:uppercase; color:var(--muted); margin-bottom:16px;
+    text-transform:uppercase; color:var(--muted);
     display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;
   }
   .overall-title .reset-all{
     font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.04em; font-size:11.5px;
-    color:var(--bad); background:none; border:1px solid rgba(226,96,74,0.4);
-    padding:5px 11px; border-radius:6px; cursor:pointer;
+    color:var(--bad); background:none; border:1px solid color-mix(in srgb, var(--bad) 40%, transparent);
+    padding:0 11px; min-height:36px; cursor:pointer;
   }
-  .overall-title .reset-all:hover{ background: rgba(226,96,74,0.12); }
-  .overall-stats-row{ display:flex; justify-content:space-between; gap:14px; margin-bottom:18px; }
-  .overall-stat .num{ font-family:var(--font-mono); font-size:26px; font-weight:600; color:var(--gold-bright); line-height:1; }
-  .overall-stat .lbl{ font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-top:5px; }
-  .overall-bar-track{ height:8px; border-radius:4px; background: var(--bg-panel-2); overflow:hidden; }
-  .overall-bar-fill{ height:100%; border-radius:4px; background: linear-gradient(90deg, var(--gold-bright), var(--blue-bright)); transition: width .4s ease; }
-  .overall-bar-caption{ display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-top:8px; letter-spacing:0.02em; }
+  .overall-title .reset-all:hover{ background: color-mix(in srgb, var(--bad) 12%, transparent); }
+  .overall-card .ready-row{ margin-top:16px; }
 
   /* ===== mode rows ===== */
   .mode-rows{ display:flex; flex-direction:column; gap:8px; margin-bottom:20px; }
   .mode-row{
     display:flex; justify-content:space-between; align-items:center;
-    padding:14px 16px; border-radius:12px; border:1px solid var(--line); gap:12px;
+    padding:14px 16px; border:1px solid var(--line); gap:12px;
     background: var(--bg-panel-2); cursor:pointer; text-align:left; width:100%;
     font-family:var(--font-body); color:var(--ink);
   }
   /* The frame keeps the index in its own 22px column rather than running it
      into the title, and colours it per row. */
-  .mode-row .mode-no{ font-family:var(--font-mono); font-size:11px; font-weight:600; width:22px; flex-shrink:0; }
-  .mode-row[data-mode="exam"] .mode-no{ color:var(--blue-bright); }
-  .mode-row[data-mode="drill"] .mode-no{ color:var(--bad); }
-  .mode-row.selected .mode-no{ color:#1a1206; }
+  .mode-row .mode-no{ font-family:var(--font-mono); font-size:11px; font-weight:600; width:22px; flex-shrink:0; color:var(--muted); }
   .mode-row .mode-lbl{ display:flex; flex-direction:column; gap:3px; flex:1; min-width:0; }
   .mode-row .mode-name{ font-family:var(--font-display); font-weight:700; font-size:16px; text-transform:uppercase; letter-spacing:.01em; }
   .mode-row .mode-cap{ font-family:var(--font-mono); font-size:11.5px; color:var(--muted); letter-spacing:.03em; }
-  .mode-row .mode-num{ font-family:var(--font-mono); font-size:22px; font-weight:600; color:var(--blue-bright); flex-shrink:0; }
-  .mode-row.selected{ background: var(--gold); border-color: var(--gold); color:#1a1206; }
-  .mode-row.selected .mode-cap{ color:rgba(26,18,6,0.7); }
-  .mode-row.selected .mode-num{ color:#1a1206; }
+  .mode-row .mode-num{ font-family:var(--font-display); font-size:24px; font-weight:800; line-height:1; color:var(--ink); flex-shrink:0; }
+  /* The chosen mode is marked, not flooded: a gold outline and gold number,
+     so the subject's modules below stay the thing the eye goes to. */
+  .mode-row.selected{ background: var(--bg-panel); border-color: var(--gold-bright); box-shadow: inset 0 0 0 1px var(--gold-bright); }
+  .mode-row.selected .mode-no, .mode-row.selected .mode-num{ color:var(--gold-bright); }
   .mode-row.disabled{ opacity:.5; cursor:default; }
   .mode-row:not(.disabled):hover{ border-color: var(--gold); }
 
@@ -188,7 +181,7 @@
      layout affordance only; nothing about it is lazy, so the header and the
      rows are always computed from the same pass. */
   .topics-card{
-    background: var(--bg-panel); border:1px solid var(--line); border-radius:14px;
+    background: var(--bg-panel); border:1px solid var(--line);
     overflow:hidden; margin-bottom:16px;
   }
   .topics-head{
@@ -202,7 +195,7 @@
   /* Real topic names run far longer than the frame's example, and the whole
      line would ellipsise away the percentage — which is half the claim. The
      name truncates; the percentage never does. */
-  .th-weakest{ display:flex; font-family:var(--font-mono); font-size:11px; color:var(--bad); margin-top:5px; }
+  .th-weakest{ display:flex; font-family:var(--font-mono); font-size:11px; color:var(--ink); opacity:.85; margin-top:5px; }
   .thw-name{ min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .thw-pct{ flex-shrink:0; white-space:pre; }
   .th-sign{ font-family:var(--font-mono); font-size:16px; color:var(--gold-bright); width:18px; text-align:center; flex-shrink:0; }
@@ -240,17 +233,19 @@
 
   /* ===== modules list ===== */
   .section-label{ font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin:4px 0 10px; }
-  .mp-bar-track{ height:6px; border-radius:3px; background: var(--bg-panel-2); overflow:hidden; margin-top:12px; }
-  .mp-bar-fill{ height:100%; border-radius:3px; background: linear-gradient(90deg, var(--gold-bright), var(--gold) 70%, rgba(224,168,63,0.25)); transition: width .3s ease; }
+  .mp-bar-track{ height:4px; background: var(--line); overflow:hidden; margin-top:12px; }
+  .mp-bar-fill{ height:100%; background: var(--blue-bright); transform-origin:left; animation: home-grow 1s cubic-bezier(.16,1,.3,1) .15s both; }
+  @media (prefers-reduced-motion: reduce){ .mp-bar-fill{ animation:none; } }
   .mp-cap{ font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-top:6px; }
   .module-grid{ display:flex; flex-direction:column; gap:12px; }
   .module-card{
     position:relative; display:block; text-decoration:none;
-    background: var(--bg-panel-2); border:1px solid var(--line); border-radius:14px; padding:18px 20px;
+    background: var(--bg-panel); border:1px solid var(--line); border-radius:0; padding:16px 18px 15px;
     transition: border-color .15s ease;
   }
   .module-card:hover{ border-color: var(--gold); }
-  .module-card.in-progress{ border-left:3px solid var(--gold); }
+  /* An unfinished attempt: gold outline plus the "Resume" line below. */
+  .module-card.in-progress{ border-color: var(--gold-bright); }
   .module-card.disabled{ opacity:.55; pointer-events:none; }
   .module-num{ font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue-bright); margin-bottom:6px; }
   /* Long module titles used to wrap onto a second line and push the card
@@ -278,10 +273,10 @@
 
   .note-panel{
     margin-top:22px; background: var(--bg-panel); border:1px solid var(--line);
-    border-radius:12px; padding:16px 20px; font-family:var(--font-mono); font-size:11.5px; color:var(--muted); line-height:1.6;
+    padding:16px 20px; font-family:var(--font-mono); font-size:11.5px; color:var(--muted); line-height:1.6;
   }
   .state-card{
-    background: var(--bg-panel); border:1px solid var(--line); border-radius:14px;
+    background: var(--bg-panel); border:1px solid var(--line);
     padding:28px 22px; text-align:center; color:var(--muted); font-family:var(--font-mono); font-size:13px; line-height:1.7;
   }
 
@@ -313,36 +308,57 @@
      draws. Only the modal needs a little more width to hold a face, a name and
      the stats without crowding. */
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=24">
-<link rel="stylesheet" href="assets/leaderboard.css?v=22">
-<script src="assets/presence.js?v=22"></script>
-<script src="assets/avatar.js?v=22"></script>
-<script src="assets/leaderboard.js?v=22"></script>
-<script src="assets/lea-confirm.js?v=22"></script>
-<script src="assets/quiz-source.js?v=22"></script>
-<script src="assets/module-progress.js?v=22"></script>
-<script src="assets/offline.js?v=22"></script>
-<script src="assets/quiz-resume.js?v=22"></script>
-<script src="assets/icons.js?v=22"></script>
-<script src="assets/theme.js?v=22" data-alt-class="light-mode" data-default-is="dark"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=55">
+<link rel="stylesheet" href="assets/leaderboard.css?v=55">
+<script src="assets/presence.js?v=55"></script>
+<script src="assets/avatar.js?v=55"></script>
+<script src="assets/leaderboard.js?v=55"></script>
+<script src="assets/lea-confirm.js?v=55"></script>
+<script src="assets/quiz-source.js?v=55"></script>
+<script src="assets/module-progress.js?v=55"></script>
+<script src="assets/offline.js?v=55"></script>
+<script src="assets/quiz-resume.js?v=55"></script>
+<script src="assets/icons.js?v=55"></script>
+<script src="assets/theme.js?v=55" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=55"></script>
 </head>
 <body>
 <div class="wrap">
   <div class="auth-bar">
-    <a class="back" href="index.html" title="Home" aria-label="Home">
+    <a class="back" href="index.html" title="Back" aria-label="Back" data-back>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
     </a>
     <div class="bar-actions">
       <button class="icon-btn-44" id="openLeaderboardBtn" title="Standings" aria-label="Standings"><span class="btn-ico" data-icon="trophy"></span></button>
-      <button class="icon-btn-44" id="themeBtn" title="Switch theme" aria-label="Switch theme"><span class="btn-ico" data-icon="sun"></span></button>
     </div>
     <span id="authStatus" hidden></span>
     <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
   </div>
 
-  <div id="pageBody">
-    <div class="state-card">Loading…</div>
-  </div>
+  <div id="pageBody" data-snap><script>document.write(LEANav.skel('subject'))</script></div>
+  <script>
+    (function(){
+      var body = document.getElementById('pageBody');
+      if (window.LEANav && LEANav.restoreSnap(body)) return;
+      // First visit from Home: draw the real heading and a skeleton of the
+      // progress card, so the name and the card have somewhere to fly to.
+      // render() replaces all of it with the full page.
+      var t = null;
+      try { t = JSON.parse(sessionStorage.getItem('lea_subject_title')); } catch (e) {}
+      var id = new URLSearchParams(location.search).get('s');
+      if (!t || !id || t.id !== id) return;
+      var head = document.createElement('div');
+      head.className = 'masthead';
+      head.innerHTML = '<div class="eyebrow">Module Compendium</div>';
+      var h1 = document.createElement('h1');
+      h1.textContent = t.name;
+      h1.setAttribute('data-vt', 'subj-' + encodeURIComponent(id));
+      h1.setAttribute('data-vt-peer', 'index.html');
+      head.appendChild(h1);
+      body.replaceChildren(head);
+      body.insertAdjacentHTML('beforeend', LEANav.skel('subject-rest', 0, encodeURIComponent(id)));
+    })();
+  </script>
 </div>
 
 <!-- ===================== LEADERBOARD MODAL ===================== -->
@@ -351,7 +367,7 @@
     <button class="modal-close" id="leaderboardModalClose">&times;</button>
     <h2><span class="btn-ico" data-icon="trophy"></span> Leaderboard</h2>
     <div id="leaderboardList">
-      <div class="lb-empty">Loading…</div>
+      <script>document.write(LEANav.skel('rows', 5))</script>
     </div>
   </div>
 </div>
@@ -395,7 +411,7 @@ let lbMyUsername = null;
 document.getElementById('openLeaderboardBtn').addEventListener('click', async () => {
   leaderboardModalOverlay.classList.remove('hidden');
   const listEl = document.getElementById('leaderboardList');
-  listEl.innerHTML = '<div class="lb-empty">Loading…</div>';
+  listEl.innerHTML = LEANav.skel('rows', 5);
 
   if(lbMyUsername === null){
     try{
@@ -517,17 +533,19 @@ async function boot(){
     return;
   }
 
-  render(subject);
+  // Waits for the page transition, so the subject's name and card finish
+  // flying in before the rest of the page arrives (assets/nav.js).
+  LEANav.afterTransition(() => render(subject));
   window.leaOnProgressReset = () => render(subject);
   document.addEventListener('visibilitychange', function(){ if(!document.hidden) render(subject); });
-  window.addEventListener('pageshow', () => render(subject));
+  window.addEventListener('pageshow', () => LEANav.afterTransition(() => render(subject)));
 }
 
 function renderMastheadHtml(subject){
   return (
     '<div class="masthead">' +
       '<div class="eyebrow">Module Compendium</div>' +
-      '<h1>' + escapeHtml(stripEmoji(subject.name)) + '</h1>' +
+      '<h1 data-vt="subj-' + encodeURIComponent(subject.id) + '" data-vt-peer="index.html">' + escapeHtml(stripEmoji(subject.name)) + '</h1>' +
       '<div class="marquee-wrap" id="marqueeWrap"><span class="marquee-text" id="marqueeText">' + escapeHtml(subject.blurb || '') + '</span></div>' +
       '<div class="step-frieze"></div>' +
     '</div>'
@@ -599,7 +617,7 @@ async function render(subject){
 
   body.innerHTML =
     renderMastheadHtml(subject) +
-    renderOverallCard(rollup, pct) +
+    renderOverallCard(subject, rollup, pct) +
     renderModeRows(subject, rollup, mode) +
     '<div class="section-label">Modules</div>' +
     renderModulesList(subject, mode) +
@@ -622,26 +640,30 @@ async function render(subject){
   });
 }
 
-function renderOverallCard(rollup, pct){
+function renderOverallCard(subject, rollup, pct){
+  const n = v => Number(v).toLocaleString('en-US');
   return (
-    '<div class="overall-card">' +
-      '<div class="overall-title"><span>Overall progress</span>' +
+    '<div class="overall-card" data-vt="card-' + encodeURIComponent(subject.id) + '" data-vt-peer="index.html">' +
+      '<div class="overall-title"><span>Subject progress</span>' +
       '<button class="reset-all" id="resetAllBtn">Reset all progress</button></div>' +
-      '<div class="overall-stats-row">' +
-        '<div class="overall-stat"><div class="num">' + rollup.mastered + '</div><div class="lbl">Mastered</div></div>' +
-        '<div class="overall-stat"><div class="num">' + rollup.modulesDone + ' / ' + '<span id="ovModCount"></span></div><div class="lbl">Modules done</div></div>' +
-        '<div class="overall-stat"><div class="num">' + rollup.flagged + '</div><div class="lbl">Flagged</div></div>' +
+      '<div class="cd-tb">' +
+        '<div><small>Mastered</small><b>' + n(rollup.mastered) + ' <span>/ ' + n(rollup.total) + '</span></b></div>' +
+        '<div><small>Modules</small><b>' + rollup.modulesDone + ' <span>/ ' + subject.modules.length + '</span></b></div>' +
+        '<div><small>Flagged</small><b>' + n(rollup.flagged) + '</b></div>' +
       '</div>' +
-      '<div class="overall-bar-track"><div class="overall-bar-fill" style="width:' + pct + '%;"></div></div>' +
-      '<div class="overall-bar-caption"><span>' + rollup.mastered + ' of ' + rollup.total + ' questions mastered</span><span>' + pct + '%</span></div>' +
+      '<div class="ready-row">' +
+        '<div class="rr-num">' + pct + '<small>%</small></div>' +
+        '<div class="rr-scale">' +
+          '<div class="rr-cap"><b>Mastered</b><span>' + n(rollup.mastered) + ' of ' + n(rollup.total) + ' questions</span></div>' +
+          '<span class="tape" role="img" aria-label="' + pct + '% of this subject mastered"><i style="width:' + pct + '%"></i><em style="left:' + pct + '%"></em></span>' +
+        '</div>' +
+      '</div>' +
     '</div>'
   );
 }
 
 function wireOverallReset(subject){
   const btn = document.getElementById('resetAllBtn');
-  const countEl = document.getElementById('ovModCount');
-  if(countEl) countEl.textContent = subject.modules.length;
   if(btn){
     btn.addEventListener('click', async () => {
       const ok = await LEAConfirm(
@@ -661,7 +683,7 @@ function renderModeRows(subject, rollup, mode){
     { id:'exam', no:'02', name:'Mock exam', cap:'Full 200 · 5 h, or a 50-item sim', num: String(subject.modules.length), disabled:false },
     { id:'drill', no:'03', name:'Drill my misses', cap: rollup.toDrill > 0 ? (rollup.total - rollup.mastered) + ' unmastered · ' + rollup.flagged + ' flagged' : 'All caught up', num: String(rollup.toDrill), disabled: rollup.toDrill === 0 }
   ];
-  return '<div class="mode-rows">' + rows.map(r =>
+  return '<div class="mode-rows lea-stagger">' + rows.map(r =>
     '<button type="button" class="mode-row' + (r.id === mode ? ' selected' : '') + (r.disabled ? ' disabled' : '') + '" data-mode="' + r.id + '"' + (r.disabled ? ' disabled' : '') + '>' +
       '<div class="mode-no">' + r.no + '</div>' +
       '<div class="mode-lbl"><div class="mode-name">' + escapeHtml(r.name) + '</div><div class="mode-cap">' + escapeHtml(r.cap) + '</div></div>' +
@@ -681,7 +703,7 @@ function wireModeRows(subject){
 }
 
 function renderModulesList(subject, mode){
-  return '<div class="module-grid">' + subject.modules.map(mod => {
+  return '<div class="module-grid lea-stagger">' + subject.modules.map(mod => {
     const mp = moduleProgress(subject.id, mod);
     const resume = LEAResume.load(subject.id, mod.id);
     const inProgress = !!(resume && resume.total && resume.answeredCount > 0 && resume.answeredCount < resume.total);
@@ -891,26 +913,7 @@ function wireTopicsBlock(){
     var fn = LEAIcons[el.getAttribute('data-icon')];
     if(fn) el.innerHTML = fn(15);
   });
-
-  // The theme button shows the mode you would switch TO, per the handoff's
-  // note on where the theme control lives — sun while dark, moon while light.
-  var themeBtn = document.getElementById('themeBtn');
-  if(!themeBtn || !window.LEATheme) return;
-  function paintTheme(){
-    var isLight = document.documentElement.classList.contains('light-mode') ||
-                  document.body.classList.contains('light-mode');
-    var icon = isLight ? 'moon' : 'sun';
-    var span = themeBtn.querySelector('.btn-ico');
-    span.setAttribute('data-icon', icon);
-    if(LEAIcons[icon]) span.innerHTML = LEAIcons[icon](18);
-    themeBtn.title = isLight ? 'Switch to dark' : 'Switch to light';
-    themeBtn.setAttribute('aria-label', themeBtn.title);
-  }
-  paintTheme();
-  themeBtn.addEventListener('click', function(){
-    LEATheme.toggle();
-    paintTheme();
-  });
+  // The theme is chosen in Home's Account sheet now; there is no button here.
 })();
 </script>
 </body>

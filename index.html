@@ -12,17 +12,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/icons.js?v=22"></script>
-<script src="assets/countdown.js?v=22"></script>
-<script src="assets/theme.js?v=22" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/quiz-source.js?v=22"></script>
-<script src="assets/avatar.js?v=22"></script>
-<script src="assets/module-progress.js?v=22"></script>
-<script src="assets/offline.js?v=22"></script>
-<script src="assets/quiz-resume.js?v=22"></script>
-<script src="assets/notifications.js?v=22"></script>
-<script src="assets/reminders.js?v=22"></script>
-<script src="assets/whats-new.js?v=22"></script>
+<script src="assets/icons.js?v=55"></script>
+<script src="assets/countdown.js?v=55"></script>
+<script src="assets/theme.js?v=55" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=55"></script>
+<script src="assets/quiz-source.js?v=55"></script>
+<script src="assets/avatar.js?v=55"></script>
+<script src="assets/module-progress.js?v=55"></script>
+<script src="assets/offline.js?v=55"></script>
+<script src="assets/quiz-resume.js?v=55"></script>
+<script src="assets/notifications.js?v=55"></script>
+<script src="assets/reminders.js?v=55"></script>
+<script src="assets/whats-new.js?v=55"></script>
 <script>
 // Coming back to Home from anywhere in the app used to flash the sign-in
 // screen for about half a second: the signed-out shell is what the document
@@ -144,44 +145,36 @@
      page, so returning to Home reads as loading rather than as signing out. */
   html.lea-resuming #signedOutShell{ display:none; }
   #bootHold{ display:none; }
-  html.lea-resuming #bootHold{
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    gap:10px; min-height:60vh; text-align:center;
-  }
-  #bootHold .bh-kicker{ font-family:var(--font-mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
-  #bootHold .bh-word{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; color:var(--ink); line-height:1; }
+  /* A restored Home (assets/nav.js) is already showing: no loading screen,
+     and the bars don't grow again as if it were the first visit. */
+  html.lea-snap #bootHold{ display:none !important; }
+  html.lea-snap .subject-row .sr-bar-fill{ animation:none; }
+  html.lea-resuming #bootHold{ display:block; }
   .signin-body{ position:relative; }
 
   .signin-geo{ position:absolute; inset:0; pointer-events:none; }
   .signin-geo span{ position:absolute; pointer-events:none; }
   .geo-arc{ border-radius:50%; }
-  .geo-arc-1{ top:-120px; right:-130px; width:330px; height:330px; border:1px solid rgba(224,168,63,0.22); }
-  .geo-arc-2{ top:-60px; right:-70px; width:210px; height:210px; border:1px solid rgba(111,168,207,0.18); }
-  .geo-square{ bottom:70px; left:-90px; width:250px; height:250px; border:1px dashed rgba(111,168,207,0.14); transform:rotate(18deg); }
+  /* Drawn from the theme's own accents so every theme gets matching linework. */
+  .geo-arc-1{ top:-120px; right:-130px; width:330px; height:330px; border:1px solid color-mix(in srgb, var(--gold) 22%, transparent); }
+  .geo-arc-2{ top:-60px; right:-70px; width:210px; height:210px; border:1px solid color-mix(in srgb, var(--blue) 20%, transparent); }
+  .geo-square{ bottom:70px; left:-90px; width:250px; height:250px; border:1px dashed color-mix(in srgb, var(--blue) 16%, transparent); transform:rotate(18deg); }
   .geo-plus{ font-family:var(--font-mono); font-size:15px; }
-  .geo-plus-1{ top:34px; right:26px; color:rgba(224,168,63,0.5); }
-  .geo-plus-2{ bottom:120px; left:22px; color:rgba(111,168,207,0.35); }
+  .geo-plus-1{ top:34px; right:26px; color:color-mix(in srgb, var(--gold) 50%, transparent); }
+  .geo-plus-2{ bottom:120px; left:22px; color:color-mix(in srgb, var(--blue) 40%, transparent); }
 
   .signin-eyebrow{ font-family:var(--font-mono); letter-spacing:.28em; font-size:11px; text-transform:uppercase; color:var(--muted); }
   .signin-wordmark{ font-family:var(--font-display); font-weight:800; font-size:60px; line-height:.86; margin:8px 0 0; text-transform:uppercase; letter-spacing:.01em; }
   .signin-rule{ height:2px; width:64px; background:var(--gold); margin:16px 0 14px; }
-  .signin-tagline{ font-family:var(--font-hand); font-size:16px; line-height:1.65; color:#c9d2da; }
-  body.light-mode .signin-tagline, :root.light-mode .signin-tagline{ color:var(--muted); }
+  .signin-tagline{ font-family:var(--font-hand); font-size:16px; line-height:1.65; color:var(--ink); opacity:.85; }
 
-  .signin-clock{ display:flex; align-items:center; gap:10px; margin:22px 0 20px; }
-  .sc-units{ display:flex; gap:6px; }
-  .sc-unit{ text-align:center; }
-  .sc-unit b{ display:block; font-family:var(--font-display); font-weight:800; font-size:26px; line-height:1; }
-  .sc-unit span{ display:block; font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:4px; }
-  .sc-sep{ font-family:var(--font-display); font-weight:800; font-size:26px; line-height:1; color:var(--muted); }
-  .sc-divider{ width:1px; height:34px; background:rgba(111,168,207,0.25); }
-  .sc-label{ font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); line-height:1.6; }
+  /* Sign in uses Home's split-flap card, so the two clocks look and turn alike. */
+  .signin-cd{ margin:22px 0 20px; }
 
   .field{ display:block; }
   .field-label{ display:block; font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:7px; }
   .signin-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
-  .keepme{ display:flex; align-items:center; gap:9px; font-size:13px; color:#c9d2da; cursor:pointer; }
-  body.light-mode .keepme, :root.light-mode .keepme{ color:var(--ink); }
+  .keepme{ display:flex; align-items:center; gap:9px; font-size:13px; color:var(--ink); cursor:pointer; }
   .keepme input{ position:absolute; opacity:0; width:0; height:0; }
   .keepme-box{ width:20px; height:20px; flex-shrink:0; border:1px solid var(--gold); display:flex; align-items:center; justify-content:center; }
   .keepme input:checked + .keepme-box{ background:var(--gold); }
@@ -195,7 +188,7 @@
   .signin-primary{ display:flex; align-items:center; justify-content:center; gap:10px; width:100%; background:var(--gold); color:#1a1206; border:none; border-radius:0; font-family:var(--font-mono); font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:15px 18px; cursor:pointer; }
   .signin-primary:hover{ background:var(--gold-bright); }
 
-  .signin-presence{ display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); padding-top:16px; margin-top:20px; border-top:1px solid rgba(111,168,207,0.18); }
+  .signin-presence{ display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); padding-top:16px; margin-top:20px; border-top:1px solid var(--line); }
   .signin-presence b{ color:var(--ink); font-weight:600; }
   .sp-dot{ width:6px; height:6px; border-radius:50%; background:var(--good); flex-shrink:0; }
 
@@ -239,7 +232,7 @@
     width:100%;
   }
   .auth-form input::placeholder{ color:var(--muted); }
-  .auth-form input:focus{ outline:none; border-color:var(--gold); box-shadow: 0 0 0 3px rgba(224,168,63,0.16); }
+  .auth-form input:focus{ outline:none; border-color:var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 16%, transparent); }
   .field-wrap{ position:relative; display:block; }
   .field-wrap input{ padding-right:52px; }
   .field-eye{
@@ -290,15 +283,24 @@
   .bell-badge{ position:absolute; top:-5px; right:-5px; min-width:18px; height:18px; padding:0 5px; border-radius:9px;
     background:var(--bad); color:#fff; font-family:var(--font-mono); font-size:10px; font-weight:600; line-height:18px; text-align:center;
     border:2px solid var(--bg-deep); box-sizing:content-box; }
-  .account-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:13px 4px; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); }
+  .account-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; min-height:56px; padding:12px 0; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); }
   .account-row:last-child{ border-bottom:none; }
-  .account-row .ar-label{ font-family:var(--font-display); font-weight:700; font-size:15px; text-transform:uppercase; }
-  .account-row .ar-sub{ font-family:var(--font-mono); font-size:11.5px; color:var(--muted); margin-top:2px; }
+  .account-row .ar-label{ font-family:var(--font-display); font-weight:800; font-size:18px; line-height:1; text-transform:uppercase; }
+  .account-row .ar-sub{ font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-top:5px; }
   .account-row.danger .ar-label{ color:var(--bad); }
   /* Rows that are <button> (Appearance, Log out) must match the <a> rows. */
   button.account-row{ width:100%; background:none; border:none; border-bottom:1px solid var(--line); font-family:inherit; text-align:left; cursor:pointer; min-height:44px; }
   button.account-row:last-child{ border-bottom:none; }
   .account-row .ar-icon{ display:flex; align-items:center; color:var(--gold-bright); flex-shrink:0; }
+  /* Theme picker in the Account sheet: one swatch per theme. */
+  .account-row.theme-row{ border-bottom:none; padding-bottom:8px; }
+  .theme-swatches{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; padding:0 0 14px; border-bottom:1px solid var(--line); }
+  .theme-sw{ display:flex; flex-direction:column; gap:6px; padding:7px 6px 8px; min-height:44px; cursor:pointer;
+    background:var(--bg-panel-2); border:1px solid var(--line); border-radius:0; color:var(--ink);
+    font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+  .theme-sw .ts-chips{ display:flex; height:26px; border-radius:0; overflow:hidden; }
+  .theme-sw .ts-chips i{ flex:1; }
+  .theme-sw[aria-checked="true"]{ border-color:var(--gold-bright); box-shadow:0 0 0 1px var(--gold-bright); }
 
   /* ===== 7a desktop (1120px) =====
      On phones the three column wrappers are display:contents, so they take no
@@ -308,16 +310,7 @@
   .home-cols{ display:contents; }
   .col-left, .col-center{ display:contents; }
   .col-right{ display:none; }
-  .subject-grid{ display:block; }
-  /* The search field sits between the resume card and Subjects on a phone,
-     but is a direct child of #homeBody so the desktop header can place it.
-     Ordering keeps the phone stack in the sequence the design specifies
-     without tying it to DOM position. Everything else defaults to order 0
-     and therefore stays in document order. */
   #homeBody{ display:flex; flex-direction:column; }
-  #homeBody .search-field{ order:1; }
-  #homeBody .subjects-divider{ order:2; }
-  #homeBody .subject-grid{ order:3; }
 
 
   /* Right rail cards */
@@ -337,13 +330,12 @@
   .rail-note{ font-family:var(--font-mono); font-size:11px; line-height:1.6; color:var(--muted); padding:0 2px; }
   .home-wordmark{ text-align:center; }
   .home-wordmark .hw-eyebrow{ font-family:var(--font-mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
-  .home-wordmark .hw-title{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; color:var(--ink); line-height:1; margin-top:2px; }
+  .home-wordmark .hw-title{ font-family:var(--font-display); font-weight:800; font-size:20px; text-transform:uppercase; color:var(--ink); line-height:1; margin-top:2px; }
 
   /* ===== presence strip ===== */
   .presence-strip{
-    display:flex; align-items:center; justify-content:space-between; gap:8px;
-    background:var(--bg-panel-2); border:1px solid var(--line); border-radius:8px;
-    padding:9px 14px; margin-bottom:12px; font-family:var(--font-mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--muted);
+    display:flex; align-items:center; gap:8px;
+    padding:0 2px; margin:0 0 16px; font-family:var(--font-body); font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted);
   }
   .presence-strip .online-dot{ width:9px; height:9px; border-radius:50%; background:var(--good); display:inline-block; margin-right:6px; }
   /* Who is here, not just how many. The names scroll only when they overrun,
@@ -364,108 +356,130 @@
   @media (prefers-reduced-motion: reduce){
     .presence-strip .who.scrolls i{ animation:none; }
   }
-  .presence-strip .offline-ready{ color:var(--blue-bright); }
 
   /* ===== split-flap countdown ===== */
   .countdown-card{
     position:relative; background:var(--bg-panel); border:1px solid var(--line);
-    padding:18px 16px 14px; margin-bottom:12px;
+    padding:14px 16px 12px; margin-bottom:16px;
   }
+  /* Shorter tiles than the shared .flap: the clock is context, not the headline. */
+  .countdown-card .flap{ padding:7px 4px 6px; }
+  /* Mastered / Quizzes / Streak: three equal centred columns under the flaps,
+     so they sit symmetrically and no label can run into the next. */
+  .cd-stats{ display:grid; grid-template-columns:repeat(3,1fr); margin-top:12px; padding-top:10px; border-top:1px solid var(--line); text-align:center; }
+  .cd-stats > div{ min-width:0; }
+  .cd-stats > div + div{ border-left:1px solid var(--line); }
+  .cd-stats b{ display:block; font-family:var(--font-display); font-weight:800; font-size:20px; line-height:1; color:var(--ink); white-space:nowrap; }
+  .cd-stats b small{ font-size:12px; color:var(--muted); }
+  .cd-stats span{ display:block; margin-top:4px; font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); white-space:nowrap; }
   .countdown-card::before, .countdown-card::after{ content:""; position:absolute; width:12px; height:12px; border:2px solid var(--gold); opacity:.9; }
   .countdown-card::before{ top:-2px; left:-2px; border-width:2px 0 0 2px; }
   .countdown-card::after{ bottom:-2px; right:-2px; border-width:0 2px 2px 0; }
-  .countdown-label{ font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); text-align:center; margin-bottom:12px; }
+  .countdown-label{ font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-align:center; margin-bottom:8px; white-space:nowrap; }
   .flap-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
   .flap{
-    position:relative; background:var(--bg-panel-2); border:1px solid rgba(111,168,207,0.28); border-radius:4px;
+    position:relative; background:var(--bg-panel-2); border:1px solid var(--line); border-radius:4px;
     padding:10px 4px 8px; text-align:center; overflow:hidden;
   }
   .flap::before{ content:""; position:absolute; top:0; left:0; right:0; height:50%; background:linear-gradient(rgba(255,255,255,0.045), transparent); }
   .flap::after{ content:""; position:absolute; top:50%; left:0; right:0; height:1px; background:rgba(0,0,0,0.55); }
-  .flap.seconds{ border-color:var(--gold); }
-  .flap .flap-val{ font-family:var(--font-display); font-weight:800; font-size:34px; color:var(--ink); line-height:1; position:relative; z-index:1; }
-  .flap.seconds .flap-val{ color:var(--gold); }
-  .flap .flap-lbl{ font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:4px; }
+  /* Seconds match the other tiles: the ticking number was the brightest spot
+     on the page while being the least useful one. */
+  .flap .flap-val{ font-family:var(--font-display); font-weight:800; font-size:28px; color:var(--ink); line-height:1; position:relative; z-index:1; }
+  .flap .flap-lbl{ font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-top:4px; }
+  /* A flap turns over when its number changes. */
+  .flap{ perspective:260px; }
+  .flap .flap-val.flip{ animation:flap-turn .32s cubic-bezier(.3,.7,.4,1); }
+  @keyframes flap-turn{ 0%{transform:rotateX(0)} 45%{transform:rotateX(-90deg); opacity:.6} 55%{transform:rotateX(90deg); opacity:.6} 100%{transform:rotateX(0)} }
 
-  /* ===== readiness ===== */
-  .readiness-card{ background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:18px 18px 14px; margin-bottom:12px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
-  .readiness-ring{ width:84px; height:84px; border-radius:50%; flex-shrink:0; position:relative; background:conic-gradient(var(--blue-bright) calc(var(--pct,0)*1%), var(--bg-panel-2) 0); }
-  .readiness-ring::before{ content:""; position:absolute; inset:8px; border-radius:50%; background:var(--bg-panel); }
-  .readiness-ring .rr-pct{ position:relative; z-index:1; width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-weight:600; font-size:18px; color:var(--ink); }
-  .readiness-info{ flex:1; min-width:170px; }
-  .readiness-info h2{ font-family:var(--font-display); font-weight:700; font-size:20px; text-transform:uppercase; margin:0 0 8px; color:var(--ink); line-height:1; }
-  .readiness-info .rr-rule{ height:1px; background:var(--gold); opacity:.6; margin-bottom:8px; }
-  .readiness-info .rr-stats{ font-family:var(--font-mono); font-size:11px; color:var(--muted); line-height:1.6; }
+  /* The title block (.cd-tb), the %-and-tape row (.ready-row, .tape) and the
+     home-grow animation are shared with the subject page: assets/blueprint.css. */
+  .ready-row{ margin:0 2px 16px; }
 
-  /* ===== streak ===== */
-  .streak-card{ background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin-bottom:12px; }
-  .streak-title{ font-family:var(--font-display); font-weight:700; font-size:15px; text-transform:uppercase; color:var(--ink); display:flex; align-items:center; gap:6px; margin-bottom:10px; }
-  .streak-ticks{ display:flex; gap:5px; margin-bottom:10px; }
-  .streak-tick{ flex:1; height:8px; border-radius:2px; background:rgba(111,168,207,0.18); }
-  .streak-tick.filled{ background:var(--gold); }
-  .streak-note{ font-family:var(--font-hand); font-size:14px; color:var(--ink); opacity:.92; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .streak-note b{ color:var(--gold-bright); font-family:var(--font-mono); font-weight:600; font-style:normal; }
-
-  /* ===== daily drill ===== */
+  /* ===== daily drill =====
+     A quiet card like the rest. Motion does the pointing instead of a gold
+     fill: a soft light sweeps across it and the arrow nudges now and then. */
   .drill-card{
-    background:var(--gold); color:#1a1206; border:1px solid var(--gold); border-radius:12px;
-    padding:16px 18px; margin-bottom:10px;
-    display:block; text-decoration:none; cursor:pointer; width:100%; text-align:left;
+    position:relative; overflow:hidden;
+    background:var(--bg-panel); color:var(--ink); border:1px solid var(--line);
+    padding:14px 16px 14px 50px; margin-bottom:8px;
+    display:flex; align-items:center; gap:12px; text-decoration:none; cursor:pointer; width:100%; text-align:left;
   }
-  /* Title and count share one row, as drawn — stacking them made the card
-     noticeably taller than the frame. */
-  .drill-card .dc-head{ display:flex; justify-content:space-between; align-items:center; gap:10px; }
+  .drill-card::after{ content:""; position:absolute; top:0; bottom:0; left:-30%; width:30%; pointer-events:none;
+    background:linear-gradient(90deg, transparent, color-mix(in srgb, var(--gold) 16%, transparent), transparent); animation:drill-sweep 3.6s ease-in-out infinite; }
+  .drill-card:hover{ border-color:var(--gold-bright); }
   .drill-card.disabled{ opacity:.55; cursor:default; }
-  .drill-card .dc-title{ font-family:var(--font-display); font-weight:700; font-size:24px; text-transform:uppercase; line-height:1; }
-  .drill-card .dc-count{ font-family:var(--font-mono); font-weight:600; font-size:12px; white-space:nowrap; }
-  .drill-card .dc-sub{ font-family:var(--font-mono); font-size:11.5px; letter-spacing:.04em; text-transform:uppercase; margin-top:8px; opacity:.85; }
-
-  /* ===== two tiles ===== */
-  .tiles-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px; }
-  .tile{
-    background:var(--bg-panel-2); border:1px solid var(--line); border-radius:12px; padding:14px 14px 12px;
-    display:block; text-decoration:none; cursor:pointer; border-style:solid; text-align:left; color:var(--ink);
+  .drill-card.disabled::after{ display:none; }
+  .drill-card .dc-body{ position:relative; min-width:0; }
+  /* A faint gold target at the left edge, drawn like the subject icons. It
+     brightens as the light sweep sets off from that side, on the same 3.6s
+     beat, so the two read as one pulse. */
+  .drill-card .dc-ico{ position:absolute; left:-16px; top:50%; width:60px; height:60px; color:var(--gold); opacity:.14; pointer-events:none;
+    transform:translateY(-50%) rotate(-8deg); animation:drill-glow 3.6s ease-in-out infinite; }
+  .drill-card .dc-ico svg{ display:block; width:100%; height:100%; }
+  .drill-card.disabled .dc-ico{ animation:none; }
+  @keyframes drill-glow{
+    0%,22%{ opacity:.14; transform:translateY(-50%) rotate(-8deg) scale(1); }
+    40%{ opacity:.38; transform:translateY(-50%) rotate(-8deg) scale(1.06); }
+    62%,100%{ opacity:.14; transform:translateY(-50%) rotate(-8deg) scale(1); }
   }
-  .tile .tile-kicker{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px; }
-  .tile.mock .tile-kicker{ color:var(--blue-bright); }
-  .tile.topic .tile-kicker{ color:var(--bad); }
-  .tile .tile-title{ font-family:var(--font-display); font-weight:700; font-size:16px; text-transform:uppercase; margin-bottom:4px; }
-  .tile .tile-sub{ font-family:var(--font-mono); font-size:11px; color:var(--muted); line-height:1.4; }
+  .drill-card .dc-title{ font-family:var(--font-display); font-weight:800; font-size:20px; text-transform:uppercase; line-height:1; }
+  .drill-card .dc-sub{ font-size:13px; color:var(--muted); margin-top:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .drill-card .dc-go{ position:relative; margin-left:auto; flex-shrink:0; white-space:nowrap; font-family:var(--font-body); font-weight:600; font-size:12px; letter-spacing:.04em; text-transform:uppercase; color:var(--gold-bright); animation:drill-nudge 2.8s ease-in-out infinite; }
+  @keyframes drill-sweep{ 0%,35%{left:-30%} 75%,100%{left:110%} }
+  @keyframes drill-nudge{ 0%,70%,100%{transform:translateX(0)} 80%{transform:translateX(5px)} 90%{transform:translateX(0)} }
+
+  /* ===== mock exam + weak spots: two small buttons ===== */
+  .tiles-row{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:16px; }
+  .tile{
+    display:flex; align-items:center; justify-content:center; min-height:44px; padding:10px 8px;
+    background:var(--bg-panel); border:1px solid var(--line); color:var(--ink); text-decoration:none; cursor:pointer;
+    font-family:var(--font-body); font-weight:600; font-size:12px; letter-spacing:.08em; text-transform:uppercase; text-align:center;
+  }
+  .tile:hover{ border-color:var(--gold-bright); }
 
   /* ===== resume ===== */
-  .resume-card{ background:var(--bg-panel-2); border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:10px; padding:14px 16px; margin-bottom:12px; display:block; text-decoration:none; color:var(--ink); }
-  .resume-card .rc-kicker{ font-family:var(--font-mono); font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:4px; }
-  .resume-card .rc-title{ font-family:var(--font-display); font-weight:700; font-size:16px; text-transform:uppercase; margin-bottom:4px; }
-  .resume-card .rc-meta{ font-family:var(--font-mono); font-size:11px; color:var(--muted); display:flex; justify-content:space-between; }
-  .resume-card .rc-meta b{ color:var(--gold-bright); }
+  /* One quiet line: what you left and the way back in. */
+  .resume-card{ display:flex; align-items:center; gap:10px; min-height:44px; background:var(--bg-panel-2); border:1px solid var(--line); padding:8px 16px; margin-bottom:16px; text-decoration:none; color:var(--ink); }
+  /* Home's cards are square like the drafting panels. The ID beats the
+     rounded radius blueprint.css gives these classes on every page. */
+  #homeBody .drill-card, #homeBody .tile, #homeBody .resume-card, #homeBody .subject-row{ border-radius:0; }
+  .resume-card .rc-kicker{ flex-shrink:0; font-family:var(--font-body); font-weight:600; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold-bright); }
+  .resume-card .rc-title{ flex:1; min-width:0; font-family:var(--font-display); font-weight:700; font-size:16px; text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .resume-card .rc-meta{ flex-shrink:0; font-family:var(--font-mono); font-size:11px; color:var(--muted); white-space:nowrap; }
 
-  /* ===== search ===== */
-  .search-field{ position:relative; margin-bottom:18px; }
-  .search-field svg{ position:absolute; left:14px; top:50%; transform:translateY(-50%); width:15px; height:15px; color:var(--blue-bright); }
-  .search-field input{
-    width:100%; background:var(--bg-panel-2); border:1px solid var(--line); border-radius:10px;
-    padding:12px 14px 12px 40px; color:var(--ink); font-family:var(--font-body); font-size:13.5px;
+  /* ===== subjects: the main event ===== */
+  .subjects-head{ display:flex; align-items:baseline; justify-content:space-between; margin:24px 2px 10px; }
+  .subjects-head h2{ margin:0; font-family:var(--font-display); font-weight:800; font-size:28px; text-transform:uppercase; line-height:1; color:var(--ink); }
+  .subjects-head span{ font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  .subject-grid{ display:flex; flex-direction:column; gap:8px; }
+  .subject-row{
+    position:relative; overflow:hidden;
+    display:grid; grid-template-columns:1fr auto; align-items:center; column-gap:12px;
+    /* Tall enough for a two-line name, so one- and two-line subjects match. */
+    min-height:84px; padding:12px 16px; background:var(--bg-panel); border:1px solid var(--line);
+    text-decoration:none; color:var(--ink);
   }
-  .search-field input::placeholder{ color:var(--muted); }
-  .search-field input:focus{ outline:none; border-color:var(--gold); }
-
-  /* ===== subjects divider + rows ===== */
-  .subjects-divider{ display:flex; align-items:center; gap:12px; margin:20px 0 12px; font-family:var(--font-mono); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
-  .subjects-divider::before, .subjects-divider::after{ content:""; flex:1; height:1px; background:var(--line); }
-  .subject-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 4px; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); }
-  .subject-row:last-child{ border-bottom:none; }
-  .subject-row .sr-left{ flex:1; min-width:0; }
-  .subject-row .sr-name{ font-family:var(--font-display); font-weight:700; font-size:17px; text-transform:uppercase; color:var(--ink); line-height:1.1; }
-  .subject-row .sr-bar-track{ height:5px; border-radius:3px; background:var(--bg-panel-2); overflow:hidden; margin-top:7px; }
-  .subject-row .sr-bar-fill{ height:100%; border-radius:3px; background:linear-gradient(90deg, var(--gold-bright), var(--gold)); }
-  .subject-row .sr-pct{ font-family:var(--font-mono); font-size:11.5px; color:var(--gold-bright); flex-shrink:0; }
-  .subject-row .sr-pct.low{ color:var(--bad); }
+  a.subject-row:hover{ border-color:var(--blue-bright); }
+  /* A faint drawing of the subject behind the card. Decoration only. */
+  .subject-row .sr-ico{ position:absolute; right:52px; top:50%; width:64px; height:64px; transform:translateY(-50%) rotate(-8deg); color:var(--ink); opacity:.09; pointer-events:none; }
+  .subject-row .sr-ico svg{ display:block; width:100%; height:100%; }
+  .subject-row .sr-name, .subject-row .sr-pct, .subject-row .sr-bar-track{ position:relative; }
+  /* Right padding keeps wrapped names clear of the faint icon behind them. */
+  .subject-row .sr-name{ font-family:var(--font-display); font-weight:700; font-size:18px; text-transform:uppercase; line-height:1.1; padding-right:56px;
+    text-wrap:balance; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .subject-row .sr-pct{ font-family:var(--font-display); font-weight:800; font-size:20px; line-height:1; text-align:right; color:var(--ink); }
+  .subject-row .sr-pct small{ font-size:13px; }
+  .subject-row .sr-pct.tag{ font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  .subject-row .sr-bar-track{ grid-column:1 / -1; height:6px; margin-top:10px; background:color-mix(in srgb, var(--muted) 28%, transparent); overflow:hidden; }
+  .subject-row .sr-bar-fill{ height:100%; background:var(--blue-bright); transform-origin:left; animation:home-grow 1s cubic-bezier(.16,1,.3,1) both; }
   .subject-row.placeholder{ opacity:.55; }
-  .see-all-link{ display:block; text-align:center; font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--gold-bright); text-decoration:none; margin-top:10px; padding:8px; }
 
-  .brand-footer{ text-align:center; margin-top:30px; opacity:.8; }
-  .brand-footer .bf-eyebrow{ font-family:var(--font-mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
-  .brand-footer .bf-title{ font-family:var(--font-display); font-weight:700; font-size:20px; text-transform:uppercase; color:var(--ink); margin-top:4px; }
+  @media (prefers-reduced-motion: reduce){
+    .flap .flap-val.flip, .tape i, .tape em, .subject-row .sr-bar-fill, .drill-card .dc-go, .drill-card .dc-ico{ animation:none; }
+    .drill-card::after{ display:none; }
+  }
+
 
   /* ===== theme toggle ===== */
   .theme-toggle{
@@ -500,30 +514,20 @@
 
   .sheet{
     width:100%; max-width:520px; max-height:82vh; overflow-y:auto; background:var(--bg-panel);
-    border-top:2px solid var(--gold); border-radius:16px 16px 0 0; padding:22px 20px 26px;
+    border-top:2px solid var(--gold); border-radius:0; padding:20px 16px 24px;
     box-shadow:0 -24px 60px rgba(0,0,0,0.5);
   }
-  .sheet h2{ font-family:var(--font-display); font-weight:700; font-size:20px; text-transform:uppercase; margin:0 0 14px; }
-  .weak-topic-row{ display:flex; align-items:center; gap:10px; padding:11px 0; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); }
+  .sheet h2{ font-family:var(--font-display); font-weight:800; font-size:28px; line-height:1; text-transform:uppercase; margin:0 0 12px; }
+  .weak-topic-row{ display:flex; align-items:center; gap:12px; min-height:52px; padding:10px 0; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); }
   .weak-topic-row:last-child{ border-bottom:none; }
-  .weak-topic-row .wt-name{ flex:1; font-size:14px; }
-  .weak-topic-row .wt-pct{ font-family:var(--font-mono); font-size:11px; color:var(--bad); }
-  .weak-topic-row .wt-arrow{ font-family:var(--font-mono); color:var(--muted); }
+  .weak-topic-row .wt-name{ flex:1; min-width:0; font-size:14px; line-height:1.35; overflow-wrap:anywhere; }
+  .weak-topic-row .wt-pct{ flex-shrink:0; font-family:var(--font-display); font-weight:800; font-size:20px; line-height:1; color:var(--ink); }
+  .weak-topic-row .wt-arrow{ flex-shrink:0; color:var(--gold-bright); }
   .sheet-close{
-    display:block; margin:14px auto 0; background:none; border:none; color:var(--muted);
-    font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; min-height:44px; margin:12px auto 0; padding:0 16px; background:none; border:none; color:var(--muted);
+    font-family:var(--font-body); font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:.08em; cursor:pointer;
   }
-  .state-note{ font-family:var(--font-mono); font-size:11.5px; color:var(--muted); text-align:center; padding:16px 0; }
-
-  /* ---- Phone stack order ----
-     The column wrappers are display:contents below 1120px, so every card is a
-     flex item of #homeBody. Daily Drill, the two mode tiles and Resume move up
-     to sit right under the presence strip: the thing you came to do comes
-     first, and the countdown, readiness and streak follow as context. */
-  @media (max-width:1119px){
-    #homeBody .home-top-bar, #homeBody .presence-strip{ order:-2; }
-    #homeBody .drill-card, #homeBody .tiles-row, #homeBody .resume-card{ order:-1; }
-  }
+  .state-note{ font-family:var(--font-body); font-size:13px; color:var(--muted); text-align:center; padding:16px 0; }
 
   /* ---- Desktop (7a) lives last on purpose ----
      A media query adds no specificity, so these rules only beat the
@@ -548,20 +552,13 @@
     .home-top-bar{ display:contents; }
     .home-top-bar .home-wordmark{ grid-row:1; grid-column:1; text-align:left;
       margin-right:6px; }
-    /* gap:16px sits between the brand block and the control cluster; the
-       cluster itself is 10px, which is the column-gap above. */
-    #homeBody .search-field{ grid-row:1; grid-column:2; justify-self:end;
-      min-width:260px; width:auto; margin:0 0 0 16px; }
-    #homeBody .search-field input{ height:40px; padding:0 14px 0 40px; }
-    #homeBody .presence-strip{ grid-row:1; grid-column:3; width:auto; margin:0;
-      height:40px; padding:0 12px; gap:7px; }
+    #homeBody .presence-strip{ grid-row:1; grid-column:2; justify-self:end; width:100%; max-width:440px; min-width:0; margin:0 6px 0 16px; }
     .home-top-actions{ display:contents; }
     .home-top-bar .icon-btn-44{ width:40px; height:40px; }
+    .home-top-bar .search-btn{ grid-row:1; grid-column:3; }
     .home-top-bar .bell-btn{ grid-row:1; grid-column:4; }
     .home-top-bar .trophy-btn{ grid-row:1; grid-column:5; }
     .home-top-bar .avatar-btn-44{ grid-row:1; grid-column:6; width:40px; height:40px; }
-    /* Offline-ready is stated in the right rail at this width. */
-    #homeBody .presence-strip .offline-ready{ display:none; }
 
     /* --- Body: three rails --- */
     .home-cols{ grid-row:2; grid-column:1 / -1;
@@ -575,35 +572,27 @@
        flex 1.4 / 1 / 1 with a 14px gap. On the phone they are a full-width
        drill card above a 2-up tiles row, so `.tiles-row` dissolves here and
        its two tiles join the drill card as siblings on this grid. */
-    .col-center{ display:grid; grid-template-columns:1.4fr 1fr 1fr;
-      gap:16px 14px; align-content:start; }
+    /* Daily Drill runs full width; Mock exam and Weak spots are two small
+       buttons under it, as on the phone. */
+    .col-center{ display:grid; grid-template-columns:1fr 1fr;
+      gap:12px 10px; align-content:start; }
     .tiles-row{ display:contents; }
-    .drill-card{ grid-row:1; grid-column:1; padding:20px; margin:0; }
-    .tile.mock{ grid-row:1; grid-column:2; padding:20px; }
-    .tile.topic{ grid-row:1; grid-column:3; padding:20px; }
-    .resume-card, .subjects-divider, .subject-grid{ grid-column:1 / -1; margin:0; }
+    .drill-card{ grid-row:1; grid-column:1 / -1; padding:16px 18px 16px 54px; margin:0; }
+    .tile.mock{ grid-row:2; grid-column:1; }
+    .tile.topic{ grid-row:2; grid-column:2; }
+    .resume-card, .subjects-head, .subject-grid{ grid-column:1 / -1; margin:0; }
 
-    /* Resume becomes a strip: kicker+title left, progress block right. */
-    .resume-card{ display:flex; align-items:center; gap:18px; padding:16px 18px; }
-    .resume-card .rc-body{ flex:1; min-width:0; }
-    .resume-card .rc-meta{ width:180px; flex-shrink:0; }
+    .resume-card{ padding:10px 16px; }
 
-    .subjects-divider{ margin-top:4px; }
-    /* Width buys context: every subject visible at once, as cards. */
+    .subjects-head{ margin-top:8px; }
+    /* Width buys context: every subject visible at once, two cards a row. */
     .subject-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-    .subject-grid .subject-row{ padding:13px 14px; border-bottom:none;
-      background:var(--bg-panel-2); border:1px solid var(--line); border-radius:10px; }
 
     /* --- Left rail: 7a's own card sizes, not the phone's --- */
     .col-left .countdown-card{ padding:16px; margin:0; }
     .col-left .flap-grid{ gap:7px; }
     .col-left .flap{ padding:9px 4px 7px; }
-    .col-left .readiness-card{ padding:18px; margin:0; text-align:center;
-      display:block; }
-    /* The frame draws the donut at 132px and centres it above the text,
-       rather than the phone's 84px ring sitting beside it. */
-    .col-left .readiness-ring{ width:132px; height:132px; margin:0 auto 14px; }
-    .col-left .streak-card{ padding:16px; margin:0; }
+    .col-left .ready-row{ margin:0 2px; }
 
     /* --- Right rail --- */
     .rail-card{ padding:16px; }
@@ -614,17 +603,14 @@
       border-left:3px solid var(--blue-bright); padding:13px 15px; border-radius:10px; }
   }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=24">
+<link rel="stylesheet" href="assets/blueprint.css?v=55">
 </head>
 <body>
 <div class="wrap">
   <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
 
   <!-- Shown only while a stored session is being confirmed. -->
-  <div id="bootHold" aria-hidden="true">
-    <div class="bh-kicker">Peter Parker's</div>
-    <div class="bh-word">LEA Reviewer</div>
-  </div>
+  <div id="bootHold"><script>document.write(LEANav.skel('home'))</script></div>
 
   <!-- ===================== SIGNED-OUT: MASTHEAD + AUTH PANEL ===================== -->
   <div id="signedOutShell">
@@ -645,18 +631,16 @@
       <div class="signin-rule"></div>
       <div class="signin-tagline">Track what you&rsquo;ve actually mastered &mdash; not what you&rsquo;ve merely read.</div>
 
-      <!-- Same clock as Home, from assets/countdown.js. Seconds are omitted
-           here by design; the frame shows days : hrs : min only. -->
-      <div class="signin-clock">
-        <div class="sc-units">
-          <div class="sc-unit"><b id="scDays">0</b><span>days</span></div>
-          <div class="sc-sep">:</div>
-          <div class="sc-unit"><b id="scHrs">00</b><span>hrs</span></div>
-          <div class="sc-sep">:</div>
-          <div class="sc-unit"><b id="scMins">00</b><span>min</span></div>
+      <!-- Same clock as Home, from assets/countdown.js, drawn with the same
+           split-flap card and turned by the same renderCountdown(). -->
+      <div class="countdown-card signin-cd">
+        <div class="countdown-label">Until the LEA &middot; 17 January 2027*</div>
+        <div class="flap-grid">
+          <div class="flap"><div class="flap-val" id="siDays">0</div><div class="flap-lbl">Days</div></div>
+          <div class="flap"><div class="flap-val" id="siHrs">00</div><div class="flap-lbl">Hrs</div></div>
+          <div class="flap"><div class="flap-val" id="siMins">00</div><div class="flap-lbl">Min</div></div>
+          <div class="flap seconds"><div class="flap-val" id="siSecs">00</div><div class="flap-lbl">Sec</div></div>
         </div>
-        <div class="sc-divider"></div>
-        <div class="sc-label">until the LEA<br>17 Jan 2027 &middot; unofficial</div>
       </div>
 
       <div class="auth-tabs">
@@ -723,13 +707,16 @@
 
   <!-- ===================== SIGNED-IN: HOME (2a) ===================== -->
   <div id="signedInShell" class="hidden">
-    <div id="homeBody"><div class="state-note">Loading…</div></div>
-
-    <div class="brand-footer">
-      <div class="bf-eyebrow">Peter Parker's</div>
-      <div class="bf-title">LEA Reviewer</div>
-    </div>
+    <div id="homeBody" data-snap><script>document.write(LEANav.skel('home'))</script></div>
   </div>
+  <script>
+    // Back on Home: show Home as you left it, so the page transition has Home
+    // to slide in rather than the loading screen (assets/nav.js).
+    if (document.documentElement.classList.contains('lea-resuming') && window.LEANav &&
+        LEANav.restoreSnap(document.getElementById('homeBody'))) {
+      document.getElementById('signedInShell').classList.remove('hidden');
+    }
+  </script>
 
 </div>
 
@@ -786,6 +773,17 @@ function stripEmoji(str){ return String(str||'').replace(/[\p{Extended_Pictograp
 const signedOutShell = document.getElementById('signedOutShell');
 const signedInShell = document.getElementById('signedInShell');
 const homeBody = document.getElementById('homeBody');
+// Lets the subject page draw its heading at once, so the name can fly into it.
+homeBody.addEventListener('click', function(e){
+  const row = e.target.closest('a.subject-row');
+  if(!row) return;
+  try{
+    sessionStorage.setItem('lea_subject_title', JSON.stringify({
+      id: new URL(row.href).searchParams.get('s'),
+      name: row.querySelector('.sr-name').textContent
+    }));
+  }catch(err){}
+});
 let currentUsername = '';
 let currentAvatarUrl = null;
 let SUBJECTS_ALL = [];
@@ -827,12 +825,21 @@ function timeAgo(iso){
 // ================= Countdown =================
 // The clock itself lives in assets/countdown.js, shared with Sign in (2e).
 // This only paints Home's split-flap panels from the numbers it hands over.
-function renderCountdown(p){
+// `prefix` picks which clock: 'cd' is Home's, 'si' is Sign in's.
+function renderCountdown(p, prefix){
   p = p || LEACountdown.parts();
-  const set = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = LEACountdown.pad2(v); };
-  const daysEl = document.getElementById('cdDays');
-  if(daysEl) daysEl.textContent = p.days;
-  set('cdHrs', p.hrs); set('cdMins', p.mins); set('cdSecs', p.secs);
+  prefix = prefix || 'cd';
+  // First paint just sets the numbers; after that a changed number turns
+  // over, swapping its text halfway through the turn.
+  const flip = (id, v) => {
+    const el = document.getElementById(id);
+    if(!el || el.textContent === v) return;
+    if(!el.dataset.painted){ el.textContent = v; el.dataset.painted = '1'; return; }
+    el.classList.remove('flip'); void el.offsetWidth; el.classList.add('flip');
+    setTimeout(() => { el.textContent = v; }, 140);
+  };
+  flip(prefix + 'Days', String(p.days));
+  flip(prefix + 'Hrs', LEACountdown.pad2(p.hrs)); flip(prefix + 'Mins', LEACountdown.pad2(p.mins)); flip(prefix + 'Secs', LEACountdown.pad2(p.secs));
 }
 let countdownTimer = null;
 
@@ -897,7 +904,11 @@ function findMostRecentResume(){
 }
 
 // ================= Render: Home (2a) =================
-function renderHome(){
+// Every redraw of Home — first paint, progress syncing in, the online list —
+// waits out a page transition first: replacing a flying subject card
+// mid-animation makes the browser drop the whole animation (assets/nav.js).
+function renderHome(){ LEANav.afterTransition(renderHomeNow); }
+function renderHomeNow(){
   // Whatever this render rebuilds, the strip gets the current list back at
   // the end of it (see lastOnlineNames).
   setTimeout(() => renderOnline(lastOnlineNames), 0);
@@ -907,58 +918,49 @@ function renderHome(){
   const resume = findMostRecentResume();
   const readySubjects = SUBJECTS_ALL.filter(s => s.ready);
 
-  // Filled from the LEFT, the way the frame draws it — days done so far run
-  // left to right, and the empty ticks at the end are the days still to come.
-  // This used to fill from the right, so a one-day streak lit the last tick
-  // and read as "six days missed".
-  const streakTicks = Array.from({length:7}, (_, i) => i < Math.min(streak.current, 7)).map(filled =>
-    '<div class="streak-tick' + (filled ? ' filled' : '') + '"></div>'
-  ).join('');
-  const streakNote = streak.current > 0
-    ? 'Don’t break the chain — <b>' + streak.current + '</b> day' + (streak.current===1?'':'s') + ' and counting.'
-    : 'Start today’s drill to begin a streak.';
-
   const drillHref = 'run.html?mode=daily-drill';
+  // Say plainly what's in today's 20: questions you've missed, new ones, or both.
+  const fresh = drillPreview.poolSize - drillPreview.fromTouched;
+  const drillSub = drillPreview.fromTouched === 0 ? drillPreview.poolSize + ' new questions'
+    : fresh === 0 ? drillPreview.poolSize + ' questions you missed before'
+    : drillPreview.fromTouched + ' you missed before · ' + fresh + ' new';
   const drillCard = drillPreview.hasAny
-    ? '<a class="drill-card" href="' + drillHref + '">' +
-        '<div class="dc-head">' +
-          '<div class="dc-title">Daily Drill</div>' +
-          '<div class="dc-count">' + drillPreview.poolSize + ' items →</div>' +
-        '</div>' +
-        '<div class="dc-sub">' + drillPreview.fromTouched + ' you keep missing · rest to introduce</div>' +
+    ? '<a class="drill-card" href="' + drillHref + '">' + DRILL_ICON +
+        '<div class="dc-body"><div class="dc-title">Daily Drill</div><div class="dc-sub">' + drillSub + '</div></div>' +
+        '<div class="dc-go">Start →</div>' +
       '</a>'
-    : '<div class="drill-card disabled"><div class="dc-head"><div class="dc-title">Daily Drill</div></div><div class="dc-sub">Nothing to drill right now — you’re caught up.</div></div>';
+    : '<div class="drill-card disabled">' + DRILL_ICON + '<div class="dc-body"><div class="dc-title">Daily Drill</div><div class="dc-sub">Nothing to drill right now. You’re caught up.</div></div></div>';
 
   const resumeCard = resume
     ? '<a class="resume-card" href="run.html?s=' + encodeURIComponent(resume.subject.id) + '&m=' + encodeURIComponent(resume.mod.id) + '&mode=' + resume.mode + '">' +
-        // .rc-body groups the two text lines so the desktop strip can sit them
-        // beside the progress block. On a phone it is a plain block and changes
-        // nothing about the stacked layout.
-        '<div class="rc-body">' +
-          '<div class="rc-kicker">Unfinished attempt · ' + escapeHtml(stripEmoji(resume.subject.name)) + '</div>' +
-          '<div class="rc-title">' + escapeHtml(resume.mod.title) + '</div>' +
-        '</div>' +
-        '<div class="rc-meta"><span>Q' + resume.rec.position + ' of ' + resume.rec.total + ' · ' + timeAgo(new Date(resume.rec.savedAt).toISOString()) + '</span><span><b>Resume →</b></span></div>' +
+        '<span class="rc-kicker">Resume</span>' +
+        '<span class="rc-title" title="' + escapeHtml(stripEmoji(resume.subject.name)) + ' · ' + timeAgo(new Date(resume.rec.savedAt).toISOString()) + '">' + escapeHtml(resume.mod.title) + '</span>' +
+        '<span class="rc-meta">Q' + resume.rec.position + '/' + resume.rec.total + ' →</span>' +
       '</a>'
     : '';
 
   // Every available subject, not the first seven. The cap was invisible until
   // there were eight: adding one looked like adding nothing, because the new
   // one was the one cut.
-  const subjectRows = readySubjects.map(s => {
+  // No red for low subjects: most people are low early on, and a wall of red
+  // reads as failing. A subject nobody has touched says "New" instead of 0%.
+  const subjectRows = readySubjects.map((s, i) => {
     const m = subjectMastery(s);
-    const low = m.pct < 10;
+    const pct = (m.pct === 0 && m.attempts === 0)
+      ? '<div class="sr-pct tag">New</div>'
+      : '<div class="sr-pct">' + m.pct + '<small>%</small></div>';
     return (
-      '<a class="subject-row" href="subject.html?s=' + encodeURIComponent(s.id) + '">' +
-        '<div class="sr-left"><div class="sr-name">' + escapeHtml(stripEmoji(s.name)) + '</div>' +
-          '<div class="sr-bar-track"><div class="sr-bar-fill" style="width:' + m.pct + '%;"></div></div>' +
-        '</div>' +
-        '<div class="sr-pct' + (low ? ' low' : '') + '">' + m.pct + '%</div>' +
+      '<a class="subject-row" href="subject.html?s=' + encodeURIComponent(s.id) + '" data-vt="card-' + encodeURIComponent(s.id) + '">' +
+        subjectIcon(s.id) +
+        // Paired with the subject page's heading (data-vt, assets/nav.js), so the name
+        // flies up into the heading when the card is opened.
+        '<div class="sr-name" data-vt="subj-' + encodeURIComponent(s.id) + '" data-vt-peer="subject.html?s=' + encodeURIComponent(s.id) + '">' + escapeHtml(stripEmoji(s.name)) + '</div>' + pct +
+        '<div class="sr-bar-track"><div class="sr-bar-fill" style="width:' + m.pct + '%;animation-delay:' + (0.25 + i * 0.05).toFixed(2) + 's"></div></div>' +
       '</a>'
     );
   }).join('');
   const placeholderRows = SUBJECTS_ALL.filter(s => !s.ready).map(s =>
-    '<div class="subject-row placeholder"><div class="sr-left"><div class="sr-name">' + escapeHtml(stripEmoji(s.name)) + '</div></div><div class="sr-pct" style="color:var(--muted);">Soon</div></div>'
+    '<div class="subject-row placeholder">' + subjectIcon(s.id) + '<div class="sr-name">' + escapeHtml(stripEmoji(s.name)) + '</div><div class="sr-pct tag">Soon</div></div>'
   ).join('');
 
   const savedCounts = computeSavedCounts();
@@ -971,25 +973,20 @@ function renderHome(){
 
   homeBody.innerHTML =
     '<div class="home-top-bar">' +
-      '<button class="avatar-btn-44" id="openAccountBtn" title="Account" aria-label="Account">' + faceHtml + '</button>' +
+      '<button class="avatar-btn-44" id="openAccountBtn" title="Account" aria-label="Account" data-vt="lea-avatar" data-vt-peer="profile.html">' + faceHtml + '</button>' +
       '<div class="home-wordmark"><div class="hw-eyebrow">Peter Parker’s</div><div class="hw-title">LEA Reviewer</div></div>' +
       '<div class="home-top-actions">' +
-        '<a class="icon-btn-44 bell-btn" href="notifications.html" title="Notifications" aria-label="Notifications">' +
+        '<a class="icon-btn-44 search-btn" href="search.html" title="Search questions" aria-label="Search questions" data-vt="lea-search">' + svgSearch() + '</a>' +
+        '<a class="icon-btn-44 bell-btn" href="notifications.html" title="Notifications" aria-label="Notifications" data-vt="lea-notifications">' +
           (window.LEANotify ? LEANotify.bellSvg() : '') + '<span class="bell-badge" id="bellBadge" hidden></span></a>' +
-        '<a class="icon-btn-44 trophy-btn" href="standings.html" title="Standings" aria-label="Standings">' + svgTrophy() + '</a>' +
+        '<a class="icon-btn-44 trophy-btn" href="standings.html" title="Standings" aria-label="Standings" data-vt="lea-standings">' + svgTrophy() + '</a>' +
       '</div>' +
     '</div>' +
 
     '<div class="presence-strip">' +
       '<span><span class="online-dot"></span><span id="onlineCount">0</span> online</span>' +
       '<span class="who" id="onlineWho"><i></i></span>' +
-      '<span class="offline-ready">◎ Offline-ready</span>' +
     '</div>' +
-
-    // A direct child of #homeBody, not of a column, so the desktop header grid
-    // can place it. Its phone position (between the resume card and Subjects)
-    // is held by `order` instead of DOM order — see the .search-field rule.
-    '<form class="search-field" id="searchForm">' + svgSearch() + '<input type="text" id="searchInput" placeholder="Search questions"></form>' +
 
     // Three column groups for the 1120px layout. On phones they are
     // display:contents, so these wrappers vanish from layout entirely and the
@@ -1000,28 +997,26 @@ function renderHome(){
     '<div class="col-left">' +
 
     '<div class="countdown-card">' +
-      '<div class="countdown-label">Until the LEA · 17 January 2027 (unofficial)</div>' +
+      '<div class="countdown-label">Until the LEA · 17 January 2027*</div>' +
       '<div class="flap-grid">' +
         '<div class="flap"><div class="flap-val" id="cdDays">0</div><div class="flap-lbl">Days</div></div>' +
         '<div class="flap"><div class="flap-val" id="cdHrs">00</div><div class="flap-lbl">Hrs</div></div>' +
         '<div class="flap"><div class="flap-val" id="cdMins">00</div><div class="flap-lbl">Min</div></div>' +
         '<div class="flap seconds"><div class="flap-val" id="cdSecs">00</div><div class="flap-lbl">Sec</div></div>' +
       '</div>' +
-    '</div>' +
-
-    '<div class="readiness-card">' +
-      '<div class="readiness-ring" style="--pct:' + readiness.pct + ';"><div class="rr-pct">' + readiness.pct + '%</div></div>' +
-      '<div class="readiness-info">' +
-        '<h2>' + readinessHeading(readiness.pct) + '</h2>' +
-        '<div class="rr-rule"></div>' +
-        '<div class="rr-stats">' + readiness.mastered + ' / ' + readiness.total + ' mastered<br>' + readiness.completedQuizzes + ' quizzes completed</div>' +
+      '<div class="cd-stats">' +
+        '<div><b>' + readiness.mastered.toLocaleString('en-US') + ' <small>/ ' + readiness.total.toLocaleString('en-US') + '</small></b><span>Mastered</span></div>' +
+        '<div><b>' + readiness.completedQuizzes + '</b><span>Quizzes</span></div>' +
+        '<div><b>' + streak.current + '</b><span>Day streak</span></div>' +
       '</div>' +
     '</div>' +
 
-    '<div class="streak-card">' +
-      '<div class="streak-title">' + LEAIcons.flame(15) + ' ' + streak.current + '-day streak' + (streak.best > streak.current ? ' · best ' + streak.best : '') + '</div>' +
-      '<div class="streak-ticks">' + streakTicks + '</div>' +
-      '<div class="streak-note">' + streakNote + '</div>' +
+    '<div class="ready-row">' +
+      '<div class="rr-num">' + readiness.pct + '<small>%</small></div>' +
+      '<div class="rr-scale">' +
+        '<div class="rr-cap"><b>Board-ready</b><span>' + readinessHeading(readiness.pct) + '</span></div>' +
+        '<span class="tape" role="img" aria-label="' + readiness.pct + '% of the way to board-ready"><i style="width:' + readiness.pct + '%"></i><em style="left:' + readiness.pct + '%"></em></span>' +
+      '</div>' +
     '</div>' +
 
     '</div>' +          // /col-left
@@ -1030,22 +1025,14 @@ function renderHome(){
     drillCard +
 
     '<div class="tiles-row">' +
-      '<a class="tile mock" href="run.html?mode=exam">' +
-        '<div class="tile-kicker">Mock exam</div>' +
-        '<div class="tile-title">Mixed run</div>' +
-        '<div class="tile-sub">Full 200/5h or 50-item sim · across subjects</div>' +
-      '</a>' +
-      '<button class="tile topic" id="openTopicDrillBtn" type="button">' +
-        '<div class="tile-kicker">Topic drill</div>' +
-        '<div class="tile-title">Weak spots</div>' +
-        '<div class="tile-sub">Practice your shakiest topics</div>' +
-      '</button>' +
+      '<a class="tile mock" href="run.html?mode=exam">Mock exam</a>' +
+      '<button class="tile topic" id="openTopicDrillBtn" type="button">Weak spots</button>' +
     '</div>' +
 
     resumeCard +
 
-    '<div class="subjects-divider">Subjects</div>' +
-    '<div class="subject-grid">' + subjectRows + placeholderRows + '</div>' +
+    '<div class="subjects-head"><h2>Subjects</h2><span>' + readySubjects.length + ' subjects</span></div>' +
+    '<div class="subject-grid lea-stagger">' + subjectRows + placeholderRows + '</div>' +
 
     '</div>' +          // /col-center
     '<div class="col-right">' + renderDesktopRail(savedCounts) + '</div>' +
@@ -1054,11 +1041,6 @@ function renderHome(){
   document.getElementById('openAccountBtn').addEventListener('click', openAccountSheet);
   paintBell();
   document.getElementById('openTopicDrillBtn').addEventListener('click', openTopicSheet);
-  document.getElementById('searchForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const q = document.getElementById('searchInput').value.trim();
-    if(q) window.location.href = 'search.html?q=' + encodeURIComponent(q);
-  });
 
   if(countdownTimer) countdownTimer();
   countdownTimer = LEACountdown.subscribe(renderCountdown);
@@ -1073,7 +1055,7 @@ function renderDesktopRail(savedCounts){
   return (
     '<div class="rail-card">' +
       '<div class="rail-head">Standings</div>' +
-      '<div id="railStandings"><div class="rail-empty">Loading…</div></div>' +
+      '<div id="railStandings">' + LEANav.skel('rows', 3) + '</div>' +
     '</div>' +
     '<div class="rail-card">' +
       '<div class="rail-head">Saved</div>' +
@@ -1164,6 +1146,13 @@ function computeSavedCounts(){
   return { flagged, notes };
 }
 
+// [id, name, swatch colours] — the colours are each theme's ground, ink and accent.
+const THEME_SWATCHES = [
+  ['blueprint', 'Blueprint', ['#0a1218', '#8fc4ea', '#e0a83f']],
+  ['vellum',    'Vellum',    ['#ece6d8', '#2c5d8a', '#c98a2e']],
+  ['lightbox',  'Lightbox',  ['#131518', '#f1ede4', '#f2b447']],
+  ['olive',     'Olive',     ['#1c2217', '#b5c98a', '#d9b45c']]
+];
 function openAccountSheet(){
   const counts = computeSavedCounts();
   const body = document.getElementById('accountSheetBody');
@@ -1174,19 +1163,35 @@ function openAccountSheet(){
     '<a class="account-row" href="reminders.html"><div><div class="ar-label">Reminders</div></div><span>→</span></a>' +
     // Appearance lives here rather than as a floating button over the page:
     // it's a set-once preference, and the sheet is where the other ones are.
-    '<button class="account-row" id="themeRow" type="button"><div><div class="ar-label">Appearance</div><div class="ar-sub" id="themeRowSub"></div></div><span class="ar-icon" id="themeRowIcon"></span></button>' +
+    '<div class="account-row theme-row"><div><div class="ar-label">Theme</div><div class="ar-sub" id="themeRowSub"></div></div></div>' +
+    '<div class="theme-swatches" role="radiogroup" aria-label="Theme">' +
+      THEME_SWATCHES.map(([id, name, chips]) =>
+        '<button type="button" class="theme-sw" role="radio" data-theme-id="' + id + '">' +
+          '<span class="ts-chips" aria-hidden="true">' + chips.map(c => '<i style="background:' + c + '"></i>').join('') + '</span>' + name +
+        '</button>').join('') +
+    '</div>' +
     '<button class="account-row danger" id="logoutBtn2" type="button"><div class="ar-label">Log out</div></button>';
 
-  const themeRow = document.getElementById('themeRow');
   const paintThemeRow = () => {
-    const isLight = document.documentElement.classList.contains('light-mode');
-    document.getElementById('themeRowSub').textContent = isLight ? 'Light' : 'Dark';
-    // Show the icon for the mode you'd switch TO, matching the row's action.
-    document.getElementById('themeRowIcon').innerHTML = isLight ? LEAIcons.moon(18) : LEAIcons.sun(18);
-    themeRow.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+    const now = LEATheme.get();
+    const match = THEME_SWATCHES.find(t => t[0] === now);
+    document.getElementById('themeRowSub').textContent = match ? match[1] : '';
+    body.querySelectorAll('.theme-sw').forEach(b => b.setAttribute('aria-checked', String(b.dataset.themeId === now)));
   };
   paintThemeRow();
-  themeRow.addEventListener('click', () => { LEATheme.toggle(); paintThemeRow(); });
+  body.querySelectorAll('.theme-sw').forEach(b => b.addEventListener('click', () => {
+    const apply = () => { LEATheme.set(b.dataset.themeId); paintThemeRow(); };
+    if(!document.startViewTransition || matchMedia('(prefers-reduced-motion: reduce)').matches){ apply(); return; }
+    // The new theme spreads out in a circle from the swatch you tapped
+    // (lea-theme-reveal in assets/blueprint.css).
+    const r = b.getBoundingClientRect(), root = document.documentElement;
+    const x = r.left + r.width / 2, y = r.top + r.height / 2;
+    root.style.setProperty('--vt-x', x + 'px');
+    root.style.setProperty('--vt-y', y + 'px');
+    root.style.setProperty('--vt-r', Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)) + 'px');
+    root.classList.add('lea-theme-vt');
+    document.startViewTransition(apply).finished.finally(() => root.classList.remove('lea-theme-vt'));
+  }));
 
   document.getElementById('logoutBtn2').addEventListener('click', async () => { await sb.auth.signOut(); });
   document.getElementById('accountSheetOverlay').classList.remove('hidden');
@@ -1398,11 +1403,13 @@ async function showSignedIn(user){
   signedInShell.classList.remove('hidden');
   startPresence(username);
   await loadSubjectsCatalogue();
-  renderHome();
+  // Not mid page-transition: redrawing Home would cancel it (assets/nav.js).
+  LEANav.afterTransition(renderHome);
   window.leaOnProgressReset = renderHome;
 }
 
 function showSignedOut(){
+  if(window.LEANav) LEANav.clearSnaps();
   document.documentElement.classList.remove('lea-resuming');
   stopPresence();
   // countdownTimer holds the unsubscribe returned by LEACountdown.subscribe.
@@ -1442,15 +1449,9 @@ async function requestPasswordReset(){
 }
 
 function startSignInScreen(){
-  // Same clock as Home — one source, two renderings. Seconds are deliberately
-  // absent here: the frame shows days : hrs : min.
+  // Same clock and same flip as Home, painted into Sign in's own flaps.
   if(signInClockStop) signInClockStop();
-  signInClockStop = LEACountdown.subscribe(p => {
-    const set = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = v; };
-    set('scDays', p.days);
-    set('scHrs', LEACountdown.pad2(p.hrs));
-    set('scMins', LEACountdown.pad2(p.mins));
-  });
+  signInClockStop = LEACountdown.subscribe(p => renderCountdown(p, 'si'));
   startSignInPresence();
   const forgotBtn = document.getElementById('forgotBtn');
   if(forgotBtn && !forgotBtn.dataset.wired){
@@ -1519,6 +1520,27 @@ function paintBell(){
 
 function svgTrophy(){
   return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M17 5h3a2 2 0 0 1-2 4h-1M7 5H4a2 2 0 0 0 2 4h1"/></svg>';
+}
+// One line drawing per subject, same 1.4 stroke throughout, shown faintly
+// behind each subject card. A subject without one simply gets no drawing.
+const SUBJECT_ICONS = {
+  'history': '<path d="M3 9h18L12 3 3 9Z"/><path d="M5 9v9M9.5 9v9M14.5 9v9M19 9v9M3 21h18M4 18h16"/>',
+  'building-utilities': '<path d="M12 3s-5 5.6-5 9.2A5 5 0 0 0 17 12.2C17 8.6 12 3 12 3Z"/><path d="m12.8 9-2.3 3.6h3l-2.3 3.6"/>',
+  'building-technology': '<rect x="3" y="5" width="18" height="14"/><path d="M3 9.7h18M3 14.3h18M9 5v4.7M15 5v4.7M6 9.7v4.6M12 9.7v4.6M18 9.7v4.6M9 14.3V19M15 14.3V19"/>',
+  'structural': '<path d="M2 17h20M4 17 8 9l4 8 4-8 4 8M8 9h8"/><path d="M4 17v3M20 17v3"/>',
+  'building-laws': '<path d="M12 3v18M7 21h10M4 7h16"/><path d="m6 7-3 7a3 3 0 0 0 6 0L6 7ZM18 7l-3 7a3 3 0 0 0 6 0l-3-7Z"/>',
+  'professional-practice': '<rect x="3" y="7" width="18" height="13" rx="1"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 12.5h18M11 12.5v2h2v-2"/>',
+  'theory-of-architecture-and-planning': '<circle cx="12" cy="4.5" r="1.5"/><path d="M11.3 5.9 6 20M12.7 5.9 18 20M8.2 14h7.6"/>',
+  'architectural-design': '<path d="M3 4h18M9 4v16"/><path d="M12 20V9l9 11h-9Z"/>',
+  'architectural-sites-proponents-styles': '<path d="M12 21s-6-5.6-6-10.5a6 6 0 0 1 12 0C18 15.4 12 21 12 21Z"/><path d="M9.5 12V9.5L12 8l2.5 1.5V12"/>',
+  'pritzker-awardees': '<circle cx="12" cy="14.5" r="5.5"/><path d="M8.5 10 6 3h4l2 5 2-5h4l-2.5 7"/><path d="m12 12 .9 1.8 2 .3-1.4 1.4.3 2-1.8-.9-1.8.9.3-2-1.4-1.4 2-.3L12 12Z"/>',
+  'methods-of-compensation': '<ellipse cx="12" cy="6" rx="7" ry="2.5"/><path d="M5 6v4c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6M5 10v4c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-4M5 14v4c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-4"/>'
+};
+// Daily Drill's target, drawn with the same stroke as the subject icons.
+const DRILL_ICON = '<span class="dc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5.5"/><circle cx="12" cy="12" r="2"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></svg></span>';
+function subjectIcon(id){
+  const paths = SUBJECT_ICONS[id];
+  return paths ? '<span class="sr-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">' + paths + '</svg></span>' : '';
 }
 function svgSearch(){
   return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>';

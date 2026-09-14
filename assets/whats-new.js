@@ -44,25 +44,30 @@
     const style = document.createElement('style');
     style.id = 'wnCss';
     style.textContent =
-      '.wn-version{background:var(--bg-panel);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:13px 16px;margin-bottom:10px;text-align:left;}' +
-      '.wn-top{display:flex;gap:8px;align-items:center;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:4px;}' +
+      // Same type and card rules as Home: square panels with 16px sides, small
+      // labels in body-font capitals, card titles in the display face.
+      '.wn-version{background:var(--bg-panel-2);border:1px solid var(--line);border-radius:0;padding:14px 16px;margin-bottom:8px;text-align:left;}' +
+      '.wn-top{display:flex;gap:8px;align-items:center;font-family:var(--font-body);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px;}' +
       '.wn-tag{color:var(--gold-bright);font-weight:600;}' +
-      '.wn-title{font-weight:600;font-size:15px;color:var(--ink);margin-bottom:6px;}' +
-      '.wn-items{margin:0;padding-left:18px;color:var(--ink);font-size:13.5px;line-height:1.55;}' +
-      '.wn-items li{margin-bottom:3px;}' +
+      '.wn-title{font-family:var(--font-display);font-weight:800;font-size:20px;line-height:1.1;text-transform:uppercase;color:var(--ink);margin-bottom:8px;text-wrap:balance;}' +
+      '.wn-items{margin:0;padding-left:18px;color:var(--ink);font-family:var(--font-body);font-size:14px;line-height:1.55;}' +
+      '.wn-items li{margin-bottom:4px;overflow-wrap:anywhere;}' +
       // One fixed box on every screen: the heading and buttons stay put and
       // only the version list between them scrolls, so nothing can spill out.
       '.wn-overlay{position:fixed;inset:0;z-index:5000;background:rgba(4,8,12,.62);display:flex;align-items:center;justify-content:center;padding:16px;overscroll-behavior:contain;}' +
-      '.wn-sheet{box-sizing:border-box;width:min(440px,100%);height:min(560px,calc(100vh - 32px));height:min(560px,calc(100dvh - 32px));display:flex;flex-direction:column;overflow:hidden;background:var(--bg-deep);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.5);}' +
-      '.wn-top-bar{flex:none;padding:18px 18px 12px;border-bottom:1px solid var(--line);}' +
-      '.wn-kicker{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:4px;}' +
-      '.wn-head{font-family:var(--font-display);font-weight:800;font-size:24px;line-height:1.05;text-transform:uppercase;color:var(--ink);margin:0;}' +
-      '.wn-scroll{flex:1;min-height:0;overflow-y:auto;padding:14px 18px 4px;overscroll-behavior:contain;}' +
-      '.wn-scroll .wn-version{margin-bottom:12px;}' +
-      '.wn-scroll .wn-version + .wn-version{border-left-color:var(--line);}' +
-      '.wn-actions{flex:none;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 18px 16px;border-top:1px solid var(--line);}' +
-      '.wn-actions a{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--gold-bright);text-decoration:none;}' +
-      '.wn-ok{background:var(--gold);color:#1a1206;border:none;border-radius:10px;padding:11px 22px;font-family:var(--font-display);font-weight:700;font-size:15px;text-transform:uppercase;cursor:pointer;}';
+      '.wn-sheet{position:relative;box-sizing:border-box;width:min(440px,100%);height:min(560px,calc(100vh - 32px));height:min(560px,calc(100dvh - 32px));display:flex;flex-direction:column;background:var(--bg-panel);border:1px solid var(--line);border-radius:0;box-shadow:0 18px 50px rgba(0,0,0,.5);}' +
+      // Drafting-corner marks, as on Home's clock card.
+      '.wn-sheet::before,.wn-sheet::after{content:"";position:absolute;width:12px;height:12px;border:2px solid var(--gold);pointer-events:none;}' +
+      '.wn-sheet::before{top:-2px;left:-2px;border-width:2px 0 0 2px;}' +
+      '.wn-sheet::after{bottom:-2px;right:-2px;border-width:0 2px 2px 0;}' +
+      '.wn-top-bar{flex:none;padding:16px 16px 12px;border-bottom:1px solid var(--line);}' +
+      '.wn-kicker{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:6px;}' +
+      '.wn-head{font-family:var(--font-display);font-weight:800;font-size:28px;line-height:1;text-transform:uppercase;color:var(--ink);margin:0;text-wrap:balance;}' +
+      '.wn-scroll{flex:1;min-height:0;overflow-y:auto;padding:12px 16px 4px;overscroll-behavior:contain;}' +
+      '.wn-actions{flex:none;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 16px 16px;border-top:1px solid var(--line);}' +
+      '.wn-actions a{display:flex;align-items:center;min-height:44px;font-family:var(--font-body);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold-bright);text-decoration:none;}' +
+      '.wn-ok{min-height:44px;background:var(--gold);color:#1a1206;border:none;border-radius:0;padding:0 24px;font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;}' +
+      '.wn-ok:hover{background:var(--gold-bright);}';
     document.head.appendChild(style);
   }
 
@@ -95,8 +100,10 @@
     overlay.className = 'wn-overlay';
     overlay.innerHTML =
       '<div class="wn-sheet" role="dialog" aria-modal="true" aria-labelledby="wnHead">' +
-        '<div class="wn-top-bar"><div class="wn-kicker">What’s new · v' + esc(versions[0].version) + '</div>' +
-          '<h2 class="wn-head" id="wnHead">' + esc(versions[0].title) + '</h2></div>' +
+        // The heading names the popup, not the first version: that version's
+        // own card already carries its title, so repeating it read as a stutter.
+        '<div class="wn-top-bar"><div class="wn-kicker">Since your last visit</div>' +
+          '<h2 class="wn-head" id="wnHead">What’s new</h2></div>' +
         '<div class="wn-scroll">' + versions.filter(v => v.build > seen).slice(0, 3).map(versionHtml).join('') + '</div>' +
         '<div class="wn-actions"><a href="profile.html?tab=versions">All versions</a><button type="button" class="wn-ok">Got it</button></div>' +
       '</div>';

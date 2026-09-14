@@ -1,87 +1,62 @@
-/* LEA Reviewer — shared light/dark theme toggle.
-   One localStorage key ('leaTheme') is used across every page, so the
-   choice made anywhere on the site carries over everywhere else. */
+/* LEA Reviewer — shared theme picker.
+   Four themes instead of dark/light: blueprint (the original dark look),
+   vellum (warm paper, which replaces light mode), lightbox and olive.
+
+   One localStorage key ('leaTheme') is used across every page, so the choice
+   made anywhere carries over everywhere else. Older saved values still work:
+   'dark' reads as blueprint and 'light' as vellum.
+
+   The theme is written to <html data-theme="…">; the token blocks for each
+   theme live at the end of assets/blueprint.css. Vellum ALSO sets the old
+   `light-mode` class on <html> and <body>, so every page's existing light
+   palette and light-only rules keep applying underneath the vellum tokens. */
 (function () {
   var KEY = 'leaTheme';
+  var THEMES = ['blueprint', 'vellum', 'lightbox', 'olive'];
+  var LIGHT = { vellum: true };
 
-  function currentMode() {
-    var saved = null;
-    try { saved = localStorage.getItem(KEY); } catch (e) {}
-    if (saved === 'dark' || saved === 'light') return saved;
-    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    return prefersDark ? 'dark' : 'light';
+  function saved() {
+    var v = null;
+    try { v = localStorage.getItem(KEY); } catch (e) {}
+    if (v === 'dark') return 'blueprint';
+    if (v === 'light') return 'vellum';
+    if (THEMES.indexOf(v) !== -1) return v;
+    var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    return prefersLight ? 'vellum' : 'blueprint';
   }
 
-  function wantsAlt(mode, defaultIs) {
-    var isDark = mode === 'dark';
-    return (defaultIs === 'light') ? isDark : !isDark;
+  function paint(theme) {
+    var root = document.documentElement;
+    root.setAttribute('data-theme', theme);
+    root.classList.toggle('light-mode', !!LIGHT[theme]);
+    if (document.body) document.body.classList.toggle('light-mode', !!LIGHT[theme]);
   }
 
-  function apply(mode, opts) {
-    var isDark = mode === 'dark';
-    var wantAltClass = wantsAlt(mode, opts.defaultIs);
-    // Mirrored onto <html> as well as <body>: the early-apply below can only
-    // reach <html> (it runs from <head>, before <body> exists), so the two
-    // must stay in step or toggling would leave a stale class behind.
-    document.documentElement.classList.toggle(opts.altClass, wantAltClass);
-    document.body.classList.toggle(opts.altClass, wantAltClass);
-    if (opts.button) {
-      opts.button.textContent = isDark ? (opts.darkIcon || '\u2600\uFE0F') : (opts.lightIcon || '\uD83C\uDF19');
-      opts.button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-    }
+  var current = saved();
+
+  function set(theme) {
+    if (THEMES.indexOf(theme) === -1) return current;
+    current = theme;
+    try { localStorage.setItem(KEY, theme); } catch (e) {}
+    paint(theme);
+    try { document.dispatchEvent(new CustomEvent('lea-theme', { detail: { theme: theme } })); } catch (e) {}
+    return current;
   }
 
-  // Held at module scope so toggle() works from anywhere — the control is no
-  // longer necessarily a button this module wired up itself (Home drives it
-  // from a row inside the account sheet).
-  var activeOpts = null;
-  var activeMode = null;
-
-  function toggle() {
-    if (!activeOpts) return null;
-    activeMode = (activeMode === 'dark') ? 'light' : 'dark';
-    try { localStorage.setItem(KEY, activeMode); } catch (e) {}
-    apply(activeMode, activeOpts);
-    return activeMode;
+  // Pages still call init({ altClass:'light-mode', defaultIs:'dark' }) from
+  // the body. The options no longer matter; this just repaints now that
+  // <body> exists, so the body class catches up with <html>.
+  function init() {
+    paint(current);
+    return { get: get, set: set };
   }
+  function get() { return current; }
+  // Kept for anything that still flips "the other theme": steps to the next one.
+  function toggle() { return set(THEMES[(THEMES.indexOf(current) + 1) % THEMES.length]); }
 
-  // opts: { altClass, defaultIs: 'light'|'dark', buttonId, darkIcon, lightIcon }
-  function init(opts) {
-    opts = opts || {};
-    opts.altClass = opts.altClass || 'dark-mode';
-    opts.defaultIs = opts.defaultIs || 'light';
-    opts.button = opts.buttonId ? document.getElementById(opts.buttonId) : null;
+  // Runs the moment the script is parsed in <head>, before anything paints,
+  // so no page flashes the wrong theme on navigation.
+  try { paint(current); } catch (e) {}
 
-    activeOpts = opts;
-    activeMode = currentMode();
-    apply(activeMode, opts);
-
-    if (opts.button) opts.button.addEventListener('click', toggle);
-    return { get: function () { return activeMode; }, toggle: toggle };
-  }
-
-  // ---- Early apply (flash-of-wrong-theme fix) ----
-  // init() runs far too late to decide the palette: it's called from the end
-  // of the body on most pages, and on welcome.html from inside an async boot
-  // that first awaits two network round-trips. Until then the page paints
-  // with the default (dark) tokens, so every light-mode reader saw a dark
-  // flash on every navigation.
-  //
-  // This runs the moment the script is parsed in <head>. <body> doesn't exist
-  // yet, so the class goes on <html> — which is why each page's palette block
-  // is selected as `body.light-mode, :root.light-mode`. Config comes from the
-  // script tag's own data attributes, since init()'s options aren't known yet
-  // and the two themes disagree about which class is the alternate one.
-  var tag = document.currentScript;
-  if (tag) {
-    var altClass = tag.getAttribute('data-alt-class');
-    var defaultIs = tag.getAttribute('data-default-is');
-    if (altClass && defaultIs) {
-      try {
-        document.documentElement.classList.toggle(altClass, wantsAlt(currentMode(), defaultIs));
-      } catch (e) {}
-    }
-  }
-
-  window.LEATheme = { init: init, toggle: toggle };
+  window.LEATheme = { init: init, get: get, set: set, toggle: toggle, list: THEMES.slice() };
 })();

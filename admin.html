@@ -9,16 +9,16 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <title>LEA Reviewer — Admin</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/lea-confirm.js?v=22"></script>
-<script src="assets/icons.js?v=22"></script>
+<script src="assets/lea-confirm.js?v=55"></script>
+<script src="assets/icons.js?v=55"></script>
 <!-- The same reader the app uses, so what the editor sees is exactly what a
      reader gets. Its balanced-bracket scan also survives question text that a
      regex would truncate. -->
-<script src="assets/quiz-source.js?v=22"></script>
-<script src="assets/quiz-rework.js?v=22"></script>
-<script src="assets/docx-quiz.js?v=22"></script>
-<script src="assets/image-intake.js?v=22"></script>
-<script src="assets/theme.js?v=22" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=55"></script>
+<script src="assets/quiz-rework.js?v=55"></script>
+<script src="assets/docx-quiz.js?v=55"></script>
+<script src="assets/image-intake.js?v=55"></script>
+<script src="assets/theme.js?v=55" data-alt-class="light-mode" data-default-is="dark"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -117,7 +117,7 @@
     background:var(--bg-panel-2); margin-bottom:4px;
   }
   .q-img:hover, .q-img:focus{ border-color:var(--gold); outline:none; }
-  .q-img.over{ border-color:var(--gold); background:rgba(224,168,63,0.08); }
+  .q-img.over{ border-color:var(--gold); background:color-mix(in srgb, var(--gold) 8%, transparent); }
   .q-img img{ max-width:150px; max-height:90px; border-radius:6px; display:block; background:#fff; }
   .q-img .q-img-say{ flex:1; font-size:12px; color:var(--muted); line-height:1.6; }
   .q-img .q-img-say b{ color:var(--ink); font-weight:600; }
@@ -127,13 +127,13 @@
      found and replaced; the mark disappears by itself once a picture is
      pasted over it, because a pasted picture is stored inline rather than
      as a file. Nothing to tick off by hand. */
-  .q-img.from-rc{ border-color:var(--bad); background:rgba(226,96,74,0.07); }
+  .q-img.from-rc{ border-color:var(--bad); background:color-mix(in srgb, var(--bad) 7%, transparent); }
   .q-img .rc-tag{
     display:inline-block; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase;
     color:var(--bad); border:1px solid var(--bad); border-radius:20px; padding:2px 7px; margin-bottom:4px;
   }
   .rc-banner{
-    background:rgba(226,96,74,0.12); border:1px solid var(--bad); color:var(--ink);
+    background:color-mix(in srgb, var(--bad) 12%, transparent); border:1px solid var(--bad); color:var(--ink);
     border-radius:10px; padding:12px 14px; margin-bottom:14px; font-size:13px; line-height:1.6;
   }
   .rc-banner b{ color:var(--bad); }
@@ -196,7 +196,7 @@
   /* Rework Module tab */
   .field-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0 14px;}
   .field-note{font-size:13px;color:var(--muted);margin:6px 0 0;line-height:1.5;}
-  .msg.ok-msg{background:rgba(95,191,130,0.12);border:1px solid var(--good);color:var(--good);}
+  .msg.ok-msg{background:color-mix(in srgb, var(--good) 12%, transparent);border:1px solid var(--good);color:var(--good);}
   .rw-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;}
   .rw-table th,.rw-table td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
   .rw-table th{font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);font-weight:600;}
@@ -207,12 +207,12 @@
   .q-row{cursor:pointer;}
   .q-row .qr-text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .q-row .qr-hidden-tag{color:var(--muted);font-style:italic;}
-  .report-badge{font-size:11px;padding:3px 8px;border-radius:20px;background:rgba(226,96,74,0.15);border:1px solid var(--bad);color:var(--bad);white-space:nowrap;}
+  .report-badge{font-size:11px;padding:3px 8px;border-radius:20px;background:color-mix(in srgb, var(--bad) 15%, transparent);border:1px solid var(--bad);color:var(--bad);white-space:nowrap;}
   .filter-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:13px;color:var(--muted);}
   .report-card{border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px;background:var(--bg-panel-deep);}
   .report-card .rc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px;}
   .report-card .rc-loc{font-family:var(--font-mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;}
-  .report-card .rc-count{font-size:11px;padding:3px 8px;border-radius:20px;background:rgba(226,96,74,0.15);border:1px solid var(--bad);color:var(--bad);white-space:nowrap;flex-shrink:0;}
+  .report-card .rc-count{font-size:11px;padding:3px 8px;border-radius:20px;background:color-mix(in srgb, var(--bad) 15%, transparent);border:1px solid var(--bad);color:var(--bad);white-space:nowrap;flex-shrink:0;}
   .report-card .rc-question{font-size:14px;margin:6px 0 10px;}
   .report-card .rc-reasons{font-size:12.5px;color:var(--muted);margin-bottom:6px;line-height:1.6;}
   .report-card .rc-reasons b{color:var(--ink);}
@@ -221,7 +221,7 @@
   /* ===== Rework tab ===== */
   .rw-drop{border:2px dashed var(--line);border-radius:12px;padding:32px 20px;text-align:center;
     cursor:pointer;color:var(--muted);transition:border-color .15s ease, background .15s ease;}
-  .rw-drop:hover,.rw-drop.over{border-color:var(--gold);background:rgba(224,168,63,.06);}
+  .rw-drop:hover,.rw-drop.over{border-color:var(--gold);background:color-mix(in srgb, var(--gold) 6%, transparent);}
   .rw-drop b{color:var(--ink);font-size:15px;display:inline-block;margin-bottom:4px;}
   .rw-drop span{font-size:13px;}
   .rw-more{margin-top:12px;}
@@ -243,7 +243,7 @@
   .rw-peek-stem{font-size:15px;line-height:1.55;margin-bottom:14px;}
   .rw-choice{display:flex;gap:10px;align-items:baseline;padding:9px 12px;margin-bottom:6px;
     border:1px solid var(--line);border-radius:8px;font-size:14px;line-height:1.5;}
-  .rw-choice.right{border-color:var(--good);background:rgba(95,191,130,.10);}
+  .rw-choice.right{border-color:var(--good);background:color-mix(in srgb, var(--good) 10%, transparent);}
   .rw-letter{color:var(--muted);font-size:12.5px;width:16px;flex-shrink:0;}
   .rw-choice.right .rw-letter{color:var(--good);}
   .rw-right-tag{margin-left:auto;color:var(--good);font-size:12px;flex-shrink:0;}
@@ -273,7 +273,7 @@
   .rep.open{border-color:var(--gold);}
   .rep.done{opacity:.55;}
   .rep-head{display:flex;gap:14px;align-items:flex-start;padding:16px;cursor:pointer;}
-  .rep-head:hover{background:rgba(111,168,207,0.05);}
+  .rep-head:hover{background:color-mix(in srgb, var(--blue) 5%, transparent);}
   .rep-caret{color:var(--muted);font-size:13px;line-height:1.5;flex-shrink:0;width:12px;transition:transform .15s ease;}
   .rep.open .rep-caret{transform:rotate(90deg);}
   .rep-main{flex:1;min-width:0;}
@@ -282,8 +282,8 @@
   .rep-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--muted);}
   .rep-meta .by b{color:var(--ink);font-weight:600;}
   .rep-tag{font-size:12px;padding:3px 10px;border-radius:20px;border:1px solid var(--line);}
-  .rep-tag.key{color:var(--bad);border-color:var(--bad);background:rgba(226,96,74,.12);}
-  .rep-tag.wording{color:var(--gold-bright);border-color:var(--gold);background:rgba(224,168,63,.12);}
+  .rep-tag.key{color:var(--bad);border-color:var(--bad);background:color-mix(in srgb, var(--bad) 12%, transparent);}
+  .rep-tag.wording{color:var(--gold-bright);border-color:var(--gold);background:color-mix(in srgb, var(--gold) 12%, transparent);}
 
   .rep-body{padding:0 16px 16px;border-top:1px solid var(--line);}
   .rep-sec{margin-top:18px;}
@@ -2040,7 +2040,7 @@ function parseQuizFile(text){
 function buildAdaptedQuizHtml(raw, format, opts){
   const { subjectId, moduleId, subjectName, includeBackLink } = opts;
   let out = raw;
-  const assetPath = '../../../assets/module-progress.js?v=22';
+  const assetPath = '../../../assets/module-progress.js?v=55';
 
   if(format === 'native'){
     out = out.replace(/const LEA_SUBJECT_ID\s*=\s*'[^']*';/, `const LEA_SUBJECT_ID = '${subjectId}';`);

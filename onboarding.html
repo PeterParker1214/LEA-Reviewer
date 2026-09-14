@@ -70,9 +70,9 @@
   }
   .ob-demo-head b{ color:var(--gold-bright); font-weight:400; }
   .ob-demo-bar{ height:6px; background:var(--line-soft); overflow:hidden; margin-bottom:12px; }
-  .ob-demo-bar span{ display:block; height:100%; background:linear-gradient(90deg, var(--gold-bright), var(--gold) 70%, rgba(224,168,63,0.25)); }
+  .ob-demo-bar span{ display:block; height:100%; background:var(--blue-bright); }
   .ob-ticks{ display:flex; gap:2px; }
-  .ob-ticks i{ flex:1; height:8px; background:rgba(111,168,207,0.18); }
+  .ob-ticks i{ flex:1; height:8px; background:var(--line); }
   .ob-ticks i.ok{ background:var(--good); }
   .ob-ticks i.no{ background:var(--bad); }
   .ob-note{ font-family:var(--font-hand); font-size:14px; color:var(--muted); margin-top:12px; }
@@ -82,19 +82,18 @@
     background:var(--gold); color:#1a1206; border:0; cursor:pointer;
     font-family:var(--font-mono); font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
   }
-  body.light-mode .ob-next, :root.light-mode .ob-next{ color:#fff; }
   .ob-next:hover{ background:var(--gold-bright); }
   .ob-foot{
     text-align:center; font-family:var(--font-mono); font-size:9.5px; letter-spacing:.05em;
     text-transform:uppercase; color:var(--muted); margin-top:12px;
   }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=24">
-<script src="assets/theme.js?v=22" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/quiz-source.js?v=22"></script>
-<script src="assets/module-progress.js?v=22"></script>
-<script src="assets/offline.js?v=22"></script>
-<script src="assets/presence.js?v=22"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=55">
+<script src="assets/theme.js?v=55" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=55"></script>
+<script src="assets/module-progress.js?v=55"></script>
+<script src="assets/offline.js?v=55"></script>
+<script src="assets/presence.js?v=55"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
 </head>
 <body>

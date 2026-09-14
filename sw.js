@@ -1,9 +1,9 @@
-/* LEA Reviewer — offline support.
+/* LEA Reviewer Ã¢â‚¬â€ offline support.
  *
- * Home has claimed "◎ Offline-ready — cached modules work without a
+ * Home has claimed "Ã¢â€”Å½ Offline-ready Ã¢â‚¬â€ cached modules work without a
  * connection" for a while, and until this file existed that was simply false:
  * with no connection the site did not load at all. This makes the claim true,
- * and it is deliberately scoped to exactly what the claim says — the app
+ * and it is deliberately scoped to exactly what the claim says Ã¢â‚¬â€ the app
  * shell, plus the modules you have actually opened.
  *
  * STRATEGIES, and why each one
@@ -15,7 +15,7 @@
  *   carry a ?v= query, so a new version is a new URL and can never be stale.
  * - Question data (data/**, subjects/**): cache-first, refreshed in the
  *   background. This is what "cached modules work without a connection"
- *   means — a module you have opened stays openable.
+ *   means Ã¢â‚¬â€ a module you have opened stays openable.
  * - The Supabase library and Google Fonts: cache-first once fetched. Without
  *   the library cached, every page throws offline before it renders anything,
  *   so caching it is what makes the rest of this work at all.
@@ -26,11 +26,11 @@
  */
 // Bumped whenever a cached thing changes meaning, not just when this file
 // changes. activate deletes every cache not named for the current version, so
-// a bump is what actually clears out what readers are already holding — and
+// a bump is what actually clears out what readers are already holding Ã¢â‚¬â€ and
 // the last change (the subject list moving to network-first) shipped without
 // one, which left the old copy sitting in the old cache on every device that
 // had visited before.
-const VERSION = 'lea-v29';
+const VERSION = 'lea-v48';
 const SHELL = VERSION + '-shell';
 const DATA = VERSION + '-data';
 const VENDOR = VERSION + '-vendor';
@@ -100,7 +100,7 @@ function isQuestionData(url) {
 }
 // data/subjects.json is the list of what exists, not a module's questions.
 // Served cache-first like the rest of /data/, a subject or module added today
-// stayed invisible until the visit after next — the cached copy was returned
+// stayed invisible until the visit after next Ã¢â‚¬â€ the cached copy was returned
 // and the fresh one only put aside for later. It is a few kilobytes, so the
 // network is always worth waiting for; the cache is the offline fallback.
 function isManifest(url) {
@@ -157,7 +157,7 @@ self.addEventListener('fetch', (event) => {
 
   const url = new URL(request.url);
 
-  // Progress and auth must never come from a cache — a stale "success" here
+  // Progress and auth must never come from a cache Ã¢â‚¬â€ a stale "success" here
   // is a lie about the reader's own data.
   if (isSupabaseApi(url)) return;
 

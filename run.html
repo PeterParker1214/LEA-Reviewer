@@ -146,7 +146,7 @@
      At 390px it is unreadable without opening it. */
   .qimg-hint{
     position:absolute; right:8px; bottom:8px; pointer-events:none;
-    background:rgba(10,18,24,0.82); color:var(--gold-bright);
+    background:color-mix(in srgb, var(--bg-deep) 82%, transparent); color:var(--gold-bright);
     font-family:var(--font-mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;
     padding:4px 7px; border-radius:5px; border:1px solid var(--line);
   }
@@ -184,9 +184,9 @@
   @media (hover:hover) and (pointer:fine){ .opt:hover:not(.locked){ border-style:solid; border-color:var(--blue-bright); } }
   .opt .letter{ font-family:var(--font-mono); color:var(--blue-bright); flex-shrink:0; }
   .opt.locked{ cursor:default; }
-  .opt.correct{ border-style:solid; border-color:var(--good); background:rgba(95,191,130,0.12); }
+  .opt.correct{ border-style:solid; border-color:var(--good); background:color-mix(in srgb, var(--good) 12%, transparent); }
   .opt.correct::after{ content:"\2713"; margin-left:auto; color:var(--good); font-weight:700; }
-  .opt.incorrect{ border-style:solid; border-color:var(--bad); background:rgba(226,96,74,0.12); }
+  .opt.incorrect{ border-style:solid; border-color:var(--bad); background:color-mix(in srgb, var(--bad) 12%, transparent); }
   .opt.incorrect::after{ content:"\2715"; margin-left:auto; color:var(--bad); font-weight:700; }
   .opt.dim{ opacity:.6; }
   .opt.chosen-tag::after{ content:"Chosen"; margin-left:auto; font-family:var(--font-mono); font-size:10px; color:var(--blue-bright); text-transform:uppercase; }
@@ -227,7 +227,7 @@
   /* A mnemonic from mnemonics.html that covers this question. Collapsed to its
      hook, so it never pushes the chips far down; the full list opens in place
      rather than linking away mid-run. */
-  .mnemo-hint{ margin:0 0 10px; border:1px dashed rgba(224,168,63,0.45); border-radius:8px; background:rgba(224,168,63,0.06); }
+  .mnemo-hint{ margin:0 0 10px; border:1px dashed color-mix(in srgb, var(--gold) 45%, transparent); border-radius:8px; background:color-mix(in srgb, var(--gold) 6%, transparent); }
   .mnemo-hint summary{ list-style:none; cursor:pointer; padding:9px 12px; }
   .mnemo-hint summary::-webkit-details-marker{ display:none; }
   .mnemo-label{ display:block; font-family:var(--font-mono); font-size:11.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:3px; }
@@ -246,7 +246,7 @@
     padding:9px 6px; border-radius:8px; cursor:pointer; text-align:center;
   }
   .chip-btn:hover{ border-color:var(--gold); }
-  .chip-btn.active{ border-color:var(--gold); color:var(--gold); background:rgba(224,168,63,0.1); }
+  .chip-btn.active{ border-color:var(--gold); color:var(--gold); background:color-mix(in srgb, var(--gold) 10%, transparent); }
   .note-box{ margin-top:10px; }
   .note-box textarea{
     width:100%; min-height:64px; background:var(--bg-panel); border:1px solid var(--line); border-radius:8px;
@@ -270,6 +270,37 @@
     background:var(--bg-deep);
     box-shadow:0 -12px 16px -8px var(--bg-deep);
   }
+  /* The "more below" softening (blueprint.css) sits just above the answer
+     bar, so it never dims the buttons themselves. */
+  html body::after{ bottom:74px; }
+
+  /* Moving between questions: only the question card moves. It slides off
+     like a sheet pulled across the drafting table, the next one slides on,
+     and its options settle in one by one. Header, progress ticks, counts
+     and the answer bar stay put and just update. The wrapper at the end of
+     the main script sets data-qdir for the length of the move. */
+  html[data-qdir] .run-header{ view-transition-name:q-head; }
+  html[data-qdir] .tick-strip{ view-transition-name:q-ticks; }
+  html[data-qdir] .counts-row{ view-transition-name:q-counts; }
+  html[data-qdir] .run-footer{ view-transition-name:q-foot; }
+  html[data-qdir] #cardSlot{ view-transition-name:q-card; }
+  html[data-qdir]::view-transition-old(root){ animation:none; opacity:0; }
+  html[data-qdir]::view-transition-new(root){ animation:none; }
+  html[data-qdir]::view-transition-group(q-card){ animation-duration:420ms; }
+  html[data-qdir]::view-transition-old(q-card){ animation:q-out-next 260ms var(--ease-out) both; }
+  html[data-qdir]::view-transition-new(q-card){ animation:q-in-next 420ms var(--ease-out) 80ms both; }
+  html[data-qdir="prev"]::view-transition-old(q-card){ animation-name:q-out-prev; }
+  html[data-qdir="prev"]::view-transition-new(q-card){ animation-name:q-in-prev; }
+  @keyframes q-out-next{ to  { opacity:0; transform:translateX(-56px) rotate(-2deg); filter:blur(3px); } }
+  @keyframes q-in-next { from{ opacity:0; transform:translateX(64px) rotate(2deg);   filter:blur(3px); } }
+  @keyframes q-out-prev{ to  { opacity:0; transform:translateX(56px) rotate(2deg);   filter:blur(3px); } }
+  @keyframes q-in-prev { from{ opacity:0; transform:translateX(-64px) rotate(-2deg); filter:blur(3px); } }
+  html[data-qdir] #cardSlot .opt{ animation:q-opt-in 360ms var(--ease-out) both; }
+  html[data-qdir] #cardSlot .opt:nth-child(1){ animation-delay:180ms; }
+  html[data-qdir] #cardSlot .opt:nth-child(2){ animation-delay:230ms; }
+  html[data-qdir] #cardSlot .opt:nth-child(3){ animation-delay:280ms; }
+  html[data-qdir] #cardSlot .opt:nth-child(n+4){ animation-delay:330ms; }
+  @keyframes q-opt-in{ from{ opacity:0; transform:translateY(10px); } }
   .footer-btn{
     flex:1; height:52px; border-radius:12px; font-family:var(--font-mono); font-size:13px;
     text-transform:uppercase; letter-spacing:.04em; cursor:pointer; border:none;
@@ -296,9 +327,11 @@
     aspect-ratio:1; border-radius:5px; background:var(--bg-panel-2); border:1px solid var(--line);
     display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:10px; color:var(--muted); cursor:pointer;
   }
-  .map-cell.correct{ background:var(--good); color:#0a1218; border-color:var(--good); }
-  .map-cell.incorrect{ background:var(--bad); color:#0a1218; border-color:var(--bad); }
-  .map-cell.skipped{ background:var(--blue-bright); color:#0a1218; border-color:var(--blue-bright); }
+  /* Text takes the theme's panel colour: dark on the dark themes' bright
+     fills, light on Vellum's deep ones. */
+  .map-cell.correct{ background:var(--good); color:var(--bg-panel); border-color:var(--good); }
+  .map-cell.incorrect{ background:var(--bad); color:var(--bg-panel); border-color:var(--bad); }
+  .map-cell.skipped{ background:var(--blue-bright); color:var(--bg-panel); border-color:var(--blue-bright); }
   .map-cell.flagged{ background:var(--gold); color:#1a1206; border-color:var(--gold); }
   .map-cell.current{ outline:2px solid var(--ink); outline-offset:1px; }
   .map-actions{ display:flex; flex-direction:column; gap:8px; }
@@ -310,7 +343,7 @@
 
   .report-reason{ display:flex; align-items:center; gap:10px; min-height:48px; padding:10px 12px; border-radius:8px; border:1px solid var(--line); margin-bottom:8px; cursor:pointer; }
   .report-reason input{ accent-color:var(--bad); }
-  .report-reason.selected{ border-color:var(--bad); background:rgba(226,96,74,0.08); }
+  .report-reason.selected{ border-color:var(--bad); background:color-mix(in srgb, var(--bad) 8%, transparent); }
   .report-comment{
     width:100%; min-height:70px; background:var(--bg-panel-2); border:1px solid var(--line); border-radius:8px;
     color:var(--ink); font-family:var(--font-hand); font-size:14px; padding:10px 12px; margin:8px 0 14px; resize:vertical;
@@ -446,7 +479,7 @@
   .res-topics-head{ font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
   .res-topic{ display:flex; align-items:center; gap:10px; padding:7px 0; }
   .rt-name{ flex:1; font-size:12.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .rt-bar{ width:64px; height:5px; background:rgba(111,168,207,0.14); flex-shrink:0; display:block; }
+  .rt-bar{ width:64px; height:5px; background:var(--line); flex-shrink:0; display:block; }
   .rt-bar span{ display:block; height:100%; background:var(--gold); }
   .rt-pct{ font-family:var(--font-mono); font-size:11.5px; color:var(--gold); width:34px; text-align:right; flex-shrink:0; }
   .rt-pct.low{ color:var(--bad); }
@@ -454,10 +487,10 @@
 
   /* 3a streak chip and 3c exam timer: 44px, gold-bordered, in the header. */
   .streak-chip{ display:flex; align-items:center; gap:5px; height:44px; padding:0 11px;
-    border:1px solid rgba(224,168,63,0.45); color:var(--gold-bright);
+    border:1px solid color-mix(in srgb, var(--gold) 45%, transparent); color:var(--gold-bright);
     font-family:var(--font-mono); font-size:12px; font-weight:600; flex-shrink:0; }
   .exam-timer{ display:inline-flex; align-items:center; gap:7px; height:44px; padding:0 12px;
-    background:var(--bg-panel); border:1px solid rgba(224,168,63,0.45); color:var(--gold-bright);
+    background:var(--bg-panel); border:1px solid color-mix(in srgb, var(--gold) 45%, transparent); color:var(--gold-bright);
     font-family:var(--font-mono); font-size:15px; font-weight:600; letter-spacing:.04em; }
 
   .state-card{
@@ -509,9 +542,9 @@
   }
   .res-sec-head::before, .res-sec-head::after{ content:''; flex:1; height:1px; background:var(--line); }
   .res-topics{ background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:6px 16px; margin-bottom:16px; text-align:left; }
-  .res-topic{ display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid rgba(111,168,207,0.14); }
+  .res-topic{ display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); }
   .res-topic:last-child{ border-bottom:none; }
-  .rt-bar{ width:56px; height:5px; border-radius:3px; background:rgba(111,168,207,0.14); flex-shrink:0; display:block; overflow:hidden; }
+  .rt-bar{ width:56px; height:5px; border-radius:3px; background:var(--line); flex-shrink:0; display:block; overflow:hidden; }
   .rt-frac{ font-family:var(--font-mono); font-size:11px; color:var(--muted); width:34px; text-align:right; flex-shrink:0; }
   .rt-frac.full{ color:var(--good); }
 
@@ -539,9 +572,9 @@
     display:flex; align-items:center; justify-content:center; color:var(--gold-bright);
   }
   .dd-title{ font-family:var(--font-display); font-weight:800; font-size:36px; text-transform:uppercase; line-height:1; }
-  .dd-day{ font-family:var(--font-hand); font-size:15px; color:var(--body-ink, #c9d2da); margin-top:8px; }
+  .dd-day{ font-family:var(--font-hand); font-size:15px; color:var(--ink); opacity:.85; margin-top:8px; }
   .dd-ticks{ display:flex; gap:5px; margin:18px 0 8px; }
-  .dd-ticks i{ flex:1; height:8px; background:rgba(111,168,207,0.18); }
+  .dd-ticks i{ flex:1; height:8px; background:var(--line); }
   .dd-ticks i.done{ background:var(--gold); }
   .dd-ticks i.today{ background:var(--gold-bright); box-shadow:0 0 8px rgba(240,194,104,0.6); }
   .dd-streak{ font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
@@ -575,16 +608,17 @@
   .etymology-card-hint{display:inline-block;margin:0 8px 0 6px;color:var(--sand);font-size:11px;letter-spacing:.04em;font-style:italic;opacity:.85;}
   @media (max-width:600px){.etymology-tooltip{max-width:calc(100vw - 24px);padding:13px 14px 12px}.etymology-tooltip-word{font-size:18px}}
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=24">
-<script src="assets/lea-confirm.js?v=22"></script>
-<script src="assets/quiz-source.js?v=22"></script>
-<script src="assets/etymology.js?v=22"></script>
-<script src="assets/module-progress.js?v=22"></script>
-<script src="assets/offline.js?v=22"></script>
-<script src="assets/presence.js?v=22"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=55">
+<script src="assets/lea-confirm.js?v=55"></script>
+<script src="assets/quiz-source.js?v=55"></script>
+<script src="assets/etymology.js?v=55"></script>
+<script src="assets/module-progress.js?v=55"></script>
+<script src="assets/offline.js?v=55"></script>
+<script src="assets/presence.js?v=55"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
-<script src="assets/quiz-resume.js?v=22"></script>
-<script src="assets/theme.js?v=22" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-resume.js?v=55"></script>
+<script src="assets/theme.js?v=55" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=55"></script>
 </head>
 <body>
 <!-- The rail is a sibling of #pageBody, not a child: every render replaces
@@ -603,7 +637,7 @@
 
 <div class="run-shell">
   <div class="wrap" id="pageBody">
-    <div class="state-card">Loading…</div>
+    <script>document.write(LEANav.skel('question'))</script>
   </div>
   <aside class="run-rail" id="runRail" aria-label="Question map"></aside>
 </div>
@@ -933,6 +967,22 @@ async function boot(){
   flaggedSet = new Set(p.flagged || []);
   notes = Object.assign({}, p.notes || {});
 
+  // ?qi=N opens one specific question — what you tapped in Search or Saved —
+  // instead of the module from the top. It runs as a short side-run like a
+  // retake: the answer still counts toward mastery, but it neither touches the
+  // module's saved attempt nor its best score, and Back returns you to the
+  // list you came from (assets/nav.js).
+  const focusQ = params.get('qi');
+  if(MODE === 'study' && focusQ !== null && /^\d+$/.test(focusQ) && QUESTIONS[Number(focusQ)] && !QUESTIONS[Number(focusQ)].hidden){
+    order = [Number(focusQ)];
+    answersLog = [null];
+    pos = 0; frontier = 0;
+    isRetake = true;
+    captureMasteredAtStart();
+    renderRun();
+    return;
+  }
+
   if(MODE === 'study'){
     // Hidden questions (admin's "Hide this question", engine-spec §4) keep
     // their slot forever — mastered[] indices must never shift — they just
@@ -956,7 +1006,7 @@ async function boot(){
     const masteredSet = new Set(p.mastered || []);
     order = shuffleArr(QUESTIONS.map((_, i) => i).filter(i => !QUESTIONS[i].hidden && (!masteredSet.has(i) || flaggedSet.has(i))));
     if(order.length === 0){
-      body.innerHTML = '<div class="state-card">Nothing to drill here — every question in this module is mastered and nothing’s flagged.<br><br><a href="subject.html?s=' + encodeURIComponent(subjectId) + '" style="color:var(--gold-bright);">&larr; Back to subject</a></div>';
+      body.innerHTML = '<div class="state-card">Nothing to drill here — every question in this module is mastered and nothing’s flagged.<br><br><a href="subject.html?s=' + encodeURIComponent(subjectId) + '" data-back="to" style="color:var(--gold-bright);">&larr; Back to subject</a></div>';
       return;
     }
     answersLog = new Array(order.length).fill(null);
@@ -1085,7 +1135,9 @@ function renderExamStart(){
         '</button>' +
       '</div>' +
     '</div>';
-  document.getElementById('backBtn').addEventListener('click', () => { window.location.href = 'subject.html?s=' + encodeURIComponent(SUBJECT.id); });
+  // Back returns to wherever this run was opened from (Search, Saved, the
+  // subject page…); the subject page is only the fallback.
+  document.getElementById('backBtn').addEventListener('click', () => { LEANav.back('subject.html?s=' + encodeURIComponent(SUBJECT.id)); });
   document.getElementById('startFullBtn').addEventListener('click', () => startExam('full'));
   document.getElementById('startSimBtn').addEventListener('click', () => startExam('sim50'));
 }
@@ -1378,7 +1430,7 @@ function renderResultsCard(opts){
 
   return (
     '<div class="res-topbar">' +
-      '<a class="res-back" href="subject.html?s=' + encodeURIComponent(subjId) + '">' +
+      '<a class="res-back" href="subject.html?s=' + encodeURIComponent(subjId) + '" data-back="to">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>' +
         escapeHtml(subjName) +
       '</a>' +
@@ -1435,7 +1487,7 @@ function wireResultsCard(onDrill){
     window.location.href = 'run.html?s=' + encodeURIComponent(SUBJECT.id) + '&m=' + encodeURIComponent(MODULE.id) + '&mode=exam';
   });
   document.getElementById('backToSubjectBtn').addEventListener('click', () => {
-    window.location.href = 'subject.html?s=' + encodeURIComponent(SUBJECT.id);
+    LEANav.goTo('subject.html?s=' + encodeURIComponent(SUBJECT.id));
   });
 }
 
@@ -1756,7 +1808,7 @@ function formatDuration(ms){
 
 function wireHeader(){
   document.getElementById('backBtn').addEventListener('click', () => {
-    window.location.href = 'subject.html?s=' + encodeURIComponent(SUBJECT.id);
+    LEANav.back('subject.html?s=' + encodeURIComponent(SUBJECT.id));
   });
   document.getElementById('flagBtn').addEventListener('click', toggleFlag);
   document.getElementById('moreBtn').addEventListener('click', openReport);
@@ -2583,7 +2635,7 @@ function toggleMultiFlag(){
 }
 
 function wireMultiHeader(){
-  document.getElementById('backBtn').addEventListener('click', () => { window.location.href = 'index.html'; });
+  document.getElementById('backBtn').addEventListener('click', () => { LEANav.back('index.html'); });
   document.getElementById('flagBtn').addEventListener('click', toggleMultiFlag);
   document.getElementById('moreBtn').addEventListener('click', openMultiReport);
   // jumpChip lives in renderMultiCountsRow (drill-kind runs) — exam mode
@@ -2635,7 +2687,7 @@ function finishMultiRun(){
         '<button class="footer-btn skip" id="backHomeBtn">Back home</button>' +
       '</div>' +
     '</div>';
-  document.getElementById('backHomeBtn').addEventListener('click', () => { window.location.href = 'index.html'; });
+  document.getElementById('backHomeBtn').addEventListener('click', () => { LEANav.back('index.html'); });
 }
 
 // ---- Streak: {current, best, lastCompletedDate}, guarded on the calendar
@@ -2719,7 +2771,7 @@ function showDailyDrillDone(correct, attempted){
   document.getElementById('keepGoingBtn').addEventListener('click', () => {
     window.location.href = 'run.html?mode=daily-drill';
   });
-  document.getElementById('backHomeBtn').addEventListener('click', () => { window.location.href = 'index.html'; });
+  document.getElementById('backHomeBtn').addEventListener('click', () => { LEANav.back('index.html'); });
 }
 
 // ---- Question map (drill-kind multi runs) ----
@@ -2788,7 +2840,7 @@ function renderMultiExamStart(index){
         '</button>' +
       '</div>' +
     '</div>';
-  document.getElementById('backBtn').addEventListener('click', () => { window.location.href = 'index.html'; });
+  document.getElementById('backBtn').addEventListener('click', () => { LEANav.back('index.html'); });
   document.getElementById('startFullBtn').addEventListener('click', () => startMultiExam(index, index.length));
   document.getElementById('startSimBtn').addEventListener('click', () => startMultiExam(index, simCount));
 }
@@ -2943,7 +2995,7 @@ function showMultiExamResults(auto, correct){
         '<button class="footer-btn next" id="reviewAnswersBtn">Review answers →</button>' +
       '</div>' +
     '</div>';
-  document.getElementById('backHomeBtn').addEventListener('click', () => { window.location.href = 'index.html'; });
+  document.getElementById('backHomeBtn').addEventListener('click', () => { LEANav.back('index.html'); });
   document.getElementById('reviewAnswersBtn').addEventListener('click', () => { pos = 0; renderMultiRun(); });
 }
 
@@ -3000,6 +3052,34 @@ function svgFlag(){
 function svgMore(){
   return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>';
 }
+
+// Moving to another question slides the card across instead of redrawing the
+// page in place (see "Moving between questions" in the styles). Wraps every
+// run renderer, so Next, Skip, the Jump map and the keyboard all get it.
+// Answering, flagging and anything else that stays on the same question
+// redraws instantly as before.
+(function(){
+  if(!document.startViewTransition) return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  let lastPos = null, busy = false, clearTimer = null;
+  const wrap = fn => function(){
+    const self = this, args = arguments;
+    const from = lastPos; lastPos = pos;
+    const onQuestion = !!document.getElementById('cardSlot');
+    if(busy || from === null || from === pos || !onQuestion || reduce.matches || document.hidden) return fn.apply(self, args);
+    const root = document.documentElement;
+    clearTimeout(clearTimer);
+    root.dataset.qdir = pos > from ? 'next' : 'prev';
+    busy = true;
+    const t = document.startViewTransition(() => { try { fn.apply(self, args); } finally { busy = false; } });
+    // Kept a moment past the card's move so the options finish settling.
+    t.finished.finally(() => { clearTimer = setTimeout(() => { delete root.dataset.qdir; }, 400); });
+  };
+  renderRun = wrap(renderRun);
+  renderExamRun = wrap(renderExamRun);
+  renderMultiRun = wrap(renderMultiRun);
+  renderMultiExamRun = wrap(renderMultiExamRun);
+})();
 </script>
 <script>
 // ================= Figure viewer =================

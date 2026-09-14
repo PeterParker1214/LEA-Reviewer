@@ -69,7 +69,11 @@
       '<div class="lb-face">' + faceHtml(avatars[row.username], row.username) + '</div>' +
       '<div class="lb-name"><span class="who">' + escapeHtml(row.username) +
         (opts.isMine ? ' (you)' : '') + '</span>' + onlineDot(row.username) + '</div>' +
-      '<div class="lb-stats">' + escapeHtml(opts.stats || '') + '</div>' +
+      // "2301 mastered · 82% avg" stacks one part per line, so the stats stay
+      // narrow and the name beside them is not cut short.
+      '<div class="lb-stats">' + String(opts.stats || '').split(' · ').map(function (part) {
+        return '<span>' + escapeHtml(part) + '</span>';
+      }).join('') + '</div>' +
     '</div>';
   }
 
@@ -83,7 +87,7 @@
       return '<div class="lb-empty">' + escapeHtml(opts.empty || 'No scores yet — be the first!') + '</div>';
     }
     var stats = opts.stats || function () { return ''; };
-    var html = rows.map(function (row, i) {
+    var html = headHtml(opts.head || 'Mastered · Avg') + rows.map(function (row, i) {
       return rowHtml(row, i + 1, {
         stats: stats(row),
         isMine: opts.myUsername != null && row.username === opts.myUsername,
@@ -93,9 +97,20 @@
     return '<div class="lb-list">' + html + '</div>';
   }
 
-  /** The overall board's stats line: mastered count and average best score. */
+  /** The overall board's stats: mastered count over average best score. The
+   *  words live once in the column head (headHtml), not on every row. */
   function overallStats(row) {
-    return (row.total_mastered || 0) + ' mastered · ' + Math.round((row.avg_best_score || 0) * 100) + '% avg';
+    return (row.total_mastered || 0) + ' · ' + Math.round((row.avg_best_score || 0) * 100) + '%';
+  }
+
+  /** One label row above a list, naming what the right-hand numbers are. */
+  function headHtml(statsLabel) {
+    return '<div class="lb-head"><span>Rank</span><span>' + escapeHtml(statsLabel) + '</span></div>';
+  }
+
+  /** Marks skipped ranks between the list and a pinned row further down. */
+  function gapHtml() {
+    return '<div class="lb-gap" aria-hidden="true">⋯</div>';
   }
 
   window.LEALeaderboard = {
@@ -103,6 +118,8 @@
     onlineDot: onlineDot,
     rowHtml: rowHtml,
     listHtml: listHtml,
+    headHtml: headHtml,
+    gapHtml: gapHtml,
     overallStats: overallStats
   };
 })();

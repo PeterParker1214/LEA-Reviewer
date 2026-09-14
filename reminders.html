@@ -58,7 +58,7 @@
   .switch input{ position:absolute; opacity:0; width:100%; height:100%; margin:0; cursor:pointer; }
   .switch .track{ position:absolute; inset:0; border-radius:12px; background:var(--bg-panel-2); border:1px solid var(--line); transition:background .15s; }
   .switch .knob{ position:absolute; top:3px; left:3px; width:18px; height:18px; border-radius:50%; background:var(--muted); transition:transform .15s, background .15s; }
-  .switch input:checked ~ .track{ background:rgba(224,168,63,0.22); border-color:var(--gold); }
+  .switch input:checked ~ .track{ background:color-mix(in srgb, var(--gold) 22%, transparent); border-color:var(--gold); }
   .switch input:checked ~ .knob{ transform:translateX(18px); background:var(--gold-bright); }
   .switch input:focus-visible ~ .track{ outline:2px solid var(--gold-bright); outline-offset:2px; }
 
@@ -70,20 +70,21 @@
   .foot{ font-size:12px; color:var(--muted); line-height:1.6; margin-top:18px; }
   .foot a{ color:var(--gold-bright); }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=24">
-<script src="assets/theme.js?v=22" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/offline.js?v=22"></script>
-<script src="assets/presence.js?v=22"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=55">
+<script src="assets/theme.js?v=55" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=55"></script>
+<script src="assets/offline.js?v=55"></script>
+<script src="assets/presence.js?v=55"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
-<script src="assets/module-progress.js?v=22"></script>
-<script src="assets/countdown.js?v=22"></script>
-<script src="assets/reminders.js?v=22"></script>
+<script src="assets/module-progress.js?v=55"></script>
+<script src="assets/countdown.js?v=55"></script>
+<script src="assets/reminders.js?v=55"></script>
 </head>
 <body>
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
 <div class="wrap">
   <div class="run-header">
-    <a class="icon-btn-44" href="notifications.html" title="Back to notifications">
+    <a class="icon-btn-44" href="notifications.html" title="Back" data-back>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
     </a>
     <div class="page-title">Reminders</div>

@@ -46,66 +46,77 @@
 
   .run-header{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
   .icon-btn-44{
-    width:44px; height:44px; border-radius:10px; background:var(--bg-panel); border:1px solid var(--line);
+    width:44px; height:44px; border-radius:8px; background:var(--bg-panel); border:1px solid var(--line);
     color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
   }
   .icon-btn-44 svg{ width:19px; height:19px; }
-  .page-title{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; }
+  .page-title{ font-family:var(--font-display); font-weight:800; font-size:28px; line-height:1; text-transform:uppercase; }
 
-  .chips{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }
+  /* One scrolling row, like Search's filters: wrapping left "Reminders" alone
+     on a second line. */
+  .chips{ display:flex; gap:8px; flex-wrap:nowrap; overflow-x:auto; margin-bottom:16px; padding-bottom:2px; scrollbar-width:none; }
+  .chips::-webkit-scrollbar{ display:none; }
+  /* Fade the right edge so a chip running off it reads as "scroll", not "cut". */
+  .chips{ -webkit-mask-image:linear-gradient(90deg, #000 calc(100% - 28px), transparent); mask-image:linear-gradient(90deg, #000 calc(100% - 28px), transparent); }
+  .nf-body.short{ display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; white-space:normal; }
+  .nf-list{ margin:0; padding-left:18px; font-size:14px; line-height:1.55; color:var(--ink); opacity:.9; }
+  .nf-list li{ margin-bottom:4px; overflow-wrap:anywhere; }
+  .chip{ flex-shrink:0; }
   .chip{
-    font-family:var(--font-mono); font-size:11px; letter-spacing:.03em; text-transform:uppercase;
+    min-height:36px; font-family:var(--font-body); font-weight:600; font-size:11px; letter-spacing:.08em; text-transform:uppercase;
     background:var(--bg-panel); border:1px solid var(--line); color:var(--muted);
-    padding:8px 11px; border-radius:999px; cursor:pointer;
+    padding:0 12px; border-radius:0; cursor:pointer; white-space:nowrap;
   }
-  .chip.active{ border-color:var(--gold); color:var(--gold-bright); background:rgba(224,168,63,0.08); }
+  .chip.active{ border-color:var(--gold); color:var(--gold-bright); background:color-mix(in srgb, var(--gold) 8%, transparent); }
   .chip b{ font-weight:600; color:var(--gold-bright); margin-left:4px; }
 
-  .nf-card{ position:relative; background:var(--bg-panel); border:1px solid var(--line); border-left:3px solid var(--line);
-    border-radius:10px; padding:13px 16px; margin-bottom:10px; }
-  .nf-card.unread{ border-left-color:var(--gold); }
-  .nf-card.unread::after{ content:''; position:absolute; top:15px; right:14px; width:8px; height:8px; border-radius:50%; background:var(--gold); }
-  .nf-top{ display:flex; gap:8px; align-items:center; font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin-bottom:5px; padding-right:16px; }
+  /* Unread is a gold outline plus the dot, not a thick left stripe. */
+  .nf-card{ position:relative; background:var(--bg-panel); border:1px solid var(--line);
+    border-radius:0; padding:14px 16px; margin-bottom:8px; }
+  .nf-card.unread{ border-color:color-mix(in srgb, var(--gold) 55%, transparent); }
+  .nf-card.unread::after{ content:''; position:absolute; top:16px; right:16px; width:8px; height:8px; border-radius:50%; background:var(--gold); }
+  .nf-top{ display:flex; gap:8px; align-items:center; font-family:var(--font-body); font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-bottom:6px; padding-right:20px; }
   .nf-kind{ font-weight:600; }
   .k-message .nf-kind{ color:var(--gold-bright); }
   .k-report .nf-kind{ color:var(--good); }
   .k-update .nf-kind{ color:var(--blue-bright); }
   .k-reminder .nf-kind{ color:var(--violet); }
-  .nf-title{ font-weight:600; font-size:14.5px; margin-bottom:4px; }
-  .nf-body{ font-size:13.5px; line-height:1.55; color:var(--ink); opacity:.9; white-space:pre-wrap; overflow-wrap:anywhere; }
-  .nf-open{ display:inline-block; margin-top:8px; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--gold-bright); text-decoration:none; }
+  .nf-title{ font-family:var(--font-display); font-weight:800; font-size:20px; line-height:1.1; text-transform:uppercase; margin-bottom:6px; text-wrap:balance; overflow-wrap:anywhere; }
+  .nf-body{ font-size:14px; line-height:1.55; color:var(--ink); opacity:.9; white-space:pre-wrap; overflow-wrap:anywhere; }
+  .nf-open{ display:inline-flex; align-items:center; min-height:36px; margin-top:4px; font-family:var(--font-body); font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--gold-bright); text-decoration:none; }
   .nf-open:hover{ text-decoration:underline; }
   button.nf-open{ background:none; border:none; padding:0; cursor:pointer; }
-  .nf-settings{ margin-left:auto; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); text-decoration:none; }
+  .nf-settings{ margin-left:auto; text-align:right; font-family:var(--font-body); font-weight:600; font-size:11px; line-height:1.3; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); text-decoration:none; }
   .nf-settings:hover{ color:var(--gold-bright); }
 
-  .state-note{ font-family:var(--font-mono); font-size:12px; color:var(--muted); text-align:center; padding:40px 0; line-height:1.7; }
-  .err-note{ font-family:var(--font-mono); font-size:11px; color:var(--bad); margin-bottom:12px; }
+  .state-note{ font-family:var(--font-body); font-size:13px; color:var(--muted); text-align:center; padding:40px 0; line-height:1.6; }
+  .err-note{ font-family:var(--font-body); font-size:13px; color:var(--bad); margin-bottom:12px; }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=24">
-<script src="assets/theme.js?v=22" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/offline.js?v=22"></script>
-<script src="assets/presence.js?v=22"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=55">
+<script src="assets/theme.js?v=55" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=55"></script>
+<script src="assets/offline.js?v=55"></script>
+<script src="assets/presence.js?v=55"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
-<script src="assets/notifications.js?v=22"></script>
-<script src="assets/module-progress.js?v=22"></script>
-<script src="assets/countdown.js?v=22"></script>
-<script src="assets/reminders.js?v=22"></script>
-<script src="assets/whats-new.js?v=22"></script>
+<script src="assets/notifications.js?v=55"></script>
+<script src="assets/module-progress.js?v=55"></script>
+<script src="assets/countdown.js?v=55"></script>
+<script src="assets/reminders.js?v=55"></script>
+<script src="assets/whats-new.js?v=55"></script>
 </head>
 <body>
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
 <div class="wrap">
   <div class="run-header">
-    <a class="icon-btn-44" href="index.html" title="Back home">
+    <a class="icon-btn-44" href="index.html" title="Back" data-back>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
     </a>
-    <div class="page-title">Notifications</div>
+    <div class="page-title" data-vt="lea-notifications" data-vt-peer="index.html">Notifications</div>
     <a class="nf-settings" href="reminders.html">Reminder settings</a>
   </div>
 
   <div class="chips" id="chips"></div>
-  <div id="list"><div class="state-note">Loading…</div></div>
+  <div id="list" class="lea-stagger"><script>document.write(LEANav.skel('cards', 4))</script></div>
 </div>
 
 <script>
@@ -152,6 +163,22 @@ function safeHref(href){
   }catch(e){ return null; }
 }
 
+// Site updates show their first line only; the full notes live on Profile →
+// Versions, which "Read →" opens. Anything written as "• " lines becomes a real
+// list, so wrapped lines line up after the bullet instead of under it.
+function bodyHtml(i){
+  const lines = String(i.body || '').split('\n').filter(l => l.trim());
+  const isBullet = l => /^\s*•\s*/.test(l);
+  if(i.kind === 'update'){
+    const first = (lines[0] || '').replace(/^\s*•\s*/, '');
+    return first ? '<div class="nf-body short">' + esc(first) + '</div>' : '';
+  }
+  if(lines.length && lines.every(isBullet)){
+    return '<ul class="nf-list">' + lines.map(l => '<li>' + esc(l.replace(/^\s*•\s*/, '')) + '</li>').join('') + '</ul>';
+  }
+  return '<div class="nf-body">' + esc(i.body) + '</div>';
+}
+
 function render(){
   document.getElementById('chips').innerHTML = FILTERS.map(f => {
     const n = ITEMS.filter(i => (f.id === 'all' || i.kind === f.id) && i.unread).length;
@@ -173,8 +200,8 @@ function render(){
         (i.where ? '<span>· ' + esc(i.where) + '</span>' : '') +
         '<span>· ' + timeAgo(i.at) + '</span></div>' +
       '<div class="nf-title">' + esc(i.title) + '</div>' +
-      '<div class="nf-body">' + esc(i.body) + '</div>' +
-      (href ? '<a class="nf-open" href="' + esc(href) + '"' + (external ? ' target="_blank" rel="noopener noreferrer"' : '') + '>Open →</a>' : '') +
+      bodyHtml(i) +
+      (href ? '<a class="nf-open" href="' + esc(href) + '"' + (external ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + (i.kind === 'update' ? 'Read →' : 'Open →') + '</a>' : '') +
       (i.action === 'refresh' ? '<button class="nf-open" type="button" data-refresh>Refresh now →</button>' : '') +
     '</div>';
   }).join('');
