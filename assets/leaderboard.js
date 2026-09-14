@@ -64,6 +64,23 @@
     opts = opts || {};
     var cls = 'lb-row' + (rank <= 3 ? ' top' + rank : '') + (opts.isMine ? ' mine' : '');
     var avatars = opts.avatars || {};
+    // Standings' "floors": the count sits beside the name and a bar sized
+    // against first place runs underneath. opts.bar = { value, pct, markPct?, note? }
+    if (opts.bar) {
+      var b = opts.bar, clamp = function (n) { return Math.max(2, Math.min(100, Math.round(n))); };
+      return '<div class="' + cls + ' has-bar">' +
+        '<div class="lb-rank">' + rank + '</div>' +
+        '<div class="lb-face">' + faceHtml(avatars[row.username], row.username) + '</div>' +
+        '<div class="lb-main">' +
+          '<div class="lb-line"><div class="lb-name"><span class="who">' + escapeHtml(row.username) +
+            (opts.isMine ? ' (you)' : '') + '</span>' + onlineDot(row.username) + '</div>' +
+            '<span class="lb-val">' + valueText(b.value) + '</span></div>' +
+          '<div class="lb-bar"><i style="width:' + clamp(b.pct) + '%"></i>' +
+            (b.markPct != null ? '<span class="lb-mark" style="left:' + clamp(b.markPct) + '%"></span>' : '') + '</div>' +
+          (b.note ? '<div class="lb-note">' + escapeHtml(b.note) + '</div>' : '') +
+        '</div>' +
+      '</div>';
+    }
     return '<div class="' + cls + '">' +
       '<div class="lb-rank">' + rank + '</div>' +
       '<div class="lb-face">' + faceHtml(avatars[row.username], row.username) + '</div>' +
@@ -108,6 +125,26 @@
     return '<div class="lb-head"><span>Rank</span><span>' + escapeHtml(statsLabel) + '</span></div>';
   }
 
+  function valueText(n) { return Number(n || 0).toLocaleString('en-US'); }
+
+  /**
+   * The top three on stepped blocks, first place in the middle and tallest.
+   *   rows  the whole board, best first
+   *   opts  { value(row) -> number, avatars, myUsername }
+   */
+  function podiumHtml(rows, opts) {
+    var avatars = opts.avatars || {};
+    return '<div class="lb-podium">' + [1, 0, 2].filter(function (i) { return rows[i]; }).map(function (i) {
+      var row = rows[i], rank = i + 1, mine = row.username === opts.myUsername;
+      return '<div class="lb-step p' + rank + (mine ? ' mine' : '') + '">' +
+        '<div class="lb-face">' + faceHtml(avatars[row.username], row.username) + '</div>' +
+        '<div class="lb-pname"><span class="who">' + escapeHtml(row.username) + (mine ? ' (you)' : '') + '</span>' + onlineDot(row.username) + '</div>' +
+        '<div class="lb-pval">' + valueText(opts.value(row)) + '</div>' +
+        '<div class="lb-plinth"><b>' + rank + '</b></div>' +
+      '</div>';
+    }).join('') + '</div>';
+  }
+
   /** Marks skipped ranks between the list and a pinned row further down. */
   function gapHtml() {
     return '<div class="lb-gap" aria-hidden="true">⋯</div>';
@@ -120,6 +157,7 @@
     listHtml: listHtml,
     headHtml: headHtml,
     gapHtml: gapHtml,
+    podiumHtml: podiumHtml,
     overallStats: overallStats
   };
 })();

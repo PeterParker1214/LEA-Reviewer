@@ -61,4 +61,57 @@
 .lb-stats span{ display:block; }
 .lb-stats span:first-child{ color:var(--ink); }
 
+/* ===== Standings: podium + floors ===== */
+
+/* Top three on stepped blocks standing on one ground line. Gold still means
+   only you: first place is marked by height and a bigger face, not colour. */
+.lb-podium{ display:flex; align-items:flex-end; gap:6px; margin:4px 0 16px; border-bottom:2px solid color-mix(in srgb, var(--blue) 35%, transparent); }
+.lb-step{ flex:1; min-width:0; text-align:center; --d:0ms; }
+.lb-step .lb-face{ width:48px; height:48px; margin:0 auto 6px; font-size:18px; }
+.lb-step.p1 .lb-face{ width:60px; height:60px; font-size:22px; }
+.lb-pname{ display:flex; justify-content:center; align-items:center; font-family:var(--font-body); font-weight:600; font-size:13px; color:var(--ink); }
+.lb-pname .who{ min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.lb-pval{ font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.08em; color:var(--muted); margin:2px 0 6px; }
+.lb-plinth{ height:56px; background:var(--bg-panel); border:1px solid var(--line); border-bottom:0; padding-top:8px; }
+.lb-plinth b{ font-family:var(--font-display); font-weight:800; font-size:26px; line-height:1; color:var(--muted); }
+.lb-step.p1 .lb-plinth{ height:100px; border-color:color-mix(in srgb, var(--blue) 45%, transparent); }
+.lb-step.p1 .lb-plinth b{ font-size:40px; color:var(--ink); }
+.lb-step.p2 .lb-plinth{ height:74px; }
+.lb-step.p2 .lb-plinth b{ font-size:30px; }
+.lb-step.mine .lb-face{ border-color:var(--gold); }
+.lb-step.mine .lb-plinth{ border-color:var(--gold); background:color-mix(in srgb, var(--gold) 12%, transparent); }
+.lb-step.mine .lb-plinth b{ color:var(--gold-bright); }
+
+/* Floors: rank, face, then name and count over a bar sized against first place. */
+.lb-row.has-bar{ align-items:center; }
+.lb-main{ flex:1; min-width:0; }
+.lb-line{ display:flex; align-items:center; gap:10px; }
+.lb-val{ margin-left:auto; flex-shrink:0; font-family:var(--font-body); font-size:13px; color:var(--ink); }
+.lb-row.mine .lb-val{ color:var(--gold-bright); font-weight:600; }
+.lb-bar{ position:relative; height:6px; margin-top:6px; background:color-mix(in srgb, var(--muted) 22%, transparent); }
+.lb-bar i{ position:absolute; left:0; top:0; bottom:0; background:var(--blue-bright); transform-origin:left; }
+.lb-row.mine .lb-bar i{ background:var(--gold); }
+/* On your row: where the person just above you is. */
+.lb-mark{ position:absolute; top:-3px; height:12px; border-left:1px dashed var(--gold-bright); }
+.lb-note{ margin-top:6px; font-family:var(--font-body); font-weight:600; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold-bright); }
+
+/* First draw only — assets/nav.js adds html.lea-settled once the page's
+   entrance has played, so tab switches and live updates just appear. The
+   plinths rise out of the ground line (second, first, third), each face
+   drops onto its block once it stands, and the bars fill left to right a
+   beat behind their rows. */
+.lb-step.p2{ --d:60ms; } .lb-step.p1{ --d:160ms; } .lb-step.p3{ --d:260ms; }
+.lb-plinth{ animation:lb-plinth-up 600ms var(--ease-drawer) var(--d) both; }
+.lb-step .lb-face, .lb-pname, .lb-pval{ animation:lb-drop-in 420ms var(--ease-out) calc(var(--d) + 360ms) both; }
+.lb-bar i{ animation:home-grow 700ms cubic-bezier(.16,1,.3,1) calc(200ms + var(--i, 0) * 40ms) both; }
+.lb-mark, .lb-note{ animation:lea-vt-in 320ms var(--ease-out) calc(700ms + var(--i, 0) * 40ms) both; }
+@keyframes lb-plinth-up{ from{ clip-path:inset(100% 0 0 0); } to{ clip-path:inset(0 0 0 0); } }
+@keyframes lb-drop-in{ from{ opacity:0; transform:translateY(-8px); } }
+html.lea-settled .lb-plinth, html.lea-settled .lb-step .lb-face, html.lea-settled .lb-pname, html.lea-settled .lb-pval,
+html.lea-settled .lb-bar i, html.lea-settled .lb-mark, html.lea-settled .lb-note{ animation:none; }
+@media (prefers-reduced-motion: reduce){
+  .lb-plinth, .lb-bar i{ animation:none; }
+  .lb-step .lb-face, .lb-pname, .lb-pval, .lb-mark, .lb-note{ animation-name:lea-vt-in; }
+}
+
 .lb-empty{ font-family:var(--font-body); font-size:13px; color:var(--muted); text-align:center; padding:24px 0; line-height:1.6; }

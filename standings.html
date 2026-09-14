@@ -110,14 +110,14 @@
     border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
   }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=57">
-<link rel="stylesheet" href="assets/leaderboard.css?v=57">
-<script src="assets/theme.js?v=57" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=57"></script>
-<script src="assets/avatar.js?v=57"></script>
-<script src="assets/leaderboard.js?v=57"></script>
-<script src="assets/offline.js?v=57"></script>
-<script src="assets/presence.js?v=57"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=59">
+<link rel="stylesheet" href="assets/leaderboard.css?v=59">
+<script src="assets/theme.js?v=59" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=59"></script>
+<script src="assets/avatar.js?v=59"></script>
+<script src="assets/leaderboard.js?v=59"></script>
+<script src="assets/offline.js?v=59"></script>
+<script src="assets/presence.js?v=59"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
 </head>
 <body>
@@ -165,7 +165,7 @@ function renderTabs(){
     '<button class="tab-btn' + (activeTab === t.key ? ' active' : '') + '" data-tab="' + t.key + '">' + t.label + '</button>'
   ).join('');
   document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => { activeTab = btn.dataset.tab; render(); });
+    btn.addEventListener('click', () => { if(activeTab === btn.dataset.tab) return; activeTab = btn.dataset.tab; render(true); });
   });
 }
 
@@ -181,13 +181,35 @@ async function loadAvatars(){
 
 const onlineDot = (username) => LEALeaderboard.onlineDot(username);
 
-// Both boards draw the same row; only the stats line differs, so that is the
-// only thing passed in. The markup itself is assets/leaderboard.js, shared
-// with the subject page's leaderboard modal.
-function lbRowHtml(row, rank, isMine){
-  return LEALeaderboard.rowHtml(row, rank, {
-    stats: LEALeaderboard.overallStats(row), isMine, avatars: avatarByUsername
-  });
+// Row and podium markup lives in assets/leaderboard.js; each board only says
+// which number it ranks by.
+const masteredOverall = r => r.total_mastered || 0;
+const masteredThisWeek = r => r.mastered || 0;
+
+// One "floor": a row whose bar is sized against first place. On your own row
+// the bar also marks where the person just above you is, and says how far.
+function floorHtml(board, rank, value){
+  const row = board[rank - 1], mine = row.username === currentUsername;
+  const top = Math.max(1, value(board[0]));
+  const bar = { value: value(row), pct: value(row) / top * 100 };
+  if(mine && rank > 1){
+    const ahead = board[rank - 2], gap = value(ahead) - value(row);
+    bar.markPct = value(ahead) / top * 100;
+    bar.note = gap > 0 ? gap.toLocaleString('en-US') + ' more to pass ' + ahead.username : 'Level with ' + ahead.username;
+  }
+  return LEALeaderboard.rowHtml(row, rank, { isMine: mine, avatars: avatarByUsername, bar });
+}
+
+// Podium for the top three, floors for 4–10, and your own floor pinned below
+// when you're further down.
+function boardHtml(board, value){
+  const myIdx = board.findIndex(r => r.username === currentUsername);
+  let html = LEALeaderboard.podiumHtml(board, { value, avatars: avatarByUsername, myUsername: currentUsername });
+  const floors = [];
+  for(let rank = 4; rank <= Math.min(10, board.length); rank++) floors.push(floorHtml(board, rank, value));
+  if(floors.length) html += '<div class="lb-list lea-stagger">' + floors.join('') + '</div>';
+  if(myIdx >= 10) html += LEALeaderboard.gapHtml() + '<div class="lb-list">' + floorHtml(board, myIdx + 1, value) + '</div>';
+  return html;
 }
 
 async function renderOverall(){
@@ -200,13 +222,7 @@ async function renderOverall(){
   const myIdx = data.findIndex(r => r.username === currentUsername);
   const chip = document.getElementById('rankChip');
   if(chip) chip.textContent = myIdx >= 0 ? ('You\u2019re #' + (myIdx + 1)) : '';
-  const top10 = data.slice(0, 10);
-  let html = rivalCardHtml(data, myIdx) +
-    '<div class="lb-list lea-stagger">' + LEALeaderboard.headHtml('Mastered · Avg') + top10.map((r, i) => lbRowHtml(r, i+1, i === myIdx)).join('') + '</div>';
-  if(myIdx >= 10){
-    html += LEALeaderboard.gapHtml() + '<div class="lb-list">' + lbRowHtml(data[myIdx], myIdx+1, true) + '</div>';
-  }
-  area.innerHTML = html;
+  area.innerHTML = boardHtml(data, masteredOverall);
 }
 
 // The frame's Closest rival card. Drawn from the same RPC rows as the list —
@@ -244,7 +260,6 @@ function rivalCardHtml(data, myIdx){
 // footnote says so rather than letting a short first week read as a full one.
 async function renderWeek(){
   const area = document.getElementById('contentArea');
-  area.innerHTML = LEANav.skel('rows', 6);
 
   let payload = null, failed = false;
   try{
@@ -287,21 +302,7 @@ async function renderWeek(){
   const chip = document.getElementById('rankChip');
   if(chip) chip.textContent = myIdx >= 0 ? ('You’re #' + (myIdx + 1) + ' this week') : '';
 
-  area.innerHTML =
-    '<div class="lb-list lea-stagger">' + LEALeaderboard.headHtml('Mastered this week') +
-      rows.slice(0, 10).map((r, i) =>
-        weekRowHtml(r, i + 1, i === myIdx)
-      ).join('') +
-    '</div>' +
-    // Your own row, pinned, when it falls outside the ten shown.
-    (myIdx >= 10 ? LEALeaderboard.gapHtml() + '<div class="lb-list">' + weekRowHtml(rows[myIdx], myIdx + 1, true) + '</div>' : '') +
-    sinceNote;
-}
-
-function weekRowHtml(row, rank, isMine){
-  return LEALeaderboard.rowHtml(row, rank, {
-    stats: String(row.mastered), isMine, avatars: avatarByUsername
-  });
+  area.innerHTML = boardHtml(rows, masteredThisWeek) + sinceNote;
 }
 
 async function renderRivals(){
@@ -320,6 +321,8 @@ async function renderRivals(){
     area.innerHTML = '<div class="state-note">You’re in first place. No one’s ahead of you to catch.</div>';
     return;
   }
+  const chip = document.getElementById('rankChip');
+  if(chip) chip.textContent = 'You’re #' + (myIdx + 1);   // not the weekly rank left over from the last tab
   const me = data[myIdx];
   const rival = data[myIdx - 1];
   const gap = Math.max(0, (rival.total_mastered||0) - (me.total_mastered||0));
@@ -330,16 +333,22 @@ async function renderRivals(){
   // Same card the Overall tab shows, rather than a second design for the
   // same comparison.
   area.innerHTML = rivalCardHtml(data, myIdx) +
-    '<div class="lb-list lea-stagger">' + LEALeaderboard.headHtml('Mastered · Avg') + lbRowHtml(rival, myIdx, false) + lbRowHtml(me, myIdx+1, true) + '</div>';
+    '<div class="lb-list lea-stagger">' + floorHtml(data, myIdx, masteredOverall) + floorHtml(data, myIdx + 1, masteredOverall) + '</div>';
 }
 
-async function render(){
+// fromTab: a tab tap, so the new board fades up in place. Live presence
+// updates redraw silently. The skeleton only shows before anything has loaded,
+// never over a board already on screen.
+async function render(fromTab){
   renderTabs();
   const area = document.getElementById('contentArea');
-  area.innerHTML = LEANav.skel('rows', 6);
+  if(!area.querySelector('.lb-podium, .lb-list, .state-note, .rival-vs')) area.innerHTML = LEANav.skel('rows', 6);
   if(activeTab === 'overall') await renderOverall();
   else if(activeTab === 'week') await renderWeek();
   else await renderRivals();
+  if(fromTab && area.animate && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    area.animate([{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'none' }], { duration: 220, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' });
+  }
 }
 
 (async function boot(){

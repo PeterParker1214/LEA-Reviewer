@@ -278,7 +278,7 @@
   document.addEventListener('animationstart', function (e) {
     if (e.animationName !== 'lea-rise-in' || settleTimer === 'started') return;
     clearTimeout(settleTimer); settleTimer = 'started';
-    setTimeout(settle, 1300);
+    setTimeout(settle, 1800);   // long enough for Standings' bars to finish filling
   });
 
   // Skeletons: the shape of what is coming, drawn while it loads, instead of
