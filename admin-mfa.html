@@ -45,7 +45,20 @@
 <script>
 const SUPABASE_URL='https://rjrrprbvsmflzncojbtq.supabase.co';
 const SUPABASE_ANON_KEY='sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
-const sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+// Match Home's auth behavior: read from either storage and keep future token
+// refreshes in whichever one already owns this browser session.
+const adminAuthStorage={
+  getItem(k){try{return localStorage.getItem(k)??sessionStorage.getItem(k)}catch(e){return null}},
+  setItem(k,v){
+    try{
+      const sessionOnly=sessionStorage.getItem(k)!==null&&localStorage.getItem(k)===null;
+      if(sessionOnly){sessionStorage.setItem(k,v);localStorage.removeItem(k)}
+      else{localStorage.setItem(k,v);sessionStorage.removeItem(k)}
+    }catch(e){}
+  },
+  removeItem(k){try{localStorage.removeItem(k);sessionStorage.removeItem(k)}catch(e){}}
+};
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY,{auth:{storage:adminAuthStorage,persistSession:true,autoRefreshToken:true}});
 const $=id=>document.getElementById(id);
 let activeFactorId=null, pendingFactorId=null;
 function say(id,text,ok){const el=$(id);el.textContent=text;el.className='msg '+(ok?'ok':'err')}
