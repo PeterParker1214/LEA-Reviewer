@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin MFA — LEA Reviewer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<style>
+  :root{color-scheme:dark;--bg:#0a1218;--panel:#0e1c28;--ink:#eef1e9;--muted:#8b98a5;--line:rgba(111,168,207,.28);--gold:#e0a83f;--bad:#e2604a;--good:#5fbf82}
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,sans-serif;padding:28px 16px}.wrap{max-width:560px;margin:auto}.card{background:var(--panel);border:1px solid var(--line);padding:20px;border-radius:12px;margin-bottom:16px}h1{margin:0 0 8px}.muted{color:var(--muted)}button,input{font:inherit}button{background:var(--gold);border:0;padding:11px 14px;border-radius:8px;cursor:pointer;font-weight:700}button.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}input{width:100%;background:#09141e;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:12px;margin:8px 0 12px}.row{display:flex;gap:8px;flex-wrap:wrap}.msg{margin-top:12px}.ok{color:var(--good)}.err{color:var(--bad)}img{max-width:280px;width:100%;background:white;padding:10px;border-radius:8px}.hidden{display:none}.secret{font-family:ui-monospace,monospace;word-break:break-all;background:#09141e;padding:10px;border-radius:8px;border:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>Admin MFA</h1>
+    <div class="muted">Set up or verify a TOTP authenticator before using sensitive admin actions.</div>
+    <div id="status" class="msg">Checking your account…</div>
+  </div>
+
+  <div id="enrollCard" class="card hidden">
+    <h2>Set up authenticator</h2>
+    <p class="muted">Scan the QR code with an authenticator app, then enter the 6-digit code.</p>
+    <div id="qrWrap"></div>
+    <div id="secretWrap" class="hidden"><div class="muted">Manual secret</div><div id="secret" class="secret"></div></div>
+    <input id="enrollCode" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="6-digit code">
+    <div class="row"><button id="verifyEnrollBtn">Verify & enable MFA</button><button id="startEnrollBtn" class="secondary">Generate new QR</button></div>
+    <div id="enrollMsg" class="msg"></div>
+  </div>
+
+  <div id="verifyCard" class="card hidden">
+    <h2>Verify MFA</h2>
+    <p class="muted">Enter the current code from your authenticator app.</p>
+    <input id="verifyCode" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="6-digit code">
+    <button id="verifyBtn">Verify session</button>
+    <div id="verifyMsg" class="msg"></div>
+  </div>
+
+  <div id="readyCard" class="card hidden">
+    <h2>Admin session protected</h2>
+    <p>Your session is at AAL2.</p>
+    <a href="admin.html"><button>Continue to Admin</button></a>
+  </div>
+</div>
+<script>
+const SUPABASE_URL='https://rjrrprbvsmflzncojbtq.supabase.co';
+const SUPABASE_ANON_KEY='sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+const $=id=>document.getElementById(id);
+let activeFactorId=null, pendingFactorId=null;
+function say(id,text,ok){const el=$(id);el.textContent=text;el.className='msg '+(ok?'ok':'err')}
+async function aal(){const {data,error}=await sb.auth.mfa.getAuthenticatorAssuranceLevel();if(error)throw error;return data}
+async function listVerified(){const {data,error}=await sb.auth.mfa.listFactors();if(error)throw error;return (data && data.totp || []).filter(f=>f.status==='verified')}
+async function refresh(){
+  const {data:{session}}=await sb.auth.getSession();
+  if(!session){$('status').textContent='Sign in on the main site first.';return}
+  const {data:profile}=await sb.from('profiles').select('is_admin').eq('id',session.user.id).single();
+  if(!profile || profile.is_admin!==true){$('status').textContent='This account is not an admin.';return}
+  const a=await aal();
+  $('status').textContent='Signed in as admin · '+(a.currentLevel||'aal1');
+  $('enrollCard').classList.add('hidden');$('verifyCard').classList.add('hidden');$('readyCard').classList.add('hidden');
+  if(a.currentLevel==='aal2'){$('readyCard').classList.remove('hidden');return}
+  const factors=await listVerified();
+  if(factors.length){activeFactorId=factors[0].id;$('verifyCard').classList.remove('hidden');return}
+  $('enrollCard').classList.remove('hidden');await startEnroll();
+}
+async function startEnroll(){
+  try{
+    const existing=await listVerified(); if(existing.length){activeFactorId=existing[0].id;$('enrollCard').classList.add('hidden');$('verifyCard').classList.remove('hidden');return}
+    const {data,error}=await sb.auth.mfa.enroll({factorType:'totp',friendlyName:'LEA Reviewer Admin'});if(error)throw error;
+    pendingFactorId=data.id;
+    $('qrWrap').innerHTML=data.totp && data.totp.qr_code?'<img alt="Authenticator QR code" src="'+data.totp.qr_code+'">':'';
+    if(data.totp && data.totp.secret){$('secret').textContent=data.totp.secret;$('secretWrap').classList.remove('hidden')}
+    say('enrollMsg','QR ready. Scan it, then enter the current code.',true);
+  }catch(e){say('enrollMsg',e.message||String(e),false)}
+}
+$('startEnrollBtn').addEventListener('click',startEnroll);
+$('verifyEnrollBtn').addEventListener('click',async()=>{
+  try{
+    const code=$('enrollCode').value.trim();if(!pendingFactorId||!code)throw new Error('Enter the authenticator code.');
+    const {data:ch,error:ce}=await sb.auth.mfa.challenge({factorId:pendingFactorId});if(ce)throw ce;
+    const {error:ve}=await sb.auth.mfa.verify({factorId:pendingFactorId,challengeId:ch.id,code});if(ve)throw ve;
+    say('enrollMsg','MFA enabled.',true);await refresh();
+  }catch(e){say('enrollMsg',e.message||String(e),false)}
+});
+$('verifyBtn').addEventListener('click',async()=>{
+  try{
+    const code=$('verifyCode').value.trim();if(!activeFactorId||!code)throw new Error('Enter the authenticator code.');
+    const {data:ch,error:ce}=await sb.auth.mfa.challenge({factorId:activeFactorId});if(ce)throw ce;
+    const {error:ve}=await sb.auth.mfa.verify({factorId:activeFactorId,challengeId:ch.id,code});if(ve)throw ve;
+    say('verifyMsg','Verified.',true);await refresh();
+  }catch(e){say('verifyMsg',e.message||String(e),false)}
+});
+refresh().catch(e=>$('status').textContent=e.message||String(e));
+</script>
+</body>
+</html>
