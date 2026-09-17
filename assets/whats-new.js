@@ -21,7 +21,7 @@
   let popupOpen = false;
 
   function esc(s){
-    return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   }
 
   function load(){
@@ -158,10 +158,16 @@
     }, true);
   }
 
-  function addAdminPortal(){
-    if(!isAdmin) return;
+  async function addAdminPortal(){
     const body = document.getElementById('accountSheetBody');
-    if(!body || body.querySelector('#adminPortalBtn')) return;
+    if(!body || body.querySelector('#adminPortalBtn') || typeof sb === 'undefined') return;
+    if(!isAdmin){
+      try{
+        const { data } = await sb.auth.getSession();
+        isAdmin = await resolveAdmin(data && data.session);
+      }catch(e){ isAdmin = false; }
+    }
+    if(!isAdmin) return;
     const logout = body.querySelector('#logoutBtn2');
     const btn = document.createElement('button');
     btn.type = 'button';
