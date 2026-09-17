@@ -1,0 +1,2069 @@
+[
+  {
+    "s": "Beams",
+    "q": "What characterizes an overhanging beam?",
+    "o": [
+      "It has no supports",
+      "It is fixed at both ends",
+      "It has only an internal support",
+      "Its ends extend beyond the supports"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 3 — Beams",
+    "n": "An overhanging beam extends beyond its supports at one or both ends."
+  },
+  {
+    "s": "Types of Beams According to Function",
+    "q": "What is a grade beam?",
+    "o": [
+      "The lowermost spandrel of a building without a basement",
+      "A circular power shaft",
+      "A roof beam between trusses",
+      "A beam over a window"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 4 — Types of Beams According to Function",
+    "n": "A grade beam is the lowermost spandrel of a building without a basement."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "What is one purpose of using strain?",
+    "o": [
+      "To classify support symbols",
+      "To measure water pressure",
+      "To predict allowable deformation or tolerances",
+      "To determine dead load only"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 2 — Strength of Materials",
+    "n": "Strain helps predict allowable deformation and tolerances."
+  },
+  {
+    "s": "Allowable Deflections",
+    "q": "What allowable deflection is given for roof or floor construction?",
+    "o": [
+      "L/180",
+      "L/240",
+      "L/360",
+      "L/480"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 4 — Allowable Deflections of Beams",
+    "n": "Roof or floor construction is assigned the tightest specified limit, L/480."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "What capacity relationship defines an over-reinforced section?",
+    "o": [
+      "Compression capacity is greater than tension capacity",
+      "Both capacities are zero",
+      "Tension and compression are equal",
+      "Tension capacity is greater than compression capacity"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "An over-reinforced section has greater tension capacity than compression capacity in the reference."
+  },
+  {
+    "s": "Vertical Structural Irregularities",
+    "q": "When is a storey considered stiffly irregular or a soft storey based on stiffness?",
+    "o": [
+      "Lateral stiffness is below 70% of the storey above or below 80% of the average of the three storeys above",
+      "Drift is below 1.2 times the average",
+      "Strength is below 50% of the storey above",
+      "Mass is above 150% of the storey below"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 4 — Vertical Structural Irregularities",
+    "n": "The criterion is lateral stiffness below 70% of the storey above or below 80% of the average of the three storeys above."
+  },
+  {
+    "s": "Plan Structural Irregularities",
+    "q": "A projection beyond a re-entrant corner is 4 m on a plan dimension of 24 m. Does it exceed the stated 15% criterion?",
+    "o": [
+      "No; it is exactly 15%",
+      "Yes; it is about 16.7%",
+      "Yes; every re-entrant corner is automatically irregular",
+      "No; it is about 6%"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 5 — Plan Structural Irregularities",
+    "n": "The re-entrant-corner criterion is based on the projection as a percentage of the relevant plan dimension."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "What does strain represent?",
+    "o": [
+      "Force per unit area",
+      "Load multiplied by area",
+      "Change in length divided by original length",
+      "Moment divided by force"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 2 — Strength of Materials",
+    "n": "Strain is the ratio of change in length to original length, written ΔL/L."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "What long-to-short side ratio identifies a two-way slab?",
+    "o": [
+      "> 2",
+      "< 2",
+      "= 4",
+      "> 8"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "A two-way slab is identified when the long-to-short side ratio is less than 2."
+  },
+  {
+    "s": "Nature of Forces",
+    "q": "How is an axial load applied relative to a member?",
+    "o": [
+      "At 45 degrees to its length",
+      "Perpendicular to its length",
+      "Only through its center of gravity",
+      "Parallel to its length"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 1 — Nature of Forces",
+    "n": "An axial load acts parallel to the member's length."
+  },
+  {
+    "s": "Vertical Structural Irregularities",
+    "q": "A storey has a lateral stiffness of 68% of the storey above. Which irregularity criterion does this meet?",
+    "o": [
+      "Weak storey",
+      "Weight or mass irregularity",
+      "In-plane discontinuity",
+      "Stiff irregularity or soft storey"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 4 — Vertical Structural Irregularities",
+    "n": "A lateral stiffness below 70% of the storey above meets the stated stiff-irregularity or soft-storey criterion."
+  },
+  {
+    "s": "Stress-Strain Curve",
+    "q": "A material has a stress of 200 MPa at a strain of 0.001. What is its modulus of elasticity?",
+    "o": [
+      "200,000 MPa",
+      "0.000005 MPa",
+      "200 MPa",
+      "2,000 MPa"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 3 — Modulus of Elasticity",
+    "n": "The modulus of elasticity is the ratio of stress to strain and describes material stiffness."
+  },
+  {
+    "s": "Stress-Strain Curve",
+    "q": "How is the modulus of elasticity expressed?",
+    "o": [
+      "Stress divided by strain",
+      "Length divided by force",
+      "Force divided by area",
+      "Strain divided by stress"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 3 — Stress-Strain Curve of Steel",
+    "n": "The modulus of elasticity is expressed as stress over strain, σ/ε."
+  },
+  {
+    "s": "Building Frames",
+    "q": "Which structural system has no vertical load-carrying space frame and therefore has no beams or columns?",
+    "o": [
+      "Moment-Resisting Frame System",
+      "Bearing Wall System",
+      "Dual System",
+      "Building Frame System"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 4 — Building Frames",
+    "n": "The bearing wall system is described as lacking a vertical load-carrying space frame, with no beams or columns."
+  },
+  {
+    "s": "Categorization of Structures",
+    "q": "Which resisted-force pattern is shown for a surface-active structure?",
+    "o": [
+      "Shear and torsion",
+      "Axial only",
+      "Axial and shear",
+      "Axial and bending"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 1 — Categorization of Structures",
+    "n": "The surface-active category is shown resisting axial and shear actions."
+  },
+  {
+    "s": "Columns",
+    "q": "What behavior is associated with a long column?",
+    "o": [
+      "Compression and bending; buckling",
+      "Tension only; necking",
+      "Compression only; crushing",
+      "Shear only; rupture"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 4 — Columns",
+    "n": "Long columns carry compression and bending and are primarily associated with buckling."
+  },
+  {
+    "s": "Trusses",
+    "q": "Which set consists entirely of truss types named in the reference?",
+    "o": [
+      "King Post, Barrel, Warren, Rib",
+      "King Post, Fink, Howe, Pratt",
+      "Howe, Gothic, Pratt, Flying Buttress",
+      "Fink, Roman, Warren, Groin"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 2 — Trusses",
+    "n": "The named truss types include King Post, Fink, Howe, and Pratt, along with Warren, K-truss, Scissor, and Bowstring."
+  },
+  {
+    "s": "Stress-Strain Curve",
+    "q": "At what point does plastic deformation begin?",
+    "o": [
+      "Proportional limit",
+      "Yield point",
+      "Fracture point",
+      "Elastic limit"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 3 — Stress-Strain Curve of Steel",
+    "n": "The yield point marks the beginning of plastic deformation."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "Why might an architect use doubly reinforced concrete when member dimensions are limited?",
+    "o": [
+      "To avoid using steel",
+      "To keep the member's sectional dimensions limited",
+      "To eliminate all shear",
+      "To reduce concrete strength"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "Doubly reinforced members are useful when the architect limits the sectional dimensions and additional capacity is needed."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "What distinguishes the structural action considered in a two-way slab?",
+    "o": [
+      "Moment is considered in both directions",
+      "Only shear is considered",
+      "Only torsion is considered",
+      "Moment is considered only along the short side"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "Two-way slab design considers moment in both directions."
+  },
+  {
+    "s": "Plan Structural Irregularities",
+    "q": "The maximum storey drift at one end is 18 mm and the structure’s average storey drift is 14 mm. Does this meet the stated torsional irregularity criterion?",
+    "o": [
+      "No; the ratio must exceed 1.50",
+      "No; the ratio is 0.78",
+      "No; the ratio is 1.10",
+      "Yes; the ratio is about 1.29, which exceeds 1.20"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 5 — Plan Structural Irregularities",
+    "n": "The reference identifies torsional irregularity when the maximum drift at one end is 1.2 times the average storey drift."
+  },
+  {
+    "s": "Types of Loads",
+    "q": "Which load is distributed at a constant intensity?",
+    "o": [
+      "Concentrated load",
+      "Dead load",
+      "Uniformly distributed load",
+      "Uniformly varying load"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 2 — Types of Loads",
+    "n": "A uniformly distributed load has a constant load intensity over its loaded length or area."
+  },
+  {
+    "s": "Plan Structural Irregularities",
+    "q": "When does torsional irregularity occur in the stated drift criterion?",
+    "o": [
+      "One end's drift is 0.8 times the average",
+      "A projection exceeds 15% of the plan dimension",
+      "The mass is 150% of an adjacent storey",
+      "One end's maximum storey drift is 1.2 times the structure's average storey drift"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 5 — Plan Structural Irregularities",
+    "n": "Torsional irregularity is identified when the maximum drift at one end is 1.2 times the structure's average storey drift."
+  },
+  {
+    "s": "Stress-Strain Curve",
+    "q": "What is the fracture point?",
+    "o": [
+      "The point where loading begins",
+      "The point where stress becomes proportional to strain",
+      "The stress at which fracture failure occurs",
+      "The point of maximum stiffness"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 3 — Stress-Strain Curve of Steel",
+    "n": "The fracture point is the stress level at which the material fails by fracture."
+  },
+  {
+    "s": "Types of Beams According to Function",
+    "q": "Which beam is a large member that carries floor beams?",
+    "o": [
+      "Girder",
+      "Shaft",
+      "Rafter",
+      "Lintel"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 4 — Types of Beams According to Function",
+    "n": "A girder is a large beam that carries floor beams."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "When are tendons tensioned in pre-tensioned concrete?",
+    "o": [
+      "After demolition",
+      "Only during service",
+      "Before casting the concrete",
+      "After the concrete has hardened"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "In pre-tensioned concrete, the tendons are stressed before the concrete is cast."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "How does an over-reinforced section fail?",
+    "o": [
+      "By yielding gradually in the steel",
+      "By torsional rupture only",
+      "By foundation settlement",
+      "By crushing of the concrete compression zone, instantaneously"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "Over-reinforced sections fail by crushing in the compression zone, and the failure is described as instantaneous."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "What capacity relationship defines an under-reinforced section?",
+    "o": [
+      "Tension and compression are equal",
+      "Tension capacity is greater than compression capacity",
+      "Tension capacity is smaller than compression capacity",
+      "Compression capacity is zero"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "An under-reinforced section has lower tension capacity than compression capacity."
+  },
+  {
+    "s": "Categorization of Structures",
+    "q": "Which is an example of a form-active structure?",
+    "o": [
+      "Geodesic dome",
+      "Concrete shell",
+      "Tensile fabric",
+      "Column frame"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 1 — Categorization of Structures",
+    "n": "Tensile fabric and arches are the examples given for form-active structures."
+  },
+  {
+    "s": "Types of Loads",
+    "q": "A load applied at one location is classified by distribution as what?",
+    "o": [
+      "Concentrated or point load",
+      "Dead load",
+      "Uniformly varying load",
+      "Live load"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 2 — Types of Loads",
+    "n": "A concentrated or point load acts at a specific location rather than being spread continuously."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "A rectangular slab measures 8 m by 3 m. Based on the long-to-short side ratio in the reference, how is it classified?",
+    "o": [
+      "Two-way slab because both directions always resist moment",
+      "Balanced slab because the ratio equals 2",
+      "Two-way slab because the ratio is below 2",
+      "One-way slab because the ratio is about 2.67"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 5 — Concrete Slab Reinforcement",
+    "n": "The reference classifies a slab as one-way when the ratio of the long side to the short side is greater than 2."
+  },
+  {
+    "s": "Beams",
+    "q": "Which symbol is used for vertical force in the beam discussion?",
+    "o": [
+      "E",
+      "K",
+      "M",
+      "V"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 3 — Beams",
+    "n": "Vertical force is denoted by V in the beam diagram and text."
+  },
+  {
+    "s": "Beams",
+    "q": "Where are the supports of a simple span beam located?",
+    "o": [
+      "At the ends of the span",
+      "At only one end",
+      "At three intermediate points",
+      "Only at midspan"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 3 — Beams",
+    "n": "A simple span beam has supports located at the ends of its span."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "Which design method uses the elastic limit of materials?",
+    "o": [
+      "Working Stress Design",
+      "Ultimate Stress Design",
+      "Limit State Design",
+      "Plastic Design"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "Working Stress Design is based on the elastic limit of the materials and is identified as no longer used."
+  },
+  {
+    "s": "Stress-Strain Curve",
+    "q": "What is another name for ultimate strength in tension?",
+    "o": [
+      "Fracture stress",
+      "Elastic limit",
+      "Ultimate tensile strength",
+      "Yield strain"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 3 — Stress-Strain Curve of Steel",
+    "n": "It is also called ultimate strength the ultimate tensile strength."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "What characterizes doubly reinforced concrete?",
+    "o": [
+      "Reinforcement is provided near both tensile and compressive faces",
+      "Reinforcement is provided only near the tensile face",
+      "Reinforcement is placed only in the middle",
+      "No reinforcement is used"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "Doubly reinforced concrete adds reinforcement near the compressive face in addition to the tensile reinforcement."
+  },
+  {
+    "s": "Nature of Forces",
+    "q": "What condition defines translational equilibrium?",
+    "o": [
+      "Vector sum of external forces equals zero",
+      "Stress equals strain",
+      "All supports are fixed",
+      "Total moment equals zero"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 1 — Nature of Forces",
+    "n": "Translational equilibrium requires the vector sum of the external forces to equal zero."
+  },
+  {
+    "s": "Allowable Deflections",
+    "q": "What is the allowable deflection for the second non-structural category?",
+    "o": [
+      "L/480",
+      "L/360",
+      "L/180",
+      "L/240"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 4 — Allowable Deflections of Beams",
+    "n": "The second non-structural category is assigned L/360."
+  },
+  {
+    "s": "Categorization of Structures",
+    "q": "Which resisted-force pattern is shown for a vector-active structure?",
+    "o": [
+      "Axial and shear",
+      "Axial force only",
+      "Axial, shear, and bending",
+      "Shear and torsion only"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 1 — Categorization of Structures",
+    "n": "The vector-active category is shown with axial resistance in the force matrix."
+  },
+  {
+    "s": "Nature of Forces",
+    "q": "A force acts perpendicular to the length of a beam. Based on the reference, what load type is this and what effects may it induce?",
+    "o": [
+      "Lateral load; shear, bending, and/or torsion",
+      "Axial load; compression or tension only",
+      "Dead load; compression only",
+      "Axial load; bending only"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 1 — Nature of Forces: Application of Forces",
+    "n": "A lateral load acts perpendicular or transverse to a member and may produce shear, bending, and/or torsion."
+  },
+  {
+    "s": "Allowable Deflections",
+    "q": "A roof or floor member has a span of 7,200 mm. Using the stated L/480 limit, what is its allowable deflection?",
+    "o": [
+      "15 mm",
+      "30 mm",
+      "40 mm",
+      "20 mm"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 4 — Allowable Deflections of Beams",
+    "n": "For roof or floor construction, the reference gives an allowable deflection of L/480."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "Which stress governs an under-reinforced section?",
+    "o": [
+      "Ultimate stress of the concrete only",
+      "Stress at the neutral axis",
+      "Yield stress of the reinforcement",
+      "Shear stress of the concrete"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "The yield stress of the reinforcement governs the under-reinforced condition."
+  },
+  {
+    "s": "Categorization of Structures",
+    "q": "A structure made of rigid surfaces that redirect loads through its shape is classified as what?",
+    "o": [
+      "Section active",
+      "Surface active",
+      "Form active",
+      "Vector active"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 1 — Categorization of Structures",
+    "n": "Surface-active systems use rigid surfaces whose shape redirects applied loads."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "A 2,000 mm long member elongates by 2 mm. What is its strain?",
+    "o": [
+      "1.0",
+      "0.001",
+      "0.01",
+      "1000"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 2 — Strength of Materials: Strain",
+    "n": "Strain measures deformation relative to the original length, so it is dimensionless when both lengths use the same unit."
+  },
+  {
+    "s": "Nature of Forces",
+    "q": "What condition defines rotational equilibrium?",
+    "o": [
+      "Vector sum of forces equals zero",
+      "Axial force equals shear",
+      "Total torque or moment equals zero",
+      "All members remain rigid"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 1 — Nature of Forces",
+    "n": "Rotational equilibrium requires the total torque or moment acting on the object to equal zero."
+  },
+  {
+    "s": "Vertical Structural Irregularities",
+    "q": "A storey has an effective mass of 480 tonnes while an adjacent storey has 300 tonnes. Does this meet the stated weight/mass irregularity criterion?",
+    "o": [
+      "No, because the ratio must exceed 200%",
+      "No, because the ratio is only 120%",
+      "Yes, because the ratio is 160%",
+      "Yes, because any increase is irregular"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 4 — Vertical Structural Irregularities",
+    "n": "Weight/mass irregularity occurs when the effective mass of a storey is more than 150% of an adjacent storey."
+  },
+  {
+    "s": "Categorization of Structures",
+    "q": "Which resisted-force pattern is shown for a form-active structure?",
+    "o": [
+      "Axial, shear, torsion, and bending",
+      "Shear, torsion, and bending",
+      "Axial force only",
+      "Axial and shear"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 1 — Categorization of Structures",
+    "n": "The form-active category is shown with axial resistance in the force matrix."
+  },
+  {
+    "s": "Stress-Strain Curve",
+    "q": "Which behavior is associated with a ductile material such as steel before failure?",
+    "o": [
+      "Immediate brittle fracture",
+      "Necking",
+      "No deformation",
+      "Complete loss of stress"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 3 — Stress-Strain Curve of Steel",
+    "n": "Ductile materials such as steel experience necking before failure."
+  },
+  {
+    "s": "Vertical Structural Irregularities",
+    "q": "A storey has 75% of the stiffness of the storey above and 82% of the average stiffness of the three storeys above. Does it meet either stated soft-storey threshold?",
+    "o": [
+      "No, neither stated threshold is met",
+      "Yes, because 82% is above 80%",
+      "Yes, because both ratios are below their limits",
+      "Yes, because 75% is below 80%"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 4 — Vertical Structural Irregularities",
+    "n": "The reference defines a soft storey when stiffness is below 70% of the storey above or below 80% of the average of the three storeys above. Each ratio must be compared with its own threshold."
+  },
+  {
+    "s": "Beams",
+    "q": "What two internal force effects are highlighted for beams?",
+    "o": [
+      "Compression and tension",
+      "Only tension and torsion",
+      "Only compression and shear",
+      "Axial force and pressure"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 3 — Beams",
+    "n": "The beam section notes simultaneous compression and tension, along with vertical force and bending moment."
+  },
+  {
+    "s": "Types of Supports",
+    "q": "Which support restrains horizontal and vertical movement but allows rotation?",
+    "o": [
+      "Roller support",
+      "Simple support",
+      "Pin support",
+      "Fixed support"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 2 — Types of Supports for Coplanar Systems",
+    "n": "A pin support restrains horizontal and vertical translation while permitting rotation."
+  },
+  {
+    "s": "Nature of Forces",
+    "q": "Which combinations are possible within the force-system classifications?",
+    "o": [
+      "Vertical and horizontal only",
+      "Concurrent, parallel, non-concurrent, and non-parallel",
+      "Parallel only",
+      "Concurrent only"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 1 — Nature of Forces",
+    "n": "Both coplanar and spatial systems may contain concurrent, parallel, non-concurrent, or non-parallel forces."
+  },
+  {
+    "s": "Concrete Protection for Reinforcement",
+    "q": "What cover range is specified for slabs, walls, and joists not exposed to weather?",
+    "o": [
+      "50–75 mm",
+      "10–20 mm",
+      "40–50 mm",
+      "20–40 mm"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "Slabs, walls, and joists not exposed to weather are assigned 20–40 mm of cover."
+  },
+  {
+    "s": "Nature of Forces",
+    "q": "What distinguishes a 2D or coplanar force system?",
+    "o": [
+      "Forces act on three axes",
+      "Forces must be parallel",
+      "Forces act on two axes",
+      "Forces act only vertically"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 1 — Nature of Forces",
+    "n": "A 2D or coplanar system contains forces acting on two axes and may be concurrent, parallel, non-concurrent, or non-parallel."
+  },
+  {
+    "s": "Trusses",
+    "q": "Which additional truss types are shown alongside the Warren and K-truss?",
+    "o": [
+      "Scissor and Bowstring",
+      "Howe and Pratt",
+      "Fan and Vierendeel",
+      "King Post and Fink"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 2 — Trusses",
+    "n": "The illustrated group also includes Scissor Truss and Bowstring Truss."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "What is strength in the context of materials?",
+    "o": [
+      "The ability to remain intact under forces",
+      "The stiffness of a support",
+      "The capacity to carry water",
+      "The ability to change color under heat"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 2 — Strength of Materials",
+    "n": "Strength is the ability of a material to hold itself together while subjected to forces."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "What is one purpose of using stress?",
+    "o": [
+      "To determine paint color",
+      "To select a site",
+      "To calculate occupancy",
+      "To predict when a material may break"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 2 — Strength of Materials",
+    "n": "Stress is used to evaluate material response and help predict when a material will break."
+  },
+  {
+    "s": "Vertical Structural Irregularities",
+    "q": "What defines weight or mass irregularity?",
+    "o": [
+      "Effective mass of a storey is more than 150% of an adjacent storey",
+      "Effective mass is below 70% of the storey above",
+      "Storey strength is below 80%",
+      "Drift is above 15%"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 4 — Vertical Structural Irregularities",
+    "n": "Weight or mass irregularity occurs when a storey's effective mass exceeds 150% of an adjacent storey."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "When are tendons tensioned in post-tensioned concrete?",
+    "o": [
+      "Only before excavation",
+      "After casting the concrete",
+      "Before mixing concrete",
+      "Before formwork is installed"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "Post-tensioned tendons are stressed after the concrete has been cast."
+  },
+  {
+    "s": "Vertical Structural Irregularities",
+    "q": "What characterizes an in-plane discontinuity?",
+    "o": [
+      "An in-plane offset of lateral-resisting structural elements",
+      "A mass increase above 150%",
+      "A sudden change in roof height",
+      "A drift increase above 1.2 times"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 4 — Vertical Structural Irregularities",
+    "n": "An in-plane discontinuity is an offset in the plane of lateral-resisting structural elements."
+  },
+  {
+    "s": "Mechanics",
+    "q": "What does statics study?",
+    "o": [
+      "Only moving objects",
+      "Objects in static equilibrium under forces",
+      "Only material failure",
+      "Only fluid systems"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 1 — Mechanics",
+    "n": "Statics deals with objects subjected to forces while remaining in static equilibrium."
+  },
+  {
+    "s": "Nature of Forces",
+    "q": "What distinguishes a 3D or spatial force system?",
+    "o": [
+      "Forces occur on three axes",
+      "Forces occur on two axes",
+      "Forces occur only at right angles",
+      "Forces occur on one axis"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 1 — Nature of Forces",
+    "n": "A spatial system contains forces acting on three axes and may have different concurrency and direction relationships."
+  },
+  {
+    "s": "Columns",
+    "q": "Which value occurs twice in the effective length factor set besides 1.0?",
+    "o": [
+      "2.0",
+      "0.7",
+      "3.0",
+      "1.5"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 4 — Columns",
+    "n": "The displayed factors include 2.0 twice, in addition to 1.0 appearing twice."
+  },
+  {
+    "s": "Types of Beams According to Function",
+    "q": "Which member transmits power to machinery and also carries torsion, shear, and flexure?",
+    "o": [
+      "Girder",
+      "Shaft",
+      "Spandrel",
+      "Joist"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 4 — Types of Beams According to Function",
+    "n": "The shaft is a circular beam that transmits power and carries torsion in addition to shear and flexure."
+  },
+  {
+    "s": "Plan Structural Irregularities",
+    "q": "When do re-entrant corners meet the stated irregularity criterion?",
+    "o": [
+      "Drift exceeds 20% of the average",
+      "Projections exceed 70% of storey height",
+      "Mass exceeds 150%",
+      "Projections beyond the re-entrant corner exceed 15% of the plan dimension"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 5 — Plan Structural Irregularities",
+    "n": "The criterion is met when projections beyond the re-entrant corner are greater than 15% of the plan dimension."
+  },
+  {
+    "s": "Columns",
+    "q": "What stress and failure are associated with a short column?",
+    "o": [
+      "Tension; fracture",
+      "Shear; yielding",
+      "Compression and bending; buckling",
+      "Compression; crushing"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 4 — Columns",
+    "n": "A short column is described as carrying compression and failing by crushing."
+  },
+  {
+    "s": "Types of Beams According to Function",
+    "q": "Which beam carries masonry over door and window openings?",
+    "o": [
+      "Lintel",
+      "Girder",
+      "Grade beam",
+      "Stringer"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 4 — Types of Beams According to Function",
+    "n": "A lintel supports masonry across openings such as doors and windows."
+  },
+  {
+    "s": "Trusses",
+    "q": "What movement is permitted between idealized truss members at a pin joint?",
+    "o": [
+      "Members may rotate relative to one another",
+      "Members may translate freely",
+      "Members may expand only vertically",
+      "No movement at all"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 2 — Trusses",
+    "n": "Pin connections allow the connected truss members to rotate relative to one another."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "What does stress represent in the simplified definition?",
+    "o": [
+      "Moment divided by distance",
+      "Force divided by area",
+      "Change in length divided by length",
+      "Area divided by force"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 2 — Strength of Materials",
+    "n": "Stress is given by force over area, F/A."
+  },
+  {
+    "s": "Types of Supports",
+    "q": "Which support resists vertical movement but allows horizontal movement and rotation?",
+    "o": [
+      "Simple support",
+      "Roller support",
+      "Fixed support",
+      "Pin support"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 2 — Types of Supports for Coplanar Systems",
+    "n": "The simple support is shown resisting vertical movement while permitting the other two motions in the coplanar system."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "What is the main subject of strength of materials?",
+    "o": [
+      "Only external loads",
+      "Fluid velocity",
+      "Architectural aesthetics",
+      "Internal effects produced by external forces"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 1 — Strength of Materials",
+    "n": "Strength of materials examines how external forces create internal effects within materials and structural members."
+  },
+  {
+    "s": "Building Frames",
+    "q": "Which system combines moment-resisting frames with shear walls or braced frames?",
+    "o": [
+      "Cantilevered Column System",
+      "Dual System",
+      "Building Frame System",
+      "Bearing Wall System"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 4 — Building Frames",
+    "n": "The dual system combines moment-resisting frames with shear walls or braced frames."
+  },
+  {
+    "s": "Building Frames",
+    "q": "Which system uses a complete space frame for gravity loads while shear walls and braced frames resist lateral loads?",
+    "o": [
+      "Moment-Resisting Frame System",
+      "Building Frame System",
+      "Cantilevered Column System",
+      "Bearing Wall System"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 4 — Building Frames",
+    "n": "In the building frame system, the space frame carries gravity loads while shear walls and brace frames resist lateral loads."
+  },
+  {
+    "s": "Trusses",
+    "q": "In a Pratt truss, how are the diagonals and verticals oriented in terms of force?",
+    "o": [
+      "Diagonals in tension; verticals in compression",
+      "Both in compression",
+      "Both in tension",
+      "Diagonals in compression; verticals in tension"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 2 — Trusses",
+    "n": "A Pratt truss reverses the force pattern: the diagonals are in tension and the verticals in compression."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "A member carries an axial force of 24 kN over a cross-sectional area of 1,200 mm². What is the stress?",
+    "o": [
+      "28.8 N/mm²",
+      "2 N/mm²",
+      "200 N/mm²",
+      "20 N/mm²"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 2 — Strength of Materials: Stress",
+    "n": "Stress is force per unit area. Convert the force to newtons so the units are consistent with mm²; N/mm² is numerically equivalent to MPa."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "Why is a balanced design described as risky?",
+    "o": [
+      "It always fails in tension first",
+      "It has no reinforcement",
+      "It cannot carry dead loads",
+      "It behaves similarly to an over-reinforced section and fails without early warning"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "Balanced behavior is considered risky because, like an over-reinforced section, failure is sudden and gives little early warning."
+  },
+  {
+    "s": "Stress-Strain Curve",
+    "q": "What happens up to the proportionality limit?",
+    "o": [
+      "Permanent deformation begins",
+      "Necking occurs",
+      "Fracture occurs",
+      "Stress is proportional to strain"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 3 — Stress-Strain Curve of Steel",
+    "n": "Up to the proportionality limit, stress and strain remain proportional in accordance with Hooke's Law."
+  },
+  {
+    "s": "Allowable Deflections",
+    "q": "A non-structural element not likely to be damaged by large deflection spans 6,000 mm. What allowable deflection corresponds to L/240?",
+    "o": [
+      "33.3 mm",
+      "12.5 mm",
+      "25 mm",
+      "16.7 mm"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 4 — Allowable Deflections of Beams",
+    "n": "The reference assigns L/240 to non-structural elements not likely to be damaged by large deflection."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "In a one-way slab, where is moment-resisting reinforcement placed?",
+    "o": [
+      "Along the short side",
+      "Along the long side only",
+      "Only at corners",
+      "Equally in both directions"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "The definition states that moment-resisting reinforcement in a one-way slab runs along the short side."
+  },
+  {
+    "s": "Types of Loads",
+    "q": "Which classification is based on how a load is spread over a member?",
+    "o": [
+      "Distribution classification",
+      "Material classification",
+      "Source classification",
+      "Support classification"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 2 — Types of Loads",
+    "n": "The load categories concentrated, uniformly distributed, and uniformly varying are grouped by distribution."
+  },
+  {
+    "s": "Columns",
+    "q": "Which effective length factor appears in the set for idealized column conditions?",
+    "o": [
+      "0.5",
+      "1.5",
+      "0.25",
+      "3.0"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 4 — Columns",
+    "n": "The effective length factor set shown is 0.5, 0.7, 1.0, 1.0, 2.0, and 2.0."
+  },
+  {
+    "s": "Types of Loads",
+    "q": "A building's own weight is classified under which load category?",
+    "o": [
+      "Variable load",
+      "Point load",
+      "Dead or static load",
+      "Live or dynamic load"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 2 — Types of Loads",
+    "n": "The weight of the structure itself is identified as a dead or static load."
+  },
+  {
+    "s": "Allowable Deflections",
+    "q": "A flat roof member spans 5,400 mm. Using the stated L/180 limit, what is its allowable deflection?",
+    "o": [
+      "22.5 mm",
+      "15 mm",
+      "12 mm",
+      "30 mm"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 4 — Allowable Deflections of Beams",
+    "n": "Flat roofs use the L/180 allowable-deflection limit in the reference."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "What is a basic strength characteristic of concrete?",
+    "o": [
+      "Low compressive strength and high tensile strength",
+      "High compressive strength and low tensile strength",
+      "High torsional strength only",
+      "Equal tensile and compressive strength"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "Concrete is characterized by high compressive strength but relatively low tensile strength."
+  },
+  {
+    "s": "Stress-Strain Curve",
+    "q": "What is ultimate strength?",
+    "o": [
+      "Stress after fracture",
+      "Stress at zero strain",
+      "Stress at first loading",
+      "Maximum stress before breaking while stretched"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 3 — Stress-Strain Curve of Steel",
+    "n": "Ultimate strength is the maximum stress a material reaches while being stretched before breaking."
+  },
+  {
+    "s": "Mechanics",
+    "q": "Where should the building configuration ideally keep its mass in relation to the center of gravity?",
+    "o": [
+      "Only along one edge",
+      "Only above the center",
+      "Near the center of gravity",
+      "Far from the center of gravity"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 1 — Categorization of Structures",
+    "n": "The preferred configuration keeps the structure near its center of gravity."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "Which pair is used to describe force intensity and deformation behavior?",
+    "o": [
+      "Density and volume",
+      "Load and support",
+      "Stress and strain",
+      "Moment and torque"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 2 — Strength of Materials",
+    "n": "Stress describes force intensity over area, while strain describes deformation relative to original length."
+  },
+  {
+    "s": "Building Frames",
+    "q": "Which system uses flexural action members to resist lateral loads?",
+    "o": [
+      "Bearing Wall System",
+      "Moment-Resisting Frame System",
+      "Building Frame System",
+      "Dual System"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 4 — Building Frames",
+    "n": "Moment-resisting frames use flexural action in their members to resist lateral loads."
+  },
+  {
+    "s": "Trusses",
+    "q": "How are truss members ideally connected at the joints?",
+    "o": [
+      "By rigid concrete joints",
+      "By sliding bearings",
+      "By frictionless pins",
+      "By fixed welds only"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 2 — Trusses",
+    "n": "The idealized truss uses frictionless pins at the joints."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "Why is steel reinforcement commonly used in concrete?",
+    "o": [
+      "It supplements concrete's tensile strength",
+      "It removes all compression",
+      "It eliminates dead load",
+      "It prevents all cracking"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "Steel reinforcement supplements the tensile capacity that concrete lacks."
+  },
+  {
+    "s": "Static Equilibrium",
+    "q": "A simply supported beam carries a single 12 kN point load at midspan. Assuming symmetrical loading, what vertical reaction acts at each support?",
+    "o": [
+      "24 kN at each support",
+      "3 kN at each support",
+      "12 kN at each support",
+      "6 kN at each support"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, pp. 1–3 — Static Equilibrium, Point Loads, Simple Span Beams",
+    "n": "For static equilibrium, the upward reactions must balance the 12 kN downward load. Because the load is centered on a symmetrical simple span, the two support reactions are equal."
+  },
+  {
+    "s": "Types of Beams According to Function",
+    "q": "Which member is usually sloped and carries loads from purlins?",
+    "o": [
+      "Joist",
+      "Rafter",
+      "Spandrel",
+      "Purlin"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 4 — Types of Beams According to Function",
+    "n": "A rafter is usually sloping and carries the load from purlins."
+  },
+  {
+    "s": "Categorization of Structures",
+    "q": "A structure whose material naturally deflects and stabilizes under loading is what type?",
+    "o": [
+      "Vector active",
+      "Section active",
+      "Form active",
+      "Surface active"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 1 — Categorization of Structures",
+    "n": "Form-active systems rely on the natural deflected shape of the material to achieve stability."
+  },
+  {
+    "s": "Stress-Strain Curve",
+    "q": "How does fracture strength compare with ultimate strength in a ductile material such as steel?",
+    "o": [
+      "It is higher",
+      "It is lower",
+      "It is unrelated",
+      "It is always equal"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 3 — Stress-Strain Curve of Steel",
+    "n": "For ductile materials, fracture strength is lower than ultimate strength because necking occurs before failure."
+  },
+  {
+    "s": "Trusses",
+    "q": "Which truss type is specifically identified with vertical members in its name?",
+    "o": [
+      "Bowstring truss",
+      "Fink truss",
+      "Scissor truss",
+      "Warren truss with vertical"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 2 — Trusses",
+    "n": "The named type is Warren truss (with vertical)."
+  },
+  {
+    "s": "Beams",
+    "q": "Which symbol is used for bending moment?",
+    "o": [
+      "E",
+      "M",
+      "σ",
+      "V"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 3 — Beams",
+    "n": "Bending moment is denoted by M."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "Which material stress is said to govern an over-reinforced section?",
+    "o": [
+      "Yield stress of the concrete",
+      "Shear stress of steel",
+      "Tensile stress of concrete",
+      "Yield stress of the reinforcement"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "The definition states that the yield stress of the concrete governs the over-reinforced condition."
+  },
+  {
+    "s": "Types of Loads",
+    "q": "People, furniture, and wind are examples of what type of load?",
+    "o": [
+      "Permanent load",
+      "Dead or static load",
+      "Point load",
+      "Live or dynamic load"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 2 — Types of Loads",
+    "n": "People, furniture, and wind are transient or moving actions categorized as live or dynamic loads."
+  },
+  {
+    "s": "Mechanics",
+    "q": "Which branch of mechanics deals with fluids?",
+    "o": [
+      "Building Mechanics",
+      "Rigid Body Mechanics",
+      "Fluid Mechanics",
+      "Deformed Body Mechanics"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 1 — Mechanics",
+    "n": "Fluid mechanics focuses on bodies or systems in which the material behaves as a fluid."
+  },
+  {
+    "s": "Types of Supports",
+    "q": "Which support allows movement horizontally while resisting vertical movement?",
+    "o": [
+      "Simple support",
+      "Fixed support",
+      "Pin support",
+      "Roller support"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 2 — Types of Supports for Coplanar Systems",
+    "n": "The roller support permits horizontal movement and resists vertical movement."
+  },
+  {
+    "s": "Vertical Structural Irregularities",
+    "q": "A storey has 85% of the stiffness of the storey directly above but only 76% of the average stiffness of the three storeys above. How is it classified by the stated criteria?",
+    "o": [
+      "Weak storey",
+      "In-plane discontinuity",
+      "Stiff irregularity or soft storey",
+      "Weight/mass irregularity"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 4 — Vertical Structural Irregularities",
+    "n": "Only one of the two soft-storey conditions needs to be met. Here, the three-storey-average criterion governs."
+  },
+  {
+    "s": "Trusses",
+    "q": "In a Howe truss, how are the diagonals and verticals oriented in terms of force?",
+    "o": [
+      "Both in compression",
+      "Diagonals in tension; verticals in compression",
+      "Diagonals in compression; verticals in tension",
+      "Both in tension"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 2 — Trusses",
+    "n": "A Howe truss has diagonals in compression and vertical members in tension."
+  },
+  {
+    "s": "Mechanics",
+    "q": "Which configuration feature is preferred because it keeps the structure's geometry more regular?",
+    "o": [
+      "Fewer reentrant angles",
+      "Greater eccentricity",
+      "Irregular asymmetry",
+      "More reentrant angles"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 1 — Categorization of Structures",
+    "n": "The preferred configuration uses fewer reentrant angles to maintain a more regular structural form."
+  },
+  {
+    "s": "Categorization of Structures",
+    "q": "Which structural category transfers loads through interlinked components whose geometry and orientation matter?",
+    "o": [
+      "Vector active",
+      "Surface active",
+      "Section active",
+      "Form active"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 1 — Categorization of Structures",
+    "n": "Vector-active structures transfer loads through linked components and depend on their geometry and orientation."
+  },
+  {
+    "s": "Concrete Protection for Reinforcement",
+    "q": "What cover is specified for pipes, conduits, or fittings exposed to weather?",
+    "o": [
+      "50 mm",
+      "20 mm",
+      "75 mm",
+      "40 mm"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "Pipes, conduits, or fittings exposed to weather require 40 mm of cover in the reference."
+  },
+  {
+    "s": "Categorization of Structures",
+    "q": "Which pair consists of vector-active examples?",
+    "o": [
+      "Steel frames and columns",
+      "Geodesic domes and trusses",
+      "Concrete shells and arches",
+      "Tensile fabric and arches"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 1 — Categorization of Structures",
+    "n": "Geodesic domes and trusses are examples of vector-active systems."
+  },
+  {
+    "s": "Allowable Deflections",
+    "q": "Which beam element has the strictest allowable deflection limit?",
+    "o": [
+      "Non-structural elements, L/240",
+      "Flat roofs",
+      "Non-structural elements, L/360",
+      "Roof or floor construction"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 4 — Allowable Deflections of Beams",
+    "n": "L/480 is the smallest allowable deflection ratio among the four specified limits, making roof or floor construction the strictest."
+  },
+  {
+    "s": "Types of Beams According to Function",
+    "q": "Which beam consists of closely spaced members supporting a floor or ceiling?",
+    "o": [
+      "Spandrel",
+      "Joist",
+      "Purlin",
+      "Lintel"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 4 — Types of Beams According to Function",
+    "n": "Joists are closely spaced beams that support floors or ceilings."
+  },
+  {
+    "s": "Categorization of Structures",
+    "q": "Which resisted-force set is associated with section-active structures in the chart?",
+    "o": [
+      "Shear and torsion only",
+      "Axial, shear, torsion, and bending",
+      "Bending only",
+      "Axial only"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 1 — Categorization of Structures",
+    "n": "Section-active structures are shown resisting axial, shear, torsional, and bending actions."
+  },
+  {
+    "s": "Concrete Protection for Reinforcement",
+    "q": "What concrete cover is given for reinforcement exposed directly to earth, such as footings?",
+    "o": [
+      "75 mm",
+      "50 mm",
+      "20 mm",
+      "40 mm"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "The specified concrete cover for reinforcement exposed to earth, such as footings, is 75 mm."
+  },
+  {
+    "s": "Columns",
+    "q": "What behavior is associated with an intermediate column?",
+    "o": [
+      "Compression only; yielding",
+      "Shear and torsion; twisting",
+      "Tension only; fracture",
+      "Compression and bending; crushing or buckling"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 4 — Columns",
+    "n": "Intermediate columns experience compression and bending and may fail by crushing or buckling."
+  },
+  {
+    "s": "Trusses",
+    "q": "Which actions are idealized as not being resisted directly by a truss?",
+    "o": [
+      "Compression and tension",
+      "Axial force and tension",
+      "Bending, moment, and shear",
+      "Vertical reaction"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 2 — Trusses",
+    "n": "The idealized truss is described as incapable of resisting bending, moment, and shear."
+  },
+  {
+    "s": "Concrete Protection for Reinforcement",
+    "q": "A footing reinforcement bar will be directly exposed to earth. What concrete cover should be selected from the reference table?",
+    "o": [
+      "20 mm",
+      "50 mm",
+      "40 mm",
+      "75 mm"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 5 — Concrete Protection for Reinforcement",
+    "n": "The table assigns the largest listed cover to reinforcement exposed directly to earth, such as footings."
+  },
+  {
+    "s": "Concrete Protection for Reinforcement",
+    "q": "What cover is specified for beams and columns not exposed to weather?",
+    "o": [
+      "30 mm",
+      "20 mm",
+      "50 mm",
+      "40 mm"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "The specified cover for beams and columns not exposed to weather is 40 mm."
+  },
+  {
+    "s": "Stress-Strain Curve",
+    "q": "How does fracture strength compare with ultimate strength in a brittle material such as concrete?",
+    "o": [
+      "It is lower",
+      "It is always zero",
+      "It is higher",
+      "It is equivalent"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 3 — Stress-Strain Curve of Steel",
+    "n": "For brittle materials such as concrete, the fracture strength is identified as equivalent to ultimate strength."
+  },
+  {
+    "s": "Mechanics",
+    "q": "Which branch treats an object as a rigid body when analyzing its motion or equilibrium?",
+    "o": [
+      "Fluid Mechanics",
+      "Elasticity Mechanics",
+      "Rigid Body Mechanics",
+      "Deformed Body Mechanics"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 1 — Mechanics",
+    "n": "Rigid body mechanics idealizes the object as not undergoing significant deformation during the analysis."
+  },
+  {
+    "s": "Vertical Structural Irregularities",
+    "q": "A storey has a lateral strength of 720 kN while the storey above has a strength of 1,000 kN. Which stated condition applies?",
+    "o": [
+      "Discontinuity in capacity or weak storey",
+      "No irregularity because 720 kN is positive",
+      "Soft storey based on stiffness",
+      "Weight/mass irregularity"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 4 — Vertical Structural Irregularities",
+    "n": "A weak storey is defined in the reference by storey strength being less than 80% of the storey above."
+  },
+  {
+    "s": "Types of Beams According to Function",
+    "q": "Which beam carries roof loads between trusses or rafters?",
+    "o": [
+      "Purlin",
+      "Rafter",
+      "Girder",
+      "Lintel"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 4 — Types of Beams According to Function",
+    "n": "A purlin carries roof load between trusses or rafters."
+  },
+  {
+    "s": "Static Equilibrium",
+    "q": "A 10 kN point load acts 2 m from the left support of a 6 m simply supported beam. Using static equilibrium, what is the right support reaction?",
+    "o": [
+      "5.00 kN",
+      "6.67 kN",
+      "10.00 kN",
+      "3.33 kN"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, pp. 1–3 — Rotational Equilibrium, Point Loads, Simple Span Beams",
+    "n": "Rotational equilibrium requires the net moment about a point to be zero. Taking moments about the left support isolates the right reaction."
+  },
+  {
+    "s": "Types of Loads",
+    "q": "Which load changes in intensity across its loaded length?",
+    "o": [
+      "Uniformly distributed load",
+      "Dead load",
+      "Concentrated load",
+      "Uniformly varying load"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 2 — Types of Loads",
+    "n": "A uniformly varying load changes continuously in intensity across the loaded region."
+  },
+  {
+    "s": "Mechanics",
+    "q": "Which branch studies bodies that change shape under loading?",
+    "o": [
+      "Fluid Mechanics",
+      "Rigid Body Mechanics",
+      "Static Geometry",
+      "Deformed Body Mechanics"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 1 — Mechanics",
+    "n": "Deformed body mechanics considers bodies whose shape changes under applied forces."
+  },
+  {
+    "s": "Types of Supports",
+    "q": "Which support provides resistance against horizontal movement, vertical movement, and rotation?",
+    "o": [
+      "Pin support",
+      "Roller support",
+      "Fixed support",
+      "Simple support"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 1 — Categorization of Structures",
+    "n": "A fixed support restrains horizontal translation, vertical translation, and rotation."
+  },
+  {
+    "s": "Allowable Deflections",
+    "q": "What is the allowable deflection for non-structural elements not likely to be damaged by large deflection?",
+    "o": [
+      "L/180",
+      "L/240",
+      "L/480",
+      "L/360"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 4 — Allowable Deflections of Beams",
+    "n": "The allowable deflection given for this category is L/240."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "How does an under-reinforced section fail?",
+    "o": [
+      "The concrete crushes instantly without warning",
+      "The steel fractures before yielding",
+      "The section fails only in shear",
+      "The reinforcement yields in a ductile manner"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "An under-reinforced section yields in a ductile manner, producing large visible deformation before failure."
+  },
+  {
+    "s": "Concrete Protection for Reinforcement",
+    "q": "What concrete cover range is given for reinforcement exposed to weather?",
+    "o": [
+      "20–40 mm",
+      "30–40 mm",
+      "40–50 mm",
+      "50–75 mm"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "Reinforcement exposed to weather is assigned a cover of 40–50 mm."
+  },
+  {
+    "s": "Nature of Forces",
+    "q": "Which combination of effects may result from a lateral load?",
+    "o": [
+      "Axial force only",
+      "Compression only",
+      "Shear, bending, and/or torsion",
+      "Tension only"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 1 — Nature of Forces",
+    "n": "The definition states that lateral loading can induce shear, bending, and/or torsion."
+  },
+  {
+    "s": "Mechanics",
+    "q": "What structural condition is associated with building failure in the discussion of statics?",
+    "o": [
+      "Lack of static equilibrium",
+      "Use of circular geometry",
+      "High center of gravity",
+      "Excessive symmetry"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 1 — Mechanics",
+    "n": "A building is described as failing when the applied forces do not maintain static equilibrium."
+  },
+  {
+    "s": "Mechanics",
+    "q": "Which two areas form the primary division of mechanics in architectural study?",
+    "o": [
+      "Stress and strain",
+      "Tension and compression",
+      "Statics and dynamics",
+      "Axial and lateral"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 1 — Mechanics",
+    "n": "The reference defines statics and dynamics as the two principal divisions of mechanics in architectural study."
+  },
+  {
+    "s": "Building Frames",
+    "q": "Which system relies on cantilevered column elements to resist lateral loads?",
+    "o": [
+      "Dual System",
+      "Bearing Wall System",
+      "Cantilevered Column Building System",
+      "Building Frame System"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 4 — Building Frames",
+    "n": "The cantilevered column building system relies on cantilevered columns to resist lateral loads."
+  },
+  {
+    "s": "Beams",
+    "q": "What characterizes a cantilever beam?",
+    "o": [
+      "It is always curved",
+      "It is supported at both ends",
+      "It is supported only at one end by a rigid connection",
+      "It has three or more supports"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 3 — Beams",
+    "n": "A cantilever is supported at only one end through a rigid connection."
+  },
+  {
+    "s": "Types of Supports",
+    "q": "Which support restrains horizontal movement, vertical movement, and rotation?",
+    "o": [
+      "Pin support",
+      "Simple support",
+      "Roller support",
+      "Fixed support"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 2 — Types of Supports for Coplanar Systems",
+    "n": "A fixed support resists all three specified motions: horizontal, vertical, and rotational."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "What long-to-short side ratio identifies a one-way slab?",
+    "o": [
+      "< 2",
+      "> 2",
+      "> 10",
+      "= 1/2"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "A one-way slab is identified when the long-to-short side ratio is greater than 2."
+  },
+  {
+    "s": "Categorization of Structures",
+    "q": "Which example is identified as surface active?",
+    "o": [
+      "Steel frames",
+      "Tensile fabric",
+      "Trusses",
+      "Concrete shells"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 1 — Categorization of Structures",
+    "n": "Concrete shells are given as the representative surface-active example."
+  },
+  {
+    "s": "Mechanics",
+    "q": "Which building configuration is considered structurally preferable?",
+    "o": [
+      "Many reentrant corners and offsets",
+      "Maximum distance from the center of gravity",
+      "Structurally symmetrical with fewer reentrant angles",
+      "Highly irregular and asymmetric"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 1 — Mechanics",
+    "n": "The preferred configuration is structurally symmetrical, has fewer reentrant angles, and keeps the mass close to the center of gravity."
+  },
+  {
+    "s": "Plan Structural Irregularities",
+    "q": "What defines diaphragm discontinuity?",
+    "o": [
+      "A diaphragm is perfectly symmetric",
+      "A diaphragm has abrupt variations in stiffness",
+      "The roof has a constant slope",
+      "The floor is uniformly loaded"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 5 — Plan Structural Irregularities",
+    "n": "Diaphragm discontinuity refers to abrupt variations in diaphragm stiffness."
+  },
+  {
+    "s": "Stress-Strain Curve",
+    "q": "What is the significance of the elastic limit?",
+    "o": [
+      "Beyond it, stress becomes zero",
+      "It is where stiffness becomes infinite",
+      "Beyond it, permanent deformation occurs",
+      "It marks fracture immediately"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 3 — Stress-Strain Curve of Steel",
+    "n": "Passing the elastic limit means the material will no longer return fully to its original shape."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "Which set contains the main considerations in strength of materials?",
+    "o": [
+      "Cost, labor, and schedule",
+      "Heat, light, and sound",
+      "Color, texture, and finish",
+      "Material properties, sectional properties, and proper connectors"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 1 — Strength of Materials",
+    "n": "The main considerations are material properties, sectional properties, and proper connectors."
+  },
+  {
+    "s": "Plan Structural Irregularities",
+    "q": "What is an out-of-plane offset?",
+    "o": [
+      "A change in roof finish",
+      "A change in material density",
+      "An increase in storey mass",
+      "A discontinuity in the lateral-force path"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 5 — Plan Structural Irregularities",
+    "n": "An out-of-plane offset is described as a discontinuity in the lateral force path."
+  },
+  {
+    "s": "Stress-Strain Curve",
+    "q": "What does the modulus of elasticity describe?",
+    "o": [
+      "Support rotation",
+      "Material color",
+      "Material stiffness",
+      "Ultimate load only"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 3 — Stress-Strain Curve of Steel",
+    "n": "The modulus of elasticity, E, describes a material's stiffness."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "Which design method uses the ultimate strength of materials?",
+    "o": [
+      "Working Stress Design",
+      "Ultimate Stress Design",
+      "Service Load Design",
+      "Elastic Design"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "Ultimate Stress Design uses the ultimate strength or failure condition and better reflects actual material behavior."
+  },
+  {
+    "s": "Mechanics",
+    "q": "What does mechanics examine?",
+    "o": [
+      "Objects subjected to forces",
+      "Only material chemistry",
+      "Only stationary buildings",
+      "Only fluid motion"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 1 — Mechanics",
+    "n": "Mechanics examines objects at rest or in motion when forces act on them."
+  },
+  {
+    "s": "Beams",
+    "q": "What characterizes a continuous beam?",
+    "o": [
+      "It has no support at the ends",
+      "It is supported at more than two points",
+      "It is supported only at one end",
+      "It must be circular"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 3 — Beams",
+    "n": "A continuous beam is supported at more than two points along its span."
+  },
+  {
+    "s": "Allowable Deflections",
+    "q": "What is the allowable deflection for flat roofs?",
+    "o": [
+      "L/240",
+      "L/360",
+      "L/480",
+      "L/180"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 4 — Allowable Deflections of Beams",
+    "n": "Flat roofs are assigned an allowable deflection of L/180."
+  },
+  {
+    "s": "Vertical Structural Irregularities",
+    "q": "What defines a discontinuity in capacity or weak storey?",
+    "o": [
+      "Storey mass is more than 150% of an adjacent storey",
+      "Storey strength is less than 80% of the storey above",
+      "Stiffness is less than 70%",
+      "Drift is 1.2 times the average"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 4 — Vertical Structural Irregularities",
+    "n": "A weak storey is identified when its strength is below 80% of the storey above."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "What characterizes singly reinforced concrete?",
+    "o": [
+      "Reinforcement is placed only near the compressive face",
+      "Reinforcement is placed only near the tensile face",
+      "No steel reinforcement is used",
+      "Equal reinforcement is placed on all faces"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "Singly reinforced concrete is reinforced near the tensile face only."
+  },
+  {
+    "s": "Categorization of Structures",
+    "q": "A structure dependent on the sectional properties of rigid components is classified as what?",
+    "o": [
+      "Section active",
+      "Vector active",
+      "Surface active",
+      "Form active"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 1 — Categorization of Structures",
+    "n": "Section-active systems depend on the sectional properties of rigid components."
+  },
+  {
+    "s": "Beams",
+    "q": "Why must a beam develop internal resisting forces?",
+    "o": [
+      "To avoid using supports",
+      "To balance forces produced by external loads",
+      "To increase dead load",
+      "To eliminate all deformation"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 3 — Beams",
+    "n": "Internal resisting forces balance the internally developed forces resulting from externally applied forces."
+  },
+  {
+    "s": "Allowable Deflections",
+    "q": "A member in the second non-structural category spans 7,200 mm. Using L/360, what is the allowable deflection?",
+    "o": [
+      "30 mm",
+      "40 mm",
+      "15 mm",
+      "20 mm"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 4 — Allowable Deflections of Beams",
+    "n": "The second non-structural category in the table uses an allowable deflection of L/360."
+  },
+  {
+    "s": "Beams",
+    "q": "What is a beam primarily designed to resist?",
+    "o": [
+      "Only torsion",
+      "Lateral loads",
+      "Only axial tension",
+      "Fluid pressure"
+    ],
+    "c": 1,
+    "ref": "Structural Tables, p. 3 — Beams",
+    "n": "A beam is described as a horizontal structural member designed to resist lateral loads."
+  },
+  {
+    "s": "Types of Beams According to Function",
+    "q": "Which member carries the flooring of a bridge, such as at stairs?",
+    "o": [
+      "Grade beam",
+      "Rafter",
+      "Girder",
+      "Stringer"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 4 — Types of Beams According to Function",
+    "n": "A stringer carries the flooring of a bridge and is used in applications such as stairs."
+  },
+  {
+    "s": "Nature of Forces",
+    "q": "What actions can an axial load induce?",
+    "o": [
+      "Shear only",
+      "Torsion only",
+      "Bending only",
+      "Compression or tension"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 1 — Nature of Forces",
+    "n": "Axial loading produces compression or tension along the member."
+  },
+  {
+    "s": "Plan Structural Irregularities",
+    "q": "What defines a non-parallel system?",
+    "o": [
+      "Vertical lateral-load-resisting elements are neither parallel nor symmetric about the major orthogonal axes",
+      "All elements are parallel to one axis",
+      "Only columns are offset vertically",
+      "The structure has a circular plan"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 5 — Plan Structural Irregularities",
+    "n": "A non-parallel system has vertical lateral-load-resisting elements that are not parallel or symmetric about the major orthogonal axes."
+  },
+  {
+    "s": "Building Frames",
+    "q": "Which system combines shear walls and frames so lateral forces are shared in proportion to their relative rigidities?",
+    "o": [
+      "Shear Wall-Frame Interactive System",
+      "Moment-Resisting Frame System",
+      "Building Frame System",
+      "Dual System"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 4 — Building Frames",
+    "n": "The interactive system combines shear walls and frames, distributing lateral forces in proportion to their relative rigidities."
+  },
+  {
+    "s": "Reinforced Concrete Design",
+    "q": "What defines a balanced design?",
+    "o": [
+      "The steel never yields",
+      "Tension capacity is twice compression capacity",
+      "Tensile and compressive zones fail at the same load",
+      "Compression fails before tension begins"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 5 — Reinforced Concrete Design",
+    "n": "Balanced design is defined as the tensile and compressive zones reaching failure at the same load."
+  },
+  {
+    "s": "Categorization of Structures",
+    "q": "Which example represents a section-active structure?",
+    "o": [
+      "Concrete shells",
+      "Geodesic domes",
+      "Tensile fabric",
+      "Steel and column frames"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 1 — Categorization of Structures",
+    "n": "Steel and column frames are given as examples of section-active structures."
+  },
+  {
+    "s": "Nature of Forces",
+    "q": "How is a lateral load applied?",
+    "o": [
+      "Only through a hinge",
+      "Parallel to the member's length",
+      "Perpendicular or transverse to the member's length",
+      "Only vertically downward"
+    ],
+    "c": 2,
+    "ref": "Structural Tables, p. 1 — Nature of Forces",
+    "n": "A lateral load acts perpendicular or transverse to the member's length."
+  },
+  {
+    "s": "Types of Beams According to Function",
+    "q": "Which beam spans between columns and supports floors and curtain walls?",
+    "o": [
+      "Spandrel",
+      "Stringer",
+      "Purlin",
+      "Joist"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 4 — Types of Beams According to Function",
+    "n": "A spandrel spans between columns and supports floors and curtain walls."
+  },
+  {
+    "s": "Mechanics",
+    "q": "Why is the circle favored as a basic structural geometry?",
+    "o": [
+      "It requires no connectors",
+      "It has the fewest materials",
+      "It always eliminates bending",
+      "All points are equidistant from the center of gravity"
+    ],
+    "c": 3,
+    "ref": "Structural Tables, p. 1 — Mechanics",
+    "n": "The circle keeps every point at the same distance from the center of gravity."
+  },
+  {
+    "s": "Mechanics",
+    "q": "What geometric form is identified as the best basic geometry for structural stability?",
+    "o": [
+      "Circle",
+      "Hexagon",
+      "Triangle",
+      "Rectangle"
+    ],
+    "c": 0,
+    "ref": "Structural Tables, p. 1 — Mechanics",
+    "n": "A circle is identified as the best geometry because every point is equidistant from the center of gravity."
+  }
+]
