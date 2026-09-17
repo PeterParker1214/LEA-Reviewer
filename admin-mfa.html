@@ -3,106 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin MFA — LEA Reviewer</title>
+<title>Admin Verification — LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <style>
-  :root{color-scheme:dark;--bg:#0a1218;--panel:#0e1c28;--ink:#eef1e9;--muted:#8b98a5;--line:rgba(111,168,207,.28);--gold:#e0a83f;--bad:#e2604a;--good:#5fbf82}
-  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,sans-serif;padding:28px 16px}.wrap{max-width:560px;margin:auto}.card{background:var(--panel);border:1px solid var(--line);padding:20px;border-radius:12px;margin-bottom:16px}h1{margin:0 0 8px}.muted{color:var(--muted)}button,input{font:inherit}button{background:var(--gold);border:0;padding:11px 14px;border-radius:8px;cursor:pointer;font-weight:700}button.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}input{width:100%;background:#09141e;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:12px;margin:8px 0 12px}.row{display:flex;gap:8px;flex-wrap:wrap}.msg{margin-top:12px}.ok{color:var(--good)}.err{color:var(--bad)}img{max-width:280px;width:100%;background:white;padding:10px;border-radius:8px}.hidden{display:none}.secret{font-family:ui-monospace,monospace;word-break:break-all;background:#09141e;padding:10px;border-radius:8px;border:1px solid var(--line)}
+:root{
+  color-scheme:dark;
+  --bg:#081018;--panel:#0e1923;--panel2:#111f2b;--ink:#f2f5f7;--muted:#94a3b2;
+  --line:rgba(148,163,184,.2);--accent:#e4ad43;--accentInk:#1d1607;--bad:#ff7b6b;
+  --good:#6fd39a;--soft:rgba(228,173,67,.09)
+}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:linear-gradient(180deg,#071018 0%,#0a131c 100%);color:var(--ink);font:15px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.shell{width:min(680px,calc(100% - 28px));margin:42px auto 60px}
+.top{margin-bottom:20px}.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:800}.top h1{font-size:30px;line-height:1.15;margin:6px 0 8px}.top p{margin:0;color:var(--muted)}
+.card{background:rgba(14,25,35,.96);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 18px 45px rgba(0,0,0,.22);margin-top:14px}.hidden{display:none!important}
+.status{display:flex;align-items:center;gap:10px;color:var(--muted)}.dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(228,173,67,.1)}
+.step{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}.stepno{flex:0 0 32px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--soft);border:1px solid rgba(228,173,67,.28);color:var(--accent);font-weight:800}.step h2{font-size:18px;margin:1px 0 4px}.step p{margin:0;color:var(--muted)}
+.qrbox{display:grid;place-items:center;background:#fff;border-radius:16px;padding:16px;width:min(300px,100%);margin:12px auto 18px}.qrbox img{display:block;width:100%;max-width:260px;height:auto}
+.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{appearance:none;border:0;border-radius:11px;padding:12px 16px;font:inherit;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}.btn.primary{background:var(--accent);color:var(--accentInk)}.btn.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}.btn:disabled{opacity:.55;cursor:not-allowed}
+.field{margin-top:16px}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}.code{width:100%;font:700 24px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.22em;text-align:center;background:#08131c;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:14px;outline:none}.code:focus{border-color:rgba(228,173,67,.65);box-shadow:0 0 0 3px rgba(228,173,67,.08)}
+.alt{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}.alt summary{cursor:pointer;color:var(--muted);font-weight:700}.secretrow{display:flex;gap:8px;margin-top:12px}.secret{min-width:0;flex:1;background:#08131c;border:1px solid var(--line);border-radius:10px;padding:11px;font:13px ui-monospace,SFMono-Regular,Menlo,monospace;word-break:break-all;color:#dce6ee}
+.note{margin-top:12px;padding:12px 14px;border-radius:12px;background:rgba(148,163,184,.07);color:var(--muted);font-size:13px}.msg{margin-top:12px;font-size:14px}.ok{color:var(--good)}.err{color:var(--bad)}
+.ready{text-align:center;padding:8px 0}.ready .badge{display:inline-grid;place-items:center;width:54px;height:54px;border-radius:50%;background:rgba(111,211,154,.12);color:var(--good);font-size:26px;margin-bottom:10px}.ready h2{margin:0 0 6px}.ready p{color:var(--muted);margin:0 0 18px}
+@media(max-width:520px){.shell{margin-top:24px}.card{padding:18px}.top h1{font-size:26px}.actions>.btn{width:100%}.secretrow{flex-direction:column}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="card">
-    <h1>Admin MFA</h1>
-    <div class="muted">Set up or verify a TOTP authenticator before using sensitive admin actions.</div>
-    <div id="status" class="msg">Checking your account…</div>
-  </div>
+<main class="shell">
+  <header class="top">
+    <div class="eyebrow">LEA Reviewer Security</div>
+    <h1>Verify your admin session</h1>
+    <p>Admin access uses a 6-digit verification code in addition to your normal password.</p>
+  </header>
 
-  <div id="enrollCard" class="card hidden">
-    <h2>Set up authenticator</h2>
-    <p class="muted">Scan the QR code with an authenticator app, then enter the 6-digit code.</p>
-    <div id="qrWrap"></div>
-    <div id="secretWrap" class="hidden"><div class="muted">Manual secret</div><div id="secret" class="secret"></div></div>
-    <input id="enrollCode" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="6-digit code">
-    <div class="row"><button id="verifyEnrollBtn">Verify & enable MFA</button><button id="startEnrollBtn" class="secondary">Generate new QR</button></div>
+  <section class="card">
+    <div class="status"><span class="dot"></span><span id="status">Checking your account…</span></div>
+  </section>
+
+  <section id="enrollCard" class="card hidden">
+    <div class="step"><div class="stepno">1</div><div><h2>Add LEA Reviewer to your authenticator</h2><p>Use Apple Passwords, Google Authenticator, Microsoft Authenticator, 1Password, or another TOTP app.</p></div></div>
+    <div id="qrWrap" class="qrbox"></div>
+    <div class="actions">
+      <a id="openAuthenticatorBtn" class="btn primary hidden" href="#">Open authenticator app</a>
+      <button id="copySecretBtn" class="btn secondary" type="button">Copy setup key</button>
+    </div>
+    <div class="note"><strong>Apple Passwords:</strong> on iPhone/iPad, try <em>Open authenticator app</em>. If that does not open Passwords, copy the setup key, then in Passwords add a verification code manually.</div>
+
+    <details class="alt">
+      <summary>Manual setup details</summary>
+      <div class="secretrow"><div id="secret" class="secret">Generating…</div></div>
+    </details>
+
+    <div class="step" style="margin-top:24px"><div class="stepno">2</div><div><h2>Enter the 6-digit code</h2><p>After adding the account, your authenticator will show a code that changes about every 30 seconds.</p></div></div>
+    <div class="field">
+      <label for="enrollCode">Verification code</label>
+      <input id="enrollCode" class="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]*" placeholder="000000">
+    </div>
+    <div class="actions" style="margin-top:12px">
+      <button id="verifyEnrollBtn" class="btn primary" type="button">Verify and continue</button>
+      <button id="startEnrollBtn" class="btn secondary" type="button">Create a fresh setup code</button>
+    </div>
     <div id="enrollMsg" class="msg"></div>
-  </div>
+  </section>
 
-  <div id="verifyCard" class="card hidden">
-    <h2>Verify MFA</h2>
-    <p class="muted">Enter the current code from your authenticator app.</p>
-    <input id="verifyCode" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="6-digit code">
-    <button id="verifyBtn">Verify session</button>
+  <section id="verifyCard" class="card hidden">
+    <div class="step"><div class="stepno">1</div><div><h2>Open your authenticator</h2><p>Find <strong>LEA Reviewer Admin</strong> and use its current 6-digit code.</p></div></div>
+    <div class="field">
+      <label for="verifyCode">Verification code</label>
+      <input id="verifyCode" class="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]*" placeholder="000000" autofocus>
+    </div>
+    <button id="verifyBtn" class="btn primary" type="button" style="margin-top:12px;width:100%">Verify admin session</button>
     <div id="verifyMsg" class="msg"></div>
-  </div>
+  </section>
 
-  <div id="readyCard" class="card hidden">
-    <h2>Admin session protected</h2>
-    <p>Your session is at AAL2.</p>
-    <a href="admin.html"><button>Continue to Admin</button></a>
-  </div>
-</div>
+  <section id="readyCard" class="card hidden">
+    <div class="ready">
+      <div class="badge">✓</div>
+      <h2>Admin session verified</h2>
+      <p>Your session now has the stronger AAL2 verification required for admin actions.</p>
+      <a class="btn primary" href="admin.html">Continue to Admin</a>
+    </div>
+  </section>
+</main>
 <script>
 const SUPABASE_URL='https://rjrrprbvsmflzncojbtq.supabase.co';
 const SUPABASE_ANON_KEY='sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
-// Match Home's auth behavior: read from either storage and keep future token
-// refreshes in whichever one already owns this browser session.
 const adminAuthStorage={
   getItem(k){try{return localStorage.getItem(k)??sessionStorage.getItem(k)}catch(e){return null}},
-  setItem(k,v){
-    try{
-      const sessionOnly=sessionStorage.getItem(k)!==null&&localStorage.getItem(k)===null;
-      if(sessionOnly){sessionStorage.setItem(k,v);localStorage.removeItem(k)}
-      else{localStorage.setItem(k,v);sessionStorage.removeItem(k)}
-    }catch(e){}
-  },
+  setItem(k,v){try{const sessionOnly=sessionStorage.getItem(k)!==null&&localStorage.getItem(k)===null;if(sessionOnly){sessionStorage.setItem(k,v);localStorage.removeItem(k)}else{localStorage.setItem(k,v);sessionStorage.removeItem(k)}}catch(e){}},
   removeItem(k){try{localStorage.removeItem(k);sessionStorage.removeItem(k)}catch(e){}}
 };
 const sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY,{auth:{storage:adminAuthStorage,persistSession:true,autoRefreshToken:true}});
 const $=id=>document.getElementById(id);
-let activeFactorId=null, pendingFactorId=null;
-function say(id,text,ok){const el=$(id);el.textContent=text;el.className='msg '+(ok?'ok':'err')}
-async function aal(){const {data,error}=await sb.auth.mfa.getAuthenticatorAssuranceLevel();if(error)throw error;return data}
-async function listVerified(){const {data,error}=await sb.auth.mfa.listFactors();if(error)throw error;return (data && data.totp || []).filter(f=>f.status==='verified')}
+let activeFactorId=null,pendingFactorId=null,pendingSecret='',pendingUri='';
+function setMsg(id,text,ok=false){const el=$(id);el.textContent=text||'';el.className='msg '+(ok?'ok':'err')}
+function cleanCode(v){return String(v||'').replace(/\D/g,'').slice(0,6)}
+['enrollCode','verifyCode'].forEach(id=>$(id).addEventListener('input',e=>e.target.value=cleanCode(e.target.value)));
+async function getAal(){const {data,error}=await sb.auth.mfa.getAuthenticatorAssuranceLevel();if(error)throw error;return data}
+async function getFactors(){const {data,error}=await sb.auth.mfa.listFactors();if(error)throw error;return data||{totp:[]}}
+async function listVerified(){const data=await getFactors();return (data.totp||[]).filter(f=>f.status==='verified')}
+function showOnly(id){['enrollCard','verifyCard','readyCard'].forEach(x=>$(x).classList.toggle('hidden',x!==id))}
 async function refresh(){
   const {data:{session}}=await sb.auth.getSession();
-  if(!session){$('status').textContent='Sign in on the main site first.';return}
-  const {data:profile}=await sb.from('profiles').select('is_admin').eq('id',session.user.id).single();
-  if(!profile || profile.is_admin!==true){$('status').textContent='This account is not an admin.';return}
-  const a=await aal();
-  $('status').textContent='Signed in as admin · '+(a.currentLevel||'aal1');
-  $('enrollCard').classList.add('hidden');$('verifyCard').classList.add('hidden');$('readyCard').classList.add('hidden');
-  if(a.currentLevel==='aal2'){$('readyCard').classList.remove('hidden');return}
-  const factors=await listVerified();
-  if(factors.length){activeFactorId=factors[0].id;$('verifyCard').classList.remove('hidden');return}
-  $('enrollCard').classList.remove('hidden');await startEnroll();
+  if(!session){$('status').textContent='Please sign in on the main site first.';return}
+  const {data:profile,error}=await sb.from('profiles').select('is_admin').eq('id',session.user.id).single();
+  if(error||!profile||profile.is_admin!==true){$('status').textContent='This account does not have admin access.';return}
+  const a=await getAal();
+  $('status').textContent='Admin account confirmed · '+(a.currentLevel==='aal2'?'extra verification complete':'extra verification required');
+  if(a.currentLevel==='aal2'){showOnly('readyCard');return}
+  const verified=await listVerified();
+  if(verified.length){activeFactorId=verified[0].id;showOnly('verifyCard');$('verifyCode').focus();return}
+  showOnly('enrollCard');await startEnroll();
 }
 async function startEnroll(){
+  const btn=$('startEnrollBtn');btn.disabled=true;setMsg('enrollMsg','Creating a secure setup code…',true);
   try{
-    const existing=await listVerified(); if(existing.length){activeFactorId=existing[0].id;$('enrollCard').classList.add('hidden');$('verifyCard').classList.remove('hidden');return}
-    const {data,error}=await sb.auth.mfa.enroll({factorType:'totp',friendlyName:'LEA Reviewer Admin'});if(error)throw error;
-    pendingFactorId=data.id;
-    $('qrWrap').innerHTML=data.totp && data.totp.qr_code?'<img alt="Authenticator QR code" src="'+data.totp.qr_code+'">':'';
-    if(data.totp && data.totp.secret){$('secret').textContent=data.totp.secret;$('secretWrap').classList.remove('hidden')}
-    say('enrollMsg','QR ready. Scan it, then enter the current code.',true);
-  }catch(e){say('enrollMsg',e.message||String(e),false)}
+    const verified=await listVerified();
+    if(verified.length){activeFactorId=verified[0].id;showOnly('verifyCard');return}
+    const {data,error}=await sb.auth.mfa.enroll({factorType:'totp',friendlyName:'LEA Reviewer Admin',issuer:'LEA Reviewer'});if(error)throw error;
+    pendingFactorId=data.id;pendingSecret=data.totp?.secret||'';pendingUri=data.totp?.uri||'';
+    $('qrWrap').innerHTML=data.totp?.qr_code?'<img alt="QR code for LEA Reviewer Admin" src="'+data.totp.qr_code+'">':'<div style="color:#111">QR code unavailable</div>';
+    $('secret').textContent=pendingSecret||'Setup key unavailable';
+    if(pendingUri){$('openAuthenticatorBtn').href=pendingUri;$('openAuthenticatorBtn').classList.remove('hidden')}else{$('openAuthenticatorBtn').classList.add('hidden')}
+    setMsg('enrollMsg','Setup is ready. Add it to your authenticator, then enter the 6-digit code.',true);
+    $('enrollCode').value='';
+  }catch(e){setMsg('enrollMsg',e.message||String(e),false)}finally{btn.disabled=false}
 }
+$('copySecretBtn').addEventListener('click',async()=>{
+  try{if(!pendingSecret)throw new Error('No setup key is available yet.');await navigator.clipboard.writeText(pendingSecret);setMsg('enrollMsg','Setup key copied.',true)}catch(e){setMsg('enrollMsg','Could not copy automatically. Open Manual setup details and copy the key there.',false)}
+});
 $('startEnrollBtn').addEventListener('click',startEnroll);
 $('verifyEnrollBtn').addEventListener('click',async()=>{
+  const btn=$('verifyEnrollBtn');btn.disabled=true;
   try{
-    const code=$('enrollCode').value.trim();if(!pendingFactorId||!code)throw new Error('Enter the authenticator code.');
+    const code=cleanCode($('enrollCode').value);if(!pendingFactorId)throw new Error('Create a setup code first.');if(code.length!==6)throw new Error('Enter the 6-digit code from your authenticator.');
     const {data:ch,error:ce}=await sb.auth.mfa.challenge({factorId:pendingFactorId});if(ce)throw ce;
     const {error:ve}=await sb.auth.mfa.verify({factorId:pendingFactorId,challengeId:ch.id,code});if(ve)throw ve;
-    say('enrollMsg','MFA enabled.',true);await refresh();
-  }catch(e){say('enrollMsg',e.message||String(e),false)}
+    setMsg('enrollMsg','MFA enabled successfully.',true);await refresh();
+  }catch(e){setMsg('enrollMsg',e.message||'That code could not be verified. Wait for a new code and try again.',false)}finally{btn.disabled=false}
 });
 $('verifyBtn').addEventListener('click',async()=>{
+  const btn=$('verifyBtn');btn.disabled=true;
   try{
-    const code=$('verifyCode').value.trim();if(!activeFactorId||!code)throw new Error('Enter the authenticator code.');
+    const code=cleanCode($('verifyCode').value);if(!activeFactorId)throw new Error('No verified authenticator is attached to this account.');if(code.length!==6)throw new Error('Enter the 6-digit code from your authenticator.');
     const {data:ch,error:ce}=await sb.auth.mfa.challenge({factorId:activeFactorId});if(ce)throw ce;
     const {error:ve}=await sb.auth.mfa.verify({factorId:activeFactorId,challengeId:ch.id,code});if(ve)throw ve;
-    say('verifyMsg','Verified.',true);await refresh();
-  }catch(e){say('verifyMsg',e.message||String(e),false)}
+    setMsg('verifyMsg','Verified.',true);await refresh();
+  }catch(e){setMsg('verifyMsg',e.message||'That code could not be verified. Wait for a new code and try again.',false)}finally{btn.disabled=false}
 });
 refresh().catch(e=>$('status').textContent=e.message||String(e));
 </script>
