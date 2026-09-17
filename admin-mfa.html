@@ -115,12 +115,20 @@ async function refresh(){
   if(verified.length){activeFactorId=verified[0].id;showOnly('verifyCard');$('verifyCode').focus();return}
   showOnly('enrollCard');await startEnroll();
 }
+async function clearUnverifiedTotp(){
+  const factors=await getFactors();
+  const stale=(factors.totp||[]).filter(f=>f.status!=='verified');
+  for(const factor of stale){
+    try{await sb.auth.mfa.unenroll({factorId:factor.id})}catch(e){}
+  }
+}
 async function startEnroll(){
   const btn=$('startEnrollBtn');btn.disabled=true;setMsg('enrollMsg','Creating a secure setup code…',true);
   try{
     const verified=await listVerified();
     if(verified.length){activeFactorId=verified[0].id;showOnly('verifyCard');return}
-    const {data,error}=await sb.auth.mfa.enroll({factorType:'totp',friendlyName:'LEA Reviewer Admin',issuer:'LEA Reviewer'});if(error)throw error;
+    await clearUnverifiedTotp();
+    const {data,error}=await sb.auth.mfa.enroll({factorType:'totp',friendlyName:'LEA Reviewer Admin'});if(error)throw error;
     pendingFactorId=data.id;pendingSecret=data.totp?.secret||'';pendingUri=data.totp?.uri||'';
     $('qrWrap').innerHTML=data.totp?.qr_code?'<img alt="QR code for LEA Reviewer Admin" src="'+data.totp.qr_code+'">':'<div style="color:#111">QR code unavailable</div>';
     $('secret').textContent=pendingSecret||'Setup key unavailable';
