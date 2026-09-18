@@ -111,18 +111,6 @@
     position:relative; background:var(--bg-panel); border:1px solid var(--line);
     padding:22px 20px 20px; margin-bottom:16px;
   }
-  .bp-card::before, .bp-card::after{ content:""; position:absolute; width:12px; height:12px; border:2px solid var(--gold); opacity:.9; }
-  .bp-card::before{ top:-2px; left:-2px; border-width:2px 0 0 2px; }
-  .bp-card::after{ bottom:-2px; right:-2px; border-width:0 2px 2px 0; }
-  .section-tag{
-    display:inline-block; background:var(--gold); color:#1a1206; font-family:var(--font-mono);
-    font-size:11px; letter-spacing:.1em; text-transform:uppercase; padding:4px 10px; border-radius:3px; margin-bottom:12px;
-  }
-  .clock-chip{
-    display:inline-block; margin-left:8px; border:1px dashed var(--line); color:var(--muted);
-    font-family:var(--font-mono); font-size:10.5px; letter-spacing:.04em; text-transform:uppercase;
-    padding:4px 9px; border-radius:20px;
-  }
   .qtext{ font-size:17px; font-weight:450; line-height:1.6; color:var(--ink); margin:0 0 14px; }
   /* Scenario: shared reference text for the question(s) that follow — a
      text figure. Sits above q-body so it always spans the full card width,
@@ -175,30 +163,16 @@
   }
   .imgview-zoom{ position:absolute; bottom:16px; left:50%; transform:translateX(-50%); display:flex; gap:8px; }
   .options{ display:flex; flex-direction:column; gap:10px; }
-  .opt{
-    min-height:56px; text-align:left; padding:13px 16px; border-radius:10px;
-    border:1.5px dashed var(--line); background:var(--bg-panel-2); color:var(--ink);
-    font-family:var(--font-body); font-size:14.5px; line-height:1.4; cursor:pointer;
-    display:flex; align-items:center; gap:10px; transition:border-color .12s ease, scale 160ms var(--ease-out);
-  }
-  @media (hover:hover) and (pointer:fine){ .opt:hover:not(.locked){ border-style:solid; border-color:var(--blue-bright); } }
-  .opt .letter{ font-family:var(--font-mono); color:var(--blue-bright); flex-shrink:0; }
   .opt.locked{ cursor:default; }
-  .opt.correct{ border-style:solid; border-color:var(--good); background:color-mix(in srgb, var(--good) 12%, transparent); }
-  .opt.correct::after{ content:"\2713"; margin-left:auto; color:var(--good); font-weight:700; }
-  .opt.incorrect{ border-style:solid; border-color:var(--bad); background:color-mix(in srgb, var(--bad) 12%, transparent); }
-  .opt.incorrect::after{ content:"\2715"; margin-left:auto; color:var(--bad); font-weight:700; }
-  .opt.dim{ opacity:.6; }
-  .opt.chosen-tag::after{ content:"Chosen"; margin-left:auto; font-family:var(--font-mono); font-size:10px; color:var(--blue-bright); text-transform:uppercase; }
   /* Ungraded "chosen" state (exam mode, pre-submit) — a plain selection
      highlight, distinct from study mode's chosen-tag+incorrect combo which
      must keep its red styling untouched. */
-  .opt.chosen-tag:not(.incorrect):not(.correct){ border-style:solid; border-color:var(--blue-bright); }
-  .opt.chosen-tag:not(.incorrect):not(.correct) .letter{ color:var(--blue-bright); }
+
+  .opt{ text-align:left; color:var(--ink); font-family:var(--font-body); cursor:pointer;
+    transition:border-color .12s ease, scale 160ms var(--ease-out); }
+  .opt.locked{ cursor:default; }
 
   /* ===== explanation panel ===== */
-  .explain{ margin-top:16px; padding:14px 16px; border-left:3px solid var(--good); background:var(--bg-panel-2); border-radius:0 8px 8px 0; }
-  .explain.wrong{ border-left-color:var(--bad); }
   .explain .verdict{ font-family:var(--font-display); font-weight:700; font-size:19px; text-transform:uppercase; margin-bottom:6px; }
   .explain.right .verdict{ color:var(--good); }
   .explain.wrong .verdict{ color:var(--bad); }
@@ -607,18 +581,57 @@
   .etymology-tooltip-source:hover{text-decoration:underline;}
   .etymology-card-hint{display:inline-block;margin:0 8px 0 6px;color:var(--sand);font-size:11px;letter-spacing:.04em;font-style:italic;opacity:.85;}
   @media (max-width:600px){.etymology-tooltip{max-width:calc(100vw - 24px);padding:13px 14px 12px}.etymology-tooltip-word{font-size:18px}}
+
+  /* The chrome above the page shrinks to one printed line; the question
+     number lives on the page itself, where an exam prints it. The page and
+     its answer sheet are styled in assets/blueprint.css, with the rest of
+     the quiz furniture. */
+  .run-header{ margin-bottom:10px; }
+  .icon-btn{ border-radius:0; width:40px; height:40px; }
+  .header-title .h-sub{ font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.08em;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .header-title .h-main{ display:none; }
+
+  /* The run so far, as one strip: right, wrong, skipped, flagged, and where
+     you are now. */
+  .tick{ height:8px; }
+  .tick.current{ height:14px; box-shadow:0 0 0 1px var(--gold-bright); }
+  .counts-text, .jump-chip{ font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+  .jump-chip{ border-radius:0; color:var(--ink); padding:7px 12px; }
+
+  .qtext{ font-size:16px; line-height:1.5; margin:0 0 12px; }
+  .scenario-box{ border-radius:0; border-left-width:1px; }
+  .scenario-box b{ font-family:var(--font-body); letter-spacing:.08em; }
+  .q-stat{ border-bottom:0; padding-bottom:0; font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.08em; }
+  .q-stat::before{ content:none; }
+  .explain .meta-row, .mnemo-label, .mnemo-items .k, .mnemo-more{
+    font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.08em;
+  }
+  .note-box textarea, .mnemo-hint, .rail-block, .map-cell, .map-action-btn,
+  .report-reason, .report-comment, .report-send, .qimg-wrap img, .qimg-hint{ border-radius:0; }
+  .map-legend .lg-item, .map-cell, .report-note, .sheet-close, .rail-head, .kbd-hint,
+  .qimg-hint, .imgview-bar .iv-note, .imgview-bar button{
+    font-family:var(--font-body); font-weight:500; letter-spacing:.08em;
+  }
+  .note-box .note-save, .map-action-btn, .report-send{ font-family:var(--font-display); font-weight:800; }
+  .sheet{ border-radius:0; border-top-width:1px; }
+
+  /* The tab at the foot of the page. */
+  .footer-btn{ border-radius:0; height:52px; font-family:var(--font-display); font-weight:800; font-size:15px; letter-spacing:.03em; }
+  .footer-btn.next{ box-shadow:0 8px 16px -10px rgba(0,0,0,.6), inset 0 1px 0 color-mix(in srgb, #fff 35%, transparent); }
+  .footer-btn.skip{ background:none; border:1px solid var(--line); color:var(--muted); flex:0 0 32%; }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=59">
-<script src="assets/lea-confirm.js?v=59"></script>
-<script src="assets/quiz-source.js?v=59"></script>
-<script src="assets/etymology.js?v=59"></script>
-<script src="assets/module-progress.js?v=59"></script>
-<script src="assets/offline.js?v=59"></script>
-<script src="assets/presence.js?v=59"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=62">
+<script src="assets/lea-confirm.js?v=62"></script>
+<script src="assets/quiz-source.js?v=62"></script>
+<script src="assets/etymology.js?v=62"></script>
+<script src="assets/module-progress.js?v=62"></script>
+<script src="assets/offline.js?v=62"></script>
+<script src="assets/presence.js?v=62"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
-<script src="assets/quiz-resume.js?v=59"></script>
-<script src="assets/theme.js?v=59" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=59"></script>
+<script src="assets/quiz-resume.js?v=62"></script>
+<script src="assets/theme.js?v=62" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=62"></script>
 </head>
 <body>
 <!-- The rail is a sibling of #pageBody, not a child: every render replaces
@@ -1217,7 +1230,7 @@ function renderExamCardUngraded(){
     const text = optionText(item, origIdx, perm);
     let cls = 'opt';
     if(logged && logged.selected === origIdx) cls += ' chosen-tag';
-    const markup = '<span class="letter">' + letter(displayI) + '.</span><span>' + escapeHtml(text) + '</span>';
+    const markup = '<span class="letter">' + letter(displayI) + '</span><span>' + escapeHtml(text) + '</span>';
     optsHtml += '<button class="' + cls + '" data-idx="' + origIdx + '">' + markup + '</button>';
   });
 
@@ -1634,7 +1647,7 @@ function renderCard(){
   perm.forEach((origIdx, displayI) => {
     const text = optionText(item, origIdx, perm);
     let cls = 'opt';
-    let markup = '<span class="letter">' + letter(displayI) + '.</span><span>' + escapeHtml(text) + '</span>';
+    let markup = '<span class="letter">' + letter(displayI) + '</span><span>' + escapeHtml(text) + '</span>';
     if(logged && !logged.skipped){
       cls += ' locked';
       if(origIdx === item.c) cls += ' correct';
@@ -1652,7 +1665,7 @@ function renderCard(){
   let explainHtml = '';
   if(logged && !logged.skipped){
     const verdictClass = logged.isCorrect ? 'right' : 'wrong';
-    const verdictText = logged.isCorrect ? 'Correct.' : 'Not quite.';
+    const verdictText = logged.isCorrect ? 'Correct' : 'Missed';
     const stepsHtml = (item.steps && item.steps.length)
       ? '<div id="stepsBlock" class="hidden"><ol class="steps-list">' + item.steps.map(s => '<li>' + escapeHtml(s) + '</li>').join('') + '</ol></div>'
       : '';
@@ -1681,8 +1694,8 @@ function renderCard(){
 
   slot.innerHTML =
     '<div class="bp-card">' +
-      sectionTagHtml(item) +
-      '<span class="clock-chip">' + (MODE === 'exam' ? 'Reviewing · mock exam' : MODE === 'drill' ? 'No clock · drilling your misses' : 'No clock · study mode') + '</span>' +
+      '<div class="page-head">' + (sectionTagHtml(item) || '<span class="section-tag">Question</span>') +
+        '<span class="page-no">No. ' + (pos + 1) + '<small> / ' + order.length + '</small></span></div>' +
       scenarioHtml(item) +
       '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
       '<div class="options">' + optsHtml + '</div>' +
@@ -2559,7 +2572,7 @@ function renderMultiCard(){
   perm.forEach((origIdx, displayI) => {
     const text = optionText(item, origIdx, perm);
     let cls = 'opt';
-    const markup = '<span class="letter">' + letter(displayI) + '.</span><span>' + escapeHtml(text) + '</span>';
+    const markup = '<span class="letter">' + letter(displayI) + '</span><span>' + escapeHtml(text) + '</span>';
     if(logged && !logged.skipped){
       cls += ' locked';
       if(origIdx === item.c) cls += ' correct';
@@ -2577,7 +2590,7 @@ function renderMultiCard(){
   let explainHtml = '';
   if(logged && !logged.skipped){
     const verdictClass = logged.isCorrect ? 'right' : 'wrong';
-    const verdictText = logged.isCorrect ? 'Correct.' : 'Not quite.';
+    const verdictText = logged.isCorrect ? 'Correct' : 'Missed';
     explainHtml =
       '<div class="explain ' + verdictClass + '">' +
         '<div class="verdict">' + verdictText + '</div>' +
@@ -2914,7 +2927,7 @@ function renderMultiExamCardUngraded(){
     const text = optionText(item, origIdx, perm);
     let cls = 'opt';
     if(logged && logged.selected === origIdx) cls += ' chosen-tag';
-    const markup = '<span class="letter">' + letter(displayI) + '.</span><span>' + escapeHtml(text) + '</span>';
+    const markup = '<span class="letter">' + letter(displayI) + '</span><span>' + escapeHtml(text) + '</span>';
     optsHtml += '<button class="' + cls + '" data-idx="' + origIdx + '">' + markup + '</button>';
   });
   let imgHtml = '';

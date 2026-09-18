@@ -130,8 +130,12 @@
     const hint = document.createElement('span');
     hint.className = 'etymology-card-hint';
     hint.textContent = onlyOrigins ? 'tap underlined words for their origin' : 'tap underlined words to learn them';
+    // Sits under the printed head, above the question.
     const chip = card.querySelector('.clock-chip');
-    if(chip) card.insertBefore(hint, chip); else card.insertBefore(hint, card.firstChild);
+    const head = card.querySelector('.page-head');
+    if(chip) card.insertBefore(hint, chip);
+    else if(head) head.insertAdjacentElement('afterend', hint);
+    else card.insertBefore(hint, card.firstChild);
   }
 
   function closeTooltip(){

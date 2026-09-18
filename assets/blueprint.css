@@ -78,51 +78,112 @@
   border-radius: 0;
 }
 
-/* Question card — phone value. The desktop value is the only override. */
-.bp-card { padding: 20px 18px 18px; }
+/* ============================================================
+   THE EXAM BOOKLET
+   A question is a page from a printed board-exam booklet: punched margin,
+   red margin rule, printed head, and answers as the bubbles you shade on
+   the answer sheet. Paper and ink come from the theme, so the page is dark
+   drafting stock on blueprint, tracing paper on vellum, lit stock on
+   lightbox and card on olive.
+   ============================================================ */
 
-/* Section tag: gold fill, dark text. */
+.bp-card {
+  padding: 16px 16px 18px 32px;
+  background:
+    radial-gradient(circle 3.5px at 11px 30px, var(--bg-deep) 3.5px, transparent 3.6px),
+    radial-gradient(circle 3.5px at 11px 50%, var(--bg-deep) 3.5px, transparent 3.6px),
+    radial-gradient(circle 3.5px at 11px calc(100% - 30px), var(--bg-deep) 3.5px, transparent 3.6px),
+    linear-gradient(90deg, transparent 21px, color-mix(in srgb, var(--bad) 42%, transparent) 21px 22px, transparent 22px),
+    var(--bg-panel);
+  box-shadow: 0 10px 24px -14px rgba(0,0,0,.55), inset 0 1px 0 color-mix(in srgb, var(--ink) 7%, transparent);
+}
+/* The drafting corner marks belong to Home's cards; a printed page has none. */
+.bp-card::before, .bp-card::after { content: none; }
+
+/* Printed head: topic on the left, the question number on the right. */
+.page-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+  border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 12px;
+}
+.page-no { font-family: var(--font-display); font-weight: 800; font-size: 17px; line-height: 1; white-space: nowrap; }
+.page-no small { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: .06em; color: var(--muted); }
+
+/* The topic is printed, not stuck on: no fill, no chip. */
 .section-tag {
-  padding: 5px 11px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
+  display: inline; padding: 0; background: none; color: var(--blue-bright);
+  font-family: var(--font-body); font-size: 11px; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
 }
 
 /* State chip: dashed, grey by default. `.blue` is the variant the drill and
    exam frames use for run-state notes ("due today", "no feedback yet"). */
 .clock-chip {
-  padding: 4px 9px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  border: 1px dashed var(--line);
-  color: var(--muted);
+  display: block; padding: 0; margin: 0 0 12px; border: 0;
+  font-family: var(--font-body); font-size: 11px; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
 }
 .clock-chip.blue {
   border-color: color-mix(in srgb, var(--blue-bright) 50%, transparent);
   color: var(--blue-bright);
 }
 
-/* Options. Unanswered is a dashed outline on a barely-there wash; every
-   resolved state swaps the border to solid and tints the fill. */
+/* The answer sheet: rows on dotted rules, each with the bubble you shade.
+   State is carried by the bubble and a word, never by a tinted row — a tint
+   that reads on blueprint's dark stock washes out on vellum's paper. */
+.options { gap: 0; }
 .opt {
-  padding: 12px 14px;
-  font-size: 15.5px;
-  border: 1.5px dashed var(--line);
-  background: color-mix(in srgb, var(--blue) 4%, transparent);
+  display: flex; min-height: 52px; padding: 10px 2px; gap: 12px; align-items: center;
+  font-size: 14.5px; background: none;
+  border: 0; border-bottom: 1px dotted var(--line);
 }
-.opt.correct   { border-style: solid; border-color: var(--good); background: color-mix(in srgb, var(--good) 12%, transparent); }
-.opt.incorrect { border-style: solid; border-color: var(--bad);  background: color-mix(in srgb, var(--bad) 12%, transparent); }
-.opt.chosen-tag{ border-style: solid; border-color: var(--gold); background: color-mix(in srgb, var(--gold) 10%, transparent); }
-.opt.dim       { opacity: .6; }
+.options .opt:last-child { border-bottom: 0; }
+.opt .letter {
+  width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-body); font-weight: 600; font-size: 11.5px; color: var(--muted);
+  border: 1.5px solid color-mix(in srgb, var(--ink) 40%, transparent);
+  box-shadow: inset 0 1px 2px color-mix(in srgb, var(--bg-deep) 55%, transparent);
+}
+/* Shaded in graphite, the way the bubble is filled on the day. */
+.opt.chosen-tag .letter, .opt.incorrect .letter {
+  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--ink) 80%, transparent), color-mix(in srgb, var(--ink) 55%, transparent));
+  border-color: color-mix(in srgb, var(--ink) 60%, transparent); color: var(--bg-panel);
+  animation: lea-shade 260ms var(--ease-out) both;
+}
+@keyframes lea-shade { from { opacity: .25; } }
+.opt.correct .letter { border: 2.5px solid var(--good); color: var(--good); box-shadow: none; }
+.opt.correct span:last-child { font-weight: 600; }
+.opt.dim { opacity: .42; }
+.opt.correct::after, .opt.incorrect::after, .opt.chosen-tag::after {
+  margin-left: auto; padding-left: 10px; flex-shrink: 0; content: "";
+  font-family: var(--font-body); font-weight: 600; font-size: 10px;
+  letter-spacing: .08em; text-transform: uppercase;
+}
+.opt.correct::after { content: "Answer"; color: var(--good); }
+.opt.incorrect.chosen-tag::after { content: "Yours"; color: var(--bad); }
+.opt.chosen-tag:not(.incorrect):not(.correct)::after { content: "Shaded"; color: var(--blue-bright); }
+@media (hover: hover) and (pointer: fine) {
+  .opt:hover:not(.locked) { background: color-mix(in srgb, var(--ink) 4%, transparent); }
+  .opt:hover:not(.locked) .letter { border-color: var(--gold); color: var(--gold-bright); }
+}
 
-/* Explanation panel: 3px left border in the verdict colour over an 8% tint
-   of the same. The verdict class carries both. */
-.explain { padding: 14px; }
+/* The checker's marks: a rule under the answers, the verdict stamped in the
+   margin, the reason written beneath. */
+.explain {
+  background: none; border-left: 0; border-top: 1px solid var(--line);
+  margin-top: 16px; padding: 14px 0 0;
+}
+.explain .verdict {
+  float: right; margin: -2px 0 8px 12px; padding: 3px 10px;
+  border: 2.5px solid currentColor; font-size: 19px; letter-spacing: .06em;
+  transform: rotate(-9deg); opacity: .92;
+  animation: lea-stamp 260ms var(--ease-out) both;
+}
+@keyframes lea-stamp { from { transform: rotate(-9deg) scale(1.5); opacity: 0; } }
+.explain .reason { font-size: 14px; line-height: 1.6; color: color-mix(in srgb, var(--ink) 88%, transparent); }
+@media (prefers-reduced-motion: reduce) {
+  .explain .verdict, .opt.chosen-tag .letter, .opt.incorrect .letter { animation: none; }
+}
 
 /* Action chips (Steps / Note / Drill). */
 .chip-btn {
@@ -205,9 +266,8 @@ input[type="text"].admin,
    ============================================================ */
 
 @media (min-width: 1120px) {
-  .bp-card { padding: 28px 30px 24px; }
-  .opt     { padding: 12px 16px; font-size: 16px; }
-  .clock-chip { padding: 9px 12px; font-size: 10.5px; }
+  .bp-card { padding: 24px 28px 24px 40px; }
+  .opt     { padding: 12px 4px; font-size: 15.5px; }
 }
 
 /* ============================================================
