@@ -1,12 +1,11 @@
-"""Draws the Building Technology quiz figures as PNGs.
+"""Draws quiz figures as PNGs.
 
 Each figure is written as plain SVG, then screenshotted by headless Edge at 2x
-so the site gets a crisp PNG. Output: subjects/building-technology/quizzes/img/.
-Run from the repo root:  python tools/btech_figures.py
+so the site gets a crisp PNG. Output: subjects/<subject>/quizzes/img/.
+Run from the repo root:  python tools/quiz_figures.py
 """
 import math, os, subprocess, tempfile
 
-OUT = os.path.join('subjects', 'building-technology', 'quizzes', 'img')
 EDGE = r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'
 INK = '#1f2328'
 STYLE = f'''<style>
@@ -382,11 +381,55 @@ def furring():
     return svg(610, 346, ''.join(b))
 
 
+def coped_beam():
+    """Elevation: two beams framing into a girder web, top flanges coped."""
+    b = []
+    for sgn in (-1, 1):                       # left beam, right beam (mirrored about x=280)
+        X = lambda x: 280 + sgn * (280 - x)
+        pts = [(40, 40), (222, 40), (222, 62), (273, 62), (273, 170), (40, 170)]
+        b.append(poly([(X(x), y) for x, y in pts], '#c9ced4'))
+        b.append(line(X(40), 50, X(222), 50, cls='s') + line(X(40), 160, X(273), 160, cls='s'))
+        b.append(f'<path class="cut" d="M{X(222)} 40 H{X(273)} V62 H{X(222)} Z"/>')
+        b.append(rect(min(X(250), X(273)), 80, 23, 60, '#9aa3ad'))
+        for y in (95, 125):
+            b.append(f'<circle cx="{X(262)}" cy="{y}" r="4" fill="{INK}"/>')
+    b.append(rect(230, 40, 100, 12, '#8b949e') + rect(230, 188, 100, 12, '#8b949e') + rect(276, 52, 8, 136, '#8b949e'))
+    b.append(cap(280, 28, 'girder (cut)', cls='t'))
+    b.append(cap(120, 110, 'beam', cls='t') + cap(440, 110, 'beam', cls='t'))
+    b.append(cap(280, 236, 'Coped beam ends framing into a girder (red dashes: the cutouts)'))
+    return svg(560, 250, ''.join(b))
+
+
+def basilica_plan():
+    """Plan of an Early Christian basilica, entrance at the west (left)."""
+    b = []
+    b.append(rect(20, 60, 150, 180, '#f1f3f5'))                          # atrium
+    for x in range(34, 170, 17):
+        b.append(f'<circle cx="{x}" cy="74" r="3" fill="{INK}"/><circle cx="{x}" cy="226" r="3" fill="{INK}"/>')
+    for y in range(91, 226, 17):
+        b.append(f'<circle cx="34" cy="{y}" r="3" fill="{INK}"/><circle cx="156" cy="{y}" r="3" fill="{INK}"/>')
+    b.append(rect(170, 60, 36, 180, '#dde2e7'))                         # narthex
+    b.append(rect(206, 60, 264, 180, '#e9ecef'))                        # nave + aisles
+    for y in (112, 188):
+        for x in range(224, 470, 22):
+            b.append(f'<circle cx="{x}" cy="{y}" r="3.5" fill="{INK}"/>')
+    b.append(rect(470, 20, 60, 260, '#dde2e7'))                         # transept
+    b.append(f'<path class="s" fill="#cfd5db" d="M530 100 A50 50 0 0 1 530 200 Z"/>')  # apse
+    for letter, x, y in (('A', 95, 150), ('B', 188, 150), ('C', 340, 150), ('D', 340, 86),
+                         ('E', 500, 50), ('F', 552, 150)):
+        b.append(f'<text class="L" x="{x}" y="{y + 6}" text-anchor="middle">{letter}</text>')
+    b.append(cap(20, 272, 'entrance (west)', 'start', 't'))
+    b.append(cap(300, 306, 'Early Christian basilica (plan)'))
+    return svg(600, 320, ''.join(b))
+
+
+BT = 'building-technology/'
 FIGURES = {
-    'curtain-wall': curtain_wall, 'window-frame': window_frame, 'slab-bands': slab_bands,
-    'roof-parts': roof, 'saw-cuts': saw_cuts, 'wood-joinery': joinery,
-    'glass-hardware': glass_hardware, 'nailing-methods': nailing,
-    'site-layout': site_layout, 'furring-profiles': furring,
+    BT + 'curtain-wall': curtain_wall, BT + 'window-frame': window_frame, BT + 'slab-bands': slab_bands,
+    BT + 'roof-parts': roof, BT + 'saw-cuts': saw_cuts, BT + 'wood-joinery': joinery,
+    BT + 'glass-hardware': glass_hardware, BT + 'nailing-methods': nailing,
+    BT + 'site-layout': site_layout, BT + 'furring-profiles': furring, BT + 'coped-beam': coped_beam,
+    'history-of-architecture/basilica-plan': basilica_plan,
 }
 
 
@@ -395,7 +438,9 @@ def render(name, s):
     h = int(s.split('height="')[1].split('"')[0])
     with tempfile.NamedTemporaryFile('w', suffix='.svg', delete=False, encoding='utf-8') as f:
         f.write(s)
-    out = os.path.abspath(os.path.join(OUT, name + '.png'))
+    subject, file = name.split('/')
+    out = os.path.abspath(os.path.join('subjects', subject, 'quizzes', 'img', file + '.png'))
+    os.makedirs(os.path.dirname(out), exist_ok=True)
     subprocess.run([EDGE, '--headless=new', '--disable-gpu', '--hide-scrollbars',
                     '--force-device-scale-factor=2', f'--window-size={w},{h}',
                     f'--screenshot={out}', 'file:///' + f.name.replace('\\', '/')],
@@ -405,7 +450,6 @@ def render(name, s):
 
 
 if __name__ == '__main__':
-    os.makedirs(OUT, exist_ok=True)
     for name, fn in FIGURES.items():
         render(name, fn())
         print('wrote', name)
