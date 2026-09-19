@@ -423,6 +423,65 @@ def basilica_plan():
     return svg(600, 320, ''.join(b))
 
 
+BRICK, BRICK_SIDE, BRICK_TOP, MORTAR = '#b5553c', '#d99a82', '#e8b9a6', '#e9e4dc'
+
+
+def _bond(courses, cap_text):
+    """Brick wall elevation. courses: list of rows, each a list of unit widths (4 = stretcher, 2 = header)."""
+    u, h, j, x0, y0 = 22, 20, 3, 20, 20
+    b = []
+    width = sum(courses[0]) * u
+    b.append(rect(x0 - j, y0 - j, width + j, len(courses) * (h + j) + j, MORTAR))
+    for r, row in enumerate(courses):
+        x = x0
+        y = y0 + r * (h + j)
+        for w in row:
+            b.append(f'<rect x="{x}" y="{y}" width="{w * u - j}" height="{h}" fill="{BRICK}" stroke="#7a3322" stroke-width="1"/>')
+            x += w * u
+    b.append(cap(x0 + width / 2, y0 + len(courses) * (h + j) + 26, cap_text))
+    return svg(int(width + 2 * x0), int(y0 + len(courses) * (h + j) + 40), ''.join(b))
+
+
+def english_bond():
+    stretch = [2] + [4] * 9 + [2]            # half bats at the ends keep the wall square
+    head = [2] * 20
+    return _bond([stretch, head] * 3, 'Brick wall face')
+
+
+def flemish_bond():
+    a = [4, 2] * 6 + [4]                     # stretcher, header, stretcher...
+    b_ = [1] + [2, 4] * 6 + [2, 1]           # next course shifted so headers sit centred on stretchers
+    return _bond([a, b_] * 3, 'Brick wall face')
+
+
+def _brick_row(L, W, H, n, cap_text):
+    """A row of bricks along x; the wall face (y=0) is shaded brick red."""
+    P = Axo(0, 0, 44)
+    faces = []
+    for k in range(n):
+        x = k * (L + 0.15)
+        faces += [([(x + L, 0, 0), (x + L, W, 0), (x + L, W, H), (x + L, 0, H)], BRICK_SIDE),
+                  ([(x, 0, H), (x + L, 0, H), (x + L, W, H), (x, W, H)], BRICK_TOP),
+                  ([(x, 0, 0), (x + L, 0, 0), (x + L, 0, H), (x, 0, H)], BRICK)]
+    pts = [P(*p) for f, _ in faces for p in f]
+    minx, miny = min(p[0] for p in pts), min(p[1] for p in pts)
+    w, h = max(p[0] for p in pts) - minx, max(p[1] for p in pts) - miny
+    body = ''.join(P.poly(f, c) for f, c in faces)
+    W_, H_ = int(max(w, 380) + 60), int(h + 80)
+    return svg(W_, H_, f'<g transform="translate({(W_ - w) / 2 - minx:.1f},{30 - miny:.1f})">{body}</g>'
+               + cap(W_ / 2, H_ - 16, cap_text))
+
+
+def rowlock():
+    # on its long, narrow edge; length runs into the wall, so only the end shows on the face
+    return _brick_row(1.0, 3.6, 1.6, 6, 'Dark red = the face you see in the wall')
+
+
+def shiner():
+    # on its long, narrow edge; the broad face lies in the wall face
+    return _brick_row(3.6, 1.0, 1.6, 3, 'Dark red = the face you see in the wall')
+
+
 BT = 'building-technology/'
 FIGURES = {
     BT + 'curtain-wall': curtain_wall, BT + 'window-frame': window_frame, BT + 'slab-bands': slab_bands,
@@ -430,6 +489,8 @@ FIGURES = {
     BT + 'glass-hardware': glass_hardware, BT + 'nailing-methods': nailing,
     BT + 'site-layout': site_layout, BT + 'furring-profiles': furring, BT + 'coped-beam': coped_beam,
     'history-of-architecture/basilica-plan': basilica_plan,
+    BT + 'english-bond': english_bond, BT + 'flemish-bond': flemish_bond,
+    BT + 'rowlock': rowlock, BT + 'shiner': shiner,
 }
 
 
