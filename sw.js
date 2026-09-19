@@ -30,7 +30,7 @@
 // the last change (the subject list moving to network-first) shipped without
 // one, which left the old copy sitting in the old cache on every device that
 // had visited before.
-const VERSION = 'lea-v59';
+const VERSION = 'lea-v60';
 const SHELL = VERSION + '-shell';
 const DATA = VERSION + '-data';
 const VENDOR = VERSION + '-vendor';
