@@ -1,0 +1,112 @@
+[
+  {
+    "s": "Loads",
+    "q": "What do you call an equivalent load applied to a single point?",
+    "o": [
+      "Point load (concentrated load)",
+      "Uniformly distributed load",
+      "Uniformly varying load",
+      "Moment load"
+    ],
+    "c": 0,
+    "n": "A point (concentrated) load is idealized as acting at one point. A uniformly distributed load spreads over a length or area.",
+    "ref": "NSCP 2015 (NSCP C101-15), Sec. 204 - Dead Loads and load definitions"
+  },
+  {
+    "s": "Dead Loads of Building Materials (NSCP)",
+    "q": "Per NSCP Table 204-2, what is the dead load of ceramic or quarry tile (20 mm) on a 25 mm mortar bed?",
+    "o": [
+      "0.48 kPa",
+      "1.10 kPa",
+      "0.77 kPa",
+      "1.53 kPa"
+    ],
+    "c": 1,
+    "n": "Ceramic or quarry tile 20 mm thick on a 25 mm mortar bed carries a dead load of 1.10 kPa.",
+    "ref": "NSCP 2015 (NSCP C101-15), Table 204-2 Minimum Design Dead Loads"
+  },
+  {
+    "s": "Dead Loads of Building Materials (NSCP)",
+    "q": "Per NSCP Table 204-2, what is the dead load of gypsum board per mm of thickness?",
+    "o": [
+      "0.0008 kPa",
+      "0.08 kPa",
+      "0.008 kPa",
+      "0.8 kPa"
+    ],
+    "c": 2,
+    "n": "Gypsum board is 0.008 kPa per mm of thickness.",
+    "ref": "NSCP 2015 (NSCP C101-15), Table 204-2 Minimum Design Dead Loads"
+  },
+  {
+    "s": "Dead Loads of Building Materials (NSCP)",
+    "q": "Using NSCP Table 204-2, what is the dead load of 12 mm thick gypsum board?",
+    "o": [
+      "0.008 kPa",
+      "0.960 kPa",
+      "0.120 kPa",
+      "0.096 kPa"
+    ],
+    "c": 3,
+    "n": "0.008 kPa per mm × 12 mm = 0.096 kPa.",
+    "formula": "Load = 0.008 kPa/mm × thickness (mm)",
+    "steps": [
+      "Unit load = 0.008 kPa per mm",
+      "Thickness = 12 mm",
+      "0.008 × 12 = 0.096 kPa"
+    ],
+    "ref": "NSCP 2015 (NSCP C101-15), Table 204-2 Minimum Design Dead Loads"
+  },
+  {
+    "s": "Dead Loads of Building Materials (NSCP)",
+    "q": "Per NSCP Table 204-2, what is the dead load of a suspended steel channel ceiling system?",
+    "o": [
+      "0.10 kPa",
+      "0.05 kPa",
+      "0.20 kPa",
+      "0.24 kPa"
+    ],
+    "c": 0,
+    "n": "Suspended steel channel system is 0.10 kPa in the ceilings group of Table 204-2.",
+    "ref": "NSCP 2015 (NSCP C101-15), Table 204-2 Minimum Design Dead Loads"
+  },
+  {
+    "s": "Dead Loads of Building Materials (NSCP)",
+    "q": "Per NSCP Table 204-2, what is the dead load of a wood furring suspension system?",
+    "o": [
+      "0.05 kPa",
+      "0.12 kPa",
+      "0.10 kPa",
+      "0.20 kPa"
+    ],
+    "c": 1,
+    "n": "Wood furring suspension system is 0.12 kPa in the ceilings group of Table 204-2.",
+    "ref": "NSCP 2015 (NSCP C101-15), Table 204-2 Minimum Design Dead Loads"
+  },
+  {
+    "s": "Dead Loads of Building Materials (NSCP)",
+    "q": "Per NSCP Table 204-2, what is the dead load of a wood-joist floor (no plaster) using 50 × 150 mm joists at 300 mm spacing?",
+    "o": [
+      "0.15 kPa",
+      "0.40 kPa",
+      "0.30 kPa",
+      "0.60 kPa"
+    ],
+    "c": 2,
+    "n": "The wood-joist floor rows give 0.30 kPa for 50 × 150 joists at 300 mm o.c. The load drops to 0.25 kPa at 400 and 600 mm spacing, so read the spacing carefully.",
+    "ref": "NSCP 2015 (NSCP C101-15), Table 204-2 Minimum Design Dead Loads"
+  },
+  {
+    "s": "Beam Spans",
+    "q": "For a beam analyzed as simply supported, how is the effective span generally determined (NSCP / ACI 318 practice)?",
+    "o": [
+      "Always the center-to-center distance of the supports",
+      "Always the clear span between faces of supports",
+      "The clear span minus the depth of the member",
+      "Clear span plus the depth of the member, but not more than the center-to-center distance of supports"
+    ],
+    "c": 3,
+    "n": "The effective span is the clear span plus the depth of the member, but it need not exceed the center-to-center distance between supports.",
+    "ref": "NSCP 2015 (NSCP C101-15), Sec. 408 / ACI 318 - span length of members not built integrally with supports"
+  }
+]

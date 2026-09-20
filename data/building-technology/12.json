@@ -1,0 +1,160 @@
+[
+  {
+    "s": "Steel Reinforcement Estimates",
+    "q": "In the weight-of-rebar formula W = D² × L × ____, with D in mm and L in m, what is the constant?",
+    "o": [
+      "0.006165",
+      "0.00785",
+      "0.06165",
+      "0.6165"
+    ],
+    "c": 0,
+    "n": "0.006165 is about 1/162, from the steel density of 7,850 kg/m³. W comes out in kilograms.",
+    "formula": "W (kg) = D² × L × 0.006165   (D in mm, L in m)",
+    "ref": "PNS 49 - unit mass of deformed steel bars; steel density 7,850 kg/m3"
+  },
+  {
+    "s": "Steel Reinforcement Estimates",
+    "q": "What is the weight of one 12 mm diameter rebar, 6.0 m long?",
+    "o": [
+      "4.44 kg",
+      "5.33 kg",
+      "6.39 kg",
+      "10.65 kg"
+    ],
+    "c": 1,
+    "n": "W = 12² × 6 × 0.006165 = 5.33 kg.",
+    "formula": "W = D² × L × 0.006165",
+    "steps": [
+      "D² = 12² = 144",
+      "144 × 6 m = 864",
+      "864 × 0.006165 = 5.33 kg"
+    ],
+    "ref": "PNS 49 - unit mass of deformed steel bars; Fajardo, Simplified Construction Estimate"
+  },
+  {
+    "s": "Steel Reinforcement Estimates",
+    "q": "What is the weight of one 16 mm diameter rebar, 9.0 m long?",
+    "o": [
+      "11.36 kg",
+      "15.98 kg",
+      "14.20 kg",
+      "28.41 kg"
+    ],
+    "c": 2,
+    "n": "W = 16² × 9 × 0.006165 = 14.20 kg.",
+    "formula": "W = D² × L × 0.006165",
+    "steps": [
+      "D² = 16² = 256",
+      "256 × 9 m = 2,304",
+      "2,304 × 0.006165 = 14.20 kg"
+    ],
+    "ref": "PNS 49 - unit mass of deformed steel bars; Fajardo, Simplified Construction Estimate"
+  },
+  {
+    "s": "Structural Steel Estimates",
+    "q": "In the angle-bar weight formula W = (Leg₁ + Leg₂ − t) × t × L × ____, with legs and t in mm and L in m, what is the constant?",
+    "o": [
+      "0.006165",
+      "0.0785",
+      "0.785",
+      "0.00785"
+    ],
+    "c": 3,
+    "n": "0.00785 comes from the 7,850 kg/m³ density of steel. W comes out in kilograms.",
+    "formula": "W (kg) = (Leg₁ + Leg₂ − t) × t × L × 0.00785   (mm, mm, mm, m)",
+    "ref": "ASEP Steel Handbook - unit mass of angle bars; steel density 7,850 kg/m3"
+  },
+  {
+    "s": "Structural Steel Estimates",
+    "q": "What is the weight of a 50 mm × 50 mm × 6 mm angle bar, 6.0 m long?",
+    "o": [
+      "26.56 kg",
+      "22.40 kg",
+      "30.36 kg",
+      "45.20 kg"
+    ],
+    "c": 0,
+    "n": "W = (50 + 50 − 6) × 6 × 6 × 0.00785 = 26.56 kg.",
+    "formula": "W = (Leg₁ + Leg₂ − t) × t × L × 0.00785",
+    "steps": [
+      "Leg₁ + Leg₂ − t = 50 + 50 − 6 = 94",
+      "94 × t = 94 × 6 = 564",
+      "564 × L = 564 × 6 = 3,384",
+      "3,384 × 0.00785 = 26.56 kg"
+    ],
+    "ref": "ASEP Steel Handbook - unit mass of angle bars; Fajardo, Simplified Construction Estimate"
+  },
+  {
+    "s": "Structural Steel Estimates",
+    "q": "What is the weight of a 75 mm × 75 mm × 6 mm angle bar, 6.0 m long?",
+    "o": [
+      "32.10 kg",
+      "40.69 kg",
+      "47.90 kg",
+      "58.40 kg"
+    ],
+    "c": 1,
+    "n": "W = (75 + 75 − 6) × 6 × 6 × 0.00785 = 40.69 kg.",
+    "formula": "W = (Leg₁ + Leg₂ − t) × t × L × 0.00785",
+    "steps": [
+      "Leg₁ + Leg₂ − t = 75 + 75 − 6 = 144",
+      "144 × 6 = 864",
+      "864 × 6 = 5,184",
+      "5,184 × 0.00785 = 40.69 kg"
+    ],
+    "ref": "ASEP Steel Handbook - unit mass of angle bars; Fajardo, Simplified Construction Estimate"
+  },
+  {
+    "s": "Earthworks",
+    "q": "Estimating practice adds a compaction allowance to fill volume. What factor corresponds to a 10% allowance?",
+    "o": [
+      "0.90",
+      "1.00",
+      "1.10",
+      "1.50"
+    ],
+    "c": 2,
+    "n": "A 10% compaction allowance multiplies the required fill volume by 1.10. The allowance depends on the soil, so use the factor the problem states.",
+    "formula": "Volume to order = Volume of earthfill × 1.10",
+    "ref": "Fajardo, Simplified Construction Estimate - earthwork, shrinkage and compaction allowance"
+  },
+  {
+    "s": "Earthworks",
+    "q": "A fill of 250 cu.m. is needed. Using a 10% compaction allowance, what volume of earthfill should be estimated?",
+    "o": [
+      "225 cu.m.",
+      "250 cu.m.",
+      "312.5 cu.m.",
+      "275 cu.m."
+    ],
+    "c": 3,
+    "n": "250 × 1.10 = 275 cu.m.",
+    "formula": "Volume = 250 × 1.10",
+    "steps": [
+      "Required compacted fill = 250 cu.m.",
+      "Apply the compaction factor of 1.10",
+      "250 × 1.10 = 275 cu.m."
+    ],
+    "ref": "Fajardo, Simplified Construction Estimate - earthwork, shrinkage and compaction allowance"
+  },
+  {
+    "s": "Concrete Works Productivity",
+    "q": "A concrete vibrator needs about 2 minutes per sqm. What area can it cover in one hour?",
+    "o": [
+      "30 sqm",
+      "15 sqm",
+      "60 sqm",
+      "120 sqm"
+    ],
+    "c": 0,
+    "n": "60 min ÷ 2 min per sqm = 30 sqm per hour.",
+    "formula": "Area per hour = 60 min ÷ minutes per sqm",
+    "steps": [
+      "1 hour = 60 minutes",
+      "Time per sqm = 2 minutes",
+      "60 ÷ 2 = 30 sqm"
+    ],
+    "ref": "Fajardo, Simplified Construction Estimate - equipment output, concrete vibrator"
+  }
+]
