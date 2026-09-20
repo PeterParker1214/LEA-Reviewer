@@ -1,0 +1,779 @@
+{
+  "figures": {
+    "f1": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5NYXRlcmlhbHMgVGVzdGluZzogU2FtcGxpbmcgQ29uY2VwdDwvdGV4dD4KPHJlY3QgeD0iODAiIHk9IjEwNSIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyNTAiIGNsYXNzPSJmIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTUwIiBjbGFzcz0icyI+cHJvamVjdCBxdWFudGl0eTwvdGV4dD4KPHRleHQgeD0iMTEyIiB5PSIyMjAiIGNsYXNzPSJ0Ij5sb3QgLyBiYXRjaCAvIHVuaXRzPC90ZXh0Pgo8bGluZSB4MT0iMzkwIiB5MT0iMjMwIiB4Mj0iNTEwIiB5Mj0iMjMwIiBjbGFzcz0ibCIvPgo8cmVjdCB4PSI1MjAiIHk9IjEwNSIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyNTAiIGNsYXNzPSJmMiIvPgo8dGV4dCB4PSI1ODUiIHk9IjE1MCIgY2xhc3M9InMiPnJlcXVpcmVkIHNhbXBsZTwvdGV4dD4KPHRleHQgeD0iNTg1IiB5PSIyMjAiIGNsYXNzPSJ0Ij50ZXN0IHNwZWNpbWVuPC90ZXh0Pgo8dGV4dCB4PSI1NTUiIHk9IjMxNSIgY2xhc3M9InMiPmZyZXF1ZW5jeSArIHNhbXBsZSBzaXplPC90ZXh0Pgo8L3N2Zz4=",
+    "f2": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5Qcm90ZWN0aXZlIENvYXRpbmcgU3lzdGVtPC90ZXh0Pgo8cmVjdCB4PSIxMDAiIHk9IjEyMCIgd2lkdGg9IjcwMCIgaGVpZ2h0PSI3NSIgY2xhc3M9ImYyIi8+Cjx0ZXh0IHg9IjM2NSIgeT0iMTY1IiBjbGFzcz0icyI+c3Vic3RyYXRlPC90ZXh0Pgo8cmVjdCB4PSIxMDAiIHk9IjE5NSIgd2lkdGg9IjcwMCIgaGVpZ2h0PSI2NSIgY2xhc3M9ImYiLz4KPHRleHQgeD0iMzQ1IiB5PSIyMzUiIGNsYXNzPSJzIj5wcmltZXIgLyBiYXNlIGNvYXQ8L3RleHQ+CjxyZWN0IHg9IjEwMCIgeT0iMjYwIiB3aWR0aD0iNzAwIiBoZWlnaHQ9IjY1IiBjbGFzcz0iZjIiLz4KPHRleHQgeD0iMzY1IiB5PSIzMDAiIGNsYXNzPSJzIj50b3AgY29hdDwvdGV4dD4KPC9zdmc+"
+  },
+  "questions": [
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum sampling frequency for Coarse Aggregates?",
+      "o": [
+        "1 per 2,000 bags",
+        "1 per 50 pipes OR 2% of number of pipes",
+        "1 per 40 tons OR 1 per 200 drums",
+        "1 per 1,500 cu.m"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Coarse Aggregates requires a minimum sampling frequency of 1 per 1,500 cu.m.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Materials Testing",
+      "q": "A delivery contains 4,000 galvanized iron sheets. At 1 sample per 1,000 sheets, how many samples are required?",
+      "o": [
+        "3 samples",
+        "5 samples",
+        "4 samples",
+        "2 samples"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Four thousand sheets at one sample per 1,000 sheets requires four samples."
+    },
+    {
+      "s": "Paint",
+      "q": "Where is PU Varnish Topcoat intended to be used?",
+      "o": [
+        "Exterior and interior",
+        "Roofs",
+        "Interior",
+        "Exterior"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "PU Varnish Topcoat is classified for interior use."
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum quantity of each Fine Aggregates sample?",
+      "o": [
+        "20 kg",
+        "10 kg",
+        "50 kg",
+        "70 kg"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Each Fine Aggregates sample requires 50 kg.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Materials Testing",
+      "q": "A shipment contains 1,500 steel pipes. At 1 sample per 500 units, how many samples are required?",
+      "o": [
+        "3 samples",
+        "1 sample",
+        "2 samples",
+        "4 samples"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "One thousand five hundred pipes divided by 500 pipes per sample gives three samples."
+    },
+    {
+      "s": "Paint",
+      "q": "Which note best describes PU Varnish Topcoat?",
+      "o": [
+        "For on-site application",
+        "Applied after varnish sealer",
+        "Provides solvent, chemical, and stain resistance",
+        "Used as a topcoat after Epoxy Primer; chemical, corrosion, and abrasion resistant"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "Applied after varnish sealer."
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum sampling frequency for Non-Reinforced Concrete Pipes?",
+      "o": [
+        "1 per 40 tons OR 1 per 200 drums",
+        "2 pipes OR 2% of number of pipes",
+        "1 per 1,500 cu.m",
+        "1 per 2,000 bags"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Non-Reinforced Concrete Pipes requires a minimum sampling frequency of 2 pipes OR 2% of number of pipes.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Materials Testing",
+      "q": "An asphalt delivery consists of 600 drums. Using 1 sample per 200 drums, how many samples are required?",
+      "o": [
+        "2 samples",
+        "4 samples",
+        "1 sample",
+        "3 samples"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Six hundred drums divided by 200 drums per sample gives three samples."
+    },
+    {
+      "s": "Paint",
+      "q": "Which application/use best matches Automotive Paint?",
+      "o": [
+        "Wood, countertops, flooring",
+        "Floorings, walls, metal substrates, other primed surfaces",
+        "Wood and metals",
+        "Metal, GI, wood, masonry, concrete flooring, water tank"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "Automotive Paint is used on wood and metals."
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum quantity of each Steel Bars sample?",
+      "o": [
+        "70 kg",
+        "10 kg",
+        "20 kg",
+        "3 bars of 1 meter length"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Each Steel Bars sample requires 3 bars of 1 meter length.",
+      "fig": "f1"
+    },
+    {
+      "s": "Paint",
+      "q": "What paint type and solvent/base are associated with Epoxy Enamel?",
+      "o": [
+        "Another listed requirement",
+        "Polyurethane, Varnish",
+        "Automotive, Solvent-Based",
+        "Epoxy, Epoxy-Based"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "Epoxy Enamel belongs to the Epoxy group and uses a epoxy-based base."
+    },
+    {
+      "s": "Paint",
+      "q": "What primer relationship applies to Epoxy Enamel?",
+      "o": [
+        "It replaces all primer",
+        "It is only a concrete admixture",
+        "It is used as a topcoat after Epoxy Primer",
+        "It must be applied before primer"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "Epoxy Enamel is used as a topcoat after an epoxy primer.",
+      "fig": "f2"
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum sampling frequency for Concrete Hollow Block?",
+      "o": [
+        "1 per 40 tons OR 1 per 200 drums",
+        "1 per 20,000 units",
+        "1 per 2,000 bags",
+        "1 per 1,500 cu.m"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Concrete Hollow Block requires a minimum sampling frequency of 1 per 20,000 units.",
+      "fig": "f1"
+    },
+    {
+      "s": "Paint",
+      "q": "Which application method is associated with Epoxy Enamel?",
+      "o": [
+        "Spray, roller, brush",
+        "Another listed requirement",
+        "On-site application",
+        "Roller"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "Epoxy Enamel is applied by roller."
+    },
+    {
+      "s": "Paint",
+      "q": "What preparatory coating is used before the PU Varnish Topcoat?",
+      "o": [
+        "Cementitious putty",
+        "Epoxy primer",
+        "Varnish sealer",
+        "Red oxide primer"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "PU Varnish Topcoat is applied after a varnish sealer.",
+      "fig": "f2"
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum quantity of each Steel Pipes sample?",
+      "o": [
+        "10 kg",
+        "70 kg",
+        "2 pieces at 10 cm long with both sides unthreaded",
+        "20 kg"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Each Steel Pipes sample requires 2 pieces at 10 cm long with both sides unthreaded.",
+      "fig": "f1"
+    },
+    {
+      "s": "Paint",
+      "q": "Where is Acqua Epoxy intended to be used?",
+      "o": [
+        "Roofs",
+        "Interior",
+        "Exterior and interior",
+        "Exterior"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "Acqua Epoxy is classified for exterior and interior use."
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum sampling frequency for Asphalt Mix?",
+      "o": [
+        "Another listed requirement",
+        "1 per 40 tons OR 1 per 200 drums",
+        "1 per 1,500 cu.m",
+        "1 per 2,000 bags"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Asphalt Mix requires a minimum sampling frequency of 1 per 40 tons OR 1 per 200 drums.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Materials Testing",
+      "q": "A project uses 4,500 cu.m of fine aggregate. At 1 sample per 1,500 cu.m, how many samples are required?",
+      "o": [
+        "3 samples",
+        "2 samples",
+        "4 samples",
+        "1 sample"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Four thousand five hundred cubic meters divided by 1,500 cubic meters per sample gives three samples."
+    },
+    {
+      "s": "Paint",
+      "q": "Which note best describes Acqua Epoxy?",
+      "o": [
+        "Applied after varnish sealer",
+        "For on-site application",
+        "Provides solvent, chemical, and stain resistance",
+        "Used as a topcoat after Epoxy Primer; chemical, corrosion, and abrasion resistant"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "Provides solvent, chemical, and stain resistance."
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum quantity of each Coarse Aggregates sample?",
+      "o": [
+        "70 kg",
+        "20 kg",
+        "10 kg",
+        "50 kg"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Each Coarse Aggregates sample requires 70 kg.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Materials Testing",
+      "q": "A project uses 40,000 concrete hollow blocks. At 1 sample per 20,000 units, how many sample sets are required?",
+      "o": [
+        "1 sample set",
+        "4 sample sets",
+        "3 sample sets",
+        "2 sample sets"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Forty thousand CHB divided by 20,000 units per sample set gives two sample sets.",
+      "fig": "f1"
+    },
+    {
+      "s": "Paint",
+      "q": "Which application/use best matches PU Varnish Topcoat?",
+      "o": [
+        "Wood and metals",
+        "Metal, GI, wood, masonry, concrete flooring, water tank",
+        "Floorings, walls, metal substrates, other primed surfaces",
+        "Wood, countertops, flooring"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "PU Varnish Topcoat is used on wood, countertops, flooring."
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum sampling frequency for Reinforced Concrete Pipes?",
+      "o": [
+        "1 per 1,500 cu.m",
+        "1 per 50 pipes OR 2% of number of pipes",
+        "1 per 40 tons OR 1 per 200 drums",
+        "1 per 2,000 bags"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Reinforced Concrete Pipes requires a minimum sampling frequency of 1 per 50 pipes OR 2% of number of pipes.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Materials Testing",
+      "q": "Three steel-pipe samples are required. Each sample needs 2 pieces, each 10 cm long. How many cut pieces are needed altogether?",
+      "o": [
+        "4 pieces",
+        "8 pieces",
+        "3 pieces",
+        "6 pieces"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Each sample requires two cut pieces, so three samples require six pieces total."
+    },
+    {
+      "s": "Paint",
+      "q": "What paint type and solvent/base are associated with Automotive Paint?",
+      "o": [
+        "Automotive, Solvent-Based",
+        "Epoxy, Epoxy-Based",
+        "Another listed requirement",
+        "Polyurethane, Varnish"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "Automotive Paint belongs to the Automotive group and uses a solvent-based base."
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum quantity of each Non-Reinforced Concrete Pipes sample?",
+      "o": [
+        "2 pipes",
+        "70 kg",
+        "20 kg",
+        "10 kg"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Each Non-Reinforced Concrete Pipes sample requires 2 pipes.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Materials Testing",
+      "q": "A project has 200 reinforced concrete pipes. Using the alternative 2% rule, how many pipes correspond to 2%?",
+      "o": [
+        "4 pipes",
+        "2 pipes",
+        "3 pipes",
+        "5 pipes"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Two percent of 200 pipes is four pipes."
+    },
+    {
+      "s": "Paint",
+      "q": "Which application method is associated with Automotive Paint?",
+      "o": [
+        "On-site application",
+        "Another listed requirement",
+        "Spray, roller, brush",
+        "Roller"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "Automotive Paint is applied by on-site application."
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum sampling frequency for Galvanized Iron Sheet?",
+      "o": [
+        "1 per 1,000 sheets",
+        "1 per 1,500 cu.m",
+        "1 per 2,000 bags",
+        "1 per 40 tons OR 1 per 200 drums"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Galvanized Iron Sheet requires a minimum sampling frequency of 1 per 1,000 sheets.",
+      "fig": "f1"
+    },
+    {
+      "s": "Paint",
+      "q": "Where is Epoxy Enamel intended to be used?",
+      "o": [
+        "Exterior and interior",
+        "Exterior",
+        "Roofs",
+        "Interior"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "Epoxy Enamel is classified for interior use."
+    },
+    {
+      "s": "Paint",
+      "q": "Which resistance properties are associated with Epoxy Enamel?",
+      "o": [
+        "Acoustic resistance",
+        "Mildew resistance only",
+        "Chemical, corrosion, and abrasion resistance",
+        "Fireproofing only"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "Epoxy Enamel is identified as resistant to chemicals, corrosion, and abrasion.",
+      "fig": "f2"
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum quantity of each Concrete Hollow Block sample?",
+      "o": [
+        "20 kg",
+        "10 kg",
+        "70 kg",
+        "6 units (3 for compressive test, 3 for moisture content)"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Each Concrete Hollow Block sample requires 6 units (3 for compressive test, 3 for moisture content).",
+      "fig": "f1"
+    },
+    {
+      "s": "Paint",
+      "q": "Which note best describes Epoxy Enamel?",
+      "o": [
+        "Applied after varnish sealer",
+        "For on-site application",
+        "Used as a topcoat after Epoxy Primer; chemical, corrosion, and abrasion resistant",
+        "Provides solvent, chemical, and stain resistance"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "Used as a topcoat after Epoxy Primer; chemical, corrosion, and abrasion resistant.",
+      "fig": "f2"
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum sampling frequency for Cement?",
+      "o": [
+        "Another listed requirement",
+        "1 per 1,500 cu.m",
+        "1 per 2,000 bags",
+        "1 per 40 tons OR 1 per 200 drums"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Cement requires a minimum sampling frequency of 1 per 2,000 bags.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Materials Testing",
+      "q": "A project will use 6,000 bags of cement. At a minimum sampling rate of 1 sample per 2,000 bags, how many samples are required?",
+      "o": [
+        "2 samples",
+        "6 samples",
+        "3 samples",
+        "4 samples"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Six thousand bags divided by 2,000 bags per sample gives three samples.",
+      "fig": "f1"
+    },
+    {
+      "s": "Paint",
+      "q": "Which application/use best matches Acqua Epoxy?",
+      "o": [
+        "Metal, GI, wood, masonry, concrete flooring, water tank",
+        "Wood, countertops, flooring",
+        "Wood and metals",
+        "Floorings, walls, metal substrates, other primed surfaces"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "Acqua Epoxy is used on floorings, walls, metal substrates, other primed surfaces."
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum quantity of each Asphalt Mix sample?",
+      "o": [
+        "70 kg",
+        "20 kg",
+        "10 kg",
+        "50 kg"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Each Asphalt Mix sample requires 20 kg.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Materials Testing",
+      "q": "A project has 30,000 kg of steel bars. At a rate of 1 sample per 10,000 kg, how many samples are required?",
+      "o": [
+        "2 samples",
+        "1 sample",
+        "4 samples",
+        "3 samples"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Thirty thousand kilograms divided by 10,000 kilograms per sample gives three samples.",
+      "fig": "f1"
+    },
+    {
+      "s": "Paint",
+      "q": "What paint type and solvent/base are associated with PU Varnish Topcoat?",
+      "o": [
+        "Automotive, Solvent-Based",
+        "Another listed requirement",
+        "Polyurethane, Varnish",
+        "Epoxy, Epoxy-Based"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "PU Varnish Topcoat belongs to the Polyurethane group and uses a varnish base."
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum sampling frequency for Fine Aggregates?",
+      "o": [
+        "1 per 40 tons OR 1 per 200 drums",
+        "1 per 1,500 cu.m",
+        "1 per 50 pipes OR 2% of number of pipes",
+        "1 per 2,000 bags"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Fine Aggregates requires a minimum sampling frequency of 1 per 1,500 cu.m.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Materials Testing",
+      "q": "Two CHB sample sets are required. Each set contains 6 units. How many CHB units are submitted in total?",
+      "o": [
+        "9 units",
+        "6 units",
+        "12 units",
+        "18 units"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Each sample set contains six units, so two sets require twelve units."
+    },
+    {
+      "s": "Paint",
+      "q": "Which application method is associated with PU Varnish Topcoat?",
+      "o": [
+        "On-site application",
+        "Roller",
+        "Spray, roller, brush",
+        "Another listed requirement"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "PU Varnish Topcoat is applied by spray, roller, brush."
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum quantity of each Reinforced Concrete Pipes sample?",
+      "o": [
+        "20 kg",
+        "70 kg",
+        "1 pipe",
+        "10 kg"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Each Reinforced Concrete Pipes sample requires 1 pipe.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Materials Testing",
+      "q": "An asphalt project uses 120 tons of mix. Using 1 sample per 40 tons, how many samples are required?",
+      "o": [
+        "2 samples",
+        "4 samples",
+        "1 sample",
+        "3 samples"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "One hundred twenty tons divided by 40 tons per sample gives three samples.",
+      "fig": "f1"
+    },
+    {
+      "s": "Paint",
+      "q": "Where is Automotive Paint intended to be used?",
+      "o": [
+        "Exterior",
+        "Exterior and interior",
+        "Interior",
+        "Roofs"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "Automotive Paint is classified for exterior and interior use."
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum sampling frequency for Steel Bars?",
+      "o": [
+        "1 per 2,000 bags",
+        "1 per 10,000 kg",
+        "1 per 40 tons OR 1 per 200 drums",
+        "1 per 1,500 cu.m"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Steel Bars requires a minimum sampling frequency of 1 per 10,000 kg.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Materials Testing",
+      "q": "A project has 300 non-reinforced concrete pipes. Using the 2% rule, how many pipes correspond to 2%?",
+      "o": [
+        "2 pipes",
+        "4 pipes",
+        "8 pipes",
+        "6 pipes"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Two percent of 300 pipes is six pipes."
+    },
+    {
+      "s": "Paint",
+      "q": "Which note best describes Automotive Paint?",
+      "o": [
+        "For on-site application",
+        "Used as a topcoat after Epoxy Primer; chemical, corrosion, and abrasion resistant",
+        "Provides solvent, chemical, and stain resistance",
+        "Applied after varnish sealer"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "For on-site application."
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum quantity of each Galvanized Iron Sheet sample?",
+      "o": [
+        "20 kg",
+        "10 kg",
+        "70 kg",
+        "1 sheet"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Each Galvanized Iron Sheet sample requires 1 sheet.",
+      "fig": "f1"
+    },
+    {
+      "s": "Paint",
+      "q": "Which application/use best matches Epoxy Enamel?",
+      "o": [
+        "Wood and metals",
+        "Wood, countertops, flooring",
+        "Metal, GI, wood, masonry, concrete flooring, water tank",
+        "Floorings, walls, metal substrates, other primed surfaces"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "Epoxy Enamel is used on metal, gi, wood, masonry, concrete flooring, water tank."
+    },
+    {
+      "s": "Paint",
+      "q": "Which resistance properties are associated with Acqua Epoxy?",
+      "o": [
+        "Solvent, chemical, and stain resistance",
+        "Heat and fire only",
+        "Mildew and insects only",
+        "UV light only"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "Acqua Epoxy provides resistance to solvents, chemicals, and stains.",
+      "fig": "f2"
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum sampling frequency for Steel Pipes?",
+      "o": [
+        "1 per 1,500 cu.m",
+        "1 per 40 tons OR 1 per 200 drums",
+        "1 per 500 units",
+        "1 per 2,000 bags"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Steel Pipes requires a minimum sampling frequency of 1 per 500 units.",
+      "fig": "f1"
+    },
+    {
+      "s": "Paint",
+      "q": "What paint type and solvent/base are associated with Acqua Epoxy?",
+      "o": [
+        "Polyurethane, Varnish",
+        "Automotive, Solvent-Based",
+        "Epoxy, Epoxy-Based",
+        "Another listed requirement"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "Acqua Epoxy belongs to the Epoxy group and uses a epoxy-based base."
+    },
+    {
+      "s": "Materials Testing",
+      "q": "What is the minimum quantity of each Cement sample?",
+      "o": [
+        "70 kg",
+        "20 kg",
+        "10 kg",
+        "50 kg"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Each Cement sample requires 10 kg.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Materials Testing",
+      "q": "A project will place 3,000 cu.m of coarse aggregate. At 1 sample per 1,500 cu.m, how many samples are required?",
+      "o": [
+        "3 samples",
+        "2 samples",
+        "4 samples",
+        "1 sample"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 58 — Materials Testing",
+      "n": "Three thousand cubic meters at one sample per 1,500 cubic meters requires two samples.",
+      "fig": "f1"
+    },
+    {
+      "s": "Paint",
+      "q": "Which application method is associated with Acqua Epoxy?",
+      "o": [
+        "On-site application",
+        "Another listed requirement",
+        "Roller",
+        "Spray, roller, brush"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 58 — Paint",
+      "n": "Acqua Epoxy is applied by roller."
+    }
+  ]
+}
