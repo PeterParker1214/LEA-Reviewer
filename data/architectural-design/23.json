@@ -53,16 +53,16 @@
   },
   {
     "s": "Driveways, Entrances and Exits",
-    "q": "PD 1096 maximum ramp slope for exit passageways",
+    "q": "Under PD 1096, what is the maximum slope of an exit passageway?",
     "o": [
       "1:4",
       "1:10",
       "1:8",
       "1:12"
     ],
-    "c": 1,
+    "c": 2,
     "ref": "Tabulation of Design Standards, p. 84",
-    "n": "The exit-passageway maximum is 1:10."
+    "n": "An exit passageway may slope up to 1:8. An exit court is stricter at 1:10. Easy to swap: the court is outdoors and carries more people, so it stays flatter."
   },
   {
     "s": "Fire Exit Stairs",
@@ -807,16 +807,16 @@
   },
   {
     "s": "Guards and Handrails",
-    "q": "Wall clearance under PD 1096",
+    "q": "Under PD 1096, from what floor level up must a building have a stairway reaching the roof?",
     "o": [
-      "38 mm",
-      "50 mm",
-      "60 mm",
-      "40 mm"
+      "4 storeys and higher",
+      "3 storeys and higher",
+      "5 storeys and higher",
+      "10 storeys and higher"
     ],
-    "c": 1,
-    "ref": "Tabulation of Design Standards, p. 82",
-    "n": "The PD 1096 wall clearance is 50 mm."
+    "c": 0,
+    "ref": "PD 1096, Sec. 1207 (e.11)",
+    "n": "Every building of four or more storeys needs one stairway extending to the roof, unless the roof is steeper than 1 in 3. The 50 mm handrail-to-wall clearance often paired with this is a BP 344 rule, not a PD 1096 one."
   },
   {
     "s": "Sidewalks and Planting Strips",
@@ -911,16 +911,16 @@
   },
   {
     "s": "Setbacks",
-    "q": "R-2 maximum front setback",
+    "q": "What is the maximum front setback for an R-2 building?",
     "o": [
       "6.00 m",
       "8.00 m",
       "3.00 m",
       "10.00 m"
     ],
-    "c": 1,
+    "c": 0,
     "ref": "Tabulation of Design Standards, p. 83",
-    "n": "R-2 maximum front setback is 8.00 m."
+    "n": "R-2 runs 3.00 m basic to 6.00 m maximum. R-3 is the one that reaches 8.00 m, made up of 3.00 m plus 5.00 m at grade for parking."
   },
   {
     "s": "Stairways",
@@ -1288,16 +1288,16 @@
   },
   {
     "s": "Stairs and Ramps",
-    "q": "Winding/circular stair width at 300 mm from narrow edge under PD 1096",
+    "q": "Under PD 1096, a winder must give the full required width of run measured 300 mm from the narrow side. What width is that?",
     "o": [
       "280 mm",
       "200 mm",
       "150 mm",
       "250 mm"
     ],
-    "c": 1,
+    "c": 3,
     "ref": "Tabulation of Design Standards, p. 83",
-    "n": "The PD 1096 value is 200 mm at 300 mm from the narrow edge."
+    "n": "The required run is 250 mm, and it must be there 300 mm in from the narrow side. No point on the winder may be narrower than 150 mm."
   },
   {
     "s": "Driveways, Entrances and Exits",
@@ -1652,16 +1652,16 @@
   },
   {
     "s": "Driveways, Entrances and Exits",
-    "q": "PD 1096 maximum ramp slope for exit courts",
+    "q": "Under PD 1096, what is the maximum slope of an exit court?",
     "o": [
       "1:10",
       "1:4",
       "1:12",
       "1:8"
     ],
-    "c": 3,
+    "c": 0,
     "ref": "Tabulation of Design Standards, p. 84",
-    "n": "The exit-court maximum is 1:8."
+    "n": "An exit court may slope up to 1:10, flatter than the 1:8 allowed inside an exit passageway."
   },
   {
     "s": "Fire Exit Stairs",
@@ -1938,16 +1938,16 @@
   },
   {
     "s": "Sidewalks and Planting Strips",
-    "q": "PD 1096 sidewalk width numeric range",
+    "q": "Under PD 1096, how is the required sidewalk width set for a road right-of-way of 30.00 m and above?",
     "o": [
-      "0.50-1.20 m",
-      "0.60-1.00 m",
-      "0.20-1.20 m",
-      "0.60-1.20 m"
+      "From 1/6 up to 1/4 of the RROW width",
+      "A fixed 0.60 m to 1.00 m",
+      "From 1/4 up to 1/3 of the RROW width",
+      "A fixed 1.20 m each side"
     ],
-    "c": 1,
-    "ref": "Tabulation of Design Standards, p. 84",
-    "n": "The PD 1096 numeric range shown is 0.60-1.00 m."
+    "c": 0,
+    "ref": "PD 1096, Table VIII.G.4",
+    "n": "PD 1096 sets sidewalks as a fraction of the road right-of-way, not a fixed width. Wide roads of 30.00 m and up give 1/6 to 1/4; narrow roads below 20.00 m give 1/4 to 1/3, so a small road gives up more of itself to the sidewalk."
   },
   {
     "s": "Stairways",

@@ -71,11 +71,11 @@
       "9.30 sq m/person",
       "28.00 sq m/person",
       "18.60 sq m/person",
-      "48.50 sq m/person"
+      "46.50 sq m/person"
     ],
-    "c": 1,
+    "c": 3,
     "ref": "P. 80 — Industrial",
-    "n": "Warehouses use 28.00 sq m/person under PD 1096."
+    "n": "Warehouses are 46.50 sq m per person, the loosest factor in Table XII.1 together with aircraft hangars. It pairs with a 10-occupant threshold for a second exit."
   },
   {
     "s": "Minimum Level of Completion",
@@ -742,16 +742,16 @@
   },
   {
     "s": "Ceiling Heights",
-    "q": "What naturally ventilated ceiling height is specified under BP 344?",
+    "q": "Which law sets the 2.70 m minimum ceiling height for a naturally ventilated habitable room?",
     "o": [
-      "2.00 m",
-      "2.70 m",
-      "2.30 m",
-      "2.40 m"
+      "PD 1096",
+      "BP 344",
+      "RA 9514",
+      "PD 957"
     ],
-    "c": 1,
-    "ref": "P. 77 — Ceiling Heights",
-    "n": "BP 344 uses 2.70 m for a naturally ventilated habitable room."
+    "c": 0,
+    "ref": "PD 1096, Sec. 805",
+    "n": "Ceiling heights come from PD 1096: 2.40 m with artificial ventilation, 2.70 m with natural ventilation. BP 344 governs accessibility and sets no ceiling height."
   },
   {
     "s": "Exits",
@@ -913,14 +913,14 @@
     "s": "Occupant Load — Industrial",
     "q": "What factor applies to aircraft hangars under PD 1096?",
     "o": [
-      "48.50 sq m/person",
+      "46.50 sq m/person",
       "9.30 sq m/person",
       "18.60 sq m/person",
       "28.00 sq m/person"
     ],
     "c": 0,
     "ref": "P. 80 — Industrial",
-    "n": "Aircraft hangars have the highest listed PD 1096 industrial factor at 48.50 sq m/person."
+    "n": "Aircraft hangars with no repair work are 46.50 sq m per person, the same as warehouses. Parking garages are 18.60 and ordinary garages 9.30."
   },
   {
     "s": "Exit Dimensions",
@@ -1275,7 +1275,7 @@
   },
   {
     "s": "Ceiling Heights",
-    "q": "Under RA 9514, what is the minimum habitable-room ceiling height with artificial ventilation?",
+    "q": "RA 9514 sets no room ceiling height. What clear height does it require along a means of egress?",
     "o": [
       "2.00 m",
       "2.40 m",
@@ -1283,8 +1283,8 @@
       "2.70 m"
     ],
     "c": 0,
-    "ref": "P. 77 — Ceiling Heights",
-    "n": "RA 9514 uses 2.00 m for habitable rooms with artificial ventilation."
+    "ref": "RA 9514 Revised IRR (2019), means of egress",
+    "n": "The 2019 Revised IRR of RA 9514 requires 2.00 m of headroom along a means of egress, and no ceiling projection lower than 2.00 m. Room ceiling heights are a PD 1096 matter."
   },
   {
     "s": "Open Space Requirements",
@@ -1496,16 +1496,16 @@
   },
   {
     "s": "Ceiling Heights",
-    "q": "What artificial-ventilation ceiling height is specified for BP 220 economic and socialized housing?",
+    "q": "Under BP 220, what is the minimum ceiling height of a habitable room in economic or socialized housing?",
     "o": [
       "2.00 m",
       "2.70 m",
       "2.40 m",
       "2.30 m"
     ],
-    "c": 2,
-    "ref": "P. 77 — Ceiling Heights",
-    "n": "The BP 220 categories shown use 2.40 m for artificial ventilation."
+    "c": 0,
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "BP 220 uses one figure, 2.00 m, whatever the ventilation. PD 1096 is the law that splits it into 2.40 m artificial and 2.70 m natural."
   },
   {
     "s": "Open Space Requirements",
@@ -1574,16 +1574,16 @@
   },
   {
     "s": "Ceiling Heights",
-    "q": "What ceiling height is shown for the BP 220 building categories?",
+    "q": "Under BP 220, what minimum clear height must a mezzanine have?",
     "o": [
+      "1.80 m",
+      "1.50 m",
       "2.00 m",
-      "2.30 m",
-      "2.40 m",
-      "2.70 m"
+      "2.40 m"
     ],
     "c": 0,
-    "ref": "P. 78 — Buildings and Mezzanine Floor",
-    "n": "BP 220 shows a 2.00 m building height in the applicable categories."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "1.80 m, the same figure PD 1096 uses above and below a mezzanine, while BP 220 rooms themselves need only 2.00 m."
   },
   {
     "s": "Occupant Load — Industrial",
@@ -1639,16 +1639,16 @@
   },
   {
     "s": "Ceiling Heights",
-    "q": "What naturally ventilated ceiling height is specified for BP 220?",
+    "q": "Which law splits its minimum ceiling height by ventilation, 2.40 m artificial and 2.70 m natural?",
     "o": [
-      "2.40 m",
-      "2.30 m",
-      "2.70 m",
-      "2.00 m"
+      "PD 1096",
+      "BP 344",
+      "RA 9514",
+      "PD 957"
     ],
-    "c": 2,
-    "ref": "P. 77 — Ceiling Heights",
-    "n": "The BP 220 entries use a 2.70 m minimum for natural ventilation."
+    "c": 0,
+    "ref": "PD 1096, Sec. 805",
+    "n": "Only PD 1096 splits the figure. BP 220 sets a flat 2.00 m, and neither RA 9514 nor BP 344 sets a room ceiling height at all."
   },
   {
     "s": "Ceiling Heights",
@@ -1912,16 +1912,16 @@
   },
   {
     "s": "Ceiling Heights",
-    "q": "Under RA 9514, what is the minimum habitable-room ceiling height with natural ventilation?",
+    "q": "Under the 2019 Revised IRR of RA 9514, what minimum ceiling height applies to a fire command center?",
     "o": [
-      "2.70 m",
-      "2.00 m",
       "2.40 m",
-      "2.30 m"
+      "2.00 m",
+      "2.70 m",
+      "3.00 m"
     ],
     "c": 0,
-    "ref": "P. 77 — Ceiling Heights",
-    "n": "RA 9514 gives 2.70 m for naturally ventilated habitable rooms."
+    "ref": "RA 9514 Revised IRR (2019), fire command center",
+    "n": "A fire command center needs 2.40 m of ceiling height, at least 10.00 sq m of floor area, and no dimension under 1.50 m."
   },
   {
     "s": "Exit Dimensions",
@@ -1938,16 +1938,16 @@
   },
   {
     "s": "Ceiling Heights",
-    "q": "What mezzanine ceiling height is shown for RA 9514?",
+    "q": "Under the 2019 Revised IRR of RA 9514, what is the minimum floor area of a fire command center?",
     "o": [
-      "2.30 m",
-      "2.00 m",
-      "2.13 m",
-      "1.80 m"
+      "10.00 sq m",
+      "6.00 sq m",
+      "12.00 sq m",
+      "15.00 sq m"
     ],
-    "c": 2,
-    "ref": "P. 78 — Buildings and Mezzanine Floor",
-    "n": "The RA 9514 entry gives 2.13 m for a mezzanine floor."
+    "c": 0,
+    "ref": "RA 9514 Revised IRR (2019), fire command center",
+    "n": "10.00 sq m minimum, separated by two-hour fire-resistive construction, with a 2.40 m ceiling."
   },
   {
     "s": "Exit Details",
@@ -2250,16 +2250,16 @@
   },
   {
     "s": "Ceiling Heights",
-    "q": "What building ceiling height is shown for RA 9514?",
+    "q": "Under the 2019 Revised IRR of RA 9514, what least dimension must a fire command center have?",
     "o": [
-      "2.00 m",
-      "2.30 m",
-      "2.70 m",
-      "2.13 m"
+      "1.50 m",
+      "1.20 m",
+      "1.80 m",
+      "2.00 m"
     ],
-    "c": 1,
-    "ref": "P. 78 — Buildings and Mezzanine Floor",
-    "n": "RA 9514 shows a 2.30 m building ceiling height."
+    "c": 0,
+    "ref": "RA 9514 Revised IRR (2019), fire command center",
+    "n": "No dimension under 1.50 m, with at least 10.00 sq m of area and a 2.40 m ceiling."
   },
   {
     "s": "Occupant Load — Educational",
