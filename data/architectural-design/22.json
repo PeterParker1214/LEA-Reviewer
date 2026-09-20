@@ -1,7 +1,7 @@
 [
   {
     "s": "Distance to Exits",
-    "q": "What is the maximum exit distance without a sprinkler system under PD 1096?",
+    "q": "Under PD 1096, what maximum travel distance to an exit applies without a sprinkler system?",
     "o": [
       "46 m",
       "60 m",
@@ -9,12 +9,12 @@
       "45 m"
     ],
     "c": 3,
-    "ref": "P. 79 — Distance to Exits",
-    "n": "PD 1096 sets a 45 m maximum without sprinklers."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "45 m unsprinklered, stretching to 60 m once sprinklers are installed."
   },
   {
     "s": "Exit Dimensions",
-    "q": "What minimum exit door width is shown under BP 220?",
+    "q": "Under BP 220, what minimum exit door width applies?",
     "o": [
       "900 mm",
       "800 mm",
@@ -22,12 +22,12 @@
       "750 mm"
     ],
     "c": 1,
-    "ref": "P. 79 — Exit Dimensions",
-    "n": "The BP 220 categories use 800 mm."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "800 mm, narrower than the 900 mm PD 1096 requires."
   },
   {
     "s": "Occupant Load — Institutional",
-    "q": "What sleeping-area factor is shown under PD 1096?",
+    "q": "Under PD 1096, what occupant-load factor applies to an institutional sleeping department?",
     "o": [
       "22.00 sq m/person",
       "11.10 sq m/person",
@@ -35,12 +35,12 @@
       "8.40 sq m/person"
     ],
     "c": 2,
-    "ref": "P. 80 — Institutional Occupancies",
-    "n": "PD 1096 assigns 11.00 sq m/person to sleeping areas."
+    "ref": "PD 1096, Table XII.1",
+    "n": "11.00 sq m per person for sleeping, against 22.00 sq m for in-patient treatment."
   },
   {
     "s": "Exits",
-    "q": "For 1000 or more occupants, how many exits are shown under PD 957?",
+    "q": "In a PD 957 project with 1000 or more occupants, how many exits are required?",
     "o": [
       "3",
       "1",
@@ -48,12 +48,12 @@
       "2"
     ],
     "c": 2,
-    "ref": "P. 78 — Exits",
-    "n": "PD 957 shows four exits at 1000 or more occupants."
+    "ref": "PD 957 and its IRR",
+    "n": "Four. PD 957 follows the PD 1096 counts: one below 10, two to 499, three to 999, four beyond."
   },
   {
     "s": "Occupant Load — Institutional",
-    "q": "What sleeping-area factor is shown under the Fire Code?",
+    "q": "Under the Fire Code, what occupant-load factor applies to an institutional sleeping area?",
     "o": [
       "22.30 sq m/person",
       "11.00 sq m/person",
@@ -61,12 +61,12 @@
       "8.40 sq m/person"
     ],
     "c": 2,
-    "ref": "P. 80 — Institutional Occupancies",
-    "n": "Both columns show 11.10 sq m/person. This factor comes from the Fire Code occupant-load schedule; RA 9514 (2008) replaced PD 1185 of 1977."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "11.10 sq m per person, a hair looser than the 11.00 sq m PD 1096 uses. RA 9514 replaced PD 1185 in 2008."
   },
   {
     "s": "Occupant Load — Industrial",
-    "q": "What occupant-load factor is assigned to warehouses under PD 1096?",
+    "q": "Under PD 1096, what occupant-load factor applies to warehouses?",
     "o": [
       "9.30 sq m/person",
       "28.00 sq m/person",
@@ -74,12 +74,12 @@
       "46.50 sq m/person"
     ],
     "c": 3,
-    "ref": "P. 80 — Industrial",
-    "n": "Warehouses are 46.50 sq m per person, the loosest factor in Table XII.1 together with aircraft hangars. It pairs with a 10-occupant threshold for a second exit."
+    "ref": "PD 1096, Table XII.1",
+    "n": "Warehouses are 46.50 sq m per person, the loosest factor in the Code, together with aircraft hangars."
   },
   {
     "s": "Minimum Level of Completion",
-    "q": "How is the minimum completion level for a single-detached open-market dwelling described?",
+    "q": "In an open market development, what minimum level of completion applies to a single-detached unit?",
     "o": [
       "Rough-finished shell only",
       "Complete House based on submitted specifications",
@@ -87,12 +87,12 @@
       "Partially finished house"
     ],
     "c": 1,
-    "ref": "P. 77 — Minimum Level of Completion",
-    "n": "The open-market single-detached category requires a complete house based on the submitted specifications."
+    "ref": "PD 957 and its IRR",
+    "n": "A complete house, built to the submitted specifications. Only socialized housing may be handed over as a shell."
   },
   {
     "s": "Exit Details",
-    "q": "For a balcony, mezzanine, or storey under RA 9514, how many exits are shown for more than 500 up to 1000 occupants?",
+    "q": "Under RA 9514, how many exits must a balcony, mezzanine or storey have for more than 500 and up to 1000 occupants?",
     "o": [
       "3",
       "2",
@@ -100,12 +100,12 @@
       "4"
     ],
     "c": 0,
-    "ref": "P. 79 — Exit Details",
-    "n": "Three exits are shown for more than 500 up to 1000 occupants."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "Three, rising to four above 1000."
   },
   {
     "s": "Lot Frontages",
-    "q": "What is the socialized-housing frontage for a duplex or single-attached dwelling?",
+    "q": "Under BP 220, what minimum frontage must a socialized-housing duplex or single-attached lot have?",
     "o": [
       "4.00 m",
       "8.00 m",
@@ -113,25 +113,25 @@
       "3.50 m"
     ],
     "c": 2,
-    "ref": "P. 77 — Lot Frontages (Residential)",
-    "n": "The socialized-housing frontage for duplex or single-attached dwellings is 6.00 m."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "6.00 m, against 8.00 m in an open market subdivision."
   },
   {
     "s": "Ceiling Heights",
-    "q": "What artificially ventilated habitable-room height appears under BP 344?",
+    "q": "Under the 2024 Revised IRR of BP 344, what minimum headroom must a sidewalk or walkway have?",
     "o": [
-      "2.40 m",
+      "2.20 m",
       "2.00 m",
-      "2.30 m",
+      "2.40 m",
       "2.70 m"
     ],
     "c": 0,
-    "ref": "P. 77 — Ceiling Heights",
-    "n": "The BP 344 entry gives 2.40 m for artificial ventilation."
+    "ref": "BP 344 Revised IRR (2024)",
+    "n": "2.20 m, that is 2200 mm. Anything hanging below 2.00 m must be guarded so a person with a visual disability does not walk into it."
   },
   {
     "s": "Exit Dimensions",
-    "q": "What maximum passageway slope is shown under PD 957?",
+    "q": "In an open market subdivision under PD 957, what maximum passageway slope applies?",
     "o": [
       "1:12",
       "1:6",
@@ -139,12 +139,12 @@
       "1:10"
     ],
     "c": 2,
-    "ref": "P. 79 — Exit Dimensions",
-    "n": "The PD 957 open-market entry uses 1:8."
+    "ref": "PD 957 and its IRR",
+    "n": "1:8, the same limit PD 1096 sets for an exit passageway."
   },
   {
     "s": "Distance to Exits",
-    "q": "What is the maximum exit distance with sprinklers under RA 9514?",
+    "q": "Under RA 9514, what maximum travel distance to an exit applies with a sprinkler system?",
     "o": [
       "45 m",
       "55 m",
@@ -152,12 +152,12 @@
       "61 m"
     ],
     "c": 3,
-    "ref": "P. 79 — Distance to Exits",
-    "n": "RA 9514 shows 61 m with sprinklers."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "61 m with sprinklers, 46 m without."
   },
   {
     "s": "Exit Details",
-    "q": "What is the maximum threshold height shown under RA 9514?",
+    "q": "Under RA 9514, what maximum height may a threshold have?",
     "o": [
       "100 mm",
       "150 mm",
@@ -165,12 +165,12 @@
       "130 mm"
     ],
     "c": 3,
-    "ref": "P. 79 — Exit Details",
-    "n": "The threshold maximum height shown is 130 mm."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "130 mm. Anything higher stops being a threshold and becomes a step."
   },
   {
     "s": "Exit Details",
-    "q": "What is the minimum exit width for the stage under the listed standard?",
+    "q": "What minimum exit width must a stage have?",
     "o": [
       "750 mm",
       "800 mm",
@@ -178,12 +178,12 @@
       "900 mm"
     ],
     "c": 3,
-    "ref": "P. 79 — Exit Details",
-    "n": "The stage exit is shown as 900 mm wide."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "900 mm for the stage exit itself, with a 750 mm exit stair."
   },
   {
     "s": "Exit Dimensions",
-    "q": "What maximum dead-end length is shown under BP 220?",
+    "q": "Under BP 220, what maximum dead-end length applies?",
     "o": [
       "9.00 m",
       "12.00 m",
@@ -191,12 +191,12 @@
       "3.50 m"
     ],
     "c": 1,
-    "ref": "P. 79 — Exit Dimensions",
-    "n": "BP 220 shows 12.00 m."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "12.00 m, twice the 6.00 m PD 1096 allows."
   },
   {
     "s": "Length of Block",
-    "q": "What maximum block length is stated for row houses under PD 1096?",
+    "q": "Under PD 1096, what maximum block length applies to row houses?",
     "o": [
       "100 m",
       "120 m",
@@ -204,12 +204,12 @@
       "150 m"
     ],
     "c": 0,
-    "ref": "P. 77 — Length of Block",
-    "n": "The PD 1096 row-house block length is capped at 100 m."
+    "ref": "PD 1096, Rule VIII",
+    "n": "100 m, with at most 20 units in that block."
   },
   {
     "s": "Exit Dimensions",
-    "q": "What minimum corridor width is specified under PD 1096?",
+    "q": "Under PD 1096, what minimum corridor width applies?",
     "o": [
       "0.90 m",
       "1.12 mm",
@@ -217,12 +217,12 @@
       "1.20 m"
     ],
     "c": 2,
-    "ref": "P. 79 — Exit Dimensions",
-    "n": "PD 1096 specifies a 1.10 m minimum corridor width."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "1.10 m. BP 220 and BP 344 both ask a little more at 1.20 m."
   },
   {
     "s": "Exits",
-    "q": "For 500–999 occupants, how many exits are shown under PD 957?",
+    "q": "In a PD 957 project with 500 to 999 occupants, how many exits are required?",
     "o": [
       "1",
       "4",
@@ -230,12 +230,12 @@
       "3"
     ],
     "c": 3,
-    "ref": "P. 78 — Exits",
-    "n": "PD 957 shows three exits for 500–999 occupants."
+    "ref": "PD 957 and its IRR",
+    "n": "Three. It steps to four at 1000 occupants."
   },
   {
     "s": "Distance to Exits",
-    "q": "What maximum exit distance without sprinklers applies to BP 220?",
+    "q": "Under BP 220, what maximum travel distance to an exit applies without a sprinkler system?",
     "o": [
       "45 m",
       "46 m",
@@ -243,12 +243,12 @@
       "60 m"
     ],
     "c": 0,
-    "ref": "P. 79 — Distance to Exits",
-    "n": "BP 220 shows a 45 m maximum without sprinklers."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "45 m, the same figure PD 1096 uses."
   },
   {
     "s": "Exit Dimensions",
-    "q": "When must a mezzanine have two stairways under PD 1096?",
+    "q": "Under PD 1096, when must a mezzanine have two stairways?",
     "o": [
       "When it exceeds 185.00 sq. m or 18.00 m in any dimension",
       "When it exceeds 250.00 sq. m or 20.00 m",
@@ -256,12 +256,12 @@
       "When it exceeds 100.00 sq. m or 12.00 m"
     ],
     "c": 0,
-    "ref": "P. 79 — Exit Dimensions",
-    "n": "The rule is triggered when the mezzanine exceeds 185.00 sq. m or 18.00 m in any dimension."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "Once it exceeds 185.00 sq m, or 18.00 m in any one direction. Either trigger is enough."
   },
   {
     "s": "Occupant Load — Mercantile",
-    "q": "What PD 1096 factor applies to a ground floor with direct street access and a sales floor?",
+    "q": "Under PD 1096, what occupant-load factor applies to a mercantile ground floor with direct street access?",
     "o": [
       "9.30 sq m/person",
       "2.80 sq m/person",
@@ -269,12 +269,12 @@
       "4.30 sq m/person"
     ],
     "c": 1,
-    "ref": "P. 80 — Mercantile",
-    "n": "PD 1096 gives 2.80 sq m/person for this ground-floor mercantile use."
+    "ref": "PD 1096, Table XII.1",
+    "n": "2.80 sq m per person on the ground floor and in the basement, 5.60 sq m on upper floors. Street level draws the densest crowd."
   },
   {
     "s": "Exit Dimensions",
-    "q": "What is the maximum dead-end length under PD 1096?",
+    "q": "Under PD 1096, what maximum dead-end length applies to a corridor?",
     "o": [
       "3.50 m",
       "10.00 m",
@@ -282,25 +282,25 @@
       "12.00 m"
     ],
     "c": 2,
-    "ref": "P. 79 — Exit Dimensions",
-    "n": "PD 1096 limits dead ends to 6.00 m."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "6.00 m. Past that an occupant could walk away from the only exit."
   },
   {
     "s": "Exit Dimensions",
-    "q": "What dead-end limit is shown under BP 344?",
+    "q": "Under the 2024 Revised IRR of BP 344, what minimum depth must a pedestrian median or island at a crossing have?",
     "o": [
-      "12.00 m",
-      "6.00 m",
-      "5.00 m",
-      "3.50 m"
+      "1500 mm",
+      "900 mm",
+      "1200 mm",
+      "2500 mm"
     ],
-    "c": 3,
-    "ref": "P. 79 — Exit Dimensions",
-    "n": "BP 344 shows a 3.50 m dead-end limit."
+    "c": 0,
+    "ref": "BP 344 Revised IRR (2024)",
+    "n": "At least 1500 mm deep, preferably 2000 mm, so a wheelchair can wait clear of traffic."
   },
   {
     "s": "Exit Details",
-    "q": "For a sleeping room to outside, what minimum opening width is shown under BP 220?",
+    "q": "Under BP 220, what minimum width must the opening from a sleeping room to the outside have?",
     "o": [
       "75 cm",
       "100 cm",
@@ -308,12 +308,12 @@
       "60 cm"
     ],
     "c": 2,
-    "ref": "P. 79 — Exit Details",
-    "n": "The BP 220 entry requires at least 90 cm from sleeping room to outside."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "90 cm from a sleeping room to the outside, against 60 cm for an interior door."
   },
   {
     "s": "Size/Dimension of Rooms",
-    "q": "What minimum floor area and minimum dimension are given for rooms for human habitation?",
+    "q": "Under PD 1096, what minimum floor area and least dimension must a room for human habitation have?",
     "o": [
       "6.00 sq. m and 2.00 m",
       "6.00 sq. m and 1.50 m",
@@ -321,12 +321,12 @@
       "8.00 sq. m and 2.00 m"
     ],
     "c": 0,
-    "ref": "P. 78 — Size/Dimension of Rooms",
-    "n": "The minimum is 6.00 sq. m, with at least one dimension of 2.00 m."
+    "ref": "PD 1096, Sec. 806",
+    "n": "6.00 sq m with a least dimension of 2.00 m. A long thin 6 sq m room does not qualify."
   },
   {
     "s": "Ceiling Heights",
-    "q": "A habitable room relies on natural ventilation. Which minimum ceiling height should be selected from the listed general standard?",
+    "q": "A habitable room relies on natural ventilation. What minimum ceiling height applies?",
     "o": [
       "2.70 m",
       "2.40 m",
@@ -334,25 +334,25 @@
       "2.00 m"
     ],
     "c": 0,
-    "ref": "P. 77 — Ceiling Heights",
-    "n": "Natural ventilation uses the 2.70 m minimum in the habitable-room row."
+    "ref": "PD 1096, Sec. 805",
+    "n": "2.70 m with natural ventilation, against 2.40 m where the room is mechanically ventilated."
   },
   {
     "s": "Distance to Exits",
-    "q": "What is the maximum exit distance with sprinklers under BP 344?",
+    "q": "Under the 2024 Revised IRR of BP 344, what minimum clear height must be kept above an accessible parking space?",
     "o": [
-      "61 m",
-      "50 m",
-      "60 m",
-      "45 m"
+      "2200 mm",
+      "2000 mm",
+      "2400 mm",
+      "3000 mm"
     ],
-    "c": 2,
-    "ref": "P. 79 — Distance to Exits",
-    "n": "BP 344 shows 60 m with sprinklers."
+    "c": 0,
+    "ref": "BP 344 Revised IRR (2024)",
+    "n": "2200 mm from the parking floor, so a van with a roof-mounted lift can enter."
   },
   {
     "s": "Exit Dimensions",
-    "q": "What minimum exit door height is shown across the applicable standards?",
+    "q": "What minimum exit door height applies across the building laws?",
     "o": [
       "1.80 m",
       "2.00 m",
@@ -360,12 +360,12 @@
       "2.10 m"
     ],
     "c": 1,
-    "ref": "P. 79 — Exit Dimensions",
-    "n": "The minimum exit door height is 2.00 m."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "2.00 m. Only the widths differ: 900 mm under PD 1096, 800 mm under BP 220."
   },
   {
     "s": "Distance to Exits",
-    "q": "What maximum exit distance with sprinklers is shown under PD 957?",
+    "q": "In an open market subdivision under PD 957, what maximum travel distance to an exit applies with sprinklers?",
     "o": [
       "61 m",
       "50 m",
@@ -373,12 +373,12 @@
       "60 m"
     ],
     "c": 3,
-    "ref": "P. 79 — Distance to Exits",
-    "n": "The PD 957 open-market value is 60 m with sprinklers."
+    "ref": "PD 957 and its IRR",
+    "n": "60 m with sprinklers, 45 m without, following the PD 1096 figures."
   },
   {
     "s": "Exits",
-    "q": "For an occupant load of 10–499, how many exits are required under PD 1096?",
+    "q": "Under PD 1096, how many exits are required for an occupant load of 10 to 499?",
     "o": [
       "4",
       "3",
@@ -386,12 +386,12 @@
       "2"
     ],
     "c": 3,
-    "ref": "P. 78 — Exits",
-    "n": "The PD 1096 entry requires two exits for 10–499 occupants."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "Two. Above the first storey, any occupant load over 10 already needs two."
   },
   {
     "s": "Occupant Load — Educational",
-    "q": "What occupant-load factor applies to reviewing stands, stadia, and waiting spaces under the Fire Code?",
+    "q": "Under the Fire Code, what occupant-load factor applies to reviewing stands, stadia and waiting spaces?",
     "o": [
       "1.80 sq m/person",
       "1.40 sq m/person",
@@ -399,12 +399,12 @@
       "0.28 sq m/person"
     ],
     "c": 3,
-    "ref": "P. 80 — Educational Occupancies",
-    "n": "The PD 1185 and RA 9514 entries both show 0.28 sq m/person. This factor comes from the Fire Code occupant-load schedule; RA 9514 (2008) replaced PD 1185 of 1977."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "0.28 sq m per person, far denser than the 0.65 sq m PD 1096 assigns. RA 9514 replaced PD 1185 in 2008."
   },
   {
     "s": "Exit Details",
-    "q": "What exception is given for the sleeping-room outside window?",
+    "q": "When is a sleeping room excused from having an outside window for escape?",
     "o": [
       "It is omitted if the room has one door",
       "It is not required if the room has two doors",
@@ -412,12 +412,12 @@
       "It is optional for corner rooms"
     ],
     "c": 1,
-    "ref": "P. 79 — Exit Details",
-    "n": "The outside window requirement is excepted when the room has two doors."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "When the room already has two doors. Two ways out make the window unnecessary."
   },
   {
     "s": "Occupant Load — Educational",
-    "q": "What occupant-load factor is shown for dry nurseries with sleeping under RA 9514?",
+    "q": "Under RA 9514, what occupant-load factor applies to a dry nursery with sleeping?",
     "o": [
       "7.40 sq m/person",
       "3.30 sq m/person",
@@ -425,12 +425,12 @@
       "1.40 sq m/person"
     ],
     "c": 1,
-    "ref": "P. 80 — Educational Occupancies",
-    "n": "RA 9514 gives 3.30 sq m/person for dry nurseries with sleeping."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "3.30 sq m per person, close to the 3.25 sq m PD 1096 gives a children’s nursery."
   },
   {
     "s": "Distance to Exits",
-    "q": "What is the maximum exit distance with sprinklers under BP 220?",
+    "q": "Under BP 220, what maximum travel distance to an exit applies with a sprinkler system?",
     "o": [
       "50 m",
       "45 m",
@@ -438,12 +438,12 @@
       "61 m"
     ],
     "c": 2,
-    "ref": "P. 79 — Distance to Exits",
-    "n": "BP 220 shows 60 m with sprinklers."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "60 m with sprinklers, against 45 m without."
   },
   {
     "s": "Lot Frontages",
-    "q": "For a single-detached irregular lot in an open-market development, what frontage is required?",
+    "q": "In an open market development, what minimum frontage must an irregular single-detached lot have?",
     "o": [
       "6.00 m",
       "10.00 m",
@@ -451,12 +451,12 @@
       "8.00 m"
     ],
     "c": 1,
-    "ref": "P. 77 — Lot Frontages (Residential)",
-    "n": "An irregular single-detached lot requires a 10.00 m frontage in the open-market category."
+    "ref": "PD 957 and its IRR",
+    "n": "10.00 m, just under the 12.00 m required of a corner lot."
   },
   {
     "s": "Occupant Load — Institutional",
-    "q": "What occupant-load factor is given for hospitals and sanitaria under PD 1096?",
+    "q": "Under PD 1096, what occupant-load factor applies to hospitals and sanitaria?",
     "o": [
       "3.25 sq m/person",
       "8.40 sq m/person",
@@ -464,12 +464,12 @@
       "11.00 sq m/person"
     ],
     "c": 1,
-    "ref": "P. 80 — Institutional Occupancies",
-    "n": "Hospitals and sanitaria use 8.40 sq m/person."
+    "ref": "PD 1096, Table XII.1",
+    "n": "8.40 sq m per person. Nursing homes and homes for the aged are looser at 7.40 sq m."
   },
   {
     "s": "Exits",
-    "q": "For 10–499 occupants, what number of exits is shown under PD 957?",
+    "q": "In a PD 957 project with 10 to 499 occupants, how many exits are required?",
     "o": [
       "2",
       "4",
@@ -477,12 +477,12 @@
       "3"
     ],
     "c": 0,
-    "ref": "P. 78 — Exits",
-    "n": "PD 957 shows two exits for an occupant load of 10–499."
+    "ref": "PD 957 and its IRR",
+    "n": "Two, following the PD 1096 counts."
   },
   {
     "s": "Distance to Exits",
-    "q": "What is the maximum exit distance with a sprinkler system under PD 1096?",
+    "q": "Under PD 1096, what maximum travel distance to an exit applies with a sprinkler system?",
     "o": [
       "60 m",
       "61 m",
@@ -490,12 +490,12 @@
       "45 m"
     ],
     "c": 0,
-    "ref": "P. 79 — Distance to Exits",
-    "n": "PD 1096 allows 60 m with sprinklers."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "60 m. Sprinklers buy 15 m over the 45 m allowed without them."
   },
   {
     "s": "Distance to Exits",
-    "q": "A sprinklered project follows BP 220. What maximum travel distance to an exit is shown?",
+    "q": "A sprinklered project is built under BP 220. What maximum travel distance to an exit applies?",
     "o": [
       "45 m",
       "50 m",
@@ -503,8 +503,8 @@
       "61 m"
     ],
     "c": 2,
-    "ref": "P. 79 — Distance to Exits",
-    "n": "BP 220 allows a maximum of 60 m with a sprinkler system."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "60 m. Without sprinklers it drops to 45 m."
   },
   {
     "s": "Size/Dimension of Rooms",
@@ -516,12 +516,12 @@
       "2.00 m × 1.70 m, 3.40 sq. m"
     ],
     "c": 0,
-    "ref": "P. 78 — Size/Dimension of Rooms",
-    "n": "Sec. C.6.3(a): accessible toilet cubicles are at least 1800 × 1800 mm, or 3.24 sq. m (the 1994 IRR required 1.70 × 1.80 m)."
+    "ref": "BP 344 Revised IRR (2024), Sec. C.6.3",
+    "n": "At least 1800 by 1800 mm, that is 3.24 sq m. The 1994 IRR required only 1.70 by 1.80 m."
   },
   {
     "s": "Exit Details",
-    "q": "How many exits are required for a boiler room?",
+    "q": "How many exits must a boiler room have?",
     "o": [
       "1",
       "3",
@@ -529,12 +529,12 @@
       "2"
     ],
     "c": 3,
-    "ref": "P. 79 — Exit Details",
-    "n": "The boiler-room entry calls for two exits."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "Two. A boiler room is where fire starts, so no occupant may be cornered in it."
   },
   {
     "s": "Lot Frontages",
-    "q": "What is the socialized-housing frontage for a single-detached corner lot?",
+    "q": "Under BP 220, what minimum frontage must a socialized-housing single-detached corner lot have?",
     "o": [
       "12.00 m",
       "6.00 m",
@@ -542,12 +542,12 @@
       "10.00 m"
     ],
     "c": 2,
-    "ref": "P. 77 — Lot Frontages (Residential)",
-    "n": "The socialized-housing requirement for a single-detached corner lot is 8.00 m."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "8.00 m, two thirds of the 12.00 m an open market corner lot needs."
   },
   {
     "s": "Exits",
-    "q": "For an occupant load of 500–999, how many exits are required under PD 1096?",
+    "q": "Under PD 1096, how many exits are required for an occupant load of 500 to 999?",
     "o": [
       "4",
       "2",
@@ -555,25 +555,25 @@
       "3"
     ],
     "c": 3,
-    "ref": "P. 78 — Exits",
-    "n": "PD 1096 requires three exits for 500–999 occupants."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "Three. Four are required at 1000 or more."
   },
   {
     "s": "Exit Details",
-    "q": "How high above the floor is the outside window opening shown?",
+    "q": "How high above the floor may the outside window of a sleeping room sit?",
     "o": [
       "1.22 cm",
       "1.22 m",
       "1.50 m",
       "0.90 m"
     ],
-    "c": 0,
-    "ref": "P. 79 — Exit Details",
-    "n": "The source prints the value as 1.22 cm above floor; this is preserved exactly."
+    "c": 1,
+    "ref": "PD 1096, Sec. 1207",
+    "n": "1.22 m above the floor, about chest height, so an adult can climb through it."
   },
   {
     "s": "Open Space Requirements",
-    "q": "For an interior lot with E, F, G, H, or I occupancy, what open-space percentage is required?",
+    "q": "For an interior lot with E, F, G, H or I occupancy, what minimum open space applies?",
     "o": [
       "25%",
       "10%",
@@ -581,12 +581,12 @@
       "20%"
     ],
     "c": 3,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "For E, F, G, H and I occupancies on an interior lot, the requirement is 20%."
+    "ref": "PD 1096, Rule VIII",
+    "n": "20%, against 50% for A, B, C, D and J occupancies on the same lot."
   },
   {
     "s": "Lot Frontages",
-    "q": "For a single-detached corner lot in an open-market development, what is the minimum frontage?",
+    "q": "In an open market development, what minimum frontage must a single-detached corner lot have?",
     "o": [
       "12.00 m",
       "6.00 m",
@@ -594,12 +594,12 @@
       "8.00 m"
     ],
     "c": 0,
-    "ref": "P. 77 — Lot Frontages (Residential)",
-    "n": "The open-market frontage for a single-detached corner lot is 12.00 m."
+    "ref": "PD 957 and its IRR",
+    "n": "12.00 m, the widest frontage in the schedule. A corner lot must address two streets."
   },
   {
     "s": "Open Space Requirements",
-    "q": "Under BP 220, what is the residential open-space requirement for an interior lot?",
+    "q": "Under BP 220, what residential open space applies to an interior lot?",
     "o": [
       "25%",
       "20%",
@@ -607,12 +607,12 @@
       "15%"
     ],
     "c": 2,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "For BP 220, an interior lot requires 50% open space for residential use."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "50% for residential use, 25% for anything else."
   },
   {
     "s": "Size/Dimension of Rooms",
-    "q": "What studio-unit area is shown under PD 957?",
+    "q": "Under PD 957, what minimum area must a studio unit have?",
     "o": [
       "30 sq. m",
       "24 sq. m",
@@ -620,12 +620,12 @@
       "18 sq. m"
     ],
     "c": 3,
-    "ref": "P. 78 — Size/Dimension of Rooms",
-    "n": "PD 957 gives 18 sq. m for a studio unit."
+    "ref": "PD 957 and its IRR",
+    "n": "18 sq m, three times the 6.00 sq m PD 1096 sets for a single habitable room."
   },
   {
     "s": "Occupant Load — Industrial",
-    "q": "What industrial factor is shown under the Fire Code for the industrial uses grouped together?",
+    "q": "Under the 1977 Fire Code, what occupant-load factor applied to grouped industrial uses?",
     "o": [
       "28.00 sq m/person",
       "48.50 sq m/person",
@@ -633,12 +633,12 @@
       "5.60 sq m/person"
     ],
     "c": 2,
-    "ref": "P. 80 — Industrial",
-    "n": "The PD 1185 industrial column shows 9.30 sq m/person for the grouped uses shown. This factor comes from the Fire Code occupant-load schedule; RA 9514 (2008) replaced PD 1185 of 1977."
+    "ref": "PD 1185, the 1977 Fire Code (repealed by RA 9514)",
+    "n": "9.30 sq m per person, the same figure used for offices. RA 9514 replaced PD 1185 in 2008."
   },
   {
     "s": "Occupant Load — Mercantile",
-    "q": "What occupant-load factor applies to basement areas with covered walls?",
+    "q": "Under PD 1096, what occupant-load factor applies to a mercantile basement?",
     "o": [
       "9.30 sq m/person",
       "2.80 sq m/person",
@@ -646,12 +646,12 @@
       "5.60 sq m/person"
     ],
     "c": 1,
-    "ref": "P. 80 — Mercantile",
-    "n": "The basement value shown is 2.80 sq m/person."
+    "ref": "PD 1096, Table XII.1",
+    "n": "2.80 sq m per person, the same as the ground floor. Upper floors ease to 5.60 sq m."
   },
   {
     "s": "Occupant Load — Institutional",
-    "q": "What factor applies to nursing homes, children’s homes, and homes for the aged?",
+    "q": "Under PD 1096, what occupant-load factor applies to nursing homes, children’s homes and homes for the aged?",
     "o": [
       "3.25 sq m/person",
       "8.40 sq m/person",
@@ -659,12 +659,12 @@
       "7.40 sq m/person"
     ],
     "c": 3,
-    "ref": "P. 80 — Institutional Occupancies",
-    "n": "These institutional uses are assigned 7.40 sq m/person."
+    "ref": "PD 1096, Table XII.1",
+    "n": "7.40 sq m per person, looser than the 8.40 sq m used for hospitals."
   },
   {
     "s": "Exits",
-    "q": "For an occupant load of 1000 and above in Class A, how many exits are required under PD 1096?",
+    "q": "Under PD 1096, how many exits are required for an occupant load of 1000 or more?",
     "o": [
       "1",
       "4",
@@ -672,12 +672,12 @@
       "3"
     ],
     "c": 1,
-    "ref": "P. 78 — Exits",
-    "n": "For 1000 or more occupants in Class A, PD 1096 requires four exits."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "Four, the highest count the Code requires."
   },
   {
     "s": "Open Space Requirements",
-    "q": "Under PD 1096, what minimum open-space percentage applies to an end lot with A, B, C, D, E2 and H occupancy?",
+    "q": "Under PD 1096, what minimum open space applies to an end lot with A, B, C, D, E2 or H occupancy?",
     "o": [
       "15%",
       "10%",
@@ -685,12 +685,12 @@
       "20%"
     ],
     "c": 2,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "For A, B, C, D, E2 and H occupancies on an end lot, the open-space range is 30%–50%."
+    "ref": "PD 1096, Rule VIII",
+    "n": "30% to 50%. An end lot has one boundary free, so it falls between an interior and a corner lot."
   },
   {
     "s": "Exit Details",
-    "q": "How many exits are required for the stage itself?",
+    "q": "How many exits must the stage itself have?",
     "o": [
       "4",
       "1",
@@ -698,12 +698,12 @@
       "3"
     ],
     "c": 1,
-    "ref": "P. 79 — Exit Details",
-    "n": "The stage entry allows one exit, with the specified width requirements."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "One exit at 900 mm wide, plus a 750 mm exit stair."
   },
   {
     "s": "Exit Dimensions",
-    "q": "What minimum corridor width is shown under BP 220 and BP 344?",
+    "q": "Under BP 220 and BP 344, what minimum corridor width applies?",
     "o": [
       "1.20 m",
       "1.10 m",
@@ -711,12 +711,12 @@
       "1.12 mm"
     ],
     "c": 0,
-    "ref": "P. 79 — Exit Dimensions",
-    "n": "Both BP 220 and BP 344 show 1.20 m."
+    "ref": "BP 344 Revised IRR (2024)",
+    "n": "1.20 m for both, against 1.10 m under PD 1096."
   },
   {
     "s": "Occupant Load — Industrial",
-    "q": "What industrial factor is shown under RA 9514 for the grouped uses shown?",
+    "q": "Under RA 9514, what occupant-load factor applies to grouped industrial uses?",
     "o": [
       "48.50 sq m/person",
       "5.60 sq m/person",
@@ -724,12 +724,12 @@
       "9.30 sq m/person"
     ],
     "c": 3,
-    "ref": "P. 80 — Industrial",
-    "n": "The RA 9514 industrial entry is 9.30 sq m/person."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "9.30 sq m per person, unchanged from the 1977 Fire Code."
   },
   {
     "s": "Light & Ventilation",
-    "q": "A required window must be protected by an eave. What minimum horizontal projection is given?",
+    "q": "A required window must be sheltered by an eave. What minimum horizontal projection must the eave have?",
     "o": [
       "600 mm",
       "500 mm",
@@ -737,8 +737,8 @@
       "750 mm"
     ],
     "c": 3,
-    "ref": "P. 78 — Light & Ventilation",
-    "n": "The required eave projection over the window is at least 750 mm."
+    "ref": "PD 1096, Sec. 805-811",
+    "n": "At least 750 mm over the window, enough to keep rain out while the window stays open."
   },
   {
     "s": "Ceiling Heights",
@@ -751,11 +751,11 @@
     ],
     "c": 0,
     "ref": "PD 1096, Sec. 805",
-    "n": "Ceiling heights come from PD 1096: 2.40 m with artificial ventilation, 2.70 m with natural ventilation. BP 344 governs accessibility and sets no ceiling height."
+    "n": "Ceiling heights come from PD 1096: 2.40 m with artificial ventilation, 2.70 m with natural. BP 344 governs accessibility and sets no ceiling height."
   },
   {
     "s": "Exits",
-    "q": "What minimum exit provision does PD 957 show for an occupant load below 10?",
+    "q": "Under the 1977 Fire Code, what minimum number of exits applied whatever the occupant load?",
     "o": [
       "4 exits",
       "At least 2 exits",
@@ -763,12 +763,12 @@
       "1 exit"
     ],
     "c": 1,
-    "ref": "P. 78 — Exits",
-    "n": "The PD 957 column specifies at least two exits for an occupant load below 10."
+    "ref": "PD 1185, the 1977 Fire Code (repealed by RA 9514)",
+    "n": "At least two. PD 1096 is gentler, allowing one below 10 occupants. RA 9514 replaced PD 1185 in 2008."
   },
   {
     "s": "Exits",
-    "q": "For an occupant load below 10, how many exits are required under PD 1096?",
+    "q": "Under PD 1096, how many exits are required for an occupant load below 10?",
     "o": [
       "2",
       "3",
@@ -776,12 +776,12 @@
       "4"
     ],
     "c": 2,
-    "ref": "P. 78 — Exits",
-    "n": "PD 1096 requires one exit for an occupant load below 10."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "One. It becomes two once the load passes 10 on any floor above the first."
   },
   {
     "s": "Occupant Load — Institutional",
-    "q": "What treatment-area factor is shown under PD 1096?",
+    "q": "Under PD 1096, what occupant-load factor applies to an in-patient institutional treatment department?",
     "o": [
       "22.30 sq m/person",
       "11.00 sq m/person",
@@ -789,12 +789,12 @@
       "28.00 sq m/person"
     ],
     "c": 2,
-    "ref": "P. 80 — Institutional Occupancies",
-    "n": "PD 1096 assigns 22.00 sq m/person to treatment areas."
+    "ref": "PD 1096, Table XII.1",
+    "n": "22.00 sq m per person for treatment, twice the 11.00 sq m used for sleeping."
   },
   {
     "s": "Open Space Requirements",
-    "q": "What BP 220 open-space percentage applies to other uses on a corner lot?",
+    "q": "Under BP 220, what open space applies to non-residential uses on a corner lot?",
     "o": [
       "15%",
       "25%",
@@ -802,12 +802,12 @@
       "10%"
     ],
     "c": 0,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "Other uses on a corner lot require 15% open space under BP 220."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "15% for other uses, against 10% for residential."
   },
   {
     "s": "Exit Details",
-    "q": "For a stand at +0.50 m AGL with more than 50 persons, how many exits are required?",
+    "q": "A stand sits 0.50 m above ground level and holds more than 50 persons. How many exits does it need?",
     "o": [
       "2",
       "4",
@@ -815,12 +815,12 @@
       "3"
     ],
     "c": 0,
-    "ref": "P. 79 — Exit Details",
-    "n": "The stand condition shown requires two exits and an open condition at both ends."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "Two, and it must be open at both ends."
   },
   {
     "s": "Occupant Load — Educational",
-    "q": "What occupant-load factor is given for conference rooms, exhibit rooms, and gyms under PD 1096?",
+    "q": "Under PD 1096, what occupant-load factor applies to conference rooms, exhibit rooms and gymnasia?",
     "o": [
       "0.65 sq m/person",
       "4.60 sq m/person",
@@ -828,12 +828,12 @@
       "1.80 sq m/person"
     ],
     "c": 2,
-    "ref": "P. 80 — Educational Occupancies",
-    "n": "The PD 1096 factor for these spaces is 1.40 sq m/person."
+    "ref": "PD 1096, Table XII.1",
+    "n": "1.40 sq m per person. Classrooms are tighter still at 1.80 sq m."
   },
   {
     "s": "Exit Details",
-    "q": "What minimum width is specified for the stage exit stair?",
+    "q": "What minimum width must a stage exit stair have?",
     "o": [
       "800 mm",
       "750 mm",
@@ -841,12 +841,12 @@
       "710 mm"
     ],
     "c": 1,
-    "ref": "P. 79 — Exit Details",
-    "n": "The stage exit stair is 750 mm wide."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "750 mm, narrower than the 900 mm stage exit itself."
   },
   {
     "s": "Occupant Load — Mercantile",
-    "q": "A mercantile upper floor follows PD 1096. What area per person should be used?",
+    "q": "A mercantile upper floor is assessed under PD 1096. What floor area per person applies?",
     "o": [
       "2.80 sq m/person",
       "9.30 sq m/person",
@@ -854,12 +854,12 @@
       "5.60 sq m/person"
     ],
     "c": 3,
-    "ref": "P. 80 — Mercantile",
-    "n": "PD 1096 assigns 5.60 sq m/person to upper-floor mercantile areas."
+    "ref": "PD 1096, Table XII.1",
+    "n": "5.60 sq m per person upstairs, against 2.80 sq m on the ground floor."
   },
   {
     "s": "Distance to Exits",
-    "q": "What is the maximum exit distance with sprinklers under the Fire Code?",
+    "q": "Under the 1977 Fire Code, what maximum travel distance to an exit applied with a sprinkler system?",
     "o": [
       "60 m",
       "61 m",
@@ -867,12 +867,12 @@
       "55 m"
     ],
     "c": 1,
-    "ref": "P. 79 — Distance to Exits",
-    "n": "PD 1185 shows 61 m with sprinklers. This factor comes from the Fire Code occupant-load schedule; RA 9514 (2008) replaced PD 1185 of 1977."
+    "ref": "PD 1185, the 1977 Fire Code (repealed by RA 9514)",
+    "n": "61 m with sprinklers, 46 m without. RA 9514 carries the same two figures. RA 9514 replaced PD 1185 in 2008."
   },
   {
     "s": "Minimum Level of Completion",
-    "q": "What completion level applies to duplex/single-attached and row-house socialized units?",
+    "q": "Under BP 220, what level of completion applies to socialized duplex, single-attached and row house units?",
     "o": [
       "Core-and-shell only",
       "Partially furnished unit",
@@ -880,12 +880,12 @@
       "Complete House based on submitted specifications"
     ],
     "c": 2,
-    "ref": "P. 77 — Minimum Level of Completion",
-    "n": "The socialized category uses a shell house based on the submitted specifications."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "A shell house built to the submitted specifications, which the buyer finishes."
   },
   {
     "s": "Exit Details",
-    "q": "How must the stand described for more than 50 persons be configured?",
+    "q": "How must a stand holding more than 50 persons be arranged?",
     "o": [
       "Open on one side only",
       "Open at both ends",
@@ -893,12 +893,12 @@
       "Enclosed on one end"
     ],
     "c": 1,
-    "ref": "P. 79 — Exit Details",
-    "n": "The stand entry requires it to be open at both ends."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "Open at both ends, with two exits, so the crowd can clear either way."
   },
   {
     "s": "Open Space Requirements",
-    "q": "What BP 220 open-space percentage applies to other uses on a corner-through lot?",
+    "q": "Under BP 220, what open space applies to non-residential uses on a corner-through lot?",
     "o": [
       "20%",
       "15%",
@@ -906,12 +906,12 @@
       "10%"
     ],
     "c": 1,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "Other uses on a corner-through lot require 15% open space under BP 220."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "15%, the same as any other non-residential corner condition."
   },
   {
     "s": "Occupant Load — Industrial",
-    "q": "What factor applies to aircraft hangars under PD 1096?",
+    "q": "Under PD 1096, what occupant-load factor applies to aircraft hangars with no repair work?",
     "o": [
       "46.50 sq m/person",
       "9.30 sq m/person",
@@ -919,8 +919,8 @@
       "28.00 sq m/person"
     ],
     "c": 0,
-    "ref": "P. 80 — Industrial",
-    "n": "Aircraft hangars with no repair work are 46.50 sq m per person, the same as warehouses. Parking garages are 18.60 and ordinary garages 9.30."
+    "ref": "PD 1096, Table XII.1",
+    "n": "46.50 sq m per person, the same as warehouses. Parking garages are 18.60 and ordinary garages 9.30."
   },
   {
     "s": "Exit Dimensions",
@@ -932,12 +932,12 @@
       "750 mm"
     ],
     "c": 0,
-    "ref": "P. 79 — Exit Dimensions",
-    "n": "Sec. C.2.1: all doors have a clear width of at least 900 mm (the 1994 IRR required 800 mm)."
+    "ref": "BP 344 Revised IRR (2024), Sec. C.2.1",
+    "n": "All doors must give at least 900 mm clear. The 1994 IRR required only 800 mm."
   },
   {
     "s": "Open Space Requirements",
-    "q": "What BP 220 open-space percentage applies to other uses on a through lot?",
+    "q": "Under BP 220, what open space applies to non-residential uses on a through lot?",
     "o": [
       "20%",
       "10%",
@@ -945,12 +945,12 @@
       "15%"
     ],
     "c": 3,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "Other uses on a through lot require 15% open space under BP 220."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "15%, against 10% for residential."
   },
   {
     "s": "Ceiling Heights",
-    "q": "Under PD 1096, what is the minimum height for succeeding storeys?",
+    "q": "Under PD 1096, what minimum clear height applies to the storeys above the second?",
     "o": [
       "1.80 m",
       "2.30 m",
@@ -958,12 +958,12 @@
       "2.10 m"
     ],
     "c": 3,
-    "ref": "P. 78 — Buildings and Mezzanine Floor",
-    "n": "Succeeding storeys are set at 2.10 m minimum."
+    "ref": "PD 1096, Sec. 805",
+    "n": "2.10 m of unobstructed headroom. The first storey needs 2.70 m and the second 2.40 m."
   },
   {
     "s": "Exit Details",
-    "q": "For a dwelling with more than two rooms, what condition applies to one of the two exits?",
+    "q": "In a dwelling with more than two rooms, what may one of the two required exits be?",
     "o": [
       "One must be an elevator",
       "Both must be stairs",
@@ -971,12 +971,12 @@
       "Both must be exterior doors"
     ],
     "c": 2,
-    "ref": "P. 79 — Exit Details",
-    "n": "The standard states that one of the two exits may be a door or stairway."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "A door or a stairway. Only one of the two has to be a full exit."
   },
   {
     "s": "Exit Details",
-    "q": "For a balcony, mezzanine, or storey under RA 9514, how many exits are shown above 1000 occupants?",
+    "q": "Under RA 9514, how many exits must a balcony, mezzanine or storey have above 1000 occupants?",
     "o": [
       "2",
       "3",
@@ -984,12 +984,12 @@
       "4"
     ],
     "c": 3,
-    "ref": "P. 79 — Exit Details",
-    "n": "Four exits are shown for an occupant load above 1000."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "Four, the top of the scale."
   },
   {
     "s": "Length of Block",
-    "q": "How many units per block are stated for row houses under PD 1096?",
+    "q": "Under PD 1096, how many row house units may a single block hold?",
     "o": [
       "10 units",
       "20 units",
@@ -997,12 +997,12 @@
       "15 units"
     ],
     "c": 1,
-    "ref": "P. 77 — Length of Block",
-    "n": "The PD 1096 entry allows 20 units per block for row houses."
+    "ref": "PD 1096, Rule VIII",
+    "n": "20 units per block, within a 100 m block length."
   },
   {
     "s": "Light & Ventilation",
-    "q": "What minimum passageway width is required from an inner court?",
+    "q": "What minimum width must a passageway from an inner court have?",
     "o": [
       "At least 1.50 m",
       "At least 2.00 m",
@@ -1010,12 +1010,12 @@
       "At least 1.20 m"
     ],
     "c": 3,
-    "ref": "P. 78 — Light & Ventilation",
-    "n": "The passageway from an inner court must be at least 1.20 m."
+    "ref": "PD 1096, Sec. 805-811",
+    "n": "At least 1.20 m, so the court is not a trap."
   },
   {
     "s": "Minimum Level of Completion",
-    "q": "What minimum completion level applies to single-detached socialized housing?",
+    "q": "Under BP 220, what minimum level of completion applies to a socialized single-detached unit?",
     "o": [
       "Shell House based on submitted specifications",
       "Partially finished house",
@@ -1023,12 +1023,12 @@
       "Complete House based on submitted specifications"
     ],
     "c": 0,
-    "ref": "P. 77 — Minimum Level of Completion",
-    "n": "The socialized-housing single-detached category is a shell house based on the submitted specifications."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "A shell house to the submitted specifications. Economic housing must be handed over complete."
   },
   {
     "s": "Occupant Load — Mercantile",
-    "q": "What factor applies to upper floors under PD 1096?",
+    "q": "Under PD 1096, what occupant-load factor applies to mercantile upper floors?",
     "o": [
       "9.30 sq m/person",
       "2.80 sq m/person",
@@ -1036,12 +1036,12 @@
       "4.30 sq m/person"
     ],
     "c": 2,
-    "ref": "P. 80 — Mercantile",
-    "n": "Upper floors under PD 1096 use 5.60 sq m/person."
+    "ref": "PD 1096, Table XII.1",
+    "n": "5.60 sq m per person, double the 2.80 sq m used at street level."
   },
   {
     "s": "Open Space Requirements",
-    "q": "For an end lot under BP 220, what standard is used for the open-space requirement?",
+    "q": "Under BP 220, what standard governs the open space on an end lot?",
     "o": [
       "10% for all uses",
       "15% for all uses",
@@ -1049,12 +1049,12 @@
       "50% for residential"
     ],
     "c": 2,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "The BP 220 entry for end lots directs users to the PD 1096 standard."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "PD 1096. BP 220 sets its own figures for the other lot types but defers on end lots."
   },
   {
     "s": "Lot Frontages",
-    "q": "What is the socialized-housing frontage for an interior single-detached lot?",
+    "q": "Under BP 220, what minimum frontage must an interior socialized-housing single-detached lot have?",
     "o": [
       "8.00 m",
       "3.00 m",
@@ -1062,12 +1062,12 @@
       "4.00 m"
     ],
     "c": 1,
-    "ref": "P. 77 — Lot Frontages (Residential)",
-    "n": "The interior single-detached lot requirement under socialized housing is 3.00 m."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "3.00 m, the narrowest frontage allowed, since an interior lot reaches the street through an access strip."
   },
   {
     "s": "Occupant Load — Mercantile",
-    "q": "What factor is assigned to offices, storage, and shipping under RA 9514?",
+    "q": "Under RA 9514, what occupant-load factor applies to offices, storage and shipping?",
     "o": [
       "3.70 sq m/person",
       "9.30 sq m/person",
@@ -1075,12 +1075,12 @@
       "18.60 sq m/person"
     ],
     "c": 1,
-    "ref": "P. 80 — Mercantile",
-    "n": "RA 9514 shows 9.30 sq m/person."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "9.30 sq m per person, matching PD 1096. The 1977 Fire Code was denser at 5.60 sq m."
   },
   {
     "s": "Exit Details",
-    "q": "What sign-illumination value is shown under RA 9514?",
+    "q": "Under RA 9514, what illumination must an exit sign receive?",
     "o": [
       "0.005 lumens/sqcm",
       "10.7 lux @ FL",
@@ -1088,12 +1088,12 @@
       "0.05 lumens/sqcm"
     ],
     "c": 0,
-    "ref": "P. 79 — Exit Details",
-    "n": "RA 9514 shows 0.005 lumens per square centimetre."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "0.005 lumens per square centimetre, the same value the 1977 Fire Code used."
   },
   {
     "s": "Exit Dimensions",
-    "q": "What is the maximum dead-end length under RA 9514?",
+    "q": "Under RA 9514, what maximum dead-end length applies to a corridor?",
     "o": [
       "3.50 m",
       "6.00 m",
@@ -1101,12 +1101,12 @@
       "12.00 m"
     ],
     "c": 1,
-    "ref": "P. 79 — Exit Dimensions",
-    "n": "RA 9514 also gives a maximum dead-end length of 6.00 m."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "6.00 m, matching PD 1096."
   },
   {
     "s": "Occupant Load — Institutional",
-    "q": "What factor applies to nurseries for children?",
+    "q": "Under PD 1096, what occupant-load factor applies to a nursery for children?",
     "o": [
       "3.25 sq m/person",
       "7.40 sq m/person",
@@ -1114,12 +1114,12 @@
       "3.30 sq m/person"
     ],
     "c": 0,
-    "ref": "P. 80 — Institutional Occupancies",
-    "n": "Nurseries for children use 3.25 sq m/person."
+    "ref": "PD 1096, Table XII.1",
+    "n": "3.25 sq m per person, the densest institutional figure."
   },
   {
     "s": "Lot Frontages",
-    "q": "What is the open-market frontage requirement for an interior single-detached lot?",
+    "q": "In an open market development, what minimum frontage must an interior single-detached lot have?",
     "o": [
       "8.00 m",
       "3.00 m",
@@ -1127,12 +1127,12 @@
       "4.00 m"
     ],
     "c": 1,
-    "ref": "P. 77 — Lot Frontages (Residential)",
-    "n": "An interior single-detached lot has a minimum open-market frontage of 3.00 m."
+    "ref": "PD 957 and its IRR",
+    "n": "3.00 m, the same as socialized housing. An interior lot needs only an access strip."
   },
   {
     "s": "Occupant Load — Assembly",
-    "q": "What occupant-load factor applies to auditoriums, theaters, churches, and dance floors?",
+    "q": "Under PD 1096, what occupant-load factor applies to auditoriums, theaters, churches and dance floors?",
     "o": [
       "1.80 sq m/person",
       "1.40 sq m/person",
@@ -1140,25 +1140,25 @@
       "0.28 sq m/person"
     ],
     "c": 2,
-    "ref": "P. 79 — Occupant Load",
-    "n": "The assembly spaces listed use 0.65 sq m per person in the applicable columns."
+    "ref": "PD 1096, Table XII.1",
+    "n": "0.65 sq m per person, the densest in the Code. Assembly spaces pack people standing or seated."
   },
   {
     "s": "Distance to Exits",
-    "q": "What is the maximum exit distance without sprinklers under BP 344?",
+    "q": "Under the 2024 Revised IRR of BP 344, how far apart may rest stops be along a long accessible walkway?",
     "o": [
-      "45 m",
-      "60 m",
-      "61 m",
-      "46 m"
+      "12000 mm",
+      "6000 mm",
+      "20000 mm",
+      "30000 mm"
     ],
     "c": 0,
-    "ref": "P. 79 — Distance to Exits",
-    "n": "BP 344 shows a 45 m maximum without sprinklers."
+    "ref": "BP 344 Revised IRR (2024)",
+    "n": "At most 12000 mm between rest stops, so a wheelchair user or a person with a cane can pause."
   },
   {
     "s": "Occupant Load — Institutional",
-    "q": "A treatment area is evaluated under RA 9514. What occupant-load factor applies?",
+    "q": "A treatment area is assessed under RA 9514. What occupant-load factor applies?",
     "o": [
       "22.30 sq m/person",
       "11.10 sq m/person",
@@ -1166,12 +1166,12 @@
       "22.00 sq m/person"
     ],
     "c": 0,
-    "ref": "P. 80 — Institutional Occupancies",
-    "n": "RA 9514 gives 22.30 sq m/person for treatment areas."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "22.30 sq m per person, against 22.00 sq m under PD 1096."
   },
   {
     "s": "Exit Details",
-    "q": "How many exits are required for an open-air stand with more than 300 persons?",
+    "q": "How many exits must an open-air stand holding more than 300 persons have?",
     "o": [
       "1",
       "3",
@@ -1179,12 +1179,12 @@
       "2"
     ],
     "c": 3,
-    "ref": "P. 79 — Exit Details",
-    "n": "The open-air stand condition requires two exits."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "Two. Indoors the same rule bites at 50 persons, because smoke has nowhere to go."
   },
   {
     "s": "Exit Dimensions",
-    "q": "What maximum passageway slope is shown under PD 1096?",
+    "q": "Under PD 1096, what maximum slope may an exit passageway have?",
     "o": [
       "1:8",
       "1:6",
@@ -1192,12 +1192,12 @@
       "1:12"
     ],
     "c": 0,
-    "ref": "P. 79 — Exit Dimensions",
-    "n": "PD 1096 gives a maximum passageway slope of 1:8."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "1:8. An exit court is held flatter, at 1:10."
   },
   {
     "s": "Occupant Load — Institutional",
-    "q": "What treatment-area factor is shown under the Fire Code?",
+    "q": "Under the Fire Code, what occupant-load factor applies to an institutional treatment area?",
     "o": [
       "28.00 sq m/person",
       "22.30 sq m/person",
@@ -1205,12 +1205,12 @@
       "22.00 sq m/person"
     ],
     "c": 1,
-    "ref": "P. 80 — Institutional Occupancies",
-    "n": "Both standards show 22.30 sq m/person. This factor comes from the Fire Code occupant-load schedule; RA 9514 (2008) replaced PD 1185 of 1977."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "22.30 sq m per person, just above the 22.00 sq m PD 1096 uses. RA 9514 replaced PD 1185 in 2008."
   },
   {
     "s": "Exit Dimensions",
-    "q": "What maximum dead-end length is shown for PD 957?",
+    "q": "In an open market subdivision under PD 957, what maximum dead-end length applies?",
     "o": [
       "6.00 m",
       "12.00 m",
@@ -1218,12 +1218,12 @@
       "9.00 m"
     ],
     "c": 1,
-    "ref": "P. 79 — Exit Dimensions",
-    "n": "PD 957 allows a maximum dead-end length of 12.00 m."
+    "ref": "PD 957 and its IRR",
+    "n": "12.00 m, the same allowance BP 220 gives."
   },
   {
     "s": "Lot Frontages",
-    "q": "What socialized-housing frontage is specified for row houses?",
+    "q": "Under BP 220, what minimum frontage must a socialized-housing row house have?",
     "o": [
       "6.00 m",
       "4.00 m",
@@ -1231,12 +1231,12 @@
       "3.50 m"
     ],
     "c": 3,
-    "ref": "P. 77 — Lot Frontages (Residential)",
-    "n": "The socialized-housing frontage for row houses is 3.50 m."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "3.50 m, against 4.00 m for economic and open market row houses."
   },
   {
     "s": "Occupant Load — Educational",
-    "q": "A classroom is being checked under RA 9514. What floor area per person should be used?",
+    "q": "A classroom is assessed under RA 9514. What floor area per person applies?",
     "o": [
       "1.90 sq m/person",
       "1.40 sq m/person",
@@ -1244,12 +1244,12 @@
       "1.80 sq m/person"
     ],
     "c": 0,
-    "ref": "P. 80 — Educational Occupancies",
-    "n": "RA 9514 sets classrooms at 1.90 sq m/person in the table."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "1.90 sq m per person, marginally looser than the 1.80 sq m PD 1096 uses."
   },
   {
     "s": "Open Space Requirements",
-    "q": "Under BP 220, what residential open-space percentage applies to an inside lot?",
+    "q": "Under BP 220, what residential open space applies to an inside lot?",
     "o": [
       "20%",
       "50%",
@@ -1257,12 +1257,12 @@
       "15%"
     ],
     "c": 0,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "Residential inside lots require 20% open space under BP 220."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "20% residential, 15% for other uses."
   },
   {
     "s": "Open Space Requirements",
-    "q": "Under PD 1096, what minimum open-space percentage applies to an interior lot with A, B, C, D and J occupancy?",
+    "q": "Under PD 1096, what minimum open space applies to an interior lot with A, B, C, D or J occupancy?",
     "o": [
       "20%",
       "10%",
@@ -1270,8 +1270,8 @@
       "50%"
     ],
     "c": 3,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "The interior-lot requirement for A, B, C, D and J occupancies is 50%."
+    "ref": "PD 1096, Rule VIII",
+    "n": "50%. An interior lot is hemmed in on every side, so it must give up the most."
   },
   {
     "s": "Ceiling Heights",
@@ -1283,12 +1283,12 @@
       "2.70 m"
     ],
     "c": 0,
-    "ref": "RA 9514 Revised IRR (2019), means of egress",
-    "n": "The 2019 Revised IRR of RA 9514 requires 2.00 m of headroom along a means of egress, and no ceiling projection lower than 2.00 m. Room ceiling heights are a PD 1096 matter."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "The 2019 Revised IRR requires 2.00 m of headroom along a means of egress, and no ceiling projection lower than 2.00 m. Room ceiling heights are a PD 1096 matter."
   },
   {
     "s": "Open Space Requirements",
-    "q": "For an inside lot with E, F, G, H, or I occupancy, what open-space percentage is required?",
+    "q": "For an inside lot with E, F, G, H or I occupancy, what minimum open space applies?",
     "o": [
       "10%",
       "20%",
@@ -1296,12 +1296,12 @@
       "25%"
     ],
     "c": 2,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "For E, F, G, H and I occupancies on an inside lot, the requirement is 15%."
+    "ref": "PD 1096, Rule VIII",
+    "n": "15%, against 20% for A, B, C, D and J occupancies."
   },
   {
     "s": "Ceiling Heights",
-    "q": "Under PD 1096, what is the minimum mezzanine clearance?",
+    "q": "Under PD 1096, what clear height must a mezzanine have above and below it?",
     "o": [
       "2.10 m",
       "1.80 m",
@@ -1309,12 +1309,12 @@
       "2.40 m"
     ],
     "c": 1,
-    "ref": "P. 78 — Buildings and Mezzanine Floor",
-    "n": "The PD 1096 mezzanine minimum is 1.80 m."
+    "ref": "PD 1096, Sec. 805",
+    "n": "1.80 m above and below. It is the one ceiling figure BP 220 matches exactly."
   },
   {
     "s": "Occupant Load — Mercantile",
-    "q": "What factor is assigned to offices, storage, and shipping under PD 1096?",
+    "q": "Under PD 1096, what occupant-load factor applies to offices, storage and shipping?",
     "o": [
       "5.60 sq m/person",
       "9.30 sq m/person",
@@ -1322,12 +1322,12 @@
       "18.60 sq m/person"
     ],
     "c": 1,
-    "ref": "P. 80 — Mercantile",
-    "n": "PD 1096 uses 9.30 sq m/person for offices, storage, and shipping."
+    "ref": "PD 1096, Table XII.1",
+    "n": "9.30 sq m per person, the same figure ordinary garages take."
   },
   {
     "s": "Open Space Requirements",
-    "q": "Under BP 220, what is the open-space requirement for nonresidential use on an interior lot?",
+    "q": "Under BP 220, what open space applies to non-residential uses on an interior lot?",
     "o": [
       "25%",
       "15%",
@@ -1335,12 +1335,12 @@
       "20%"
     ],
     "c": 0,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "The BP 220 requirement for other, nonresidential uses on an interior lot is 25%."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "25%, half the 50% required of residential use on the same lot."
   },
   {
     "s": "Light & Ventilation",
-    "q": "What is the minimum dimension of a court under PD 957 open-market development?",
+    "q": "In an open market development under PD 957, what minimum court dimension applies?",
     "o": [
       "2.00 m",
       "2.50 m",
@@ -1348,12 +1348,12 @@
       "1.50 m"
     ],
     "c": 3,
-    "ref": "P. 78 — Light & Ventilation",
-    "n": "The PD 957 open-market value is 1.50 m."
+    "ref": "PD 957 and its IRR",
+    "n": "1.50 m, tighter than the 2.00 m PD 1096 sets."
   },
   {
     "s": "Ceiling Heights",
-    "q": "Under PD 1096, what is the minimum building ceiling height at the first storey?",
+    "q": "Under PD 1096, what minimum ceiling height applies to the first storey of a multi-storey building?",
     "o": [
       "2.40 m",
       "1.80 m",
@@ -1361,12 +1361,12 @@
       "2.70 m"
     ],
     "c": 3,
-    "ref": "P. 78 — Buildings and Mezzanine Floor",
-    "n": "The first-storey minimum is 2.70 m."
+    "ref": "PD 1096, Sec. 805",
+    "n": "2.70 m at the first storey, 2.40 m at the second, 2.10 m of headroom above that."
   },
   {
     "s": "Distance to Exits",
-    "q": "What is the maximum exit distance without sprinklers under the Fire Code?",
+    "q": "Under the 1977 Fire Code, what maximum travel distance to an exit applied without a sprinkler system?",
     "o": [
       "60 m",
       "61 m",
@@ -1374,12 +1374,12 @@
       "46 m"
     ],
     "c": 3,
-    "ref": "P. 79 — Distance to Exits",
-    "n": "PD 1185 shows a 46 m maximum without a sprinkler system. This factor comes from the Fire Code occupant-load schedule; RA 9514 (2008) replaced PD 1185 of 1977."
+    "ref": "PD 1185, the 1977 Fire Code (repealed by RA 9514)",
+    "n": "46 m unsprinklered, 61 m sprinklered. RA 9514 replaced PD 1185 in 2008."
   },
   {
     "s": "Exit Details",
-    "q": "What sign-illumination value is shown under the Fire Code?",
+    "q": "Under the 1977 Fire Code, what illumination did an exit sign require?",
     "o": [
       "0.005 lumens/sqcm",
       "10.7 lux @ FL",
@@ -1387,12 +1387,12 @@
       "0.01 lumens/sqcm"
     ],
     "c": 0,
-    "ref": "P. 79 — Exit Details",
-    "n": "PD 1185 uses 0.005 lumens per square centimetre. This factor comes from the Fire Code occupant-load schedule; RA 9514 (2008) replaced PD 1185 of 1977."
+    "ref": "PD 1185, the 1977 Fire Code (repealed by RA 9514)",
+    "n": "0.005 lumens per square centimetre, carried forward unchanged into RA 9514. RA 9514 replaced PD 1185 in 2008."
   },
   {
     "s": "Length of Block",
-    "q": "What maximum block length is given for the economic and socialized housing categories?",
+    "q": "Under BP 220, what maximum block length applies in economic and socialized housing?",
     "o": [
       "250 m",
       "300 m",
@@ -1400,12 +1400,12 @@
       "400 m"
     ],
     "c": 3,
-    "ref": "P. 77 — Length of Block",
-    "n": "The table gives 400 m as the maximum block length for the BP 220 housing categories shown."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "400 m, with a 2.0 m alley at midlength once the block passes 250 m."
   },
   {
     "s": "Occupant Load — Industrial",
-    "q": "What factor applies to garages under PD 1096?",
+    "q": "Under PD 1096, what occupant-load factor applies to garages?",
     "o": [
       "28.00 sq m/person",
       "9.30 sq m/person",
@@ -1413,12 +1413,12 @@
       "18.60 sq m/person"
     ],
     "c": 1,
-    "ref": "P. 80 — Industrial",
-    "n": "Garages are assigned 9.30 sq m/person under PD 1096."
+    "ref": "PD 1096, Table XII.1",
+    "n": "9.30 sq m per person for an ordinary garage. A parking garage is looser at 18.60 sq m."
   },
   {
     "s": "Open Space Requirements",
-    "q": "For an inside lot with A, B, C, D, or J occupancy, what open-space percentage is required?",
+    "q": "For an inside lot with A, B, C, D or J occupancy, what minimum open space applies?",
     "o": [
       "15%",
       "10%",
@@ -1426,12 +1426,12 @@
       "20%"
     ],
     "c": 3,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "For A, B, C, D and J occupancies on an inside lot, the requirement is 20%."
+    "ref": "PD 1096, Rule VIII",
+    "n": "20%. An inside lot fronts a street, so it needs less than the 50% of an interior lot."
   },
   {
     "s": "Light & Ventilation",
-    "q": "What minimum fraction of floor area must be provided as window openings?",
+    "q": "What minimum window opening must a room have, as a fraction of its floor area?",
     "o": [
       "At least 15%",
       "At least 10% of the floor area",
@@ -1439,12 +1439,12 @@
       "At least 20%"
     ],
     "c": 1,
-    "ref": "P. 78 — Light & Ventilation",
-    "n": "The standard calls for window openings equal to at least 10% of the floor area."
+    "ref": "PD 1096, Sec. 805-811",
+    "n": "At least 10% of the floor area, with half of that openable for ventilation."
   },
   {
     "s": "Ceiling Heights",
-    "q": "Under PD 1096, what is the minimum habitable-room ceiling height with artificial ventilation?",
+    "q": "Under PD 1096, what minimum ceiling height applies to a habitable room with artificial ventilation?",
     "o": [
       "2.00 m",
       "2.40 m",
@@ -1452,12 +1452,12 @@
       "2.70 m"
     ],
     "c": 1,
-    "ref": "P. 77 — Ceiling Heights",
-    "n": "PD 1096 sets 2.40 m for habitable rooms with artificial ventilation."
+    "ref": "PD 1096, Sec. 805",
+    "n": "2.40 m with artificial ventilation. Rely on natural ventilation and it rises to 2.70 m."
   },
   {
     "s": "Light & Ventilation",
-    "q": "How far should eaves project over required windows?",
+    "q": "How far must eaves project over a required window?",
     "o": [
       "At least 750 mm",
       "At least 600 mm",
@@ -1465,12 +1465,12 @@
       "At least 900 mm"
     ],
     "c": 0,
-    "ref": "P. 78 — Light & Ventilation",
-    "n": "The required eaves projection is at least 750 mm over the windows."
+    "ref": "PD 1096, Sec. 805-811",
+    "n": "At least 750 mm."
   },
   {
     "s": "Occupant Load — Residential",
-    "q": "What residential occupant-load factor is shown under the Fire Code?",
+    "q": "Under the 1977 Fire Code, what occupant-load factor applied to residential occupancy?",
     "o": [
       "22.00 sq m/person",
       "18.00 sq m/person",
@@ -1478,25 +1478,25 @@
       "28.00 sq m/person"
     ],
     "c": 1,
-    "ref": "P. 80 — Residential",
-    "n": "PD 1185 shows 18.00 sq m/person for residential occupancy. This factor comes from the Fire Code occupant-load schedule; RA 9514 (2008) replaced PD 1185 of 1977."
+    "ref": "PD 1185, the 1977 Fire Code (repealed by RA 9514)",
+    "n": "18.00 sq m per person, far denser than the 28.00 sq m PD 1096 assigns a dwelling. RA 9514 replaced PD 1185 in 2008."
   },
   {
     "s": "Exit Dimensions",
-    "q": "What minimum corridor width is shown under RA 9514?",
+    "q": "Under RA 9514, what minimum corridor width applies?",
     "o": [
       "0.90 m",
       "1.10 m",
       "1.20 m",
-      "1.12 mm"
+      "1.12 m"
     ],
     "c": 3,
-    "ref": "P. 79 — Exit Dimensions",
-    "n": "The RA 9514 entry is printed as 1.12 mm; this is preserved as the source value."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "1.12 m, between the 1.10 m of PD 1096 and the 1.20 m of BP 220."
   },
   {
     "s": "Ceiling Heights",
-    "q": "Under BP 220, what is the minimum ceiling height of a habitable room in economic or socialized housing?",
+    "q": "Under BP 220, what minimum ceiling height applies to a habitable room in economic or socialized housing?",
     "o": [
       "2.00 m",
       "2.70 m",
@@ -1505,11 +1505,11 @@
     ],
     "c": 0,
     "ref": "BP 220 Revised IRR (2008)",
-    "n": "BP 220 uses one figure, 2.00 m, whatever the ventilation. PD 1096 is the law that splits it into 2.40 m artificial and 2.70 m natural."
+    "n": "BP 220 uses one figure, 2.00 m, whatever the ventilation. PD 1096 is the law that splits it into 2.40 m and 2.70 m."
   },
   {
     "s": "Open Space Requirements",
-    "q": "Under PD 1096, what minimum open-space percentage applies to a corner lot with A, B, C, D and J occupancy?",
+    "q": "Under PD 1096, what minimum open space applies to a corner lot with A, B, C, D or J occupancy?",
     "o": [
       "15%",
       "10%",
@@ -1517,12 +1517,12 @@
       "5%"
     ],
     "c": 1,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "For A, B, C, D and J occupancies on a corner lot, the requirement is 10%."
+    "ref": "PD 1096, Rule VIII",
+    "n": "10%. Two street frontages already give the lot light and air."
   },
   {
     "s": "Occupant Load — Educational",
-    "q": "What occupant-load factor is given for classrooms under PD 1096?",
+    "q": "Under PD 1096, what occupant-load factor applies to classrooms?",
     "o": [
       "4.60 sq m/person",
       "0.65 sq m/person",
@@ -1530,12 +1530,12 @@
       "1.40 sq m/person"
     ],
     "c": 2,
-    "ref": "P. 80 — Educational Occupancies",
-    "n": "PD 1096 gives 1.80 sq m per person for classrooms."
+    "ref": "PD 1096, Table XII.1",
+    "n": "1.80 sq m per person. Conference rooms and gymnasia are denser still at 1.40 sq m."
   },
   {
     "s": "Lot Frontages",
-    "q": "What is the open-market frontage requirement for a regular single-detached lot?",
+    "q": "In an open market development, what minimum frontage must a regular single-detached lot have?",
     "o": [
       "12.00 m",
       "6.00 m",
@@ -1543,12 +1543,12 @@
       "10.00 m"
     ],
     "c": 1,
-    "ref": "P. 77 — Lot Frontages (Residential)",
-    "n": "A regular single-detached lot has a 6.00 m open-market frontage requirement."
+    "ref": "PD 957 and its IRR",
+    "n": "6.00 m. A corner lot needs twice that at 12.00 m."
   },
   {
     "s": "Exit Details",
-    "q": "What minimum width is specified for the exit or means of egress under RA 9514?",
+    "q": "Under RA 9514, what minimum width must a means of egress have?",
     "o": [
       "1200 mm",
       "710 mm",
@@ -1556,12 +1556,12 @@
       "800 mm"
     ],
     "c": 1,
-    "ref": "P. 79 — Exit Details",
-    "n": "RA 9514 shows a 710 mm minimum width."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "710 mm minimum, 1220 mm maximum for a single unit of exit width."
   },
   {
     "s": "Distance to Exits",
-    "q": "What is the maximum exit distance without sprinklers under PD 957?",
+    "q": "In an open market subdivision under PD 957, what maximum travel distance to an exit applies without sprinklers?",
     "o": [
       "46 m",
       "61 m",
@@ -1569,8 +1569,8 @@
       "45 m"
     ],
     "c": 3,
-    "ref": "P. 79 — Distance to Exits",
-    "n": "The PD 957 open-market value is 45 m."
+    "ref": "PD 957 and its IRR",
+    "n": "45 m, rising to 60 m with sprinklers."
   },
   {
     "s": "Ceiling Heights",
@@ -1583,11 +1583,11 @@
     ],
     "c": 0,
     "ref": "BP 220 Revised IRR (2008)",
-    "n": "1.80 m, the same figure PD 1096 uses above and below a mezzanine, while BP 220 rooms themselves need only 2.00 m."
+    "n": "1.80 m, the same figure PD 1096 uses, while BP 220 rooms themselves need only 2.00 m."
   },
   {
     "s": "Occupant Load — Industrial",
-    "q": "What occupant-load factor is assigned to mechanical equipment rooms under PD 1096?",
+    "q": "Under PD 1096, what occupant-load factor applies to mechanical equipment rooms?",
     "o": [
       "28.00 sq m/person",
       "18.60 sq m/person",
@@ -1595,12 +1595,12 @@
       "9.30 sq m/person"
     ],
     "c": 0,
-    "ref": "P. 80 — Industrial",
-    "n": "Mechanical equipment rooms use 28.00 sq m/person under PD 1096."
+    "ref": "PD 1096, Table XII.1",
+    "n": "28.00 sq m per person, the same as a dwelling. Few people, spread thin."
   },
   {
     "s": "Ceiling Heights",
-    "q": "Under PD 1096, what is the minimum building ceiling height at the second storey?",
+    "q": "Under PD 1096, what minimum ceiling height applies to the second storey?",
     "o": [
       "2.40 m",
       "2.10 m",
@@ -1608,12 +1608,12 @@
       "2.70 m"
     ],
     "c": 0,
-    "ref": "P. 78 — Buildings and Mezzanine Floor",
-    "n": "The second-storey minimum is 2.40 m."
+    "ref": "PD 1096, Sec. 805",
+    "n": "2.40 m at the second storey, below the 2.70 m required at the first."
   },
   {
     "s": "Light & Ventilation",
-    "q": "How far above the roof must the minimum firewall clearance extend?",
+    "q": "How far above the roof must a firewall extend for the required clearance?",
     "o": [
       "1.00 m",
       "2.00 m",
@@ -1621,12 +1621,12 @@
       "0.50 m"
     ],
     "c": 0,
-    "ref": "P. 78 — Light & Ventilation",
-    "n": "The minimum height clearance from the firewall is 1.00 m above the roof."
+    "ref": "PD 1096, Sec. 805-811",
+    "n": "1.00 m above the roof, so fire cannot lap over it."
   },
   {
     "s": "Exit Details",
-    "q": "What is the minimum least dimension of an outside window serving a sleeping room?",
+    "q": "What least dimension must the outside window of a sleeping room have?",
     "o": [
       "45 cm",
       "56 cm",
@@ -1634,8 +1634,8 @@
       "60 cm"
     ],
     "c": 1,
-    "ref": "P. 79 — Exit Details",
-    "n": "The outside-window opening is given a least dimension of 56 cm."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "56 cm, with an area of at least 0.45 sq m."
   },
   {
     "s": "Ceiling Heights",
@@ -1652,7 +1652,7 @@
   },
   {
     "s": "Ceiling Heights",
-    "q": "What minimum mezzanine height is shown under BP 220?",
+    "q": "Under BP 220, what minimum mezzanine height applies in economic and socialized housing?",
     "o": [
       "2.00 m",
       "2.13 m",
@@ -1660,12 +1660,12 @@
       "2.30 m"
     ],
     "c": 2,
-    "ref": "P. 78 — Buildings and Mezzanine Floor",
-    "n": "BP 220 specifies a minimum mezzanine height of 1.80 m."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "1.80 m, against the 2.00 m required of an ordinary room."
   },
   {
     "s": "Open Space Requirements",
-    "q": "Under PD 1096, what minimum open-space percentage applies to a through lot with A, B, C, D and J occupancy?",
+    "q": "Under PD 1096, what minimum open space applies to a through lot with A, B, C, D or J occupancy?",
     "o": [
       "5%",
       "10%",
@@ -1673,12 +1673,12 @@
       "15%"
     ],
     "c": 1,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "For A, B, C, D and J occupancies on a through lot, the requirement is 10%."
+    "ref": "PD 1096, Rule VIII",
+    "n": "10%, the same as a corner lot. Both have two open sides."
   },
   {
     "s": "Open Space Requirements",
-    "q": "Under PD 1096, what minimum open-space percentage applies to a corner-through lot, for any occupancy group?",
+    "q": "Under PD 1096, what minimum open space applies to a corner-through lot, whatever the occupancy?",
     "o": [
       "15%",
       "5%",
@@ -1686,12 +1686,12 @@
       "10%"
     ],
     "c": 1,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "The listed requirement for a corner-through lot is 5%."
+    "ref": "PD 1096, Rule VIII",
+    "n": "5%, the lowest requirement, because three sides already open onto streets."
   },
   {
     "s": "Open Space Requirements",
-    "q": "What BP 220 residential open-space percentage applies to a corner-through lot?",
+    "q": "Under BP 220, what residential open space applies to a corner-through lot?",
     "o": [
       "20%",
       "10%",
@@ -1699,12 +1699,12 @@
       "5%"
     ],
     "c": 1,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "The BP 220 residential requirement for a corner-through lot is 10%."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "10% residential, 15% for other uses."
   },
   {
     "s": "Exit Details",
-    "q": "For a dwelling with more than two rooms, how many exits are shown?",
+    "q": "How many exits must a dwelling with more than two rooms have?",
     "o": [
       "1",
       "2",
@@ -1712,12 +1712,12 @@
       "4"
     ],
     "c": 1,
-    "ref": "P. 79 — Exit Details",
-    "n": "Two exits are shown, with one being a door or stairway."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "Two, one of which may be a door or a stairway."
   },
   {
     "s": "Size/Dimension of Rooms",
-    "q": "What minimum area and dimension are specified for a kitchen?",
+    "q": "Under PD 1096, what minimum area and least dimension must a kitchen have?",
     "o": [
       "2.00 sq. m and 1.20 m",
       "4.00 sq. m and 1.50 m",
@@ -1725,12 +1725,12 @@
       "3.00 sq. m and 1.20 m"
     ],
     "c": 2,
-    "ref": "P. 78 — Size/Dimension of Rooms",
-    "n": "The kitchen minimum is 3.00 sq. m with a minimum dimension of 1.50 m."
+    "ref": "PD 1096, Sec. 806",
+    "n": "3.00 sq m with a least dimension of 1.50 m, half the area required of a habitable room."
   },
   {
     "s": "Length of Block",
-    "q": "What maximum block length is given for the open-market row-house category?",
+    "q": "In an open market development, what maximum block length applies to row houses?",
     "o": [
       "400 m",
       "250 m",
@@ -1738,12 +1738,12 @@
       "300 m"
     ],
     "c": 0,
-    "ref": "P. 77 — Length of Block",
-    "n": "The open-market row-house block length is a maximum of 400 m."
+    "ref": "PD 957 and its IRR",
+    "n": "400 m, four times the 100 m PD 1096 allows."
   },
   {
     "s": "Minimum Level of Completion",
-    "q": "What completion level applies to duplex/single-attached and row-house open-market units?",
+    "q": "In an open market development, what level of completion applies to duplex, single-attached and row house units?",
     "o": [
       "Structural frame only",
       "Shell House based on submitted specifications",
@@ -1751,12 +1751,12 @@
       "Complete House based on submitted specifications"
     ],
     "c": 3,
-    "ref": "P. 77 — Minimum Level of Completion",
-    "n": "The open-market duplex/single-attached and row-house categories require a complete house based on the submitted specifications."
+    "ref": "PD 957 and its IRR",
+    "n": "A complete house, built to the submitted specifications."
   },
   {
     "s": "Distance to Exits",
-    "q": "What is the maximum exit distance without sprinklers under RA 9514?",
+    "q": "Under RA 9514, what maximum travel distance to an exit applies without a sprinkler system?",
     "o": [
       "61 m",
       "60 m",
@@ -1764,12 +1764,12 @@
       "46 m"
     ],
     "c": 3,
-    "ref": "P. 79 — Distance to Exits",
-    "n": "RA 9514 shows 46 m without sprinklers."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "46 m without sprinklers, 61 m with them. PD 1096 is a metre tighter at 45 m and 60 m."
   },
   {
     "s": "Light & Ventilation",
-    "q": "Under BP 220, what is the upper limit for the sum of opening areas in a storey?",
+    "q": "Under BP 220, what limit applies to the sum of opening areas in any storey?",
     "o": [
       "Less than 33%",
       "Less than 50%",
@@ -1777,12 +1777,12 @@
       "Less than 25%"
     ],
     "c": 3,
-    "ref": "P. 78 — Light & Ventilation",
-    "n": "BP 220 uses a less-than-25% limit for the listed categories."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "Less than 25% of the wall area on that storey, half of what PD 1096 allows."
   },
   {
     "s": "Exit Details",
-    "q": "For a balcony, mezzanine, or storey under RA 9514, what number of exits is shown for 100 to 500 occupants?",
+    "q": "Under RA 9514, how many exits must a balcony, mezzanine or storey have for 100 to 500 occupants?",
     "o": [
       "1",
       "4",
@@ -1790,12 +1790,12 @@
       "2"
     ],
     "c": 3,
-    "ref": "P. 79 — Exit Details",
-    "n": "Two exits are shown for this range."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "Two. It steps to three above 500 and four above 1000."
   },
   {
     "s": "Lot Frontages",
-    "q": "What is the open-market frontage for a duplex or single-attached dwelling?",
+    "q": "In an open market development, what minimum frontage must a duplex or single-attached lot have?",
     "o": [
       "3.50 m",
       "4.00 m",
@@ -1803,12 +1803,12 @@
       "6.00 m"
     ],
     "c": 2,
-    "ref": "P. 77 — Lot Frontages (Residential)",
-    "n": "Duplex or single-attached dwellings require 8.00 m frontage in the open-market category."
+    "ref": "PD 957 and its IRR",
+    "n": "8.00 m, against 6.00 m in socialized housing."
   },
   {
     "s": "Occupant Load — Educational",
-    "q": "What occupant-load factor is given for classrooms under RA 9514?",
+    "q": "Under RA 9514, what occupant-load factor applies to classrooms?",
     "o": [
       "4.60 sq m/person",
       "1.40 sq m/person",
@@ -1816,12 +1816,12 @@
       "1.90 sq m/person"
     ],
     "c": 3,
-    "ref": "P. 80 — Educational Occupancies",
-    "n": "RA 9514 uses 1.90 sq m/person for classrooms."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "1.90 sq m per person, against 1.80 sq m under PD 1096."
   },
   {
     "s": "Occupant Load — Mercantile",
-    "q": "What factor applies to upper floors under RA 9514?",
+    "q": "Under RA 9514, what occupant-load factor applies to mercantile upper floors?",
     "o": [
       "9.30 sq m/person",
       "2.80 sq m/person",
@@ -1829,12 +1829,12 @@
       "4.30 sq m/person"
     ],
     "c": 2,
-    "ref": "P. 80 — Mercantile",
-    "n": "RA 9514 also shows 5.60 sq m/person for upper floors."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "5.60 sq m per person, matching PD 1096."
   },
   {
     "s": "Light & Ventilation",
-    "q": "Under PD 957, the sum of opening areas in any storey must be less than what fraction of that wall area?",
+    "q": "In an open market development under PD 957, what limit applies to the sum of opening areas in a storey?",
     "o": [
       "75%",
       "25%",
@@ -1842,12 +1842,12 @@
       "50%"
     ],
     "c": 3,
-    "ref": "P. 78 — Light & Ventilation",
-    "n": "The PD 957 open-market entry also uses less than 50% of the wall area."
+    "ref": "PD 957 and its IRR",
+    "n": "Less than 50% of the wall area on that storey, following PD 1096."
   },
   {
     "s": "Light & Ventilation",
-    "q": "Under PD 1096, the sum of opening areas in any storey must be less than what fraction of the wall area?",
+    "q": "Under PD 1096, what limit applies to the sum of opening areas in any storey?",
     "o": [
       "25%",
       "50%",
@@ -1855,12 +1855,12 @@
       "33%"
     ],
     "c": 1,
-    "ref": "P. 78 — Light & Ventilation",
-    "n": "PD 1096 limits the sum of opening areas to less than 50% of the wall area on that storey."
+    "ref": "PD 1096, Sec. 805-811",
+    "n": "Less than 50% of the wall area on that storey. Past half, the wall stops being a wall."
   },
   {
     "s": "Occupant Load — Mercantile",
-    "q": "What factor is shown for the same ground-floor mercantile use under the Fire Code?",
+    "q": "Under the 1977 Fire Code, what occupant-load factor applied to a mercantile ground floor with direct access?",
     "o": [
       "9.30 sq m/person",
       "5.60 sq m/person",
@@ -1868,12 +1868,12 @@
       "4.30 sq m/person"
     ],
     "c": 3,
-    "ref": "P. 80 — Mercantile",
-    "n": "PD 1185 shows 4.30 sq m/person for the ground floor with direct access and sales floor. This factor comes from the Fire Code occupant-load schedule; RA 9514 (2008) replaced PD 1185 of 1977."
+    "ref": "PD 1185, the 1977 Fire Code (repealed by RA 9514)",
+    "n": "4.30 sq m per person, looser than the 2.80 sq m PD 1096 and RA 9514 both use. RA 9514 replaced PD 1185 in 2008."
   },
   {
     "s": "Open Space Requirements",
-    "q": "What BP 220 residential open-space percentage applies to a corner lot?",
+    "q": "Under BP 220, what residential open space applies to a corner lot?",
     "o": [
       "25%",
       "10%",
@@ -1881,12 +1881,12 @@
       "15%"
     ],
     "c": 1,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "A BP 220 corner lot requires 10% open space for residential use."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "10% residential, 15% for other uses."
   },
   {
     "s": "Occupant Load — Mercantile",
-    "q": "What factor is shown for a split-level mercantile space under RA 9514?",
+    "q": "Under RA 9514, what occupant-load factor applies to a split-level mercantile space?",
     "o": [
       "2.80 sq m/person",
       "9.30 sq m/person",
@@ -1894,12 +1894,12 @@
       "5.60 sq m/person"
     ],
     "c": 2,
-    "ref": "P. 80 — Mercantile",
-    "n": "The split-level entry under RA 9514 is 3.70 sq m/person."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "3.70 sq m per person, between the 2.80 sq m ground floor and the 5.60 sq m upper floors."
   },
   {
     "s": "Occupant Load — Mercantile",
-    "q": "What factor is assigned to offices, storage, and shipping under the Fire Code?",
+    "q": "Under the 1977 Fire Code, what occupant-load factor applied to offices, storage and shipping?",
     "o": [
       "3.70 sq m/person",
       "5.60 sq m/person",
@@ -1907,8 +1907,8 @@
       "18.60 sq m/person"
     ],
     "c": 1,
-    "ref": "P. 80 — Mercantile",
-    "n": "PD 1185 shows 5.60 sq m/person. This factor comes from the Fire Code occupant-load schedule; RA 9514 (2008) replaced PD 1185 of 1977."
+    "ref": "PD 1185, the 1977 Fire Code (repealed by RA 9514)",
+    "n": "5.60 sq m per person, far denser than the 9.30 sq m used today. RA 9514 replaced PD 1185 in 2008."
   },
   {
     "s": "Ceiling Heights",
@@ -1920,12 +1920,12 @@
       "3.00 m"
     ],
     "c": 0,
-    "ref": "RA 9514 Revised IRR (2019), fire command center",
+    "ref": "RA 9514 Revised IRR (2019)",
     "n": "A fire command center needs 2.40 m of ceiling height, at least 10.00 sq m of floor area, and no dimension under 1.50 m."
   },
   {
     "s": "Exit Dimensions",
-    "q": "A project uses BP 220 standards. What minimum exit-door height should be used?",
+    "q": "A project is built under BP 220. What minimum exit door height applies?",
     "o": [
       "1.80 m",
       "2.10 m",
@@ -1933,8 +1933,8 @@
       "2.00 m"
     ],
     "c": 3,
-    "ref": "P. 79 — Exit Dimensions",
-    "n": "BP 220 shows a 2.00 m minimum exit-door height."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "2.00 m, the same height every one of these laws requires."
   },
   {
     "s": "Ceiling Heights",
@@ -1946,12 +1946,12 @@
       "15.00 sq m"
     ],
     "c": 0,
-    "ref": "RA 9514 Revised IRR (2019), fire command center",
+    "ref": "RA 9514 Revised IRR (2019)",
     "n": "10.00 sq m minimum, separated by two-hour fire-resistive construction, with a 2.40 m ceiling."
   },
   {
     "s": "Exit Details",
-    "q": "What maximum width is shown for the exit or means of egress under RA 9514?",
+    "q": "Under RA 9514, what maximum width applies to a single unit of exit width?",
     "o": [
       "1500 mm",
       "1000 mm",
@@ -1959,12 +1959,12 @@
       "900 mm"
     ],
     "c": 2,
-    "ref": "P. 79 — Exit Details",
-    "n": "The RA 9514 entry gives a 1220 mm maximum."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "1220 mm maximum, 710 mm minimum."
   },
   {
     "s": "Occupant Load — Educational",
-    "q": "What occupant-load factor is given for dining rooms, drinking establishments, exhibit rooms, and gymnasia?",
+    "q": "What occupant-load factor applies to dining rooms, drinking establishments, exhibit rooms and gymnasia?",
     "o": [
       "1.80 sq m/person",
       "0.65 sq m/person",
@@ -1972,12 +1972,12 @@
       "4.60 sq m/person"
     ],
     "c": 2,
-    "ref": "P. 80 — Educational Occupancies",
-    "n": "The factor is 1.40 sq m per person."
+    "ref": "PD 1096, Table XII.1",
+    "n": "1.40 sq m per person."
   },
   {
     "s": "Open Space Requirements",
-    "q": "Under BP 220, what open-space percentage applies to other uses on an inside lot?",
+    "q": "Under BP 220, what open space applies to non-residential uses on an inside lot?",
     "o": [
       "15%",
       "25%",
@@ -1985,12 +1985,12 @@
       "20%"
     ],
     "c": 0,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "Other uses on an inside lot require 15% open space under BP 220."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "15%, against 20% for residential."
   },
   {
     "s": "Open Space Requirements",
-    "q": "Under PD 1096, what minimum open-space percentage applies to a through lot with E, F, G, H and I occupancy?",
+    "q": "Under PD 1096, what minimum open space applies to a through lot with E, F, G, H or I occupancy?",
     "o": [
       "10%",
       "15%",
@@ -1998,12 +1998,12 @@
       "20%"
     ],
     "c": 2,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "For E, F, G, H and I occupancies on a through lot, the requirement is 5%."
+    "ref": "PD 1096, Rule VIII",
+    "n": "5%, half the 10% required of A, B, C, D and J occupancies."
   },
   {
     "s": "Lot Frontages",
-    "q": "What is the socialized-housing frontage for a single-detached irregular lot?",
+    "q": "Under BP 220, what minimum frontage must an irregular socialized-housing single-detached lot have?",
     "o": [
       "10.00 m",
       "8.00 m",
@@ -2011,12 +2011,12 @@
       "6.00 m"
     ],
     "c": 1,
-    "ref": "P. 77 — Lot Frontages (Residential)",
-    "n": "An irregular single-detached lot requires 8.00 m frontage in the socialized-housing category."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "8.00 m, the same as a socialized-housing corner lot."
   },
   {
     "s": "Lot Frontages",
-    "q": "What medium-cost frontage is specified for row houses?",
+    "q": "In a medium cost development, what minimum frontage must a row house have?",
     "o": [
       "6.00 m",
       "8.00 m",
@@ -2024,12 +2024,12 @@
       "4.00 m"
     ],
     "c": 3,
-    "ref": "P. 77 — Lot Frontages (Residential)",
-    "n": "The medium-cost row-house frontage is also 4.00 m."
+    "ref": "PD 957 and its IRR",
+    "n": "4.00 m, the same as the open market figure. Only socialized housing drops to 3.50 m."
   },
   {
     "s": "Occupant Load — Mercantile",
-    "q": "What factor is assigned to parking garages under PD 1096?",
+    "q": "Under PD 1096, what occupant-load factor applies to parking garages?",
     "o": [
       "9.30 sq m/person",
       "5.60 sq m/person",
@@ -2037,12 +2037,12 @@
       "28.00 sq m/person"
     ],
     "c": 2,
-    "ref": "P. 80 — Mercantile",
-    "n": "Parking garages are assigned 18.60 sq m/person under PD 1096."
+    "ref": "PD 1096, Table XII.1",
+    "n": "18.60 sq m per person for a parking garage, against 9.30 sq m for an ordinary garage."
   },
   {
     "s": "Exit Details",
-    "q": "What illumination level is specified for signs under PD 1096?",
+    "q": "Under PD 1096, what illumination must an exit sign receive?",
     "o": [
       "12 lux @ FL",
       "0.005 lumens/sqcm",
@@ -2050,12 +2050,12 @@
       "5 lux @ FL"
     ],
     "c": 2,
-    "ref": "P. 79 — Exit Details",
-    "n": "PD 1096 gives 10.7 lux at floor level."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "10.7 lux at floor level."
   },
   {
     "s": "Exit Dimensions",
-    "q": "What minimum exit door width is shown under PD 957?",
+    "q": "In an open market subdivision under PD 957, what minimum exit door width applies?",
     "o": [
       "710 mm",
       "900 mm",
@@ -2063,12 +2063,12 @@
       "750 mm"
     ],
     "c": 1,
-    "ref": "P. 79 — Exit Dimensions",
-    "n": "The PD 957 open-market entry gives 900 mm."
+    "ref": "PD 957 and its IRR",
+    "n": "900 mm, following PD 1096. BP 220 housing may drop to 800 mm."
   },
   {
     "s": "Length of Block",
-    "q": "What must be provided at midlength when a row-house block exceeds 250 m in the open-market category?",
+    "q": "In an open market development, what must be provided at midlength when a row house block exceeds 250 m?",
     "o": [
       "A 1.0 m alley",
       "A 1.5 m alley",
@@ -2076,12 +2076,12 @@
       "A 2.0 m alley"
     ],
     "c": 3,
-    "ref": "P. 77 — Length of Block",
-    "n": "For blocks over 250 m, a 2.0 m alley must be provided at midlength."
+    "ref": "PD 957 and its IRR",
+    "n": "A 2.0 m alley at midlength, so residents are not forced to walk the full block."
   },
   {
     "s": "Light & Ventilation",
-    "q": "What is the minimum dimension of a court under PD 1096?",
+    "q": "Under PD 1096, what minimum dimension must a court have?",
     "o": [
       "2.00 m",
       "1.20 m",
@@ -2089,12 +2089,12 @@
       "1.50 m"
     ],
     "c": 0,
-    "ref": "P. 78 — Light & Ventilation",
-    "n": "PD 1096 sets the minimum court dimension at 2.00 m."
+    "ref": "PD 1096, Sec. 805-811",
+    "n": "2.00 m for a one or two storey building, with a 1.20 m passageway out of an inner court."
   },
   {
     "s": "Exit Dimensions",
-    "q": "What minimum exit door width is shown under RA 9514?",
+    "q": "Under RA 9514, what minimum exit door width applies?",
     "o": [
       "710 mm",
       "800 mm",
@@ -2102,12 +2102,12 @@
       "750 mm"
     ],
     "c": 0,
-    "ref": "P. 79 — Exit Dimensions",
-    "n": "RA 9514 shows a 710 mm minimum exit door width."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "710 mm, the narrowest of the laws. PD 1096 requires 900 mm."
   },
   {
     "s": "Lot Frontages",
-    "q": "What is the socialized-housing frontage for a regular single-detached lot?",
+    "q": "Under BP 220, what minimum frontage must a regular socialized-housing single-detached lot have?",
     "o": [
       "3.00 m",
       "4.00 m",
@@ -2115,12 +2115,12 @@
       "6.00 m"
     ],
     "c": 1,
-    "ref": "P. 77 — Lot Frontages (Residential)",
-    "n": "A regular single-detached lot has a 4.00 m socialized-housing frontage requirement."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "4.00 m, against 6.00 m in an open market subdivision."
   },
   {
     "s": "Lot Frontages",
-    "q": "What open-market frontage is specified for row houses?",
+    "q": "In an open market development, what minimum frontage must a row house have?",
     "o": [
       "3.50 m",
       "8.00 m",
@@ -2128,12 +2128,12 @@
       "6.00 m"
     ],
     "c": 2,
-    "ref": "P. 77 — Lot Frontages (Residential)",
-    "n": "Row houses have a 4.00 m open-market frontage requirement."
+    "ref": "PD 957 and its IRR",
+    "n": "4.00 m, narrowing to 3.50 m in socialized housing."
   },
   {
     "s": "Exit Details",
-    "q": "What minimum interior-door width is shown under BP 220?",
+    "q": "Under BP 220, what minimum width must an interior door have?",
     "o": [
       "60 cm",
       "90 cm",
@@ -2141,12 +2141,12 @@
       "50 cm"
     ],
     "c": 0,
-    "ref": "P. 79 — Exit Details",
-    "n": "The interior-door minimum is 60 cm."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "60 cm for an interior door, against 90 cm from a sleeping room to the outside."
   },
   {
     "s": "Light & Ventilation",
-    "q": "What is the headroom clearance shown across the applicable categories?",
+    "q": "What minimum headroom clearance applies across these building laws?",
     "o": [
       "2.00 m",
       "1.80 m",
@@ -2154,8 +2154,8 @@
       "2.40 m"
     ],
     "c": 0,
-    "ref": "P. 78 — Light & Ventilation",
-    "n": "The headroom clearance is 2.00 m in the listed applicable standards."
+    "ref": "PD 1096, Sec. 805-811",
+    "n": "2.00 m, the one figure PD 1096, BP 220 and the Fire Code all agree on."
   },
   {
     "s": "Occupant Load — Educational",
@@ -2167,12 +2167,12 @@
       "1.40 sq m/person"
     ],
     "c": 2,
-    "ref": "P. 80 — Educational Occupancies",
-    "n": "The factor for shops and laboratories is 4.60 sq m/person in all three applicable columns shown."
+    "ref": "PD 1096, Table XII.1",
+    "n": "4.60 sq m per person, the same under PD 1096 and both fire codes."
   },
   {
     "s": "Exits",
-    "q": "For an occupant load below 10 under BP 220 economic/socialized housing, how many exits are shown?",
+    "q": "Under BP 220, how many exits are required in economic or socialized housing for an occupant load below 10?",
     "o": [
       "2",
       "4",
@@ -2180,12 +2180,12 @@
       "1"
     ],
     "c": 3,
-    "ref": "P. 78 — Exits",
-    "n": "The BP 220 columns show one exit for an occupant load below 10."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "One, the same as PD 1096. Two are required at 10 or more."
   },
   {
     "s": "Open Space Requirements",
-    "q": "Under PD 1096, what minimum open-space percentage applies to an end lot with H1, H2, H4 and E3 occupancy?",
+    "q": "Under PD 1096, what minimum open space applies to an end lot with H1, H2, H4 or E3 occupancy?",
     "o": [
       "5%",
       "10%",
@@ -2193,12 +2193,12 @@
       "15%"
     ],
     "c": 0,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "For H1, H2, H4 and E3 occupancies on an end lot, the requirement is 5%."
+    "ref": "PD 1096, Rule VIII",
+    "n": "5%. The same lot with A, B, C, D, E2 or H occupancy needs 30% to 50%."
   },
   {
     "s": "Open Space Requirements",
-    "q": "Under PD 1096, what minimum open-space percentage applies to a corner lot abutting three or more streets, alleys, rivers, or the like?",
+    "q": "Under PD 1096, what minimum open space applies to a corner lot abutting three or more streets or rivers?",
     "o": [
       "5%",
       "20%",
@@ -2206,12 +2206,12 @@
       "10%"
     ],
     "c": 0,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "The requirement for a corner lot abutting three or more streets, alleys, rivers, or similar boundaries is 5%."
+    "ref": "PD 1096, Rule VIII",
+    "n": "5%, the floor of the scale, since the lot is almost entirely edged by open space already."
   },
   {
     "s": "Exit Details",
-    "q": "How many exits are required for dressing rooms?",
+    "q": "How many exits must a dressing room have?",
     "o": [
       "3",
       "4",
@@ -2219,12 +2219,12 @@
       "2"
     ],
     "c": 3,
-    "ref": "P. 79 — Exit Details",
-    "n": "The dressing-room entry specifies two exits."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "Two, each 750 mm wide."
   },
   {
     "s": "Occupant Load — Mercantile",
-    "q": "What factor is shown for the same ground-floor mercantile use under RA 9514?",
+    "q": "Under RA 9514, what occupant-load factor applies to a mercantile ground floor with direct access?",
     "o": [
       "5.60 sq m/person",
       "2.80 sq m/person",
@@ -2232,12 +2232,12 @@
       "9.30 sq m/person"
     ],
     "c": 1,
-    "ref": "P. 80 — Mercantile",
-    "n": "RA 9514 returns to 2.80 sq m/person for this category."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "2.80 sq m per person, the same as PD 1096. The 1977 Fire Code was looser at 4.30 sq m."
   },
   {
     "s": "Occupant Load — Residential",
-    "q": "What residential occupant-load factor is shown under PD 1096?",
+    "q": "Under PD 1096, what occupant-load factor applies to a dwelling?",
     "o": [
       "11.00 sq m/person",
       "18.00 sq m/person",
@@ -2245,8 +2245,8 @@
       "22.00 sq m/person"
     ],
     "c": 2,
-    "ref": "P. 80 — Residential",
-    "n": "The residential factor under PD 1096 is 28.00 sq m/person."
+    "ref": "PD 1096, Table XII.1",
+    "n": "28.00 sq m per person, the loosest residential figure. The 1977 Fire Code assumed 18.00 sq m."
   },
   {
     "s": "Ceiling Heights",
@@ -2258,12 +2258,12 @@
       "2.00 m"
     ],
     "c": 0,
-    "ref": "RA 9514 Revised IRR (2019), fire command center",
+    "ref": "RA 9514 Revised IRR (2019)",
     "n": "No dimension under 1.50 m, with at least 10.00 sq m of area and a 2.40 m ceiling."
   },
   {
     "s": "Occupant Load — Educational",
-    "q": "What occupant-load factor applies to reviewing stands, stadia, and waiting spaces under PD 1096?",
+    "q": "Under PD 1096, what occupant-load factor applies to reviewing stands, stadia and waiting spaces?",
     "o": [
       "1.40 sq m/person",
       "1.80 sq m/person",
@@ -2271,12 +2271,12 @@
       "0.65 sq m/person"
     ],
     "c": 3,
-    "ref": "P. 80 — Educational Occupancies",
-    "n": "PD 1096 gives 0.65 sq m/person for these spaces."
+    "ref": "PD 1096, Table XII.1",
+    "n": "0.65 sq m per person, the same as an auditorium."
   },
   {
     "s": "Exit Dimensions",
-    "q": "What minimum exit door width is specified under PD 1096?",
+    "q": "Under PD 1096, what minimum exit door width applies?",
     "o": [
       "900 mm",
       "710 mm",
@@ -2284,12 +2284,12 @@
       "750 mm"
     ],
     "c": 0,
-    "ref": "P. 79 — Exit Dimensions",
-    "n": "PD 1096 specifies a minimum exit door width of 900 mm."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "900 mm wide by 2.00 m high."
   },
   {
     "s": "Open Space Requirements",
-    "q": "Under PD 1096, what minimum open-space percentage applies to a corner lot with E, F, G, H and I occupancy?",
+    "q": "Under PD 1096, what minimum open space applies to a corner lot with E, F, G, H or I occupancy?",
     "o": [
       "20%",
       "5%",
@@ -2297,12 +2297,12 @@
       "15%"
     ],
     "c": 1,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "For E, F, G, H and I occupancies on a corner lot, the requirement is 5%."
+    "ref": "PD 1096, Rule VIII",
+    "n": "5%, half the 10% required of A, B, C, D and J occupancies."
   },
   {
     "s": "Occupant Load — Business",
-    "q": "What occupant-load factor is shown for business occupancy?",
+    "q": "What occupant-load factor applies to business occupancy?",
     "o": [
       "9.30 sq m/person",
       "5.60 sq m/person",
@@ -2310,12 +2310,12 @@
       "28.00 sq m/person"
     ],
     "c": 0,
-    "ref": "P. 80 — Business",
-    "n": "The business entry is 9.30 sq m/person."
+    "ref": "PD 1096, Table XII.1",
+    "n": "9.30 sq m per person, the office figure."
   },
   {
     "s": "Open Space Requirements",
-    "q": "What BP 220 residential open-space percentage applies to a through lot?",
+    "q": "Under BP 220, what residential open space applies to a through lot?",
     "o": [
       "25%",
       "20%",
@@ -2323,12 +2323,12 @@
       "15%"
     ],
     "c": 2,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "A BP 220 through lot requires 10% open space for residential use."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "10% residential, 15% for other uses."
   },
   {
     "s": "Size/Dimension of Rooms",
-    "q": "What is the minimum area and dimension specified for a toilet and bath under PD 1096?",
+    "q": "Under PD 1096, what minimum area and least dimension must a toilet and bath have?",
     "o": [
       "1.20 sq. m and 1.20 m",
       "1.20 sq. m and 0.90 m",
@@ -2336,12 +2336,12 @@
       "2.25 sq. m and 1.70 m"
     ],
     "c": 1,
-    "ref": "P. 78 — Size/Dimension of Rooms",
-    "n": "The PD 1096 entry gives 1.20 sq. m with a minimum dimension of 0.90 m."
+    "ref": "PD 1096, Sec. 806",
+    "n": "1.20 sq m with a least dimension of 0.90 m, the smallest room the Code allows."
   },
   {
     "s": "Ceiling Heights",
-    "q": "Under PD 1096, what is the minimum habitable-room ceiling height with natural ventilation?",
+    "q": "Under PD 1096, what minimum ceiling height applies to a habitable room with natural ventilation?",
     "o": [
       "2.00 m",
       "2.30 m",
@@ -2349,12 +2349,12 @@
       "2.40 m"
     ],
     "c": 2,
-    "ref": "P. 77 — Ceiling Heights",
-    "n": "For natural ventilation, PD 1096 uses a 2.70 m minimum ceiling height."
+    "ref": "PD 1096, Sec. 805",
+    "n": "2.70 m with natural ventilation, against 2.40 m with artificial."
   },
   {
     "s": "Open Space Requirements",
-    "q": "What BP 220 percentage applies to a corner lot abutting three or more streets, alleys, rivers, or similar boundaries?",
+    "q": "Under BP 220, what open space applies to a corner lot abutting three or more streets or rivers?",
     "o": [
       "20%",
       "5%",
@@ -2362,12 +2362,12 @@
       "15%"
     ],
     "c": 1,
-    "ref": "P. 77 — Open Space Requirements",
-    "n": "The special BP 220 requirement for this lot condition is 5% for all group occupancies."
+    "ref": "BP 220 Revised IRR (2008)",
+    "n": "5% for all group occupancies, the lowest figure BP 220 sets."
   },
   {
     "s": "Exit Details",
-    "q": "What minimum area is given for the outside window of a sleeping room?",
+    "q": "What minimum area must the outside window of a sleeping room have?",
     "o": [
       "0.75 sq. m",
       "0.45 sq. m",
@@ -2375,12 +2375,12 @@
       "0.30 sq. m"
     ],
     "c": 1,
-    "ref": "P. 79 — Exit Details",
-    "n": "The required outside-window area is 0.45 sq. m."
+    "ref": "PD 1096, Sec. 1207",
+    "n": "0.45 sq m, with a least dimension of 56 cm."
   },
   {
     "s": "Exit Details",
-    "q": "What is the minimum threshold slope condition shown under RA 9514?",
+    "q": "Under RA 9514, how must a threshold be treated once its rise exceeds 6 mm?",
     "o": [
       "1/1 slope > 6 mm",
       "1/3 slope > 6 mm",
@@ -2388,7 +2388,7 @@
       "1/2 slope > 6 mm"
     ],
     "c": 3,
-    "ref": "P. 79 — Exit Details",
-    "n": "The entry specifies a 1/2 slope where the rise exceeds 6 mm."
+    "ref": "RA 9514 Revised IRR (2019)",
+    "n": "It must be bevelled at a 1:2 slope. Under 6 mm it may be left square."
   }
 ]
