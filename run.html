@@ -214,6 +214,14 @@
   .mnemo-items .k{ flex-shrink:0; min-width:3.2em; font-family:var(--font-mono); font-size:11.5px; color:var(--blue-bright); padding-top:1px; }
   .mnemo-more{ display:block; padding:0 12px 10px; font-family:var(--font-mono); font-size:11.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--blue-bright); }
   .chip-row{ display:flex; gap:8px; margin-top:12px; }
+  .speak-btn{
+    display:inline-flex; align-items:center; justify-content:center; vertical-align:-3px;
+    width:24px; height:24px; margin-left:6px; padding:0; border-radius:6px;
+    background:transparent; border:1px solid var(--line); color:var(--muted); cursor:pointer;
+  }
+  .speak-btn svg{ width:14px; height:14px; }
+  .speak-btn:hover{ border-color:var(--gold); color:var(--gold); }
+  .speak-btn.active{ border-color:var(--gold); color:var(--gold); background:color-mix(in srgb, var(--gold) 12%, transparent); }
   .chip-btn{
     flex:1; font-family:var(--font-mono); font-size:11px; letter-spacing:.03em; text-transform:uppercase;
     background:var(--bg-panel); border:1px solid var(--line); color:var(--ink);
@@ -1241,7 +1249,7 @@ function renderExamCardUngraded(){
     '<div class="bp-card">' +
       sectionTagHtml(item) +
       scenarioHtml(item) +
-      '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
+      '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + speakBtnHtml() + '</p>' + imgHtml + '</div>' +
       '<div class="options">' + optsHtml + '</div>' +
     '</div>';
 
@@ -1697,7 +1705,7 @@ function renderCard(){
       '<div class="page-head">' + (sectionTagHtml(item) || '<span class="section-tag">Question</span>') +
         '<span class="page-no">No. ' + (pos + 1) + '<small> / ' + order.length + '</small></span></div>' +
       scenarioHtml(item) +
-      '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
+      '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + speakBtnHtml() + '</p>' + imgHtml + '</div>' +
       '<div class="options">' + optsHtml + '</div>' +
       explainHtml +
     '</div>';
@@ -2609,7 +2617,7 @@ function renderMultiCard(){
       sectionTagHtml(item) +
       '<span class="clock-chip">' + escapeHtml(cell.moduleTitle) + '</span>' +
       scenarioHtml(item) +
-      '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
+      '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + speakBtnHtml() + '</p>' + imgHtml + '</div>' +
       '<div class="options">' + optsHtml + '</div>' +
       explainHtml +
     '</div>';
@@ -2937,7 +2945,7 @@ function renderMultiExamCardUngraded(){
       sectionTagHtml(item) +
       '<span class="clock-chip">' + escapeHtml(stripEmoji(cell.subjectName)) + '</span>' +
       scenarioHtml(item) +
-      '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + '</p>' + imgHtml + '</div>' +
+      '<div class="q-body"><p class="qtext">' + escapeHtml(item.q) + speakBtnHtml() + '</p>' + imgHtml + '</div>' +
       '<div class="options">' + optsHtml + '</div>' +
     '</div>';
   slot.querySelectorAll('.opt[data-idx]').forEach(btn => {
@@ -3050,6 +3058,43 @@ function topicGivesAwayAnswer(item){
 // Not every module tags its questions by topic (the older QUIZ_DATA quizzes
 // carry no topic field at all). Omit the tag entirely in that case rather than
 // drawing an empty gold chip.
+// Read the question aloud. Web Speech only: no keys, no audio files, offline.
+// Voice quality is the browser's, not ours -- Edge/Safari/Android pick a neural
+// voice, Chrome on Windows only has the robotic SAPI ones.
+// ponytail: swap for pregenerated audio files if the robot voice drives users off.
+function speakBtnHtml(){
+  if(!('speechSynthesis' in window)) return '';
+  return ' <button class="speak-btn" type="button" aria-label="Read question aloud">' +
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
+    '<path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg></button>';
+}
+
+function bestVoice(){
+  const vs = speechSynthesis.getVoices().filter(v => v.lang && v.lang.toLowerCase().startsWith('en'));
+  return vs.find(v => /Natural|Neural|Premium|Enhanced/i.test(v.name))
+      || vs.find(v => /Google|Samantha/i.test(v.name))
+      || vs[0] || null;
+}
+
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest && e.target.closest('.speak-btn');
+  if(!btn) return;
+  const stopping = btn.classList.contains('active');
+  speechSynthesis.cancel();
+  btn.classList.remove('active');
+  if(stopping) return;
+  const p = btn.closest('.qtext');
+  const text = p ? p.textContent.trim() : '';
+  if(!text) return;
+  const u = new SpeechSynthesisUtterance(text);
+  const v = bestVoice();
+  if(v) u.voice = v;
+  u.rate = 0.95;
+  u.onend = u.onerror = () => btn.classList.remove('active');
+  btn.classList.add('active');
+  speechSynthesis.speak(u);
+});
+
 function sectionTagHtml(item){
   const s = item && item.s ? String(item.s).trim() : '';
   if(!s || topicGivesAwayAnswer(item)) return '';
