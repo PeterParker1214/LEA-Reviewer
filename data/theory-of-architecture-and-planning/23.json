@@ -1,0 +1,1888 @@
+{
+  "figures": {
+    "f1": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2U4ZjRkZDtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPlN0cmVldCBQYXR0ZXJuIENvbmNlcHRzPC90ZXh0Pgo8cmVjdCB4PSI3MCIgeT0iMTA1IiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjIyMCIgY2xhc3M9ImYiLz4KPHBhdGggZD0iTTkwIDE0MCBIMjcwIE05MCAxOTAgSDI3MCBNOTAgMjQwIEgyNzAgTTEyMCAxMjAgVjMwNSBNMTgwIDEyMCBWMzA1IE0yNDAgMTIwIFYzMDUiIGNsYXNzPSJ0aCIvPgo8dGV4dCB4PSIxMDUiIHk9IjM2MCIgY2xhc3M9InMiPm9ydGhvZ29uYWwgZ3JpZDwvdGV4dD4KPHJlY3QgeD0iMzQwIiB5PSIxMDUiIHdpZHRoPSIyMjAiIGhlaWdodD0iMjIwIiBjbGFzcz0iZjIiLz4KPHBhdGggZD0iTTM2MCAzMDAgUTQzMCAxNjAgNTQwIDE0MCBNMzY1IDE1MCBRNDUwIDI2MCA1NDAgMzAwIE0zNzAgMjIwIFE0NTAgMTkwIDUzNSAyMjAiIGNsYXNzPSJ0aCIvPgo8dGV4dCB4PSIzODAiIHk9IjM2MCIgY2xhc3M9InMiPmN1cnZpbGluZWFyIC8gdGVycmFpbjwvdGV4dD4KPHJlY3QgeD0iNjEwIiB5PSIxMDUiIHdpZHRoPSIyMjAiIGhlaWdodD0iMjIwIiBjbGFzcz0iZiIvPgo8cGF0aCBkPSJNNzIwIDIxNSBMNjMwIDEyNSBNNzIwIDIxNSBMODEwIDEyNSBNNzIwIDIxNSBMNjMwIDMwNSBNNzIwIDIxNSBMODEwIDMwNSBNNjMwIDIxNSBIODEwIiBjbGFzcz0idGgiLz4KPGNpcmNsZSBjeD0iNzIwIiBjeT0iMjE1IiByPSIyOCIgY2xhc3M9ImYyIi8+Cjx0ZXh0IHg9IjY1MCIgeT0iMzYwIiBjbGFzcz0icyI+ZGlhZ29uYWwgZm9jdXM8L3RleHQ+Cjwvc3ZnPg==",
+    "f2": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2U4ZjRkZDtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPldpbmQgRXhwb3N1cmUgQ2F0ZWdvcmllczwvdGV4dD4KPHJlY3QgeD0iNzAiIHk9IjExMCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIyMjAiIGNsYXNzPSJmIi8+PHRleHQgeD0iMTMwIiB5PSIyMjAiIGNsYXNzPSJ0IGIiPkE8L3RleHQ+PHRleHQgeD0iOTUiIHk9IjM2NSIgY2xhc3M9InMiPmxhcmdlIGNpdHk8L3RleHQ+CjxyZWN0IHg9IjI3MCIgeT0iMTEwIiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjIyMCIgY2xhc3M9ImYyIi8+PHRleHQgeD0iMzMwIiB5PSIyMjAiIGNsYXNzPSJ0IGIiPkI8L3RleHQ+PHRleHQgeD0iMjg1IiB5PSIzNjUiIGNsYXNzPSJzIj51cmJhbiAvIHdvb2RlZDwvdGV4dD4KPHJlY3QgeD0iNDcwIiB5PSIxMTAiIHdpZHRoPSIxNzAiIGhlaWdodD0iMjIwIiBjbGFzcz0iZiIvPjx0ZXh0IHg9IjUzMCIgeT0iMjIwIiBjbGFzcz0idCBiIj5DPC90ZXh0Pjx0ZXh0IHg9IjQ5MCIgeT0iMzY1IiBjbGFzcz0icyI+b3BlbiB0ZXJyYWluPC90ZXh0Pgo8cmVjdCB4PSI2NzAiIHk9IjExMCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIyMjAiIGNsYXNzPSJmMiIvPjx0ZXh0IHg9IjczMCIgeT0iMjIwIiBjbGFzcz0idCBiIj5EPC90ZXh0Pjx0ZXh0IHg9IjY5NSIgeT0iMzY1IiBjbGFzcz0icyI+b3BlbiB3YXRlcjwvdGV4dD4KPC9zdmc+",
+    "f3": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2U4ZjRkZDtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPk5laWdoYm9yaG9vZCBUcmFuc2VjdDogVDMgdG8gVDY8L3RleHQ+CjxyZWN0IHg9IjcwIiB5PSIxMjAiIHdpZHRoPSIxODAiIGhlaWdodD0iMjEwIiBjbGFzcz0iZjIiLz48dGV4dCB4PSIxMzAiIHk9IjIyMCIgY2xhc3M9InQgYiI+VDM8L3RleHQ+PHRleHQgeD0iOTUiIHk9IjM2NSIgY2xhc3M9InMiPlN1Yi1VcmJhbjwvdGV4dD4KPHJlY3QgeD0iMjcwIiB5PSIxMDAiIHdpZHRoPSIxODAiIGhlaWdodD0iMjMwIiBjbGFzcz0iZiIvPjx0ZXh0IHg9IjMzMCIgeT0iMjIwIiBjbGFzcz0idCBiIj5UNDwvdGV4dD48dGV4dCB4PSIyODUiIHk9IjM2NSIgY2xhc3M9InMiPkdlbmVyYWwgVXJiYW48L3RleHQ+CjxyZWN0IHg9IjQ3MCIgeT0iODAiIHdpZHRoPSIxODAiIGhlaWdodD0iMjUwIiBjbGFzcz0iZjIiLz48dGV4dCB4PSI1MzAiIHk9IjIyMCIgY2xhc3M9InQgYiI+VDU8L3RleHQ+PHRleHQgeD0iNDg1IiB5PSIzNjUiIGNsYXNzPSJzIj5VcmJhbiBDZW50ZXI8L3RleHQ+CjxyZWN0IHg9IjY3MCIgeT0iNjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMjcwIiBjbGFzcz0iZiIvPjx0ZXh0IHg9IjcyMCIgeT0iMjIwIiBjbGFzcz0idCBiIj5UNjwvdGV4dD48dGV4dCB4PSI2ODUiIHk9IjM2NSIgY2xhc3M9InMiPlVyYmFuIENvcmU8L3RleHQ+Cjx0ZXh0IHg9IjI2MCIgeT0iNDA1IiBjbGFzcz0icyI+SW5jcmVhc2luZyBkZW5zaXR5IGFuZCB1cmJhbiBpbnRlbnNpdHkg4oaSPC90ZXh0Pgo8L3N2Zz4=",
+    "f4": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2U4ZjRkZDtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPlJlc3BvbnNpdmUgRW52aXJvbm1lbnQgQ3JpdGVyaWE8L3RleHQ+CjxyZWN0IHg9IjgwIiB5PSIxMDAiIHdpZHRoPSIyMjAiIGhlaWdodD0iOTAiIGNsYXNzPSJmIi8+PHRleHQgeD0iMTI1IiB5PSIxNTUiIGNsYXNzPSJzIj5QZXJtZWFiaWxpdHk8L3RleHQ+CjxyZWN0IHg9IjM0MCIgeT0iMTAwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjkwIiBjbGFzcz0iZjIiLz48dGV4dCB4PSI0MDUiIHk9IjE1NSIgY2xhc3M9InMiPlZhcmlldHk8L3RleHQ+CjxyZWN0IHg9IjYwMCIgeT0iMTAwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjkwIiBjbGFzcz0iZiIvPjx0ZXh0IHg9IjY1NSIgeT0iMTU1IiBjbGFzcz0icyI+TGVnaWJpbGl0eTwvdGV4dD4KPHJlY3QgeD0iODAiIHk9IjIzMCIgd2lkdGg9IjIyMCIgaGVpZ2h0PSI5MCIgY2xhc3M9ImYyIi8+PHRleHQgeD0iMTM1IiB5PSIyODUiIGNsYXNzPSJzIj5Sb2J1c3RuZXNzPC90ZXh0Pgo8cmVjdCB4PSIzNDAiIHk9IjIzMCIgd2lkdGg9IjIyMCIgaGVpZ2h0PSI5MCIgY2xhc3M9ImYiLz48dGV4dCB4PSIzNTAiIHk9IjI4NSIgY2xhc3M9InMiPlZpc3VhbCBBcHByb3ByaWF0ZW5lc3M8L3RleHQ+CjxyZWN0IHg9IjYwMCIgeT0iMjMwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjkwIiBjbGFzcz0iZjIiLz48dGV4dCB4PSI2NTUiIHk9IjI4NSIgY2xhc3M9InMiPlJpY2huZXNzPC90ZXh0Pgo8dGV4dCB4PSIzNzAiIHk9IjM4MCIgY2xhc3M9InMiPisgUGVyc29uYWxpemF0aW9uPC90ZXh0Pgo8L3N2Zz4=",
+    "f5": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2U4ZjRkZDtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPkZyb250YWdlIENvbmNlcHRzPC90ZXh0Pgo8bGluZSB4MT0iODAiIHkxPSIzMzAiIHgyPSI4MjAiIHkyPSIzMzAiIGNsYXNzPSJsIi8+CjxsaW5lIHgxPSIyMDAiIHkxPSI5MCIgeDI9IjIwMCIgeTI9IjMzMCIgY2xhc3M9ImQiLz4KPHRleHQgeD0iMTQwIiB5PSIzNjUiIGNsYXNzPSJzIj5mcm9udGFnZSBsaW5lPC90ZXh0Pgo8cmVjdCB4PSIyMzAiIHk9IjEzMCIgd2lkdGg9IjE4MCIgaGVpZ2h0PSIyMDAiIGNsYXNzPSJmIi8+CjxwYXRoIGQ9Ik0yMzAgMjMwIEwxNzAgMzAwIiBjbGFzcz0ibCIvPgo8dGV4dCB4PSIyNDUiIHk9IjExMCIgY2xhc3M9InMiPnN0b29wPC90ZXh0Pgo8cmVjdCB4PSI1MDAiIHk9IjEzMCIgd2lkdGg9IjIzMCIgaGVpZ2h0PSIyMDAiIGNsYXNzPSJmMiIvPgo8cmVjdCB4PSI1MDAiIHk9IjIxMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMjAiIGZpbGw9IndoaXRlIiBzdHJva2U9IiMxMTEiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSI1NjAiIHk9IjExMCIgY2xhc3M9InMiPmZvcmVjb3VydDwvdGV4dD4KPC9zdmc+"
+  },
+  "questions": [
+    {
+      "s": "Frontage Types",
+      "q": "What minimum width is recommended for a useful porch?",
+      "o": [
+        "8 ft",
+        "12 ft",
+        "10 ft",
+        "6 ft"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "A porch should be at least 8 ft wide to be useful."
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Straight lines enhance rolling terrain?",
+      "o": [
+        "Washington Pattern",
+        "Mariemont Pattern",
+        "Savannah Pattern",
+        "Nantucket Pattern"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Straight lines enhance rolling terrain is listed as an advantage of the Savannah Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "Which wind exposure is described by large city centers with at least 50% of buildings over 70 ft (21,336 mm)?",
+      "o": [
+        "Exposure C",
+        "Exposure B",
+        "Exposure A",
+        "Exposure D"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "Exposure A corresponds to this terrain condition. Representative Exposure A terrain must prevail upwind for at least 0.5 mile (0.8 km) or 10 times building height, whichever is greater.",
+      "fig": "f2"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the disadvantage: Monotonous unless periodically interrupted?",
+      "o": [
+        "Mariemont Pattern",
+        "Savannah Pattern",
+        "Nantucket Pattern",
+        "Washington Pattern"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Monotonous unless periodically interrupted is a disadvantage of the Savannah Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "Which additional statement applies to Exposure A?",
+      "o": [
+        "Closely spaced substantial obstructions characterize the terrain",
+        "Includes flat open country, grasslands, and shorelines in hurricane-prone regions",
+        "Extends inland 1,500 ft (457 m) or 10 times building/structure height, whichever is greater",
+        "Possible channeling or increased velocity pressure from adjacent-building wakes must be considered"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "Possible channeling or increased velocity pressure from adjacent-building wakes must be considered."
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the disadvantage: Unresponsive to steep terrain?",
+      "o": [
+        "Washington Pattern",
+        "Mariemont Pattern",
+        "Nantucket Pattern",
+        "Savannah Pattern"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Unresponsive to steep terrain is a disadvantage of the Savannah Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "Which rule is associated with Exposure B?",
+      "o": [
+        "Also applies to a building in B-type terrain directly adjacent to C-type open area for more than 600 ft (183 m) in any quadrant",
+        "Assumed unless the site meets another exposure definition",
+        "Applies only to structures exposed to wind coming from over the water",
+        "Representative Exposure A terrain must prevail upwind for at least 0.5 mile (0.8 km) or 10 times building height, whichever is greater"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "For Exposure B, Assumed unless the site meets another exposure definition.",
+      "fig": "f2"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Hierarchy with long routes for through traffic?",
+      "o": [
+        "Washington Pattern",
+        "Mariemont Pattern",
+        "Savannah Pattern",
+        "Nantucket Pattern"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Hierarchy with long routes for through traffic is listed as an advantage of the Nantucket Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "Which wind exposure is described by open terrain with scattered obstructions or irregularities generally under 30 ft (9,144 mm) high extending more than 1,500 ft (457 m) from the site in any quadrant?",
+      "o": [
+        "Exposure B",
+        "Exposure A",
+        "Exposure C",
+        "Exposure D"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "Exposure C corresponds to this terrain condition. Also applies to a building in B-type terrain directly adjacent to C-type open area for more than 600 ft (183 m) in any quadrant.",
+      "fig": "f2"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Responsive to terrain?",
+      "o": [
+        "Mariemont Pattern",
+        "Washington Pattern",
+        "Nantucket Pattern",
+        "Savannah Pattern"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Responsive to terrain is listed as an advantage of the Nantucket Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "Which additional statement applies to Exposure C?",
+      "o": [
+        "Includes flat open country, grasslands, and shorelines in hurricane-prone regions",
+        "Closely spaced substantial obstructions characterize the terrain",
+        "Possible channeling or increased velocity pressure from adjacent-building wakes must be considered",
+        "Extends inland 1,500 ft (457 m) or 10 times building/structure height, whichever is greater"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "Includes flat open country, grasslands, and shorelines in hurricane-prone regions."
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Monotony eliminated by terminated vistas?",
+      "o": [
+        "Savannah Pattern",
+        "Nantucket Pattern",
+        "Washington Pattern",
+        "Mariemont Pattern"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Monotony eliminated by terminated vistas is listed as an advantage of the Nantucket Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "Which rule is associated with Exposure D?",
+      "o": [
+        "Representative Exposure A terrain must prevail upwind for at least 0.5 mile (0.8 km) or 10 times building height, whichever is greater",
+        "Applies only to structures exposed to wind coming from over the water",
+        "Also applies to a building in B-type terrain directly adjacent to C-type open area for more than 600 ft (183 m) in any quadrant",
+        "Assumed unless the site meets another exposure definition"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "For Exposure D, Applies only to structures exposed to wind coming from over the water.",
+      "fig": "f2"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the disadvantage: Uncontrollable variety of blocks and lots?",
+      "o": [
+        "Mariemont Pattern",
+        "Nantucket Pattern",
+        "Savannah Pattern",
+        "Washington Pattern"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Uncontrollable variety of blocks and lots is a disadvantage of the Nantucket Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "For Exposure A, what is the minimum share of buildings over 70 ft?",
+      "o": [
+        "At least 50%",
+        "1,500 ft (457 m)",
+        "600 ft (183 m)",
+        "0.5 mile (0.8 km)"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "For Exposure A, the minimum share of buildings over 70 ft is At least 50%."
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Hierarchy with diagonals for through traffic?",
+      "o": [
+        "Savannah Pattern",
+        "Washington Pattern",
+        "Mariemont Pattern",
+        "Nantucket Pattern"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Hierarchy with diagonals for through traffic is listed as an advantage of the Mariemont Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "For Exposure A, what is the minimum representative upwind distance alternative?",
+      "o": [
+        "1,500 ft (457 m)",
+        "600 ft (183 m)",
+        "0.5 mile (0.8 km) or 10 times building height, whichever is greater",
+        "0.5 mile (0.8 km)"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "For Exposure A, the minimum representative upwind distance alternative is 0.5 mile (0.8 km) or 10 times building height, whichever is greater."
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Monotony interrupted by deflected vistas?",
+      "o": [
+        "Savannah Pattern",
+        "Washington Pattern",
+        "Mariemont Pattern",
+        "Nantucket Pattern"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Monotony interrupted by deflected vistas is listed as an advantage of the Mariemont Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "For Exposure C, what is the open-terrain extent from building site?",
+      "o": [
+        "0.5 mile (0.8 km)",
+        "600 ft (183 m)",
+        "1,500 ft (457 m)",
+        "More than 1,500 ft (457 m)"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "For Exposure C, the open-terrain extent from building site is More than 1,500 ft (457 m)."
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the disadvantage: Tends to be disorienting?",
+      "o": [
+        "Mariemont Pattern",
+        "Savannah Pattern",
+        "Washington Pattern",
+        "Nantucket Pattern"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Tends to be disorienting is a disadvantage of the Mariemont Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "For Exposure D, what is the minimum open-water fetch?",
+      "o": [
+        "600 ft (183 m)",
+        "1,500 ft (457 m)",
+        "0.5 mile (0.8 km)",
+        "At least 1 mile (1.61 km)"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "For Exposure D, the minimum open-water fetch is At least 1 mile (1.61 km)."
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Hierarchy with diagonals for through traffic?",
+      "o": [
+        "Savannah Pattern",
+        "Mariemont Pattern",
+        "Nantucket Pattern",
+        "Washington Pattern"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Hierarchy with diagonals for through traffic is listed as an advantage of the Washington Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Neighborhood Planning",
+      "q": "A primarily residential neighborhood sector is the least dense, uses low-density freestanding edgeyard buildings, and may contain parks within a nearby greenbelt. Which transect zone is it?",
+      "o": [
+        "T3 Sub-Urban",
+        "T6 Urban Core",
+        "T5 Urban Center",
+        "T4 General Urban"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "The combination of lowest density, primarily residential use, edgeyard buildings, and greenbelt-related open space identifies T3.",
+      "fig": "f3"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Diagonal focus on terrain features?",
+      "o": [
+        "Savannah Pattern",
+        "Mariemont Pattern",
+        "Washington Pattern",
+        "Nantucket Pattern"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Diagonal focus on terrain features is listed as an advantage of the Washington Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Street Patterns",
+      "q": "A street plan needs excellent directional orientation, controllable lot depth, and efficient double-loading of alleys and utilities. Which pattern fits best?",
+      "o": [
+        "Nantucket Pattern",
+        "Savannah Pattern",
+        "Radburn Pattern",
+        "Riverside Pattern"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "These are characteristic advantages of the Savannah orthogonal/gridiron pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the disadvantage: Uncontrollable variety of lots?",
+      "o": [
+        "Nantucket Pattern",
+        "Savannah Pattern",
+        "Mariemont Pattern",
+        "Washington Pattern"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Uncontrollable variety of lots is a disadvantage of the Washington Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Responsive Environments",
+      "q": "An urban designer is first deciding where pedestrians and vehicles can and cannot move through a district. Which responsive-environment criterion is being addressed?",
+      "o": [
+        "Richness",
+        "Permeability",
+        "Variety",
+        "Legibility"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 50 — Criteria for Responsive Environments",
+      "n": "Permeability deals directly with movement choices and is the criterion the source emphasizes first.",
+      "fig": "f4"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the disadvantage: Diagonal intersections spatially ill-defined?",
+      "o": [
+        "Mariemont Pattern",
+        "Washington Pattern",
+        "Savannah Pattern",
+        "Nantucket Pattern"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Diagonal intersections spatially ill-defined is a disadvantage of the Washington Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Frontages",
+      "q": "A retail facade is directly at sidewalk grade and uses a cantilevered shed roof or awning. Which frontage type is this?",
+      "o": [
+        "Dooryard & Light Court",
+        "Shopfront & Awning",
+        "Stoop",
+        "Common Lawn"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "Shopfront & Awning is the conventional retail frontage with an entrance at sidewalk grade and an awning."
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Monotony interrupted by deflected vistas?",
+      "o": [
+        "Nantucket Pattern",
+        "Savannah Pattern",
+        "Riverside Pattern",
+        "Mariemont Pattern"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Monotony interrupted by deflected vistas is listed as an advantage of the Riverside Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Wind Exposure",
+      "q": "A building faces wind coming across at least 1 mile of unobstructed open water. Which exposure category applies?",
+      "o": [
+        "Exposure B",
+        "Exposure D",
+        "Exposure A",
+        "Exposure C"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "Exposure D applies to flat, unobstructed sites exposed to wind flowing over open water for at least one mile.",
+      "fig": "f2"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Highly responsive to terrain?",
+      "o": [
+        "Savannah Pattern",
+        "Riverside Pattern",
+        "Mariemont Pattern",
+        "Nantucket Pattern"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Highly responsive to terrain is listed as an advantage of the Riverside Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Wind Exposure",
+      "q": "A 200-ft-high structure in Exposure D is being checked for inland extent. What distance governs?",
+      "o": [
+        "1,500 ft",
+        "20,000 ft",
+        "2,000 ft",
+        "1,000 ft"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "Ten times 200 ft is 2,000 ft, which is greater than 1,500 ft.",
+      "fig": "f2"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the disadvantage: Highly disorienting?",
+      "o": [
+        "Nantucket Pattern",
+        "Riverside Pattern",
+        "Savannah Pattern",
+        "Mariemont Pattern"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Highly disorienting is a disadvantage of the Riverside Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What land-use pattern is associated with T3 Sub-Urban?",
+      "o": [
+        "A substantially different transect condition",
+        "limited, permitting controlled combination of residential with other uses",
+        "restricted, combining residential with certain other uses",
+        "No defined pattern"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T3 Sub-Urban, the land-use pattern is restricted, combining residential with certain other uses.",
+      "fig": "f3"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the disadvantage: No intrinsic hierarchy?",
+      "o": [
+        "Nantucket Pattern",
+        "Savannah Pattern",
+        "Mariemont Pattern",
+        "Riverside Pattern"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "No intrinsic hierarchy is a disadvantage of the Riverside Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What frontage pattern is associated with T3 Sub-Urban?",
+      "o": [
+        "A substantially different transect condition",
+        "No defined pattern",
+        "medium-density freestanding sideyard and edgeyard types",
+        "common lawn and porch-and-fence"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T3 Sub-Urban, the frontage pattern is common lawn and porch-and-fence.",
+      "fig": "f3"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Good street hierarchy for locals and collectors?",
+      "o": [
+        "Mariemont Pattern",
+        "Nantucket Pattern",
+        "Radburn Pattern",
+        "Savannah Pattern"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Good street hierarchy for locals and collectors is listed as an advantage of the Radburn Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What thoroughfare system is associated with T3 Sub-Urban?",
+      "o": [
+        "No defined pattern",
+        "A substantially different transect condition",
+        "roads and drives; buildings may use rear lanes, though wider lots may dispense with them",
+        "medium-density freestanding sideyard and edgeyard types"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T3 Sub-Urban, the thoroughfare system is roads and drives; buildings may use rear lanes, though wider lots may dispense with them.",
+      "fig": "f3"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Easily absorbs environmental interruptions?",
+      "o": [
+        "Nantucket Pattern",
+        "Savannah Pattern",
+        "Mariemont Pattern",
+        "Radburn Pattern"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Easily absorbs environmental interruptions is listed as an advantage of the Radburn Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "Which zone is described as the mixed in function but principally residential; usually the largest neighborhood area?",
+      "o": [
+        "T4 General Urban",
+        "T3 Sub-Urban",
+        "T6 Urban Core",
+        "T5 Urban Center"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "T4 General Urban has this neighborhood role.",
+      "fig": "f3"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the disadvantage: Congestion of traffic by absence of web?",
+      "o": [
+        "Nantucket Pattern",
+        "Radburn Pattern",
+        "Savannah Pattern",
+        "Mariemont Pattern"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Congestion of traffic by absence of web is a disadvantage of the Radburn Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What building pattern is associated with T4 General Urban?",
+      "o": [
+        "higher-density attached courtyard, rearyard, and sideyard types",
+        "A substantially different transect condition",
+        "medium-density freestanding sideyard and edgeyard types",
+        "No defined pattern"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T4 General Urban, the building pattern is medium-density freestanding sideyard and edgeyard types.",
+      "fig": "f3"
+    },
+    {
+      "s": "Responsive Environments",
+      "q": "Which responsive-environment criterion refers to how design affects where people can and cannot go within a city district; it should be considered first because it involves pedestrian and vehicle circulation?",
+      "o": [
+        "Variety",
+        "Legibility",
+        "Robustness",
+        "Permeability"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Criteria for Responsive Environments",
+      "n": "Permeability refers to how design affects where people can and cannot go within a city district; it should be considered first because it involves pedestrian and vehicle circulation.",
+      "fig": "f4"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What streetscape is associated with T4 General Urban?",
+      "o": [
+        "No defined pattern",
+        "higher-density attached courtyard, rearyard, and sideyard types",
+        "road, residential street, and avenue",
+        "A substantially different transect condition"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T4 General Urban, the streetscape is road, residential street, and avenue.",
+      "fig": "f3"
+    },
+    {
+      "s": "Responsive Environments",
+      "q": "Which responsive-environment criterion refers to the ease with which people can understand the spatial layout of a place?",
+      "o": [
+        "Variety",
+        "Permeability",
+        "Robustness",
+        "Legibility"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Criteria for Responsive Environments",
+      "n": "Legibility refers to the ease with which people can understand the spatial layout of a place.",
+      "fig": "f4"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What open-space organization is associated with T4 General Urban?",
+      "o": [
+        "A substantially different transect condition",
+        "No defined pattern",
+        "higher-density attached courtyard, rearyard, and sideyard types",
+        "parks and greens"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T4 General Urban, the open-space organization is parks and greens.",
+      "fig": "f3"
+    },
+    {
+      "s": "Responsive Environments",
+      "q": "Which responsive-environment criterion refers to how design physically makes people aware of the choices a place provides?",
+      "o": [
+        "Visual Appropriateness",
+        "Variety",
+        "Legibility",
+        "Permeability"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 50 — Criteria for Responsive Environments",
+      "n": "Visual Appropriateness refers to how design physically makes people aware of the choices a place provides.",
+      "fig": "f4"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What land-use pattern is associated with T5 Urban Center?",
+      "o": [
+        "Another listed condition",
+        "A substantially different transect condition",
+        "No defined pattern",
+        "open, encouraging residential and other uses"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T5 Urban Center, the land-use pattern is open, encouraging residential and other uses.",
+      "fig": "f3"
+    },
+    {
+      "s": "Responsive Environments",
+      "q": "Which responsive-environment criterion refers to design that encourages people to put their own mark on places where they live and work?",
+      "o": [
+        "Permeability",
+        "Legibility",
+        "Variety",
+        "Personalization"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Criteria for Responsive Environments",
+      "n": "Personalization refers to design that encourages people to put their own mark on places where they live and work.",
+      "fig": "f4"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What frontage pattern is associated with T5 Urban Center?",
+      "o": [
+        "high-density attached courtyard and rearyard types only",
+        "A substantially different transect condition",
+        "No defined pattern",
+        "continuous streetwalls with shallow setbacks: arcade, shopfront, stoop, and forecourt"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T5 Urban Center, the frontage pattern is continuous streetwalls with shallow setbacks: arcade, shopfront, stoop, and forecourt.",
+      "fig": "f3"
+    },
+    {
+      "s": "Frontage Types",
+      "q": "Which frontage type is described as private frontage conventionally for retail use; facade is a colonnade overlapping the sidewalk while the sidewalk-level facade remains at the frontage line?",
+      "o": [
+        "Shopfront & Awning",
+        "Forecourt",
+        "Stoop",
+        "Gallery & Arcade"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "Gallery & Arcade has this frontage arrangement. usually requires an easement for private use of the right-of-way; arcade should be no less than 12 ft wide.",
+      "fig": "f5"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What thoroughfare system is associated with T5 Urban Center?",
+      "o": [
+        "A substantially different transect condition",
+        "No defined pattern",
+        "avenues and streets; all buildings served by rear alleys",
+        "high-density attached courtyard and rearyard types only"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T5 Urban Center, the thoroughfare system is avenues and streets; all buildings served by rear alleys.",
+      "fig": "f3"
+    },
+    {
+      "s": "Frontage Types",
+      "q": "Which frontage type is described as facade aligned close to frontage line with entrance at sidewalk grade; conventional for retail frontage; commonly equipped with cantilevered shed roof or awning?",
+      "o": [
+        "Forecourt",
+        "Shopfront & Awning",
+        "Gallery & Arcade",
+        "Stoop"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "Shopfront & Awning has this frontage arrangement. absence of a raised ground story precludes residential use on the ground floor, though residential use is appropriate above.",
+      "fig": "f5"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "Which zone is described as the most dense business, service, and institutional center, usually shared by several neighborhoods?",
+      "o": [
+        "T5 Urban Center",
+        "T6 Urban Core",
+        "T4 General Urban",
+        "T3 Sub-Urban"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "T6 Urban Core has this neighborhood role.",
+      "fig": "f3"
+    },
+    {
+      "s": "Frontage Types",
+      "q": "Which frontage type is described as facade aligned close to frontage line with first story elevated from sidewalk for privacy and an exterior stair and landing at entrance?",
+      "o": [
+        "Gallery & Arcade",
+        "Shopfront & Awning",
+        "Stoop",
+        "Forecourt"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "Stoop has this frontage arrangement. suitable for ground-floor residential uses at short setbacks with rowhouses/apartment buildings; easement may be needed for encroaching stoop.",
+      "fig": "f5"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What building pattern is associated with T6 Urban Core?",
+      "o": [
+        "high-density attached courtyard and rearyard types only",
+        "No defined pattern",
+        "A substantially different transect condition",
+        "low-density freestanding edgeyard type"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T6 Urban Core, the building pattern is high-density attached courtyard and rearyard types only.",
+      "fig": "f3"
+    },
+    {
+      "s": "Frontage Types",
+      "q": "Which frontage type is described as facade aligned close to frontage line with a portion set back, creating space for gardens, drop-offs, and utility off-loading?",
+      "o": [
+        "Shopfront & Awning",
+        "Forecourt",
+        "Gallery & Arcade",
+        "Stoop"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "Forecourt has this frontage arrangement. should be used sparingly with adjacent frontage types; continuous excessive setback is boring/unsafe; tree canopies should overhang sidewalks.",
+      "fig": "f5"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What streetscape is associated with T6 Urban Core?",
+      "o": [
+        "No defined pattern",
+        "low-density freestanding edgeyard type",
+        "commercial street, avenue, and boulevard",
+        "A substantially different transect condition"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T6 Urban Core, the streetscape is commercial street, avenue, and boulevard.",
+      "fig": "f3"
+    },
+    {
+      "s": "Frontage Types",
+      "q": "Which frontage type is described as private frontage with shallow setback and front garden or patio, usually with a low wall at the frontage line?",
+      "o": [
+        "Stoop",
+        "Shopfront & Awning",
+        "Dooryard & Light Court",
+        "Gallery & Arcade"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "Dooryard & Light Court has this frontage arrangement. buffers residential quarters from the sidewalk while removing private yard from public encroachment.",
+      "fig": "f5"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What open-space organization is associated with T6 Urban Core?",
+      "o": [
+        "No defined pattern",
+        "A substantially different transect condition",
+        "plazas or squares",
+        "low-density freestanding edgeyard type"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T6 Urban Core, the open-space organization is plazas or squares.",
+      "fig": "f3"
+    },
+    {
+      "s": "Frontage Types",
+      "q": "Which frontage type is described as facade set back from frontage line with an encroaching porch; fence at frontage line maintains yard demarcation?",
+      "o": [
+        "Shopfront & Awning",
+        "Gallery & Arcade",
+        "Stoop",
+        "Porch & Fence"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "Porch & Fence has this frontage arrangement. porch should remain within conversational distance of sidewalk and should be at least 8 ft wide.",
+      "fig": "f5"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "Which zone is typically shared by several neighborhoods?",
+      "o": [
+        "T6 Urban Core",
+        "T3 Sub-Urban",
+        "T4 General Urban",
+        "T5 Urban Center"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "The Urban Core is the densest business, service, and institutional center and is commonly shared by several neighborhoods."
+    },
+    {
+      "s": "Frontage Types",
+      "q": "Which frontage type is described as facade set back substantially from frontage line; front yard remains unfenced and visually continuous with adjacent yards?",
+      "o": [
+        "Gallery & Arcade",
+        "Stoop",
+        "Shopfront & Awning",
+        "Common Lawn"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "Common Lawn has this frontage arrangement. simulates buildings in a common rural landscape; front porch not warranted; suitable for higher-speed thoroughfares because large setback buffers traffic.",
+      "fig": "f5"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "Which zone is the least dense and most purely residential?",
+      "o": [
+        "T5 Urban Center",
+        "T4 General Urban",
+        "T3 Sub-Urban",
+        "T6 Urban Core"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "T3 Sub-Urban is the least dense and most residential of the four shown zones."
+    },
+    {
+      "s": "Frontage Types",
+      "q": "Which frontage type is described as facade no more than 80 ft from right-of-way; parking is placed within first layer and private sidewalks link public sidewalk to building entrances?",
+      "o": [
+        "Gallery & Arcade",
+        "Stoop",
+        "Shopfront & Awning",
+        "Slip Lane"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "Slip Lane has this frontage arrangement. parking/private sidewalk system is landscaped for shade/shelter and a streetwall buffer; transit stops may link directly to private sidewalk system.",
+      "fig": "f5"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Controllable lot depth?",
+      "o": [
+        "Savannah Pattern",
+        "Washington Pattern",
+        "Mariemont Pattern",
+        "Nantucket Pattern"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Controllable lot depth is listed as an advantage of the Savannah Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Frontage Types",
+      "q": "What minimum width is recommended for a useful arcade?",
+      "o": [
+        "8 ft",
+        "10 ft",
+        "16 ft",
+        "12 ft"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "The arcade should be no less than 12 ft wide."
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Even dispersal of traffic through the web?",
+      "o": [
+        "Washington Pattern",
+        "Savannah Pattern",
+        "Mariemont Pattern",
+        "Nantucket Pattern"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Even dispersal of traffic through the web is listed as an advantage of the Savannah Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Frontage Types",
+      "q": "How far from the right-of-way may the facade be in a Slip Lane frontage?",
+      "o": [
+        "Exactly 12 ft",
+        "No more than 80 ft",
+        "No more than 40 ft",
+        "At least 100 ft"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "The Slip Lane facade is limited to no more than 80 ft from the right-of-way."
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Efficient double-loading of alleys and utilities?",
+      "o": [
+        "Nantucket Pattern",
+        "Washington Pattern",
+        "Mariemont Pattern",
+        "Savannah Pattern"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Efficient double-loading of alleys and utilities is listed as an advantage of the Savannah Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "Which rule is associated with Exposure A?",
+      "o": [
+        "Applies only to structures exposed to wind coming from over the water",
+        "Also applies to a building in B-type terrain directly adjacent to C-type open area for more than 600 ft (183 m) in any quadrant",
+        "Representative Exposure A terrain must prevail upwind for at least 0.5 mile (0.8 km) or 10 times building height, whichever is greater",
+        "Assumed unless the site meets another exposure definition"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "For Exposure A, Representative Exposure A terrain must prevail upwind for at least 0.5 mile (0.8 km) or 10 times building height, whichever is greater.",
+      "fig": "f2"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the disadvantage: Does not easily absorb environmental interruptions?",
+      "o": [
+        "Nantucket Pattern",
+        "Savannah Pattern",
+        "Mariemont Pattern",
+        "Washington Pattern"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Does not easily absorb environmental interruptions is a disadvantage of the Savannah Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "Which wind exposure is described by urban/suburban or wooded terrain with numerous closely spaced obstructions the size of single-family dwellings or larger?",
+      "o": [
+        "Exposure D",
+        "Exposure B",
+        "Exposure C",
+        "Exposure A"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "Exposure B corresponds to this terrain condition. Assumed unless the site meets another exposure definition.",
+      "fig": "f2"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "What synonym is associated with the Savannah Pattern?",
+      "o": [
+        "orthogonal grid / gridiron",
+        "sitte model / townscape",
+        "unwin model / spider web",
+        "city beautiful / haussmann model"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "The Savannah Pattern is also associated with the term orthogonal grid / gridiron."
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "Which additional statement applies to Exposure B?",
+      "o": [
+        "Extends inland 1,500 ft (457 m) or 10 times building/structure height, whichever is greater",
+        "Includes flat open country, grasslands, and shorelines in hurricane-prone regions",
+        "Closely spaced substantial obstructions characterize the terrain",
+        "Possible channeling or increased velocity pressure from adjacent-building wakes must be considered"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "Closely spaced substantial obstructions characterize the terrain."
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Even dispersal of traffic through web?",
+      "o": [
+        "Nantucket Pattern",
+        "Washington Pattern",
+        "Mariemont Pattern",
+        "Savannah Pattern"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Even dispersal of traffic through web is listed as an advantage of the Nantucket Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "Which rule is associated with Exposure C?",
+      "o": [
+        "Applies only to structures exposed to wind coming from over the water",
+        "Representative Exposure A terrain must prevail upwind for at least 0.5 mile (0.8 km) or 10 times building height, whichever is greater",
+        "Assumed unless the site meets another exposure definition",
+        "Also applies to a building in B-type terrain directly adjacent to C-type open area for more than 600 ft (183 m) in any quadrant"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "For Exposure C, Also applies to a building in B-type terrain directly adjacent to C-type open area for more than 600 ft (183 m) in any quadrant.",
+      "fig": "f2"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Easily absorbs environmental interruptions?",
+      "o": [
+        "Mariemont Pattern",
+        "Washington Pattern",
+        "Savannah Pattern",
+        "Nantucket Pattern"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Easily absorbs environmental interruptions is listed as an advantage of the Nantucket Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "Which wind exposure is described by flat unobstructed areas exposed to wind flowing over open water for at least 1 mile (1.61 km), excluding hurricane-prone shorelines?",
+      "o": [
+        "Exposure B",
+        "Exposure D",
+        "Exposure C",
+        "Exposure A"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "Exposure D corresponds to this terrain condition. Applies only to structures exposed to wind coming from over the water.",
+      "fig": "f2"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Follows traces on the landscape?",
+      "o": [
+        "Nantucket Pattern",
+        "Mariemont Pattern",
+        "Savannah Pattern",
+        "Washington Pattern"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Follows traces on the landscape is listed as an advantage of the Nantucket Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "Which additional statement applies to Exposure D?",
+      "o": [
+        "Possible channeling or increased velocity pressure from adjacent-building wakes must be considered",
+        "Includes flat open country, grasslands, and shorelines in hurricane-prone regions",
+        "Closely spaced substantial obstructions characterize the terrain",
+        "Extends inland 1,500 ft (457 m) or 10 times building/structure height, whichever is greater"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "Extends inland 1,500 ft (457 m) or 10 times building/structure height, whichever is greater."
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "What synonym is associated with the Nantucket Pattern?",
+      "o": [
+        "orthogonal grid / gridiron",
+        "city beautiful / haussmann model",
+        "sitte model / townscape",
+        "unwin model / spider web"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "The Nantucket Pattern is also associated with the term sitte model / townscape."
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "For Exposure A, what is the large-city height threshold?",
+      "o": [
+        "1,500 ft (457 m)",
+        "600 ft (183 m)",
+        "70 ft (21,336 mm)",
+        "0.5 mile (0.8 km)"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "For Exposure A, the large-city height threshold is 70 ft (21,336 mm)."
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Even dispersal of traffic through the grid?",
+      "o": [
+        "Nantucket Pattern",
+        "Savannah Pattern",
+        "Washington Pattern",
+        "Mariemont Pattern"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Even dispersal of traffic through the grid is listed as an advantage of the Mariemont Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "For Exposure C, what is the typical obstruction height ceiling?",
+      "o": [
+        "Less than 30 ft (9,144 mm)",
+        "0.5 mile (0.8 km)",
+        "600 ft (183 m)",
+        "1,500 ft (457 m)"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "For Exposure C, the typical obstruction height ceiling is Less than 30 ft (9,144 mm)."
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Diagonal intersections spatially well-defined?",
+      "o": [
+        "Washington Pattern",
+        "Mariemont Pattern",
+        "Nantucket Pattern",
+        "Savannah Pattern"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Diagonal intersections spatially well-defined is listed as an advantage of the Mariemont Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "For Exposure C, what is the adjacent open-area distance that triggers c condition from b terrain?",
+      "o": [
+        "0.5 mile (0.8 km)",
+        "More than 600 ft (183 m)",
+        "600 ft (183 m)",
+        "1,500 ft (457 m)"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "For Exposure C, the adjacent open-area distance that triggers c condition from b terrain is More than 600 ft (183 m)."
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "What synonym is associated with the Mariemont Pattern?",
+      "o": [
+        "sitte model / townscape",
+        "city beautiful / haussmann model",
+        "orthogonal grid / gridiron",
+        "unwin model / spider web"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "The Mariemont Pattern is also associated with the term unwin model / spider web."
+    },
+    {
+      "s": "Wind Exposure Categories",
+      "q": "For Exposure D, what is the inland extent?",
+      "o": [
+        "0.5 mile (0.8 km)",
+        "600 ft (183 m)",
+        "1,500 ft (457 m)",
+        "1,500 ft (457 m) or 10 times building height, whichever is greater"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "For Exposure D, the inland extent is 1,500 ft (457 m) or 10 times building height, whichever is greater."
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Even dispersal of traffic through the grid?",
+      "o": [
+        "Nantucket Pattern",
+        "Mariemont Pattern",
+        "Washington Pattern",
+        "Savannah Pattern"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Even dispersal of traffic through the grid is listed as an advantage of the Washington Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Neighborhood Planning",
+      "q": "A mixed but principally residential sector is usually the largest neighborhood area, with medium-density freestanding sideyard and edgeyard buildings. Which zone is it?",
+      "o": [
+        "T3 Sub-Urban",
+        "T5 Urban Center",
+        "T6 Urban Core",
+        "T4 General Urban"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "Those characteristics match T4 General Urban.",
+      "fig": "f3"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Diagonal interruptions break grid monotony?",
+      "o": [
+        "Nantucket Pattern",
+        "Mariemont Pattern",
+        "Savannah Pattern",
+        "Washington Pattern"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Diagonal interruptions break grid monotony is listed as an advantage of the Washington Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Street Patterns",
+      "q": "A plan must be highly responsive to terrain and absorb environmental interruptions, while accepting some disorientation and irregular lots. Which pattern is the closest match?",
+      "o": [
+        "Radburn Pattern",
+        "Riverside Pattern",
+        "Savannah Pattern",
+        "Washington Pattern"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Riverside is highly terrain-responsive and absorbs environmental interruptions, but can be disorienting and produce uncontrolled lot variety.",
+      "fig": "f1"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the disadvantage: High number of awkward lot shapes?",
+      "o": [
+        "Nantucket Pattern",
+        "Savannah Pattern",
+        "Washington Pattern",
+        "Mariemont Pattern"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "High number of awkward lot shapes is a disadvantage of the Washington Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Frontages",
+      "q": "A ground-floor residential rowhouse is close to the frontage line but needs privacy by elevating the first story above the sidewalk, with exterior steps to the entrance. Which frontage fits?",
+      "o": [
+        "Common Lawn",
+        "Shopfront & Awning",
+        "Stoop",
+        "Forecourt"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "A stoop raises the first story above the sidewalk and uses an exterior stair/landing, making it suitable for residential use at short setbacks.",
+      "fig": "f5"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "What synonym is associated with the Washington Pattern?",
+      "o": [
+        "city beautiful / haussmann model",
+        "orthogonal grid / gridiron",
+        "unwin model / spider web",
+        "sitte model / townscape"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "The Washington Pattern is also associated with the term city beautiful / haussmann model."
+    },
+    {
+      "s": "Applied Wind Exposure",
+      "q": "A site is in an ordinary suburban neighborhood with many closely spaced houses and does not meet another exposure definition. Which wind exposure should be assumed?",
+      "o": [
+        "Exposure D",
+        "Exposure B",
+        "Exposure C",
+        "Exposure A"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "Exposure B covers urban/suburban or wooded terrain with many closely spaced dwelling-sized obstructions and is the default unless another category applies.",
+      "fig": "f2"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Easily absorbs environmental interruptions?",
+      "o": [
+        "Savannah Pattern",
+        "Riverside Pattern",
+        "Nantucket Pattern",
+        "Mariemont Pattern"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Easily absorbs environmental interruptions is listed as an advantage of the Riverside Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Wind Exposure",
+      "q": "A 60-ft-high building in Exposure D is being checked for how far the exposure extends inland. Compare 1,500 ft with 10 times the building height. What inland distance governs?",
+      "o": [
+        "1,500 ft",
+        "6,000 ft",
+        "600 ft",
+        "1,000 ft"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 51 — Wind Exposure Category",
+      "n": "Ten times 60 ft is 600 ft. Exposure D uses the greater of 1,500 ft or 10 times height, so 1,500 ft governs.",
+      "fig": "f2"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Even dispersal of traffic through the web?",
+      "o": [
+        "Riverside Pattern",
+        "Savannah Pattern",
+        "Nantucket Pattern",
+        "Mariemont Pattern"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Even dispersal of traffic through the web is listed as an advantage of the Riverside Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "Which zone is described as the least dense, most purely residential sector?",
+      "o": [
+        "T4 General Urban",
+        "T5 Urban Center",
+        "T3 Sub-Urban",
+        "T6 Urban Core"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "T3 Sub-Urban has this neighborhood role.",
+      "fig": "f3"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the disadvantage: Uncontrollable variety of lots?",
+      "o": [
+        "Savannah Pattern",
+        "Nantucket Pattern",
+        "Mariemont Pattern",
+        "Riverside Pattern"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Uncontrollable variety of lots is a disadvantage of the Riverside Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What building pattern is associated with T3 Sub-Urban?",
+      "o": [
+        "medium-density freestanding sideyard and edgeyard types",
+        "No defined pattern",
+        "A substantially different transect condition",
+        "low-density freestanding edgeyard type"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T3 Sub-Urban, the building pattern is low-density freestanding edgeyard type.",
+      "fig": "f3"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "What synonym is associated with the Riverside Pattern?",
+      "o": [
+        "olmstedian",
+        "unwin model / spider web",
+        "sitte model / townscape",
+        "orthogonal grid / gridiron"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "The Riverside Pattern is also associated with the term olmstedian."
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What streetscape is associated with T3 Sub-Urban?",
+      "o": [
+        "parkway, road, and lane",
+        "medium-density freestanding sideyard and edgeyard types",
+        "A substantially different transect condition",
+        "No defined pattern"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T3 Sub-Urban, the streetscape is parkway, road, and lane.",
+      "fig": "f3"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Controllable variety of blocks and lots?",
+      "o": [
+        "Mariemont Pattern",
+        "Savannah Pattern",
+        "Radburn Pattern",
+        "Nantucket Pattern"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Controllable variety of blocks and lots is listed as an advantage of the Radburn Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What open-space organization is associated with T3 Sub-Urban?",
+      "o": [
+        "No defined pattern",
+        "medium-density freestanding sideyard and edgeyard types",
+        "A substantially different transect condition",
+        "parks within the proximate greenbelt"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T3 Sub-Urban, the open-space organization is parks within the proximate greenbelt.",
+      "fig": "f3"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Responsive to terrain?",
+      "o": [
+        "Mariemont Pattern",
+        "Radburn Pattern",
+        "Nantucket Pattern",
+        "Savannah Pattern"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Responsive to terrain is listed as an advantage of the Radburn Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What land-use pattern is associated with T4 General Urban?",
+      "o": [
+        "No defined pattern",
+        "limited, permitting controlled combination of residential with other uses",
+        "A substantially different transect condition",
+        "open, encouraging residential and other uses"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T4 General Urban, the land-use pattern is limited, permitting controlled combination of residential with other uses.",
+      "fig": "f3"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "What synonym is associated with the Radburn Pattern?",
+      "o": [
+        "sitte model / townscape",
+        "cul-de-sac",
+        "orthogonal grid / gridiron",
+        "unwin model / spider web"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "The Radburn Pattern is also associated with the term cul-de-sac."
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What frontage pattern is associated with T4 General Urban?",
+      "o": [
+        "No defined pattern",
+        "dooryard and porch-and-fence with medium setbacks",
+        "higher-density attached courtyard, rearyard, and sideyard types",
+        "A substantially different transect condition"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T4 General Urban, the frontage pattern is dooryard and porch-and-fence with medium setbacks.",
+      "fig": "f3"
+    },
+    {
+      "s": "Responsive Environments",
+      "q": "Which responsive-environment criterion refers to the range of uses a place provides, such as housing, shopping, employment, and recreation?",
+      "o": [
+        "Robustness",
+        "Legibility",
+        "Permeability",
+        "Variety"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Criteria for Responsive Environments",
+      "n": "Variety refers to the range of uses a place provides, such as housing, shopping, employment, and recreation.",
+      "fig": "f4"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What thoroughfare system is associated with T4 General Urban?",
+      "o": [
+        "avenues, streets, and roads; most buildings served by rear lanes",
+        "A substantially different transect condition",
+        "higher-density attached courtyard, rearyard, and sideyard types",
+        "No defined pattern"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T4 General Urban, the thoroughfare system is avenues, streets, and roads; most buildings served by rear lanes.",
+      "fig": "f3"
+    },
+    {
+      "s": "Responsive Environments",
+      "q": "Which responsive-environment criterion refers to buildings and outdoor spaces that support many purposes and activities rather than a single fixed use?",
+      "o": [
+        "Permeability",
+        "Legibility",
+        "Variety",
+        "Robustness"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Criteria for Responsive Environments",
+      "n": "Robustness refers to buildings and outdoor spaces that support many purposes and activities rather than a single fixed use.",
+      "fig": "f4"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "Which zone is described as the dense multifunctional social condenser, usually central and within walking distance of surrounding residential areas?",
+      "o": [
+        "T3 Sub-Urban",
+        "T6 Urban Core",
+        "T5 Urban Center",
+        "T4 General Urban"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "T5 Urban Center has this neighborhood role.",
+      "fig": "f3"
+    },
+    {
+      "s": "Responsive Environments",
+      "q": "Which responsive-environment criterion refers to ways to increase the range of sensory experiences users can enjoy, including touch, sound, light, and taste?",
+      "o": [
+        "Variety",
+        "Legibility",
+        "Permeability",
+        "Richness"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Criteria for Responsive Environments",
+      "n": "Richness refers to ways to increase the range of sensory experiences users can enjoy, including touch, sound, light, and taste.",
+      "fig": "f4"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What building pattern is associated with T5 Urban Center?",
+      "o": [
+        "higher-density attached courtyard, rearyard, and sideyard types",
+        "A substantially different transect condition",
+        "high-density attached courtyard and rearyard types only",
+        "No defined pattern"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T5 Urban Center, the building pattern is higher-density attached courtyard, rearyard, and sideyard types.",
+      "fig": "f3"
+    },
+    {
+      "s": "Responsive Environments",
+      "q": "Which criterion should the urban designer consider first because it concerns pedestrian and vehicle circulation?",
+      "o": [
+        "Legibility",
+        "Richness",
+        "Variety",
+        "Permeability"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Criteria for Responsive Environments",
+      "n": "Permeability is emphasized first because it governs movement choices and circulation through the district."
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What streetscape is associated with T5 Urban Center?",
+      "o": [
+        "residential street, commercial street, avenue, and boulevard",
+        "No defined pattern",
+        "high-density attached courtyard and rearyard types only",
+        "A substantially different transect condition"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T5 Urban Center, the streetscape is residential street, commercial street, avenue, and boulevard.",
+      "fig": "f3"
+    },
+    {
+      "s": "Frontage Types",
+      "q": "Which statement is associated with Gallery & Arcade?",
+      "o": [
+        "absence of a raised ground story precludes residential use on the ground floor, though residential use is appropriate above",
+        "suitable for ground-floor residential uses at short setbacks with rowhouses/apartment buildings; easement may be needed for encroaching stoop",
+        "should be used sparingly with adjacent frontage types; continuous excessive setback is boring/unsafe; tree canopies should overhang sidewalks",
+        "usually requires an easement for private use of the right-of-way; arcade should be no less than 12 ft wide"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "For Gallery & Arcade, usually requires an easement for private use of the right-of-way; arcade should be no less than 12 ft wide.",
+      "fig": "f5"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What open-space organization is associated with T5 Urban Center?",
+      "o": [
+        "high-density attached courtyard and rearyard types only",
+        "A substantially different transect condition",
+        "plazas or squares",
+        "No defined pattern"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T5 Urban Center, the open-space organization is plazas or squares.",
+      "fig": "f3"
+    },
+    {
+      "s": "Frontage Types",
+      "q": "Which statement is associated with Shopfront & Awning?",
+      "o": [
+        "suitable for ground-floor residential uses at short setbacks with rowhouses/apartment buildings; easement may be needed for encroaching stoop",
+        "usually requires an easement for private use of the right-of-way; arcade should be no less than 12 ft wide",
+        "absence of a raised ground story precludes residential use on the ground floor, though residential use is appropriate above",
+        "should be used sparingly with adjacent frontage types; continuous excessive setback is boring/unsafe; tree canopies should overhang sidewalks"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "For Shopfront & Awning, absence of a raised ground story precludes residential use on the ground floor, though residential use is appropriate above.",
+      "fig": "f5"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What land-use pattern is associated with T6 Urban Core?",
+      "o": [
+        "No defined pattern",
+        "A substantially different transect condition",
+        "open, encouraging residential and other uses",
+        "restricted, combining residential with certain other uses"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T6 Urban Core, the land-use pattern is open, encouraging residential and other uses.",
+      "fig": "f3"
+    },
+    {
+      "s": "Frontage Types",
+      "q": "Which statement is associated with Stoop?",
+      "o": [
+        "suitable for ground-floor residential uses at short setbacks with rowhouses/apartment buildings; easement may be needed for encroaching stoop",
+        "usually requires an easement for private use of the right-of-way; arcade should be no less than 12 ft wide",
+        "absence of a raised ground story precludes residential use on the ground floor, though residential use is appropriate above",
+        "should be used sparingly with adjacent frontage types; continuous excessive setback is boring/unsafe; tree canopies should overhang sidewalks"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "For Stoop, suitable for ground-floor residential uses at short setbacks with rowhouses/apartment buildings; easement may be needed for encroaching stoop.",
+      "fig": "f5"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What frontage pattern is associated with T6 Urban Core?",
+      "o": [
+        "A substantially different transect condition",
+        "low-density freestanding edgeyard type",
+        "continuous streetwalls with shallow setbacks: arcade, shopfront, stoop, and forecourt",
+        "No defined pattern"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T6 Urban Core, the frontage pattern is continuous streetwalls with shallow setbacks: arcade, shopfront, stoop, and forecourt.",
+      "fig": "f3"
+    },
+    {
+      "s": "Frontage Types",
+      "q": "Which statement is associated with Forecourt?",
+      "o": [
+        "usually requires an easement for private use of the right-of-way; arcade should be no less than 12 ft wide",
+        "absence of a raised ground story precludes residential use on the ground floor, though residential use is appropriate above",
+        "suitable for ground-floor residential uses at short setbacks with rowhouses/apartment buildings; easement may be needed for encroaching stoop",
+        "should be used sparingly with adjacent frontage types; continuous excessive setback is boring/unsafe; tree canopies should overhang sidewalks"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "For Forecourt, should be used sparingly with adjacent frontage types; continuous excessive setback is boring/unsafe; tree canopies should overhang sidewalks.",
+      "fig": "f5"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "What thoroughfare system is associated with T6 Urban Core?",
+      "o": [
+        "No defined pattern",
+        "A substantially different transect condition",
+        "streets and boulevards; all buildings served by rear alleys",
+        "low-density freestanding edgeyard type"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "For T6 Urban Core, the thoroughfare system is streets and boulevards; all buildings served by rear alleys.",
+      "fig": "f3"
+    },
+    {
+      "s": "Frontage Types",
+      "q": "Which statement is associated with Dooryard & Light Court?",
+      "o": [
+        "absence of a raised ground story precludes residential use on the ground floor, though residential use is appropriate above",
+        "suitable for ground-floor residential uses at short setbacks with rowhouses/apartment buildings; easement may be needed for encroaching stoop",
+        "usually requires an easement for private use of the right-of-way; arcade should be no less than 12 ft wide",
+        "buffers residential quarters from the sidewalk while removing private yard from public encroachment"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "For Dooryard & Light Court, buffers residential quarters from the sidewalk while removing private yard from public encroachment.",
+      "fig": "f5"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "Which zone is usually the largest area of the neighborhood?",
+      "o": [
+        "T5 Urban Center",
+        "T3 Sub-Urban",
+        "T6 Urban Core",
+        "T4 General Urban"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "General Urban is principally residential, mixed in function, and usually occupies the largest share of the neighborhood."
+    },
+    {
+      "s": "Frontage Types",
+      "q": "Which statement is associated with Porch & Fence?",
+      "o": [
+        "absence of a raised ground story precludes residential use on the ground floor, though residential use is appropriate above",
+        "usually requires an easement for private use of the right-of-way; arcade should be no less than 12 ft wide",
+        "porch should remain within conversational distance of sidewalk and should be at least 8 ft wide",
+        "suitable for ground-floor residential uses at short setbacks with rowhouses/apartment buildings; easement may be needed for encroaching stoop"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "For Porch & Fence, porch should remain within conversational distance of sidewalk and should be at least 8 ft wide.",
+      "fig": "f5"
+    },
+    {
+      "s": "Neighborhood Transect Zones",
+      "q": "Which zone is usually centrally located within walking distance of surrounding residential areas?",
+      "o": [
+        "T4 General Urban",
+        "T5 Urban Center",
+        "T3 Sub-Urban",
+        "T6 Urban Core"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 49 — Neighborhood Structure and Elements",
+      "n": "The Urban Center acts as a dense multifunctional social condenser at a central walkable location."
+    },
+    {
+      "s": "Frontage Types",
+      "q": "Which statement is associated with Common Lawn?",
+      "o": [
+        "suitable for ground-floor residential uses at short setbacks with rowhouses/apartment buildings; easement may be needed for encroaching stoop",
+        "simulates buildings in a common rural landscape; front porch not warranted; suitable for higher-speed thoroughfares because large setback buffers traffic",
+        "usually requires an easement for private use of the right-of-way; arcade should be no less than 12 ft wide",
+        "absence of a raised ground story precludes residential use on the ground floor, though residential use is appropriate above"
+      ],
+      "c": 1,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "For Common Lawn, simulates buildings in a common rural landscape; front porch not warranted; suitable for higher-speed thoroughfares because large setback buffers traffic.",
+      "fig": "f5"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Excellent directional orientation?",
+      "o": [
+        "Savannah Pattern",
+        "Nantucket Pattern",
+        "Washington Pattern",
+        "Mariemont Pattern"
+      ],
+      "c": 0,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Excellent directional orientation is listed as an advantage of the Savannah Pattern.",
+      "fig": "f1"
+    },
+    {
+      "s": "Frontage Types",
+      "q": "Which statement is associated with Slip Lane?",
+      "o": [
+        "absence of a raised ground story precludes residential use on the ground floor, though residential use is appropriate above",
+        "suitable for ground-floor residential uses at short setbacks with rowhouses/apartment buildings; easement may be needed for encroaching stoop",
+        "parking/private sidewalk system is landscaped for shade/shelter and a streetwall buffer; transit stops may link directly to private sidewalk system",
+        "usually requires an easement for private use of the right-of-way; arcade should be no less than 12 ft wide"
+      ],
+      "c": 2,
+      "ref": "Principles of Planning Tables, p. 51 — Frontage Types",
+      "n": "For Slip Lane, parking/private sidewalk system is landscaped for shade/shelter and a streetwall buffer; transit stops may link directly to private sidewalk system.",
+      "fig": "f5"
+    },
+    {
+      "s": "Street Pattern Types",
+      "q": "Which street pattern has the advantage: Provides end grain of blocks for fast traffic?",
+      "o": [
+        "Mariemont Pattern",
+        "Nantucket Pattern",
+        "Washington Pattern",
+        "Savannah Pattern"
+      ],
+      "c": 3,
+      "ref": "Principles of Planning Tables, p. 50 — Street Pattern Types",
+      "n": "Provides end grain of blocks for fast traffic is listed as an advantage of the Savannah Pattern.",
+      "fig": "f1"
+    }
+  ]
+}
