@@ -1,0 +1,392 @@
+{
+  "figures": {
+    "f1": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPlJvY2sgRHJpbGxpbmcgQ29uY2VwdHM8L3RleHQ+CjxyZWN0IHg9IjgwIiB5PSIxMTAiIHdpZHRoPSIyMjAiIGhlaWdodD0iMjYwIiBjbGFzcz0iZiIvPgo8cGF0aCBkPSJNMTkwIDEyNSBWMzQwIiBjbGFzcz0ibCIvPjxwYXRoIGQ9Ik0xNzAgMTUwIEwyMTAgMTMwIE0xNzAgMTg1IEwyMTAgMTY1IE0xNzAgMjIwIEwyMTAgMjAwIiBjbGFzcz0idGgiLz4KPHRleHQgeD0iMTE1IiB5PSI0MTAiIGNsYXNzPSJzIj5wZXJjdXNzaW9uIGltcGFjdDwvdGV4dD4KPHJlY3QgeD0iMzQwIiB5PSIxMTAiIHdpZHRoPSIyMjAiIGhlaWdodD0iMjYwIiBjbGFzcz0iZjIiLz4KPGNpcmNsZSBjeD0iNDUwIiBjeT0iMjQ1IiByPSI3NSIgY2xhc3M9InRoIi8+PGNpcmNsZSBjeD0iNDUwIiBjeT0iMjQ1IiByPSIzNSIgY2xhc3M9InRoIi8+Cjx0ZXh0IHg9IjM5NSIgeT0iNDEwIiBjbGFzcz0icyI+Y29yZSBkcmlsbGluZzwvdGV4dD4KPHJlY3QgeD0iNjAwIiB5PSIxMTAiIHdpZHRoPSIyMjAiIGhlaWdodD0iMjYwIiBjbGFzcz0iZiIvPgo8Y2lyY2xlIGN4PSI3MTAiIGN5PSIzMTUiIHI9IjM4IiBjbGFzcz0idGgiLz48Y2lyY2xlIGN4PSI3MTAiIGN5PSIzMTUiIHI9IjEyIiBmaWxsPSIjMTExIi8+CjxsaW5lIHgxPSI3MTAiIHkxPSIxMzAiIHgyPSI3MTAiIHkyPSIyNzUiIGNsYXNzPSJsIi8+Cjx0ZXh0IHg9IjY1MCIgeT0iNDEwIiBjbGFzcz0icyI+cm90YXJ5IGJpdDwvdGV4dD4KPC9zdmc+",
+    "f2": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPkZvcm13b3JrIFN5c3RlbXM8L3RleHQ+CjxyZWN0IHg9IjgwIiB5PSIxMjAiIHdpZHRoPSIyMTAiIGhlaWdodD0iMjQwIiBjbGFzcz0iZiIvPgo8dGV4dCB4PSIxMjUiIHk9IjEwNSIgY2xhc3M9InMiPnNsaXAgZm9ybTwvdGV4dD4KPHBhdGggZD0iTTEyMCAzMjAgSDI1MCBNMTM1IDI4MCBIMjM1IE0xNTAgMjQwIEgyMjAgTTE2NSAyMDAgSDIwNSIgY2xhc3M9InRoIi8+CjxyZWN0IHg9IjM1MCIgeT0iMTIwIiB3aWR0aD0iMjEwIiBoZWlnaHQ9IjI0MCIgY2xhc3M9ImYyIi8+Cjx0ZXh0IHg9IjM5MCIgeT0iMTA1IiBjbGFzcz0icyI+dHVubmVsIGZvcm08L3RleHQ+CjxwYXRoIGQ9Ik0zOTUgMzMwIFYxOTAgUTQ1NSAxMjUgNTE1IDE5MCBWMzMwIiBjbGFzcz0ibCIvPgo8cmVjdCB4PSI2MjAiIHk9IjEyMCIgd2lkdGg9IjIxMCIgaGVpZ2h0PSIyNDAiIGNsYXNzPSJmIi8+Cjx0ZXh0IHg9IjY2NSIgeT0iMTA1IiBjbGFzcz0icyI+Zmx5aW5nIHRhYmxlPC90ZXh0Pgo8cmVjdCB4PSI2NTUiIHk9IjE3MCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSIzNSIgY2xhc3M9InRoIi8+PGxpbmUgeDE9IjY4MCIgeTE9IjIwNSIgeDI9IjY1MCIgeTI9IjMzMCIgY2xhc3M9InRoIi8+PGxpbmUgeDE9Ijc3MCIgeTE9IjIwNSIgeDI9IjgwMCIgeTI9IjMzMCIgY2xhc3M9InRoIi8+Cjwvc3ZnPg==",
+    "f3": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPkNvbnN0cnVjdGlvbiBFcXVpcG1lbnQgUm9sZXM8L3RleHQ+CjxyZWN0IHg9IjcwIiB5PSIxMTAiIHdpZHRoPSIyMzAiIGhlaWdodD0iMjMwIiBjbGFzcz0iZiIvPgo8Y2lyY2xlIGN4PSIxMjUiIGN5PSIzMzUiIHI9IjM1IiBjbGFzcz0idGgiLz48Y2lyY2xlIGN4PSIyNDUiIGN5PSIzMzUiIHI9IjM1IiBjbGFzcz0idGgiLz4KPHBhdGggZD0iTTEzMCAyMDAgSDIzMCBMMjcwIDI2MCBIMTEwIFoiIGNsYXNzPSJsIi8+Cjx0ZXh0IHg9IjExMCIgeT0iMzk1IiBjbGFzcz0icyI+bG9hZGVyIC8gZXhjYXZhdG9yIHJvbGU8L3RleHQ+CjxyZWN0IHg9IjM0MCIgeT0iMTEwIiB3aWR0aD0iMjMwIiBoZWlnaHQ9IjIzMCIgY2xhc3M9ImYyIi8+CjxwYXRoIGQ9Ik0zODUgMzIwIEg1MzUgTDU1MCAyNjAgSDQwMCBaIiBjbGFzcz0ibCIvPjxsaW5lIHgxPSI0MzAiIHkxPSIyNjAiIHgyPSI0MzAiIHkyPSIxNzUiIGNsYXNzPSJsIi8+Cjx0ZXh0IHg9IjQwNSIgeT0iMzk1IiBjbGFzcz0icyI+Z3JhZGluZyAvIGZpbmlzaGluZyByb2xlPC90ZXh0Pgo8cmVjdCB4PSI2MTAiIHk9IjExMCIgd2lkdGg9IjIzMCIgaGVpZ2h0PSIyMzAiIGNsYXNzPSJmIi8+CjxsaW5lIHgxPSI2NzUiIHkxPSIzMTUiIHgyPSI3MzUiIHkyPSIxNzAiIGNsYXNzPSJsIi8+PGxpbmUgeDE9IjczNSIgeTE9IjE3MCIgeDI9IjgwMCIgeTI9IjIxMCIgY2xhc3M9InRoIi8+Cjx0ZXh0IHg9IjY3NSIgeT0iMzk1IiBjbGFzcz0icyI+bGlmdGluZyAvIGhvaXN0aW5nIHJvbGU8L3RleHQ+Cjwvc3ZnPg==",
+    "f4": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPlN1YnN1cmZhY2UgSW52ZXN0aWdhdGlvbiBNZXRob2RzPC90ZXh0Pgo8cmVjdCB4PSIxMTAiIHk9IjExMCIgd2lkdGg9IjE4MCIgaGVpZ2h0PSIyODAiIGNsYXNzPSJmIi8+Cjx0ZXh0IHg9IjE1NSIgeT0iOTUiIGNsYXNzPSJzIj50ZXN0IHBpdDwvdGV4dD4KPHBhdGggZD0iTTIwMCAxMjAgVjM3NSIgY2xhc3M9ImQiLz4KPHJlY3QgeD0iMzYwIiB5PSIxMTAiIHdpZHRoPSIxODAiIGhlaWdodD0iMjgwIiBjbGFzcz0iZjIiLz4KPHRleHQgeD0iMzk1IiB5PSI5NSIgY2xhc3M9InMiPnRlc3QgYm9yaW5nPC90ZXh0Pgo8bGluZSB4MT0iNDUwIiB5MT0iMTE1IiB4Mj0iNDUwIiB5Mj0iMzkwIiBjbGFzcz0ibCIvPgo8cmVjdCB4PSI2MTAiIHk9IjExMCIgd2lkdGg9IjE4MCIgaGVpZ2h0PSIyODAiIGNsYXNzPSJmIi8+Cjx0ZXh0IHg9IjY1NSIgeT0iOTUiIGNsYXNzPSJzIj5TUFQ8L3RleHQ+CjxsaW5lIHgxPSI3MDAiIHkxPSIxMjAiIHgyPSI3MDAiIHkyPSIzMzUiIGNsYXNzPSJ0aCIvPgo8cmVjdCB4PSI2NzUiIHk9IjMzNSIgd2lkdGg9IjUwIiBoZWlnaHQ9IjU1IiBjbGFzcz0iZjIiLz4KPC9zdmc+",
+    "f5": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPkdyYWRpbmcgYW5kIEVhcnRod29yazwvdGV4dD4KPHBhdGggZD0iTTgwIDMxNSBRMjIwIDE4MCAzNjAgMzAwIFE1MTAgNDIwIDgyMCAyMjAiIGNsYXNzPSJsIi8+CjxwYXRoIGQ9Ik04MCAzMzAgTDgyMCAzMzAiIGNsYXNzPSJkIi8+Cjx0ZXh0IHg9IjE2NSIgeT0iMTcwIiBjbGFzcz0icyI+Y3V0IHpvbmU8L3RleHQ+Cjx0ZXh0IHg9IjYwMCIgeT0iMzkwIiBjbGFzcz0icyI+ZmlsbCB6b25lPC90ZXh0Pgo8dGV4dCB4PSIzNjUiIHk9IjQ1NSIgY2xhc3M9InMiPmdyYWRpbmcgc2hhcGVzIHRoZSBzaXRlIHRvIHRoZSByZXF1aXJlZCBmaW5pc2ggZWxldmF0aW9uczwvdGV4dD4KPC9zdmc+"
+  },
+  "questions": [
+    {
+      "s": "Drilling Methods",
+      "q": "Which drill uses a rotating roller bit at the end of a drill stem to grind or crush rock?",
+      "o": [
+        "Rotary blasthole drill",
+        "Core drill only",
+        "Pile hammer",
+        "Hand auger"
+      ],
+      "c": 0,
+      "ref": "Peurifoy, Schexnayder & Shapira, Construction Planning, Equipment, and Methods - excavation, drilling and construction equipment",
+      "n": "Rotary blasthole drills commonly use roller-cone or similar bits to crush rock as the drill string rotates.",
+      "fig": "f1"
+    },
+    {
+      "s": "Concrete Formwork",
+      "q": "What are flying forms?",
+      "o": [
+        "Excavation supports",
+        "Permanent roof panels",
+        "Large prefabricated table-form units moved from bay to bay or floor to floor",
+        "Small hand tools"
+      ],
+      "c": 2,
+      "ref": "ACI 347R - Guide to Formwork for Concrete",
+      "n": "Flying or table forms are large reusable floor-form assemblies moved as units between placements.",
+      "fig": "f2"
+    },
+    {
+      "s": "Geotechnical Practice",
+      "q": "Which professional discipline typically directs soil and foundation investigations for a building project?",
+      "o": [
+        "Interior design",
+        "Lighting design",
+        "Geotechnical engineering",
+        "Landscape maintenance"
+      ],
+      "c": 2,
+      "ref": "FHWA Geotechnical Engineering Circulars - subsurface investigation, boring and soil-testing guidance",
+      "n": "Geotechnical engineers investigate soil, rock, groundwater, and foundation behavior."
+    },
+    {
+      "s": "Construction Equipment",
+      "q": "Which machine combines a front loader with a rear excavating backhoe?",
+      "o": [
+        "Motor grader",
+        "Concrete pump",
+        "Backhoe-loader",
+        "Tower crane"
+      ],
+      "c": 2,
+      "ref": "Caterpillar Performance Handbook - earthmoving and grading equipment functions",
+      "n": "A backhoe-loader combines a loader bucket at the front with a backhoe excavator attachment at the rear.",
+      "fig": "f3"
+    },
+    {
+      "s": "Concrete Formwork",
+      "q": "What construction method uses forms that move continuously or in small increments upward as concrete placement progresses?",
+      "o": [
+        "Tilt-up construction",
+        "Lift-slab construction",
+        "Brick veneering",
+        "Slipforming"
+      ],
+      "c": 3,
+      "ref": "ACI 347R - Guide to Formwork for Concrete",
+      "n": "Slipforms move vertically as concrete is continuously placed, commonly for cores, silos, and tall walls.",
+      "fig": "f2"
+    },
+    {
+      "s": "Drilling Methods",
+      "q": "Using a jackhammer is an example of which basic drilling action?",
+      "o": [
+        "Percussion",
+        "Hydraulic grading",
+        "Rotary coring",
+        "Static pressing"
+      ],
+      "c": 0,
+      "ref": "Peurifoy, Schexnayder & Shapira, Construction Planning, Equipment, and Methods - excavation, drilling and construction equipment",
+      "n": "A jackhammer breaks material through rapid repeated impacts, which is percussion action."
+    },
+    {
+      "s": "Site Preparation",
+      "q": "What is proof rolling used to evaluate?",
+      "o": [
+        "The uniformity and support condition of prepared subgrade or base",
+        "Glass impact resistance",
+        "Roof membrane adhesion",
+        "Weld penetration"
+      ],
+      "c": 0,
+      "ref": "FHWA Geotechnical Engineering Circulars - subsurface investigation, boring and soil-testing guidance",
+      "n": "Proof rolling uses loaded equipment to reveal weak or unstable areas in prepared soil-support systems."
+    },
+    {
+      "s": "Earthwork",
+      "q": "What is earthmoving?",
+      "o": [
+        "Only paving",
+        "Only surveying",
+        "The excavation, transport, placement, and shaping of soil or rock",
+        "Only roofing"
+      ],
+      "c": 2,
+      "ref": "Peurifoy, Schexnayder & Shapira, Construction Planning, Equipment, and Methods - excavation, drilling and construction equipment",
+      "n": "Earthmoving broadly includes excavating, loading, hauling, placing, and grading earth materials."
+    },
+    {
+      "s": "Concrete Formwork",
+      "q": "What is the main advantage of reusable large-panel or table-form systems on repetitive projects?",
+      "o": [
+        "Faster cycling with reduced repetitive assembly labor",
+        "They eliminate concrete curing",
+        "They make reinforcement unnecessary",
+        "They remove all structural design requirements"
+      ],
+      "c": 0,
+      "ref": "ACI 347R - Guide to Formwork for Concrete",
+      "n": "Large reusable forms reduce repeated setup and dismantling effort where floor plans repeat."
+    },
+    {
+      "s": "Site Preparation",
+      "q": "Why is proof rolling useful before placing a slab or pavement?",
+      "o": [
+        "It helps identify localized weak zones that may deform under load",
+        "It replaces all laboratory testing",
+        "It determines paint color",
+        "It measures window air leakage"
+      ],
+      "c": 0,
+      "ref": "FHWA Geotechnical Engineering Circulars - subsurface investigation, boring and soil-testing guidance",
+      "n": "Visible deflection or rutting during proof rolling can indicate inadequate support or poorly compacted areas."
+    },
+    {
+      "s": "Drilling Methods",
+      "q": "Which type of drill is designed to recover a cylindrical rock sample for examination?",
+      "o": [
+        "Percussion hammer only",
+        "Core drill",
+        "Scraper",
+        "Motor grader"
+      ],
+      "c": 1,
+      "ref": "Cyril M. Harris, Dictionary of Architecture and Construction - earthwork, equipment, formwork and drilling terminology",
+      "n": "Core drilling cuts an annular kerf and retrieves a cylindrical rock or concrete core.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Construction Equipment",
+      "q": "A project needs one machine to excavate utility trenches, load spoil, and perform light backfilling. Which equipment is the most versatile choice?",
+      "o": [
+        "Concrete buggy",
+        "Tower crane",
+        "Motor grader",
+        "Backhoe-loader"
+      ],
+      "c": 3,
+      "ref": "Caterpillar Performance Handbook - earthmoving and grading equipment functions",
+      "n": "A backhoe-loader combines digging and loading functions in one machine."
+    },
+    {
+      "s": "Applied Formwork",
+      "q": "A high-rise residential project repeats nearly identical room-sized cells, and the contractor wants to cast walls and slabs in one operation. Which system fits best?",
+      "o": [
+        "Slipform only",
+        "Tunnel form system",
+        "Flying roof trusses",
+        "Timber footing forms"
+      ],
+      "c": 1,
+      "ref": "Francis D.K. Ching, Building Construction Illustrated - sitework, excavation, foundations, concrete formwork and construction equipment",
+      "n": "Tunnel forms are intended for repetitive cellular layouts where walls and slabs are concreted together.",
+      "fig": "f2"
+    },
+    {
+      "s": "Soil Investigation",
+      "q": "Which field test records the number of hammer blows needed to drive a split-barrel sampler into soil?",
+      "o": [
+        "Proof rolling",
+        "Standard Penetration Test",
+        "Slump test",
+        "Core compression test"
+      ],
+      "c": 1,
+      "ref": "ASTM D1586/D1586M - Standard Test Method for Standard Penetration Test (SPT) and Split-Barrel Sampling of Soils",
+      "n": "The SPT records penetration resistance as a blow count during split-barrel sampling.",
+      "fig": "f4"
+    },
+    {
+      "s": "Concrete Formwork",
+      "q": "Which reusable forming system casts walls and slabs together in repetitive cellular construction?",
+      "o": [
+        "Individual footing forms",
+        "Slipforms",
+        "Stay-in-place metal deck only",
+        "Tunnel forms"
+      ],
+      "c": 3,
+      "ref": "Francis D.K. Ching, Building Construction Illustrated - sitework, excavation, foundations, concrete formwork and construction equipment",
+      "n": "Tunnel forms create room-sized wall-and-slab cells and are well suited to repetitive apartments, hotels, and similar buildings.",
+      "fig": "f2"
+    },
+    {
+      "s": "Soil Investigation",
+      "q": "When shallow near-surface conditions must be examined directly, which investigation method is most appropriate?",
+      "o": [
+        "Core curing",
+        "Test pit",
+        "SPT only",
+        "Slump cone"
+      ],
+      "c": 1,
+      "ref": "U.S. Army Corps of Engineers, Geotechnical Investigations / subsurface exploration guidance",
+      "n": "A test pit exposes soil directly and is useful for shallow subsurface inspection where excavation is practical.",
+      "fig": "f4"
+    },
+    {
+      "s": "Soil Investigation",
+      "q": "What does SPT stand for?",
+      "o": [
+        "Standard Penetration Test",
+        "Soil Pit Test",
+        "Soil Pressure Test",
+        "Standard Proctor Test"
+      ],
+      "c": 0,
+      "ref": "ASTM D1586/D1586M - Standard Test Method for Standard Penetration Test (SPT) and Split-Barrel Sampling of Soils",
+      "n": "ASTM D1586 defines the Standard Penetration Test using a split-barrel sampler driven into soil.",
+      "fig": "f4"
+    },
+    {
+      "s": "Soil Investigation",
+      "q": "What is a test boring?",
+      "o": [
+        "A concrete cylinder test",
+        "A drilled subsurface exploration used to obtain soil/rock information and samples",
+        "A roof drainage opening",
+        "A pavement finishing method"
+      ],
+      "c": 1,
+      "ref": "FHWA Geotechnical Engineering Circulars - subsurface investigation, boring and soil-testing guidance",
+      "n": "Test borings provide direct subsurface information and permit sampling, groundwater observations, and in-situ tests.",
+      "fig": "f4"
+    },
+    {
+      "s": "Applied Formwork",
+      "q": "A concrete core must rise continuously as placement proceeds, with the forms moving upward rather than being dismantled each lift. What method is appropriate?",
+      "o": [
+        "Flying forms",
+        "Tilt-up",
+        "Slipforming",
+        "Conventional isolated footing formwork"
+      ],
+      "c": 2,
+      "ref": "ACI 347R - Guide to Formwork for Concrete",
+      "n": "Continuous upward movement of the form during placement identifies slipforming."
+    },
+    {
+      "s": "Earthwork",
+      "q": "What term describes soil or material placed to raise an area to the required elevation?",
+      "o": [
+        "Scupper",
+        "Fill",
+        "Boring",
+        "Cut"
+      ],
+      "c": 1,
+      "ref": "Cyril M. Harris, Dictionary of Architecture and Construction - earthwork, equipment, formwork and drilling terminology",
+      "n": "Fill is material placed and compacted to raise or reshape ground elevations."
+    },
+    {
+      "s": "Cranes",
+      "q": "What is a climbing crane?",
+      "o": [
+        "A crane designed to raise its mast or support as the building rises",
+        "A hand-operated hoist",
+        "A stationary derrick that cannot rise",
+        "A crane used only below grade"
+      ],
+      "c": 0,
+      "ref": "OSHA construction guidance - cranes, derricks, excavation and lifting terminology",
+      "n": "Climbing cranes are arranged so the crane can climb with the advancing building structure.",
+      "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPkNsaW1iaW5nIENyYW5lIENvbmNlcHQ8L3RleHQ+CjxyZWN0IHg9IjE4MCIgeT0iMzIwIiB3aWR0aD0iNTIwIiBoZWlnaHQ9IjgwIiBjbGFzcz0iZiIvPgo8cmVjdCB4PSI0MzAiIHk9IjEwNSIgd2lkdGg9IjU1IiBoZWlnaHQ9IjI5NSIgY2xhc3M9ImYyIi8+CjxsaW5lIHgxPSI0NTciIHkxPSIxMTAiIHgyPSI3MDAiIHkyPSIxMTAiIGNsYXNzPSJsIi8+CjxsaW5lIHgxPSI0NTciIHkxPSIxMTAiIHgyPSIzMzAiIHkyPSIxNTUiIGNsYXNzPSJ0aCIvPgo8bGluZSB4MT0iNjUwIiB5MT0iMTEwIiB4Mj0iNjUwIiB5Mj0iMjQwIiBjbGFzcz0idGgiLz4KPHRleHQgeD0iNTA1IiB5PSI0NTUiIGNsYXNzPSJzIj5jcmFuZSBtYXN0IHJpc2VzIHdpdGggdGhlIHN0cnVjdHVyZTwvdGV4dD4KPC9zdmc+"
+    },
+    {
+      "s": "Earthwork",
+      "q": "What is cut and fill?",
+      "o": [
+        "Removing formwork",
+        "Excavating material from high areas and placing it in low areas to achieve design grades",
+        "Sawing lumber and filling nail holes",
+        "Cutting reinforcing bars and filling joints"
+      ],
+      "c": 1,
+      "ref": "Peurifoy, Schexnayder & Shapira, Construction Planning, Equipment, and Methods - excavation, drilling and construction equipment",
+      "n": "Cut-and-fill operations redistribute earth to create the intended site profile.",
+      "fig": "f5"
+    },
+    {
+      "s": "Construction Equipment",
+      "q": "Which machine is primarily intended for fine grading and finishing long surfaces?",
+      "o": [
+        "Tower crane",
+        "Derrick",
+        "Backhoe-loader",
+        "Motor grader"
+      ],
+      "c": 3,
+      "ref": "Caterpillar Performance Handbook - earthmoving and grading equipment functions",
+      "n": "Motor graders use a long adjustable blade for fine grading and surface finishing.",
+      "fig": "f3"
+    },
+    {
+      "s": "Drilling Methods",
+      "q": "Which drilling method breaks rock primarily through repeated impact blows?",
+      "o": [
+        "Float drilling",
+        "Directional drilling",
+        "Percussion drilling",
+        "Core drilling"
+      ],
+      "c": 2,
+      "ref": "Peurifoy, Schexnayder & Shapira, Construction Planning, Equipment, and Methods - excavation, drilling and construction equipment",
+      "n": "Percussion drilling fragments rock through repeated impact energy.",
+      "fig": "f1"
+    },
+    {
+      "s": "Construction Equipment",
+      "q": "Which machine is especially useful when both excavation and loading/finishing tasks must be handled by one compact unit?",
+      "o": [
+        "Pile driver",
+        "Tower crane",
+        "Concrete vibrator",
+        "Backhoe-loader"
+      ],
+      "c": 3,
+      "ref": "Caterpillar Performance Handbook - earthmoving and grading equipment functions",
+      "n": "The backhoe-loader's front bucket and rear excavator make it versatile for excavation, loading, backfilling, and light finishing tasks."
+    },
+    {
+      "s": "Earthwork",
+      "q": "What is hauling in site construction?",
+      "o": [
+        "Installing windows",
+        "Testing concrete strength",
+        "Transporting excavated or construction material from one location to another",
+        "Compacting soil in place"
+      ],
+      "c": 2,
+      "ref": "Peurifoy, Schexnayder & Shapira, Construction Planning, Equipment, and Methods - excavation, drilling and construction equipment",
+      "n": "Hauling refers to transporting excavated soil, aggregate, debris, or other material within or away from the site."
+    },
+    {
+      "s": "Construction Equipment",
+      "q": "What is a derrick?",
+      "o": [
+        "A glazing mullion",
+        "A hoisting device using a mast or boom with ropes or cables",
+        "A soil sampler",
+        "A concrete joint"
+      ],
+      "c": 1,
+      "ref": "Cyril M. Harris, Dictionary of Architecture and Construction - earthwork, equipment, formwork and drilling terminology",
+      "n": "A derrick is a hoisting device with a boom or mast used to raise and move loads by cables.",
+      "fig": "f3"
+    },
+    {
+      "s": "Sitework",
+      "q": "What does grading mean in site construction?",
+      "o": [
+        "Applying paint to concrete",
+        "Shaping the ground to required elevations and slopes",
+        "Welding roof trusses",
+        "Installing glass"
+      ],
+      "c": 1,
+      "ref": "Francis D.K. Ching, Building Construction Illustrated - sitework, excavation, foundations, concrete formwork and construction equipment",
+      "n": "Grading cuts, fills, and shapes the ground surface to the required design elevations and drainage slopes.",
+      "fig": "f5"
+    }
+  ]
+}
