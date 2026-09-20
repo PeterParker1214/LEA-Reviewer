@@ -1,0 +1,1618 @@
+{
+  "figures": {
+    "f1": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9Ci50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0KLmZpbGx7ZmlsbDojZWVmM2ZiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZmlsbDJ7ZmlsbDojZjVlZWUzO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZGFzaHtzdHJva2U6IzY2NjtzdHJva2Utd2lkdGg6MjtzdHJva2UtZGFzaGFycmF5OjcgNjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+VGhyZWUtQ29hdCBTdHVjY28gLyBDZW1lbnQgUGxhc3RlcjwvdGV4dD4KPHJlY3QgeD0iMTEwIiB5PSIxMjAiIHdpZHRoPSIxODAiIGhlaWdodD0iMjMwIiBjbGFzcz0iZmlsbDIiLz4KPHJlY3QgeD0iMjkwIiB5PSIxMjAiIHdpZHRoPSIxNTAiIGhlaWdodD0iMjMwIiBjbGFzcz0iZmlsbCIvPgo8cmVjdCB4PSI0NDAiIHk9IjEyMCIgd2lkdGg9IjEzMCIgaGVpZ2h0PSIyMzAiIGNsYXNzPSJmaWxsMiIvPgo8cmVjdCB4PSI1NzAiIHk9IjEyMCIgd2lkdGg9Ijc1IiBoZWlnaHQ9IjIzMCIgY2xhc3M9ImZpbGwiLz4KPHRleHQgeD0iMTUwIiB5PSIzOTAiIGNsYXNzPSJzIj5CYXNlPC90ZXh0Pgo8dGV4dCB4PSIzMDAiIHk9IjM5MCIgY2xhc3M9InMiPlNjcmF0Y2g8L3RleHQ+Cjx0ZXh0IHg9IjQ1NSIgeT0iMzkwIiBjbGFzcz0icyI+QnJvd248L3RleHQ+Cjx0ZXh0IHg9IjU3NSIgeT0iMzkwIiBjbGFzcz0icyI+RmluaXNoPC90ZXh0Pgo8dGV4dCB4PSIyNzAiIHk9IjkwIiBjbGFzcz0icyI+c2NyYXRjaCArIGJyb3duICsgZmluaXNoIGNvYXRzPC90ZXh0Pgo8L3N2Zz4=",
+    "f2": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9Ci50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0KLmZpbGx7ZmlsbDojZWVmM2ZiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZmlsbDJ7ZmlsbDojZjVlZWUzO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZGFzaHtzdHJva2U6IzY2NjtzdHJva2Utd2lkdGg6MjtzdHJva2UtZGFzaGFycmF5OjcgNjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+Q29uY3JldGUgU3VyZmFjZSBGaW5pc2ggQ29uY2VwdHM8L3RleHQ+CjxyZWN0IHg9IjcwIiB5PSIxMDUiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjIwIiBjbGFzcz0iZmlsbCIvPgo8cGF0aCBkPSJNODUgMTUwIFExMjUgMTI1IDE2NSAxNTAgVDI0NSAxNTAiIGNsYXNzPSJ0aGluIi8+CjxwYXRoIGQ9Ik04NSAyMDUgUTEyNSAxODAgMTY1IDIwNSBUMjQ1IDIwNSIgY2xhc3M9InRoaW4iLz4KPHRleHQgeD0iMTEwIiB5PSIzNjAiIGNsYXNzPSJzIj5SdWJiZWQgLyBzYW5kLWZsb2F0PC90ZXh0Pgo8cmVjdCB4PSIzNTAiIHk9IjEwNSIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMjAiIGNsYXNzPSJmaWxsIi8+CjxwYXRoIGQ9Ik0zNjUgMTQ1IEw1MzUgMTQ1IE0zNjUgMTgwIEw1MzUgMTgwIE0zNjUgMjE1IEw1MzUgMjE1IiBjbGFzcz0ibGluZSIvPgo8dGV4dCB4PSIzOTUiIHk9IjM2MCIgY2xhc3M9InMiPkJydXNoZWQ8L3RleHQ+CjxyZWN0IHg9IjYzMCIgeT0iMTA1IiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIyMCIgY2xhc3M9ImZpbGwiLz4KPGNpcmNsZSBjeD0iNjc1IiBjeT0iMTUwIiByPSIxOCIgY2xhc3M9ImZpbGwyIi8+CjxjaXJjbGUgY3g9IjczNSIgY3k9IjIwNSIgcj0iMjMiIGNsYXNzPSJmaWxsMiIvPgo8Y2lyY2xlIGN4PSI3OTAiIGN5PSIxNTUiIHI9IjE1IiBjbGFzcz0iZmlsbDIiLz4KPGNpcmNsZSBjeD0iNjkwIiBjeT0iMjU1IiByPSIxNCIgY2xhc3M9ImZpbGwyIi8+Cjx0ZXh0IHg9IjY1NSIgeT0iMzYwIiBjbGFzcz0icyI+RXhwb3NlZCBhZ2dyZWdhdGU8L3RleHQ+Cjwvc3ZnPg==",
+    "f3": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9Ci50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0KLmZpbGx7ZmlsbDojZWVmM2ZiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZmlsbDJ7ZmlsbDojZjVlZWUzO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZGFzaHtzdHJva2U6IzY2NjtzdHJva2Utd2lkdGg6MjtzdHJva2UtZGFzaGFycmF5OjcgNjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+RmFzdGVuZXIgVHlwZXM8L3RleHQ+CjxsaW5lIHgxPSIxNTAiIHkxPSIxMDAiIHgyPSIxNTAiIHkyPSIzMzUiIGNsYXNzPSJsaW5lIi8+Cjxwb2x5Z29uIHBvaW50cz0iMTMyLDEwMCAxNjgsMTAwIDE1MCw3MiIgZmlsbD0iIzExMSIvPgo8dGV4dCB4PSIxMTAiIHk9IjM4MCIgY2xhc3M9InMiPk5haWw8L3RleHQ+CjxsaW5lIHgxPSI0MzAiIHkxPSIxMDAiIHgyPSI0MzAiIHkyPSIzMzUiIGNsYXNzPSJsaW5lIi8+CjxwYXRoIGQ9Ik00MTAgMTQ1IEw0NTAgMTY1IE00MTAgMTg1IEw0NTAgMjA1IE00MTAgMjI1IEw0NTAgMjQ1IE00MTAgMjY1IEw0NTAgMjg1IiBjbGFzcz0idGhpbiIvPgo8cmVjdCB4PSI0MDAiIHk9IjcwIiB3aWR0aD0iNjAiIGhlaWdodD0iMjUiIGNsYXNzPSJmaWxsIi8+Cjx0ZXh0IHg9IjM5NSIgeT0iMzgwIiBjbGFzcz0icyI+U2NyZXc8L3RleHQ+CjxsaW5lIHgxPSI3MDAiIHkxPSIxMDAiIHgyPSI3MDAiIHkyPSIzMzUiIGNsYXNzPSJsaW5lIi8+CjxyZWN0IHg9IjY3MCIgeT0iNzAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIyNSIgY2xhc3M9ImZpbGwiLz4KPHJlY3QgeD0iNjU1IiB5PSIzMjUiIHdpZHRoPSI5MCIgaGVpZ2h0PSIxOCIgY2xhc3M9ImZpbGwiLz4KPHRleHQgeD0iNjgwIiB5PSIzODAiIGNsYXNzPSJzIj5Cb2x0PC90ZXh0Pgo8L3N2Zz4=",
+    "f4": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9Ci50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0KLmZpbGx7ZmlsbDojZWVmM2ZiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZmlsbDJ7ZmlsbDojZjVlZWUzO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZGFzaHtzdHJva2U6IzY2NjtzdHJva2Utd2lkdGg6MjtzdHJva2UtZGFzaGFycmF5OjcgNjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+U3BlY2lhbCBBbmNob3JpbmcgQm9sdHM8L3RleHQ+CjxyZWN0IHg9IjgwIiB5PSIxMDUiIHdpZHRoPSIzMDAiIGhlaWdodD0iMjUwIiBjbGFzcz0iZmlsbCIvPgo8bGluZSB4MT0iMjIwIiB5MT0iOTAiIHgyPSIyMjAiIHkyPSIzMzAiIGNsYXNzPSJsaW5lIi8+CjxwYXRoIGQ9Ik0yMjAgMjIwIEwxNTUgMTgwIE0yMjAgMjIwIEwyODUgMTgwIiBjbGFzcz0ibGluZSIvPgo8dGV4dCB4PSIxMjUiIHk9IjM5MCIgY2xhc3M9InMiPlRvZ2dsZSBib2x0OiBwaXZvdGVkIHdpbmdzPC90ZXh0Pgo8cmVjdCB4PSI1MTUiIHk9IjEwNSIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyNTAiIGNsYXNzPSJmaWxsMiIvPgo8bGluZSB4MT0iNjU1IiB5MT0iODUiIHgyPSI2NTUiIHkyPSIzMzAiIGNsYXNzPSJsaW5lIi8+CjxyZWN0IHg9IjYyNSIgeT0iMTkwIiB3aWR0aD0iNjAiIGhlaWdodD0iMTEwIiBjbGFzcz0iZmlsbCIvPgo8cGF0aCBkPSJNNjI1IDE5MCBMNjAwIDE3NSBNNjg1IDE5MCBMNzEwIDE3NSBNNjI1IDMwMCBMNjAwIDMxNSBNNjg1IDMwMCBMNzEwIDMxNSIgY2xhc3M9ImxpbmUiLz4KPHRleHQgeD0iNTQ1IiB5PSIzOTAiIGNsYXNzPSJzIj5FeHBhbnNpb24gYm9sdDogZXhwYW5kaW5nIHNvY2tldDwvdGV4dD4KPC9zdmc+",
+    "f5": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9Ci50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0KLmZpbGx7ZmlsbDojZWVmM2ZiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZmlsbDJ7ZmlsbDojZjVlZWUzO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZGFzaHtzdHJva2U6IzY2NjtzdHJva2Utd2lkdGg6MjtzdHJva2UtZGFzaGFycmF5OjcgNjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+VGVycmF6em8gLyBHcmFub2xpdGhpYyBGbG9vciBDb25jZXB0PC90ZXh0Pgo8cmVjdCB4PSIxMDAiIHk9IjIyMCIgd2lkdGg9IjcwMCIgaGVpZ2h0PSIxMDAiIGNsYXNzPSJmaWxsIi8+CjxjaXJjbGUgY3g9IjE2NSIgY3k9IjI0NSIgcj0iMTAiIGZpbGw9IiM3NzciLz4KPGNpcmNsZSBjeD0iMjE1IiBjeT0iMjcwIiByPSIxNCIgZmlsbD0iIzc3NyIvPgo8Y2lyY2xlIGN4PSIyODUiIGN5PSIyNDUiIHI9IjEyIiBmaWxsPSIjNzc3Ii8+CjxjaXJjbGUgY3g9IjM2MCIgY3k9IjI4MCIgcj0iMTAiIGZpbGw9IiM3NzciLz4KPGNpcmNsZSBjeD0iNDUwIiBjeT0iMjUwIiByPSIxNSIgZmlsbD0iIzc3NyIvPgo8Y2lyY2xlIGN4PSI1NDAiIGN5PSIyNzUiIHI9IjExIiBmaWxsPSIjNzc3Ii8+CjxjaXJjbGUgY3g9IjYyNSIgY3k9IjI0NSIgcj0iMTMiIGZpbGw9IiM3NzciLz4KPGNpcmNsZSBjeD0iNzEwIiBjeT0iMjc1IiByPSIxMiIgZmlsbD0iIzc3NyIvPgo8dGV4dCB4PSIyNjUiIHk9IjE4MCIgY2xhc3M9InQiPmFnZ3JlZ2F0ZS1yaWNoIHRvcHBpbmc8L3RleHQ+CjxsaW5lIHgxPSIxMDAiIHkxPSIzNTAiIHgyPSI4MDAiIHkyPSIzNTAiIGNsYXNzPSJ0aGluIi8+Cjx0ZXh0IHg9IjMzMCIgeT0iMzg1IiBjbGFzcz0icyI+bWluaW11bSB0b3BwaW5nIHRoaWNrbmVzczwvdGV4dD4KPC9zdmc+",
+    "f6": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9Ci50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0KLmZpbGx7ZmlsbDojZWVmM2ZiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZmlsbDJ7ZmlsbDojZjVlZWUzO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZGFzaHtzdHJva2U6IzY2NjtzdHJva2Utd2lkdGg6MjtzdHJva2UtZGFzaGFycmF5OjcgNjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+Q2VyYW1pYyBUaWxlIENsYXNzaWZpY2F0aW9uPC90ZXh0Pgo8cmVjdCB4PSI5MCIgeT0iMTAwIiB3aWR0aD0iMjEwIiBoZWlnaHQ9IjIxMCIgY2xhc3M9ImZpbGwiLz4KPGxpbmUgeDE9IjEwNSIgeTE9IjExNSIgeDI9IjI4NSIgeTI9IjI5NSIgY2xhc3M9InRoaW4iLz4KPGxpbmUgeDE9IjI4NSIgeTE9IjExNSIgeDI9IjEwNSIgeTI9IjI5NSIgY2xhc3M9InRoaW4iLz4KPHRleHQgeD0iMTIwIiB5PSIzNTAiIGNsYXNzPSJzIj5HbGF6ZWQgLyB1bmdsYXplZDwvdGV4dD4KPHJlY3QgeD0iMzQ1IiB5PSIxMDAiIHdpZHRoPSIyMTAiIGhlaWdodD0iMjEwIiBjbGFzcz0iZmlsbDIiLz4KPHRleHQgeD0iMzg1IiB5PSIxODAiIGNsYXNzPSJzIj5EdXN0LXByZXNzZWQ8L3RleHQ+Cjx0ZXh0IHg9IjM5NSIgeT0iMjI1IiBjbGFzcz0icyI+b3IgcGxhc3RpYzwvdGV4dD4KPHRleHQgeD0iNDAwIiB5PSIyNzAiIGNsYXNzPSJzIj5wcm9jZXNzPC90ZXh0Pgo8cmVjdCB4PSI2MDAiIHk9IjEwMCIgd2lkdGg9IjIxMCIgaGVpZ2h0PSIyMTAiIGNsYXNzPSJmaWxsIi8+Cjx0ZXh0IHg9IjYyNSIgeT0iMTY1IiBjbGFzcz0icyI+Tm9uLXZpdHJlb3VzPC90ZXh0Pgo8dGV4dCB4PSI2MjUiIHk9IjIwNSIgY2xhc3M9InMiPlNlbWktdml0cmVvdXM8L3RleHQ+Cjx0ZXh0IHg9IjYyNSIgeT0iMjQ1IiBjbGFzcz0icyI+Vml0cmVvdXM8L3RleHQ+Cjx0ZXh0IHg9IjYyNSIgeT0iMjg1IiBjbGFzcz0icyI+SW1wZXJ2aW91czwvdGV4dD4KPC9zdmc+"
+  },
+  "questions": [
+    {
+      "s": "Concrete Surface Finishes",
+      "q": "What is stucco or cement plaster made from?",
+      "o": [
+        "Cement, sand, and water, sometimes with hydrated lime",
+        "Gypsum and asphalt only",
+        "Sand and epoxy only",
+        "Cement and marble chips only"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 54 — Concrete Surface Finishes",
+      "n": "Stucco or cement plaster combines cement, sand, and water, and may include hydrated lime."
+    },
+    {
+      "s": "Types of Ceramic Tile",
+      "q": "What vitrification class is glazed interior tile?",
+      "o": [
+        "Vitreous",
+        "Non-vitreous",
+        "Impervious",
+        "Semi-vitreous"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 55 — Types of Ceramic Tile",
+      "n": "Glazed interior tile is classified as non-vitreous."
+    },
+    {
+      "s": "Concrete Surface Finishes",
+      "q": "What are the three stucco/cement-plaster coats?",
+      "o": [
+        "Float, brush, and blast",
+        "Scratch, brown, and finish",
+        "Base, mesh, and glaze",
+        "Prime, seal, and topcoat"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 54 — Concrete Surface Finishes",
+      "n": "The three-coat plaster sequence is scratch coat, brown coat, then finish coat.",
+      "fig": "f1"
+    },
+    {
+      "s": "Types of Ceramic Tile",
+      "q": "What is the maximum facial area of ceramic mosaic tile?",
+      "o": [
+        "Exactly 24 sq in",
+        "Less than 6 sq in",
+        "Less than 12 sq in",
+        "More than 36 sq in"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 55 — Types of Ceramic Tile",
+      "n": "Ceramic mosaic units have facial areas under 6 square inches."
+    },
+    {
+      "s": "Concrete Surface Finishes",
+      "q": "What motion is used when producing a rubbed finish with grout?",
+      "o": [
+        "Straight sawing motion",
+        "Circular rubbing motion",
+        "Random sandblasting only",
+        "Vertical hammering"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 54 — Concrete Surface Finishes",
+      "n": "A rubbed finish is produced with a circular rubbing motion when grout is used."
+    },
+    {
+      "s": "Types of Ceramic Tile",
+      "q": "What vitrification class is ceramic mosaic tile?",
+      "o": [
+        "Semi-vitreous",
+        "Fully vitrified",
+        "Impervious only",
+        "Non-vitreous"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 55 — Types of Ceramic Tile",
+      "n": "Ceramic mosaic tile is classified as fully vitrified."
+    },
+    {
+      "s": "Concrete Surface Finishes",
+      "q": "How is a brushed finish produced?",
+      "o": [
+        "By torch heating",
+        "By scrubbing or brushing concrete with fiber or wire brushes",
+        "By grinding with carborundum",
+        "By adding marble chips only"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 54 — Concrete Surface Finishes",
+      "n": "Brushed finishes use fiber or wire brushes on the concrete surface.",
+      "fig": "f2"
+    },
+    {
+      "s": "Types of Ceramic Tile",
+      "q": "What vitrification class is glazed weatherproof tile?",
+      "o": [
+        "Fully vitrified",
+        "Impervious",
+        "Semi-vitreous",
+        "Non-vitreous"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 55 — Types of Ceramic Tile",
+      "n": "Glazed weatherproof tile is classified as semi-vitreous."
+    },
+    {
+      "s": "Concrete Surface Finishes",
+      "q": "What is the most common method of producing a tooled finish?",
+      "o": [
+        "Bush hammering",
+        "Sand floating",
+        "Acid etching",
+        "Steel trowelling"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 54 — Concrete Surface Finishes",
+      "n": "Bush hammering is identified as the most common tooled-finish method."
+    },
+    {
+      "s": "Types of Ceramic Tile",
+      "q": "What facial area distinguishes pavers?",
+      "o": [
+        "Less than 3 sq in",
+        "Exactly 6 sq in",
+        "Less than 6 sq in",
+        "More than 6 sq in"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 55 — Types of Ceramic Tile",
+      "n": "Pavers have facial areas greater than 6 square inches."
+    },
+    {
+      "s": "Concrete Surface Finishes",
+      "q": "When should a sand-blast finish be applied relative to concrete age?",
+      "o": [
+        "Preferably when concrete is at least 1 month old",
+        "Immediately after placement",
+        "Only after 1 year",
+        "Within 24 hours"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 54 — Concrete Surface Finishes",
+      "n": "Sand blasting is best performed after the concrete has matured for at least about one month."
+    },
+    {
+      "s": "Types of Ceramic Tile",
+      "q": "What vitrification results from plastic-method pavers?",
+      "o": [
+        "Fully vitrified only",
+        "Impervious only",
+        "Vitreous or semi-vitreous",
+        "Non-vitreous only"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 55 — Types of Ceramic Tile",
+      "n": "Plastic-method pavers may be vitreous or semi-vitreous."
+    },
+    {
+      "s": "Concrete Surface Finishes",
+      "q": "Which abrasive is most effective for sand blasting?",
+      "o": [
+        "Wood flour",
+        "Wet clay",
+        "Dried silica sand or quartz",
+        "Gypsum powder"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 54 — Concrete Surface Finishes",
+      "n": "Dried silica sand or quartz is the most effective abrasive for sand blasting."
+    },
+    {
+      "s": "Applied Fasteners",
+      "q": "A temporary timber formwork assembly must later be dismantled easily. Which nail is most suitable?",
+      "o": [
+        "Flooring Nail",
+        "Roofing Nail",
+        "Double Headed Nail",
+        "Casing Nail"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 54 — Types of Nails",
+      "n": "Double-headed nails are intended for temporary structures because the second head facilitates later removal.",
+      "fig": "f3"
+    },
+    {
+      "s": "Concrete Floor Finishes",
+      "q": "How is a wood-float finish produced?",
+      "o": [
+        "A glaze is fused onto the surface",
+        "The concrete is polished after full cure",
+        "Coarse aggregate is forced below the surface while fresh concrete is leveled",
+        "The surface is sandblasted"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 54 — Concrete Surface Finishes",
+      "n": "Wood floating pushes coarse aggregate below the surface while the concrete is still unset and levels the top."
+    },
+    {
+      "s": "Applied Fasteners",
+      "q": "A timber member must be anchored into masonry using a socket that expands as the bolt is tightened. Which fastener fits?",
+      "o": [
+        "Tekscrew",
+        "Toggle Bolt",
+        "Expansion Bolt",
+        "Machine Bolt"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 54 — Types of Bolts",
+      "n": "Expansion bolts use a socket that expands during tightening and are suited to masonry anchorage.",
+      "fig": "f4"
+    },
+    {
+      "s": "Concrete Floor Finishes",
+      "q": "What finish uses a 1:3 mortar coat applied while the concrete is still green?",
+      "o": [
+        "Sand-Blast Finish",
+        "Rubbed Finish",
+        "Integral Color Finish",
+        "Exposed Aggregate Finish"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 54 — Concrete Surface Finishes",
+      "n": "Integral-color flooring applies a 1:3 mortar finish coat while the base concrete is still green."
+    },
+    {
+      "s": "Applied Plaster",
+      "q": "A finish coat uses 5 parts of cement. With a 1:2 cement-to-sand ratio, how many parts of sand are needed?",
+      "o": [
+        "20 parts sand",
+        "5 parts sand",
+        "10 parts sand",
+        "15 parts sand"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 55 — Stucco/Cement Plaster Finish",
+      "n": "The finish-coat ratio requires two parts of sand for every one part of cement."
+    },
+    {
+      "s": "Stucco/Cement Plaster",
+      "q": "What cement-to-sand proportion is used for the scratch and brown coats?",
+      "o": [
+        "1:1",
+        "1:2",
+        "1:4",
+        "1 part cement to 3 parts sand"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 55 — Stucco/Cement Plaster Finish",
+      "n": "Scratch and brown coats use 1 part cement to 3 parts sand.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Terrazzo",
+      "q": "A common terrazzo panel has a total visible surface area of 2.0 m². At 70% aggregate exposure, how much of the surface is aggregate?",
+      "o": [
+        "1.0 m²",
+        "1.7 m²",
+        "1.4 m²",
+        "0.6 m²"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 55 — Terrazzo Floor Finish",
+      "n": "Seventy percent of 2.0 m² is 1.4 m².",
+      "fig": "f5"
+    },
+    {
+      "s": "Stucco/Cement Plaster",
+      "q": "What sand size is used for scratch and brown coats?",
+      "o": [
+        "Fine",
+        "No sand",
+        "Coarse",
+        "Very fine"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 55 — Stucco/Cement Plaster Finish",
+      "n": "Scratch and brown coats use coarse sand."
+    },
+    {
+      "s": "Applied Ceramic Tile",
+      "q": "An unglazed tile has a facial area of 9 sq in. Which size-based tile category best fits?",
+      "o": [
+        "Cement Tile",
+        "Paver",
+        "Ceramic Mosaic",
+        "Glazed Interior Tile"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 55 — Types of Ceramic Tile",
+      "n": "Pavers are unglazed and have facial areas greater than 6 square inches.",
+      "fig": "f6"
+    },
+    {
+      "s": "Stucco/Cement Plaster",
+      "q": "What cement-to-sand proportion is used for the finish coat?",
+      "o": [
+        "1:4",
+        "1 part cement to 2 parts sand",
+        "1:1",
+        "1:3"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 55 — Stucco/Cement Plaster Finish",
+      "n": "The finish coat uses a richer 1:2 cement-to-sand proportion."
+    },
+    {
+      "s": "Applied Ceramic Tile",
+      "q": "A tile absorbs 2% of its weight in moisture. What vitrification class applies?",
+      "o": [
+        "Impervious",
+        "Non-vitreous",
+        "Semi-vitreous",
+        "Vitreous"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "A 2% absorption is below 3%, which places the tile in the vitreous category.",
+      "fig": "f6"
+    },
+    {
+      "s": "Stucco/Cement Plaster",
+      "q": "What typical thickness is indicated for the finish coat?",
+      "o": [
+        "1/8 in",
+        "1/16 in",
+        "3/8 in",
+        "1/2 in"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Stucco/Cement Plaster Finish",
+      "n": "The finish coat is typically about 1/8 inch thick."
+    },
+    {
+      "s": "Types of Nails",
+      "q": "Which nail is primarily used for general construction (2d–60d)?",
+      "o": [
+        "Box Nail",
+        "Finishing Nail",
+        "Common Nail",
+        "Casing Nail"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 54 — Types of Nails",
+      "n": "Common Nail is intended for general construction (2d–60d).",
+      "fig": "f3"
+    },
+    {
+      "s": "Granolithic and Terrazzo",
+      "q": "What is the granolithic mix?",
+      "o": [
+        "1 part cement, 1 part sand, and 1 part finely crushed stone",
+        "1 cement, 3 sand, no stone",
+        "1 cement, 2 sand, 3 gravel",
+        "Cement, water, and marble chips only"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Granolithic and Terrazzo Ingredients",
+      "n": "Granolithic uses equal parts cement, sand, and finely crushed stone.",
+      "fig": "f5"
+    },
+    {
+      "s": "Types of Nails",
+      "q": "Which nail is primarily used for finish work (2d–40d)?",
+      "o": [
+        "Finishing Nail",
+        "Common Nail",
+        "Box Nail",
+        "Casing Nail"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 54 — Types of Nails",
+      "n": "Casing Nail is intended for finish work (2d–40d).",
+      "fig": "f3"
+    },
+    {
+      "s": "Terrazzo Floor Finish",
+      "q": "What aggregate exposure is associated with common terrazzo?",
+      "o": [
+        "60%",
+        "80%",
+        "50%",
+        "70%"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 55 — Terrazzo Floor Finish",
+      "n": "Common terrazzo is associated with 70% aggregate exposure.",
+      "fig": "f5"
+    },
+    {
+      "s": "Types of Nails",
+      "q": "Which nail is primarily used for fastening floor boards?",
+      "o": [
+        "Box Nail",
+        "Casing Nail",
+        "Flooring Nail",
+        "Common Nail"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 54 — Types of Nails",
+      "n": "Flooring Nail is intended for fastening floor boards.",
+      "fig": "f3"
+    },
+    {
+      "s": "Terrazzo Floor Finish",
+      "q": "What aggregate proportion is used for heavy-duty non-slip terrazzo?",
+      "o": [
+        "1 marble : 1 abrasive",
+        "2 marble : 1 abrasive",
+        "4 marble : 1 abrasive",
+        "3 marble granules : 1 abrasive"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 55 — Terrazzo Floor Finish",
+      "n": "Heavy-duty non-slip terrazzo uses 3 parts marble granules to 1 part abrasive."
+    },
+    {
+      "s": "Types of Nails",
+      "q": "Which nail is primarily used for fastening shingles?",
+      "o": [
+        "Common Nail",
+        "Casing Nail",
+        "Box Nail",
+        "Roofing Nail"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 54 — Types of Nails",
+      "n": "Roofing Nail is intended for fastening shingles.",
+      "fig": "f3"
+    },
+    {
+      "s": "Terrazzo Floor Finish",
+      "q": "Where is terrazzo especially useful?",
+      "o": [
+        "Where durability, wear resistance, and minimal maintenance are needed",
+        "Only on timber ceilings",
+        "Only below grade",
+        "Where temporary finishes are required"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Terrazzo Floor Finish",
+      "n": "Terrazzo is suited to areas requiring durability, resistance to wear, and low maintenance."
+    },
+    {
+      "s": "Types of Nails",
+      "q": "Which nail is primarily used for hammering into concrete or masonry?",
+      "o": [
+        "Masonry Nail",
+        "Box Nail",
+        "Common Nail",
+        "Casing Nail"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 54 — Types of Nails",
+      "n": "Masonry Nail is intended for hammering into concrete or masonry.",
+      "fig": "f3"
+    },
+    {
+      "s": "Cement and Ceramic Tile",
+      "q": "What is cement tile made from?",
+      "o": [
+        "Gypsum and lime",
+        "Glass and resin",
+        "Cement and sand mixture in a plastic mould",
+        "Clay fired in a kiln"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 55 — Cement and Ceramic Tile",
+      "n": "Cement tile is formed from a cement-and-sand mixture in a plastic mould."
+    },
+    {
+      "s": "Types of Nails",
+      "q": "Which nail is primarily used for driving into concrete or steel?",
+      "o": [
+        "Box Nail",
+        "Power Driven Studs",
+        "Casing Nail",
+        "Common Nail"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 54 — Types of Nails",
+      "n": "Power Driven Studs is intended for driving into concrete or steel.",
+      "fig": "f3"
+    },
+    {
+      "s": "Cement and Ceramic Tile",
+      "q": "Which is a common cement-tile size?",
+      "o": [
+        "16 × 16 in",
+        "24 × 24 in",
+        "12 × 12 in",
+        "8 × 8 in"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 55 — Cement and Ceramic Tile",
+      "n": "8 × 8 in is one of the common cement-tile sizes."
+    },
+    {
+      "s": "Types of Nails",
+      "q": "What size range is associated with the Box Nail?",
+      "o": [
+        "2d–20d",
+        "4d–60d",
+        "2d–40d",
+        "2d–60d"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 54 — Types of Nails",
+      "n": "The Box Nail uses a 2d–40d size range."
+    },
+    {
+      "s": "Cement and Ceramic Tile",
+      "q": "Which is a common cement-tile size?",
+      "o": [
+        "12 × 12 in",
+        "16 × 16 in",
+        "24 × 24 in",
+        "8 × 8 in"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 55 — Cement and Ceramic Tile",
+      "n": "16 × 16 in is one of the common cement-tile sizes."
+    },
+    {
+      "s": "Types of Nails",
+      "q": "What size range is associated with the Finishing Nail?",
+      "o": [
+        "2d–60d",
+        "2d–20d",
+        "4d–60d",
+        "2d–40d"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 54 — Types of Nails",
+      "n": "The Finishing Nail uses a 2d–20d size range."
+    },
+    {
+      "s": "Cement and Ceramic Tile",
+      "q": "Which brands are cited as examples of ceramic tile?",
+      "o": [
+        "Mariwasa and Eurotiles",
+        "Durisol and Analok",
+        "Boysen and Sahara",
+        "Flint-Kote and Pozolith"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Cement and Ceramic Tile",
+      "n": "Mariwasa and Eurotiles are cited as ceramic-tile brands."
+    },
+    {
+      "s": "Types of Screws",
+      "q": "Which materials can a wood screw fasten into?",
+      "o": [
+        "Steel only",
+        "Glass only",
+        "Wood or resilient material",
+        "Concrete only"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 54 — Types of Screws",
+      "n": "Wood screws are intended for wood or resilient materials."
+    },
+    {
+      "s": "Ceramic Tile Characteristics",
+      "q": "What is the function of filler in ceramic tile composition?",
+      "o": [
+        "It creates glaze sheen",
+        "It reduces shrinkage during drying and firing",
+        "It melts into a glassy surface",
+        "It increases water absorption"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Fillers help control shrinkage as the ceramic body dries and fires."
+    },
+    {
+      "s": "Types of Screws",
+      "q": "What distinguishes a lag screw, lag bolt, or coach screw?",
+      "o": [
+        "Pointed end with fine machine thread",
+        "Square head with a thin, coarse-pitched thread",
+        "Expanding socket",
+        "Pivoted flanged wings"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 54 — Types of Screws",
+      "n": "Lag screws or coach screws use a square head and a thin, coarse-pitched thread."
+    },
+    {
+      "s": "Ceramic Tile Characteristics",
+      "q": "Which materials are examples of ceramic fillers?",
+      "o": [
+        "Flint, kaolin, talc, and finely pulverized silica",
+        "Gypsum, asphalt, and lime",
+        "PVC, PE, and EPDM",
+        "Copper, zinc, and tin"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Flint, kaolin, talc, and finely pulverized silica are cited as ceramic fillers."
+    },
+    {
+      "s": "Types of Screws",
+      "q": "What is the basic form of a Tux screw anchor?",
+      "o": [
+        "Wooden plug with nail",
+        "Wire wing with nut",
+        "Flat washer with rivet",
+        "Metal shell with a screw along its central axis"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 54 — Types of Screws",
+      "n": "The Tux screw uses a metal shell with a screw running along its central axis."
+    },
+    {
+      "s": "Ceramic Tile Characteristics",
+      "q": "Which flux is widely used in ceramic tile?",
+      "o": [
+        "Asphalt",
+        "Graphite",
+        "Marble",
+        "Feldspar"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Feldspar is a widely used ceramic flux."
+    },
+    {
+      "s": "Types of Bolts",
+      "q": "Which bolt is described as a threaded bolt with straight shank and conventional head?",
+      "o": [
+        "Toggle Bolt",
+        "Expansion Bolt",
+        "Machine Bolt",
+        "Carriage Bolt"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 54 — Types of Bolts",
+      "n": "Machine Bolt matches this form and use.",
+      "fig": "f3"
+    },
+    {
+      "s": "Ceramic Tile Characteristics",
+      "q": "What does glazed tile have on its face?",
+      "o": [
+        "A rubber coating",
+        "A glassy surface of ceramic materials fused onto the face",
+        "A metal sheet",
+        "A wood veneer"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Glazed tile has a glassy ceramic layer fused to its face."
+    },
+    {
+      "s": "Types of Bolts",
+      "q": "Which bolt is described as a nut with pivoted flanged wings for fastening objects to hollow walls?",
+      "o": [
+        "Expansion Bolt",
+        "Toggle Bolt",
+        "Machine Bolt",
+        "Carriage Bolt"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 54 — Types of Bolts",
+      "n": "Toggle Bolt matches this form and use.",
+      "fig": "f4"
+    },
+    {
+      "s": "Ceramic Tile Characteristics",
+      "q": "What characterizes a bright glaze?",
+      "o": [
+        "No sheen at all",
+        "A highly polished surface that reflects images",
+        "An unglazed body",
+        "A rough porous face"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Bright glaze is highly polished and image-reflective."
+    },
+    {
+      "s": "Types of Bolts",
+      "q": "Which bolt is useful for fastening objects to a hollow wall?",
+      "o": [
+        "Toggle Bolt",
+        "Expansion Bolt",
+        "Machine Bolt",
+        "Carriage Bolt"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 54 — Types of Bolts",
+      "n": "The toggle bolt's pivoted wings open behind a hollow wall and provide bearing support.",
+      "fig": "f4"
+    },
+    {
+      "s": "Ceramic Tile Characteristics",
+      "q": "How are tiles shaped by the dust-press process?",
+      "o": [
+        "Wet clay is hand carved only",
+        "Dry tiles are rolled under asphalt",
+        "Molten tile is cast into glass moulds",
+        "Heavy pressure is applied in steel dies to a damp ceramic mix"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Dust pressing compacts a damp ceramic mix under heavy pressure in steel dies.",
+      "fig": "f6"
+    },
+    {
+      "s": "Types of Surface Finishes",
+      "q": "Which is a recognized category of surface finish?",
+      "o": [
+        "Granolithic and Terrazzo Finishes",
+        "Wood Flooring Finishes",
+        "Resilient Floor Finishes",
+        "Concrete Surface Finishes"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 54 — Types of Surface Finishes",
+      "n": "Concrete Surface Finishes is one of the identified finish categories."
+    },
+    {
+      "s": "Ceramic Tile Characteristics",
+      "q": "How are tiles formed in the plastic process?",
+      "o": [
+        "Glass is floated on tin",
+        "Dry powder is fused without water",
+        "Clay is rendered plastic by mixing with water and then shaped",
+        "Stone chips are pressed into cement only"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "The plastic process adds water to clay to make it moldable before shaping."
+    },
+    {
+      "s": "Types of Surface Finishes",
+      "q": "Which is a recognized category of surface finish?",
+      "o": [
+        "Concrete Surface Finishes",
+        "Resilient Floor Finishes",
+        "Wood Flooring Finishes",
+        "Granolithic and Terrazzo Finishes"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 54 — Types of Surface Finishes",
+      "n": "Granolithic and Terrazzo Finishes is one of the identified finish categories."
+    },
+    {
+      "s": "Ceramic Tile Vitrification",
+      "q": "What moisture-absorption range characterizes Non-vitreous tile?",
+      "o": [
+        "< 3% of tile weight",
+        "> 7% of tile weight",
+        "3–7% of tile weight",
+        "Negligible moisture absorption"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Non-vitreous tile is classified by moisture absorption of > 7% of tile weight.",
+      "fig": "f6"
+    },
+    {
+      "s": "Types of Surface Finishes",
+      "q": "Which is a recognized category of surface finish?",
+      "o": [
+        "Concrete Surface Finishes",
+        "Tile Finishes",
+        "Granolithic and Terrazzo Finishes",
+        "Wood Flooring Finishes"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 54 — Types of Surface Finishes",
+      "n": "Tile Finishes is one of the identified finish categories."
+    },
+    {
+      "s": "Ceramic Tile Vitrification",
+      "q": "What moisture-absorption range characterizes Vitreous tile?",
+      "o": [
+        "> 7% of tile weight",
+        "3–7% of tile weight",
+        "Negligible moisture absorption",
+        "< 3% of tile weight"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Vitreous tile is classified by moisture absorption of < 3% of tile weight.",
+      "fig": "f6"
+    },
+    {
+      "s": "Types of Surface Finishes",
+      "q": "Which is a recognized category of surface finish?",
+      "o": [
+        "Wood Flooring Finishes",
+        "Granolithic and Terrazzo Finishes",
+        "Paint Finishes",
+        "Concrete Surface Finishes"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 54 — Types of Surface Finishes",
+      "n": "Paint Finishes is one of the identified finish categories."
+    },
+    {
+      "s": "Types of Ceramic Tile",
+      "q": "How is glazed interior tile manufactured?",
+      "o": [
+        "By extrusion only",
+        "By casting in place",
+        "By hand molding only",
+        "By the dust-pressed process"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 55 — Types of Ceramic Tile",
+      "n": "Glazed interior tile is made by dust pressing."
+    },
+    {
+      "s": "Concrete Surface Finishes",
+      "q": "How many coats are used in a traditional stucco/cement-plaster application?",
+      "o": [
+        "1 coat",
+        "4 coats",
+        "2 coats",
+        "3 coats"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 54 — Concrete Surface Finishes",
+      "n": "The system uses three coats: scratch, brown, and finish.",
+      "fig": "f1"
+    },
+    {
+      "s": "Types of Ceramic Tile",
+      "q": "How is ceramic mosaic tile typically finished?",
+      "o": [
+        "Predominantly unglazed",
+        "Always bright glazed",
+        "Always matte glazed",
+        "Always metallic coated"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Types of Ceramic Tile",
+      "n": "Ceramic mosaic tile is predominantly unglazed."
+    },
+    {
+      "s": "Concrete Surface Finishes",
+      "q": "How is a rubbed finish produced?",
+      "o": [
+        "By rolling ceramic chips into concrete",
+        "By grinding down the concrete surface with a brick of carborundum, emery, or soft natural stone",
+        "By exposing aggregate with acid",
+        "By torching the surface"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 54 — Concrete Surface Finishes",
+      "n": "A rubbed finish is obtained by grinding the hardened concrete surface with an abrasive brick or stone.",
+      "fig": "f2"
+    },
+    {
+      "s": "Types of Ceramic Tile",
+      "q": "What sheet area is associated with ceramic mosaic tile?",
+      "o": [
+        "4 sq ft per sheet",
+        "2 sq ft per sheet",
+        "1 sq ft per sheet",
+        "3 sq ft per sheet"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 55 — Types of Ceramic Tile",
+      "n": "Ceramic mosaic tile is supplied with each sheet covering 2 square feet."
+    },
+    {
+      "s": "Concrete Surface Finishes",
+      "q": "What is a rubbed finish called when sand is used instead of grout?",
+      "o": [
+        "Bush-Hammered Finish",
+        "Integral Color Finish",
+        "Sand-Float Finish",
+        "Steel-Trowelled Finish"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 54 — Concrete Surface Finishes",
+      "n": "Substituting sand for grout produces a sand-float finish."
+    },
+    {
+      "s": "Types of Ceramic Tile",
+      "q": "Where can glazed weatherproof tile be used?",
+      "o": [
+        "Below-grade foundations only",
+        "Interior ceilings only",
+        "Interior or exterior walls and floors",
+        "Exterior roofs only"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 55 — Types of Ceramic Tile",
+      "n": "Glazed weatherproof tile is suitable for interior or exterior walls and floors."
+    },
+    {
+      "s": "Concrete Surface Finishes",
+      "q": "What visual result does a brushed finish create?",
+      "o": [
+        "A uniform opaque glaze",
+        "Coarse aggregates are left exposed",
+        "A mirror-like surface",
+        "A wood-grain texture"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 54 — Concrete Surface Finishes",
+      "n": "Brushing removes enough surface paste to leave coarse aggregate exposed."
+    },
+    {
+      "s": "Types of Ceramic Tile",
+      "q": "How are pavers described?",
+      "o": [
+        "Glass blocks",
+        "Unglazed tiles resembling mosaic tiles",
+        "Cement tiles with marble chips",
+        "Glazed wall tiles only"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 55 — Types of Ceramic Tile",
+      "n": "Pavers are unglazed and resemble mosaic tiles."
+    },
+    {
+      "s": "Concrete Surface Finishes",
+      "q": "Why is bush hammering not recommended on gravel concrete?",
+      "o": [
+        "The concrete becomes too glossy",
+        "The finish cannot dry",
+        "Pebbles can become dislodged",
+        "The lime content increases"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 54 — Concrete Surface Finishes",
+      "n": "Bush hammering may loosen and dislodge pebbles in gravel concrete."
+    },
+    {
+      "s": "Types of Ceramic Tile",
+      "q": "Which example paver sizes are identified?",
+      "o": [
+        "3 × 3 in or 6 × 6 in",
+        "12 × 12 in or 16 × 16 in",
+        "8 × 8 in or 12 × 12 in",
+        "2 × 2 in or 4 × 4 in"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Types of Ceramic Tile",
+      "n": "Examples include 3-by-3-inch and 6-by-6-inch pavers."
+    },
+    {
+      "s": "Concrete Surface Finishes",
+      "q": "What appearance does sand blasting produce?",
+      "o": [
+        "A granulated finish",
+        "A smooth glazed finish",
+        "A polished mirror finish",
+        "A wood-float texture only"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 54 — Concrete Surface Finishes",
+      "n": "Sand blasting produces a granulated surface texture."
+    },
+    {
+      "s": "Types of Ceramic Tile",
+      "q": "What vitrification results from dust-pressed pavers?",
+      "o": [
+        "Impervious",
+        "Semi-vitreous",
+        "Vitreous only",
+        "Non-vitreous"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Types of Ceramic Tile",
+      "n": "Dust-pressed pavers are classified as impervious."
+    },
+    {
+      "s": "Concrete Surface Finishes",
+      "q": "Where does the color of an exposed-aggregate finish primarily come from?",
+      "o": [
+        "A surface paint only",
+        "The aggregate itself",
+        "Hydrated lime",
+        "Steel trowelling"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 54 — Concrete Surface Finishes",
+      "n": "Exposed-aggregate color is derived from the aggregate rather than surface coloring.",
+      "fig": "f2"
+    },
+    {
+      "s": "Applied Fasteners",
+      "q": "A fixture must be attached to a hollow partition wall. Which bolt is the appropriate choice?",
+      "o": [
+        "Toggle Bolt",
+        "Carriage Bolt",
+        "Expansion Bolt",
+        "Machine Bolt"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 54 — Types of Bolts",
+      "n": "A toggle bolt uses pivoted wings that bear against the back of a hollow wall.",
+      "fig": "f4"
+    },
+    {
+      "s": "Concrete Floor Finishes",
+      "q": "When is a steel-trowelled finish made?",
+      "o": [
+        "Only after one month",
+        "Before any floating",
+        "Only after sand blasting",
+        "After wood floating, before the concrete fully sets"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 54 — Concrete Surface Finishes",
+      "n": "Steel trowelling follows wood floating and is completed before final setting."
+    },
+    {
+      "s": "Applied Plaster",
+      "q": "A scratch coat requires 4 parts of cement. Using the 1:3 cement-to-sand proportion, how many parts of sand are required?",
+      "o": [
+        "12 parts sand",
+        "16 parts sand",
+        "4 parts sand",
+        "8 parts sand"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Stucco/Cement Plaster Finish",
+      "n": "A 1:3 proportion means each cement part requires three sand parts; four cement parts therefore require twelve sand parts.",
+      "fig": "f1"
+    },
+    {
+      "s": "Concrete Floor Finishes",
+      "q": "How is the 1:3 mortar finish coat leveled before steel trowelling?",
+      "o": [
+        "With a sandblaster",
+        "With a wood screed",
+        "With a wire brush",
+        "With a bush hammer"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 54 — Concrete Surface Finishes",
+      "n": "The mortar coat is first leveled with a wood screed and then steel trowelled."
+    },
+    {
+      "s": "Applied Granolithic",
+      "q": "A granolithic topping is batched with 6 kg of cement. Using the 1:1:1 proportion, how much sand and finely crushed stone are required?",
+      "o": [
+        "12 kg sand and 12 kg stone",
+        "6 kg sand and 6 kg finely crushed stone",
+        "3 kg sand and 3 kg stone",
+        "6 kg sand and 12 kg stone"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 55 — Granolithic and Terrazzo Ingredients",
+      "n": "Equal parts are used for cement, sand, and finely crushed stone, so each component matches the cement quantity.",
+      "fig": "f5"
+    },
+    {
+      "s": "Stucco/Cement Plaster",
+      "q": "How much hydrated lime is associated with the scratch/brown coat mix?",
+      "o": [
+        "15 lb",
+        "10 lb",
+        "20 lb",
+        "5 lb"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 55 — Stucco/Cement Plaster Finish",
+      "n": "The scratch/brown coat mix includes 10 lb of hydrated lime."
+    },
+    {
+      "s": "Applied Ceramic Tile",
+      "q": "A ceramic tile has a facial area of 5 sq in. Based on the size criterion, which category can it qualify for?",
+      "o": [
+        "Ceramic Mosaic",
+        "Paver",
+        "Cement Tile only",
+        "Glazed Weatherproof only"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Types of Ceramic Tile",
+      "n": "Ceramic mosaic units have facial areas below 6 square inches, whereas pavers exceed 6 square inches.",
+      "fig": "f6"
+    },
+    {
+      "s": "Stucco/Cement Plaster",
+      "q": "What thickness is indicated for the scratch/brown plaster layer?",
+      "o": [
+        "1/4 in",
+        "1/8 in",
+        "3/8 in (10 mm)",
+        "1/2 in"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 55 — Stucco/Cement Plaster Finish",
+      "n": "The scratch/brown plaster layer is indicated at 3/8 inch, about 10 mm."
+    },
+    {
+      "s": "Applied Ceramic Tile",
+      "q": "A tile absorbs 5% of its weight in moisture. What vitrification class applies?",
+      "o": [
+        "Non-vitreous",
+        "Impervious",
+        "Vitreous",
+        "Semi-vitreous"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "A 5% absorption falls within the 3–7% range for semi-vitreous tile.",
+      "fig": "f6"
+    },
+    {
+      "s": "Stucco/Cement Plaster",
+      "q": "What sand size is used for the finish coat?",
+      "o": [
+        "Fine",
+        "Coarse",
+        "Gravel",
+        "No aggregate"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Stucco/Cement Plaster Finish",
+      "n": "Fine sand is used in the finish coat."
+    },
+    {
+      "s": "Applied Ceramic Tile",
+      "q": "A tile absorbs 8% of its weight in moisture. What vitrification class applies?",
+      "o": [
+        "Vitreous",
+        "Non-vitreous",
+        "Impervious",
+        "Semi-vitreous"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Absorption above 7% falls into the non-vitreous category.",
+      "fig": "f6"
+    },
+    {
+      "s": "Stucco/Cement Plaster",
+      "q": "What upper thickness is the finish coat said to rarely exceed?",
+      "o": [
+        "1/4 in",
+        "3/8 in",
+        "1/8 in",
+        "1/2 in"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Stucco/Cement Plaster Finish",
+      "n": "The finish coat is normally 1/8 inch and rarely exceeds 1/4 inch."
+    },
+    {
+      "s": "Types of Nails",
+      "q": "Which nail is primarily used for light construction (2d–40d)?",
+      "o": [
+        "Common Nail",
+        "Finishing Nail",
+        "Box Nail",
+        "Casing Nail"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 54 — Types of Nails",
+      "n": "Box Nail is intended for light construction (2d–40d).",
+      "fig": "f3"
+    },
+    {
+      "s": "Granolithic and Terrazzo",
+      "q": "Which ingredients form a terrazzo mix?",
+      "o": [
+        "Asphalt, sand, and glass",
+        "Cement, sand, and coarse gravel only",
+        "Gypsum, lime, and clay",
+        "Cement, water, and marble-chip aggregates"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 55 — Granolithic and Terrazzo Ingredients",
+      "n": "Terrazzo combines cement and water with marble-chip aggregate.",
+      "fig": "f5"
+    },
+    {
+      "s": "Types of Nails",
+      "q": "Which nail is primarily used for cabinetry (2d–20d)?",
+      "o": [
+        "Box Nail",
+        "Finishing Nail",
+        "Common Nail",
+        "Casing Nail"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 54 — Types of Nails",
+      "n": "Finishing Nail is intended for cabinetry (2d–20d).",
+      "fig": "f3"
+    },
+    {
+      "s": "Terrazzo Floor Finish",
+      "q": "What minimum topping thickness is indicated for terrazzo?",
+      "o": [
+        "5/8 in",
+        "1/2 in",
+        "3/8 in",
+        "3/4 in"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Terrazzo Floor Finish",
+      "n": "The indicated minimum terrazzo topping thickness is 5/8 inch.",
+      "fig": "f5"
+    },
+    {
+      "s": "Types of Nails",
+      "q": "Which nail is primarily used for wood flooring?",
+      "o": [
+        "Casing Nail",
+        "Common Nail",
+        "Box Nail",
+        "Cut Nail"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 54 — Types of Nails",
+      "n": "Cut Nail is intended for wood flooring.",
+      "fig": "f3"
+    },
+    {
+      "s": "Terrazzo Floor Finish",
+      "q": "What aggregate proportion is used for light-duty non-slip terrazzo?",
+      "o": [
+        "2 marble : 1 abrasive",
+        "4 marble granules : 1 abrasive",
+        "1 marble : 1 abrasive",
+        "3 marble : 1 abrasive"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 55 — Terrazzo Floor Finish",
+      "n": "Light-duty non-slip terrazzo uses 4 parts marble granules to 1 part abrasive."
+    },
+    {
+      "s": "Types of Nails",
+      "q": "Which nail is primarily used for temporary structures?",
+      "o": [
+        "Double Headed Nail",
+        "Casing Nail",
+        "Box Nail",
+        "Common Nail"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 54 — Types of Nails",
+      "n": "Double Headed Nail is intended for temporary structures.",
+      "fig": "f3"
+    },
+    {
+      "s": "Terrazzo Floor Finish",
+      "q": "In what forms may terrazzo be installed?",
+      "o": [
+        "Precast, such as tile, or cast in place",
+        "Only as roll flooring",
+        "Only poured in place",
+        "Only as sheet membrane"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Terrazzo Floor Finish",
+      "n": "Terrazzo may be precast, including tile units, or installed cast in place."
+    },
+    {
+      "s": "Types of Nails",
+      "q": "Which nail is primarily used for fastening heavy timbers?",
+      "o": [
+        "Casing Nail",
+        "Spikes",
+        "Box Nail",
+        "Common Nail"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 54 — Types of Nails",
+      "n": "Spikes is intended for fastening heavy timbers.",
+      "fig": "f3"
+    },
+    {
+      "s": "Cement and Ceramic Tile",
+      "q": "What thickness is indicated for cement tile?",
+      "o": [
+        "1 in",
+        "1 1/2 in",
+        "3/4 in",
+        "1/2 in"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Cement and Ceramic Tile",
+      "n": "Cement tile is indicated at 1 inch thick."
+    },
+    {
+      "s": "Types of Nails",
+      "q": "What size range is associated with the Common Nail?",
+      "o": [
+        "2d–40d",
+        "4d–60d",
+        "2d–60d",
+        "2d–20d"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 54 — Types of Nails",
+      "n": "The Common Nail uses a 2d–60d size range."
+    },
+    {
+      "s": "Cement and Ceramic Tile",
+      "q": "Which is a common cement-tile size?",
+      "o": [
+        "12 × 12 in",
+        "16 × 16 in",
+        "24 × 24 in",
+        "8 × 8 in"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Cement and Ceramic Tile",
+      "n": "12 × 12 in is one of the common cement-tile sizes."
+    },
+    {
+      "s": "Types of Nails",
+      "q": "What size range is associated with the Casing Nail?",
+      "o": [
+        "2d–20d",
+        "4d–60d",
+        "2d–40d",
+        "2d–60d"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 54 — Types of Nails",
+      "n": "The Casing Nail uses a 2d–40d size range."
+    },
+    {
+      "s": "Cement and Ceramic Tile",
+      "q": "What is ceramic tile made from?",
+      "o": [
+        "Cement and sand only",
+        "Glass fiber and resin",
+        "Asphalt and felt",
+        "Clay or clay mixed with other ceramic materials, then fired"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 55 — Cement and Ceramic Tile",
+      "n": "Ceramic tile uses clay or clay mixtures with other ceramic materials and is fired."
+    },
+    {
+      "s": "Types of Screws",
+      "q": "What best describes a wood screw?",
+      "o": [
+        "Straight smooth shank with square head",
+        "Expandable masonry socket",
+        "Pivoted flanged wings",
+        "Helically threaded with a pointed end"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 54 — Types of Screws",
+      "n": "A wood screw has a helical thread and pointed end.",
+      "fig": "f3"
+    },
+    {
+      "s": "Ceramic Tile Characteristics",
+      "q": "What is the role of plastic clay in a ceramic tile body?",
+      "o": [
+        "It acts as metallic reinforcement",
+        "It provides drainage",
+        "It creates a bituminous film",
+        "It provides clay with high bonding power"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Plastic clay contributes the bonding quality of the ceramic body.",
+      "fig": "f6"
+    },
+    {
+      "s": "Types of Screws",
+      "q": "Which screw type is intended for driving into metal?",
+      "o": [
+        "Lag Screw",
+        "Screw Anchor",
+        "Metal Screw",
+        "Wood Screw"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 54 — Types of Screws",
+      "n": "Metal screws are intended for fastening into metal."
+    },
+    {
+      "s": "Ceramic Tile Characteristics",
+      "q": "What additional effect does filler have during heating?",
+      "o": [
+        "It increases flexibility",
+        "It dissolves the clay",
+        "It imparts rigidity and prevents deformation",
+        "It causes deliberate warping"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Fillers help the tile remain rigid and resist deformation during heating."
+    },
+    {
+      "s": "Types of Screws",
+      "q": "Which screw anchor is described as similar to an expansion bolt?",
+      "o": [
+        "Wood Screw",
+        "Tekscrew",
+        "Metal Screw",
+        "Screw Anchor or Tux Screw"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 54 — Types of Screws",
+      "n": "A screw anchor or Tux screw performs a function similar to an expansion bolt."
+    },
+    {
+      "s": "Ceramic Tile Characteristics",
+      "q": "What does the flux or solvent do during firing?",
+      "o": [
+        "It melts under intense heat and fuses heat-resisting elements into a solid mass",
+        "It acts only as a coloring pigment",
+        "It prevents all vitrification",
+        "It removes all clay"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Flux melts during firing and helps fuse the heat-resisting ingredients into a solid mass."
+    },
+    {
+      "s": "Types of Screws",
+      "q": "Which fastener is used to fasten metal roofing sheets to purlins?",
+      "o": [
+        "Wood Screw",
+        "Tekscrew",
+        "Toggle Bolt",
+        "Casing Nail"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 54 — Types of Screws",
+      "n": "Tekscrews are used to fasten metal roofing sheets to purlins."
+    },
+    {
+      "s": "Ceramic Tile Characteristics",
+      "q": "What does unglazed tile mean?",
+      "o": [
+        "The body contains embedded wire",
+        "Only the face is ceramic",
+        "The same ingredients continue throughout the tile body",
+        "The tile has a glassy face coating"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Unglazed tile has essentially the same material composition through its body.",
+      "fig": "f6"
+    },
+    {
+      "s": "Types of Bolts",
+      "q": "Which bolt is described as a circular head with oval or flat bearing surface and a means to prevent rotation?",
+      "o": [
+        "Toggle Bolt",
+        "Carriage Bolt",
+        "Expansion Bolt",
+        "Machine Bolt"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 54 — Types of Bolts",
+      "n": "Carriage Bolt matches this form and use.",
+      "fig": "f3"
+    },
+    {
+      "s": "Ceramic Tile Characteristics",
+      "q": "Which surface appearances can glazed tile have?",
+      "o": [
+        "Only mirror polished",
+        "Plain, textured, polychrome, mottled, stippled, or rippled",
+        "Only plain and white",
+        "Only rough and uncolored"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Glazed tile can be produced in a range of decorative textures and color effects."
+    },
+    {
+      "s": "Types of Bolts",
+      "q": "Which bolt is described as a anchoring device with expandable socket that swells as the bolt is tightened?",
+      "o": [
+        "Toggle Bolt",
+        "Expansion Bolt",
+        "Machine Bolt",
+        "Carriage Bolt"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 54 — Types of Bolts",
+      "n": "Expansion Bolt matches this form and use.",
+      "fig": "f4"
+    },
+    {
+      "s": "Ceramic Tile Characteristics",
+      "q": "What characterizes a matte glaze?",
+      "o": [
+        "It is entirely without sheen",
+        "It is always textured",
+        "It is mirror reflective",
+        "It is translucent only"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Matte glaze has no sheen."
+    },
+    {
+      "s": "Types of Bolts",
+      "q": "Which anchoring bolt is used in masonry or for attaching timbers?",
+      "o": [
+        "Carriage Bolt",
+        "Expansion Bolt",
+        "Machine Bolt",
+        "Toggle Bolt"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 54 — Types of Bolts",
+      "n": "An expansion bolt uses an expandable socket and is suited to masonry or timber attachment.",
+      "fig": "f4"
+    },
+    {
+      "s": "Ceramic Tile Characteristics",
+      "q": "What appearance advantage is associated with dust pressing?",
+      "o": [
+        "A more regular appearance",
+        "More warping",
+        "Greater surface cracking",
+        "Less dimensional control"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Dust pressing produces a more regular appearance."
+    },
+    {
+      "s": "Types of Surface Finishes",
+      "q": "Which is a recognized category of surface finish?",
+      "o": [
+        "Granolithic and Terrazzo Finishes",
+        "Resilient Floor Finishes",
+        "Wood Flooring Finishes",
+        "Concrete Surface Finishes"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 54 — Types of Surface Finishes",
+      "n": "Wood Flooring Finishes is one of the identified finish categories."
+    },
+    {
+      "s": "Ceramic Tile Characteristics",
+      "q": "What two shaping methods are identified under the plastic process?",
+      "o": [
+        "Pressed and tempered",
+        "Hand molded and extruded",
+        "Laminated and floated",
+        "Rolled and cast"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Plastic-process ceramic units may be hand molded or extruded."
+    },
+    {
+      "s": "Types of Surface Finishes",
+      "q": "Which is a recognized category of surface finish?",
+      "o": [
+        "Granolithic and Terrazzo Finishes",
+        "Wood Flooring Finishes",
+        "Concrete Surface Finishes",
+        "Resilient Floor Finishes"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 54 — Types of Surface Finishes",
+      "n": "Resilient Floor Finishes is one of the identified finish categories."
+    },
+    {
+      "s": "Ceramic Tile Vitrification",
+      "q": "What moisture-absorption range characterizes Semi-vitreous tile?",
+      "o": [
+        "> 7% of tile weight",
+        "Negligible moisture absorption",
+        "< 3% of tile weight",
+        "3–7% of tile weight"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Semi-vitreous tile is classified by moisture absorption of 3–7% of tile weight.",
+      "fig": "f6"
+    },
+    {
+      "s": "Types of Surface Finishes",
+      "q": "Which is a recognized category of surface finish?",
+      "o": [
+        "Ceiling Finishes",
+        "Wood Flooring Finishes",
+        "Granolithic and Terrazzo Finishes",
+        "Concrete Surface Finishes"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 54 — Types of Surface Finishes",
+      "n": "Ceiling Finishes is one of the identified finish categories."
+    },
+    {
+      "s": "Ceramic Tile Vitrification",
+      "q": "What moisture-absorption range characterizes Impervious tile?",
+      "o": [
+        "> 7% of tile weight",
+        "< 3% of tile weight",
+        "Negligible moisture absorption",
+        "3–7% of tile weight"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 55 — Ceramic Tile Characteristics",
+      "n": "Impervious tile is classified by moisture absorption of Negligible moisture absorption.",
+      "fig": "f6"
+    }
+  ]
+}
