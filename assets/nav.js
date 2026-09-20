@@ -27,6 +27,11 @@
   var LEA_UI_CLICK_SOURCE = 'https://assets.mixkit.co/active_storage/sfx/3124/3124-preview.mp3';
   var leaUiClicks = [];
   var leaUiCursor = 0;
+  // Start loading the first click immediately so the first user interaction
+  // does not pay the cost of constructing the audio element and fetching it.
+  var leaUiWarm = new Audio(LEA_UI_CLICK_SOURCE);
+  leaUiWarm.preload = 'auto';
+  leaUiClicks.push(leaUiWarm);
   function playUiClick(){
     if(pageName(location.href) === 'run') return;
     if(window.LEAAudio && typeof window.LEAAudio.playSfx === 'function'){
