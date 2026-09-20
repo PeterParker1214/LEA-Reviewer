@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=5">
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Code plates — LEA Reviewer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-2:#0a1520;
+    --gold:#e0a83f; --gold-bright:#f0c268; --blue:#6fa8cf; --blue-bright:#8fc4ea;
+    --muted:#8b98a5; --good:#5fbf82; --bad:#e2604a;
+    --line: rgba(111,168,207,0.20); --grid-line: rgba(111,168,207,0.09);
+    --font-display: 'Big Shoulders Display', sans-serif;
+    --font-hand: 'Architects Daughter', cursive;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+  body.light-mode, :root.light-mode{
+    --ink:#16202b; --bg-deep:#d3dee6; --bg-panel:#ffffff; --bg-panel-2:#e9eff4;
+    --gold:#b5791f; --gold-bright:#7d520c; --blue:#2f6c95; --blue-bright:#1b4a6b;
+    --muted:#4f5d6a; --good:#206b3c; --bad:#a1372a;
+    --line: rgba(47,108,149,0.28); --grid-line: rgba(47,108,149,0.11);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      var(--bg-deep);
+    color:var(--ink); font-family:var(--font-body); min-height:100vh;
+    display:flex; justify-content:center; padding:20px 16px 64px;
+  }
+  .wrap{width:100%; max-width:560px;}
+  a{color:inherit;}
+  button, input{font-family:inherit;}
+
+  .run-header{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .icon-btn-44{
+    width:44px; height:44px; border-radius:10px; background:var(--bg-panel); border:1px solid var(--line);
+    color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+  }
+  .icon-btn-44 svg{ width:19px; height:19px; }
+  .page-title{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; }
+
+  .search{
+    width:100%; background:var(--bg-panel); border:1px solid var(--line); border-radius:0;
+    color:var(--ink); font-size:14px; padding:12px 14px; margin-bottom:10px;
+  }
+  .search:focus{ outline:none; border-color:var(--gold); }
+
+  /* Categories wrap rather than stretch: four labels of uneven length. */
+  .chips{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+  .chip{
+    font-family:var(--font-body); font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+    background:var(--bg-panel); border:1px solid var(--line); color:var(--muted);
+    padding:8px 12px; border-radius:0; cursor:pointer;
+  }
+  .chip.active{ border-color:var(--gold); color:var(--gold-bright); background:color-mix(in srgb, var(--gold) 8%, transparent); }
+
+  .cd-card{ margin-bottom:12px; scroll-margin-top:16px; }
+  .cd-card.flash{ border-color:var(--gold); }
+  .cd-title{ font-family:var(--font-display); font-weight:800; font-size:21px; text-transform:uppercase;
+    letter-spacing:.01em; margin:2px 0 4px; }
+  .cd-lede{ font-size:13.5px; line-height:1.5; color:var(--muted); margin-bottom:12px; }
+  /* The plate keeps its own white sheet in both themes — a drawing is read
+     the way it is drawn, not re-coloured. */
+  .cd-plate{ background:#fff; border:1px solid var(--line); padding:6px; }
+  .cd-plate img{ display:block; width:100%; height:auto; }
+  .cd-facts{ list-style:none; margin:12px 0 0; padding:0; }
+  .cd-facts li{ font-size:13.5px; line-height:1.5; padding:6px 0 6px 16px; position:relative;
+    border-top:1px solid var(--line); }
+  .cd-facts li:before{ content:'—'; position:absolute; left:0; color:var(--gold); }
+  .cd-cite{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.06em; color:var(--muted);
+    margin-top:12px; }
+  .state-note{ font-family:var(--font-mono); font-size:12px; color:var(--muted); text-align:center; padding:40px 0; }
+  .credits{ font-size:12px; color:var(--muted); line-height:1.6; text-align:center; margin-top:24px; }
+</style>
+<link rel="stylesheet" href="assets/blueprint.css?v=63">
+<script src="assets/theme.js?v=63" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=64"></script>
+<script src="assets/offline.js?v=63"></script>
+</head>
+<body>
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
+<div class="wrap">
+  <div class="run-header">
+    <a class="icon-btn-44" href="index.html" title="Back" data-back>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </a>
+    <div class="page-title">Code plates</div>
+  </div>
+
+  <input class="search" id="search" type="search" placeholder="Search — e.g. ramp, 1800, parking" autocomplete="off">
+  <div class="chips" id="chips"></div>
+  <div id="contentArea" class="lea-stagger"><script>document.write(LEANav.skel('cards', 3))</script></div>
+  <div class="credits">Every dimension is drawn from the law itself.<br>The cite under each plate says which clause.</div>
+</div>
+
+<script>
+const LAWS = { all:'All', bp344:'BP 344', pd1096:'PD 1096', ra9514:'RA 9514' };
+
+let LIST = [];
+let activeLaw = 'all';
+let query = '';
+
+function escapeHtml(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function matches(f, q){
+  if(!q) return true;
+  const hay = [f.title, f.lede, f.cite].concat(f.facts).join(' ').toLowerCase();
+  return q.split(/\s+/).every(word => hay.includes(word));
+}
+
+function renderChips(){
+  // Only laws that actually have a plate get a chip.
+  const have = new Set(LIST.map(f => f.law));
+  document.getElementById('chips').innerHTML = Object.keys(LAWS)
+    .filter(law => law === 'all' || have.has(law))
+    .map(law => '<button class="chip' + (law === activeLaw ? ' active' : '') + '" type="button" data-law="' + law + '">' + escapeHtml(LAWS[law]) + '</button>')
+    .join('');
+}
+
+function cardHtml(f){
+  return (
+    '<div class="bp-card cd-card" id="' + escapeHtml(f.id) + '">' +
+      '<div class="page-head">' +
+        '<span class="section-tag">' + escapeHtml(LAWS[f.law] || f.law) + '</span>' +
+        '<span class="page-no">' + f.facts.length + '<small> rules</small></span>' +
+      '</div>' +
+      '<div class="cd-title">' + escapeHtml(f.title) + '</div>' +
+      '<div class="cd-lede">' + escapeHtml(f.lede) + '</div>' +
+      '<div class="cd-plate"><img src="assets/codes/' + encodeURIComponent(f.id) + '.svg" alt="' + escapeHtml(f.title) + '" loading="lazy"></div>' +
+      '<ul class="cd-facts">' + f.facts.map(x => '<li>' + escapeHtml(x) + '</li>').join('') + '</ul>' +
+      '<div class="cd-cite">' + escapeHtml(f.cite) + '</div>' +
+    '</div>'
+  );
+}
+
+function render(){
+  renderChips();
+  const q = query.trim().toLowerCase();
+  const shown = LIST.filter(f => (activeLaw === 'all' || f.law === activeLaw) && matches(f, q));
+  document.getElementById('contentArea').innerHTML = shown.length
+    ? shown.map(cardHtml).join('')
+    : '<div class="state-note">No plate matches that.</div>';
+}
+
+document.getElementById('chips').addEventListener('click', e => {
+  const chip = e.target.closest('[data-law]');
+  if(!chip) return;
+  activeLaw = chip.dataset.law;
+  render();
+});
+
+document.getElementById('search').addEventListener('input', e => {
+  query = e.target.value;
+  render();
+});
+
+(async function boot(){
+  try{
+    const res = await fetch('data/codes.json', { cache: 'no-cache' });
+    LIST = await res.json();
+  }catch(e){
+    document.getElementById('contentArea').innerHTML = '<div class="state-note">Couldn’t load the plates. Try reloading.</div>';
+    return;
+  }
+  render();
+  // A link from a quiz explanation lands on its plate.
+  const target = decodeURIComponent(location.hash.slice(1));
+  const el = target && document.getElementById(target);
+  if(el){ el.scrollIntoView({ behavior:'smooth', block:'start' }); el.classList.add('flash'); }
+})();
+</script>
+</body>
+</html>
