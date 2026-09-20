@@ -302,17 +302,21 @@
   .theme-sw .ts-chips{ display:flex; height:26px; border-radius:0; overflow:hidden; }
   .theme-sw .ts-chips i{ flex:1; }
   .theme-sw[aria-checked="true"]{ border-color:var(--gold-bright); box-shadow:0 0 0 1px var(--gold-bright); }
-  /* SFX controls live inside Account so the Home and quiz surfaces stay unchanged. */
+  /* SFX is an Account preference, so it uses the same quiet row rhythm as the links above. */
   .account-sfx{ padding:12px 0 14px; border-bottom:1px solid var(--line); }
   .account-sfx-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
   .account-sfx .ar-sub{ margin-top:5px; }
-  .sfx-mute{ min-width:88px; min-height:40px; padding:0 12px; border:1px solid var(--line); background:var(--bg-panel-2); color:var(--muted); cursor:pointer;
+  .sfx-mute{ min-width:0; min-height:44px; margin:-4px -4px -4px 0; padding:4px; border:0; background:none; color:var(--muted); cursor:pointer;
     font-family:var(--font-body); font-weight:600; font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
-  .sfx-mute:hover{ border-color:var(--gold-bright); color:var(--gold-bright); }
-  .sfx-mute[aria-pressed="true"]{ border-color:var(--bad); color:var(--bad); }
-  .sfx-volume{ display:flex; align-items:center; gap:10px; margin-top:12px; }
-  .sfx-volume input{ flex:1; min-width:0; accent-color:var(--gold); cursor:pointer; }
-  .sfx-volume output{ width:42px; flex-shrink:0; text-align:right; font-family:var(--font-mono); font-size:11px; color:var(--muted); }
+  .sfx-mute:hover{ color:var(--gold-bright); }
+  .sfx-mute[aria-pressed="true"]{ color:var(--bad); }
+  .sfx-volume{ display:flex; align-items:center; gap:10px; margin-top:9px; padding-left:0; }
+  .sfx-volume input{ flex:1; min-width:0; height:18px; margin:0; accent-color:var(--gold); cursor:pointer; }
+  .sfx-volume input::-webkit-slider-runnable-track{ height:4px; background:var(--bg-panel-2); border:1px solid var(--line); }
+  .sfx-volume input::-webkit-slider-thumb{ -webkit-appearance:none; appearance:none; width:12px; height:12px; margin-top:-5px; border:1px solid var(--gold); border-radius:50%; background:var(--gold); }
+  .sfx-volume input::-moz-range-track{ height:4px; background:var(--bg-panel-2); border:1px solid var(--line); }
+  .sfx-volume input::-moz-range-thumb{ width:11px; height:11px; border:1px solid var(--gold); border-radius:50%; background:var(--gold); }
+  .sfx-volume output{ width:34px; flex-shrink:0; text-align:right; font-family:var(--font-mono); font-size:10.5px; color:var(--muted); }
 
   /* ===== 7a desktop (1120px) =====
      On phones the three column wrappers are display:contents, so they take no
