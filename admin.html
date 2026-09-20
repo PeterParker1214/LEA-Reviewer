@@ -338,7 +338,7 @@ const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
 // The session's home is whichever "keep me signed in" chose on the main site:
 // localStorage when ticked, sessionStorage when not. index.html and
-// admin-mfa.html both read it this way. This page used the library default —
+// the main site reads it this way too. This page used the library default —
 // localStorage only — so a session kept in sessionStorage left it reading an
 // older token that MFA verification never touched, and every save came back
 // "MFA required" no matter how many times the code was entered.
@@ -734,13 +734,7 @@ async function callSave(path, content, message){
     body: JSON.stringify({ path, content, message })
   });
   const result = await resp.json();
-  if(!resp.ok){
-    // The save function demands an aal2 session. This page took its token at
-    // load, so verifying in another tab is not enough — this one has to reload.
-    if(/mfa/i.test(result.error || ''))
-      throw new Error('MFA required — verify at admin-mfa.html, then reload this page and save again.');
-    throw new Error(result.error || 'Save failed');
-  }
+  if(!resp.ok) throw new Error(result.error || 'Save failed');
   return result;
 }
 
@@ -757,20 +751,6 @@ async function init(){
     showGate('This account is not an admin, so this page is not available to you.', true);
     return;
   }
-
-  // Saving needs an aal2 session, and a fresh sign-in is always aal1 — so say
-  // so on arrival rather than halfway through writing a batch of files.
-  try{
-    const { data: aal } = await sb.auth.mfa.getAuthenticatorAssuranceLevel();
-    if(aal && aal.currentLevel !== 'aal2'){
-      showGate('This sign-in still needs the extra verification before anything ' +
-        'can be saved. <a href="admin-mfa.html">Verify now</a>, then come back — ' +
-        'the page picks it up on its own.');
-      // Nothing to poll and nothing to click here: the verification happens on
-      // the other page, and coming back reloads this one.
-      return;
-    }
-  }catch(e){ /* the save itself still refuses if this could not be read */ }
 
   gateEl.style.display = 'none';
   panelEl.style.display = 'block';

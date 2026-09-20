@@ -174,13 +174,7 @@
     btn.id = 'adminPortalBtn';
     btn.className = 'account-row';
     btn.innerHTML = '<div><div class="ar-label">Admin</div><div class="ar-sub">Manage reviewer content and tools</div></div><span>→</span>';
-    btn.addEventListener('click', async function(){
-      try{
-        const { data, error } = await sb.auth.mfa.getAuthenticatorAssuranceLevel();
-        if(error) throw error;
-        location.href = data && data.currentLevel === 'aal2' ? 'admin.html' : 'admin-mfa.html';
-      }catch(e){ location.href = 'admin-mfa.html'; }
-    });
+    btn.addEventListener('click', function(){ location.href = 'admin.html'; });
     if(logout) body.insertBefore(btn, logout); else body.appendChild(btn);
   }
 
