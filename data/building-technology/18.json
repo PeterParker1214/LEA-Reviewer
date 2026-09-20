@@ -1,0 +1,1629 @@
+{
+  "figures": {
+    "f1": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0KLmZpbGx7ZmlsbDojZWVmM2ZiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfSAuZ2xhc3N7ZmlsbDojZThmNmZmO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZGFzaHtzdHJva2U6IzY2NjtzdHJva2Utd2lkdGg6MjtzdHJva2UtZGFzaGFycmF5OjcgNjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+TmFpbGluZyBNZXRob2RzPC90ZXh0Pgo8cmVjdCB4PSI3MCIgeT0iMTUwIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjcwIiBjbGFzcz0iZmlsbCIvPgo8bGluZSB4MT0iMTcwIiB5MT0iODAiIHgyPSIxNzAiIHkyPSIxOTAiIGNsYXNzPSJsaW5lIi8+Cjx0ZXh0IHg9IjEyNSIgeT0iMjY1IiBjbGFzcz0icyI+RmFjZSBuYWlsaW5nPC90ZXh0Pgo8cmVjdCB4PSIzNTAiIHk9IjE1MCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSI3MCIgY2xhc3M9ImZpbGwiLz4KPGxpbmUgeDE9IjQzMCIgeTE9IjgwIiB4Mj0iNDMwIiB5Mj0iMTg1IiBjbGFzcz0ibGluZSIvPgo8Y2lyY2xlIGN4PSI0MzAiIGN5PSIxNTAiIHI9IjgiIGZpbGw9IiNlZWYzZmIiLz4KPHRleHQgeD0iMzkwIiB5PSIyNjUiIGNsYXNzPSJzIj5CbGluZCBuYWlsaW5nPC90ZXh0Pgo8cmVjdCB4PSI2MzAiIHk9IjE1MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSI3MCIgY2xhc3M9ImZpbGwiLz4KPHJlY3QgeD0iNzEwIiB5PSIyMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSIxMTAiIGNsYXNzPSJmaWxsIi8+CjxsaW5lIHgxPSI2NzUiIHkxPSIxMDUiIHgyPSI3NDAiIHkyPSIyMzAiIGNsYXNzPSJsaW5lIi8+Cjx0ZXh0IHg9IjY2MCIgeT0iMzY1IiBjbGFzcz0icyI+VG9lIG5haWxpbmc8L3RleHQ+Cjwvc3ZnPg==",
+    "f2": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0KLmZpbGx7ZmlsbDojZWVmM2ZiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfSAuZ2xhc3N7ZmlsbDojZThmNmZmO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZGFzaHtzdHJva2U6IzY2NjtzdHJva2Utd2lkdGg6MjtzdHJva2UtZGFzaGFycmF5OjcgNjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+RG9vciBIYW5kaW5nPC90ZXh0Pgo8cmVjdCB4PSIxMTAiIHk9IjExMCIgd2lkdGg9IjI2MCIgaGVpZ2h0PSIyNTAiIGNsYXNzPSJmaWxsIi8+CjxsaW5lIHgxPSIxMTAiIHkxPSIxMTAiIHgyPSIxMTAiIHkyPSIzNjAiIGNsYXNzPSJsaW5lIi8+CjxsaW5lIHgxPSIxMTAiIHkxPSIzNjAiIHgyPSIzNDAiIHkyPSIxNjAiIGNsYXNzPSJsaW5lIi8+CjxwYXRoIGQ9Ik0xMTAgMzYwIEEyMzAgMjMwIDAgMCAxIDM0MCAxMzAiIGNsYXNzPSJkYXNoIi8+Cjx0ZXh0IHg9IjE1NSIgeT0iOTUiIGNsYXNzPSJzIj5oaW5nZSBzaWRlPC90ZXh0Pgo8dGV4dCB4PSIyNDAiIHk9IjM5MCIgY2xhc3M9InMiPnN3aW5nIGFyYzwvdGV4dD4KPHJlY3QgeD0iNTMwIiB5PSIxMTAiIHdpZHRoPSIyNjAiIGhlaWdodD0iMjUwIiBjbGFzcz0iZmlsbCIvPgo8bGluZSB4MT0iNzkwIiB5MT0iMTEwIiB4Mj0iNzkwIiB5Mj0iMzYwIiBjbGFzcz0ibGluZSIvPgo8bGluZSB4MT0iNzkwIiB5MT0iMzYwIiB4Mj0iNTYwIiB5Mj0iMTYwIiBjbGFzcz0ibGluZSIvPgo8cGF0aCBkPSJNNzkwIDM2MCBBMjMwIDIzMCAwIDAgMCA1NjAgMTMwIiBjbGFzcz0iZGFzaCIvPgo8dGV4dCB4PSI2NTAiIHk9Ijk1IiBjbGFzcz0icyI+aGluZ2Ugc2lkZTwvdGV4dD4KPC9zdmc+",
+    "f3": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0KLmZpbGx7ZmlsbDojZWVmM2ZiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfSAuZ2xhc3N7ZmlsbDojZThmNmZmO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZGFzaHtzdHJva2U6IzY2NjtzdHJva2Utd2lkdGg6MjtzdHJva2UtZGFzaGFycmF5OjcgNjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+U2FmZXR5LUdsYXNzIENvbmNlcHRzPC90ZXh0Pgo8cmVjdCB4PSIxMDAiIHk9IjExMCIgd2lkdGg9IjIyMCIgaGVpZ2h0PSIyMzAiIGNsYXNzPSJnbGFzcyIvPgo8bGluZSB4MT0iMTYwIiB5MT0iMTEwIiB4Mj0iMTYwIiB5Mj0iMzQwIiBjbGFzcz0idGhpbiIvPgo8bGluZSB4MT0iMjYwIiB5MT0iMTEwIiB4Mj0iMjYwIiB5Mj0iMzQwIiBjbGFzcz0idGhpbiIvPgo8dGV4dCB4PSIxMjUiIHk9IjM3NSIgY2xhc3M9InMiPkxhbWluYXRlZCBwbGllczwvdGV4dD4KPHJlY3QgeD0iNTgwIiB5PSIxMTAiIHdpZHRoPSIyMjAiIGhlaWdodD0iMjMwIiBjbGFzcz0iZ2xhc3MiLz4KPHBhdGggZD0iTTYwMCAxMjUgTDc4MCAzMjUgTTc4MCAxMjUgTDYwMCAzMjUgTTYwMCAyMDAgTDc4MCAyMDAgTTY5MCAxMjUgTDY5MCAzMjUiIGNsYXNzPSJ0aGluIi8+Cjx0ZXh0IHg9IjYyMCIgeT0iMzc1IiBjbGFzcz0icyI+V2lyZWQgZ2xhc3M8L3RleHQ+Cjwvc3ZnPg==",
+    "f4": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0KLmZpbGx7ZmlsbDojZWVmM2ZiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfSAuZ2xhc3N7ZmlsbDojZThmNmZmO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZGFzaHtzdHJva2U6IzY2NjtzdHJva2Utd2lkdGg6MjtzdHJva2UtZGFzaGFycmF5OjcgNjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+Q29tbW9uIEpvaW5lcnkgRmFzdGVuZXJzPC90ZXh0Pgo8bGluZSB4MT0iMTUwIiB5MT0iMTAwIiB4Mj0iMTUwIiB5Mj0iMzM1IiBjbGFzcz0ibGluZSIvPgo8cG9seWdvbiBwb2ludHM9IjEzMCwxMDAgMTcwLDEwMCAxNTAsNzAiIGZpbGw9IiMxMTEiLz4KPHRleHQgeD0iMTE1IiB5PSIzODAiIGNsYXNzPSJzIj5OYWlsPC90ZXh0Pgo8bGluZSB4MT0iNDMwIiB5MT0iOTUiIHgyPSI0MzAiIHkyPSIzMzUiIGNsYXNzPSJsaW5lIi8+CjxwYXRoIGQ9Ik00MTAgMTM1IEw0NTAgMTU1IE00MTAgMTc1IEw0NTAgMTk1IE00MTAgMjE1IEw0NTAgMjM1IE00MTAgMjU1IEw0NTAgMjc1IiBjbGFzcz0idGhpbiIvPgo8cmVjdCB4PSI0MDAiIHk9IjY1IiB3aWR0aD0iNjAiIGhlaWdodD0iMjUiIGNsYXNzPSJmaWxsIi8+Cjx0ZXh0IHg9IjM5NSIgeT0iMzgwIiBjbGFzcz0icyI+U2NyZXc8L3RleHQ+CjxsaW5lIHgxPSI3MDAiIHkxPSI5NSIgeDI9IjcwMCIgeTI9IjMzNSIgY2xhc3M9ImxpbmUiLz4KPHJlY3QgeD0iNjcwIiB5PSI2NSIgd2lkdGg9IjYwIiBoZWlnaHQ9IjI1IiBjbGFzcz0iZmlsbCIvPgo8cmVjdCB4PSI2NjAiIHk9IjMyMCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjE4IiBjbGFzcz0iZmlsbCIvPgo8dGV4dCB4PSI2NzgiIHk9IjM4MCIgY2xhc3M9InMiPkJvbHQ8L3RleHQ+Cjwvc3ZnPg==",
+    "f5": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0KLmZpbGx7ZmlsbDojZWVmM2ZiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfSAuZ2xhc3N7ZmlsbDojZThmNmZmO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZGFzaHtzdHJva2U6IzY2NjtzdHJva2Utd2lkdGg6MjtzdHJva2UtZGFzaGFycmF5OjcgNjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+RmxhdC1HbGFzcyBQcm9jZXNzIENvbmNlcHRzPC90ZXh0Pgo8cmVjdCB4PSI3MCIgeT0iMTE1IiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE3MCIgY2xhc3M9ImdsYXNzIi8+CjxwYXRoIGQ9Ik05MCAxODUgQzEzMCAxNDAsMTcwIDIzMCwyMTUgMTgwIEMyNDUgMTUwLDI2NSAxODUsMjg1IDE3NSIgY2xhc3M9InRoaW4iLz4KPHRleHQgeD0iMTQ1IiB5PSIzMjAiIGNsYXNzPSJzIj5TaGVldCBnbGFzczwvdGV4dD4KPHJlY3QgeD0iMzQwIiB5PSIxMTUiIHdpZHRoPSIyMjAiIGhlaWdodD0iMTcwIiBjbGFzcz0iZ2xhc3MiLz4KPGxpbmUgeDE9IjM1NSIgeTE9IjE1NSIgeDI9IjU0NSIgeTI9IjE1NSIgY2xhc3M9InRoaW4iLz4KPGxpbmUgeDE9IjM1NSIgeTE9IjI0NSIgeDI9IjU0NSIgeTI9IjI0NSIgY2xhc3M9InRoaW4iLz4KPHRleHQgeD0iNDIwIiB5PSIzMjAiIGNsYXNzPSJzIj5QbGF0ZSBnbGFzczwvdGV4dD4KPHJlY3QgeD0iNjEwIiB5PSIxMTUiIHdpZHRoPSIyMjAiIGhlaWdodD0iMTcwIiBjbGFzcz0iZ2xhc3MiLz4KPHBhdGggZD0iTTYyNSAyNTUgUTcyMCAyNDUgODE1IDI1NSIgY2xhc3M9InRoaW4iLz4KPHRleHQgeD0iNjU1IiB5PSIyMzAiIGNsYXNzPSJzIj5tb2x0ZW4gdGluIHN1cmZhY2U8L3RleHQ+Cjx0ZXh0IHg9IjY4NSIgeT0iMzIwIiBjbGFzcz0icyI+RmxvYXQgZ2xhc3M8L3RleHQ+Cjwvc3ZnPg==",
+    "f6": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0KLmZpbGx7ZmlsbDojZWVmM2ZiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfSAuZ2xhc3N7ZmlsbDojZThmNmZmO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZGFzaHtzdHJva2U6IzY2NjtzdHJva2Utd2lkdGg6MjtzdHJva2UtZGFzaGFycmF5OjcgNjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+U2xpZGluZyBEb29yIFRyYWNrIGFuZCBHdWlkZSBMb2NhdGlvbnM8L3RleHQ+CjxyZWN0IHg9IjE1NSIgeT0iMTMwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjIxMCIgY2xhc3M9ImZpbGwiLz4KPGxpbmUgeDE9IjEzMCIgeTE9Ijk1IiB4Mj0iNDAwIiB5Mj0iOTUiIGNsYXNzPSJsaW5lIi8+Cjx0ZXh0IHg9IjIwNSIgeT0iODIiIGNsYXNzPSJzIj51cHBlciB0cmFjayAvIGd1aWRlPC90ZXh0Pgo8bGluZSB4MT0iMTMwIiB5MT0iMzc1IiB4Mj0iNDAwIiB5Mj0iMzc1IiBjbGFzcz0ibGluZSIvPgo8dGV4dCB4PSIyMDUiIHk9IjQwNSIgY2xhc3M9InMiPmxvd2VyIHRyYWNrIC8gZ3VpZGU8L3RleHQ+CjxyZWN0IHg9IjU0MCIgeT0iMTMwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjIxMCIgY2xhc3M9ImZpbGwiLz4KPGxpbmUgeDE9IjUxNSIgeTE9Ijk1IiB4Mj0iNzg1IiB5Mj0iOTUiIGNsYXNzPSJsaW5lIi8+CjxsaW5lIHgxPSI1MTUiIHkxPSIzNzUiIHgyPSI3ODUiIHkyPSIzNzUiIGNsYXNzPSJsaW5lIi8+Cjx0ZXh0IHg9IjE2NSIgeT0iMjU1IiBjbGFzcz0idCI+V29vZCAvIFN0ZWVsPC90ZXh0Pgo8dGV4dCB4PSI1NjUiIHk9IjI1NSIgY2xhc3M9InQiPkFsdW1pbnVtIC8gdVBWQzwvdGV4dD4KPC9zdmc+",
+    "f7": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiB2aWV3Qm94PSIwIDAgOTAwIDQ0MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0KLmZpbGx7ZmlsbDojZWVmM2ZiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfSAuZ2xhc3N7ZmlsbDojZThmNmZmO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfQouZGFzaHtzdHJva2U6IzY2NjtzdHJva2Utd2lkdGg6MjtzdHJva2UtZGFzaGFycmF5OjcgNjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+V2luZG93IE9wZW5pbmcgQ29uY2VwdHM8L3RleHQ+CjxyZWN0IHg9IjgwIiB5PSIxMDUiIHdpZHRoPSIxODAiIGhlaWdodD0iMjEwIiBjbGFzcz0iZmlsbCIvPgo8dGV4dCB4PSIxMzUiIHk9IjM0NSIgY2xhc3M9InMiPkZpeGVkOiAwJTwvdGV4dD4KPHJlY3QgeD0iMzYwIiB5PSIxMDUiIHdpZHRoPSIxODAiIGhlaWdodD0iMjEwIiBjbGFzcz0iZmlsbCIvPgo8bGluZSB4MT0iMzYwIiB5MT0iMTA1IiB4Mj0iNTIwIiB5Mj0iMTgwIiBjbGFzcz0ibGluZSIvPgo8cGF0aCBkPSJNMzYwIDEwNSBBMTgwIDE4MCAwIDAgMSA1MzUgMjgwIiBjbGFzcz0iZGFzaCIvPgo8dGV4dCB4PSIzODUiIHk9IjM0NSIgY2xhc3M9InMiPkNhc2VtZW50OiAxMDAlPC90ZXh0Pgo8cmVjdCB4PSI2NDAiIHk9IjEwNSIgd2lkdGg9IjE4MCIgaGVpZ2h0PSIyMTAiIGNsYXNzPSJmaWxsIi8+CjxsaW5lIHgxPSI2NDAiIHkxPSIxMDUiIHgyPSI3ODAiIHkyPSIxMDUiIGNsYXNzPSJsaW5lIi8+CjxsaW5lIHgxPSI2NDAiIHkxPSIzMTUiIHgyPSI3MzAiIHkyPSIzMTUiIGNsYXNzPSJsaW5lIi8+Cjx0ZXh0IHg9IjY2MCIgeT0iMzQ1IiBjbGFzcz0icyI+U2xpZGluZzogNTAlPC90ZXh0Pgo8L3N2Zz4="
+  },
+  "questions": [
+    {
+      "s": "Applied Joinery",
+      "q": "Two framing members meet at an angle and the nail must be driven obliquely through one member into the other. Which method is being used?",
+      "o": [
+        "Toe nailing",
+        "Face nailing",
+        "Riveting",
+        "Blind nailing"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Types of Nail Construction",
+      "n": "Toe nailing is characterized by an oblique nail driven into the surfaces being joined.",
+      "fig": "f1"
+    },
+    {
+      "s": "Glass in Construction",
+      "q": "Which glass product or application is used for control of light transmission, glare, and solar radiation?",
+      "o": [
+        "Glass Fibers",
+        "Foamed or Cellular Glass",
+        "Glass Block",
+        "Glass Fibers Spun in Form"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Glass in Building Construction",
+      "n": "Glass Block is associated with control of light transmission, glare, and solar radiation."
+    },
+    {
+      "s": "Door Handing",
+      "q": "Which handing variants are associated with double-handing doors?",
+      "o": [
+        "Left/right hand only",
+        "Left/right hand active in-swing and left/right hand active out-swing",
+        "Roll-up and revolving",
+        "Flush and panel"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Double-handing doors may be designated active in-swing or active out-swing on either left or right hand.",
+      "fig": "f2"
+    },
+    {
+      "s": "Applied Glass Selection",
+      "q": "A safety glazing panel must remain held together when broken rather than releasing loose fragments. Which glass best satisfies that requirement?",
+      "o": [
+        "Plate glass",
+        "Annealed glass",
+        "Laminated / safety glass",
+        "Patterned glass"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "The bonded resin interlayer of laminated glass retains fragments after breakage.",
+      "fig": "f3"
+    },
+    {
+      "s": "Door Frames",
+      "q": "What opening-surface preparation is compatible with a uPVC door frame?",
+      "o": [
+        "Rough only",
+        "Unfinished only",
+        "Finished only",
+        "Finished or rough"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 52 — Doors: Surface Preparation for Door Frames",
+      "n": "A uPVC door frame is compatible with finished or rough opening surfaces."
+    },
+    {
+      "s": "Tinted and Coated Glass",
+      "q": "How is tinted or heat-absorbing glass produced?",
+      "o": [
+        "By slow cooling only",
+        "By grinding and polishing",
+        "By embedding wire mesh",
+        "By adding a chemical admixture that absorbs part of radiant heat and light"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Tinted heat-absorbing glass uses chemical admixtures to absorb part of the incident radiation."
+    },
+    {
+      "s": "Applied Joinery",
+      "q": "A board is 3/4 in thick. Using the rule that nail length should be about three times the material thickness, what approximate nail length is appropriate?",
+      "o": [
+        "3 in",
+        "4 1/2 in",
+        "2 1/4 in",
+        "1 1/2 in"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "Three times 3/4 inch is 2 1/4 inches.",
+      "fig": "f4"
+    },
+    {
+      "s": "Window Frames",
+      "q": "What opening-surface preparation is associated with a Wood window frame?",
+      "o": [
+        "Rough",
+        "Finished or rough",
+        "Unfinished",
+        "Finished"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 52 — Windows: Surface Preparation for Window Frames",
+      "n": "A Wood window frame is associated with a finished opening surface."
+    },
+    {
+      "s": "Safety and Specialty Glass",
+      "q": "What are the visual effects of patterned glass?",
+      "o": [
+        "It reflects all visible light",
+        "It obscures vision and diffuses light",
+        "It magnifies objects",
+        "It completely blocks light"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Patterned glass provides privacy by obscuring vision while diffusing transmitted light."
+    },
+    {
+      "s": "Nailing Methods",
+      "q": "How is a toe nail driven?",
+      "o": [
+        "Obliquely to the surfaces being joined",
+        "Perpendicular to the face",
+        "Straight through a predrilled bolt hole",
+        "Parallel to both surfaces"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Types of Nail Construction",
+      "n": "Toe nailing drives the nail at an oblique angle into the surfaces being joined.",
+      "fig": "f1"
+    },
+    {
+      "s": "Glass in Construction",
+      "q": "Which glass product or application is used for window, sash, and skylight openings?",
+      "o": [
+        "Glass Fibers Spun in Form",
+        "Glazing",
+        "Glass Fibers",
+        "Foamed or Cellular Glass"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 53 — Glass in Building Construction",
+      "n": "Glazing is associated with window, sash, and skylight openings."
+    },
+    {
+      "s": "Door Construction",
+      "q": "Which is a door classification according to build?",
+      "o": [
+        "Hollow Core Flush Door",
+        "Framed Flush Door",
+        "Solid Core Flush Door",
+        "Rail & Stile or Panel Door"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Rail & Stile or Panel Door is one of the door types classified by build."
+    },
+    {
+      "s": "Safety and Specialty Glass",
+      "q": "What is the architectural purpose of spandrel glass?",
+      "o": [
+        "To provide operable ventilation",
+        "To drain roof water",
+        "To form reinforcing bars",
+        "To conceal structural elements in a curtain wall"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Opaque spandrel glass conceals structural or building elements behind a curtain wall."
+    },
+    {
+      "s": "Flat Glass",
+      "q": "Which glass has this characteristic: Virtually clear, undistorted vision?",
+      "o": [
+        "Patterned glass",
+        "Sheet glass",
+        "Plate glass",
+        "Float glass"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Plate glass is associated with this characteristic.",
+      "fig": "f5"
+    },
+    {
+      "s": "Joinery Fasteners",
+      "q": "Which materials may also be used for nails?",
+      "o": [
+        "PVC, EPDM, and acrylic only",
+        "Gypsum, lime, clay, and cement",
+        "Wood, glass, and ceramic only",
+        "Aluminum, copper, brass, zinc, stainless, and tempered high-carbon steel"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "Nails may also be made from several nonferrous metals, stainless steel, and tempered high-carbon steel."
+    },
+    {
+      "s": "Window Operation",
+      "q": "Which window types may use an automatic actuator?",
+      "o": [
+        "Awning, casement, and hopper",
+        "Accordion, sliding, and fixed",
+        "Fixed, sliding, and pivot",
+        "Jalousie, fixed, and hung"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 52 — Windows: Types According to Operation",
+      "n": "An automatic actuator may be used on awning, casement, and hopper windows."
+    },
+    {
+      "s": "Safety and Specialty Glass",
+      "q": "What disadvantages are associated with acid-etched or sandblasted obscure glass?",
+      "o": [
+        "The process weakens the glass and makes it hard to clean",
+        "It doubles its weight",
+        "It makes the glass highly conductive",
+        "It eliminates all light transmission"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "The obscuring process can weaken the glass and leaves a surface that is difficult to clean."
+    },
+    {
+      "s": "Door Handing",
+      "q": "Which is a recognized door-handing designation?",
+      "o": [
+        "Left / Right Hand Active Out-swing",
+        "Left / Right Hand Active In-swing",
+        "Left / Right Hand",
+        "Left / Right Hand Reverse"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Left / Right Hand is one of the stated door-handing arrangements.",
+      "fig": "f2"
+    },
+    {
+      "s": "Door Operation",
+      "q": "Which is a door type classified according to operation?",
+      "o": [
+        "Pivot Swing Door",
+        "Swing Door",
+        "Folding Door",
+        "Dutch Door"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Dutch Door is classified according to door operation."
+    },
+    {
+      "s": "Applied Joinery",
+      "q": "A carpenter wants the nail heads hidden from the finished face of a board. Which nailing method is appropriate?",
+      "o": [
+        "Bolting",
+        "Face nailing",
+        "Blind nailing",
+        "Toe nailing"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Types of Nail Construction",
+      "n": "Blind nailing is used when the nail heads should not be visible on the finished face.",
+      "fig": "f1"
+    },
+    {
+      "s": "Safety and Specialty Glass",
+      "q": "How is spandrel glass made opaque?",
+      "o": [
+        "By inserting wire mesh",
+        "By bonding paper between plies",
+        "By fusing a ceramic frit to the interior surface of tempered or heat-strengthened glass",
+        "By coating it with gypsum"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Spandrel glass uses a ceramic frit fused to the interior face of heat-treated glass."
+    },
+    {
+      "s": "Applied Glass Selection",
+      "q": "A curtain wall needs an opaque glass panel that hides structural elements behind the glazing. Which glass should be specified?",
+      "o": [
+        "Float glass",
+        "Low-emissivity glass",
+        "Sheet glass",
+        "Spandrel glass"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Spandrel glass is opaque and is specifically used to conceal structural elements behind curtain walls."
+    },
+    {
+      "s": "Joinery Fasteners",
+      "q": "Which shaft forms are identified for nails?",
+      "o": [
+        "Serrated, barbed, threaded, fluted, or twisted",
+        "Only hollow and corrugated",
+        "Only helically threaded",
+        "Only smooth and square"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "Nail shafts may be serrated, barbed, threaded, fluted, or twisted."
+    },
+    {
+      "s": "Window Frames",
+      "q": "What opening-surface preparation is associated with a Aluminum window frame?",
+      "o": [
+        "Finished",
+        "Finished or rough",
+        "Unfinished",
+        "Rough"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 52 — Windows: Surface Preparation for Window Frames",
+      "n": "A Aluminum window frame is associated with a finished opening surface."
+    },
+    {
+      "s": "Tinted and Coated Glass",
+      "q": "What optical property is associated with low-emissivity glass?",
+      "o": [
+        "It prevents any solar transmission",
+        "It reflects all visible light",
+        "It transmits visible light",
+        "It is fully opaque"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Low-e glass is designed to transmit visible light while modifying thermal-radiation behavior."
+    },
+    {
+      "s": "Door Appearance",
+      "q": "Which pair classifies doors according to panel appearance?",
+      "o": [
+        "Wood and metal",
+        "Flush and panel",
+        "Left and right hand",
+        "Swing and pivot"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Panel appearance divides doors into flush and panel types."
+    },
+    {
+      "s": "Tinted and Coated Glass",
+      "q": "What color is associated with Selenium in tinted glass?",
+      "o": [
+        "Bronze tint",
+        "Grayish",
+        "Pale blue-green",
+        "Clear"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Selenium produces a bronze tint tint."
+    },
+    {
+      "s": "Door Materials",
+      "q": "Which two broad material categories are identified for doors?",
+      "o": [
+        "Wood and metal",
+        "Fabric and stone",
+        "Glass and masonry",
+        "Plastic and concrete"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Door material is broadly classified as wood or metal."
+    },
+    {
+      "s": "Door Construction",
+      "q": "Which is a door classification according to build?",
+      "o": [
+        "Framed Flush Door",
+        "Solid Core Flush Door",
+        "Hollow Core Flush Door",
+        "Batten Door"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Batten Door is one of the door types classified by build."
+    },
+    {
+      "s": "Safety and Specialty Glass",
+      "q": "What safety function does the resin in laminated glass provide?",
+      "o": [
+        "It creates corrugations",
+        "It removes all thermal expansion",
+        "It retains fragments when the glass breaks",
+        "It makes the glass opaque"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "The interlayer retains broken fragments, helping the glazing stay together after fracture.",
+      "fig": "f3"
+    },
+    {
+      "s": "Safety and Specialty Glass",
+      "q": "What creates patterned glass?",
+      "o": [
+        "Two bonded plies",
+        "A linear geometric surface pattern",
+        "A wire mesh core",
+        "A low-e deposit"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Patterned glass uses a linear geometric pattern on its surface."
+    },
+    {
+      "s": "Joinery Fasteners",
+      "q": "What bolt-length range is indicated?",
+      "o": [
+        "3/4 in to 30 in (19–900 mm)",
+        "1 in to 12 in",
+        "2 in to 24 in",
+        "1/2 in to 6 in"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "Bolts range from approximately 3/4 inch to 30 inches, or 19–900 mm.",
+      "fig": "f4"
+    },
+    {
+      "s": "Safety and Specialty Glass",
+      "q": "What benefits are associated with insulating glass?",
+      "o": [
+        "Greater opacity only",
+        "Thermal insulation and resistance to condensation",
+        "Faster water absorption",
+        "Higher electrical conductivity"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "The separated panes improve insulation and help resist condensation."
+    },
+    {
+      "s": "Joinery Fasteners",
+      "q": "What nail diameter is associated with finish work?",
+      "o": [
+        "Thicker than heavy-work nails",
+        "Bolt-sized diameter",
+        "Lighter diameter",
+        "Large diameter"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "Lighter nails are associated with finish work."
+    },
+    {
+      "s": "Joinery Fasteners",
+      "q": "How are bolts described as fasteners?",
+      "o": [
+        "Glass-fiber dowels",
+        "Helically threaded sheets",
+        "Wooden pegs only",
+        "Metal pins or rods"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "Bolts are metal pins or rods used to fasten materials together."
+    },
+    {
+      "s": "Joinery Fasteners",
+      "q": "Which nail material is noted for greater strength in masonry?",
+      "o": [
+        "Tempered high-carbon steel",
+        "Zinc",
+        "Copper",
+        "Aluminum"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "Tempered high-carbon steel nails provide greater strength for masonry applications."
+    },
+    {
+      "s": "Door Frames",
+      "q": "What opening-surface preparation is compatible with a Steel door frame?",
+      "o": [
+        "Unfinished only",
+        "Rough only",
+        "Finished or rough",
+        "Finished only"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 52 — Doors: Surface Preparation for Door Frames",
+      "n": "A Steel door frame is compatible with finished or rough opening surfaces."
+    },
+    {
+      "s": "Joinery Fasteners",
+      "q": "What nail diameter is associated with heavy work?",
+      "o": [
+        "Large diameter",
+        "Lighter diameter",
+        "Thinner diameter",
+        "Gauge 24 only"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "Large-diameter nails are associated with heavy work."
+    },
+    {
+      "s": "Door Operation",
+      "q": "Which is a door type classified according to operation?",
+      "o": [
+        "Revolving",
+        "Dutch Door",
+        "Pivot Swing Door",
+        "Swing Door"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Revolving is classified according to door operation."
+    },
+    {
+      "s": "Glass Heat Treatment",
+      "q": "How much resistance can tempered glass have compared with annealed glass?",
+      "o": [
+        "About 3–5 times the resistance",
+        "About 10–12 times",
+        "About 1.5 times",
+        "About 2 times"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Tempered glass has about 3–5 times the impact and thermal-stress resistance of annealed glass."
+    },
+    {
+      "s": "Glass Heat Treatment",
+      "q": "How is annealed glass produced?",
+      "o": [
+        "By bonding two plies",
+        "By cooling glass slowly",
+        "By embedding wire mesh",
+        "By rapid quenching"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Annealed glass is formed by slow cooling."
+    },
+    {
+      "s": "Joinery Fasteners",
+      "q": "What form is associated with screws?",
+      "o": [
+        "Plain rods with washers",
+        "Barbed shafts with flat heads only",
+        "Smooth shafts with cupped heads",
+        "Tapered, helically threaded shanks with slotted heads"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "The indicated screw form is a tapered, helically threaded shank with a slotted head."
+    },
+    {
+      "s": "Joinery Fasteners",
+      "q": "Which head forms are identified for nails?",
+      "o": [
+        "Slotted or Phillips only",
+        "Tapered, cupped, or flat",
+        "Hooked or forked",
+        "Round, hex, or square only"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "Nail heads may be tapered, cupped, or flat."
+    },
+    {
+      "s": "Joinery Fasteners",
+      "q": "What nail-length range is indicated from 2d to 60d?",
+      "o": [
+        "2d = 1 in to 40d = 4 in",
+        "2d = 1/2 in to 60d = 4 in",
+        "2d = 2 in to 60d = 8 in",
+        "2d = 1 in to 60d = 6 in"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "Nails range from 2d at about 1 inch long to 60d at about 6 inches long.",
+      "fig": "f4"
+    },
+    {
+      "s": "Door Handing",
+      "q": "Which is a recognized door-handing designation?",
+      "o": [
+        "Left / Right Hand Reverse",
+        "Left / Right Hand",
+        "Left / Right Hand Active In-swing",
+        "Left / Right Hand Active Out-swing"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Left / Right Hand Active Out-swing is one of the stated door-handing arrangements.",
+      "fig": "f2"
+    },
+    {
+      "s": "Flat Glass",
+      "q": "Which glass is produced by this process: Molten glass rolled into a plate, then ground and polished?",
+      "o": [
+        "Plate glass",
+        "Float glass",
+        "Patterned glass",
+        "Sheet glass"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Plate glass is produced in this manner and is characterized by virtually clear, undistorted vision.",
+      "fig": "f5"
+    },
+    {
+      "s": "Safety and Specialty Glass",
+      "q": "Wired glass may have what surface form?",
+      "o": [
+        "Only laminated",
+        "Only corrugated",
+        "Flat or patterned",
+        "Only float"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Wired glass may be either flat or patterned."
+    },
+    {
+      "s": "Tinted and Coated Glass",
+      "q": "What does reflective glass do?",
+      "o": [
+        "Reflects a portion of light",
+        "Blocks all visible light",
+        "Absorbs all moisture",
+        "Eliminates glare completely"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Its metallic coating reflects part of the incident light."
+    },
+    {
+      "s": "Tinted and Coated Glass",
+      "q": "How is low-emissivity glass made?",
+      "o": [
+        "By sandblasting both sides",
+        "By adding wire mesh",
+        "By depositing a low-e coating on the glass",
+        "By rolling molten glass into a plate"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Low-emissivity glazing is created by depositing a low-e coating on the glass surface."
+    },
+    {
+      "s": "Glass Heat Treatment",
+      "q": "How is heat-strengthened glass produced?",
+      "o": [
+        "By partially tempering annealed glass through reheating and sudden cooling",
+        "By slow cooling only",
+        "By adding wire mesh",
+        "By acid etching"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Heat-strengthened glass is annealed glass that is partially tempered through reheating and sudden cooling."
+    },
+    {
+      "s": "Joinery Fasteners",
+      "q": "For hardwood versus softwood, what nail-diameter tendency is indicated?",
+      "o": [
+        "Use thinner nails for hardwood than for softwood",
+        "Use identical diameters only",
+        "Use thicker nails for hardwood",
+        "Use bolts instead of nails"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "The joinery guidance indicates thinner nails for hardwood relative to softwood."
+    },
+    {
+      "s": "Flat Glass",
+      "q": "How can visible distortion in sheet glass be minimized during glazing?",
+      "o": [
+        "Acid-etch both faces",
+        "Orient the distortion horizontally",
+        "Orient it vertically",
+        "Use a metallic coating"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Sheet glass may show some distortion; orienting that distortion horizontally minimizes its visual effect."
+    },
+    {
+      "s": "Door Frames",
+      "q": "What opening-surface preparation is compatible with a Aluminum door frame?",
+      "o": [
+        "Unfinished only",
+        "Finished only",
+        "Finished or rough",
+        "Rough only"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Doors: Surface Preparation for Door Frames",
+      "n": "A Aluminum door frame is compatible with finished only opening surfaces."
+    },
+    {
+      "s": "Safety and Specialty Glass",
+      "q": "What is insulating glass composed of?",
+      "o": [
+        "At least two sheets separated by a space",
+        "Acrylic laminated to steel",
+        "One thick sheet only",
+        "Glass with embedded wire only"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Insulating glass uses two or more glass sheets separated by an enclosed space."
+    },
+    {
+      "s": "Sliding Door Tracks",
+      "q": "For a Steel sliding door, where are the track and guide located?",
+      "o": [
+        "Track down, guide up",
+        "Track up, guide down",
+        "Both down",
+        "Both up"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Location of Tracks and Guides for Sliding Doors",
+      "n": "For Steel sliding doors, the track is up and the guide is down.",
+      "fig": "f6"
+    },
+    {
+      "s": "Tinted and Coated Glass",
+      "q": "What color is associated with Cobalt oxide / nickel in tinted glass?",
+      "o": [
+        "Clear",
+        "Grayish",
+        "Bronze tint",
+        "Pale blue-green"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Cobalt oxide / nickel produces a grayish tint."
+    },
+    {
+      "s": "Door Construction",
+      "q": "Which is a door classification according to build?",
+      "o": [
+        "Rail & Stile or Panel Door",
+        "Hollow Core Flush Door",
+        "Solid Core Flush Door",
+        "Framed Flush Door"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Hollow Core Flush Door is one of the door types classified by build."
+    },
+    {
+      "s": "Joinery Fasteners",
+      "q": "What is a defining bolt form?",
+      "o": [
+        "A head at one end, inserted through holes, typically used with washers",
+        "No head and no washer",
+        "A flat sheet bent into a clip",
+        "A barbed tapered shaft only"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "Bolts have a head at one end and pass through prepared holes, commonly with washers."
+    },
+    {
+      "s": "Nailing Methods",
+      "q": "What distinguishes blind nailing?",
+      "o": [
+        "The nail is driven through a washer",
+        "The nail heads are not visible on the face",
+        "The nails are driven perpendicular and exposed",
+        "The nails are replaced by screws"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 53 — Types of Nail Construction",
+      "n": "Blind nailing conceals the nail heads from the finished face.",
+      "fig": "f1"
+    },
+    {
+      "s": "Glass in Construction",
+      "q": "Which glass product or application is used for glass wool for acoustical and thermal insulation?",
+      "o": [
+        "Glass Block",
+        "Glass Fibers",
+        "Glass Fibers Spun in Form",
+        "Foamed or Cellular Glass"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Glass in Building Construction",
+      "n": "Glass Fibers Spun in Form is associated with glass wool for acoustical and thermal insulation."
+    },
+    {
+      "s": "Window Operation",
+      "q": "What opening percentage is associated with a Louvered / Jalousie window?",
+      "o": [
+        "100%",
+        "0%",
+        "50%",
+        "80–85%"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 52 — Windows: Types According to Operation",
+      "n": "A Louvered / Jalousie window has an opening value of 100%.",
+      "fig": "f7"
+    },
+    {
+      "s": "Tinted and Coated Glass",
+      "q": "What color is associated with Iron oxide in tinted glass?",
+      "o": [
+        "Bronze tint",
+        "Grayish",
+        "Clear",
+        "Pale blue-green"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Iron oxide produces a pale blue-green tint."
+    },
+    {
+      "s": "Door Handing",
+      "q": "Which is a recognized door-handing designation?",
+      "o": [
+        "Left / Right Hand Active In-swing",
+        "Left / Right Hand Reverse",
+        "Left / Right Hand Active Out-swing",
+        "Left / Right Hand"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Left / Right Hand Active In-swing is one of the stated door-handing arrangements.",
+      "fig": "f2"
+    },
+    {
+      "s": "Door Operation",
+      "q": "Which is a door type classified according to operation?",
+      "o": [
+        "Dutch Door",
+        "Pivot Swing Door",
+        "Swing Door",
+        "Hidden or Jibb Door"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Hidden or Jibb Door is classified according to door operation."
+    },
+    {
+      "s": "Safety and Specialty Glass",
+      "q": "How is laminated or safety glass made?",
+      "o": [
+        "A single sheet is cooled slowly",
+        "Wire mesh is cast into one sheet",
+        "Two or more plies of flat glass are bonded under heat and pressure",
+        "A metallic coating is sprayed on"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Laminated glass uses two or more glass plies bonded under heat and pressure.",
+      "fig": "f3"
+    },
+    {
+      "s": "Joinery Fasteners",
+      "q": "Which materials are indicated for screws?",
+      "o": [
+        "Wood and plastic",
+        "Steel, brass, aluminum, bronze, and stainless steel",
+        "Copper and zinc only",
+        "Mild steel only"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "Screws may be made from steel, brass, aluminum, bronze, or stainless steel."
+    },
+    {
+      "s": "Door Dimensions",
+      "q": "What door undercut is indicated?",
+      "o": [
+        "6 mm",
+        "10 mm",
+        "12 mm",
+        "3 mm"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 52 — Doors: Dimensions",
+      "n": "The indicated door undercut is 6 mm."
+    },
+    {
+      "s": "Glass Heat Treatment",
+      "q": "How strong is heat-strengthened glass compared with annealed glass of the same thickness?",
+      "o": [
+        "About 2 times as strong",
+        "About 3–5 times as strong",
+        "About the same",
+        "About 10 times as strong"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Heat-strengthened glass is about twice the strength of annealed glass of the same thickness."
+    },
+    {
+      "s": "Joinery Fasteners",
+      "q": "What bolt-diameter range is indicated?",
+      "o": [
+        "1/2 in to 2 in",
+        "Ga. 16 to Ga. 24",
+        "1/4 in to 1 1/4 in (6–32 mm)",
+        "1/8 in to 1/2 in"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "Bolt diameters range from about 1/4 inch to 1 1/4 inches, or 6–32 mm."
+    },
+    {
+      "s": "Joinery Fasteners",
+      "q": "What maximum screw diameter is indicated?",
+      "o": [
+        "Up to Ga. 12",
+        "Up to Ga. 24",
+        "Up to 1 1/4 in",
+        "Up to Ga. 16"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "Screw diameter is indicated up to Gauge 24."
+    },
+    {
+      "s": "Applied Door Selection",
+      "q": "A sliding door uses an aluminum frame. Where should its track and guide be placed?",
+      "o": [
+        "Track up, guide down",
+        "Track down, guide up",
+        "Both down",
+        "Both up"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Location of Tracks and Guides for Sliding Doors",
+      "n": "Aluminum sliding doors use the lower track with the guide above.",
+      "fig": "f6"
+    },
+    {
+      "s": "Door Operation",
+      "q": "Which is a door type classified according to operation?",
+      "o": [
+        "Overhead",
+        "Pivot Swing Door",
+        "Dutch Door",
+        "Swing Door"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Overhead is classified according to door operation."
+    },
+    {
+      "s": "Window Frames",
+      "q": "What opening-surface preparation is associated with a Steel window frame?",
+      "o": [
+        "Finished or rough",
+        "Finished",
+        "Rough",
+        "Unfinished"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 52 — Windows: Surface Preparation for Window Frames",
+      "n": "A Steel window frame is associated with a rough opening surface."
+    },
+    {
+      "s": "Safety and Specialty Glass",
+      "q": "What is embedded in wired glass to help prevent shattering?",
+      "o": [
+        "Square or diamond wire mesh",
+        "Plastic film only",
+        "Aluminum foil",
+        "Wood fibers"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Wired glass contains a square or diamond wire mesh embedded in the glass.",
+      "fig": "f3"
+    },
+    {
+      "s": "Joinery Fasteners",
+      "q": "As a rule of thumb, nail length should be about how many times the thickness of the material being secured?",
+      "o": [
+        "About 5 times",
+        "About 2 times",
+        "About 3 times",
+        "About 1 time"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "Nail length is approximately three times the thickness of the material being secured.",
+      "fig": "f4"
+    },
+    {
+      "s": "Joinery Fasteners",
+      "q": "Which is the primary nail material identified?",
+      "o": [
+        "Glass fiber",
+        "Mild steel",
+        "Cast iron only",
+        "Portland cement"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "Mild steel is the principal nail material indicated."
+    },
+    {
+      "s": "Applied Window Selection",
+      "q": "A window must provide a full 100% opening without using a limiter and should project outward from a top hinge. Which opening percentage applies to an awning window under that condition?",
+      "o": [
+        "50%",
+        "80–90%",
+        "100%",
+        "0%"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 52 — Windows: Types According to Operation",
+      "n": "An awning window opens fully when no limiter is used; with a limiter, the opening is reduced to 80–90%.",
+      "fig": "f7"
+    },
+    {
+      "s": "Door Construction",
+      "q": "Which is a door classification according to build?",
+      "o": [
+        "Hollow Core Flush Door",
+        "Solid Core Flush Door",
+        "Framed Flush Door",
+        "Rail & Stile or Panel Door"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Framed Flush Door is one of the door types classified by build."
+    },
+    {
+      "s": "Glass Heat Treatment",
+      "q": "How is tempered glass produced?",
+      "o": [
+        "By slow cooling",
+        "By lamination only",
+        "By reheating and rapidly cooling glass",
+        "By applying a low-e coating"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Tempered glass is reheated and then rapidly cooled."
+    },
+    {
+      "s": "Window Operation",
+      "q": "What opening percentage is associated with a Single / Double Hung window?",
+      "o": [
+        "80–90%",
+        "80–85%",
+        "50%",
+        "0%"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 52 — Windows: Types According to Operation",
+      "n": "A Single / Double Hung window has an opening value of 50%.",
+      "fig": "f7"
+    },
+    {
+      "s": "Door Operation",
+      "q": "Which is a door type classified according to operation?",
+      "o": [
+        "Pivot Swing Door",
+        "Swing Door",
+        "Dutch Door",
+        "Automatic"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Automatic is classified according to door operation."
+    },
+    {
+      "s": "Nailing Methods",
+      "q": "How is a face nail driven?",
+      "o": [
+        "Parallel to the grain",
+        "Obliquely into two joining surfaces",
+        "Perpendicular to the face of the material",
+        "Completely hidden beneath a second board"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Types of Nail Construction",
+      "n": "Face nailing drives the nail perpendicular to the material face.",
+      "fig": "f1"
+    },
+    {
+      "s": "Door Construction",
+      "q": "Which is a door classification according to build?",
+      "o": [
+        "Framed Flush Door",
+        "Rail & Stile or Panel Door",
+        "Hollow Core Flush Door",
+        "Solid Core Flush Door"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Solid Core Flush Door is one of the door types classified by build."
+    },
+    {
+      "s": "Window Operation",
+      "q": "What opening percentage is associated with a Awning without limiter window?",
+      "o": [
+        "50%",
+        "80–85%",
+        "0%",
+        "100%"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 52 — Windows: Types According to Operation",
+      "n": "A Awning without limiter window has an opening value of 100%.",
+      "fig": "f7"
+    },
+    {
+      "s": "Door Operation",
+      "q": "Which is a door type classified according to operation?",
+      "o": [
+        "Pivot Swing Door",
+        "Roll-up or Coiling",
+        "Dutch Door",
+        "Swing Door"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Roll-up or Coiling is classified according to door operation."
+    },
+    {
+      "s": "Door Dimensions",
+      "q": "What door thickness range is indicated?",
+      "o": [
+        "45–55 mm",
+        "38–45 mm",
+        "25–30 mm",
+        "30–35 mm"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Doors: Dimensions",
+      "n": "The indicated door thickness range is 38–45 mm."
+    },
+    {
+      "s": "Window Operation",
+      "q": "What opening percentage is associated with a Accordion / Folding window?",
+      "o": [
+        "80–85%",
+        "50%",
+        "80–90%",
+        "0%"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 52 — Windows: Types According to Operation",
+      "n": "A Accordion / Folding window has an opening value of 80–85%.",
+      "fig": "f7"
+    },
+    {
+      "s": "Door Materials",
+      "q": "What gauge range or gauge is associated with Aluminum doors?",
+      "o": [
+        "Ga. 24",
+        "Ga. 16",
+        "Ga. 16–22",
+        "Ga. 18"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Aluminum doors are associated with Ga. 16."
+    },
+    {
+      "s": "Safety and Specialty Glass",
+      "q": "How is obscure glass produced?",
+      "o": [
+        "By adding a low-e film",
+        "By acid etching or sandblasting one or both sides",
+        "By embedding wire",
+        "By rapid tempering"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Obscure glass may be acid etched or sandblasted on one or both faces."
+    },
+    {
+      "s": "Flat Glass",
+      "q": "Which glass is produced by this process: Drawn from molten glass from a furnace or formed by flattening a cylinder?",
+      "o": [
+        "Sheet glass",
+        "Patterned glass",
+        "Float glass",
+        "Plate glass"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Sheet glass is produced in this manner and is characterized by some distortion; reduce perceived distortion by glazing with it horizontally.",
+      "fig": "f5"
+    },
+    {
+      "s": "Window Operation",
+      "q": "What opening percentage is associated with a Casement window?",
+      "o": [
+        "50%",
+        "80–85%",
+        "100%",
+        "0%"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 52 — Windows: Types According to Operation",
+      "n": "A Casement window has an opening value of 100%.",
+      "fig": "f7"
+    },
+    {
+      "s": "Door Operation",
+      "q": "Which is a door type classified according to operation?",
+      "o": [
+        "Swing Door",
+        "Accordion",
+        "Pivot Swing Door",
+        "Dutch Door"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Accordion is classified according to door operation."
+    },
+    {
+      "s": "Door Materials",
+      "q": "What gauge range or gauge is associated with Stainless doors?",
+      "o": [
+        "Ga. 24",
+        "Ga. 16",
+        "Ga. 16–22",
+        "Ga. 18"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Stainless doors are associated with Ga. 16–22."
+    },
+    {
+      "s": "Door Frames",
+      "q": "What opening-surface preparation is compatible with a Wood door frame?",
+      "o": [
+        "Rough only",
+        "Finished or rough",
+        "Finished only",
+        "Unfinished only"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Doors: Surface Preparation for Door Frames",
+      "n": "A Wood door frame is compatible with finished or rough opening surfaces."
+    },
+    {
+      "s": "Door Handing",
+      "q": "Which is a recognized door-handing designation?",
+      "o": [
+        "Left / Right Hand Active In-swing",
+        "Left / Right Hand",
+        "Left / Right Hand Reverse",
+        "Left / Right Hand Active Out-swing"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Left / Right Hand Reverse is one of the stated door-handing arrangements.",
+      "fig": "f2"
+    },
+    {
+      "s": "Sliding Door Tracks",
+      "q": "For a Wood sliding door, where are the track and guide located?",
+      "o": [
+        "Track up, guide down",
+        "Both up",
+        "Track down, guide up",
+        "Both down"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 52 — Location of Tracks and Guides for Sliding Doors",
+      "n": "For Wood sliding doors, the track is up and the guide is down.",
+      "fig": "f6"
+    },
+    {
+      "s": "Door Construction",
+      "q": "Which is a door classification according to build?",
+      "o": [
+        "Fire Rated Door",
+        "Framed Flush Door",
+        "Hollow Core Flush Door",
+        "Solid Core Flush Door"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Fire Rated Door is one of the door types classified by build."
+    },
+    {
+      "s": "Sliding Door Tracks",
+      "q": "For a Aluminum sliding door, where are the track and guide located?",
+      "o": [
+        "Track up, guide down",
+        "Both down",
+        "Both up",
+        "Track down, guide up"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 52 — Location of Tracks and Guides for Sliding Doors",
+      "n": "For Aluminum sliding doors, the track is down and the guide is up.",
+      "fig": "f6"
+    },
+    {
+      "s": "Flat Glass",
+      "q": "Which glass has this characteristic: Flat, parallel surfaces with minimized distortion?",
+      "o": [
+        "Patterned glass",
+        "Plate glass",
+        "Float glass",
+        "Sheet glass"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Float glass is associated with this characteristic.",
+      "fig": "f5"
+    },
+    {
+      "s": "Window Operation",
+      "q": "What opening percentage is associated with a Sliding window?",
+      "o": [
+        "0%",
+        "80–85%",
+        "50%",
+        "80–90%"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 52 — Windows: Types According to Operation",
+      "n": "A Sliding window has an opening value of 50%.",
+      "fig": "f7"
+    },
+    {
+      "s": "Tinted and Coated Glass",
+      "q": "What produces reflective glass?",
+      "o": [
+        "A ceramic frit only",
+        "An air space between two panes",
+        "A thin, translucent metallic coating",
+        "Embedded wire mesh"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Reflective glass uses a thin translucent metallic coating."
+    },
+    {
+      "s": "Door Dimensions",
+      "q": "What nominal door-frame size is indicated?",
+      "o": [
+        "2\" × 6\"",
+        "2\" × 4\"",
+        "2\" × 3\"",
+        "1\" × 3\""
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Doors: Dimensions",
+      "n": "The door-frame dimension is given as 2 by 4 inches."
+    },
+    {
+      "s": "Door Materials",
+      "q": "What gauge range or gauge is associated with Steel doors?",
+      "o": [
+        "Ga. 16",
+        "Ga. 18",
+        "Ga. 24",
+        "Ga. 16–22"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Steel doors are associated with Ga. 16–22."
+    },
+    {
+      "s": "Applied Window Selection",
+      "q": "An awning window is fitted with a limiter. What opening range should be expected?",
+      "o": [
+        "0%",
+        "80–90%",
+        "50%",
+        "100%"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Windows: Types According to Operation",
+      "n": "A limiter reduces an awning window's opening from full opening to an 80–90% range.",
+      "fig": "f7"
+    },
+    {
+      "s": "Flat Glass",
+      "q": "Which glass has this characteristic: Some distortion; reduce perceived distortion by glazing with it horizontally?",
+      "o": [
+        "Patterned glass",
+        "Plate glass",
+        "Float glass",
+        "Sheet glass"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Sheet glass is associated with this characteristic.",
+      "fig": "f5"
+    },
+    {
+      "s": "Glass Heat Treatment",
+      "q": "How does tempered glass typically break?",
+      "o": [
+        "Into intact bonded plies",
+        "Into a flexible sheet",
+        "Into long sharp shards",
+        "Into relatively harmless pebble-sized particles"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Tempered glass fractures into small pebble-like particles, reducing sharp dangerous shards.",
+      "fig": "f3"
+    },
+    {
+      "s": "Door Materials",
+      "q": "What gauge range or gauge is associated with Galvanized Iron doors?",
+      "o": [
+        "Ga. 24",
+        "Ga. 16",
+        "Ga. 16–22",
+        "Ga. 18"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Galvanized Iron doors are associated with Ga. 16."
+    },
+    {
+      "s": "Door Operation",
+      "q": "Which is a door type classified according to operation?",
+      "o": [
+        "Swing Door",
+        "Pivot Swing Door",
+        "Folding Door",
+        "Dutch Door"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Pivot Swing Door is classified according to door operation."
+    },
+    {
+      "s": "Glass in Construction",
+      "q": "Which glass product or application is used for textiles and material reinforcement?",
+      "o": [
+        "Foamed or Cellular Glass",
+        "Glass Block",
+        "Glass Fibers",
+        "Glass Fibers Spun in Form"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Glass in Building Construction",
+      "n": "Glass Fibers is associated with textiles and material reinforcement."
+    },
+    {
+      "s": "Window Operation",
+      "q": "What opening percentage is associated with a Fixed window?",
+      "o": [
+        "50%",
+        "0%",
+        "80–85%",
+        "80–90%"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Windows: Types According to Operation",
+      "n": "A Fixed window has an opening value of 0%.",
+      "fig": "f7"
+    },
+    {
+      "s": "Glass in Construction",
+      "q": "Which glass product or application is used for rigid, vapor-proof thermal insulation?",
+      "o": [
+        "Foamed or Cellular Glass",
+        "Glass Fibers Spun in Form",
+        "Glass Fibers",
+        "Glass Block"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 53 — Glass in Building Construction",
+      "n": "Foamed or Cellular Glass is associated with rigid, vapor-proof thermal insulation."
+    },
+    {
+      "s": "Flat Glass",
+      "q": "Which glass is produced by this process: Molten glass poured onto molten tin and cooled slowly?",
+      "o": [
+        "Patterned glass",
+        "Float glass",
+        "Sheet glass",
+        "Plate glass"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 53 — Glass: Types of Glass",
+      "n": "Float glass is produced in this manner and is characterized by flat, parallel surfaces with minimized distortion.",
+      "fig": "f5"
+    },
+    {
+      "s": "Window Operation",
+      "q": "What opening percentage is associated with a Awning with limiter window?",
+      "o": [
+        "50%",
+        "0%",
+        "80–85%",
+        "80–90%"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 52 — Windows: Types According to Operation",
+      "n": "A Awning with limiter window has an opening value of 80–90%.",
+      "fig": "f7"
+    },
+    {
+      "s": "Joinery Fasteners",
+      "q": "What length range is indicated for screws?",
+      "o": [
+        "1 in to 12 in",
+        "3/4 in to 30 in",
+        "1/4 in to 3 in",
+        "1/2 in to 6 in (12–150 mm)"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "Screws range from about 1/2 inch to 6 inches, or roughly 12–150 mm.",
+      "fig": "f4"
+    },
+    {
+      "s": "Door Operation",
+      "q": "Which is a door type classified according to operation?",
+      "o": [
+        "Pivot Swing Door",
+        "Folding Door",
+        "Dutch Door",
+        "Swing Door"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Folding Door is classified according to door operation."
+    },
+    {
+      "s": "Door Operation",
+      "q": "Which is a door type classified according to operation?",
+      "o": [
+        "Dutch Door",
+        "Folding Door",
+        "Pivot Swing Door",
+        "Swing Door"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Swing Door is classified according to door operation."
+    },
+    {
+      "s": "Window Operation",
+      "q": "What opening percentage is associated with a Tilt and Turn window?",
+      "o": [
+        "80–85%",
+        "0%",
+        "100%",
+        "50%"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 52 — Windows: Types According to Operation",
+      "n": "A Tilt and Turn window has an opening value of 100%.",
+      "fig": "f7"
+    },
+    {
+      "s": "Window Frames",
+      "q": "What opening-surface preparation is associated with a uPVC window frame?",
+      "o": [
+        "Unfinished",
+        "Finished or rough",
+        "Finished",
+        "Rough"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Windows: Surface Preparation for Window Frames",
+      "n": "A uPVC window frame is associated with a finished or rough opening surface."
+    },
+    {
+      "s": "Sliding Door Tracks",
+      "q": "For a uPVC sliding door, where are the track and guide located?",
+      "o": [
+        "Both up",
+        "Track up, guide down",
+        "Track down, guide up",
+        "Both down"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 52 — Location of Tracks and Guides for Sliding Doors",
+      "n": "For uPVC sliding doors, the track is down and the guide is up.",
+      "fig": "f6"
+    },
+    {
+      "s": "Door Operation",
+      "q": "Which is a door type classified according to operation?",
+      "o": [
+        "Swing Door",
+        "Sliding",
+        "Dutch Door",
+        "Pivot Swing Door"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 52 — Doors: Types of Doors",
+      "n": "Sliding is classified according to door operation."
+    },
+    {
+      "s": "Applied Joinery",
+      "q": "A board is 1 1/2 in thick. Using the same nail-length rule, what approximate nail length is appropriate?",
+      "o": [
+        "2 in",
+        "6 in",
+        "4 1/2 in",
+        "3 in"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 53 — Joinery",
+      "n": "Three times 1 1/2 inches gives an approximate nail length of 4 1/2 inches.",
+      "fig": "f4"
+    }
+  ]
+}
