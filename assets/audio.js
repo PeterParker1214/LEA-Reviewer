@@ -24,4 +24,6 @@
   function toggleMute(){settings.muted=!settings.muted;saveSettings();return settings.muted}
   function init(){loadSettings();buildAudio();return true}
   window.LEAAudio={init:init,unlock:unlock,playSfx:playSfx,setSfxVolume:setSfxVolume,toggleMute:toggleMute,getSettings:function(){return{sfx:settings.sfx,muted:settings.muted,sources:SOURCES}}}
+  // Initialize immediately so quiz handlers can play SFX on their first click.
+  init();
 })();
