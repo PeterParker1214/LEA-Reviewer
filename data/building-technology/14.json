@@ -1,0 +1,1540 @@
+{
+  "figures": {
+    "f1": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgOTAwIDQyMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MztmaWxsOm5vbmV9IC5maWxse2ZpbGw6I2VhZjBmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmRpbXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPlNoZWV0IERhbXBwcm9vZmluZyBDb25uZWN0aW9uPC90ZXh0Pgo8cmVjdCB4PSIxMjAiIHk9IjE1MCIgd2lkdGg9IjQzMCIgaGVpZ2h0PSI4MCIgY2xhc3M9ImZpbGwiLz4KPHJlY3QgeD0iMzUwIiB5PSIxOTUiIHdpZHRoPSI0MzAiIGhlaWdodD0iODAiIGNsYXNzPSJmaWxsIi8+CjxsaW5lIHgxPSIzNTAiIHkxPSIzMDUiIHgyPSI1NTAiIHkyPSIzMDUiIGNsYXNzPSJkaW0iLz4KPHRleHQgeD0iNDE1IiB5PSIzMzUiIGNsYXNzPSJzIj5vdmVybGFwPC90ZXh0Pgo8dGV4dCB4PSIxMjAiIHk9IjEzNSIgY2xhc3M9InMiPlNoZWV0IDE8L3RleHQ+Cjx0ZXh0IHg9IjcwMCIgeT0iMTkwIiBjbGFzcz0icyI+U2hlZXQgMjwvdGV4dD4KCjwvc3ZnPg==",
+    "f2": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgOTAwIDQyMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MztmaWxsOm5vbmV9IC5maWxse2ZpbGw6I2VhZjBmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmRpbXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPkNvYXRpbmcgQ292ZXJhZ2U8L3RleHQ+CjxyZWN0IHg9IjEzMCIgeT0iMTEwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjIyMCIgY2xhc3M9ImZpbGwiLz4KPHRleHQgeD0iMzQwIiB5PSIyMDUiIGNsYXNzPSJ0Ij53YWxsIC8gZmxvb3Igc3VyZmFjZTwvdGV4dD4KPHBhdGggZD0iTTkwIDEyMCBMOTAgMzMwIiBjbGFzcz0ibGluZSIvPgo8dGV4dCB4PSI1NSIgeT0iMjQwIiBjbGFzcz0icyIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDU1LDI0MCkiPmNvYXRlZCBhcmVhPC90ZXh0Pgo8dGV4dCB4PSIzMTAiIHk9IjM2NSIgY2xhc3M9InMiPmNhbGN1bGF0ZSBnYWxsb25zIGZyb20gYXJlYSDDtyBjb3ZlcmFnZTwvdGV4dD4KCjwvc3ZnPg==",
+    "f3": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgOTAwIDQyMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MztmaWxsOm5vbmV9IC5maWxse2ZpbGw6I2VhZjBmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmRpbXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPkRlY2sgTWVtYnJhbmUgQXR0YWNobWVudDwvdGV4dD4KPHJlY3QgeD0iMTAwIiB5PSIyNjAiIHdpZHRoPSI3MDAiIGhlaWdodD0iNjAiIGNsYXNzPSJmaWxsIi8+CjxwYXRoIGQ9Ik0xMjAgMjQwIEw3ODAgMjQwIiBjbGFzcz0ibGluZSIvPgo8Y2lyY2xlIGN4PSIyNTAiIGN5PSIyNDAiIHI9IjgiIGZpbGw9IiMxMTEiLz4KPGNpcmNsZSBjeD0iNDUwIiBjeT0iMjQwIiByPSI4IiBmaWxsPSIjMTExIi8+CjxjaXJjbGUgY3g9IjY1MCIgY3k9IjI0MCIgcj0iOCIgZmlsbD0iIzExMSIvPgo8dGV4dCB4PSIyNjAiIHk9IjIxMCIgY2xhc3M9InMiPm1lbWJyYW5lIHNoZWV0PC90ZXh0Pgo8dGV4dCB4PSIzMTAiIHk9IjM1NSIgY2xhc3M9InMiPmRlY2sgc3Vic3RyYXRlPC90ZXh0PgoKPC9zdmc+"
+  },
+  "questions": [
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing type is intended for a rough, dry surface?",
+      "o": [
+        "Elastomeric",
+        "Membrane",
+        "Cementitious",
+        "Integral"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Membrane is associated with a rough, dry surface condition."
+    },
+    {
+      "s": "Plastic Sheets, Film, Foam and Laminates",
+      "q": "Corrugated plastic sheet is associated with which building use?",
+      "o": [
+        "Reinforcing bar",
+        "Wall footing",
+        "Roofing",
+        "Floor underlayment"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 50 — Plastic Sheets, Film and Foam, Laminates",
+      "n": "Corrugated plastic sheet is used as a roofing material."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "What is another membrane method for concrete waterproofing?",
+      "o": [
+        "Polyethylene film laid in gypsum",
+        "Copper sheet fixed with epoxy",
+        "Asbestos or asphalted felt laid in asphalt",
+        "Wood shingles embedded in cement"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "Another membrane approach uses asbestos or asphalted felt laid in asphalt."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing type has the form 'Coat' and is applied by roller or brush?",
+      "o": [
+        "Cementitious",
+        "Cut-back",
+        "Integral",
+        "Elastomeric"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Cut-back uses the coat form and is applied by roller or brush."
+    },
+    {
+      "s": "Plastic Sheets, Film, Foam and Laminates",
+      "q": "Which film thicknesses are identified for building construction?",
+      "o": [
+        "1, 3, and 5 mil",
+        "6, 8, and 10 mil",
+        "2, 4, and 6 mil",
+        "10, 12, and 14 mil"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 50 — Plastic Sheets, Film and Foam, Laminates",
+      "n": "Building-construction film is identified in 2-, 4-, and 6-mil thicknesses."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "What minimum pitch is identified for membrane-waterproofed concrete surfaces?",
+      "o": [
+        "2%",
+        "1%",
+        "0.5%",
+        "0.25%"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "The minimum pitch is 1 percent to promote drainage."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing type is intended for a relatively rough surface?",
+      "o": [
+        "Cementitious",
+        "Elastomeric",
+        "PVC Sheet",
+        "Integral"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "PVC Sheet is associated with a relatively rough surface condition."
+    },
+    {
+      "s": "Plastic Sheets, Film, Foam and Laminates",
+      "q": "Which are typical uses of thermosetting-resin laminates?",
+      "o": [
+        "Sheets, table tops, and wall facings",
+        "Piles, caissons, and footings",
+        "Sewer pipes and storm drains",
+        "Reinforcing bars, ties, and stirrups"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 50 — Plastic Sheets, Film and Foam, Laminates",
+      "n": "Thermosetting-resin laminates are used for sheet products, table tops, and wall facings."
+    },
+    {
+      "s": "Applied Dampproofing",
+      "q": "Two dampproofing sheets are being joined. What is the minimum overlap required at the connection?",
+      "o": [
+        "4 in",
+        "2 in",
+        "12 in",
+        "6 in"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 50 — Dampproofing",
+      "n": "Sheet dampproofing connections require at least 6 inches of overlap.",
+      "fig": "f1"
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing type has the form 'Membrane' and is applied by hot/cold rollers?",
+      "o": [
+        "Felt & Bitumen",
+        "Cementitious",
+        "Elastomeric",
+        "Integral"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Felt & Bitumen uses the membrane form and is applied by hot/cold rollers."
+    },
+    {
+      "s": "Roofing Materials",
+      "q": "Which roofing category includes wood and tar/asphalt?",
+      "o": [
+        "Tiles",
+        "Shingles",
+        "Membrane roofing",
+        "Sheet metal"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Types of Roofing Materials",
+      "n": "Shingles is the category associated with Wood and tar/asphalt."
+    },
+    {
+      "s": "Applied Waterproofing",
+      "q": "A floor area of 72 m² will receive 4 elastomeric coats. Using 18 m²/gal coverage and ignoring waste, how many gallons are required?",
+      "o": [
+        "8 gal",
+        "4 gal",
+        "12 gal",
+        "16 gal"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Each coat needs 4 gallons for 72 m², and four coats require 16 gallons total.",
+      "fig": "f2"
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Approximately how much area does cementitious waterproofing cover per gallon?",
+      "o": [
+        "16–18 sq m/gal",
+        "5 sq m/gal",
+        "25 sq m/gal",
+        "10 sq m/gal"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Cementitious waterproofing is associated with coverage of about 10 square meters per gallon."
+    },
+    {
+      "s": "Sheet Metal Roofing",
+      "q": "What width is given for GI/GS roofing?",
+      "o": [
+        "32 in",
+        "36 in",
+        "30 in",
+        "40 in"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 50 — Sheet Metal Roofing",
+      "n": "GI/GS roofing is given a 32-inch sheet width."
+    },
+    {
+      "s": "Applied Waterproofing",
+      "q": "A deck membrane will use adhesive fasteners rather than hot-air welding. Which system fits?",
+      "o": [
+        "EPDM",
+        "PVC Sheet",
+        "Felt & Bitumen",
+        "Asphalt-polyester membrane"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "EPDM is the deck membrane associated with adhesive fasteners.",
+      "fig": "f3"
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "What coverage is associated with elastomeric waterproofing?",
+      "o": [
+        "16–18 sq m/gal",
+        "20–25 sq m/gal",
+        "8–10 sq m/gal",
+        "10–12 sq m/gal"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Elastomeric waterproofing is associated with approximately 16–18 square meters per gallon."
+    },
+    {
+      "s": "Sheet Metal Roofing",
+      "q": "Which gauge is generally specified for GI/GS roofing?",
+      "o": [
+        "Gauge 30",
+        "Gauge 24",
+        "Gauge 26",
+        "Gauge 20"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 50 — Sheet Metal Roofing",
+      "n": "Gauge 26 is generally specified for roofing."
+    },
+    {
+      "s": "Applied Concrete Waterproofing",
+      "q": "For the alum mixture, how much alum is required for 5 gallons of water?",
+      "o": [
+        "5 oz alum",
+        "8 oz alum",
+        "20 oz alum",
+        "10 oz alum"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "The alum proportion is 2 ounces per gallon of water, so 5 gallons require 10 ounces."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which example brand is associated with integral waterproofing?",
+      "o": [
+        "Analok",
+        "Sahara",
+        "Flint-Kote",
+        "Boysen Flexibond"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Sahara is identified as an example of an integral waterproofing product mixed with cement."
+    },
+    {
+      "s": "Sheet Metal Roofing",
+      "q": "Which widths are identified for aluminum roofing sheets?",
+      "o": [
+        "32 in, 36 in, and 40 in",
+        "30 in, 32 in, and 34 in",
+        "31 in, 33 in, and 35 in",
+        "32 5/8 in, 31 1/2 in, and 31 1/8 in"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 50 — Sheet Metal Roofing",
+      "n": "Aluminum roofing is associated with widths of 32 5/8, 31 1/2, and 31 1/8 inches."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which thermosetting plastic is characterized as noted for adhesive qualities?",
+      "o": [
+        "Melamine / Urea",
+        "Epoxy",
+        "Phenolic",
+        "Alkyd"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Epoxy is associated with this material description. Used in special chemical-resistant paints and caulking compounds."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which finishes are identified for modified-bitumen membrane?",
+      "o": [
+        "Smooth and ribbed",
+        "Clear and opaque",
+        "Plain and granulated",
+        "Gloss and matte"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Modified-bitumen membrane is available in plain and granulated finishes."
+    },
+    {
+      "s": "Sheet Metal Roofing",
+      "q": "What contact precaution is stated for aluminum roofing?",
+      "o": [
+        "Other materials should be insulated from contact",
+        "Aluminum requires no separation from dissimilar materials",
+        "Aluminum must be embedded in wet concrete",
+        "Aluminum must always contact copper directly"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 50 — Sheet Metal Roofing",
+      "n": "Aluminum roofing should be insulated from contact with other materials to reduce adverse material interactions."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which thermosetting plastic is associated with this use: Used for molded electrical parts and vehicle paints, lacquers, and enamels?",
+      "o": [
+        "Melamine / Urea",
+        "Alkyd",
+        "Phenolic",
+        "Epoxy"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Alkyd is the thermosetting plastic associated with that use."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which deck membrane uses adhesive fasteners?",
+      "o": [
+        "PVC Sheet",
+        "Cementitious",
+        "Felt & Bitumen",
+        "EPDM"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "EPDM membrane is attached with adhesive fasteners and is used for decks."
+    },
+    {
+      "s": "Joint Sealants",
+      "q": "What colors are identified for silicone sealant?",
+      "o": [
+        "Red and blue",
+        "Black and brown",
+        "Green and yellow",
+        "White and clear"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 50 — Joint Sealants",
+      "n": "Silicone sealant is identified in white and clear forms."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which thermosetting plastic is characterized as strong, rigid, and impact resistant?",
+      "o": [
+        "Alkyd",
+        "Epoxy",
+        "Polyester",
+        "Melamine / Urea"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Polyester is associated with this material description. Commonly used in large glass-fiber-reinforced translucent panels, impregnating wood and paper, laminating material, and contact adhesive."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "Which alternate-mixture treatment uses alum and soap?",
+      "o": [
+        "PVC-sheet waterproofing",
+        "Waterproofing coats and washes",
+        "Integral waterproofing",
+        "Membrane waterproofing"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "Alum-and-soap alternate mixtures are used as waterproofing coats and washes to reduce percolation."
+    },
+    {
+      "s": "Dampproofing",
+      "q": "What is the minimum sheet thickness over sand or soil?",
+      "o": [
+        "10 mils",
+        "2 mils",
+        "4 mils",
+        "6 mils"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 50 — Dampproofing",
+      "n": "A minimum of 4 mils is required over sand or soil."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which thermosetting plastic is associated with this use: Used for paint coatings and self-adhesive foams?",
+      "o": [
+        "Epoxy",
+        "Alkyd",
+        "Melamine / Urea",
+        "Urethanes"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Urethanes is the thermosetting plastic associated with that use."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "What is the purpose of the alum-and-soap alternate treatment?",
+      "o": [
+        "To increase electrical conductivity",
+        "To soften reinforcing steel",
+        "To accelerate corrosion",
+        "To prevent percolation"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "The alternate alum-and-soap treatment is intended to reduce or prevent water percolation."
+    },
+    {
+      "s": "Dampproofing",
+      "q": "What minimum return is identified at a sheet connection?",
+      "o": [
+        "1 to 3 in",
+        "2 to 4 in",
+        "12 to 18 in",
+        "6 to 12 in"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 50 — Dampproofing",
+      "n": "A minimum return of 6–12 inches is identified at sheet connections."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which material is specifically associated with molded dishes?",
+      "o": [
+        "Melamine",
+        "Epoxy",
+        "Silicone",
+        "Urea"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Melamine is used for molded dishes, while urea is associated with light diffusion and baked enamels."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "How may paraffin and other mineral-base waterproofing materials be applied?",
+      "o": [
+        "Only as dry powder",
+        "Only as a membrane roll",
+        "In cold solution or prepared in melted form",
+        "Only by torch welding"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "Paraffin and mineral-base products may be applied as a cold solution or after melting."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing type has the form 'Coat' and is applied by roller or brush?",
+      "o": [
+        "Integral",
+        "Membrane",
+        "Elastomeric",
+        "Cementitious"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Elastomeric uses the coat form and is applied by roller or brush."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which thermosetting plastic is linked with contact adhesive?",
+      "o": [
+        "Phenolic",
+        "Polyester",
+        "Alkyd",
+        "Silicone"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Polyester is used as a laminating material and contact adhesive, in addition to reinforced translucent panels."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "What remains after the water vehicle in asphalt emulsion evaporates?",
+      "o": [
+        "A dry cement grout",
+        "A gypsum crust",
+        "A metallic coating",
+        "A weatherproof film"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "Evaporation of the water leaves a weatherproof asphalt film."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing type is intended for a n/a surface?",
+      "o": [
+        "Integral",
+        "Cementitious",
+        "Elastomeric",
+        "Membrane"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Integral is associated with a n/a surface condition."
+    },
+    {
+      "s": "Plastic Sheets, Film, Foam and Laminates",
+      "q": "What thickness range is given for plastic sheets?",
+      "o": [
+        "0.5 mm to 1.0 mm",
+        "3 mm to 6 mm",
+        "1/4 in to 1/2 in",
+        "1.5 mm to 2.38 mm (1/16 in to 3/32 in)"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 50 — Plastic Sheets, Film and Foam, Laminates",
+      "n": "Plastic sheets are in the approximate 1.5–2.38 mm range, equivalent to 1/16–3/32 inch."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "Which materials are examples of integral waterproofing admixtures?",
+      "o": [
+        "PVC, EPDM, and felt",
+        "Melamine, urea, and alkyd",
+        "Flint-Kote, John Mansville, and Boysen Flexibond",
+        "Sahara, Pozolith, Truscon Zilicon, Aquella, and Anti-hydro"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "These products are examples of integral waterproofing materials mixed with concrete."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing type has the form 'Coat' and is applied by roller or brush?",
+      "o": [
+        "Emulsions",
+        "Cementitious",
+        "Integral",
+        "Elastomeric"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Emulsions uses the coat form and is applied by roller or brush."
+    },
+    {
+      "s": "Plastic Sheets, Film, Foam and Laminates",
+      "q": "Which film materials are identified for water-barrier or dampproofing use?",
+      "o": [
+        "PE and PV",
+        "Epoxy and phenolic",
+        "ABS and nylon",
+        "Melamine and urea"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 50 — Plastic Sheets, Film and Foam, Laminates",
+      "n": "PE and PV films are used as water barriers or dampproofing materials."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "What surface condition is required before applying membrane waterproofing to concrete?",
+      "o": [
+        "Dusty and saturated",
+        "Rough, wet, and sloped",
+        "Smooth, dry, and level",
+        "Uneven and freshly cast"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "Concrete surfaces should be smooth, dry, and level before membrane application."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing type is intended for a smooth or rough, dry surface?",
+      "o": [
+        "Cementitious",
+        "Integral",
+        "Cut-back",
+        "Elastomeric"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Cut-back is associated with a smooth or rough, dry surface condition."
+    },
+    {
+      "s": "Plastic Sheets, Film, Foam and Laminates",
+      "q": "Which plastic form is used as a flotation material, thermal insulator, and shock-resistant mounting?",
+      "o": [
+        "Foam",
+        "Film",
+        "Laminate",
+        "Sheet"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 50 — Plastic Sheets, Film and Foam, Laminates",
+      "n": "Plastic foam can serve as flotation material, thermal insulation, and shock-resistant mounting."
+    },
+    {
+      "s": "Applied Roofing Selection",
+      "q": "A roof requires a common GI/GS sheet length and the preferred gauge. Which combination should be specified?",
+      "o": [
+        "10-ft sheet, Gauge 20",
+        "6-ft sheet, Gauge 26",
+        "8-ft sheet, Gauge 24",
+        "12-ft sheet, Gauge 30"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 50 — Sheet Metal Roofing",
+      "n": "The common GI/GS sheet length is 8 ft, while Gauge 24 is identified as the preferred roofing gauge.",
+      "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgOTAwIDQyMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MztmaWxsOm5vbmV9IC5maWxse2ZpbGw6I2VhZjBmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmRpbXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPkNvcnJ1Z2F0ZWQgU2hlZXQtTWV0YWwgUm9vZmluZzwvdGV4dD4KPHBhdGggZD0iTTEwMCAyMjAgUTEzMCAxNTAgMTYwIDIyMCBUMjIwIDIyMCBUMjgwIDIyMCBUMzQwIDIyMCBUNDAwIDIyMCBUNDYwIDIyMCBUNTIwIDIyMCBUNTgwIDIyMCBUNjQwIDIyMCBUNzAwIDIyMCBUNzYwIDIyMCIgY2xhc3M9ImxpbmUiLz4KPGxpbmUgeDE9IjEwMCIgeTE9IjMwMCIgeDI9Ijc2MCIgeTI9IjMwMCIgY2xhc3M9ImRpbSIvPgo8dGV4dCB4PSIzNTUiIHk9IjMzMCIgY2xhc3M9InMiPnNoZWV0IHdpZHRoPC90ZXh0Pgo8dGV4dCB4PSIzMDAiIHk9IjExNSIgY2xhc3M9InMiPmNvcnJ1Z2F0aW9uIHBpdGNoPC90ZXh0Pgo8bGluZSB4MT0iMjgwIiB5MT0iMTMwIiB4Mj0iMzQwIiB5Mj0iMTMwIiBjbGFzcz0iZGltIi8+Cgo8L3N2Zz4="
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing type has the form 'Membrane' and is applied by adhesive fasteners?",
+      "o": [
+        "Cementitious",
+        "Elastomeric",
+        "EPDM",
+        "Integral"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "EPDM uses the membrane form and is applied by adhesive fasteners."
+    },
+    {
+      "s": "Roofing Materials",
+      "q": "Which roofing category includes galvanized iron, galvanized steel, and aluminum?",
+      "o": [
+        "Tiles",
+        "Sheet metal",
+        "Membrane roofing",
+        "Shingles"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Types of Roofing Materials",
+      "n": "Sheet metal is the category associated with Galvanized iron, galvanized steel, and aluminum."
+    },
+    {
+      "s": "Applied Waterproofing",
+      "q": "A 54 m² wall will receive elastomeric waterproofing at a coverage of 18 m²/gal per coat. Ignoring waste, how many gallons are needed for one coat?",
+      "o": [
+        "6 gal",
+        "3 gal",
+        "4 gal",
+        "2 gal"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "At 18 m² per gallon, dividing 54 m² by 18 m²/gal gives 3 gallons for one coat.",
+      "fig": "f2"
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing type is intended for a relatively rough surface?",
+      "o": [
+        "Felt & Bitumen",
+        "Cementitious",
+        "Elastomeric",
+        "Integral"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Felt & Bitumen is associated with a relatively rough surface condition."
+    },
+    {
+      "s": "Sheet Metal Roofing",
+      "q": "What length range is given for GI/GS roofing sheets?",
+      "o": [
+        "4 to 10 ft in 2-ft increments",
+        "5 to 12 ft in 1-ft increments",
+        "6 to 14 ft in 2-ft increments",
+        "8 to 16 ft in 1-ft increments"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Sheet Metal Roofing",
+      "n": "GI/GS roofing sheets are available from 5 to 12 feet in one-foot increments."
+    },
+    {
+      "s": "Applied Waterproofing",
+      "q": "A waterproofing membrane is specified for a rough, dry substrate and must be installed by LPG torch. Which system fits?",
+      "o": [
+        "PVC sheet",
+        "EPDM",
+        "Cementitious coating",
+        "Asphalt-polyester membrane"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Torch-applied asphalt-polyester membrane is intended for rough, dry substrates and is installed as modified-bitumen ply.",
+      "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgOTAwIDQyMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MztmaWxsOm5vbmV9IC5maWxse2ZpbGw6I2VhZjBmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmRpbXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPlRvcmNoLUFwcGxpZWQgTWVtYnJhbmUgV2F0ZXJwcm9vZmluZzwvdGV4dD4KPHJlY3QgeD0iMTEwIiB5PSIyNjAiIHdpZHRoPSI2ODAiIGhlaWdodD0iNzAiIGNsYXNzPSJmaWxsIi8+Cjx0ZXh0IHg9IjMzMCIgeT0iMzAzIiBjbGFzcz0icyI+cm91Z2gsIGRyeSBzdWJzdHJhdGU8L3RleHQ+CjxwYXRoIGQ9Ik0xODAgMjUwIEw2MTAgMjUwIiBjbGFzcz0ibGluZSIvPgo8dGV4dCB4PSIzMjUiIHk9IjIzNSIgY2xhc3M9InMiPmFzcGhhbHQtcG9seWVzdGVyIG1lbWJyYW5lIHJvbGw8L3RleHQ+CjxwYXRoIGQ9Ik02NTAgMTI1IEM2OTAgMTY1LDY5MCAyMDUsNjUwIDI0MCBDNjEwIDIwNSw2MTUgMTY1LDY1MCAxMjUgWiIgZmlsbD0iI2YzZDM5YiIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjIiLz4KPHRleHQgeD0iNjg1IiB5PSIxODUiIGNsYXNzPSJzIj5MUEcgdG9yY2g8L3RleHQ+Cgo8L3N2Zz4="
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which example brand is associated with cementitious waterproofing?",
+      "o": [
+        "Sahara",
+        "Boysen Flexibond",
+        "John Mansville",
+        "Flint-Kote"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Boysen Flexibond is given as an example of a cementitious waterproofing product."
+    },
+    {
+      "s": "Sheet Metal Roofing",
+      "q": "How many corrugations are identified for GI/GS roofing?",
+      "o": [
+        "12 corrugations",
+        "10 corrugations",
+        "8 corrugations",
+        "14 corrugations"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Sheet Metal Roofing",
+      "n": "GI/GS sheet roofing is identified with 10 corrugations."
+    },
+    {
+      "s": "Applied Concrete Waterproofing",
+      "q": "A membrane-waterproofed concrete surface is 12 m long. At the minimum 1% pitch, what vertical fall is required from one end to the other?",
+      "o": [
+        "0.012 m (12 mm)",
+        "0.12 m (120 mm)",
+        "1.20 m (1,200 mm)",
+        "0.60 m (600 mm)"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "A 1% slope means a fall equal to 0.01 times the horizontal run. Over 12 m, that is 0.12 m.",
+      "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgOTAwIDQyMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubGluZXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MztmaWxsOm5vbmV9IC5maWxse2ZpbGw6I2VhZjBmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmRpbXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Cjwvc3R5bGU+Cgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPk1lbWJyYW5lLVdhdGVycHJvb2ZlZCBDb25jcmV0ZSBTdXJmYWNlPC90ZXh0Pgo8cGF0aCBkPSJNMTEwIDI4MCBMNzkwIDIxMCIgY2xhc3M9ImxpbmUiLz4KPHBhdGggZD0iTTExMCAzMDAgTDc5MCAyMzAiIGNsYXNzPSJsaW5lIi8+Cjx0ZXh0IHg9IjI1MCIgeT0iMTg1IiBjbGFzcz0icyI+c21vb3RoLCBkcnksIGxldmVsbGVkIGNvbmNyZXRlPC90ZXh0Pgo8dGV4dCB4PSIzOTAiIHk9IjM0MCIgY2xhc3M9InMiPm1pbmltdW0gZHJhaW5hZ2UgcGl0Y2g8L3RleHQ+Cgo8L3N2Zz4="
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "How many elastomeric coats are identified for walls?",
+      "o": [
+        "3 coats",
+        "4 coats",
+        "5 coats",
+        "2 coats"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Walls are identified with three elastomeric waterproofing coats."
+    },
+    {
+      "s": "Sheet Metal Roofing",
+      "q": "Which GI/GS gauge is preferred?",
+      "o": [
+        "Gauge 28",
+        "Gauge 22",
+        "Gauge 24",
+        "Gauge 26"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 50 — Sheet Metal Roofing",
+      "n": "Gauge 24 is identified as the preferred GI/GS roofing gauge."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which thermosetting plastic is characterized as hard, durable, and stable?",
+      "o": [
+        "Melamine / Urea",
+        "Phenolic",
+        "Epoxy",
+        "Alkyd"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Melamine / Urea is associated with this material description. Melamine is used for molded dishes; urea is used for incandescent-light diffusion and baked enamels."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which membrane waterproofing is applied using an LPG torch?",
+      "o": [
+        "Felt and bitumen",
+        "PVC sheet",
+        "Asphalt-polyester membrane",
+        "EPDM"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Asphalt-polyester membrane waterproofing uses torch application."
+    },
+    {
+      "s": "Sheet Metal Roofing",
+      "q": "How many corrugations are indicated for aluminum roofing wider than or equal to 32 inches?",
+      "o": [
+        "12",
+        "8",
+        "10",
+        "14"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 50 — Sheet Metal Roofing",
+      "n": "Aluminum roofing at 32 inches or wider is identified with 12 corrugations."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which thermosetting plastic is associated with this use: Used in special chemical-resistant paints and caulking compounds?",
+      "o": [
+        "Phenolic",
+        "Epoxy",
+        "Melamine / Urea",
+        "Alkyd"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Epoxy is the thermosetting plastic associated with that use."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing product is also described as black primer?",
+      "o": [
+        "Cut-back",
+        "Elastomeric",
+        "Cementitious",
+        "Emulsions"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Emulsion waterproofing is also identified as black primer."
+    },
+    {
+      "s": "Joint Sealants",
+      "q": "What appearance can bituminous cement have?",
+      "o": [
+        "Transparent sheet only",
+        "Gray powder only",
+        "Black, solid, semi-solid, or liquid",
+        "White and clear only"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 50 — Joint Sealants",
+      "n": "Bituminous cement may be black and can occur as a solid, semi-solid, or liquid."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which thermosetting plastic is characterized as a resin or plastic made by condensation of phenol?",
+      "o": [
+        "Alkyd",
+        "Phenolic",
+        "Epoxy",
+        "Melamine / Urea"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Phenolic is associated with this material description. Used for paints, baked enamels, adhesives, impregnating resins for paper and wood, and finish hardware."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing system is used for decks or slabs only and is applied with hot or cold rollers?",
+      "o": [
+        "PVC Sheet",
+        "EPDM",
+        "Felt & Bitumen",
+        "Cut-back"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Felt-and-bitumen waterproofing uses hot or cold rollers and is identified for decks or slabs only."
+    },
+    {
+      "s": "Joint Sealants",
+      "q": "Where can silicone sealant be used?",
+      "o": [
+        "Only below-grade footing joints",
+        "Outdoor or indoor joints between surfaces",
+        "Only roofing nail holes",
+        "Only submerged joints"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Joint Sealants",
+      "n": "Silicone sealant can be used in both exterior and interior joints between surfaces."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which thermosetting plastic is associated with this use: Commonly used in large glass-fiber-reinforced translucent panels, impregnating wood and paper, laminating material, and contact adhesive?",
+      "o": [
+        "Epoxy",
+        "Melamine / Urea",
+        "Polyester",
+        "Alkyd"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Polyester is the thermosetting plastic associated with that use."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "What soap-to-water proportion is identified for an alum-and-soap treatment?",
+      "o": [
+        "2 gallons soap to 1 gallon water",
+        "1/4 gallon soap to 1 gallon water",
+        "3/4 gallon soap to 1 gallon water",
+        "1 gallon soap to 1 gallon water"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "The soap mixture uses three-fourths gallon of soap for each gallon of water."
+    },
+    {
+      "s": "Dampproofing",
+      "q": "What is the minimum sheet thickness over rocks or gravel?",
+      "o": [
+        "4 mils",
+        "6 mils",
+        "2 mils",
+        "8 mils"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Dampproofing",
+      "n": "Over rocks or gravel, the minimum sheet thickness increases to 6 mils."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which thermosetting plastic is characterized as based on silicone-oxygen chains?",
+      "o": [
+        "Epoxy",
+        "Melamine / Urea",
+        "Alkyd",
+        "Silicone"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Silicone is associated with this material description. Used for clear, water-repellent paints for masonry and concrete above grade."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "Which materials are identified in another waterproofing wash?",
+      "o": [
+        "PVC, PE, and asphalt",
+        "Clay, lime, and gypsum",
+        "Alum, lye, and cement",
+        "Silicone, epoxy, and sand"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "An alternate wash formulation uses alum, lye, and cement."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing type has the form 'Coat' and is applied by roller or brush?",
+      "o": [
+        "Membrane",
+        "Elastomeric",
+        "Integral",
+        "Cementitious"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Cementitious uses the coat form and is applied by roller or brush."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which material is associated with incandescent-light diffusion?",
+      "o": [
+        "Phenolic",
+        "Melamine",
+        "Polyester",
+        "Urea"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Urea is used for incandescent-light diffusion and baked enamels."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "Which products are cited as examples of specially prepared bituminous products?",
+      "o": [
+        "Flint-Kote and John Mansville",
+        "Epoxy and Melamine",
+        "Analok and Durisol",
+        "Boysen Flexibond and Sahara"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "Flint-Kote and John Mansville are cited as examples of specially prepared bituminous waterproofing products."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing type is intended for a smooth or rough, damp surface?",
+      "o": [
+        "Cementitious",
+        "Membrane",
+        "Elastomeric",
+        "Integral"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Elastomeric is associated with a smooth or rough, damp surface condition."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which material is used for clear, water-repellent paints on masonry and concrete above grade?",
+      "o": [
+        "Silicone",
+        "Alkyd",
+        "Epoxy",
+        "Urethanes"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Silicone-based compounds are used for clear water-repellent coatings on above-grade masonry and concrete."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "How are tough, durable bituminous films characterized?",
+      "o": [
+        "They dissolve when the water evaporates",
+        "They require steel reinforcement",
+        "They are formed only by hot-air welding",
+        "They remain after the emulsion dries"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "The bituminous material forms a tough, durable film after the water phase evaporates."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing type has the form 'Asphalt polyester' and is applied by lpg torch?",
+      "o": [
+        "Cementitious",
+        "Integral",
+        "Elastomeric",
+        "Membrane"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Membrane uses the asphalt polyester form and is applied by lpg torch."
+    },
+    {
+      "s": "Plastic Sheets, Film, Foam and Laminates",
+      "q": "Plastic sheets can replace glass in which applications?",
+      "o": [
+        "Footings, beams, columns, and piles",
+        "Water tanks, sewers, and culverts",
+        "Stairs, ramps, railings, and ladders",
+        "Windows, doors, skylights, and showers"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 50 — Plastic Sheets, Film and Foam, Laminates",
+      "n": "Plastic sheet products are suitable for glazing-type applications such as windows, doors, skylights, and showers."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "What base is used for one membrane waterproofing method on concrete?",
+      "o": [
+        "Ordinary tar paper laid with coal-tar pitch",
+        "Aluminum foil on sand",
+        "PVC sheet embedded in wet plaster",
+        "Clay tile set in lime mortar"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "One membrane method uses ordinary tar paper laid with coal-tar pitch."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing type is intended for a smooth or rough, dry surface?",
+      "o": [
+        "Cementitious",
+        "Emulsions",
+        "Integral",
+        "Elastomeric"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Emulsions is associated with a smooth or rough, dry surface condition."
+    },
+    {
+      "s": "Plastic Sheets, Film, Foam and Laminates",
+      "q": "What thickness range is given for PE and PV film used as a water barrier?",
+      "o": [
+        "12 to 20 mils",
+        "1 to 10 mils (0.001 to 0.01 in)",
+        "1 to 10 mm",
+        "0.1 to 1 in"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Plastic Sheets, Film and Foam, Laminates",
+      "n": "The film thickness range is 1–10 mils, equivalent to 0.001–0.01 inch."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "What mortar proportion is identified for leveling concrete before membrane waterproofing?",
+      "o": [
+        "1:1 cement mortar",
+        "1:3 cement mortar",
+        "1:2 cement mortar",
+        "1:4 cement mortar"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "A 1:2 cement mortar is identified for leveling the concrete surface."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing type has the form 'Membrane' and is applied by hot-air welding fasteners?",
+      "o": [
+        "Integral",
+        "Elastomeric",
+        "PVC Sheet",
+        "Cementitious"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "PVC Sheet uses the membrane form and is applied by hot-air welding fasteners."
+    },
+    {
+      "s": "Plastic Sheets, Film, Foam and Laminates",
+      "q": "What forms the base of the laminate product described?",
+      "o": [
+        "Paper or fabric impregnated with thermosetting resins",
+        "Wood fiber mixed with cement",
+        "Steel mesh coated with PVC",
+        "Glass sheets bonded with asphalt"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 50 — Plastic Sheets, Film and Foam, Laminates",
+      "n": "The laminate is made by impregnating paper or fabric with thermosetting resins."
+    },
+    {
+      "s": "Applied Dampproofing",
+      "q": "A polyethylene dampproofing sheet will be installed directly over gravel. What minimum thickness should be used?",
+      "o": [
+        "2 mils",
+        "4 mils",
+        "10 mils",
+        "6 mils"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 50 — Dampproofing",
+      "n": "Sheet dampproofing over rocks or gravel requires the thicker 6-mil minimum rather than the 4-mil minimum used over sand or soil.",
+      "fig": "f1"
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing type is intended for a relatively rough surface?",
+      "o": [
+        "Integral",
+        "EPDM",
+        "Cementitious",
+        "Elastomeric"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "EPDM is associated with a relatively rough surface condition."
+    },
+    {
+      "s": "Roofing Materials",
+      "q": "Which roofing category includes clay and concrete?",
+      "o": [
+        "Tiles",
+        "Sheet metal",
+        "Membrane roofing",
+        "Shingles"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 50 — Types of Roofing Materials",
+      "n": "Tiles is the category associated with Clay and concrete."
+    },
+    {
+      "s": "Applied Waterproofing",
+      "q": "The same 54 m² wall requires 3 elastomeric coats at 18 m²/gal per coat. Ignoring waste, how many gallons are required in total?",
+      "o": [
+        "3 gal",
+        "6 gal",
+        "12 gal",
+        "9 gal"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "One coat needs 3 gallons, and three coats therefore need 9 gallons.",
+      "fig": "f2"
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "How long is the curing time per coat for cementitious waterproofing?",
+      "o": [
+        "12 hours per coat",
+        "Same as concrete",
+        "6 hours",
+        "1 day per coat"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Cementitious waterproofing requires about one day of curing per coat."
+    },
+    {
+      "s": "Sheet Metal Roofing",
+      "q": "What GI/GS sheet length is identified as the most common?",
+      "o": [
+        "12 ft",
+        "6 ft",
+        "10 ft",
+        "8 ft"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 50 — Sheet Metal Roofing",
+      "n": "An 8-foot GI/GS roofing sheet is identified as the most common length."
+    },
+    {
+      "s": "Applied Waterproofing",
+      "q": "A deck membrane must be joined using hot-air welding and fasteners. Which membrane should be selected?",
+      "o": [
+        "Cementitious",
+        "Felt & Bitumen",
+        "PVC Sheet",
+        "EPDM"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "PVC sheet membrane is the deck system associated with hot-air welding and fasteners.",
+      "fig": "f3"
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "How long is the curing time per coat for elastomeric waterproofing?",
+      "o": [
+        "Same as concrete",
+        "6 hours",
+        "12 hours per coat",
+        "1 day per coat"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Elastomeric waterproofing requires about 12 hours per coat."
+    },
+    {
+      "s": "Sheet Metal Roofing",
+      "q": "What corrugation pitch is given for GI/GS roofing?",
+      "o": [
+        "4 in",
+        "6 in",
+        "2 in",
+        "3 in"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 50 — Sheet Metal Roofing",
+      "n": "The GI/GS corrugation pitch is 3 inches."
+    },
+    {
+      "s": "Applied Concrete Waterproofing",
+      "q": "For an alum-and-soap waterproofing treatment, how much soap is required if 4 gallons of water are used for the soap mixture?",
+      "o": [
+        "2 gal soap",
+        "3 gal soap",
+        "1 gal soap",
+        "4 gal soap"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "The mixture uses 3/4 gallon of soap per gallon of water. Four gallons of water therefore require 3 gallons of soap."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "How many elastomeric coats are identified for floors?",
+      "o": [
+        "2 coats",
+        "4 coats",
+        "5 coats",
+        "3 coats"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Floors are identified with four elastomeric waterproofing coats."
+    },
+    {
+      "s": "Sheet Metal Roofing",
+      "q": "What length range is given for aluminum roofing sheets?",
+      "o": [
+        "8 to 14 ft in 2-ft increments",
+        "6 to 12 ft in 1-ft increments",
+        "4 to 8 ft in 2-ft increments",
+        "5 to 10 ft in 1-ft increments"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Sheet Metal Roofing",
+      "n": "Aluminum roofing sheets are available from 6 to 12 feet in one-foot increments."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which thermosetting plastic is associated with this use: Melamine is used for molded dishes; urea is used for incandescent-light diffusion and baked enamels?",
+      "o": [
+        "Phenolic",
+        "Melamine / Urea",
+        "Epoxy",
+        "Alkyd"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Melamine / Urea is the thermosetting plastic associated with that use."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which thicknesses are identified for modified-bitumen membrane?",
+      "o": [
+        "8 mm and 10 mm",
+        "5 mm and 6 mm",
+        "3 mm and 4 mm",
+        "1 mm and 2 mm"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Modified-bitumen membrane is identified in 3-mm and 4-mm thicknesses."
+    },
+    {
+      "s": "Sheet Metal Roofing",
+      "q": "How many corrugations are indicated for aluminum roofing narrower than 32 inches?",
+      "o": [
+        "14",
+        "8",
+        "12",
+        "10"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 50 — Sheet Metal Roofing",
+      "n": "Aluminum roofing below 32 inches in width is identified with 10 corrugations."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which thermosetting plastic is characterized as derived from alcohols and acids?",
+      "o": [
+        "Melamine / Urea",
+        "Phenolic",
+        "Alkyd",
+        "Epoxy"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Alkyd is associated with this material description. Used for molded electrical parts and vehicle paints, lacquers, and enamels."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which deck membrane uses hot-air welding and fasteners?",
+      "o": [
+        "PVC Sheet",
+        "Asphalt polyester",
+        "EPDM",
+        "Felt & Bitumen"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "PVC sheet membrane uses hot-air welding with fasteners and is used for decks."
+    },
+    {
+      "s": "Joint Sealants",
+      "q": "Bituminous cement is used for which sealing work?",
+      "o": [
+        "Only timber joinery",
+        "Built-up roofing and joints or cracks in concrete pavements",
+        "Only ceramic tile grout",
+        "Only glazing joints"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Joint Sealants",
+      "n": "Bituminous cement is useful for sealing built-up roofing and cracks or joints in concrete pavements."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which thermosetting plastic is associated with this use: Used for paints, baked enamels, adhesives, impregnating resins for paper and wood, and finish hardware?",
+      "o": [
+        "Alkyd",
+        "Phenolic",
+        "Epoxy",
+        "Melamine / Urea"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Phenolic is the thermosetting plastic associated with that use."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "What is the basic approach to impermeability through dense concrete?",
+      "o": [
+        "Use dry sand without cement",
+        "Use bituminous felt inside the mix",
+        "Use well-graded sands, good aggregates, and Portland cement as a plaster coat",
+        "Use only coarse aggregate with no fines"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "Dense concrete waterproofing relies on well-graded sands, sound aggregates, and Portland-cement plastering."
+    },
+    {
+      "s": "Dampproofing",
+      "q": "Which materials are identified for sheet dampproofing?",
+      "o": [
+        "Aluminum and copper",
+        "Polyvinyl chloride and polyethylene",
+        "Clay and concrete",
+        "Epoxy and phenolic"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Dampproofing",
+      "n": "PVC and polyethylene are identified as sheet materials for dampproofing."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which thermosetting plastic is characterized as synthetic crystalline compounds?",
+      "o": [
+        "Epoxy",
+        "Alkyd",
+        "Urethanes",
+        "Melamine / Urea"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Urethanes is associated with this material description. Used for paint coatings and self-adhesive foams."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "What alum-to-water proportion is identified for the same treatment?",
+      "o": [
+        "1 oz alum to 1 gallon water",
+        "4 oz alum to 1 gallon water",
+        "2 oz alum to 1 gallon water",
+        "8 oz alum to 1 gallon water"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "The alum mixture uses two ounces of alum for each gallon of water."
+    },
+    {
+      "s": "Dampproofing",
+      "q": "What minimum overlap is identified for sheet connections?",
+      "o": [
+        "2 in",
+        "6 in",
+        "4 in",
+        "12 in"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Dampproofing",
+      "n": "Sheet connections require at least 6 inches of overlap."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which thermosetting plastic is associated with this use: Used for clear, water-repellent paints for masonry and concrete above grade?",
+      "o": [
+        "Alkyd",
+        "Silicone",
+        "Melamine / Urea",
+        "Epoxy"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Silicone is the thermosetting plastic associated with that use."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "Cement grout may be used with or without what addition?",
+      "o": [
+        "Lime putty only",
+        "Steel fibers",
+        "Polyethylene sheets",
+        "Water repellents"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "Cement grout can be applied with or without water-repellent additives."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing type is intended for a rough, damp surface?",
+      "o": [
+        "Integral",
+        "Membrane",
+        "Cementitious",
+        "Elastomeric"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Cementitious is associated with a rough, damp surface condition."
+    },
+    {
+      "s": "Thermosetting Plastics",
+      "q": "Which thermosetting plastic is useful for special chemical-resistant paints?",
+      "o": [
+        "Melamine",
+        "Urethanes",
+        "Epoxy",
+        "Alkyd"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 50 — Thermosetting Plastics",
+      "n": "Epoxy combines adhesive qualities with use in special chemical-resistant paints."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "What is asphalt emulsion?",
+      "o": [
+        "Molten asphalt mixed only with sand",
+        "Minute asphalt particles dispersed in water and held in suspension by an emulsifying agent",
+        "A PVC film dissolved in solvent",
+        "Dry cement powder mixed with alum"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "Asphalt emulsion consists of very small asphalt particles dispersed in water and stabilized by an emulsifying agent."
+    },
+    {
+      "s": "Types of Waterproofing",
+      "q": "Which waterproofing type has the form 'Integral' and is applied by mixed with cement?",
+      "o": [
+        "Cementitious",
+        "Membrane",
+        "Elastomeric",
+        "Integral"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 51 — Types of Waterproofing",
+      "n": "Integral uses the integral form and is applied by mixed with cement."
+    },
+    {
+      "s": "Plastic Sheets, Film, Foam and Laminates",
+      "q": "Which materials are used for plastic sheet products?",
+      "o": [
+        "Acrylate, polyester, polystyrene, and glass-fiber-reinforced plain material",
+        "Polyethylene and PVC only",
+        "Rubber, asphalt, and tar",
+        "Phenolic and epoxy resins only"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 50 — Plastic Sheets, Film and Foam, Laminates",
+      "n": "Plastic sheet products may be made from acrylate, polyester, polystyrene, or material reinforced with glass fiber."
+    },
+    {
+      "s": "Waterproofing of Concrete",
+      "q": "In what forms can integral concrete waterproofing admixtures be supplied?",
+      "o": [
+        "Sheet or roll only",
+        "Foam or mesh only",
+        "Powder or liquid",
+        "Tile or shingle only"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 51 — Waterproofing of Concrete",
+      "n": "Integral waterproofing admixtures may be supplied as powders or liquids and mixed directly with concrete."
+    }
+  ]
+}
