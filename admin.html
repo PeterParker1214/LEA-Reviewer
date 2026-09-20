@@ -14,9 +14,9 @@
 <!-- The same reader the app uses, so what the editor sees is exactly what a
      reader gets. Its balanced-bracket scan also survives question text that a
      regex would truncate. -->
-<script src="assets/quiz-source.js?v=63"></script>
+<script src="assets/quiz-source.js?v=64"></script>
 <script src="assets/quiz-rework.js?v=63"></script>
-<script src="assets/docx-quiz.js?v=63"></script>
+<script src="assets/docx-quiz.js?v=64"></script>
 <script src="assets/image-intake.js?v=63"></script>
 <script src="assets/theme.js?v=63" data-alt-class="light-mode" data-default-is="dark"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -617,7 +617,10 @@ function arrayToLiteralText(rows){
  */
 function readQuestionSource(path, raw){
   if(path.endsWith('.json')){
-    const rows = JSON.parse(raw);
+    // A module may carry its pictures in a shared figures table; the editor
+    // only ever deals in plain rows with img on them, and writing packs the
+    // table back. See LEAQuizSource.inflateFigures.
+    const rows = LEAQuizSource.inflateFigures(JSON.parse(raw));
     return { kind:'json', rows, editable: rows, varName:null };
   }
   const asQuestions = LEAQuizSource.extractArrayLiteral(raw, 'QUESTIONS');
@@ -629,7 +632,7 @@ function readQuestionSource(path, raw){
 
 /** Serialise edited questions back into the file they came from. */
 function writeQuestionSource(kind, varName, rawFileText, originals, edited){
-  if(kind === 'json') return JSON.stringify(edited, null, 2) + '\n';
+  if(kind === 'json') return JSON.stringify(LEAQuizSource.packFigures(edited), null, 2) + '\n';
   const rows = (kind === 'quizdata') ? editorToQuizData(edited, originals) : edited;
   const out = LEAQuizSource.replaceArrayLiteral(rawFileText, varName, arrayToLiteralText(rows));
   if(out === null) throw new Error('Could not find the ' + varName + ' list in this file any more.');
@@ -702,7 +705,13 @@ async function callSave(path, content, message){
     body: JSON.stringify({ path, content, message })
   });
   const result = await resp.json();
-  if(!resp.ok) throw new Error(result.error || 'Save failed');
+  if(!resp.ok){
+    // The save function demands an aal2 session. This page took its token at
+    // load, so verifying in another tab is not enough — this one has to reload.
+    if(/mfa/i.test(result.error || ''))
+      throw new Error('MFA required — verify at admin-mfa.html, then reload this page and save again.');
+    throw new Error(result.error || 'Save failed');
+  }
   return result;
 }
 
@@ -2995,9 +3004,9 @@ function renderReworkTab(){
 
       '<div id="rwDrop" class="rw-drop">' +
         '<b>Drop your files here</b><br>' +
-        '<span>Word documents, or .json / .html quizzes. Several at once is fine.</span>' +
+        '<span>Word documents, .json / .html quizzes, or a .zip holding a quiz JSON and its figures. Several at once is fine.</span>' +
       '</div>' +
-      '<input type="file" id="rwFile" accept=".docx,.json,.html,.htm" multiple style="display:none;">' +
+      '<input type="file" id="rwFile" accept=".docx,.json,.html,.htm,.zip" multiple style="display:none;">' +
 
       '<details class="rw-more"><summary>Or start from a quiz already on the site</summary>' +
         '<select id="rwSource" style="margin-top:10px;">' +
@@ -3100,9 +3109,108 @@ async function loadModuleAsJob(e){
   }
 }
 
+/* ---------------- a module ZIP: the JSON plus its figures ---------------- */
+//
+// Saving writes exactly one file per module — data/<subject>/NN.json through
+// callSave, which takes text — so a figure file in the zip has nowhere of its
+// own to land. Each one is inlined onto its question as a data: URI instead:
+// the same shape the question editor already produces (assets/image-intake.js),
+// already rendered by the engine, and already shipping in the Structural bank.
+//
+// ponytail: a figure used by 20 questions is stored 20 times. If a module ever
+// gets heavy enough to notice, give quiz-source.js a shared figure table.
+
+function svgDataUri(text){
+  return 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(text)));
+}
+
+// SVG is text and goes in as it is, sharp at any zoom. Everything else is a
+// picture, so it takes the same shrink the question editor applies — a 4 MB
+// photo must not land whole inside a module file.
+async function zipFileToDataUri(bytes, name){
+  if(/\.svg$/i.test(name)) return svgDataUri(new TextDecoder().decode(bytes));
+  const ext = (name.split('.').pop() || '').toLowerCase();
+  const type = ext === 'png' ? 'image/png'
+    : ext === 'gif' ? 'image/gif'
+    : ext === 'webp' ? 'image/webp'
+    : ext === 'avif' ? 'image/avif'
+    : 'image/jpeg';
+  const res = await LEAImageIntake.process(new File([bytes], name, { type }));
+  return res.dataUrl;
+}
+
+// A figure is named in one of several ways depending on what wrote the module:
+// "img" as a path, "fig" as a key into a figures table, or a "figure" object
+// carrying either a path or the SVG itself. Every one of them becomes img.
+async function inlineZipFigures(arr, figures, files){
+  const warnings = [], cache = new Map(), byBase = {};
+  Object.keys(files).forEach(n => { byBase[n.split('/').pop().toLowerCase()] = n; });
+
+  async function uriFor(src){
+    const key = String(src).replace(/^\.?\//, '');
+    if(cache.has(key)) return cache.get(key);
+    const hit = files[key] ? key : byBase[key.split('/').pop().toLowerCase()];
+    if(!hit) return null;
+    let uri = null;
+    try{ uri = await zipFileToDataUri(files[hit], hit); }
+    catch(err){ warnings.push(hit + ': ' + err.message); }
+    cache.set(key, uri);
+    return uri;
+  }
+
+  for(const q of arr){
+    if(!q || typeof q !== 'object') continue;
+    let fig = q.figure;
+    if(typeof fig === 'string') fig = (figures && figures[fig]) || { src: fig };
+    if(!fig && q.fig) fig = (figures && figures[q.fig]) || { src: q.fig };
+    if(!fig && q.img) fig = { src: q.img };
+    if(!fig || typeof fig !== 'object') continue;
+
+    if(fig.svg){ q.img = svgDataUri(fig.svg); delete q.figure; delete q.fig; continue; }
+    const src = fig.src || fig.img;
+    if(!src) continue;
+    // A picture that is already self-contained needs nothing from the zip.
+    if(/^(data:|https?:)/i.test(src)){ q.img = src; delete q.figure; delete q.fig; continue; }
+
+    const uri = await uriFor(src);
+    if(uri){ q.img = uri; delete q.figure; delete q.fig; }
+    else {
+      // Leaving the unresolved path on the question would save a link to a
+      // file that is nowhere on the site, and the reader gets a broken image.
+      delete q.img; delete q.figure; delete q.fig;
+      warnings.push('Nothing in the zip called ' + src + ' — that question keeps its text and loses the picture.');
+    }
+  }
+  return warnings;
+}
+
+async function readReworkZip(f, niceTitle){
+  const msg = document.getElementById('rwLoadMsg');
+  msg.innerHTML += '<div class="msg info">Reading ' + escapeHtml(f.name) + '…</div>';
+  try{
+    const files = await LEADocxQuiz.unzip(f);
+    const jsonName = Object.keys(files).find(n => /\.json$/i.test(n));
+    if(!jsonName) throw new Error('there is no .json inside it.');
+
+    const data = JSON.parse(new TextDecoder().decode(files[jsonName]));
+    const arr = Array.isArray(data) ? data : data.questions;
+    const figures = (!Array.isArray(data) && data.figures) || null;
+    if(!Array.isArray(arr) || !arr.length) throw new Error(jsonName + ' holds no questions.');
+
+    const warnings = await inlineZipFigures(arr, figures, files);
+    const rows = arr.map(LEAQuizRework.canonical).filter(Boolean);
+    if(!rows.length) throw new Error('no usable questions in ' + jsonName + '.');
+    addJob(f.name, rows, arr.length, niceTitle, null, warnings);
+  }catch(err){
+    msg.innerHTML += '<div class="msg error">' + escapeHtml(f.name + ': ' + err.message) + '</div>';
+  }
+}
+
 function readReworkFile(f){
   const msg = document.getElementById('rwLoadMsg');
-  const niceTitle = f.name.replace(/\.(docx|json|html?)$/i, '').replace(/[_-]+/g, ' ').trim();
+  const niceTitle = f.name.replace(/\.(docx|json|html?|zip)$/i, '').replace(/[_-]+/g, ' ').trim();
+
+  if(/\.zip$/i.test(f.name)){ readReworkZip(f, niceTitle); return; }
 
   if(/\.docx$/i.test(f.name)){
     msg.innerHTML += '<div class="msg info">Reading ' + escapeHtml(f.name) + '…</div>';
@@ -3480,7 +3588,7 @@ async function saveAllJobs(){
 
     for(const p of planned){
       log('Writing ' + p.path + ' …');
-      await callSave(p.path, JSON.stringify(p.job.result.rows, null, 2) + '\n',
+      await callSave(p.path, JSON.stringify(LEAQuizSource.packFigures(p.job.result.rows), null, 2) + '\n',
         'Admin: add "' + p.entry.title + '" to ' + p.subject.id);
       p.subject.modules.push(p.entry);
       p.job.saved = true;

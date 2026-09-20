@@ -43,13 +43,13 @@ window.LEADocxQuiz = (function () {
   /* ---------------- minimal zip reader ---------------- */
   // Only what a .docx needs: find one entry by name in the central directory
   // and inflate it. Stored (0) and deflated (8) are the only methods Word uses.
-  function findEntry(buf, wanted) {
-    var dv = new DataView(buf), i;
+  function listEntries(buf) {
+    var dv = new DataView(buf), i, out = [];
     // End of central directory: scan back for its signature.
     for (i = buf.byteLength - 22; i >= 0; i--) {
       if (dv.getUint32(i, true) === 0x06054b50) break;
     }
-    if (i < 0) throw new Error('That file is not a valid .docx (no zip directory).');
+    if (i < 0) throw new Error('That file is not a valid zip (no zip directory).');
     var count = dv.getUint16(i + 10, true);
     var off = dv.getUint32(i + 16, true);
     var dec = new TextDecoder();
@@ -64,17 +64,38 @@ window.LEADocxQuiz = (function () {
       var localOff = dv.getUint32(off + 42, true);
       var name = dec.decode(new Uint8Array(buf, off + 46, nameLen));
 
-      if (name === wanted) {
-        // The local header repeats the name/extra lengths, and they can differ
-        // from the central directory's — read them from the local header.
-        var lNameLen = dv.getUint16(localOff + 26, true);
-        var lExtraLen = dv.getUint16(localOff + 28, true);
-        var dataOff = localOff + 30 + lNameLen + lExtraLen;
-        return { method: method, bytes: new Uint8Array(buf, dataOff, compSize) };
-      }
+      // The local header repeats the name/extra lengths, and they can differ
+      // from the central directory's — read them from the local header.
+      var lNameLen = dv.getUint16(localOff + 26, true);
+      var lExtraLen = dv.getUint16(localOff + 28, true);
+      var dataOff = localOff + 30 + lNameLen + lExtraLen;
+      out.push({ name: name, method: method, bytes: new Uint8Array(buf, dataOff, compSize) });
       off += 46 + nameLen + extraLen + commentLen;
     }
+    return out;
+  }
+
+  function findEntry(buf, wanted) {
+    var all = listEntries(buf), i;
+    for (i = 0; i < all.length; i++) if (all[i].name === wanted) return all[i];
     throw new Error('That .docx has no ' + wanted + ' inside it.');
+  }
+
+  /** Every file in a zip, inflated: { "figures/q1.svg": Uint8Array, ... }.
+   *  Directory entries are dropped. Used by the Rework tab to read a module
+   *  ZIP — the JSON and the figures that travel beside it. */
+  function unzip(file) {
+    return file.arrayBuffer().then(function (buf) {
+      var entries = listEntries(buf).filter(function (e) {
+        return !/\/$/.test(e.name) && !/^__MACOSX\//.test(e.name);
+      });
+      return Promise.all(entries.map(function (e) { return inflate(e); }))
+        .then(function (parts) {
+          var out = {};
+          for (var i = 0; i < entries.length; i++) out[entries[i].name] = parts[i];
+          return out;
+        });
+    });
   }
 
   function inflate(entry) {
@@ -219,5 +240,5 @@ window.LEADocxQuiz = (function () {
       });
   }
 
-  return { read: read, parseParagraphs: parseParagraphs, paragraphs: paragraphs };
+  return { read: read, unzip: unzip, parseParagraphs: parseParagraphs, paragraphs: paragraphs };
 })();

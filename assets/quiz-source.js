@@ -98,6 +98,58 @@
     return null;
   }
 
+  // A JSON module may carry its pictures once in a `figures` table and have
+  // the questions name a key into it — the same trick the HTML quizzes use
+  // with FIGURES. It matters when the pictures are inline data: URIs: one
+  // beam diagram shared by 20 questions is stored once, not 20 times.
+  //
+  //   { "figures": { "f1": "data:image/svg+xml;base64,…" },
+  //     "questions": [ { "q": "…", "fig": "f1" }, … ] }
+  //
+  // Everything downstream keeps seeing a plain array with `img` on it.
+  function inflateFigures(data) {
+    var figures = null, arr = data;
+    if (!Array.isArray(data) && data && Array.isArray(data.questions)) {
+      figures = data.figures || null;
+      arr = data.questions;
+    }
+    if (!figures || !Array.isArray(arr)) return arr;
+    return arr.map(function (q) {
+      if (!q || !q.fig) return q;
+      var copy = {}, k;
+      for (k in q) if (Object.prototype.hasOwnProperty.call(q, k)) copy[k] = q[k];
+      if (figures[q.fig]) copy.img = figures[q.fig];
+      delete copy.fig;
+      return copy;
+    });
+  }
+
+  /** The other direction: lift every picture used more than once into a
+   *  figures table. A picture used by a single question stays on it, because
+   *  a table entry would only add indirection. Returns the array unchanged
+   *  when nothing repeats, so modules without figures never change shape. */
+  function packFigures(rows) {
+    if (!Array.isArray(rows)) return rows;
+    var counts = {}, i, src;
+    for (i = 0; i < rows.length; i++) {
+      src = rows[i] && rows[i].img;
+      if (src) counts[src] = (counts[src] || 0) + 1;
+    }
+    var keys = {}, figures = {}, n = 0, out = [];
+    for (i = 0; i < rows.length; i++) {
+      var r = rows[i];
+      src = r && r.img;
+      if (!src || counts[src] < 2) { out.push(r); continue; }
+      if (!keys[src]) { keys[src] = 'f' + (++n); figures[keys[src]] = src; }
+      var copy = {}, k;
+      for (k in r) if (Object.prototype.hasOwnProperty.call(r, k)) copy[k] = r[k];
+      delete copy.img;
+      copy.fig = keys[src];
+      out.push(copy);
+    }
+    return n ? { figures: figures, questions: out } : rows;
+  }
+
   // Images are written relative to the quiz page that declares them
   // ("img/q0001.jpg"), but the engine renders from the site root, where that
   // path resolves somewhere else entirely. Rebase against the module's own
@@ -197,7 +249,7 @@
     } catch (e) { /* unreadable cache is just a cache miss */ }
 
     return fetch(mod.file).then(function (res) {
-      if (mod.format === 'json') return res.json().then(function (a) { return { arr: a, figures: null }; });
+      if (mod.format === 'json') return res.json().then(function (a) { return { arr: inflateFigures(a), figures: null }; });
       return res.text().then(function (html) {
         return {
           arr: extractArrayLiteral(html, 'QUESTIONS') || extractArrayLiteral(html, 'QUIZ_DATA'),
@@ -249,6 +301,8 @@
     loadModuleTopics: loadModuleTopics,
     extractArrayLiteral: extractArrayLiteral,
     extractFigures: extractFigures,
+    inflateFigures: inflateFigures,
+    packFigures: packFigures,
     replaceArrayLiteral: replaceArrayLiteral,
     CACHE_PREFIX: CACHE_PREFIX
   };

@@ -193,6 +193,7 @@
   }
   .explain .meta-row span{ flex:1; color:var(--muted); text-transform:none; letter-spacing:0; }
   .explain .steps-list{ margin:8px 0 0; padding-left:18px; font-size:13px; color:var(--ink); line-height:1.7; }
+  .explain .steps-formula{ margin:8px 0 0; font-family:var(--font-mono); font-size:12.5px; color:var(--blue-bright); }
   /* A figure that belongs to the explanation rather than the question — a
      worked solution or a marked-up detail, which would give the answer away
      if it were shown before the reader commits. Same zoom affordance as the
@@ -631,7 +632,7 @@
 </style>
 <link rel="stylesheet" href="assets/blueprint.css?v=63">
 <script src="assets/lea-confirm.js?v=63"></script>
-<script src="assets/quiz-source.js?v=63"></script>
+<script src="assets/quiz-source.js?v=64"></script>
 <script src="assets/etymology.js?v=63"></script>
 <script src="assets/module-progress.js?v=63"></script>
 <script src="assets/offline.js?v=63"></script>
@@ -1676,8 +1677,12 @@ function renderCard(){
   if(logged && !logged.skipped){
     const verdictClass = logged.isCorrect ? 'right' : 'wrong';
     const verdictText = logged.isCorrect ? 'Correct' : 'Missed';
-    const stepsHtml = (item.steps && item.steps.length)
-      ? '<div id="stepsBlock" class="hidden"><ol class="steps-list">' + item.steps.map(s => '<li>' + escapeHtml(s) + '</li>').join('') + '</ol></div>'
+    const hasSteps = !!(item.formula || (item.steps && item.steps.length));
+    const stepsHtml = hasSteps
+      ? '<div id="stepsBlock" class="hidden">' +
+        (item.formula ? '<div class="steps-formula">' + escapeHtml(item.formula) + '</div>' : '') +
+        (item.steps && item.steps.length ? '<ol class="steps-list">' + item.steps.map(s => '<li>' + escapeHtml(s) + '</li>').join('') + '</ol>' : '') +
+        '</div>'
       : '';
     const qIndex = order[pos];
     const isFlagged = flaggedSet.has(qIndex);
@@ -1691,7 +1696,7 @@ function renderCard(){
         mnemonicHtml(item) +
         (item.ref ? '<div class="meta-row">Source<span>' + escapeHtml(item.ref) + '</span></div>' : '') +
         '<div class="chip-row">' +
-          (item.steps && item.steps.length ? '<button class="chip-btn" id="stepsChip">＋ Steps</button>' : '<div style="flex:1;"></div>') +
+          (hasSteps ? '<button class="chip-btn" id="stepsChip">＋ Steps</button>' : '<div style="flex:1;"></div>') +
           '<button class="chip-btn" id="noteChip">✎ Note</button>' +
           '<button class="chip-btn' + (isFlagged ? ' active' : '') + '" id="drillChip">↻ Drill</button>' +
         '</div>' +
