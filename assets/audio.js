@@ -8,10 +8,10 @@
   var audio = {};
   var unlocked = false;
   var SOURCES = {
-    wrong: 'https://assets.mixkit.co/sfx/preview/mixkit-kids-cartoon-close-bells-2256.mp3',
-    correct: 'https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3',
+    wrong: 'https://assets.mixkit.co/active_storage/sfx/2256/2256.wav',
+    correct: 'https://assets.mixkit.co/active_storage/sfx/600/600.wav',
     next: 'https://assets.mixkit.co/active_storage/sfx/217/217-preview.mp3',
-    complete: 'https://assets.mixkit.co/active_storage/sfx/938/938-preview.mp3'
+    complete: 'https://assets.mixkit.co/active_storage/sfx/938/938.wav'
   };
   function clamp(v){v=Number(v);return isFinite(v)?Math.max(0,Math.min(1,v)):0}
   function loadSettings(){try{var raw=localStorage.getItem(STORAGE_KEY);if(!raw)return;var saved=JSON.parse(raw);if(!saved||typeof saved!=='object')return;if(saved.sfx!=null)settings.sfx=clamp(saved.sfx);settings.muted=!!saved.muted}catch(e){}}
