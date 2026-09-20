@@ -1,0 +1,1371 @@
+{
+  "figures": {
+    "f1": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc5MDAnIGhlaWdodD0nNDIwJyB2aWV3Qm94PScwIDAgOTAwIDQyMCc+PHN0eWxlPi50e2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2ZpbGw6IzExMTtmb250LXNpemU6MjJweH0uc217Zm9udC1zaXplOjE4cHh9LnRpdGxle2ZvbnQtc2l6ZToyN3B4O2ZvbnQtd2VpZ2h0OmJvbGR9LmxpbmV7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfS50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0uZmlsbHtmaWxsOiNkZmU5ZmY7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Lndvb2R7ZmlsbDojZWZlMmNiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfS5lYXJ0aHtmaWxsOiNlNGRjY2Y7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9LmRpbXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjttYXJrZXItc3RhcnQ6dXJsKCNhKTttYXJrZXItZW5kOnVybCgjYSl9LmFycntzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MzttYXJrZXItZW5kOnVybCgjYik7ZmlsbDpub25lfTwvc3R5bGU+PGRlZnM+PG1hcmtlciBpZD0iYSIgbWFya2VyV2lkdGg9IjEwIiBtYXJrZXJIZWlnaHQ9IjEwIiByZWZYPSI1IiByZWZZPSI1IiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0xMCw1IEwwLDAgTDAsMTAgeiIgZmlsbD0iIzExMSIvPjwvbWFya2VyPjxtYXJrZXIgaWQ9ImIiIG1hcmtlcldpZHRoPSIxMiIgbWFya2VySGVpZ2h0PSIxMiIgcmVmWD0iOSIgcmVmWT0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMiw2IEwwLDEyIHoiIGZpbGw9IiMxMTEiLz48L21hcmtlcj48L2RlZnM+Cjx0ZXh0IHg9JzQwJyB5PSc0MicgY2xhc3M9J3QgdGl0bGUnPlNoZWV0IFNpemU8L3RleHQ+CjxyZWN0IHg9JzI2MCcgeT0nODUnIHdpZHRoPSczNjAnIGhlaWdodD0nMjQwJyBjbGFzcz0nZmlsbCcvPgo8bGluZSB4MT0nMjYwJyB5MT0nMzUwJyB4Mj0nNjIwJyB5Mj0nMzUwJyBjbGFzcz0nZGltJy8+PHRleHQgeD0nNDIwJyB5PSczNDInIGNsYXNzPSd0IHNtJz40IGZ0PC90ZXh0Pgo8bGluZSB4MT0nNjUwJyB5MT0nODUnIHgyPSc2NTAnIHkyPSczMjUnIGNsYXNzPSdkaW0nLz48dGV4dCB4PSc2NjUnIHk9JzIxMCcgY2xhc3M9J3Qgc20nPjggZnQ8L3RleHQ+Cjwvc3ZnPg==",
+    "f2": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc5MDAnIGhlaWdodD0nNDIwJyB2aWV3Qm94PScwIDAgOTAwIDQyMCc+PHN0eWxlPi50e2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2ZpbGw6IzExMTtmb250LXNpemU6MjJweH0uc217Zm9udC1zaXplOjE4cHh9LnRpdGxle2ZvbnQtc2l6ZToyN3B4O2ZvbnQtd2VpZ2h0OmJvbGR9LmxpbmV7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfS50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0uZmlsbHtmaWxsOiNkZmU5ZmY7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Lndvb2R7ZmlsbDojZWZlMmNiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfS5lYXJ0aHtmaWxsOiNlNGRjY2Y7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9LmRpbXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjttYXJrZXItc3RhcnQ6dXJsKCNhKTttYXJrZXItZW5kOnVybCgjYSl9LmFycntzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MzttYXJrZXItZW5kOnVybCgjYik7ZmlsbDpub25lfTwvc3R5bGU+PGRlZnM+PG1hcmtlciBpZD0iYSIgbWFya2VyV2lkdGg9IjEwIiBtYXJrZXJIZWlnaHQ9IjEwIiByZWZYPSI1IiByZWZZPSI1IiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0xMCw1IEwwLDAgTDAsMTAgeiIgZmlsbD0iIzExMSIvPjwvbWFya2VyPjxtYXJrZXIgaWQ9ImIiIG1hcmtlcldpZHRoPSIxMiIgbWFya2VySGVpZ2h0PSIxMiIgcmVmWD0iOSIgcmVmWT0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMiw2IEwwLDEyIHoiIGZpbGw9IiMxMTEiLz48L21hcmtlcj48L2RlZnM+Cjx0ZXh0IHg9JzQwJyB5PSc0MicgY2xhc3M9J3QgdGl0bGUnPkZpYmVyLUNlbWVudCBCb2FyZCBDb21wb3NpdGlvbjwvdGV4dD4KPHJlY3QgeD0nOTAnIHk9JzEyNScgd2lkdGg9JzU3NicgaGVpZ2h0PSc4NScgZmlsbD0nI2RmZTlmZicgc3Ryb2tlPScjMTExJyBzdHJva2Utd2lkdGg9JzInLz48cmVjdCB4PSc2NjYnIHk9JzEyNScgd2lkdGg9JzE2MCcgaGVpZ2h0PSc4NScgZmlsbD0nI2VhZjdlYScgc3Ryb2tlPScjMTExJyBzdHJva2Utd2lkdGg9JzInLz48cmVjdCB4PSc4MjYnIHk9JzEyNScgd2lkdGg9JzY0JyBoZWlnaHQ9Jzg1JyBmaWxsPScjZjJlNmU2JyBzdHJva2U9JyMxMTEnIHN0cm9rZS13aWR0aD0nMicvPgo8dGV4dCB4PScyODAnIHk9JzE3NScgY2xhc3M9J3QnPjcyJSBQb3J0bGFuZCBjZW1lbnQ8L3RleHQ+PHRleHQgeD0nNjc1JyB5PScxNzUnIGNsYXNzPSd0IHNtJz4yMCUgY2VsbHVsb3NlPC90ZXh0Pjx0ZXh0IHg9JzgzMCcgeT0nMTc1JyBjbGFzcz0ndCBzbSc+OCU8L3RleHQ+Cjx0ZXh0IHg9JzM0MCcgeT0nMjcwJyBjbGFzcz0ndCBzbSc+UGVyY2VudGFnZXMgcmVwcmVzZW50IHBhcnRzIG9mIHRoZSB0b3RhbCBtaXh0dXJlLjwvdGV4dD4KPC9zdmc+",
+    "f3": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc5MDAnIGhlaWdodD0nNDIwJyB2aWV3Qm94PScwIDAgOTAwIDQyMCc+PHN0eWxlPi50e2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2ZpbGw6IzExMTtmb250LXNpemU6MjJweH0uc217Zm9udC1zaXplOjE4cHh9LnRpdGxle2ZvbnQtc2l6ZToyN3B4O2ZvbnQtd2VpZ2h0OmJvbGR9LmxpbmV7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfS50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0uZmlsbHtmaWxsOiNkZmU5ZmY7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Lndvb2R7ZmlsbDojZWZlMmNiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfS5lYXJ0aHtmaWxsOiNlNGRjY2Y7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9LmRpbXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjttYXJrZXItc3RhcnQ6dXJsKCNhKTttYXJrZXItZW5kOnVybCgjYSl9LmFycntzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MzttYXJrZXItZW5kOnVybCgjYik7ZmlsbDpub25lfTwvc3R5bGU+PGRlZnM+PG1hcmtlciBpZD0iYSIgbWFya2VyV2lkdGg9IjEwIiBtYXJrZXJIZWlnaHQ9IjEwIiByZWZYPSI1IiByZWZZPSI1IiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0xMCw1IEwwLDAgTDAsMTAgeiIgZmlsbD0iIzExMSIvPjwvbWFya2VyPjxtYXJrZXIgaWQ9ImIiIG1hcmtlcldpZHRoPSIxMiIgbWFya2VySGVpZ2h0PSIxMiIgcmVmWD0iOSIgcmVmWT0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMiw2IEwwLDEyIHoiIGZpbGw9IiMxMTEiLz48L21hcmtlcj48L2RlZnM+Cjx0ZXh0IHg9JzQwJyB5PSc0MicgY2xhc3M9J3QgdGl0bGUnPlRyYW5zcGFyZW50IFNreWxpZ2h0IFBhbmVsPC90ZXh0Pgo8cGF0aCBkPSdNMTcwIDMwMCBMMzUwIDEzMCBMNzMwIDEzMCBMNzMwIDMwMCBaJyBjbGFzcz0nbGluZScvPjxyZWN0IHg9JzM4NScgeT0nMTMwJyB3aWR0aD0nMTkwJyBoZWlnaHQ9JzcwJyBmaWxsPScjZThmM2ZmJyBzdHJva2U9JyMxMTEnIHN0cm9rZS13aWR0aD0nMycvPjx0ZXh0IHg9JzQxMCcgeT0nMTc1JyBjbGFzcz0ndCBzbSc+dHJhbnNwYXJlbnQgcGFuZWw8L3RleHQ+PHRleHQgeD0nMzAwJyB5PSczNTAnIGNsYXNzPSd0Jz5Sb29mIC8gc2t5bGlnaHQgYXBwbGljYXRpb248L3RleHQ+Cjwvc3ZnPg==",
+    "f4": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc5MDAnIGhlaWdodD0nNDIwJyB2aWV3Qm94PScwIDAgOTAwIDQyMCc+PHN0eWxlPi50e2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2ZpbGw6IzExMTtmb250LXNpemU6MjJweH0uc217Zm9udC1zaXplOjE4cHh9LnRpdGxle2ZvbnQtc2l6ZToyN3B4O2ZvbnQtd2VpZ2h0OmJvbGR9LmxpbmV7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfS50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0uZmlsbHtmaWxsOiNkZmU5ZmY7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Lndvb2R7ZmlsbDojZWZlMmNiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfS5lYXJ0aHtmaWxsOiNlNGRjY2Y7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9LmRpbXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjttYXJrZXItc3RhcnQ6dXJsKCNhKTttYXJrZXItZW5kOnVybCgjYSl9LmFycntzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MzttYXJrZXItZW5kOnVybCgjYik7ZmlsbDpub25lfTwvc3R5bGU+PGRlZnM+PG1hcmtlciBpZD0iYSIgbWFya2VyV2lkdGg9IjEwIiBtYXJrZXJIZWlnaHQ9IjEwIiByZWZYPSI1IiByZWZZPSI1IiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0xMCw1IEwwLDAgTDAsMTAgeiIgZmlsbD0iIzExMSIvPjwvbWFya2VyPjxtYXJrZXIgaWQ9ImIiIG1hcmtlcldpZHRoPSIxMiIgbWFya2VySGVpZ2h0PSIxMiIgcmVmWD0iOSIgcmVmWT0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMiw2IEwwLDEyIHoiIGZpbGw9IiMxMTEiLz48L21hcmtlcj48L2RlZnM+Cjx0ZXh0IHg9JzQwJyB5PSc0MicgY2xhc3M9J3QgdGl0bGUnPldvb2QgUG9zdCBvbiBhIENvbmNyZXRlIFBpZXI8L3RleHQ+CjxyZWN0IHg9JzM5MCcgeT0nODAnIHdpZHRoPScxMjAnIGhlaWdodD0nMTkwJyBjbGFzcz0nd29vZCcvPjx0ZXh0IHg9JzQzMCcgeT0nMTY1JyBjbGFzcz0ndCc+UG9zdDwvdGV4dD4KPHJlY3QgeD0nMzE1JyB5PScyNzAnIHdpZHRoPScyNzAnIGhlaWdodD0nODUnIGNsYXNzPSdmaWxsJy8+PHRleHQgeD0nMzY1JyB5PSczMjAnIGNsYXNzPSd0Jz5Db25jcmV0ZSBwaWVyPC90ZXh0Pgo8cmVjdCB4PScyMjAnIHk9JzM1NScgd2lkdGg9JzQ2MCcgaGVpZ2h0PSczNScgY2xhc3M9J2VhcnRoJy8+PHRleHQgeD0nNjkwJyB5PSczODInIGNsYXNzPSd0IHNtJz5ncm91bmQ8L3RleHQ+Cjwvc3ZnPg==",
+    "f5": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc5MDAnIGhlaWdodD0nNDIwJyB2aWV3Qm94PScwIDAgOTAwIDQyMCc+PHN0eWxlPi50e2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2ZpbGw6IzExMTtmb250LXNpemU6MjJweH0uc217Zm9udC1zaXplOjE4cHh9LnRpdGxle2ZvbnQtc2l6ZToyN3B4O2ZvbnQtd2VpZ2h0OmJvbGR9LmxpbmV7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfS50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0uZmlsbHtmaWxsOiNkZmU5ZmY7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Lndvb2R7ZmlsbDojZWZlMmNiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfS5lYXJ0aHtmaWxsOiNlNGRjY2Y7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9LmRpbXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjttYXJrZXItc3RhcnQ6dXJsKCNhKTttYXJrZXItZW5kOnVybCgjYSl9LmFycntzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MzttYXJrZXItZW5kOnVybCgjYik7ZmlsbDpub25lfTwvc3R5bGU+PGRlZnM+PG1hcmtlciBpZD0iYSIgbWFya2VyV2lkdGg9IjEwIiBtYXJrZXJIZWlnaHQ9IjEwIiByZWZYPSI1IiByZWZZPSI1IiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0xMCw1IEwwLDAgTDAsMTAgeiIgZmlsbD0iIzExMSIvPjwvbWFya2VyPjxtYXJrZXIgaWQ9ImIiIG1hcmtlcldpZHRoPSIxMiIgbWFya2VySGVpZ2h0PSIxMiIgcmVmWD0iOSIgcmVmWT0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMiw2IEwwLDEyIHoiIGZpbGw9IiMxMTEiLz48L21hcmtlcj48L2RlZnM+Cjx0ZXh0IHg9JzQwJyB5PSc0MicgY2xhc3M9J3QgdGl0bGUnPlBvbmQgLyBMYWdvb24gTGluaW5nPC90ZXh0Pgo8cGF0aCBkPSdNMTIwIDExMCBMMjUwIDMwMCBMNjUwIDMwMCBMNzgwIDExMCcgY2xhc3M9J2xpbmUnLz48cGF0aCBkPSdNMTQ1IDEyMCBMMjY4IDI3OCBMNjMyIDI3OCBMNzU1IDEyMCcgc3Ryb2tlPScjMTExJyBzdHJva2Utd2lkdGg9JzEwJyBmaWxsPSdub25lJy8+CjxwYXRoIGQ9J00yNzAgMjgwIFE0NTAgMjMwIDYzMCAyODAnIGZpbGw9JyNkZmU5ZmYnIHN0cm9rZT0nIzExMScgc3Ryb2tlLXdpZHRoPScyJy8+PHRleHQgeD0nMzYwJyB5PScyNDUnIGNsYXNzPSd0Jz53YXRlcjwvdGV4dD48dGV4dCB4PSc1NzUnIHk9JzE1MCcgY2xhc3M9J3Qgc20nPmZsZXhpYmxlIHBsYXN0aWMgbGluZXI8L3RleHQ+Cjwvc3ZnPg=="
+  },
+  "questions": [
+    {
+      "s": "Thermoplastics",
+      "q": "Which manufacturing/use combination is associated with ABS?",
+      "o": [
+        "Only hand-carved furniture",
+        "Only copper piping",
+        "Injection-molded appliances and furniture, extruded sheets, and thermoformed items",
+        "Only plywood laminates"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "ABS supports injection molding, extrusion, and thermoforming for products ranging from appliances and furniture to hot tubs and vehicle parts."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "Which plywood thickness is suited to a double-wall partition?",
+      "o": [
+        "1 in (25 mm)",
+        "3/16 in (4.5 mm)",
+        "1/4 in (6 mm)",
+        "3/8 in (10 mm)"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "A 1/4-inch (6 mm) plywood sheet is used for a double-wall partition."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "What sheet size is associated with medium-density fiberboard?",
+      "o": [
+        "4 ft x 4 ft",
+        "4 ft x 8 ft",
+        "2 ft x 4 ft",
+        "3 ft x 6 ft"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Medium-density fiberboard commonly comes in 4 ft x 8 ft sheets.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wood Composites",
+      "q": "A 50 kg fiber-cement-board batch follows the 8% calcium-carbonate proportion. How much calcium carbonate is required?",
+      "o": [
+        "4 kg",
+        "36 kg",
+        "8 kg",
+        "10 kg"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Calcium carbonate forms 8% of the mixture, giving 4 kg in a 50 kg batch.",
+      "fig": "f2"
+    },
+    {
+      "s": "Group 4 Philippine Timber",
+      "q": "What is a common use of Almon?",
+      "o": [
+        "Gas piping",
+        "Furniture and interior work",
+        "Thermal insulation foam",
+        "Piling and wharves only"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 48 — Group 4 Philippine Timber",
+      "n": "Almon is a Group 4 timber used for furniture and interior work."
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which wood belongs to the low-grade beam, girder, rafter, and chord group?",
+      "o": [
+        "Guijo",
+        "Narig",
+        "Nato",
+        "Ipil"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "Nato is grouped with tanguile and red/white lauan for low-grade beams, girders, rafters, and chords."
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "Which plastic is transparent like glass but shatterproof?",
+      "o": [
+        "Polypropylene",
+        "ABS",
+        "Acrylic (Lucite/Plexiglass)",
+        "Cellulosic"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "Acrylic, including Lucite and Plexiglass, combines glass-like transparency with shatter resistance.",
+      "fig": "f3"
+    },
+    {
+      "s": "Wood Composites",
+      "q": "How is particle board described?",
+      "o": [
+        "Thin veneers glued into cross-laminated plies",
+        "Small wood chips and base materials pressed and glued together",
+        "Vegetable fibers pressed without adhesive",
+        "Gypsum encased in paper"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Particle board is made by pressing and gluing small wood chips with base materials."
+    },
+    {
+      "s": "Philippine Timber Groups",
+      "q": "Which group has the greatest shock resistance and nail-holding power?",
+      "o": [
+        "Group 4",
+        "Group 1",
+        "Group 3",
+        "Group 2"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 48 — Philippine Timber Groups",
+      "n": "Group 4 has the greatest shock resistance and nail-holding power among the four groups."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "Which sheet sizes occur for chipboard?",
+      "o": [
+        "3 ft x 3 ft, 3 ft x 6 ft, and 6 ft x 8 ft",
+        "4 ft x 10 ft only",
+        "2 ft x 4 ft, 4 ft x 4 ft, and 4 ft x 8 ft",
+        "2 ft x 8 ft only"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Chipboard is available in 2 x 4, 4 x 4, and 4 x 8 foot sheet sizes."
+    },
+    {
+      "s": "Group 3 Philippine Timber",
+      "q": "Which use best matches Apitong?",
+      "o": [
+        "House posts and frames, flooring when well-seasoned, and piling",
+        "Only fine interior veneers",
+        "Only skylights",
+        "Only wall paint"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 48 — Group 3 Philippine Timber",
+      "n": "Apitong is a Group 3 Philippine timber associated with house posts and frames, flooring when well-seasoned, and piling."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "Which plywood thicknesses are suitable for drawers and shelves?",
+      "o": [
+        "3/4 in and 1 in",
+        "3/8 in (10 mm) and 1/2 in (12 mm)",
+        "1/8 in and 3/16 in",
+        "1/4 in and 1 in"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Drawers and shelves can use 3/8-inch (10 mm) or 1/2-inch (12 mm) plywood."
+    },
+    {
+      "s": "Philippine Timber Groups",
+      "q": "Which timber group has nail-holding power and beam strength similar to Group 2 but less tendency to split under impact?",
+      "o": [
+        "Group 1",
+        "Group 3",
+        "Group 4",
+        "Group 2"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 48 — Philippine Timber Groups",
+      "n": "Group 3 is comparable to Group 2 in holding power and beam strength but is less prone to splitting and shattering under impact."
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which timber is suitable for posts where strength and durability are important?",
+      "o": [
+        "Molave",
+        "Almon",
+        "Nato",
+        "White Lauan"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "Molave is among the timbers suited to durable structural posts. Nato appears in the low-grade beam/rafter group instead."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "What sheet size is associated with particle board?",
+      "o": [
+        "4 ft x 4 ft",
+        "4 ft x 8 ft",
+        "3 ft x 6 ft",
+        "2 ft x 4 ft"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Particle board is associated with the standard 4 ft x 8 ft sheet size.",
+      "fig": "f1"
+    },
+    {
+      "s": "Wood Composites",
+      "q": "Which set contains chipboard subtypes?",
+      "o": [
+        "Ordinary, form, marine, and fancy",
+        "Plain, patterned, veneered, and high-density",
+        "Acoustic, marine, and ordinary",
+        "Standard, panel, and tempered"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Chipboard can be plain, patterned, veneered, or high-density."
+    },
+    {
+      "s": "Philippine Timber Groups",
+      "q": "Which timber group is more inclined to split and may have grain that deflects nails?",
+      "o": [
+        "Group 4",
+        "Group 3",
+        "Group 2",
+        "Group 1"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 48 — Philippine Timber Groups",
+      "n": "Group 2 gains nail-holding power but is more prone to splitting and nail deflection."
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "Which thermoplastic is characterized by good heat and chemical resistance and is used for chairs and pipes?",
+      "o": [
+        "Acrylic",
+        "Cellulosic",
+        "Polystyrene",
+        "Polypropylene"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "Polypropylene combines heat and chemical resistance with common uses such as chairs and pipes."
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "Which uses are associated with polystyrene?",
+      "o": [
+        "Window sills and flooring",
+        "Bridge ties and piles",
+        "Pond lining and vapor barriers only",
+        "Colorful brittle wall tiles, thermal-insulator foam, and paint for concrete"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "Polystyrene is associated with decorative wall tiles, thermal-insulating foam, and concrete paint."
+    },
+    {
+      "s": "Group 3 Philippine Timber",
+      "q": "Which use best matches Palosapis?",
+      "o": [
+        "Only roof insulation",
+        "Only piles and wharves",
+        "Only plumbing fixtures",
+        "Interior finish, veneers, plywood, and general construction"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 48 — Group 3 Philippine Timber",
+      "n": "Palosapis is a Group 3 Philippine timber associated with interior finish, veneers, plywood, and general construction."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "How is chipboard made?",
+      "o": [
+        "By bonding wood particles with an adhesive such as phenolic resin or urea glue",
+        "By gluing thin veneers into plies",
+        "By melting cellulose into clear sheets",
+        "By pressing gypsum between paper facings"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Chipboard is made from wood particles bonded with an adhesive such as phenolic resin or urea glue."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "Which names refer to hardboard products?",
+      "o": [
+        "Lucite, Plexiglass, and ABS",
+        "Narra, Yakal, and Ipil",
+        "Masonite, Lawanit, and Lawanex",
+        "Boral, Elephant, and Marine"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Masonite, Lawanit, and Lawanex are names associated with hardboard."
+    },
+    {
+      "s": "Group 3 Philippine Timber",
+      "q": "Which use best matches Red Lauan?",
+      "o": [
+        "Mahogany-like uses including furniture, veneer, sash, and millwork",
+        "Only water tanks",
+        "Only floor drains",
+        "Only bridge ties"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 48 — Group 3 Philippine Timber",
+      "n": "Red Lauan is a Group 3 Philippine timber associated with mahogany-like uses including furniture, veneer, sash, and millwork."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "Which plywood thickness is suitable for cabinet and closet doors and subfloors?",
+      "o": [
+        "1/8 in (3 mm)",
+        "3/16 in (4.5 mm)",
+        "1/4 in (6 mm)",
+        "1 in (25 mm)"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "One-inch (25 mm) plywood is suited to heavier cabinet/closet doors and subfloor applications."
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "Which plastic is noted for abrasion, chemical, and heat resistance?",
+      "o": [
+        "Acrylic",
+        "Polystyrene",
+        "Cellulosic",
+        "Fluoroplastic"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "Fluoroplastic is distinguished by resistance to abrasion, chemicals, and heat."
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which set is appropriate for siding?",
+      "o": [
+        "Akle, dao, bansalagin, aranga",
+        "Yakal, narig, guijo, ipil",
+        "Red narra, betis, guijo, ipil",
+        "Narra, molave, supa, tanguile"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "These four species are identified for siding work."
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which timber is appropriate for strong, durable posts and also appears in the high-grade beam group?",
+      "o": [
+        "Nato",
+        "Yakal",
+        "White Lauan",
+        "Almon"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "Yakal serves both durable post work and high-grade beams, girders, rafters, and chords."
+    },
+    {
+      "s": "Group 2 Philippine Timber",
+      "q": "Which use best matches Kalamansanai?",
+      "o": [
+        "Safety glazing only",
+        "Bridge piles only",
+        "Flooring and window sills",
+        "Ceiling boards only"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 48 — Group 2 Philippine Timber",
+      "n": "Kalamansanai is a Group 2 Philippine timber associated with flooring and window sills."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "What sheet size is associated with gypsum board?",
+      "o": [
+        "3 ft x 6 ft",
+        "4 ft x 4 ft",
+        "2 ft x 4 ft",
+        "4 ft x 8 ft"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Gypsum board is commonly supplied in 4 ft x 8 ft sheets.",
+      "fig": "f1"
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which wood is suitable for sash-work panels?",
+      "o": [
+        "Palosapis",
+        "Amugis",
+        "Akle",
+        "Apitong"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "Akle is among the panel choices for sash work, along with narra, tanguile, and tindalo."
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which grade group for beams, girders, rafters, and chords includes yakal, narig, guijo, ipil, malugai, and apitong?",
+      "o": [
+        "Finish grade",
+        "High grade",
+        "Low grade",
+        "Medium grade"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "Those species form the high-grade set for major linear structural members."
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "Which applications are associated with PVC?",
+      "o": [
+        "Resilient floor tile, films, pipes, lacquers, adhesives, and safety glass",
+        "Pond lining only",
+        "Plywood veneers only",
+        "High-grade timber framing"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "PVC serves a broad set of architectural and industrial uses including floor tile, films, pipes, coatings, adhesives, and safety-glass applications."
+    },
+    {
+      "s": "Philippine Timber Groups",
+      "q": "Which timber group is characterized as soft woods that are relatively free from splitting when nailed?",
+      "o": [
+        "Group 2",
+        "Group 3",
+        "Group 4",
+        "Group 1"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 48 — Philippine Timber Groups",
+      "n": "Group 1 consists of soft woods noted for resisting splitting during nailing."
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "Which uses are associated with cellulosic plastic?",
+      "o": [
+        "Piling, beams, and rafters",
+        "Pipes and chairs only",
+        "Paints, lacquers, and transparent sheeting",
+        "Flooring timber only"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "Cellulosic plastics are used for paints, lacquers, and transparent sheeting."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "Hardboard such as Masonite, Lawanit, or Lawanex is produced by what process?",
+      "o": [
+        "Casting gypsum between paper liners",
+        "Bonding only large timber strips",
+        "Reducing wood chips to fibers and pressing them under heat and pressure",
+        "Gluing thin veneers crosswise"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Hardboard is made by refining wood chips into fibers and consolidating them with heat and pressure."
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which wood is among the additional choices when a post bears on a concrete pier?",
+      "o": [
+        "White Lauan",
+        "Guijo",
+        "Nato",
+        "Almon"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "Guijo is added to the durable-post choices when posts are supported on concrete piers.",
+      "fig": "f4"
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "Which plastic is appropriate for pond or lagoon lining and water-vapor barriers?",
+      "o": [
+        "Polystyrene",
+        "Nylon",
+        "Flexible polyethylene",
+        "ABS"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "The flexible low-density polyethylene type is suited to pond or lagoon lining and water-vapor barrier work.",
+      "fig": "f5"
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "A designer needs a flexible water-vapor barrier membrane. Which material best fits?",
+      "o": [
+        "Rigid PVC",
+        "Polystyrene tile",
+        "White Lauan",
+        "Low-density polyethylene"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "Low-density polyethylene is flexible and is used as a water-vapor barrier.",
+      "fig": "f5"
+    },
+    {
+      "s": "Wood Composites",
+      "q": "What thickness corresponds to tempered hardboard?",
+      "o": [
+        "1/8 in (3 mm)",
+        "1/2 in (12 mm)",
+        "3/16 in (4.5 mm)",
+        "1/4 in (6 mm)"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Tempered hardboard is 1/4 inch (6 mm) thick."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "Which subtype is associated with medium-density fiberboard?",
+      "o": [
+        "Marine",
+        "Tempered",
+        "Acoustic",
+        "Fancy"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "An acoustic subtype is associated with medium-density fiberboard."
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which group contains the yellowish flooring choices?",
+      "o": [
+        "Narra, molave, supa",
+        "Supa, yakal, saplungan",
+        "Red narra, ipil, betis",
+        "Guijo, tanguile, red lauan"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "Supa, yakal, and saplungan form the yellowish flooring group."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "What is plywood?",
+      "o": [
+        "A gypsum core wrapped in paper",
+        "Thin plies or veneers glued together",
+        "Small chips pressed with base materials only",
+        "Wood chips reduced to fibers and hot-pressed"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Plywood is built by bonding multiple thin wood plies or veneers into a sheet.",
+      "img": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc5MDAnIGhlaWdodD0nNDIwJyB2aWV3Qm94PScwIDAgOTAwIDQyMCc+PHN0eWxlPi50e2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2ZpbGw6IzExMTtmb250LXNpemU6MjJweH0uc217Zm9udC1zaXplOjE4cHh9LnRpdGxle2ZvbnQtc2l6ZToyN3B4O2ZvbnQtd2VpZ2h0OmJvbGR9LmxpbmV7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfS50aGlue3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO2ZpbGw6bm9uZX0uZmlsbHtmaWxsOiNkZmU5ZmY7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Lndvb2R7ZmlsbDojZWZlMmNiO3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyfS5lYXJ0aHtmaWxsOiNlNGRjY2Y7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9LmRpbXtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjttYXJrZXItc3RhcnQ6dXJsKCNhKTttYXJrZXItZW5kOnVybCgjYSl9LmFycntzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MzttYXJrZXItZW5kOnVybCgjYik7ZmlsbDpub25lfTwvc3R5bGU+PGRlZnM+PG1hcmtlciBpZD0iYSIgbWFya2VyV2lkdGg9IjEwIiBtYXJrZXJIZWlnaHQ9IjEwIiByZWZYPSI1IiByZWZZPSI1IiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0xMCw1IEwwLDAgTDAsMTAgeiIgZmlsbD0iIzExMSIvPjwvbWFya2VyPjxtYXJrZXIgaWQ9ImIiIG1hcmtlcldpZHRoPSIxMiIgbWFya2VySGVpZ2h0PSIxMiIgcmVmWD0iOSIgcmVmWT0iNiIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMiw2IEwwLDEyIHoiIGZpbGw9IiMxMTEiLz48L21hcmtlcj48L2RlZnM+Cjx0ZXh0IHg9JzQwJyB5PSc0MicgY2xhc3M9J3QgdGl0bGUnPlBseXdvb2QgQ3Jvc3MtU2VjdGlvbjwvdGV4dD4KPHJlY3QgeD0nMTcwJyB5PScxMTAnIHdpZHRoPSc1NjAnIGhlaWdodD0nMzgnIGNsYXNzPSd3b29kJy8+PHJlY3QgeD0nMTcwJyB5PScxNDgnIHdpZHRoPSc1NjAnIGhlaWdodD0nMzgnIGNsYXNzPSdmaWxsJy8+PHJlY3QgeD0nMTcwJyB5PScxODYnIHdpZHRoPSc1NjAnIGhlaWdodD0nMzgnIGNsYXNzPSd3b29kJy8+PHJlY3QgeD0nMTcwJyB5PScyMjQnIHdpZHRoPSc1NjAnIGhlaWdodD0nMzgnIGNsYXNzPSdmaWxsJy8+PHJlY3QgeD0nMTcwJyB5PScyNjInIHdpZHRoPSc1NjAnIGhlaWdodD0nMzgnIGNsYXNzPSd3b29kJy8+Cjx0ZXh0IHg9JzI1MCcgeT0nMzQ1JyBjbGFzcz0ndCc+VGhpbiBwbGllcyAvIHZlbmVlcnMgYm9uZGVkIHRvZ2V0aGVyPC90ZXh0Pgo8L3N2Zz4="
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "Which thermoplastic is tough and heat-resistant with low shrinkage and good stability?",
+      "o": [
+        "ABS",
+        "Acrylic",
+        "Cellulosic",
+        "Polystyrene"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "ABS is characterized by toughness, heat resistance, low shrinkage, and dimensional stability."
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which set is suited to low-grade beams, girders, rafters, and chords?",
+      "o": [
+        "Apitong, amugis, pagatpat, lamog",
+        "Molave, tindalo, yakal, guijo",
+        "Tanguile, nato, red and white lauan",
+        "Yakal, narig, guijo, ipil"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "The low-grade structural-member group consists of tanguile, nato, and red/white lauan."
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "Which plastic is based on cellulose acetate or butyrate?",
+      "o": [
+        "Polycarbonate",
+        "PVC",
+        "ABS",
+        "Cellulosic"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "Cellulosic plastic is based on cellulose acetate or butyrate."
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which wood becomes an added option for posts on concrete piers?",
+      "o": [
+        "Narra",
+        "Red Lauan",
+        "Makaapis",
+        "Tindalo"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "Makaapis is one of the additional species suitable for posts on concrete piers.",
+      "fig": "f4"
+    },
+    {
+      "s": "Philippine Timber Groups",
+      "q": "Which group is classified as true hardwoods?",
+      "o": [
+        "Group 1",
+        "Group 2",
+        "Group 4",
+        "Group 3"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 48 — Philippine Timber Groups",
+      "n": "Group 4 is the true-hardwood group."
+    },
+    {
+      "s": "Group 1 Philippine Timber",
+      "q": "Which use best matches Yakal?",
+      "o": [
+        "Only cabinets",
+        "Only wall tiles",
+        "Only veneers",
+        "Posts, flooring, beams, joists, ties, and bridges"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 48 — Group 1 Philippine Timber",
+      "n": "Yakal is a Group 1 Philippine timber suited to posts, flooring, beams, joists, ties, and bridges."
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "Which products are associated with polycarbonate?",
+      "o": [
+        "Only floor joists",
+        "Only wood veneers",
+        "Only plumbing valves",
+        "Injection-molded plates, rods, and gears"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "Polycarbonate is used in injection-molded forms such as plates, rods, and gears and is also associated with skylight applications."
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "How is Ziegler polyethylene characterized?",
+      "o": [
+        "Brittle and highly transparent only",
+        "Elastic and oil-resistant",
+        "Strong, tough, and rigid",
+        "White, amorphous, and heat-resistant"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "Ziegler polyethylene is characterized as strong, tough, and rigid."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "Which thicknesses are associated with medium-density fiberboard?",
+      "o": [
+        "1/8 in only",
+        "1 in and 2 in only",
+        "1/4 in, 1/2 in, and 3/4 in",
+        "3/16 in and 5/16 in only"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Medium-density fiberboard is given in 1/4-, 1/2-, and 3/4-inch thicknesses."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "What thickness range is associated with chipboard?",
+      "o": [
+        "1/16 in to 1/8 in",
+        "1/4 in to 1 in (6 mm to 25 mm)",
+        "2 in to 4 in",
+        "1 1/4 in to 2 in"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Chipboard spans approximately 1/4 inch to 1 inch, equivalent to about 6 to 25 mm."
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "Which thermoplastic combines excellent transparency, rigidity, and moldability?",
+      "o": [
+        "Polypropylene",
+        "Fluoroplastic",
+        "Polystyrene",
+        "Nylon"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "Polystyrene is characterized by excellent transparency, rigidity, and moldability."
+    },
+    {
+      "s": "Group 1 Philippine Timber",
+      "q": "Which use best matches Supa?",
+      "o": [
+        "High-grade construction and furniture, including flooring, paneling, and door/window casings",
+        "Only roofing membranes",
+        "Only piles",
+        "Only electrical conduit"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 48 — Group 1 Philippine Timber",
+      "n": "Supa is a Group 1 Philippine timber suited to high-grade construction and furniture, including flooring, paneling, and door/window casings."
+    },
+    {
+      "s": "Group 1 Philippine Timber",
+      "q": "Which use best matches Aranga?",
+      "o": [
+        "Only cabinet doors",
+        "High-grade construction such as posts, beams, rafters, flooring, and interior building work",
+        "Only decorative veneers",
+        "Only wharf piles"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 48 — Group 1 Philippine Timber",
+      "n": "Aranga is a Group 1 Philippine timber suited to high-grade construction such as posts, beams, rafters, flooring, and interior building work."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "A 25 kg fiber-cement-board batch follows the 20% cellulose-fiber proportion. How much cellulose fiber is required?",
+      "o": [
+        "18 kg",
+        "2 kg",
+        "5 kg",
+        "8 kg"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Cellulose fibers form 20% of the mixture, so a 25 kg batch needs 5 kg.",
+      "fig": "f2"
+    },
+    {
+      "s": "Wood Composites",
+      "q": "Medium-density fiberboard is made primarily from what?",
+      "o": [
+        "Portland cement and steel fibers",
+        "A gypsum core wrapped in paper",
+        "Vegetable fibers pressed into sheets",
+        "Thin wood veneers glued in layers"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Medium-density fiberboard uses vegetable fibers pressed into sheet form."
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which timber is suitable for stairs?",
+      "o": [
+        "Tindalo",
+        "Dao",
+        "Akle",
+        "Palosapis"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "Tindalo is included among the stair timbers with molave, yakal, guijo, and apitong."
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "Which plastic is strong, elastic, resistant to oil damage, and can be colored?",
+      "o": [
+        "PVC",
+        "Acrylic",
+        "Nylon",
+        "Polystyrene"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "Nylon is strong and elastic, resists oil-related damage, and can be colored."
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "Which use is associated with acrylic?",
+      "o": [
+        "Skylights and sky domes",
+        "Cabinet timber",
+        "Pond or lagoon lining only",
+        "Chairs and pipes only"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "Acrylic is used for skylights, sky domes, safety glazing, paints, adhesives, finish hardware, and lighting fixtures.",
+      "fig": "f3"
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "Which plastic is a suitable choice for a transparent skylight where shatter resistance is desired?",
+      "o": [
+        "Nylon",
+        "Cellulosic",
+        "Acrylic",
+        "ABS"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "Acrylic combines transparency with shatter resistance and is directly associated with skylights and sky domes.",
+      "fig": "f3"
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "What is a common use of Ziegler polyethylene?",
+      "o": [
+        "Only gypsum board facing",
+        "Household and industrial applications",
+        "Only high-grade furniture",
+        "Only window sills"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "Ziegler polyethylene is associated with general household and industrial applications."
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which wood is suitable for sash-work frames?",
+      "o": [
+        "Akle",
+        "Guijo",
+        "White Lauan",
+        "Almon"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "Guijo is among the sash-frame choices together with narra, ipil, yakal, and apitong."
+    },
+    {
+      "s": "Group 4 Philippine Timber",
+      "q": "What is a common use of White Lauan?",
+      "o": [
+        "Roof membranes only",
+        "Bridge piles only",
+        "Water supply piping",
+        "Furniture, cabinet work, and interior finish"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 48 — Group 4 Philippine Timber",
+      "n": "White Lauan is a Group 4 timber used for furniture, cabinets, and interior finishing."
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which wood is suitable for siding?",
+      "o": [
+        "Molave",
+        "Makaapis",
+        "Almon",
+        "Narig"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "Molave is among the siding choices together with narra, supa, and tanguile."
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "Which plastic is amorphous, rigid, solvent-resistant, and flame-resistant?",
+      "o": [
+        "Nylon",
+        "Polypropylene",
+        "Polyvinyl chloride (PVC)",
+        "Acrylic"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "PVC is characterized as amorphous and rigid with resistance to solvents and flame."
+    },
+    {
+      "s": "Group 1 Philippine Timber",
+      "q": "Which use best matches Ipil?",
+      "o": [
+        "Acoustic board only",
+        "House construction",
+        "Pond lining only",
+        "Safety glass only"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 48 — Group 1 Philippine Timber",
+      "n": "Ipil is a Group 1 Philippine timber suited to house construction."
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "A stair member requires one of the suggested species. Which choice fits?",
+      "o": [
+        "Apitong",
+        "Akle",
+        "Almon",
+        "Red Lauan"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "Apitong is one of the suggested stair timbers and is also useful in structural framing."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "Which plywood subtypes are associated with 4 ft x 8 ft sheets?",
+      "o": [
+        "Ordinary and marine plywood",
+        "Form and fancy plywood",
+        "Marine and fancy plywood",
+        "Ordinary and form plywood"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Marine and fancy plywood are associated with the 4 ft x 8 ft sheet size.",
+      "fig": "f1"
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which wood belongs to the medium-grade beam, girder, rafter, and chord group?",
+      "o": [
+        "Tindalo",
+        "Nato",
+        "Amugis",
+        "Yakal"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "Amugis is grouped with apitong, pagatpat, and lamog for medium-grade structural members."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "What is the common sheet size for hardboard?",
+      "o": [
+        "3 ft x 6 ft",
+        "4 ft x 8 ft",
+        "2 ft x 4 ft",
+        "4 ft x 4 ft"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Hardboard is commonly supplied in 4 ft x 8 ft sheets.",
+      "fig": "f1"
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which wood is an added post-on-concrete-pier choice and also appears in structural framing uses elsewhere?",
+      "o": [
+        "Akle",
+        "Apitong",
+        "Almon",
+        "White Lauan"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "Apitong is added for posts on concrete piers and is also used for house posts, frames, and other structural work.",
+      "fig": "f4"
+    },
+    {
+      "s": "Philippine Timber Groups",
+      "q": "Which group contains harder soft woods with greater nail-holding power than Group 1?",
+      "o": [
+        "Group 1",
+        "Group 3",
+        "Group 4",
+        "Group 2"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 48 — Philippine Timber Groups",
+      "n": "Group 2 woods are harder soft woods and hold nails better than Group 1."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "What is the composition of fiber-cement board?",
+      "o": [
+        "50% Portland cement, 25% cellulose, 25% lime",
+        "72% cellulose, 20% Portland cement, 8% gypsum",
+        "80% gypsum, 10% wood fiber, 10% calcium carbonate",
+        "72% Portland cement, 20% cellulose fibers, 8% calcium carbonate"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Fiber-cement board combines Portland cement as the main component with cellulose fibers and calcium carbonate.",
+      "fig": "f2"
+    },
+    {
+      "s": "Group 2 Philippine Timber",
+      "q": "Which use best matches Guijo?",
+      "o": [
+        "Only decorative veneer",
+        "Thermal foam and wall tiles",
+        "Construction frames such as posts, beams, trusses, studs, and furniture",
+        "Pond liners and vapor barriers"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 48 — Group 2 Philippine Timber",
+      "n": "Guijo is a Group 2 Philippine timber associated with construction frames such as posts, beams, trusses, studs, and furniture."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "What is the area of one 3 ft x 6 ft plywood sheet?",
+      "o": [
+        "32 sq ft",
+        "24 sq ft",
+        "18 sq ft",
+        "12 sq ft"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "A 3-by-6-foot sheet covers 18 square feet before cutting or waste."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "Which brands are associated with gypsum board?",
+      "o": [
+        "Boral and Elephant",
+        "Lucite and Plexiglass",
+        "Masonite and Lawanit",
+        "Ziegler and ABS"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Boral and Elephant are gypsum-board brands associated with this material category."
+    },
+    {
+      "s": "Group 1 Philippine Timber",
+      "q": "Which use best matches Dao?",
+      "o": [
+        "Roof membranes only",
+        "Veneer, flooring, paneling, and furniture/cabinet work",
+        "Gas piping only",
+        "Piling only"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 48 — Group 1 Philippine Timber",
+      "n": "Dao is a Group 1 Philippine timber suited to veneer, flooring, paneling, and furniture/cabinet work."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "What thickness corresponds to standard hardboard?",
+      "o": [
+        "3/16 in (4.5 mm)",
+        "1/2 in (12 mm)",
+        "1/4 in (6 mm)",
+        "1/8 in (3 mm)"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Standard hardboard is 1/8 inch (3 mm) thick."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "What is the core material of gypsum board?",
+      "o": [
+        "Gypsum enclosed in paper",
+        "Wood particles in resin",
+        "Vegetable fibers only",
+        "Portland cement and cellulose only"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Gypsum board consists of a gypsum core faced with paper."
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which of these is an additional post-on-concrete-pier timber?",
+      "o": [
+        "Akle",
+        "Pagatpat",
+        "Tanguile",
+        "Narra"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "Pagatpat is among the additional woods for posts resting on concrete piers.",
+      "fig": "f4"
+    },
+    {
+      "s": "Wood Composites",
+      "q": "A 10 kg fiber-cement-board mixture follows the 72% Portland cement proportion. How much Portland cement does it contain?",
+      "o": [
+        "2.0 kg",
+        "7.2 kg",
+        "8.0 kg",
+        "0.8 kg"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Portland cement forms 72% of the mixture, so a 10 kg batch contains 7.2 kg of Portland cement.",
+      "fig": "f2"
+    },
+    {
+      "s": "Wood Composites",
+      "q": "Which plywood thickness is suitable for drawers, shelves, and cabinet doors?",
+      "o": [
+        "3/16 in (4.5 mm)",
+        "3/4 in (19 mm)",
+        "1/4 in (6 mm)",
+        "1/8 in (3 mm)"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Three-quarter-inch (19 mm) plywood is suitable for drawers, shelves, and cabinet doors."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "Which plywood subtypes are associated with the smaller 3 ft x 6 ft sheet size?",
+      "o": [
+        "Fancy and form plywood",
+        "Marine and fancy plywood",
+        "Marine and ordinary plywood",
+        "Ordinary and form plywood"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Ordinary and form plywood are associated with the 3 ft x 6 ft sheet size in this material schedule."
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "Which plastic is white, amorphous, tough, and has good heat resistance?",
+      "o": [
+        "Polystyrene",
+        "Polycarbonate",
+        "Polyethylene",
+        "Cellulosic"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "Polycarbonate is characterized as white, amorphous, tough, and heat-resistant."
+    },
+    {
+      "s": "Group 2 Philippine Timber",
+      "q": "Which use best matches Narig?",
+      "o": [
+        "Only acoustic panels",
+        "Only light decorative trim",
+        "Only vapor barriers",
+        "Uses comparable to yakal or molave"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 48 — Group 2 Philippine Timber",
+      "n": "Narig is a Group 2 Philippine timber associated with uses comparable to yakal or molave."
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which timber is included among reddish flooring woods?",
+      "o": [
+        "Yakal",
+        "Saplungan",
+        "Supa",
+        "Red narra"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "Red narra is grouped with the reddish flooring timbers."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "What sheet size is associated with fiber-cement board?",
+      "o": [
+        "4 ft x 8 ft",
+        "3 ft x 6 ft",
+        "4 ft x 4 ft",
+        "2 ft x 4 ft"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Fiber-cement board is supplied in a 4 ft x 8 ft sheet size.",
+      "fig": "f1"
+    },
+    {
+      "s": "Group 1 Philippine Timber",
+      "q": "Which use best matches Tindalo?",
+      "o": [
+        "Only soil pipes",
+        "High-grade construction including floors, doors, windows, sills, and cabinets",
+        "Only temporary bracing",
+        "Only ceiling insulation"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 48 — Group 1 Philippine Timber",
+      "n": "Tindalo is a Group 1 Philippine timber suited to high-grade construction including floors, doors, windows, sills, and cabinets."
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "Which plastic is commonly known by names such as Lucite and Plexiglass?",
+      "o": [
+        "Nylon",
+        "Polystyrene",
+        "PVC",
+        "Acrylic"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "Lucite and Plexiglass are common names associated with acrylic."
+    },
+    {
+      "s": "Group 1 Philippine Timber",
+      "q": "Which use best matches Akle?",
+      "o": [
+        "High-grade furniture and interior work, including paneling",
+        "Pond lining and vapor barriers",
+        "Low-grade rafters only",
+        "Piling and house posts"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 48 — Group 1 Philippine Timber",
+      "n": "Akle is a Group 1 Philippine timber suited to high-grade furniture and interior work, including paneling."
+    },
+    {
+      "s": "Group 3 Philippine Timber",
+      "q": "Which use best matches Tanguile?",
+      "o": [
+        "Only gas lines",
+        "Only fireproof insulation",
+        "Cabinet timber and uses comparable to mahogany",
+        "Only concrete formwork"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 48 — Group 3 Philippine Timber",
+      "n": "Tanguile is a Group 3 Philippine timber associated with cabinet timber and uses comparable to mahogany."
+    },
+    {
+      "s": "Group 1 Philippine Timber",
+      "q": "Which use best matches Bansalagin?",
+      "o": [
+        "Wharf and bridge construction, ships, and posts",
+        "Ceiling boards only",
+        "Window glass framing only",
+        "Thermal insulation only"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 48 — Group 1 Philippine Timber",
+      "n": "Bansalagin is a Group 1 Philippine timber suited to wharf and bridge construction, ships, and posts."
+    },
+    {
+      "s": "Group 1 Philippine Timber",
+      "q": "Which use best matches Narra?",
+      "o": [
+        "Sewer piping only",
+        "Piling only",
+        "Concrete formwork only",
+        "High-grade furniture and fixtures and paneling"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 48 — Group 1 Philippine Timber",
+      "n": "Narra is a Group 1 Philippine timber suited to high-grade furniture and fixtures and paneling."
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which timber belongs among the woods for strong, durable posts?",
+      "o": [
+        "White Lauan",
+        "Ipil",
+        "Lamog",
+        "Nato"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "Ipil is suitable for strength- and durability-critical posts and is also widely used in house construction."
+    },
+    {
+      "s": "Philippine Timber Groups",
+      "q": "Which group consists of medium-density hardwoods?",
+      "o": [
+        "Group 3",
+        "Group 1",
+        "Group 4",
+        "Group 2"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 48 — Philippine Timber Groups",
+      "n": "Group 3 is the medium-density hardwood category."
+    },
+    {
+      "s": "Philippine Timber Groups",
+      "q": "Which group is the heaviest and hardest but is very susceptible to splitting?",
+      "o": [
+        "Group 4",
+        "Group 2",
+        "Group 1",
+        "Group 3"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 48 — Philippine Timber Groups",
+      "n": "Group 4 combines the greatest hardness and weight with a high susceptibility to splitting."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "Which plywood thickness is suited to double walls and ceilings?",
+      "o": [
+        "3/4 in (19 mm)",
+        "3/16 in (4.5 mm)",
+        "1 in (25 mm)",
+        "1/4 in (6 mm)"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "A 3/16-inch (4.5 mm) plywood sheet is suited to double walls and ceilings."
+    },
+    {
+      "s": "Group 2 Philippine Timber",
+      "q": "Which use best matches Manggachapui?",
+      "o": [
+        "Only floor tiles",
+        "General high-grade construction such as doors, window frames, joists, and beams",
+        "Only paint binders",
+        "Only particle board cores"
+      ],
+      "c": 1,
+      "ref": "Building Technology Tables, p. 48 — Group 2 Philippine Timber",
+      "n": "Manggachapui is a Group 2 Philippine timber associated with general high-grade construction such as doors, window frames, joists, and beams."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "What is the area of one 4 ft x 8 ft sheet?",
+      "o": [
+        "48 sq ft",
+        "12 sq ft",
+        "32 sq ft",
+        "24 sq ft"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "A 4-by-8-foot sheet covers 32 square feet before cutting or waste.",
+      "fig": "f1"
+    },
+    {
+      "s": "Suggested Woods for Construction",
+      "q": "Which timber is included among yellowish flooring woods?",
+      "o": [
+        "Betis",
+        "Red narra",
+        "Red Lauan",
+        "Supa"
+      ],
+      "c": 3,
+      "ref": "Building Technology Tables, p. 48 — Suggested Woods for Construction",
+      "n": "Supa belongs to the yellowish flooring group together with yakal and saplungan."
+    },
+    {
+      "s": "Wood Composites",
+      "q": "What thickness corresponds to panel hardboard?",
+      "o": [
+        "3/16 in (4.5 mm)",
+        "1/8 in (3 mm)",
+        "1/4 in (6 mm)",
+        "3/4 in (19 mm)"
+      ],
+      "c": 0,
+      "ref": "Building Technology Tables, p. 49 — Wood Composites",
+      "n": "Panel hardboard is 3/16 inch (4.5 mm) thick."
+    },
+    {
+      "s": "Thermoplastics",
+      "q": "How is the Improved Chemical Industries type of polyethylene characterized?",
+      "o": [
+        "Strong, elastic, and oil-resistant",
+        "High-density, brittle, and rigid",
+        "High-pressure, low-density, flexible, and tough",
+        "White, amorphous, and heat-resistant"
+      ],
+      "c": 2,
+      "ref": "Building Technology Tables, p. 49 — Plastic: Thermoplastics",
+      "n": "This polyethylene type is characterized by high-pressure manufacture, low density, flexibility, and toughness."
+    }
+  ]
+}
