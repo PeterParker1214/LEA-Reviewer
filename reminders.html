@@ -46,39 +46,42 @@
     color:var(--ink); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
   .icon-btn-44 svg{ width:19px; height:19px; }
   .page-title{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; }
-  .section-label{ font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:22px 0 8px; }
+  /* Printed section heads, same voice as the booklet's page heads. */
+  .section-label{ font-family:var(--font-body); font-size:11px; font-weight:600; text-transform:uppercase;
+    letter-spacing:.08em; color:var(--muted); margin:22px 0 10px; border-bottom:1px solid var(--line); padding-bottom:6px; }
 
-  .panel{ background:var(--bg-panel); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
-  .toggle-row{ display:flex; align-items:center; gap:12px; padding:13px 16px; border-bottom:1px solid var(--line); cursor:pointer; }
+  .toggle-row{ display:flex; align-items:center; gap:12px; padding:13px 0; border-bottom:1px dotted var(--line); cursor:pointer; }
   .toggle-row:last-child{ border-bottom:none; }
   .toggle-row .tr-text{ flex:1; }
   .tr-label{ font-weight:600; font-size:14px; }
   .tr-sub{ font-size:12.5px; color:var(--muted); margin-top:2px; line-height:1.45; }
   .switch{ position:relative; width:42px; height:24px; flex-shrink:0; }
   .switch input{ position:absolute; opacity:0; width:100%; height:100%; margin:0; cursor:pointer; }
-  .switch .track{ position:absolute; inset:0; border-radius:12px; background:var(--bg-panel-2); border:1px solid var(--line); transition:background .15s; }
+  .switch .track{ position:absolute; inset:0; border-radius:2px; background:var(--bg-panel-2); border:1px solid var(--line); transition:background .15s; }
   .switch .knob{ position:absolute; top:3px; left:3px; width:18px; height:18px; border-radius:50%; background:var(--muted); transition:transform .15s, background .15s; }
   .switch input:checked ~ .track{ background:color-mix(in srgb, var(--gold) 22%, transparent); border-color:var(--gold); }
   .switch input:checked ~ .knob{ transform:translateX(18px); background:var(--gold-bright); }
   .switch input:focus-visible ~ .track{ outline:2px solid var(--gold-bright); outline-offset:2px; }
 
-  .now-card{ background:var(--bg-panel); border:1px solid var(--line); border-left:3px solid var(--violet); border-radius:10px; padding:12px 16px; margin-bottom:8px; }
-  .now-title{ font-weight:600; font-size:14px; margin-bottom:3px; }
-  .now-body{ font-size:13px; line-height:1.5; opacity:.9; }
-  .now-open{ display:inline-block; margin-top:6px; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; color:var(--gold-bright); text-decoration:none; background:none; border:none; padding:0; cursor:pointer; }
+  .now-card{ margin-bottom:10px; }
+  .now-title{ font-family:var(--font-display); font-weight:700; font-size:17px; text-transform:uppercase; line-height:1.15; margin-bottom:5px; }
+  .now-body{ font-size:13.5px; line-height:1.55; opacity:.9; }
+  .now-open{ display:inline-block; margin-top:8px; font-family:var(--font-body); font-size:11px; font-weight:600;
+    letter-spacing:.08em; text-transform:uppercase; color:var(--gold-bright); text-decoration:none;
+    background:none; border:none; padding:0; cursor:pointer; }
   .state-note{ font-family:var(--font-mono); font-size:12px; color:var(--muted); text-align:center; padding:22px 0; }
   .foot{ font-size:12px; color:var(--muted); line-height:1.6; margin-top:18px; }
   .foot a{ color:var(--gold-bright); }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=62">
-<script src="assets/theme.js?v=62" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=62"></script>
-<script src="assets/offline.js?v=62"></script>
-<script src="assets/presence.js?v=62"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=63">
+<script src="assets/theme.js?v=63" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=63"></script>
+<script src="assets/offline.js?v=63"></script>
+<script src="assets/presence.js?v=63"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
-<script src="assets/module-progress.js?v=62"></script>
-<script src="assets/countdown.js?v=62"></script>
-<script src="assets/reminders.js?v=62"></script>
+<script src="assets/module-progress.js?v=63"></script>
+<script src="assets/countdown.js?v=63"></script>
+<script src="assets/reminders.js?v=63"></script>
 </head>
 <body>
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
@@ -91,13 +94,13 @@
   </div>
 
   <div class="section-label">Right now</div>
-  <div id="nowList"><div class="state-note">Checking…</div></div>
+  <div id="nowList" class="lea-stagger"><div class="state-note">Checking…</div></div>
 
   <div class="section-label">Remind me about</div>
-  <div class="panel" id="toggles"></div>
+  <div class="bp-card" id="toggles"></div>
 
   <div class="section-label">Phone notifications</div>
-  <div class="panel" style="padding:14px 16px;">
+  <div class="bp-card">
     <div class="tr-label">Get notified when the site is closed</div>
     <div class="tr-sub" id="pushNote">Messages from the admin and replies to your reports, sent to this device.</div>
     <button type="button" class="now-open" id="pushBtn" style="margin-top:10px;font-size:12px;" hidden></button>
@@ -147,7 +150,7 @@ async function renderNow(){
   const el = document.getElementById('nowList');
   if(!items.length){ el.innerHTML = '<div class="state-note">Nothing to remind you about right now.</div>'; return; }
   el.innerHTML = items.map((i, n) =>
-    '<div class="now-card"><div class="now-title">' + esc(i.title) + '</div><div class="now-body">' + esc(i.body) + '</div>' +
+    '<div class="bp-card now-card"><div class="now-title">' + esc(i.title) + '</div><div class="now-body">' + esc(i.body) + '</div>' +
       (i.href ? '<a class="now-open" href="' + esc(i.href) + '">Open →</a>' : '') +
       (i.action === 'refresh' ? '<button class="now-open" type="button" data-refresh>Refresh now →</button>' : '') +
     '</div>'
@@ -202,7 +205,7 @@ function label12(t){
 }
 function paintSchedule(){
   document.getElementById('timeList').innerHTML = schedule.times.length
-    ? schedule.times.map(t => '<span class="now-open" style="margin:0;border:1px solid var(--line);border-radius:999px;padding:5px 10px;">' + label12(t) +
+    ? schedule.times.map(t => '<span class="now-open" style="margin:0;border:1px solid var(--line);padding:5px 10px;">' + label12(t) +
         ' <button type="button" data-remove="' + t + '" aria-label="Remove ' + label12(t) + '" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;padding:0 0 0 4px;">×</button></span>').join('')
     : '<span class="tr-sub">No study times yet.</span>';
   document.getElementById('streakPush').checked = schedule.streak;

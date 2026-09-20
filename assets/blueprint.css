@@ -88,6 +88,9 @@
    ============================================================ */
 
 .bp-card {
+  position: relative;
+  border: 1px solid var(--line);
+  margin-bottom: 16px;
   padding: 16px 16px 18px 32px;
   background:
     radial-gradient(circle 3.5px at 11px 30px, var(--bg-deep) 3.5px, transparent 3.6px),
@@ -229,9 +232,8 @@
   text-transform: uppercase;
 }
 
-/* Card-like rows on Search and Saved. */
+/* Card-like rows on Search. */
 .result-card { padding: 13px 14px; }
-.saved-card  { padding: 14px; }
 
 /* ============================================================
    CHROME — rounded, from the scale

@@ -53,7 +53,7 @@
   .page-title{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; }
 
   .search{
-    width:100%; background:var(--bg-panel); border:1px solid var(--line); border-radius:10px;
+    width:100%; background:var(--bg-panel); border:1px solid var(--line); border-radius:0;
     color:var(--ink); font-size:14px; padding:12px 14px; margin-bottom:10px;
   }
   .search:focus{ outline:none; border-color:var(--gold); }
@@ -61,53 +61,59 @@
   /* Categories wrap rather than stretch: four labels of uneven length. */
   .chips{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
   .chip{
-    font-family:var(--font-mono); font-size:11px; letter-spacing:.03em; text-transform:uppercase;
+    font-family:var(--font-body); font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
     background:var(--bg-panel); border:1px solid var(--line); color:var(--muted);
-    padding:8px 12px; border-radius:999px; cursor:pointer;
+    padding:8px 12px; border-radius:0; cursor:pointer;
   }
   .chip.active{ border-color:var(--gold); color:var(--gold-bright); background:color-mix(in srgb, var(--gold) 8%, transparent); }
 
   .drill-all-btn{
     display:block; width:100%; background:var(--gold); color:#1a1206; border:none; border-radius:10px;
     padding:14px; text-align:center; font-family:var(--font-display); font-weight:700; font-size:15px;
-    text-transform:uppercase; margin-bottom:16px; cursor:pointer;
+    text-transform:uppercase; margin-bottom:16px; cursor:pointer; border-radius:0;
   }
 
-  .mn-card{ background:var(--bg-panel); border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:10px; padding:14px 16px; margin-bottom:12px; scroll-margin-top:16px; }
+  /* A mnemonic is a booklet page too: printed head, the hook in ink, the
+     list on ruled lines. */
+  .mn-card{ margin-bottom:12px; scroll-margin-top:16px; }
   .mn-card.flash{ border-color:var(--gold); }
-  .mn-cat{ font-family:var(--font-mono); font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.03em; margin-bottom:6px; }
-  .mn-title{ font-family:var(--font-display); font-weight:700; font-size:18px; text-transform:uppercase; line-height:1.15; margin-bottom:8px; }
-  .mn-hook{ font-family:var(--font-hand); font-size:16px; line-height:1.5; margin-bottom:12px;
-    background:color-mix(in srgb, var(--blue) 6%, transparent); border-left:2px solid color-mix(in srgb, var(--gold) 50%, transparent); padding:9px 11px; }
+  .mn-title{ font-family:var(--font-display); font-weight:700; font-size:19px; text-transform:uppercase; line-height:1.15; margin-bottom:8px; }
+  .mn-hook{ font-family:var(--font-hand); font-size:16.5px; line-height:1.55; margin:0 0 12px;
+    background:none; border:0; padding:0; }
   .mn-hook b, .mn-items b.hl{ color:var(--gold-bright); font-weight:700; }
 
-  .mn-items{ list-style:none; margin:0 0 12px; padding:0; border-top:1px dashed var(--line); }
-  .mn-items li{ display:grid; grid-template-columns:minmax(58px, max-content) 1fr; gap:12px; padding:8px 0; border-bottom:1px dashed var(--line); font-size:13.5px; line-height:1.5; }
-  .mn-items .k{ font-family:var(--font-mono); font-size:12px; color:var(--blue-bright); padding-top:1px; }
+  .mn-items{ list-style:none; margin:0 0 12px; padding:0; border-top:1px solid var(--line); }
+  .mn-items li{ display:grid; grid-template-columns:minmax(26px, max-content) 1fr; gap:14px; padding:9px 0;
+    border-bottom:1px dotted var(--line); font-size:13.5px; line-height:1.5; }
+  .mn-items li:last-child{ border-bottom:0; }
+  .mn-items .k{ font-family:var(--font-body); font-weight:700; font-size:12.5px; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--blue-bright); padding-top:2px; }
   .mn-items li.hid{ cursor:pointer; }
-  .mn-items li.hid .v{ color:var(--muted); font-family:var(--font-mono); font-size:11px; letter-spacing:.03em; text-transform:uppercase;
-    border:1px dashed var(--line); border-radius:6px; padding:3px 8px; justify-self:start; }
+  .mn-items li.hid .v{ color:var(--muted); font-family:var(--font-body); font-size:10.5px; font-weight:600;
+    letter-spacing:.08em; text-transform:uppercase;
+    border:1px dashed var(--line); border-radius:0; padding:3px 8px; justify-self:start; }
   .mn-items li.hid:hover .v{ border-color:var(--gold); color:var(--gold-bright); }
-  .mn-note{ font-size:12.5px; color:var(--muted); line-height:1.55; margin:-4px 0 12px; }
+  .mn-note{ font-size:12.5px; color:var(--muted); line-height:1.55; margin:-2px 0 12px; }
   .mn-note b{ color:var(--ink); }
 
-  .mn-actions{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  .mn-actions{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; border-top:1px dotted var(--line); padding-top:10px; }
   .mn-actions button{
-    font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.03em;
-    background:var(--bg-panel-2); border:1px solid var(--line); color:var(--ink); padding:7px 12px; border-radius:8px; cursor:pointer;
+    font-family:var(--font-body); font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+    background:none; border:1px solid var(--line); color:var(--ink); padding:8px 12px; border-radius:0; cursor:pointer;
   }
-  .mn-actions button:hover{ border-color:var(--gold); }
+  .mn-actions button:hover{ border-color:var(--gold); color:var(--gold-bright); }
   .mn-actions button.on{ border-color:var(--gold); color:var(--gold-bright); }
-  .mn-count{ margin-left:auto; font-family:var(--font-mono); font-size:11px; color:var(--muted); }
+  .mn-count{ margin-left:auto; font-family:var(--font-body); font-size:11px; font-weight:600;
+    letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
   .mn-count.done{ color:var(--good); }
 
   .state-note{ font-family:var(--font-mono); font-size:12px; color:var(--muted); text-align:center; padding:40px 0; }
   .credits{ font-size:12px; color:var(--muted); line-height:1.6; text-align:center; margin-top:24px; }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=62">
-<script src="assets/theme.js?v=62" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=62"></script>
-<script src="assets/offline.js?v=62"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=63">
+<script src="assets/theme.js?v=63" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=63"></script>
+<script src="assets/offline.js?v=63"></script>
 </head>
 <body>
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
@@ -193,8 +199,11 @@ function cardHtml(m){
   }
 
   return (
-    '<div class="mn-card" id="' + escapeHtml(m.id) + '" data-id="' + escapeHtml(m.id) + '">' +
-      '<div class="mn-cat">' + escapeHtml(CATS[m.cat] || '') + '</div>' +
+    '<div class="bp-card mn-card" id="' + escapeHtml(m.id) + '" data-id="' + escapeHtml(m.id) + '">' +
+      '<div class="page-head">' +
+        '<span class="section-tag">' + escapeHtml(CATS[m.cat] || '') + '</span>' +
+        '<span class="page-no">' + m.items.length + '<small> lines</small></span>' +
+      '</div>' +
       '<div class="mn-title">' + escapeHtml(m.title) + '</div>' +
       '<div class="mn-hook">' + markHtml(m.hook) + '</div>' +
       body +

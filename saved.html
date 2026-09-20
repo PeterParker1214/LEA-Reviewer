@@ -62,25 +62,30 @@
   .tab-btn.active{ border-color:var(--gold); color:var(--gold-bright); background:color-mix(in srgb, var(--gold) 8%, transparent); }
 
   .drill-all-btn{
-    display:block; width:100%; background:var(--gold); color:#1a1206; border:none; border-radius:10px;
+    display:block; width:100%; background:var(--gold); color:#1a1206; border:none; border-radius:0;
     padding:14px; text-align:center; font-family:var(--font-display); font-weight:700; font-size:15px;
     text-transform:uppercase; text-decoration:none; margin-bottom:16px; cursor:pointer;
   }
 
-  .saved-card{ background:var(--bg-panel); border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:10px; padding:14px 16px; margin-bottom:12px; }
-  .saved-card .sc-loc{ font-family:var(--font-mono); font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.03em; margin-bottom:6px; }
-  .saved-card .sc-text{ font-size:14px; line-height:1.5; margin-bottom:10px; }
-  /* Frame 3f: a blue-tinted quote block with a gold left rule, not a gold fill. */
-  .saved-card .sc-note{ font-family:var(--font-hand); font-size:14px; line-height:1.5; color:var(--ink);
-    background:color-mix(in srgb, var(--blue) 6%, transparent); border-left:2px solid color-mix(in srgb, var(--gold) 50%, transparent); border-radius:0;
-    padding:9px 11px; margin-bottom:10px; }
-  .saved-card .sc-note-edit{ width:100%; min-height:60px; background:var(--bg-panel-2); border:1px solid var(--line); border-radius:8px; color:var(--ink); font-family:var(--font-hand); font-size:15px; padding:10px 12px; margin-bottom:8px; resize:vertical; }
-  .sc-actions{ display:flex; gap:8px; flex-wrap:wrap; }
-  .sc-actions button{
-    font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.03em;
-    background:var(--bg-panel-2); border:1px solid var(--line); color:var(--ink); padding:7px 12px; border-radius:8px; cursor:pointer;
+  /* A saved question is a page torn from the booklet: the same punched
+     margin and printed head as the quiz, with your note in the margin. */
+  .saved-card{ margin-bottom:12px; }
+  .saved-card .sc-text{ font-size:14.5px; line-height:1.6; margin-bottom:12px; }
+  .saved-card .sc-note{ font-family:var(--font-hand); font-size:14.5px; line-height:1.55; color:var(--ink);
+    background:none; border:0; border-top:1px solid var(--line); border-radius:0; padding:12px 0 0; margin:0 0 12px; }
+  .saved-card .sc-note::before{
+    content:"Note"; display:block; margin-bottom:5px;
+    font-family:var(--font-body); font-size:10px; font-weight:600; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--muted);
   }
-  .sc-actions button:hover{ border-color:var(--gold); }
+  .saved-card .sc-note-edit{ width:100%; min-height:60px; background:var(--bg-panel-2); border:1px solid var(--line);
+    border-radius:0; color:var(--ink); font-family:var(--font-hand); font-size:15px; padding:10px 12px; margin-bottom:10px; resize:vertical; }
+  .sc-actions{ display:flex; gap:8px; flex-wrap:wrap; border-top:1px dotted var(--line); padding-top:10px; }
+  .sc-actions button{
+    font-family:var(--font-body); font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+    background:none; border:1px solid var(--line); color:var(--ink); padding:8px 12px; border-radius:0; cursor:pointer;
+  }
+  .sc-actions button:hover{ border-color:var(--gold); color:var(--gold-bright); }
   .sc-actions button.unflag{ color:var(--bad); }
 
   .state-note{ font-family:var(--font-mono); font-size:12px; color:var(--muted); text-align:center; padding:40px 0; }
@@ -91,13 +96,13 @@
     border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
   }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=62">
-<script src="assets/theme.js?v=62" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=62"></script>
-<script src="assets/quiz-source.js?v=62"></script>
-<script src="assets/module-progress.js?v=62"></script>
-<script src="assets/offline.js?v=62"></script>
-<script src="assets/presence.js?v=62"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=63">
+<script src="assets/theme.js?v=63" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=63"></script>
+<script src="assets/quiz-source.js?v=63"></script>
+<script src="assets/module-progress.js?v=63"></script>
+<script src="assets/offline.js?v=63"></script>
+<script src="assets/presence.js?v=63"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
 </head>
 <body>
@@ -192,8 +197,11 @@ async function render(){
   area.innerHTML = drillBtn + list.map((c, i) => {
     const cardId = 'card' + i;
     return (
-      '<div class="saved-card" data-subject="' + escapeHtml(c.subjectId) + '" data-module="' + escapeHtml(c.moduleId) + '" data-qidx="' + c.qIndex + '">' +
-        '<div class="sc-loc">' + subjectLabel(c.subjectName) + ' · ' + escapeHtml(c.moduleTitle) + ' · Q' + (c.qIndex + 1) + '</div>' +
+      '<div class="bp-card saved-card" data-subject="' + escapeHtml(c.subjectId) + '" data-module="' + escapeHtml(c.moduleId) + '" data-qidx="' + c.qIndex + '">' +
+                  '<div class="page-head">' +
+            '<span class="section-tag">' + subjectLabel(c.subjectName) + ' · ' + escapeHtml(c.moduleTitle) + '</span>' +
+            '<span class="page-no">Q ' + (c.qIndex + 1) + '</span>' +
+          '</div>' +
         '<div class="sc-text">' + escapeHtml(c.text) + '</div>' +
         (c.note ? '<div class="sc-note" id="' + cardId + '-view">' + escapeHtml(c.note) + '</div>' : '') +
         '<textarea class="sc-note-edit hidden" id="' + cardId + '-edit" placeholder="Your note…">' + escapeHtml(c.note) + '</textarea>' +
