@@ -336,7 +336,30 @@
 <script>
 const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
-const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// The session's home is whichever "keep me signed in" chose on the main site:
+// localStorage when ticked, sessionStorage when not. index.html and
+// admin-mfa.html both read it this way. This page used the library default —
+// localStorage only — so a session kept in sessionStorage left it reading an
+// older token that MFA verification never touched, and every save came back
+// "MFA required" no matter how many times the code was entered.
+const adminAuthStorage = {
+  getItem(k){
+    try{ return localStorage.getItem(k) ?? sessionStorage.getItem(k); }catch(e){ return null; }
+  },
+  setItem(k, v){
+    try{
+      const sessionOnly = sessionStorage.getItem(k) !== null && localStorage.getItem(k) === null;
+      if(sessionOnly){ sessionStorage.setItem(k, v); localStorage.removeItem(k); }
+      else { localStorage.setItem(k, v); sessionStorage.removeItem(k); }
+    }catch(e){}
+  },
+  removeItem(k){
+    try{ localStorage.removeItem(k); sessionStorage.removeItem(k); }catch(e){}
+  }
+};
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  auth: { storage: adminAuthStorage, persistSession: true, autoRefreshToken: true }
+});
 
 const GITHUB_OWNER = 'peterparker1214';
 const GITHUB_REPO = 'LEA-Reviewer';
@@ -728,6 +751,20 @@ async function init(){
     showGate('This account is not an admin, so this page is not available to you.', true);
     return;
   }
+
+  // Saving needs an aal2 session, and a fresh sign-in is always aal1 — so say
+  // so on arrival rather than halfway through writing a batch of files.
+  try{
+    const { data: aal } = await sb.auth.mfa.getAuthenticatorAssuranceLevel();
+    if(aal && aal.currentLevel !== 'aal2'){
+      showGate('This sign-in still needs the extra verification before anything ' +
+        'can be saved. <a href="admin-mfa.html">Verify now</a>, then come back — ' +
+        'the page picks it up on its own.');
+      // Nothing to poll and nothing to click here: the verification happens on
+      // the other page, and coming back reloads this one.
+      return;
+    }
+  }catch(e){ /* the save itself still refuses if this could not be read */ }
 
   gateEl.style.display = 'none';
   panelEl.style.display = 'block';
