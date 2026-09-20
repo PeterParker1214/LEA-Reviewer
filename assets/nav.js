@@ -24,8 +24,9 @@
 
   // One quiet UI click for the app chrome. Quiz pages keep their dedicated
   // answer/next sounds, so the global click is intentionally skipped there.
-  var LEA_UI_CLICK_SOURCE = 'https://assets.mixkit.co/active_storage/sfx/1109/1109-preview.mp3';
-  var leaUiClick = null;
+  var LEA_UI_CLICK_SOURCE = 'https://assets.mixkit.co/active_storage/sfx/3124/3124-preview.mp3';
+  var leaUiClicks = [];
+  var leaUiCursor = 0;
   function playUiClick(){
     if(pageName(location.href) === 'run') return;
     if(window.LEAAudio && typeof window.LEAAudio.playSfx === 'function'){
@@ -42,15 +43,26 @@
       }
     }catch(e){}
     if(muted || !isFinite(volume)) return;
-    if(!leaUiClick){
-      leaUiClick = new Audio(LEA_UI_CLICK_SOURCE);
-      leaUiClick.preload = 'auto';
-    }
     try{
-      leaUiClick.pause();
-      leaUiClick.currentTime = 0;
-      leaUiClick.volume = volume;
-      var p = leaUiClick.play();
+      var clip = null;
+      for(var i=0;i<leaUiClicks.length;i++){
+        var idx = (leaUiCursor + i) % leaUiClicks.length;
+        var candidate = leaUiClicks[idx];
+        if(candidate.paused || candidate.ended){ clip = candidate; leaUiCursor = (idx + 1) % leaUiClicks.length; break; }
+      }
+      if(!clip && leaUiClicks.length < 6){
+        clip = new Audio(LEA_UI_CLICK_SOURCE);
+        clip.preload = 'auto';
+        leaUiClicks.push(clip);
+        leaUiCursor = leaUiClicks.length ? leaUiCursor : 0;
+      }
+      if(!clip){
+        clip = new Audio(LEA_UI_CLICK_SOURCE);
+        clip.preload = 'auto';
+      }
+      clip.volume = volume;
+      if(clip.paused || clip.ended) clip.currentTime = 0;
+      var p = clip.play();
       if(p && p.catch) p.catch(function(){});
     }catch(e){}
   }
