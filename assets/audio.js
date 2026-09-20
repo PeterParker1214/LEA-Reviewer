@@ -8,6 +8,7 @@
   var audio = {};
   var unlocked = false;
   var SOURCES = {
+    click: 'https://assets.mixkit.co/active_storage/sfx/1109/1109-preview.mp3',
     wrong: 'https://assets.mixkit.co/active_storage/sfx/2256/2256.wav',
     correct: 'https://assets.mixkit.co/active_storage/sfx/600/600.wav',
     next: 'https://assets.mixkit.co/active_storage/sfx/217/217-preview.mp3',
