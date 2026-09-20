@@ -305,7 +305,7 @@
   /* SFX is an Account preference, so it uses the same quiet row rhythm as the links above. */
   .account-sfx{ padding:12px 0 14px; border-bottom:1px solid var(--line); }
   .account-sfx-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
-  .account-sfx .ar-sub{ margin-top:5px; }
+  .account-sfx .ar-label{ font-family:var(--font-display); font-weight:800; font-size:18px; line-height:1; text-transform:uppercase; }
   .sfx-mute{ min-width:0; min-height:44px; margin:-4px -4px -4px 0; padding:4px; border:0; background:none; color:var(--muted); cursor:pointer;
     font-family:var(--font-body); font-weight:600; font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
   .sfx-mute:hover{ color:var(--gold-bright); }
@@ -1178,7 +1178,7 @@ function openAccountSheet(){
     '<a class="account-row" href="mnemonics.html"><div><div class="ar-label">Mnemonics</div><div class="ar-sub">Memory hooks from the LEA Discord</div></div><span>→</span></a>' +
     '<a class="account-row" href="reminders.html"><div><div class="ar-label">Reminders</div></div><span>→</span></a>' +
     '<div class="account-sfx">' +
-      '<div class="account-sfx-head"><div><div class="ar-label">Sound effects</div><div class="ar-sub" id="sfxRowSub"></div></div>' +
+      '<div class="account-sfx-head"><div><div class="ar-label">Sound effects</div></div>' +
       '<button class="sfx-mute" id="sfxMuteBtn" type="button" aria-pressed="false">Mute</button></div>' +
       '<label class="sfx-volume"><span class="sr-only">SFX volume</span><input id="sfxVolume" type="range" min="0" max="100" step="1" value="70" aria-label="SFX volume"><output id="sfxVolumeOut">70%</output></label>' +
     '</div>' +
@@ -1219,7 +1219,6 @@ function openAccountSheet(){
   const sfxVolume = document.getElementById('sfxVolume');
   const sfxVolumeOut = document.getElementById('sfxVolumeOut');
   const sfxMuteBtn = document.getElementById('sfxMuteBtn');
-  const sfxRowSub = document.getElementById('sfxRowSub');
   const paintSfx = () => {
     const now = window.LEAAudio ? LEAAudio.getSettings() : { sfx: 0.70, muted: false };
     const pct = Math.round(now.sfx * 100);
@@ -1228,7 +1227,6 @@ function openAccountSheet(){
     sfxVolumeOut.textContent = pct + '%';
     sfxMuteBtn.setAttribute('aria-pressed', String(now.muted));
     sfxMuteBtn.textContent = now.muted ? 'Unmute' : 'Mute';
-    sfxRowSub.textContent = now.muted ? 'Muted · volume ' + pct + '%' : 'Volume ' + pct + '%';
     sfxVolume.setAttribute('aria-valuetext', pct + '%');
   };
   paintSfx();
