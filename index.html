@@ -22,6 +22,7 @@
 <script src="assets/offline.js?v=63"></script>
 <script src="assets/quiz-resume.js?v=63"></script>
 <script src="assets/notifications.js?v=63"></script>
+<script src="assets/audio.js?v=4"></script>
 <script src="assets/reminders.js?v=63"></script>
 <script src="assets/whats-new.js?v=63"></script>
 <script>
@@ -301,6 +302,17 @@
   .theme-sw .ts-chips{ display:flex; height:26px; border-radius:0; overflow:hidden; }
   .theme-sw .ts-chips i{ flex:1; }
   .theme-sw[aria-checked="true"]{ border-color:var(--gold-bright); box-shadow:0 0 0 1px var(--gold-bright); }
+  /* SFX controls live inside Account so the Home and quiz surfaces stay unchanged. */
+  .account-sfx{ padding:12px 0 14px; border-bottom:1px solid var(--line); }
+  .account-sfx-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .account-sfx .ar-sub{ margin-top:5px; }
+  .sfx-mute{ min-width:88px; min-height:40px; padding:0 12px; border:1px solid var(--line); background:var(--bg-panel-2); color:var(--muted); cursor:pointer;
+    font-family:var(--font-body); font-weight:600; font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+  .sfx-mute:hover{ border-color:var(--gold-bright); color:var(--gold-bright); }
+  .sfx-mute[aria-pressed="true"]{ border-color:var(--bad); color:var(--bad); }
+  .sfx-volume{ display:flex; align-items:center; gap:10px; margin-top:12px; }
+  .sfx-volume input{ flex:1; min-width:0; accent-color:var(--gold); cursor:pointer; }
+  .sfx-volume output{ width:42px; flex-shrink:0; text-align:right; font-family:var(--font-mono); font-size:11px; color:var(--muted); }
 
   /* ===== 7a desktop (1120px) =====
      On phones the three column wrappers are display:contents, so they take no
@@ -1161,6 +1173,11 @@ function openAccountSheet(){
     '<a class="account-row" href="saved.html"><div><div class="ar-label">Saved</div><div class="ar-sub">' + counts.flagged + ' flagged · ' + counts.notes + ' note' + (counts.notes === 1 ? '' : 's') + '</div></div><span>→</span></a>' +
     '<a class="account-row" href="mnemonics.html"><div><div class="ar-label">Mnemonics</div><div class="ar-sub">Memory hooks from the LEA Discord</div></div><span>→</span></a>' +
     '<a class="account-row" href="reminders.html"><div><div class="ar-label">Reminders</div></div><span>→</span></a>' +
+    '<div class="account-sfx">' +
+      '<div class="account-sfx-head"><div><div class="ar-label">Sound effects</div><div class="ar-sub" id="sfxRowSub"></div></div>' +
+      '<button class="sfx-mute" id="sfxMuteBtn" type="button" aria-pressed="false">Mute</button></div>' +
+      '<label class="sfx-volume"><span class="sr-only">SFX volume</span><input id="sfxVolume" type="range" min="0" max="100" step="1" value="70" aria-label="SFX volume"><output id="sfxVolumeOut">70%</output></label>' +
+    '</div>' +
     // Appearance lives here rather than as a floating button over the page:
     // it's a set-once preference, and the sheet is where the other ones are.
     '<div class="account-row theme-row"><div><div class="ar-label">Theme</div><div class="ar-sub" id="themeRowSub"></div></div></div>' +
@@ -1192,6 +1209,33 @@ function openAccountSheet(){
     root.classList.add('lea-theme-vt');
     document.startViewTransition(apply).finished.finally(() => root.classList.remove('lea-theme-vt'));
   }));
+
+  // SFX preferences use the shared audio engine, so a setting made here is
+  // the same setting the quiz uses and persists across pages.
+  const sfxVolume = document.getElementById('sfxVolume');
+  const sfxVolumeOut = document.getElementById('sfxVolumeOut');
+  const sfxMuteBtn = document.getElementById('sfxMuteBtn');
+  const sfxRowSub = document.getElementById('sfxRowSub');
+  const paintSfx = () => {
+    const now = window.LEAAudio ? LEAAudio.getSettings() : { sfx: 0.70, muted: false };
+    const pct = Math.round(now.sfx * 100);
+    sfxVolume.value = String(pct);
+    sfxVolumeOut.value = pct + '%';
+    sfxVolumeOut.textContent = pct + '%';
+    sfxMuteBtn.setAttribute('aria-pressed', String(now.muted));
+    sfxMuteBtn.textContent = now.muted ? 'Unmute' : 'Mute';
+    sfxRowSub.textContent = now.muted ? 'Muted · volume ' + pct + '%' : 'Volume ' + pct + '%';
+    sfxVolume.setAttribute('aria-valuetext', pct + '%');
+  };
+  paintSfx();
+  sfxVolume.addEventListener('input', () => {
+    if(window.LEAAudio) LEAAudio.setSfxVolume(Number(sfxVolume.value) / 100);
+    paintSfx();
+  });
+  sfxMuteBtn.addEventListener('click', () => {
+    if(window.LEAAudio) LEAAudio.toggleMute();
+    paintSfx();
+  });
 
   document.getElementById('logoutBtn2').addEventListener('click', async () => { await sb.auth.signOut(); });
   document.getElementById('accountSheetOverlay').classList.remove('hidden');
