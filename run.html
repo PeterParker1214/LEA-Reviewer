@@ -1295,6 +1295,7 @@ function submitExam(auto){
   if(examSubmitted) return;
   examSubmitted = true;
   stopExamTimer();
+  LEAAudio.playSfx('complete');
   answersLog = answersLog.map((a, p) => {
     const item = QUESTIONS[order[p]];
     const selected = (a && a.selected != null) ? a.selected : -1;
@@ -2978,6 +2979,7 @@ function submitMultiExam(auto){
   if(examSubmitted) return;
   examSubmitted = true;
   stopExamTimer();
+  LEAAudio.playSfx('complete');
   answersLog = answersLog.map((a, p) => {
     const cell = pool[p];
     const selected = (a && a.selected != null) ? a.selected : -1;
