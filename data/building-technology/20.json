@@ -1,0 +1,319 @@
+{
+  "figures": {
+    "f1": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgOTAwIDQ4MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPkJyaWNrIEJvbmQgUGF0dGVybnM8L3RleHQ+CjxyZWN0IHg9IjcwIiB5PSI5NSIgd2lkdGg9IjM1MCIgaGVpZ2h0PSIyODAiIGNsYXNzPSJmIi8+Cjx0ZXh0IHg9IjE3MCIgeT0iMTMwIiBjbGFzcz0icyBiIj5QYXR0ZXJuIEE8L3RleHQ+CjxwYXRoIGQ9Ik05MCAxNzAgSDQwMCBNOTAgMjI1IEg0MDAgTTkwIDI4MCBINDAwIE05MCAzMzUgSDQwMCIgY2xhc3M9InRoIi8+CjxwYXRoIGQ9Ik0xNDUgMTcwIFYyMjUgTTI1NSAxNzAgVjIyNSBNMzY1IDE3MCBWMjI1IE0xMTAgMjI1IFYyODAgTTIyMCAyMjUgVjI4MCBNMzMwIDIyNSBWMjgwIE0xNDUgMjgwIFYzMzUgTTI1NSAyODAgVjMzNSBNMzY1IDI4MCBWMzM1IiBjbGFzcz0idGgiLz4KPHJlY3QgeD0iNDgwIiB5PSI5NSIgd2lkdGg9IjM1MCIgaGVpZ2h0PSIyODAiIGNsYXNzPSJmMiIvPgo8dGV4dCB4PSI1ODAiIHk9IjEzMCIgY2xhc3M9InMgYiI+UGF0dGVybiBCPC90ZXh0Pgo8cGF0aCBkPSJNNTAwIDE3MCBIODEwIE01MDAgMjI1IEg4MTAgTTUwMCAyODAgSDgxMCBNNTAwIDMzNSBIODEwIiBjbGFzcz0idGgiLz4KPHBhdGggZD0iTTU1NSAxNzAgVjIyNSBNNjY1IDE3MCBWMjI1IE03NzUgMTcwIFYyMjUgTTYxMCAyMjUgVjI4MCBNNzIwIDIyNSBWMjgwIE01NTUgMjgwIFYzMzUgTTY2NSAyODAgVjMzNSBNNzc1IDI4MCBWMzM1IiBjbGFzcz0idGgiLz4KPHRleHQgeD0iMTQ1IiB5PSI0MjAiIGNsYXNzPSJzIj5hbHRlcm5hdGluZyBoZWFkZXJzL3N0cmV0Y2hlcnMgd2l0aGluIGNvdXJzZTwvdGV4dD4KPHRleHQgeD0iNTM1IiB5PSI0MjAiIGNsYXNzPSJzIj5oZWFkZXIgY291cnNlIGFsdGVybmF0ZXMgd2l0aCBzdHJldGNoZXIgY291cnNlPC90ZXh0Pgo8L3N2Zz4=",
+    "f2": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgOTAwIDQ4MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPk1hc29ucnkgQXJjaCBVbml0czwvdGV4dD4KPHBhdGggZD0iTTE4MCAzNTAgUTQ1MCA4MCA3MjAgMzUwIiBjbGFzcz0ibCIvPgo8cGF0aCBkPSJNMjQ1IDM1MCBRNDUwIDE1MCA2NTUgMzUwIiBjbGFzcz0ibCIvPgo8cGF0aCBkPSJNMzAwIDMwMCBMMjY1IDI2NSBNMzYwIDIyNSBMMzMwIDE5MCBNNDUwIDE4NSBMNDUwIDEzNSBNNTQwIDIyNSBMNTcwIDE5MCBNNjAwIDMwMCBMNjM1IDI2NSIgY2xhc3M9InRoIi8+Cjx0ZXh0IHg9IjM5NSIgeT0iMTIwIiBjbGFzcz0icyI+d2VkZ2Utc2hhcGVkIHVuaXQ8L3RleHQ+Cjx0ZXh0IHg9IjM4NSIgeT0iNDIwIiBjbGFzcz0icyI+dW5pdHMgcmFkaWF0ZSB0b3dhcmQgdGhlIGFyY2ggY2VudGVyPC90ZXh0Pgo8L3N2Zz4=",
+    "f3": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgOTAwIDQ4MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPldhbGwgLyBTdHJ1Y3R1cmFsIEZyYW1lIFJlbGF0aW9uc2hpcDwvdGV4dD4KPHJlY3QgeD0iOTAiIHk9IjEwMCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIyNTAiIGNsYXNzPSJmIi8+Cjx0ZXh0IHg9IjEyMCIgeT0iMjMwIiBjbGFzcz0icyI+c3RydWN0dXJhbCBmcmFtZTwvdGV4dD4KPHJlY3QgeD0iMzMwIiB5PSIxMDAiIHdpZHRoPSI4NSIgaGVpZ2h0PSIyNTAiIGNsYXNzPSJmMiIvPgo8dGV4dCB4PSIzMzAiIHk9IjM5MCIgY2xhc3M9InMiPmFpciAvIG1vdmVtZW50IGdhcDwvdGV4dD4KPHJlY3QgeD0iNDgwIiB5PSIxMDAiIHdpZHRoPSIyNDAiIGhlaWdodD0iMjUwIiBjbGFzcz0iZiIvPgo8dGV4dCB4PSI1NTAiIHk9IjIzMCIgY2xhc3M9InMiPm1hc29ucnkgc2tpbjwvdGV4dD4KPGxpbmUgeDE9IjQxNSIgeTE9IjE0NSIgeDI9IjQ4MCIgeTI9IjE0NSIgY2xhc3M9InRoIi8+CjxsaW5lIHgxPSI0MTUiIHkxPSIyMjAiIHgyPSI0ODAiIHkyPSIyMjAiIGNsYXNzPSJ0aCIvPgo8bGluZSB4MT0iNDE1IiB5MT0iMjk1IiB4Mj0iNDgwIiB5Mj0iMjk1IiBjbGFzcz0idGgiLz4KPC9zdmc+"
+  },
+  "questions": [
+    {
+      "s": "Brickwork",
+      "q": "Which bond alternates headers and stretchers within each individual course?",
+      "o": [
+        "Running bond",
+        "Stack bond",
+        "English bond",
+        "Flemish bond"
+      ],
+      "c": 3,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
+      "n": "The source defines Flemish bond as alternating headers and stretchers in the same course.",
+      "fig": "f1"
+    },
+    {
+      "s": "Masonry Arches",
+      "q": "What geometric feature distinguishes a voussoir from an ordinary rectangular masonry unit?",
+      "o": [
+        "It has no bearing surfaces",
+        "Its faces remain parallel",
+        "It is always square in plan",
+        "Its side faces converge toward an arch center"
+      ],
+      "c": 3,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
+      "n": "The source describes the sides of a voussoir as converging toward one of the arch centers.",
+      "fig": "f2"
+    },
+    {
+      "s": "Brickwork",
+      "q": "In which bond are header and stretcher units intermingled in the same horizontal course?",
+      "o": [
+        "Running bond",
+        "Flemish bond",
+        "English bond",
+        "Stack bond"
+      ],
+      "c": 1,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
+      "n": "That mixed-header-and-stretcher arrangement is the defining feature of Flemish bond."
+    },
+    {
+      "s": "Plastering",
+      "q": "For 12 mm plaster in the source table, what sand factor is used?",
+      "o": [
+        "0.020 m³ per m²",
+        "0.012 m³ per m²",
+        "0.016 m³ per m²",
+        "0.008 m³ per m²"
+      ],
+      "c": 1,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 20–23 and Table 1.0 (substantially reworded)",
+      "n": "Table 1.0 gives 0.012 m³ of sand per square metre for 12 mm plaster."
+    },
+    {
+      "s": "Brick and Clay Products",
+      "q": "What manufacturing process extrudes plastic clay through a die and cuts the continuous section to length with wires before firing?",
+      "o": [
+        "Cold-form process",
+        "Soft-mud process",
+        "Stiff-mud process",
+        "Dry-press process"
+      ],
+      "c": 2,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
+      "n": "The source identifies this extrusion-and-wire-cut method as the stiff-mud process."
+    },
+    {
+      "s": "Plastering — Quantity Estimating",
+      "q": "What is the net exterior wall area to receive plaster after deducting all door and window openings?",
+      "o": [
+        "69.20 m²",
+        "96.25 m²",
+        "44.45 m²",
+        "71.50 m²"
+      ],
+      "c": 0,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 20–23 and Table 1.0 (substantially reworded)",
+      "n": "Gross wall area is 96.25 m². The total area of doors is 15.75 m² and windows total 11.30 m², leaving 69.20 m²."
+    },
+    {
+      "s": "Applied Masonry",
+      "q": "A facade uses a non-loadbearing brick skin attached back to a steel-stud wall. Which masonry system best describes it?",
+      "o": [
+        "Solid masonry",
+        "Grouted masonry",
+        "Hollow-unit bearing wall",
+        "Masonry veneer"
+      ],
+      "c": 3,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
+      "n": "The masonry acts as an exterior skin while the separate stud frame carries the structural role.",
+      "fig": "f3"
+    },
+    {
+      "s": "Plastering — Quantity Estimating",
+      "q": "If all openings are set back 0.10 m from the exterior face, how much additional plaster area is created by the reveals/returns?",
+      "o": [
+        "4.85 m²",
+        "6.61 m²",
+        "2.85 m²",
+        "3.36 m²"
+      ],
+      "c": 1,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 20–23 and Table 1.0 (substantially reworded)",
+      "n": "The reveal area is based on the exposed perimeter of each opening multiplied by the 0.10 m recess depth, with door bottoms excluded.",
+      "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgOTAwIDQ4MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPk9wZW5pbmcgUmV2ZWFsIC8gUmV0dXJuIEFyZWE8L3RleHQ+CjxyZWN0IHg9IjE0MCIgeT0iMTAwIiB3aWR0aD0iNjIwIiBoZWlnaHQ9IjI3MCIgY2xhc3M9ImYiLz4KPHJlY3QgeD0iMzI1IiB5PSIxNzUiIHdpZHRoPSIyNTAiIGhlaWdodD0iMTk1IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjIiLz4KPHBhdGggZD0iTTMyNSAxNzUgTDI4NSAxNDUgTDUzNSAxNDUgTDU3NSAxNzUiIGNsYXNzPSJ0aCIvPgo8cGF0aCBkPSJNMzI1IDE3NSBMMjg1IDE0NSBMMjg1IDM0MCBMMzI1IDM3MCIgY2xhc3M9InRoIi8+CjxwYXRoIGQ9Ik01NzUgMTc1IEw2MTUgMTQ1IEw2MTUgMzQwIEw1NzUgMzcwIiBjbGFzcz0idGgiLz4KPHRleHQgeD0iMzA1IiB5PSI0MjAiIGNsYXNzPSJzIj5SZXZlYWwgZGVwdGggPSAwLjEwIG08L3RleHQ+Cjwvc3ZnPg=="
+    },
+    {
+      "s": "Brickwork",
+      "q": "A brick is set on its long edge so that its short end appears at the wall face. What is this orientation called?",
+      "o": [
+        "Stretcher",
+        "Soldier",
+        "Rowlock",
+        "Header"
+      ],
+      "c": 2,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
+      "n": "The source identifies this long-edge placement with the end exposed as a rowlock.",
+      "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgOTAwIDQ4MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPkJyaWNrIE9yaWVudGF0aW9uPC90ZXh0Pgo8cmVjdCB4PSI5MCIgeT0iMTIwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjEyMCIgY2xhc3M9ImYiLz4KPHRleHQgeD0iMTY1IiB5PSIxOTAiIGNsYXNzPSJzIj5sb25nIGZhY2UgZXhwb3NlZDwvdGV4dD4KPHJlY3QgeD0iNTMwIiB5PSIxMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iMjQwIiBjbGFzcz0iZjIiLz4KPHRleHQgeD0iNDg1IiB5PSIzODUiIGNsYXNzPSJzIj5icmljayBvbiBsb25nIGVkZ2Ugd2l0aCBlbmQgZXhwb3NlZDwvdGV4dD4KPC9zdmc+"
+    },
+    {
+      "s": "Plastering — Quantity Estimating",
+      "q": "How much sand is required for the same 12 mm plaster work?",
+      "o": [
+        "0.5334 m³",
+        "0.8304 m³",
+        "1.1550 m³",
+        "0.8580 m³"
+      ],
+      "c": 1,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 20–23 and Table 1.0 (substantially reworded)",
+      "n": "The table gives 0.012 m³ of sand per square metre for 12 mm plaster. Multiplying by 69.20 m² gives 0.8304 m³."
+    },
+    {
+      "s": "Applied Masonry Arches",
+      "q": "A restoration detail requires replacement of one tapered masonry block from an arch ring. What is the correct technical term for that block?",
+      "o": [
+        "Intrados",
+        "Keystone",
+        "Voussoir",
+        "Springer"
+      ],
+      "c": 2,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
+      "n": "An individual wedge-shaped unit forming an arch is a voussoir.",
+      "fig": "f2"
+    },
+    {
+      "s": "Masonry Wall Systems",
+      "q": "Which masonry wall type is tied back to a separate structural frame, such as wood or metal studs?",
+      "o": [
+        "Hollow-unit masonry",
+        "Masonry veneer",
+        "Solid masonry",
+        "Grouted masonry"
+      ],
+      "c": 1,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
+      "n": "The source identifies masonry veneer as the masonry skin attached to a separate structural frame.",
+      "fig": "f3"
+    },
+    {
+      "s": "Applied Plastering",
+      "q": "A 40 m² wall is to receive 12 mm plaster. Using 0.012 m³ of sand per square metre, what sand volume is required?",
+      "o": [
+        "0.48 m³",
+        "0.32 m³",
+        "1.20 m³",
+        "0.64 m³"
+      ],
+      "c": 0,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 20–23 and Table 1.0 (substantially reworded)",
+      "n": "Forty square metres multiplied by 0.012 m³/m² gives 0.48 m³."
+    },
+    {
+      "s": "Applied Brickwork",
+      "q": "A wall pattern alternates a header, then a stretcher, repeatedly within the same course. Which bond should be specified?",
+      "o": [
+        "English bond",
+        "Stack bond",
+        "Running bond",
+        "Flemish bond"
+      ],
+      "c": 3,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
+      "n": "Flemish bond alternates header and stretcher units within each course.",
+      "fig": "f1"
+    },
+    {
+      "s": "Brickwork",
+      "q": "Which bond alternates whole header courses with whole stretcher courses?",
+      "o": [
+        "Running bond",
+        "Flemish bond",
+        "Common bond",
+        "English bond"
+      ],
+      "c": 3,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
+      "n": "The source defines English bond by alternating all-header and all-stretcher courses.",
+      "fig": "f1"
+    },
+    {
+      "s": "Applied Plastering",
+      "q": "A wall has 50 m² of net plaster area. Using the same 12 mm Class C factor of 0.108 bag/m², how many full cement bags should be ordered?",
+      "o": [
+        "6 bags",
+        "7 bags",
+        "5 bags",
+        "8 bags"
+      ],
+      "c": 0,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 20–23 and Table 1.0 (substantially reworded)",
+      "n": "50 × 0.108 = 5.4 bags, which must be rounded up to 6 full bags."
+    },
+    {
+      "s": "Plastering — Quantity Estimating",
+      "q": "Using the Class C, 12 mm plaster factor, how many cement bags should be allowed for the net wall area?",
+      "o": [
+        "11 bags",
+        "8 bags",
+        "5 bags",
+        "7 bags"
+      ],
+      "c": 1,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 20–23 and Table 1.0 (substantially reworded)",
+      "n": "69.20 m² × 0.108 bag/m² = 7.47 bags, so the estimate rounds up to 8 bags."
+    },
+    {
+      "s": "Plastering",
+      "q": "Which material quantity in the source estimating table changes directly with plaster thickness but not with mixture class?",
+      "o": [
+        "Cement bag factor",
+        "Sand",
+        "Brick count",
+        "Tie wire"
+      ],
+      "c": 1,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 20–23 and Table 1.0 (substantially reworded)",
+      "n": "In Table 1.0, the sand quantity is listed once for each thickness, while cement usage varies by both thickness and mixture class."
+    },
+    {
+      "s": "Masonry Wall Systems",
+      "q": "Why is a movement joint needed where exterior cladding is attached to a structural frame?",
+      "o": [
+        "To increase wall dead load",
+        "To eliminate all sealants",
+        "To allow the frame and enclosure to move independently",
+        "To force both layers to move as one"
+      ],
+      "c": 2,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
+      "n": "The source describes soft sealant joints that permit independent movement between the structural frame and exterior skin.",
+      "fig": "f3"
+    },
+    {
+      "s": "Earth Construction",
+      "q": "What is the term for a rammed-earth wall made by compacting a stiff mixture of clay, sand or aggregate, and water within forms?",
+      "o": [
+        "Adobe",
+        "Pisé",
+        "Terra cotta",
+        "Mudbrick"
+      ],
+      "c": 1,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
+      "n": "The source describes rammed earth compacted in forms as pisé."
+    },
+    {
+      "s": "Masonry Arches",
+      "q": "What is the name for each wedge-shaped masonry unit forming an arch or vault?",
+      "o": [
+        "Voussoir",
+        "Springer",
+        "Extrados",
+        "Keystone"
+      ],
+      "c": 0,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
+      "n": "The source defines the wedge-shaped arch units as voussoirs.",
+      "fig": "f2"
+    },
+    {
+      "s": "Masonry Wall Systems",
+      "q": "What is the source's term for the movement joint between a building frame and its cladding skin?",
+      "o": [
+        "Working construction joint",
+        "Surface divider joint",
+        "Structure/enclosure joint",
+        "Building separation joint"
+      ],
+      "c": 2,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
+      "n": "The source classifies the independent frame-to-cladding attachment as a structure/enclosure joint."
+    },
+    {
+      "s": "Plastering",
+      "q": "What do you call plaster made without sand aggregate?",
+      "o": [
+        "Rich plaster",
+        "Stucco",
+        "Neat plaster",
+        "Lean plaster"
+      ],
+      "c": 2,
+      "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
+      "n": "The source identifies sand-free plaster as neat plaster."
+    }
+  ]
+}
