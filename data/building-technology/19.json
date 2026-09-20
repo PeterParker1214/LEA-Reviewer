@@ -1,1 +1,342 @@
-[]
+{
+  "figures": {
+    "f1": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgOTAwIDQ4MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQouZGlte3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO21hcmtlci1zdGFydDp1cmwoI2EpO21hcmtlci1lbmQ6dXJsKCNhKX0KPC9zdHlsZT4KPGRlZnM+PG1hcmtlciBpZD0iYSIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgcmVmWD0iNCIgcmVmWT0iNCIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCw0IEw4LDAgTDgsOCBaIiBmaWxsPSIjMTExIi8+PC9tYXJrZXI+PC9kZWZzPgoKPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5TbGFiIFJlaW5mb3JjZW1lbnQgQ29uY2VwdHM8L3RleHQ+CjxyZWN0IHg9IjkwIiB5PSIxMjAiIHdpZHRoPSI3MjAiIGhlaWdodD0iMjIwIiBjbGFzcz0iZiIvPgo8bGluZSB4MT0iMTAwIiB5MT0iMTkwIiB4Mj0iODAwIiB5Mj0iMTkwIiBjbGFzcz0idGgiLz4KPGxpbmUgeDE9IjEwMCIgeTE9IjI2NSIgeDI9IjgwMCIgeTI9IjI2NSIgY2xhc3M9InRoIi8+CjxjaXJjbGUgY3g9IjE2MCIgY3k9IjE2NSIgcj0iNyIgZmlsbD0iIzExMSIvPjxjaXJjbGUgY3g9IjIzMCIgY3k9IjE2NSIgcj0iNyIgZmlsbD0iIzExMSIvPgo8Y2lyY2xlIGN4PSIzMDAiIGN5PSIxNjUiIHI9IjciIGZpbGw9IiMxMTEiLz48Y2lyY2xlIGN4PSIzNzAiIGN5PSIxNjUiIHI9IjciIGZpbGw9IiMxMTEiLz4KPGNpcmNsZSBjeD0iNDQwIiBjeT0iMTY1IiByPSI3IiBmaWxsPSIjMTExIi8+PGNpcmNsZSBjeD0iNTEwIiBjeT0iMTY1IiByPSI3IiBmaWxsPSIjMTExIi8+Cjx0ZXh0IHg9IjU0NSIgeT0iMTcwIiBjbGFzcz0icyI+dXBwZXItdGhpcmQgcmVpbmZvcmNlbWVudDwvdGV4dD4KPHBhdGggZD0iTTEzNSAzMDUgSDc2NSIgY2xhc3M9ImwiLz4KPHRleHQgeD0iMjkwIiB5PSIzOTUiIGNsYXNzPSJzIj5jb250aW51b3VzIGJvdHRvbSBzdXBwb3J0IC8gc2xhYiBib2xzdGVyPC90ZXh0Pgo8L3N2Zz4=",
+    "f2": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgOTAwIDQ4MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQouZGlte3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO21hcmtlci1zdGFydDp1cmwoI2EpO21hcmtlci1lbmQ6dXJsKCNhKX0KPC9zdHlsZT4KPGRlZnM+PG1hcmtlciBpZD0iYSIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgcmVmWD0iNCIgcmVmWT0iNCIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCw0IEw4LDAgTDgsOCBaIiBmaWxsPSIjMTExIi8+PC9tYXJrZXI+PC9kZWZzPgoKPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5DbG9zZWQgVGllIEN1dHRpbmctTGVuZ3RoIEdlb21ldHJ5PC90ZXh0Pgo8cmVjdCB4PSIxODUiIHk9IjExNSIgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGNsYXNzPSJmIi8+CjxyZWN0IHg9IjIyNSIgeT0iMTU1IiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjE3MCIgY2xhc3M9InRoIi8+CjxsaW5lIHgxPSIyMjUiIHkxPSI0MDUiIHgyPSI0ODUiIHkyPSI0MDUiIGNsYXNzPSJkaW0iLz4KPHRleHQgeD0iMzQ1IiB5PSI0NDAiIGNsYXNzPSJzIj5BPC90ZXh0Pgo8bGluZSB4MT0iNTY1IiB5MT0iMTU1IiB4Mj0iNTY1IiB5Mj0iMzI1IiBjbGFzcz0iZGltIi8+Cjx0ZXh0IHg9IjU4NSIgeT0iMjQ1IiBjbGFzcz0icyI+QjwvdGV4dD4KPHRleHQgeD0iNTcwIiB5PSIxMjAiIGNsYXNzPSJzIj5iYXIgZGlhbWV0ZXIgPSBkPC90ZXh0Pgo8dGV4dCB4PSIyODAiIHk9IjgwIiBjbGFzcz0icyI+TCA9IDIoQSArIEIpICsgMjBkPC90ZXh0Pgo8L3N2Zz4=",
+    "f3": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgOTAwIDQ4MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQouZGlte3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO21hcmtlci1zdGFydDp1cmwoI2EpO21hcmtlci1lbmQ6dXJsKCNhKX0KPC9zdHlsZT4KPGRlZnM+PG1hcmtlciBpZD0iYSIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgcmVmWD0iNCIgcmVmWT0iNCIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCw0IEw4LDAgTDgsOCBaIiBmaWxsPSIjMTExIi8+PC9tYXJrZXI+PC9kZWZzPgoKPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5Db25jcmV0ZSBTdXJmYWNlIC8gUGxhY2VtZW50IERlZmVjdHM8L3RleHQ+CjxyZWN0IHg9IjgwIiB5PSIxMDAiIHdpZHRoPSIzMDAiIGhlaWdodD0iMjUwIiBjbGFzcz0iZiIvPgo8Y2lyY2xlIGN4PSIxMjUiIGN5PSIxNTAiIHI9IjE4IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjMTExIi8+PGNpcmNsZSBjeD0iMTkwIiBjeT0iMTkwIiByPSIyNCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzExMSIvPgo8Y2lyY2xlIGN4PSIyNTUiIGN5PSIxNDUiIHI9IjIwIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjMTExIi8+PGNpcmNsZSBjeD0iMzIwIiBjeT0iMjMwIiByPSIyNiIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzExMSIvPgo8dGV4dCB4PSIxNTAiIHk9IjM5MCIgY2xhc3M9InMiPmhvbmV5Y29tYmVkIC8gdm9pZGVkIHpvbmU8L3RleHQ+CjxyZWN0IHg9IjUyMCIgeT0iMTAwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjI1MCIgY2xhc3M9ImYyIi8+CjxyZWN0IHg9IjUyMCIgeT0iMTAwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjM1IiBmaWxsPSIjZGRkIiBzdHJva2U9IiMxMTEiLz4KPHRleHQgeD0iNjAwIiB5PSIzOTAiIGNsYXNzPSJzIj5sYWl0YW5jZSBsYXllcjwvdGV4dD4KPC9zdmc+"
+  },
+  "questions": [
+    {
+      "s": "Applied Column Reinforcement",
+      "q": "A tied column uses 25 mm longitudinal bars, 10 mm ties, and has a least dimension of 450 mm. What maximum spacing controls?",
+      "o": [
+        "500 mm",
+        "480 mm",
+        "400 mm",
+        "450 mm"
+      ],
+      "c": 2,
+      "ref": "ACI 318-19, Sec. 25.7.2.1 - maximum spacing of transverse reinforcement in tied columns",
+      "n": "The three ACI limits are 16(25)=400 mm, 48(10)=480 mm, and 450 mm. The least is 400 mm."
+    },
+    {
+      "s": "Concrete Joints",
+      "q": "What joint or discontinuity results when placement is delayed long enough that successive concrete lifts do not intermingle and bond?",
+      "o": [
+        "Cold joint",
+        "Expansion joint",
+        "Isolation joint",
+        "Saw-cut contraction joint"
+      ],
+      "c": 0,
+      "ref": "ACI 201.1R-11, Sec. 2.3.4 - cold joint",
+      "n": "ACI 201.1R defines a cold joint as a discontinuity caused by a placement delay sufficient to prevent intermingling and bonding of successive lifts."
+    },
+    {
+      "s": "Concrete Floor Systems",
+      "q": "What is a reinforced-concrete floor in which a solid slab is supported by reinforced-concrete beams or girders?",
+      "o": [
+        "Beam-and-slab floor construction",
+        "Slab-on-ground",
+        "Lift slab",
+        "Flat plate"
+      ],
+      "c": 0,
+      "ref": "Concrete Reinforcing Steel Institute (CRSI), Reinforced Concrete Terminology",
+      "n": "CRSI defines beam-and-slab floor construction as a reinforced-concrete slab supported by reinforced-concrete beams or girders."
+    },
+    {
+      "s": "Slab Bar Supports",
+      "q": "What is the continuous bar support used beneath bottom reinforcing bars in a slab?",
+      "o": [
+        "Dowel sleeve",
+        "Column horse",
+        "Slab bolster",
+        "Individual high chair"
+      ],
+      "c": 2,
+      "ref": "Concrete Reinforcing Steel Institute (CRSI), Reinforced Concrete Terminology",
+      "n": "CRSI defines a slab bolster as a continuous bar support used to support bottom slab bars.",
+      "fig": "f1"
+    },
+    {
+      "s": "Column Tie Estimating",
+      "q": "If every tie is secured to all eight longitudinal bars using 0.40 m of wire per intersection, what total tie-wire length is required?",
+      "o": [
+        "2,392.0 m",
+        "1,913.6 m",
+        "1,196.0 m",
+        "957.0 m"
+      ],
+      "c": 1,
+      "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Metal Reinforcement: Post and Column Reinforcement / Lateral Ties",
+      "n": "There are 598 ties with eight bar intersections each; multiplying by 0.40 m gives 1,913.6 m."
+    },
+    {
+      "s": "Column Tie Estimating",
+      "q": "For this estimating exercise, what tie-side dimension should be used for A and B?",
+      "o": [
+        "400 mm",
+        "420 mm",
+        "460 mm",
+        "440 mm"
+      ],
+      "c": 1,
+      "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Metal Reinforcement: Post and Column Reinforcement / Lateral Ties",
+      "n": "Using the simplified estimating convention in the stated problem, the clear tie side is taken as 500 mm less 40 mm cover at each face.",
+      "fig": "f2"
+    },
+    {
+      "s": "Applied Tie Estimating",
+      "q": "For a 400 mm square column with 40 mm clear cover, what tie-side dimension results from the same estimating convention?",
+      "o": [
+        "320 mm",
+        "300 mm",
+        "360 mm",
+        "340 mm"
+      ],
+      "c": 0,
+      "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Metal Reinforcement: Post and Column Reinforcement / Lateral Ties",
+      "n": "The simplified estimating dimension is 400−2(40)=320 mm."
+    },
+    {
+      "s": "Concrete Formwork",
+      "q": "What is the standard term for removing formwork or a mold from hardened concrete?",
+      "o": [
+        "Stripping",
+        "Reshoring",
+        "Rodding",
+        "Screeding"
+      ],
+      "c": 0,
+      "ref": "American Concrete Institute, ACI Concrete Terminology - stripping; see also ACI 347R formwork guidance",
+      "n": "ACI Concrete Terminology defines stripping as removal of formwork or a mold."
+    },
+    {
+      "s": "Ferrocement",
+      "q": "Which material consists of a thin cement-mortar section reinforced with several closely spaced layers of wire mesh?",
+      "o": [
+        "GFRC panel",
+        "Shotcrete",
+        "Lean concrete",
+        "Ferrocement"
+      ],
+      "c": 3,
+      "ref": "ACI Committee 549, Report on Ferrocement / ACI Concrete Terminology",
+      "n": "ACI describes ferrocement as thin cement-mortar sections reinforced by closely spaced layers of wire mesh."
+    },
+    {
+      "s": "Reinforcement Terminology",
+      "q": "What general term applies to transverse reinforcement such as ties, hoops, and spirals in columns?",
+      "o": [
+        "Curtain reinforcement",
+        "Dowel reinforcement",
+        "Distribution reinforcement",
+        "Lateral reinforcement"
+      ],
+      "c": 3,
+      "ref": "American Concrete Institute, ACI Concrete Terminology",
+      "n": "ACI terminology uses 'lateral reinforcement' for transverse reinforcement such as ties, hoops, and spirals in column-like members."
+    },
+    {
+      "s": "Column Tie Estimating",
+      "q": "At 53 m of tie wire per kilogram, how much tie wire should be allowed?",
+      "o": [
+        "About 49 kg",
+        "About 37 kg",
+        "About 35 kg",
+        "About 27 kg"
+      ],
+      "c": 1,
+      "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Metal Reinforcement: Post and Column Reinforcement / Lateral Ties",
+      "n": "The calculated mass is 1,913.6/53 ≈ 36.1 kg; allowing whole kilograms gives about 37 kg."
+    },
+    {
+      "s": "Column Tie Estimating",
+      "q": "Using L = 2(A+B)+20d, what cutting length is obtained for one 10 mm tie?",
+      "o": [
+        "2.08 m",
+        "1.88 m",
+        "1.68 m",
+        "1.76 m"
+      ],
+      "c": 1,
+      "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Metal Reinforcement: Post and Column Reinforcement / Lateral Ties",
+      "n": "Substituting A=B=0.42 m and d=0.01 m gives a 1.88 m cutting length.",
+      "fig": "f2"
+    },
+    {
+      "s": "Applied Tie Estimating",
+      "q": "If A=B=0.32 m and the tie diameter is 10 mm, what cutting length results from L=2(A+B)+20d?",
+      "o": [
+        "1.28 m",
+        "1.48 m",
+        "1.68 m",
+        "1.38 m"
+      ],
+      "c": 1,
+      "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Metal Reinforcement: Post and Column Reinforcement / Lateral Ties",
+      "n": "The perimeter component is 1.28 m and the 20d allowance is 0.20 m, totaling 1.48 m.",
+      "fig": "f2"
+    },
+    {
+      "s": "Concrete Defects",
+      "q": "What defect consists of voids caused by insufficient mortar filling around coarse aggregate?",
+      "o": [
+        "Laitance",
+        "Efflorescence",
+        "Craze cracking",
+        "Honeycomb"
+      ],
+      "c": 3,
+      "ref": "ACI 201.1R-11, Sec. 2.3.7 - honeycomb",
+      "n": "ACI 201.1R defines honeycomb as voids left because mortar failed to adequately fill spaces among coarse aggregate particles.",
+      "fig": "f3"
+    },
+    {
+      "s": "Concrete Terminology",
+      "q": "What term describes concrete having a high cement content?",
+      "o": [
+        "Pervious concrete",
+        "Zero-slump concrete",
+        "Rich concrete",
+        "Lean concrete"
+      ],
+      "c": 2,
+      "ref": "American Concrete Institute, ACI Concrete Terminology",
+      "n": "ACI Concrete Terminology defines rich concrete as concrete of high cement content."
+    },
+    {
+      "s": "Flat-Slab Reinforcement",
+      "q": "What reinforcement arrangement uses bands parallel to two adjacent slab edges and also along both diagonals?",
+      "o": [
+        "Curtain reinforcement",
+        "Two-way reinforcement",
+        "Web reinforcement",
+        "Four-way reinforcement"
+      ],
+      "c": 3,
+      "ref": "American Concrete Institute, ACI Concrete Terminology",
+      "n": "ACI terminology defines four-way reinforcement as bands parallel to two adjacent edges and both diagonals of a rectangular flat slab.",
+      "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgOTAwIDQ4MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQouZGlte3N0cm9rZTojMTExO3N0cm9rZS13aWR0aDoyO21hcmtlci1zdGFydDp1cmwoI2EpO21hcmtlci1lbmQ6dXJsKCNhKX0KPC9zdHlsZT4KPGRlZnM+PG1hcmtlciBpZD0iYSIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgcmVmWD0iNCIgcmVmWT0iNCIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCw0IEw4LDAgTDgsOCBaIiBmaWxsPSIjMTExIi8+PC9tYXJrZXI+PC9kZWZzPgoKPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5Gb3VyLVdheSBSZWluZm9yY2VtZW50PC90ZXh0Pgo8cmVjdCB4PSIxODAiIHk9IjkwIiB3aWR0aD0iNTQwIiBoZWlnaHQ9IjMwMCIgY2xhc3M9ImYiLz4KPHBhdGggZD0iTTIzMCAxMjAgVjM2MCBNMzAwIDEyMCBWMzYwIE0zNzAgMTIwIFYzNjAgTTQ0MCAxMjAgVjM2MCBNNTEwIDEyMCBWMzYwIE01ODAgMTIwIFYzNjAgTTY1MCAxMjAgVjM2MCIgY2xhc3M9InRoIi8+CjxwYXRoIGQ9Ik0yMTAgMTYwIEg2OTAgTTIxMCAyMjUgSDY5MCBNMjEwIDI5MCBINjkwIE0yMTAgMzUwIEg2OTAiIGNsYXNzPSJ0aCIvPgo8cGF0aCBkPSJNMjA1IDEwNSBMNjk1IDM3NSBNNjk1IDEwNSBMMjA1IDM3NSIgY2xhc3M9ImwiLz4KPC9zdmc+"
+    },
+    {
+      "s": "Column Reinforcement",
+      "q": "What is the primary placing function of closed column ties?",
+      "o": [
+        "To serve as anchor bolts",
+        "To form the concrete cover",
+        "To hold and laterally restrain the longitudinal bars",
+        "To replace all longitudinal reinforcement"
+      ],
+      "c": 2,
+      "ref": "Concrete Reinforcing Steel Institute (CRSI), Reinforced Concrete Terminology",
+      "n": "CRSI defines column ties as reinforcing bars bent into closed or related shapes for holding column vertical bars in place."
+    },
+    {
+      "s": "Column Tie Estimating",
+      "q": "How many closed ties are required for all 26 columns?",
+      "o": [
+        "552 ties",
+        "676 ties",
+        "598 ties",
+        "624 ties"
+      ],
+      "c": 2,
+      "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Metal Reinforcement: Post and Column Reinforcement / Lateral Ties",
+      "n": "Each column requires 23 ties, so 26 columns require 26×23 = 598 ties."
+    },
+    {
+      "s": "Column Ties",
+      "q": "Which value governs the maximum vertical spacing of the lateral ties?",
+      "o": [
+        "320 mm",
+        "240 mm",
+        "480 mm",
+        "500 mm"
+      ],
+      "c": 0,
+      "ref": "ACI 318-19, Sec. 25.7.2.1 - maximum spacing of transverse reinforcement in tied columns",
+      "n": "ACI 318 limits the spacing to the least of the three governing quantities. Here, 16(20)=320 mm, 48(10)=480 mm, and the least section dimension is 500 mm."
+    },
+    {
+      "s": "Concrete Defects",
+      "q": "What weak layer can form when cementitious material and aggregate fines are carried by bleeding to a surface?",
+      "o": [
+        "Honeycomb",
+        "Cold joint",
+        "Spalling",
+        "Laitance"
+      ],
+      "c": 3,
+      "ref": "ACI 201.1R-11, Sec. 2.3.9 - laitance",
+      "n": "ACI 201.1R describes laitance as a weak residue derived from cementitious material and fines, often carried by bleeding.",
+      "fig": "f3"
+    },
+    {
+      "s": "Concrete Proportioning",
+      "q": "Which concrete property is strongly related to the selected water-cementitious materials ratio?",
+      "o": [
+        "Color",
+        "Compressive strength",
+        "Formwork pressure only",
+        "Aggregate shape"
+      ],
+      "c": 1,
+      "ref": "ACI 211.1 - relationship of water-cementitious materials ratio to concrete compressive strength",
+      "n": "ACI 211.1 explicitly uses the relationship between water-cementitious materials ratio and compressive strength in mixture proportioning."
+    },
+    {
+      "s": "Slab-on-Ground Reinforcement",
+      "q": "Where should shrinkage-control reinforcement be placed for greatest effectiveness in the slab system described by ACI 360R's cited recommendation?",
+      "o": [
+        "At any depth with equal effect",
+        "About one-third of the slab depth from the top",
+        "At the bottom face",
+        "At mid-depth only"
+      ],
+      "c": 1,
+      "ref": "ACI 360R-10, Sec. 9.3.3; ACI 223R - reinforcement location in shrinkage-compensating slabs",
+      "n": "ACI 360R notes that reinforcement position is critical and cites ACI 223 recommending placement about one-third of the slab depth from the top.",
+      "fig": "f1"
+    },
+    {
+      "s": "Fiber-Reinforced Concrete",
+      "q": "Which reinforcement addition is commonly used in small quantities to reduce plastic-shrinkage cracking?",
+      "o": [
+        "Air voids",
+        "Coarse aggregate",
+        "Synthetic microfibers",
+        "Calcium chloride"
+      ],
+      "c": 2,
+      "ref": "ACI 544.3R-08 and ACI 544.1R - fiber-reinforced concrete and plastic-shrinkage crack control",
+      "n": "ACI guidance identifies synthetic microfibers as a common means of controlling early-age plastic-shrinkage cracking."
+    },
+    {
+      "s": "Column Tie Estimating",
+      "q": "If 6.00 m commercial bars are used, approximately how many bars are required when each 1.88 m tie is cut from whole bars?",
+      "o": [
+        "188 bars",
+        "200 bars",
+        "300 bars",
+        "150 bars"
+      ],
+      "c": 1,
+      "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Metal Reinforcement: Post and Column Reinforcement / Lateral Ties",
+      "n": "One 6.00 m bar yields three 1.88 m ties. The 598 required ties therefore need ceil(598/3)=200 commercial bars."
+    },
+    {
+      "s": "Column Ties",
+      "q": "Using the governing spacing, how many closed ties are required along one 7.00 m column if ties are provided at both ends?",
+      "o": [
+        "24 ties",
+        "23 ties",
+        "22 ties",
+        "21 ties"
+      ],
+      "c": 1,
+      "ref": "ACI 318-19, Sec. 25.7.2.1 - maximum spacing of transverse reinforcement in tied columns",
+      "n": "A 7.00 m height at a maximum 0.32 m spacing requires 22 spaces after rounding upward, which means 23 tie levels."
+    }
+  ]
+}
