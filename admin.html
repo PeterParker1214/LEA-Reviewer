@@ -722,6 +722,12 @@ function escapeHtml(s){
 }
 
 async function callSave(path, content, message){
+  // Always send the token the client holds right now, not the one this page
+  // happened to load with: it expires after an hour, and verification done in
+  // another tab replaces it. A stale token comes back as "MFA required".
+  const { data: { session } } = await sb.auth.getSession();
+  if(session && session.access_token) accessToken = session.access_token;
+
   const resp = await fetch(`${SUPABASE_URL}/functions/v1/admin-save-file`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${accessToken}` },
