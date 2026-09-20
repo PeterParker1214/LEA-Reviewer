@@ -22,6 +22,44 @@
   var SCROLL_PREFIX = 'lea_scroll:';
   var DIR_KEY = 'lea_nav_dir';
 
+  // One quiet UI click for the app chrome. Quiz pages keep their dedicated
+  // answer/next sounds, so the global click is intentionally skipped there.
+  var LEA_UI_CLICK_SOURCE = 'https://assets.mixkit.co/active_storage/sfx/1109/1109-preview.mp3';
+  var leaUiClick = null;
+  function playUiClick(){
+    if(pageName(location.href) === 'run') return;
+    if(window.LEAAudio && typeof window.LEAAudio.playSfx === 'function'){
+      window.LEAAudio.playSfx('click');
+      return;
+    }
+    var muted = false, volume = 0.70;
+    try{
+      var raw = localStorage.getItem('lea_audio_settings_v2');
+      if(raw){
+        var s = JSON.parse(raw);
+        muted = !!s.muted;
+        if(s.sfx != null) volume = Math.max(0, Math.min(1, Number(s.sfx)));
+      }
+    }catch(e){}
+    if(muted || !isFinite(volume)) return;
+    if(!leaUiClick){
+      leaUiClick = new Audio(LEA_UI_CLICK_SOURCE);
+      leaUiClick.preload = 'auto';
+    }
+    try{
+      leaUiClick.pause();
+      leaUiClick.currentTime = 0;
+      leaUiClick.volume = volume;
+      var p = leaUiClick.play();
+      if(p && p.catch) p.catch(function(){});
+    }catch(e){}
+  }
+  document.addEventListener('click', function(e){
+    var el = e.target.closest && e.target.closest('button, a[href], [role="button"], summary, input[type="button"], input[type="submit"], input[type="reset"], input[type="checkbox"], input[type="radio"]');
+    if(!el || el.disabled || el.getAttribute('aria-disabled') === 'true') return;
+    playUiClick();
+  }, true);
+
   function key() { return SCROLL_PREFIX + location.pathname + location.search; }
   function store(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }
   function read(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }
