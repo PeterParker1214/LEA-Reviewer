@@ -136,12 +136,12 @@
   .finder input{ width:100%; font-family:inherit; font-size:16px; padding:9px 12px; color:var(--ink);
     background:var(--bg-panel); border:1px solid var(--line); border-radius:8px; }
 </style>
-<script src="assets/theme.js?v=67" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=67"></script>
-<script src="assets/avatar.js?v=67"></script>
-<script src="assets/chat.js?v=67"></script>
-<script src="assets/offline.js?v=67"></script>
-<script src="assets/presence.js?v=67"></script>
+<script src="assets/theme.js?v=68" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=68"></script>
+<script src="assets/avatar.js?v=68"></script>
+<script src="assets/chat.js?v=68"></script>
+<script src="assets/offline.js?v=68"></script>
+<script src="assets/presence.js?v=68"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
 </head>
 <body>
@@ -397,10 +397,20 @@ function clearDraftImage(){
 async function pickImage(file){
   const problem = LEAChat.imageProblem(file);
   if(problem){ say(problem); return; }
-  const ext = (file.name.split('.').pop() || 'png').toLowerCase().replace(/[^a-z0-9]/g, '');
-  const path = state.me + '/' + Date.now() + '.' + ext;
   const el = document.getElementById('draftShot');
   el.classList.remove('hidden');
+
+  // A picture over the limit is resized here rather than refused. A GIF
+  // never gets this far — imageProblem() turns an oversized one away,
+  // because a canvas would keep one frame and drop the animation.
+  if(LEAChat.needsShrinking(file)){
+    el.textContent = 'Resizing…';
+    try{ file = await LEAChat.shrinkToFit(file); }
+    catch(e){ say('That picture could not be resized. Try saving it smaller.'); clearDraftImage(); return; }
+  }
+
+  const ext = (file.name.split('.').pop() || 'png').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const path = state.me + '/' + Date.now() + '.' + ext;
   el.textContent = 'Uploading…';
 
   const up = await sb.storage.from('chat-images').upload(path, file, { contentType: file.type, cacheControl: '3600' });

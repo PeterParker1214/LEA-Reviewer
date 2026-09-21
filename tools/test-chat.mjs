@@ -41,9 +41,18 @@ assert.equal(C.sendable('  hi  ', null).body, 'hi');
 assert.equal(C.sendable('x'.repeat(C.BODY_MAX + 1), null), null, 'over the column limit');
 assert.equal(C.sendable('x'.repeat(C.BODY_MAX), null).body.length, C.BODY_MAX);
 
-// Only the types and size the bucket itself allows.
+// Only the types the bucket allows, and a GIF has to arrive small enough
+// because shrinking one would cost it its animation.
 assert.equal(C.imageProblem({ type: 'image/gif', size: 1000 }), null);
 assert.ok(C.imageProblem({ type: 'application/pdf', size: 10 }));
-assert.ok(C.imageProblem({ type: 'image/png', size: C.IMAGE_MAX_BYTES + 1 }));
+assert.ok(C.imageProblem({ type: 'image/gif', size: C.IMAGE_MAX_BYTES + 1 }));
+
+// A still picture over the limit is accepted and resized instead.
+const big = { type: 'image/png', size: C.IMAGE_MAX_BYTES + 1, name: 'photo.png' };
+assert.equal(C.imageProblem(big), null, 'a big photo is not turned away');
+assert.equal(C.needsShrinking(big), true);
+assert.equal(C.needsShrinking({ type: 'image/png', size: 1000 }), false, 'a small one is sent as it is');
+assert.equal(C.needsShrinking({ type: 'image/gif', size: C.IMAGE_MAX_BYTES + 1 }), false, 'a GIF is never redrawn');
+assert.equal(C.IMAGE_MAX_BYTES, 5 * 1024 * 1024);
 
 console.log('chat helpers ok');

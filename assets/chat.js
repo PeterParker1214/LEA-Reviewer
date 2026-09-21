@@ -11,7 +11,8 @@
 
   var BODY_MAX = 1000;
   var IMAGE_TYPES = ['image/png', 'image/jpeg', 'image/webp', 'image/gif'];
-  var IMAGE_MAX_BYTES = 2 * 1024 * 1024;
+  var IMAGE_MAX_BYTES = 5 * 1024 * 1024;
+  var SHRINK_EDGE = 1600;   // longest side after shrinking — plenty for a phone screen
 
   /** The other person in this message's thread, or null for the lobby. */
   function threadKey(msg, meId) {
@@ -57,12 +58,63 @@
     return { body: text || null, image_url: imageUrl || null };
   }
 
-  /** Why this file cannot be sent, or null when it can. */
+  /**
+   * Why this file cannot be sent, or null when it can.
+   *
+   * A still picture over the limit is not refused — shrinkToFit() below
+   * makes it fit. A GIF is, because redrawing one through a canvas keeps
+   * the first frame and throws the animation away, which is worse than
+   * saying no.
+   */
   function imageProblem(file) {
     if (!file) return 'No file.';
     if (IMAGE_TYPES.indexOf(file.type) === -1) return 'Pictures and GIFs only.';
-    if (file.size > IMAGE_MAX_BYTES) return 'Keep it under 2 MB.';
+    if (file.type === 'image/gif' && file.size > IMAGE_MAX_BYTES) {
+      return 'That GIF is over 5 MB. A GIF cannot be shrunk without losing the animation.';
+    }
     return null;
+  }
+
+  /** True when this file has to go through shrinkToFit() before it is sent. */
+  function needsShrinking(file) {
+    return !!file && file.type !== 'image/gif' && file.size > IMAGE_MAX_BYTES;
+  }
+
+  /**
+   * A picture redrawn small enough to send: longest side capped, then JPEG
+   * quality stepped down until it fits. Returns the original file when it
+   * already fits, and throws when the browser cannot decode it.
+   *
+   * ponytail: quality is stepped rather than solved for — three or four
+   * draws of a phone photo, which is faster than it is worth optimising.
+   */
+  function shrinkToFit(file, limit, edge) {
+    limit = limit || IMAGE_MAX_BYTES;
+    edge = edge || SHRINK_EDGE;
+    if (!needsShrinking(file)) return Promise.resolve(file);
+
+    return createImageBitmap(file).then(function (bitmap) {
+      var scale = Math.min(1, edge / Math.max(bitmap.width, bitmap.height));
+      var canvas = document.createElement('canvas');
+      canvas.width = Math.max(1, Math.round(bitmap.width * scale));
+      canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+      canvas.getContext('2d').drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      bitmap.close();
+
+      var qualities = [0.85, 0.7, 0.55, 0.4];
+      var step = function (i) {
+        return new Promise(function (resolve) {
+          canvas.toBlob(resolve, 'image/jpeg', qualities[i]);
+        }).then(function (blob) {
+          if (!blob) throw new Error('This picture could not be resized.');
+          if (blob.size <= limit || i === qualities.length - 1) {
+            return new File([blob], file.name.replace(/\.[^.]+$/, '') + '.jpg', { type: 'image/jpeg' });
+          }
+          return step(i + 1);
+        });
+      };
+      return step(0);
+    });
   }
 
   /** "9:14 AM" for today, "14 Sep" before that. */
@@ -82,11 +134,14 @@
     BODY_MAX: BODY_MAX,
     IMAGE_TYPES: IMAGE_TYPES,
     IMAGE_MAX_BYTES: IMAGE_MAX_BYTES,
+    SHRINK_EDGE: SHRINK_EDGE,
     threadKey: threadKey,
     groupThreads: groupThreads,
     threadMessages: threadMessages,
     sendable: sendable,
     imageProblem: imageProblem,
+    needsShrinking: needsShrinking,
+    shrinkToFit: shrinkToFit,
     shortTime: shortTime
   };
 })(typeof window !== 'undefined' ? window : globalThis);
