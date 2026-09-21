@@ -64,4 +64,14 @@ const order = D.sortForList([
 ], ME, NOW).map(d => d.id);
 assert.deepEqual(order, ['invited', 'done', 'waiting']);
 
+// Roulette: the longest wait is taken, and never yourself.
+assert.equal(D.pickOpponent([], ME), null, 'an empty queue pairs nobody');
+assert.equal(D.pickOpponent([{ userId: ME, since: '2026-09-22T10:00:00Z' }], ME), null, 'waiting alone is not a match');
+assert.equal(D.pickOpponent([
+  { userId: ANA, since: '2026-09-22T10:05:00Z' },
+  { userId: 'kev', since: '2026-09-22T10:01:00Z' },
+  { userId: ME,  since: '2026-09-22T10:00:00Z' }
+], ME), 'kev', 'kev waited longer than ana');
+assert.equal(D.pickOpponent([{ userId: ANA }], ME), ANA, 'a missing timestamp still pairs');
+
 console.log('duel helpers ok');

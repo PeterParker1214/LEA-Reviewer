@@ -99,7 +99,23 @@
     });
   }
 
+  /**
+   * Who a waiting player should be paired with: anyone else in the queue,
+   * oldest wait first, so the person who has been waiting longest is taken
+   * rather than whoever the channel happens to list first.
+   *
+   * `queue` is [{ userId, since }]. Returns null when nobody else is there.
+   */
+  function pickOpponent(queue, meId) {
+    var others = (queue || []).filter(function (p) { return p && p.userId && p.userId !== meId; });
+    if (!others.length) return null;
+    return others.slice().sort(function (a, b) {
+      return new Date(a.since || 0) - new Date(b.since || 0);
+    })[0].userId;
+  }
+
   root.LEADuel = {
+    pickOpponent: pickOpponent,
     SIZE: SIZE,
     EXPIRY_DAYS: EXPIRY_DAYS,
     drawQuestions: drawQuestions,

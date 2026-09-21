@@ -93,18 +93,19 @@
     text-transform:uppercase; color:var(--gold-bright); margin-top:14px; }
   .verdict.quiet{ color:var(--muted); font-size:15px; font-family:var(--font-body); font-weight:500; text-transform:none; }
 
-  select{ width:100%; font-family:inherit; font-size:16px; padding:11px 12px; color:var(--ink);
+  select, input[type="search"]{ width:100%; font-family:inherit; font-size:16px; padding:11px 12px; color:var(--ink);
     background:var(--bg-panel); border:1px solid var(--line); border-radius:10px; margin-bottom:12px; }
+  .hidden{ display:none !important; }
   .note{ padding:22px 16px; text-align:center; color:var(--muted); font-size:13px; line-height:1.6; }
   .note code{ font-family:var(--font-mono); font-size:12px; }
   .say{ color:var(--bad); font-size:13px; margin-bottom:10px; }
 </style>
-<script src="assets/theme.js?v=73" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=73"></script>
-<script src="assets/avatar.js?v=73"></script>
-<script src="assets/duel.js?v=73"></script>
-<script src="assets/offline.js?v=73"></script>
-<script src="assets/presence.js?v=73"></script>
+<script src="assets/theme.js?v=74" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=74"></script>
+<script src="assets/avatar.js?v=74"></script>
+<script src="assets/duel.js?v=74"></script>
+<script src="assets/offline.js?v=74"></script>
+<script src="assets/presence.js?v=74"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
 </head>
 <body>
@@ -129,7 +130,13 @@ function escapeHtml(s){
 }
 
 const params = new URLSearchParams(location.search);
-const state = { me: null, duels: [], people: new Map(), subjects: [], one: params.get('d'), fresh: params.get('new') };
+const state = {
+  me: null, duels: [], people: new Map(), subjects: [],
+  one: params.get('d'), fresh: params.get('new'),
+  subject: null,        // the subject the next duel is drawn from
+  choosing: false,      // the pick-a-person view is up
+  finding: ''
+};
 
 function person(id){ return state.people.get(id) || { username: 'Someone', avatar_url: null }; }
 function faceHtml(id){ return LEAAvatar.faceHtml(person(id).avatar_url, person(id).username); }
@@ -153,7 +160,8 @@ const PHASE_TAG = {
 function renderList(){
   document.getElementById('pageTitle').textContent = 'Duels';
   const rows = LEADuel.sortForList(state.duels, state.me);
-  card(
+  card(newDuelHtml() +
+    '<div class="label">Your duels</div>' +
     (rows.length
       ? rows.map(d => {
           const p = LEADuel.phase(d, state.me);
@@ -171,10 +179,134 @@ function renderList(){
               '<span class="tag ' + cls + '">' + text + '</span>' +
             '</a>';
         }).join('')
-      : '<div class="note">No duels yet. Open someone’s page from the lobby and challenge them.</div>') +
-    '<a class="act-btn ghost" href="chat.html">Find someone in the lobby</a>'
+      : '<div class="note">No duels yet.</div>')
   );
+  wireNewDuel();
 }
+
+// One place decides which of the three views is on screen.
+function render(){
+  if(state.choosing){ renderChoose(); return; }
+  renderList();
+}
+
+// ---------------------------------------------------------------- new duel
+
+// Starting a duel begins here rather than on someone's page: pick the
+// subject, then either take whoever else is waiting or choose a name.
+function newDuelHtml(){
+  const ready = state.subjects.filter(s => s.ready && cellsForSubject(s.id).length >= LEADuel.SIZE);
+  return '<div class="label" style="margin-top:0;">Start a duel</div>' +
+    '<select id="subjectPick">' + ready.map(s =>
+      '<option value="' + escapeHtml(s.id) + '"' + (s.id === state.subject ? ' selected' : '') + '>' +
+      escapeHtml(subjectName(s.id)) + '</option>').join('') + '</select>' +
+    '<div class="pair">' +
+      '<button class="act-btn" id="rouletteBtn" type="button">Find me an opponent</button>' +
+      '<button class="act-btn ghost" id="chooseBtn" type="button">Choose someone</button>' +
+    '</div>' +
+    '<div id="queueNote" class="note hidden" style="padding:10px 0;"></div>';
+}
+
+function wireNewDuel(){
+  const pick = document.getElementById('subjectPick');
+  if(pick) pick.addEventListener('change', () => { state.subject = pick.value; });
+  const roulette = document.getElementById('rouletteBtn');
+  if(roulette) roulette.addEventListener('click', () => joinQueue(pick ? pick.value : null));
+  const choose = document.getElementById('chooseBtn');
+  if(choose) choose.addEventListener('click', () => { state.choosing = true; render(); });
+}
+
+// The people you can challenge, whoever is online first. Presence knows
+// display names rather than ids, the same way the board does.
+function renderChoose(){
+  document.getElementById('pageTitle').textContent = 'Choose someone';
+  const q = (state.finding || '').trim().toLowerCase();
+  const online = name => !!(window.LEAPresence && LEAPresence.isOnline(name));
+  const people = Array.from(state.people.values())
+    .filter(p => p.id !== state.me && p.username)
+    .filter(p => !q || p.username.toLowerCase().includes(q))
+    .sort((a, b) => (online(b.username) ? 1 : 0) - (online(a.username) ? 1 : 0)
+      || a.username.localeCompare(b.username));
+
+  card(
+    '<input id="findInput" type="search" placeholder="Search a name..." autocomplete="off" spellcheck="false" value="' + escapeHtml(state.finding || '') + '">' +
+    (people.length
+      ? people.slice(0, 60).map(p =>
+          '<button class="row" type="button" data-who="' + escapeHtml(p.id) + '">' +
+            '<span class="face">' + faceHtml(p.id) + '</span>' +
+            '<span class="x"><span class="nm">' + escapeHtml(p.username) + '</span>' +
+            '<span class="sub">' + (online(p.username) ? 'Online now' : 'Offline') + '</span></span>' +
+            '<span class="tag' + (online(p.username) ? ' act' : '') + '">Challenge</span>' +
+          '</button>').join('')
+      : '<div class="note">Nobody by that name.</div>') +
+    '<button class="act-btn ghost" id="backToDuels" type="button">Back</button>'
+  );
+
+  const input = document.getElementById('findInput');
+  input.addEventListener('input', e => { state.finding = e.target.value; renderChoose(); });
+  document.querySelectorAll('[data-who]').forEach(b => {
+    b.addEventListener('click', () => challenge(b.dataset.who, state.subject, b));
+  });
+  document.getElementById('backToDuels').addEventListener('click', () => {
+    state.choosing = false; state.finding = ''; render();
+  });
+}
+
+// ---- Roulette ----------------------------------------------------------
+//
+// A presence channel is the whole queue: joining it announces that you are
+// looking, leaving takes you out, and everyone in it sees everyone else.
+// Nothing is stored, so a closed tab removes you by itself.
+//
+// ponytail: two people joining in the same instant can each see an empty
+// queue and then each other, and both send a challenge, so you get two duels
+// instead of one. Rare and harmless; the cure is a matchmaking table with a
+// transaction. Add it if it actually happens.
+let queueChannel = null;
+
+function queueNote(text){
+  const el = document.getElementById('queueNote');
+  if(!el) return;
+  el.textContent = text || '';
+  el.classList.toggle('hidden', !text);
+}
+
+async function joinQueue(subjectId){
+  if(queueChannel){ leaveQueue(); return; }
+  state.subject = subjectId || state.subject;
+  const btn = document.getElementById('rouletteBtn');
+  if(btn) btn.textContent = 'Stop looking';
+  queueNote('Looking for someone who is also waiting...');
+
+  queueChannel = sb.channel('duel-queue', { config: { presence: { key: state.me } } });
+  queueChannel.on('presence', { event: 'sync' }, async () => {
+    if(!queueChannel) return;
+    const waiting = Object.values(queueChannel.presenceState()).flat();
+    const them = LEADuel.pickOpponent(waiting, state.me);
+    if(!them) return;
+    // Leave first: whatever happens next, you are no longer waiting.
+    const channel = queueChannel;
+    queueChannel = null;
+    await sb.removeChannel(channel);
+    queueNote('Found ' + person(them).username + '. Setting up the duel...');
+    challenge(them, state.subject);
+  });
+  queueChannel.subscribe(status => {
+    if(status === 'SUBSCRIBED' && queueChannel){
+      queueChannel.track({ userId: state.me, username: person(state.me).username, since: new Date().toISOString() });
+    }
+  });
+}
+
+function leaveQueue(){
+  if(queueChannel){ sb.removeChannel(queueChannel); queueChannel = null; }
+  const btn = document.getElementById('rouletteBtn');
+  if(btn) btn.textContent = 'Find me an opponent';
+  queueNote('');
+}
+
+// A tab that goes away should not leave a ghost waiting in the queue.
+window.addEventListener('pagehide', leaveQueue);
 
 // ---------------------------------------------------------------- one duel
 
@@ -255,13 +387,13 @@ function cellsForSubject(subjectId){
 
 async function challenge(opponentId, subjectId, btn){
   const cells = cellsForSubject(subjectId);
-  if(cells.length < LEADuel.SIZE){ alert('That subject is too small for a duel.'); return; }
+  if(cells.length < LEADuel.SIZE){ alert('Pick a subject first.'); leaveQueue(); return; }
   if(btn) btn.disabled = true;
   const { data, error } = await sb.from('duels').insert({
     opponent: opponentId, subject: subjectId,
     questions: LEADuel.drawQuestions(cells, LEADuel.SIZE)
   }).select('id').single();
-  if(error){ if(btn) btn.disabled = false; alert(error.message); return; }
+  if(error){ if(btn) btn.disabled = false; leaveQueue(); alert(error.message); return; }
   location.href = 'duel.html?d=' + encodeURIComponent(data.id);
 }
 
@@ -311,6 +443,9 @@ function renderNew(opponentId){
   }
   state.duels = duels.data || [];
 
+  const ready = state.subjects.filter(s => s.ready && cellsForSubject(s.id).length >= LEADuel.SIZE);
+  state.subject = ready.length ? ready[0].id : null;
+
   if(state.fresh && state.fresh !== state.me){ renderNew(state.fresh); return; }
   if(state.one){
     const duel = state.duels.find(d => d.id === state.one);
@@ -318,7 +453,8 @@ function renderNew(opponentId){
     renderOne(duel);
     return;
   }
-  renderList();
+  render();
+  if(window.LEAPresence) LEAPresence.subscribe(() => { if(state.choosing) renderChoose(); });
 })();
 </script>
 </body>
