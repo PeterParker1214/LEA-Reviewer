@@ -9,16 +9,16 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <title>LEA Reviewer — Admin</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/lea-confirm.js?v=71"></script>
-<script src="assets/icons.js?v=71"></script>
+<script src="assets/lea-confirm.js?v=72"></script>
+<script src="assets/icons.js?v=72"></script>
 <!-- The same reader the app uses, so what the editor sees is exactly what a
      reader gets. Its balanced-bracket scan also survives question text that a
      regex would truncate. -->
-<script src="assets/quiz-source.js?v=71"></script>
-<script src="assets/quiz-rework.js?v=71"></script>
-<script src="assets/docx-quiz.js?v=71"></script>
-<script src="assets/image-intake.js?v=71"></script>
-<script src="assets/theme.js?v=71" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=72"></script>
+<script src="assets/quiz-rework.js?v=72"></script>
+<script src="assets/docx-quiz.js?v=72"></script>
+<script src="assets/image-intake.js?v=72"></script>
+<script src="assets/theme.js?v=72" data-alt-class="light-mode" data-default-is="dark"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -2077,7 +2077,7 @@ function parseQuizFile(text){
 function buildAdaptedQuizHtml(raw, format, opts){
   const { subjectId, moduleId, subjectName, includeBackLink } = opts;
   let out = raw;
-  const assetPath = '../../../assets/module-progress.js?v=71';
+  const assetPath = '../../../assets/module-progress.js?v=72';
 
   if(format === 'native'){
     out = out.replace(/const LEA_SUBJECT_ID\s*=\s*'[^']*';/, `const LEA_SUBJECT_ID = '${subjectId}';`);
@@ -2896,7 +2896,7 @@ const CONTACT_FIELDS = [
   ['support_label', 'Support heading', 'text', 'Buy me a coffee'],
   ['support_note', 'Support note', 'textarea', 'Why someone might chip in. Optional.'],
   ['support_url', 'Support link', 'text', 'https://ko-fi.com/… — leave blank to hide the whole card'],
-  ['gcash_qr', 'GCash QR image URL', 'text', 'https://… a picture of your QR, optional']
+  ['gcash_qr', 'GCash QR picture', 'text', 'Upload one below, or paste a link to it']
 ];
 
 async function fetchContact(){
@@ -2919,6 +2919,14 @@ async function openContactTab(){
           ? '<textarea id="ct-' + key + '" rows="3" maxlength="1200" placeholder="' + escapeHtml(hint) + '">' + escapeHtml(current[key] || '') + '</textarea>'
           : '<input type="text" id="ct-' + key + '" maxlength="300" placeholder="' + escapeHtml(hint) + '" value="' + escapeHtml(current[key] || '') + '">')
       ).join('') +
+      // The QR is a picture rather than a link, so it gets a file picker here
+      // instead of asking for a URL nobody has. It goes to the same public
+      // bucket chat pictures use, under this admin account's own folder.
+      '<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px;">' +
+        '<input type="file" id="ctQrFile" accept="image/png,image/jpeg,image/webp">' +
+        '<span id="ctQrStatus" class="field-note" style="margin:0;"></span>' +
+      '</div>' +
+      '<div id="ctQrPreview" style="margin-top:10px;">' + qrPreviewHtml(current.gcash_qr) + '</div>' +
       '<p class="field-note">Anything left blank is hidden from readers rather than shown empty. Links have to start with http:// or https://.</p>' +
       '<div style="margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;">' +
         '<button class="primary" id="ctSave" type="button">Save</button>' +
@@ -2927,6 +2935,58 @@ async function openContactTab(){
       '</div>' +
     '</div>';
   document.getElementById('ctSave').addEventListener('click', saveContact);
+  document.getElementById('ctQrFile').addEventListener('change', uploadQr);
+}
+
+/** The bucket path of a QR this admin uploaded before, or null. */
+function qrPathInBucket(url, userId){
+  const match = String(url || '').match(/\/chat-images\/([^?]+)/);
+  if(!match) return null;
+  const path = decodeURIComponent(match[1]);
+  return path.indexOf(userId + '/') === 0 ? path : null;   // never delete anyone else's
+}
+
+function qrPreviewHtml(url){
+  return /^https?:\/\//i.test(String(url || ''))
+    ? '<img src="' + escapeHtml(url) + '" alt="" style="width:150px;border-radius:8px;border:1px solid var(--line);">'
+    : '';
+}
+
+// Straight to storage, then the public URL lands in the field above. Saving
+// the page is still a separate, deliberate click.
+async function uploadQr(e){
+  const file = e.target.files && e.target.files[0];
+  e.target.value = '';
+  if(!file) return;
+  const status = document.getElementById('ctQrStatus');
+  const say = (text, kind) => {
+    status.textContent = text;
+    status.style.color = kind === 'err' ? 'var(--bad)' : kind === 'ok' ? 'var(--good)' : 'var(--muted)';
+  };
+  if(!/^image\/(png|jpeg|webp)$/.test(file.type)){ say('PNG, JPEG or WebP only.', 'err'); return; }
+  if(file.size > 5 * 1024 * 1024){ say('Keep it under 5 MB.', 'err'); return; }
+
+  say('Uploading…');
+  try{
+    const { data: { session } } = await sb.auth.getSession();
+    const ext = file.type === 'image/png' ? 'png' : file.type === 'image/webp' ? 'webp' : 'jpg';
+    // A fresh name each time rather than overwriting one: the bucket lets
+    // you write and delete your own files but not update them, so an upsert
+    // comes back as a policy refusal. The one it replaces is deleted below.
+    const path = session.user.id + '/gcash-qr-' + Date.now() + '.' + ext;
+    const up = await sb.storage.from('chat-images').upload(path, file, { contentType: file.type, cacheControl: '3600' });
+    if(up.error) throw up.error;
+    const url = sb.storage.from('chat-images').getPublicUrl(path).data.publicUrl;
+
+    const previous = qrPathInBucket(document.getElementById('ct-gcash_qr').value, session.user.id);
+    if(previous && previous !== path) sb.storage.from('chat-images').remove([previous]).catch(() => {});
+
+    document.getElementById('ct-gcash_qr').value = url;
+    document.getElementById('ctQrPreview').innerHTML = qrPreviewHtml(url);
+    say('Uploaded. Press Save to publish it.', 'ok');
+  }catch(err){
+    say('Error: ' + err.message, 'err');
+  }
 }
 
 async function saveContact(){
