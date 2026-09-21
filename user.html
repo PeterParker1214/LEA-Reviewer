@@ -164,7 +164,8 @@ function render(){
     statsHtml() +
     (isMe
       ? '<a class="act ghost" href="profile.html">Edit your profile</a>'
-      : '<a class="act" href="chat.html?to=' + encodeURIComponent(state.id) + '">Message</a>') +
+      : '<a class="act" href="chat.html?to=' + encodeURIComponent(state.id) + '">Message</a>' +
+         '<a class="act ghost" href="duel.html?new=' + encodeURIComponent(state.id) + '">Challenge to a duel</a>') +
     compareHtml();
 }
 

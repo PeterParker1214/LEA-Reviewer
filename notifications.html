@@ -89,6 +89,7 @@
   .k-report .nf-kind{ color:var(--good); }
   .k-update .nf-kind{ color:var(--blue-bright); }
   .k-reminder .nf-kind{ color:var(--violet); }
+  .k-duel .nf-kind{ color:var(--gold); }
   .nf-title{ font-family:var(--font-display); font-weight:800; font-size:20px; line-height:1.1; text-transform:uppercase; margin-bottom:6px; text-wrap:balance; overflow-wrap:anywhere; }
   .nf-body{ font-size:14px; line-height:1.6; color:color-mix(in srgb, var(--ink) 82%, transparent); white-space:pre-wrap; overflow-wrap:anywhere; }
   .nf-open{ display:inline-flex; align-items:center; min-height:36px; margin-top:8px; font-family:var(--font-body); font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--gold-bright); text-decoration:none; }
@@ -136,15 +137,17 @@ const FILTERS = [
   { id:'message',  label:'Messages' },
   { id:'report',   label:'Reports' },
   { id:'update',   label:'Updates' },
-  { id:'reminder', label:'Reminders' }
+  { id:'reminder', label:'Reminders' },
+  { id:'duel',     label:'Duels' }
 ];
-const KIND_LABEL = { message:'Message', report:'Report', update:'Update', reminder:'Reminder' };
+const KIND_LABEL = { message:'Message', report:'Report', update:'Update', reminder:'Reminder', duel:'Duel' };
 const EMPTY = {
   all:'Nothing yet. Messages, report replies, site updates and reminders will show up here.',
   message:'No messages from the admin yet.',
   report:'No replies yet. When you report a question and it gets fixed, you will hear about it here.',
   update:'No site updates yet.',
-  reminder:'No reminders right now.'
+  reminder:'No reminders right now.',
+  duel:'No duels waiting on you.'
 };
 
 let ITEMS = [];
