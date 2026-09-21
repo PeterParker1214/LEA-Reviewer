@@ -12,6 +12,12 @@
   var BODY_MAX = 1000;
   var IMAGE_TYPES = ['image/png', 'image/jpeg', 'image/webp', 'image/gif'];
   var IMAGE_MAX_BYTES = 5 * 1024 * 1024;
+  // A GIF is sent as it arrives, so its ceiling is the one people actually
+  // meet. Six or seven MB is an ordinary reaction GIF.
+  // ponytail: a bigger allowance, not a smarter one. If storage fills, the
+  // upgrade is converting a GIF to WebM in the page (ImageDecoder frames
+  // through MediaRecorder), which is five to ten times smaller.
+  var GIF_MAX_BYTES = 12 * 1024 * 1024;
   var SHRINK_EDGE = 1600;   // longest side after shrinking — plenty for a phone screen
 
   /** The other person in this message's thread, or null for the lobby. */
@@ -69,8 +75,8 @@
   function imageProblem(file) {
     if (!file) return 'No file.';
     if (IMAGE_TYPES.indexOf(file.type) === -1) return 'Pictures and GIFs only.';
-    if (file.type === 'image/gif' && file.size > IMAGE_MAX_BYTES) {
-      return 'That GIF is over 5 MB. A GIF cannot be shrunk without losing the animation.';
+    if (file.type === 'image/gif' && file.size > GIF_MAX_BYTES) {
+      return 'That GIF is over 12 MB. A GIF cannot be shrunk without losing the animation.';
     }
     return null;
   }
@@ -134,6 +140,7 @@
     BODY_MAX: BODY_MAX,
     IMAGE_TYPES: IMAGE_TYPES,
     IMAGE_MAX_BYTES: IMAGE_MAX_BYTES,
+    GIF_MAX_BYTES: GIF_MAX_BYTES,
     SHRINK_EDGE: SHRINK_EDGE,
     threadKey: threadKey,
     groupThreads: groupThreads,

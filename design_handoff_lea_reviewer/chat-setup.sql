@@ -81,15 +81,16 @@ begin
 end $$;
 
 -- 6. A bucket for pictures and GIFs -----------------------------------
--- 5 MB and image types only, enforced by the bucket itself. A still
--- picture bigger than that is resized by the page before it is sent, so
--- this limit is the backstop rather than what a reader runs into.
+-- 12 MB and image types only, enforced by the bucket itself. A still
+-- picture is resized by the page to well under this before it is sent;
+-- the headroom is for GIFs, which are sent as they arrive because
+-- shrinking one would cost it its animation.
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
-values ('chat-images', 'chat-images', true, 5242880,
+values ('chat-images', 'chat-images', true, 12582912,
         array['image/png','image/jpeg','image/webp','image/gif'])
 on conflict (id) do update
   set public = true,
-      file_size_limit = 5242880,
+      file_size_limit = 12582912,
       allowed_mime_types = array['image/png','image/jpeg','image/webp','image/gif'];
 
 drop policy if exists "chat images are publicly readable" on storage.objects;
