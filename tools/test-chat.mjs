@@ -77,4 +77,26 @@ assert.equal(C.isVideo('https://x/y/photo.jpg'), false);
 assert.equal(C.isVideo('https://x/webm/photo.png'), false, 'the extension decides, not the path');
 assert.equal(C.isVideo(null), false);
 
+// Read receipts: who has got as far as a given message.
+const reads = [
+  { user_id: ME,  thread: 'lobby', last_read_id: 4 },
+  { user_id: ANA, thread: 'lobby', last_read_id: 4 },
+  { user_id: KEV, thread: 'lobby', last_read_id: 1 },
+  { user_id: ANA, thread: ANA,     last_read_id: 3 }
+];
+assert.equal(C.threadName(null), 'lobby');
+assert.equal(C.threadName(ANA), ANA);
+
+assert.deepEqual(C.seenBy(reads, 'lobby', 1, ME), [ANA, KEV], 'both got past message 1');
+assert.deepEqual(C.seenBy(reads, 'lobby', 4, ME), [ANA], 'kev stopped at 1');
+assert.deepEqual(C.seenBy(reads, 'lobby', 5, ME), [], 'nobody has seen the newest one');
+assert.deepEqual(C.seenBy(reads, 'lobby', 4, ANA), [ME], 'you never count as having seen your own');
+
+const nameOf = id => ({ ana: 'Ana', kev: 'Kevin' })[id] || id;
+assert.equal(C.seenLabel(reads, 'lobby', 4, ME, nameOf), 'Seen by Ana', 'one reader gets a name');
+assert.equal(C.seenLabel(reads, 'lobby', 1, ME, nameOf), 'Seen by 2', 'more than one gets a count');
+assert.equal(C.seenLabel(reads, 'lobby', 5, ME, nameOf), null, 'nothing to say yet');
+assert.equal(C.seenLabel(reads, ANA, 3, ME, nameOf), 'Seen', 'a private thread just says Seen');
+assert.equal(C.seenLabel(reads, ANA, 4, ME, nameOf), null);
+
 console.log('chat helpers ok');

@@ -13,7 +13,7 @@
 </div></section>
 <section class="section"><label for="sfxVolume"><span>SFX volume</span><span id="sfxValue">70%</span></label><input id="sfxVolume" type="range" min="0" max="1" step="0.01" value="0.70"><button id="mute" style="margin-top:12px">Mute / unmute</button></section>
 <div class="note">Background music remains disabled. These are the four SFX selected for the reviewer.</div><div class="status" id="status">Click a sound to preview it.</div></main>
-<script src="assets/audio.js?v=72"></script><script>
+<script src="assets/audio.js?v=73"></script><script>
 const statusEl=document.getElementById('status'),sfxVolume=document.getElementById('sfxVolume'),sfxValue=document.getElementById('sfxValue');LEAAudio.init();function setStatus(m){statusEl.textContent=m}
 document.querySelectorAll('[data-sfx]').forEach(b=>b.addEventListener('click',()=>{const n=b.dataset.sfx;LEAAudio.unlock();LEAAudio.playSfx(n);setStatus('Previewing: '+n)}));
 document.getElementById('mute').addEventListener('click',()=>{const muted=LEAAudio.toggleMute();setStatus(muted?'Audio muted.':'Audio unmuted.')});sfxVolume.addEventListener('input',e=>{LEAAudio.setSfxVolume(e.target.value);sfxValue.textContent=Math.round(Number(e.target.value)*100)+'%'});

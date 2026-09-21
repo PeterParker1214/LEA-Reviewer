@@ -96,6 +96,7 @@
   .msg .bin{ background:none; border:0; color:var(--muted); font-size:11px; cursor:pointer;
     padding:2px 4px; font-family:var(--font-mono); }
   .msg .bin:hover{ color:var(--bad); }
+  .seen-line{ align-self:flex-end; font-family:var(--font-mono); font-size:10px; color:var(--muted); margin-top:-6px; }
 
   .compose{ flex:none; display:flex; gap:8px; align-items:flex-end; padding:10px;
     border-top:1px solid var(--line); background:var(--bg-panel-2); }
@@ -136,12 +137,12 @@
   .finder input{ width:100%; font-family:inherit; font-size:16px; padding:9px 12px; color:var(--ink);
     background:var(--bg-panel); border:1px solid var(--line); border-radius:8px; }
 </style>
-<script src="assets/theme.js?v=72" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=72"></script>
-<script src="assets/avatar.js?v=72"></script>
-<script src="assets/chat.js?v=72"></script>
-<script src="assets/offline.js?v=72"></script>
-<script src="assets/presence.js?v=72"></script>
+<script src="assets/theme.js?v=73" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=73"></script>
+<script src="assets/avatar.js?v=73"></script>
+<script src="assets/chat.js?v=73"></script>
+<script src="assets/offline.js?v=73"></script>
+<script src="assets/presence.js?v=73"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
 </head>
 <body>
@@ -187,7 +188,6 @@ const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-const SEEN_KEY = 'lea_chat_seen';
 const PAGE = 60;
 
 function escapeHtml(s){
@@ -201,18 +201,30 @@ const state = {
   lobby: [], dms: [],
   people: new Map(),       // user id -> { username, avatar_url }
   draftImage: null,        // { url, name } already uploaded, waiting to be sent
+  reads: [],               // every chat_reads row: who has read how far
   finding: ''
 };
 
+/** How far I have read each thread, for the unread dots. */
 function seenMap(){
-  try{ return JSON.parse(localStorage.getItem(SEEN_KEY) || '{}'); }catch(e){ return {}; }
+  const mine = {};
+  state.reads.forEach(r => { if(r.user_id === state.me) mine[r.thread] = r.last_read_id; });
+  return mine;
 }
-function markSeen(who, id){
-  if(who == null) return;
-  const m = seenMap();
-  if(Number(m[who] || 0) >= Number(id)) return;
-  m[who] = id;
-  try{ localStorage.setItem(SEEN_KEY, JSON.stringify(m)); }catch(e){}
+
+// Marking your place is shared rather than kept on this device, so the
+// person you are talking to can see that you read theirs. A failed mark is
+// not worth reporting: the worst of it is a dot that comes back, and the
+// next view tries again.
+async function markSeen(who, id){
+  const thread = LEAChat.threadName(who);
+  const mine = state.reads.find(r => r.user_id === state.me && r.thread === thread);
+  if(mine && Number(mine.last_read_id) >= Number(id)) return;
+  if(mine) mine.last_read_id = id;
+  else state.reads.push({ user_id: state.me, thread, last_read_id: id });
+  await sb.from('chat_reads')
+    .upsert({ user_id: state.me, thread, last_read_id: id, updated_at: new Date().toISOString() },
+            { onConflict: 'user_id,thread' });
 }
 
 function person(id){ return state.people.get(id) || { username: 'Someone', avatar_url: null }; }
@@ -237,6 +249,12 @@ function say(text){
 async function loadPeople(){
   const { data } = await sb.from('profiles').select('id,username,avatar_url');
   (data || []).forEach(p => state.people.set(p.id, p));
+}
+
+async function loadReads(){
+  const { data, error } = await sb.from('chat_reads').select('user_id,thread,last_read_id');
+  if(error) throw error;
+  state.reads = data || [];
 }
 
 async function loadMessages(){
@@ -276,11 +294,23 @@ function msgHtml(m){
     '</div>';
 }
 
-function drawStream(messages, emptyText){
+// Only your own latest message carries it — under every one it would be
+// noise, and under someone else's it is not yours to know.
+function seenLineHtml(messages, thread){
+  for(let i = messages.length - 1; i >= 0; i--){
+    if(messages[i].user_id !== state.me) continue;
+    const label = LEAChat.seenLabel(state.reads, thread, messages[i].id, state.me,
+      id => person(id).username);
+    return label ? '<div class="seen-line">' + escapeHtml(label) + '</div>' : '';
+  }
+  return '';
+}
+
+function drawStream(messages, emptyText, tail){
   const stream = document.getElementById('stream');
   const atBottom = stream.scrollHeight - stream.scrollTop - stream.clientHeight < 80;
   stream.innerHTML = messages.length
-    ? messages.map(msgHtml).join('')
+    ? messages.map(msgHtml).join('') + (tail || '')
     : '<div class="state-note">' + emptyText + '</div>';
   stream.querySelectorAll('[data-del]').forEach(b => {
     b.addEventListener('click', () => remove(Number(b.dataset.del)));
@@ -342,11 +372,14 @@ function render(){
   if(who !== null){
     document.getElementById('threadName').innerHTML =
       '<a href="user.html?u=' + escapeHtml(who) + '">' + escapeHtml(person(who).username) + '</a>';
-    if(list.length) markSeen(who, list[list.length - 1].id);
   }
+  // The lobby is marked too, not just private threads: it is what lets the
+  // person who posted see how many people have caught up.
+  if(list.length) markSeen(who, list[list.length - 1].id);
   document.getElementById('draft').placeholder =
     who === null ? 'Message the lobby…' : 'Message ' + person(who).username + '…';
-  drawStream(list, who === null ? 'Nothing in the lobby yet. Say the first thing.' : 'No messages yet.');
+  drawStream(list, who === null ? 'Nothing in the lobby yet. Say the first thing.' : 'No messages yet.',
+    seenLineHtml(list, LEAChat.threadName(who)));
 }
 
 function openThread(who){
@@ -453,6 +486,15 @@ function watch(){
       state.dms = state.dms.filter(x => x.id !== m.id);
       render();
     })
+    // Someone marking their place is what turns your last message to "Seen",
+    // so it has to arrive without a reload the same way a message does.
+    .on('postgres_changes', { event:'*', schema:'public', table:'chat_reads' }, ({ new: r }) => {
+      if(!r || !r.user_id) return;
+      const known = state.reads.find(x => x.user_id === r.user_id && x.thread === r.thread);
+      if(known) known.last_read_id = r.last_read_id;
+      else state.reads.push({ user_id: r.user_id, thread: r.thread, last_read_id: r.last_read_id });
+      render();
+    })
     .subscribe();
 }
 
@@ -515,6 +557,9 @@ if(window.LEAPresence){
     state.isAdmin = !!(mine && mine.is_admin === true);
     await loadPeople();
     await loadMessages();
+    // Receipts are an extra, not a requirement: before chat-reads-setup.sql
+    // is run, chat still works and simply says nothing about who has read.
+    try{ await loadReads(); }catch(e){}
   }catch(e){
     // Before chat-setup.sql is run the table is simply not there yet.
     note(/chat_messages/.test(e.message || '')

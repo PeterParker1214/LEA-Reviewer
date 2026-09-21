@@ -50,6 +50,39 @@
       .sort(function (a, b) { return b.last.id - a.last.id; });
   }
 
+  /** The key a conversation is filed under in chat_reads. */
+  function threadName(who) {
+    return who == null ? 'lobby' : String(who);
+  }
+
+  /**
+   * Everyone except you who has read as far as this message.
+   *
+   * `reads` is every row of chat_reads: { user_id, thread, last_read_id }.
+   * Someone counts as having seen a message when the place they marked is
+   * at or past it — nobody is asked to acknowledge each message on its own.
+   */
+  function seenBy(reads, thread, messageId, meId) {
+    return (reads || [])
+      .filter(function (r) {
+        return r.thread === thread && r.user_id !== meId && Number(r.last_read_id) >= Number(messageId);
+      })
+      .map(function (r) { return r.user_id; });
+  }
+
+  /**
+   * What to print under your own last message, or null when there is
+   * nothing worth saying. Only your latest counts: a "Seen" under every
+   * message you ever sent is noise.
+   */
+  function seenLabel(reads, thread, messageId, meId, nameOf) {
+    var who = seenBy(reads, thread, messageId, meId);
+    if (!who.length) return null;
+    if (thread !== 'lobby') return 'Seen';
+    if (who.length === 1 && nameOf) return 'Seen by ' + nameOf(who[0]);
+    return 'Seen by ' + who.length;
+  }
+
   /** The messages of one thread, oldest first. `who` null means the lobby. */
   function threadMessages(messages, meId, who) {
     return (messages || [])
@@ -252,6 +285,9 @@
     GIF_MAX_BYTES: GIF_MAX_BYTES,
     SHRINK_EDGE: SHRINK_EDGE,
     threadKey: threadKey,
+    threadName: threadName,
+    seenBy: seenBy,
+    seenLabel: seenLabel,
     groupThreads: groupThreads,
     threadMessages: threadMessages,
     sendable: sendable,

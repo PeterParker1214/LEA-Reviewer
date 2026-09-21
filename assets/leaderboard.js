@@ -24,14 +24,37 @@
   }
 
   /** username -> avatar_url, for everyone who has set one. */
+  // The board knows people by display name; their page is addressed by id.
+  // Filled by the same fetch that gets the faces, so every caller gets the
+  // links without asking for them.
+  var idByUsername = {};
+
   function loadAvatars(sb) {
-    return sb.from('profiles').select('username, avatar_url').then(function (res) {
+    return sb.from('profiles').select('id, username, avatar_url').then(function (res) {
       var map = {};
       if (res && res.data) {
-        res.data.forEach(function (r) { if (r.username && r.avatar_url) map[r.username] = r.avatar_url; });
+        res.data.forEach(function (r) {
+          if (!r.username) return;
+          if (r.avatar_url) map[r.username] = r.avatar_url;
+          if (r.id) idByUsername[r.username] = r.id;
+        });
       }
       return map;
     }).catch(function () { return {}; });
+  }
+
+  /**
+   * A name, linked to that person's page when we know which account it is.
+   * Two people cannot share a display name, so the name is enough to find
+   * the id — and a name with no id known stays plain text rather than
+   * becoming a link to nowhere.
+   */
+  function nameHtml(username, mine) {
+    var label = escapeHtml(username) + (mine ? ' (you)' : '');
+    var id = idByUsername[username];
+    return id
+      ? '<a class="who" href="user.html?u=' + escapeHtml(id) + '">' + label + '</a>'
+      : '<span class="who">' + label + '</span>';
   }
 
   /**
@@ -72,8 +95,8 @@
         '<div class="lb-rank">' + rank + '</div>' +
         '<div class="lb-face">' + faceHtml(avatars[row.username], row.username) + '</div>' +
         '<div class="lb-main">' +
-          '<div class="lb-line"><div class="lb-name"><span class="who">' + escapeHtml(row.username) +
-            (opts.isMine ? ' (you)' : '') + '</span>' + onlineDot(row.username) + '</div>' +
+          '<div class="lb-line"><div class="lb-name">' + nameHtml(row.username, opts.isMine) +
+            onlineDot(row.username) + '</div>' +
             '<span class="lb-val">' + valueText(b.value) + '</span></div>' +
           '<div class="lb-bar"><i style="width:' + clamp(b.pct) + '%"></i>' +
             (b.markPct != null ? '<span class="lb-mark" style="left:' + clamp(b.markPct) + '%"></span>' : '') + '</div>' +
@@ -84,8 +107,7 @@
     return '<div class="' + cls + '">' +
       '<div class="lb-rank">' + rank + '</div>' +
       '<div class="lb-face">' + faceHtml(avatars[row.username], row.username) + '</div>' +
-      '<div class="lb-name"><span class="who">' + escapeHtml(row.username) +
-        (opts.isMine ? ' (you)' : '') + '</span>' + onlineDot(row.username) + '</div>' +
+      '<div class="lb-name">' + nameHtml(row.username, opts.isMine) + onlineDot(row.username) + '</div>' +
       // "2301 mastered · 82% avg" stacks one part per line, so the stats stay
       // narrow and the name beside them is not cut short.
       '<div class="lb-stats">' + String(opts.stats || '').split(' · ').map(function (part) {
@@ -138,7 +160,7 @@
       var row = rows[i], rank = i + 1, mine = row.username === opts.myUsername;
       return '<div class="lb-step p' + rank + (mine ? ' mine' : '') + '">' +
         '<div class="lb-face">' + faceHtml(avatars[row.username], row.username) + '</div>' +
-        '<div class="lb-pname"><span class="who">' + escapeHtml(row.username) + (mine ? ' (you)' : '') + '</span>' + onlineDot(row.username) + '</div>' +
+        '<div class="lb-pname">' + nameHtml(row.username, mine) + onlineDot(row.username) + '</div>' +
         '<div class="lb-pval">' + valueText(opts.value(row)) + '</div>' +
         '<div class="lb-plinth"><b>' + rank + '</b></div>' +
       '</div>';
@@ -152,6 +174,7 @@
 
   window.LEALeaderboard = {
     loadAvatars: loadAvatars,
+    nameHtml: nameHtml,
     onlineDot: onlineDot,
     rowHtml: rowHtml,
     listHtml: listHtml,
