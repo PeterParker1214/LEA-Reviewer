@@ -9,16 +9,16 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <title>LEA Reviewer — Admin</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/lea-confirm.js?v=70"></script>
-<script src="assets/icons.js?v=70"></script>
+<script src="assets/lea-confirm.js?v=71"></script>
+<script src="assets/icons.js?v=71"></script>
 <!-- The same reader the app uses, so what the editor sees is exactly what a
      reader gets. Its balanced-bracket scan also survives question text that a
      regex would truncate. -->
-<script src="assets/quiz-source.js?v=70"></script>
-<script src="assets/quiz-rework.js?v=70"></script>
-<script src="assets/docx-quiz.js?v=70"></script>
-<script src="assets/image-intake.js?v=70"></script>
-<script src="assets/theme.js?v=70" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=71"></script>
+<script src="assets/quiz-rework.js?v=71"></script>
+<script src="assets/docx-quiz.js?v=71"></script>
+<script src="assets/image-intake.js?v=71"></script>
+<script src="assets/theme.js?v=71" data-alt-class="light-mode" data-default-is="dark"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -322,6 +322,7 @@
       <button class="tab-btn" data-tab="deleted">Deleted Modules</button>
       <button class="tab-btn" data-tab="reports">Reports</button>
       <button class="tab-btn" data-tab="messages">Messages</button>
+      <button class="tab-btn" data-tab="contact">Contact</button>
     </div>
     <div id="tab-subjects"></div>
     <div id="tab-pages" class="hidden"></div>
@@ -330,6 +331,7 @@
     <div id="tab-deleted" class="hidden"></div>
     <div id="tab-reports" class="hidden"></div>
     <div id="tab-messages" class="hidden"></div>
+    <div id="tab-contact" class="hidden"></div>
   </div>
 </div>
 
@@ -379,6 +381,7 @@ const tabReworkEl = document.getElementById('tab-rework');
 const tabDeletedEl = document.getElementById('tab-deleted');
 const tabReportsEl = document.getElementById('tab-reports');
 const tabMessagesEl = document.getElementById('tab-messages');
+const tabContactEl = document.getElementById('tab-contact');
 
 let subjects = [];
 let accessToken = '';
@@ -766,7 +769,9 @@ async function init(){
       tabDeletedEl.classList.toggle('hidden', btn.dataset.tab !== 'deleted');
       tabReportsEl.classList.toggle('hidden', btn.dataset.tab !== 'reports');
       tabMessagesEl.classList.toggle('hidden', btn.dataset.tab !== 'messages');
+      tabContactEl.classList.toggle('hidden', btn.dataset.tab !== 'contact');
       if(btn.dataset.tab === 'messages') openMessagesTab();
+      if(btn.dataset.tab === 'contact') openContactTab();
       if(btn.dataset.tab === 'pages' && fileTree.length === 0) loadFileTree();
       if(btn.dataset.tab === 'upload') renderUploadTab();
       if(btn.dataset.tab === 'rework') renderReworkTab();
@@ -2072,7 +2077,7 @@ function parseQuizFile(text){
 function buildAdaptedQuizHtml(raw, format, opts){
   const { subjectId, moduleId, subjectName, includeBackLink } = opts;
   let out = raw;
-  const assetPath = '../../../assets/module-progress.js?v=70';
+  const assetPath = '../../../assets/module-progress.js?v=71';
 
   if(format === 'native'){
     out = out.replace(/const LEA_SUBJECT_ID\s*=\s*'[^']*';/, `const LEA_SUBJECT_ID = '${subjectId}';`);
@@ -2873,6 +2878,85 @@ function openMessagesTab(){
     '<div class="card"><div class="field-label" style="margin-top:0;">Sent messages</div><div id="msgList" class="field-note">Loading…</div></div>';
   document.getElementById('msgSend').addEventListener('click', sendMessage);
   loadSentMessages();
+}
+
+/* ================= CONTACT TAB =================
+ *
+ * The About page reads data/contact.json and leaves out anything blank, so
+ * an empty field here is a row readers never see. Saving writes the file
+ * straight to the repo, the same way a module upload does.
+ */
+const CONTACT_PATH = 'data/contact.json';
+const CONTACT_FIELDS = [
+  ['about', 'About LEA Reviewer', 'textarea', 'Who made it and what it is. Shown at the top of the About page.'],
+  ['email', 'Email', 'text', 'you@example.com'],
+  ['facebook', 'Facebook page', 'text', 'https://facebook.com/…'],
+  ['messenger', 'Messenger', 'text', 'https://m.me/…'],
+  ['discord', 'Discord invite', 'text', 'https://discord.gg/…'],
+  ['support_label', 'Support heading', 'text', 'Buy me a coffee'],
+  ['support_note', 'Support note', 'textarea', 'Why someone might chip in. Optional.'],
+  ['support_url', 'Support link', 'text', 'https://ko-fi.com/… — leave blank to hide the whole card'],
+  ['gcash_qr', 'GCash QR image URL', 'text', 'https://… a picture of your QR, optional']
+];
+
+async function fetchContact(){
+  const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${CONTACT_PATH}?t=${Date.now()}`;
+  try{
+    const resp = await fetch(url, { cache: 'no-store' });
+    if(resp.ok) return await resp.json();
+  }catch(e){}
+  return {};
+}
+
+async function openContactTab(){
+  tabContactEl.innerHTML = '<div class="card msg info">Loading the current details…</div>';
+  const current = await fetchContact();
+  tabContactEl.innerHTML =
+    '<div class="card">' +
+      CONTACT_FIELDS.map(([key, label, kind, hint], i) =>
+        '<div class="field-label"' + (i === 0 ? ' style="margin-top:0;"' : '') + '>' + escapeHtml(label) + '</div>' +
+        (kind === 'textarea'
+          ? '<textarea id="ct-' + key + '" rows="3" maxlength="1200" placeholder="' + escapeHtml(hint) + '">' + escapeHtml(current[key] || '') + '</textarea>'
+          : '<input type="text" id="ct-' + key + '" maxlength="300" placeholder="' + escapeHtml(hint) + '" value="' + escapeHtml(current[key] || '') + '">')
+      ).join('') +
+      '<p class="field-note">Anything left blank is hidden from readers rather than shown empty. Links have to start with http:// or https://.</p>' +
+      '<div style="margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;">' +
+        '<button class="primary" id="ctSave" type="button">Save</button>' +
+        '<a href="about.html" target="_blank" rel="noopener">Open the About page</a>' +
+        '<span id="ctStatus" class="field-note" style="margin:0;"></span>' +
+      '</div>' +
+    '</div>';
+  document.getElementById('ctSave').addEventListener('click', saveContact);
+}
+
+async function saveContact(){
+  const btn = document.getElementById('ctSave');
+  const status = document.getElementById('ctStatus');
+  const say = (text, kind) => {
+    status.textContent = text;
+    status.style.color = kind === 'err' ? 'var(--bad)' : kind === 'ok' ? 'var(--good)' : 'var(--muted)';
+  };
+
+  const out = {};
+  for(const [key] of CONTACT_FIELDS) out[key] = document.getElementById('ct-' + key).value.trim();
+
+  // A link that is not a link would render as plain text on the About page.
+  // Say so here instead, where it can still be fixed.
+  const bad = ['facebook', 'messenger', 'discord', 'support_url', 'gcash_qr']
+    .filter(key => out[key] && !/^https?:\/\//i.test(out[key]));
+  if(bad.length){ say('These need to start with https:// — ' + bad.join(', '), 'err'); return; }
+  if(out.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(out.email)){ say('That email does not look right.', 'err'); return; }
+
+  btn.disabled = true;
+  say('Saving…');
+  try{
+    await callSave(CONTACT_PATH, JSON.stringify(out, null, 2) + '\n', 'Admin: update the contact and support details');
+    say('Saved. The About page shows it once GitHub Pages catches up.', 'ok');
+  }catch(e){
+    say('Error: ' + e.message, 'err');
+  }finally{
+    btn.disabled = false;
+  }
 }
 
 function msgStatus(text, kind){

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=5">
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — LEA Reviewer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Architects+Daughter&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-2:#0a1520;
+    --gold:#e0a83f; --gold-bright:#f0c268; --blue:#6fa8cf; --blue-bright:#8fc4ea;
+    --muted:#8b98a5; --good:#5fbf82; --bad:#e2604a;
+    --line: rgba(111,168,207,0.20); --grid-line: rgba(111,168,207,0.09);
+    --font-display: 'Big Shoulders Display', sans-serif;
+    --font-hand: 'Architects Daughter', cursive;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+  body.light-mode, :root.light-mode{
+    --ink:#16202b; --bg-deep:#d3dee6; --bg-panel:#ffffff; --bg-panel-2:#e9eff4;
+    --gold:#b5791f; --gold-bright:#7d520c; --blue:#2f6c95; --blue-bright:#1b4a6b;
+    --muted:#4f5d6a; --good:#206b3c; --bad:#a1372a;
+    --line: rgba(47,108,149,0.28); --grid-line: rgba(47,108,149,0.11);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      var(--bg-deep);
+    color:var(--ink); font-family:var(--font-body); min-height:100vh;
+    display:flex; justify-content:center; padding:20px 16px 64px;
+  }
+  .wrap{width:100%; max-width:520px;}
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit;}
+
+  .run-header{ display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+  .icon-btn-44{
+    width:44px; height:44px; border-radius:10px; background:var(--bg-panel); border:1px solid var(--line);
+    color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+  }
+  .icon-btn-44 svg{ width:19px; height:19px; }
+  .page-title{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; }
+
+  .card{ border:1px solid var(--line); border-radius:12px; padding:15px; background:var(--bg-panel); margin-bottom:12px; }
+  .card h2{ font-family:var(--font-display); font-size:19px; font-weight:800; text-transform:uppercase; margin:0 0 10px; }
+  .card p{ margin:0; font-size:14px; line-height:1.6; color:var(--muted); white-space:pre-line; }
+
+  .lk{ display:flex; align-items:center; gap:11px; padding:10px 0; border-bottom:1px solid var(--line); }
+  .lk:last-child{ border-bottom:0; padding-bottom:0; }
+  .lk:first-of-type{ padding-top:0; }
+  .lk .i{ width:30px; height:30px; flex:none; border-radius:8px; background:var(--bg-panel-2); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; font-size:14px; color:var(--gold-bright); }
+  .lk .t{ font-size:13.5px; }
+  .lk .v{ font-family:var(--font-mono); font-size:12px; color:var(--blue-bright); overflow-wrap:anywhere; }
+
+  .support{ border:0; border-radius:12px; padding:18px 16px; margin-bottom:12px; text-align:center;
+    background:linear-gradient(135deg, var(--gold), var(--gold-bright)); color:#1a1206; }
+  .support h2{ font-family:var(--font-display); font-size:23px; font-weight:800; text-transform:uppercase; margin:0 0 6px; }
+  .support p{ margin:0 0 13px; font-size:13px; line-height:1.55; opacity:.85; white-space:pre-line; }
+  .support .go{ display:inline-block; background:#1a1206; color:var(--gold-bright); padding:10px 22px;
+    border-radius:22px; font-weight:600; font-size:14px; }
+  .support img{ display:block; width:170px; max-width:100%; margin:14px auto 0; border-radius:8px; border:5px solid #fff; }
+  .support .qr-note{ font-family:var(--font-mono); font-size:11px; margin-top:8px; opacity:.75; }
+
+  .note{ padding:24px 16px; text-align:center; color:var(--muted); font-size:13px; line-height:1.6; }
+</style>
+<script src="assets/theme.js?v=71" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=71"></script>
+<script src="assets/offline.js?v=71"></script>
+</head>
+<body>
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
+<div class="wrap">
+  <div class="run-header">
+    <a class="icon-btn-44" href="index.html" title="Back" data-back>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </a>
+    <div class="page-title">About</div>
+  </div>
+  <div id="card"><div class="note">Loading…</div></div>
+</div>
+
+<script>
+function escapeHtml(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// Only http(s) and mailto get to be links. Anything else is shown as plain
+// text, so a stray javascript: in the file cannot become a clickable thing.
+function safeHref(url){
+  const s = String(url || '').trim();
+  return /^(https?:\/\/|mailto:)/i.test(s) ? s : null;
+}
+
+function linkRow(icon, label, value, href){
+  const inner =
+    '<span class="i">' + icon + '</span>' +
+    '<span class="t">' + escapeHtml(label) + '<br><span class="v">' + escapeHtml(value) + '</span></span>';
+  const to = safeHref(href);
+  return to
+    ? '<a class="lk" href="' + escapeHtml(to) + '" target="_blank" rel="noopener noreferrer">' + inner + '</a>'
+    : '<div class="lk">' + inner + '</div>';
+}
+
+// Every row is optional. A field nobody has filled in is left out rather than
+// shown empty, so the page is never half-written in front of a reader.
+function render(c){
+  const rows = [];
+  if(c.email)     rows.push(linkRow('&#9993;', 'Email', c.email, 'mailto:' + c.email));
+  if(c.facebook)  rows.push(linkRow('f', 'Facebook', c.facebook.replace(/^https?:\/\//, ''), c.facebook));
+  if(c.messenger) rows.push(linkRow('&#128172;', 'Messenger', c.messenger.replace(/^https?:\/\//, ''), c.messenger));
+  if(c.discord)   rows.push(linkRow('&#9673;', 'Discord', c.discord.replace(/^https?:\/\//, ''), c.discord));
+  rows.push(linkRow('&#9873;', 'Report a question', 'Use the flag on any question', null));
+
+  const support = c.support_url
+    ? '<div class="support">' +
+        '<h2>' + escapeHtml(c.support_label || 'Buy me a coffee') + '</h2>' +
+        (c.support_note ? '<p>' + escapeHtml(c.support_note) + '</p>' : '') +
+        (safeHref(c.support_url)
+          ? '<a class="go" href="' + escapeHtml(safeHref(c.support_url)) + '" target="_blank" rel="noopener noreferrer">Support LEA Reviewer</a>'
+          : '') +
+        (safeHref(c.gcash_qr)
+          ? '<img src="' + escapeHtml(safeHref(c.gcash_qr)) + '" alt="Scan to send a gift">' +
+            '<div class="qr-note">or scan to send via GCash</div>'
+          : '') +
+      '</div>'
+    : (safeHref(c.gcash_qr)
+        ? '<div class="support">' +
+            '<h2>' + escapeHtml(c.support_label || 'Buy me a coffee') + '</h2>' +
+            (c.support_note ? '<p>' + escapeHtml(c.support_note) + '</p>' : '') +
+            '<img src="' + escapeHtml(safeHref(c.gcash_qr)) + '" alt="Scan to send a gift">' +
+            '<div class="qr-note">Scan to send via GCash</div>' +
+          '</div>'
+        : '');
+
+  document.getElementById('card').innerHTML =
+    (c.about ? '<div class="card"><h2>About</h2><p>' + escapeHtml(c.about) + '</p></div>' : '') +
+    '<div class="card"><h2>Contact us</h2>' + rows.join('') + '</div>' +
+    support;
+}
+
+(async function boot(){
+  let contact = {};
+  try{
+    const res = await fetch('data/contact.json', { cache: 'no-cache' });
+    if(res.ok) contact = await res.json();
+  }catch(e){}
+  render(contact || {});
+})();
+</script>
+</body>
+</html>
