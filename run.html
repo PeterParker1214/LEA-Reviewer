@@ -480,6 +480,17 @@
     background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:28px 22px;
     text-align:center; color:var(--muted); font-family:var(--font-mono); font-size:13px; line-height:1.7;
   }
+  /* The wait while the bank is read. It says what it is doing and fills as
+     the modules land, so a few seconds read as progress and not a hang. */
+  .build-card{ padding:34px 22px; }
+  .build-title{ font-family:var(--font-display); font-weight:800; font-size:26px; line-height:1;
+    text-transform:uppercase; color:var(--ink); margin-bottom:8px; }
+  .build-sub{ font-family:var(--font-mono); font-size:12px; color:var(--muted); margin-bottom:16px; }
+  .build-bar{ height:6px; border-radius:3px; background:var(--bg-panel-2); border:1px solid var(--line);
+    overflow:hidden; max-width:260px; margin:0 auto; }
+  .build-bar i{ display:block; height:100%; background:var(--gold);
+    transition:width .25s ease; }
+  @media (prefers-reduced-motion: reduce){ .build-bar i{ transition:none; } }
 
   /* ===== results ===== */
   .results-card{ text-align:center; padding:22px 18px; }
@@ -630,19 +641,19 @@
   .footer-btn.next{ box-shadow:0 8px 16px -10px rgba(0,0,0,.6), inset 0 1px 0 color-mix(in srgb, #fff 35%, transparent); }
   .footer-btn.skip{ background:none; border:1px solid var(--line); color:var(--muted); flex:0 0 32%; }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=75">
-<script src="assets/lea-confirm.js?v=75"></script>
-<script src="assets/quiz-source.js?v=75"></script>
-<script src="assets/duel.js?v=75"></script>
-<script src="assets/etymology.js?v=75"></script>
-<script src="assets/module-progress.js?v=75"></script>
-<script src="assets/offline.js?v=75"></script>
-<script src="assets/presence.js?v=75"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=76">
+<script src="assets/lea-confirm.js?v=76"></script>
+<script src="assets/quiz-source.js?v=76"></script>
+<script src="assets/duel.js?v=76"></script>
+<script src="assets/etymology.js?v=76"></script>
+<script src="assets/module-progress.js?v=76"></script>
+<script src="assets/offline.js?v=76"></script>
+<script src="assets/presence.js?v=76"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
-<script src="assets/quiz-resume.js?v=75"></script>
-<script src="assets/theme.js?v=75" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=75"></script>
-<script src="assets/audio.js?v=75"></script>
+<script src="assets/quiz-resume.js?v=76"></script>
+<script src="assets/theme.js?v=76" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=76"></script>
+<script src="assets/audio.js?v=76"></script>
 </head>
 <body>
 <!-- The rail is a sibling of #pageBody, not a child: every render replaces
@@ -2241,29 +2252,61 @@ function shuffleArr(arr){
   return a;
 }
 
-async function buildQuestionIndex(subjects){
-  const cells = [];
-  for(const subject of subjects){
-    if(!subject.ready) continue;
-    for(const mod of (subject.modules || [])){
-      // Every module, whatever it is stored as. This used to skip anything
-      // that wasn't a .json file, which hid 61% of the bank from every
-      // cross-subject feature — see assets/quiz-source.js.
-      const arr = await LEAQuizSource.loadModuleQuestions(mod);
-      if(!arr) continue;
-      const p = LEAProgress.load(subject.id, mod.id);
-      const masteredSet = new Set(p.mastered || []);
-      const flagSet = new Set(p.flagged || []);
-      arr.forEach((q, qIndex) => {
-        if(q.hidden) return; // admin-hidden — keeps its slot, just never served
-        cells.push({
-          subjectId: subject.id, subjectName: subject.name, moduleId: mod.id, moduleTitle: mod.title,
-          moduleAttempts: p.attempts || 0, qIndex, q, s: q.s || mod.title,
-          mastered: masteredSet.has(qIndex), flagged: flagSet.has(qIndex)
-        });
-      });
+// How many module files to have in the air at once. The bank is 230 files;
+// fetching them one after another took about a minute on a phone, which is
+// what "Building your set" used to be spent on. In flights of twelve it is
+// two or three seconds, and twelve is low enough not to trip the browser's
+// own per-host connection limit or a slow network's patience.
+const FETCH_AT_ONCE = 12;
+
+// Runs `job` over `items`, FETCH_AT_ONCE at a time, results in input order.
+async function inFlights(items, job){
+  const out = new Array(items.length);
+  let next = 0;
+  await Promise.all(Array.from({ length: Math.min(FETCH_AT_ONCE, items.length) }, async () => {
+    while(next < items.length){
+      const i = next++;
+      out[i] = await job(items[i], i);
     }
-  }
+  }));
+  return out;
+}
+
+// One flat list of every question in every ready subject.
+// Every module, whatever it is stored as. This used to skip anything that
+// wasn't a .json file, which hid 61% of the bank from every cross-subject
+// feature — see assets/quiz-source.js.
+async function buildQuestionIndex(subjects, onProgress){
+  const wanted = [];
+  (subjects || []).forEach(subject => {
+    if(!subject.ready) return;
+    (subject.modules || []).forEach(mod => wanted.push({ subject, mod }));
+  });
+
+  let done = 0;
+  const loaded = await inFlights(wanted, async ({ mod }) => {
+    const arr = await LEAQuizSource.loadModuleQuestions(mod);
+    done++;
+    if(onProgress) onProgress(done, wanted.length);
+    return arr;
+  });
+
+  const cells = [];
+  wanted.forEach(({ subject, mod }, i) => {
+    const arr = loaded[i];
+    if(!arr) return;
+    const p = LEAProgress.load(subject.id, mod.id);
+    const masteredSet = new Set(p.mastered || []);
+    const flagSet = new Set(p.flagged || []);
+    arr.forEach((q, qIndex) => {
+      if(q.hidden) return; // admin-hidden — keeps its slot, just never served
+      cells.push({
+        subjectId: subject.id, subjectName: subject.name, moduleId: mod.id, moduleTitle: mod.title,
+        moduleAttempts: p.attempts || 0, qIndex, q, s: q.s || mod.title,
+        mastered: masteredSet.has(qIndex), flagged: flagSet.has(qIndex)
+      });
+    });
+  });
   return cells;
 }
 
@@ -2345,7 +2388,7 @@ function buildSearchDrillPool(index, q, filter){
 // different sets, which is the one thing a duel cannot have.
 let DUEL = null;
 
-async function buildDuelPool(index, duelId){
+async function buildDuelPool(_index, duelId){
   const body = document.getElementById('pageBody');
   const stop = html => { body.innerHTML = '<div class="state-card">' + html +
     '<br><br><a href="duel.html" style="color:var(--gold-bright);">&larr; Duels</a></div>'; return null; };
@@ -2360,11 +2403,36 @@ async function buildDuelPool(index, duelId){
   if(LEADuel.scoreOf(duel, side) != null) return stop('You have already played this duel.');
   if(duel.status === 'declined') return stop('That duel was declined.');
 
+  // The ten name at most ten modules, and usually two or three, so only
+  // those are fetched. Building the whole index here meant waiting for 230
+  // files to answer ten questions.
+  const refs = duel.questions || [];
+  const names = Array.from(new Set(refs.map(r => r.s + '/' + r.m)));
+  const loaded = new Map();
+  await Promise.all(names.map(async name => {
+    const [subjectId, moduleId] = name.split('/');
+    const subject = (ALL_SUBJECTS || []).find(x => x.id === subjectId);
+    const mod = subject && (subject.modules || []).find(m => m.id === moduleId);
+    if(!mod) return;
+    const arr = await LEAQuizSource.loadModuleQuestions(mod);
+    if(arr) loaded.set(name, { subject, mod, arr });
+  }));
+
   const cells = [];
-  for(const ref of (duel.questions || [])){
-    const cell = index.find(c => c.subjectId === ref.s && c.moduleId === ref.m && c.qIndex === ref.i);
-    if(cell) cells.push(cell);
-  }
+  refs.forEach(ref => {
+    const hit = loaded.get(ref.s + '/' + ref.m);
+    if(!hit) return;
+    const q = hit.arr[ref.i];
+    if(!q || q.hidden) return;
+    const p = LEAProgress.load(hit.subject.id, hit.mod.id);
+    cells.push({
+      subjectId: hit.subject.id, subjectName: hit.subject.name,
+      moduleId: hit.mod.id, moduleTitle: hit.mod.title,
+      moduleAttempts: p.attempts || 0, qIndex: ref.i, q, s: q.s || hit.mod.title,
+      mastered: (p.mastered || []).indexOf(ref.i) !== -1,
+      flagged: (p.flagged || []).indexOf(ref.i) !== -1
+    });
+  });
   // A question that has since been hidden or removed simply is not asked, and
   // both players are scored out of what is left, because the row's list is
   // the same for both of them.
@@ -2420,11 +2488,38 @@ function aggregateWeakTopics(index){
   return out;
 }
 
+// The wait is a real one — a couple of seconds of fetching — so it says what
+// it is doing and how far along it is rather than sitting on one word.
+function buildingHtml(){
+  return '<div class="state-card build-card">' +
+      '<div class="build-title">Building your set</div>' +
+      '<div class="build-sub" id="buildSub">Reading the question bank…</div>' +
+      '<div class="build-bar"><i id="buildBar" style="width:4%"></i></div>' +
+    '</div>';
+}
+
+function buildingProgress(done, total){
+  const bar = document.getElementById('buildBar');
+  const sub = document.getElementById('buildSub');
+  if(!bar || !sub) return;
+  const pct = total ? Math.max(4, Math.round((done / total) * 100)) : 4;
+  bar.style.width = pct + '%';
+  sub.textContent = done >= total ? 'Choosing your questions…' : done + ' of ' + total + ' modules';
+}
+
 async function bootMulti(subjects, drillParams){
   const body = document.getElementById('pageBody');
   document.title = (MODE === 'daily-drill' ? 'Daily Drill' : MODE === 'exam' ? 'Mock Exam' : 'Drill') + ' — LEA Reviewer';
-  body.innerHTML = '<div class="state-card">Building your set…</div>';
-  const index = await buildQuestionIndex(subjects);
+  body.innerHTML = buildingHtml();
+  // A duel names its own ten, so it never needs the rest of the bank.
+  if(MODE === 'drill' && drillParams.duel){
+    pool = await buildDuelPool(null, drillParams.duel);
+    if(pool === null) return;           // buildDuelPool drew the reason itself
+    startMultiRun('duel');
+    return;
+  }
+
+  const index = await buildQuestionIndex(subjects, buildingProgress);
 
   if(MODE === 'daily-drill'){
     pool = buildDailyDrillPool(index);
@@ -2457,10 +2552,6 @@ async function bootMulti(subjects, drillParams){
         body.innerHTML = '<div class="state-card">Nothing flagged right now.<br><br><a href="saved.html" style="color:var(--gold-bright);">&larr; Saved</a></div>';
         return;
       }
-    } else if(drillParams.duel){
-      drillKind = 'duel';
-      pool = await buildDuelPool(index, drillParams.duel);
-      if(pool === null) return;           // buildDuelPool drew the reason itself
     } else if(drillParams.q){
       drillKind = 'drill-search';
       pool = buildSearchDrillPool(index, drillParams.q, drillParams.filter);
