@@ -1,0 +1,461 @@
+[
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding t-beam flange?",
+    "o": [
+      "Tension steel reaches yield/limiting strain before compression concrete crushes.",
+      "Slab portion that participates in compression under positive bending.",
+      "L/16.",
+      "Lecture gives φ = 0.90 for axial tension and axial tension with flexure."
+    ],
+    "c": 1,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Slab portion that participates in compression under positive bending."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding legacy balanced ratio equation?",
+    "o": [
+      "Lecture gives ρbal = (0.85β1 f'c/fy)(87000/(87000+fy)).",
+      "Preferred concept because steel yielding gives greater ductility/warning before ultimate failure.",
+      "Design load effects are produced by prescribed load combinations and load factors; the lecture simplifies this as load factor × load.",
+      "L/28."
+    ],
+    "c": 0,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Lecture gives ρbal = (0.85β1 f'c/fy)(87000/(87000+fy))."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding source shear/torsion phi?",
+    "o": [
+      "Mu in the lecture denotes the beam's factored/ultimate moment demand or is loosely labeled 'moment capacity'; notation must be interpreted consistently with the design framework.",
+      "L/10.",
+      "Lecture gives 0.85.",
+      "Lecture gives ρmin = 1.4/fy in its unit system."
+    ],
+    "c": 2,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Lecture gives 0.85."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding singly reinforced beam?",
+    "o": [
+      "Typically places top concrete in compression and bottom longitudinal reinforcement in tension for a simply supported beam under downward load.",
+      "ρ = As/(bd).",
+      "Source table gives L/20 when deflection is not explicitly computed and listed conditions apply.",
+      "Main flexural reinforcement is provided primarily in the tension zone for strength."
+    ],
+    "c": 3,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Main flexural reinforcement is provided primarily in the tension zone for strength.",
+    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+UkMgQmVhbSBSZWluZm9yY2VtZW50IFR5cGVzPC90ZXh0Pgo8cmVjdCB4PSI4MCIgeT0iMTIwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjI1MCIgY2xhc3M9ImYiLz48Y2lyY2xlIGN4PSIxNDAiIGN5PSIzMzAiIHI9IjEwIiBmaWxsPSIjMTExIi8+PGNpcmNsZSBjeD0iMjIwIiBjeT0iMzMwIiByPSIxMCIgZmlsbD0iIzExMSIvPjx0ZXh0IHg9IjExNSIgeT0iMjAwIiBjbGFzcz0icyI+U2luZ2x5PC90ZXh0Pgo8cmVjdCB4PSIzNDAiIHk9IjEyMCIgd2lkdGg9IjIyMCIgaGVpZ2h0PSIyNTAiIGNsYXNzPSJmMiIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjMzMCIgcj0iMTAiIGZpbGw9IiMxMTEiLz48Y2lyY2xlIGN4PSI1MDAiIGN5PSIzMzAiIHI9IjEwIiBmaWxsPSIjMTExIi8+PGNpcmNsZSBjeD0iNDAwIiBjeT0iMTU1IiByPSIxMCIgZmlsbD0iIzExMSIvPjxjaXJjbGUgY3g9IjUwMCIgY3k9IjE1NSIgcj0iMTAiIGZpbGw9IiMxMTEiLz48dGV4dCB4PSIzNzUiIHk9IjI0NSIgY2xhc3M9InMiPkRvdWJseTwvdGV4dD4KPHBhdGggZD0iTTYzMCAxMzAgSDgzMCBWMTkwIEg3NjAgVjM3MCBINzAwIFYxOTAgSDYzMCBaIiBjbGFzcz0iZiIvPjx0ZXh0IHg9IjcwMCIgeT0iMjQ1IiBjbGFzcz0icyI+VC1iZWFtPC90ZXh0Pjwvc3ZnPg=="
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding beam/ribbed one-way slab both-ends-continuous thickness?",
+    "o": [
+      "L/21.",
+      "Lecture gives ρmax = 0.75ρbal.",
+      "Lecture gives 0.70.",
+      "Monolithic slab and beam may act together so effective slab width forms a compression flange."
+    ],
+    "c": 0,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] L/21."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding source flexure phi?",
+    "o": [
+      "Has both tension reinforcement and compression reinforcement.",
+      "Concrete and tensile steel reach their limiting strain conditions simultaneously in the legacy balanced-section concept.",
+      "Lecture gives φ = 0.90 for flexure without axial load.",
+      "The lecture's φ values are older code-era values and are not to be memorized as the latest ACI CODE-318-25 factors."
+    ],
+    "c": 2,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Lecture gives φ = 0.90 for flexure without axial load."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding under-reinforced section?",
+    "o": [
+      "L/8.",
+      "Lecture gives 0.70.",
+      "Tension steel reaches yield/limiting strain before compression concrete crushes.",
+      "Useful when member depth is constrained or additional moment capacity/stiffness is needed."
+    ],
+    "c": 2,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Tension steel reaches yield/limiting strain before compression concrete crushes."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding solid one-way slab both-ends-continuous thickness?",
+    "o": [
+      "Concrete does not 'disappear'; the brittle concern is compression crushing before sufficient tensile reinforcement yielding.",
+      "Lecture gives φ = 0.90 for axial tension and axial tension with flexure.",
+      "L/28.",
+      "These are source-era prescriptive span/depth ratios for specified conditions; current code permits/uses deflection checks and code-specific limits."
+    ],
+    "c": 2,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] L/28."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding moment capacity?",
+    "o": [
+      "L/18.5.",
+      "Preferred concept because steel yielding gives greater ductility/warning before ultimate failure.",
+      "Mu in the lecture denotes the beam's factored/ultimate moment demand or is loosely labeled 'moment capacity'; notation must be interpreted consistently with the design framework.",
+      "Lecture gives 0.75."
+    ],
+    "c": 2,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[CURRENTNESS-AUDITED / CORRECTED] Mu in the lecture denotes the beam's factored/ultimate moment demand or is loosely labeled 'moment capacity'; notation must be interpreted consistently with the design framework."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding tension reinforcement ratio?",
+    "o": [
+      "Compression concrete reaches its limiting strain before adequate tensile-steel yielding.",
+      "L/10.",
+      "ρ = As/(bd).",
+      "Available design strength is a strength-reduction factor φ times nominal strength."
+    ],
+    "c": 2,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] ρ = As/(bd)."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding source bearing phi?",
+    "o": [
+      "L/16.",
+      "The 0.75ρbal maximum-ratio approach is legacy design methodology; modern ACI flexural ductility is expressed through strain-controlled provisions.",
+      "Typically places top concrete in compression and bottom longitudinal reinforcement in tension for a simply supported beam under downward load.",
+      "Lecture gives 0.70."
+    ],
+    "c": 3,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Lecture gives 0.70."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding doubly reinforced beam?",
+    "o": [
+      "Has both tension reinforcement and compression reinforcement.",
+      "L/24.",
+      "Design load effects are produced by prescribed load combinations and load factors; the lecture simplifies this as load factor × load.",
+      "Lecture gives ρmax = 0.75ρbal."
+    ],
+    "c": 0,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Has both tension reinforcement and compression reinforcement."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding beam/ribbed one-way slab cantilever thickness?",
+    "o": [
+      "Slab portion that participates in compression under positive bending.",
+      "L/8.",
+      "Lecture gives ρmin = 1.4/fy in its unit system.",
+      "The lecture's φ values are older code-era values and are not to be memorized as the latest ACI CODE-318-25 factors."
+    ],
+    "c": 1,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] L/8."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding source axial-tension phi?",
+    "o": [
+      "Source table gives L/20 when deflection is not explicitly computed and listed conditions apply.",
+      "Useful when member depth is constrained or additional moment capacity/stiffness is needed.",
+      "Lecture gives ρbal = (0.85β1 f'c/fy)(87000/(87000+fy)).",
+      "Lecture gives φ = 0.90 for axial tension and axial tension with flexure."
+    ],
+    "c": 3,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Lecture gives φ = 0.90 for axial tension and axial tension with flexure."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding under-reinforced behavior?",
+    "o": [
+      "Lecture gives 0.85.",
+      "Monolithic slab and beam may act together so effective slab width forms a compression flange.",
+      "Preferred concept because steel yielding gives greater ductility/warning before ultimate failure.",
+      "These are source-era prescriptive span/depth ratios for specified conditions; current code permits/uses deflection checks and code-specific limits."
+    ],
+    "c": 2,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Preferred concept because steel yielding gives greater ductility/warning before ultimate failure."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding solid one-way slab cantilever thickness?",
+    "o": [
+      "Lecture gives 0.75.",
+      "Concrete and tensile steel reach their limiting strain conditions simultaneously in the legacy balanced-section concept.",
+      "Main flexural reinforcement is provided primarily in the tension zone for strength.",
+      "L/10."
+    ],
+    "c": 3,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] L/10."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding positive flexure?",
+    "o": [
+      "L/21.",
+      "Typically places top concrete in compression and bottom longitudinal reinforcement in tension for a simply supported beam under downward load.",
+      "Compression concrete reaches its limiting strain before adequate tensile-steel yielding.",
+      "Lecture gives 0.70."
+    ],
+    "c": 1,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Typically places top concrete in compression and bottom longitudinal reinforcement in tension for a simply supported beam under downward load.",
+    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+UG9zaXRpdmUgRmxleHVyZSBpbiBhbiBSQyBCZWFtPC90ZXh0Pgo8cmVjdCB4PSIxMjAiIHk9IjEyMCIgd2lkdGg9IjY2MCIgaGVpZ2h0PSIyNTAiIGNsYXNzPSJmIi8+Cjx0ZXh0IHg9IjMzMCIgeT0iMTY1IiBjbGFzcz0icyI+Y29tcHJlc3Npb24gem9uZTwvdGV4dD4KPGNpcmNsZSBjeD0iMjUwIiBjeT0iMzMwIiByPSIxMCIgZmlsbD0iIzExMSIvPjxjaXJjbGUgY3g9IjM1MCIgY3k9IjMzMCIgcj0iMTAiIGZpbGw9IiMxMTEiLz48Y2lyY2xlIGN4PSI0NTAiIGN5PSIzMzAiIHI9IjEwIiBmaWxsPSIjMTExIi8+PGNpcmNsZSBjeD0iNTUwIiBjeT0iMzMwIiByPSIxMCIgZmlsbD0iIzExMSIvPjxjaXJjbGUgY3g9IjY1MCIgY3k9IjMzMCIgcj0iMTAiIGZpbGw9IiMxMTEiLz4KPHRleHQgeD0iMzE1IiB5PSI0MzAiIGNsYXNzPSJzIj50ZW5zaW9uIHJlaW5mb3JjZW1lbnQ8L3RleHQ+PC9zdmc+"
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding legacy maximum ratio?",
+    "o": [
+      "L/16.",
+      "Concrete does not 'disappear'; the brittle concern is compression crushing before sufficient tensile reinforcement yielding.",
+      "Lecture gives ρmax = 0.75ρbal.",
+      "Lecture gives φ = 0.90 for flexure without axial load."
+    ],
+    "c": 2,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Lecture gives ρmax = 0.75ρbal."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding phi-factor warning?",
+    "o": [
+      "Tension steel reaches yield/limiting strain before compression concrete crushes.",
+      "Design load effects are produced by prescribed load combinations and load factors; the lecture simplifies this as load factor × load.",
+      "The lecture's φ values are older code-era values and are not to be memorized as the latest ACI CODE-318-25 factors.",
+      "L/18.5."
+    ],
+    "c": 2,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[CURRENTNESS-AUDITED / CORRECTED] The lecture's φ values are older code-era values and are not to be memorized as the latest ACI CODE-318-25 factors."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding doubly reinforced use?",
+    "o": [
+      "L/28.",
+      "Useful when member depth is constrained or additional moment capacity/stiffness is needed.",
+      "Lecture gives ρmin = 1.4/fy in its unit system.",
+      "Available design strength is a strength-reduction factor φ times nominal strength."
+    ],
+    "c": 1,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Useful when member depth is constrained or additional moment capacity/stiffness is needed."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding minimum-thickness caveat?",
+    "o": [
+      "Source table gives L/20 when deflection is not explicitly computed and listed conditions apply.",
+      "Mu in the lecture denotes the beam's factored/ultimate moment demand or is loosely labeled 'moment capacity'; notation must be interpreted consistently with the design framework.",
+      "These are source-era prescriptive span/depth ratios for specified conditions; current code permits/uses deflection checks and code-specific limits.",
+      "The 0.75ρbal maximum-ratio approach is legacy design methodology; modern ACI flexural ductility is expressed through strain-controlled provisions."
+    ],
+    "c": 2,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[CURRENTNESS-AUDITED / CORRECTED] These are source-era prescriptive span/depth ratios for specified conditions; current code permits/uses deflection checks and code-specific limits."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding source spiral compression phi?",
+    "o": [
+      "ρ = As/(bd).",
+      "Monolithic slab and beam may act together so effective slab width forms a compression flange.",
+      "Lecture gives 0.75.",
+      "L/24."
+    ],
+    "c": 2,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Lecture gives 0.75."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding over-reinforced section?",
+    "o": [
+      "Concrete and tensile steel reach their limiting strain conditions simultaneously in the legacy balanced-section concept.",
+      "Compression concrete reaches its limiting strain before adequate tensile-steel yielding.",
+      "Lecture gives 0.70.",
+      "Slab portion that participates in compression under positive bending."
+    ],
+    "c": 1,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Compression concrete reaches its limiting strain before adequate tensile-steel yielding."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding beam/ribbed one-way slab simply-supported thickness?",
+    "o": [
+      "Has both tension reinforcement and compression reinforcement.",
+      "Lecture gives ρbal = (0.85β1 f'c/fy)(87000/(87000+fy)).",
+      "L/16.",
+      "Lecture gives 0.70."
+    ],
+    "c": 2,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] L/16."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding factored load concept?",
+    "o": [
+      "Concrete does not 'disappear'; the brittle concern is compression crushing before sufficient tensile reinforcement yielding.",
+      "Lecture gives 0.85.",
+      "L/8.",
+      "Design load effects are produced by prescribed load combinations and load factors; the lecture simplifies this as load factor × load."
+    ],
+    "c": 3,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Design load effects are produced by prescribed load combinations and load factors; the lecture simplifies this as load factor × load."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding legacy minimum ratio?",
+    "o": [
+      "Lecture gives ρmin = 1.4/fy in its unit system.",
+      "Main flexural reinforcement is provided primarily in the tension zone for strength.",
+      "Lecture gives φ = 0.90 for axial tension and axial tension with flexure.",
+      "L/18.5."
+    ],
+    "c": 0,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Lecture gives ρmin = 1.4/fy in its unit system."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding solid one-way slab simply-supported thickness?",
+    "o": [
+      "Preferred concept because steel yielding gives greater ductility/warning before ultimate failure.",
+      "Available design strength is a strength-reduction factor φ times nominal strength.",
+      "Source table gives L/20 when deflection is not explicitly computed and listed conditions apply.",
+      "L/21."
+    ],
+    "c": 2,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Source table gives L/20 when deflection is not explicitly computed and listed conditions apply.",
+    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+U291cmNlIE1pbmltdW0tVGhpY2tuZXNzIFJhdGlvczwvdGV4dD4KPHJlY3QgeD0iOTAiIHk9IjEwMCIgd2lkdGg9IjcyMCIgaGVpZ2h0PSIzMjAiIGNsYXNzPSJmIi8+Cjx0ZXh0IHg9IjEzNSIgeT0iMTYwIiBjbGFzcz0icyI+U29saWQgb25lLXdheSBzbGFiOiBMLzIwLCBMLzI0LCBMLzI4LCBMLzEwPC90ZXh0Pgo8dGV4dCB4PSIxMzUiIHk9IjIyNSIgY2xhc3M9InMiPkJlYW0vcmliYmVkIG9uZS13YXkgc2xhYjogTC8xNiwgTC8xOC41LCBMLzIxLCBMLzg8L3RleHQ+Cjx0ZXh0IHg9IjEzNSIgeT0iMzAwIiBjbGFzcz0icyI+Y29sdW1uczogc2ltcGx5IHN1cHBvcnRlZCDigKIgb25lLWVuZCBjb250aW51b3VzIOKAoiBib3RoLWVuZCBjb250aW51b3VzIOKAoiBjYW50aWxldmVyPC90ZXh0Pjwvc3ZnPg=="
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding t-beam?",
+    "o": [
+      "L/10.",
+      "Lecture gives φ = 0.90 for flexure without axial load.",
+      "Monolithic slab and beam may act together so effective slab width forms a compression flange.",
+      "The 0.75ρbal maximum-ratio approach is legacy design methodology; modern ACI flexural ductility is expressed through strain-controlled provisions."
+    ],
+    "c": 2,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Monolithic slab and beam may act together so effective slab width forms a compression flange."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding balanced section?",
+    "o": [
+      "Concrete and tensile steel reach their limiting strain conditions simultaneously in the legacy balanced-section concept.",
+      "L/24.",
+      "Typically places top concrete in compression and bottom longitudinal reinforcement in tension for a simply supported beam under downward load.",
+      "Tension steel reaches yield/limiting strain before compression concrete crushes."
+    ],
+    "c": 0,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Concrete and tensile steel reach their limiting strain conditions simultaneously in the legacy balanced-section concept.",
+    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+RmxleHVyYWwgUmVpbmZvcmNlbWVudCBDb25kaXRpb25zPC90ZXh0Pgo8cmVjdCB4PSI2MCIgeT0iMTIwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjI1MCIgY2xhc3M9ImYiLz48dGV4dCB4PSIxMzUiIHk9IjIyMCIgY2xhc3M9InMiPlVuZGVyLXJlaW5mb3JjZWQ8L3RleHQ+PHRleHQgeD0iMTA1IiB5PSIyODAiIGNsYXNzPSJzIj5zdGVlbCB5aWVsZHMgZmlyc3Q8L3RleHQ+CjxyZWN0IHg9IjMzMCIgeT0iMTIwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjI1MCIgY2xhc3M9ImYyIi8+PHRleHQgeD0iNDA1IiB5PSIyMjAiIGNsYXNzPSJzIj5CYWxhbmNlZDwvdGV4dD48dGV4dCB4PSIzNjAiIHk9IjI4MCIgY2xhc3M9InMiPmxpbWl0aW5nIHN0cmFpbnMgdG9nZXRoZXI8L3RleHQ+CjxyZWN0IHg9IjYwMCIgeT0iMTIwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjI1MCIgY2xhc3M9ImYiLz48dGV4dCB4PSI2NjAiIHk9IjIyMCIgY2xhc3M9InMiPk92ZXItcmVpbmZvcmNlZDwvdGV4dD48dGV4dCB4PSI2NDAiIHk9IjI4MCIgY2xhc3M9InMiPmNvbmNyZXRlIGNydXNoZXMgZmlyc3Q8L3RleHQ+PC9zdmc+"
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding source tied compression phi?",
+    "o": [
+      "L/28.",
+      "Lecture gives ρmax = 0.75ρbal.",
+      "Lecture gives 0.70.",
+      "Slab portion that participates in compression under positive bending."
+    ],
+    "c": 2,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Lecture gives 0.70."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding over-reinforced source wording correction?",
+    "o": [
+      "The lecture's φ values are older code-era values and are not to be memorized as the latest ACI CODE-318-25 factors.",
+      "Concrete does not 'disappear'; the brittle concern is compression crushing before sufficient tensile reinforcement yielding.",
+      "Mu in the lecture denotes the beam's factored/ultimate moment demand or is loosely labeled 'moment capacity'; notation must be interpreted consistently with the design framework.",
+      "Lecture gives ρbal = (0.85β1 f'c/fy)(87000/(87000+fy))."
+    ],
+    "c": 1,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[CURRENTNESS-AUDITED / CORRECTED] Concrete does not 'disappear'; the brittle concern is compression crushing before sufficient tensile reinforcement yielding."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding beam/ribbed one-way slab one-end-continuous thickness?",
+    "o": [
+      "Lecture gives 0.85.",
+      "L/18.5.",
+      "Useful when member depth is constrained or additional moment capacity/stiffness is needed.",
+      "ρ = As/(bd)."
+    ],
+    "c": 1,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] L/18.5."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding design strength concept?",
+    "o": [
+      "These are source-era prescriptive span/depth ratios for specified conditions; current code permits/uses deflection checks and code-specific limits.",
+      "Lecture gives 0.70.",
+      "Main flexural reinforcement is provided primarily in the tension zone for strength.",
+      "Available design strength is a strength-reduction factor φ times nominal strength."
+    ],
+    "c": 3,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] Available design strength is a strength-reduction factor φ times nominal strength."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding steel-ratio warning?",
+    "o": [
+      "Lecture gives 0.75.",
+      "Has both tension reinforcement and compression reinforcement.",
+      "The 0.75ρbal maximum-ratio approach is legacy design methodology; modern ACI flexural ductility is expressed through strain-controlled provisions.",
+      "L/21."
+    ],
+    "c": 2,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[CURRENTNESS-AUDITED / CORRECTED] The 0.75ρbal maximum-ratio approach is legacy design methodology; modern ACI flexural ductility is expressed through strain-controlled provisions."
+  },
+  {
+    "s": "Reinforced Concrete Flexure",
+    "q": "Which statement is correct regarding solid one-way slab one-end-continuous thickness?",
+    "o": [
+      "Compression concrete reaches its limiting strain before adequate tensile-steel yielding.",
+      "Lecture gives φ = 0.90 for flexure without axial load.",
+      "L/24.",
+      "L/8."
+    ],
+    "c": 2,
+    "ref": "ACI CODE-318-25 current context / source-era RC design provisions",
+    "n": "[SOURCE FACT — AUDITED] L/24."
+  }
+]
