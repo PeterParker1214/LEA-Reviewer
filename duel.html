@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=5">
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duels — LEA Reviewer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Architects+Daughter&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-2:#0a1520;
+    --gold:#e0a83f; --gold-bright:#f0c268; --blue:#6fa8cf; --blue-bright:#8fc4ea;
+    --muted:#8b98a5; --good:#5fbf82; --bad:#e2604a;
+    --line: rgba(111,168,207,0.20); --grid-line: rgba(111,168,207,0.09);
+    --font-display: 'Big Shoulders Display', sans-serif;
+    --font-hand: 'Architects Daughter', cursive;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+  body.light-mode, :root.light-mode{
+    --ink:#16202b; --bg-deep:#d3dee6; --bg-panel:#ffffff; --bg-panel-2:#e9eff4;
+    --gold:#b5791f; --gold-bright:#7d520c; --blue:#2f6c95; --blue-bright:#1b4a6b;
+    --muted:#4f5d6a; --good:#206b3c; --bad:#a1372a;
+    --line: rgba(47,108,149,0.28); --grid-line: rgba(47,108,149,0.11);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+      var(--bg-deep);
+    color:var(--ink); font-family:var(--font-body); min-height:100vh;
+    display:flex; justify-content:center; padding:20px 16px 64px;
+  }
+  .wrap{width:100%; max-width:520px;}
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit;}
+
+  .run-header{ display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+  .icon-btn-44{
+    width:44px; height:44px; border-radius:10px; background:var(--bg-panel); border:1px solid var(--line);
+    color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+  }
+  .icon-btn-44 svg{ width:19px; height:19px; }
+  .page-title{ font-family:var(--font-display); font-weight:800; font-size:22px; text-transform:uppercase; flex:1; }
+
+  .row{ display:flex; gap:11px; align-items:center; width:100%; text-align:left; color:inherit; cursor:pointer;
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:12px; padding:12px; margin-bottom:9px; }
+  .row .face{ width:40px; height:40px; border-radius:50%; flex:none; overflow:hidden;
+    display:flex; align-items:center; justify-content:center; background:var(--bg-panel-2); border:1px solid var(--line);
+    color:var(--blue-bright); font-family:var(--font-display); font-weight:800; }
+  .row .face img{ width:100%; height:100%; object-fit:cover; }
+  .row .x{ flex:1; min-width:0; }
+  .row .nm{ display:block; font-size:14px; font-weight:600; }
+  .row .sub{ display:block; font-size:12px; color:var(--muted); margin-top:2px; }
+  .tag{ flex:none; font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:.06em;
+    padding:4px 8px; border-radius:20px; border:1px solid var(--line); color:var(--muted); }
+  .tag.act{ border-color:var(--gold); color:var(--gold-bright); background:color-mix(in srgb, var(--gold) 10%, transparent); }
+  .tag.win{ border-color:var(--good); color:var(--good); }
+  .tag.loss{ border-color:var(--bad); color:var(--bad); }
+
+  .label{ font-family:var(--font-mono); font-size:11px; color:var(--muted); text-transform:uppercase;
+    letter-spacing:.1em; margin:20px 0 9px; }
+  .act-btn{ display:block; width:100%; text-align:center; padding:13px; border-radius:10px; cursor:pointer;
+    background:var(--gold); color:#1a1206; border:1px solid var(--gold); font-weight:600; font-size:15px; margin-bottom:10px; }
+  .act-btn.ghost{ background:transparent; color:var(--blue-bright); border-color:var(--line); }
+  .act-btn:disabled{ opacity:.5; cursor:default; }
+  .pair{ display:flex; gap:9px; }
+  .pair .act-btn{ flex:1; }
+
+  .board{ background:var(--bg-panel); border:1px solid var(--line); border-radius:12px; padding:18px 14px; margin-bottom:14px; }
+  .vs{ display:flex; align-items:center; gap:10px; }
+  .vs .side{ flex:1; text-align:center; }
+  .vs .side .face{ width:56px; height:56px; border-radius:50%; margin:0 auto 7px; overflow:hidden;
+    display:flex; align-items:center; justify-content:center; background:var(--bg-panel-2); border:1px solid var(--line);
+    color:var(--blue-bright); font-family:var(--font-display); font-weight:800; font-size:21px; }
+  .vs .side .face img{ width:100%; height:100%; object-fit:cover; }
+  .vs .side.won .face{ border-color:var(--gold); color:var(--gold); box-shadow:0 0 0 3px color-mix(in srgb, var(--gold) 20%, transparent); }
+  .vs .sc{ font-family:var(--font-display); font-size:34px; font-weight:800; line-height:1; }
+  .vs .side.won .sc{ color:var(--gold-bright); }
+  .vs .who{ font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-top:3px; }
+  .vs .mid{ font-family:var(--font-display); font-size:17px; color:var(--muted); }
+  .verdict{ text-align:center; font-family:var(--font-display); font-weight:800; font-size:23px;
+    text-transform:uppercase; color:var(--gold-bright); margin-top:14px; }
+  .verdict.quiet{ color:var(--muted); font-size:15px; font-family:var(--font-body); font-weight:500; text-transform:none; }
+
+  select{ width:100%; font-family:inherit; font-size:16px; padding:11px 12px; color:var(--ink);
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:10px; margin-bottom:12px; }
+  .note{ padding:22px 16px; text-align:center; color:var(--muted); font-size:13px; line-height:1.6; }
+  .note code{ font-family:var(--font-mono); font-size:12px; }
+  .say{ color:var(--bad); font-size:13px; margin-bottom:10px; }
+</style>
+<script src="assets/theme.js?v=66" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=66"></script>
+<script src="assets/avatar.js?v=66"></script>
+<script src="assets/duel.js?v=66"></script>
+<script src="assets/offline.js?v=66"></script>
+<script src="assets/presence.js?v=66"></script>
+<script>if(window.LEAPresence) LEAPresence.init({});</script>
+</head>
+<body>
+<script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
+<div class="wrap">
+  <div class="run-header">
+    <a class="icon-btn-44" href="index.html" title="Back" data-back>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </a>
+    <div class="page-title" id="pageTitle">Duels</div>
+  </div>
+  <div id="card"><div class="note">Loading…</div></div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+function escapeHtml(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+const params = new URLSearchParams(location.search);
+const state = { me: null, duels: [], people: new Map(), subjects: [], one: params.get('d'), fresh: params.get('new') };
+
+function person(id){ return state.people.get(id) || { username: 'Someone', avatar_url: null }; }
+function faceHtml(id){ return LEAAvatar.faceHtml(person(id).avatar_url, person(id).username); }
+function other(duel){ return duel.challenger === state.me ? duel.opponent : duel.challenger; }
+function subjectName(id){
+  const s = state.subjects.find(x => x.id === id);
+  return s ? s.name.replace(/[\p{Extended_Pictographic}\p{Emoji_Modifier}\u{200D}\u{FE0F}]+/gu, '').trim() : id;
+}
+function card(html){ document.getElementById('card').innerHTML = html; }
+
+const PHASE_TAG = {
+  'invited':   ['act',  'Your move'],
+  'your-turn': ['act',  'Your move'],
+  'waiting':   ['',     'Waiting'],
+  'declined':  ['',     'Declined'],
+  'expired':   ['',     'Expired']
+};
+
+// ---------------------------------------------------------------- the list
+
+function renderList(){
+  document.getElementById('pageTitle').textContent = 'Duels';
+  const rows = LEADuel.sortForList(state.duels, state.me);
+  card(
+    (rows.length
+      ? rows.map(d => {
+          const p = LEADuel.phase(d, state.me);
+          const result = LEADuel.outcome(d, state.me);
+          const [cls, text] = p === 'done'
+            ? [result === 'win' ? 'win' : result === 'loss' ? 'loss' : '', result === 'draw' ? 'Draw' : (result === 'win' ? 'Won' : 'Lost')]
+            : PHASE_TAG[p];
+          const score = p === 'done'
+            ? LEADuel.scoreOf(d, LEADuel.side(d, state.me)) + ' – ' + LEADuel.scoreOf(d, LEADuel.side(d, state.me) === 'challenger' ? 'opponent' : 'challenger')
+            : subjectName(d.subject);
+          return '<a class="row" href="duel.html?d=' + escapeHtml(d.id) + '">' +
+              '<span class="face">' + faceHtml(other(d)) + '</span>' +
+              '<span class="x"><span class="nm">' + escapeHtml(person(other(d)).username) + '</span>' +
+              '<span class="sub">' + escapeHtml(score) + '</span></span>' +
+              '<span class="tag ' + cls + '">' + text + '</span>' +
+            '</a>';
+        }).join('')
+      : '<div class="note">No duels yet. Open someone’s page from the lobby and challenge them.</div>') +
+    '<a class="act-btn ghost" href="chat.html">Find someone in the lobby</a>'
+  );
+}
+
+// ---------------------------------------------------------------- one duel
+
+function renderOne(duel){
+  const me = LEADuel.side(duel, state.me);
+  const them = me === 'challenger' ? 'opponent' : 'challenger';
+  const theirId = other(duel);
+  const phase = LEADuel.phase(duel, state.me);
+  const result = LEADuel.outcome(duel, state.me);
+  const mine = LEADuel.scoreOf(duel, me), theirs = LEADuel.scoreOf(duel, them);
+  const tally = LEADuel.record(state.duels, state.me, theirId);
+  document.getElementById('pageTitle').textContent = 'Duel';
+
+  const sideHtml = (id, score, won, label) =>
+    '<div class="side' + (won ? ' won' : '') + '">' +
+      '<div class="face">' + faceHtml(id) + '</div>' +
+      '<div class="sc">' + (score == null ? '–' : score) + '</div>' +
+      '<div class="who">' + escapeHtml(label) + '</div>' +
+    '</div>';
+
+  const verdict = phase === 'done'
+    ? '<div class="verdict">' + (result === 'draw' ? 'Drawn' : (result === 'win' ? 'You win' : person(theirId).username + ' wins')) + '</div>'
+    : '<div class="verdict quiet">' + escapeHtml(
+        phase === 'declined' ? 'This duel was declined.'
+        : phase === 'expired' ? 'Nobody answered within ' + LEADuel.EXPIRY_DAYS + ' days.'
+        : phase === 'waiting' ? 'Waiting for ' + person(theirId).username + ' to play their ten.'
+        : 'Both of you answer the same ' + (duel.questions || []).length + ' questions.') + '</div>';
+
+  const play = '<a class="act-btn" href="run.html?mode=drill&duel=' + escapeHtml(duel.id) + '">' +
+    (phase === 'invited' ? 'Accept and play' : 'Play your ten') + '</a>';
+
+  card(
+    '<div class="board">' +
+      '<div class="vs">' +
+        sideHtml(state.me, mine, result === 'win', 'You') +
+        '<div class="mid">VS</div>' +
+        sideHtml(theirId, theirs, result === 'loss', person(theirId).username) +
+      '</div>' + verdict +
+    '</div>' +
+    '<div class="row" style="cursor:default">' +
+      '<span class="x"><span class="nm">' + escapeHtml(subjectName(duel.subject)) + '</span>' +
+      '<span class="sub">' + (duel.questions || []).length + ' questions · ' +
+        tally.w + 'W · ' + tally.l + 'L' + (tally.d ? ' · ' + tally.d + 'D' : '') + ' against ' + escapeHtml(person(theirId).username) +
+      '</span></span>' +
+    '</div>' +
+    (phase === 'invited'
+      ? '<div class="pair">' + play + '<button class="act-btn ghost" id="declineBtn">Decline</button></div>'
+      : (phase === 'your-turn' ? play : '')) +
+    (phase === 'done' ? '<button class="act-btn ghost" id="rematchBtn">Rematch</button>' : '') +
+    '<a class="act-btn ghost" href="duel.html">All duels</a>'
+  );
+
+  const decline = document.getElementById('declineBtn');
+  if(decline) decline.addEventListener('click', async () => {
+    decline.disabled = true;
+    const { error } = await sb.from('duels').update({ status: 'declined' }).eq('id', duel.id);
+    if(error){ decline.disabled = false; alert(error.message); return; }
+    location.href = 'duel.html';
+  });
+
+  const rematch = document.getElementById('rematchBtn');
+  if(rematch) rematch.addEventListener('click', () => challenge(theirId, duel.subject, rematch));
+}
+
+// ---------------------------------------------------------------- new duel
+
+// The ten are drawn from the subject catalogue, not from the question files:
+// every module says how many questions it holds, which is all a reference
+// needs. That keeps this page from fetching the whole bank to pick ten.
+function cellsForSubject(subjectId){
+  const subject = state.subjects.find(s => s.id === subjectId);
+  const cells = [];
+  (subject ? subject.modules || [] : []).forEach(mod => {
+    for(let i = 0; i < (mod.total || 0); i++) cells.push({ subjectId: subject.id, moduleId: mod.id, qIndex: i });
+  });
+  return cells;
+}
+
+async function challenge(opponentId, subjectId, btn){
+  const cells = cellsForSubject(subjectId);
+  if(cells.length < LEADuel.SIZE){ alert('That subject is too small for a duel.'); return; }
+  if(btn) btn.disabled = true;
+  const { data, error } = await sb.from('duels').insert({
+    opponent: opponentId, subject: subjectId,
+    questions: LEADuel.drawQuestions(cells, LEADuel.SIZE)
+  }).select('id').single();
+  if(error){ if(btn) btn.disabled = false; alert(error.message); return; }
+  location.href = 'duel.html?d=' + encodeURIComponent(data.id);
+}
+
+function renderNew(opponentId){
+  document.getElementById('pageTitle').textContent = 'Challenge';
+  const ready = state.subjects.filter(s => s.ready && cellsForSubject(s.id).length >= LEADuel.SIZE);
+  card(
+    '<div class="row" style="cursor:default">' +
+      '<span class="face">' + faceHtml(opponentId) + '</span>' +
+      '<span class="x"><span class="nm">' + escapeHtml(person(opponentId).username) + '</span>' +
+      '<span class="sub">' + LEADuel.SIZE + ' questions, the same ten for both of you</span></span>' +
+    '</div>' +
+    '<div class="label">Subject</div>' +
+    '<select id="subjectPick">' + ready.map(s =>
+      '<option value="' + escapeHtml(s.id) + '">' + escapeHtml(subjectName(s.id)) + '</option>').join('') + '</select>' +
+    '<button class="act-btn" id="goBtn">Send the challenge</button>' +
+    '<a class="act-btn ghost" href="user.html?u=' + escapeHtml(opponentId) + '">Back to their page</a>'
+  );
+  document.getElementById('goBtn').addEventListener('click', e => {
+    challenge(opponentId, document.getElementById('subjectPick').value, e.currentTarget);
+  });
+}
+
+// ---------------------------------------------------------------- boot
+
+(async function boot(){
+  const { data: { session } } = await sb.auth.getSession();
+  if(!session){ location.href = 'index.html'; return; }
+  state.me = session.user.id;
+
+  try{
+    const res = await fetch('data/subjects.json', { cache: 'no-cache' });
+    state.subjects = await res.json();
+  }catch(e){ state.subjects = []; }
+
+  const [{ data: people }, duels] = await Promise.all([
+    sb.from('profiles').select('id,username,avatar_url'),
+    sb.from('duels').select('*').order('created_at', { ascending: false }).limit(100)
+  ]);
+  (people || []).forEach(p => state.people.set(p.id, p));
+
+  if(duels.error){
+    card('<div class="note">' + (/duels/.test(duels.error.message || '')
+      ? 'Duels are not switched on yet. Run <code>design_handoff_lea_reviewer/duels-setup.sql</code> in Supabase.'
+      : escapeHtml(duels.error.message)) + '</div>');
+    return;
+  }
+  state.duels = duels.data || [];
+
+  if(state.fresh && state.fresh !== state.me){ renderNew(state.fresh); return; }
+  if(state.one){
+    const duel = state.duels.find(d => d.id === state.one);
+    if(!duel){ card('<div class="note">That duel is not yours, or no longer exists.</div>'); return; }
+    renderOne(duel);
+    return;
+  }
+  renderList();
+})();
+</script>
+</body>
+</html>

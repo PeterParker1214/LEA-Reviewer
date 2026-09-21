@@ -1176,6 +1176,8 @@ function openAccountSheet(){
   body.innerHTML =
     '<a class="account-row" href="profile.html"><div><div class="ar-label">Profile</div><div class="ar-sub">' + escapeHtml(currentUsername) + '</div></div><span>→</span></a>' +
     '<a class="account-row" href="saved.html"><div><div class="ar-label">Saved</div><div class="ar-sub">' + counts.flagged + ' flagged · ' + counts.notes + ' note' + (counts.notes === 1 ? '' : 's') + '</div></div><span>→</span></a>' +
+    '<a class="account-row" href="chat.html"><div><div class="ar-label">Chat</div><div class="ar-sub">The lobby and your messages</div></div><span>→</span></a>' +
+    '<a class="account-row" href="duel.html"><div><div class="ar-label">Duels</div><div class="ar-sub">Ten questions, head to head</div></div><span>→</span></a>' +
     '<a class="account-row" href="mnemonics.html"><div><div class="ar-label">Mnemonics</div><div class="ar-sub">Memory hooks from the LEA Discord</div></div><span>→</span></a>' +
     '<a class="account-row" href="codes.html"><div><div class="ar-label">Code plates</div><div class="ar-sub">Dimensions of the law, drawn to scale</div></div><span>→</span></a>' +
     '<a class="account-row" href="reminders.html"><div><div class="ar-label">Reminders</div></div><span>→</span></a>' +

@@ -633,6 +633,7 @@
 <link rel="stylesheet" href="assets/blueprint.css?v=66">
 <script src="assets/lea-confirm.js?v=66"></script>
 <script src="assets/quiz-source.js?v=66"></script>
+<script src="assets/duel.js?v=66"></script>
 <script src="assets/etymology.js?v=66"></script>
 <script src="assets/module-progress.js?v=66"></script>
 <script src="assets/offline.js?v=66"></script>
@@ -939,7 +940,7 @@ async function boot(){
   const params = new URLSearchParams(window.location.search);
   const subjectId = params.get('s');
   const moduleId = params.get('m');
-  const drillParams = { topic: params.get('topic'), scope: params.get('scope'), q: params.get('q'), filter: params.get('filter') };
+  const drillParams = { topic: params.get('topic'), scope: params.get('scope'), q: params.get('q'), filter: params.get('filter'), duel: params.get('duel') };
   MODE = params.get('mode') || 'study';
   const body = document.getElementById('pageBody');
 
@@ -2337,6 +2338,42 @@ function buildSearchDrillPool(index, q, filter){
   return shuffleArr(matches);
 }
 
+// ---- Duel ----------------------------------------------------------------
+// The ten are fixed in the duel row, so both players answer the same
+// questions in the same order. Nothing is shuffled and nothing is filtered
+// by what you have already mastered: that would give the two of you
+// different sets, which is the one thing a duel cannot have.
+let DUEL = null;
+
+async function buildDuelPool(index, duelId){
+  const body = document.getElementById('pageBody');
+  const stop = html => { body.innerHTML = '<div class="state-card">' + html +
+    '<br><br><a href="duel.html" style="color:var(--gold-bright);">&larr; Duels</a></div>'; return null; };
+
+  const { data: duel, error } = await sb.from('duels').select('*').eq('id', duelId).maybeSingle();
+  if(error || !duel) return stop('That duel could not be opened.');
+
+  const { data: { session } } = await sb.auth.getSession();
+  const me = session && session.user.id;
+  const side = LEADuel.side(duel, me);
+  if(!side) return stop('That duel is not yours.');
+  if(LEADuel.scoreOf(duel, side) != null) return stop('You have already played this duel.');
+  if(duel.status === 'declined') return stop('That duel was declined.');
+
+  const cells = [];
+  for(const ref of (duel.questions || [])){
+    const cell = index.find(c => c.subjectId === ref.s && c.moduleId === ref.m && c.qIndex === ref.i);
+    if(cell) cells.push(cell);
+  }
+  // A question that has since been hidden or removed simply is not asked, and
+  // both players are scored out of what is left, because the row's list is
+  // the same for both of them.
+  if(cells.length === 0) return stop('None of this duel’s questions could be loaded.');
+
+  DUEL = duel;
+  return cells;
+}
+
 // Sorting purely by percentage looks right until you notice that most topics
 // are on 0%, and every tie was broken by position in the index — which is
 // subject order. The whole list came out of whichever subject happens to be
@@ -2420,6 +2457,10 @@ async function bootMulti(subjects, drillParams){
         body.innerHTML = '<div class="state-card">Nothing flagged right now.<br><br><a href="saved.html" style="color:var(--gold-bright);">&larr; Saved</a></div>';
         return;
       }
+    } else if(drillParams.duel){
+      drillKind = 'duel';
+      pool = await buildDuelPool(index, drillParams.duel);
+      if(pool === null) return;           // buildDuelPool drew the reason itself
     } else if(drillParams.q){
       drillKind = 'drill-search';
       pool = buildSearchDrillPool(index, drillParams.q, drillParams.filter);
@@ -2505,7 +2546,8 @@ const MULTI_KIND_LABELS = {
   'drill-daily': 'Daily Drill',
   'drill-topic': 'Topic Drill',
   'drill-flagged': 'Flagged',
-  'drill-search': 'Search'
+  'drill-search': 'Search',
+  'duel': 'Duel'
 };
 
 // The card tags each question with its own subject; the header describes the
@@ -2710,6 +2752,11 @@ function finishMultiRun(){
     return;
   }
 
+  if(multiKind === 'duel'){
+    showDuelDone(correct);
+    return;
+  }
+
   const body = document.getElementById('pageBody');
   const pct = pool.length > 0 ? Math.round((correct / pool.length) * 100) : 0;
   body.innerHTML =
@@ -2722,6 +2769,33 @@ function finishMultiRun(){
       '</div>' +
     '</div>';
   document.getElementById('backHomeBtn').addEventListener('click', () => { LEANav.back('index.html'); });
+}
+
+// Your score goes in once. The database refuses a second write, so a failure
+// here is reported rather than retried — and the score you just earned is
+// still on screen either way.
+async function showDuelDone(correct){
+  const body = document.getElementById('pageBody');
+  const side = LEADuel.side(DUEL, (await sb.auth.getSession()).data.session.user.id);
+  const column = side === 'challenger' ? 'challenger_score' : 'opponent_score';
+  const patch = {};
+  patch[column] = correct;
+  // Playing a duel you were challenged to is also accepting it.
+  if(side === 'opponent' && DUEL.status === 'pending') patch.status = 'accepted';
+  const { error } = await sb.from('duels').update(patch).eq('id', DUEL.id);
+
+  body.innerHTML =
+    '<div class="bp-card results-card">' +
+      '<span class="section-tag">Duel</span>' +
+      '<div class="results-score">' + correct + '<span> / ' + pool.length + '</span></div>' +
+      '<div class="counts-text">' +
+        (error ? escapeHtml('Your score could not be saved: ' + error.message)
+               : 'Score sent. The result appears once both of you have played.') +
+      '</div>' +
+      '<div class="results-actions">' +
+        '<a class="footer-btn skip" href="duel.html?d=' + encodeURIComponent(DUEL.id) + '">See the duel</a>' +
+      '</div>' +
+    '</div>';
 }
 
 // ---- Streak: {current, best, lastCompletedDate}, guarded on the calendar

@@ -65,6 +65,43 @@
     return Array.from(seen.values());
   }
 
+  // A duel that is waiting on you: a challenge you have not answered, or one
+  // you accepted and have not played. Nothing is said about duels waiting on
+  // the other person — that is not news to you.
+  async function loadDuels(sb, userId){
+    const { data, error } = await sb.from('duels')
+      .select('id,challenger,opponent,challenger_score,opponent_score,status,created_at')
+      .or('challenger.eq.' + userId + ',opponent.eq.' + userId)
+      .neq('status', 'declined')
+      .order('created_at', { ascending:false })
+      .limit(50);
+    if(error) throw error;
+    const names = new Map();
+    const ids = Array.from(new Set((data || []).map(d => d.challenger === userId ? d.opponent : d.challenger)));
+    if(ids.length){
+      const { data: people } = await sb.from('profiles').select('id,username').in('id', ids);
+      (people || []).forEach(p => names.set(p.id, p.username));
+    }
+    return (data || []).filter(d => {
+      const mine = d.challenger === userId ? d.challenger_score : d.opponent_score;
+      const theirs = d.challenger === userId ? d.opponent_score : d.challenger_score;
+      if(mine != null) return false;                       // you have played yours
+      if(d.status === 'pending' && d.challenger === userId) return false; // waiting on them to accept
+      if(d.status === 'pending' && Date.now() - new Date(d.created_at) > 3 * 86400000) return false; // expired
+      return theirs != null || d.status !== 'pending' || d.opponent === userId;
+    }).map(d => {
+      const who = names.get(d.challenger === userId ? d.opponent : d.challenger) || 'Someone';
+      const invited = d.status === 'pending';
+      return {
+        kind:'duel', id:String(d.id),
+        title: invited ? who + ' challenged you to a duel' : 'Your duel with ' + who + ' is waiting',
+        body: invited ? 'Ten questions, the same ten for both of you.' : 'You have not answered your ten yet.',
+        href: 'duel.html?d=' + encodeURIComponent(d.id),
+        at: d.created_at
+      };
+    });
+  }
+
   async function loadReads(sb, userId){
     const { data, error } = await sb.from('notification_reads').select('kind,ref_id').eq('user_id', userId);
     if(error) throw error;
@@ -76,13 +113,14 @@
   async function load(sb, userId){
     const errors = [];
     const safe = (name, p) => Promise.resolve(p).catch(e => { errors.push(name + ': ' + (e.message || e)); return []; });
-    const [messages, reports, reads, ...extra] = await Promise.all([
+    const [messages, reports, duels, reads, ...extra] = await Promise.all([
       safe('messages', loadMessages(sb)),
       safe('reports', loadReports(sb, userId)),
+      safe('duels', loadDuels(sb, userId)),
       loadReads(sb, userId).catch(e => { errors.push('read state: ' + (e.message || e)); return new Set(); }),
       ...sources.map(s => safe(s.name, s.load(sb, userId)))
     ]);
-    const items = [].concat(messages, reports, ...extra);
+    const items = [].concat(messages, reports, duels, ...extra);
     items.forEach(item => {
       if(item.unread === undefined) item.unread = !reads.has(item.kind + ':' + item.id);
     });
@@ -110,7 +148,7 @@
 
   // ---- Pop-up toasts for new notifications, on whatever page is open ----
   const TOASTED_KEY = 'lea_notify_toasted';
-  const KIND_LABEL = { message:'Message', report:'Report', update:'Update', reminder:'Reminder' };
+  const KIND_LABEL = { message:'Message', report:'Report', update:'Update', reminder:'Reminder', duel:'Duel' };
   let watching = false;
   let lastTick = 0;
 
