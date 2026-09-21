@@ -333,21 +333,48 @@ def nailing():
 
 
 def site_layout():
+    """Construction site plan. Each lettered zone is drawn as what it is — the
+    questions ask the reader to recognise the facility, so the drawing has to
+    show one: cabins, a locked store, a stockpile yard, a paved turning bay,
+    and a crane with its operating radius."""
     b = []
     b.append(rect(20, 360, 620, 50, '#d0d4d8') + cap(330, 392, 'ROAD', cls='t'))
     b.append(f'<rect x="40" y="30" width="580" height="320" fill="#fafafa" stroke="{INK}" stroke-width="2" stroke-dasharray="10 5"/>')
     b.append(rect(90, 345, 70, 10, '#fff', 'stroke-width="0"') + cap(125, 338, 'GATE', cls='t'))
-    b.append(rect(250, 80, 230, 190, '#cfd5db'))
-    b.append(cap(365, 170, '8-storey building', cls='t') + cap(365, 186, 'under construction', cls='t'))
+    b.append(rect(250, 80, 230, 170, '#cfd5db'))
+    b.append(cap(365, 158, '8-storey building', cls='t') + cap(365, 174, 'under construction', cls='t'))
 
-    def zone(letter, x, y, w, h):
-        return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="#fff" stroke="{INK}" stroke-width="1.4" stroke-dasharray="4 3"/>'
-                f'<text class="L" x="{x + w / 2}" y="{y + h / 2 + 6}" text-anchor="middle">{letter}</text>')
-    b.append(zone('A', 60, 255, 90, 60))     # near the gate, clear of the building
-    b.append(zone('B', 60, 170, 70, 55))     # beside A, fenced and watched
-    b.append(zone('C', 170, 150, 55, 90))    # next to the building, off the gate road
-    b.append(zone('D', 360, 290, 60, 45))    # building edge facing the road
-    b.append(zone('E', 510, 150, 50, 50))    # tight to the building's long side
+    # E — tower crane: hatched mast inside its dashed operating radius.
+    b.append(f'<circle cx="505" cy="175" r="108" fill="none" stroke="{INK}" stroke-width="1.2" stroke-dasharray="6 5"/>')
+    b.append(rect(492, 162, 26, 26, '#9aa4ad'))
+    b.append(line(505, 162, 505, 188, 's') + line(492, 175, 518, 175, 's'))
+    b.append(f'<text class="L" x="545" y="150">E</text>')
+
+    # A — site accommodation: a row of cabins just inside the gate.
+    for i in range(3):
+        b.append(rect(58 + i * 46, 262, 38, 30, '#fff'))
+        b.append(f'<polyline class="lead" points="{58 + i * 46},262 {77 + i * 46},252 {96 + i * 46},262"/>')
+    b.append(f'<text class="L" x="120" y="315" text-anchor="middle">A</text>')
+
+    # B — secure store: solid, closed cabin with a padlock.
+    b.append(rect(58, 150, 80, 62, '#e8ebee'))
+    b.append(f'<rect x="90" y="176" width="16" height="13" fill="none" stroke="{INK}" stroke-width="1.6"/>')
+    b.append(f'<path class="lead" d="M93,176 v-6 a5,5 0 0 1 10,0 v6"/>')
+    b.append(f'<text class="L" x="98" y="142" text-anchor="middle">B</text>')
+
+    # C — open materials yard: stacks in the open, no enclosure.
+    b.append(f'<rect x="168" y="120" width="66" height="112" fill="none" stroke="{INK}" stroke-width="1.4" stroke-dasharray="4 3"/>')
+    for y in (130, 168, 206):
+        b.append(rect(178, y, 46, 18, '#c8ced4'))
+        b.append(line(178, y + 9, 224, y + 9, 's'))
+    b.append(f'<text class="L" x="201" y="112" text-anchor="middle">C</text>')
+
+    # D — paved hardstand off the gate, with the vehicle turning arc.
+    b.append(rect(200, 268, 118, 74, '#d8dce0'))
+    b.append(f'<path class="lead" d="M220,330 a45,32 0 1 1 82,-8" stroke-dasharray="5 4"/>')
+    b.append('<polygon fill="%s" points="302,322 296,310 308,312"/>' % INK)
+    b.append(f'<text class="L" x="259" y="292" text-anchor="middle">D</text>')
+
     b.append(cap(330, 432, 'Site layout (plan)'))
     return svg(660, 446, ''.join(b))
 

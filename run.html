@@ -1061,6 +1061,10 @@ function tryResume(){
     onResume: (payload) => {
       if(payload && Array.isArray(payload.answersLog)){
         answersLog = payload.answersLog;
+        // The play order has to come back with the answers. Without it the
+        // module reshuffles on resume and every logged answer lands on a
+        // different question.
+        if(Array.isArray(payload.order) && payload.order.length) order = payload.order;
         frontier = payload.frontier || 0;
         pos = Math.min(payload.pos || 0, order.length - 1);
         if(Array.isArray(payload.flagged)) flaggedSet = new Set(payload.flagged);
@@ -1082,7 +1086,7 @@ function saveResumeState(){
   const answeredCount = answersLog.filter(a => a && !a.skipped).length;
   LEAResume.save(SUBJECT.id, resumeKey(), {
     answeredCount, total: order.length, position: pos + 1,
-    payload: { answersLog, frontier, pos, flagged: Array.from(flaggedSet), masteredAtStart }
+    payload: { order, answersLog, frontier, pos, flagged: Array.from(flaggedSet), masteredAtStart }
   });
 }
 
