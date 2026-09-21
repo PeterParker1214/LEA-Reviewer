@@ -84,7 +84,15 @@
   async function popup(){
     if(popupOpen) return;
     popupOpen = true;
-    const versions = await load();
+    const all = await load();
+    // Only announce what this page is actually running. A reader still on
+    // the previous copy fetches the NEW changelog while the OLD scripts are
+    // in memory, so without this the popup, the bell and the refresh
+    // reminder all fire at once for one release - two of them describing
+    // features the page does not have yet. Capped, the refresh reminder
+    // speaks alone and the popup follows on the load that has the features.
+    const running = (window.LEAReminders && window.LEAReminders.BUILD) || 0;
+    const versions = running ? all.filter(v => Number(v.build) <= running) : all;
     let seen = 0;
     try{ seen = Number(localStorage.getItem(SEEN_KEY) || 0); }catch(e){}
     const latest = versions.length ? versions[0].build : 0;
