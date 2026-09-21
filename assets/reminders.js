@@ -19,7 +19,7 @@
  */
 (function(){
   'use strict';
-  const BUILD = 15;
+  const BUILD = 16;
   const EXAM_MILESTONES = [180, 120, 90, 60, 30, 14, 7, 3, 1];
   const DEFAULT_PREFS = { daily:true, streak:true, exam:true, rivals:true, focus:true, update:true };
   const TYPES = [
