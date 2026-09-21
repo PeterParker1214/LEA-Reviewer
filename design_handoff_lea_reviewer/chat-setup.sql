@@ -81,17 +81,18 @@ begin
 end $$;
 
 -- 6. A bucket for pictures and GIFs -----------------------------------
--- 12 MB and image types only, enforced by the bucket itself. A still
--- picture is resized by the page to well under this before it is sent;
--- the headroom is for GIFs, which are sent as they arrive because
--- shrinking one would cost it its animation.
+-- 12 MB, and image types plus WebM. A still picture is resized by the
+-- page to well under this before it is sent, and a GIF is re-encoded as a
+-- looping WebM, which is several times smaller with the same animation.
+-- The headroom is for the browsers that cannot do that conversion and send
+-- the GIF as it is.
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
 values ('chat-images', 'chat-images', true, 12582912,
-        array['image/png','image/jpeg','image/webp','image/gif'])
+        array['image/png','image/jpeg','image/webp','image/gif','video/webm'])
 on conflict (id) do update
   set public = true,
       file_size_limit = 12582912,
-      allowed_mime_types = array['image/png','image/jpeg','image/webp','image/gif'];
+      allowed_mime_types = array['image/png','image/jpeg','image/webp','image/gif','video/webm'];
 
 drop policy if exists "chat images are publicly readable" on storage.objects;
 create policy "chat images are publicly readable"

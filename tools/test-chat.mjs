@@ -59,4 +59,22 @@ assert.equal(C.needsShrinking({ type: 'image/png', size: 1000 }), false, 'a smal
 assert.equal(C.needsShrinking({ type: 'image/gif', size: C.GIF_MAX_BYTES + 1 }), false, 'a GIF is never redrawn');
 assert.equal(C.IMAGE_MAX_BYTES, 5 * 1024 * 1024);
 
+// A GIF is converted only where the browser can both decode and record.
+const able = { ImageDecoder: function(){}, MediaRecorder: Object.assign(function(){}, { isTypeSupported: () => true }) };
+const unable = { ImageDecoder: undefined, MediaRecorder: undefined };
+assert.equal(C.canMakeVideo(able), true);
+assert.equal(C.canMakeVideo(unable), false);
+assert.equal(C.canMakeVideo({ ImageDecoder: function(){}, MediaRecorder: Object.assign(function(){}, { isTypeSupported: () => false }) }), false, 'no WebM, no conversion');
+
+assert.equal(C.shouldConvertGif({ type: 'image/gif' }, true), true);
+assert.equal(C.shouldConvertGif({ type: 'image/gif' }, false), false, 'Safari sends the GIF as it is');
+assert.equal(C.shouldConvertGif({ type: 'image/png' }, true), false, 'a still picture is not a video');
+
+// A sent file that is really a video has to render as one.
+assert.equal(C.isVideo('https://x/y/clip.webm'), true);
+assert.equal(C.isVideo('https://x/y/clip.webm?v=2'), true);
+assert.equal(C.isVideo('https://x/y/photo.jpg'), false);
+assert.equal(C.isVideo('https://x/webm/photo.png'), false, 'the extension decides, not the path');
+assert.equal(C.isVideo(null), false);
+
 console.log('chat helpers ok');

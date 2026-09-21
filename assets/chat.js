@@ -11,6 +11,7 @@
 
   var BODY_MAX = 1000;
   var IMAGE_TYPES = ['image/png', 'image/jpeg', 'image/webp', 'image/gif'];
+  var VIDEO_TYPE = 'video/webm';
   var IMAGE_MAX_BYTES = 5 * 1024 * 1024;
   // A GIF is sent as it arrives, so its ceiling is the one people actually
   // meet. Six or seven MB is an ordinary reaction GIF.
@@ -81,6 +82,113 @@
     return null;
   }
 
+  /**
+   * Whether this browser can turn a GIF into a video: WebCodecs to read the
+   * frames, and MediaRecorder to write WebM. Chrome and Edge can; Safari
+   * cannot, and there the GIF is simply sent as it is.
+   */
+  function canMakeVideo(win) {
+    var w = win || root;
+    return typeof w.ImageDecoder === 'function'
+      && typeof w.MediaRecorder === 'function'
+      && typeof w.MediaRecorder.isTypeSupported === 'function'
+      && w.MediaRecorder.isTypeSupported(VIDEO_TYPE);
+  }
+
+  /** A GIF worth converting: an animation this browser can re-encode. */
+  function shouldConvertGif(file, able) {
+    return !!file && file.type === 'image/gif' && (able === undefined ? canMakeVideo() : !!able);
+  }
+
+  /** A sent picture that is really a video, and has to render as one. */
+  function isVideo(url) {
+    return /\.webm(\?|$)/i.test(String(url || ''));
+  }
+
+  /**
+   * A GIF re-encoded as WebM, animation and all: the frames are decoded with
+   * WebCodecs, drawn onto a canvas, and recorded off that canvas's stream.
+   * Returns the original file when the browser cannot do it, or when the
+   * result came out no smaller than the GIF.
+   *
+   * ponytail: the frames are played at their real speed while recording, so
+   * a three-second GIF takes about three seconds to convert. Encoding them
+   * faster than real time needs VideoEncoder and a muxer, which is a great
+   * deal more code for a wait nobody is watching.
+   */
+  function gifToVideo(file, opts) {
+    opts = opts || {};
+    if (!shouldConvertGif(file)) return Promise.resolve(file);
+    var edge = opts.edge || SHRINK_EDGE;
+
+    return file.arrayBuffer().then(function (buffer) {
+      var decoder = new root.ImageDecoder({ data: buffer, type: 'image/gif' });
+      return decoder.tracks.ready.then(function () {
+        var track = decoder.tracks.selectedTrack;
+        var count = track ? track.frameCount : 1;
+        if (!count || count < 2) throw new Error('still');   // a one-frame GIF is a picture
+
+        // Decode every frame up front: drawing has to keep to the GIF's own
+        // timing, and decoding inside that loop would drift.
+        var frames = [];
+        var next = function (i) {
+          if (i >= count) return Promise.resolve();
+          return decoder.decode({ frameIndex: i }).then(function (res) {
+            frames.push(res.image);
+            return next(i + 1);
+          });
+        };
+        return next(0).then(function () { return { frames: frames, decoder: decoder }; });
+      });
+    }).then(function (all) {
+      var frames = all.frames;
+      var first = frames[0];
+      var scale = Math.min(1, edge / Math.max(first.displayWidth, first.displayHeight));
+      var canvas = document.createElement('canvas');
+      // WebM wants even dimensions.
+      canvas.width = Math.max(2, Math.round(first.displayWidth * scale / 2) * 2);
+      canvas.height = Math.max(2, Math.round(first.displayHeight * scale / 2) * 2);
+      var ctx = canvas.getContext('2d');
+
+      var stream = canvas.captureStream();
+      var recorder = new root.MediaRecorder(stream, {
+        mimeType: VIDEO_TYPE,
+        videoBitsPerSecond: opts.bitrate || 1200000
+      });
+      var chunks = [];
+      recorder.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+
+      return new Promise(function (resolve, reject) {
+        recorder.onerror = reject;
+        recorder.onstop = function () {
+          frames.forEach(function (f) { try { f.close(); } catch (e) {} });
+          try { all.decoder.close(); } catch (e) {}
+          resolve(new Blob(chunks, { type: VIDEO_TYPE }));
+        };
+        recorder.start();
+
+        var i = 0;
+        var draw = function () {
+          if (i >= frames.length) { setTimeout(function () { recorder.stop(); }, 120); return; }
+          var frame = frames[i];
+          ctx.drawImage(frame, 0, 0, canvas.width, canvas.height);
+          // A GIF frame's duration is in microseconds, and browsers floor
+          // anything under 20 ms to 100 ms the way they do when playing one.
+          var ms = (frame.duration || 100000) / 1000;
+          if (ms < 20) ms = 100;
+          i++;
+          setTimeout(draw, ms);
+        };
+        draw();
+      });
+    }).then(function (blob) {
+      if (!blob || blob.size === 0 || blob.size >= file.size) return file;   // no saving, keep the GIF
+      return new File([blob], file.name.replace(/\.[^.]+$/, '') + '.webm', { type: VIDEO_TYPE });
+    }).catch(function () {
+      return file;   // a still GIF, an odd file, an old browser: send it as it is
+    });
+  }
+
   /** True when this file has to go through shrinkToFit() before it is sent. */
   function needsShrinking(file) {
     return !!file && file.type !== 'image/gif' && file.size > IMAGE_MAX_BYTES;
@@ -139,6 +247,7 @@
   root.LEAChat = {
     BODY_MAX: BODY_MAX,
     IMAGE_TYPES: IMAGE_TYPES,
+    VIDEO_TYPE: VIDEO_TYPE,
     IMAGE_MAX_BYTES: IMAGE_MAX_BYTES,
     GIF_MAX_BYTES: GIF_MAX_BYTES,
     SHRINK_EDGE: SHRINK_EDGE,
@@ -147,6 +256,10 @@
     threadMessages: threadMessages,
     sendable: sendable,
     imageProblem: imageProblem,
+    canMakeVideo: canMakeVideo,
+    shouldConvertGif: shouldConvertGif,
+    isVideo: isVideo,
+    gifToVideo: gifToVideo,
     needsShrinking: needsShrinking,
     shrinkToFit: shrinkToFit,
     shortTime: shortTime

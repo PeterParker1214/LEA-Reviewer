@@ -92,7 +92,7 @@
   .msg.mine .bub{ background:color-mix(in srgb, var(--gold) 12%, transparent);
     border-color:color-mix(in srgb, var(--gold) 38%, transparent); border-radius:12px 2px 12px 12px; }
   .msg.mine .at{ text-align:right; }
-  .msg .shot{ display:block; max-width:100%; margin-top:6px; border-radius:8px; border:1px solid var(--line); }
+  .msg .shot{ display:block; max-width:100%; height:auto; margin-top:6px; border-radius:8px; border:1px solid var(--line); }
   .msg .bin{ background:none; border:0; color:var(--muted); font-size:11px; cursor:pointer;
     padding:2px 4px; font-family:var(--font-mono); }
   .msg .bin:hover{ color:var(--bad); }
@@ -113,7 +113,7 @@
   .send:disabled{ opacity:.45; cursor:default; }
   .draft-shot{ flex:none; display:flex; align-items:center; gap:9px; padding:8px 10px;
     border-top:1px solid var(--line); background:var(--bg-panel-2); font-size:12px; color:var(--muted); }
-  .draft-shot img{ width:42px; height:42px; object-fit:cover; border-radius:6px; border:1px solid var(--line); }
+  .draft-shot img, .draft-shot video{ width:42px; height:42px; object-fit:cover; border-radius:6px; border:1px solid var(--line); }
 
   .thread-row{ display:flex; gap:10px; align-items:center; padding:11px 12px; cursor:pointer;
     border-bottom:1px solid var(--line); background:none; border-left:0; border-right:0; border-top:0;
@@ -136,12 +136,12 @@
   .finder input{ width:100%; font-family:inherit; font-size:16px; padding:9px 12px; color:var(--ink);
     background:var(--bg-panel); border:1px solid var(--line); border-radius:8px; }
 </style>
-<script src="assets/theme.js?v=69" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=69"></script>
-<script src="assets/avatar.js?v=69"></script>
-<script src="assets/chat.js?v=69"></script>
-<script src="assets/offline.js?v=69"></script>
-<script src="assets/presence.js?v=69"></script>
+<script src="assets/theme.js?v=70" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=70"></script>
+<script src="assets/avatar.js?v=70"></script>
+<script src="assets/chat.js?v=70"></script>
+<script src="assets/offline.js?v=70"></script>
+<script src="assets/presence.js?v=70"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
 </head>
 <body>
@@ -261,7 +261,13 @@ function msgHtml(m){
         '<div class="bub">' +
           (mine || state.tab !== 'lobby' ? '' : '<a class="who" href="user.html?u=' + escapeHtml(m.user_id) + '">' + escapeHtml(person(m.user_id).username) + '</a>') +
           (m.body ? escapeHtml(m.body) : '') +
-          (m.image_url ? '<img class="shot" src="' + escapeHtml(m.image_url) + '" alt="" loading="lazy">' : '') +
+          (m.image_url
+            ? (LEAChat.isVideo(m.image_url)
+                // A converted GIF: it loops and has no sound, so it reads as
+                // a GIF rather than as a video someone has to press play on.
+                ? '<video class="shot" src="' + escapeHtml(m.image_url) + '" autoplay loop muted playsinline></video>'
+                : '<img class="shot" src="' + escapeHtml(m.image_url) + '" alt="" loading="lazy">')
+            : '') +
         '</div>' +
         '<div class="at">' + escapeHtml(LEAChat.shortTime(m.created_at)) +
           (canDelete ? ' <button class="bin" type="button" data-del="' + m.id + '">Delete</button>' : '') +
@@ -409,6 +415,14 @@ async function pickImage(file){
     catch(e){ say('That picture could not be resized. Try saving it smaller.'); clearDraftImage(); return; }
   }
 
+  // A GIF becomes a looping video: same animation, a fraction of the size.
+  // It plays at its own speed while it records, so this takes about as long
+  // as the GIF runs. On a browser that cannot do it the GIF goes up as it is.
+  if(LEAChat.shouldConvertGif(file)){
+    el.textContent = 'Converting the GIF…';
+    file = await LEAChat.gifToVideo(file);
+  }
+
   const ext = (file.name.split('.').pop() || 'png').toLowerCase().replace(/[^a-z0-9]/g, '');
   const path = state.me + '/' + Date.now() + '.' + ext;
   el.textContent = 'Uploading…';
@@ -417,8 +431,11 @@ async function pickImage(file){
   if(up.error){ say(up.error.message); clearDraftImage(); return; }
   const url = sb.storage.from('chat-images').getPublicUrl(path).data.publicUrl;
   state.draftImage = { url, path };
-  el.innerHTML = '<img src="' + escapeHtml(url) + '" alt="">' +
-    '<span>Picture ready</span><button class="link-btn" type="button" id="dropShot">Remove</button>';
+  el.innerHTML = (LEAChat.isVideo(url)
+      ? '<video src="' + escapeHtml(url) + '" autoplay loop muted playsinline></video>'
+      : '<img src="' + escapeHtml(url) + '" alt="">') +
+    '<span>' + (LEAChat.isVideo(url) ? 'GIF ready' : 'Picture ready') + '</span>' +
+    '<button class="link-btn" type="button" id="dropShot">Remove</button>';
   document.getElementById('dropShot').addEventListener('click', () => { clearDraftImage(); refreshSendButton(); });
   refreshSendButton();
 }
