@@ -158,16 +158,51 @@
     s.id = 'leaToastCss';
     s.textContent =
       '.lea-toast{position:fixed;top:12px;left:50%;z-index:6000;width:min(420px,calc(100% - 24px));transform:translate(-50%,-150%);' +
-        'transition:transform .3s cubic-bezier(.2,.8,.2,1);display:block;text-decoration:none;color:var(--ink,#eef1e9);' +
+        'transition:transform .3s cubic-bezier(.2,.8,.2,1),opacity .2s linear;display:block;text-decoration:none;color:var(--ink,#eef1e9);' +
         'background:var(--bg-panel,#0e1c28);border:1px solid var(--line,rgba(111,168,207,.2));border-left:3px solid var(--gold,#e0a83f);' +
-        'border-radius:12px;padding:11px 40px 11px 14px;box-shadow:0 10px 30px rgba(0,0,0,.45);font-family:var(--font-body,system-ui,sans-serif);}' +
+        'border-radius:12px;padding:11px 14px;touch-action:pan-y;box-shadow:0 10px 30px rgba(0,0,0,.45);font-family:var(--font-body,system-ui,sans-serif);}' +
       '.lea-toast.in{transform:translate(-50%,0);}' +
       '.lea-toast-kicker{display:block;font-family:var(--font-mono,monospace);font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--gold-bright,#f0c268);margin-bottom:2px;}' +
       '.lea-toast-title{display:block;font-weight:600;font-size:14px;line-height:1.35;}' +
       '.lea-toast-body{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:12.5px;line-height:1.45;opacity:.85;margin-top:2px;white-space:pre-line;}' +
-      '.lea-toast-x{position:absolute;top:6px;right:6px;width:28px;height:28px;border:none;background:none;color:inherit;font-size:18px;cursor:pointer;opacity:.7;}' +
       '@media (prefers-reduced-motion: reduce){.lea-toast{transition:none;}}';
     document.head.appendChild(s);
+  }
+
+  // Swipe (or drag) the toast sideways or up to dismiss it. A move under
+  // 10px is still a tap, so the link keeps working.
+  function swipeToDismiss(el){
+    let x0 = 0, y0 = 0, dx = 0, dy = 0, down = false;
+    el.addEventListener('pointerdown', e => {
+      down = true; x0 = e.clientX; y0 = e.clientY; dx = dy = 0;
+      el.style.transition = 'none';
+      el.setPointerCapture(e.pointerId);
+    });
+    el.addEventListener('pointermove', e => {
+      if(!down) return;
+      dx = e.clientX - x0; dy = Math.min(0, e.clientY - y0);
+      el.style.transform = 'translate(calc(-50% + ' + dx + 'px),' + dy + 'px)';
+      el.style.opacity = String(Math.max(0, 1 - Math.max(Math.abs(dx), Math.abs(dy)) / 200));
+    });
+    const up = () => {
+      if(!down) return;
+      down = false;
+      el.style.transition = '';
+      const sideways = Math.abs(dx) > 70;
+      if(sideways || dy < -50){
+        el.style.transform = sideways
+          ? 'translate(calc(-50% + ' + (dx > 0 ? 400 : -400) + 'px),0)'
+          : 'translate(-50%,-200px)';
+        el.style.opacity = '0';
+        setTimeout(() => el.remove(), 300);
+      } else {
+        el.style.transform = ''; el.style.opacity = '';
+      }
+    };
+    el.addEventListener('pointerup', up);
+    el.addEventListener('pointercancel', up);
+    // A drag must not follow the link.
+    el.addEventListener('click', e => { if(Math.abs(dx) > 10 || Math.abs(dy) > 10) e.preventDefault(); });
   }
 
   function toast(items){
@@ -184,23 +219,22 @@
     el.innerHTML =
       '<span class="lea-toast-kicker">' + (one ? KIND_LABEL[one.kind] || 'Notification' : 'Notifications') + '</span>' +
       '<span class="lea-toast-title">' + escapeHtml(one ? one.title : items.length + ' new notifications') + '</span>' +
-      (one && one.body ? '<span class="lea-toast-body">' + escapeHtml(one.body) + '</span>' : '') +
-      '<button type="button" class="lea-toast-x" aria-label="Dismiss">×</button>';
+      (one && one.body ? '<span class="lea-toast-body">' + escapeHtml(one.body) + '</span>' : '');
     document.body.appendChild(el);
     requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('in')));
     const hide = () => { el.classList.remove('in'); setTimeout(() => el.remove(), 350); };
-    el.querySelector('.lea-toast-x').addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); hide(); });
+    swipeToDismiss(el);
     setTimeout(hide, 8000);
   }
 
-  // Checks once a minute while the tab is visible (and on coming back to it).
+  // Checks every five minutes while the tab is visible (and on coming back to it).
   // Each unread item pops up once per device; a backlog, such as a first
   // visit, becomes one summary toast. onCount receives the unread total.
   function watch(sb, onCount){
     if(watching) return;
     watching = true;
     const tick = async () => {
-      if(document.hidden || Date.now() - lastTick < 20000) return;
+      if(document.hidden || Date.now() - lastTick < 60000) return;
       lastTick = Date.now();
       try{
         const { data: { session } } = await sb.auth.getSession();
@@ -218,7 +252,7 @@
       }catch(e){ /* a toast is never worth breaking the page for */ }
     };
     tick();
-    setInterval(tick, 60000);
+    setInterval(tick, 300000);
     document.addEventListener('visibilitychange', tick);
   }
 
