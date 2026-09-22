@@ -170,8 +170,9 @@
   }
 
   // Swipe (or drag) the toast sideways or up to dismiss it. A move under
-  // 10px is still a tap, so the link keeps working.
-  function swipeToDismiss(el){
+  // 10px is still a tap, so the link keeps working. onGone runs when a swipe
+  // takes the toast away, since that skips the usual hide().
+  function swipeToDismiss(el, onGone){
     let x0 = 0, y0 = 0, dx = 0, dy = 0, down = false;
     el.addEventListener('pointerdown', e => {
       down = true; x0 = e.clientX; y0 = e.clientY; dx = dy = 0;
@@ -195,6 +196,7 @@
           : 'translate(-50%,-200px)';
         el.style.opacity = '0';
         setTimeout(() => el.remove(), 300);
+        if(onGone) onGone();
       } else {
         el.style.transform = ''; el.style.opacity = '';
       }
@@ -222,8 +224,13 @@
       (one && one.body ? '<span class="lea-toast-body">' + escapeHtml(one.body) + '</span>' : '');
     document.body.appendChild(el);
     requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('in')));
-    const hide = () => { el.classList.remove('in'); setTimeout(() => el.remove(), 350); };
-    swipeToDismiss(el);
+    // Swiping is for fingers and mice; Escape is how a keyboard dismisses it.
+    let onKey;
+    const cleanup = () => document.removeEventListener('keydown', onKey);
+    const hide = () => { cleanup(); el.classList.remove('in'); setTimeout(() => el.remove(), 350); };
+    onKey = e => { if(e.key === 'Escape') hide(); };
+    document.addEventListener('keydown', onKey);
+    swipeToDismiss(el, cleanup);
     setTimeout(hide, 8000);
   }
 
