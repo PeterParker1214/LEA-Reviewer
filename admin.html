@@ -3027,12 +3027,17 @@ function msgStatus(text, kind){
 
 // Phone/browser push to readers who turned it on (edge function send-push).
 // Fire-and-forget: the bell already holds the item, so a failed push loses nothing.
+// The message or reply is already saved by the time this runs, so a failure
+// here is not fatal — but it must be said out loud, or a push that reaches
+// nobody looks exactly like one that worked.
 function sendPush(title, body, url, userIds){
   fetch(`${SUPABASE_URL}/functions/v1/send-push`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${accessToken}` },
     body: JSON.stringify({ title, body, url, userIds })
-  }).catch(() => {});
+  }).then(res => res.ok ? null : res.text().catch(() => '').then(t => res.status + ' ' + t))
+    .catch(e => e.message)
+    .then(err => { if(err) LEAAlert('Saved, but the phone notification failed: ' + err); });
 }
 
 async function sendMessage(){
