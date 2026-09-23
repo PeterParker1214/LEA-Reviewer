@@ -1,366 +1,372 @@
 [
   {
     "s": "Storm Drainage",
-    "q": "Which statement is correct regarding two opposite equal-height walls?",
+    "q": "A roof lies between two opposite walls of the same height. How much wall area is added to the roof area for drain sizing?",
     "o": [
-      "No added wall area.",
-      "Net inlet at least 2× outlet area.",
-      "Not less than Gauge #26 galvanized sheet.",
-      "Take one-half of cross area in source summary."
+      "None",
+      "50% of one wall",
+      "35% of both walls",
+      "50% of both walls"
     ],
     "c": 0,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] No added wall area."
+    "n": "Rain driven against one wall is balanced by shelter from the other, so no wall area is added. Walls beside a roof catch driving rain and shed it onto the roof, so part of their area is added when sizing the drains."
   },
   {
     "s": "Storm Drainage",
-    "q": "Which statement is correct regarding dome strainer?",
+    "q": "What minimum total inlet area must a dome-type roof strainer have?",
     "o": [
-      "Vertical portion of rainwater conductor.",
-      "Must resist hydrostatic pressure.",
-      "Net inlet at least 1.5× outlet area.",
-      "102 mm/h."
+      "2 times the area of the outlet pipe",
+      "1.5 times the area of the outlet pipe",
+      "Equal to the area of the outlet pipe",
+      "3 times the area of the outlet pipe"
+    ],
+    "c": 1,
+    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
+    "n": "Leaves collect on the dome, so its openings must exceed the pipe area. Flat roof-deck strainers need 2 times."
+  },
+  {
+    "s": "Storm Drainage",
+    "q": "Which way does a leader (conductor) carry rainwater?",
+    "o": [
+      "From the downspout to the gutter",
+      "From the storm sewer to the building",
+      "From the gutter to the downspout",
+      "From the roof drain to the vent stack"
     ],
     "c": 2,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Net inlet at least 1.5× outlet area."
+    "n": "Leaders and conductors carry roof water from the gutter or roof drain down toward the storm drain."
   },
   {
     "s": "Storm Drainage",
-    "q": "Which statement is correct regarding leader/conductor?",
+    "q": "How high above the roof surface must a roof drain dome strainer rise?",
     "o": [
-      "No added wall area.",
-      "Cast iron, copper, or corrosion-resistant material.",
-      "From gutter toward downspout.",
-      "Collect stormwater and discharge to approved disposal point."
-    ],
-    "c": 2,
-    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] From gutter toward downspout."
-  },
-  {
-    "s": "Storm Drainage",
-    "q": "Which statement is correct regarding roof-drain height?",
-    "o": [
-      "Take one-half of cross area in source summary.",
-      "Summary lists galvanized iron, cast iron, DWV copper, ABS/PVC-DWV and similar approved materials.",
-      "102 mm above roof surface is stated.",
-      "Rainfall intensity and roof area."
-    ],
-    "c": 2,
-    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] 102 mm above roof surface is stated."
-  },
-  {
-    "s": "Storm Drainage",
-    "q": "Which statement is correct regarding no cross-use?",
-    "o": [
-      "Net inlet at least 1.5× outlet area.",
-      "Add 50% of wall area above lower wall.",
-      "Collect stormwater and discharge to approved disposal point.",
-      "Do not use rainwater piping as vent, soil, or waste pipe."
+      "At least 25 mm",
+      "At least 300 mm",
+      "At least 1.0 m",
+      "At least 102 mm"
     ],
     "c": 3,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Do not use rainwater piping as vent, soil, or waste pipe."
+    "n": "The raised dome keeps taking water even when leaves and debris pile up around its base."
   },
   {
     "s": "Storm Drainage",
-    "q": "Which statement is correct regarding manila intensity?",
+    "q": "May rainwater piping be used as a vent, soil or waste pipe?",
     "o": [
-      "102 mm/h.",
-      "Add 50% of wall area above lower wall.",
-      "Cast iron, copper, or corrosion-resistant material.",
-      "Roofs, courtyards, and courts."
+      "No, never",
+      "Yes, as a vent only",
+      "Yes, above the top floor",
+      "Yes, if it is cast iron"
     ],
     "c": 0,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] 102 mm/h."
+    "n": "Mixing systems sends sewer gas and sewage into storm lines, or storm water into the sanitary system."
   },
   {
     "s": "Storm Drainage",
-    "q": "Which statement is correct regarding storm water?",
+    "q": "What rainfall intensity does the plumbing code use for the Manila area when sizing rainwater piping?",
     "o": [
-      "Add 50% of inner wall below lowest top plus allowance above that top.",
-      "Surface runoff from precipitation.",
-      "Net inlet at least 1.5× outlet area.",
-      "Not less than Gauge #26 galvanized sheet."
+      "50 mm per hour",
+      "102 mm per hour",
+      "150 mm per hour",
+      "25 mm per hour"
     ],
     "c": 1,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Surface runoff from precipitation."
+    "n": "Pipe sizes in the code tables are read from roof area and rainfall intensity."
   },
   {
     "s": "Storm Drainage",
-    "q": "Which statement is correct regarding roof-drain materials?",
+    "q": "What is storm water?",
     "o": [
-      "No allowance below lowest top; add applicable area above.",
-      "Not less than Gauge #26 galvanized sheet.",
-      "Cast iron, copper, or corrosion-resistant material.",
-      "Cast iron and watertight in source summary."
+      "Waste water from sinks and showers",
+      "Water drained from a swimming pool",
+      "The part of rainfall that runs off over the surface",
+      "Water from a building's cooling tower"
     ],
     "c": 2,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Cast iron, copper, or corrosion-resistant material."
+    "n": "Storm water is collected by roof drains, gutters and area drains and kept out of the sanitary system."
   },
   {
     "s": "Storm Drainage",
-    "q": "Which statement is correct regarding sizing basis?",
+    "q": "What must roof drains be made of?",
     "o": [
-      "Roof drains, overflow drains, and rainwater piping are tested.",
-      "Rainfall intensity and roof area.",
-      "Surface runoff from precipitation.",
-      "No added wall area."
-    ],
-    "c": 1,
-    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Rainfall intensity and roof area."
-  },
-  {
-    "s": "Storm Drainage",
-    "q": "Which statement is correct regarding 0.60 m note?",
-    "o": [
-      "Roofs, courtyards, and courts.",
-      "102 mm above roof surface is stated.",
-      "Rainwater piping commencement 0.60 m from exterior is noted in the source context.",
-      "No added wall area."
-    ],
-    "c": 2,
-    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Rainwater piping commencement 0.60 m from exterior is noted in the source context."
-  },
-  {
-    "s": "Storm Drainage",
-    "q": "Which statement is correct regarding downspout?",
-    "o": [
-      "Roof drains, overflow drains, and rainwater piping are tested.",
-      "Roofs, courtyards, and courts.",
-      "Vertical portion of rainwater conductor.",
-      "Add 35% total wall area."
-    ],
-    "c": 2,
-    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Vertical portion of rainwater conductor."
-  },
-  {
-    "s": "Storm Drainage",
-    "q": "Which statement is correct regarding three sides?",
-    "o": [
-      "From gutter toward downspout.",
-      "Rainfall intensity and roof area.",
-      "Add 50% of inner wall below lowest top plus allowance above that top.",
-      "Must resist hydrostatic pressure."
-    ],
-    "c": 2,
-    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Add 50% of inner wall below lowest top plus allowance above that top."
-  },
-  {
-    "s": "Storm Drainage",
-    "q": "Which statement is correct regarding house storm sewer?",
-    "o": [
-      "102 mm above roof surface is stated.",
-      "Cast iron, galvanized steel, iron, brass, copper, lead, ABS/PVC-DWV and approved materials.",
-      "From building storm drainage toward public storm sewer.",
-      "Add 50% of wall area above lower wall."
-    ],
-    "c": 2,
-    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] From building storm drainage toward public storm sewer."
-  },
-  {
-    "s": "Storm Drainage",
-    "q": "Which statement is correct regarding high-rise piping?",
-    "o": [
-      "Cast iron, copper, or corrosion-resistant material.",
-      "Add 35% total wall area.",
-      "Must resist hydrostatic pressure.",
-      "Surface runoff from precipitation."
-    ],
-    "c": 2,
-    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Must resist hydrostatic pressure."
-  },
-  {
-    "s": "Storm Drainage",
-    "q": "Which statement is correct regarding one wall?",
-    "o": [
-      "Collect stormwater and discharge to approved disposal point.",
-      "Add 50% wall area.",
-      "Add 50% of inner wall below lowest top plus allowance above that top.",
-      "102 mm above roof surface is stated."
-    ],
-    "c": 1,
-    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Add 50% wall area."
-  },
-  {
-    "s": "Storm Drainage",
-    "q": "Which statement is correct regarding tall exposed side?",
-    "o": [
-      "Take one-half of cross area in source summary.",
-      "Surface runoff from precipitation.",
-      "Do not use rainwater piping as vent, soil, or waste pipe.",
-      "Add 50% wall area."
-    ],
-    "c": 0,
-    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Take one-half of cross area in source summary."
-  },
-  {
-    "s": "Storm Drainage",
-    "q": "Which statement is correct regarding low-rise sheet metal?",
-    "o": [
-      "Do not use rainwater piping as vent, soil, or waste pipe.",
-      "From gutter toward downspout.",
-      "102 mm/h.",
-      "Not less than Gauge #26 galvanized sheet."
+      "Galvanized sheet metal only",
+      "Any plastic without a listing",
+      "Concrete formed on site",
+      "Cast iron, copper or other corrosion-resistant material"
     ],
     "c": 3,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Not less than Gauge #26 galvanized sheet."
+    "n": "Roof drains sit in standing water and debris, so they must not corrode."
   },
   {
     "s": "Storm Drainage",
-    "q": "Which statement is correct regarding four sides?",
+    "q": "What is rainwater piping sized from?",
     "o": [
-      "102 mm/h.",
-      "From building storm drainage toward public storm sewer.",
-      "No allowance below lowest top; add applicable area above.",
-      "Rainwater piping commencement 0.60 m from exterior is noted in the source context."
+      "Rainfall intensity and the roof area drained",
+      "The number of plumbing fixtures",
+      "The height of the building only",
+      "The number of downspouts only"
+    ],
+    "c": 0,
+    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
+    "n": "The code tables give the roof area each pipe size can drain at a given rainfall intensity."
+  },
+  {
+    "s": "Storm Drainage",
+    "q": "From what point does \"rainwater piping\" (as against the building's leaders) begin under the code?",
+    "o": [
+      "At the roof drain",
+      "0.60 m outside the exterior wall",
+      "At the property line",
+      "At the public storm sewer"
+    ],
+    "c": 1,
+    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
+    "n": "As with the sanitary side, the storm line changes name 0.60 m outside the building."
+  },
+  {
+    "s": "Storm Drainage",
+    "q": "What is a downspout?",
+    "o": [
+      "The horizontal gutter along the eave",
+      "The strainer over a roof drain",
+      "The vertical part of a rainwater conductor",
+      "The pipe from the building to the public storm sewer"
     ],
     "c": 2,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] No allowance below lowest top; add applicable area above."
+    "n": "A downspout carries water from the gutter down the face of the building."
+  },
+  {
+    "s": "Storm Drainage",
+    "q": "A roof is enclosed by walls on three sides. What is added to the roof area for drain sizing?",
+    "o": [
+      "Nothing, as walls on three sides shelter the roof",
+      "35% of the total wall area",
+      "100% of the area of all three walls",
+      "50% of the inner wall area below the top of the lowest wall, plus the wall area above it"
+    ],
+    "c": 3,
+    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
+    "n": "Walls beside a roof catch driving rain and shed it onto the roof, so part of their area is added when sizing the drains."
+  },
+  {
+    "s": "Storm Drainage",
+    "q": "What is the house storm sewer?",
+    "o": [
+      "The pipe from the building's storm drainage to the public storm sewer",
+      "The vertical pipe from the gutter to the ground",
+      "The pipe from the building to the public sanitary sewer",
+      "The drain under a courtyard"
+    ],
+    "c": 0,
+    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
+    "n": "It is the storm-side twin of the building sewer."
+  },
+  {
+    "s": "Storm Drainage",
+    "q": "Why do downspouts in high-rise buildings need stronger pipe?",
+    "o": [
+      "High winds bend thin downspouts",
+      "A full column of water builds up high hydrostatic pressure at the bottom",
+      "Rainwater is more acidic at height",
+      "Codes require the same pipe as fire standpipes"
+    ],
+    "c": 1,
+    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
+    "n": "If a downspout backs up, water pressure at the base rises about 10 kPa for every metre of height."
+  },
+  {
+    "s": "Storm Drainage",
+    "q": "A roof has one wall rising beside it. What is added to the roof area for drain sizing?",
+    "o": [
+      "35% of the wall area",
+      "100% of the wall area",
+      "50% of the wall area",
+      "Nothing"
+    ],
+    "c": 2,
+    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
+    "n": "Walls beside a roof catch driving rain and shed it onto the roof, so part of their area is added when sizing the drains."
+  },
+  {
+    "s": "Storm Drainage",
+    "q": "For the side of a tall building exposed to rain, what area is used for drain sizing?",
+    "o": [
+      "All of its area",
+      "One-quarter of its area",
+      "None of its area",
+      "One-half of its area"
+    ],
+    "c": 3,
+    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
+    "n": "Wind-driven rain strikes a tall face at an angle, so half of the face is counted."
+  },
+  {
+    "s": "Storm Drainage",
+    "q": "What is the lightest galvanized sheet metal allowed for downspouts on low buildings?",
+    "o": [
+      "Gauge 26",
+      "Gauge 30",
+      "Gauge 32",
+      "Gauge 20"
+    ],
+    "c": 0,
+    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
+    "n": "Higher gauge numbers are thinner. Gauge 26 is the thinnest allowed, and only on low buildings."
+  },
+  {
+    "s": "Storm Drainage",
+    "q": "A roof is enclosed by walls on all four sides. What wall area is added for drain sizing?",
+    "o": [
+      "50% of all four walls",
+      "None below the top of the lowest wall; only the wall area above it",
+      "35% of all four walls",
+      "100% of all four walls"
+    ],
+    "c": 1,
+    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
+    "n": "Walls beside a roof catch driving rain and shed it onto the roof, so part of their area is added when sizing the drains."
   },
   {
     "s": "Applied Storm Sizing",
-    "q": "A roof is 200 m² with two adjacent walls totaling 80 m². Using the stated 35% allowance, what effective area is used?",
+    "q": "A 200 m² roof has two adjacent walls rising beside it, with a total area of 80 m². What area is used to size the drains?",
     "o": [
       "240 m²",
-      "228 m²",
       "200 m²",
+      "228 m²",
       "280 m²"
     ],
-    "c": 1,
-    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Add 35% of the adjacent-wall area."
-  },
-  {
-    "s": "Storm Drainage",
-    "q": "Which statement is correct regarding medium-height piping?",
-    "o": [
-      "Add 50% wall area.",
-      "From building storm drainage toward public storm sewer.",
-      "Summary lists galvanized iron, cast iron, DWV copper, ABS/PVC-DWV and similar approved materials.",
-      "Roof drains, overflow drains, and rainwater piping are tested."
-    ],
     "c": 2,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Summary lists galvanized iron, cast iron, DWV copper, ABS/PVC-DWV and similar approved materials."
+    "n": "Walls beside a roof catch driving rain and shed it onto the roof, so part of their area is added when sizing the drains.",
+    "formula": "A = roof area + 0.35 × wall area",
+    "steps": [
+      "Two adjacent walls: add 35% of their total area",
+      "0.35 × 80 m² = 28 m²",
+      "A = 200 + 28 = 228 m²"
+    ]
   },
   {
     "s": "Storm Drainage",
-    "q": "Which statement is correct regarding flat deck strainer?",
+    "q": "Which materials may be used for rainwater piping in medium-height buildings?",
     "o": [
-      "Rainwater piping commencement 0.60 m from exterior is noted in the source context.",
-      "Add 50% wall area.",
-      "From gutter toward downspout.",
-      "Net inlet at least 2× outlet area."
+      "Galvanized sheet metal only",
+      "Vitrified clay only",
+      "Concrete pipe only",
+      "Galvanized iron, cast iron, DWV copper, ABS or PVC-DWV"
     ],
     "c": 3,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Net inlet at least 2× outlet area."
+    "n": "Medium-height buildings need pipe that holds some pressure, so light sheet metal is not enough."
   },
   {
     "s": "Storm Drainage",
-    "q": "Which statement is correct regarding downspout materials?",
+    "q": "What minimum total inlet area must a flat roof-deck strainer have?",
     "o": [
-      "Vertical portion of rainwater conductor.",
-      "Rainfall intensity and roof area.",
-      "Cast iron, galvanized steel, iron, brass, copper, lead, ABS/PVC-DWV and approved materials.",
-      "Rainwater piping commencement 0.60 m from exterior is noted in the source context."
-    ],
-    "c": 2,
-    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Cast iron, galvanized steel, iron, brass, copper, lead, ABS/PVC-DWV and approved materials."
-  },
-  {
-    "s": "Storm Drainage",
-    "q": "Which statement is correct regarding testing?",
-    "o": [
-      "Add 50% of inner wall below lowest top plus allowance above that top.",
-      "Cast iron, galvanized steel, iron, brass, copper, lead, ABS/PVC-DWV and approved materials.",
-      "Roof drains, overflow drains, and rainwater piping are tested.",
-      "Net inlet at least 2× outlet area."
-    ],
-    "c": 2,
-    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Roof drains, overflow drains, and rainwater piping are tested."
-  },
-  {
-    "s": "Storm Drainage",
-    "q": "Which statement is correct regarding required areas?",
-    "o": [
-      "No allowance below lowest top; add applicable area above.",
-      "Summary lists galvanized iron, cast iron, DWV copper, ABS/PVC-DWV and similar approved materials.",
-      "Net inlet at least 2× outlet area.",
-      "Roofs, courtyards, and courts."
-    ],
-    "c": 3,
-    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Roofs, courtyards, and courts."
-  },
-  {
-    "s": "Storm Drainage",
-    "q": "Which statement is correct regarding interior roof drain?",
-    "o": [
-      "From building storm drainage toward public storm sewer.",
-      "Add 35% total wall area.",
-      "Cast iron and watertight in source summary.",
-      "Do not use rainwater piping as vent, soil, or waste pipe."
-    ],
-    "c": 2,
-    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Cast iron and watertight in source summary."
-  },
-  {
-    "s": "Storm Drainage",
-    "q": "Which statement is correct regarding purpose?",
-    "o": [
-      "Cast iron and watertight in source summary.",
-      "Must resist hydrostatic pressure.",
-      "Take one-half of cross area in source summary.",
-      "Collect stormwater and discharge to approved disposal point."
-    ],
-    "c": 3,
-    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Collect stormwater and discharge to approved disposal point."
-  },
-  {
-    "s": "Storm Drainage",
-    "q": "Which statement is correct regarding two opposite unequal-height walls?",
-    "o": [
-      "Add 50% of wall area above lower wall.",
-      "Vertical portion of rainwater conductor.",
-      "Summary lists galvanized iron, cast iron, DWV copper, ABS/PVC-DWV and similar approved materials.",
-      "Cast iron and watertight in source summary."
+      "2 times the area of the outlet pipe",
+      "1.5 times the area of the outlet pipe",
+      "Equal to the area of the outlet pipe",
+      "4 times the area of the outlet pipe"
     ],
     "c": 0,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Add 50% of wall area above lower wall."
+    "n": "Flat strainers on sun decks clog faster than domes, so they need more open area."
   },
   {
     "s": "Storm Drainage",
-    "q": "Which statement is correct regarding two adjacent walls?",
+    "q": "Which of these is NOT listed as a downspout material?",
     "o": [
-      "Net inlet at least 1.5× outlet area.",
-      "Cast iron, galvanized steel, iron, brass, copper, lead, ABS/PVC-DWV and approved materials.",
-      "Add 35% total wall area.",
-      "No allowance below lowest top; add applicable area above."
+      "Cast iron",
+      "Vitrified clay",
+      "Copper",
+      "PVC-DWV"
+    ],
+    "c": 1,
+    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
+    "n": "Downspouts may be cast iron, galvanized steel, iron, brass, copper, lead, ABS or PVC-DWV. Clay is for buried sewers."
+  },
+  {
+    "s": "Storm Drainage",
+    "q": "Which parts of a storm drainage system must be tested?",
+    "o": [
+      "Only the gutters",
+      "Only the public storm sewer",
+      "Roof drains, overflow drains and rainwater piping",
+      "Nothing, since storm water is not sewage"
     ],
     "c": 2,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
-    "n": "[1999 REVISED NPCP TECHNICAL PROVISION] Add 35% total wall area."
+    "n": "Leaks inside a building damage it just as sewage leaks do, so storm piping is tested too."
+  },
+  {
+    "s": "Storm Drainage",
+    "q": "Which areas must be provided with storm drainage?",
+    "o": [
+      "Roofs only",
+      "Parking areas only",
+      "Only areas over 100 m²",
+      "Roofs, courtyards and courts"
+    ],
+    "c": 3,
+    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
+    "n": "Any paved or roofed area that collects rain must drain to an approved disposal point."
+  },
+  {
+    "s": "Storm Drainage",
+    "q": "What must an interior roof drain be?",
+    "o": [
+      "Cast iron and watertight",
+      "Galvanized sheet metal",
+      "Open-jointed clay",
+      "Any material, since it is inside"
+    ],
+    "c": 0,
+    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
+    "n": "A leak inside the building would soak ceilings and walls, so interior drains are cast iron and watertight."
+  },
+  {
+    "s": "Storm Drainage",
+    "q": "What is the purpose of a storm drainage system?",
+    "o": [
+      "To carry sewage to the septic tank",
+      "To collect storm water and discharge it to an approved disposal point",
+      "To vent the sanitary drainage system",
+      "To supply water for flushing"
+    ],
+    "c": 1,
+    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
+    "n": "Storm water may go to a storm sewer, a drainage ditch or a harvesting tank, but never into the sanitary system."
+  },
+  {
+    "s": "Storm Drainage",
+    "q": "A roof lies between two opposite walls of different heights. What is added to the roof area for drain sizing?",
+    "o": [
+      "Nothing",
+      "35% of both walls",
+      "50% of the higher wall's area above the top of the lower wall",
+      "50% of both walls in full"
+    ],
+    "c": 2,
+    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
+    "n": "Only the part of the taller wall that is not sheltered by the lower wall catches extra rain."
+  },
+  {
+    "s": "Storm Drainage",
+    "q": "A roof has two adjacent walls rising beside it. What is added to the roof area for drain sizing?",
+    "o": [
+      "50% of the total wall area",
+      "Nothing",
+      "100% of the total wall area",
+      "35% of the total wall area"
+    ],
+    "c": 3,
+    "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 11",
+    "n": "Walls beside a roof catch driving rain and shed it onto the roof, so part of their area is added when sizing the drains."
   }
 ]
