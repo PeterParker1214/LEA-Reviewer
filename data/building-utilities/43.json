@@ -1,396 +1,392 @@
 [
   {
     "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding source wacu-cycle error?",
+    "q": "What is the correct order of the vapor-compression refrigeration cycle?",
     "o": [
-      "The statement that an FCU is required if total developed length exceeds 3 m is unsupported and is not a general HVAC rule.",
-      "The source reverses several refrigeration-cycle state changes; its sequence is not retained as a correct cycle.",
-      "Air-cooled condensing unit contains compressor/condenser/fan and related components.",
-      "'Freon' is a DuPont/Chemours trademark historically used for certain refrigerants, not the generic name for all refrigerants."
+      "Compressor, condenser, expansion device, evaporator",
+      "Compressor, evaporator, condenser, expansion device",
+      "Evaporator, condenser, compressor, expansion device",
+      "Condenser, compressor, evaporator, expansion device"
+    ],
+    "c": 0,
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Vapor-compression cycle: the compressor raises the vapor to high pressure and temperature; the condenser rejects heat and turns it to liquid; the expansion device drops the pressure; the evaporator absorbs room heat and turns it back to vapor."
+  },
+  {
+    "s": "Room and Split Air Conditioning",
+    "q": "What does the condenser fan of a window air conditioner do?",
+    "o": [
+      "Moves room air across the evaporator",
+      "Moves outdoor air across the condenser coil",
+      "Pumps the refrigerant",
+      "Drains the condensate"
     ],
     "c": 1,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source reverses several refrigeration-cycle state changes; its sequence is not retained as a correct cycle."
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "The outdoor side sheds heat to the outside air."
   },
   {
     "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding wacu condenser fan?",
+    "q": "What heat does an air-cooled outdoor unit reject?",
     "o": [
-      "Moves outdoor air across condenser coil.",
-      "In the basic vapor-compression cycle, compressor discharge is high-pressure, high-temperature refrigerant vapor.",
-      "Uses one outdoor unit serving multiple indoor units within manufacturer design limits.",
-      "Short refrigerant runs can reduce piping cost/pressure-drop concerns, but efficiency is not determined solely by being 'back-to-back.'"
+      "Only the compressor's heat",
+      "Only the room heat",
+      "The heat taken from indoors plus the compressor's work",
+      "No heat; it only cools"
+    ],
+    "c": 2,
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "That is why the air blowing from an outdoor unit is warmer than the heat removed from the room."
+  },
+  {
+    "s": "Room and Split Air Conditioning",
+    "q": "What happens to refrigerant in the expansion device?",
+    "o": [
+      "Its pressure rises",
+      "It turns completely to vapor",
+      "It gives off heat to outdoors",
+      "Its pressure and temperature drop"
+    ],
+    "c": 3,
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Vapor-compression cycle: the compressor raises the vapor to high pressure and temperature; the condenser rejects heat and turns it to liquid; the expansion device drops the pressure; the evaporator absorbs room heat and turns it back to vapor."
+  },
+  {
+    "s": "Room and Split Air Conditioning",
+    "q": "What does the evaporator coil of a window air conditioner do?",
+    "o": [
+      "Absorbs heat from the room air",
+      "Rejects heat outdoors",
+      "Compresses the refrigerant",
+      "Stores the refrigerant"
     ],
     "c": 0,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[SOURCE FACT — AUDITED] Moves outdoor air across condenser coil."
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Vapor-compression cycle: the compressor raises the vapor to high pressure and temperature; the condenser rejects heat and turns it to liquid; the expansion device drops the pressure; the evaporator absorbs room heat and turns it back to vapor."
   },
   {
     "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding heat rejection?",
+    "q": "What decides the allowed refrigerant pipe length between indoor and outdoor units?",
     "o": [
-      "Working fluid that evaporates and condenses to transfer heat.",
-      "Calling the evaporator coil the 'discharge line' is incorrect; compressor discharge is the hot-gas line leading toward the condenser.",
-      "An air-cooled outdoor unit rejects indoor heat plus compressor work to outdoor air.",
-      "Source lists ceiling-mounted, cassette, wall-mounted and floor/freestanding types."
-    ],
-    "c": 2,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[SOURCE FACT — AUDITED] An air-cooled outdoor unit rejects indoor heat plus compressor work to outdoor air."
-  },
-  {
-    "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding expansion process?",
-    "o": [
-      "Uses physically separated indoor and outdoor units connected by refrigerant piping and control/power connections.",
-      "The liquid line is the pipe leaving the condenser/receiver toward the expansion device, not the condenser coil itself.",
-      "Expansion device reduces pressure/temperature of the refrigerant mixture.",
-      "Raises refrigerant vapor pressure and temperature and circulates refrigerant."
-    ],
-    "c": 2,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Expansion device reduces pressure/temperature of the refrigerant mixture."
-  },
-  {
-    "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding wacu evaporator?",
-    "o": [
-      "The source reverses several refrigeration-cycle state changes; its sequence is not retained as a correct cycle.",
-      "Indoor evaporator coil absorbs heat from room air.",
-      "A window/through-wall air conditioner packages indoor and outdoor refrigeration components in one cabinet.",
-      "Drops refrigerant pressure before the evaporator and meters refrigerant flow."
+      "A fixed 3 m limit for all units",
+      "The maker's data for that model",
+      "The room's floor area",
+      "The electrical code"
     ],
     "c": 1,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[SOURCE FACT — AUDITED] Indoor evaporator coil absorbs heat from room air."
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Long runs are allowed within the maker's limits; no fan coil is \"required\" just because pipes pass 3 m."
   },
   {
     "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding source fcu-if-over-3m claim?",
+    "q": "What leaves the compressor?",
     "o": [
-      "The statement that an FCU is required if total developed length exceeds 3 m is unsupported and is not a general HVAC rule.",
-      "Low-pressure refrigerant absorbs indoor heat and evaporates.",
-      "The source gives 2.10 m as an installation-height note; actual mounting height is project/manufacturer specific.",
-      "Moves outdoor air across condenser coil."
-    ],
-    "c": 0,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The statement that an FCU is required if total developed length exceeds 3 m is unsupported and is not a general HVAC rule."
-  },
-  {
-    "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding compressor outlet state?",
-    "o": [
-      "An air-cooled outdoor unit rejects indoor heat plus compressor work to outdoor air.",
-      "Moves room air across the evaporator coil.",
-      "Carries low-pressure vapor from evaporator back to compressor.",
-      "In the basic vapor-compression cycle, compressor discharge is high-pressure, high-temperature refrigerant vapor."
-    ],
-    "c": 3,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] In the basic vapor-compression cycle, compressor discharge is high-pressure, high-temperature refrigerant vapor.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+VmFwb3ItQ29tcHJlc3Npb24gUmVmcmlnZXJhdGlvbiBDeWNsZTwvdGV4dD4KPHJlY3QgeD0iNzAiIHk9IjE5MCIgd2lkdGg9IjE1MCIgaGVpZ2h0PSIxMDAiIGNsYXNzPSJmIi8+PHRleHQgeD0iMTAwIiB5PSIyNDUiIGNsYXNzPSJzIj5Db21wcmVzc29yPC90ZXh0Pgo8cmVjdCB4PSIyNzUiIHk9IjgwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjEwMCIgY2xhc3M9ImYyIi8+PHRleHQgeD0iMzEwIiB5PSIxMzUiIGNsYXNzPSJzIj5Db25kZW5zZXI8L3RleHQ+CjxyZWN0IHg9IjQ4MCIgeT0iMTkwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjEwMCIgY2xhc3M9ImYiLz48dGV4dCB4PSI1MDAiIHk9IjI0NSIgY2xhc3M9InMiPkV4cGFuc2lvbjwvdGV4dD4KPHJlY3QgeD0iNjg1IiB5PSIzMDAiIHdpZHRoPSIxNTAiIGhlaWdodD0iMTAwIiBjbGFzcz0iZjIiLz48dGV4dCB4PSI3MTUiIHk9IjM1NSIgY2xhc3M9InMiPkV2YXBvcmF0b3I8L3RleHQ+CjxsaW5lIHgxPSIyMjAiIHkxPSIyMTAiIHgyPSIyNzUiIHkyPSIxNTAiIGNsYXNzPSJsIi8+PGxpbmUgeDE9IjQyNSIgeTE9IjE1MCIgeDI9IjQ4MCIgeTI9IjIxMCIgY2xhc3M9ImwiLz48bGluZSB4MT0iNjMwIiB5MT0iMjcwIiB4Mj0iNjg1IiB5Mj0iMzIwIiBjbGFzcz0ibCIvPjxwYXRoIGQ9Ik02ODUgMzgwIFEzNTAgNDcwIDE0NSAyOTAiIGNsYXNzPSJsIi8+PC9zdmc+"
-  },
-  {
-    "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding indoor split-unit forms?",
-    "o": [
-      "Outdoor condenser rejects refrigerant heat to outside air.",
-      "Expansion device reduces pressure/temperature of the refrigerant mixture.",
-      "Source lists ceiling-mounted, cassette, wall-mounted and floor/freestanding types.",
-      "Maximum piping length, branch arrangement, elevation difference and connected capacity are set by the selected manufacturer's engineering data."
+      "Low-pressure liquid",
+      "Low-pressure vapor",
+      "High-pressure, high-temperature refrigerant vapor",
+      "High-pressure liquid"
     ],
     "c": 2,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[SOURCE FACT — AUDITED] Source lists ceiling-mounted, cassette, wall-mounted and floor/freestanding types."
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Vapor-compression cycle: the compressor raises the vapor to high pressure and temperature; the condenser rejects heat and turns it to liquid; the expansion device drops the pressure; the evaporator absorbs room heat and turns it back to vapor."
   },
   {
     "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding source 'condenser liquid line' label?",
+    "q": "Which of these is an indoor unit type of a split air conditioner?",
     "o": [
-      "Indoor evaporator coil absorbs heat from room air.",
-      "Cooling coils remove moisture from air; condensate must be drained appropriately.",
-      "Refrigerant rejects heat and condenses from vapor toward liquid at high pressure.",
-      "The liquid line is the pipe leaving the condenser/receiver toward the expansion device, not the condenser coil itself."
+      "Cooling tower",
+      "Chiller",
+      "Condensing unit",
+      "Cassette"
     ],
     "c": 3,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The liquid line is the pipe leaving the condenser/receiver toward the expansion device, not the condenser coil itself."
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Indoor units may be wall-mounted, ceiling-mounted, cassette or floor-standing."
   },
   {
     "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding expansion device?",
+    "q": "What is the liquid line?",
     "o": [
-      "Drops refrigerant pressure before the evaporator and meters refrigerant flow.",
-      "Carries high-pressure liquid refrigerant from condenser toward the expansion device.",
-      "Air-cooled condensing unit contains compressor/condenser/fan and related components.",
-      "The statement that an FCU is required if total developed length exceeds 3 m is unsupported and is not a general HVAC rule."
+      "The pipe from the condenser to the expansion device",
+      "The condenser coil itself",
+      "The pipe from the evaporator to the compressor",
+      "The condensate drain"
     ],
     "c": 0,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[SOURCE FACT — AUDITED] Drops refrigerant pressure before the evaporator and meters refrigerant flow."
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "It carries high-pressure liquid refrigerant."
   },
   {
     "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding source 2.10 m wacu height?",
+    "q": "What does the expansion device do?",
     "o": [
-      "In the basic vapor-compression cycle, compressor discharge is high-pressure, high-temperature refrigerant vapor.",
-      "The source gives 2.10 m as an installation-height note; actual mounting height is project/manufacturer specific.",
-      "Short refrigerant runs can reduce piping cost/pressure-drop concerns, but efficiency is not determined solely by being 'back-to-back.'",
-      "The source calls a split-system indoor unit an AHU; in HVAC practice, small split indoor units are more commonly called fan-coil/evaporator indoor units, while AHU usually refers to a larger air-handling assembly."
+      "Raises refrigerant pressure",
+      "Drops refrigerant pressure and meters flow into the evaporator",
+      "Rejects heat outdoors",
+      "Filters the room air"
     ],
     "c": 1,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source gives 2.10 m as an installation-height note; actual mounting height is project/manufacturer specific."
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Vapor-compression cycle: the compressor raises the vapor to high pressure and temperature; the condenser rejects heat and turns it to liquid; the expansion device drops the pressure; the evaporator absorbs room heat and turns it back to vapor."
   },
   {
     "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding suction line?",
+    "q": "How high is a window air conditioner usually mounted?",
     "o": [
-      "Working fluid that evaporates and condenses to transfer heat.",
-      "Source lists ceiling-mounted, cassette, wall-mounted and floor/freestanding types.",
-      "The source's universal 3 m maximum is incorrect; allowable minimum/maximum/equivalent refrigerant-pipe length is manufacturer/model specific and commonly exceeds 3 m.",
-      "Carries low-pressure vapor from evaporator back to compressor."
-    ],
-    "c": 3,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[SOURCE FACT — AUDITED] Carries low-pressure vapor from evaporator back to compressor."
-  },
-  {
-    "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding wacu condenser?",
-    "o": [
-      "'Freon' is a DuPont/Chemours trademark historically used for certain refrigerants, not the generic name for all refrigerants.",
-      "Uses physically separated indoor and outdoor units connected by refrigerant piping and control/power connections.",
-      "Outdoor condenser rejects refrigerant heat to outside air.",
-      "The liquid line is the pipe leaving the condenser/receiver toward the expansion device, not the condenser coil itself."
+      "At floor level",
+      "Above the ceiling",
+      "Per the maker, commonly about 1.5 to 2.1 m above the floor",
+      "Outside on the roof"
     ],
     "c": 2,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[SOURCE FACT — AUDITED] Outdoor condenser rejects refrigerant heat to outside air."
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "It should be high enough for good air throw, but reachable for filter cleaning."
   },
   {
     "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding indoor condensate?",
+    "q": "What does the suction line carry?",
     "o": [
-      "The source reverses several refrigeration-cycle state changes; its sequence is not retained as a correct cycle.",
-      "Cooling coils remove moisture from air; condensate must be drained appropriately.",
-      "Drops refrigerant pressure before the evaporator and meters refrigerant flow.",
-      "Uses one outdoor unit serving multiple indoor units within manufacturer design limits."
+      "High-pressure liquid to the expansion device",
+      "Hot gas to the condenser",
+      "Condensate to the drain",
+      "Low-pressure vapor from the evaporator back to the compressor"
+    ],
+    "c": 3,
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "It is the larger, insulated pipe of the line set."
+  },
+  {
+    "s": "Room and Split Air Conditioning",
+    "q": "What does the condenser of a window air conditioner do?",
+    "o": [
+      "Rejects refrigerant heat to the outside air",
+      "Absorbs room heat",
+      "Drops refrigerant pressure",
+      "Filters the air"
+    ],
+    "c": 0,
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Vapor-compression cycle: the compressor raises the vapor to high pressure and temperature; the condenser rejects heat and turns it to liquid; the expansion device drops the pressure; the evaporator absorbs room heat and turns it back to vapor."
+  },
+  {
+    "s": "Room and Split Air Conditioning",
+    "q": "Why does an air conditioner need a condensate drain?",
+    "o": [
+      "The refrigerant leaks as water",
+      "The cooling coil removes moisture from the air, which must be drained away",
+      "The compressor needs water cooling",
+      "The fan needs lubrication"
     ],
     "c": 1,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[SOURCE FACT — AUDITED] Cooling coils remove moisture from air; condensate must be drained appropriately."
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Warm humid air condenses on the cold coil."
   },
   {
     "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding liquid line?",
+    "q": "What does the liquid line carry?",
     "o": [
-      "Carries high-pressure liquid refrigerant from condenser toward the expansion device.",
-      "Moves outdoor air across condenser coil.",
-      "The source gives 2.10 m as an installation-height note; actual mounting height is project/manufacturer specific.",
-      "Calling the evaporator coil the 'discharge line' is incorrect; compressor discharge is the hot-gas line leading toward the condenser."
-    ],
-    "c": 0,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[SOURCE FACT — AUDITED] Carries high-pressure liquid refrigerant from condenser toward the expansion device."
-  },
-  {
-    "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding source ahu terminology?",
-    "o": [
-      "Carries low-pressure vapor from evaporator back to compressor.",
-      "Raises refrigerant vapor pressure and temperature and circulates refrigerant.",
-      "An air-cooled outdoor unit rejects indoor heat plus compressor work to outdoor air.",
-      "The source calls a split-system indoor unit an AHU; in HVAC practice, small split indoor units are more commonly called fan-coil/evaporator indoor units, while AHU usually refers to a larger air-handling assembly."
-    ],
-    "c": 3,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source calls a split-system indoor unit an AHU; in HVAC practice, small split indoor units are more commonly called fan-coil/evaporator indoor units, while AHU usually refers to a larger air-handling assembly."
-  },
-  {
-    "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding source 3 m maximum tubing length?",
-    "o": [
-      "The source's universal 3 m maximum is incorrect; allowable minimum/maximum/equivalent refrigerant-pipe length is manufacturer/model specific and commonly exceeds 3 m.",
-      "A window/through-wall air conditioner packages indoor and outdoor refrigeration components in one cabinet.",
-      "Outdoor condenser rejects refrigerant heat to outside air.",
-      "Expansion device reduces pressure/temperature of the refrigerant mixture."
-    ],
-    "c": 0,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source's universal 3 m maximum is incorrect; allowable minimum/maximum/equivalent refrigerant-pipe length is manufacturer/model specific and commonly exceeds 3 m."
-  },
-  {
-    "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding freon terminology?",
-    "o": [
-      "Cooling coils remove moisture from air; condensate must be drained appropriately.",
-      "Indoor evaporator coil absorbs heat from room air.",
-      "Low-pressure refrigerant absorbs indoor heat and evaporates.",
-      "'Freon' is a DuPont/Chemours trademark historically used for certain refrigerants, not the generic name for all refrigerants."
-    ],
-    "c": 3,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] 'Freon' is a DuPont/Chemours trademark historically used for certain refrigerants, not the generic name for all refrigerants."
-  },
-  {
-    "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding multi-split system?",
-    "o": [
-      "The statement that an FCU is required if total developed length exceeds 3 m is unsupported and is not a general HVAC rule.",
-      "Carries high-pressure liquid refrigerant from condenser toward the expansion device.",
-      "Uses one outdoor unit serving multiple indoor units within manufacturer design limits.",
-      "Moves room air across the evaporator coil."
+      "Low-pressure vapor to the compressor",
+      "Hot gas to the condenser",
+      "High-pressure liquid refrigerant toward the expansion device",
+      "Condensate to the drain"
     ],
     "c": 2,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[SOURCE FACT — AUDITED] Uses one outdoor unit serving multiple indoor units within manufacturer design limits.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+TXVsdGktU3BsaXQgQXJyYW5nZW1lbnQ8L3RleHQ+CjxyZWN0IHg9IjYyMCIgeT0iMTY1IiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE3MCIgY2xhc3M9ImYyIi8+PHRleHQgeD0iNjY1IiB5PSIyNTAiIGNsYXNzPSJzIj5PdXRkb29yPC90ZXh0Pgo8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSIxODAiIGhlaWdodD0iMTAwIiBjbGFzcz0iZiIvPjxyZWN0IHg9IjgwIiB5PSIyMDAiIHdpZHRoPSIxODAiIGhlaWdodD0iMTAwIiBjbGFzcz0iZiIvPjxyZWN0IHg9IjgwIiB5PSIzMjAiIHdpZHRoPSIxODAiIGhlaWdodD0iMTAwIiBjbGFzcz0iZiIvPgo8dGV4dCB4PSIxMjAiIHk9IjE0MCIgY2xhc3M9InMiPkluZG9vciAxPC90ZXh0Pjx0ZXh0IHg9IjEyMCIgeT0iMjYwIiBjbGFzcz0icyI+SW5kb29yIDI8L3RleHQ+PHRleHQgeD0iMTIwIiB5PSIzODAiIGNsYXNzPSJzIj5JbmRvb3IgMzwvdGV4dD4KPGxpbmUgeDE9IjI2MCIgeTE9IjEzMCIgeDI9IjYyMCIgeTI9IjIyMCIgY2xhc3M9InRoIi8+PGxpbmUgeDE9IjI2MCIgeTE9IjI1MCIgeDI9IjYyMCIgeTI9IjI1MCIgY2xhc3M9InRoIi8+PGxpbmUgeDE9IjI2MCIgeTE9IjM3MCIgeDI9IjYyMCIgeTI9IjI4MCIgY2xhc3M9InRoIi8+PC9zdmc+"
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "It runs from the condenser to the expansion device."
   },
   {
     "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding source 'evaporator discharge line' label?",
+    "q": "In a small split air conditioner, what is the indoor unit usually called?",
     "o": [
-      "The source calls a split-system indoor unit an AHU; in HVAC practice, small split indoor units are more commonly called fan-coil/evaporator indoor units, while AHU usually refers to a larger air-handling assembly.",
-      "In the basic vapor-compression cycle, compressor discharge is high-pressure, high-temperature refrigerant vapor.",
-      "Maximum piping length, branch arrangement, elevation difference and connected capacity are set by the selected manufacturer's engineering data.",
-      "Calling the evaporator coil the 'discharge line' is incorrect; compressor discharge is the hot-gas line leading toward the condenser."
+      "A cooling tower",
+      "A chiller",
+      "A condensing unit",
+      "A fan coil unit (FCU)"
     ],
     "c": 3,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Calling the evaporator coil the 'discharge line' is incorrect; compressor discharge is the hot-gas line leading toward the condenser."
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Large central systems use air handling units (AHUs) with ducts."
   },
   {
     "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding compressor?",
+    "q": "Where is the maximum refrigerant line length of a split system found?",
     "o": [
-      "Raises refrigerant vapor pressure and temperature and circulates refrigerant.",
-      "The source's universal 3 m maximum is incorrect; allowable minimum/maximum/equivalent refrigerant-pipe length is manufacturer/model specific and commonly exceeds 3 m.",
-      "Source lists ceiling-mounted, cassette, wall-mounted and floor/freestanding types.",
-      "Refrigerant rejects heat and condenses from vapor toward liquid at high pressure."
+      "In the maker's installation data for the model",
+      "In the plumbing code",
+      "In the electrical code",
+      "It is 3 m for all units"
     ],
     "c": 0,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[SOURCE FACT — AUDITED] Raises refrigerant vapor pressure and temperature and circulates refrigerant."
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Limits for length, height difference and extra charge differ by model."
   },
   {
     "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding wacu?",
+    "q": "What is \"Freon\"?",
     "o": [
-      "'Freon' is a DuPont/Chemours trademark historically used for certain refrigerants, not the generic name for all refrigerants.",
-      "Air-cooled condensing unit contains compressor/condenser/fan and related components.",
-      "A window/through-wall air conditioner packages indoor and outdoor refrigeration components in one cabinet.",
-      "The liquid line is the pipe leaving the condenser/receiver toward the expansion device, not the condenser coil itself."
-    ],
-    "c": 2,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[SOURCE FACT — AUDITED] A window/through-wall air conditioner packages indoor and outdoor refrigeration components in one cabinet.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+V2luZG93IEFpciBDb25kaXRpb25lciDigJQgRnVuY3Rpb25hbCBab25lczwvdGV4dD4KPHJlY3QgeD0iMTAwIiB5PSIxMTAiIHdpZHRoPSI3MDAiIGhlaWdodD0iMzAwIiBjbGFzcz0iZiIvPgo8bGluZSB4MT0iNDUwIiB5MT0iMTEwIiB4Mj0iNDUwIiB5Mj0iNDEwIiBjbGFzcz0ibCIvPgo8dGV4dCB4PSIyMDUiIHk9IjE2NSIgY2xhc3M9InQiPklORE9PUjwvdGV4dD48dGV4dCB4PSI1ODUiIHk9IjE2NSIgY2xhc3M9InQiPk9VVERPT1I8L3RleHQ+Cjx0ZXh0IHg9IjE3MCIgeT0iMjUwIiBjbGFzcz0icyI+ZXZhcG9yYXRvciArIGJsb3dlcjwvdGV4dD48dGV4dCB4PSI1NDAiIHk9IjIzMCIgY2xhc3M9InMiPmNvbmRlbnNlciArIGZhbjwvdGV4dD48dGV4dCB4PSI1NTUiIHk9IjI4NSIgY2xhc3M9InMiPmNvbXByZXNzb3I8L3RleHQ+PC9zdmc+"
-  },
-  {
-    "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding evaporator process?",
-    "o": [
-      "Uses one outdoor unit serving multiple indoor units within manufacturer design limits.",
-      "Drops refrigerant pressure before the evaporator and meters refrigerant flow.",
-      "Short refrigerant runs can reduce piping cost/pressure-drop concerns, but efficiency is not determined solely by being 'back-to-back.'",
-      "Low-pressure refrigerant absorbs indoor heat and evaporates."
-    ],
-    "c": 3,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Low-pressure refrigerant absorbs indoor heat and evaporates."
-  },
-  {
-    "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding wacu blower?",
-    "o": [
-      "Moves room air across the evaporator coil.",
-      "The source gives 2.10 m as an installation-height note; actual mounting height is project/manufacturer specific.",
-      "Working fluid that evaporates and condenses to transfer heat.",
-      "Calling the evaporator coil the 'discharge line' is incorrect; compressor discharge is the hot-gas line leading toward the condenser."
-    ],
-    "c": 0,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[SOURCE FACT — AUDITED] Moves room air across the evaporator coil."
-  },
-  {
-    "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding multi-split design limits?",
-    "o": [
-      "Maximum piping length, branch arrangement, elevation difference and connected capacity are set by the selected manufacturer's engineering data.",
-      "Carries low-pressure vapor from evaporator back to compressor.",
-      "Raises refrigerant vapor pressure and temperature and circulates refrigerant.",
-      "Uses physically separated indoor and outdoor units connected by refrigerant piping and control/power connections."
-    ],
-    "c": 0,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Maximum piping length, branch arrangement, elevation difference and connected capacity are set by the selected manufacturer's engineering data."
-  },
-  {
-    "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding condenser process?",
-    "o": [
-      "Refrigerant rejects heat and condenses from vapor toward liquid at high pressure.",
-      "The source reverses several refrigeration-cycle state changes; its sequence is not retained as a correct cycle.",
-      "Outdoor condenser rejects refrigerant heat to outside air.",
-      "A window/through-wall air conditioner packages indoor and outdoor refrigeration components in one cabinet."
-    ],
-    "c": 0,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Refrigerant rejects heat and condenses from vapor toward liquid at high pressure."
-  },
-  {
-    "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding outdoor split component?",
-    "o": [
-      "Moves outdoor air across condenser coil.",
-      "Low-pressure refrigerant absorbs indoor heat and evaporates.",
-      "Cooling coils remove moisture from air; condensate must be drained appropriately.",
-      "Air-cooled condensing unit contains compressor/condenser/fan and related components."
-    ],
-    "c": 3,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[SOURCE FACT — AUDITED] Air-cooled condensing unit contains compressor/condenser/fan and related components."
-  },
-  {
-    "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding back-to-back split layout?",
-    "o": [
-      "Short refrigerant runs can reduce piping cost/pressure-drop concerns, but efficiency is not determined solely by being 'back-to-back.'",
-      "An air-cooled outdoor unit rejects indoor heat plus compressor work to outdoor air.",
-      "Carries high-pressure liquid refrigerant from condenser toward the expansion device.",
-      "Moves room air across the evaporator coil."
-    ],
-    "c": 0,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Short refrigerant runs can reduce piping cost/pressure-drop concerns, but efficiency is not determined solely by being 'back-to-back.'"
-  },
-  {
-    "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding refrigerant?",
-    "o": [
-      "Expansion device reduces pressure/temperature of the refrigerant mixture.",
-      "Working fluid that evaporates and condenses to transfer heat.",
-      "Maximum piping length, branch arrangement, elevation difference and connected capacity are set by the selected manufacturer's engineering data.",
-      "The source calls a split-system indoor unit an AHU; in HVAC practice, small split indoor units are more commonly called fan-coil/evaporator indoor units, while AHU usually refers to a larger air-handling assembly."
+      "The generic name of all refrigerants",
+      "A trademark for certain refrigerants, not the generic word",
+      "A type of compressor",
+      "A type of air filter"
     ],
     "c": 1,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[SOURCE FACT — AUDITED] Working fluid that evaporates and condenses to transfer heat."
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Refrigerants are named by R-numbers, such as R-32 or R-410A."
   },
   {
     "s": "Room and Split Air Conditioning",
-    "q": "Which statement is correct regarding split system?",
+    "q": "What is a multi-split air conditioning system?",
     "o": [
-      "Uses physically separated indoor and outdoor units connected by refrigerant piping and control/power connections.",
-      "Refrigerant rejects heat and condenses from vapor toward liquid at high pressure.",
-      "The source's universal 3 m maximum is incorrect; allowable minimum/maximum/equivalent refrigerant-pipe length is manufacturer/model specific and commonly exceeds 3 m.",
-      "Indoor evaporator coil absorbs heat from room air."
+      "One indoor unit served by several outdoor units",
+      "A window unit with two fans",
+      "One outdoor unit serving several indoor units",
+      "A chiller with a cooling tower"
+    ],
+    "c": 2,
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Multi-splits save outdoor space but must stay within the maker's limits."
+  },
+  {
+    "s": "Room and Split Air Conditioning",
+    "q": "What is the discharge (hot-gas) line?",
+    "o": [
+      "The evaporator coil",
+      "The pipe from the evaporator to the compressor",
+      "The condensate drain",
+      "The pipe from the compressor to the condenser"
+    ],
+    "c": 3,
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "It carries the hottest refrigerant in the cycle."
+  },
+  {
+    "s": "Room and Split Air Conditioning",
+    "q": "What does the compressor do?",
+    "o": [
+      "Raises the vapor's pressure and temperature and circulates the refrigerant",
+      "Drops the refrigerant pressure",
+      "Absorbs heat from the room",
+      "Drains the condensate"
     ],
     "c": 0,
-    "ref": "Refrigeration fundamentals (ASHRAE); RA 8495 (Mechanical Engineering Law)",
-    "n": "[SOURCE FACT — AUDITED] Uses physically separated indoor and outdoor units connected by refrigerant piping and control/power connections.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+U3BsaXQtU3lzdGVtIEFpciBDb25kaXRpb25lcjwvdGV4dD4KPHJlY3QgeD0iMTAwIiB5PSIxNTAiIHdpZHRoPSIyODAiIGhlaWdodD0iMjIwIiBjbGFzcz0iZiIvPjx0ZXh0IHg9IjE4MCIgeT0iMjUwIiBjbGFzcz0icyI+SW5kb29yIFVuaXQ8L3RleHQ+CjxyZWN0IHg9IjUyMCIgeT0iMTUwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjIyMCIgY2xhc3M9ImYyIi8+PHRleHQgeD0iNjAwIiB5PSIyNTAiIGNsYXNzPSJzIj5PdXRkb29yIFVuaXQ8L3RleHQ+CjxsaW5lIHgxPSIzODAiIHkxPSIyMTUiIHgyPSI1MjAiIHkyPSIyMTUiIGNsYXNzPSJsIi8+PGxpbmUgeDE9IjM4MCIgeTE9IjMwNSIgeDI9IjUyMCIgeTI9IjMwNSIgY2xhc3M9ImwiLz4KPHRleHQgeD0iMzkwIiB5PSIxOTAiIGNsYXNzPSJzIj5yZWZyaWdlcmFudCBwaXBpbmc8L3RleHQ+PC9zdmc+"
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Vapor-compression cycle: the compressor raises the vapor to high pressure and temperature; the condenser rejects heat and turns it to liquid; the expansion device drops the pressure; the evaporator absorbs room heat and turns it back to vapor."
+  },
+  {
+    "s": "Room and Split Air Conditioning",
+    "q": "What is a window-type air conditioner (WACU)?",
+    "o": [
+      "An indoor unit with a separate outdoor unit",
+      "A single cabinet holding both the indoor and outdoor parts of the cycle",
+      "A central chiller",
+      "A cooling tower"
+    ],
+    "c": 1,
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "It sits in a window or wall opening, half inside and half outside."
+  },
+  {
+    "s": "Room and Split Air Conditioning",
+    "q": "What happens to refrigerant in the evaporator?",
+    "o": [
+      "It rejects heat and condenses",
+      "It is compressed",
+      "It absorbs room heat and evaporates at low pressure",
+      "It is filtered"
+    ],
+    "c": 2,
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Vapor-compression cycle: the compressor raises the vapor to high pressure and temperature; the condenser rejects heat and turns it to liquid; the expansion device drops the pressure; the evaporator absorbs room heat and turns it back to vapor."
+  },
+  {
+    "s": "Room and Split Air Conditioning",
+    "q": "What does the blower of a window air conditioner do?",
+    "o": [
+      "Moves outdoor air across the condenser",
+      "Pumps the refrigerant",
+      "Drains the condensate",
+      "Moves room air across the evaporator coil"
+    ],
+    "c": 3,
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "The indoor blower delivers the cooled air to the room."
+  },
+  {
+    "s": "Room and Split Air Conditioning",
+    "q": "What sets the design limits of a multi-split system?",
+    "o": [
+      "The maker's data on pipe length, height difference and connected capacity",
+      "The plumbing code",
+      "The number of windows",
+      "The room colors"
+    ],
+    "c": 0,
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Designers must check each limit for the chosen model."
+  },
+  {
+    "s": "Room and Split Air Conditioning",
+    "q": "What happens to refrigerant in the condenser?",
+    "o": [
+      "It absorbs room heat",
+      "It rejects heat and condenses to liquid at high pressure",
+      "Its pressure drops",
+      "It evaporates"
+    ],
+    "c": 1,
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Vapor-compression cycle: the compressor raises the vapor to high pressure and temperature; the condenser rejects heat and turns it to liquid; the expansion device drops the pressure; the evaporator absorbs room heat and turns it back to vapor."
+  },
+  {
+    "s": "Room and Split Air Conditioning",
+    "q": "What is inside the outdoor unit of a split system?",
+    "o": [
+      "The evaporator and blower",
+      "Only a fan",
+      "The compressor, condenser coil and fan",
+      "Only the thermostat"
+    ],
+    "c": 2,
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "The outdoor unit is an air-cooled condensing unit (ACCU)."
+  },
+  {
+    "s": "Room and Split Air Conditioning",
+    "q": "What is the advantage of placing split-system indoor and outdoor units back to back?",
+    "o": [
+      "It doubles the cooling capacity",
+      "It removes the need for a drain",
+      "It removes the need for electricity",
+      "Short refrigerant runs, with less piping cost and pressure loss"
+    ],
+    "c": 3,
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Short runs help, but the unit's efficiency rating still depends on the model."
+  },
+  {
+    "s": "Room and Split Air Conditioning",
+    "q": "What is a refrigerant?",
+    "o": [
+      "A working fluid that evaporates and condenses to move heat",
+      "A fan that moves air",
+      "A filter that cleans air",
+      "A pipe that carries water"
+    ],
+    "c": 0,
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Vapor-compression cycle: the compressor raises the vapor to high pressure and temperature; the condenser rejects heat and turns it to liquid; the expansion device drops the pressure; the evaporator absorbs room heat and turns it back to vapor."
+  },
+  {
+    "s": "Room and Split Air Conditioning",
+    "q": "What is a split air conditioning system?",
+    "o": [
+      "One cabinet in a window",
+      "Separate indoor and outdoor units joined by refrigerant piping",
+      "A central chiller plant",
+      "A cooling tower"
+    ],
+    "c": 1,
+    "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
+    "n": "Splitting the units puts the noisy compressor outside."
   }
 ]
