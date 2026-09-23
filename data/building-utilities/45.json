@@ -1,578 +1,574 @@
 [
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding elisha otis?",
+    "q": "What is Elisha Otis known for?",
     "o": [
-      "The source associates geared traction with mid-rise service.",
-      "Historically associated with the safety elevator and demonstration of elevator safety gear.",
-      "The source gives 0.60 m as an NBCP pit dimension; actual required pit depth depends on elevator type, speed, equipment and adopted elevator standard.",
-      "Provides and stores pressurized hydraulic fluid for elevator movement."
-    ],
-    "c": 1,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Historically associated with the safety elevator and demonstration of elevator safety gear."
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding drive machine?",
-    "o": [
-      "An additional sheave used to route suspension ropes in some traction arrangements.",
-      "Machine-room-less elevator locates the traction drive/control equipment within or adjacent to the hoistway rather than a conventional separate machine room.",
-      "Provides motive power to the elevator.",
-      "The source associates electric traction elevators with tall buildings."
-    ],
-    "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Provides motive power to the elevator."
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding operating device?",
-    "o": [
-      "Controls/monitors stopping and travel limits in the source's hydraulic component list.",
-      "User/operator control interface such as car/landing controls.",
-      "Support and move a traction elevator car and counterweight.",
-      "Older elevator systems used motor-generator sets for drive/control; modern VVVF solid-state drives have largely replaced them."
-    ],
-    "c": 1,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] User/operator control interface such as car/landing controls."
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding source 40% load note?",
-    "o": [
-      "The source gives car weight plus about 40% of rated load as a counterweight rule of thumb; actual balance percentage is design-dependent.",
-      "The portion of the hoistway below the lowest landing used for buffers, clearances and equipment.",
-      "Modern traction elevators commonly use AC motors with variable-frequency drives; the source's 'DC motor operated' description is outdated as a general rule.",
-      "Historically associated with the safety elevator and demonstration of elevator safety gear."
+      "Demonstrating the safety elevator in 1854",
+      "Inventing the escalator in 1892",
+      "Inventing the hydraulic elevator in 1950",
+      "Building the first skyscraper"
     ],
     "c": 0,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source gives car weight plus about 40% of rated load as a counterweight rule of thumb; actual balance percentage is design-dependent."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Otis showed that a safety device would stop the car if its rope was cut, which made tall buildings practical."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding hydraulic car gate switch?",
+    "q": "What does the drive machine of an elevator do?",
     "o": [
-      "Monitors gate/door condition to prevent unsafe operation.",
-      "Compensates for the changing weight of suspension ropes in taller/high-rise traction installations.",
-      "A hydraulic elevator raises the car through hydraulic pressure acting on a jack/plunger or roped-hydraulic arrangement.",
-      "Provides motive power to the elevator."
+      "Stops the car at overspeed",
+      "Provides the power that moves the car",
+      "Guides the car along the rails",
+      "Opens the landing doors"
+    ],
+    "c": 1,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "In a traction elevator it turns the sheave; in a hydraulic one it runs the pump."
+  },
+  {
+    "s": "Elevators",
+    "q": "What is an elevator operating device?",
+    "o": [
+      "The motor that drives the car",
+      "The buffer in the pit",
+      "A control used by passengers or operators, such as car and hall buttons",
+      "The counterweight"
+    ],
+    "c": 2,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Operating devices send calls to the controller."
+  },
+  {
+    "s": "Elevators",
+    "q": "A traction elevator counterweight usually equals the car weight plus about what share of rated load?",
+    "o": [
+      "About 5%",
+      "About 100%",
+      "About 200%",
+      "About 40–50%"
+    ],
+    "c": 3,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Then the motor works least when the car is about half full. The exact figure is set by the designer."
+  },
+  {
+    "s": "Elevators",
+    "q": "What does a car gate switch on a hydraulic elevator do?",
+    "o": [
+      "Stops the car from running unless the car gate is closed",
+      "Opens the gate at each floor",
+      "Pumps oil to the jack",
+      "Levels the car"
     ],
     "c": 0,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Monitors gate/door condition to prevent unsafe operation."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "It is part of the safety circuit."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding guide shoes?",
+    "q": "What do guide shoes do?",
     "o": [
-      "Uses a reduction gearbox between motor and traction sheave; older designs commonly used worm gearing.",
-      "User/operator control interface such as car/landing controls.",
-      "Engage the guide rails and guide the car/counterweight.",
-      "Controls elevator operation, dispatching, doors, motion and safety interfaces."
-    ],
-    "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Engage the guide rails and guide the car/counterweight."
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding hydraulic controller?",
-    "o": [
-      "The source gives car weight plus about 40% of rated load as a counterweight rule of thumb; actual balance percentage is design-dependent.",
-      "Controls pump/motor/valves and elevator operation.",
-      "The source associates hydraulic elevators with lower-rise buildings and gives 5–10 storeys as a rule of thumb; this is not a universal code limit.",
-      "Mechanical spring-type buffer used within permitted elevator speed/application limits."
+      "Grip the rails at overspeed",
+      "Run along the guide rails to keep the car and counterweight in line",
+      "Absorb impact in the pit",
+      "Carry power to the car"
     ],
     "c": 1,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Controls pump/motor/valves and elevator operation."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Shoes slide on the rails; faster elevators use roller guides."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding machine room/penthouse?",
+    "q": "What does the controller of a hydraulic elevator control?",
     "o": [
-      "Traditional traction systems may have a machine room above/adjacent to the hoistway; not all modern elevators require one.",
-      "The elevator controller/drive governs acceleration, travel speed, deceleration and stopping.",
-      "Monitors gate/door condition to prevent unsafe operation.",
-      "The source associates gearless traction with high-rise service."
+      "The traction sheave",
+      "The counterweight",
+      "The pump motor and valves",
+      "The governor rope"
+    ],
+    "c": 2,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Hydraulic elevator parts: motor, pump and oil tank; control valves; the jack (cylinder and plunger); and switches for stopping and releveling."
+  },
+  {
+    "s": "Elevators",
+    "q": "Does every elevator need a machine room?",
+    "o": [
+      "Yes, always above the hoistway",
+      "Yes, always in the basement",
+      "Only hydraulic elevators do",
+      "No; machine-room-less (MRL) elevators put the drive in the hoistway"
+    ],
+    "c": 3,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Traditional traction elevators had penthouse machine rooms."
+  },
+  {
+    "s": "Elevators",
+    "q": "What do leveling (creep) switches on a hydraulic elevator do?",
+    "o": [
+      "Bring the car back level with the floor if it drifts",
+      "Open the doors",
+      "Stop the car at overspeed",
+      "Call the car to the lobby"
     ],
     "c": 0,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Traditional traction systems may have a machine room above/adjacent to the hoistway; not all modern elevators require one."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Oil can leak back slowly, so the car relevels itself. Hydraulic elevator parts: motor, pump and oil tank; control valves; the jack (cylinder and plunger); and switches for stopping and releveling."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding creepage/leveling switch source note?",
+    "q": "Which drive is common in modern machine-room-less traction elevators?",
     "o": [
-      "Overspeed-sensing device that can trigger elevator safety gear.",
-      "Engage the guide rails and guide the car/counterweight.",
-      "The source lists switches for maintaining/recovering landing level in hydraulic systems.",
-      "The traction sheave is directly coupled to the motor without a reduction gearbox."
-    ],
-    "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] The source lists switches for maintaining/recovering landing level in hydraulic systems."
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding permanent-magnet synchronous gearless drive?",
-    "o": [
-      "The load-carrying enclosure/platform.",
-      "Energy-absorbing device in the pit that protects car/counterweight at the lower limit of travel.",
-      "A common modern MRL traction-drive technology.",
-      "Controls pump/motor/valves and elevator operation."
-    ],
-    "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] A common modern MRL traction-drive technology."
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding electric/traction elevator?",
-    "o": [
-      "Mechanical device that grips guide rails to stop/hold the car under specified emergency/overspeed conditions.",
-      "The source phrase 'spun and worm' for gearless traction is technically incorrect and is not retained.",
-      "Traditional traction systems may have a machine room above/adjacent to the hoistway; not all modern elevators require one.",
-      "A traction elevator moves the car using suspension ropes/belts over a traction sheave driven by a machine."
-    ],
-    "c": 3,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] A traction elevator moves the car using suspension ropes/belts over a traction sheave driven by a machine.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+VHJhY3Rpb24gRWxldmF0b3IgQ29uY2VwdDwvdGV4dD4KPGNpcmNsZSBjeD0iNDUwIiBjeT0iMTE1IiByPSI1NSIgY2xhc3M9ImYyIi8+CjxsaW5lIHgxPSI0MTAiIHkxPSIxNDUiIHgyPSIyNzAiIHkyPSIzOTAiIGNsYXNzPSJsIi8+PGxpbmUgeDE9IjQ5MCIgeTE9IjE0NSIgeDI9IjYzMCIgeTI9IjM5MCIgY2xhc3M9ImwiLz4KPHJlY3QgeD0iMjEwIiB5PSIyNjAiIHdpZHRoPSIxMjAiIGhlaWdodD0iMTUwIiBjbGFzcz0iZiIvPjxyZWN0IHg9IjU5MCIgeT0iMjg1IiB3aWR0aD0iODAiIGhlaWdodD0iMTI1IiBjbGFzcz0iZjIiLz4KPHRleHQgeD0iMTgwIiB5PSI0NTUiIGNsYXNzPSJzIj5jYXI8L3RleHQ+PHRleHQgeD0iNjAwIiB5PSI0NTUiIGNsYXNzPSJzIj5jb3VudGVyd2VpZ2h0PC90ZXh0Pjwvc3ZnPg=="
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding source 0.60 m pit note?",
-    "o": [
-      "The source lists switches for maintaining/recovering landing level in hydraulic systems.",
-      "Hydraulic/oil buffer used for higher-energy applications.",
-      "The source gives 0.60 m as an NBCP pit dimension; actual required pit depth depends on elevator type, speed, equipment and adopted elevator standard.",
-      "The source gives 4–6 ropes as a local-reference note; actual number depends on elevator design/rating and applicable standard."
-    ],
-    "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source gives 0.60 m as an NBCP pit dimension; actual required pit depth depends on elevator type, speed, equipment and adopted elevator standard."
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding source high-rise note?",
-    "o": [
-      "Detects/limits travel at specified positions.",
-      "A common modern MRL traction-drive technology.",
-      "The source associates electric traction elevators with tall buildings.",
-      "The source associates geared traction with mid-rise service."
-    ],
-    "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] The source associates electric traction elevators with tall buildings."
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding motor-generator source component?",
-    "o": [
-      "A traction elevator moves the car using suspension ropes/belts over a traction sheave driven by a machine.",
-      "An additional sheave used to route suspension ropes in some traction arrangements.",
-      "Older elevator systems used motor-generator sets for drive/control; modern VVVF solid-state drives have largely replaced them.",
-      "Balances a substantial portion of car mass and rated load in a traction system."
-    ],
-    "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Older elevator systems used motor-generator sets for drive/control; modern VVVF solid-state drives have largely replaced them."
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding modern traction motor?",
-    "o": [
-      "The source gives 0.60 m as an NBCP pit dimension; actual required pit depth depends on elevator type, speed, equipment and adopted elevator standard.",
-      "Movable part of the hydraulic jack acting to lift the car directly or through roping.",
-      "Modern traction elevators commonly use AC motors with variable-frequency drives; the source's 'DC motor operated' description is outdated as a general rule.",
-      "Support and move a traction elevator car and counterweight."
-    ],
-    "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Modern traction elevators commonly use AC motors with variable-frequency drives; the source's 'DC motor operated' description is outdated as a general rule."
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding compensating chain?",
-    "o": [
-      "The source associates electric traction elevators with tall buildings.",
-      "Compensates for the changing weight of suspension ropes in taller/high-rise traction installations.",
-      "Historically associated with the safety elevator and demonstration of elevator safety gear.",
-      "Provides the guided vertical path for car/counterweight and supports safety engagement."
+      "DC motor-generator set",
+      "Permanent-magnet synchronous gearless motor",
+      "Steam engine",
+      "Worm-geared DC motor"
     ],
     "c": 1,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Compensates for the changing weight of suspension ropes in taller/high-rise traction installations."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "These compact motors fit inside the hoistway."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding geared traction machine?",
+    "q": "How does a traction (electric) elevator move its car?",
     "o": [
-      "Controls hydraulic-fluid flow in the lift circuit.",
-      "Provides motive power to the elevator.",
-      "Uses a reduction gearbox between motor and traction sheave; older designs commonly used worm gearing.",
-      "Older elevator systems used motor-generator sets for drive/control; modern VVVF solid-state drives have largely replaced them."
+      "Oil is pumped into a cylinder under the car",
+      "A screw turns under the car",
+      "Ropes or belts run over a driven sheave, balanced by a counterweight",
+      "A cable winds onto a drum with no counterweight"
     ],
     "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Uses a reduction gearbox between motor and traction sheave; older designs commonly used worm gearing."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Friction between the ropes and the sheave grooves drives the car."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding spring buffer?",
+    "q": "What decides the required depth of an elevator pit?",
     "o": [
-      "Mechanical spring-type buffer used within permitted elevator speed/application limits.",
-      "Modern traction elevators commonly use AC motors with variable-frequency drives; the source's 'DC motor operated' description is outdated as a general rule.",
-      "User/operator control interface such as car/landing controls.",
-      "Vertical enclosure/path in which the elevator car and related components travel."
+      "A fixed 0.60 m for every elevator",
+      "The number of passengers only",
+      "The floor finish",
+      "The elevator's type, speed and the maker's data"
+    ],
+    "c": 3,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Faster elevators need deeper pits for buffer stroke and clearance."
+  },
+  {
+    "s": "Elevators",
+    "q": "Which elevator type is usually chosen for high-rise buildings?",
+    "o": [
+      "Gearless traction",
+      "Hydraulic",
+      "Drum (winding)",
+      "Hand-operated"
     ],
     "c": 0,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Mechanical spring-type buffer used within permitted elevator speed/application limits."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Typical use: hydraulic elevators for low rise (up to about 5–6 floors), geared traction for mid rise, gearless traction for high rise. These are tendencies, not code limits."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding high-rise gearless source association?",
+    "q": "What replaced motor-generator (Ward Leonard) sets for elevator speed control?",
     "o": [
-      "Compensates for the changing weight of suspension ropes in taller/high-rise traction installations.",
-      "Provides and stores pressurized hydraulic fluid for elevator movement.",
-      "The source associates gearless traction with high-rise service.",
-      "The source gives car weight plus about 40% of rated load as a counterweight rule of thumb; actual balance percentage is design-dependent."
+      "Hydraulic valves",
+      "Solid-state VVVF drives",
+      "Steam engines",
+      "Manual rheostats"
+    ],
+    "c": 1,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "VVVF drives use far less energy."
+  },
+  {
+    "s": "Elevators",
+    "q": "What motor do most modern traction elevators use?",
+    "o": [
+      "A DC motor with a motor-generator set",
+      "A steam engine",
+      "An AC motor on a variable-frequency drive",
+      "A gasoline engine"
     ],
     "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] The source associates gearless traction with high-rise service."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "The Green Building Code requires VVVF drives on non-hydraulic elevators."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding governor?",
+    "q": "What does a compensating chain or rope do?",
     "o": [
-      "Uses a reduction gearbox between motor and traction sheave; older designs commonly used worm gearing.",
-      "Monitors gate/door condition to prevent unsafe operation.",
-      "Overspeed-sensing device that can trigger elevator safety gear.",
-      "Machine-room-less elevator locates the traction drive/control equipment within or adjacent to the hoistway rather than a conventional separate machine room."
-    ],
-    "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Overspeed-sensing device that can trigger elevator safety gear."
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding elevator car/cab?",
-    "o": [
-      "Mechanical spring-type buffer used within permitted elevator speed/application limits.",
-      "Controls/monitors stopping and travel limits in the source's hydraulic component list.",
-      "The load-carrying enclosure/platform.",
-      "Engage the guide rails and guide the car/counterweight."
-    ],
-    "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] The load-carrying enclosure/platform.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+U2VsZWN0ZWQgRWxldmF0b3IgQ29tcG9uZW50czwvdGV4dD4KPHJlY3QgeD0iNjAiIHk9IjEyMCIgd2lkdGg9IjE1MCIgaGVpZ2h0PSIyNjAiIGNsYXNzPSJmIi8+PHRleHQgeD0iMTEwIiB5PSIyNDAiIGNsYXNzPSJzIj5DYXI8L3RleHQ+CjxyZWN0IHg9IjIzMCIgeT0iMTIwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjI2MCIgY2xhc3M9ImYyIi8+PHRleHQgeD0iMjY1IiB5PSIyNDAiIGNsYXNzPSJzIj5HdWlkZSBSYWlsPC90ZXh0Pgo8cmVjdCB4PSI0MDAiIHk9IjEyMCIgd2lkdGg9IjE1MCIgaGVpZ2h0PSIyNjAiIGNsYXNzPSJmIi8+PHRleHQgeD0iNDM1IiB5PSIyNDAiIGNsYXNzPSJzIj5Hb3Zlcm5vcjwvdGV4dD4KPHJlY3QgeD0iNTcwIiB5PSIxMjAiIHdpZHRoPSIxNTAiIGhlaWdodD0iMjYwIiBjbGFzcz0iZjIiLz48dGV4dCB4PSI2MTAiIHk9IjI0MCIgY2xhc3M9InMiPkJ1ZmZlcjwvdGV4dD4KPHJlY3QgeD0iNzQwIiB5PSIxMjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMjYwIiBjbGFzcz0iZiIvPjx0ZXh0IHg9Ijc1NSIgeT0iMjQwIiBjbGFzcz0icyI+U2FmZXR5PC90ZXh0Pjwvc3ZnPg=="
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding safety gear?",
-    "o": [
-      "The source associates gearless traction with high-rise service.",
-      "The portion of the hoistway below the lowest landing used for buffers, clearances and equipment.",
-      "Mechanical device that grips guide rails to stop/hold the car under specified emergency/overspeed conditions.",
-      "Controls pump/motor/valves and elevator operation."
-    ],
-    "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Mechanical device that grips guide rails to stop/hold the car under specified emergency/overspeed conditions."
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding source 4–6 ropes note?",
-    "o": [
-      "A hydraulic elevator raises the car through hydraulic pressure acting on a jack/plunger or roped-hydraulic arrangement.",
-      "Traditional traction systems may have a machine room above/adjacent to the hoistway; not all modern elevators require one.",
-      "Overspeed-sensing device that can trigger elevator safety gear.",
-      "The source gives 4–6 ropes as a local-reference note; actual number depends on elevator design/rating and applicable standard."
+      "Stops the car at overspeed",
+      "Opens the landing doors",
+      "Carries power to the car",
+      "Balances the shifting weight of the hoist ropes in tall buildings"
     ],
     "c": 3,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source gives 4–6 ropes as a local-reference note; actual number depends on elevator design/rating and applicable standard."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "As the car travels, rope weight moves from one side to the other; compensation evens it out."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding limit switch?",
+    "q": "What is a geared traction machine?",
     "o": [
-      "Detects/limits travel at specified positions.",
-      "Controls elevator operation, dispatching, doors, motion and safety interfaces.",
-      "The load-carrying enclosure/platform.",
-      "The source lists switches for maintaining/recovering landing level in hydraulic systems."
+      "A motor that drives the sheave through a reduction gearbox",
+      "A motor directly coupled to the sheave",
+      "A pump that feeds a hydraulic jack",
+      "A drum that winds the rope"
     ],
     "c": 0,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Detects/limits travel at specified positions."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Typical use: hydraulic elevators for low rise (up to about 5–6 floors), geared traction for mid rise, gearless traction for high rise. These are tendencies, not code limits."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding counterweight?",
+    "q": "Where are spring buffers used?",
     "o": [
-      "The source associates hydraulic elevators with lower-rise buildings and gives 5–10 storeys as a rule of thumb; this is not a universal code limit.",
-      "Balances a substantial portion of car mass and rated load in a traction system.",
-      "Mechanical device that grips guide rails to stop/hold the car under specified emergency/overspeed conditions.",
-      "A common modern MRL traction-drive technology."
+      "On the fastest elevators",
+      "On slower elevators",
+      "On escalators",
+      "On dumbwaiters only"
     ],
     "c": 1,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Balances a substantial portion of car mass and rated load in a traction system."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Spring buffers suit slower elevators; oil buffers absorb the greater energy of faster cars."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding hydraulic plunger?",
+    "q": "Which elevator drive is associated with the fastest, tallest installations?",
     "o": [
-      "The elevator controller/drive governs acceleration, travel speed, deceleration and stopping.",
-      "A traction elevator moves the car using suspension ropes/belts over a traction sheave driven by a machine.",
-      "The source gives 4–6 ropes as a local-reference note; actual number depends on elevator design/rating and applicable standard.",
-      "Movable part of the hydraulic jack acting to lift the car directly or through roping."
+      "Geared traction",
+      "Hydraulic",
+      "Gearless traction",
+      "Drum"
+    ],
+    "c": 2,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Typical use: hydraulic elevators for low rise (up to about 5–6 floors), geared traction for mid rise, gearless traction for high rise. These are tendencies, not code limits."
+  },
+  {
+    "s": "Elevators",
+    "q": "What does the governor do?",
+    "o": [
+      "Levels the car",
+      "Opens the doors",
+      "Balances the car",
+      "Senses overspeed and trips the safety gear"
     ],
     "c": 3,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Movable part of the hydraulic jack acting to lift the car directly or through roping."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "The governor is driven by its own rope linked to the car."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding guide rail?",
+    "q": "What is the elevator car?",
     "o": [
-      "Detects/limits travel at specified positions.",
-      "Provides the guided vertical path for car/counterweight and supports safety engagement.",
-      "The source gives 0.60 m as an NBCP pit dimension; actual required pit depth depends on elevator type, speed, equipment and adopted elevator standard.",
-      "The traction sheave is directly coupled to the motor without a reduction gearbox."
-    ],
-    "c": 1,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Provides the guided vertical path for car/counterweight and supports safety engagement."
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding hydraulic gate valve?",
-    "o": [
-      "Balances a substantial portion of car mass and rated load in a traction system.",
-      "The source associates electric traction elevators with tall buildings.",
-      "Energy-absorbing device in the pit that protects car/counterweight at the lower limit of travel.",
-      "Controls hydraulic-fluid flow in the lift circuit."
-    ],
-    "c": 3,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Controls hydraulic-fluid flow in the lift circuit."
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding hoistway/shaft?",
-    "o": [
-      "Vertical enclosure/path in which the elevator car and related components travel.",
-      "The source phrase 'spun and worm' for gearless traction is technically incorrect and is not retained.",
-      "Movable part of the hydraulic jack acting to lift the car directly or through roping.",
-      "Older elevator systems used motor-generator sets for drive/control; modern VVVF solid-state drives have largely replaced them."
+      "The enclosure and platform that carries the load",
+      "The machine room",
+      "The counterweight frame",
+      "The pit"
     ],
     "c": 0,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Vertical enclosure/path in which the elevator car and related components travel."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "The car hangs from its sling, the frame the ropes are attached to."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding hydraulic motor-pump-tank?",
+    "q": "What does safety gear do?",
     "o": [
-      "Provides the guided vertical path for car/counterweight and supports safety engagement.",
-      "Modern traction elevators commonly use AC motors with variable-frequency drives; the source's 'DC motor operated' description is outdated as a general rule.",
-      "Hydraulic/oil buffer used for higher-energy applications.",
-      "Provides and stores pressurized hydraulic fluid for elevator movement."
+      "Absorbs impact in the pit",
+      "Grips the guide rails to stop the car at overspeed",
+      "Opens the doors",
+      "Drives the sheave"
+    ],
+    "c": 1,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "It is tripped by the governor."
+  },
+  {
+    "s": "Elevators",
+    "q": "What decides the number of hoist ropes on a traction elevator?",
+    "o": [
+      "A fixed number of two",
+      "The building's floor area",
+      "The car's capacity and the design safety factor",
+      "The door width"
+    ],
+    "c": 2,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Several ropes (commonly 4 to 6 or more) share the load, so the safety factor holds even if one fails."
+  },
+  {
+    "s": "Elevators",
+    "q": "What does a limit switch do?",
+    "o": [
+      "Opens the landing doors",
+      "Balances the car",
+      "Pumps oil",
+      "Stops the car if it travels past its normal end positions"
     ],
     "c": 3,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Provides and stores pressurized hydraulic fluid for elevator movement."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Final limits cut power before the car reaches the buffers."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding mrl elevator?",
+    "q": "What does the counterweight do?",
     "o": [
-      "Compensates for the changing weight of suspension ropes in taller/high-rise traction installations.",
-      "The source associates geared traction with mid-rise service.",
-      "Machine-room-less elevator locates the traction drive/control equipment within or adjacent to the hoistway rather than a conventional separate machine room.",
-      "Controls hydraulic-fluid flow in the lift circuit."
-    ],
-    "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Machine-room-less elevator locates the traction drive/control equipment within or adjacent to the hoistway rather than a conventional separate machine room.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+TWFjaGluZS1Sb29tLUxlc3MgRWxldmF0b3I8L3RleHQ+CjxyZWN0IHg9IjMwMCIgeT0iODAiIHdpZHRoPSIzMDAiIGhlaWdodD0iMzUwIiBjbGFzcz0iZiIvPgo8cmVjdCB4PSIzNjAiIHk9IjI0NSIgd2lkdGg9IjE4MCIgaGVpZ2h0PSIxNDAiIGNsYXNzPSJmMiIvPjxjaXJjbGUgY3g9IjU0MCIgY3k9IjEzNSIgcj0iNDUiIGNsYXNzPSJmMiIvPgo8dGV4dCB4PSI1OTAiIHk9IjE0MCIgY2xhc3M9InMiPmRyaXZlIHVuaXQgd2l0aGluIGhvaXN0d2F5PC90ZXh0Pjwvc3ZnPg=="
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding floor stop/limit switch?",
-    "o": [
-      "Uses a reduction gearbox between motor and traction sheave; older designs commonly used worm gearing.",
-      "An additional sheave used to route suspension ropes in some traction arrangements.",
-      "Controls/monitors stopping and travel limits in the source's hydraulic component list.",
-      "Vertical enclosure/path in which the elevator car and related components travel."
-    ],
-    "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Controls/monitors stopping and travel limits in the source's hydraulic component list."
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding elevator pit?",
-    "o": [
-      "The portion of the hoistway below the lowest landing used for buffers, clearances and equipment.",
-      "Mechanical spring-type buffer used within permitted elevator speed/application limits.",
-      "Provides and stores pressurized hydraulic fluid for elevator movement.",
-      "Support and move a traction elevator car and counterweight."
+      "Balances the car and part of the load, reducing motor work",
+      "Stops the car at overspeed",
+      "Guides the car",
+      "Carries power to the car"
     ],
     "c": 0,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] The portion of the hoistway below the lowest landing used for buffers, clearances and equipment."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "It runs on its own rails in the hoistway."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding hydraulic elevator?",
+    "q": "What is the plunger of a hydraulic elevator?",
     "o": [
-      "Machine-room-less elevator locates the traction drive/control equipment within or adjacent to the hoistway rather than a conventional separate machine room.",
-      "The source associates gearless traction with high-rise service.",
-      "Historically associated with the safety elevator and demonstration of elevator safety gear.",
-      "A hydraulic elevator raises the car through hydraulic pressure acting on a jack/plunger or roped-hydraulic arrangement."
-    ],
-    "c": 3,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] A hydraulic elevator raises the car through hydraulic pressure acting on a jack/plunger or roped-hydraulic arrangement.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+SHlkcmF1bGljIEVsZXZhdG9yIENvbmNlcHQ8L3RleHQ+CjxyZWN0IHg9IjMzMCIgeT0iMTAwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjE3MCIgY2xhc3M9ImYiLz48bGluZSB4MT0iNDUwIiB5MT0iMjcwIiB4Mj0iNDUwIiB5Mj0iNDMwIiBjbGFzcz0ibCIvPgo8cmVjdCB4PSI0MDUiIHk9IjMzMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjEwMCIgY2xhc3M9ImYyIi8+PHRleHQgeD0iNTQwIiB5PSIzNzUiIGNsYXNzPSJzIj5oeWRyYXVsaWMgamFjayAvIHBsdW5nZXI8L3RleHQ+PC9zdmc+"
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding control equipment?",
-    "o": [
-      "Provides motive power to the elevator.",
-      "Controls/monitors stopping and travel limits in the source's hydraulic component list.",
-      "Controls elevator operation, dispatching, doors, motion and safety interfaces.",
-      "Overspeed-sensing device that can trigger elevator safety gear."
-    ],
-    "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Controls elevator operation, dispatching, doors, motion and safety interfaces."
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding source low-rise hydraulic note?",
-    "o": [
-      "The load-carrying enclosure/platform.",
-      "User/operator control interface such as car/landing controls.",
-      "The portion of the hoistway below the lowest landing used for buffers, clearances and equipment.",
-      "The source associates hydraulic elevators with lower-rise buildings and gives 5–10 storeys as a rule of thumb; this is not a universal code limit."
-    ],
-    "c": 3,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source associates hydraulic elevators with lower-rise buildings and gives 5–10 storeys as a rule of thumb; this is not a universal code limit."
-  },
-  {
-    "s": "Elevators",
-    "q": "Which statement is correct regarding acceleration/speed/retardation control?",
-    "o": [
-      "The source gives car weight plus about 40% of rated load as a counterweight rule of thumb; actual balance percentage is design-dependent.",
-      "The elevator controller/drive governs acceleration, travel speed, deceleration and stopping.",
-      "A hydraulic elevator raises the car through hydraulic pressure acting on a jack/plunger or roped-hydraulic arrangement.",
-      "Mechanical device that grips guide rails to stop/hold the car under specified emergency/overspeed conditions."
+      "The oil tank",
+      "The moving part of the jack that lifts the car",
+      "The motor",
+      "The control valve"
     ],
     "c": 1,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] The elevator controller/drive governs acceleration, travel speed, deceleration and stopping."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Hydraulic elevator parts: motor, pump and oil tank; control valves; the jack (cylinder and plunger); and switches for stopping and releveling."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding gearless traction machine?",
+    "q": "What do guide rails do?",
     "o": [
-      "The source gives 4–6 ropes as a local-reference note; actual number depends on elevator design/rating and applicable standard.",
-      "Controls elevator operation, dispatching, doors, motion and safety interfaces.",
-      "The traction sheave is directly coupled to the motor without a reduction gearbox.",
-      "Monitors gate/door condition to prevent unsafe operation."
+      "Carry the car's weight to the pit",
+      "Carry power to the car",
+      "Guide the car and counterweight and give the safety gear something to grip",
+      "Hold the doors"
     ],
     "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The traction sheave is directly coupled to the motor without a reduction gearbox."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Steel T-rails run from pit to overhead."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding buffer?",
+    "q": "What does the valve in a hydraulic elevator control?",
     "o": [
-      "Detects/limits travel at specified positions.",
-      "Engage the guide rails and guide the car/counterweight.",
-      "The source associates hydraulic elevators with lower-rise buildings and gives 5–10 storeys as a rule of thumb; this is not a universal code limit.",
-      "Energy-absorbing device in the pit that protects car/counterweight at the lower limit of travel."
+      "The flow of water to the sprinklers",
+      "The flow of air to the car",
+      "The flow of refrigerant",
+      "The flow of oil to and from the jack"
     ],
     "c": 3,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Energy-absorbing device in the pit that protects car/counterweight at the lower limit of travel."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Hydraulic elevator parts: motor, pump and oil tank; control valves; the jack (cylinder and plunger); and switches for stopping and releveling."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding gearless source error?",
+    "q": "What is the hoistway?",
     "o": [
-      "Balances a substantial portion of car mass and rated load in a traction system.",
-      "The elevator controller/drive governs acceleration, travel speed, deceleration and stopping.",
-      "Controls pump/motor/valves and elevator operation.",
-      "The source phrase 'spun and worm' for gearless traction is technically incorrect and is not retained."
+      "The vertical shaft in which the car travels",
+      "The lobby in front of the doors",
+      "The machine room",
+      "The pit only"
+    ],
+    "c": 0,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "It runs from the pit to the overhead."
+  },
+  {
+    "s": "Elevators",
+    "q": "What do the motor, pump and tank of a hydraulic elevator do?",
+    "o": [
+      "Drive a traction sheave",
+      "Store oil and pump it under pressure to lift the car",
+      "Cool the machine room",
+      "Supply water to the building"
+    ],
+    "c": 1,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Hydraulic elevator parts: motor, pump and oil tank; control valves; the jack (cylinder and plunger); and switches for stopping and releveling."
+  },
+  {
+    "s": "Elevators",
+    "q": "What is a machine-room-less (MRL) elevator?",
+    "o": [
+      "A hydraulic elevator with no pump",
+      "An elevator with no motor",
+      "A traction elevator with its drive and controls in or beside the hoistway",
+      "An escalator"
+    ],
+    "c": 2,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "MRL saves the penthouse machine room."
+  },
+  {
+    "s": "Elevators",
+    "q": "What do floor-stop switches on a hydraulic elevator do?",
+    "o": [
+      "Open the car doors",
+      "Trip the safety gear",
+      "Drive the pump",
+      "Stop the car level at each landing"
     ],
     "c": 3,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source phrase 'spun and worm' for gearless traction is technically incorrect and is not retained."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Hydraulic elevator parts: motor, pump and oil tank; control valves; the jack (cylinder and plunger); and switches for stopping and releveling."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding oil buffer?",
+    "q": "What is the elevator pit?",
     "o": [
-      "The traction sheave is directly coupled to the motor without a reduction gearbox.",
-      "Hydraulic/oil buffer used for higher-energy applications.",
-      "Traditional traction systems may have a machine room above/adjacent to the hoistway; not all modern elevators require one.",
-      "Movable part of the hydraulic jack acting to lift the car directly or through roping."
+      "The part of the hoistway below the lowest landing",
+      "The space above the top landing",
+      "The machine room floor",
+      "The lobby"
+    ],
+    "c": 0,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "It holds the buffers."
+  },
+  {
+    "s": "Elevators",
+    "q": "How does a hydraulic elevator raise its car?",
+    "o": [
+      "By ropes over a traction sheave",
+      "By oil pressure acting on a jack",
+      "By a screw drive",
+      "By a drum winding cable"
     ],
     "c": 1,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Hydraulic/oil buffer used for higher-energy applications."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Typical use: hydraulic elevators for low rise (up to about 5–6 floors), geared traction for mid rise, gearless traction for high rise. These are tendencies, not code limits."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding mid-rise geared source association?",
+    "q": "What does elevator control equipment do?",
     "o": [
-      "Energy-absorbing device in the pit that protects car/counterweight at the lower limit of travel.",
-      "The source lists switches for maintaining/recovering landing level in hydraulic systems.",
-      "The source associates geared traction with mid-rise service.",
-      "Provides the guided vertical path for car/counterweight and supports safety engagement."
+      "Only lights the car",
+      "Only moves the counterweight",
+      "Runs dispatching, doors, motion and safety circuits",
+      "Only opens the hoistway"
     ],
     "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] The source associates geared traction with mid-rise service."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "It answers calls and moves the car safely."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding secondary sheave?",
+    "q": "Which elevator type suits low-rise buildings?",
     "o": [
-      "A common modern MRL traction-drive technology.",
-      "An additional sheave used to route suspension ropes in some traction arrangements.",
-      "The source phrase 'spun and worm' for gearless traction is technically incorrect and is not retained.",
-      "Controls hydraulic-fluid flow in the lift circuit."
+      "Gearless traction",
+      "Double-deck",
+      "Sky-lobby shuttle",
+      "Hydraulic"
+    ],
+    "c": 3,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Typical use: hydraulic elevators for low rise (up to about 5–6 floors), geared traction for mid rise, gearless traction for high rise. These are tendencies, not code limits."
+  },
+  {
+    "s": "Elevators",
+    "q": "What governs an elevator's acceleration, speed and slowing down?",
+    "o": [
+      "The controller and drive",
+      "The buffer",
+      "The guide rails",
+      "The counterweight"
+    ],
+    "c": 0,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Smooth changes in speed keep the ride comfortable."
+  },
+  {
+    "s": "Elevators",
+    "q": "What is a gearless traction machine?",
+    "o": [
+      "A motor with a worm gearbox",
+      "A motor directly coupled to the sheave, with no gearbox",
+      "A hydraulic pump",
+      "A drum winder"
     ],
     "c": 1,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] An additional sheave used to route suspension ropes in some traction arrangements."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Typical use: hydraulic elevators for low rise (up to about 5–6 floors), geared traction for mid rise, gearless traction for high rise. These are tendencies, not code limits."
   },
   {
     "s": "Elevators",
-    "q": "Which statement is correct regarding suspension ropes/cables?",
+    "q": "What does a buffer do?",
     "o": [
-      "Hydraulic/oil buffer used for higher-energy applications.",
-      "A traction elevator moves the car using suspension ropes/belts over a traction sheave driven by a machine.",
-      "Support and move a traction elevator car and counterweight.",
-      "Vertical enclosure/path in which the elevator car and related components travel."
+      "Stops the car at overspeed on the rails",
+      "Opens the doors",
+      "Absorbs the energy of the car or counterweight at the bottom of travel",
+      "Levels the car"
     ],
     "c": 2,
-    "ref": "RA 8495; ASME A17.1 elevator terminology",
-    "n": "[SOURCE FACT — AUDITED] Support and move a traction elevator car and counterweight."
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Spring buffers suit slower elevators; oil buffers absorb the greater energy of faster cars."
+  },
+  {
+    "s": "Elevators",
+    "q": "What does a gearless machine NOT have?",
+    "o": [
+      "A motor",
+      "A traction sheave",
+      "A brake",
+      "A reduction gearbox (such as a worm gear)"
+    ],
+    "c": 3,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Geared machines use worm or helical gears; gearless ones do not."
+  },
+  {
+    "s": "Elevators",
+    "q": "Where are oil buffers used?",
+    "o": [
+      "On faster elevators with more energy to absorb",
+      "Only on slow freight elevators",
+      "On escalators",
+      "Only on dumbwaiters"
+    ],
+    "c": 0,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Spring buffers suit slower elevators; oil buffers absorb the greater energy of faster cars."
+  },
+  {
+    "s": "Elevators",
+    "q": "Which elevator drive is usually used in mid-rise buildings?",
+    "o": [
+      "Gearless traction",
+      "Geared traction",
+      "Hydraulic",
+      "Hand-operated"
+    ],
+    "c": 1,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Typical use: hydraulic elevators for low rise (up to about 5–6 floors), geared traction for mid rise, gearless traction for high rise. These are tendencies, not code limits."
+  },
+  {
+    "s": "Elevators",
+    "q": "What is a secondary (deflector) sheave for?",
+    "o": [
+      "Driving the car",
+      "Braking the car",
+      "Guiding the ropes to the counterweight or for double wrap",
+      "Sensing overspeed"
+    ],
+    "c": 2,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "It does not drive; it only redirects the ropes."
+  },
+  {
+    "s": "Elevators",
+    "q": "What do suspension ropes do?",
+    "o": [
+      "Carry power to the car",
+      "Trip the safety gear",
+      "Hold the doors",
+      "Carry the car and counterweight over the sheave"
+    ],
+    "c": 3,
+    "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Steel wire ropes or coated belts are used."
   }
 ]
