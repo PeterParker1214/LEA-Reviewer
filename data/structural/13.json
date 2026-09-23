@@ -1,434 +1,438 @@
 [
   {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding longitudinal-bar clear spacing source note?",
+    "s": "Column Ties",
+    "q": "Under NSCP 2015, how far may an unsupported longitudinal column bar be from a bar that is held by a tie corner?",
     "o": [
-      "Source table gives 40 mm.",
-      "Source table gives 75 mm for reinforcement in concrete cast against and permanently exposed to earth.",
-      "Source table gives 8db.",
-      "Source says up to 150 mm maximum clear distance before additional support/bars are needed in the described tie-support context."
-    ],
-    "c": 3,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source says up to 150 mm maximum clear distance before additional support/bars are needed in the described tie-support context."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding source cover table status?",
-    "o": [
-      "Source table gives 75 mm.",
-      "These values should be memorized only as the source's NSCP-2015-era table; current project detailing must follow the actually adopted code and exposure/durability requirements.",
-      "Source gives 90° bend plus 6db extension.",
-      "Source table gives 75 mm for reinforcement in concrete cast against and permanently exposed to earth."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[CURRENTNESS WARNING] These values should be memorized only as the source's NSCP-2015-era table; current project detailing must follow the actually adopted code and exposure/durability requirements."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding cast-in-place shell/folded plate 20 mm+ bars?",
-    "o": [
-      "Source table gives 20 mm.",
-      "Source gives 90° bend plus 6db extension.",
-      "Source gives 12 mm ties.",
-      "Source table gives 25 mm."
+      "No more than 150 mm clear on each side",
+      "No more than 300 mm clear",
+      "No more than 450 mm clear",
+      "Any distance, if the tie spacing is met"
     ],
     "c": 0,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source table gives 20 mm."
+    "ref": "NSCP 2015 Sec. 425.7.2 Ties.3",
+    "n": "Every corner bar and every alternate bar must sit in a tie corner (angle no more than 135°), and no unsupported bar may be more than 150 mm clear from a supported one. Otherwise crossties are needed."
   },
   {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding maximum tie spacing rule 3?",
+    "s": "Concrete Cover",
+    "q": "Under NSCP 2015, what minimum concrete cover applies to cast-in-place non-prestressed concrete cast against and permanently exposed to earth?",
     "o": [
-      "Least dimension of compression member.",
-      "Source table gives 25 mm.",
-      "Source gives 12db extension, not less than 60 mm.",
-      "Source table gives 40 mm for 42/58 mm bars."
+      "50 mm",
+      "75 mm",
+      "40 mm",
+      "25 mm"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Table 420.6.1.3.1 Cover for Cast-in-Place Non-Prestressed Concrete Members",
+    "n": "Concrete cast directly on soil, such as footing bottoms, gets 75 mm because the surface is rough and wet and the steel must be well protected. Formed surfaces exposed to earth or weather need less (40 to 50 mm)."
+  },
+  {
+    "s": "Concrete Cover",
+    "q": "Under NSCP 2015, what cover applies to bundled bars in concrete not cast against earth?",
+    "o": [
+      "Always 75 mm",
+      "Twice the largest bar diameter",
+      "The smaller of the bundle's equivalent diameter and 50 mm",
+      "Always 20 mm"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Table 420.6.1.3.1 Cover for Cast-in-Place Non-Prestressed Concrete Members; Sec. 420.6.1.3.4",
+    "n": "Sec. 420.6.1.3.4: the cover for a bundle is at least the smaller of its equivalent diameter (the diameter of one bar with the same total area) and 50 mm. Where cast against earth it is 75 mm."
+  },
+  {
+    "s": "Column Ties",
+    "q": "Under NSCP 2015, which of these is one of the three limits on the vertical spacing of column ties?",
+    "o": [
+      "The largest dimension of the column",
+      "Half the column height",
+      "Six times the tie diameter",
+      "The least dimension of the column"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Sec. 425.7.2 Ties.1",
+    "n": "Tie spacing must not exceed the smallest of 16 longitudinal bar diameters, 48 tie diameters and the least dimension of the column."
+  },
+  {
+    "s": "Standard Hooks",
+    "q": "Under NSCP 2015, what minimum inside bend diameter applies to a standard hook on 40 mm to 58 mm bars?",
+    "o": [
+      "10db",
+      "8db",
+      "6db",
+      "4db"
     ],
     "c": 0,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Least dimension of compression member."
+    "ref": "NSCP 2015 Table 425.3.1 Standard Hook Geometry for Deformed Bars in Tension",
+    "n": "Bend diameters grow with bar size so large bars are not cracked by tight bends: 6db for 10 to 25 mm, 8db for 28 to 36 mm and 10db for 40 to 58 mm bars."
   },
   {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding bar 42–58 mm bend diameter?",
+    "s": "Concrete Cover",
+    "q": "Under NSCP 2015, what minimum concrete cover applies to cast-in-place prestressed slabs, joists and walls exposed to weather or in contact with ground?",
     "o": [
-      "Source table gives 40 mm for 42/58 mm bars.",
-      "Source table gives 20 mm.",
-      "Source says up to 150 mm maximum clear distance before additional support/bars are needed in the described tie-support context.",
-      "Source table gives 10db."
+      "75 mm",
+      "25 mm",
+      "50 mm",
+      "40 mm"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Table 420.6.1.3.2 Cover for Cast-in-Place Prestressed Concrete Members",
+    "n": "For cast-in-place prestressed members, weather-exposed slabs, joists and walls need 25 mm and other exposed members 40 mm. Prestressed concrete is kept almost crack-free, so it needs less cover than non-prestressed concrete (40 to 50 mm)."
+  },
+  {
+    "s": "Standard Hooks",
+    "q": "Why must reinforcing bars have enough development length or hooks?",
+    "o": [
+      "So the bars do not rust",
+      "So the concrete sets faster",
+      "So bond with the concrete can build up the stress the bar is designed to carry",
+      "So the bars can be spliced without lapping"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Sec. 425.4 Development of reinforcement",
+    "n": "A bar can only be stressed as far as the concrete can grip it. Without enough embedment it pulls out before yielding, and the member loses both strength and ductility. Hooks shorten the length needed."
+  },
+  {
+    "s": "Standard Hooks",
+    "q": "Under NSCP 2015, what extension is required on a 135° hook of a stirrup or tie?",
+    "o": [
+      "12db, but not less than 150 mm",
+      "4db, but not less than 65 mm",
+      "2db, with no minimum",
+      "6db, but not less than 75 mm"
     ],
     "c": 3,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source table gives 10db."
+    "ref": "NSCP 2015 Table 425.3.2 Minimum Bend Diameter and Hook Geometry for Stirrups, Ties and Hoops",
+    "n": "A 135° stirrup or tie hook needs a 6db extension of at least 75 mm, bent around the longitudinal bar. It anchors into the core and does not pop out when the cover spalls, which is why seismic hooks are 135°."
   },
   {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding precast weather-exposed walls/panels/slabs/joists?",
+    "s": "Concrete Cover",
+    "q": "Under NSCP 2015, what minimum concrete cover applies to the primary reinforcement of cast-in-place prestressed beams and columns not exposed to weather?",
     "o": [
-      "Source table gives 25 mm.",
-      "Source says up to 150 mm maximum clear distance before additional support/bars are needed in the described tie-support context.",
-      "Source table gives 50 mm.",
-      "These values should be memorized only as the source's NSCP-2015-era table; current project detailing must follow the actually adopted code and exposure/durability requirements."
+      "40 mm",
+      "75 mm",
+      "50 mm",
+      "25 mm"
     ],
     "c": 0,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source table gives 25 mm."
+    "ref": "NSCP 2015 Table 420.6.1.3.2 Cover for Cast-in-Place Prestressed Concrete Members",
+    "n": "Interior prestressed beams and columns need 40 mm to their primary reinforcement and 25 mm to their stirrups, ties and spirals."
   },
   {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding development length purpose?",
+    "s": "Concrete Cover",
+    "q": "Under NSCP 2015, what minimum concrete cover applies to cast-in-place non-prestressed concrete exposed to weather or earth, with 16 mm bars and smaller?",
     "o": [
-      "These values should be memorized only as the source's NSCP-2015-era table; current project detailing must follow the actually adopted code and exposure/durability requirements.",
-      "Provides embedment/bond so reinforcement can develop required stress and member ductility.",
-      "Source gives 90° bend plus 12db extension.",
-      "Source table gives 20 mm."
+      "75 mm",
+      "40 mm",
+      "50 mm",
+      "25 mm"
     ],
     "c": 1,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Provides embedment/bond so reinforcement can develop required stress and member ductility."
+    "ref": "NSCP 2015 Table 420.6.1.3.1 Cover for Cast-in-Place Non-Prestressed Concrete Members",
+    "n": "Formed concrete exposed to weather or earth needs 40 mm for 16 mm bars and smaller and 50 mm for 20 to 58 mm bars. Larger bars get more cover because they are harder to protect."
   },
   {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding 135° hook?",
+    "s": "Standard Hooks",
+    "q": "Under NSCP 2015, what hook may a 25 mm stirrup or tie use?",
     "o": [
-      "Another listed value",
-      "Source table gives 20 mm.",
-      "Least dimension of compression member.",
-      "Source gives 6db extension, not less than 60 mm."
-    ],
-    "c": 3,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source gives 6db extension, not less than 60 mm."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding precast interior beam/column primary reinforcement?",
-    "o": [
-      "Least dimension of compression member.",
-      "Source table gives 40 mm.",
-      "Source table gives 20 mm.",
-      "Source table gives 10db."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source table gives 40 mm."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding weather-exposed cast-in-place 16 mm and smaller?",
-    "o": [
-      "16 times longitudinal-bar diameter.",
-      "Source table gives 40 mm.",
-      "Source table gives 10db.",
-      "Source table gives 25 mm."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source table gives 40 mm."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding tie/stirrup 135° hook ≤25 mm?",
-    "o": [
-      "Provides embedment/bond so reinforcement can develop required stress and member ductility.",
-      "Source gives 135° bend plus 6db extension.",
-      "Source standard-hook table gives minimum inside bend diameter 6db.",
-      "Source table gives 25 mm."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source gives 135° bend plus 6db extension."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding precast shell/folded plate 16 mm and smaller?",
-    "o": [
-      "Source table gives 12 mm.",
-      "Source table gives 10 mm.",
-      "Source gives 6db extension, not less than 60 mm.",
-      "Provides embedment/bond so reinforcement can develop required stress and member ductility."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source table gives 10 mm."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding interior cast-in-place beams/columns?",
-    "o": [
-      "Source gives 10 mm ties.",
-      "Source table gives 40 mm to primary reinforcement/ties/stirrups/spirals.",
-      "Source gives 6db extension, not less than 60 mm.",
-      "Source table gives 40 mm."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source table gives 40 mm to primary reinforcement/ties/stirrups/spirals."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding maximum tie spacing rule 2?",
-    "o": [
-      "Source table gives 40 mm.",
-      "48 times tie-bar diameter.",
-      "Source gives 4db extension, not less than 60 mm.",
-      "Another listed value"
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] 48 times tie-bar diameter."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding bar 28–36 mm bend diameter?",
-    "o": [
-      "Another listed value",
-      "Source table gives 8db.",
-      "Source gives 135° bend plus 6db extension.",
-      "Source table gives 40 mm."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source table gives 8db."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding precast earth-cast?",
-    "o": [
-      "Source gives 135° bend plus 6db extension.",
-      "Source table gives 10 mm.",
-      "Source table gives 75 mm.",
-      "Source table gives 75 mm for reinforcement in concrete cast against and permanently exposed to earth."
+      "Only a 180° hook",
+      "A 90° hook with a 4db extension",
+      "A 135° hook with a 6db extension (at least 75 mm), or a 90° hook with a 12db extension",
+      "No hook, only a straight bar"
     ],
     "c": 2,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source table gives 75 mm."
+    "ref": "NSCP 2015 Table 425.3.2 Minimum Bend Diameter and Hook Geometry for Stirrups, Ties and Hoops",
+    "n": "For 20 to 25 mm stirrups and ties, a 90° hook needs 12db extension and a 135° hook needs 6db (at least 75 mm). 180° hooks are not listed for these sizes."
   },
   {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding tie size for longitudinal bars ≥36 mm or bundled bars?",
+    "s": "Concrete Cover",
+    "q": "Why does concrete cast against earth need more cover than concrete cast in forms and later exposed to earth?",
     "o": [
-      "Source table gives 40 mm to primary reinforcement/ties/stirrups/spirals.",
-      "Source gives 12 mm ties.",
-      "Source gives 90° bend plus 6db extension.",
-      "Source table gives 10 mm."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source gives 12 mm ties."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding 90° hook?",
-    "o": [
-      "48 times tie-bar diameter.",
-      "Source table gives 25 mm.",
-      "Source table gives 40 mm to primary reinforcement/ties/stirrups/spirals.",
-      "Source gives 12db extension, not less than 60 mm."
+      "It sets faster",
+      "It is always unreinforced",
+      "It carries less load",
+      "Its surface is rough and uneven and it stays in contact with moist soil"
     ],
     "c": 3,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source gives 12db extension, not less than 60 mm.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+U3RhbmRhcmQgSG9vayBHZW9tZXRyeSDigJQgU291cmNlLUVyYSBDb25jZXB0czwvdGV4dD4KPHBhdGggZD0iTTEwMCAxNzAgSDI4MCBRMzUwIDE3MCAzNTAgMjQwIFYzMjAiIGNsYXNzPSJsIi8+PHRleHQgeD0iMTU1IiB5PSIxMjUiIGNsYXNzPSJzIj45MMKwIGhvb2s8L3RleHQ+CjxwYXRoIGQ9Ik00NzAgMTcwIEg2NTAgUTcyMCAxNzAgNzIwIDI0MCBRNzIwIDMxMCA2NTAgMzEwIEg1OTAiIGNsYXNzPSJsIi8+PHRleHQgeD0iNTQwIiB5PSIxMjUiIGNsYXNzPSJzIj4xODDCsCBob29rPC90ZXh0Pjwvc3ZnPg=="
+    "ref": "NSCP 2015 Table 420.6.1.3.1 Cover for Cast-in-Place Non-Prestressed Concrete Members",
+    "n": "Concrete poured straight onto soil has no form to give a true surface, and soil may mix into its skin, so NSCP asks for 75 mm instead of 40 to 50 mm."
   },
   {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding precast interior slabs/walls/joists?",
+    "s": "Concrete Cover",
+    "q": "Under NSCP 2015, what minimum concrete cover applies to the primary bars, stirrups, ties and spirals of cast-in-place non-prestressed beams and columns not exposed to weather?",
     "o": [
-      "Source table gives 8db.",
-      "Source table gives 20 mm.",
-      "Source table gives 40 mm for 42/58 mm bars.",
-      "48 times tie-bar diameter."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source table gives 20 mm."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding weather-exposed cast-in-place 20–36 mm bars?",
-    "o": [
-      "Source says up to 150 mm maximum clear distance before additional support/bars are needed in the described tie-support context.",
-      "Source table gives 8db.",
-      "Source table gives 50 mm.",
-      "Source table gives 75 mm."
-    ],
-    "c": 2,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source table gives 50 mm."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding tie/stirrup hook 20–25 mm?",
-    "o": [
-      "Source table gives 75 mm.",
-      "These values should be memorized only as the source's NSCP-2015-era table; current project detailing must follow the actually adopted code and exposure/durability requirements.",
-      "Source gives 12 mm ties.",
-      "Source gives 90° bend plus 12db extension."
-    ],
-    "c": 3,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source gives 90° bend plus 12db extension."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding precast shell/folded plate 20 mm+?",
-    "o": [
-      "Source gives 12db extension, not less than 60 mm.",
-      "Source gives 12 mm ties.",
-      "Another listed value",
-      "Source table gives 20 mm."
-    ],
-    "c": 3,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source table gives 20 mm."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding interior cast-in-place slabs/walls/joists 36 mm and smaller?",
-    "o": [
-      "Another listed value",
-      "Source table gives 20 mm.",
-      "Source gives 12db extension, not less than 60 mm.",
-      "Least dimension of compression member."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source table gives 20 mm."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding maximum tie spacing rule 1?",
-    "o": [
-      "Source table gives 20 mm.",
-      "16 times longitudinal-bar diameter.",
-      "Source table gives 10db.",
-      "Source table gives 50 mm."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] 16 times longitudinal-bar diameter.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+Q29sdW1uIFRpZXM8L3RleHQ+CjxyZWN0IHg9IjI2MCIgeT0iOTAiIHdpZHRoPSIzODAiIGhlaWdodD0iMzIwIiBjbGFzcz0iZiIvPgo8cmVjdCB4PSIzMTAiIHk9IjE0MCIgd2lkdGg9IjI4MCIgaGVpZ2h0PSIyMjAiIGNsYXNzPSJ0aCIvPgo8Y2lyY2xlIGN4PSIzMzAiIGN5PSIxNjAiIHI9IjEyIiBmaWxsPSIjMTExIi8+PGNpcmNsZSBjeD0iNTcwIiBjeT0iMTYwIiByPSIxMiIgZmlsbD0iIzExMSIvPjxjaXJjbGUgY3g9IjMzMCIgY3k9IjM0MCIgcj0iMTIiIGZpbGw9IiMxMTEiLz48Y2lyY2xlIGN4PSI1NzAiIGN5PSIzNDAiIHI9IjEyIiBmaWxsPSIjMTExIi8+Cjx0ZXh0IHg9IjMxNSIgeT0iNDU1IiBjbGFzcz0icyI+dGllcyByZXN0cmFpbiBhbmQgbGF0ZXJhbGx5IHN1cHBvcnQgbG9uZ2l0dWRpbmFsIGJhcnM8L3RleHQ+PC9zdmc+"
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding bar 10–25 mm bend diameter?",
-    "o": [
-      "Source table gives 25 mm.",
-      "Source gives 90° bend plus 12db extension.",
-      "Source standard-hook table gives minimum inside bend diameter 6db.",
-      "Source table gives 50 mm."
-    ],
-    "c": 2,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source standard-hook table gives minimum inside bend diameter 6db."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding cast-in-place shell/folded plate 16 mm and smaller?",
-    "o": [
-      "Provides embedment/bond so reinforcement can develop required stress and member ductility.",
-      "Source gives 90° bend plus 12db extension.",
-      "Source table gives 12 mm.",
-      "Source table gives 20 mm."
-    ],
-    "c": 2,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source table gives 12 mm."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding tie size for longitudinal bars ≤32 mm?",
-    "o": [
-      "Another listed value",
-      "Source gives 6db extension, not less than 60 mm.",
-      "Source table gives 20 mm.",
-      "Source gives 10 mm ties."
-    ],
-    "c": 3,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source gives 10 mm ties."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding 180° hook?",
-    "o": [
-      "16 times longitudinal-bar diameter.",
-      "Source table gives 20 mm.",
-      "Source gives 4db extension, not less than 60 mm.",
-      "Source table gives 40 mm."
-    ],
-    "c": 2,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source gives 4db extension, not less than 60 mm."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding precast weather-exposed other members?",
-    "o": [
-      "16 times longitudinal-bar diameter.",
-      "Source standard-hook table gives minimum inside bend diameter 6db.",
-      "Another listed value",
-      "Source table gives 40 mm."
-    ],
-    "c": 3,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source table gives 40 mm."
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding earth-cast concrete cover?",
-    "o": [
-      "Source standard-hook table gives minimum inside bend diameter 6db.",
-      "Source table gives 75 mm for reinforcement in concrete cast against and permanently exposed to earth.",
-      "Source table gives 12 mm.",
-      "Source gives 135° bend plus 6db extension."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source table gives 75 mm for reinforcement in concrete cast against and permanently exposed to earth.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+Q29uY3JldGUgQ292ZXI8L3RleHQ+CjxyZWN0IHg9IjE3MCIgeT0iMTAwIiB3aWR0aD0iNTYwIiBoZWlnaHQ9IjMwMCIgY2xhc3M9ImYiLz48Y2lyY2xlIGN4PSIyNjAiIGN5PSIzMTAiIHI9IjIwIiBmaWxsPSIjMTExIi8+PGNpcmNsZSBjeD0iMzYwIiBjeT0iMzEwIiByPSIyMCIgZmlsbD0iIzExMSIvPjxjaXJjbGUgY3g9IjQ2MCIgY3k9IjMxMCIgcj0iMjAiIGZpbGw9IiMxMTEiLz4KPGxpbmUgeDE9IjE3MCIgeTE9IjMxMCIgeDI9IjI0MCIgeTI9IjMxMCIgY2xhc3M9ImQiLz48dGV4dCB4PSIxOTUiIHk9IjI4NSIgY2xhc3M9InMiPmNvdmVyPC90ZXh0Pjwvc3ZnPg=="
-  },
-  {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding tie/stirrup hook ≤16 mm?",
-    "o": [
-      "Source gives 90° bend plus 6db extension.",
-      "Source table gives 10 mm.",
-      "Source gives 10 mm ties.",
-      "Source table gives 12 mm."
+      "40 mm",
+      "75 mm",
+      "50 mm",
+      "25 mm"
     ],
     "c": 0,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source gives 90° bend plus 6db extension."
+    "ref": "NSCP 2015 Table 420.6.1.3.1 Cover for Cast-in-Place Non-Prestressed Concrete Members",
+    "n": "Interior beams, columns, pedestals and tension ties get 40 mm, measured to the outermost steel, usually the stirrups or ties."
   },
   {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding precast beam/column ties/stirrups/spirals?",
+    "s": "Column Ties",
+    "q": "Under NSCP 2015, tie spacing may not exceed how many tie-bar diameters?",
     "o": [
-      "Source table gives 25 mm.",
-      "Source table gives 40 mm to primary reinforcement/ties/stirrups/spirals.",
-      "Source gives 4db extension, not less than 60 mm.",
-      "Source gives 10 mm ties."
+      "16",
+      "48",
+      "24",
+      "12"
     ],
-    "c": 0,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source table gives 25 mm."
+    "c": 1,
+    "ref": "NSCP 2015 Sec. 425.7.2 Ties.1",
+    "n": "The limits are 16 longitudinal bar diameters, 48 tie diameters and the least column dimension, whichever is smallest. With 10 mm ties, 48 × 10 = 480 mm."
   },
   {
-    "s": "Reinforcement Detailing",
-    "q": "Which statement is correct regarding interior cast-in-place slabs/walls/joists large bars?",
+    "s": "Standard Hooks",
+    "q": "Under NSCP 2015, what minimum inside bend diameter applies to a standard hook on 28 mm to 36 mm bars?",
     "o": [
-      "Source gives 4db extension, not less than 60 mm.",
-      "48 times tie-bar diameter.",
-      "Source table gives 40 mm.",
-      "Source table gives 40 mm for 42/58 mm bars."
+      "6db",
+      "10db",
+      "8db",
+      "4db"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Table 425.3.1 Standard Hook Geometry for Deformed Bars in Tension",
+    "n": "28 to 36 mm bars bend around at least 8db; smaller bars (10 to 25 mm) 6db and larger bars (40 to 58 mm) 10db."
+  },
+  {
+    "s": "Concrete Cover",
+    "q": "Under NSCP 2015, what minimum concrete cover applies to cast-in-place prestressed concrete cast against and permanently in contact with ground?",
+    "o": [
+      "50 mm",
+      "40 mm",
+      "25 mm",
+      "75 mm"
     ],
     "c": 3,
-    "ref": "NSCP 2015-era source table; current cross-reference ACI CODE-318-25",
-    "n": "[NSCP-2015-ERA SOURCE PROVISION] Source table gives 40 mm for 42/58 mm bars."
+    "ref": "NSCP 2015 Table 420.6.1.3.2 Cover for Cast-in-Place Prestressed Concrete Members",
+    "n": "Concrete cast against earth takes 75 mm whether it is prestressed or not."
+  },
+  {
+    "s": "Column Ties",
+    "q": "Under NSCP 2015, what minimum tie size applies to columns with 36 mm longitudinal bars or with bundled bars?",
+    "o": [
+      "12 mm",
+      "10 mm",
+      "8 mm",
+      "16 mm"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Sec. 425.7.2 Ties.2",
+    "n": "Ties must be at least 10 mm for longitudinal bars 32 mm and smaller, and at least 12 mm for 36 mm and larger bars or bundles."
+  },
+  {
+    "s": "Standard Hooks",
+    "q": "Under NSCP 2015, what straight extension is required after a 90° standard hook on a main bar?",
+    "o": [
+      "4db",
+      "12db",
+      "6db",
+      "8db"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Table 425.3.1 Standard Hook Geometry for Deformed Bars in Tension",
+    "n": "A 90° standard hook on a longitudinal bar needs a 12db extension. A 180° hook needs only 4db (at least 65 mm) because the full turn anchors better."
+  },
+  {
+    "s": "Concrete Cover",
+    "q": "Under NSCP 2015, what minimum concrete cover applies to cast-in-place prestressed slabs, joists and walls not exposed to weather?",
+    "o": [
+      "75 mm",
+      "50 mm",
+      "20 mm",
+      "40 mm"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Table 420.6.1.3.2 Cover for Cast-in-Place Prestressed Concrete Members",
+    "n": "Interior prestressed slabs, joists and walls need 20 mm, the same as non-prestressed ones with 36 mm bars and smaller."
+  },
+  {
+    "s": "Concrete Cover",
+    "q": "Under NSCP 2015, what minimum concrete cover applies to cast-in-place non-prestressed concrete exposed to weather or earth, with 20 mm to 58 mm bars?",
+    "o": [
+      "75 mm",
+      "40 mm",
+      "25 mm",
+      "50 mm"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Table 420.6.1.3.1 Cover for Cast-in-Place Non-Prestressed Concrete Members",
+    "n": "Weather-exposed formed concrete takes 50 mm for bars 20 mm and larger and 40 mm for 16 mm bars and smaller."
+  },
+  {
+    "s": "Standard Hooks",
+    "q": "Under NSCP 2015, what extension is required on a 90° hook of a 20 mm or 25 mm stirrup?",
+    "o": [
+      "12db",
+      "6db",
+      "4db",
+      "75 mm only"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Table 425.3.2 Minimum Bend Diameter and Hook Geometry for Stirrups, Ties and Hoops",
+    "n": "For 20 to 25 mm stirrups a 90° hook needs 12db. For 16 mm and smaller stirrups the same hook needs only 6db (at least 75 mm)."
+  },
+  {
+    "s": "Concrete Cover",
+    "q": "Under NSCP 2015, what applies to cover in corrosive environments or other severe exposure?",
+    "o": [
+      "Cover may be reduced by 10 mm",
+      "Cover is increased as needed, or other protection is provided",
+      "Cover is fixed at 20 mm",
+      "No cover is needed if the bars are epoxy-coated"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Table 420.6.1.3.1 Cover for Cast-in-Place Non-Prestressed Concrete Members; Sec. 420.6.1.4",
+    "n": "Sec. 420.6.1.4.1 lets the designer raise the cover in corrosive conditions, such as seawater splash zones, and requires the durability rules of Section 419.3 to be met, or other protection to be given."
+  },
+  {
+    "s": "Concrete Cover",
+    "q": "Under NSCP 2015, what minimum concrete cover applies to cast-in-place non-prestressed slabs, walls and joists not exposed to weather, with 36 mm bars and smaller?",
+    "o": [
+      "75 mm",
+      "50 mm",
+      "20 mm",
+      "40 mm"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Table 420.6.1.3.1 Cover for Cast-in-Place Non-Prestressed Concrete Members",
+    "n": "Interior slabs, walls and joists need only 20 mm for 36 mm bars and smaller, and 40 mm for 40 to 58 mm bars."
+  },
+  {
+    "s": "Column Ties",
+    "q": "A tied column has 20 mm longitudinal bars and 10 mm ties and measures 400 mm × 500 mm. What is the maximum tie spacing?",
+    "o": [
+      "400 mm",
+      "480 mm",
+      "500 mm",
+      "320 mm"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Sec. 425.7.2 Ties.1",
+    "n": "The spacing is the smallest of 16 × 20 = 320 mm, 48 × 10 = 480 mm and 400 mm, so 320 mm governs.",
+    "formula": "s = min(16 db, 48 dtie, least column dimension)",
+    "steps": [
+      "16 × 20 mm = 320 mm",
+      "48 × 10 mm = 480 mm",
+      "Least column dimension = 400 mm",
+      "Smallest value: s = 320 mm"
+    ]
+  },
+  {
+    "s": "Standard Hooks",
+    "q": "Under NSCP 2015, what minimum inside bend diameter applies to a standard hook on 10 mm to 25 mm bars?",
+    "o": [
+      "6db",
+      "8db",
+      "10db",
+      "4db"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Table 425.3.1 Standard Hook Geometry for Deformed Bars in Tension",
+    "n": "Small and medium bars (10 to 25 mm) bend around at least 6db. Stirrups and ties of 16 mm and smaller may bend tighter, at 4db, because they are thinner."
+  },
+  {
+    "s": "Standard Hooks",
+    "q": "Under NSCP 2015, what minimum inside bend diameter applies to stirrups and ties of 16 mm and smaller?",
+    "o": [
+      "6db",
+      "4db",
+      "8db",
+      "10db"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Table 425.3.2 Minimum Bend Diameter and Hook Geometry for Stirrups, Ties and Hoops",
+    "n": "Stirrups and ties 16 mm and smaller bend around 4db. From 20 mm up they need 6db, the same as main bars."
+  },
+  {
+    "s": "Column Ties",
+    "q": "Under NSCP 2015, what minimum tie size applies to columns with longitudinal bars of 32 mm and smaller?",
+    "o": [
+      "12 mm",
+      "8 mm",
+      "10 mm",
+      "6 mm"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Sec. 425.7.2 Ties.2",
+    "n": "10 mm ties are enough for longitudinal bars up to 32 mm. Bars of 36 mm and larger, or bundles, need 12 mm ties."
+  },
+  {
+    "s": "Standard Hooks",
+    "q": "Under NSCP 2015, what straight extension is required after a 180° standard hook?",
+    "o": [
+      "12db",
+      "6db, but not less than 75 mm",
+      "The greater of 8db and 150 mm",
+      "The greater of 4db and 65 mm"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Table 425.3.1 Standard Hook Geometry for Deformed Bars in Tension",
+    "n": "A 180° hook turns the bar fully back, so a short 4db tail is enough, but never less than 65 mm."
+  },
+  {
+    "s": "Concrete Cover",
+    "q": "Under NSCP 2015, what minimum concrete cover applies to cast-in-place prestressed members other than slabs, joists and walls, exposed to weather or in contact with ground?",
+    "o": [
+      "40 mm",
+      "75 mm",
+      "50 mm",
+      "25 mm"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Table 420.6.1.3.2 Cover for Cast-in-Place Prestressed Concrete Members",
+    "n": "Exposed prestressed beams and columns need 40 mm; exposed prestressed slabs, joists and walls need 25 mm."
+  },
+  {
+    "s": "Concrete Cover",
+    "q": "Where is concrete cover measured to?",
+    "o": [
+      "The center of the main bars",
+      "The outermost surface of the reinforcement, usually the stirrups or ties",
+      "The center of the member",
+      "The inside face of the main bars"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Table 420.6.1.3.1 Cover for Cast-in-Place Non-Prestressed Concrete Members",
+    "n": "Cover is the clear distance from the concrete surface to the nearest steel. In beams and columns that is usually the stirrup or tie, not the main bar behind it."
+  },
+  {
+    "s": "Standard Hooks",
+    "q": "Under NSCP 2015, what extension is required on a 90° hook of a 16 mm or smaller stirrup?",
+    "o": [
+      "12db",
+      "4db",
+      "6db, but not less than 75 mm",
+      "65 mm only"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Table 425.3.2 Minimum Bend Diameter and Hook Geometry for Stirrups, Ties and Hoops",
+    "n": "Small stirrups (16 mm and smaller) with a 90° hook need 6db and at least 75 mm. Larger stirrups (20 to 25 mm) need 12db."
+  },
+  {
+    "s": "Concrete Cover",
+    "q": "Under NSCP 2015, what minimum concrete cover applies to the stirrups, ties and spirals of cast-in-place prestressed beams and columns not exposed to weather?",
+    "o": [
+      "75 mm",
+      "50 mm",
+      "40 mm",
+      "25 mm"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Table 420.6.1.3.2 Cover for Cast-in-Place Prestressed Concrete Members",
+    "n": "In interior prestressed beams and columns, the primary reinforcement gets 40 mm and the stirrups, ties and spirals 25 mm."
+  },
+  {
+    "s": "Concrete Cover",
+    "q": "Under NSCP 2015, what minimum concrete cover applies to cast-in-place non-prestressed slabs, walls and joists not exposed to weather, with 40 mm and 58 mm bars?",
+    "o": [
+      "40 mm",
+      "75 mm",
+      "50 mm",
+      "25 mm"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Table 420.6.1.3.1 Cover for Cast-in-Place Non-Prestressed Concrete Members",
+    "n": "The very large 40 and 58 mm bars need 40 mm even inside. Bars of 36 mm and smaller need only 20 mm."
   }
 ]
