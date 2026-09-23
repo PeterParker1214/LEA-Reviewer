@@ -3,7 +3,7 @@
     "s": "Water Supply and Backflow",
     "q": "What is a thrust block sized from?",
     "o": [
-      "Maximum line pressure, pipe size and soil type",
+      "Line pressure, pipe size and soil type",
       "The pipe material only",
       "The number of fixtures served",
       "The depth of the trench only"
@@ -55,10 +55,10 @@
     "s": "Water Supply and Backflow",
     "q": "Where must a backflow preventer NOT be located?",
     "o": [
-      "Where toxic, poisonous or corrosive fumes can reach it",
-      "Where it can be tested",
-      "Above the ground",
-      "Near a shutoff valve"
+      "Where toxic or corrosive fumes can reach it",
+      "Where it can be reached for testing",
+      "Above the ground in the open air",
+      "Near a shutoff valve on the line"
     ],
     "c": 0,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 6",
@@ -68,10 +68,10 @@
     "s": "Water Supply and Backflow",
     "q": "How often must backflow prevention assemblies be tested?",
     "o": [
-      "Only when installed",
-      "At least once a year, by a certified tester",
-      "Every five years",
-      "Only after a failure"
+      "Only once, when installed",
+      "At least once a year, by a tester",
+      "Every five years, by the owner",
+      "Only after it has failed"
     ],
     "c": 1,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 6",
@@ -107,10 +107,10 @@
     "s": "Water Supply and Backflow",
     "q": "Which of these is used in sizing water supply piping?",
     "o": [
-      "The pressure available at the street main",
+      "The pressure at the street main",
       "The number of storeys only",
-      "The roof area",
-      "The number of drains"
+      "The roof area drained",
+      "The number of floor drains"
     ],
     "c": 0,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 6",
@@ -173,9 +173,9 @@
     "q": "What does a reduced-pressure principle assembly consist of?",
     "o": [
       "One check valve and one air opening",
-      "Two check valves with a relief valve between them, plus test cocks and shutoffs",
-      "Two check valves only",
-      "A single gate valve"
+      "Two checks with a relief valve between them",
+      "Two check valves with no relief valve",
+      "A single gate valve with test cocks"
     ],
     "c": 1,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 6",
@@ -201,7 +201,7 @@
       "Every 10 floors",
       "Only at the bottom",
       "Only at the top",
-      "At each storey or floor level"
+      "At each storey"
     ],
     "c": 3,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 6",
@@ -211,7 +211,7 @@
     "s": "Water Supply and Backflow",
     "q": "What must hangers and straps on water piping NOT do?",
     "o": [
-      "Compress, cut or wear the pipe, or stop it from moving",
+      "Damage the pipe or stop it moving",
       "Hold the pipe in line",
       "Carry the pipe's weight",
       "Allow for expansion"
@@ -291,8 +291,8 @@
     "o": [
       "At least 0.05 m",
       "At least 1.5 m",
-      "At least 0.30 m below ground",
-      "Any depth"
+      "At least 0.30 m",
+      "Any depth at all"
     ],
     "c": 2,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 6",
@@ -329,7 +329,7 @@
     "q": "What screen covers water tank vents and overflows?",
     "o": [
       "Coarse chicken wire",
-      "Fine corrosion-resistant screen, 14 to 18 mesh per 25 mm",
+      "Fine rust-proof mesh screen",
       "No screen at all",
       "A solid steel cap"
     ],
@@ -367,9 +367,9 @@
     "s": "Water Supply and Backflow",
     "q": "Where are thrust blocks placed on water mains?",
     "o": [
-      "At tees, bends, reducers, dead ends and valves",
-      "Only at straight runs",
-      "Only at the meter",
+      "At tees, bends, dead ends and valves",
+      "Only along straight runs",
+      "Only at the water meter",
       "Only at the building wall"
     ],
     "c": 0,
@@ -380,10 +380,10 @@
     "s": "Water Supply and Backflow",
     "q": "How is buried copper water tube protected?",
     "o": [
-      "With paint only",
-      "With bitumen coating, fiberglass wrap or a split casing",
-      "With no protection",
-      "By galvanizing"
+      "With a coat of paint only",
+      "With a coating, wrap or split casing",
+      "With no protection at all",
+      "By galvanizing the copper"
     ],
     "c": 1,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 6",
@@ -432,10 +432,10 @@
     "s": "Water Supply and Backflow",
     "q": "How are tanks, vats and pools filled from a potable line protected?",
     "o": [
-      "With a check valve only",
-      "With an approved vacuum breaker whose critical level is at least 152 mm above the water",
-      "With a gate valve",
-      "With no protection"
+      "With a single check valve only",
+      "With a vacuum breaker 152 mm above the water",
+      "With a gate valve on the inlet",
+      "With no protection at all"
     ],
     "c": 1,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 6",
@@ -458,10 +458,10 @@
     "s": "Water Supply and Backflow",
     "q": "What arrangement is prohibited in potable water piping?",
     "o": [
-      "Any with a shutoff valve",
-      "Any with more than one riser",
-      "Any with a meter",
-      "Any that lets unclean or polluted water enter the potable supply"
+      "Any that has a shutoff valve",
+      "Any that has more than one riser",
+      "Any that has a water meter",
+      "Any that lets polluted water into it"
     ],
     "c": 3,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 6",
@@ -510,9 +510,9 @@
     "s": "Water Supply and Backflow",
     "q": "What is required at every cross-connection?",
     "o": [
-      "A trap",
-      "A vent",
-      "A cleanout",
+      "A trap on the supply line",
+      "A vent on the supply line",
+      "A cleanout on the supply line",
       "Approved backflow prevention"
     ],
     "c": 3,
@@ -537,9 +537,9 @@
     "q": "How is potable water kept apart from another fluid in a heat exchanger?",
     "o": [
       "With a single thin wall",
-      "With two separate walls and a vented space between them to show leaks",
-      "With a check valve",
-      "With a strainer"
+      "With a double wall and a vented gap",
+      "With a check valve on the line",
+      "With a strainer on the inlet"
     ],
     "c": 1,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 6",
@@ -575,7 +575,7 @@
     "s": "Water Supply and Backflow",
     "q": "What may be used where the supply pressure is too low?",
     "o": [
-      "A hydropneumatic tank, or an elevated tank with booster pump",
+      "A hydropneumatic tank or booster pump",
       "A smaller service pipe",
       "A pressure-reducing valve",
       "A longer service pipe"
@@ -588,10 +588,10 @@
     "s": "Water Supply and Backflow",
     "q": "What stops a water tank from overflowing?",
     "o": [
-      "A check valve",
-      "A float valve, float switch or level electrode",
-      "A trap",
-      "A cleanout"
+      "A check valve on the inlet",
+      "A float valve or level switch",
+      "A trap on the overflow",
+      "A cleanout on the outlet"
     ],
     "c": 1,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 6",
@@ -617,7 +617,7 @@
       "Before the main shutoff valve",
       "At the water meter",
       "Below the sprinkler heads",
-      "On the discharge side of the last shutoff valve"
+      "After the last shutoff valve"
     ],
     "c": 3,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 6",
@@ -640,10 +640,10 @@
     "s": "Water Supply and Backflow",
     "q": "How must a relief-valve discharge pipe end?",
     "o": [
-      "Capped with a plug",
-      "152 mm to 0.60 m above the ground, pointing down, not threaded or capped",
-      "Into a closed pipe with a valve",
-      "Pointing up, above the roof"
+      "Capped with a threaded plug at the end",
+      "Open, pointing down, 152 mm–0.60 m above ground",
+      "Into a closed pipe with a shutoff valve",
+      "Pointing up, above the roof line"
     ],
     "c": 1,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 6",
@@ -667,9 +667,9 @@
     "q": "How are water-supplied aspirators protected?",
     "o": [
       "With a check valve only",
-      "With no protection",
-      "With a trap",
-      "With a vacuum breaker at least 152 mm above the unit"
+      "With no protection at all",
+      "With a trap on the outlet",
+      "With a vacuum breaker above the unit"
     ],
     "c": 3,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 6",
@@ -693,9 +693,9 @@
     "q": "What does a pressure vacuum breaker consist of?",
     "o": [
       "Two check valves and a relief valve",
-      "A spring-loaded air inlet and a check valve, with test cocks",
+      "An air inlet and check valve, testable",
       "One body and one air opening only",
-      "Two gate valves"
+      "Two gate valves in series"
     ],
     "c": 1,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 6",
@@ -731,10 +731,10 @@
     "s": "Water Supply and Backflow",
     "q": "For a flushometer's vacuum breaker, where must its critical level be?",
     "o": [
-      "At least 152 mm above the fixture's flood-level rim",
-      "At the flood-level rim",
-      "Below the rim",
-      "At the floor"
+      "152 mm above the flood-level rim",
+      "Exactly at the flood-level rim",
+      "Below the flood-level rim",
+      "At the floor level"
     ],
     "c": 0,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 6",
@@ -783,10 +783,10 @@
     "s": "Water Supply and Backflow",
     "q": "Where must a ball cock's critical level be in a flush tank?",
     "o": [
-      "At least 25 mm above the top of the overflow pipe",
-      "Below the overflow pipe",
-      "At the tank bottom",
-      "Anywhere in the tank"
+      "25 mm above the overflow pipe top",
+      "Below the top of the overflow pipe",
+      "At the bottom of the tank",
+      "Anywhere inside the tank"
     ],
     "c": 0,
     "ref": "1999 Revised National Plumbing Code of the Philippines, Chapter 6",
