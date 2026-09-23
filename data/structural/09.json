@@ -1,434 +1,434 @@
 [
   {
     "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding doubly reinforced beam?",
+    "q": "What is a doubly reinforced beam?",
     "o": [
-      "Factored/required load effects are obtained using prescribed load combinations and factors, not one universal 'load factor × load' expression.",
-      "The listed 38% gravel, 33% sand, 17% water and 12% cement are illustrative source proportions, not a universal concrete mixture design.",
-      "Includes compression reinforcement as well as tension reinforcement, useful where depth is limited or moment capacity/stiffness demands require it.",
-      "The source lists several old-code dimensional exceptions to minimum shear reinforcement; these are code-edition-specific and should be checked against the currently adopted concrete provisions."
-    ],
-    "c": 2,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Includes compression reinforcement as well as tension reinforcement, useful where depth is limited or moment capacity/stiffness demands require it."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding astm slump cone base?",
-    "o": [
-      "Standard slump mold base diameter is about 200 mm (8 in).",
-      "Stirrups/ties or other transverse reinforcement resisting shear and providing confinement/anchorage functions.",
-      "Legacy flexural concept where tensile steel and compression concrete reach limiting strain conditions simultaneously.",
-      "Informal term for a mix with relatively high cementitious content."
+      "A beam with compression steel as well as tension steel",
+      "A beam with two layers of tension bars only",
+      "A beam reinforced with both stirrups and ties",
+      "A beam cast together with its slab"
     ],
     "c": 0,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Standard slump mold base diameter is about 200 mm (8 in)."
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "Compression bars near the top help the concrete carry compression. They are used when the beam depth is limited and a singly reinforced section cannot reach the needed moment, and they also reduce long-term (creep) deflection."
   },
   {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding source 90-minute delivery note?",
+    "s": "Slump Test",
+    "q": "What is the base diameter of the standard slump cone?",
     "o": [
-      "Embedment length required to develop required reinforcing-bar stress through bond with concrete.",
-      "Specimen subsides approximately uniformly while retaining general shape; valid slump result.",
-      "Design strength is φ times nominal strength.",
-      "The source gives 90 minutes from batching plant to pouring; actual discharge limits depend on project specification, concrete temperature, mixture, admixtures and governing standard."
-    ],
-    "c": 3,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source gives 90 minutes from batching plant to pouring; actual discharge limits depend on project specification, concrete temperature, mixture, admixtures and governing standard."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding shear failure?",
-    "o": [
-      "Potentially brittle beam failure mode that can occur with little warning.",
-      "Concrete strength and durability are strongly influenced by water-cementitious materials ratio, not simply 'water' alone.",
-      "Field measure of consistency/workability response of fresh concrete, not a direct strength test.",
-      "Tension steel yields before concrete compression crushing, providing ductile warning/behavior; this is the preferred flexural philosophy."
-    ],
-    "c": 0,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Potentially brittle beam failure mode that can occur with little warning."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding ultimate load concept?",
-    "o": [
-      "Composite material made from hydraulic cement, water, fine aggregate, coarse aggregate and optional admixtures.",
-      "One side shears/slips; test should generally be repeated because result may be invalid.",
-      "Factored/required load effects are obtained using prescribed load combinations and factors, not one universal 'load factor × load' expression.",
-      "The source says failure occurs because 'there is no concrete present to take compression'; that is incorrect—there is concrete, but it crushes before adequate steel yielding."
-    ],
-    "c": 2,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Factored/required load effects are obtained using prescribed load combinations and factors, not one universal 'load factor × load' expression."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding rich mix?",
-    "o": [
-      "The source statement 'collapse slump acceptable for beams & columns' is not retained as a valid general rule.",
-      "Compression concrete crushes before sufficient tensile steel yielding, producing brittle behavior and therefore is undesirable.",
-      "Informal term for a mix with relatively high cementitious content.",
-      "Concrete and steel reinforcement act compositely; steel carries tensile forces efficiently while concrete is strong in compression."
-    ],
-    "c": 2,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Informal term for a mix with relatively high cementitious content."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding development length?",
-    "o": [
-      "Embedment length required to develop required reinforcing-bar stress through bond with concrete.",
-      "Admixture used to accelerate setting and/or early strength development.",
-      "Flexural reinforcement primarily in the tension zone for strength.",
-      "Specimen collapses; usually indicates mixture is too fluid for meaningful standard slump measurement and is not generally an 'acceptable beam/column slump' by itself."
-    ],
-    "c": 0,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Embedment length required to develop required reinforcing-bar stress through bond with concrete."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding under-reinforced section?",
-    "o": [
-      "Standard slump mold top diameter is about 100 mm (4 in).",
-      "Ingredient other than cementitious materials, water and aggregates added to modify fresh/hardened concrete properties.",
-      "Tension steel yields before concrete compression crushing, providing ductile warning/behavior; this is the preferred flexural philosophy.",
-      "Beam cast monolithically with slab such that an effective slab width acts as compression flange."
-    ],
-    "c": 2,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Tension steel yields before concrete compression crushing, providing ductile warning/behavior; this is the preferred flexural philosophy.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+UmVpbmZvcmNlZC1Db25jcmV0ZSBCZWFtIEJlaGF2aW9yPC90ZXh0Pgo8cmVjdCB4PSIxMjAiIHk9IjEzMCIgd2lkdGg9IjY2MCIgaGVpZ2h0PSIyMzAiIGNsYXNzPSJmIi8+CjxjaXJjbGUgY3g9IjIzMCIgY3k9IjMyNSIgcj0iMTAiIGZpbGw9IiMxMTEiLz48Y2lyY2xlIGN4PSIzMzAiIGN5PSIzMjUiIHI9IjEwIiBmaWxsPSIjMTExIi8+PGNpcmNsZSBjeD0iNDMwIiBjeT0iMzI1IiByPSIxMCIgZmlsbD0iIzExMSIvPjxjaXJjbGUgY3g9IjUzMCIgY3k9IjMyNSIgcj0iMTAiIGZpbGw9IiMxMTEiLz48Y2lyY2xlIGN4PSI2MzAiIGN5PSIzMjUiIHI9IjEwIiBmaWxsPSIjMTExIi8+Cjx0ZXh0IHg9IjI4NSIgeT0iMTA1IiBjbGFzcz0icyI+Y29tcHJlc3Npb24gem9uZTwvdGV4dD48dGV4dCB4PSIzMDAiIHk9IjQyMCIgY2xhc3M9InMiPnRlbnNpb24gcmVpbmZvcmNlbWVudDwvdGV4dD48L3N2Zz4="
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding shear slump?",
-    "o": [
-      "One side shears/slips; test should generally be repeated because result may be invalid.",
-      "Includes compression reinforcement as well as tension reinforcement, useful where depth is limited or moment capacity/stiffness demands require it.",
-      "Standard slump mold height is about 300 mm (12 in).",
-      "Admixture used to delay setting."
-    ],
-    "c": 0,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] One side shears/slips; test should generally be repeated because result may be invalid."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding reinforced concrete?",
-    "o": [
-      "The listed 38% gravel, 33% sand, 17% water and 12% cement are illustrative source proportions, not a universal concrete mixture design.",
-      "Wide slab portion participating in compression in positive bending for a T-beam.",
-      "Standard slump mold base diameter is about 200 mm (8 in).",
-      "Concrete and steel reinforcement act compositely; steel carries tensile forces efficiently while concrete is strong in compression."
-    ],
-    "c": 3,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Concrete and steel reinforcement act compositely; steel carries tensile forces efficiently while concrete is strong in compression."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding singly reinforced beam?",
-    "o": [
-      "The source says 120 mm / 4 in; 4 in is about 102 mm, so the metric value is inconsistent.",
-      "Stirrups/ties or other transverse reinforcement resisting shear and providing confinement/anchorage functions.",
-      "Flexural reinforcement primarily in the tension zone for strength.",
-      "The source gives 90 minutes from batching plant to pouring; actual discharge limits depend on project specification, concrete temperature, mixture, admixtures and governing standard."
-    ],
-    "c": 2,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Flexural reinforcement primarily in the tension zone for strength."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding astm slump cone top?",
-    "o": [
-      "The source's blanket '≤3% concrete volume' rule is not a universal admixture limit; dosage is admixture- and mix-design-specific.",
-      "Design strength is φ times nominal strength.",
-      "Potentially brittle beam failure mode that can occur with little warning.",
-      "Standard slump mold top diameter is about 100 mm (4 in)."
-    ],
-    "c": 3,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Standard slump mold top diameter is about 100 mm (4 in)."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding retarder?",
-    "o": [
-      "The source lists several old-code dimensional exceptions to minimum shear reinforcement; these are code-edition-specific and should be checked against the currently adopted concrete provisions.",
-      "Factored/required load effects are obtained using prescribed load combinations and factors, not one universal 'load factor × load' expression.",
-      "Admixture used to delay setting.",
-      "Field measure of consistency/workability response of fresh concrete, not a direct strength test."
-    ],
-    "c": 2,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Admixture used to delay setting."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding flange?",
-    "o": [
-      "Informal term for a mix with relatively high cementitious content.",
-      "Composite material made from hydraulic cement, water, fine aggregate, coarse aggregate and optional admixtures.",
-      "Legacy flexural concept where tensile steel and compression concrete reach limiting strain conditions simultaneously.",
-      "Wide slab portion participating in compression in positive bending for a T-beam."
-    ],
-    "c": 3,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Wide slab portion participating in compression in positive bending for a T-beam."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding source top-diameter error?",
-    "o": [
-      "The source says 120 mm / 4 in; 4 in is about 102 mm, so the metric value is inconsistent.",
-      "Specimen subsides approximately uniformly while retaining general shape; valid slump result.",
-      "Compression concrete crushes before sufficient tensile steel yielding, producing brittle behavior and therefore is undesirable.",
-      "Embedment length required to develop required reinforcing-bar stress through bond with concrete."
-    ],
-    "c": 0,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source says 120 mm / 4 in; 4 in is about 102 mm, so the metric value is inconsistent."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding source ≤3% admixture volume?",
-    "o": [
-      "Concrete strength and durability are strongly influenced by water-cementitious materials ratio, not simply 'water' alone.",
-      "The source's blanket '≤3% concrete volume' rule is not a universal admixture limit; dosage is admixture- and mix-design-specific.",
-      "Tension steel yields before concrete compression crushing, providing ductile warning/behavior; this is the preferred flexural philosophy.",
-      "Specimen collapses; usually indicates mixture is too fluid for meaningful standard slump measurement and is not generally an 'acceptable beam/column slump' by itself."
+      "100 mm (4 in)",
+      "200 mm (8 in)",
+      "300 mm (12 in)",
+      "150 mm (6 in)"
     ],
     "c": 1,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source's blanket '≤3% concrete volume' rule is not a universal admixture limit; dosage is admixture- and mix-design-specific."
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "The ASTM C143 slump cone is 300 mm tall, 200 mm across the base and 100 mm across the top. Keep them apart: 300 high, 200 bottom, 100 top."
   },
   {
     "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding source small-beam shear exception?",
+    "q": "Under ASTM C94, within what time after batching should ready-mixed concrete normally be fully discharged?",
     "o": [
-      "One side shears/slips; test should generally be repeated because result may be invalid.",
-      "Ingredient other than cementitious materials, water and aggregates added to modify fresh/hardened concrete properties.",
-      "The source lists several old-code dimensional exceptions to minimum shear reinforcement; these are code-edition-specific and should be checked against the currently adopted concrete provisions.",
-      "The source says failure occurs because 'there is no concrete present to take compression'; that is incorrect—there is concrete, but it crushes before adequate steel yielding."
+      "30 minutes",
+      "3 hours",
+      "90 minutes",
+      "6 hours"
     ],
     "c": 2,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source lists several old-code dimensional exceptions to minimum shear reinforcement; these are code-edition-specific and should be checked against the currently adopted concrete provisions."
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "ASTM C94 asks for discharge within 1½ hours (or before 300 drum revolutions) after water first meets the cement. After that the mix stiffens. A project specification may allow more time with retarders or less time in hot weather."
   },
   {
     "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding balanced section?",
+    "q": "Why do codes guard against shear failure in beams more strictly than flexural failure?",
     "o": [
-      "The source statement 'collapse slump acceptable for beams & columns' is not retained as a valid general rule.",
-      "Legacy flexural concept where tensile steel and compression concrete reach limiting strain conditions simultaneously.",
-      "Concrete and steel reinforcement act compositely; steel carries tensile forces efficiently while concrete is strong in compression.",
-      "Includes compression reinforcement as well as tension reinforcement, useful where depth is limited or moment capacity/stiffness demands require it."
-    ],
-    "c": 1,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Legacy flexural concept where tensile steel and compression concrete reach limiting strain conditions simultaneously."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding true slump?",
-    "o": [
-      "Admixture used to accelerate setting and/or early strength development.",
-      "Standard slump mold base diameter is about 200 mm (8 in).",
-      "Specimen subsides approximately uniformly while retaining general shape; valid slump result.",
-      "Flexural reinforcement primarily in the tension zone for strength."
-    ],
-    "c": 2,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Specimen subsides approximately uniformly while retaining general shape; valid slump result.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+U2x1bXAgVGVzdCBPdXRjb21lczwvdGV4dD4KPHBhdGggZD0iTTEyMCAzNTAgTDE3MCAxMzAgSDI4MCBMMzMwIDM1MCBaIiBjbGFzcz0ibCIvPjx0ZXh0IHg9IjE1MCIgeT0iNDEwIiBjbGFzcz0icyI+dHJ1ZTwvdGV4dD4KPHBhdGggZD0iTTM5MCAzNTAgTDQ1MCAxNzAgSDU3MCBMNjIwIDM1MCBaIiBjbGFzcz0ibCIvPjxwYXRoIGQ9Ik01MDAgMTcwIEw1ODAgMjIwIiBjbGFzcz0idGgiLz48dGV4dCB4PSI0NjUiIHk9IjQxMCIgY2xhc3M9InMiPnNoZWFyPC90ZXh0Pgo8cGF0aCBkPSJNNjgwIDM1MCBRNzMwIDMwMCA3OTAgMzQwIiBjbGFzcz0ibCIvPjx0ZXh0IHg9IjcwMCIgeT0iNDEwIiBjbGFzcz0icyI+Y29sbGFwc2U8L3RleHQ+PC9zdmc+"
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding water-cement ratio significance?",
-    "o": [
-      "Standard slump mold top diameter is about 100 mm (4 in).",
-      "The source gives 90 minutes from batching plant to pouring; actual discharge limits depend on project specification, concrete temperature, mixture, admixtures and governing standard.",
-      "Concrete strength and durability are strongly influenced by water-cementitious materials ratio, not simply 'water' alone.",
-      "Beam cast monolithically with slab such that an effective slab width acts as compression flange."
-    ],
-    "c": 2,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Concrete strength and durability are strongly influenced by water-cementitious materials ratio, not simply 'water' alone."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding source over-reinforced explanation error?",
-    "o": [
-      "Admixture used to delay setting.",
-      "Potentially brittle beam failure mode that can occur with little warning.",
-      "The source says failure occurs because 'there is no concrete present to take compression'; that is incorrect—there is concrete, but it crushes before adequate steel yielding.",
-      "Standard slump mold height is about 300 mm (12 in)."
-    ],
-    "c": 2,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source says failure occurs because 'there is no concrete present to take compression'; that is incorrect—there is concrete, but it crushes before adequate steel yielding."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding source collapse-slump error?",
-    "o": [
-      "Factored/required load effects are obtained using prescribed load combinations and factors, not one universal 'load factor × load' expression.",
-      "The listed 38% gravel, 33% sand, 17% water and 12% cement are illustrative source proportions, not a universal concrete mixture design.",
-      "The source statement 'collapse slump acceptable for beams & columns' is not retained as a valid general rule.",
-      "Wide slab portion participating in compression in positive bending for a T-beam."
-    ],
-    "c": 2,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source statement 'collapse slump acceptable for beams & columns' is not retained as a valid general rule."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding accelerator?",
-    "o": [
-      "Admixture used to accelerate setting and/or early strength development.",
-      "Informal term for a mix with relatively high cementitious content.",
-      "The source says 120 mm / 4 in; 4 in is about 102 mm, so the metric value is inconsistent.",
-      "Stirrups/ties or other transverse reinforcement resisting shear and providing confinement/anchorage functions."
-    ],
-    "c": 0,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Admixture used to accelerate setting and/or early strength development."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding t-beam?",
-    "o": [
-      "Design strength is φ times nominal strength.",
-      "The source's blanket '≤3% concrete volume' rule is not a universal admixture limit; dosage is admixture- and mix-design-specific.",
-      "Beam cast monolithically with slab such that an effective slab width acts as compression flange.",
-      "Embedment length required to develop required reinforcing-bar stress through bond with concrete."
-    ],
-    "c": 2,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Beam cast monolithically with slab such that an effective slab width acts as compression flange."
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding astm slump cone height?",
-    "o": [
-      "Tension steel yields before concrete compression crushing, providing ductile warning/behavior; this is the preferred flexural philosophy.",
-      "The source lists several old-code dimensional exceptions to minimum shear reinforcement; these are code-edition-specific and should be checked against the currently adopted concrete provisions.",
-      "Field measure of consistency/workability response of fresh concrete, not a direct strength test.",
-      "Standard slump mold height is about 300 mm (12 in)."
+      "Shear failure always happens at midspan, where it is hard to see",
+      "Shear failure only happens in steel beams",
+      "Shear failure is slow and ductile, so it is hard to detect",
+      "Shear failure is brittle and can happen suddenly, with little warning"
     ],
     "c": 3,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Standard slump mold height is about 300 mm (12 in)."
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "A beam that fails in shear cracks diagonally and can collapse abruptly, while an under-reinforced beam failing in bending sags and cracks visibly first. That is why the shear strength reduction factor (φ = 0.75) is lower than the one for bending (0.90)."
   },
   {
     "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding source concrete-volume percentages?",
+    "q": "In strength design, how is the required (ultimate) strength U found?",
     "o": [
-      "The listed 38% gravel, 33% sand, 17% water and 12% cement are illustrative source proportions, not a universal concrete mixture design.",
-      "One side shears/slips; test should generally be repeated because result may be invalid.",
-      "Composite material made from hydraulic cement, water, fine aggregate, coarse aggregate and optional admixtures.",
-      "Legacy flexural concept where tensile steel and compression concrete reach limiting strain conditions simultaneously."
+      "By multiplying the service loads by load factors in the code load combinations",
+      "By adding all the service loads with no factors",
+      "By dividing the service loads by a factor of safety",
+      "By multiplying only the live load by 2"
     ],
     "c": 0,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The listed 38% gravel, 33% sand, 17% water and 12% cement are illustrative source proportions, not a universal concrete mixture design."
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "U comes from load combinations such as U = 1.4D or U = 1.2D + 1.6L (NSCP 203.3). Different loads get different factors because some are more uncertain than others. The member is then designed so that φ times its nominal strength is at least U."
   },
   {
     "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding shear reinforcement?",
+    "q": "What is a \"rich\" concrete mix?",
     "o": [
-      "Specimen subsides approximately uniformly while retaining general shape; valid slump result.",
-      "Stirrups/ties or other transverse reinforcement resisting shear and providing confinement/anchorage functions.",
-      "Concrete and steel reinforcement act compositely; steel carries tensile forces efficiently while concrete is strong in compression.",
-      "Compression concrete crushes before sufficient tensile steel yielding, producing brittle behavior and therefore is undesirable."
+      "A mix with a high water-cement ratio",
+      "A mix with a relatively high cement content",
+      "A mix with extra coarse aggregate",
+      "A mix with no admixtures"
     ],
     "c": 1,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Stirrups/ties or other transverse reinforcement resisting shear and providing confinement/anchorage functions."
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "A rich mix has more cement for its volume, such as Class AA (1 : 1½ : 3), so it is stronger but costlier and shrinks more. A lean mix, such as Class C (1 : 2½ : 5), has less cement."
   },
   {
     "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding design strength concept?",
+    "q": "What is the development length of a reinforcing bar?",
     "o": [
-      "Flexural reinforcement primarily in the tension zone for strength.",
-      "Concrete strength and durability are strongly influenced by water-cementitious materials ratio, not simply 'water' alone.",
-      "Design strength is φ times nominal strength.",
-      "Specimen collapses; usually indicates mixture is too fluid for meaningful standard slump measurement and is not generally an 'acceptable beam/column slump' by itself."
+      "The length of the hook bent at the bar's end",
+      "The overlap between two spliced bars",
+      "The embedment needed for bond to build up the bar's full design stress",
+      "The distance between two adjacent bars"
     ],
     "c": 2,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Design strength is φ times nominal strength."
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "A bar can only pull as hard as the concrete around it can grip it. The development length ld is how far it must be embedded past the point of maximum stress so bond can develop fy. It grows with bar size and fy and shrinks with higher f'c."
   },
   {
     "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding slump?",
+    "q": "Why is an under-reinforced beam section preferred in design?",
     "o": [
-      "Ingredient other than cementitious materials, water and aggregates added to modify fresh/hardened concrete properties.",
-      "Field measure of consistency/workability response of fresh concrete, not a direct strength test.",
-      "Standard slump mold top diameter is about 100 mm (4 in).",
-      "The source says failure occurs because 'there is no concrete present to take compression'; that is incorrect—there is concrete, but it crushes before adequate steel yielding."
+      "The concrete crushes first, which is quick and clean",
+      "It uses the most steel possible",
+      "It never cracks under service loads",
+      "The tension steel yields before the concrete crushes, so the beam gives warning before it fails"
     ],
-    "c": 1,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Field measure of consistency/workability response of fresh concrete, not a direct strength test."
+    "c": 3,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "In an under-reinforced (tension-controlled) section the steel yields first. The beam deflects and cracks widely, warning the occupants long before collapse. The code encourages this by giving the highest φ (0.90) to tension-controlled sections."
   },
   {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding concrete?",
+    "s": "Slump Test",
+    "q": "In the figure of slump-test results, which one is a shear slump?",
     "o": [
-      "Admixture used to delay setting.",
-      "The source statement 'collapse slump acceptable for beams & columns' is not retained as a valid general rule.",
-      "Composite material made from hydraulic cement, water, fine aggregate, coarse aggregate and optional admixtures.",
-      "Includes compression reinforcement as well as tension reinforcement, useful where depth is limited or moment capacity/stiffness demands require it."
-    ],
-    "c": 2,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Composite material made from hydraulic cement, water, fine aggregate, coarse aggregate and optional admixtures.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+Q29uY3JldGUgQ29uc3RpdHVlbnRzPC90ZXh0Pgo8cmVjdCB4PSI4MCIgeT0iMTIwIiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjI2MCIgY2xhc3M9ImYiLz48dGV4dCB4PSIxMjUiIHk9IjI0NSIgY2xhc3M9InMiPkNlbWVudDwvdGV4dD4KPHJlY3QgeD0iMjYwIiB5PSIxMjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMjYwIiBjbGFzcz0iZjIiLz48dGV4dCB4PSIzMDUiIHk9IjI0NSIgY2xhc3M9InMiPldhdGVyPC90ZXh0Pgo8cmVjdCB4PSI0NDAiIHk9IjEyMCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIyNjAiIGNsYXNzPSJmIi8+PHRleHQgeD0iNDc1IiB5PSIyNDUiIGNsYXNzPSJzIj5GaW5lIEFnZy48L3RleHQ+CjxyZWN0IHg9IjYyMCIgeT0iMTIwIiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjI2MCIgY2xhc3M9ImYyIi8+PHRleHQgeD0iNjUwIiB5PSIyNDUiIGNsYXNzPSJzIj5Db2Fyc2UgQWdnLjwvdGV4dD48L3N2Zz4="
-  },
-  {
-    "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding over-reinforced section?",
-    "o": [
-      "Compression concrete crushes before sufficient tensile steel yielding, producing brittle behavior and therefore is undesirable.",
-      "Standard slump mold base diameter is about 200 mm (8 in).",
-      "Admixture used to accelerate setting and/or early strength development.",
-      "Wide slab portion participating in compression in positive bending for a T-beam."
+      "Shape B",
+      "Shape A",
+      "Shape C",
+      "None of them"
     ],
     "c": 0,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Compression concrete crushes before sufficient tensile steel yielding, producing brittle behavior and therefore is undesirable."
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "In a shear slump (B), one side of the concrete slides off along a slanted plane. It points to a harsh mix that lacks cohesion. ASTM C143 treats it as an invalid result, so the test is repeated with a fresh sample.",
+    "img": "../../subjects/structural/quizzes/img/slump-types.png"
   },
   {
     "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding collapse slump?",
+    "q": "Why are concrete and steel combined in reinforced concrete?",
     "o": [
-      "Beam cast monolithically with slab such that an effective slab width acts as compression flange.",
-      "The source gives 90 minutes from batching plant to pouring; actual discharge limits depend on project specification, concrete temperature, mixture, admixtures and governing standard.",
-      "The source says 120 mm / 4 in; 4 in is about 102 mm, so the metric value is inconsistent.",
-      "Specimen collapses; usually indicates mixture is too fluid for meaningful standard slump measurement and is not generally an 'acceptable beam/column slump' by itself."
+      "Steel is strong in compression and concrete carries the tension",
+      "Concrete is strong in compression and steel carries the tension",
+      "Both are weak in tension, so they share it",
+      "Steel only protects the concrete from fire"
     ],
-    "c": 3,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Specimen collapses; usually indicates mixture is too fluid for meaningful standard slump measurement and is not generally an 'acceptable beam/column slump' by itself."
+    "c": 1,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "Concrete's tensile strength is only about a tenth of its compressive strength, so it cracks under tension. Steel bars placed in the tension zone take over after cracking. The two work together because they bond well and expand with heat at almost the same rate."
   },
   {
     "s": "Concrete and RC Design",
-    "q": "Which statement is correct regarding admixture?",
+    "q": "What is a singly reinforced beam?",
     "o": [
-      "Standard slump mold height is about 300 mm (12 in).",
-      "Potentially brittle beam failure mode that can occur with little warning.",
-      "The source's blanket '≤3% concrete volume' rule is not a universal admixture limit; dosage is admixture- and mix-design-specific.",
-      "Ingredient other than cementitious materials, water and aggregates added to modify fresh/hardened concrete properties."
+      "A beam with only one bar",
+      "A beam with steel only in the compression zone",
+      "A beam with longitudinal steel only in the tension zone",
+      "A beam with no stirrups"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "A singly reinforced beam relies on the concrete alone for compression and puts its main bars in the tension zone. It is the common case; compression steel is added (doubly reinforced) only when needed."
+  },
+  {
+    "s": "Slump Test",
+    "q": "What is the top diameter of the standard slump cone?",
+    "o": [
+      "200 mm (8 in)",
+      "120 mm (5 in)",
+      "300 mm (12 in)",
+      "100 mm (4 in)"
     ],
     "c": 3,
-    "ref": "ACI 318-25 / ASTM C143/C143M / concrete fundamentals",
-    "n": "[SOURCE FACT — AUDITED] Ingredient other than cementitious materials, water and aggregates added to modify fresh/hardened concrete properties."
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "The top opening of the ASTM C143 cone is 100 mm (4 in); the base is 200 mm and the height 300 mm. 120 mm is a common wrong figure: 4 inches is about 102 mm."
+  },
+  {
+    "s": "Concrete and RC Design",
+    "q": "Which admixture delays the setting of concrete?",
+    "o": [
+      "Retarder",
+      "Accelerator",
+      "Air-entraining agent",
+      "Superplasticizer"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "Retarders slow setting, which helps in hot weather, for long hauls and to avoid cold joints in large pours. Accelerators do the opposite, and air-entraining agents add tiny bubbles for freeze-thaw resistance."
+  },
+  {
+    "s": "Concrete and RC Design",
+    "q": "In a T-beam under positive moment, which part works as the compression flange?",
+    "o": [
+      "The web below the slab",
+      "The effective width of the slab cast with the beam",
+      "The stirrups",
+      "The bottom tension bars"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "When the slab is cast monolithically with the beam, a strip of slab (the effective flange width) carries the compression at the top. The web below it holds the tension steel. Under negative moment the flange is in tension, so the beam acts as a rectangle."
+  },
+  {
+    "s": "Slump Test",
+    "q": "What is the height of the standard slump cone?",
+    "o": [
+      "200 mm (8 in)",
+      "100 mm (4 in)",
+      "300 mm (12 in)",
+      "450 mm (18 in)"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "The cone is 300 mm tall. It is filled in three layers of equal volume, each rodded 25 times, then lifted straight up in about 5 seconds, and the drop of the concrete is measured."
+  },
+  {
+    "s": "Concrete and RC Design",
+    "q": "How is the dosage of a chemical admixture decided?",
+    "o": [
+      "Always 3% of the total concrete volume",
+      "Always 1 liter per cubic meter, whatever the product",
+      "By the slump alone, with no reference to the product",
+      "From the manufacturer's recommendation and trial mixes, usually per mass of cement"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "Each admixture has its own effective range, usually given in mL per 100 kg of cement, and the right amount is confirmed with trial batches. There is no single percentage that fits all admixtures."
+  },
+  {
+    "s": "Concrete and RC Design",
+    "q": "Under NSCP 2015, which members are exempt from the minimum shear reinforcement required in beams?",
+    "o": [
+      "Solid slabs and footings",
+      "Deep transfer girders",
+      "All beams deeper than 600 mm",
+      "Beams carrying heavy concentrated loads"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "NSCP 2015 Sec. 409.6.3.1 (from ACI 318) exempts solid slabs, footings, joist construction and very shallow beams from minimum stirrups where the factored shear exceeds 0.5φVc. Ordinary beams need at least the minimum stirrups there, because shear failure is brittle."
+  },
+  {
+    "s": "Concrete and RC Design",
+    "q": "What is a balanced section in reinforced concrete flexure?",
+    "o": [
+      "One where the tension and compression steel have equal areas",
+      "One where the tension steel reaches yield just as the concrete reaches its crushing strain of 0.003",
+      "One where the beam depth equals its width",
+      "One with steel only at mid-depth"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "At balance, the steel yields (εy = fy/Es) at the same moment the extreme concrete fibre reaches 0.003. More steel than that gives an over-reinforced, brittle beam; less gives an under-reinforced, ductile one."
+  },
+  {
+    "s": "Slump Test",
+    "q": "In the figure of slump-test results, which one is a true slump?",
+    "o": [
+      "Shape B",
+      "Shape C",
+      "Shape A",
+      "All three"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "In a true slump (A) the concrete settles evenly and keeps roughly its cone shape. Only this form gives a valid slump reading, measured from the top of the cone to the top of the settled concrete.",
+    "img": "../../subjects/structural/quizzes/img/slump-types.png"
+  },
+  {
+    "s": "Concrete and RC Design",
+    "q": "What single factor has the strongest effect on the strength and durability of hardened concrete?",
+    "o": [
+      "The size of the mixer",
+      "The color of the aggregate",
+      "The slump cone used for testing",
+      "The water-cement ratio"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "Abrams' law: as the water-cement ratio rises, strength falls, because the extra water leaves pores when it evaporates. More pores also let water and chlorides in, so durability suffers too."
+  },
+  {
+    "s": "Concrete and RC Design",
+    "q": "How does NSCP 2015 keep beams from being over-reinforced?",
+    "o": [
+      "By requiring a net tensile strain in the steel of at least 0.004",
+      "By banning compression steel",
+      "By requiring the beam depth to equal twice the width",
+      "By limiting the concrete strength to 21 MPa"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "Flexural members must have εt ≥ 0.004 at nominal strength (NSCP 409.3.3.1). To get the full φ = 0.90 the section must be tension-controlled, with εt ≥ 0.005. Both limits keep the steel yielding before the concrete crushes."
+  },
+  {
+    "s": "Slump Test",
+    "q": "A slump test on a normal-weight column mix gives a collapse slump. What should be concluded?",
+    "o": [
+      "The mix is ideal for columns",
+      "The mix is too wet for a valid slump reading, so the mix should be checked",
+      "The result is a valid slump of 300 mm",
+      "The concrete is too stiff and needs more cement"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "A collapse means the concrete spread out entirely, usually because of too much water. The test cannot measure it, and for ordinary concrete it signals a mix problem. Very fluid mixes such as self-consolidating concrete are checked with a slump-flow test instead."
+  },
+  {
+    "s": "Concrete and RC Design",
+    "q": "Which admixture speeds up setting and early strength gain?",
+    "o": [
+      "Retarder",
+      "Air-entraining agent",
+      "Accelerator",
+      "Water reducer"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "Accelerators, such as calcium chloride or non-chloride types, shorten setting time and raise early strength, which is useful for early form removal or cold weather. Calcium chloride is not allowed in prestressed concrete or near embedded aluminum because it corrodes metal."
+  },
+  {
+    "s": "Concrete and RC Design",
+    "q": "What is a T-beam?",
+    "o": [
+      "A beam with a T-shaped steel section inside",
+      "A beam supported at three points",
+      "A beam used only for roof trusses",
+      "A beam cast together with the slab, so part of the slab acts as its compression flange"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "In monolithic construction the slab and beam act as one. The slab strip over the beam forms the flange of the T and the part below the slab forms the web. An edge beam with a slab on one side only is called an L-beam."
+  },
+  {
+    "s": "Concrete and RC Design",
+    "q": "In a typical concrete mix, which ingredient takes up the largest share of the volume?",
+    "o": [
+      "Coarse aggregate (gravel)",
+      "Fine aggregate (sand)",
+      "Water",
+      "Cement"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "Aggregates fill about 60 to 75% of concrete's volume, and coarse aggregate is the largest single part, commonly around 35 to 40%. Cement is only about 10 to 15%. The exact split comes from the mix design."
+  },
+  {
+    "s": "Concrete and RC Design",
+    "q": "What is the role of shear reinforcement (stirrups) in a concrete beam?",
+    "o": [
+      "It carries the main bending moment at midspan",
+      "It resists diagonal tension from shear and helps confine the concrete and hold the main bars",
+      "It prevents the slab from lifting off the beam",
+      "It controls shrinkage along the top surface"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "Stirrups cross the diagonal cracks that shear causes near the supports and carry the tension across them. They also hold the longitudinal bars in place and add some confinement to the concrete."
+  },
+  {
+    "s": "Concrete and RC Design",
+    "q": "In strength design, how is the design strength of a member obtained?",
+    "o": [
+      "By dividing the nominal strength by the load factor",
+      "By adding a safety margin of 10 kN",
+      "By multiplying the nominal strength by a strength reduction factor φ",
+      "By using the nominal strength with no reduction"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "Design strength = φ × nominal strength (φMn, φVn, φPn) and must be at least the required strength U. φ reflects how reliable and how ductile each mode is: 0.90 for tension-controlled bending, 0.75 for shear, 0.65 for tied columns."
+  },
+  {
+    "s": "Concrete and RC Design",
+    "q": "What does the slump test measure?",
+    "o": [
+      "The compressive strength of hardened concrete",
+      "The air content of fresh concrete",
+      "The unit weight of hardened concrete",
+      "The consistency (workability) of fresh concrete"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "Slump shows how stiff or fluid a fresh mix is and whether batches are consistent. It is not a strength test; strength is checked by crushing cylinders, usually at 28 days."
+  },
+  {
+    "s": "Concrete and RC Design",
+    "q": "What is concrete made of?",
+    "o": [
+      "Cement, water, fine aggregate and coarse aggregate, with optional admixtures",
+      "Cement, lime and sand only",
+      "Cement and water only",
+      "Sand, gravel and lime only"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "Cement and water form a paste that hardens by hydration and binds the sand and gravel. Admixtures may be added to change workability, setting time or durability. Cement, lime and sand without gravel make mortar or plaster, not concrete."
+  },
+  {
+    "s": "Concrete and RC Design",
+    "q": "What is an over-reinforced beam section?",
+    "o": [
+      "One with more stirrups than the code minimum",
+      "One with so much tension steel that the concrete crushes before the steel yields",
+      "One with compression steel added",
+      "One with steel placed below the required cover"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "With too much steel, the steel is still elastic when the concrete reaches 0.003 strain and crushes. The failure is sudden, with little deflection or cracking to warn anyone, so codes do not allow it."
+  },
+  {
+    "s": "Slump Test",
+    "q": "In the figure of slump-test results, which one is a collapse slump?",
+    "o": [
+      "Shape A",
+      "Shape B",
+      "Shape C",
+      "None of them"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "In a collapse slump (C) the concrete loses its shape and spreads out. It usually means the mix is too wet, and it does not give a valid slump value.",
+    "img": "../../subjects/structural/quizzes/img/slump-types.png"
+  },
+  {
+    "s": "Concrete and RC Design",
+    "q": "What is an admixture in concrete?",
+    "o": [
+      "Any aggregate finer than 4.75 mm",
+      "The water added after the mixer leaves the plant",
+      "The steel reinforcement",
+      "An ingredient other than cement, water and aggregate, added to change the concrete's properties"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "Admixtures are added just before or during mixing to adjust properties: retarders and accelerators change the setting time, water reducers improve workability, and air-entraining agents add freeze-thaw resistance."
+  },
+  {
+    "s": "Concrete and RC Design",
+    "q": "A ready-mix truck arrives 2 hours after batching and the concrete has stiffened. What should be done?",
+    "o": [
+      "Reject it or refer it to the engineer, since it is past the normal 90-minute limit",
+      "Add water at the site until it flows",
+      "Pour it into columns, where stiff concrete is better",
+      "Mix in more cement by hand"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
+    "n": "Adding water raises the water-cement ratio and cuts strength. ASTM C94 sets a normal limit of 90 minutes from batching, so concrete this late is usually rejected unless the engineer approves otherwise (for example, when a retarder was used)."
   }
 ]

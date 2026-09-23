@@ -576,8 +576,26 @@ def support_types():
     return svg(520, 140, body)
 
 
+def slump_types():
+    # three slump-test results beside the dashed outline of the 300 mm cone
+    g, conc = 180, '#c9c3b6'
+    cone = lambda cx: f'<polygon points="{cx-50},{g} {cx+50},{g} {cx+25},{g-150} {cx-25},{g-150}" fill="none" stroke="#999" stroke-width="1.2" stroke-dasharray="5 4"/>'
+    shapes = {
+        'A': lambda cx: poly([(cx - 52, g), (cx + 52, g), (cx + 30, g - 118), (cx - 30, g - 118)], conc),           # true: even drop
+        'B': lambda cx: poly([(cx - 52, g), (cx + 52, g), (cx + 46, g - 60), (cx - 28, g - 128), (cx - 34, g - 60)], conc),  # shear: one side slid off
+        'C': lambda cx: f'<path class="s" fill="{conc}" d="M{cx-85},{g} Q{cx-40},{g-38} {cx},{g-40} Q{cx+40},{g-38} {cx+85},{g} Z"/>',  # collapse
+    }
+    body = ''
+    for k, (L, fn) in enumerate(shapes.items()):
+        cx = 100 + k * 200
+        body += cone(cx) + fn(cx) + f'<text class="L" x="{cx}" y="{g + 30}" text-anchor="middle">{L}</text>'
+    body += line(20, g, 580, g, 's') + cap(300, g + 55, 'Dashed outline = the cone before it was lifted')
+    return svg(600, 250, body)
+
+
 BT = 'building-technology/'
 FIGURES = {
+    'structural/slump-types': slump_types,
     'structural/beam-types': beam_types, 'structural/support-types': support_types,
     'structural/stress-strain': stress_strain,
     BT + 'curtain-wall': curtain_wall, BT + 'window-frame': window_frame, BT + 'slab-bands': slab_bands,
