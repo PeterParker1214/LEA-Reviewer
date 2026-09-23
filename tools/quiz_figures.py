@@ -659,8 +659,36 @@ def footing_types():
     return svg(660, 420, body)
 
 
+def lateral_systems():
+    # two-storey, one-bay elevations: A moment frame (rigid joints), B X-braced frame, C shear wall
+    body = ''
+    g, h, w = 250, 90, 130
+    for k, L in enumerate('ABC'):
+        x0 = 40 + k * 190
+        x1 = x0 + w
+        for lvl in (1, 2):
+            y = g - h * lvl
+            body += f'<line x1="{x0}" y1="{y}" x2="{x1}" y2="{y}" stroke="{INK}" stroke-width="5"/>'
+        body += f'<line x1="{x0}" y1="{g}" x2="{x0}" y2="{g - 2 * h}" stroke="{INK}" stroke-width="5"/><line x1="{x1}" y1="{g}" x2="{x1}" y2="{g - 2 * h}" stroke="{INK}" stroke-width="5"/>'
+        if L == 'A':
+            for x in (x0, x1):
+                for lvl in (1, 2):
+                    body += f'<rect x="{x - 6}" y="{g - h * lvl - 6}" width="12" height="12" fill="{INK}"/>'
+        elif L == 'B':
+            for lvl in (0, 1):
+                ya, yb = g - h * lvl, g - h * (lvl + 1)
+                body += f'<line x1="{x0}" y1="{ya}" x2="{x1}" y2="{yb}" stroke="{INK}" stroke-width="2.5"/><line x1="{x0}" y1="{yb}" x2="{x1}" y2="{ya}" stroke="{INK}" stroke-width="2.5"/>'
+        else:
+            body += f'<rect x="{x0 + 3}" y="{g - 2 * h + 3}" width="{w - 6}" height="{2 * h - 3}" fill="#c9c3b6" stroke="none"/>'
+        body += line(x0 - 20, g, x1 + 20, g, 's')
+        body += f'<text class="L" x="{(x0 + x1) / 2}" y="{g + 35}" text-anchor="middle">{L}</text>'
+    body += cap(300, g + 60, 'Elevations. Black squares = rigid (moment) joints')
+    return svg(600, 330, body)
+
+
 BT = 'building-technology/'
 FIGURES = {
+    'structural/lateral-systems': lateral_systems,
     'structural/footing-types': footing_types,
     'structural/load-types': load_types, 'structural/force-systems': force_systems,
     'structural/slump-types': slump_types,
