@@ -173,7 +173,7 @@
     "q": "Which description matches \"transformer room or vault\"?",
     "o": [
       "A nonflammable PCB transformer fluid, now banned for new use.",
-      "Transformers may require dedicated rooms/vaults depending on type, rating, location, fire protection and code requirements.",
+      "A dedicated room some transformers need, by type and rating.",
       "A distribution panelboard serves downstream circuits/panels/equipment.",
       "A fuse with a single fusible element and less intentional time delay."
     ],
@@ -186,9 +186,9 @@
     "q": "Which description matches \"oil-filled transformer\"?",
     "o": [
       "Lowers voltage from primary to secondary.",
-      "A distribution panelboard serves downstream circuits/panels/equipment.",
+      "A panelboard feeding downstream circuits and panels.",
       "The final distribution point for lighting and power circuits.",
-      "Uses insulating oil as dielectric/cooling medium and may require a vault/containment depending on installation."
+      "Uses insulating oil for cooling; may need a vault."
     ],
     "c": 3,
     "ref": "PEC 2017; NEMA/IEEE equipment terminology",
@@ -224,8 +224,8 @@
     "s": "Power-Handling Equipment",
     "q": "Which description matches \"switchboard\"?",
     "o": [
-      "A disconnecting means at the service.",
-      "A large panel/assembly containing switches, overcurrent devices, buses and related distribution equipment.",
+      "A disconnecting means at the service entrance.",
+      "A large assembly of switches, overcurrent devices and buses.",
       "Its capacity, given in VA, kVA or MVA.",
       "The final distribution point for lighting and power circuits."
     ],
