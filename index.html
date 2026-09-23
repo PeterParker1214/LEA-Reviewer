@@ -622,7 +622,7 @@
       border-left:3px solid var(--blue-bright); padding:13px 15px; border-radius:10px; }
   }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=79">
+<link rel="stylesheet" href="assets/blueprint.css?v=80">
 <link rel="stylesheet" href="assets/messenger.css?v=79">
 </head>
 <body>
@@ -1360,6 +1360,20 @@ let presenceChannel = null;
 // happened to arrive or leave.
 let lastOnlineNames = [];
 
+// Scroll only if the names actually overrun, and only as far as they do.
+const whoObserver = new ResizeObserver(() => {
+  const who = document.getElementById('onlineWho');
+  const run = who && who.querySelector('i');
+  if(!run || !who.clientWidth) return;
+  const overflow = run.scrollWidth - who.clientWidth;
+  if(overflow > 4){
+    who.classList.add('scrolls');
+    who.style.setProperty('--who-shift', (-overflow - 12) + 'px');
+  } else {
+    who.classList.remove('scrolls');
+    who.style.removeProperty('--who-shift');
+  }
+});
 function renderOnline(names){
   lastOnlineNames = names;
   const uniq = Array.from(new Set(names)).sort((a, b) => a.localeCompare(b));
@@ -1381,17 +1395,12 @@ function renderOnline(names){
     (mine.length ? '<b>you</b>' + (others.length ? ' · ' : '') : '') +
     others.map(n => escapeHtml(n)).join(' · ');
 
-  // Scroll only if the names actually overrun, and only as far as they do.
-  requestAnimationFrame(() => {
-    const overflow = run.scrollWidth - who.clientWidth;
-    if(overflow > 4){
-      who.classList.add('scrolls');
-      who.style.setProperty('--who-shift', (-overflow - 12) + 'px');
-    } else {
-      who.classList.remove('scrolls');
-      who.style.removeProperty('--who-shift');
-    }
-  });
+  // Re-measured whenever the names or the strip change size: a single
+  // measurement taken before the web font loaded or the desktop grid settled
+  // left the marquee stuck on or off for the whole visit.
+  whoObserver.disconnect();
+  whoObserver.observe(who);
+  whoObserver.observe(run);
 }
 function startPresence(username){
   if(presenceChannel) return;

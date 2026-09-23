@@ -741,3 +741,8 @@ html.lea-settled .lea-stagger > *, html.lea-snap .lea-stagger > * { animation: n
   --panel-hover:#2a3222; --clay-bright:#d4a373; --turq-bright:#6fb3a0; --sand:#c9b896;
   --body-ink:#d6d9c4; --track:rgba(206,214,168,0.18);
 }
+
+/* Phones inflate text they think is hard to read (iOS on rotation, Android
+   Chrome's font boosting on long unwrapped lines like the online strip), so
+   a line could suddenly render larger than its CSS size. Keep the sizes we set. */
+html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; }
