@@ -1,330 +1,339 @@
 [
   {
     "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding bond role of deformations?",
+    "q": "Why do reinforcing bars have deformations (lugs) on their surface?",
     "o": [
-      "Deformations improve mechanical bond/interlock between reinforcing steel and concrete.",
-      "Steel product of plain round or deformed cross-section used for concrete reinforcement.",
-      "Lecture pairs Grade 520 with Grade 75 terminology.",
-      "Increase in gage length expressed as a percentage of the original gage length."
+      "To interlock mechanically with the concrete and improve bond",
+      "To make the bars lighter",
+      "To mark the bar grade only",
+      "To reduce rusting"
     ],
     "c": 0,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Deformations improve mechanical bond/interlock between reinforcing steel and concrete."
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "The lugs bear against the concrete like small keys, so deformed bars grip far better than plain round bars. That is why codes require deformed bars for main reinforcement."
   },
   {
     "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding gage length?",
+    "q": "In a tensile test of a steel bar, what is the gage length?",
     "o": [
-      "5.0, 6.0, 7.5, 9.0, 10.5 and 12.0 m.",
-      "Height of lugs is measured.",
-      "Reference length over which elongation is measured.",
-      "Actual available PNS/ASTM grades and sizes depend on the governing standard and supplier; lecture availability statements should not be treated as universal present-day catalog limits."
+      "The total length of the specimen",
+      "The marked length over which the elongation is measured",
+      "The length of the grips",
+      "The bar diameter times 10"
+    ],
+    "c": 1,
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "Two marks are made on the bar before testing. The change in the distance between them, divided by the original distance, gives the elongation."
+  },
+  {
+    "s": "Reinforcing Steel",
+    "q": "What is the approximate mass per metre of a 16 mm reinforcing bar?",
+    "o": [
+      "0.99 kg/m",
+      "2.47 kg/m",
+      "1.58 kg/m",
+      "0.62 kg/m"
     ],
     "c": 2,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Reference length over which elongation is measured."
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "A handy formula is mass = d²/162 kg/m with d in mm: 16² / 162 = 256 / 162 = 1.58 kg/m. It comes from steel's density of 7,850 kg/m³. Weighing bars per metre checks that they are not undersized.",
+    "formula": "Mass (kg/m) = d² / 162, d in mm",
+    "steps": [
+      "d = 16 mm",
+      "d² = 256",
+      "256 / 162 = 1.58 kg/m"
+    ]
   },
   {
     "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding weight per metre test?",
+    "q": "Under ASTM A615, in which size range is Grade 280 (Grade 40) bar usually made?",
     "o": [
-      "10, 12, 16, 20, 25, 28, 32, 36, 40 and 50 mm.",
-      "Spacing between transverse lugs is measured on deformed bars.",
-      "Elongation provides one indicator of tensile ductility.",
-      "Lecture includes measurement of steel-bar mass/weight per metre length as a compliance check."
+      "Only 57 mm bars",
+      "Only the largest sizes, 36 mm and up",
+      "Every size up to 57 mm",
+      "The smaller sizes, about 10 to 19 mm"
     ],
     "c": 3,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Lecture includes measurement of steel-bar mass/weight per metre length as a compliance check."
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "ASTM A615 supplies Grade 280 (40) only in the small sizes, #3 to #6 (about 10 to 19 mm). Larger bars come in Grade 420 (60) and higher."
   },
   {
     "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding grade 280 source-size note?",
+    "q": "Grade 280 in metric rebar grading is roughly the same as which grade in the English system?",
     "o": [
-      "Graded according to minimum yield strength.",
-      "Stress level associated with onset of significant yielding and used to identify rebar grade.",
-      "Lecture states Grade 280 (40) bars furnished in sizes 3–6 / about 10–19 mm in its referenced system.",
-      "(Final gage length − original gage length) / original gage length × 100."
+      "Grade 40 (40,000 psi)",
+      "Grade 60",
+      "Grade 75",
+      "Grade 33"
+    ],
+    "c": 0,
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "Metric grades give the minimum yield in MPa and English grades in ksi. 280 MPa ≈ 40 ksi, 420 MPa ≈ 60 ksi and 520 MPa ≈ 75 ksi. PNS 49 uses Grade 230, 275 and 415."
+  },
+  {
+    "s": "Reinforcing Steel",
+    "q": "What is the ultimate tensile strength of a steel bar?",
+    "o": [
+      "The stress at which it first yields",
+      "The highest engineering stress it reaches in a tensile test",
+      "The stress at which it breaks",
+      "The stress at the proportional limit"
+    ],
+    "c": 1,
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "It is the peak of the stress-strain curve. For rebar it is well above the yield strength (for example about 620 MPa for Grade 420), which gives reserve strength."
+  },
+  {
+    "s": "Reinforcing Steel",
+    "q": "What is a reinforcing steel bar?",
+    "o": [
+      "A steel beam used in framing",
+      "A steel sheet used for roofing",
+      "A steel bar, plain round or deformed, used to reinforce concrete",
+      "A steel cable used in bridges"
     ],
     "c": 2,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Lecture states Grade 280 (40) bars furnished in sizes 3–6 / about 10–19 mm in its referenced system."
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "Rebar is made plain or deformed. Deformed bars are used for almost all structural reinforcement because of their bond; plain bars are used mostly for dowels and spirals."
   },
   {
     "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding grade 280 notation?",
+    "q": "What property is used to name the grade of a reinforcing bar?",
     "o": [
-      "Bar with surface lugs/protrusions called deformations.",
-      "Used to determine reinforcing-bar tensile/yield behavior.",
-      "Width/gap of the longitudinal rib is measured.",
-      "Lecture pairs Grade 280 with Grade 40 terminology."
+      "Its diameter",
+      "Its length",
+      "Its color",
+      "Its minimum yield strength"
     ],
     "c": 3,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Lecture pairs Grade 280 with Grade 40 terminology."
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "Grade 275 means a minimum yield of 275 MPa, Grade 415 a minimum yield of 415 MPa. Designers use the yield strength fy in calculations."
   },
   {
     "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding ultimate tensile strength?",
+    "q": "Under PNS 49 and ASTM A615, how does the required elongation of a bar depend on its size?",
     "o": [
-      "Lecture states Grade 520 (75) bars furnished only through bar size 18 / approximately 19–57 mm in its referenced system.",
-      "Maximum tensile engineering stress reached during test.",
-      "Bar without surface deformations.",
-      "Lecture notes required elongation depends on bar size/standard table."
-    ],
-    "c": 1,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Maximum tensile engineering stress reached during test."
-  },
-  {
-    "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding reinforcing steel bar?",
-    "o": [
-      "10, 12, 16, 20, 25, 28, 32, 36, 40 and 50 mm.",
-      "Width/gap of the longitudinal rib is measured.",
-      "Lecture includes measurement of steel-bar mass/weight per metre length as a compliance check.",
-      "Steel product of plain round or deformed cross-section used for concrete reinforcement."
-    ],
-    "c": 3,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Steel product of plain round or deformed cross-section used for concrete reinforcement."
-  },
-  {
-    "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding yield strength?",
-    "o": [
-      "Lecture pairs Grade 280 with Grade 40 terminology.",
-      "(Final gage length − original gage length) / original gage length × 100.",
-      "Bar with surface lugs/protrusions called deformations.",
-      "Stress level associated with onset of significant yielding and used to identify rebar grade."
-    ],
-    "c": 3,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Stress level associated with onset of significant yielding and used to identify rebar grade."
-  },
-  {
-    "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding elongation requirement?",
-    "o": [
-      "Stress level associated with onset of significant yielding and used to identify rebar grade.",
-      "Lecture states Grade 280 (40) bars furnished in sizes 3–6 / about 10–19 mm in its referenced system.",
-      "Bar without surface deformations.",
-      "Lecture notes required elongation depends on bar size/standard table."
-    ],
-    "c": 3,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Lecture notes required elongation depends on bar size/standard table."
-  },
-  {
-    "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding tensile test?",
-    "o": [
-      "Height of lugs is measured.",
-      "Used to determine reinforcing-bar tensile/yield behavior.",
-      "Reference length over which elongation is measured.",
-      "Lecture pairs Grade 520 with Grade 75 terminology."
-    ],
-    "c": 1,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Used to determine reinforcing-bar tensile/yield behavior."
-  },
-  {
-    "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding plain bar?",
-    "o": [
-      "Stress level associated with onset of significant yielding and used to identify rebar grade.",
-      "Increase in gage length expressed as a percentage of the original gage length.",
-      "Lecture pairs Grade 280 with Grade 40 terminology.",
-      "Bar without surface deformations."
-    ],
-    "c": 3,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Bar without surface deformations."
-  },
-  {
-    "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding elongation formula?",
-    "o": [
-      "Deformations improve mechanical bond/interlock between reinforcing steel and concrete.",
-      "(Final gage length − original gage length) / original gage length × 100.",
-      "Lecture states Grade 520 (75) bars furnished only through bar size 18 / approximately 19–57 mm in its referenced system.",
-      "Bar with surface lugs/protrusions called deformations."
-    ],
-    "c": 1,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] (Final gage length − original gage length) / original gage length × 100.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+RWxvbmdhdGlvbiBNZWFzdXJlbWVudDwvdGV4dD4KPGxpbmUgeDE9IjE3MCIgeTE9IjIyMCIgeDI9IjczMCIgeTI9IjIyMCIgY2xhc3M9ImwiLz48bGluZSB4MT0iMjUwIiB5MT0iMTgwIiB4Mj0iMjUwIiB5Mj0iMjYwIiBjbGFzcz0idGgiLz48bGluZSB4MT0iNjUwIiB5MT0iMTgwIiB4Mj0iNjUwIiB5Mj0iMjYwIiBjbGFzcz0idGgiLz4KPHRleHQgeD0iMzM1IiB5PSIxODAiIGNsYXNzPSJzIj5vcmlnaW5hbCBnYWdlIGxlbmd0aCBM4oKAPC90ZXh0Pjx0ZXh0IHg9IjI3MCIgeT0iMzE1IiBjbGFzcz0icyI+JSBlbG9uZ2F0aW9uID0gKExmaW5hbCDiiJIgTOKCgCkvTOKCgCDDlyAxMDA8L3RleHQ+PC9zdmc+"
-  },
-  {
-    "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding deformation average height?",
-    "o": [
-      "Elongation provides one indicator of tensile ductility.",
-      "Height of lugs is measured.",
-      "Lecture includes measurement of steel-bar mass/weight per metre length as a compliance check.",
-      "5.0, 6.0, 7.5, 9.0, 10.5 and 12.0 m."
-    ],
-    "c": 1,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Height of lugs is measured."
-  },
-  {
-    "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding ductility?",
-    "o": [
-      "Graded according to minimum yield strength.",
-      "Spacing between transverse lugs is measured on deformed bars.",
-      "Lecture states Grade 280 (40) bars furnished in sizes 3–6 / about 10–19 mm in its referenced system.",
-      "Elongation provides one indicator of tensile ductility."
-    ],
-    "c": 3,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Elongation provides one indicator of tensile ductility."
-  },
-  {
-    "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding deformation average spacing?",
-    "o": [
-      "Actual available PNS/ASTM grades and sizes depend on the governing standard and supplier; lecture availability statements should not be treated as universal present-day catalog limits.",
-      "Graded according to minimum yield strength.",
-      "Maximum tensile engineering stress reached during test.",
-      "Spacing between transverse lugs is measured on deformed bars."
-    ],
-    "c": 3,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Spacing between transverse lugs is measured on deformed bars.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+RGVmb3JtZWQtQmFyIEdlb21ldHJ5IE1lYXN1cmVtZW50czwvdGV4dD4KPGxpbmUgeDE9IjEyMCIgeTE9IjI1MCIgeDI9Ijc4MCIgeTI9IjI1MCIgY2xhc3M9ImwiLz4KPHBhdGggZD0iTTIyMCAyMTAgTDI1MCAyOTAgTTM2MCAyMTAgTDM5MCAyOTAgTTUwMCAyMTAgTDUzMCAyOTAgTTY0MCAyMTAgTDY3MCAyOTAiIGNsYXNzPSJ0aCIvPgo8dGV4dCB4PSIyMTUiIHk9IjM2NSIgY2xhc3M9InMiPmx1ZyBzcGFjaW5nIOKAoiBsdWcgaGVpZ2h0IOKAoiByaWIgZ2FwL3dpZHRoPC90ZXh0Pjwvc3ZnPg=="
-  },
-  {
-    "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding grade 520 notation?",
-    "o": [
-      "Height of lugs is measured.",
-      "Lecture pairs Grade 520 with Grade 75 terminology.",
-      "Steel product of plain round or deformed cross-section used for concrete reinforcement.",
-      "Lecture includes measurement of steel-bar mass/weight per metre length as a compliance check."
-    ],
-    "c": 1,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Lecture pairs Grade 520 with Grade 75 terminology."
-  },
-  {
-    "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding deformation gap?",
-    "o": [
-      "Used to determine reinforcing-bar tensile/yield behavior.",
-      "Reference length over which elongation is measured.",
-      "10, 12, 16, 20, 25, 28, 32, 36, 40 and 50 mm.",
-      "Width/gap of the longitudinal rib is measured."
-    ],
-    "c": 3,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Width/gap of the longitudinal rib is measured."
-  },
-  {
-    "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding grade availability caveat?",
-    "o": [
-      "5.0, 6.0, 7.5, 9.0, 10.5 and 12.0 m.",
-      "Maximum tensile engineering stress reached during test.",
-      "Lecture notes required elongation depends on bar size/standard table.",
-      "Actual available PNS/ASTM grades and sizes depend on the governing standard and supplier; lecture availability statements should not be treated as universal present-day catalog limits."
-    ],
-    "c": 3,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[CURRENTNESS-AUDITED] Actual available PNS/ASTM grades and sizes depend on the governing standard and supplier; lecture availability statements should not be treated as universal present-day catalog limits."
-  },
-  {
-    "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding lecture nominal diameters?",
-    "o": [
-      "10, 12, 16, 20, 25, 28, 32, 36, 40 and 50 mm.",
-      "Actual available PNS/ASTM grades and sizes depend on the governing standard and supplier; lecture availability statements should not be treated as universal present-day catalog limits.",
-      "Reference length over which elongation is measured.",
-      "Spacing between transverse lugs is measured on deformed bars."
+      "Larger bars are allowed a lower minimum elongation",
+      "All sizes need the same elongation",
+      "Larger bars need more elongation",
+      "Elongation is not tested"
     ],
     "c": 0,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] 10, 12, 16, 20, 25, 28, 32, 36, 40 and 50 mm."
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "The standards set a minimum percent elongation that falls a little as bar size increases, because thick bars are harder to stretch uniformly."
   },
   {
     "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding elongation definition?",
+    "q": "What does a tensile test of a reinforcing bar measure?",
     "o": [
-      "Width/gap of the longitudinal rib is measured.",
-      "Increase in gage length expressed as a percentage of the original gage length.",
-      "Lecture pairs Grade 280 with Grade 40 terminology.",
-      "Steel product of plain round or deformed cross-section used for concrete reinforcement."
+      "Its bond with concrete",
+      "Its yield strength, tensile strength and elongation",
+      "Its corrosion rate",
+      "Its bending radius"
     ],
     "c": 1,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Increase in gage length expressed as a percentage of the original gage length."
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "The bar is pulled until it breaks. The test gives the yield strength, the ultimate tensile strength and the elongation, which together show strength and ductility."
   },
   {
     "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding bar grade basis?",
+    "q": "What is a plain bar?",
     "o": [
-      "Graded according to minimum yield strength.",
-      "Lecture states Grade 520 (75) bars furnished only through bar size 18 / approximately 19–57 mm in its referenced system.",
-      "(Final gage length − original gage length) / original gage length × 100.",
-      "Maximum tensile engineering stress reached during test."
+      "A bar with lugs",
+      "A bar with an epoxy coating",
+      "A round bar with a smooth surface and no deformations",
+      "A bar bent into a hook"
+    ],
+    "c": 2,
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "Plain bars bond poorly, so they are used only where bond does not matter much, such as dowels at expansion joints and some spirals."
+  },
+  {
+    "s": "Reinforcing Steel",
+    "q": "How is the percent elongation of a steel bar computed?",
+    "o": [
+      "Final length ÷ original length",
+      "(Original − final) ÷ final × 100",
+      "Load ÷ area × 100",
+      "(Final gage length − original gage length) ÷ original gage length × 100"
+    ],
+    "c": 3,
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "Elongation is the stretch at fracture as a percentage of the original gage length. It measures ductility: how much the bar can stretch before it breaks."
+  },
+  {
+    "s": "Reinforcing Steel",
+    "q": "When deformed bars are inspected, which feature of the lugs is measured?",
+    "o": [
+      "Their average height",
+      "Their color",
+      "Their weight",
+      "Their temperature"
     ],
     "c": 0,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Graded according to minimum yield strength."
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "The standard sets a minimum average lug height, average spacing and maximum gap, because these control how well the bar bonds."
   },
   {
     "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding grade 520 source-size note?",
+    "q": "What does the percent elongation of a bar indicate?",
     "o": [
-      "Deformations improve mechanical bond/interlock between reinforcing steel and concrete.",
-      "Lecture states Grade 520 (75) bars furnished only through bar size 18 / approximately 19–57 mm in its referenced system.",
-      "Bar without surface deformations.",
-      "Increase in gage length expressed as a percentage of the original gage length."
+      "Its stiffness",
+      "Its ductility",
+      "Its hardness",
+      "Its corrosion resistance"
     ],
     "c": 1,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Lecture states Grade 520 (75) bars furnished only through bar size 18 / approximately 19–57 mm in its referenced system."
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "Higher elongation means the bar can stretch a lot before breaking, which gives warning and lets structures absorb earthquake energy."
   },
   {
     "s": "Reinforcing Steel",
-    "q": "A bar has an original gage length of 200 mm and a final gage length of 224 mm. What is the elongation?",
+    "q": "On a deformed bar, what is measured between the transverse lugs?",
     "o": [
-      "10%",
+      "Their weight",
+      "Their yield strength",
+      "Their average spacing",
+      "Their chemical content"
+    ],
+    "c": 2,
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "Lug spacing must not exceed 0.7 times the nominal diameter. If the lugs are too far apart, the bar grips the concrete less."
+  },
+  {
+    "s": "Reinforcing Steel",
+    "q": "Grade 520 in metric rebar grading is roughly the same as which grade in the English system?",
+    "o": [
+      "Grade 60",
+      "Grade 40",
+      "Grade 100",
+      "Grade 75 (75,000 psi)"
+    ],
+    "c": 3,
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "520 MPa ≈ 75 ksi. High-strength Grade 520 bars reduce congestion in heavily loaded columns."
+  },
+  {
+    "s": "Reinforcing Steel",
+    "q": "On a deformed bar, what is the \"gap\" that is checked?",
+    "o": [
+      "The gap between the ends of the transverse lugs on either side of the bar",
+      "The space between two bars in a beam",
+      "The space between the bar and the formwork",
+      "The crack width in the concrete"
+    ],
+    "c": 0,
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "The lugs do not wrap all the way around; they stop short of the longitudinal ribs. The total gap is limited (to about 12.5% of the bar perimeter) so enough lug surface grips the concrete."
+  },
+  {
+    "s": "Reinforcing Steel",
+    "q": "Where should a designer check which rebar grades and sizes are actually available?",
+    "o": [
+      "Only an old reviewer",
+      "The governing standard (PNS 49) and local suppliers",
+      "Any foreign catalogue",
+      "The concrete supplier"
+    ],
+    "c": 1,
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "Not every grade is rolled in every size in the Philippines. Specifying a size or grade that mills do not make can delay a project, so designers check PNS 49 and supplier stock."
+  },
+  {
+    "s": "Reinforcing Steel",
+    "q": "Which of these is NOT a standard nominal diameter of reinforcing bar?",
+    "o": [
+      "12 mm",
+      "16 mm",
+      "14 mm",
+      "20 mm"
+    ],
+    "c": 2,
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "Common nominal diameters are 10, 12, 16, 20, 25, 28, 32, 36, 40 and 50 mm. 14 mm is not a standard rebar size."
+  },
+  {
+    "s": "Reinforcing Steel",
+    "q": "How is the elongation of a steel specimen expressed?",
+    "o": [
+      "In kilonewtons",
+      "In megapascals",
+      "As a ratio of diameters",
+      "As the increase in gage length, as a percentage of the original gage length"
+    ],
+    "c": 3,
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "Elongation is a percentage. For example, a 200 mm gage length that becomes 224 mm has stretched 12%."
+  },
+  {
+    "s": "Reinforcing Steel",
+    "q": "Grade 415 deformed bar under PNS 49 has what minimum yield strength?",
+    "o": [
+      "415 MPa",
+      "275 MPa",
+      "230 MPa",
+      "520 MPa"
+    ],
+    "c": 0,
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "Grade numbers give the minimum yield strength in MPa. Grade 415 (about 60 ksi) is the usual grade for main bars in Philippine buildings."
+  },
+  {
+    "s": "Reinforcing Steel",
+    "q": "Under ASTM A615, in which size range is Grade 520 (Grade 75) bar made?",
+    "o": [
+      "Only 10 mm bars",
+      "The larger sizes, about 19 mm and up",
+      "Only 12 mm bars",
+      "Only plain bars"
+    ],
+    "c": 1,
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "High-strength Grade 520 (75) is rolled in the larger sizes, about #6 to #18 (19 to 57 mm), where it saves the most steel."
+  },
+  {
+    "s": "Reinforcing Steel",
+    "q": "A bar has an original gage length of 200 mm and a final gage length of 224 mm. What is its elongation?",
+    "o": [
+      "24%",
+      "10.7%",
       "12%",
-      "8%",
-      "24%"
+      "1.12%"
     ],
-    "c": 1,
-    "ref": "Tensile-test elongation definition",
-    "n": "[CALCULATION] (224−200)/200 ×100 = 12%."
+    "c": 2,
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "Elongation = (224 − 200) / 200 × 100 = 24 / 200 × 100 = 12%.",
+    "formula": "Elongation = (Lf − L0) / L0 × 100",
+    "steps": [
+      "Stretch = 224 − 200 = 24 mm",
+      "24 / 200 = 0.12",
+      "0.12 × 100 = 12%"
+    ]
   },
   {
     "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding lecture stock lengths?",
+    "q": "Which of these is a standard commercial length of reinforcing bar in the Philippines?",
     "o": [
-      "Lecture states Grade 280 (40) bars furnished in sizes 3–6 / about 10–19 mm in its referenced system.",
-      "5.0, 6.0, 7.5, 9.0, 10.5 and 12.0 m.",
-      "Elongation provides one indicator of tensile ductility.",
-      "Lecture notes required elongation depends on bar size/standard table."
+      "4.0 m",
+      "8.0 m",
+      "15.0 m",
+      "6.0 m"
     ],
-    "c": 1,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] 5.0, 6.0, 7.5, 9.0, 10.5 and 12.0 m."
+    "c": 3,
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "Bars are commonly sold in 6.0, 7.5, 9.0, 10.5 and 12.0 m lengths. Cutting lists are planned around these to reduce waste."
   },
   {
     "s": "Reinforcing Steel",
-    "q": "Which statement is correct regarding deformed bar?",
+    "q": "What is a deformed bar?",
     "o": [
-      "Bar with surface lugs/protrusions called deformations.",
-      "Used to determine reinforcing-bar tensile/yield behavior.",
-      "Lecture pairs Grade 520 with Grade 75 terminology.",
-      "Deformations improve mechanical bond/interlock between reinforcing steel and concrete."
+      "A bar with surface lugs or ribs rolled onto it",
+      "A bar that has been bent by mistake",
+      "A bar that has rusted",
+      "A bar with a smooth surface"
     ],
     "c": 0,
-    "ref": "DPWH/PNS/ASTM reinforcing-steel context; ACI CODE-318-25",
-    "n": "[SOURCE FACT — AUDITED] Bar with surface lugs/protrusions called deformations.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+UGxhaW4gdnMgRGVmb3JtZWQgUmVpbmZvcmNpbmcgQmFyczwvdGV4dD4KPGxpbmUgeDE9IjEwMCIgeTE9IjE4MCIgeDI9IjM4MCIgeTI9IjE4MCIgY2xhc3M9ImwiLz48dGV4dCB4PSIxODUiIHk9IjIzNSIgY2xhc3M9InMiPnBsYWluIGJhcjwvdGV4dD4KPGxpbmUgeDE9IjUyMCIgeTE9IjE4MCIgeDI9IjgwMCIgeTI9IjE4MCIgY2xhc3M9ImwiLz48cGF0aCBkPSJNNTUwIDE1MCBMNTgwIDIxMCBNNjEwIDE1MCBMNjQwIDIxMCBNNjcwIDE1MCBMNzAwIDIxMCBNNzMwIDE1MCBMNzYwIDIxMCIgY2xhc3M9InRoIi8+PHRleHQgeD0iNjEwIiB5PSIyMzUiIGNsYXNzPSJzIj5kZWZvcm1lZCBiYXI8L3RleHQ+PC9zdmc+"
+    "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
+    "n": "Deformed bars are rolled with ribs so they bond with the concrete. They are required for main reinforcement in reinforced concrete."
   }
 ]
