@@ -1,513 +1,509 @@
 [
   {
     "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding chilled-water pump?",
+    "q": "What does the chilled-water pump do?",
     "o": [
-      "A central plant or centralized HVAC system conditions multiple spaces through central equipment and distribution systems.",
-      "Circulates chilled water between chiller and cooling coils.",
-      "Chiller cools water → pump sends chilled water to AHU/FCU coils → room air is cooled → warmed chilled water returns to chiller.",
-      "The source gives 2.70 m as a passive-cooling floor-to-ceiling rule of thumb; it is not a universal mechanical-code requirement."
+      "Circulates chilled water between the chiller and the cooling coils",
+      "Sends condenser water to the cooling tower",
+      "Pumps refrigerant through the compressor",
+      "Drains the condensate"
+    ],
+    "c": 0,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "Chilled-water loop: the chiller cools water, the chilled-water pump sends it to AHU and FCU coils, the coils cool the air, and the warmed water returns to the chiller."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "Which building typically uses split-type units rather than a central chilled-water plant?",
+    "o": [
+      "A 40-storey hotel",
+      "A small office or house",
+      "A large shopping mall",
+      "A hospital complex"
     ],
     "c": 1,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] Circulates chilled water between chiller and cooling coils."
+    "n": "Central plants pay off in large buildings; splits suit small ones. It is a tendency, not a rule."
   },
   {
     "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding smaller vs larger facility note?",
+    "q": "What affects how much energy an HVAC system uses?",
     "o": [
-      "Rejects heat from condenser water to the atmosphere, primarily through evaporative heat/mass transfer.",
-      "Uses fans/ducts or mechanical equipment to supply or exhaust air.",
-      "The source associates split systems with smaller establishments and central systems with larger facilities; this is a common tendency, not a universal rule.",
-      "Incorrect for a typical chilled-water system; AHUs receive chilled water and cool air across coils, not distribute refrigerant gas to rooms."
+      "Only the brand of the equipment",
+      "Only the color of the ducts",
+      "System choice, controls, equipment efficiency, part-load performance and building load",
+      "Only the thermostat setting"
     ],
     "c": 2,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] The source associates split systems with smaller establishments and central systems with larger facilities; this is a common tendency, not a universal rule."
+    "n": "Energy use depends on the whole system and how it runs."
   },
   {
     "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding energy efficiency?",
+    "q": "In a chilled-water plant, where does the refrigerant change phase?",
     "o": [
-      "Chiller cools water → pump sends chilled water to AHU/FCU coils → room air is cooled → warmed chilled water returns to chiller.",
-      "System choice, controls, equipment efficiency, part-load performance, ventilation requirements and building load all affect HVAC energy use.",
-      "Fan-coil unit uses a fan and coil to condition recirculated/ventilation air locally.",
-      "The source gives 2.40 m as an active-cooling rule of thumb; it is not a universal HVAC requirement."
+      "In the chilled-water pipes to the rooms",
+      "In the air ducts",
+      "In the cooling tower basin",
+      "Inside the chiller's own refrigeration circuit"
+    ],
+    "c": 3,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "The chilled water never boils; it stays a separate loop cooled by the chiller's refrigerant."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "What minimum ceiling height does the NBC IRR set for rooms relying on natural ventilation?",
+    "o": [
+      "2.70 m",
+      "2.40 m",
+      "2.10 m",
+      "3.00 m"
+    ],
+    "c": 0,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "Air-conditioned (mechanically ventilated) rooms may go down to 2.40 m."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "What does a cooling tower do?",
+    "o": [
+      "Cools the supply air directly",
+      "Rejects heat from condenser water to the air, mainly by evaporation",
+      "Produces chilled water for the rooms",
+      "Stores refrigerant"
     ],
     "c": 1,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] System choice, controls, equipment efficiency, part-load performance, ventilation requirements and building load all affect HVAC energy use."
+    "n": "Condenser-water loop: the chiller rejects heat to condenser water, the condenser-water pump sends it to the cooling tower, the tower rejects the heat outdoors, and cooled water returns to the chiller."
   },
   {
     "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding source 'liquid freon turns to gas via chiller'?",
+    "q": "What is the correct chilled-water sequence?",
     "o": [
-      "Uses fans/ducts or mechanical equipment to supply or exhaust air.",
-      "Cooling towers are often located outdoors/at roof or grade where airflow and structural/water considerations permit; rooftop location is not mandatory.",
-      "Constant Air Volume systems deliver essentially constant airflow while controlling temperature or cycling/other variables depending on system.",
-      "Oversimplified/incorrect wording; refrigerant phase change occurs within the chiller's refrigeration circuit while chilled water remains a separate secondary fluid."
-    ],
-    "c": 3,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Oversimplified/incorrect wording; refrigerant phase change occurs within the chiller's refrigeration circuit while chilled water remains a separate secondary fluid."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding source 2.70 m passive ceiling height?",
-    "o": [
-      "Water-cooled chiller rejects heat to condenser water → pump sends warm condenser water to cooling tower → tower rejects heat outdoors → cooled condenser water returns to chiller.",
-      "Fan-coil unit uses a fan and coil to condition recirculated/ventilation air locally.",
-      "The source gives 2.70 m as a passive-cooling floor-to-ceiling rule of thumb; it is not a universal mechanical-code requirement.",
-      "Restroom exhaust fans remove odors/moisture/air contaminants; the exhaust duct is not a combustion flue."
+      "Cooling tower, rooms, chiller, pump",
+      "AHU, cooling tower, chiller, rooms",
+      "Chiller, pump, AHU or FCU coils, back to chiller",
+      "Pump, rooms, cooling tower, AHU"
     ],
     "c": 2,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source gives 2.70 m as a passive-cooling floor-to-ceiling rule of thumb; it is not a universal mechanical-code requirement."
+    "n": "Chilled-water loop: the chiller cools water, the chilled-water pump sends it to AHU and FCU coils, the coils cool the air, and the warmed water returns to the chiller."
   },
   {
     "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding cooling tower?",
+    "q": "What is mechanical ventilation?",
     "o": [
-      "Air terminal mounted at a wall opening.",
-      "A flue specifically conveys combustion products from fuel-burning equipment to the outdoors.",
-      "Constant Air Volume systems deliver essentially constant airflow while controlling temperature or cycling/other variables depending on system.",
-      "Rejects heat from condenser water to the atmosphere, primarily through evaporative heat/mass transfer."
+      "Moving air by wind through windows",
+      "Cooling air with thick walls",
+      "Shading windows",
+      "Moving air with fans and ducts"
     ],
     "c": 3,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Rejects heat from condenser water to the atmosphere, primarily through evaporative heat/mass transfer."
+    "n": "Natural ventilation uses wind and stack effect instead."
   },
   {
     "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding correct chilled-water sequence?",
+    "q": "What is a fan coil unit (FCU)?",
     "o": [
-      "Chiller cools water → pump sends chilled water to AHU/FCU coils → room air is cooled → warmed chilled water returns to chiller.",
-      "Restroom exhaust fans remove odors/moisture/air contaminants; the exhaust duct is not a combustion flue.",
-      "Zone thermostat/controller modulates VAV terminal airflow or related control devices.",
-      "Distributes supply, return and/or exhaust air."
+      "A fan and coil that condition the air of one room or zone",
+      "A central chiller",
+      "A cooling tower",
+      "A roof exhaust fan"
     ],
     "c": 0,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Chiller cools water → pump sends chilled water to AHU/FCU coils → room air is cooled → warmed chilled water returns to chiller."
+    "n": "FCUs take chilled water from the plant or refrigerant from an outdoor unit."
   },
   {
     "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding mechanical ventilation?",
+    "q": "What is a constant air volume (CAV) system?",
     "o": [
-      "Air terminal mounted at a wall opening.",
-      "Uses fans/ducts or mechanical equipment to supply or exhaust air.",
-      "An air curtain reduces exchange but is not an airtight physical barrier and does not replace required doors/fire/smoke separations.",
-      "The source table incorrectly equates VAV with split/multi-split systems; VAV is an air-distribution/control strategy, usually associated with ducted systems."
+      "One that varies airflow to each zone",
+      "One that supplies steady airflow and varies the supply temperature",
+      "One with no fans",
+      "One that uses only windows"
     ],
     "c": 1,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] Uses fans/ducts or mechanical equipment to supply or exhaust air.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+VmVudGlsYXRpb24gYW5kIEV4aGF1c3Q8L3RleHQ+CjxyZWN0IHg9IjEwMCIgeT0iMTIwIiB3aWR0aD0iMjUwIiBoZWlnaHQ9IjI2MCIgY2xhc3M9ImYiLz48dGV4dCB4PSIxNjAiIHk9IjIyNSIgY2xhc3M9InMiPk91dGRvb3IgQWlyPC90ZXh0Pjx0ZXh0IHg9IjE2MCIgeT0iMjc1IiBjbGFzcz0icyI+VmVudGlsYXRpb248L3RleHQ+CjxyZWN0IHg9IjU1MCIgeT0iMTIwIiB3aWR0aD0iMjUwIiBoZWlnaHQ9IjI2MCIgY2xhc3M9ImYyIi8+PHRleHQgeD0iNjIwIiB5PSIyMjUiIGNsYXNzPSJzIj5FeGhhdXN0PC90ZXh0Pjx0ZXh0IHg9IjU5MCIgeT0iMjc1IiBjbGFzcz0icyI+S2l0Y2hlbiAvIFRvaWxldCAvIFByb2Nlc3M8L3RleHQ+PC9zdmc+"
+    "n": "CAV keeps airflow constant and varies the supply temperature; VAV keeps supply temperature steady and varies the airflow to each zone."
   },
   {
     "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding fcu?",
+    "q": "Is a toilet exhaust duct a flue?",
     "o": [
-      "The source incorrectly groups kitchen and comfort-room exhaust under 'flue.'",
-      "Zone thermostat/controller modulates VAV terminal airflow or related control devices.",
-      "Fan-coil unit uses a fan and coil to condition recirculated/ventilation air locally.",
-      "Circulates condenser water between water-cooled chiller and cooling tower."
+      "Yes; all exhaust ducts are flues",
+      "Yes, if it runs to the roof",
+      "No; a flue carries combustion gases, while toilet exhaust carries odors and moisture",
+      "Only in hospitals"
     ],
     "c": 2,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] Fan-coil unit uses a fan and coil to condition recirculated/ventilation air locally."
+    "n": "The terms matter because flues need fire-rated, heat-resistant construction."
   },
   {
     "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding cav?",
+    "q": "What is a wall register?",
     "o": [
-      "An air curtain reduces exchange but is not an airtight physical barrier and does not replace required doors/fire/smoke separations.",
-      "Produces chilled water by transferring heat from the chilled-water loop to a refrigeration/condenser system.",
-      "Constant Air Volume systems deliver essentially constant airflow while controlling temperature or cycling/other variables depending on system.",
-      "Uses building form, shading, natural ventilation, thermal mass and similar non-mechanical strategies to reduce cooling loads."
+      "A thermostat on a wall",
+      "A wall-mounted fan coil",
+      "A fire damper",
+      "An air outlet or inlet set in a wall opening"
     ],
-    "c": 2,
+    "c": 3,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Constant Air Volume systems deliver essentially constant airflow while controlling temperature or cycling/other variables depending on system."
+    "n": "Registers usually have adjustable louvers or dampers."
   },
   {
     "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding toilet exhaust?",
+    "q": "In a VAV system, what does each zone thermostat control?",
     "o": [
-      "Restroom exhaust fans remove odors/moisture/air contaminants; the exhaust duct is not a combustion flue.",
-      "CAV systems also use thermostatic controls; airflow remains essentially constant while supply temperature or equipment operation changes.",
-      "Circulates condenser water between water-cooled chiller and cooling tower.",
-      "A central plant or centralized HVAC system conditions multiple spaces through central equipment and distribution systems."
+      "The airflow through its VAV box",
+      "The chiller's compressor directly",
+      "The cooling tower fan",
+      "The outdoor air intake of the whole building"
     ],
     "c": 0,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Restroom exhaust fans remove odors/moisture/air contaminants; the exhaust duct is not a combustion flue."
+    "n": "CAV keeps airflow constant and varies the supply temperature; VAV keeps supply temperature steady and varies the airflow to each zone."
   },
   {
     "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding wall register?",
+    "q": "What is the limit of an air curtain?",
     "o": [
-      "In AC systems, indoor heat is absorbed at the evaporator/cooling coil and ultimately rejected outdoors at the condenser/cooling tower.",
-      "Air terminal mounted at a wall opening.",
-      "Uses building form, shading, natural ventilation, thermal mass and similar non-mechanical strategies to reduce cooling loads.",
-      "Incorrect for a typical chilled-water system; AHUs receive chilled water and cool air across coils, not distribute refrigerant gas to rooms."
+      "It blocks all air completely",
+      "It reduces air exchange but is not a door or fire separation",
+      "It replaces fire doors",
+      "It works only when doors are closed"
     ],
     "c": 1,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] Air terminal mounted at a wall opening."
+    "n": "Air curtains cut heat and insect entry at open doorways."
   },
   {
     "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding vav thermostat?",
+    "q": "What does the condenser-water pump do?",
     "o": [
-      "Incorrect; a cooling tower requires airflow and water circulation but not 'high-pressure air' as the defining operating principle.",
-      "A central plant or centralized HVAC system conditions multiple spaces through central equipment and distribution systems.",
-      "Zone thermostat/controller modulates VAV terminal airflow or related control devices.",
-      "The source gives 2.40 m as an active-cooling rule of thumb; it is not a universal HVAC requirement."
+      "Sends chilled water to the AHUs",
+      "Pumps domestic water to the floors",
+      "Circulates water between a water-cooled chiller and the cooling tower",
+      "Pumps refrigerant"
     ],
     "c": 2,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] Zone thermostat/controller modulates VAV terminal airflow or related control devices."
+    "n": "Condenser-water loop: the chiller rejects heat to condenser water, the condenser-water pump sends it to the cooling tower, the tower rejects the heat outdoors, and cooled water returns to the chiller."
   },
   {
     "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding air-curtain limitation?",
+    "q": "What is passive cooling?",
     "o": [
-      "Uses mechanical equipment such as fans, refrigeration/AC systems and controls.",
-      "Incorrect for a typical chilled-water system; AHUs receive chilled water and cool air across coils, not distribute refrigerant gas to rooms.",
-      "An air curtain reduces exchange but is not an airtight physical barrier and does not replace required doors/fire/smoke separations.",
-      "Cooling towers are often located outdoors/at roof or grade where airflow and structural/water considerations permit; rooftop location is not mandatory."
-    ],
-    "c": 2,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] An air curtain reduces exchange but is not an airtight physical barrier and does not replace required doors/fire/smoke separations."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding condenser-water pump?",
-    "o": [
-      "Source locates chiller/major plant equipment in a mechanical room; actual plant location depends on design.",
-      "Water-cooled chiller rejects heat to condenser water → pump sends warm condenser water to cooling tower → tower rejects heat outdoors → cooled condenser water returns to chiller.",
-      "Circulates condenser water between water-cooled chiller and cooling tower.",
-      "The source gives 2.40 m as an active-cooling rule of thumb; it is not a universal HVAC requirement."
-    ],
-    "c": 2,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] Circulates condenser water between water-cooled chiller and cooling tower."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding passive cooling?",
-    "o": [
-      "Incorrect; return/exhaust air and condenser-water heat rejection are separate paths.",
-      "A flue specifically conveys combustion products from fuel-burning equipment to the outdoors.",
-      "Uses building form, shading, natural ventilation, thermal mass and similar non-mechanical strategies to reduce cooling loads.",
-      "Cooling towers are often located outdoors/at roof or grade where airflow and structural/water considerations permit; rooftop location is not mandatory."
-    ],
-    "c": 2,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] Uses building form, shading, natural ventilation, thermal mass and similar non-mechanical strategies to reduce cooling loads."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding centralized air conditioning?",
-    "o": [
-      "Distributes supply, return and/or exhaust air.",
-      "Water-cooled chiller rejects heat to condenser water → pump sends warm condenser water to cooling tower → tower rejects heat outdoors → cooled condenser water returns to chiller.",
-      "A central plant or centralized HVAC system conditions multiple spaces through central equipment and distribution systems.",
-      "Uses wind, buoyancy/stack effect and openings to move outdoor air without mechanical fans."
-    ],
-    "c": 2,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] A central plant or centralized HVAC system conditions multiple spaces through central equipment and distribution systems.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+VHlwaWNhbCBDaGlsbGVkLVdhdGVyIEhWQUMgQ29uY2VwdDwvdGV4dD4KPHJlY3QgeD0iNzAiIHk9IjMwMCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxMDAiIGNsYXNzPSJmIi8+PHRleHQgeD0iMTIwIiB5PSIzNTUiIGNsYXNzPSJzIj5DaGlsbGVyPC90ZXh0Pgo8cmVjdCB4PSIyOTAiIHk9IjMwMCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxMDAiIGNsYXNzPSJmMiIvPjx0ZXh0IHg9IjM0MCIgeT0iMzU1IiBjbGFzcz0icyI+UHVtcDwvdGV4dD4KPHJlY3QgeD0iNTEwIiB5PSIxMjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMTAwIiBjbGFzcz0iZiIvPjx0ZXh0IHg9IjU2NSIgeT0iMTc1IiBjbGFzcz0icyI+QUhVPC90ZXh0Pgo8cmVjdCB4PSI3MTAiIHk9IjMwMCIgd2lkdGg9IjEzMCIgaGVpZ2h0PSIxMDAiIGNsYXNzPSJmMiIvPjx0ZXh0IHg9IjczNSIgeT0iMzU1IiBjbGFzcz0icyI+Q29vbGluZyBUb3dlcjwvdGV4dD4KPGxpbmUgeDE9IjIzMCIgeTE9IjM1MCIgeDI9IjI5MCIgeTI9IjM1MCIgY2xhc3M9ImwiLz48cGF0aCBkPSJNNDUwIDM1MCBRNTIwIDM1MCA1NTAgMjIwIiBjbGFzcz0ibCIvPjxwYXRoIGQ9Ik02NzAgMTcwIFE3NjAgMTcwIDc3NSAzMDAiIGNsYXNzPSJsIi8+PC9zdmc+"
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding source 'ahu distributes cooled gas'?",
-    "o": [
-      "The source table incorrectly equates VAV with split/multi-split systems; VAV is an air-distribution/control strategy, usually associated with ducted systems.",
-      "Air-handling unit conditions and circulates air through coils, filters, fans and related components.",
-      "Incorrect for a typical chilled-water system; AHUs receive chilled water and cool air across coils, not distribute refrigerant gas to rooms.",
-      "A flue specifically conveys combustion products from fuel-burning equipment to the outdoors."
-    ],
-    "c": 2,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Incorrect for a typical chilled-water system; AHUs receive chilled water and cool air across coils, not distribute refrigerant gas to rooms."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding source 2.40 m active ceiling height?",
-    "o": [
-      "Distributes supply, return and/or exhaust air.",
-      "The source incorrectly groups kitchen and comfort-room exhaust under 'flue.'",
-      "Variable Air Volume systems vary supply airflow to zones in response to load, commonly using VAV terminal boxes.",
-      "The source gives 2.40 m as an active-cooling rule of thumb; it is not a universal HVAC requirement."
+      "Using a chiller at night only",
+      "Using ceiling fans only",
+      "Using split units on low speed",
+      "Using form, shading, ventilation and mass to reduce cooling loads without machines"
     ],
     "c": 3,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source gives 2.40 m as an active-cooling rule of thumb; it is not a universal HVAC requirement."
+    "n": "Passive strategies cut the load before any equipment is sized."
   },
   {
     "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding roof-deck source note?",
+    "q": "What is centralized air conditioning?",
     "o": [
-      "The source table incorrectly equates VAV with split/multi-split systems; VAV is an air-distribution/control strategy, usually associated with ducted systems.",
-      "Kitchen hoods/ducts exhaust heat, grease-laden vapors, smoke and cooking contaminants; they are not generically called flues.",
-      "Produces chilled water by transferring heat from the chilled-water loop to a refrigeration/condenser system.",
-      "Cooling towers are often located outdoors/at roof or grade where airflow and structural/water considerations permit; rooftop location is not mandatory."
-    ],
-    "c": 3,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] Cooling towers are often located outdoors/at roof or grade where airflow and structural/water considerations permit; rooftop location is not mandatory."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding correct condenser-water sequence?",
-    "o": [
-      "CAV systems also use thermostatic controls; airflow remains essentially constant while supply temperature or equipment operation changes.",
-      "The source incorrectly groups kitchen and comfort-room exhaust under 'flue.'",
-      "Terminal air device supplying or returning air at a ceiling/wall/floor opening depending on design.",
-      "Water-cooled chiller rejects heat to condenser water → pump sends warm condenser water to cooling tower → tower rejects heat outdoors → cooled condenser water returns to chiller."
-    ],
-    "c": 3,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Water-cooled chiller rejects heat to condenser water → pump sends warm condenser water to cooling tower → tower rejects heat outdoors → cooled condenser water returns to chiller."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding flue?",
-    "o": [
-      "Produces chilled water by transferring heat from the chilled-water loop to a refrigeration/condenser system.",
-      "In AC systems, indoor heat is absorbed at the evaporator/cooling coil and ultimately rejected outdoors at the condenser/cooling tower.",
-      "A flue specifically conveys combustion products from fuel-burning equipment to the outdoors.",
-      "Incorrect as an absolute statement; CAV systems can have zone or room temperature controls depending on design."
-    ],
-    "c": 2,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] A flue specifically conveys combustion products from fuel-burning equipment to the outdoors."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding ductwork?",
-    "o": [
-      "A high-velocity air stream across an opening that reduces transfer of outdoor/indoor air, insects, dust or contaminants.",
-      "Incorrect; a cooling tower requires airflow and water circulation but not 'high-pressure air' as the defining operating principle.",
-      "CAV systems also use thermostatic controls; airflow remains essentially constant while supply temperature or equipment operation changes.",
-      "Distributes supply, return and/or exhaust air."
-    ],
-    "c": 3,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] Distributes supply, return and/or exhaust air."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding source vav/split conflation?",
-    "o": [
-      "Uses mechanical equipment such as fans, refrigeration/AC systems and controls.",
-      "In AC systems, indoor heat is absorbed at the evaporator/cooling coil and ultimately rejected outdoors at the condenser/cooling tower.",
-      "The source table incorrectly equates VAV with split/multi-split systems; VAV is an air-distribution/control strategy, usually associated with ducted systems.",
-      "Circulates chilled water between chiller and cooling coils."
-    ],
-    "c": 2,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source table incorrectly equates VAV with split/multi-split systems; VAV is an air-distribution/control strategy, usually associated with ducted systems."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding source flue conflation?",
-    "o": [
-      "Incorrect; a cooling tower requires airflow and water circulation but not 'high-pressure air' as the defining operating principle.",
-      "Source locates chiller/major plant equipment in a mechanical room; actual plant location depends on design.",
-      "The source associates split systems with smaller establishments and central systems with larger facilities; this is a common tendency, not a universal rule.",
-      "The source incorrectly groups kitchen and comfort-room exhaust under 'flue.'"
-    ],
-    "c": 3,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source incorrectly groups kitchen and comfort-room exhaust under 'flue.'"
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding chiller?",
-    "o": [
-      "Incorrect; return/exhaust air and condenser-water heat rejection are separate paths.",
-      "Uses mechanical equipment such as fans, refrigeration/AC systems and controls.",
-      "Produces chilled water by transferring heat from the chilled-water loop to a refrigeration/condenser system.",
-      "System choice, controls, equipment efficiency, part-load performance, ventilation requirements and building load all affect HVAC energy use."
-    ],
-    "c": 2,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] Produces chilled water by transferring heat from the chilled-water loop to a refrigeration/condenser system."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding cav thermostat?",
-    "o": [
-      "CAV systems also use thermostatic controls; airflow remains essentially constant while supply temperature or equipment operation changes.",
-      "Oversimplified/incorrect wording; refrigerant phase change occurs within the chiller's refrigeration circuit while chilled water remains a separate secondary fluid.",
-      "Source locates chiller/major plant equipment in a mechanical room; actual plant location depends on design.",
-      "Uses wind, buoyancy/stack effect and openings to move outdoor air without mechanical fans."
+      "A central plant that conditions many spaces through distribution systems",
+      "A window unit in every room",
+      "A portable air conditioner",
+      "Natural ventilation"
     ],
     "c": 0,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] CAV systems also use thermostatic controls; airflow remains essentially constant while supply temperature or equipment operation changes."
+    "n": "Chillers, AHUs and ducts serve the whole building."
   },
   {
     "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding indoor heat rejection?",
+    "q": "In a chilled-water system, what does an AHU send to the rooms?",
     "o": [
-      "Air-handling unit conditions and circulates air through coils, filters, fans and related components.",
-      "The source gives 2.70 m as a passive-cooling floor-to-ceiling rule of thumb; it is not a universal mechanical-code requirement.",
-      "Incorrect; return/exhaust air and condenser-water heat rejection are separate paths.",
-      "In AC systems, indoor heat is absorbed at the evaporator/cooling coil and ultimately rejected outdoors at the condenser/cooling tower."
-    ],
-    "c": 3,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] In AC systems, indoor heat is absorbed at the evaporator/cooling coil and ultimately rejected outdoors at the condenser/cooling tower."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding source 'cooling tower needs high-pressure air'?",
-    "o": [
-      "Incorrect; a cooling tower requires airflow and water circulation but not 'high-pressure air' as the defining operating principle.",
-      "Uses wind, buoyancy/stack effect and openings to move outdoor air without mechanical fans.",
-      "Variable Air Volume systems vary supply airflow to zones in response to load, commonly using VAV terminal boxes.",
-      "Rejects heat from condenser water to the atmosphere, primarily through evaporative heat/mass transfer."
-    ],
-    "c": 0,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Incorrect; a cooling tower requires airflow and water circulation but not 'high-pressure air' as the defining operating principle."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding active cooling?",
-    "o": [
-      "Chiller cools water → pump sends chilled water to AHU/FCU coils → room air is cooled → warmed chilled water returns to chiller.",
-      "Air-handling unit conditions and circulates air through coils, filters, fans and related components.",
-      "Uses mechanical equipment such as fans, refrigeration/AC systems and controls.",
-      "Kitchen hoods/ducts exhaust heat, grease-laden vapors, smoke and cooking contaminants; they are not generically called flues."
-    ],
-    "c": 2,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] Uses mechanical equipment such as fans, refrigeration/AC systems and controls."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding mechanical room?",
-    "o": [
-      "Variable Air Volume systems vary supply airflow to zones in response to load, commonly using VAV terminal boxes.",
-      "Terminal air device supplying or returning air at a ceiling/wall/floor opening depending on design.",
-      "Source locates chiller/major plant equipment in a mechanical room; actual plant location depends on design.",
-      "Uses fans/ducts or mechanical equipment to supply or exhaust air."
-    ],
-    "c": 2,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] Source locates chiller/major plant equipment in a mechanical room; actual plant location depends on design."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding source 'wall register exhausts indoor heat to cooling tower'?",
-    "o": [
-      "Fan-coil unit uses a fan and coil to condition recirculated/ventilation air locally.",
-      "Incorrect as an absolute statement; CAV systems can have zone or room temperature controls depending on design.",
-      "Kitchen hoods/ducts exhaust heat, grease-laden vapors, smoke and cooking contaminants; they are not generically called flues.",
-      "Incorrect; return/exhaust air and condenser-water heat rejection are separate paths."
-    ],
-    "c": 3,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Incorrect; return/exhaust air and condenser-water heat rejection are separate paths."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding natural ventilation?",
-    "o": [
-      "Uses wind, buoyancy/stack effect and openings to move outdoor air without mechanical fans.",
-      "A high-velocity air stream across an opening that reduces transfer of outdoor/indoor air, insects, dust or contaminants.",
-      "Terminal air device supplying or returning air at a ceiling/wall/floor opening depending on design.",
-      "Constant Air Volume systems deliver essentially constant airflow while controlling temperature or cycling/other variables depending on system."
-    ],
-    "c": 0,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] Uses wind, buoyancy/stack effect and openings to move outdoor air without mechanical fans."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding ahu?",
-    "o": [
-      "Air-handling unit conditions and circulates air through coils, filters, fans and related components.",
-      "Circulates chilled water between chiller and cooling coils.",
-      "Incorrect as an absolute statement; CAV systems can have zone or room temperature controls depending on design.",
-      "Restroom exhaust fans remove odors/moisture/air contaminants; the exhaust duct is not a combustion flue."
-    ],
-    "c": 0,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] Air-handling unit conditions and circulates air through coils, filters, fans and related components."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding vav?",
-    "o": [
-      "Variable Air Volume systems vary supply airflow to zones in response to load, commonly using VAV terminal boxes.",
-      "Air terminal mounted at a wall opening.",
-      "The source associates split systems with smaller establishments and central systems with larger facilities; this is a common tendency, not a universal rule.",
-      "A high-velocity air stream across an opening that reduces transfer of outdoor/indoor air, insects, dust or contaminants."
-    ],
-    "c": 0,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Variable Air Volume systems vary supply airflow to zones in response to load, commonly using VAV terminal boxes.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+Q0FWIHZzIFZBViBBaXIgRGlzdHJpYnV0aW9uPC90ZXh0Pgo8cmVjdCB4PSIxMDAiIHk9IjEyMCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyNjAiIGNsYXNzPSJmIi8+PHRleHQgeD0iMjA1IiB5PSIyMDAiIGNsYXNzPSJ0Ij5DQVY8L3RleHQ+PHRleHQgeD0iMTQwIiB5PSIyNjAiIGNsYXNzPSJzIj5haXIgdm9sdW1lIGhlbGQgZXNzZW50aWFsbHkgY29uc3RhbnQ8L3RleHQ+PHRleHQgeD0iMTUwIiB5PSIzMTAiIGNsYXNzPSJzIj50ZW1wZXJhdHVyZS9vdGhlciB2YXJpYWJsZSBtYXkgY2hhbmdlPC90ZXh0Pgo8cmVjdCB4PSI1MDAiIHk9IjEyMCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyNjAiIGNsYXNzPSJmMiIvPjx0ZXh0IHg9IjYwNSIgeT0iMjAwIiBjbGFzcz0idCI+VkFWPC90ZXh0Pjx0ZXh0IHg9IjUzNSIgeT0iMjYwIiBjbGFzcz0icyI+YWlyZmxvdyB2YXJpZXMgd2l0aCB6b25lIGxvYWQ8L3RleHQ+PHRleHQgeD0iNTQwIiB5PSIzMTAiIGNsYXNzPSJzIj56b25lIGNvbnRyb2xzIG1vZHVsYXRlIHRlcm1pbmFsIGFpcmZsb3c8L3RleHQ+PC9zdmc+"
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding kitchen exhaust?",
-    "o": [
-      "Kitchen hoods/ducts exhaust heat, grease-laden vapors, smoke and cooking contaminants; they are not generically called flues.",
-      "System choice, controls, equipment efficiency, part-load performance, ventilation requirements and building load all affect HVAC energy use.",
-      "Zone thermostat/controller modulates VAV terminal airflow or related control devices.",
-      "Circulates chilled water between chiller and cooling coils."
-    ],
-    "c": 0,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Kitchen hoods/ducts exhaust heat, grease-laden vapors, smoke and cooking contaminants; they are not generically called flues."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding ceiling register?",
-    "o": [
-      "Terminal air device supplying or returning air at a ceiling/wall/floor opening depending on design.",
-      "Oversimplified/incorrect wording; refrigerant phase change occurs within the chiller's refrigeration circuit while chilled water remains a separate secondary fluid.",
-      "An air curtain reduces exchange but is not an airtight physical barrier and does not replace required doors/fire/smoke separations.",
-      "The source associates split systems with smaller establishments and central systems with larger facilities; this is a common tendency, not a universal rule."
-    ],
-    "c": 0,
-    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] Terminal air device supplying or returning air at a ceiling/wall/floor opening depending on design."
-  },
-  {
-    "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding source cav/no-room-control claim?",
-    "o": [
-      "Circulates condenser water between water-cooled chiller and cooling tower.",
-      "Incorrect as an absolute statement; CAV systems can have zone or room temperature controls depending on design.",
-      "System choice, controls, equipment efficiency, part-load performance, ventilation requirements and building load all affect HVAC energy use.",
-      "The source gives 2.70 m as a passive-cooling floor-to-ceiling rule of thumb; it is not a universal mechanical-code requirement."
+      "Refrigerant gas",
+      "Cooled air",
+      "Chilled water",
+      "Condenser water"
     ],
     "c": 1,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Incorrect as an absolute statement; CAV systems can have zone or room temperature controls depending on design."
+    "n": "The AHU cools air over its chilled-water coil and blows the air through ducts."
   },
   {
     "s": "Central HVAC and Ventilation",
-    "q": "Which statement is correct regarding air curtain?",
+    "q": "What minimum ceiling height does the NBC IRR set for air-conditioned rooms?",
     "o": [
-      "Uses building form, shading, natural ventilation, thermal mass and similar non-mechanical strategies to reduce cooling loads.",
-      "A high-velocity air stream across an opening that reduces transfer of outdoor/indoor air, insects, dust or contaminants.",
-      "Oversimplified/incorrect wording; refrigerant phase change occurs within the chiller's refrigeration circuit while chilled water remains a separate secondary fluid.",
-      "Rejects heat from condenser water to the atmosphere, primarily through evaporative heat/mass transfer."
+      "2.70 m",
+      "2.10 m",
+      "2.40 m",
+      "3.00 m"
+    ],
+    "c": 2,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "Naturally ventilated rooms need 2.70 m."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "Where are cooling towers usually placed?",
+    "o": [
+      "Inside the mechanical room",
+      "In the basement with no openings",
+      "Inside the AHU room",
+      "Outdoors, often on the roof or at grade, with free airflow"
+    ],
+    "c": 3,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "They need open air to evaporate water, plus structure for their weight."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "What is the correct condenser-water sequence?",
+    "o": [
+      "Chiller, pump, cooling tower, back to chiller",
+      "Chiller, AHU, rooms, cooling tower",
+      "Cooling tower, rooms, AHU, chiller",
+      "Pump, FCU, rooms, chiller"
+    ],
+    "c": 0,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "Condenser-water loop: the chiller rejects heat to condenser water, the condenser-water pump sends it to the cooling tower, the tower rejects the heat outdoors, and cooled water returns to the chiller."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "What does a flue carry?",
+    "o": [
+      "Toilet exhaust",
+      "Combustion gases from fuel-burning equipment to the outdoors",
+      "Kitchen grease vapors",
+      "Supply air"
     ],
     "c": 1,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
-    "n": "[SOURCE FACT — AUDITED] A high-velocity air stream across an opening that reduces transfer of outdoor/indoor air, insects, dust or contaminants.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+QWlyIEN1cnRhaW4gYXQgRG9vcndheTwvdGV4dD4KPHJlY3QgeD0iMjYwIiB5PSI5MCIgd2lkdGg9IjM4MCIgaGVpZ2h0PSIzMjAiIGNsYXNzPSJmIi8+CjxyZWN0IHg9IjMwMCIgeT0iOTUiIHdpZHRoPSIzMDAiIGhlaWdodD0iNjAiIGNsYXNzPSJmMiIvPgo8cGF0aCBkPSJNMzQwIDE1NSBWMzgwIE00MDAgMTU1IFYzODAgTTQ2MCAxNTUgVjM4MCBNNTIwIDE1NSBWMzgwIE01ODAgMTU1IFYzODAiIGNsYXNzPSJkIi8+Cjx0ZXh0IHg9IjMzNSIgeT0iNDU1IiBjbGFzcz0icyI+aGlnaC12ZWxvY2l0eSBhaXIgc3RyZWFtIHJlZHVjZXMgdHJhbnNmZXIgYWNyb3NzIG9wZW4gZG9vcndheTwvdGV4dD48L3N2Zz4="
+    "n": "Flues serve boilers, water heaters and generators."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "What does ductwork do?",
+    "o": [
+      "Carries chilled water",
+      "Carries refrigerant",
+      "Carries supply, return and exhaust air",
+      "Carries condenser water"
+    ],
+    "c": 2,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "Ducts are sized for airflow and noise."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "Is VAV a kind of split air conditioner?",
+    "o": [
+      "Yes; it is another name for a split unit",
+      "Yes; it is a multi-split",
+      "Yes; it is a window unit",
+      "No; VAV is a way of controlling airflow in ducted systems"
+    ],
+    "c": 3,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "CAV keeps airflow constant and varies the supply temperature; VAV keeps supply temperature steady and varies the airflow to each zone."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "Are kitchen and toilet exhausts classed as flues?",
+    "o": [
+      "No; flues carry combustion products only",
+      "Yes; all exhaust ducts are flues",
+      "Only kitchen exhaust is",
+      "Only toilet exhaust is"
+    ],
+    "c": 0,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "Kitchen hoods have their own grease-duct rules."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "What does a chiller do?",
+    "o": [
+      "Rejects heat directly to outdoor air by evaporation",
+      "Produces chilled water by moving heat from the water loop to its refrigeration circuit",
+      "Blows cool air into rooms",
+      "Stores ice only"
+    ],
+    "c": 1,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "Chilled-water loop: the chiller cools water, the chilled-water pump sends it to AHU and FCU coils, the coils cool the air, and the warmed water returns to the chiller."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "Does a CAV system use thermostats?",
+    "o": [
+      "No; CAV has no temperature control",
+      "Only for heating",
+      "Yes; airflow stays constant while supply temperature or equipment output changes",
+      "Only in hospitals"
+    ],
+    "c": 2,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "CAV keeps airflow constant and varies the supply temperature; VAV keeps supply temperature steady and varies the airflow to each zone."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "Where is the heat absorbed indoors finally rejected in an AC system?",
+    "o": [
+      "Into the ceiling space",
+      "Into the return duct",
+      "Into the floor slab",
+      "Outdoors, at the condenser or cooling tower"
+    ],
+    "c": 3,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "The evaporator or cooling coil picks it up inside; the condenser or tower throws it out."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "What does a cooling tower need to work?",
+    "o": [
+      "Airflow and circulating water",
+      "High-pressure compressed air",
+      "Refrigerant gas",
+      "Steam"
+    ],
+    "c": 0,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "Condenser-water loop: the chiller rejects heat to condenser water, the condenser-water pump sends it to the cooling tower, the tower rejects the heat outdoors, and cooled water returns to the chiller."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "What is active cooling?",
+    "o": [
+      "Using shading and thermal mass only",
+      "Using powered equipment such as fans and air conditioners",
+      "Using windows only",
+      "Using landscaping only"
+    ],
+    "c": 1,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "Passive cooling reduces the load that active cooling must handle."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "Where is chiller plant equipment usually housed?",
+    "o": [
+      "In occupied office rooms",
+      "Inside elevator shafts",
+      "In a mechanical room or plant area chosen in design",
+      "In stairwells"
+    ],
+    "c": 2,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "Plant rooms need access, drainage, ventilation and structural support."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "Is room return air sent to the cooling tower?",
+    "o": [
+      "Yes; all indoor air goes to the tower",
+      "Yes; through the wall registers",
+      "Only at night",
+      "No; return air goes back to the AHU, and only condenser water goes to the tower"
+    ],
+    "c": 3,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "Air and water paths are separate."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "What is natural ventilation?",
+    "o": [
+      "Moving outdoor air through openings by wind and stack effect",
+      "Moving air with fans and ducts",
+      "Cooling air with a chiller",
+      "Recirculating air through an AHU"
+    ],
+    "c": 0,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "It needs no fans, only well-placed openings."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "What is an air handling unit (AHU)?",
+    "o": [
+      "A cooling tower",
+      "A unit with fans, filters and coils that conditions and circulates air",
+      "A chiller",
+      "A condenser-water pump"
+    ],
+    "c": 1,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "Large AHUs serve whole floors through ducts."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "What is a variable air volume (VAV) system?",
+    "o": [
+      "One that supplies constant airflow everywhere",
+      "One with no ducts",
+      "One that varies airflow to each zone to match its load",
+      "One that uses only windows"
+    ],
+    "c": 2,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "CAV keeps airflow constant and varies the supply temperature; VAV keeps supply temperature steady and varies the airflow to each zone."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "What do kitchen hoods and ducts exhaust?",
+    "o": [
+      "Only toilet odors",
+      "Combustion gases from boilers",
+      "Supply air",
+      "Heat, grease-laden vapors and smoke from cooking"
+    ],
+    "c": 3,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "Grease ducts need special construction and cleaning access."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "What is a ceiling register?",
+    "o": [
+      "An air outlet or inlet at a ceiling opening",
+      "A ceiling fan",
+      "A light fixture",
+      "A sprinkler head"
+    ],
+    "c": 0,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "Registers may supply or return air depending on design."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "Can a CAV system have room temperature control?",
+    "o": [
+      "No, never",
+      "Yes, through zone reheat or other controls, depending on design",
+      "Only if it is a VAV system",
+      "Only with windows open"
+    ],
+    "c": 1,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "CAV keeps airflow constant and varies the supply temperature; VAV keeps supply temperature steady and varies the airflow to each zone."
+  },
+  {
+    "s": "Central HVAC and Ventilation",
+    "q": "What is an air curtain?",
+    "o": [
+      "A fabric curtain",
+      "A fire shutter",
+      "A strong air stream across a doorway that reduces air and insect transfer",
+      "A glass partition"
+    ],
+    "c": 2,
+    "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
+    "n": "Air curtains are used at shop and loading doors."
   }
 ]
