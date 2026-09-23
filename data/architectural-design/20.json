@@ -355,7 +355,13 @@
     "o": [
       "A shower",
       "A lavatory",
-      "Both A and C",
+      {
+        "ref": [
+          1,
+          3
+        ],
+        "tpl": "both"
+      },
       "A water closet"
     ],
     "c": 0,

@@ -161,7 +161,13 @@
       "Open space requirements",
       "Building height limit",
       "Firewalls",
-      "Both A and D"
+      {
+        "ref": [
+          0,
+          3
+        ],
+        "tpl": "both"
+      }
     ],
     "c": 2,
     "ref": "",
@@ -269,7 +275,13 @@
     "s": "",
     "q": "Which workspace-arrangement rule places the most critical item where it's easiest to reach?",
     "o": [
-      "Both A and B",
+      {
+        "ref": [
+          1,
+          3
+        ],
+        "tpl": "both"
+      },
       "Sequence of use principle",
       "Importance principle",
       "Frequency of use principle",
@@ -355,7 +367,13 @@
     "o": [
       "Function principle",
       "Importance principle",
-      "Both A and B",
+      {
+        "ref": [
+          1,
+          4
+        ],
+        "tpl": "both"
+      },
       "Sequence of use principle",
       "Frequency of use principle"
     ],
@@ -393,11 +411,17 @@
   },
   {
     "s": "",
-    "q": "What term names the maximum share of a lot that a building may occupy?",
+    "q": "Which terms describe the limit on how much of a lot a building's footprint may cover?",
     "o": [
       "MACA",
       "AMBF",
-      "Both B and D",
+      {
+        "ref": [
+          1,
+          4
+        ],
+        "tpl": "both"
+      },
       "PSOmin",
       "PSOmax"
     ],

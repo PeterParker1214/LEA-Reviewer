@@ -47,7 +47,13 @@
     "o": [
       "10 storeys",
       "17 storeys",
-      "Both C and D",
+      {
+        "ref": [
+          1,
+          4
+        ],
+        "tpl": "both"
+      },
       "5 storeys",
       "35 storeys"
     ],
@@ -61,7 +67,13 @@
     "o": [
       "Several dispersed cores",
       "Centered core",
-      "Either A or C",
+      {
+        "ref": [
+          0,
+          3
+        ],
+        "tpl": "either"
+      },
       "Core pushed to one side",
       "No core provided"
     ],
@@ -85,10 +97,16 @@
   },
   {
     "s": "",
-    "q": "What circulation drawback results from placing the core toward one side of the floor plate?",
+    "q": "Which core placement leaves tenants on the far side with the longest walk to the elevators and exits?",
     "o": [
       "Several dispersed cores",
-      "Either A or C",
+      {
+        "ref": [
+          0,
+          4
+        ],
+        "tpl": "either"
+      },
       "No core provided",
       "Core pushed to one side",
       "Centered core"

@@ -138,7 +138,13 @@
       "No. The owner must wait for the building permit to be issued before he can proceed with excavation works.",
       "Yes, as long as the Building Official issues the Ground Preparation and Excavation Permit and as long as the owner follows the corresponding rules/requirements.",
       "The NBC is silent on this matter.",
-      "Both A and C."
+      {
+        "ref": [
+          0,
+          2
+        ],
+        "tpl": "both"
+      }
     ],
     "c": 1
   },
@@ -149,7 +155,13 @@
       "No. The entire building must be completed first and the Certificate of Occupancy for the entire building must be issued before anyone can occupy any portion of the building.",
       "No, this is extremely dangerous. There must be no ongoing works within the building before anyone may be allowed to occupy it.",
       "Yes, if the Building Official grants a Partial Certificate of Occupancy to the owner.",
-      "Both A and B"
+      {
+        "ref": [
+          0,
+          1
+        ],
+        "tpl": "both"
+      }
     ],
     "c": 2
   },
@@ -281,7 +293,13 @@
       "The architect or the engineer who drew up the plans",
       "The contractor and the construction supervisor",
       "The building official who reviewed and approved the c. plans",
-      "Both B and C"
+      {
+        "ref": [
+          1,
+          2
+        ],
+        "tpl": "both"
+      }
     ],
     "c": 1
   },
@@ -301,11 +319,18 @@
     "q": "The Building Code mandates that the owner engage a full-time construction inspector. What license must this inspector hold?",
     "o": [
       "Licensed architect",
-      "Licensed mechanical engineer",
+      "Licensed civil engineer",
       "Licensed contractor",
-      "Either A or B"
+      {
+        "ref": [
+          0,
+          1
+        ],
+        "tpl": "either"
+      }
     ],
-    "c": 0
+    "c": 3,
+    "n": "PD 1096 Sec. 308 requires the owner to engage a duly licensed architect or civil engineer for full-time inspection and supervision of the construction work."
   },
   {
     "s": "PD 1096 — National Building Code",
@@ -314,7 +339,13 @@
       "Allowed only on one side of property",
       "Allowed on both sides of the property",
       "Allowed on one side and the rear",
-      "Both B and C"
+      {
+        "ref": [
+          1,
+          2
+        ],
+        "tpl": "both"
+      }
     ],
     "c": 3
   },
@@ -347,7 +378,13 @@
       "BP 220 projects",
       "Buildings made of native materials like wood, nipa, and lumber",
       "Projects that only involve non-structural repairs",
-      "Both A and B"
+      {
+        "ref": [
+          0,
+          1
+        ],
+        "tpl": "both"
+      }
     ],
     "c": 0
   },
@@ -369,7 +406,13 @@
       "Non-fire restricted zone",
       "Fire restrictive zone",
       "Highly fire restrictive zone",
-      "Both B and C"
+      {
+        "ref": [
+          1,
+          2
+        ],
+        "tpl": "both"
+      }
     ],
     "c": 2
   },
@@ -650,7 +693,13 @@
       "Wet standpipe",
       "Dry standpipe",
       "Combination standpipe",
-      "Both A and C"
+      {
+        "ref": [
+          0,
+          2
+        ],
+        "tpl": "both"
+      }
     ],
     "c": 1
   },
@@ -979,7 +1028,7 @@
     "o": [
       "An architect’s duty to his client",
       "An architect’s duty to the public",
-      "Both A and B are equally important",
+      "Both duties are equally important",
       "None of the above"
     ],
     "c": 1
@@ -1079,7 +1128,13 @@
       "A sole proprietorship",
       "A partnership",
       "An architectural firm",
-      "Both B and C"
+      {
+        "ref": [
+          1,
+          2
+        ],
+        "tpl": "both"
+      }
     ],
     "c": 1
   },
@@ -2125,7 +2180,13 @@
       "The contractor still needs to rectify it because it is inferior work, at no cost to the owner.",
       "The contractor will rectify the inferior work but will charge the cost of rectification to the owner because the condemnation period expires no later than 6 months from substantial completion.",
       "Since the condemnation period has already expired, the owner may cross charge to the architect the cost for rectification. This may be deducted from the architect's remaining fee for construction supervision.",
-      "Both B and C"
+      {
+        "ref": [
+          1,
+          2
+        ],
+        "tpl": "both"
+      }
     ],
     "c": 0
   },
