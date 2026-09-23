@@ -636,8 +636,32 @@ def force_systems():
     return svg(600, 240, body)
 
 
+def footing_types():
+    # plan views; dark squares are columns, dashed line is the property line
+    col = lambda x, y: f'<rect x="{x - 9}" y="{y - 9}" width="18" height="18" fill="{INK}"/>'
+    ft = '#d8d2c4'
+    body = ''
+    # A isolated
+    body += rect(40, 60, 90, 90, ft) + col(85, 105)
+    # B rectangular combined
+    body += rect(190, 70, 190, 70, ft) + col(225, 105) + col(345, 105)
+    # C trapezoidal combined, wide end under the heavier column at the property line
+    body += poly([(440, 55), (440, 155), (620, 125), (620, 85)], ft) + col(465, 105) + col(595, 105)
+    body += f'<line x1="440" y1="35" x2="440" y2="175" stroke="#c0392b" stroke-width="1.6" stroke-dasharray="6 4"/>'
+    # D strap footing: two pads joined by a beam
+    body += rect(40, 240, 60, 90, ft) + rect(250, 250, 70, 70, ft) + rect(100, 277, 150, 16, '#b8c7d9') + col(62, 285) + col(285, 285)
+    body += f'<line x1="40" y1="220" x2="40" y2="350" stroke="#c0392b" stroke-width="1.6" stroke-dasharray="6 4"/>'
+    # E mat
+    body += rect(380, 215, 240, 140, ft) + ''.join(col(410 + 60 * i, 245 + 40 * j) for i in range(4) for j in range(3))
+    for L, x, y in (('A', 85, 185), ('B', 285, 185), ('C', 530, 185), ('D', 180, 375), ('E', 500, 380)):
+        body += f'<text class="L" x="{x}" y="{y}" text-anchor="middle">{L}</text>'
+    body += cap(330, 405, 'Plan views. Black squares = columns; red dashed line = property line')
+    return svg(660, 420, body)
+
+
 BT = 'building-technology/'
 FIGURES = {
+    'structural/footing-types': footing_types,
     'structural/load-types': load_types, 'structural/force-systems': force_systems,
     'structural/slump-types': slump_types,
     'structural/beam-types': beam_types, 'structural/support-types': support_types,
