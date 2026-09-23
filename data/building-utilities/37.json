@@ -1,513 +1,509 @@
 [
   {
     "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding fusible fixed-temperature design?",
+    "q": "How does a one-time (non-restorable) fixed-temperature heat detector work?",
     "o": [
-      "Uses automatic initiating/detection devices to trigger the alarm system.",
-      "A one-time design may use a low-melting fusible element.",
-      "The source associates photoelectric detection with smoke-producing/slow-smoldering fires.",
-      "Continuous evacuation ringing, with optional zoning/annunciation."
+      "A low-melting fusible element melts at its set temperature",
+      "A bimetal strip bends and resets itself",
+      "A light beam is blocked by smoke",
+      "An ion current drops when smoke enters"
+    ],
+    "c": 0,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Once the fusible link melts, the detector must be replaced. Heat detectors: fixed-temperature types act at a set temperature, rate-of-rise types act when temperature climbs too fast, and combination types do both."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "Which of these are audible alarm devices?",
+    "o": [
+      "Strobes and beacons",
+      "Bells, horns, chimes and speakers",
+      "Smoke and heat detectors",
+      "Pull stations and break-glass stations"
     ],
     "c": 1,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] A one-time design may use a low-melting fusible element."
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Notification appliances are audible (bells, horns, speakers) or visible (strobes). Detectors and pull stations are initiating devices."
   },
   {
     "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding audible notification?",
+    "q": "Under the 2019 Fire Code IRR, what fire alarm is required in business occupancies below the size limits for an automatic system?",
     "o": [
-      "In the source's legacy system, station identity is not inherently transmitted as a unique code to the control panel.",
-      "Manual stations grouped into zones that produce identifiable zone codes.",
-      "The source lists bells, buzzers, gongs, and horns.",
-      "The source gives higher heat-detector ratings for kitchens/attics/basements; actual selection depends on ambient temperature and device listing."
+      "No alarm at all",
+      "Only portable fire extinguishers",
+      "A manual fire alarm system",
+      "Only a sprinkler system"
     ],
     "c": 2,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] The source lists bells, buzzers, gongs, and horns."
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Larger business buildings need full fire alarm systems; smaller ones still need manual alarm stations."
   },
   {
     "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding current business occupancy example?",
+    "q": "Why is a heat detector's rating chosen above the normal room temperature?",
     "o": [
-      "The source associates photoelectric detection with smoke-producing/slow-smoldering fires.",
-      "The 2019 RIRR requires fire alarm systems in business occupancies under specified storey/occupant thresholds and manual fire alarm where the listed threshold conditions are not met.",
-      "Legacy stations transmit a code identifying location/station information.",
-      "Legacy system producing rounds of an audible code."
+      "So it never activates at all",
+      "So it reacts to cigarette smoke",
+      "So it can be installed outdoors only",
+      "So it does not trip from everyday heat, yet still acts early in a fire"
+    ],
+    "c": 3,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Ordinary rooms use detectors around 57°C (135°F). Hot spaces such as kitchens and attics use higher ratings, around 88–93°C (190–200°F)."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "In a non-coded fire alarm system, what signal is given?",
+    "o": [
+      "A continuous ringing for evacuation",
+      "A coded pattern that identifies the station",
+      "A silent signal to the fire station only",
+      "A voice message naming the floor"
+    ],
+    "c": 0,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Coded systems sound a pattern that identifies the station or zone. Non-coded systems simply ring continuously for evacuation."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "What does a non-coded manual station send to the control panel?",
+    "o": [
+      "A unique code for its location",
+      "An alarm, without a code identifying that station",
+      "A voice message",
+      "A video image"
     ],
     "c": 1,
-    "ref": "2019 Revised IRR of RA 9514, Sec. 10.2.6 and occupancy provisions",
-    "n": "[CURRENT FIRE CODE — VERIFIED] The 2019 RIRR requires fire alarm systems in business occupancies under specified storey/occupant thresholds and manual fire alarm where the listed threshold conditions are not met."
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "An annunciator can be added to show which zone the alarm came from. Coded systems sound a pattern that identifies the station or zone. Non-coded systems simply ring continuously for evacuation."
   },
   {
     "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding 135°f/200 ft² source note?",
+    "q": "Which fire is a photoelectric smoke detector best at detecting?",
     "o": [
-      "Manual stations grouped into zones that produce identifiable zone codes.",
-      "The source notes an annunciator can provide zone identification for otherwise non-coded stations.",
-      "Detects radiant energy from flame rather than relying on smoke or heat alone.",
-      "The source gives 135°F and 200 ft² as an ordinary-room legacy detector note; detector spacing/ratings today depend on listing, device type, ceiling conditions, and applicable fire-alarm design standards rather than this blanket rule."
-    ],
-    "c": 3,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source gives 135°F and 200 ft² as an ordinary-room legacy detector note; detector spacing/ratings today depend on listing, device type, ceiling conditions, and applicable fire-alarm design standards rather than this blanket rule."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding legacy non-coded control?",
-    "o": [
-      "Detects smoke by changes in ion current in an ionization chamber.",
-      "Legacy stations transmit a code identifying location/station information.",
-      "Continuous evacuation ringing, with optional zoning/annunciation.",
-      "The source describes an outdoor alarm bell for external indication."
+      "A fast, clean-burning flaming fire",
+      "A fire with no smoke at all",
+      "A slow, smoldering fire that gives off heavy smoke",
+      "A fire in a gas pipeline"
     ],
     "c": 2,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] Continuous evacuation ringing, with optional zoning/annunciation."
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Smoke detectors: ionization types react fastest to small particles from flaming fires; photoelectric types react best to large particles from smoldering fires."
   },
   {
     "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding non-coded manual station?",
+    "q": "What is a zone-coded fire alarm system?",
     "o": [
-      "Responds to temperature conditions rather than smoke or flame radiation.",
-      "Combines identifying coded alarm and continuous building evacuation alarm.",
-      "Detects radiant energy from flame rather than relying on smoke or heat alone.",
-      "In the source's legacy system, station identity is not inherently transmitted as a unique code to the control panel."
+      "A system with no codes at all",
+      "A system with one code for the whole building",
+      "A system using only sprinklers",
+      "Manual stations grouped into zones, each sounding its own code"
     ],
     "c": 3,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] In the source's legacy system, station identity is not inherently transmitted as a unique code to the control panel."
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Coded systems sound a pattern that identifies the station or zone. Non-coded systems simply ring continuously for evacuation."
   },
   {
     "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding photoelectric application source note?",
+    "q": "What does a coded manual station do?",
     "o": [
-      "The source associates photoelectric detection with smoke-producing/slow-smoldering fires.",
-      "The source describes an outdoor alarm bell for external indication.",
-      "The source associates flame detectors with industrial applications requiring rapid/sensitive flame detection.",
-      "The source says legacy coded stations often used three- or four-digit codes."
+      "Sends a code that identifies its location",
+      "Rings continuously with no code",
+      "Only lights a lamp at the station",
+      "Only calls the police"
     ],
     "c": 0,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] The source associates photoelectric detection with smoke-producing/slow-smoldering fires."
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Coded systems sound a pattern that identifies the station or zone. Non-coded systems simply ring continuously for evacuation."
   },
   {
     "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding zone-coded system?",
+    "q": "What does a flame detector sense?",
     "o": [
-      "Responds to temperature conditions rather than smoke or flame radiation.",
-      "Manual stations grouped into zones that produce identifiable zone codes.",
-      "The 2019 RIRR permits required fire-alarm initiation by manual means, approved automatic detection, or approved automatic sprinkler system where applicable.",
-      "Uses infrared spectral energy."
+      "Smoke particles",
+      "Radiant energy from the flame",
+      "A rise in room temperature",
+      "Carbon monoxide gas"
     ],
     "c": 1,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] Manual stations grouped into zones that produce identifiable zone codes.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+TGVnYWN5IENvZGVkIEZpcmUtQWxhcm0gQ29uY2VwdHMgaW4gU291cmNlPC90ZXh0Pgo8cmVjdCB4PSI3MCIgeT0iMTIwIiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjI2MCIgY2xhc3M9ImYiLz48dGV4dCB4PSIxMTUiIHk9IjIzNSIgY2xhc3M9InMiPk5vbi1jb2RlZDwvdGV4dD4KPHJlY3QgeD0iMjcwIiB5PSIxMjAiIHdpZHRoPSIxODAiIGhlaWdodD0iMjYwIiBjbGFzcz0iZjIiLz48dGV4dCB4PSIzMzAiIHk9IjIzNSIgY2xhc3M9InMiPkNvZGVkPC90ZXh0Pgo8cmVjdCB4PSI0NzAiIHk9IjEyMCIgd2lkdGg9IjE4MCIgaGVpZ2h0PSIyNjAiIGNsYXNzPSJmIi8+PHRleHQgeD0iNTI1IiB5PSIyMzUiIGNsYXNzPSJzIj5ab25lLWNvZGVkPC90ZXh0Pgo8cmVjdCB4PSI2NzAiIHk9IjEyMCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIyNjAiIGNsYXNzPSJmMiIvPjx0ZXh0IHg9IjcyMCIgeT0iMjM1IiBjbGFzcz0icyI+RHVhbC1jb2RlZDwvdGV4dD48L3N2Zz4="
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Flame detectors sense radiant energy from the flame itself, in the ultraviolet (UV) or infrared (IR) band. They are used where fires flare fast, such as fuel handling."
   },
   {
     "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding coded manual station?",
+    "q": "What is a weatherproof bell on the outside of a building for?",
     "o": [
-      "The source calls a normally de-energized initiating circuit that operates on activation an 'open circuit system.'",
-      "The source associates flame detectors with industrial applications requiring rapid/sensitive flame detection.",
-      "Legacy stations transmit a code identifying location/station information.",
-      "Operates when ambient temperature increases faster than a predetermined rate."
+      "Replacing the indoor alarms",
+      "Testing the detectors",
+      "Alerting people outside and guiding firefighters to the building",
+      "Ringing the class bell"
     ],
     "c": 2,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] Legacy stations transmit a code identifying location/station information."
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "An outdoor bell or strobe tells arriving firefighters which building is in alarm."
   },
   {
     "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding flame detector?",
+    "q": "What does a heat detector respond to?",
     "o": [
-      "The 2019 RIRR permits required fire-alarm initiation by manual means, approved automatic detection, or approved automatic sprinkler system where applicable.",
-      "Operates when a preset temperature is reached.",
-      "Detects radiant energy from flame rather than relying on smoke or heat alone.",
-      "The source notes standby battery supply for the fire alarm control unit."
+      "Smoke particles",
+      "Flame radiation",
+      "Gas leaks",
+      "Temperature"
     ],
-    "c": 2,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] Detects radiant energy from flame rather than relying on smoke or heat alone."
+    "c": 3,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Heat detectors: fixed-temperature types act at a set temperature, rate-of-rise types act when temperature climbs too fast, and combination types do both."
   },
   {
     "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding weatherproof external bell?",
+    "q": "Where are flame detectors typically used?",
     "o": [
-      "The source describes an outdoor alarm bell for external indication.",
-      "Receives initiating-device signals and controls alarm/notification and other programmed fire-safety functions.",
-      "Operates when ambient temperature increases faster than a predetermined rate.",
-      "Uses automatic initiating/detection devices to trigger the alarm system."
+      "Industrial areas where fires flare quickly, such as fuel handling",
+      "Hotel bedrooms",
+      "Office corridors",
+      "Classrooms"
     ],
     "c": 0,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] The source describes an outdoor alarm bell for external indication."
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Flame detectors sense radiant energy from the flame itself, in the ultraviolet (UV) or infrared (IR) band. They are used where fires flare fast, such as fuel handling."
   },
   {
     "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding heat detector?",
+    "q": "Under the 2019 Fire Code IRR, how may a required fire alarm be set off?",
     "o": [
-      "The 2019 RIRR requires required fire alarm systems to provide occupant notification/emergency action in accordance with its provisions.",
-      "Responds to temperature conditions rather than smoke or flame radiation.",
-      "The source notes standby battery supply for the fire alarm control unit.",
-      "The source gives higher heat-detector ratings for kitchens/attics/basements; actual selection depends on ambient temperature and device listing."
+      "Only by manual stations",
+      "By manual stations, automatic detection or a sprinkler waterflow switch",
+      "Only by smoke detectors",
+      "Only by the fire department"
     ],
     "c": 1,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] Responds to temperature conditions rather than smoke or flame radiation."
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Any approved initiating means can start the alarm."
   },
   {
     "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding industrial flame detection?",
+    "q": "When does a rate-of-rise heat detector operate?",
     "o": [
-      "A rate-of-rise function may be combined with fixed-temperature operation.",
-      "Uses automatic initiating/detection devices to trigger the alarm system.",
-      "The source associates flame detectors with industrial applications requiring rapid/sensitive flame detection.",
-      "Legacy system producing rounds of an audible code."
+      "When temperature reaches a fixed value",
+      "When smoke enters its chamber",
+      "When temperature rises faster than a set rate",
+      "When it sees a flame"
     ],
     "c": 2,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] The source associates flame detectors with industrial applications requiring rapid/sensitive flame detection."
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Heat detectors: fixed-temperature types act at a set temperature, rate-of-rise types act when temperature climbs too fast, and combination types do both."
   },
   {
     "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding current fire code initiation?",
+    "q": "What keeps a fire alarm working during a power failure?",
     "o": [
-      "The source describes functions such as shutting fuel lines/fans or controlling other building systems; modern interfaces must be designed/listed for the intended fire-safety sequence.",
-      "The source gives higher heat-detector ratings for kitchens/attics/basements; actual selection depends on ambient temperature and device listing.",
-      "The 2019 RIRR permits required fire-alarm initiation by manual means, approved automatic detection, or approved automatic sprinkler system where applicable.",
-      "The source notes an annunciator can provide zone identification for otherwise non-coded stations."
-    ],
-    "c": 2,
-    "ref": "2019 Revised IRR of RA 9514, Sec. 10.2.6 and occupancy provisions",
-    "n": "[CURRENT FIRE CODE — VERIFIED] The 2019 RIRR permits required fire-alarm initiation by manual means, approved automatic detection, or approved automatic sprinkler system where applicable."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding rate-of-rise detector?",
-    "o": [
-      "Uses manual observation and manual initiating stations to trigger an alarm.",
-      "Detects smoke by changes in ion current in an ionization chamber.",
-      "Operates when ambient temperature increases faster than a predetermined rate.",
-      "Legacy system producing rounds of an audible code."
-    ],
-    "c": 2,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] Operates when ambient temperature increases faster than a predetermined rate."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding emergency standby battery?",
-    "o": [
-      "Detects smoke using an optical/light principle, commonly by light scattering or obscuration.",
-      "Combines identifying coded alarm and continuous building evacuation alarm.",
-      "The source notes standby battery supply for the fire alarm control unit.",
-      "The source notes an annunciator can provide zone identification for otherwise non-coded stations."
-    ],
-    "c": 2,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] The source notes standby battery supply for the fire alarm control unit."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding automatic fire-alarm system source definition?",
-    "o": [
-      "The source says legacy coded stations often used three- or four-digit codes.",
-      "Detects smoke by changes in ion current in an ionization chamber.",
-      "Uses automatic initiating/detection devices to trigger the alarm system.",
-      "The source describes 108 strokes/min and calls it march time; this is legacy alarm signaling, not a universal current evacuation signal."
-    ],
-    "c": 2,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] Uses automatic initiating/detection devices to trigger the alarm system."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding 190–200°f source note?",
-    "o": [
-      "Uses infrared spectral energy.",
-      "The source says coding should be considered beyond ten manual stations; this is a legacy design note, not treated as a current universal Fire Code threshold.",
-      "The source gives higher heat-detector ratings for kitchens/attics/basements; actual selection depends on ambient temperature and device listing.",
-      "Combines identifying coded alarm and continuous building evacuation alarm."
-    ],
-    "c": 2,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source gives higher heat-detector ratings for kitchens/attics/basements; actual selection depends on ambient temperature and device listing."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding master/common/fixed coded?",
-    "o": [
-      "The source says legacy coded stations often used three- or four-digit codes.",
-      "The source calls a normally de-energized initiating circuit that operates on activation an 'open circuit system.'",
-      "The source says ionization detectors 'do not detect fires producing heavy smoke'; that is overbroad and is not taught as an absolute modern rule.",
-      "Legacy system producing rounds of an audible code."
+      "The building's lighting circuit",
+      "A solar panel on the roof only",
+      "Nothing; alarms need mains power",
+      "A standby battery at the control panel"
     ],
     "c": 3,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] Legacy system producing rounds of an audible code."
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "The battery must run the system for a set time and then sound the alarm."
   },
   {
     "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding annunciator addition?",
+    "q": "What starts an automatic fire alarm system?",
     "o": [
-      "Uses infrared spectral energy.",
-      "Audible alarm appliances in source include bells, buzzers, gongs, and horns.",
-      "Operates when a preset temperature is reached.",
-      "The source notes an annunciator can provide zone identification for otherwise non-coded stations."
-    ],
-    "c": 3,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] The source notes an annunciator can provide zone identification for otherwise non-coded stations."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding ionization smoke detector?",
-    "o": [
-      "Receives initiating-device signals and controls alarm/notification and other programmed fire-safety functions.",
-      "The source calls a normally de-energized initiating circuit that operates on activation an 'open circuit system.'",
-      "The source example assigns digits to building, floor, and station.",
-      "Detects smoke by changes in ion current in an ionization chamber."
-    ],
-    "c": 3,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] Detects smoke by changes in ion current in an ionization chamber."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding dual-coded system?",
-    "o": [
-      "Operates when a preset temperature is reached.",
-      "The 2019 RIRR requires required fire alarm systems to provide occupant notification/emergency action in accordance with its provisions.",
-      "Combines identifying coded alarm and continuous building evacuation alarm.",
-      "Uses ultraviolet spectral energy."
-    ],
-    "c": 2,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] Combines identifying coded alarm and continuous building evacuation alarm."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding three/four-digit code note?",
-    "o": [
-      "The source uses 'supervised' for a system that indicates circuit malfunction/trouble; modern supervision includes monitoring circuit integrity and equipment conditions.",
-      "A rate-of-rise function may be combined with fixed-temperature operation.",
-      "Receives initiating-device signals and controls alarm/notification and other programmed fire-safety functions.",
-      "The source says legacy coded stations often used three- or four-digit codes."
-    ],
-    "c": 3,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] The source says legacy coded stations often used three- or four-digit codes."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding ir flame detector?",
-    "o": [
-      "The source describes functions such as shutting fuel lines/fans or controlling other building systems; modern interfaces must be designed/listed for the intended fire-safety sequence.",
-      "The 2019 RIRR requires required fire alarm systems to provide occupant notification/emergency action in accordance with its provisions.",
-      "Uses infrared spectral energy.",
-      "A one-time design may use a low-melting fusible element."
-    ],
-    "c": 2,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] Uses infrared spectral energy."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding open-circuit source terminology?",
-    "o": [
-      "A rate-of-rise function may be combined with fixed-temperature operation.",
-      "Uses manual observation and manual initiating stations to trigger an alarm.",
-      "The source lists bells, buzzers, gongs, and horns.",
-      "The source calls a normally de-energized initiating circuit that operates on activation an 'open circuit system.'"
-    ],
-    "c": 3,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] The source calls a normally de-energized initiating circuit that operates on activation an 'open circuit system.'"
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding fixed-temperature heat detector?",
-    "o": [
-      "Detects smoke using an optical/light principle, commonly by light scattering or obscuration.",
-      "The source describes functions such as shutting fuel lines/fans or controlling other building systems; modern interfaces must be designed/listed for the intended fire-safety sequence.",
-      "Operates when a preset temperature is reached.",
-      "The 2019 RIRR requires fire alarm systems in business occupancies under specified storey/occupant thresholds and manual fire alarm where the listed threshold conditions are not met."
-    ],
-    "c": 2,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] Operates when a preset temperature is reached.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+SGVhdCBEZXRlY3RvciBDb25jZXB0czwvdGV4dD4KPHJlY3QgeD0iMTEwIiB5PSIxMjAiIHdpZHRoPSIzMDAiIGhlaWdodD0iMjcwIiBjbGFzcz0iZiIvPjx0ZXh0IHg9IjE3MCIgeT0iMjEwIiBjbGFzcz0icyI+Rml4ZWQgVGVtcGVyYXR1cmU8L3RleHQ+PHRleHQgeD0iMTY1IiB5PSIyNjUiIGNsYXNzPSJzIj5UcmlwcyBhdCBzZXQgdGhyZXNob2xkPC90ZXh0Pgo8cmVjdCB4PSI0OTAiIHk9IjEyMCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyNzAiIGNsYXNzPSJmMiIvPjx0ZXh0IHg9IjU1MCIgeT0iMjEwIiBjbGFzcz0icyI+UmF0ZS1vZi1SaXNlPC90ZXh0Pjx0ZXh0IHg9IjU0MCIgeT0iMjY1IiBjbGFzcz0icyI+VHJpcHMgb24gcmFwaWQgdGVtcGVyYXR1cmUgcmlzZTwvdGV4dD48L3N2Zz4="
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding control panel?",
-    "o": [
-      "Receives initiating-device signals and controls alarm/notification and other programmed fire-safety functions.",
-      "The source gives 135°F and 200 ft² as an ordinary-room legacy detector note; detector spacing/ratings today depend on listing, device type, ceiling conditions, and applicable fire-alarm design standards rather than this blanket rule.",
-      "Uses manual observation and manual initiating stations to trigger an alarm.",
-      "The source describes 108 strokes/min and calls it march time; this is legacy alarm signaling, not a universal current evacuation signal."
+      "Detectors or sprinkler flow switches, with no person needed",
+      "Only pull stations",
+      "Only a phone call to the fire station",
+      "Only a guard's key switch"
     ],
     "c": 0,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] Receives initiating-device signals and controls alarm/notification and other programmed fire-safety functions.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+RmlyZSBBbGFybSBGdW5jdGlvbmFsIENoYWluPC90ZXh0Pgo8cmVjdCB4PSI3MCIgeT0iMTY1IiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjEzMCIgY2xhc3M9ImYiLz48dGV4dCB4PSIxMTUiIHk9IjIzNSIgY2xhc3M9InMiPkluaXRpYXRpbmcgRGV2aWNlPC90ZXh0Pgo8cmVjdCB4PSIzNjAiIHk9IjE2NSIgd2lkdGg9IjE4MCIgaGVpZ2h0PSIxMzAiIGNsYXNzPSJmMiIvPjx0ZXh0IHg9IjQwMCIgeT0iMjM1IiBjbGFzcz0icyI+Q29udHJvbCBQYW5lbDwvdGV4dD4KPHJlY3QgeD0iNjUwIiB5PSIxNjUiIHdpZHRoPSIxODAiIGhlaWdodD0iMTMwIiBjbGFzcz0iZiIvPjx0ZXh0IHg9IjY5MCIgeT0iMjM1IiBjbGFzcz0icyI+Tm90aWZpY2F0aW9uPC90ZXh0Pgo8bGluZSB4MT0iMjUwIiB5MT0iMjMwIiB4Mj0iMzYwIiB5Mj0iMjMwIiBjbGFzcz0ibCIvPjxsaW5lIHgxPSI1NDAiIHkxPSIyMzAiIHgyPSI2NTAiIHkyPSIyMzAiIGNsYXNzPSJsIi8+PC9zdmc+"
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Automatic systems detect a fire even when nobody is there to see it."
   },
   {
     "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding current occupant notification?",
+    "q": "Why are heat detectors in kitchens and attics rated higher, around 88–93°C?",
     "o": [
-      "The source says coding should be considered beyond ten manual stations; this is a legacy design note, not treated as a current universal Fire Code threshold.",
-      "Continuous evacuation ringing, with optional zoning/annunciation.",
-      "Detects smoke using an optical/light principle, commonly by light scattering or obscuration.",
-      "The 2019 RIRR requires required fire alarm systems to provide occupant notification/emergency action in accordance with its provisions."
-    ],
-    "c": 3,
-    "ref": "2019 Revised IRR of RA 9514, Sec. 10.2.6 and occupancy provisions",
-    "n": "[CURRENT FIRE CODE — VERIFIED] The 2019 RIRR requires required fire alarm systems to provide occupant notification/emergency action in accordance with its provisions."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding combination heat detector?",
-    "o": [
-      "A rate-of-rise function may be combined with fixed-temperature operation.",
-      "The source describes 108 strokes/min and calls it march time; this is legacy alarm signaling, not a universal current evacuation signal.",
-      "The source says ionization detectors 'do not detect fires producing heavy smoke'; that is overbroad and is not taught as an absolute modern rule.",
-      "In the source's legacy system, station identity is not inherently transmitted as a unique code to the control panel."
-    ],
-    "c": 0,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] A rate-of-rise function may be combined with fixed-temperature operation."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding ancillary control?",
-    "o": [
-      "The source associates photoelectric detection with smoke-producing/slow-smoldering fires.",
-      "The source says coding should be considered beyond ten manual stations; this is a legacy design note, not treated as a current universal Fire Code threshold.",
-      "The source describes functions such as shutting fuel lines/fans or controlling other building systems; modern interfaces must be designed/listed for the intended fire-safety sequence.",
-      "Audible alarm appliances in source include bells, buzzers, gongs, and horns."
-    ],
-    "c": 2,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] The source describes functions such as shutting fuel lines/fans or controlling other building systems; modern interfaces must be designed/listed for the intended fire-safety sequence."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding manual fire-alarm system source definition?",
-    "o": [
-      "The source says ionization detectors 'do not detect fires producing heavy smoke'; that is overbroad and is not taught as an absolute modern rule.",
-      "The source example assigns digits to building, floor, and station.",
-      "Uses manual observation and manual initiating stations to trigger an alarm.",
-      "Manual stations grouped into zones that produce identifiable zone codes."
-    ],
-    "c": 2,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] Uses manual observation and manual initiating stations to trigger an alarm."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding photoelectric smoke detector?",
-    "o": [
-      "Legacy stations transmit a code identifying location/station information.",
-      "Uses ultraviolet spectral energy.",
-      "Audible alarm appliances in source include bells, buzzers, gongs, and horns.",
-      "Detects smoke using an optical/light principle, commonly by light scattering or obscuration."
-    ],
-    "c": 3,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] Detects smoke using an optical/light principle, commonly by light scattering or obscuration.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+U21va2UgRGV0ZWN0aW9uIFByaW5jaXBsZXM8L3RleHQ+CjxyZWN0IHg9IjEwMCIgeT0iMTI1IiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjI2MCIgY2xhc3M9ImYiLz48dGV4dCB4PSIxNDUiIHk9IjIyMCIgY2xhc3M9InMiPlBob3RvZWxlY3RyaWM8L3RleHQ+PHRleHQgeD0iMTQ1IiB5PSIyNzUiIGNsYXNzPSJzIj5saWdodCBzY2F0dGVyaW5nIC8gb2JzY3VyYXRpb248L3RleHQ+CjxyZWN0IHg9IjUwMCIgeT0iMTI1IiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjI2MCIgY2xhc3M9ImYyIi8+PHRleHQgeD0iNTY1IiB5PSIyMjAiIGNsYXNzPSJzIj5Jb25pemF0aW9uPC90ZXh0Pjx0ZXh0IHg9IjU1NSIgeT0iMjc1IiBjbGFzcz0icyI+Y2hhbmdlIGluIGlvbml6YXRpb24gY3VycmVudDwvdGV4dD48L3N2Zz4="
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding march time source note?",
-    "o": [
-      "The source describes 108 strokes/min and calls it march time; this is legacy alarm signaling, not a universal current evacuation signal.",
-      "The source uses 'supervised' for a system that indicates circuit malfunction/trouble; modern supervision includes monitoring circuit integrity and equipment conditions.",
-      "The source example assigns digits to building, floor, and station.",
-      "Detects radiant energy from flame rather than relying on smoke or heat alone."
-    ],
-    "c": 0,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source describes 108 strokes/min and calls it march time; this is legacy alarm signaling, not a universal current evacuation signal."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding beyond-ten-stations note?",
-    "o": [
-      "The source says coding should be considered beyond ten manual stations; this is a legacy design note, not treated as a current universal Fire Code threshold.",
-      "A one-time design may use a low-melting fusible element.",
-      "Uses ultraviolet spectral energy.",
-      "The source describes an outdoor alarm bell for external indication."
-    ],
-    "c": 0,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] The source says coding should be considered beyond ten manual stations; this is a legacy design note, not treated as a current universal Fire Code threshold."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding ionization heavy-smoke claim?",
-    "o": [
-      "The source says ionization detectors 'do not detect fires producing heavy smoke'; that is overbroad and is not taught as an absolute modern rule.",
-      "Responds to temperature conditions rather than smoke or flame radiation.",
-      "The source lists bells, buzzers, gongs, and horns.",
-      "The source uses 'supervised' for a system that indicates circuit malfunction/trouble; modern supervision includes monitoring circuit integrity and equipment conditions."
-    ],
-    "c": 0,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source says ionization detectors 'do not detect fires producing heavy smoke'; that is overbroad and is not taught as an absolute modern rule."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding alarm devices?",
-    "o": [
-      "Audible alarm appliances in source include bells, buzzers, gongs, and horns.",
-      "The 2019 RIRR requires fire alarm systems in business occupancies under specified storey/occupant thresholds and manual fire alarm where the listed threshold conditions are not met.",
-      "The source associates flame detectors with industrial applications requiring rapid/sensitive flame detection.",
-      "A one-time design may use a low-melting fusible element."
-    ],
-    "c": 0,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] Audible alarm appliances in source include bells, buzzers, gongs, and horns."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding code digit meaning?",
-    "o": [
-      "The source example assigns digits to building, floor, and station.",
-      "The source gives 135°F and 200 ft² as an ordinary-room legacy detector note; detector spacing/ratings today depend on listing, device type, ceiling conditions, and applicable fire-alarm design standards rather than this blanket rule.",
-      "The 2019 RIRR permits required fire-alarm initiation by manual means, approved automatic detection, or approved automatic sprinkler system where applicable.",
-      "The source lists bells, buzzers, gongs, and horns."
-    ],
-    "c": 0,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] The source example assigns digits to building, floor, and station."
-  },
-  {
-    "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding uv flame detector?",
-    "o": [
-      "Operates when ambient temperature increases faster than a predetermined rate.",
-      "Uses ultraviolet spectral energy.",
-      "The 2019 RIRR requires fire alarm systems in business occupancies under specified storey/occupant thresholds and manual fire alarm where the listed threshold conditions are not met.",
-      "Continuous evacuation ringing, with optional zoning/annunciation."
+      "Fires there burn cooler",
+      "Those spaces are normally hot, so a lower rating would cause false alarms",
+      "Codes ban detectors in those spaces",
+      "Higher ratings react faster"
     ],
     "c": 1,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[SOURCE FACT — AUDITED] Uses ultraviolet spectral energy."
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "The rating is set above the highest normal temperature of the space. Heat detectors: fixed-temperature types act at a set temperature, rate-of-rise types act when temperature climbs too fast, and combination types do both."
   },
   {
     "s": "Fire Alarm Systems",
-    "q": "Which statement is correct regarding supervised system source definition?",
+    "q": "What does a master (common) coded system do?",
     "o": [
-      "The source notes standby battery supply for the fire alarm control unit.",
-      "The source uses 'supervised' for a system that indicates circuit malfunction/trouble; modern supervision includes monitoring circuit integrity and equipment conditions.",
-      "The source gives 135°F and 200 ft² as an ordinary-room legacy detector note; detector spacing/ratings today depend on listing, device type, ceiling conditions, and applicable fire-alarm design standards rather than this blanket rule.",
-      "In the source's legacy system, station identity is not inherently transmitted as a unique code to the control panel."
+      "Rings continuously with no code",
+      "Sends a different code to each floor only",
+      "Sounds rounds of one code on all alarm devices",
+      "Makes no sound"
+    ],
+    "c": 2,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Coded systems sound a pattern that identifies the station or zone. Non-coded systems simply ring continuously for evacuation."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "What does adding an annunciator do for a non-coded system?",
+    "o": [
+      "Makes the alarm silent",
+      "Replaces the pull stations",
+      "Replaces the control panel",
+      "Shows which zone the alarm came from"
+    ],
+    "c": 3,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "The annunciator panel, usually at the entrance, tells firefighters where to go."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "How does an ionization smoke detector work?",
+    "o": [
+      "Smoke disturbs a small ion current in a chamber",
+      "Smoke scatters a light beam onto a sensor",
+      "A metal element melts from heat",
+      "It senses infrared radiation from a flame"
+    ],
+    "c": 0,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Smoke detectors: ionization types react fastest to small particles from flaming fires; photoelectric types react best to large particles from smoldering fires."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "What is a dual-coded fire alarm system?",
+    "o": [
+      "One with two control panels",
+      "One that sounds a location code and a general evacuation alarm",
+      "One with no audible devices",
+      "One that only calls the fire station"
     ],
     "c": 1,
-    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source uses 'supervised' for a system that indicates circuit malfunction/trouble; modern supervision includes monitoring circuit integrity and equipment conditions."
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Coded systems sound a pattern that identifies the station or zone. Non-coded systems simply ring continuously for evacuation."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "In coded fire alarm systems, how many digits did station codes usually have?",
+    "o": [
+      "One",
+      "Ten",
+      "Three or four",
+      "Twenty"
+    ],
+    "c": 2,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Digits identified the building, floor and station."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "What does an IR flame detector sense?",
+    "o": [
+      "Ultraviolet radiation from the flame",
+      "Smoke particles",
+      "Temperature rise",
+      "Infrared radiation from the flame"
+    ],
+    "c": 3,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Flame detectors sense radiant energy from the flame itself, in the ultraviolet (UV) or infrared (IR) band. They are used where fires flare fast, such as fuel handling."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "What is an open-circuit initiating system?",
+    "o": [
+      "A circuit that is normally open and closes when a device operates",
+      "A circuit that is always carrying current",
+      "A circuit with no wires",
+      "A circuit that is never supervised"
+    ],
+    "c": 0,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Closing the circuit sends the alarm. In a closed-circuit system, opening the circuit sends it."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "When does a fixed-temperature heat detector operate?",
+    "o": [
+      "When temperature rises quickly",
+      "When the air reaches its set temperature",
+      "When smoke enters it",
+      "When it sees a flame"
+    ],
+    "c": 1,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Heat detectors: fixed-temperature types act at a set temperature, rate-of-rise types act when temperature climbs too fast, and combination types do both."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "What does a fire alarm control panel do?",
+    "o": [
+      "Only rings the bells",
+      "Only detects smoke",
+      "Receives signals from initiating devices and runs the alarms and other fire-safety functions",
+      "Only pumps water to sprinklers"
+    ],
+    "c": 2,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "It is the brain of the system, and it also supervises the wiring for faults."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "Under the 2019 Fire Code IRR, what must a required fire alarm system provide?",
+    "o": [
+      "Only a record of the alarm",
+      "Only a signal to the owner by phone",
+      "Nothing beyond detection",
+      "Notification of occupants and emergency action"
+    ],
+    "c": 3,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "The point of the alarm is to get people out."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "What is a combination heat detector?",
+    "o": [
+      "One with both rate-of-rise and fixed-temperature functions",
+      "One that detects smoke and heat",
+      "One that detects gas and heat",
+      "One that detects flame and smoke"
+    ],
+    "c": 0,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Heat detectors: fixed-temperature types act at a set temperature, rate-of-rise types act when temperature climbs too fast, and combination types do both."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "Which of these is an ancillary function a fire alarm may control?",
+    "o": [
+      "Turning on room lights for parties",
+      "Shutting off fans and fuel lines",
+      "Opening the elevator doors on all floors",
+      "Starting the water heater"
+    ],
+    "c": 1,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Alarms can shut down air handling, release door holders and recall elevators."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "What starts a manual fire alarm system?",
+    "o": [
+      "A smoke detector",
+      "A heat detector",
+      "A person pulling a manual station",
+      "A sprinkler flow switch"
+    ],
+    "c": 2,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Manual systems depend on someone noticing the fire."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "How does a photoelectric smoke detector work?",
+    "o": [
+      "Smoke disturbs an ion current",
+      "A metal element melts",
+      "It senses ultraviolet light",
+      "Smoke scatters or blocks a light beam"
+    ],
+    "c": 3,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Smoke detectors: ionization types react fastest to small particles from flaming fires; photoelectric types react best to large particles from smoldering fires."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "In older coded systems, what alarm rhythm was called \"march time\"?",
+    "o": [
+      "About 108 strokes per minute",
+      "About 10 strokes per minute",
+      "About 300 strokes per minute",
+      "A single stroke every minute"
+    ],
+    "c": 0,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Modern evacuation signals use the standard three-pulse temporal pattern instead."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "Why were coded systems used in large buildings with many manual stations?",
+    "o": [
+      "Because they were cheaper",
+      "So staff could tell where the alarm came from",
+      "Because they were quieter",
+      "Because they needed no wiring"
+    ],
+    "c": 1,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "With many stations, a plain bell does not show where to go. Coded systems sound a pattern that identifies the station or zone. Non-coded systems simply ring continuously for evacuation."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "Which fire does an ionization smoke detector detect fastest?",
+    "o": [
+      "A slow, smoldering fire with large particles",
+      "A fire with no smoke",
+      "A fast, flaming fire with small smoke particles",
+      "A fire outside the building"
+    ],
+    "c": 2,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Smoke detectors: ionization types react fastest to small particles from flaming fires; photoelectric types react best to large particles from smoldering fires."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "Which of these is a notification appliance, not an initiating device?",
+    "o": [
+      "A smoke detector",
+      "A heat detector",
+      "A manual pull station",
+      "A horn"
+    ],
+    "c": 3,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Initiating devices start the alarm; notification appliances warn people."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "In a coded alarm, what might the digits of a code stand for?",
+    "o": [
+      "Building, floor and station",
+      "Date, time and year",
+      "The detector's serial number",
+      "The fire department's phone number"
+    ],
+    "c": 0,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Coded systems sound a pattern that identifies the station or zone. Non-coded systems simply ring continuously for evacuation."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "What does a UV flame detector sense?",
+    "o": [
+      "Infrared radiation from the flame",
+      "Ultraviolet radiation from the flame",
+      "Smoke particles",
+      "Temperature rise"
+    ],
+    "c": 1,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Flame detectors sense radiant energy from the flame itself, in the ultraviolet (UV) or infrared (IR) band. They are used where fires flare fast, such as fuel handling."
+  },
+  {
+    "s": "Fire Alarm Systems",
+    "q": "What is a supervised fire alarm system?",
+    "o": [
+      "One watched by a security guard",
+      "One with no wiring",
+      "One that signals a trouble alarm if a circuit or device fails",
+      "One tested only once"
+    ],
+    "c": 2,
+    "ref": "Fire Code of the Philippines (RA 9514) Revised IRR 2019; NFPA 72; Grondzik and Kwok, fire alarm systems",
+    "n": "Supervision checks the wiring and power so a broken wire does not silently disable the system."
   }
 ]
