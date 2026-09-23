@@ -509,8 +509,25 @@ def shiner():
     return _brick_row(3.6, 1.0, 1.6, 3, 'Dark red = the face you see in the wall')
 
 
+def stress_strain():
+    # mild steel in tension: straight line, yield plateau, strain hardening, necking
+    ox, oy = 70, 330
+    pts = {'A': (190, 130), 'B': (200, 119), 'C': (228, 116), 'D': (520, 52), 'E': (650, 112)}
+    path = (f'M{ox},{oy} L190,130 Q196,120 200,119 L212,114 L218,120 L300,118 '
+            f'C360,112 440,56 520,52 C580,50 625,78 650,112')
+    body = (f'<line class="s" x1="{ox}" y1="{oy}" x2="690" y2="{oy}"/><line class="s" x1="{ox}" y1="{oy}" x2="{ox}" y2="25"/>'
+            f'<path d="{path}" fill="none" stroke="{INK}" stroke-width="2.6"/>'
+            + cap(380, 362, 'Strain, ε') + f'<text class="cap" transform="translate(38,180) rotate(-90)" text-anchor="middle">Stress, σ</text>')
+    offs = {'A': (-26, 10), 'B': (-22, -18), 'C': (8, -26), 'D': (0, -26), 'E': (26, 4)}
+    for k, (x, y) in pts.items():
+        dx, dy = offs[k]
+        body += label(k, x + dx, y + dy, x, y)
+    return svg(720, 380, body)
+
+
 BT = 'building-technology/'
 FIGURES = {
+    'structural/stress-strain': stress_strain,
     BT + 'curtain-wall': curtain_wall, BT + 'window-frame': window_frame, BT + 'slab-bands': slab_bands,
     BT + 'roof-parts': roof, BT + 'saw-cuts': saw_cuts, BT + 'wood-joinery': joinery,
     BT + 'glass-hardware': glass_hardware, BT + 'nailing-methods': nailing,

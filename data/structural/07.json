@@ -1,360 +1,368 @@
 [
   {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding elastic limit?",
+    "s": "Stress-Strain Diagram",
+    "q": "On the stress-strain diagram of mild steel shown, which point is the elastic limit, the highest stress from which the bar still returns to its original length when unloaded?",
     "o": [
-      "Highest stress at which material returns to original form upon unloading.",
-      "Ability to plastically deform under compressive working such as rolling/hammering.",
-      "Dimensionless deformation measure.",
-      "Time-dependent reduction in stress under approximately constant imposed strain."
+      "B",
+      "A",
+      "C",
+      "D"
     ],
     "c": 0,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Highest stress at which material returns to original form upon unloading."
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Point B, the elastic limit, sits just above the proportional limit (A). Between A and B the curve is no longer straight, but unloading still leaves no permanent set. Past B the steel yields (C) and some deformation stays.",
+    "img": "../../subjects/structural/quizzes/img/stress-strain.png"
   },
   {
     "s": "Strength of Materials",
-    "q": "Which statement is correct regarding normal stress formula?",
+    "q": "Which formula gives the uniform normal stress in a member carrying an axial load P over a cross-sectional area A?",
     "o": [
-      "x̄ = ΣAᵢxᵢ / ΣAᵢ.",
-      "Ability to plastically deform under compressive working such as rolling/hammering.",
-      "σ = P/A for uniform axial stress.",
-      "Range in which permanent deformation remains after unloading."
+      "σ = P × A",
+      "σ = P / A",
+      "σ = A / P",
+      "σ = P / L"
+    ],
+    "c": 1,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Normal stress is force per unit area, σ = P/A, in N/mm² (MPa) or kPa. It is uniform only when the load passes through the centroid of the section."
+  },
+  {
+    "s": "Stress-Strain Diagram",
+    "q": "On the stress-strain diagram of mild steel shown, which point marks the yield point, where the bar stretches markedly with little or no increase in stress?",
+    "o": [
+      "A",
+      "B",
+      "C",
+      "D"
     ],
     "c": 2,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] σ = P/A for uniform axial stress."
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Point C is the yield point. Mild steel shows a flat yield plateau there: strain grows a lot while stress stays about the same. The yield stress Fy (such as 275 MPa for Grade 40 bars) is the value design codes use.",
+    "img": "../../subjects/structural/quizzes/img/stress-strain.png"
   },
   {
     "s": "Strength of Materials",
-    "q": "Which statement is correct regarding yield point?",
+    "q": "What is the strain energy per unit volume a material can absorb without any permanent deformation?",
     "o": [
-      "Ability to absorb energy before fracture.",
-      "Progressive damage/failure under repeated cyclic stresses, often below monotonic strength.",
-      "ε = ΔL/L₀.",
-      "Onset of substantial plastic deformation with little or no increase in stress for materials showing a yield plateau."
+      "Modulus of toughness",
+      "Modulus of elasticity",
+      "Modulus of rupture",
+      "Modulus of resilience"
     ],
     "c": 3,
-    "ref": "Mechanics of materials",
-    "n": "[CORRECTED / CLARIFIED] Onset of substantial plastic deformation with little or no increase in stress for materials showing a yield plateau."
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "The modulus of resilience is the area under the stress-strain curve up to the elastic (proportional) limit, about Fy²/2E. The modulus of toughness is the whole area up to fracture, so it is always larger."
   },
   {
     "s": "Strength of Materials",
-    "q": "Which statement is correct regarding modulus of resilience?",
+    "q": "What is the geometric center of a plane area, which coincides with the center of mass when the density is uniform?",
     "o": [
-      "Twisting action producing shear stress over a cross-section.",
-      "Maximum engineering stress reached in a tensile test.",
-      "Low temperature can reduce ductility and promote brittle behavior in some materials.",
-      "Strain energy per unit volume absorbed up to elastic behavior/yield threshold without permanent deformation."
-    ],
-    "c": 3,
-    "ref": "Mechanics of materials",
-    "n": "[CORRECTED / CLARIFIED] Strain energy per unit volume absorbed up to elastic behavior/yield threshold without permanent deformation."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding centroid?",
-    "o": [
-      "The source line 'k = shear stress/shear strain' under modulus of elasticity is incorrect; that ratio defines shear modulus G, not Young's modulus E.",
-      "Sliding deformation along planes due to tangential stress.",
-      "Geometric center of area for a plane figure; for uniform density it coincides with center of mass.",
-      "Range in which permanent deformation remains after unloading."
-    ],
-    "c": 2,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Geometric center of area for a plane figure; for uniform density it coincides with center of mass."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding plastic range?",
-    "o": [
-      "Range in which permanent deformation remains after unloading.",
-      "Material response can change with loading rate; some normally ductile materials may behave more brittle under high-rate loading.",
-      "Produces tension on one side and compression on the other in a flexural member.",
-      "Onset of substantial plastic deformation with little or no increase in stress for materials showing a yield plateau."
+      "Centroid",
+      "Center of pressure",
+      "Shear center",
+      "Moment of inertia"
     ],
     "c": 0,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Range in which permanent deformation remains after unloading."
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "The centroid is the average position of the area. Bending stresses are measured from the neutral axis, which passes through the centroid. The shear center is a different point, where a load causes bending without twisting."
   },
   {
     "s": "Strength of Materials",
-    "q": "Which statement is correct regarding proportional limit?",
+    "q": "In which range of the stress-strain curve does a permanent deformation remain after the load is removed?",
     "o": [
-      "Ability to recover original form after removal of load within elastic range.",
-      "Highest stress over which stress remains proportional to strain.",
-      "Normal stress developed by an axial force.",
-      "Residual inelastic deformation after load removal."
+      "Elastic range",
+      "Plastic range",
+      "Proportional range",
+      "Linear range"
     ],
     "c": 1,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Highest stress over which stress remains proportional to strain."
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Beyond the elastic limit the material is in the plastic range: atoms slip past each other and do not return, so unloading leaves a permanent set. In the elastic range every deformation is recovered."
   },
   {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding axial stress?",
+    "s": "Stress-Strain Diagram",
+    "q": "On the stress-strain diagram of mild steel shown, which point is the proportional limit, the end of the straight-line part of the curve?",
     "o": [
-      "Geometric center of area for a plane figure; for uniform density it coincides with center of mass.",
-      "Normal stress developed by an axial force.",
-      "Ability to undergo significant plastic deformation in tension before rupture.",
-      "Range in which unloading returns material substantially to original dimensions."
-    ],
-    "c": 1,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Normal stress developed by an axial force."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding torsion?",
-    "o": [
-      "Line indicating direction of principal stress, not its magnitude.",
-      "Twisting action producing shear stress over a cross-section.",
-      "Time-dependent reduction in stress under approximately constant imposed strain.",
-      "Stress associated with fracture/breaking."
-    ],
-    "c": 1,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Twisting action producing shear stress over a cross-section."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding composite centroid y?",
-    "o": [
-      "Magnitude ratio of transverse strain to longitudinal strain under uniaxial loading; sign convention may include a negative sign.",
-      "Twisting action producing shear stress over a cross-section.",
-      "Total strain energy per unit volume absorbed up to fracture.",
-      "ȳ = ΣAᵢyᵢ / ΣAᵢ."
-    ],
-    "c": 3,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] ȳ = ΣAᵢyᵢ / ΣAᵢ."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding ductility?",
-    "o": [
-      "Magnitude ratio of transverse strain to longitudinal strain under uniaxial loading; sign convention may include a negative sign.",
-      "Ability to undergo significant plastic deformation in tension before rupture.",
-      "Range in which permanent deformation remains after unloading.",
-      "Deals with internal effects of forces and deformation in materials/members."
-    ],
-    "c": 1,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Ability to undergo significant plastic deformation in tension before rupture."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding permanent set?",
-    "o": [
-      "Residual inelastic deformation after load removal.",
-      "ε = ΔL/L₀.",
-      "ȳ = ΣAᵢyᵢ / ΣAᵢ.",
-      "Ability to undergo significant plastic deformation in tension before rupture."
-    ],
-    "c": 0,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Residual inelastic deformation after load removal."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding composite centroid x?",
-    "o": [
-      "Strain energy per unit volume absorbed up to elastic behavior/yield threshold without permanent deformation.",
-      "x̄ = ΣAᵢxᵢ / ΣAᵢ.",
-      "G = shear stress / shear strain.",
-      "Produces tension on one side and compression on the other in a flexural member."
-    ],
-    "c": 1,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] x̄ = ΣAᵢxᵢ / ΣAᵢ."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding tension?",
-    "o": [
-      "σ = P/A for uniform axial stress.",
-      "Pulling/stretching action.",
-      "Recoverable deformation.",
-      "Highest stress at which material returns to original form upon unloading."
-    ],
-    "c": 1,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Pulling/stretching action."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding fatigue?",
-    "o": [
-      "E = normal stress / normal strain in linear elasticity.",
-      "Range in which unloading returns material substantially to original dimensions.",
-      "Progressive damage/failure under repeated cyclic stresses, often below monotonic strength.",
-      "Pulling/stretching action."
+      "B",
+      "C",
+      "A",
+      "E"
     ],
     "c": 2,
-    "ref": "Mechanics of materials",
-    "n": "[CORRECTED / CLARIFIED] Progressive damage/failure under repeated cyclic stresses, often below monotonic strength."
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Point A ends the straight line from the origin. Up to A, stress is proportional to strain and Hooke's law holds; the slope of that line is the modulus of elasticity E.",
+    "img": "../../subjects/structural/quizzes/img/stress-strain.png"
   },
   {
     "s": "Strength of Materials",
-    "q": "Which statement is correct regarding strain-rate effect?",
+    "q": "What kind of stress develops in a member loaded by a force acting along its longitudinal axis?",
     "o": [
-      "Normal stress developed by an axial force.",
-      "Material response can change with loading rate; some normally ductile materials may behave more brittle under high-rate loading.",
-      "Maximum engineering stress reached in a tensile test.",
-      "Progressive damage/failure under repeated cyclic stresses, often below monotonic strength."
+      "Shear stress",
+      "Bending stress",
+      "Torsional stress",
+      "Axial (normal) stress"
     ],
-    "c": 1,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Material response can change with loading rate; some normally ductile materials may behave more brittle under high-rate loading."
+    "c": 3,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "An axial force acts perpendicular to the cross-section, so it produces normal stress, σ = P/A: tension if it pulls, compression if it pushes. Shear stress comes from forces parallel to the section."
   },
   {
     "s": "Strength of Materials",
-    "q": "Which statement is correct regarding young's modulus?",
+    "q": "What twisting action about a member's longitudinal axis produces shear stress across its cross-section?",
     "o": [
-      "E = normal stress / normal strain in linear elasticity.",
-      "Sliding deformation along planes due to tangential stress.",
-      "Recoverable deformation.",
-      "Highest stress over which stress remains proportional to strain."
+      "Torsion",
+      "Bending",
+      "Buckling",
+      "Axial compression"
     ],
     "c": 0,
-    "ref": "Mechanics of materials",
-    "n": "[CORRECTED / CLARIFIED] E = normal stress / normal strain in linear elasticity.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+RWxhc3RpYyBNb2R1bGk8L3RleHQ+CjxyZWN0IHg9IjEwMCIgeT0iMTIwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjI1MCIgY2xhc3M9ImYiLz48dGV4dCB4PSIxNzAiIHk9IjIwNSIgY2xhc3M9InQiPkUgPSDPgyAvIM61PC90ZXh0Pjx0ZXh0IHg9IjE0NSIgeT0iMjc1IiBjbGFzcz0icyI+WW91bmcncyBtb2R1bHVzPC90ZXh0Pgo8cmVjdCB4PSI1MDAiIHk9IjEyMCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyNTAiIGNsYXNzPSJmMiIvPjx0ZXh0IHg9IjU3MCIgeT0iMjA1IiBjbGFzcz0idCI+RyA9IM+EIC8gzrM8L3RleHQ+PHRleHQgeD0iNTQ1IiB5PSIyNzUiIGNsYXNzPSJzIj5zaGVhciBtb2R1bHVzPC90ZXh0Pjwvc3ZnPg=="
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Torsion (torque) twists a member such as a shaft or a spandrel beam. It causes shear stress that is zero at the center and greatest at the outer surface, τ = Tc/J for a round shaft."
   },
   {
     "s": "Strength of Materials",
-    "q": "Which statement is correct regarding bending?",
+    "q": "Which formula locates the centroid ȳ of a composite area made of simple parts?",
     "o": [
-      "ε = ΔL/L₀.",
-      "Time-dependent deformation under sustained stress/load.",
-      "Produces tension on one side and compression on the other in a flexural member.",
-      "Maximum engineering stress reached in a tensile test."
-    ],
-    "c": 2,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Produces tension on one side and compression on the other in a flexural member."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding stress relaxation?",
-    "o": [
-      "Measures small changes in length/strain.",
-      "Ability to absorb energy before fracture.",
-      "Shortening/pushing-together action.",
-      "Time-dependent reduction in stress under approximately constant imposed strain."
-    ],
-    "c": 3,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Time-dependent reduction in stress under approximately constant imposed strain."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding compression?",
-    "o": [
-      "Low temperature can reduce ductility and promote brittle behavior in some materials.",
-      "Shortening/pushing-together action.",
-      "Normal stress developed by an axial force.",
-      "Within the linear-elastic range, stress is proportional to strain."
+      "ȳ = ΣAᵢ / ΣAᵢyᵢ",
+      "ȳ = ΣAᵢyᵢ / ΣAᵢ",
+      "ȳ = ΣIᵢ / ΣAᵢ",
+      "ȳ = ΣAᵢyᵢ²"
     ],
     "c": 1,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Shortening/pushing-together action.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+Rml2ZSBJbnRlcm5hbC1Gb3JjZSBFZmZlY3RzPC90ZXh0Pgo8cmVjdCB4PSI0NSIgeT0iMTIwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjI1MCIgY2xhc3M9ImYiLz48dGV4dCB4PSI3MCIgeT0iMjQwIiBjbGFzcz0icyI+Q29tcHJlc3Npb248L3RleHQ+CjxyZWN0IHg9IjIxNSIgeT0iMTIwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjI1MCIgY2xhc3M9ImYyIi8+PHRleHQgeD0iMjYwIiB5PSIyNDAiIGNsYXNzPSJzIj5UZW5zaW9uPC90ZXh0Pgo8cmVjdCB4PSIzODUiIHk9IjEyMCIgd2lkdGg9IjE1MCIgaGVpZ2h0PSIyNTAiIGNsYXNzPSJmIi8+PHRleHQgeD0iNDMwIiB5PSIyNDAiIGNsYXNzPSJzIj5TaGVhcjwvdGV4dD4KPHJlY3QgeD0iNTU1IiB5PSIxMjAiIHdpZHRoPSIxNTAiIGhlaWdodD0iMjUwIiBjbGFzcz0iZjIiLz48dGV4dCB4PSI2MDAiIHk9IjI0MCIgY2xhc3M9InMiPkJlbmRpbmc8L3RleHQ+CjxyZWN0IHg9IjcyNSIgeT0iMTIwIiB3aWR0aD0iMTMwIiBoZWlnaHQ9IjI1MCIgY2xhc3M9ImYiLz48dGV4dCB4PSI3NjAiIHk9IjI0MCIgY2xhc3M9InMiPlRvcnNpb248L3RleHQ+PC9zdmc+"
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Split the shape into simple parts, multiply each area by the distance of its own centroid from a reference axis, add these moments, and divide by the total area. The same rule with x gives x̄."
   },
   {
     "s": "Strength of Materials",
-    "q": "Which statement is correct regarding elastic deformation?",
+    "q": "What property lets a material undergo large plastic deformation in tension before it breaks?",
     "o": [
-      "Ability to recover original form after removal of load within elastic range.",
-      "x̄ = ΣAᵢxᵢ / ΣAᵢ.",
-      "Dimensionless deformation measure.",
-      "Recoverable deformation."
+      "Malleability",
+      "Brittleness",
+      "Ductility",
+      "Hardness"
+    ],
+    "c": 2,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Ductility is stretching in tension, as when steel is drawn into wire. Malleability is the similar ability under compression, such as rolling or hammering. Brittle materials like cast iron and plain concrete break with little warning."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "What is the deformation that remains in a material after the load is removed?",
+    "o": [
+      "Elastic deformation",
+      "Creep recovery",
+      "Proportional strain",
+      "Permanent set"
     ],
     "c": 3,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Recoverable deformation."
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Permanent set is the leftover inelastic strain once a material has been loaded past its elastic limit. Elastic deformation, by contrast, disappears completely on unloading."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "Which formula locates the centroid x̄ of a composite area made of simple parts?",
+    "o": [
+      "x̄ = ΣAᵢxᵢ / ΣAᵢ",
+      "x̄ = ΣAᵢ / ΣAᵢxᵢ",
+      "x̄ = ΣAᵢxᵢ²",
+      "x̄ = ΣIᵢ / ΣAᵢ"
+    ],
+    "c": 0,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "The x-centroid is the area-weighted average of each part's x-distance: add every Aᵢxᵢ and divide by the total area ΣAᵢ."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "What internal action pulls or stretches a member, making it longer?",
+    "o": [
+      "Compression",
+      "Tension",
+      "Shear",
+      "Torsion"
+    ],
+    "c": 1,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Tension elongates a member, as in a hanger rod or the bottom chord of a truss. Its opposite, compression, shortens it."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "What is the progressive failure of a material under repeated cycles of stress, often at stresses below its static strength?",
+    "o": [
+      "Creep",
+      "Stress relaxation",
+      "Fatigue",
+      "Yielding"
+    ],
+    "c": 2,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Fatigue cracks start at small flaws and grow a little with each load cycle until the member snaps. It matters for crane girders, bridges and machine supports. Creep and relaxation are time effects under a steady load, not cycling."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "Some normally ductile materials behave in a more brittle way when loaded very quickly. What is this effect called?",
+    "o": [
+      "Temperature effect",
+      "Fatigue",
+      "Creep",
+      "Strain-rate effect"
+    ],
+    "c": 3,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "The strain-rate effect: at high loading rates, such as impact or blast, the material has less time to yield, so its strength goes up but its ductility can go down."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "Which ratio defines Young's modulus (the modulus of elasticity), E?",
+    "o": [
+      "Normal stress / normal strain",
+      "Shear stress / shear strain",
+      "Lateral strain / axial strain",
+      "Load / elongation"
+    ],
+    "c": 0,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "E = σ/ε in the linear-elastic range, the slope of the straight part of the stress-strain curve. Steel is about 200,000 MPa. Shear stress over shear strain is the shear modulus G, and lateral over axial strain is Poisson's ratio."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "Which internal action produces tension on one face and compression on the opposite face of a member?",
+    "o": [
+      "Axial tension",
+      "Bending",
+      "Torsion",
+      "Direct shear"
+    ],
+    "c": 1,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "A bending moment curves the member: fibres on one side stretch and on the other side shorten, with zero stress at the neutral axis. In a simple beam under gravity load, the bottom is in tension and the top in compression."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "What is the gradual drop in stress over time in a material held at a constant strain?",
+    "o": [
+      "Creep",
+      "Fatigue",
+      "Stress relaxation",
+      "Strain hardening"
+    ],
+    "c": 2,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Stress relaxation is the loss of stress at a fixed length, for example the slow loss of force in prestressing tendons. Creep is the mirror case: strain grows over time under a constant stress."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "What internal action shortens a member by pushing its particles together?",
+    "o": [
+      "Tension",
+      "Shear",
+      "Torsion",
+      "Compression"
+    ],
+    "c": 3,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Compression shortens a member, as in columns, struts and the top chord of a truss. Slender members in compression can buckle long before the material crushes."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "What type of deformation disappears completely once the load is removed?",
+    "o": [
+      "Elastic deformation",
+      "Plastic deformation",
+      "Permanent set",
+      "Creep"
+    ],
+    "c": 0,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Elastic deformation is fully recoverable because the atoms only stretch their bonds and do not slip. Plastic deformation and permanent set remain after unloading."
   },
   {
     "s": "Stress and Strain",
-    "q": "A 100 kN axial force acts on a 2,000 mm² area. What uniform normal stress results?",
+    "q": "A 100 kN axial force acts on a cross-section of 2,000 mm². What uniform normal stress results?",
     "o": [
-      "50 MPa",
       "5 MPa",
+      "50 MPa",
       "20 MPa",
       "200 MPa"
     ],
-    "c": 0,
-    "ref": "Mechanics of materials",
-    "n": "[CALCULATION] 100,000 N / 2,000 mm² = 50 N/mm² = 50 MPa."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding temperature effect?",
-    "o": [
-      "Geometric center of area for a plane figure; for uniform density it coincides with center of mass.",
-      "Low temperature can reduce ductility and promote brittle behavior in some materials.",
-      "σ = P/A for uniform axial stress.",
-      "Stress associated with fracture/breaking."
-    ],
     "c": 1,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Low temperature can reduce ductility and promote brittle behavior in some materials."
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "σ = P/A = 100,000 N / 2,000 mm² = 50 N/mm² = 50 MPa.",
+    "formula": "σ = P / A",
+    "steps": [
+      "Convert the load to newtons: P = 100 kN = 100,000 N",
+      "Area A = 2,000 mm²",
+      "σ = 100,000 / 2,000 = 50 N/mm²",
+      "1 N/mm² = 1 MPa, so σ = 50 MPa"
+    ]
   },
   {
     "s": "Strength of Materials",
-    "q": "Which statement is correct regarding axial force?",
+    "q": "How does low temperature typically affect steel and some other metals?",
     "o": [
-      "Progressive damage/failure under repeated cyclic stresses, often below monotonic strength.",
-      "Acts along the longitudinal axis of a member.",
-      "Ability to recover original form after removal of load within elastic range.",
-      "Measures small changes in length/strain."
-    ],
-    "c": 1,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Acts along the longitudinal axis of a member."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding creep?",
-    "o": [
-      "Line indicating direction of principal stress, not its magnitude.",
-      "Time-dependent deformation under sustained stress/load.",
-      "Deals with internal effects of forces and deformation in materials/members.",
-      "Ability to plastically deform under compressive working such as rolling/hammering."
-    ],
-    "c": 1,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Time-dependent deformation under sustained stress/load."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding modulus of toughness?",
-    "o": [
-      "Acts along the longitudinal axis of a member.",
-      "Recoverable deformation.",
-      "Total strain energy per unit volume absorbed up to fracture.",
-      "Stress associated with fracture/breaking."
+      "It raises ductility and toughness",
+      "It removes the yield plateau and raises ductility",
+      "It lowers ductility and can make them fracture in a brittle way",
+      "It has no effect on how they fail"
     ],
     "c": 2,
-    "ref": "Mechanics of materials",
-    "n": "[CORRECTED / CLARIFIED] Total strain energy per unit volume absorbed up to fracture."
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Below a transition temperature many steels lose toughness and can crack suddenly with little deformation, the cause of well-known ship and bridge failures. Heat has the opposite effect: it lowers strength and stiffness."
   },
   {
     "s": "Strength of Materials",
-    "q": "Which statement is correct regarding extensometer?",
+    "q": "What is a force that acts along the longitudinal axis of a member called?",
     "o": [
-      "G = shear stress / shear strain.",
-      "Within the linear-elastic range, stress is proportional to strain.",
-      "Pulling/stretching action.",
-      "Measures small changes in length/strain."
+      "Shear force",
+      "Bending moment",
+      "Torque",
+      "Axial force"
     ],
     "c": 3,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Measures small changes in length/strain."
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "An axial force acts along the member's centroidal axis and causes uniform tension or compression. A shear force acts across the member, a moment bends it, and a torque twists it."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "What is the slow increase in deformation of a material under a load that is held constant over a long time?",
+    "o": [
+      "Creep",
+      "Stress relaxation",
+      "Fatigue",
+      "Elastic recovery"
+    ],
+    "c": 0,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Under sustained load, concrete and timber keep deflecting for years; this is creep. It is why long-term deflections of concrete beams can be two to three times the immediate ones."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "What is the total strain energy per unit volume a material absorbs up to fracture?",
+    "o": [
+      "Modulus of resilience",
+      "Modulus of toughness",
+      "Modulus of rupture",
+      "Modulus of elasticity"
+    ],
+    "c": 1,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "The modulus of toughness is the whole area under the stress-strain curve up to rupture. Ductile steel has a large one because it stretches a long way before breaking. The modulus of resilience only counts the elastic part."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "Which instrument measures the small changes in length of a test specimen so that strain can be computed?",
+    "o": [
+      "Dynamometer",
+      "Tensiometer",
+      "Extensometer",
+      "Slump cone"
+    ],
+    "c": 2,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "An extensometer is clamped to the specimen over a known gauge length and reads its elongation, so strain ε = ΔL/L can be found. The testing machine itself reads the load."
   },
   {
     "s": "Stress and Strain",
-    "q": "A 2,000 mm gauge length elongates by 2 mm. What engineering strain results?",
+    "q": "A 2,000 mm gauge length elongates by 2 mm under load. What engineering strain results?",
     "o": [
       "1.0",
       "0.01",
@@ -362,203 +370,210 @@
       "0.001"
     ],
     "c": 3,
-    "ref": "Mechanics of materials",
-    "n": "[CALCULATION] ε = 2/2000 = 0.001."
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "ε = ΔL/L₀ = 2 mm / 2,000 mm = 0.001. Strain has no units because it is length over length.",
+    "formula": "ε = ΔL / L₀",
+    "steps": [
+      "Elongation ΔL = 2 mm",
+      "Original length L₀ = 2,000 mm",
+      "ε = 2 / 2,000 = 0.001"
+    ]
+  },
+  {
+    "s": "Stress-Strain Diagram",
+    "q": "On the stress-strain diagram of mild steel shown, which point marks the ultimate tensile strength?",
+    "o": [
+      "D",
+      "C",
+      "E",
+      "B"
+    ],
+    "c": 0,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Point D is the peak of the curve, the ultimate (tensile) strength: the highest engineering stress the bar reaches. After D the bar necks, the load it can carry drops, and it breaks at E.",
+    "img": "../../subjects/structural/quizzes/img/stress-strain.png"
   },
   {
     "s": "Strength of Materials",
-    "q": "Which statement is correct regarding ultimate tensile strength?",
+    "q": "In which range of the stress-strain curve does a material return to its original dimensions when unloaded?",
     "o": [
-      "E = normal stress / normal strain in linear elasticity.",
-      "Geometric center of area for a plane figure; for uniform density it coincides with center of mass.",
-      "Line indicating direction of principal stress, not its magnitude.",
-      "Maximum engineering stress reached in a tensile test."
+      "Plastic range",
+      "Elastic range",
+      "Strain-hardening range",
+      "Necking range"
+    ],
+    "c": 1,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "The elastic range runs from zero up to the elastic limit. In it, unloading retraces the curve back to zero strain. Past that point the material enters the plastic range."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "What is a stress trajectory?",
+    "o": [
+      "A line whose length shows the size of the stress",
+      "The path a crack follows after fracture",
+      "A line showing the direction of the principal stresses at each point",
+      "The curve of stress against time"
+    ],
+    "c": 2,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Stress trajectories are drawn so that at every point they point along a principal stress direction. They show direction only, not magnitude. In a beam, the tension trajectories explain why diagonal cracks form near the supports."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "What property lets a material be plastically deformed by compression, such as rolling or hammering, without cracking?",
+    "o": [
+      "Ductility",
+      "Elasticity",
+      "Hardness",
+      "Malleability"
     ],
     "c": 3,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Maximum engineering stress reached in a tensile test.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+R2VuZXJpYyBEdWN0aWxlLU1hdGVyaWFsIFN0cmVzcy1TdHJhaW4gQ3VydmU8L3RleHQ+CjxsaW5lIHgxPSIxMjAiIHkxPSI0MDAiIHgyPSI4MDAiIHkyPSI0MDAiIGNsYXNzPSJsIi8+PGxpbmUgeDE9IjEyMCIgeTE9IjQwMCIgeDI9IjEyMCIgeTI9IjgwIiBjbGFzcz0ibCIvPgo8cGF0aCBkPSJNMTIwIDQwMCBMMzAwIDIyMCBRMzgwIDE4MCA0NTAgMjI1IFE1NjAgMTAwIDY5MCAxNDUgUTc0MCAxNjUgNzcwIDI2MCIgY2xhc3M9ImwiLz4KPHRleHQgeD0iMjgwIiB5PSI0NTAiIGNsYXNzPSJzIj5zdHJhaW4gzrU8L3RleHQ+PHRleHQgeD0iMzUiIHk9IjIzMCIgY2xhc3M9InMiPnN0cmVzcyDPgzwvdGV4dD48L3N2Zz4="
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Malleability is shaping under compression: gold can be beaten into leaf and steel rolled into plate. Ductility is the matching ability in tension, such as drawing into wire."
   },
   {
     "s": "Strength of Materials",
-    "q": "Which statement is correct regarding elastic range?",
+    "q": "What deformation makes layers of a material slide past each other under forces acting parallel to a plane?",
     "o": [
-      "Sliding deformation along planes due to tangential stress.",
-      "Range in which unloading returns material substantially to original dimensions.",
-      "Highest stress at which material returns to original form upon unloading.",
-      "Magnitude ratio of transverse strain to longitudinal strain under uniaxial loading; sign convention may include a negative sign."
+      "Shear",
+      "Tension",
+      "Compression",
+      "Bending"
+    ],
+    "c": 0,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Shear stress acts along a plane, and shear deformation changes angles rather than lengths. Examples are bolts in a lap joint and the web of a beam near its supports."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "Which branch of mechanics deals with the internal stresses and deformations that forces produce in structural members?",
+    "o": [
+      "Statics",
+      "Strength of materials",
+      "Dynamics",
+      "Fluid mechanics"
     ],
     "c": 1,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Range in which unloading returns material substantially to original dimensions."
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Statics treats bodies as rigid and finds the external forces and reactions. Strength of materials (mechanics of materials) takes those forces and finds the internal stresses, strains and deflections."
   },
   {
     "s": "Strength of Materials",
-    "q": "Which statement is correct regarding stress trajectory?",
+    "q": "Which formula defines the shear modulus (modulus of rigidity), G?",
     "o": [
-      "The source line 'k = shear stress/shear strain' under modulus of elasticity is incorrect; that ratio defines shear modulus G, not Young's modulus E.",
-      "Shortening/pushing-together action.",
-      "Highest stress over which stress remains proportional to strain.",
-      "Line indicating direction of principal stress, not its magnitude."
+      "G = σ / ε",
+      "G = P / A",
+      "G = τ / γ",
+      "G = ΔL / L"
+    ],
+    "c": 2,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "G is shear stress τ divided by shear strain γ in the elastic range. For steel it is about 77,000 to 80,000 MPa. It is linked to E by G = E / 2(1 + ν)."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "Why does strain have no unit?",
+    "o": [
+      "It is always expressed as a percentage of stress",
+      "It is force divided by area",
+      "It is measured only in the elastic range",
+      "It is a change in length divided by an original length"
     ],
     "c": 3,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Line indicating direction of principal stress, not its magnitude."
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Strain ε = ΔL/L₀ is length over length, so the units cancel. It is often written as mm/mm, as a percentage, or in microstrain (×10⁻⁶)."
   },
   {
     "s": "Strength of Materials",
-    "q": "Which statement is correct regarding malleability?",
+    "q": "Which law states that, within the elastic range, stress is proportional to strain?",
     "o": [
-      "Material response can change with loading rate; some normally ductile materials may behave more brittle under high-rate loading.",
-      "Shortening/pushing-together action.",
-      "Ability to plastically deform under compressive working such as rolling/hammering.",
-      "Strain energy per unit volume absorbed up to elastic behavior/yield threshold without permanent deformation."
+      "Hooke's law",
+      "Newton's second law",
+      "Pascal's law",
+      "Poisson's law"
     ],
-    "c": 2,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Ability to plastically deform under compressive working such as rolling/hammering."
+    "c": 0,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Hooke's law, σ = Eε, holds up to the proportional limit. The constant of proportionality is the modulus of elasticity E."
   },
   {
     "s": "Strength of Materials",
-    "q": "Which statement is correct regarding shear?",
+    "q": "What is the ratio of lateral strain to axial strain in a member under uniaxial load?",
     "o": [
-      "Residual inelastic deformation after load removal.",
-      "Sliding deformation along planes due to tangential stress.",
-      "Dimensionless deformation measure.",
-      "Onset of substantial plastic deformation with little or no increase in stress for materials showing a yield plateau."
+      "Modulus of elasticity",
+      "Poisson's ratio",
+      "Slenderness ratio",
+      "Shear modulus"
     ],
     "c": 1,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Sliding deformation along planes due to tangential stress."
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "When a bar is stretched it also gets thinner. Poisson's ratio ν is the size of that lateral strain divided by the axial strain: about 0.3 for steel and 0.15 to 0.2 for concrete."
   },
   {
     "s": "Strength of Materials",
-    "q": "Which statement is correct regarding strength of materials?",
+    "q": "What is the general ability of a material to absorb energy before it fractures?",
     "o": [
-      "Deals with internal effects of forces and deformation in materials/members.",
-      "Material response can change with loading rate; some normally ductile materials may behave more brittle under high-rate loading.",
-      "Acts along the longitudinal axis of a member.",
-      "Highest stress over which stress remains proportional to strain."
+      "Hardness",
+      "Stiffness",
+      "Toughness",
+      "Resilience"
+    ],
+    "c": 2,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "A tough material both resists stress and deforms a lot before breaking, so it soaks up energy. Resilience is energy absorbed only in the elastic range; stiffness is resistance to deformation, measured by E."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "What is the ability of a material to recover its original shape when the load is removed?",
+    "o": [
+      "Plasticity",
+      "Ductility",
+      "Malleability",
+      "Elasticity"
+    ],
+    "c": 3,
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Elasticity is recovery of shape after unloading, valid up to the elastic limit. Plasticity is the opposite: deformation that stays."
+  },
+  {
+    "s": "Strength of Materials",
+    "q": "Which formula gives normal (engineering) strain?",
+    "o": [
+      "ε = ΔL / L₀",
+      "ε = L₀ / ΔL",
+      "ε = P / A",
+      "ε = σ × E"
     ],
     "c": 0,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Deals with internal effects of forces and deformation in materials/members."
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Engineering strain is the change in length divided by the original length. From Hooke's law, it can also be found as ε = σ/E in the elastic range."
   },
   {
     "s": "Strength of Materials",
-    "q": "Which statement is correct regarding shear modulus?",
+    "q": "Shear stress divided by shear strain gives which elastic constant?",
     "o": [
-      "Time-dependent deformation under sustained stress/load.",
-      "G = shear stress / shear strain.",
-      "Highest stress at which material returns to original form upon unloading.",
-      "Twisting action producing shear stress over a cross-section."
+      "Young's modulus, E",
+      "Shear modulus, G",
+      "Bulk modulus, K",
+      "Poisson's ratio, ν"
     ],
     "c": 1,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] G = shear stress / shear strain."
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "τ/γ is the shear modulus G. Normal stress over normal strain is Young's modulus E, and volumetric stress over volumetric strain is the bulk modulus K. It is a common mix-up to call τ/γ \"E\"."
   },
   {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding strain?",
+    "s": "Stress-Strain Diagram",
+    "q": "On the stress-strain diagram of mild steel shown, which point marks the rupture (breaking) strength?",
     "o": [
-      "Ability to absorb energy before fracture.",
-      "Strain energy per unit volume absorbed up to elastic behavior/yield threshold without permanent deformation.",
-      "Dimensionless deformation measure.",
-      "ȳ = ΣAᵢyᵢ / ΣAᵢ."
+      "D",
+      "C",
+      "E",
+      "A"
     ],
     "c": 2,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Dimensionless deformation measure."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding hooke's law?",
-    "o": [
-      "Within the linear-elastic range, stress is proportional to strain.",
-      "Time-dependent deformation under sustained stress/load.",
-      "Ability to undergo significant plastic deformation in tension before rupture.",
-      "σ = P/A for uniform axial stress."
-    ],
-    "c": 0,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Within the linear-elastic range, stress is proportional to strain."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding poisson's ratio?",
-    "o": [
-      "Magnitude ratio of transverse strain to longitudinal strain under uniaxial loading; sign convention may include a negative sign.",
-      "Time-dependent reduction in stress under approximately constant imposed strain.",
-      "Onset of substantial plastic deformation with little or no increase in stress for materials showing a yield plateau.",
-      "Acts along the longitudinal axis of a member."
-    ],
-    "c": 0,
-    "ref": "Mechanics of materials",
-    "n": "[CORRECTED / CLARIFIED] Magnitude ratio of transverse strain to longitudinal strain under uniaxial loading; sign convention may include a negative sign."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding toughness?",
-    "o": [
-      "Ability to absorb energy before fracture.",
-      "Low temperature can reduce ductility and promote brittle behavior in some materials.",
-      "Total strain energy per unit volume absorbed up to fracture.",
-      "Pulling/stretching action."
-    ],
-    "c": 0,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Ability to absorb energy before fracture."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding elasticity?",
-    "o": [
-      "Ability to recover original form after removal of load within elastic range.",
-      "G = shear stress / shear strain.",
-      "Range in which unloading returns material substantially to original dimensions.",
-      "ȳ = ΣAᵢyᵢ / ΣAᵢ."
-    ],
-    "c": 0,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Ability to recover original form after removal of load within elastic range."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding normal strain formula?",
-    "o": [
-      "E = normal stress / normal strain in linear elasticity.",
-      "Deals with internal effects of forces and deformation in materials/members.",
-      "ε = ΔL/L₀.",
-      "Total strain energy per unit volume absorbed up to fracture."
-    ],
-    "c": 2,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] ε = ΔL/L₀."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding source e-formula error?",
-    "o": [
-      "The source line 'k = shear stress/shear strain' under modulus of elasticity is incorrect; that ratio defines shear modulus G, not Young's modulus E.",
-      "Produces tension on one side and compression on the other in a flexural member.",
-      "Within the linear-elastic range, stress is proportional to strain.",
-      "Residual inelastic deformation after load removal."
-    ],
-    "c": 0,
-    "ref": "Mechanics of materials",
-    "n": "[CORRECTED / CLARIFIED] The source line 'k = shear stress/shear strain' under modulus of elasticity is incorrect; that ratio defines shear modulus G, not Young's modulus E."
-  },
-  {
-    "s": "Strength of Materials",
-    "q": "Which statement is correct regarding rupture strength?",
-    "o": [
-      "Measures small changes in length/strain.",
-      "x̄ = ΣAᵢxᵢ / ΣAᵢ.",
-      "Stress associated with fracture/breaking.",
-      "The source line 'k = shear stress/shear strain' under modulus of elasticity is incorrect; that ratio defines shear modulus G, not Young's modulus E."
-    ],
-    "c": 2,
-    "ref": "Mechanics of materials",
-    "n": "[SOURCE FACT — AUDITED] Stress associated with fracture/breaking."
+    "ref": "Hibbeler, Mechanics of Materials; Gere & Goodno, Mechanics of Materials",
+    "n": "Point E is where the bar fractures. On an engineering curve it sits below the ultimate strength D because the neck has shrunk the real area, so a smaller load breaks it.",
+    "img": "../../subjects/structural/quizzes/img/stress-strain.png"
   }
 ]
