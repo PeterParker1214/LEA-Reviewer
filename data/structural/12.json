@@ -1,928 +1,925 @@
 [
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding hazardous facilities?",
+    "s": "Occupancy Categories",
+    "q": "Under NSCP 2015 Table 103-1, which occupancy category covers structures housing or supporting toxic or explosive substances?",
     "o": [
-      "Rock, natural soil or fill used in grading/foundation context.",
-      "Structures storing/supporting/containing toxic or explosive substances.",
-      "Dynamic allowance for machinery/equipment producing impact/vibration.",
-      "The source table gives I/Ip values by legacy occupancy category; these are retained only as source-era NSCP review data."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Structures storing/supporting/containing toxic or explosive substances."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding borrow?",
-    "o": [
-      "Generally treated as live load in the source.",
-      "Legacy source class for faults capable of large events with high seismic activity; source gives 7.0≤M≤8.4.",
-      "Earth material imported from off-site for grading.",
-      "Loss/reduction of structural capability so intended safe function is no longer satisfied."
-    ],
-    "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Earth material imported from off-site for grading."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding base shear?",
-    "o": [
-      "Total design lateral shear at base of structure.",
-      "Frame whose members/joints resist lateral forces primarily through flexure and joint action.",
-      "Failure causing extensive property damage.",
-      "33%."
+      "Category II, Hazardous Facilities",
+      "Category I, Essential Facilities",
+      "Category III, Special Occupancy",
+      "Category V, Miscellaneous"
     ],
     "c": 0,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Total design lateral shear at base of structure."
+    "ref": "NSCP 2015 Vol. 1, Sec. 103 and Table 103-1 Occupancy Category",
+    "n": "Category II covers facilities whose failure could release toxic or explosive materials. It gets a seismic importance factor of 1.25 (and 1.50 for parts and portions)."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding excavation?",
+    "s": "Earthworks",
+    "q": "In earthworks, what is borrow?",
     "o": [
-      "Catastrophic failure without human lives endangered.",
-      "Legacy lower-magnitude/lower-activity category; source gives M<6.5.",
-      "Source table gives 100% impact increase.",
-      "Removal of earth material."
+      "Soil removed from the site and hauled away",
+      "Earth material brought in from another site for use as fill",
+      "A level step cut into a slope",
+      "Rock left in place under the site"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Vol. 1, Chapter 3 (Earthworks and Foundations), definitions",
+    "n": "Borrow is soil taken from a borrow pit elsewhere to make up fill. Material dug out and removed is excavation or spoil."
+  },
+  {
+    "s": "Lateral Systems",
+    "q": "What is base shear in seismic design?",
+    "o": [
+      "The shear force in the ground-floor beams",
+      "The vertical reaction at each footing",
+      "The total design lateral force at the base of the structure",
+      "The lateral force on the roof only"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Sec. 208 (Earthquake Loads)",
+    "n": "Base shear V is the total horizontal earthquake force the structure must resist at its base. It is then distributed up the height as floor forces, largest near the top."
+  },
+  {
+    "s": "Earthworks",
+    "q": "In earthworks, what is excavation?",
+    "o": [
+      "The placing of earth material by artificial means",
+      "The densifying of fill",
+      "The wearing away of ground by water",
+      "The removal of earth material"
     ],
     "c": 3,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Removal of earth material."
+    "ref": "NSCP 2015 Vol. 1, Chapter 3 (Earthworks and Foundations), definitions",
+    "n": "Excavation is digging out earth material. Placing it is fill, densifying it is compaction, and natural wearing away is erosion."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding story shear?",
+    "s": "Lateral Systems",
+    "q": "What is the story shear at a given level of a building?",
     "o": [
-      "Sum of design lateral forces above a story level.",
-      "Failure causing reduced serviceability.",
-      "Horizontal/near-horizontal structural system transferring lateral loads to vertical resisting elements.",
-      "Source treats as separate load added to dead load based on weight."
+      "The sum of the design lateral forces at and above that level",
+      "The lateral force at that floor only",
+      "The weight of that story",
+      "The shear in the columns of the roof"
     ],
     "c": 0,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Sum of design lateral forces above a story level."
+    "ref": "NSCP 2015 Sec. 208 (Earthquake Loads)",
+    "n": "Story shear adds up every floor force above the level being checked, so it grows toward the base, where it equals the base shear."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding essential examples?",
+    "s": "Occupancy Categories",
+    "q": "Which of these is an Essential Facility (Occupancy Category I) under NSCP 2015?",
     "o": [
-      "Where wind effects govern strength demand, wind design may govern while seismic detailing/limitations can still apply where required.",
-      "Hospitals, fire/police stations, aviation control towers, designated evacuation centers and other emergency-response facilities listed by source.",
-      "DPWH project documents in 2025 and ASEP training in 2025 still cite NSCP 2015, supporting its continued practical use; however project-specific governing requirements must always be checked.",
-      "Generally treated as live load in the source."
+      "A private garage",
+      "A fire station",
+      "A retail store",
+      "An office building"
     ],
     "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Hospitals, fire/police stations, aviation control towers, designated evacuation centers and other emergency-response facilities listed by source."
+    "ref": "NSCP 2015 Vol. 1, Sec. 103 and Table 103-1 Occupancy Category",
+    "n": "Essential facilities must keep working after a disaster: hospitals, fire and police stations, emergency vehicle garages, designated evacuation centers, aviation control towers and, in the Philippine table, public school buildings. They get the highest seismic importance factor, 1.50."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding earthquake design objective?",
+    "s": "Lateral Systems",
+    "q": "What is the aim of the NSCP seismic provisions?",
     "o": [
-      "Earth material placed by artificial means.",
-      "Total design lateral shear at base of structure.",
-      "Forces/actions from self-weight, occupancy, environmental effects, differential movement and restrained dimensional changes.",
-      "Seismic provisions aim to reduce collapse/life-safety risk and major damage; they do not guarantee zero damage or post-event functionality."
+      "To make sure buildings suffer zero damage in any earthquake",
+      "To keep every building fully usable after any earthquake",
+      "To protect life by reducing the risk of collapse and major damage, not to prevent all damage",
+      "To prevent earthquakes from reaching the building"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Sec. 208 (Earthquake Loads)",
+    "n": "NSCP 208 states the provisions are meant to safeguard against major failures and loss of life, not to guarantee zero damage or continued function. Some cracking and yielding in a strong quake is expected."
+  },
+  {
+    "s": "Occupancy Categories",
+    "q": "Under NSCP 2015 Table 103-1, what is Occupancy Category V?",
+    "o": [
+      "Standard occupancy structures",
+      "Special occupancy structures",
+      "Hazardous facilities",
+      "Miscellaneous structures"
     ],
     "c": 3,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Seismic provisions aim to reduce collapse/life-safety risk and major damage; they do not guarantee zero damage or post-event functionality."
+    "ref": "NSCP 2015 Vol. 1, Sec. 103 and Table 103-1 Occupancy Category",
+    "n": "The five categories are I Essential, II Hazardous, III Special Occupancy, IV Standard Occupancy and V Miscellaneous. Category V covers minor structures such as private garages and sheds."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding occupancy category v?",
+    "s": "Lateral Systems",
+    "q": "Which lateral system resists lateral forces mainly through the bending of its members and the rigidity of its joints?",
     "o": [
-      "Seismic provisions aim to reduce collapse/life-safety risk and major damage; they do not guarantee zero damage or post-event functionality.",
-      "The source explicitly identifies NSCP 2015.",
-      "Source labels miscellaneous structures.",
-      "Load produced by use/occupancy excluding dead load."
-    ],
-    "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Source labels miscellaneous structures."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding moment-resisting frame?",
-    "o": [
-      "Frame whose members/joints resist lateral forces primarily through flexure and joint action.",
-      "Source includes large assembly, certain educational, utility and institutional facilities.",
-      "Removal of earth material.",
-      "Does not satisfy open or partially enclosed definitions."
+      "Moment-resisting frame",
+      "Braced frame",
+      "Bearing-wall system",
+      "Shear wall system"
     ],
     "c": 0,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Frame whose members/joints resist lateral forces primarily through flexure and joint action."
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "A moment frame has rigid beam-column joints, so beams and columns bend to resist sway. It leaves the bays open but is more flexible than braced frames or shear walls."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding weak story?",
+    "s": "Lateral Systems",
+    "q": "Under NSCP 2015, what is a weak story?",
     "o": [
-      "Hospitals, fire/police stations, aviation control towers, designated evacuation centers and other emergency-response facilities listed by source.",
-      "Source defines as story strength less than 80% of story above.",
-      "Earth material imported from off-site for grading.",
-      "Legacy factor accounting for occupancy consequence in older wind provisions."
+      "A story whose lateral stiffness is less than 70% of the story above",
+      "A story whose lateral strength is less than 80% of the story above",
+      "A story taller than 4 m",
+      "A story with no shear walls"
     ],
     "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Source defines as story strength less than 80% of story above."
+    "ref": "NSCP 2015 Sec. 208 (Earthquake Loads)",
+    "n": "A weak story is a strength irregularity (strength < 80% of the story above). A soft story is a stiffness irregularity (stiffness < 70% of the story above). Both concentrate damage, as in ground floors left open for parking."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding wind-vs-seismic governing?",
+    "s": "Lateral Systems",
+    "q": "In a building where wind forces are larger than earthquake forces, what applies?",
     "o": [
-      "Sum of design lateral forces above a story level.",
-      "Finished surface condition after grading.",
-      "Where wind effects govern strength demand, wind design may govern while seismic detailing/limitations can still apply where required.",
-      "Load whose variation with time is rare/small."
+      "Seismic provisions can be ignored completely",
+      "Only the earthquake forces are used",
+      "Wind governs the strength design, but the seismic detailing requirements still apply",
+      "The building needs no lateral system"
     ],
     "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Where wind effects govern strength demand, wind design may govern while seismic detailing/limitations can still apply where required."
+    "ref": "NSCP 2015 Sec. 208 (Earthquake Loads)",
+    "n": "NSCP 208 notes that when wind produces the higher load effects, wind governs strength, but the detailing and limitations of the seismic provisions must still be met so the structure stays ductile in an earthquake."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding floor/balcony hanger impact source?",
+    "s": "Loads",
+    "q": "Under NSCP 2015, what impact increase applies to hangers supporting floors and balconies?",
     "o": [
-      "Catastrophic failure without human lives endangered.",
-      "33%.",
-      "Source defines as story lateral stiffness less than 70% of story above.",
-      "Does not satisfy open or partially enclosed definitions."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] 33%."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding soft story?",
-    "o": [
-      "In-place solid or altered rock.",
-      "Source labels miscellaneous structures.",
-      "Requires aircraft landing/dynamic impact considerations.",
-      "Source defines as story lateral stiffness less than 70% of story above."
+      "20%",
+      "50%",
+      "100%",
+      "33%"
     ],
     "c": 3,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Source defines as story lateral stiffness less than 70% of story above."
+    "ref": "NSCP 2015 Sec. 205 Impact Loads (Table of impact increases)",
+    "n": "The impact increases are 100% for elevator machinery, 20% for light shaft- or motor-driven machinery, 50% for reciprocating machinery and 33% for hangers of floors and balconies."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding nscp 2010 wind-table warning?",
+    "s": "Lateral Systems",
+    "q": "Under NSCP 2015, what is a soft story?",
     "o": [
-      "Source includes private garages, carports, sheds and fences over 1.5 m.",
-      "Vertical truss-like frame using concentric/eccentric bracing to resist lateral forces.",
-      "The source page 10 explicitly labels its wind-importance table as NSCP 2010 even though the overall summary is NSCP 2015; this must not be presented as an unqualified current NSCP-2015 table.",
-      "Removal of earth material."
+      "A story whose lateral stiffness is less than 70% of the story above",
+      "A story whose lateral strength is less than 80% of the story above",
+      "A story built of timber",
+      "A story with a lighter floor finish"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Sec. 208 (Earthquake Loads)",
+    "n": "A soft story is a stiffness irregularity: less than 70% of the story above (or 80% of the average of the three above). Open ground floors with stiff infilled floors above are the classic case."
+  },
+  {
+    "s": "Loads",
+    "q": "On which standard are the NSCP 2015 wind load provisions based?",
+    "o": [
+      "ASCE 7-05",
+      "ASCE 7-10",
+      "UBC 1997",
+      "ACI 318-14"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Sec. 207A (Wind Loads, based on ASCE 7-10)",
+    "n": "NSCP 2015 updated Section 207 from ASCE 7-05 to ASCE 7-10. Wind speeds now come from three Philippine maps by occupancy category, for strength design with a wind load factor of 1.0."
+  },
+  {
+    "s": "Loads",
+    "q": "For wind design, what is an enclosed building?",
+    "o": [
+      "A building with no windows at all",
+      "A building with every wall at least 80% open",
+      "A building that does not qualify as open or partially enclosed",
+      "A building with a dominant opening on the windward wall"
     ],
     "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[CURRENTNESS-AUDITED / WARNING] The source page 10 explicitly labels its wind-importance table as NSCP 2010 even though the overall summary is NSCP 2015; this must not be presented as an unqualified current NSCP-2015 table."
+    "ref": "NSCP 2015 Sec. 207A (Wind Loads, based on ASCE 7-10)",
+    "n": "Enclosed is defined by elimination: if a building is not open (each wall at least 80% open) and not partially enclosed (a dominant windward opening), it is enclosed."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding enclosed building?",
+    "s": "Earthworks",
+    "q": "In earthworks, what is bedrock?",
     "o": [
-      "Does not satisfy open or partially enclosed definitions.",
-      "In-place solid or altered rock.",
-      "Legacy lower-magnitude/lower-activity category; source gives M<6.5.",
-      "Structures storing/supporting/containing toxic or explosive substances."
-    ],
-    "c": 0,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Does not satisfy open or partially enclosed definitions."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding bedrock?",
-    "o": [
-      "Load produced by use/occupancy excluding dead load.",
-      "In-place solid or altered rock.",
-      "Analysis/design of structures to safely resist loads.",
-      "The source table gives I/Ip values by legacy occupancy category; these are retained only as source-era NSCP review data."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] In-place solid or altered rock."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding shear wall?",
-    "o": [
-      "Vertical wall element resisting lateral forces in its plane and transferring them to foundation.",
-      "Dominant opening also exceeds 0.5 m² or 1% of that wall area, whichever is smaller, with remaining-envelope opening percentage limited as stated.",
-      "Source includes private garages, carports, sheds and fences over 1.5 m.",
-      "Finished surface condition after grading."
-    ],
-    "c": 0,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Vertical wall element resisting lateral forces in its plane and transferring them to foundation."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding elevator machinery impact source?",
-    "o": [
-      "Story drift divided by story height.",
-      "Analysis/design of structures to safely resist loads.",
-      "Source table gives 100% impact increase.",
-      "Requires aircraft landing/dynamic impact considerations."
-    ],
-    "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Source table gives 100% impact increase."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding partially enclosed criterion 1?",
-    "o": [
-      "Source includes large assembly, certain educational, utility and institutional facilities.",
-      "System relying on bearing walls for vertical loads rather than a complete space frame.",
-      "Dominant opening area on positive-pressure wall exceeds openings in remaining envelope by more than 1%.",
-      "Earth material imported from off-site for grading."
-    ],
-    "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Dominant opening area on positive-pressure wall exceeds openings in remaining envelope by more than 1%."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding compaction?",
-    "o": [
-      "Source treats as separate load added to dead load based on weight.",
-      "Densification of fill by mechanical/other means.",
-      "Total design lateral shear at base of structure.",
-      "Source labels hazardous facilities."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Densification of fill by mechanical/other means."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding impact load?",
-    "o": [
-      "Dynamic allowance for machinery/equipment producing impact/vibration.",
-      "Relative horizontal displacement between top and bottom of a story.",
-      "Application of soil/rock mechanics to investigation, analysis, design and construction verification involving earth materials/foundations.",
-      "Special equipment loads requiring vertical/horizontal/dynamic effects."
-    ],
-    "c": 0,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Dynamic allowance for machinery/equipment producing impact/vibration."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding furniture?",
-    "o": [
-      "Upward force on floors/foundations from pressure or buoyancy/wind effects.",
-      "Generally treated as live load in the source.",
-      "Densification of fill by mechanical/other means.",
-      "Sum of design lateral forces above a story level."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Generally treated as live load in the source."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding wind importance factor?",
-    "o": [
-      "Legacy source class for faults capable of large events with high seismic activity; source gives 7.0≤M≤8.4.",
-      "Source labels miscellaneous structures.",
-      "Legacy factor accounting for occupancy consequence in older wind provisions.",
-      "DPWH project documents in 2025 and ASEP training in 2025 still cite NSCP 2015, supporting its continued practical use; however project-specific governing requirements must always be checked."
-    ],
-    "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Legacy factor accounting for occupancy consequence in older wind provisions."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding source seismic importance factors?",
-    "o": [
-      "Weight of permanent materials and fixed equipment.",
-      "The source table gives I/Ip values by legacy occupancy category; these are retained only as source-era NSCP review data.",
-      "Relative horizontal displacement between top and bottom of a story.",
-      "Relatively level step excavated into earth on which fill may be placed."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[CURRENTNESS-AUDITED / WARNING] The source table gives I/Ip values by legacy occupancy category; these are retained only as source-era NSCP review data."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding open building source definition?",
-    "o": [
-      "Each wall at least 80% open, Ao ≥0.8Ag.",
-      "Legacy category for faults other than A and C; source gives 6.5≤M≤7.0.",
-      "Hospitals, fire/police stations, aviation control towers, designated evacuation centers and other emergency-response facilities listed by source.",
-      "Rock, natural soil or fill used in grading/foundation context."
-    ],
-    "c": 0,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Each wall at least 80% open, Ao ≥0.8Ag.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+V2luZC1FbmNsb3N1cmUgQ2xhc3NpZmljYXRpb25zIOKAlCBTb3VyY2UgRXJhPC90ZXh0Pgo8cmVjdCB4PSI3MCIgeT0iMTMwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjI0MCIgY2xhc3M9ImYiLz48dGV4dCB4PSIxNDUiIHk9IjI0NSIgY2xhc3M9InMiPk9wZW48L3RleHQ+CjxyZWN0IHg9IjM0MCIgeT0iMTMwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjI0MCIgY2xhc3M9ImYyIi8+PHRleHQgeD0iMzc1IiB5PSIyNDUiIGNsYXNzPSJzIj5QYXJ0aWFsbHkgRW5jbG9zZWQ8L3RleHQ+CjxyZWN0IHg9IjYxMCIgeT0iMTMwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjI0MCIgY2xhc3M9ImYiLz48dGV4dCB4PSI2NzUiIHk9IjI0NSIgY2xhc3M9InMiPkVuY2xvc2VkPC90ZXh0Pjwvc3ZnPg=="
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding special occupancy examples?",
-    "o": [
-      "In-place solid or altered rock.",
-      "Source includes large assembly, certain educational, utility and institutional facilities.",
-      "Source table gives 100% impact increase.",
-      "Legacy source class for faults capable of large events with high seismic activity; source gives 7.0≤M≤8.4."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Source includes large assembly, certain educational, utility and institutional facilities."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding crane loads?",
-    "o": [
-      "Vertical wall element resisting lateral forces in its plane and transferring them to foundation.",
-      "Special equipment loads requiring vertical/horizontal/dynamic effects.",
-      "Where wind effects govern strength demand, wind design may govern while seismic detailing/limitations can still apply where required.",
-      "Source labels special occupancy structures."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Special equipment loads requiring vertical/horizontal/dynamic effects."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding fill?",
-    "o": [
-      "Earth material placed by artificial means.",
-      "System relying on bearing walls for vertical loads rather than a complete space frame.",
-      "20%.",
-      "Failure causing extensive property damage."
-    ],
-    "c": 0,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Earth material placed by artificial means."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding live load?",
-    "o": [
-      "Relatively level step excavated into earth on which fill may be placed.",
-      "Total design lateral shear at base of structure.",
-      "Can produce live/environmental loading.",
-      "Load produced by use/occupancy excluding dead load."
+      "Compacted fill below a slab",
+      "The top layer of organic soil",
+      "Crushed rock used as base course",
+      "In-place solid rock"
     ],
     "c": 3,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Load produced by use/occupancy excluding dead load."
+    "ref": "NSCP 2015 Vol. 1, Chapter 3 (Earthworks and Foundations), definitions",
+    "n": "Bedrock is rock still in its natural place, whether solid or weathered. Fill, topsoil and base course are all placed or loose materials."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding occupancy category iv?",
+    "s": "Lateral Systems",
+    "q": "What structural element resists lateral forces in its own plane and carries them down to the foundation?",
     "o": [
-      "Vertical wall element resisting lateral forces in its plane and transferring them to foundation.",
-      "Source labels standard occupancy structures.",
-      "The source page 10 explicitly labels its wind-importance table as NSCP 2010 even though the overall summary is NSCP 2015; this must not be presented as an unqualified current NSCP-2015 table.",
-      "Weight of permanent materials and fixed equipment."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Source labels standard occupancy structures."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding nscp source edition?",
-    "o": [
-      "Relatively level step excavated into earth on which fill may be placed.",
-      "The source page 10 explicitly labels its wind-importance table as NSCP 2010 even though the overall summary is NSCP 2015; this must not be presented as an unqualified current NSCP-2015 table.",
-      "The source explicitly identifies NSCP 2015.",
-      "Forces/actions from self-weight, occupancy, environmental effects, differential movement and restrained dimensional changes."
-    ],
-    "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] The source explicitly identifies NSCP 2015."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding retaining wall load?",
-    "o": [
-      "Dominant opening also exceeds 0.5 m² or 1% of that wall area, whichever is smaller, with remaining-envelope opening percentage limited as stated.",
-      "Source treats as a separate permanent/dead load contribution.",
-      "Failure causing reduced serviceability.",
-      "System/components designed to resist wind/seismic lateral loads."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Source treats as a separate permanent/dead load contribution."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding story drift?",
-    "o": [
-      "Relative horizontal displacement between top and bottom of a story.",
-      "Source labels essential facilities.",
-      "Vertical wall element resisting lateral forces in its plane and transferring them to foundation.",
-      "Source treats as a separate permanent/dead load contribution."
+      "Shear wall",
+      "Diaphragm",
+      "Moment frame",
+      "Curtain wall"
     ],
     "c": 0,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Relative horizontal displacement between top and bottom of a story.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+TGF0ZXJhbCBSZXNwb25zZSBDb25jZXB0czwvdGV4dD4KPHJlY3QgeD0iMTEwIiB5PSIxMDAiIHdpZHRoPSIyNTAiIGhlaWdodD0iMzAwIiBjbGFzcz0iZiIvPjxwYXRoIGQ9Ik0xNzAgMzUwIEgzMDAgTTE3MCAyODAgSDMwMCBNMTcwIDIxMCBIMzAwIE0xNzAgMTQwIEgzMDAiIGNsYXNzPSJ0aCIvPjxwYXRoIGQ9Ik0yMzUgMzUwIFEyNjUgMjkwIDIzMCAyMTAgUTI3MCAxNjAgMjQwIDEwMCIgY2xhc3M9ImwiLz48dGV4dCB4PSIxNjAiIHk9IjQ0NSIgY2xhc3M9InMiPnN0b3J5IGRyaWZ0PC90ZXh0Pgo8cmVjdCB4PSI1NDAiIHk9IjEwMCIgd2lkdGg9IjI1MCIgaGVpZ2h0PSIzMDAiIGNsYXNzPSJmMiIvPjxwYXRoIGQ9Ik02MDAgMzUwIEg3MzAgTTYwMCAyODAgSDczMCBNNjAwIDIxMCBINzMwIE02MDAgMTQwIEg3MzAiIGNsYXNzPSJ0aCIvPjxwYXRoIGQ9Ik02NjUgMzUwIFE3MjAgMjUwIDcwMCAxMzAiIGNsYXNzPSJsIi8+PHRleHQgeD0iNjAwIiB5PSI0NDUiIGNsYXNzPSJzIj5Q4oCTzpQgZWZmZWN0PC90ZXh0Pjwvc3ZnPg=="
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "A shear wall is a vertical wall acting like a deep cantilever against lateral load in its plane. The diaphragm (floor or roof) collects the lateral load and delivers it to the walls. A curtain wall carries no structural load."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding as-graded?",
+    "s": "Loads",
+    "q": "Under NSCP 2015, what impact increase applies to supports of elevator machinery?",
     "o": [
-      "Finished surface condition after grading.",
-      "50%.",
-      "Failure causing reduced serviceability.",
-      "150 mm load-bearing / 100 mm non-load-bearing is a source rule of thumb, not a universal structural requirement."
+      "50%",
+      "100%",
+      "33%",
+      "20%"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Sec. 205 Impact Loads (Table of impact increases)",
+    "n": "Elevator machinery supports are designed for twice the static load (100% increase) because of the sudden starts and stops. Reciprocating machinery gets 50% and light machinery 20%."
+  },
+  {
+    "s": "Loads",
+    "q": "For wind design, a partially enclosed building has windward-wall openings that exceed the openings in the rest of the envelope by more than what amount?",
+    "o": [
+      "1%",
+      "50%",
+      "10%",
+      "80%"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Sec. 207A (Wind Loads, based on ASCE 7-10)",
+    "n": "A building is partially enclosed when the openings in the windward wall exceed the openings in the rest of the envelope by more than 10%, and also exceed 0.37 m² or 1% of that wall's area, whichever is smaller. Wind then pushes into the building and raises the internal pressure."
+  },
+  {
+    "s": "Earthworks",
+    "q": "In earthworks, what is compaction?",
+    "o": [
+      "Removing earth material",
+      "Importing soil from another site",
+      "Cutting steps into a slope",
+      "Densifying fill by mechanical means"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Vol. 1, Chapter 3 (Earthworks and Foundations), definitions",
+    "n": "Compaction presses out air voids with rollers, rammers or vibrators so fill becomes stronger and settles less. NSCP requires at least 90% of ASTM D1557 maximum density."
+  },
+  {
+    "s": "Loads",
+    "q": "Why is an impact increase added to machinery loads?",
+    "o": [
+      "Moving or vibrating equipment loads a structure more than its static weight alone",
+      "Machinery is lighter than it looks",
+      "Machinery is always placed on the roof",
+      "The increase replaces the live load"
     ],
     "c": 0,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Finished surface condition after grading."
+    "ref": "NSCP 2015 Sec. 205 Impact Loads (Table of impact increases)",
+    "n": "Starting, stopping and vibration produce dynamic forces above the static weight. The code covers them with a percentage increase on the static load."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding load definition?",
+    "s": "Loads",
+    "q": "Movable furniture in a building is normally treated as what kind of load?",
     "o": [
-      "System relying on bearing walls for vertical loads rather than a complete space frame.",
-      "33%.",
-      "Removal of earth material.",
-      "Forces/actions from self-weight, occupancy, environmental effects, differential movement and restrained dimensional changes."
+      "Dead load",
+      "Live load",
+      "Wind load",
+      "Impact load"
     ],
-    "c": 3,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Forces/actions from self-weight, occupancy, environmental effects, differential movement and restrained dimensional changes."
+    "c": 1,
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "Furniture can be moved or removed, so it is part of the occupancy (live) load. Dead load covers only permanent construction and fixed equipment."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding structural failure?",
+    "s": "Loads",
+    "q": "How does NSCP 2015 account for the importance of a building in wind design?",
     "o": [
-      "Source labels miscellaneous structures.",
-      "Story drift divided by story height.",
-      "Loss/reduction of structural capability so intended safe function is no longer satisfied.",
-      "Upward force on floors/foundations from pressure or buoyancy/wind effects."
+      "By multiplying the wind pressure by an importance factor of 1.15",
+      "By ignoring occupancy in wind design",
+      "By giving separate basic wind speed maps for different occupancy categories",
+      "By doubling the wind speed for every category"
     ],
     "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Loss/reduction of structural capability so intended safe function is no longer satisfied."
+    "ref": "NSCP 2015 Sec. 207A (Wind Loads, based on ASCE 7-10)",
+    "n": "NSCP 2015 dropped the separate wind importance factor of the older code. Instead it gives three wind speed maps with return periods of about 1,700, 700 and 300 years, chosen by occupancy category."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding source p-delta wording error?",
+    "s": "Occupancy Categories",
+    "q": "Under NSCP 2015 Table 208-1, what seismic importance factor I applies to Essential Facilities?",
     "o": [
-      "P–Δ arises from the interaction of vertical load P and lateral displacement Δ; saying it is 'not caused by story drift/sideways movement' is misleading.",
-      "Source labels standard occupancy structures.",
-      "Rock, natural soil or fill used in grading/foundation context.",
-      "Special equipment loads requiring vertical/horizontal/dynamic effects."
+      "1.25",
+      "1.00",
+      "2.00",
+      "1.50"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Sec. 208 (Earthquake Loads), Table 208-1",
+    "n": "Essential facilities get I = 1.50 and hazardous facilities I = 1.25. Special, standard and miscellaneous occupancies all get I = 1.00."
+  },
+  {
+    "s": "Loads",
+    "q": "For wind design, when is a building classified as open?",
+    "o": [
+      "When each wall is at least 80% open",
+      "When at least one wall has a door",
+      "When the roof has vents",
+      "When the building has no ceiling"
     ],
     "c": 0,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[CURRENTNESS-AUDITED / WARNING] P–Δ arises from the interaction of vertical load P and lateral displacement Δ; saying it is 'not caused by story drift/sideways movement' is misleading."
+    "ref": "NSCP 2015 Sec. 207A (Wind Loads, based on ASCE 7-10)",
+    "n": "A building is open when every wall is at least 80% open (Ao ≥ 0.8Ag). Wind passes through, so there is little internal pressure. Covered courts and sheds are often open buildings."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding source wall thickness note?",
+    "s": "Occupancy Categories",
+    "q": "Which of these falls under Special Occupancy (Category III) under NSCP 2015?",
     "o": [
-      "20%.",
-      "150 mm load-bearing / 100 mm non-load-bearing is a source rule of thumb, not a universal structural requirement.",
-      "Source defines as story strength less than 80% of story above.",
-      "Catastrophic failure with loss of life."
+      "A hospital",
+      "A building with an assembly room for 1,000 or more people",
+      "A private garage",
+      "A small single-family house"
     ],
     "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[CURRENTNESS-AUDITED / WARNING] 150 mm load-bearing / 100 mm non-load-bearing is a source rule of thumb, not a universal structural requirement."
+    "ref": "NSCP 2015 Vol. 1, Sec. 103 and Table 103-1 Occupancy Category",
+    "n": "Category III covers buildings with large crowds or occupants who cannot easily leave: assembly rooms for 1,000 or more, auditoriums, museums and libraries for 300 or more, colleges for 500 or more, jails, churches and power stations. Hospitals are essential (I) and private garages miscellaneous (V)."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding lateral-force-resisting frame?",
+    "s": "Loads",
+    "q": "Why are crane loads treated as special loads?",
     "o": [
-      "System/components designed to resist wind/seismic lateral loads.",
-      "Structures storing/supporting/containing toxic or explosive substances.",
-      "Each wall at least 80% open, Ao ≥0.8Ag.",
-      "Wearing away of ground by wind/water action."
+      "Cranes are always removed before occupancy",
+      "Crane loads are lighter than floor live loads",
+      "A moving crane adds vertical impact, lateral and longitudinal forces as well as its weight",
+      "Crane loads act only on the roof"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "Crane runway beams must resist the lifted load plus impact, sideways forces from the trolley and forces along the rail from braking. NSCP gives separate percentages for each."
+  },
+  {
+    "s": "Earthworks",
+    "q": "In earthworks, what is fill?",
+    "o": [
+      "Earth material removed by digging",
+      "Rock left in its natural place",
+      "The finished surface after grading",
+      "Earth material placed by artificial means"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Vol. 1, Chapter 3 (Earthworks and Foundations), definitions",
+    "n": "Fill is any earth material deposited by people, whether from the site or borrowed. It must be placed in lifts and compacted."
+  },
+  {
+    "s": "Loads",
+    "q": "What is live load?",
+    "o": [
+      "The load from the use and occupancy of a building, not including dead load",
+      "The weight of the structure itself",
+      "The load from wind and earthquake only",
+      "The weight of fixed equipment"
     ],
     "c": 0,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] System/components designed to resist wind/seismic lateral loads."
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "Live load covers people, furniture and movable contents. It varies over time, so NSCP gives minimum values per occupancy in Table 205-1."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding story drift ratio?",
+    "s": "Occupancy Categories",
+    "q": "Under NSCP 2015 Table 103-1, what is Occupancy Category IV?",
     "o": [
-      "Can produce live/environmental loading.",
-      "The source explicitly identifies NSCP 2015.",
-      "Source labels hazardous facilities.",
-      "Story drift divided by story height."
-    ],
-    "c": 3,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Story drift divided by story height."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding diaphragm?",
-    "o": [
-      "Dominant opening area on positive-pressure wall exceeds openings in remaining envelope by more than 1%.",
-      "Source category for ordinary occupancies not falling into Categories I, II, III or V.",
-      "Horizontal/near-horizontal structural system transferring lateral loads to vertical resisting elements.",
-      "Earth material placed by artificial means."
-    ],
-    "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Horizontal/near-horizontal structural system transferring lateral loads to vertical resisting elements."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding seismic source c?",
-    "o": [
-      "P–Δ arises from the interaction of vertical load P and lateral displacement Δ; saying it is 'not caused by story drift/sideways movement' is misleading.",
-      "Dynamic allowance for machinery/equipment producing impact/vibration.",
-      "Legacy lower-magnitude/lower-activity category; source gives M<6.5.",
-      "Analysis/design of structures to safely resist loads."
-    ],
-    "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Legacy lower-magnitude/lower-activity category; source gives M<6.5."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding miscellaneous examples?",
-    "o": [
-      "Legacy lower-magnitude/lower-activity category; source gives M<6.5.",
-      "Source includes private garages, carports, sheds and fences over 1.5 m.",
-      "Wearing away of ground by wind/water action.",
-      "50%."
+      "Miscellaneous structures",
+      "Standard occupancy structures",
+      "Special occupancy structures",
+      "Essential facilities"
     ],
     "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Source includes private garages, carports, sheds and fences over 1.5 m."
+    "ref": "NSCP 2015 Vol. 1, Sec. 103 and Table 103-1 Occupancy Category",
+    "n": "Category IV is the default for ordinary buildings, such as most offices, residences and stores, that do not fall into Categories I, II, III or V."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding standard occupancy?",
+    "s": "Loads",
+    "q": "Which NSCP edition is the 7th edition of Volume 1 (Buildings, Towers and Other Vertical Structures)?",
     "o": [
-      "Source category for ordinary occupancies not falling into Categories I, II, III or V.",
-      "Earth material imported from off-site for grading.",
-      "20%.",
-      "Legacy category for faults other than A and C; source gives 6.5≤M≤7.0."
+      "NSCP 2010",
+      "NSCP 2001",
+      "NSCP 2015",
+      "NSCP 1992"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Vol. 1, 7th Edition (ASEP)",
+    "n": "NSCP 2015 is the 7th edition, published by ASEP. It moved wind loads to ASCE 7-10 and concrete to ACI 318-14. The 6th edition was NSCP 2010."
+  },
+  {
+    "s": "Loads",
+    "q": "How is the weight of a retaining wall itself treated in load calculations?",
+    "o": [
+      "As live load",
+      "As wind load",
+      "As impact load",
+      "As dead load"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "The wall is permanent construction, so its weight is dead load. The soil pressure it holds back is a separate lateral load, H."
+  },
+  {
+    "s": "Lateral Systems",
+    "q": "What is story drift?",
+    "o": [
+      "The horizontal displacement of one floor relative to the floor below",
+      "The total sway of the roof",
+      "The vertical sag of a floor slab",
+      "The settlement of a footing"
     ],
     "c": 0,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Source category for ordinary occupancies not falling into Categories I, II, III or V."
+    "ref": "NSCP 2015 Sec. 208 (Earthquake Loads)",
+    "n": "Story drift is the difference in lateral displacement between the top and bottom of a story. NSCP limits it to protect walls, glazing and finishes and to control P-Δ effects."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding seismic source a?",
+    "s": "Earthworks",
+    "q": "In earthworks, what does \"as-graded\" mean?",
     "o": [
-      "Story drift divided by story height.",
-      "Densification of fill by mechanical/other means.",
-      "Load produced by use/occupancy excluding dead load.",
-      "Legacy source class for faults capable of large events with high seismic activity; source gives 7.0≤M≤8.4."
-    ],
-    "c": 3,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Legacy source class for faults capable of large events with high seismic activity; source gives 7.0≤M≤8.4."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding bench?",
-    "o": [
-      "Vertical truss-like frame using concentric/eccentric bracing to resist lateral forces.",
-      "Relatively level step excavated into earth on which fill may be placed.",
-      "33%.",
-      "Source labels essential facilities."
+      "The original ground before any work",
+      "The surface condition when grading is finished",
+      "The level of the water table",
+      "The bottom of the footing"
     ],
     "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Relatively level step excavated into earth on which fill may be placed."
+    "ref": "NSCP 2015 Vol. 1, Chapter 3 (Earthworks and Foundations), definitions",
+    "n": "As-graded describes the finished ground once grading is complete. Existing grade is the ground before work; finish grade is the final surface after landscaping."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding source failure category 2?",
+    "s": "Loads",
+    "q": "Under NSCP 2015, which of these counts as a load?",
     "o": [
-      "Structures storing/supporting/containing toxic or explosive substances.",
-      "P–Δ arises from the interaction of vertical load P and lateral displacement Δ; saying it is 'not caused by story drift/sideways movement' is misleading.",
-      "Requires aircraft landing/dynamic impact considerations.",
-      "Catastrophic failure without human lives endangered."
-    ],
-    "c": 3,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Catastrophic failure without human lives endangered."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding bearing-wall system?",
-    "o": [
-      "Loss/reduction of structural capability so intended safe function is no longer satisfied.",
-      "Source defines as story lateral stiffness less than 70% of story above.",
-      "System relying on bearing walls for vertical loads rather than a complete space frame.",
-      "Source table gives 100% impact increase."
+      "Only gravity forces",
+      "Only wind and earthquake forces",
+      "All of: self-weight, occupancy, environmental effects, differential movement and restrained dimensional change",
+      "Only the weight of people"
     ],
     "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] System relying on bearing walls for vertical loads rather than a complete space frame."
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "NSCP defines loads broadly: forces from weights, occupancy and environment, plus effects of differential settlement and restrained shrinkage or temperature change."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding earth material?",
+    "s": "Loads",
+    "q": "Under NSCP 2015, what is structural failure?",
     "o": [
-      "Where wind effects govern strength demand, wind design may govern while seismic detailing/limitations can still apply where required.",
-      "Application of soil/rock mechanics to investigation, analysis, design and construction verification involving earth materials/foundations.",
-      "Weight of permanent materials and fixed equipment.",
-      "Rock, natural soil or fill used in grading/foundation context."
+      "Only a total collapse",
+      "Any visible hairline crack",
+      "Any deflection under load",
+      "A loss of capability so that the structure can no longer safely serve its purpose"
     ],
     "c": 3,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Rock, natural soil or fill used in grading/foundation context."
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "Failure is broader than collapse. Failure that only reduces serviceability, such as excessive deflection or cracking that stops the building being used as intended, also counts."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding p-delta effect?",
+    "s": "Lateral Systems",
+    "q": "What causes the P-Δ effect?",
     "o": [
-      "Source labels special occupancy structures.",
-      "Upward force on floors/foundations from pressure or buoyancy/wind effects.",
-      "DPWH project documents in 2025 and ASEP training in 2025 still cite NSCP 2015, supporting its continued practical use; however project-specific governing requirements must always be checked.",
-      "Second-order effect from gravity loads acting through laterally displaced geometry."
-    ],
-    "c": 3,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Second-order effect from gravity loads acting through laterally displaced geometry."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding reciprocating machinery impact source?",
-    "o": [
-      "Each wall at least 80% open, Ao ≥0.8Ag.",
-      "Catastrophic failure with loss of life.",
-      "P–Δ arises from the interaction of vertical load P and lateral displacement Δ; saying it is 'not caused by story drift/sideways movement' is misleading.",
-      "50%."
-    ],
-    "c": 3,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] 50%."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding uplift?",
-    "o": [
-      "Horizontal/near-horizontal structural system transferring lateral loads to vertical resisting elements.",
-      "Upward force on floors/foundations from pressure or buoyancy/wind effects.",
-      "Seismic provisions aim to reduce collapse/life-safety risk and major damage; they do not guarantee zero damage or post-event functionality.",
-      "Source labels hazardous facilities."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Upward force on floors/foundations from pressure or buoyancy/wind effects."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding structural engineering?",
-    "o": [
-      "Source labels standard occupancy structures.",
-      "Relative horizontal displacement between top and bottom of a story.",
-      "Analysis/design of structures to safely resist loads.",
-      "Can produce live/environmental loading."
-    ],
-    "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Analysis/design of structures to safely resist loads."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding seismic source b?",
-    "o": [
-      "Application of soil/rock mechanics to investigation, analysis, design and construction verification involving earth materials/foundations.",
-      "Legacy category for faults other than A and C; source gives 6.5≤M≤7.0.",
-      "Generally treated as live load in the source.",
-      "Second-order effect from gravity loads acting through laterally displaced geometry."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Legacy category for faults other than A and C; source gives 6.5≤M≤7.0."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding heliport/helipad load?",
-    "o": [
-      "Requires aircraft landing/dynamic impact considerations.",
-      "The source table gives I/Ip values by legacy occupancy category; these are retained only as source-era NSCP review data.",
-      "Source labels standard occupancy structures.",
-      "The source explicitly identifies NSCP 2015."
+      "Gravity loads acting on a structure that has already swayed sideways",
+      "Wind pressure on the roof",
+      "Settlement of one footing",
+      "Shrinkage of the concrete slab"
     ],
     "c": 0,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Requires aircraft landing/dynamic impact considerations."
+    "ref": "NSCP 2015 Sec. 208 (Earthquake Loads)",
+    "n": "When a story drifts by Δ, the gravity load P above it now acts off-center and adds a moment P × Δ. That extra moment increases the drift, so P-Δ is a second-order effect of lateral displacement."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding source failure category 4?",
+    "s": "Loads",
+    "q": "In common Philippine practice, which concrete hollow block (CHB) thickness is used for load-bearing walls?",
     "o": [
-      "Each wall at least 80% open, Ao ≥0.8Ag.",
-      "Source defines as story strength less than 80% of story above.",
-      "Failure causing reduced serviceability.",
-      "Source category for ordinary occupancies not falling into Categories I, II, III or V."
-    ],
-    "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Failure causing reduced serviceability."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding partially enclosed criterion 2?",
-    "o": [
-      "150 mm load-bearing / 100 mm non-load-bearing is a source rule of thumb, not a universal structural requirement.",
-      "Dominant opening also exceeds 0.5 m² or 1% of that wall area, whichever is smaller, with remaining-envelope opening percentage limited as stated.",
-      "Wearing away of ground by wind/water action.",
-      "Source category for ordinary occupancies not falling into Categories I, II, III or V."
+      "100 mm (4 in)",
+      "150 mm (6 in)",
+      "75 mm (3 in)",
+      "200 mm (8 in) only for partitions"
     ],
     "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Dominant opening also exceeds 0.5 m² or 1% of that wall area, whichever is smaller, with remaining-envelope opening percentage limited as stated."
+    "ref": "Common Philippine CHB practice",
+    "n": "150 mm CHB is the usual size for load-bearing and exterior walls, and 100 mm CHB for interior non-load-bearing partitions. This is a practice rule; the actual wall must still be designed for its loads."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding water accumulation?",
+    "s": "Lateral Systems",
+    "q": "What is the lateral-force-resisting system of a building?",
     "o": [
-      "The source page 10 explicitly labels its wind-importance table as NSCP 2010 even though the overall summary is NSCP 2015; this must not be presented as an unqualified current NSCP-2015 table.",
-      "Frame whose members/joints resist lateral forces primarily through flexure and joint action.",
-      "Can produce live/environmental loading.",
-      "Source labels essential facilities."
+      "The elements that carry only gravity loads",
+      "The roofing and waterproofing system",
+      "The elements designed to resist wind and earthquake forces",
+      "The foundation drainage system"
     ],
     "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Can produce live/environmental loading."
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "The lateral system, such as moment frames, braced frames or shear walls joined by diaphragms, takes horizontal forces to the foundation. Gravity-only members must still be able to follow the drift."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding source failure category 3?",
+    "s": "Lateral Systems",
+    "q": "What is the story drift ratio?",
     "o": [
-      "Legacy factor accounting for occupancy consequence in older wind provisions.",
-      "Source defines as story lateral stiffness less than 70% of story above.",
-      "Failure causing extensive property damage.",
-      "Source includes large assembly, certain educational, utility and institutional facilities."
+      "The story height divided by the building height",
+      "The roof drift divided by the base shear",
+      "The story shear divided by the story weight",
+      "The story drift divided by the story height"
     ],
-    "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Failure causing extensive property damage."
+    "c": 3,
+    "ref": "NSCP 2015 Sec. 208 (Earthquake Loads)",
+    "n": "Drift ratio = Δ / h. NSCP limits it (for example 0.025 for shorter buildings and 0.020 for taller ones, using the inelastic drift) to control damage."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding light machinery impact source?",
+    "s": "Lateral Systems",
+    "q": "What is a diaphragm in a lateral-force system?",
     "o": [
-      "20%.",
-      "Loss/reduction of structural capability so intended safe function is no longer satisfied.",
-      "Second-order effect from gravity loads acting through laterally displaced geometry.",
-      "Legacy factor accounting for occupancy consequence in older wind provisions."
+      "A horizontal or nearly horizontal system, such as a floor or roof, that carries lateral loads to the vertical elements",
+      "A vertical wall resisting lateral load in its plane",
+      "A diagonal brace in a frame",
+      "A thin membrane used for waterproofing"
     ],
     "c": 0,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] 20%."
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "Floor and roof slabs act as diaphragms: they collect the lateral forces at each level and spread them to the shear walls or frames below."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding nscp current-use context?",
+    "s": "Lateral Systems",
+    "q": "Under NSCP 2015, what defines a Type C seismic source?",
     "o": [
-      "Densification of fill by mechanical/other means.",
-      "Seismic provisions aim to reduce collapse/life-safety risk and major damage; they do not guarantee zero damage or post-event functionality.",
-      "DPWH project documents in 2025 and ASEP training in 2025 still cite NSCP 2015, supporting its continued practical use; however project-specific governing requirements must always be checked.",
-      "Load whose variation with time is rare/small."
-    ],
-    "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[CURRENTNESS-AUDITED / WARNING] DPWH project documents in 2025 and ASEP training in 2025 still cite NSCP 2015, supporting its continued practical use; however project-specific governing requirements must always be checked."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding source failure category 1?",
-    "o": [
-      "Special equipment loads requiring vertical/horizontal/dynamic effects.",
-      "Catastrophic failure with loss of life.",
-      "Second-order effect from gravity loads acting through laterally displaced geometry.",
-      "Hospitals, fire/police stations, aviation control towers, designated evacuation centers and other emergency-response facilities listed by source."
+      "A fault that produces large events (M 7.0 or more) with high activity",
+      "A fault that cannot produce large earthquakes (M < 6.5) and has a low rate of activity",
+      "Any fault within 2 km of the site",
+      "Any fault that is not A or C"
     ],
     "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Catastrophic failure with loss of life."
+    "ref": "NSCP 2015 Sec. 208 (Earthquake Loads), Seismic Source Types",
+    "n": "Type A faults can produce large events (7.0 ≤ M ≤ 8.4) and are highly active, such as the Philippine Fault and the Valley Fault System. Type C faults stay below M 6.5 with low activity. Type B is every fault that is not A or C."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding geotechnical engineering?",
+    "s": "Occupancy Categories",
+    "q": "Which of these is a Miscellaneous Structure (Category V) under NSCP 2015?",
     "o": [
-      "Source treats as a separate permanent/dead load contribution.",
-      "Sum of design lateral forces above a story level.",
-      "Application of soil/rock mechanics to investigation, analysis, design and construction verification involving earth materials/foundations.",
-      "Source labels special occupancy structures."
+      "A hospital",
+      "A large auditorium",
+      "A fence taller than 1.5 m",
+      "A power station"
     ],
     "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Application of soil/rock mechanics to investigation, analysis, design and construction verification involving earth materials/foundations."
+    "ref": "NSCP 2015 Vol. 1, Sec. 103 and Table 103-1 Occupancy Category",
+    "n": "Category V includes private garages, carports, sheds, agricultural buildings and fences over 1.5 m tall, structures whose failure puts few people at risk."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding permanent load?",
+    "s": "Occupancy Categories",
+    "q": "Which occupancy category applies to an ordinary office building that is not essential, hazardous, special or miscellaneous?",
     "o": [
-      "150 mm load-bearing / 100 mm non-load-bearing is a source rule of thumb, not a universal structural requirement.",
-      "Earth material placed by artificial means.",
-      "Load whose variation with time is rare/small.",
-      "Source treats as separate load added to dead load based on weight."
-    ],
-    "c": 2,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Load whose variation with time is rare/small."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding erosion?",
-    "o": [
-      "Legacy category for faults other than A and C; source gives 6.5≤M≤7.0.",
-      "Catastrophic failure with loss of life.",
-      "Dynamic allowance for machinery/equipment producing impact/vibration.",
-      "Wearing away of ground by wind/water action."
+      "Category III, Special Occupancy",
+      "Category I, Essential Facilities",
+      "Category V, Miscellaneous",
+      "Category IV, Standard Occupancy"
     ],
     "c": 3,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Wearing away of ground by wind/water action."
+    "ref": "NSCP 2015 Vol. 1, Sec. 103 and Table 103-1 Occupancy Category",
+    "n": "Standard Occupancy (IV) is the catch-all for ordinary buildings. It takes a seismic importance factor of 1.00."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding interior wall load?",
+    "s": "Lateral Systems",
+    "q": "Under NSCP 2015, what defines a Type A seismic source?",
     "o": [
-      "Failure causing extensive property damage.",
-      "Source treats as separate load added to dead load based on weight.",
-      "Dominant opening area on positive-pressure wall exceeds openings in remaining envelope by more than 1%.",
-      "Source defines as story strength less than 80% of story above."
-    ],
-    "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Source treats as separate load added to dead load based on weight."
-  },
-  {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding braced frame?",
-    "o": [
-      "Vertical truss-like frame using concentric/eccentric bracing to resist lateral forces.",
-      "System/components designed to resist wind/seismic lateral loads.",
-      "Catastrophic failure without human lives endangered.",
-      "50%."
+      "A fault that can produce large earthquakes (7.0 ≤ M ≤ 8.4) and has a high rate of activity",
+      "A fault limited to M < 6.5",
+      "Any fault other than B and C",
+      "A fault more than 15 km from the site"
     ],
     "c": 0,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Vertical truss-like frame using concentric/eccentric bracing to resist lateral forces."
+    "ref": "NSCP 2015 Sec. 208 (Earthquake Loads), Seismic Source Types",
+    "n": "Type A is the most dangerous source class, used with near-source factors Na and Nv when a site lies close to it. The Valley Fault System in Metro Manila is a Type A source."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding occupancy category i?",
+    "s": "Earthworks",
+    "q": "In earthworks, what is a bench?",
     "o": [
-      "Source includes private garages, carports, sheds and fences over 1.5 m.",
-      "Source labels essential facilities.",
-      "System/components designed to resist wind/seismic lateral loads.",
-      "Does not satisfy open or partially enclosed definitions."
+      "A stockpile of borrow material",
+      "A relatively level step cut into the ground on which fill may be placed",
+      "A retaining wall of stone",
+      "A trench for drainage pipes"
     ],
     "c": 1,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Source labels essential facilities."
+    "ref": "NSCP 2015 Vol. 1, Chapter 3 (Earthworks and Foundations), definitions",
+    "n": "Before fill is placed on a slope steeper than 1V:5H, the ground is benched (cut into level steps) so the fill keys into it and does not slide."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding occupancy category iii?",
+    "s": "Loads",
+    "q": "Which of these is NOT one of the NSCP categories of structural failure?",
     "o": [
-      "Load whose variation with time is rare/small.",
-      "Dominant opening also exceeds 0.5 m² or 1% of that wall area, whichever is smaller, with remaining-envelope opening percentage limited as stated.",
-      "Horizontal/near-horizontal structural system transferring lateral loads to vertical resisting elements.",
-      "Source labels special occupancy structures."
+      "Catastrophic failure with loss of life",
+      "Failure resulting in extensive property damage",
+      "Failure resulting from excessive architectural finishes",
+      "Failure resulting in reduced serviceability"
     ],
-    "c": 3,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Source labels special occupancy structures."
+    "c": 2,
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions, Structural Failure",
+    "n": "NSCP groups failures by their consequence into four categories: catastrophic failure with loss of life, catastrophic failure with no lives endangered, failure causing extensive property damage, and failure causing reduced serviceability."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding dead load?",
+    "s": "Lateral Systems",
+    "q": "Which structural system relies on walls rather than a complete frame to carry the gravity loads?",
     "o": [
-      "Source treats as a separate permanent/dead load contribution.",
-      "Finished surface condition after grading.",
-      "Vertical truss-like frame using concentric/eccentric bracing to resist lateral forces.",
-      "Weight of permanent materials and fixed equipment."
+      "Moment-resisting frame system",
+      "Dual system",
+      "Building frame system",
+      "Bearing-wall system"
     ],
     "c": 3,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Weight of permanent materials and fixed equipment.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+U3RydWN0dXJhbCBMb2FkIENhdGVnb3JpZXM8L3RleHQ+CjxyZWN0IHg9IjcwIiB5PSIxMTAiIHdpZHRoPSIxNTAiIGhlaWdodD0iMjcwIiBjbGFzcz0iZiIvPjx0ZXh0IHg9IjExNSIgeT0iMjQ1IiBjbGFzcz0icyI+RGVhZDwvdGV4dD4KPHJlY3QgeD0iMjQwIiB5PSIxMTAiIHdpZHRoPSIxNTAiIGhlaWdodD0iMjcwIiBjbGFzcz0iZjIiLz48dGV4dCB4PSIyODUiIHk9IjI0NSIgY2xhc3M9InMiPkxpdmU8L3RleHQ+CjxyZWN0IHg9IjQxMCIgeT0iMTEwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjI3MCIgY2xhc3M9ImYiLz48dGV4dCB4PSI0NTAiIHk9IjI0NSIgY2xhc3M9InMiPldpbmQ8L3RleHQ+CjxyZWN0IHg9IjU4MCIgeT0iMTEwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjI3MCIgY2xhc3M9ImYyIi8+PHRleHQgeD0iNjIwIiB5PSIyNDUiIGNsYXNzPSJzIj5TZWlzbWljPC90ZXh0Pgo8cmVjdCB4PSI3NTAiIHk9IjExMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIyNzAiIGNsYXNzPSJmIi8+PHRleHQgeD0iNzY1IiB5PSIyNDUiIGNsYXNzPSJzIj5JbXBhY3Q8L3RleHQ+PC9zdmc+"
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "In a bearing-wall system the walls carry most of the gravity load and also resist lateral load. A building frame system uses a frame for gravity and separate walls or braces for lateral load."
   },
   {
-    "s": "NSCP Loads and Lateral Systems",
-    "q": "Which statement is correct regarding occupancy category ii?",
+    "s": "Earthworks",
+    "q": "In earthworks, what does \"earth material\" include?",
     "o": [
-      "Forces/actions from self-weight, occupancy, environmental effects, differential movement and restrained dimensional changes.",
-      "Frame whose members/joints resist lateral forces primarily through flexure and joint action.",
-      "Dominant opening area on positive-pressure wall exceeds openings in remaining envelope by more than 1%.",
-      "Source labels hazardous facilities."
+      "Rock, natural soil or fill, or any combination of them",
+      "Only natural topsoil",
+      "Only imported fill",
+      "Only crushed gravel"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Vol. 1, Chapter 3 (Earthworks and Foundations), definitions",
+    "n": "NSCP uses earth material for any rock, natural soil or fill, so grading rules apply whatever the ground is made of."
+  },
+  {
+    "s": "Lateral Systems",
+    "q": "Why is the P-Δ effect more critical in tall, flexible buildings?",
+    "o": [
+      "Tall buildings have no gravity loads",
+      "Larger drifts make the gravity loads more eccentric, adding bigger secondary moments",
+      "Flexible buildings have no drift",
+      "Tall buildings never sway"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Sec. 208 (Earthquake Loads)",
+    "n": "The added moment is P × Δ. Tall flexible buildings carry large P and sway more, so the effect grows and can lead to instability. NSCP requires it to be checked when the stability coefficient is above 0.10."
+  },
+  {
+    "s": "Loads",
+    "q": "Under NSCP 2015, what impact increase applies to reciprocating machinery or power-driven units?",
+    "o": [
+      "20%",
+      "33%",
+      "50%",
+      "100%"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Sec. 205 Impact Loads (Table of impact increases)",
+    "n": "Reciprocating machines, such as compressors and piston pumps, vibrate strongly, so their supports take a 50% increase. Light rotating machinery takes only 20%."
+  },
+  {
+    "s": "Loads",
+    "q": "What is uplift?",
+    "o": [
+      "The downward weight of the roof",
+      "The sideways force of soil on a wall",
+      "The settlement of a footing",
+      "An upward force on floors or foundations from water pressure or wind"
     ],
     "c": 3,
-    "ref": "NSCP 2015-era source; DPWH/ASEP current-use evidence",
-    "n": "[NSCP-2015-ERA SOURCE FACT] Source labels hazardous facilities."
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "Uplift can come from groundwater under a basement slab (buoyancy) or from wind suction on a light roof. Load combination 0.9D + 1.0W checks that the dead load can hold the structure down."
+  },
+  {
+    "s": "Loads",
+    "q": "Which discipline covers the analysis and design of structures so they can safely resist their loads?",
+    "o": [
+      "Structural engineering",
+      "Geotechnical engineering",
+      "Architectural design",
+      "Surveying"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "Structural engineering deals with the frame and its members. Geotechnical engineering deals with the soil and rock that support them."
+  },
+  {
+    "s": "Lateral Systems",
+    "q": "Under NSCP 2015, what defines a Type B seismic source?",
+    "o": [
+      "A fault that produces only M < 5 events",
+      "Any fault that is not Type A or Type C",
+      "A fault with the highest activity rate",
+      "An offshore fault only"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Sec. 208 (Earthquake Loads), Seismic Source Types",
+    "n": "Type B is defined by elimination: all faults other than Types A and C, typically with magnitudes of about 6.5 to 7.0."
+  },
+  {
+    "s": "Loads",
+    "q": "Why do helipads need special load consideration?",
+    "o": [
+      "Helicopters are lighter than people",
+      "Helipads carry no live load",
+      "Landing aircraft cause dynamic impact loads beyond their static weight",
+      "Helipads are always at ground level"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "A helicopter landing hard exerts an impact well above its weight, so helipads are designed for the aircraft load with an impact factor as well as a uniform live load."
+  },
+  {
+    "s": "Loads",
+    "q": "Excessive deflection makes a floor unusable, though it does not collapse. Which NSCP failure category is this?",
+    "o": [
+      "Catastrophic failure with loss of life",
+      "Catastrophic failure with no lives endangered",
+      "Failure resulting in extensive property damage",
+      "Failure resulting in reduced serviceability"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions, Structural Failure",
+    "n": "Serviceability failures, like sagging floors, cracking or vibration that stop a building being used as intended, still count as failure under NSCP, even when nobody is hurt."
+  },
+  {
+    "s": "Loads",
+    "q": "For a building to be partially enclosed, what else must its windward-wall openings exceed?",
+    "o": [
+      "0.37 m² or 1% of that wall's area, whichever is smaller",
+      "10 m² or 10% of that wall's area",
+      "80% of that wall's area",
+      "The area of the roof"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Sec. 207A (Wind Loads, based on ASCE 7-10)",
+    "n": "Besides exceeding the other openings by more than 10%, the windward openings must exceed 0.37 m² or 1% of that wall's area, whichever is smaller, and the other openings must be no more than 20% of their walls and roof."
+  },
+  {
+    "s": "Loads",
+    "q": "Why must roof drainage be designed to prevent water from building up (ponding)?",
+    "o": [
+      "Water makes the roof lighter",
+      "Collected water adds load, and deflection lets even more collect",
+      "Ponding only affects appearance",
+      "Water has no weight on a roof"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "Each 25 mm of water weighs about 0.25 kPa. On a flexible roof, water makes it sag, the sag collects more water, and the cycle can cause collapse. Rain and ponding loads are covered in NSCP 205."
+  },
+  {
+    "s": "Loads",
+    "q": "A structure fails and causes heavy property damage but no one is hurt and it does not collapse. Which NSCP failure category is this?",
+    "o": [
+      "Catastrophic failure with loss of life",
+      "Failure resulting in reduced serviceability",
+      "Failure resulting in extensive property damage",
+      "Catastrophic failure with no lives endangered"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions, Structural Failure",
+    "n": "NSCP separates failures by consequence. A failure causing extensive property damage, short of collapse, has its own category between catastrophic failure and reduced serviceability."
+  },
+  {
+    "s": "Loads",
+    "q": "Under NSCP 2015, what impact increase applies to light machinery that is shaft- or motor-driven?",
+    "o": [
+      "33%",
+      "50%",
+      "100%",
+      "20%"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Sec. 205 Impact Loads (Table of impact increases)",
+    "n": "Light rotating machinery vibrates little, so its supports need only a 20% increase. Reciprocating machinery gets 50% and elevator machinery 100%."
+  },
+  {
+    "s": "Loads",
+    "q": "Under NSCP 2015, what load factor is applied to wind in strength design?",
+    "o": [
+      "1.0",
+      "1.6",
+      "0.6",
+      "1.3"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Sec. 207A (Wind Loads, based on ASCE 7-10)",
+    "n": "The NSCP 2015 wind maps give strength-level wind speeds, so the wind load factor is 1.0 in strength design and 0.6 in allowable stress design. Older editions used 1.6 with service-level speeds."
+  },
+  {
+    "s": "Loads",
+    "q": "A structure collapses and people are killed. Which NSCP failure category is this?",
+    "o": [
+      "Catastrophic failure with no lives endangered",
+      "Catastrophic failure with loss of life",
+      "Failure resulting in extensive property damage",
+      "Failure resulting in reduced serviceability"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions, Structural Failure",
+    "n": "This is the most severe of the four NSCP failure categories. The next is catastrophic failure in which no lives are endangered, such as a collapse of an empty structure."
+  },
+  {
+    "s": "Earthworks",
+    "q": "Which discipline applies soil and rock mechanics to the investigation and design of foundations and earthworks?",
+    "o": [
+      "Structural engineering",
+      "Hydraulic engineering",
+      "Geotechnical engineering",
+      "Transportation engineering"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Vol. 1, Chapter 3 (Earthworks and Foundations), definitions",
+    "n": "Geotechnical engineers run the borehole investigation, find bearing capacities and settlements, and design earthworks and slopes. NSCP requires a geotechnical study for structures two storeys or higher."
+  },
+  {
+    "s": "Loads",
+    "q": "What is a permanent load?",
+    "o": [
+      "A load that changes every day",
+      "A load that lasts only during construction",
+      "A load from an earthquake",
+      "A load that changes rarely or only slightly over time"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "Permanent loads, mainly dead loads and earth pressure, stay nearly constant for the life of the structure. Variable loads, such as live, wind and seismic loads, come and go."
+  },
+  {
+    "s": "Earthworks",
+    "q": "In earthworks, what is erosion?",
+    "o": [
+      "The wearing away of the ground surface by wind or water",
+      "The placing of fill in lifts",
+      "The removal of rock by blasting",
+      "The densifying of soil"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Vol. 1, Chapter 3 (Earthworks and Foundations), definitions",
+    "n": "Erosion washes or blows soil away. NSCP requires cut and fill slopes to be protected from it with cover, drainage or planting."
+  },
+  {
+    "s": "Loads",
+    "q": "How are fixed interior walls and partitions treated in the loads on a floor?",
+    "o": [
+      "They are ignored",
+      "Their weight is added to the dead load",
+      "They are treated as wind load",
+      "They replace the live load"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "Fixed partitions are permanent, so their weight is part of the dead load. Where partitions may be moved later, NSCP asks for a partition allowance (1.0 kPa) on office floors."
+  },
+  {
+    "s": "Lateral Systems",
+    "q": "Which lateral system acts like a vertical truss, using diagonal members to resist lateral forces?",
+    "o": [
+      "Moment-resisting frame",
+      "Bearing-wall system",
+      "Braced frame",
+      "Flat-slab system"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "Braced frames resist sway through axial forces in their diagonals, so they are stiff and use little material. Concentric braces meet at the joints; eccentric braces are offset on purpose to add ductility."
+  },
+  {
+    "s": "Occupancy Categories",
+    "q": "Under NSCP 2015 Table 103-1, what is Occupancy Category I?",
+    "o": [
+      "Hazardous facilities",
+      "Special occupancy structures",
+      "Standard occupancy structures",
+      "Essential facilities"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Vol. 1, Sec. 103 and Table 103-1 Occupancy Category",
+    "n": "Category I holds the buildings that must work after a disaster, such as hospitals and fire stations, and gets the strictest design (I = 1.50)."
+  },
+  {
+    "s": "Occupancy Categories",
+    "q": "Under NSCP 2015 Table 103-1, what is Occupancy Category III?",
+    "o": [
+      "Special occupancy structures",
+      "Standard occupancy structures",
+      "Essential facilities",
+      "Miscellaneous structures"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Vol. 1, Sec. 103 and Table 103-1 Occupancy Category",
+    "n": "Category III covers large assembly buildings, colleges with 500 or more occupants, churches, jails and other buildings where many people gather or cannot easily leave."
+  },
+  {
+    "s": "Loads",
+    "q": "What is dead load?",
+    "o": [
+      "The weight of people and furniture",
+      "The weight of all permanent construction and fixed service equipment",
+      "The force from wind on the walls",
+      "The load during construction only"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
+    "n": "Dead load includes the structure, walls, floors, roofing, finishes, ceilings and fixed equipment. NSCP Table 204-2 lists typical values per area."
+  },
+  {
+    "s": "Occupancy Categories",
+    "q": "Under NSCP 2015 Table 103-1, what is Occupancy Category II?",
+    "o": [
+      "Essential facilities",
+      "Special occupancy structures",
+      "Hazardous facilities",
+      "Miscellaneous structures"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Vol. 1, Sec. 103 and Table 103-1 Occupancy Category",
+    "n": "Category II covers structures holding toxic or explosive substances. Their failure could harm people well beyond the building itself."
   }
 ]
