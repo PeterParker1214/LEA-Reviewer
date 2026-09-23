@@ -1,253 +1,262 @@
 [
   {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes clear span?",
+    "s": "Beam Vocabulary",
+    "q": "What is the clear span of a beam?",
     "o": [
-      "Distance between inner faces of supports.",
-      "For a rectangular section, vertical shear stress is maximum at the neutral axis and decreases toward outer faces.",
-      "Simple span supported between cantilevered adjoining spans using pinned joints near zero-moment locations.",
-      "Perpendicular displacement of a spanning member from its original course under transverse loading."
+      "The distance between the inner faces of its supports",
+      "The distance between the centers of its supports",
+      "The total length of the beam including its bearings",
+      "The distance between its points of inflection"
     ],
     "c": 0,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CHING-BASED LECTURE TERM] Distance between inner faces of supports.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+U3BhbiBUZXJtaW5vbG9neTwvdGV4dD4KPGxpbmUgeDE9IjEzMCIgeTE9IjI1MCIgeDI9Ijc3MCIgeTI9IjI1MCIgY2xhc3M9ImwiLz48cmVjdCB4PSIxNTAiIHk9IjI1MCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjExMCIgY2xhc3M9ImYiLz48cmVjdCB4PSI2ODAiIHk9IjI1MCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjExMCIgY2xhc3M9ImYiLz4KPGxpbmUgeDE9IjIyMCIgeTE9IjE4MCIgeDI9IjY4MCIgeTI9IjE4MCIgY2xhc3M9ImQiLz48dGV4dCB4PSIzODAiIHk9IjE2MCIgY2xhc3M9InMiPmNsZWFyIHNwYW48L3RleHQ+CjxsaW5lIHgxPSIxODUiIHkxPSIxMTUiIHgyPSI3MTUiIHkyPSIxMTUiIGNsYXNzPSJkIi8+PHRleHQgeD0iMzY1IiB5PSI5NSIgY2xhc3M9InMiPmVmZmVjdGl2ZSAvIGNlbnRlci10by1jZW50ZXIgc3BhbjwvdGV4dD48L3N2Zz4="
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
+    "n": "Clear span is the open distance you can walk through between supports. Center-to-center span is longer by half a support width at each end."
   },
   {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes deflection?",
+    "s": "Beam Vocabulary",
+    "q": "What is deflection?",
     "o": [
-      "Local thickening/deepening of a beam to provide greater moment/shear resistance or efficiency.",
-      "Longitudinal shear stress developed to prevent slippage along longitudinal planes.",
-      "Distance between inner faces of supports.",
-      "Perpendicular displacement of a spanning member from its original course under transverse loading."
-    ],
-    "c": 3,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CHING-BASED LECTURE TERM] Perpendicular displacement of a spanning member from its original course under transverse loading.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+RGVmbGVjdGlvbiBhbmQgQ2FtYmVyPC90ZXh0Pgo8bGluZSB4MT0iMTAwIiB5MT0iMTgwIiB4Mj0iODAwIiB5Mj0iMTgwIiBjbGFzcz0iZCIvPjxwYXRoIGQ9Ik0xMDAgMTgwIFE0NTAgMzQwIDgwMCAxODAiIGNsYXNzPSJsIi8+PHRleHQgeD0iMzc1IiB5PSIzNjAiIGNsYXNzPSJzIj5kZWZsZWN0aW9uIHVuZGVyIGxvYWQ8L3RleHQ+CjxwYXRoIGQ9Ik0xMDAgNDUwIFE0NTAgMzQwIDgwMCA0NTAiIGNsYXNzPSJ0aCIvPjx0ZXh0IHg9IjM4MCIgeT0iNDIwIiBjbGFzcz0icyI+dXB3YXJkIGNhbWJlcjwvdGV4dD48L3N2Zz4="
-  },
-  {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes deflected shape inference?",
-    "o": [
-      "Perpendicular displacement of a spanning member from its original course under transverse loading.",
-      "Shear stress over a cross-section resisting transverse shear.",
-      "Rigid structural member designed to carry and transfer transverse loads to supporting elements.",
-      "Moment-diagram shape can help infer curvature/deflected behavior when stiffness/sign conventions are considered."
-    ],
-    "c": 3,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CLARIFIED] Moment-diagram shape can help infer curvature/deflected behavior when stiffness/sign conventions are considered."
-  },
-  {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes transverse shear?",
-    "o": [
-      "Graphic representation of variation of shear force along a structure/member.",
-      "Internal moment equal and opposite to bending moment to maintain section equilibrium.",
-      "Shear force at a member cross-section equal to algebraic sum of transverse forces on one side.",
-      "Rigid structural member designed to carry and transfer transverse loads to supporting elements."
-    ],
-    "c": 2,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CHING-BASED LECTURE TERM] Shear force at a member cross-section equal to algebraic sum of transverse forces on one side.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+VHJhbnN2ZXJzZSBhbmQgTG9uZ2l0dWRpbmFsIFNoZWFyPC90ZXh0Pgo8cmVjdCB4PSIxNTAiIHk9IjEzMCIgd2lkdGg9IjYwMCIgaGVpZ2h0PSIyNDAiIGNsYXNzPSJmIi8+CjxsaW5lIHgxPSI0NTAiIHkxPSI4MCIgeDI9IjQ1MCIgeTI9IjQyMCIgY2xhc3M9ImQiLz48cGF0aCBkPSJNMzYwIDE3MCBINTQwIiBjbGFzcz0ibCIvPjxwYXRoIGQ9Ik01NDAgMzMwIEgzNjAiIGNsYXNzPSJsIi8+Cjx0ZXh0IHg9IjI3MCIgeT0iNDYwIiBjbGFzcz0icyI+YmVhbSBzaGVhciBwcm9kdWNlcyBpbnRlcm5hbCBzaGVhcmluZyBzdHJlc3NlczwvdGV4dD48L3N2Zz4="
-  },
-  {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes deflection dependencies?",
-    "o": [
-      "Simple span supported between cantilevered adjoining spans using pinned joints near zero-moment locations.",
-      "Generally increases with load and span and decreases with greater section moment of inertia or material modulus of elasticity.",
-      "Center-to-center distance between supports of a span.",
-      "Shear stress over a cross-section resisting transverse shear."
+      "The shortening of a column under axial load",
+      "The displacement of a member perpendicular to its axis under transverse load",
+      "The rotation of a footing",
+      "The stretching of a tie rod"
     ],
     "c": 1,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CHING-BASED LECTURE TERM] Generally increases with load and span and decreases with greater section moment of inertia or material modulus of elasticity."
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
+    "n": "Deflection is the sag of a beam or slab. It is limited (for example span/360 under live load for floors carrying brittle finishes) so finishes do not crack and floors do not feel bouncy."
   },
   {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes haunch?",
+    "s": "Beam Vocabulary",
+    "q": "A simple beam has positive (sagging) moment along its whole length. What shape does it deflect into?",
     "o": [
-      "Local thickening/deepening of a beam to provide greater moment/shear resistance or efficiency.",
-      "Extent of space between two supports; also the structure spanning that space.",
-      "For a rectangular section, vertical shear stress is maximum at the neutral axis and decreases toward outer faces.",
-      "Generally increases with load and span and decreases with greater section moment of inertia or material modulus of elasticity."
-    ],
-    "c": 0,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CHING-BASED LECTURE TERM] Local thickening/deepening of a beam to provide greater moment/shear resistance or efficiency."
-  },
-  {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes span?",
-    "o": [
-      "Shear stress over a cross-section resisting transverse shear.",
-      "Extent of space between two supports; also the structure spanning that space.",
-      "Local thickening/deepening of a beam to provide greater moment/shear resistance or efficiency.",
-      "Internal moment equal and opposite to bending moment to maintain section equilibrium."
-    ],
-    "c": 1,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CHING-BASED LECTURE TERM] Extent of space between two supports; also the structure spanning that space."
-  },
-  {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes lecture effective length?",
-    "o": [
-      "Shear force at a member cross-section equal to algebraic sum of transverse forces on one side.",
-      "Center-to-center distance between supports of a span.",
-      "For fixed/continuous beams, lecture defines effective length as distance between inflection points, analogous to a simple-span length.",
-      "Graphic representation of variation of bending moment along a structure/member."
+      "Concave downward, hogging along its whole length",
+      "An S-shape with a point of inflection",
+      "Concave upward, sagging along its whole length",
+      "It stays straight"
     ],
     "c": 2,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CLARIFIED] For fixed/continuous beams, lecture defines effective length as distance between inflection points, analogous to a simple-span length."
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
+    "n": "The curvature follows the sign of the moment: positive moment gives concave-up curvature. Where the moment diagram changes sign, the deflected shape has a point of inflection."
   },
   {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes rectangular-beam shear distribution?",
+    "s": "Beam Vocabulary",
+    "q": "How is the internal shear force at a section of a beam found?",
     "o": [
-      "For a rectangular section, vertical shear stress is maximum at the neutral axis and decreases toward outer faces.",
-      "Local thickening/deepening of a beam to provide greater moment/shear resistance or efficiency.",
-      "Intentional slight convex curvature built in to compensate for anticipated deflection.",
-      "Center-to-center distance between supports of a span."
-    ],
-    "c": 0,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CLARIFIED] For a rectangular section, vertical shear stress is maximum at the neutral axis and decreases toward outer faces."
-  },
-  {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes bending moment?",
-    "o": [
-      "Intentional slight convex curvature built in to compensate for anticipated deflection.",
-      "Graphic representation of variation of bending moment along a structure/member.",
-      "Moment tending to rotate/bend part of a structure.",
-      "Rigid structural member designed to carry and transfer transverse loads to supporting elements."
-    ],
-    "c": 2,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CHING-BASED LECTURE TERM] Moment tending to rotate/bend part of a structure.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+QmVuZGluZyBhbmQgUmVzaXN0aW5nIE1vbWVudDwvdGV4dD4KPHJlY3QgeD0iMTYwIiB5PSIxODAiIHdpZHRoPSI1ODAiIGhlaWdodD0iMTIwIiBjbGFzcz0iZiIvPgo8cGF0aCBkPSJNMzUwIDE2MCBRMzAwIDIzMCAzNTAgMzIwIiBjbGFzcz0ibCIvPjxwYXRoIGQ9Ik01NTAgMTYwIFE2MDAgMjMwIDU1MCAzMjAiIGNsYXNzPSJsIi8+Cjx0ZXh0IHg9IjI4MCIgeT0iMzkwIiBjbGFzcz0icyI+ZXh0ZXJuYWwgYmVuZGluZyBlZmZlY3QgYmFsYW5jZWQgYnkgaW50ZXJuYWwgcmVzaXN0aW5nIG1vbWVudDwvdGV4dD48L3N2Zz4="
-  },
-  {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes camber?",
-    "o": [
-      "Intentional slight convex curvature built in to compensate for anticipated deflection.",
-      "Moment tending to rotate/bend part of a structure.",
-      "For a rectangular section, vertical shear stress is maximum at the neutral axis and decreases toward outer faces.",
-      "For fixed/continuous beams, lecture defines effective length as distance between inflection points, analogous to a simple-span length."
-    ],
-    "c": 0,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CHING-BASED LECTURE TERM] Intentional slight convex curvature built in to compensate for anticipated deflection."
-  },
-  {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes effective span in lecture?",
-    "o": [
-      "For fixed/continuous beams, lecture defines effective length as distance between inflection points, analogous to a simple-span length.",
-      "Graphic representation of variation of shear force along a structure/member.",
-      "Center-to-center distance between supports of a span.",
-      "Generally increases with load and span and decreases with greater section moment of inertia or material modulus of elasticity."
-    ],
-    "c": 2,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CHING-BASED LECTURE TERM] Center-to-center distance between supports of a span."
-  },
-  {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes suspended/hung span?",
-    "o": [
-      "Simple span supported between cantilevered adjoining spans using pinned joints near zero-moment locations.",
-      "Graphic representation of variation of shear force along a structure/member.",
-      "Intentional slight convex curvature built in to compensate for anticipated deflection.",
-      "Distance between inner faces of supports."
-    ],
-    "c": 0,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CHING-BASED LECTURE TERM] Simple span supported between cantilevered adjoining spans using pinned joints near zero-moment locations."
-  },
-  {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes vertical shearing stress?",
-    "o": [
-      "Shear stress over a cross-section resisting transverse shear.",
-      "Distance between inner faces of supports.",
-      "Generally increases with load and span and decreases with greater section moment of inertia or material modulus of elasticity.",
-      "Moment-diagram shape can help infer curvature/deflected behavior when stiffness/sign conventions are considered."
-    ],
-    "c": 0,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CHING-BASED LECTURE TERM] Shear stress over a cross-section resisting transverse shear."
-  },
-  {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes resisting moment?",
-    "o": [
-      "Shear force at a member cross-section equal to algebraic sum of transverse forces on one side.",
-      "Moment-diagram shape can help infer curvature/deflected behavior when stiffness/sign conventions are considered.",
-      "Extent of space between two supports; also the structure spanning that space.",
-      "Internal moment equal and opposite to bending moment to maintain section equilibrium."
+      "As the sum of all moments about the section",
+      "As the load divided by the beam depth",
+      "As the reaction at the far support only",
+      "As the algebraic sum of the transverse forces on one side of the section"
     ],
     "c": 3,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CHING-BASED LECTURE TERM] Internal moment equal and opposite to bending moment to maintain section equilibrium."
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
+    "n": "Cut the beam and take one side as a free body: the shear at the cut balances the sum of the vertical loads and reactions on that side."
   },
   {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes horizontal shearing stress?",
+    "s": "Beam Vocabulary",
+    "q": "A simply supported beam under uniform load has its span doubled, with the same load per metre and section. By what factor does its midspan deflection grow?",
     "o": [
-      "Longitudinal shear stress developed to prevent slippage along longitudinal planes.",
-      "Graphic representation of variation of bending moment along a structure/member.",
-      "Perpendicular displacement of a spanning member from its original course under transverse loading.",
-      "Extent of space between two supports; also the structure spanning that space."
+      "16 times",
+      "2 times",
+      "4 times",
+      "8 times"
     ],
     "c": 0,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CHING-BASED LECTURE TERM] Longitudinal shear stress developed to prevent slippage along longitudinal planes."
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
+    "n": "δ = 5wL⁴/384EI, so deflection grows with the fourth power of the span: 2⁴ = 16. That is why long spans are usually governed by deflection rather than strength.",
+    "formula": "δ = 5wL⁴ / 384EI",
+    "steps": [
+      "Deflection is proportional to L⁴",
+      "New span = 2L",
+      "(2L)⁴ = 16 L⁴",
+      "Deflection becomes 16 times larger"
+    ]
   },
   {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes beam?",
+    "s": "Beam Vocabulary",
+    "q": "What is a haunch on a beam?",
     "o": [
-      "Longitudinal shear stress developed to prevent slippage along longitudinal planes.",
-      "Moment tending to rotate/bend part of a structure.",
-      "Rigid structural member designed to carry and transfer transverse loads to supporting elements.",
-      "Moment-diagram shape can help infer curvature/deflected behavior when stiffness/sign conventions are considered."
-    ],
-    "c": 2,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CHING-BASED LECTURE TERM] Rigid structural member designed to carry and transfer transverse loads to supporting elements."
-  },
-  {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes shear diagram?",
-    "o": [
-      "Simple span supported between cantilevered adjoining spans using pinned joints near zero-moment locations.",
-      "Graphic representation of variation of shear force along a structure/member.",
-      "Moment tending to rotate/bend part of a structure.",
-      "Shear force at a member cross-section equal to algebraic sum of transverse forces on one side."
+      "A notch cut into the beam's end",
+      "A local deepening of the beam near a support to resist higher moment and shear",
+      "A thin flange added at midspan",
+      "A hook at the end of a bar"
     ],
     "c": 1,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CHING-BASED LECTURE TERM] Graphic representation of variation of shear force along a structure/member."
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
+    "n": "Near the supports of continuous beams and frames, moments and shears peak. A haunch deepens the beam only there, instead of making the whole beam deeper."
   },
   {
-    "s": "Structural Vocabulary",
-    "q": "Which statement correctly describes moment diagram?",
+    "s": "Beam Vocabulary",
+    "q": "What is the span of a structure?",
     "o": [
-      "Internal moment equal and opposite to bending moment to maintain section equilibrium.",
-      "Longitudinal shear stress developed to prevent slippage along longitudinal planes.",
-      "For fixed/continuous beams, lecture defines effective length as distance between inflection points, analogous to a simple-span length.",
-      "Graphic representation of variation of bending moment along a structure/member."
+      "The height of a column",
+      "The width of a slab strip",
+      "The distance between two supports, or the part of the structure that crosses it",
+      "The depth of a beam"
+    ],
+    "c": 2,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
+    "n": "Span is the horizontal distance a beam, slab or truss must bridge between supports. Longer spans need deeper members."
+  },
+  {
+    "s": "Beam Vocabulary",
+    "q": "In a fixed or continuous beam, what length acts like the span of an equivalent simple beam?",
+    "o": [
+      "The full clear span",
+      "The distance from face to face of the columns plus the beam depth",
+      "Twice the clear span",
+      "The distance between the points of inflection"
     ],
     "c": 3,
-    "ref": "Francis D.K. Ching, A Visual Dictionary of Architecture; structural mechanics",
-    "n": "[CHING-BASED LECTURE TERM] Graphic representation of variation of bending moment along a structure/member."
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
+    "n": "The segment between the points of zero moment bends like a simply supported beam. In a fixed-ended beam under uniform load these points are about 0.21L from each support."
+  },
+  {
+    "s": "Beam Vocabulary",
+    "q": "Where is the vertical shear stress greatest in a rectangular beam section?",
+    "o": [
+      "At the neutral axis",
+      "At the top face",
+      "At the bottom face",
+      "It is the same everywhere"
+    ],
+    "c": 0,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
+    "n": "Shear stress τ = VQ/Ib is zero at the top and bottom faces and peaks at the neutral axis, at 1.5 times the average V/A for a rectangle."
+  },
+  {
+    "s": "Beam Vocabulary",
+    "q": "What is a bending moment?",
+    "o": [
+      "The force that shortens a column",
+      "The internal moment that tends to bend a member at a section",
+      "The twisting of a shaft",
+      "The sliding of a joint"
+    ],
+    "c": 1,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
+    "n": "Bending moment at a section equals the sum of the moments of all forces on one side of it. It causes tension on one face and compression on the other."
+  },
+  {
+    "s": "Beam Vocabulary",
+    "q": "What is camber?",
+    "o": [
+      "The downward sag of a beam under load",
+      "A sloped top surface for drainage",
+      "A slight upward curve built into a beam to offset its expected deflection",
+      "The rotation of a support"
+    ],
+    "c": 2,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
+    "n": "A cambered beam or truss is made curving slightly upward so that under dead load it settles to about level. It is common in long-span steel beams and precast members."
+  },
+  {
+    "s": "Beam Vocabulary",
+    "q": "A beam's clear span is 5.0 m and it rests on 0.40 m wide columns. What is its center-to-center span?",
+    "o": [
+      "5.0 m",
+      "5.2 m",
+      "5.8 m",
+      "5.4 m"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Sec. 406.2.3",
+    "n": "Center-to-center span = clear span + half a column width at each end = 5.0 + 0.2 + 0.2 = 5.4 m.",
+    "formula": "L(c-c) = clear span + ½ support width at each end",
+    "steps": [
+      "Clear span = 5.0 m",
+      "Half of each 0.40 m support = 0.20 m",
+      "5.0 + 0.20 + 0.20 = 5.4 m"
+    ]
+  },
+  {
+    "s": "Beam Vocabulary",
+    "q": "What is a suspended (hung) span?",
+    "o": [
+      "A simple span carried between the cantilevered ends of the adjoining spans",
+      "A span carried by cables from a tower",
+      "A beam hung from the floor above",
+      "A span with no supports at all"
+    ],
+    "c": 0,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
+    "n": "In a cantilever-and-suspended-span system, the adjoining spans cantilever out and a simple span is pinned between their tips, near where the moment would be zero. It makes a continuous-looking beam statically determinate."
+  },
+  {
+    "s": "Beam Vocabulary",
+    "q": "What resists the transverse shear force at a section of a beam?",
+    "o": [
+      "The bending stresses at the top and bottom",
+      "The vertical shearing stresses across the section",
+      "The axial stress in the beam",
+      "The bearing stress at the support"
+    ],
+    "c": 1,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
+    "n": "Vertical shearing stresses spread over the cross-section add up to the shear force V. They come with equal horizontal shearing stresses on longitudinal planes."
+  },
+  {
+    "s": "Beam Vocabulary",
+    "q": "What is the resisting moment of a beam section?",
+    "o": [
+      "The reaction moment at a fixed support",
+      "The moment that causes torsion",
+      "The internal moment, from the compression and tension forces in the section, that balances the bending moment",
+      "The largest moment on the diagram"
+    ],
+    "c": 2,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
+    "n": "The compression force C and tension force T in the section form a couple, C × lever arm, that equals the external bending moment and keeps the section in equilibrium."
+  },
+  {
+    "s": "Beam Vocabulary",
+    "q": "What is horizontal shearing stress in a beam?",
+    "o": [
+      "The shear at the supports only",
+      "The stress from horizontal wind load",
+      "The bearing stress on the column",
+      "Shear along longitudinal planes that keeps the layers of the beam from sliding over each other"
+    ],
+    "c": 3,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
+    "n": "If a beam were a stack of loose planks, the planks would slide past each other when bent. Horizontal shear is what prevents that sliding in a solid beam; it is why glulam glue lines and composite shear studs matter."
+  },
+  {
+    "s": "Beam Vocabulary",
+    "q": "What is a beam?",
+    "o": [
+      "A rigid member that carries loads across its length to its supports",
+      "A vertical member carrying axial load",
+      "A cable carrying tension only",
+      "A plate carrying load in two directions"
+    ],
+    "c": 0,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
+    "n": "Beams take transverse loads and carry them to supports through bending and shear. Columns carry axial load, cables carry tension only, and slabs spread load in one or two directions."
+  },
+  {
+    "s": "Beam Vocabulary",
+    "q": "At what point along a beam does the shear diagram cross zero?",
+    "o": [
+      "At the supports only",
+      "At the point of maximum bending moment",
+      "At the point of maximum deflection in every case",
+      "At the point of inflection"
+    ],
+    "c": 1,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
+    "n": "Since dM/dx = V, the moment peaks where the shear is zero. That is why the shear diagram is drawn first when looking for the design moment."
+  },
+  {
+    "s": "Beam Vocabulary",
+    "q": "How is the change in bending moment between two points of a beam related to the shear diagram?",
+    "o": [
+      "It equals the slope of the shear diagram",
+      "It equals the largest shear value",
+      "It equals the area of the shear diagram between those points",
+      "It is unrelated to the shear diagram"
+    ],
+    "c": 2,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
+    "n": "Because dM/dx = V, integrating gives ΔM = area under the shear diagram. Likewise, the change in shear equals the area under the load diagram."
   }
 ]
