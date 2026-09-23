@@ -3,9 +3,9 @@
     "s": "Networks and Telephony Features",
     "q": "What does music on hold do?",
     "o": [
-      "Plays audio to callers while they are on hold",
-      "Records every call",
-      "Blocks outside calls",
+      "Plays audio to callers on hold",
+      "Records every call for review",
+      "Blocks all outside calls",
       "Rings every phone at once"
     ],
     "c": 0,
@@ -55,10 +55,10 @@
     "s": "Networks and Telephony Features",
     "q": "What does caller ID do?",
     "o": [
-      "Shows who is calling, where the service supports it",
+      "Shows who is calling",
       "Stores voice messages",
       "Redials the last number",
-      "Blocks all calls"
+      "Blocks all incoming calls"
     ],
     "c": 0,
     "ref": "RA 9292; networking and telephony terminology",
@@ -107,10 +107,10 @@
     "s": "Networks and Telephony Features",
     "q": "What does a call log do?",
     "o": [
-      "Records missed and recent calls for review or redial",
-      "Blocks unwanted calls",
-      "Plays music on hold",
-      "Pages staff"
+      "Lists missed and recent calls",
+      "Blocks unwanted callers",
+      "Plays music to callers on hold",
+      "Pages staff over speakers"
     ],
     "c": 0,
     "ref": "RA 9292; networking and telephony terminology",
@@ -133,10 +133,10 @@
     "s": "Networks and Telephony Features",
     "q": "What does night mode on a phone system do?",
     "o": [
-      "Turns off all phones",
-      "Dims the handset lights",
-      "Routes calls differently after hours, such as to voicemail",
-      "Blocks all outgoing calls"
+      "Turns off all phones at night",
+      "Dims the handset display lights",
+      "Routes calls differently after hours",
+      "Blocks all outgoing calls at night"
     ],
     "c": 2,
     "ref": "RA 9292; networking and telephony terminology",
@@ -146,9 +146,9 @@
     "s": "Networks and Telephony Features",
     "q": "What has largely replaced T1 lines for business voice and data?",
     "o": [
-      "Party lines",
-      "Telegraph lines",
-      "Crank telephones",
+      "Analog party lines",
+      "Telegraph circuits",
+      "Crank-telephone lines",
       "Fiber, Ethernet and SIP trunks"
     ],
     "c": 3,
@@ -159,10 +159,10 @@
     "s": "Networks and Telephony Features",
     "q": "What does a surge protector on phone and network lines do?",
     "o": [
-      "Protects equipment from voltage spikes such as lightning",
-      "Boosts the signal strength",
-      "Stores voice messages",
-      "Routes calls to extensions"
+      "Protects equipment from voltage spikes",
+      "Boosts the signal strength on long lines",
+      "Stores voice messages during outages",
+      "Routes incoming calls to extensions"
     ],
     "c": 0,
     "ref": "RA 9292; networking and telephony terminology",
@@ -172,10 +172,10 @@
     "s": "Networks and Telephony Features",
     "q": "What phone system suits a small office?",
     "o": [
-      "A 500-line PABX",
-      "A multi-line system with several extensions and voicemail",
-      "A single analog line",
-      "A T3 carrier"
+      "A 500-line PABX with an operator",
+      "A multi-line system with voicemail",
+      "A single analog line and handset",
+      "A T3 carrier with 672 channels"
     ],
     "c": 1,
     "ref": "RA 9292; networking and telephony terminology",
@@ -185,10 +185,10 @@
     "s": "Networks and Telephony Features",
     "q": "What decides how long a phone system's battery backup lasts?",
     "o": [
-      "The color of the phones",
-      "The number of floors",
-      "The battery capacity and the load it carries",
-      "The length of the phone cords"
+      "The color of the telephone sets",
+      "The number of floors in the building",
+      "Battery capacity and connected load",
+      "The length of the handset cords"
     ],
     "c": 2,
     "ref": "RA 9292; networking and telephony terminology",
@@ -211,10 +211,10 @@
     "s": "Networks and Telephony Features",
     "q": "What does a router do?",
     "o": [
-      "Forwards data packets between networks",
-      "Amplifies TV signals",
-      "Detects smoke",
-      "Stores voice messages"
+      "Forwards packets between networks",
+      "Amplifies television signals",
+      "Detects smoke in the equipment room",
+      "Stores voice messages for users"
     ],
     "c": 0,
     "ref": "RA 9292; networking and telephony terminology",
@@ -224,9 +224,9 @@
     "s": "Networks and Telephony Features",
     "q": "What lets users of a modern phone system send text messages without interrupting a call?",
     "o": [
-      "Caller ID",
+      "Caller ID display",
       "Unified-communications chat",
-      "Speed dial",
+      "Speed dial buttons",
       "Music on hold"
     ],
     "c": 1,
@@ -237,10 +237,10 @@
     "s": "Networks and Telephony Features",
     "q": "How does a LAN differ from a WAN?",
     "o": [
-      "A LAN is always wireless",
-      "A WAN only works inside one room",
-      "A LAN covers a small area under one organization's control; a WAN covers wide areas",
-      "They are the same thing"
+      "A LAN is always wireless; a WAN is always wired",
+      "A WAN only works inside one room of a building",
+      "A LAN is local and private; a WAN spans wide areas",
+      "They are the same thing under two names"
     ],
     "c": 2,
     "ref": "RA 9292; networking and telephony terminology",
@@ -289,10 +289,10 @@
     "s": "Networks and Telephony Features",
     "q": "What is an IP PBX?",
     "o": [
-      "A copper cable",
-      "A wall outlet",
-      "A server or software that handles private call control over IP",
-      "A telephone handset"
+      "A copper cable for telephone lines",
+      "A wall outlet for data and voice",
+      "Software that runs private calls over IP",
+      "A desk telephone handset"
     ],
     "c": 2,
     "ref": "RA 9292; networking and telephony terminology",
@@ -315,9 +315,9 @@
     "s": "Networks and Telephony Features",
     "q": "What does a traditional analog phone line use?",
     "o": [
-      "One twisted pair of wires (tip and ring)",
-      "Four fiber strands",
-      "A coaxial cable",
+      "One twisted pair (tip and ring)",
+      "Four strands of optical fiber",
+      "A single coaxial cable",
       "Two HDMI cables"
     ],
     "c": 0,
@@ -355,9 +355,9 @@
     "q": "What does call restriction (number blocking) do?",
     "o": [
       "Blocks all incoming calls",
-      "Records all calls",
-      "Plays music on hold",
-      "Prevents calls to selected numbers, such as overseas"
+      "Records every call made",
+      "Plays music to callers",
+      "Stops calls to chosen numbers"
     ],
     "c": 3,
     "ref": "RA 9292; networking and telephony terminology",
@@ -367,10 +367,10 @@
     "s": "Networks and Telephony Features",
     "q": "What does a digital phone line carry?",
     "o": [
-      "Voice turned into digital data, with signaling",
-      "Only analog voice",
-      "Only electric power",
-      "Only TV signals"
+      "Voice encoded as digital data",
+      "Only analog voice signals",
+      "Only electric power to phones",
+      "Only television signals"
     ],
     "c": 0,
     "ref": "RA 9292; networking and telephony terminology",
@@ -380,10 +380,10 @@
     "s": "Networks and Telephony Features",
     "q": "What does remote voicemail access allow?",
     "o": [
-      "Recording TV shows",
-      "Checking messages away from the desk",
-      "Blocking callers",
-      "Unlocking doors"
+      "Recording TV programs",
+      "Checking messages from afar",
+      "Blocking unwanted callers",
+      "Unlocking the front door"
     ],
     "c": 1,
     "ref": "RA 9292; networking and telephony terminology",
@@ -419,10 +419,10 @@
     "s": "Networks and Telephony Features",
     "q": "What was a T1 line traditionally used as?",
     "o": [
-      "A dedicated digital leased line between the carrier and a customer",
-      "A home cable TV line",
-      "A fire alarm circuit",
-      "A power line"
+      "A leased digital line to the carrier",
+      "A home cable television line",
+      "A fire alarm signal circuit",
+      "A power line to the building"
     ],
     "c": 0,
     "ref": "RA 9292; networking and telephony terminology",
@@ -432,10 +432,10 @@
     "s": "Networks and Telephony Features",
     "q": "What does a door-entry feature on a phone system do?",
     "o": [
-      "Counts visitors",
-      "Lets users talk to a visitor and release the door lock",
-      "Turns on the lights",
-      "Plays music at the door"
+      "Counting the visitors who enter",
+      "Talking to a visitor and releasing the lock",
+      "Turning on the lights at the entrance",
+      "Playing music at the front door"
     ],
     "c": 1,
     "ref": "RA 9292; networking and telephony terminology",
@@ -445,10 +445,10 @@
     "s": "Networks and Telephony Features",
     "q": "What is a basic analog phone?",
     "o": [
-      "A phone with ten lines",
-      "A video phone",
-      "A one-line phone without transfer or multi-line features",
-      "An IP phone"
+      "A phone with ten lines and a console",
+      "A video phone with a camera",
+      "A one-line phone with no extra features",
+      "An IP phone on the data network"
     ],
     "c": 2,
     "ref": "RA 9292; networking and telephony terminology",
@@ -458,10 +458,10 @@
     "s": "Networks and Telephony Features",
     "q": "What does battery backup on a phone system do?",
     "o": [
-      "Boosts the call volume",
-      "Stores voicemail",
-      "Blocks calls",
-      "Keeps it running for a time during a power failure"
+      "Boosts the call volume on long lines",
+      "Stores voicemail during the day",
+      "Blocks calls during storms",
+      "Keeps it working in a power failure"
     ],
     "c": 3,
     "ref": "RA 9292; networking and telephony terminology",
@@ -471,10 +471,10 @@
     "s": "Networks and Telephony Features",
     "q": "What decides the trunk capacity a business needs?",
     "o": [
-      "The number of calls it must carry at the same time",
+      "The number of calls carried at once",
       "The number of employees alone",
-      "The floor area",
-      "The building height"
+      "The floor area of the office",
+      "The height of the building"
     ],
     "c": 0,
     "ref": "RA 9292; networking and telephony terminology",
@@ -484,10 +484,10 @@
     "s": "Networks and Telephony Features",
     "q": "What does unified communications combine?",
     "o": [
-      "Water, gas and power",
-      "Voice, video, messaging, presence and conferencing",
-      "Lighting and HVAC",
-      "Fire alarm and sprinklers"
+      "Water, gas and electric power",
+      "Voice, video, chat and conferencing",
+      "Lighting and air conditioning",
+      "Fire alarms and sprinklers"
     ],
     "c": 1,
     "ref": "RA 9292; networking and telephony terminology",
@@ -497,10 +497,10 @@
     "s": "Networks and Telephony Features",
     "q": "What does paging on a phone system do?",
     "o": [
-      "Blocks outside calls",
-      "Stores messages",
-      "Contacts staff away from their own phone",
-      "Shows caller ID"
+      "Blocks outside calls to staff",
+      "Stores messages for staff",
+      "Reaches staff away from their desk",
+      "Shows the caller ID to staff"
     ],
     "c": 2,
     "ref": "RA 9292; networking and telephony terminology",
@@ -510,10 +510,10 @@
     "s": "Networks and Telephony Features",
     "q": "What is a LAN?",
     "o": [
-      "A network that links countries",
-      "A single telephone line",
-      "A TV antenna system",
-      "A network that connects devices within a small area such as an office or school"
+      "A network that links sites in several countries",
+      "A single telephone line to the exchange",
+      "A TV antenna system for a building",
+      "A network within a small area, such as an office"
     ],
     "c": 3,
     "ref": "RA 9292; networking and telephony terminology",
@@ -523,10 +523,10 @@
     "s": "Networks and Telephony Features",
     "q": "What does call waiting do?",
     "o": [
-      "Signals a second incoming call while a line is in use",
-      "Holds a call forever",
-      "Records the call",
-      "Redials the last number"
+      "Signals a second call during a call",
+      "Holds a caller on the line forever",
+      "Records the call in progress",
+      "Redials the last number called"
     ],
     "c": 0,
     "ref": "RA 9292; networking and telephony terminology",
@@ -537,8 +537,8 @@
     "q": "What may a WAN use to link sites?",
     "o": [
       "Only the building's own cables",
-      "Leased lines, VPNs over the internet, or SD-WAN",
-      "Only Wi-Fi in one room",
+      "Leased lines, VPNs or SD-WAN",
+      "Only Wi-Fi within one room",
       "Only a telephone handset"
     ],
     "c": 1,
@@ -549,10 +549,10 @@
     "s": "Networks and Telephony Features",
     "q": "What does conference calling do?",
     "o": [
-      "Ends all calls",
-      "Blocks callers",
-      "Joins several parties in one call",
-      "Stores messages"
+      "Ends all calls at once",
+      "Blocks unwanted callers",
+      "Joins several people in one call",
+      "Stores messages for later"
     ],
     "c": 2,
     "ref": "RA 9292; networking and telephony terminology",
@@ -563,9 +563,9 @@
     "q": "What is the status of IP telephony today?",
     "o": [
       "It is an untested new idea",
-      "It has been banned",
+      "It has been banned for businesses",
       "It works only on analog lines",
-      "It is the mainstream technology for business phone systems"
+      "It is the mainstream business technology"
     ],
     "c": 3,
     "ref": "RA 9292; networking and telephony terminology",

@@ -16,8 +16,8 @@
     "s": "Telephone Distribution Infrastructure",
     "q": "Where should the main telephone terminal (entrance room) be placed?",
     "o": [
-      "On the top floor",
-      "As close as possible to where the service enters the building",
+      "On the top floor, near the roof",
+      "As close as possible to the service entry",
       "Far from the entrance, for security",
       "Inside the elevator machine room"
     ],
@@ -29,10 +29,10 @@
     "s": "Telephone Distribution Infrastructure",
     "q": "What happens in a riser splicing closet?",
     "o": [
-      "Water pipes are joined",
-      "Power is metered",
-      "Riser cables are spliced to the floor distribution cables",
-      "Air ducts branch off"
+      "Water pipes are joined and valved",
+      "Electric power is metered and fused",
+      "Riser cables are spliced to floor cables",
+      "Air ducts branch off to the floor"
     ],
     "c": 2,
     "ref": "RA 9292; TIA-568/569 structured cabling practice; telephone service entrance terminology",
@@ -55,10 +55,10 @@
     "s": "Telephone Distribution Infrastructure",
     "q": "What spaces make up a modern structured cabling system?",
     "o": [
-      "Entrance facility, equipment room, telecom rooms, backbone and horizontal cabling",
-      "Only a single wall cabinet",
-      "Only phone jacks",
-      "Only an outdoor pole"
+      "Entrance, equipment and telecom rooms, plus cabling",
+      "Only a single wall cabinet per building",
+      "Only the phone jacks at each desk",
+      "Only an outdoor pole and drop wire"
     ],
     "c": 0,
     "ref": "RA 9292; TIA-568/569 structured cabling practice; telephone service entrance terminology",
@@ -83,8 +83,8 @@
     "o": [
       "The phone jack at a desk",
       "The door to the telephone room",
-      "The connection from the carrier's outside plant into the building",
-      "The elevator lobby phone"
+      "Where carrier cables enter the building",
+      "The phone in the elevator lobby"
     ],
     "c": 2,
     "ref": "RA 9292; TIA-568/569 structured cabling practice; telephone service entrance terminology",
@@ -94,10 +94,10 @@
     "s": "Telephone Distribution Infrastructure",
     "q": "What is a telephone riser?",
     "o": [
-      "A horizontal duct under the floor",
-      "A phone mounted on a wall",
-      "An antenna mast",
-      "Vertically aligned splicing closets linked by conduit"
+      "A horizontal duct under the floor slab",
+      "A phone mounted on a corridor wall",
+      "An antenna mast on the roof",
+      "Aligned splicing closets linked by conduit"
     ],
     "c": 3,
     "ref": "RA 9292; TIA-568/569 structured cabling practice; telephone service entrance terminology",
@@ -107,9 +107,9 @@
     "s": "Telephone Distribution Infrastructure",
     "q": "How does an underground telephone service entrance run?",
     "o": [
-      "In buried conduit, concealed from view",
+      "In buried conduit, out of sight",
       "On poles across the lot",
-      "Along the roof",
+      "Along the roof edge",
       "Loose on the ground"
     ],
     "c": 0,
@@ -120,10 +120,10 @@
     "s": "Telephone Distribution Infrastructure",
     "q": "What is a riser shaft?",
     "o": [
-      "A shaft for elevator ropes",
-      "A vertical shaft of aligned closets carrying telecom cables between floors",
-      "A plumbing vent stack",
-      "A light well"
+      "A shaft for the elevator hoist ropes",
+      "A vertical shaft of aligned telecom closets",
+      "A plumbing vent stack through the roof",
+      "A light well open to the sky"
     ],
     "c": 1,
     "ref": "RA 9292; TIA-568/569 structured cabling practice; telephone service entrance terminology",
@@ -159,10 +159,10 @@
     "s": "Telephone Distribution Infrastructure",
     "q": "What does a telephone line protector at the service entrance do?",
     "o": [
-      "Limits surges from lightning and power faults",
-      "Boosts the signal",
-      "Records calls",
-      "Adds extra lines"
+      "Limits lightning and power surges",
+      "Boosts the telephone signal",
+      "Records calls on the line",
+      "Adds extra lines to the building"
     ],
     "c": 0,
     "ref": "RA 9292; TIA-568/569 structured cabling practice; telephone service entrance terminology",
@@ -172,8 +172,8 @@
     "s": "Telephone Distribution Infrastructure",
     "q": "When does a building floor need more than one telephone riser?",
     "o": [
-      "Never",
-      "When the floor is very large or divided into separate areas",
+      "Never, since one riser serves any floor",
+      "When the floor is very large or divided",
       "Only on the ground floor",
       "Only if the building has elevators"
     ],
@@ -185,10 +185,10 @@
     "s": "Telephone Distribution Infrastructure",
     "q": "How many line protectors are needed at the service entrance?",
     "o": [
-      "One for the whole building",
+      "One for the building",
       "One per floor",
-      "One for each pair of telephone wires entering",
-      "None"
+      "One per incoming pair",
+      "None at all"
     ],
     "c": 2,
     "ref": "RA 9292; TIA-568/569 structured cabling practice; telephone service entrance terminology",
@@ -201,7 +201,7 @@
       "The building to the water main",
       "The roof to the basement drains",
       "The generator to the elevator",
-      "Riser splicing points to cabinets, ducts and wall outlets"
+      "Riser splice points to outlets"
     ],
     "c": 3,
     "ref": "RA 9292; TIA-568/569 structured cabling practice; telephone service entrance terminology",
@@ -250,10 +250,10 @@
     "s": "Telephone Distribution Infrastructure",
     "q": "How does an overhead telephone service entrance run?",
     "o": [
-      "In buried conduit",
-      "Through the sewer",
+      "In buried conduit underground",
+      "Through the sewer line",
       "Through the water pipe",
-      "On exposed wires from a pole to the building"
+      "On exposed wires from a pole"
     ],
     "c": 3,
     "ref": "RA 9292; TIA-568/569 structured cabling practice; telephone service entrance terminology",
@@ -276,10 +276,10 @@
     "s": "Telephone Distribution Infrastructure",
     "q": "What is telephone service conduit usually made of?",
     "o": [
-      "Garden hose",
-      "Rigid metal or listed nonmetallic conduit, as for electrical work",
-      "Cardboard tube",
-      "Bamboo"
+      "Garden hose laid in the ground",
+      "Rigid metal or listed plastic conduit",
+      "Cardboard tube cast in concrete",
+      "Bamboo poles split in half"
     ],
     "c": 1,
     "ref": "RA 9292; TIA-568/569 structured cabling practice; telephone service entrance terminology",

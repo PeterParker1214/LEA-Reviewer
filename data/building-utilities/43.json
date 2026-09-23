@@ -29,10 +29,10 @@
     "s": "Room and Split Air Conditioning",
     "q": "What heat does an air-cooled outdoor unit reject?",
     "o": [
-      "Only the compressor's heat",
-      "Only the room heat",
-      "The heat taken from indoors plus the compressor's work",
-      "No heat; it only cools"
+      "Only the compressor's own heat",
+      "Only the heat taken from the room",
+      "Room heat plus the compressor's work",
+      "No heat; the unit only cools"
     ],
     "c": 2,
     "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
@@ -81,10 +81,10 @@
     "s": "Room and Split Air Conditioning",
     "q": "What leaves the compressor?",
     "o": [
-      "Low-pressure liquid",
-      "Low-pressure vapor",
-      "High-pressure, high-temperature refrigerant vapor",
-      "High-pressure liquid"
+      "Cold, low-pressure liquid",
+      "Cool, low-pressure vapor",
+      "Hot, high-pressure vapor",
+      "Warm, high-pressure liquid"
     ],
     "c": 2,
     "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
@@ -120,10 +120,10 @@
     "s": "Room and Split Air Conditioning",
     "q": "What does the expansion device do?",
     "o": [
-      "Raises refrigerant pressure",
-      "Drops refrigerant pressure and meters flow into the evaporator",
-      "Rejects heat outdoors",
-      "Filters the room air"
+      "Raises refrigerant pressure and temperature",
+      "Drops refrigerant pressure and meters flow",
+      "Rejects heat to the outdoor air",
+      "Filters dust from the room air"
     ],
     "c": 1,
     "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
@@ -133,10 +133,10 @@
     "s": "Room and Split Air Conditioning",
     "q": "How high is a window air conditioner usually mounted?",
     "o": [
-      "At floor level",
-      "Above the ceiling",
-      "Per the maker, commonly about 1.5 to 2.1 m above the floor",
-      "Outside on the roof"
+      "At floor level, below the window sill",
+      "Above the ceiling, out of sight",
+      "Per the maker, often 1.5–2.1 m up",
+      "Outside on the roof slab"
     ],
     "c": 2,
     "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
@@ -159,10 +159,10 @@
     "s": "Room and Split Air Conditioning",
     "q": "What does the condenser of a window air conditioner do?",
     "o": [
-      "Rejects refrigerant heat to the outside air",
-      "Absorbs room heat",
-      "Drops refrigerant pressure",
-      "Filters the air"
+      "Rejects heat to the outside air",
+      "Absorbs heat from the room air",
+      "Drops the refrigerant pressure",
+      "Filters the room air"
     ],
     "c": 0,
     "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
@@ -172,10 +172,10 @@
     "s": "Room and Split Air Conditioning",
     "q": "Why does an air conditioner need a condensate drain?",
     "o": [
-      "The refrigerant leaks as water",
-      "The cooling coil removes moisture from the air, which must be drained away",
+      "The refrigerant leaks out as water",
+      "The coil pulls moisture from the air",
       "The compressor needs water cooling",
-      "The fan needs lubrication"
+      "The fan bearings need lubrication"
     ],
     "c": 1,
     "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
@@ -185,10 +185,10 @@
     "s": "Room and Split Air Conditioning",
     "q": "What does the liquid line carry?",
     "o": [
-      "Low-pressure vapor to the compressor",
-      "Hot gas to the condenser",
-      "High-pressure liquid refrigerant toward the expansion device",
-      "Condensate to the drain"
+      "Low-pressure vapor back to the compressor",
+      "Hot gas from the compressor to the condenser",
+      "High-pressure liquid to the expansion device",
+      "Condensate from the coil to the drain"
     ],
     "c": 2,
     "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
@@ -211,9 +211,9 @@
     "s": "Room and Split Air Conditioning",
     "q": "Where is the maximum refrigerant line length of a split system found?",
     "o": [
-      "In the maker's installation data for the model",
-      "In the plumbing code",
-      "In the electrical code",
+      "In the maker's installation data",
+      "In the National Plumbing Code",
+      "In the Philippine Electrical Code",
       "It is 3 m for all units"
     ],
     "c": 0,
@@ -225,9 +225,9 @@
     "q": "What is \"Freon\"?",
     "o": [
       "The generic name of all refrigerants",
-      "A trademark for certain refrigerants, not the generic word",
-      "A type of compressor",
-      "A type of air filter"
+      "A trademark, not a generic name",
+      "A type of rotary compressor",
+      "A type of washable air filter"
     ],
     "c": 1,
     "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
@@ -263,10 +263,10 @@
     "s": "Room and Split Air Conditioning",
     "q": "What does the compressor do?",
     "o": [
-      "Raises the vapor's pressure and temperature and circulates the refrigerant",
-      "Drops the refrigerant pressure",
-      "Absorbs heat from the room",
-      "Drains the condensate"
+      "Raises vapor pressure and circulates refrigerant",
+      "Drops the refrigerant pressure before the coil",
+      "Absorbs heat from the room air",
+      "Drains the condensate from the coil"
     ],
     "c": 0,
     "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
@@ -277,9 +277,9 @@
     "q": "What is a window-type air conditioner (WACU)?",
     "o": [
       "An indoor unit with a separate outdoor unit",
-      "A single cabinet holding both the indoor and outdoor parts of the cycle",
-      "A central chiller",
-      "A cooling tower"
+      "One cabinet with indoor and outdoor parts",
+      "A central chiller serving many rooms",
+      "A cooling tower on the roof"
     ],
     "c": 1,
     "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
@@ -290,9 +290,9 @@
     "q": "What happens to refrigerant in the evaporator?",
     "o": [
       "It rejects heat and condenses",
-      "It is compressed",
-      "It absorbs room heat and evaporates at low pressure",
-      "It is filtered"
+      "It is compressed to high pressure",
+      "It absorbs heat and evaporates",
+      "It is filtered and dried"
     ],
     "c": 2,
     "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
@@ -315,10 +315,10 @@
     "s": "Room and Split Air Conditioning",
     "q": "What sets the design limits of a multi-split system?",
     "o": [
-      "The maker's data on pipe length, height difference and connected capacity",
-      "The plumbing code",
-      "The number of windows",
-      "The room colors"
+      "The maker's data for that model",
+      "The National Plumbing Code",
+      "The number of windows served",
+      "The colors of the rooms"
     ],
     "c": 0,
     "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
@@ -328,10 +328,10 @@
     "s": "Room and Split Air Conditioning",
     "q": "What happens to refrigerant in the condenser?",
     "o": [
-      "It absorbs room heat",
-      "It rejects heat and condenses to liquid at high pressure",
-      "Its pressure drops",
-      "It evaporates"
+      "It absorbs heat from the room",
+      "It rejects heat and condenses",
+      "Its pressure drops sharply",
+      "It evaporates into vapor"
     ],
     "c": 1,
     "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
@@ -341,9 +341,9 @@
     "s": "Room and Split Air Conditioning",
     "q": "What is inside the outdoor unit of a split system?",
     "o": [
-      "The evaporator and blower",
-      "Only a fan",
-      "The compressor, condenser coil and fan",
+      "Evaporator coil and blower",
+      "Only a propeller fan",
+      "Compressor, condenser coil and fan",
       "Only the thermostat"
     ],
     "c": 2,
@@ -356,8 +356,8 @@
     "o": [
       "It doubles the cooling capacity",
       "It removes the need for a drain",
-      "It removes the need for electricity",
-      "Short refrigerant runs, with less piping cost and pressure loss"
+      "It removes the need for power",
+      "Short, cheaper refrigerant runs"
     ],
     "c": 3,
     "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
@@ -367,10 +367,10 @@
     "s": "Room and Split Air Conditioning",
     "q": "What is a refrigerant?",
     "o": [
-      "A working fluid that evaporates and condenses to move heat",
-      "A fan that moves air",
-      "A filter that cleans air",
-      "A pipe that carries water"
+      "A fluid that moves heat by changing phase",
+      "A fan that moves air across a coil",
+      "A filter that cleans the room air",
+      "A pipe that carries condenser water"
     ],
     "c": 0,
     "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
@@ -380,10 +380,10 @@
     "s": "Room and Split Air Conditioning",
     "q": "What is a split air conditioning system?",
     "o": [
-      "One cabinet in a window",
-      "Separate indoor and outdoor units joined by refrigerant piping",
-      "A central chiller plant",
-      "A cooling tower"
+      "One cabinet set in a window opening",
+      "Indoor and outdoor units joined by piping",
+      "A central chiller plant with towers",
+      "A cooling tower on the roof"
     ],
     "c": 1,
     "ref": "Refrigeration fundamentals (ASHRAE); split and window air-conditioner terminology",
