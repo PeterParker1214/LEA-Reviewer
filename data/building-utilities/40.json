@@ -1,578 +1,574 @@
 [
   {
     "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding music on hold?",
+    "q": "What does music on hold do?",
     "o": [
-      "The source says LANs do not require leased telecom lines as a defining contrast to WANs; modern WANs may use leased lines, VPNs, Internet, SD-WAN, private fiber, cellular, or other services.",
-      "Allows users to retrieve messages away from their desk/system.",
-      "T1 is a legacy low-capacity WAN/voice technology now widely replaced by Ethernet, fiber, broadband, SIP trunks, MPLS/SD-WAN and other services.",
-      "Plays audio to callers while held, where configured."
-    ],
-    "c": 3,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Plays audio to callers while held, where configured."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding phone-system control unit?",
-    "o": [
-      "The source describes a central unit where lines/extensions connect and calls are routed.",
-      "Helps protect electronic telephone/network equipment from damaging transient overvoltage.",
-      "Adds multiple parties to a call/conference.",
-      "Each T1 voice channel is nominally 64 kb/s."
+      "Plays audio to callers while they are on hold",
+      "Records every call",
+      "Blocks outside calls",
+      "Rings every phone at once"
     ],
     "c": 0,
     "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] The source describes a central unit where lines/extensions connect and calls are routed."
+    "n": "Common phone-system features: hold music, speed dial, caller ID, voicemail, call log, night mode, transfer, redial, call waiting, conferencing, paging and call restriction."
   },
   {
     "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding speed dialing?",
+    "q": "What does the control unit of a business phone system do?",
     "o": [
-      "Routes an active call to another extension/destination.",
-      "Source describes multiple extensions/lines and voicemail ports for small offices.",
-      "The source calls IP telephony the latest technology; this is outdated wording because IP telephony has been mainstream for decades.",
-      "Stores frequently used numbers for abbreviated/one-button dialing."
+      "Only charges the handset batteries",
+      "Connects the lines and extensions and routes calls",
+      "Only plays hold music",
+      "Only records voicemail"
+    ],
+    "c": 1,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "It is the switching heart of a key system or PBX."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What does speed dial do?",
+    "o": [
+      "Records calls",
+      "Shows the caller's number",
+      "Stores numbers for one-button dialing",
+      "Forwards calls to voicemail"
+    ],
+    "c": 2,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "Common phone-system features: hold music, speed dial, caller ID, voicemail, call log, night mode, transfer, redial, call waiting, conferencing, paging and call restriction."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What connector is commonly used for a single analog phone line?",
+    "o": [
+      "RJ45",
+      "BNC",
+      "HDMI",
+      "RJ11"
     ],
     "c": 3,
     "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Stores frequently used numbers for abbreviated/one-button dialing."
+    "n": "RJ11 carries one or two phone pairs. RJ45 is used for Ethernet and many digital phones. Connector shape alone does not prove a line is analog."
   },
   {
     "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding four-groove connector claim?",
+    "q": "What does caller ID do?",
     "o": [
-      "The source says 30 minutes to one hour; actual backup duration depends on battery capacity, load, design and applicable life-safety/service requirements.",
-      "The source tries to identify analog lines by connector groove/contact count; connector contact count is not a valid universal definition of analog service.",
-      "Plays audio to callers while held, where configured.",
-      "T1 historically served as a dedicated digital circuit/leased line between carrier/customer points."
-    ],
-    "c": 1,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source tries to identify analog lines by connector groove/contact count; connector contact count is not a valid universal definition of analog service."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding caller id?",
-    "o": [
-      "Allows authorized door release through an integrated phone/intercom/access-control system.",
-      "Displays calling-party identification when service/system supports it.",
-      "Provides hands-free private listening/speaking without holding a handset.",
-      "The source describes a central unit where lines/extensions connect and calls are routed."
-    ],
-    "c": 1,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Displays calling-party identification when service/system supports it."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding all modems analog claim?",
-    "o": [
-      "Stores frequently used numbers for abbreviated/one-button dialing.",
-      "A router forwards packets between IP networks and selects paths according to routing information.",
-      "The source says all modems require analog lines; this is false because cable, DSL, cellular, fiber ONT/modem functions and other modems are not limited to analog POTS.",
-      "Source describes a basic one-line analog phone without transfer/multiline features."
-    ],
-    "c": 2,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source says all modems require analog lines; this is false because cable, DSL, cellular, fiber ONT/modem functions and other modems are not limited to analog POTS."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding voicemail?",
-    "o": [
-      "The source tries to identify analog lines by connector groove/contact count; connector contact count is not a valid universal definition of analog service.",
-      "Legacy text/message keyboard lets users send text messages without interrupting calls; modern systems provide chat/messaging through unified communications.",
-      "Stores voice messages for users/mailboxes.",
-      "Provides temporary operation during loss of normal power."
-    ],
-    "c": 2,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Stores voice messages for users/mailboxes.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+VGVsZXBob25lIC8gVUMgRmVhdHVyZXM8L3RleHQ+CjxyZWN0IHg9Ijc1IiB5PSIxMTUiIHdpZHRoPSIxODAiIGhlaWdodD0iMjYwIiBjbGFzcz0iZiIvPjx0ZXh0IHg9IjEyMCIgeT0iMjIwIiBjbGFzcz0icyI+Vm9pY2VtYWlsPC90ZXh0Pgo8cmVjdCB4PSIyNzUiIHk9IjExNSIgd2lkdGg9IjE4MCIgaGVpZ2h0PSIyNjAiIGNsYXNzPSJmMiIvPjx0ZXh0IHg9IjMyMCIgeT0iMjIwIiBjbGFzcz0icyI+VHJhbnNmZXI8L3RleHQ+CjxyZWN0IHg9IjQ3NSIgeT0iMTE1IiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjI2MCIgY2xhc3M9ImYiLz48dGV4dCB4PSI1MTUiIHk9IjIyMCIgY2xhc3M9InMiPkNvbmZlcmVuY2U8L3RleHQ+CjxyZWN0IHg9IjY3NSIgeT0iMTE1IiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjI2MCIgY2xhc3M9ImYyIi8+PHRleHQgeD0iNzEwIiB5PSIyMjAiIGNsYXNzPSJzIj5DYWxsZXIgSUQ8L3RleHQ+PC9zdmc+"
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding t1?",
-    "o": [
-      "Source associates >50 employees with higher-capacity lines such as T1; employee count does not by itself determine modern trunk/network technology.",
-      "LANs generally cover smaller areas than WANs and are under local organizational control.",
-      "A North American/Japanese DS1 digital carrier with 24 DS0 channels.",
-      "Displays calling-party identification when service/system supports it."
-    ],
-    "c": 2,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] A North American/Japanese DS1 digital carrier with 24 DS0 channels.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+VDEgLyBEUzEgTGVnYWN5IERpZ2l0YWwgQ2FycmllcjwvdGV4dD4KPHJlY3QgeD0iMTIwIiB5PSIxNTAiIHdpZHRoPSI2NjAiIGhlaWdodD0iMTkwIiBjbGFzcz0iZiIvPgo8dGV4dCB4PSIzMDAiIHk9IjIyMCIgY2xhc3M9InQiPjI0IMOXIDY0IGtiL3MgRFMwIGNoYW5uZWxzPC90ZXh0Pgo8dGV4dCB4PSIyNzAiIHk9IjI4NSIgY2xhc3M9InQiPmFnZ3JlZ2F0ZSBsaW5lIHJhdGUg4omIIDEuNTQ0IE1iL3M8L3RleHQ+PC9zdmc+"
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding call log?",
-    "o": [
-      "Modern systems can combine voice, video, messaging, presence, conferencing, mobile clients and cloud services.",
-      "Allow multiple concurrent calls when properly provisioned.",
-      "The source says all modems require analog lines; this is false because cable, DSL, cellular, fiber ONT/modem functions and other modems are not limited to analog POTS.",
-      "Records missed/recent calls for review/redial."
-    ],
-    "c": 3,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Records missed/recent calls for review/redial."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding t1 aggregate rate?",
-    "o": [
-      "Can page/contact employees away from their own telephone.",
-      "Voice/telephony carried using Internet Protocol networks.",
-      "Stores voice messages for users/mailboxes.",
-      "A T1/DS1 line has an aggregate line rate of 1.544 Mb/s, including framing overhead."
-    ],
-    "c": 3,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] A T1/DS1 line has an aggregate line rate of 1.544 Mb/s, including framing overhead."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding night mode source feature?",
-    "o": [
-      "Receives/routes incoming calls; may be human or automated in modern systems.",
-      "Can route calls differently, such as to voicemail, outside business hours.",
-      "A local area network connects devices within a limited geographic area such as a home, office, school, or laboratory.",
-      "A North American/Japanese DS1 digital carrier with 24 DS0 channels."
-    ],
-    "c": 1,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Can route calls differently, such as to voicemail, outside business hours."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding t1 currentness?",
-    "o": [
-      "Records missed/recent calls for review/redial.",
-      "A server/appliance/software system providing private call control, extensions, trunks, and related telephony services.",
-      "T1 is a legacy low-capacity WAN/voice technology now widely replaced by Ethernet, fiber, broadband, SIP trunks, MPLS/SD-WAN and other services.",
-      "Signals another incoming call while a line is already in use."
-    ],
-    "c": 2,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] T1 is a legacy low-capacity WAN/voice technology now widely replaced by Ethernet, fiber, broadband, SIP trunks, MPLS/SD-WAN and other services."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding surge protection?",
-    "o": [
-      "The source says LANs do not require leased telecom lines as a defining contrast to WANs; modern WANs may use leased lines, VPNs, Internet, SD-WAN, private fiber, cellular, or other services.",
-      "A T1/DS1 line has an aggregate line rate of 1.544 Mb/s, including framing overhead.",
-      "Helps protect electronic telephone/network equipment from damaging transient overvoltage.",
-      "Speakerphone/headset operation without holding handset."
-    ],
-    "c": 2,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Helps protect electronic telephone/network equipment from damaging transient overvoltage."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding small-business multiline source?",
-    "o": [
-      "Adds multiple parties to a call/conference.",
-      "Traditional analog subscriber line carries analog voice signaling and commonly uses a two-conductor tip/ring pair.",
-      "Can route calls differently, such as to voicemail, outside business hours.",
-      "Source describes multiple extensions/lines and voicemail ports for small offices."
-    ],
-    "c": 3,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Source describes multiple extensions/lines and voicemail ports for small offices."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding 30–60 min backup claim?",
-    "o": [
-      "T1 is a legacy low-capacity WAN/voice technology now widely replaced by Ethernet, fiber, broadband, SIP trunks, MPLS/SD-WAN and other services.",
-      "The source says 30 minutes to one hour; actual backup duration depends on battery capacity, load, design and applicable life-safety/service requirements.",
-      "The source calls IP telephony the latest technology; this is outdated wording because IP telephony has been mainstream for decades.",
-      "Calls the last dialed number again."
-    ],
-    "c": 1,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source says 30 minutes to one hour; actual backup duration depends on battery capacity, load, design and applicable life-safety/service requirements."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding headset?",
-    "o": [
-      "Traditional telephone pair conductors are called tip and ring.",
-      "Provides hands-free private listening/speaking without holding a handset.",
-      "Helps protect electronic telephone/network equipment from damaging transient overvoltage.",
-      "Plays audio to callers while held, where configured."
-    ],
-    "c": 1,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Provides hands-free private listening/speaking without holding a handset."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding router?",
-    "o": [
-      "The source describes a central unit where lines/extensions connect and calls are routed.",
-      "Can prevent or restrict selected outgoing destinations.",
-      "A router forwards packets between IP networks and selects paths according to routing information.",
-      "Source describes multiple extensions/lines and voicemail ports for small offices."
-    ],
-    "c": 2,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] A router forwards packets between IP networks and selects paths according to routing information.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+Um91dGVyPC90ZXh0Pgo8cmVjdCB4PSIzNTAiIHk9IjE3MCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIxNTAiIGNsYXNzPSJmMiIvPjx0ZXh0IHg9IjQxMCIgeT0iMjQ1IiBjbGFzcz0idCI+Um91dGVyPC90ZXh0Pgo8bGluZSB4MT0iOTAiIHkxPSIyNDUiIHgyPSIzNTAiIHkyPSIyNDUiIGNsYXNzPSJsIi8+PGxpbmUgeDE9IjU1MCIgeTE9IjI0NSIgeDI9IjgxMCIgeTI9IjI0NSIgY2xhc3M9ImwiLz4KPHRleHQgeD0iMTI1IiB5PSIyMTUiIGNsYXNzPSJzIj5OZXR3b3JrIEE8L3RleHQ+PHRleHQgeD0iNjcwIiB5PSIyMTUiIGNsYXNzPSJzIj5OZXR3b3JrIEI8L3RleHQ+PC9zdmc+"
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding message keyboard source feature?",
-    "o": [
-      "The source says 30 minutes to one hour; actual backup duration depends on battery capacity, load, design and applicable life-safety/service requirements.",
-      "Legacy text/message keyboard lets users send text messages without interrupting calls; modern systems provide chat/messaging through unified communications.",
-      "A digital telephone interface transports digitally encoded voice/signaling, but connector contact count alone does not define whether a line is digital.",
-      "Stores frequently used numbers for abbreviated/one-button dialing."
-    ],
-    "c": 1,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Legacy text/message keyboard lets users send text messages without interrupting calls; modern systems provide chat/messaging through unified communications."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding lan vs wan?",
-    "o": [
-      "Allows users to retrieve messages away from their desk/system.",
-      "The source tries to identify analog lines by connector groove/contact count; connector contact count is not a valid universal definition of analog service.",
-      "Provides hands-free private listening/speaking without holding a handset.",
-      "LANs generally cover smaller areas than WANs and are under local organizational control."
-    ],
-    "c": 3,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] LANs generally cover smaller areas than WANs and are under local organizational control."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding multiple lines?",
-    "o": [
-      "Each T1 voice channel is nominally 64 kb/s.",
-      "Allow multiple concurrent calls when properly provisioned.",
-      "Displays calling-party identification when service/system supports it.",
-      "A router forwards packets between IP networks and selects paths according to routing information."
-    ],
-    "c": 1,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Allow multiple concurrent calls when properly provisioned."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding ip telephony?",
-    "o": [
-      "Legacy text/message keyboard lets users send text messages without interrupting calls; modern systems provide chat/messaging through unified communications.",
-      "Routes an active call to another extension/destination.",
-      "Voice/telephony carried using Internet Protocol networks.",
-      "The source says all modems require analog lines; this is false because cable, DSL, cellular, fiber ONT/modem functions and other modems are not limited to analog POTS."
-    ],
-    "c": 2,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Voice/telephony carried using Internet Protocol networks."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding call attendant?",
-    "o": [
-      "LANs generally cover smaller areas than WANs and are under local organizational control.",
-      "Receives/routes incoming calls; may be human or automated in modern systems.",
-      "T1 historically served as a dedicated digital circuit/leased line between carrier/customer points.",
-      "Stores voice messages for users/mailboxes."
-    ],
-    "c": 1,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Receives/routes incoming calls; may be human or automated in modern systems."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding pbx server?",
-    "o": [
-      "A North American/Japanese DS1 digital carrier with 24 DS0 channels.",
-      "Allows authorized door release through an integrated phone/intercom/access-control system.",
-      "Allow multiple concurrent calls when properly provisioned.",
-      "A server/appliance/software system providing private call control, extensions, trunks, and related telephony services."
-    ],
-    "c": 3,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] A server/appliance/software system providing private call control, extensions, trunks, and related telephony services."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding hands-free calling?",
-    "o": [
-      "Voice/telephony carried using Internet Protocol networks.",
-      "Source describes a basic one-line analog phone without transfer/multiline features.",
-      "Speakerphone/headset operation without holding handset.",
-      "Records missed/recent calls for review/redial."
-    ],
-    "c": 2,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Speakerphone/headset operation without holding handset."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding analog phone line?",
-    "o": [
-      "Traditional analog subscriber line carries analog voice signaling and commonly uses a two-conductor tip/ring pair.",
-      "Receives/routes incoming calls; may be human or automated in modern systems.",
-      "A T1/DS1 line has an aggregate line rate of 1.544 Mb/s, including framing overhead.",
-      "Provides temporary operation during loss of normal power."
+      "Shows who is calling, where the service supports it",
+      "Stores voice messages",
+      "Redials the last number",
+      "Blocks all calls"
     ],
     "c": 0,
     "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Traditional analog subscriber line carries analog voice signaling and commonly uses a two-conductor tip/ring pair."
+    "n": "Common phone-system features: hold music, speed dial, caller ID, voicemail, call log, night mode, transfer, redial, call waiting, conferencing, paging and call restriction."
   },
   {
     "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding redial?",
+    "q": "Which modem needs an analog phone line to work?",
     "o": [
-      "Source associates >50 employees with higher-capacity lines such as T1; employee count does not by itself determine modern trunk/network technology.",
-      "A server/appliance/software system providing private call control, extensions, trunks, and related telephony services.",
-      "Can route calls differently, such as to voicemail, outside business hours.",
-      "Calls the last dialed number again."
+      "A cable modem",
+      "A dial-up modem",
+      "A fiber ONT",
+      "A cellular modem"
+    ],
+    "c": 1,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "Only dial-up modems turn data into sounds sent over an analog line. Cable, DSL, fiber and cellular modems work differently."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What does voicemail do?",
+    "o": [
+      "Shows the caller's number",
+      "Forwards all calls to the operator",
+      "Stores voice messages for each user",
+      "Plays music on hold"
+    ],
+    "c": 2,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "Common phone-system features: hold music, speed dial, caller ID, voicemail, call log, night mode, transfer, redial, call waiting, conferencing, paging and call restriction."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What is a T1 line?",
+    "o": [
+      "An analog line with one channel",
+      "A fiber line with 1,000 channels",
+      "A wireless link between phones",
+      "A digital carrier with 24 channels of 64 kb/s"
     ],
     "c": 3,
     "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Calls the last dialed number again."
+    "n": "A T1 (DS1) line carries 24 voice channels of 64 kb/s each, for 1.544 Mb/s with framing. It has largely been replaced by fiber, Ethernet and SIP trunks."
   },
   {
     "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding tip and ring?",
+    "q": "What does a call log do?",
     "o": [
-      "Speakerphone/headset operation without holding handset.",
-      "Traditional telephone pair conductors are called tip and ring.",
-      "Modern systems can combine voice, video, messaging, presence, conferencing, mobile clients and cloud services.",
-      "T1 is a legacy low-capacity WAN/voice technology now widely replaced by Ethernet, fiber, broadband, SIP trunks, MPLS/SD-WAN and other services."
-    ],
-    "c": 1,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Traditional telephone pair conductors are called tip and ring."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding call restrictions/number blocks?",
-    "o": [
-      "Can prevent or restrict selected outgoing destinations.",
-      "Traditional analog subscriber line carries analog voice signaling and commonly uses a two-conductor tip/ring pair.",
-      "Can page/contact employees away from their own telephone.",
-      "Helps protect electronic telephone/network equipment from damaging transient overvoltage."
+      "Records missed and recent calls for review or redial",
+      "Blocks unwanted calls",
+      "Plays music on hold",
+      "Pages staff"
     ],
     "c": 0,
     "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Can prevent or restrict selected outgoing destinations."
+    "n": "Common phone-system features: hold music, speed dial, caller ID, voicemail, call log, night mode, transfer, redial, call waiting, conferencing, paging and call restriction."
   },
   {
     "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding digital phone line?",
+    "q": "What is the line rate of a T1 line?",
     "o": [
-      "Source describes multiple extensions/lines and voicemail ports for small offices.",
-      "A local area network connects devices within a limited geographic area such as a home, office, school, or laboratory.",
-      "A digital telephone interface transports digitally encoded voice/signaling, but connector contact count alone does not define whether a line is digital.",
-      "Calls the last dialed number again."
+      "64 kb/s",
+      "1.544 Mb/s",
+      "2.048 Mb/s",
+      "10 Mb/s"
+    ],
+    "c": 1,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "A T1 (DS1) line carries 24 voice channels of 64 kb/s each, for 1.544 Mb/s with framing. It has largely been replaced by fiber, Ethernet and SIP trunks. The European E1 runs at 2.048 Mb/s with 32 channels."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What does night mode on a phone system do?",
+    "o": [
+      "Turns off all phones",
+      "Dims the handset lights",
+      "Routes calls differently after hours, such as to voicemail",
+      "Blocks all outgoing calls"
     ],
     "c": 2,
     "ref": "RA 9292; networking and telephony terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] A digital telephone interface transports digitally encoded voice/signaling, but connector contact count alone does not define whether a line is digital."
+    "n": "Common phone-system features: hold music, speed dial, caller ID, voicemail, call log, night mode, transfer, redial, call waiting, conferencing, paging and call restriction."
   },
   {
     "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding remote voicemail access?",
+    "q": "What has largely replaced T1 lines for business voice and data?",
     "o": [
-      "Allows users to retrieve messages away from their desk/system.",
-      "Signals another incoming call while a line is already in use.",
-      "Traditional telephone pair conductors are called tip and ring.",
-      "The source says 30 minutes to one hour; actual backup duration depends on battery capacity, load, design and applicable life-safety/service requirements."
-    ],
-    "c": 0,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Allows users to retrieve messages away from their desk/system."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding ds0 channel?",
-    "o": [
-      "Can prevent or restrict selected outgoing destinations.",
-      "Each T1 voice channel is nominally 64 kb/s.",
-      "The source says LANs do not require leased telecom lines as a defining contrast to WANs; modern WANs may use leased lines, VPNs, Internet, SD-WAN, private fiber, cellular, or other services.",
-      "Provides hands-free private listening/speaking without holding a handset."
-    ],
-    "c": 1,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Each T1 voice channel is nominally 64 kb/s."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding call transfer?",
-    "o": [
-      "Adds multiple parties to a call/conference.",
-      "Routes an active call to another extension/destination.",
-      "A digital telephone interface transports digitally encoded voice/signaling, but connector contact count alone does not define whether a line is digital.",
-      "A router forwards packets between IP networks and selects paths according to routing information."
-    ],
-    "c": 1,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Routes an active call to another extension/destination."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding t1 leased line?",
-    "o": [
-      "Allows users to retrieve messages away from their desk/system.",
-      "The source calls IP telephony the latest technology; this is outdated wording because IP telephony has been mainstream for decades.",
-      "T1 historically served as a dedicated digital circuit/leased line between carrier/customer points.",
-      "Legacy text/message keyboard lets users send text messages without interrupting calls; modern systems provide chat/messaging through unified communications."
-    ],
-    "c": 2,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] T1 historically served as a dedicated digital circuit/leased line between carrier/customer points."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding remote door entry?",
-    "o": [
-      "LANs generally cover smaller areas than WANs and are under local organizational control.",
-      "Allows authorized door release through an integrated phone/intercom/access-control system.",
-      "Plays audio to callers while held, where configured.",
-      "Each T1 voice channel is nominally 64 kb/s."
-    ],
-    "c": 1,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Allows authorized door release through an integrated phone/intercom/access-control system."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding single-line phone source?",
-    "o": [
-      "Allow multiple concurrent calls when properly provisioned.",
-      "Source describes a basic one-line analog phone without transfer/multiline features.",
-      "The source describes a central unit where lines/extensions connect and calls are routed.",
-      "Routes an active call to another extension/destination."
-    ],
-    "c": 1,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Source describes a basic one-line analog phone without transfer/multiline features."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding battery backup?",
-    "o": [
-      "T1 historically served as a dedicated digital circuit/leased line between carrier/customer points.",
-      "Provides temporary operation during loss of normal power.",
-      "Voice/telephony carried using Internet Protocol networks.",
-      "Stores frequently used numbers for abbreviated/one-button dialing."
-    ],
-    "c": 1,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Provides temporary operation during loss of normal power."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding large-business source?",
-    "o": [
-      "Receives/routes incoming calls; may be human or automated in modern systems.",
-      "Allows authorized door release through an integrated phone/intercom/access-control system.",
-      "The source tries to identify analog lines by connector groove/contact count; connector contact count is not a valid universal definition of analog service.",
-      "Source associates >50 employees with higher-capacity lines such as T1; employee count does not by itself determine modern trunk/network technology."
+      "Party lines",
+      "Telegraph lines",
+      "Crank telephones",
+      "Fiber, Ethernet and SIP trunks"
     ],
     "c": 3,
     "ref": "RA 9292; networking and telephony terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Source associates >50 employees with higher-capacity lines such as T1; employee count does not by itself determine modern trunk/network technology."
+    "n": "A T1 (DS1) line carries 24 voice channels of 64 kb/s each, for 1.544 Mb/s with framing. It has largely been replaced by fiber, Ethernet and SIP trunks."
   },
   {
     "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding modern unified communications?",
+    "q": "What does a surge protector on phone and network lines do?",
     "o": [
-      "Modern systems can combine voice, video, messaging, presence, conferencing, mobile clients and cloud services.",
-      "A server/appliance/software system providing private call control, extensions, trunks, and related telephony services.",
-      "Displays calling-party identification when service/system supports it.",
-      "Source describes a basic one-line analog phone without transfer/multiline features."
+      "Protects equipment from voltage spikes such as lightning",
+      "Boosts the signal strength",
+      "Stores voice messages",
+      "Routes calls to extensions"
     ],
     "c": 0,
     "ref": "RA 9292; networking and telephony terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] Modern systems can combine voice, video, messaging, presence, conferencing, mobile clients and cloud services."
+    "n": "Protectors are placed where lines enter the building and at sensitive equipment."
   },
   {
     "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding intercom feature?",
+    "q": "What phone system suits a small office?",
     "o": [
-      "Provides temporary operation during loss of normal power.",
-      "The source says all modems require analog lines; this is false because cable, DSL, cellular, fiber ONT/modem functions and other modems are not limited to analog POTS.",
-      "Can page/contact employees away from their own telephone.",
-      "Speakerphone/headset operation without holding handset."
-    ],
-    "c": 2,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Can page/contact employees away from their own telephone."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding lan?",
-    "o": [
-      "Traditional analog subscriber line carries analog voice signaling and commonly uses a two-conductor tip/ring pair.",
-      "Stores voice messages for users/mailboxes.",
-      "A local area network connects devices within a limited geographic area such as a home, office, school, or laboratory.",
-      "Source associates >50 employees with higher-capacity lines such as T1; employee count does not by itself determine modern trunk/network technology."
-    ],
-    "c": 2,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] A local area network connects devices within a limited geographic area such as a home, office, school, or laboratory.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+TG9jYWwgQXJlYSBOZXR3b3JrPC90ZXh0Pgo8cmVjdCB4PSIzNTUiIHk9IjE4MCIgd2lkdGg9IjE5MCIgaGVpZ2h0PSIxMzAiIGNsYXNzPSJmMiIvPjx0ZXh0IHg9IjQyMCIgeT0iMjQ1IiBjbGFzcz0icyI+U3dpdGNoPC90ZXh0Pgo8Y2lyY2xlIGN4PSIxNTAiIGN5PSIxNDAiIHI9IjM1IiBjbGFzcz0iZiIvPjxjaXJjbGUgY3g9IjE1MCIgY3k9IjM1MCIgcj0iMzUiIGNsYXNzPSJmIi8+PGNpcmNsZSBjeD0iNzUwIiBjeT0iMTQwIiByPSIzNSIgY2xhc3M9ImYiLz48Y2lyY2xlIGN4PSI3NTAiIGN5PSIzNTAiIHI9IjM1IiBjbGFzcz0iZiIvPgo8bGluZSB4MT0iMTg1IiB5MT0iMTQwIiB4Mj0iMzU1IiB5Mj0iMjEwIiBjbGFzcz0ibCIvPjxsaW5lIHgxPSIxODUiIHkxPSIzNTAiIHgyPSIzNTUiIHkyPSIyODAiIGNsYXNzPSJsIi8+PGxpbmUgeDE9IjU0NSIgeTE9IjIxMCIgeDI9IjcxNSIgeTI9IjE0MCIgY2xhc3M9ImwiLz48bGluZSB4MT0iNTQ1IiB5MT0iMjgwIiB4Mj0iNzE1IiB5Mj0iMzUwIiBjbGFzcz0ibCIvPjwvc3ZnPg=="
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding call waiting?",
-    "o": [
-      "A North American/Japanese DS1 digital carrier with 24 DS0 channels.",
-      "Signals another incoming call while a line is already in use.",
-      "Calls the last dialed number again.",
-      "Modern systems can combine voice, video, messaging, presence, conferencing, mobile clients and cloud services."
+      "A 500-line PABX",
+      "A multi-line system with several extensions and voicemail",
+      "A single analog line",
+      "A T3 carrier"
     ],
     "c": 1,
     "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Signals another incoming call while a line is already in use."
+    "n": "Small systems give each phone access to a few outside lines."
   },
   {
     "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding source leased-line note?",
+    "q": "What decides how long a phone system's battery backup lasts?",
     "o": [
-      "Can page/contact employees away from their own telephone.",
-      "The source says LANs do not require leased telecom lines as a defining contrast to WANs; modern WANs may use leased lines, VPNs, Internet, SD-WAN, private fiber, cellular, or other services.",
-      "Traditional telephone pair conductors are called tip and ring.",
-      "Records missed/recent calls for review/redial."
+      "The color of the phones",
+      "The number of floors",
+      "The battery capacity and the load it carries",
+      "The length of the phone cords"
     ],
-    "c": 1,
+    "c": 2,
     "ref": "RA 9292; networking and telephony terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source says LANs do not require leased telecom lines as a defining contrast to WANs; modern WANs may use leased lines, VPNs, Internet, SD-WAN, private fiber, cellular, or other services."
+    "n": "Common designs give 30 minutes to a few hours, but it depends on the batteries and what they power."
   },
   {
     "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding conference calling?",
+    "q": "What is a speakerphone for?",
     "o": [
-      "Adds multiple parties to a call/conference.",
-      "A T1/DS1 line has an aggregate line rate of 1.544 Mb/s, including framing overhead.",
-      "Can prevent or restrict selected outgoing destinations.",
-      "A local area network connects devices within a limited geographic area such as a home, office, school, or laboratory."
-    ],
-    "c": 0,
-    "ref": "RA 9292; networking and telephony terminology",
-    "n": "[SOURCE FACT — AUDITED] Adds multiple parties to a call/conference."
-  },
-  {
-    "s": "Networks and Telephony Features",
-    "q": "Which statement is correct regarding source 'latest technology' note?",
-    "o": [
-      "Can route calls differently, such as to voicemail, outside business hours.",
-      "A digital telephone interface transports digitally encoded voice/signaling, but connector contact count alone does not define whether a line is digital.",
-      "Signals another incoming call while a line is already in use.",
-      "The source calls IP telephony the latest technology; this is outdated wording because IP telephony has been mainstream for decades."
+      "Private listening with earphones",
+      "Recording calls",
+      "Paging the building",
+      "Hands-free talking without holding the handset"
     ],
     "c": 3,
     "ref": "RA 9292; networking and telephony terminology",
-    "n": "[CURRENTNESS-AUDITED / CORRECTED] The source calls IP telephony the latest technology; this is outdated wording because IP telephony has been mainstream for decades."
+    "n": "A headset gives hands-free private listening."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What does a router do?",
+    "o": [
+      "Forwards data packets between networks",
+      "Amplifies TV signals",
+      "Detects smoke",
+      "Stores voice messages"
+    ],
+    "c": 0,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "A router joins a building's LAN to the internet or other networks."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What lets users of a modern phone system send text messages without interrupting a call?",
+    "o": [
+      "Caller ID",
+      "Unified-communications chat",
+      "Speed dial",
+      "Music on hold"
+    ],
+    "c": 1,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "Older systems used message keyboards; now chat is built into the platform."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "How does a LAN differ from a WAN?",
+    "o": [
+      "A LAN is always wireless",
+      "A WAN only works inside one room",
+      "A LAN covers a small area under one organization's control; a WAN covers wide areas",
+      "They are the same thing"
+    ],
+    "c": 2,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "Offices, schools and homes use LANs. WANs link sites across cities or countries."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What do multiple outside lines (trunks) allow?",
+    "o": [
+      "Only one call at a time",
+      "Only internal calls",
+      "Only faxes",
+      "Several calls at the same time"
+    ],
+    "c": 3,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "Each trunk or SIP channel carries one call."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What is IP telephony (VoIP)?",
+    "o": [
+      "Voice calls carried over Internet Protocol networks",
+      "Calls carried only on copper party lines",
+      "Radio broadcasting",
+      "Text messages only"
+    ],
+    "c": 0,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "VoIP has been the mainstream for business phones for many years."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What does an auto-attendant or receptionist do?",
+    "o": [
+      "Stores voice messages only",
+      "Receives and routes incoming calls",
+      "Blocks all calls",
+      "Repairs phone lines"
+    ],
+    "c": 1,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "Automated attendants play menus (\"press 1 for sales\") and route the call."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What is an IP PBX?",
+    "o": [
+      "A copper cable",
+      "A wall outlet",
+      "A server or software that handles private call control over IP",
+      "A telephone handset"
+    ],
+    "c": 2,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "It manages extensions, trunks and features on the data network."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What does hands-free calling allow?",
+    "o": [
+      "Calling without a phone line",
+      "Calling without dialing",
+      "Calling without power",
+      "Talking without holding the handset"
+    ],
+    "c": 3,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "Speakerphones and headsets make calls hands-free."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What does a traditional analog phone line use?",
+    "o": [
+      "One twisted pair of wires (tip and ring)",
+      "Four fiber strands",
+      "A coaxial cable",
+      "Two HDMI cables"
+    ],
+    "c": 0,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "The pair carries voice and ringing signals from the exchange."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What does redial do?",
+    "o": [
+      "Forwards calls to voicemail",
+      "Calls the last dialed number again",
+      "Records the call",
+      "Shows the caller's number"
+    ],
+    "c": 1,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "Common phone-system features: hold music, speed dial, caller ID, voicemail, call log, night mode, transfer, redial, call waiting, conferencing, paging and call restriction."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What are the two wires of a traditional phone pair called?",
+    "o": [
+      "Line and neutral",
+      "Hot and ground",
+      "Tip and ring",
+      "Plus and minus"
+    ],
+    "c": 2,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "The names come from the parts of old switchboard plugs."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What does call restriction (number blocking) do?",
+    "o": [
+      "Blocks all incoming calls",
+      "Records all calls",
+      "Plays music on hold",
+      "Prevents calls to selected numbers, such as overseas"
+    ],
+    "c": 3,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "Common phone-system features: hold music, speed dial, caller ID, voicemail, call log, night mode, transfer, redial, call waiting, conferencing, paging and call restriction."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What does a digital phone line carry?",
+    "o": [
+      "Voice turned into digital data, with signaling",
+      "Only analog voice",
+      "Only electric power",
+      "Only TV signals"
+    ],
+    "c": 0,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "Digital lines are defined by how they encode voice, not by the connector shape."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What does remote voicemail access allow?",
+    "o": [
+      "Recording TV shows",
+      "Checking messages away from the desk",
+      "Blocking callers",
+      "Unlocking doors"
+    ],
+    "c": 1,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "Common phone-system features: hold music, speed dial, caller ID, voicemail, call log, night mode, transfer, redial, call waiting, conferencing, paging and call restriction."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What is the capacity of one T1 voice channel?",
+    "o": [
+      "1.544 Mb/s",
+      "56 Mb/s",
+      "64 kb/s",
+      "8 kb/s"
+    ],
+    "c": 2,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "A T1 (DS1) line carries 24 voice channels of 64 kb/s each, for 1.544 Mb/s with framing. It has largely been replaced by fiber, Ethernet and SIP trunks."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What does call transfer do?",
+    "o": [
+      "Ends the call",
+      "Puts the caller on hold forever",
+      "Records the call",
+      "Sends an active call to another extension"
+    ],
+    "c": 3,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "Common phone-system features: hold music, speed dial, caller ID, voicemail, call log, night mode, transfer, redial, call waiting, conferencing, paging and call restriction."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What was a T1 line traditionally used as?",
+    "o": [
+      "A dedicated digital leased line between the carrier and a customer",
+      "A home cable TV line",
+      "A fire alarm circuit",
+      "A power line"
+    ],
+    "c": 0,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "A T1 (DS1) line carries 24 voice channels of 64 kb/s each, for 1.544 Mb/s with framing. It has largely been replaced by fiber, Ethernet and SIP trunks."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What does a door-entry feature on a phone system do?",
+    "o": [
+      "Counts visitors",
+      "Lets users talk to a visitor and release the door lock",
+      "Turns on the lights",
+      "Plays music at the door"
+    ],
+    "c": 1,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "The phone links to an intercom and electric strike."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What is a basic analog phone?",
+    "o": [
+      "A phone with ten lines",
+      "A video phone",
+      "A one-line phone without transfer or multi-line features",
+      "An IP phone"
+    ],
+    "c": 2,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "It plugs straight into an analog line."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What does battery backup on a phone system do?",
+    "o": [
+      "Boosts the call volume",
+      "Stores voicemail",
+      "Blocks calls",
+      "Keeps it running for a time during a power failure"
+    ],
+    "c": 3,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "Phones are life-safety links, so backup power matters."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What decides the trunk capacity a business needs?",
+    "o": [
+      "The number of calls it must carry at the same time",
+      "The number of employees alone",
+      "The floor area",
+      "The building height"
+    ],
+    "c": 0,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "Call traffic, not headcount alone, sets how many trunks or SIP channels are needed."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What does unified communications combine?",
+    "o": [
+      "Water, gas and power",
+      "Voice, video, messaging, presence and conferencing",
+      "Lighting and HVAC",
+      "Fire alarm and sprinklers"
+    ],
+    "c": 1,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "One platform serves desk phones, computers and mobiles."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What does paging on a phone system do?",
+    "o": [
+      "Blocks outside calls",
+      "Stores messages",
+      "Contacts staff away from their own phone",
+      "Shows caller ID"
+    ],
+    "c": 2,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "Common phone-system features: hold music, speed dial, caller ID, voicemail, call log, night mode, transfer, redial, call waiting, conferencing, paging and call restriction."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What is a LAN?",
+    "o": [
+      "A network that links countries",
+      "A single telephone line",
+      "A TV antenna system",
+      "A network that connects devices within a small area such as an office or school"
+    ],
+    "c": 3,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "LAN means local area network."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What does call waiting do?",
+    "o": [
+      "Signals a second incoming call while a line is in use",
+      "Holds a call forever",
+      "Records the call",
+      "Redials the last number"
+    ],
+    "c": 0,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "Common phone-system features: hold music, speed dial, caller ID, voicemail, call log, night mode, transfer, redial, call waiting, conferencing, paging and call restriction."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What may a WAN use to link sites?",
+    "o": [
+      "Only the building's own cables",
+      "Leased lines, VPNs over the internet, or SD-WAN",
+      "Only Wi-Fi in one room",
+      "Only a telephone handset"
+    ],
+    "c": 1,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "WANs cross public or carrier networks. LANs stay within the owner's premises."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What does conference calling do?",
+    "o": [
+      "Ends all calls",
+      "Blocks callers",
+      "Joins several parties in one call",
+      "Stores messages"
+    ],
+    "c": 2,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "Common phone-system features: hold music, speed dial, caller ID, voicemail, call log, night mode, transfer, redial, call waiting, conferencing, paging and call restriction."
+  },
+  {
+    "s": "Networks and Telephony Features",
+    "q": "What is the status of IP telephony today?",
+    "o": [
+      "It is an untested new idea",
+      "It has been banned",
+      "It works only on analog lines",
+      "It is the mainstream technology for business phone systems"
+    ],
+    "c": 3,
+    "ref": "RA 9292; networking and telephony terminology",
+    "n": "VoIP has been standard for decades and keeps adding features."
   }
 ]
