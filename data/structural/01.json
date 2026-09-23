@@ -93,17 +93,23 @@
   },
   {
     "s": "Statics of Structures",
-    "q": "A simple beam spans 6 m and carries a uniformly distributed load of w = 1000 kN/m over its full length. What reaction develops at the roller support?",
+    "q": "A simple beam spans 6 m and carries a uniform load of 1,000 kN/m over its full length. What reaction develops at the roller support?",
     "img": "../../subjects/structural/quizzes/img/fig-beam-udl.svg",
     "o": [
-      "Zero",
-      "100 kN",
-      "3000 kN",
-      "6000 kN"
+      "6,000 kN",
+      "1,000 kN",
+      "500 kN",
+      "3,000 kN"
     ],
-    "c": 2,
-    "ref": "Beam reactions — UDL on simple span",
-    "n": "Total load = w·L = 1000 × 6 = 6000 kN. By symmetry, each simple support carries half of the total load, so the roller reaction is 3000 kN."
+    "c": 3,
+    "ref": "Statics and strength of materials",
+    "n": "A symmetric load on a simple beam splits equally between the two supports.",
+    "formula": "R = wL ÷ 2",
+    "steps": [
+      "Total load W = wL = 1,000 × 6 = 6,000 kN",
+      "The load is symmetric, so each support takes half",
+      "R = 6,000 ÷ 2 = 3,000 kN"
+    ]
   },
   {
     "s": "Statics of Structures",
@@ -120,17 +126,23 @@
   },
   {
     "s": "Statics of Structures",
-    "q": "A 6 m beam carries a triangularly distributed load that increases from zero at the left end to 60 kN/m at the right end. What is the magnitude of the resultant W, acting through the load diagram's centroid?",
+    "q": "A 6 m beam carries a load that rises from zero at the left end to 60 kN/m at the right end. What is the resultant W of this load?",
     "img": "../../subjects/structural/quizzes/img/fig-triangular-load.svg",
     "o": [
       "360 kN",
-      "180 kN/m",
-      "150 kN",
-      "200 kN/m"
+      "180 kN",
+      "120 kN",
+      "60 kN"
     ],
     "c": 1,
-    "ref": "Equivalent resultant of a triangular load",
-    "n": "The resultant of a triangular load equals the area of the load diagram: ½ × base × height = ½ × 6 m × 60 kN/m = 180 kN, acting at the centroid of the triangle."
+    "ref": "Statics and strength of materials",
+    "n": "The resultant is the area of the load diagram, in kN (not kN/m). It acts through the triangle's centroid.",
+    "formula": "W = ½ × w × L",
+    "steps": [
+      "The load diagram is a triangle",
+      "W = ½ × 60 kN/m × 6 m",
+      "W = 180 kN, acting 4 m from the zero end (2/3 of L)"
+    ]
   },
   {
     "s": "Structural Terminology",
@@ -173,7 +185,7 @@
   },
   {
     "s": "Structural Terminology",
-    "q": "What term describes the transverse bending of an elastic member under a lateral force, found by multiplying the force by its moment arm to the center of moments?",
+    "q": "What is the sideways displacement of a beam from its original position under load called?",
     "o": [
       "Bending moment",
       "Deflection",
@@ -181,8 +193,8 @@
       "Drift"
     ],
     "c": 1,
-    "ref": "Beam behavior — serviceability",
-    "n": "Deflection is the transverse displacement of a beam under load; it is often evaluated alongside the bending moment produced by the applied force and its moment arm."
+    "ref": "Statics and strength of materials",
+    "n": "Deflection is how far the beam moves off its original line. Force times moment arm gives the bending moment, not the deflection. Drift is the sideways movement of a storey."
   },
   {
     "s": "Structural Terminology",
@@ -373,9 +385,9 @@
     "q": "The figure shows transverse loading producing both concave and convex curvature along the beam. Which labeled curve represents positive bending?",
     "img": "../../subjects/structural/quizzes/img/fig-bending.svg",
     "o": [
-      "A",
-      "B",
-      "C",
+      "Curve A",
+      "Curve B",
+      "Curve C",
       "None of the above"
     ],
     "c": 1,
