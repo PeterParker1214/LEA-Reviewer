@@ -3,10 +3,10 @@
     "s": "Elevator Planning",
     "q": "Why are several elevators often grouped around one lobby in larger buildings?",
     "o": [
-      "So riders wait in one place and a group control can dispatch the cars",
-      "So each car can have its own lobby",
-      "So all cars can share one hoistway door",
-      "So the cars need no group control"
+      "So riders wait in one place and cars are dispatched as a group",
+      "So each car can have its own separate lobby",
+      "So all the cars can share one hoistway door",
+      "So the cars can run without any group control"
     ],
     "c": 0,
     "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -55,10 +55,10 @@
     "s": "Elevator Planning",
     "q": "What is an elevator bank?",
     "o": [
-      "A group of elevators serving the same floors from a common lobby",
-      "One elevator serving one floor",
+      "A group of elevators serving the same floors",
+      "One elevator serving one floor only",
       "A sump that drains the elevator pit",
-      "A group of escalators"
+      "A group of escalators between two floors"
     ],
     "c": 0,
     "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -134,9 +134,9 @@
     "q": "In a 50-storey building, what is a sky lobby?",
     "o": [
       "A roof deck that houses the elevator machine room",
-      "A lobby for the freight elevators only",
-      "An upper transfer floor reached by express shuttles, where riders change to local cars",
-      "A lobby for the fire-service elevator only"
+      "A lobby reserved for the freight elevators only",
+      "A transfer floor where riders change from shuttles to local cars",
+      "A lobby reserved for the fire-service elevator only"
     ],
     "c": 2,
     "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -146,10 +146,10 @@
     "s": "Traffic Concepts",
     "q": "In elevator planning, what is handling capacity?",
     "o": [
-      "The rated load of one car in kilograms",
-      "The number of cars in a group",
-      "The number of floors served",
-      "The share of the building population moved in 5 minutes at peak"
+      "The rated load of one car, in kilograms",
+      "The number of cars in the elevator group",
+      "The number of floors the group serves",
+      "The share of the population moved in 5 minutes at peak"
     ],
     "c": 3,
     "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -187,7 +187,7 @@
     "o": [
       "Every car stops at every floor in turn",
       "Idle cars are parked at the top floor",
-      "Riders enter their floor in the lobby and are assigned a car going there",
+      "Riders key in their floor and are assigned a car",
       "Cars are assigned at random to spread wear"
     ],
     "c": 2,
