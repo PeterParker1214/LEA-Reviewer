@@ -86,14 +86,41 @@
         document.head.appendChild(s);
       }
 
+      // Study pages share the desktop dock. Exams keep their focused layout.
+      function watchMessages(user) {
+        if (/\/(chat|run|admin|duel)\.html$/.test(location.pathname) || /\/archive\//.test(location.pathname)) return;
+        if (window.LEAMessenger) { LEAMessenger.installDock(sb, user); return; }
+        if (window.__leaMessengerLoading) return;
+        window.__leaMessengerLoading = true;
+        var self = document.querySelector('script[src*="presence.js"]');
+        if (!self) return;
+        var base = self.getAttribute('src');
+        var css = document.createElement('link');
+        css.rel = 'stylesheet'; css.href = base.replace('presence.js', 'messenger.css');
+        document.head.appendChild(css);
+        function load(name) {
+          return new Promise(function(resolve, reject) {
+            var script = document.createElement('script');
+            script.src = base.replace('presence.js', name + '.js');
+            script.onload = resolve; script.onerror = reject;
+            document.head.appendChild(script);
+          });
+        }
+        load('chat').then(function(){ return load('messenger-model'); })
+          .then(function(){ return load('messenger'); })
+          .then(function(){ return sb.auth.getSession(); })
+          .then(function(res){ if(res.data.session) LEAMessenger.installDock(sb, res.data.session.user); })
+          .catch(function(){ window.__leaMessengerLoading = false; });
+      }
+
       sb.auth.onAuthStateChange(function (event, session) {
         if (event === 'SIGNED_OUT') stop();
-        if (event === 'SIGNED_IN' && session) { resolveUsername(sb, session.user).then(start); watchNotifications(); }
+        if (event === 'SIGNED_IN' && session) { resolveUsername(sb, session.user).then(start); watchNotifications(); watchMessages(session.user); }
       });
 
       sb.auth.getSession().then(function (res) {
         var session = res && res.data && res.data.session;
-        if (session) { resolveUsername(sb, session.user).then(start); watchNotifications(); }
+        if (session) { resolveUsername(sb, session.user).then(start); watchNotifications(); watchMessages(session.user); }
       });
     });
   }

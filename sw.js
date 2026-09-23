@@ -30,7 +30,7 @@
 // the last change (the subject list moving to network-first) shipped without
 // one, which left the old copy sitting in the old cache on every device that
 // had visited before.
-const VERSION = 'lea-v77';
+const VERSION = 'lea-v79';
 const SHELL = VERSION + '-shell';
 const DATA = VERSION + '-data';
 const VENDOR = VERSION + '-vendor';
@@ -51,6 +51,10 @@ const SHELL_URLS = [
   'reminders.html',
   'notifications.html',
   'chat.html',
+  'assets/chat.js?v=79',
+  'assets/messenger-model.js?v=79',
+  'assets/messenger.js?v=79',
+  'assets/messenger.css?v=79',
   'duel.html',
   'user.html',
   'about.html',

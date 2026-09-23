@@ -12,19 +12,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/icons.js?v=78"></script>
-<script src="assets/countdown.js?v=78"></script>
-<script src="assets/theme.js?v=78" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=78"></script>
-<script src="assets/quiz-source.js?v=78"></script>
-<script src="assets/avatar.js?v=78"></script>
-<script src="assets/module-progress.js?v=78"></script>
-<script src="assets/offline.js?v=78"></script>
-<script src="assets/quiz-resume.js?v=78"></script>
-<script src="assets/notifications.js?v=78"></script>
-<script src="assets/audio.js?v=78"></script>
-<script src="assets/reminders.js?v=78"></script>
-<script src="assets/whats-new.js?v=78"></script>
+<script src="assets/icons.js?v=79"></script>
+<script src="assets/countdown.js?v=79"></script>
+<script src="assets/theme.js?v=79" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=79"></script>
+<script src="assets/quiz-source.js?v=79"></script>
+<script src="assets/avatar.js?v=79"></script>
+<script src="assets/module-progress.js?v=79"></script>
+<script src="assets/offline.js?v=79"></script>
+<script src="assets/quiz-resume.js?v=79"></script>
+<script src="assets/notifications.js?v=79"></script>
+<script src="assets/audio.js?v=79"></script>
+<script src="assets/reminders.js?v=79"></script>
+<script src="assets/whats-new.js?v=79"></script>
+<script src="assets/chat.js?v=79"></script>
+<script src="assets/messenger-model.js?v=79"></script>
+<script src="assets/messenger.js?v=79"></script>
 <script>
 // Coming back to Home from anywhere in the app used to flash the sign-in
 // screen for about half a second: the signed-out shell is what the document
@@ -619,7 +622,8 @@
       border-left:3px solid var(--blue-bright); padding:13px 15px; border-radius:10px; }
   }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=78">
+<link rel="stylesheet" href="assets/blueprint.css?v=79">
+<link rel="stylesheet" href="assets/messenger.css?v=79">
 </head>
 <body>
 <div class="wrap">
@@ -989,7 +993,8 @@ function renderHomeNow(){
 
   homeBody.innerHTML =
     '<div class="home-top-bar">' +
-      '<button class="avatar-btn-44" id="openAccountBtn" title="Account" aria-label="Account" data-vt="lea-avatar" data-vt-peer="profile.html">' + faceHtml + '</button>' +
+      '<div class="home-profile-messages"><button class="avatar-btn-44" id="openAccountBtn" title="Account" aria-label="Account" data-vt="lea-avatar" data-vt-peer="profile.html">' + faceHtml + '</button>' +
+      '<button class="icon-btn-44 home-message-btn" type="button" data-open-messages aria-label="Messages">' + LEAMessenger.icon + '<span class="lea-msg-count" data-message-count hidden></span></button></div>' +
       '<div class="home-wordmark"><div class="hw-eyebrow">Peter Parker’s</div><div class="hw-title">LEA Reviewer</div></div>' +
       '<div class="home-top-actions">' +
         '<a class="icon-btn-44 search-btn" href="search.html" title="Search questions" aria-label="Search questions" data-vt="lea-search">' + svgSearch() + '</a>' +
@@ -1176,7 +1181,7 @@ function openAccountSheet(){
   body.innerHTML =
     '<a class="account-row" href="profile.html"><div><div class="ar-label">Profile</div><div class="ar-sub">' + escapeHtml(currentUsername) + '</div></div><span>→</span></a>' +
     '<a class="account-row" href="saved.html"><div><div class="ar-label">Saved</div><div class="ar-sub">' + counts.flagged + ' flagged · ' + counts.notes + ' note' + (counts.notes === 1 ? '' : 's') + '</div></div><span>→</span></a>' +
-    '<a class="account-row" href="chat.html"><div><div class="ar-label">Chat</div><div class="ar-sub">The lobby and your messages</div></div><span>→</span></a>' +
+    '<a class="account-row" href="chat.html"><div><div class="ar-label">Chat</div><div class="ar-sub">Community and your messages</div></div><span>→</span></a>' +
     '<a class="account-row" href="duel.html"><div><div class="ar-label">Duels</div><div class="ar-sub">Ten questions, head to head</div></div><span>→</span></a>' +
     '<a class="account-row" href="mnemonics.html"><div><div class="ar-label">Mnemonics</div><div class="ar-sub">Memory hooks from the LEA Discord</div></div><span>→</span></a>' +
     '<a class="account-row" href="codes.html"><div><div class="ar-label">Code plates</div><div class="ar-sub">Dimensions of the law, drawn to scale</div></div><span>→</span></a>' +
@@ -1455,6 +1460,7 @@ async function showSignedIn(user){
   signedOutShell.classList.add('hidden');
   signedInShell.classList.remove('hidden');
   startPresence(username);
+  LEAMessenger.installDock(sb, user);
   await loadSubjectsCatalogue();
   // Not mid page-transition: redrawing Home would cancel it (assets/nav.js).
   LEANav.afterTransition(renderHome);
@@ -1462,6 +1468,7 @@ async function showSignedIn(user){
 }
 
 function showSignedOut(){
+  LEAMessenger.removeDock();
   if(window.LEANav) LEANav.clearSnaps();
   document.documentElement.classList.remove('lea-resuming');
   stopPresence();
