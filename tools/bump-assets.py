@@ -64,6 +64,10 @@ def iter_html():
         for fn in files:
             if fn.endswith('.html'):
                 yield os.path.join(root, fn)
+    # sw.js precaches the app shell by exact URL, query included. Left out of
+    # the bump, its list sat at ?v=1 while every page asked for ?v=78, so the
+    # precache matched nothing and a first offline visit had no scripts.
+    yield os.path.join(REPO, 'sw.js')
 
 
 def current_versions():

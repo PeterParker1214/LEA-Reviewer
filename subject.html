@@ -384,7 +384,7 @@ async function onSignedIn(user){
   let username = (user.email || '').split('@')[0];
   const { data: profile } = await sb.from('profiles').select('username').eq('id', user.id).single();
   if(profile && profile.username) username = profile.username;
-  authStatus.innerHTML = 'Logged in as <b>' + username + '</b> — <button class="auth-link" id="logoutBtn">Log out</button>';
+  authStatus.innerHTML = 'Logged in as <b>' + String(username).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])) + '</b> — <button class="auth-link" id="logoutBtn">Log out</button>';
   document.getElementById('logoutBtn').addEventListener('click', async () => { await sb.auth.signOut(); });
 }
 

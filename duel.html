@@ -329,7 +329,7 @@ function renderOne(duel){
     '</div>';
 
   const verdict = phase === 'done'
-    ? '<div class="verdict">' + (result === 'draw' ? 'Drawn' : (result === 'win' ? 'You win' : person(theirId).username + ' wins')) + '</div>'
+    ? '<div class="verdict">' + (result === 'draw' ? 'Drawn' : (result === 'win' ? 'You win' : escapeHtml(person(theirId).username) + ' wins')) + '</div>'
     : '<div class="verdict quiet">' + escapeHtml(
         phase === 'declined' ? 'This duel was declined.'
         : phase === 'expired' ? 'Nobody answered within ' + LEADuel.EXPIRY_DAYS + ' days.'
