@@ -30,9 +30,9 @@
     "q": "What is an elevator operating device?",
     "o": [
       "The motor that drives the car",
-      "The buffer in the pit",
-      "A control used by passengers or operators, such as car and hall buttons",
-      "The counterweight"
+      "The spring buffer in the pit",
+      "A control such as car and hall buttons",
+      "The counterweight on its rails"
     ],
     "c": 2,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -55,10 +55,10 @@
     "s": "Elevators",
     "q": "What does a car gate switch on a hydraulic elevator do?",
     "o": [
-      "Stops the car from running unless the car gate is closed",
+      "Stops the car unless the gate is closed",
       "Opens the gate at each floor",
       "Pumps oil to the jack",
-      "Levels the car"
+      "Levels the car at the landing"
     ],
     "c": 0,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -68,10 +68,10 @@
     "s": "Elevators",
     "q": "What do guide shoes do?",
     "o": [
-      "Grip the rails at overspeed",
-      "Run along the guide rails to keep the car and counterweight in line",
-      "Absorb impact in the pit",
-      "Carry power to the car"
+      "Grip the rails when the car overspeeds",
+      "Keep the car and counterweight on the rails",
+      "Absorb impact at the bottom of the pit",
+      "Carry electric power to the moving car"
     ],
     "c": 1,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -96,8 +96,8 @@
     "o": [
       "Yes, always above the hoistway",
       "Yes, always in the basement",
-      "Only hydraulic elevators do",
-      "No; machine-room-less (MRL) elevators put the drive in the hoistway"
+      "Only hydraulic elevators need one",
+      "No; MRL units put the drive in the shaft"
     ],
     "c": 3,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -107,8 +107,8 @@
     "s": "Elevators",
     "q": "What do leveling (creep) switches on a hydraulic elevator do?",
     "o": [
-      "Bring the car back level with the floor if it drifts",
-      "Open the doors",
+      "Relevel the car if it drifts",
+      "Open the doors at each floor",
       "Stop the car at overspeed",
       "Call the car to the lobby"
     ],
@@ -121,8 +121,8 @@
     "q": "Which drive is common in modern machine-room-less traction elevators?",
     "o": [
       "DC motor-generator set",
-      "Permanent-magnet synchronous gearless motor",
-      "Steam engine",
+      "Permanent-magnet gearless motor",
+      "Steam engine and drum",
       "Worm-geared DC motor"
     ],
     "c": 1,
@@ -198,10 +198,10 @@
     "s": "Elevators",
     "q": "What does a compensating chain or rope do?",
     "o": [
-      "Stops the car at overspeed",
-      "Opens the landing doors",
-      "Carries power to the car",
-      "Balances the shifting weight of the hoist ropes in tall buildings"
+      "Stops the car when it overspeeds",
+      "Opens the landing doors at each floor",
+      "Carries electric power to the car",
+      "Balances hoist-rope weight in tall shafts"
     ],
     "c": 3,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -211,10 +211,10 @@
     "s": "Elevators",
     "q": "What is a geared traction machine?",
     "o": [
-      "A motor that drives the sheave through a reduction gearbox",
-      "A motor directly coupled to the sheave",
+      "A motor driving the sheave through gears",
+      "A motor coupled directly to the sheave",
       "A pump that feeds a hydraulic jack",
-      "A drum that winds the rope"
+      "A drum that winds up the hoist rope"
     ],
     "c": 0,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -250,10 +250,10 @@
     "s": "Elevators",
     "q": "What does the governor do?",
     "o": [
-      "Levels the car",
-      "Opens the doors",
-      "Balances the car",
-      "Senses overspeed and trips the safety gear"
+      "Levels the car at each floor",
+      "Opens the car and hall doors",
+      "Balances the car and its load",
+      "Trips the safety at overspeed"
     ],
     "c": 3,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -263,10 +263,10 @@
     "s": "Elevators",
     "q": "What is the elevator car?",
     "o": [
-      "The enclosure and platform that carries the load",
-      "The machine room",
+      "The enclosure that carries the load",
+      "The machine room above the shaft",
       "The counterweight frame",
-      "The pit"
+      "The pit below the lowest landing"
     ],
     "c": 0,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -277,9 +277,9 @@
     "q": "What does safety gear do?",
     "o": [
       "Absorbs impact in the pit",
-      "Grips the guide rails to stop the car at overspeed",
-      "Opens the doors",
-      "Drives the sheave"
+      "Grips the rails at overspeed",
+      "Opens the car doors",
+      "Drives the traction sheave"
     ],
     "c": 1,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -289,10 +289,10 @@
     "s": "Elevators",
     "q": "What decides the number of hoist ropes on a traction elevator?",
     "o": [
-      "A fixed number of two",
+      "A fixed number of two ropes",
       "The building's floor area",
-      "The car's capacity and the design safety factor",
-      "The door width"
+      "Car capacity and safety factor",
+      "The width of the car door"
     ],
     "c": 2,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -303,9 +303,9 @@
     "q": "What does a limit switch do?",
     "o": [
       "Opens the landing doors",
-      "Balances the car",
-      "Pumps oil",
-      "Stops the car if it travels past its normal end positions"
+      "Balances the car and load",
+      "Pumps oil to the jack",
+      "Stops the car past its end limits"
     ],
     "c": 3,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -315,10 +315,10 @@
     "s": "Elevators",
     "q": "What does the counterweight do?",
     "o": [
-      "Balances the car and part of the load, reducing motor work",
-      "Stops the car at overspeed",
-      "Guides the car",
-      "Carries power to the car"
+      "Balances the car, easing motor work",
+      "Stops the car when it overspeeds",
+      "Guides the car along the rails",
+      "Carries electric power to the car"
     ],
     "c": 0,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -328,9 +328,9 @@
     "s": "Elevators",
     "q": "What is the plunger of a hydraulic elevator?",
     "o": [
-      "The oil tank",
-      "The moving part of the jack that lifts the car",
-      "The motor",
+      "The oil storage tank",
+      "The moving part of the jack",
+      "The pump motor",
       "The control valve"
     ],
     "c": 1,
@@ -341,10 +341,10 @@
     "s": "Elevators",
     "q": "What do guide rails do?",
     "o": [
-      "Carry the car's weight to the pit",
-      "Carry power to the car",
-      "Guide the car and counterweight and give the safety gear something to grip",
-      "Hold the doors"
+      "Carry the car's weight down to the pit",
+      "Carry electric power to the car",
+      "Guide the car and take the safety grip",
+      "Hold the landing doors in line"
     ],
     "c": 2,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -380,9 +380,9 @@
     "s": "Elevators",
     "q": "What do the motor, pump and tank of a hydraulic elevator do?",
     "o": [
-      "Drive a traction sheave",
-      "Store oil and pump it under pressure to lift the car",
-      "Cool the machine room",
+      "Drive a traction sheave and ropes",
+      "Pump oil under pressure to lift the car",
+      "Cool the machine room air",
       "Supply water to the building"
     ],
     "c": 1,
@@ -394,9 +394,9 @@
     "q": "What is a machine-room-less (MRL) elevator?",
     "o": [
       "A hydraulic elevator with no pump",
-      "An elevator with no motor",
-      "A traction elevator with its drive and controls in or beside the hoistway",
-      "An escalator"
+      "An elevator with no motor at all",
+      "A traction elevator with its drive in the shaft",
+      "An escalator with a hidden drive"
     ],
     "c": 2,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -408,8 +408,8 @@
     "o": [
       "Open the car doors",
       "Trip the safety gear",
-      "Drive the pump",
-      "Stop the car level at each landing"
+      "Drive the oil pump",
+      "Stop the car level at floors"
     ],
     "c": 3,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -419,10 +419,10 @@
     "s": "Elevators",
     "q": "What is the elevator pit?",
     "o": [
-      "The part of the hoistway below the lowest landing",
+      "The hoistway below the lowest stop",
       "The space above the top landing",
-      "The machine room floor",
-      "The lobby"
+      "The machine room floor slab",
+      "The elevator lobby at grade"
     ],
     "c": 0,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -445,10 +445,10 @@
     "s": "Elevators",
     "q": "What does elevator control equipment do?",
     "o": [
-      "Only lights the car",
+      "Only lights the car interior",
       "Only moves the counterweight",
-      "Runs dispatching, doors, motion and safety circuits",
-      "Only opens the hoistway"
+      "Runs dispatch, doors and motion",
+      "Only opens the hoistway doors"
     ],
     "c": 2,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -484,10 +484,10 @@
     "s": "Elevators",
     "q": "What is a gearless traction machine?",
     "o": [
-      "A motor with a worm gearbox",
-      "A motor directly coupled to the sheave, with no gearbox",
-      "A hydraulic pump",
-      "A drum winder"
+      "A motor driving through a worm gearbox",
+      "A motor coupled straight to the sheave",
+      "A hydraulic pump and jack",
+      "A drum that winds the rope"
     ],
     "c": 1,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -498,9 +498,9 @@
     "q": "What does a buffer do?",
     "o": [
       "Stops the car at overspeed on the rails",
-      "Opens the doors",
-      "Absorbs the energy of the car or counterweight at the bottom of travel",
-      "Levels the car"
+      "Opens the doors at the lowest landing",
+      "Absorbs the car's energy at the bottom",
+      "Levels the car at the lowest landing"
     ],
     "c": 2,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -510,10 +510,10 @@
     "s": "Elevators",
     "q": "What does a gearless machine NOT have?",
     "o": [
-      "A motor",
+      "An electric motor",
       "A traction sheave",
-      "A brake",
-      "A reduction gearbox (such as a worm gear)"
+      "A machine brake",
+      "A reduction gearbox"
     ],
     "c": 3,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -523,8 +523,8 @@
     "s": "Elevators",
     "q": "Where are oil buffers used?",
     "o": [
-      "On faster elevators with more energy to absorb",
-      "Only on slow freight elevators",
+      "On faster elevators",
+      "Only on slow freight cars",
       "On escalators",
       "Only on dumbwaiters"
     ],
@@ -549,10 +549,10 @@
     "s": "Elevators",
     "q": "What is a secondary (deflector) sheave for?",
     "o": [
-      "Driving the car",
-      "Braking the car",
-      "Guiding the ropes to the counterweight or for double wrap",
-      "Sensing overspeed"
+      "Driving the car up and down",
+      "Braking the car at each floor",
+      "Guiding ropes to the counterweight",
+      "Sensing overspeed of the car"
     ],
     "c": 2,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",
@@ -562,10 +562,10 @@
     "s": "Elevators",
     "q": "What do suspension ropes do?",
     "o": [
-      "Carry power to the car",
-      "Trip the safety gear",
-      "Hold the doors",
-      "Carry the car and counterweight over the sheave"
+      "Carry electric power to the car",
+      "Trip the safety gear at overspeed",
+      "Hold the landing doors shut",
+      "Carry the car and counterweight"
     ],
     "c": 3,
     "ref": "RA 8495; ASME A17.1 elevator terminology; Strakosch, The Vertical Transportation Handbook",

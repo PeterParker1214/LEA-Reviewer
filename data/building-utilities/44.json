@@ -3,10 +3,10 @@
     "s": "Central HVAC and Ventilation",
     "q": "What does the chilled-water pump do?",
     "o": [
-      "Circulates chilled water between the chiller and the cooling coils",
-      "Sends condenser water to the cooling tower",
+      "Circulates chilled water to the coils",
+      "Sends condenser water to the tower",
       "Pumps refrigerant through the compressor",
-      "Drains the condensate"
+      "Drains the condensate from the AHU"
     ],
     "c": 0,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -30,9 +30,9 @@
     "q": "What affects how much energy an HVAC system uses?",
     "o": [
       "Only the brand of the equipment",
-      "Only the color of the ducts",
-      "System choice, controls, equipment efficiency, part-load performance and building load",
-      "Only the thermostat setting"
+      "Only the color of the ductwork",
+      "System type, controls, efficiency and load",
+      "Only the thermostat set point"
     ],
     "c": 2,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -69,9 +69,9 @@
     "q": "What does a cooling tower do?",
     "o": [
       "Cools the supply air directly",
-      "Rejects heat from condenser water to the air, mainly by evaporation",
+      "Rejects condenser-water heat by evaporation",
       "Produces chilled water for the rooms",
-      "Stores refrigerant"
+      "Stores the refrigerant charge"
     ],
     "c": 1,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -107,9 +107,9 @@
     "s": "Central HVAC and Ventilation",
     "q": "What is a fan coil unit (FCU)?",
     "o": [
-      "A fan and coil that condition the air of one room or zone",
-      "A central chiller",
-      "A cooling tower",
+      "A fan and coil serving one room",
+      "A central water chiller",
+      "A rooftop cooling tower",
       "A roof exhaust fan"
     ],
     "c": 0,
@@ -120,10 +120,10 @@
     "s": "Central HVAC and Ventilation",
     "q": "What is a constant air volume (CAV) system?",
     "o": [
-      "One that varies airflow to each zone",
-      "One that supplies steady airflow and varies the supply temperature",
-      "One with no fans",
-      "One that uses only windows"
+      "Varying airflow to each zone",
+      "Steady airflow, varying temperature",
+      "A system with no fans at all",
+      "A system using only windows"
     ],
     "c": 1,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -134,9 +134,9 @@
     "q": "Is a toilet exhaust duct a flue?",
     "o": [
       "Yes; all exhaust ducts are flues",
-      "Yes, if it runs to the roof",
-      "No; a flue carries combustion gases, while toilet exhaust carries odors and moisture",
-      "Only in hospitals"
+      "Yes, if it runs up to the roof",
+      "No; flues carry combustion gases",
+      "Only in hospital buildings"
     ],
     "c": 2,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -148,8 +148,8 @@
     "o": [
       "A thermostat on a wall",
       "A wall-mounted fan coil",
-      "A fire damper",
-      "An air outlet or inlet set in a wall opening"
+      "A fire damper in a wall",
+      "An air outlet set in a wall"
     ],
     "c": 3,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -173,9 +173,9 @@
     "q": "What is the limit of an air curtain?",
     "o": [
       "It blocks all air completely",
-      "It reduces air exchange but is not a door or fire separation",
-      "It replaces fire doors",
-      "It works only when doors are closed"
+      "It is not a door or fire barrier",
+      "It replaces required fire doors",
+      "It works only with doors closed"
     ],
     "c": 1,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -187,8 +187,8 @@
     "o": [
       "Sends chilled water to the AHUs",
       "Pumps domestic water to the floors",
-      "Circulates water between a water-cooled chiller and the cooling tower",
-      "Pumps refrigerant"
+      "Circulates water to the cooling tower",
+      "Pumps refrigerant through the chiller"
     ],
     "c": 2,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -198,10 +198,10 @@
     "s": "Central HVAC and Ventilation",
     "q": "What is passive cooling?",
     "o": [
-      "Using a chiller at night only",
-      "Using ceiling fans only",
-      "Using split units on low speed",
-      "Using form, shading, ventilation and mass to reduce cooling loads without machines"
+      "Running a chiller at night only",
+      "Using ceiling fans in every room",
+      "Running split units on low speed",
+      "Cutting cooling loads by design, not machines"
     ],
     "c": 3,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -211,10 +211,10 @@
     "s": "Central HVAC and Ventilation",
     "q": "What is centralized air conditioning?",
     "o": [
-      "A central plant that conditions many spaces through distribution systems",
+      "A central plant serving many spaces",
       "A window unit in every room",
       "A portable air conditioner",
-      "Natural ventilation"
+      "Natural cross ventilation"
     ],
     "c": 0,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -251,9 +251,9 @@
     "q": "Where are cooling towers usually placed?",
     "o": [
       "Inside the mechanical room",
-      "In the basement with no openings",
+      "In a closed basement room",
       "Inside the AHU room",
-      "Outdoors, often on the roof or at grade, with free airflow"
+      "Outdoors, with free airflow"
     ],
     "c": 3,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -276,10 +276,10 @@
     "s": "Central HVAC and Ventilation",
     "q": "What does a flue carry?",
     "o": [
-      "Toilet exhaust",
-      "Combustion gases from fuel-burning equipment to the outdoors",
+      "Toilet exhaust air",
+      "Combustion gases to outdoors",
       "Kitchen grease vapors",
-      "Supply air"
+      "Conditioned supply air"
     ],
     "c": 1,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -289,10 +289,10 @@
     "s": "Central HVAC and Ventilation",
     "q": "What does ductwork do?",
     "o": [
-      "Carries chilled water",
-      "Carries refrigerant",
-      "Carries supply, return and exhaust air",
-      "Carries condenser water"
+      "Chilled water to the coils",
+      "Refrigerant to the units",
+      "Supply, return and exhaust air",
+      "Condenser water to the tower"
     ],
     "c": 2,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -328,10 +328,10 @@
     "s": "Central HVAC and Ventilation",
     "q": "What does a chiller do?",
     "o": [
-      "Rejects heat directly to outdoor air by evaporation",
-      "Produces chilled water by moving heat from the water loop to its refrigeration circuit",
-      "Blows cool air into rooms",
-      "Stores ice only"
+      "Rejects heat straight to outdoor air by evaporation",
+      "Makes chilled water using a refrigeration circuit",
+      "Blows cool air directly into the rooms",
+      "Stores ice for use the next day only"
     ],
     "c": 1,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -342,9 +342,9 @@
     "q": "Does a CAV system use thermostats?",
     "o": [
       "No; CAV has no temperature control",
-      "Only for heating",
-      "Yes; airflow stays constant while supply temperature or equipment output changes",
-      "Only in hospitals"
+      "Only when the system is heating",
+      "Yes; supply temperature changes instead",
+      "Only in hospital buildings"
     ],
     "c": 2,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -354,10 +354,10 @@
     "s": "Central HVAC and Ventilation",
     "q": "Where is the heat absorbed indoors finally rejected in an AC system?",
     "o": [
-      "Into the ceiling space",
-      "Into the return duct",
-      "Into the floor slab",
-      "Outdoors, at the condenser or cooling tower"
+      "Into the ceiling space above",
+      "Into the return air duct",
+      "Into the concrete floor slab",
+      "Outdoors, at the condenser or tower"
     ],
     "c": 3,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -381,9 +381,9 @@
     "q": "What is active cooling?",
     "o": [
       "Using shading and thermal mass only",
-      "Using powered equipment such as fans and air conditioners",
-      "Using windows only",
-      "Using landscaping only"
+      "Using powered fans and air conditioners",
+      "Using open windows only",
+      "Using trees and landscaping only"
     ],
     "c": 1,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -394,9 +394,9 @@
     "q": "Where is chiller plant equipment usually housed?",
     "o": [
       "In occupied office rooms",
-      "Inside elevator shafts",
-      "In a mechanical room or plant area chosen in design",
-      "In stairwells"
+      "Inside the elevator shafts",
+      "In a mechanical room or plant area",
+      "Inside the exit stairwells"
     ],
     "c": 2,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -408,8 +408,8 @@
     "o": [
       "Yes; all indoor air goes to the tower",
       "Yes; through the wall registers",
-      "Only at night",
-      "No; return air goes back to the AHU, and only condenser water goes to the tower"
+      "Only at night, when the AHU is off",
+      "No; only condenser water goes there"
     ],
     "c": 3,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -419,7 +419,7 @@
     "s": "Central HVAC and Ventilation",
     "q": "What is natural ventilation?",
     "o": [
-      "Moving outdoor air through openings by wind and stack effect",
+      "Wind and stack effect through openings",
       "Moving air with fans and ducts",
       "Cooling air with a chiller",
       "Recirculating air through an AHU"
@@ -432,9 +432,9 @@
     "s": "Central HVAC and Ventilation",
     "q": "What is an air handling unit (AHU)?",
     "o": [
-      "A cooling tower",
-      "A unit with fans, filters and coils that conditions and circulates air",
-      "A chiller",
+      "A rooftop cooling tower",
+      "A unit that filters, cools and moves air",
+      "A water-cooled chiller",
       "A condenser-water pump"
     ],
     "c": 1,
@@ -458,10 +458,10 @@
     "s": "Central HVAC and Ventilation",
     "q": "What do kitchen hoods and ducts exhaust?",
     "o": [
-      "Only toilet odors",
+      "Only toilet odors and moisture",
       "Combustion gases from boilers",
-      "Supply air",
-      "Heat, grease-laden vapors and smoke from cooking"
+      "Conditioned supply air",
+      "Heat, grease vapors and smoke"
     ],
     "c": 3,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -471,9 +471,9 @@
     "s": "Central HVAC and Ventilation",
     "q": "What is a ceiling register?",
     "o": [
-      "An air outlet or inlet at a ceiling opening",
-      "A ceiling fan",
-      "A light fixture",
+      "An air outlet in the ceiling",
+      "A ceiling-mounted fan",
+      "A recessed light fixture",
       "A sprinkler head"
     ],
     "c": 0,
@@ -484,10 +484,10 @@
     "s": "Central HVAC and Ventilation",
     "q": "Can a CAV system have room temperature control?",
     "o": [
-      "No, never",
-      "Yes, through zone reheat or other controls, depending on design",
+      "No, never under any design",
+      "Yes, through reheat or zone controls",
       "Only if it is a VAV system",
-      "Only with windows open"
+      "Only with the windows open"
     ],
     "c": 1,
     "ref": "ASHRAE HVAC fundamentals; RA 8495; Philippine Green Building Code",
@@ -497,9 +497,9 @@
     "s": "Central HVAC and Ventilation",
     "q": "What is an air curtain?",
     "o": [
-      "A fabric curtain",
-      "A fire shutter",
-      "A strong air stream across a doorway that reduces air and insect transfer",
+      "A heavy fabric curtain",
+      "A rolling fire shutter",
+      "An air stream across a doorway",
       "A glass partition"
     ],
     "c": 2,
