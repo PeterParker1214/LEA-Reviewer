@@ -1,369 +1,391 @@
 [
   {
     "s": "Shear Design",
-    "q": "Which statement is correct regarding fy meaning in shear equation?",
+    "q": "In the stirrup spacing formula s = Av fyt d / Vs, what is fyt?",
     "o": [
-      "Yield strength of web/shear reinforcement.",
-      "Vs = Vu/φ − Vc.",
-      "Closed transverse loop around longitudinal reinforcement.",
-      "Concrete joist construction is listed as an exception."
+      "The yield strength of the stirrup steel",
+      "The yield strength of the main bars",
+      "The concrete strength",
+      "The tensile strength of concrete"
     ],
     "c": 0,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Yield strength of web/shear reinforcement."
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "fyt is the yield strength of the transverse (shear) reinforcement. Stirrups are often a lower grade than the main bars, so the two must not be mixed up."
   },
   {
     "s": "Shear Design",
-    "q": "Which statement is correct regarding minimum web reinforcement?",
+    "q": "Under NSCP 2015, what is the minimum area of shear reinforcement Av,min where stirrups are required?",
     "o": [
-      "Lecture includes beams with total depth less than 250 mm among exceptions.",
-      "Lecture gives Av = b s /(3 fy).",
-      "Lecture uses φ = 0.85 for shear.",
-      "Beam failure mode associated with excessive shear/diagonal tension."
+      "bw s / fyt",
+      "The larger of 0.062√f'c bw s/fyt and 0.35 bw s/fyt",
+      "0.5 bw d / fyt",
+      "Zero if the concrete carries the shear"
     ],
     "c": 1,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Lecture gives Av = b s /(3 fy)."
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "The two terms make sure there is enough steel to carry the load when the first diagonal crack forms. The older code used bw s / (3fy), which is close to the 0.35 term."
   },
   {
     "s": "Shear Design",
-    "q": "Which statement is correct regarding required steel shear contribution?",
+    "q": "How is the shear the stirrups must carry, Vs, found in design?",
     "o": [
-      "Area of shear reinforcement within spacing s.",
-      "Stirrup with multiple effective vertical legs crossing potential shear cracks.",
-      "For rectangular beams b is beam width; for T-beams it is web width.",
-      "Vs = Vu/φ − Vc."
+      "Vs = Vu + Vc",
+      "Vs = φVu − Vc",
+      "Vs = Vu/φ − Vc",
+      "Vs = Vc − Vu"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "The nominal strength needed is Vu/φ. The concrete supplies Vc, and the stirrups must supply the rest."
+  },
+  {
+    "s": "Shear Design",
+    "q": "Under NSCP 2015, what strength reduction factor φ applies to shear?",
+    "o": [
+      "0.85",
+      "0.90",
+      "0.65",
+      "0.75"
     ],
     "c": 3,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Vs = Vu/φ − Vc."
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "φ for shear is 0.75. The older code used 0.85 with different load factors; mixing the old φ with the new load factors is unsafe."
   },
   {
     "s": "Shear Design",
-    "q": "Which statement is correct regarding source shear phi?",
+    "q": "For a T-beam, which width is used as bw in the shear equations?",
     "o": [
-      "Transverse reinforcement such as stirrups used to carry shear and control diagonal cracking.",
-      "Concrete joist construction is listed as an exception.",
-      "Lecture uses φ = 0.85 for shear.",
-      "Lecture says stirrups are needed when Vu > 0.5 φVc under its older criterion."
-    ],
-    "c": 2,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Lecture uses φ = 0.85 for shear."
-  },
-  {
-    "s": "Shear Design",
-    "q": "Which statement is correct regarding web width b?",
-    "o": [
-      "Center-to-center spacing of stirrups.",
-      "For rectangular beams b is beam width; for T-beams it is web width.",
-      "Lecture includes beams with total depth less than 250 mm among exceptions.",
-      "Vn = Vc + Vs in the lecture."
-    ],
-    "c": 1,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] For rectangular beams b is beam width; for T-beams it is web width."
-  },
-  {
-    "s": "Shear Design",
-    "q": "Which statement is correct regarding source joist exception?",
-    "o": [
-      "Lecture gives Av = 2As = 157 mm² for a 10 mm two-leg stirrup.",
-      "Stirrup with multiple effective vertical legs crossing potential shear cracks.",
-      "Concrete joist construction is listed as an exception.",
-      "Lecture gives Vc = (1/6)√f'c b d in its SI-era formulation."
-    ],
-    "c": 2,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Concrete joist construction is listed as an exception."
-  },
-  {
-    "s": "Shear Design",
-    "q": "Which statement is correct regarding source shallow-beam exception?",
-    "o": [
-      "Lecture includes beams with total depth less than 250 mm among exceptions.",
-      "s = Av fy d / Vs = Av fy d /(Vu/φ − Vc).",
-      "Lecture defines Vc as shear strength contributed by concrete.",
-      "Transverse reinforcement such as stirrups used to carry shear and control diagonal cracking."
+      "The web width",
+      "The effective flange width",
+      "The slab span",
+      "The total width of the floor"
     ],
     "c": 0,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Lecture includes beams with total depth less than 250 mm among exceptions."
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "Shear is carried by the web, so bw is the web width. For a rectangular beam, bw is simply the beam width."
   },
   {
     "s": "Shear Design",
-    "q": "Which statement is correct regarding multi-leg stirrup?",
+    "q": "Under NSCP 2015, which construction is exempt from the minimum stirrup requirement?",
     "o": [
-      "Center-to-center spacing of stirrups.",
-      "Lecture includes the greater of 2.5× flange thickness or one-half web width in its exception wording.",
-      "The source Vc equation and φ=0.85 are older code values and not the latest ACI shear-design formulation.",
-      "Stirrup with multiple effective vertical legs crossing potential shear cracks."
-    ],
-    "c": 3,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Stirrup with multiple effective vertical legs crossing potential shear cracks."
-  },
-  {
-    "s": "Shear Design",
-    "q": "Which statement is correct regarding shear reinforcement?",
-    "o": [
-      "Lecture gives Av = 2As = 157 mm² for a 10 mm two-leg stirrup.",
-      "Slabs and footings are listed as an exception in the lecture's older provision.",
-      "Distance from extreme compression fiber to centroid of tension reinforcement in ordinary flexural notation.",
-      "Transverse reinforcement such as stirrups used to carry shear and control diagonal cracking."
-    ],
-    "c": 3,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Transverse reinforcement such as stirrups used to carry shear and control diagonal cracking."
-  },
-  {
-    "s": "Shear Design",
-    "q": "Which statement is correct regarding s meaning?",
-    "o": [
-      "These shear-reinforcement exceptions are source-era provisions; current ACI CODE-318-25 requirements must be checked for actual design.",
-      "Center-to-center spacing of stirrups.",
-      "s = Av fy d / Vs = Av fy d /(Vu/φ − Vc).",
-      "U-shaped transverse reinforcement."
+      "Deep transfer girders",
+      "Concrete joist construction",
+      "Beams deeper than 600 mm",
+      "Cantilever beams"
     ],
     "c": 1,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Center-to-center spacing of stirrups."
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "Joists are closely spaced and share load, so the code exempts them, together with slabs, footings and very shallow beams."
   },
   {
     "s": "Shear Design",
-    "q": "Which statement is correct regarding 10 mm two-leg stirrup area example?",
+    "q": "Under NSCP 2015, below what overall depth is a beam exempt from the minimum stirrup requirement?",
     "o": [
-      "The source Vc equation and φ=0.85 are older code values and not the latest ACI shear-design formulation.",
-      "Lecture gives Av = 2As = 157 mm² for a 10 mm two-leg stirrup.",
-      "Can be brittle and occur with less warning than ductile flexural yielding.",
-      "Lecture includes beams whose depth is not greater than 2.5 times flange thickness under the listed condition."
-    ],
-    "c": 1,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Lecture gives Av = 2As = 157 mm² for a 10 mm two-leg stirrup."
-  },
-  {
-    "s": "Shear Design",
-    "q": "Which statement is correct regarding source stirrup spacing equation?",
-    "o": [
-      "Distance from extreme compression fiber to centroid of tension reinforcement in ordinary flexural notation.",
-      "s = Av fy d / Vs = Av fy d /(Vu/φ − Vc).",
-      "Lecture says shear reinforcement is provided in reinforced-concrete flexural members except listed source-era exceptions.",
-      "Yield strength of web/shear reinforcement."
-    ],
-    "c": 1,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] s = Av fy d / Vs = Av fy d /(Vu/φ − Vc)."
-  },
-  {
-    "s": "Shear Design",
-    "q": "Which statement is correct regarding shear equation warning?",
-    "o": [
-      "Lecture gives Av = b s /(3 fy).",
-      "The source Vc equation and φ=0.85 are older code values and not the latest ACI shear-design formulation.",
-      "These shear-reinforcement exceptions are source-era provisions; current ACI CODE-318-25 requirements must be checked for actual design.",
-      "Closed transverse loop around longitudinal reinforcement."
-    ],
-    "c": 1,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[CURRENTNESS WARNING] The source Vc equation and φ=0.85 are older code values and not the latest ACI shear-design formulation."
-  },
-  {
-    "s": "Shear Design",
-    "q": "Which statement is correct regarding effective depth d?",
-    "o": [
-      "Vs = Vu/φ − Vc.",
-      "Lecture includes beams whose depth is not greater than 2.5 times flange thickness under the listed condition.",
-      "Beam failure mode associated with excessive shear/diagonal tension.",
-      "Distance from extreme compression fiber to centroid of tension reinforcement in ordinary flexural notation."
-    ],
-    "c": 3,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Distance from extreme compression fiber to centroid of tension reinforcement in ordinary flexural notation."
-  },
-  {
-    "s": "Shear Design",
-    "q": "Which statement is correct regarding exception warning?",
-    "o": [
-      "Lecture uses φ = 0.85 for shear.",
-      "Lecture says shear reinforcement is provided in reinforced-concrete flexural members except listed source-era exceptions.",
-      "These shear-reinforcement exceptions are source-era provisions; current ACI CODE-318-25 requirements must be checked for actual design.",
-      "Area of shear reinforcement within spacing s."
+      "400 mm",
+      "600 mm",
+      "250 mm",
+      "150 mm"
     ],
     "c": 2,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[CURRENTNESS WARNING] These shear-reinforcement exceptions are source-era provisions; current ACI CODE-318-25 requirements must be checked for actual design."
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "Beams with h ≤ 250 mm are exempt, because shallow members behave more like slabs."
   },
   {
     "s": "Shear Design",
-    "q": "Which statement is correct regarding source flange-thickness exception?",
+    "q": "Why are multi-leg stirrups used in wide or heavily loaded beams?",
     "o": [
-      "Closed transverse loop around longitudinal reinforcement.",
-      "Lecture includes beams whose depth is not greater than 2.5 times flange thickness under the listed condition.",
-      "Lecture says stirrups are needed when Vu > 0.5 φVc under its older criterion.",
-      "For rectangular beams b is beam width; for T-beams it is web width."
-    ],
-    "c": 1,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Lecture includes beams whose depth is not greater than 2.5 times flange thickness under the listed condition."
-  },
-  {
-    "s": "Shear Design",
-    "q": "Which statement is correct regarding source general requirement?",
-    "o": [
-      "Concrete joist construction is listed as an exception.",
-      "Beam failure mode associated with excessive shear/diagonal tension.",
-      "Vn = Vc + Vs in the lecture.",
-      "Lecture says shear reinforcement is provided in reinforced-concrete flexural members except listed source-era exceptions."
+      "To make the beam lighter",
+      "To replace the main bars",
+      "To reduce the concrete cover",
+      "More legs cross each diagonal crack, adding shear area and holding more bars"
     ],
     "c": 3,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Lecture says shear reinforcement is provided in reinforced-concrete flexural members except listed source-era exceptions."
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "A four-leg stirrup doubles Av at the same spacing and ties the interior bars too. Wide beams need legs spaced not far apart across the width."
   },
   {
     "s": "Shear Design",
-    "q": "Which statement is correct regarding closed stirrup?",
+    "q": "What does shear reinforcement do in a concrete beam?",
     "o": [
-      "Lecture gives Vc = (1/6)√f'c b d in its SI-era formulation.",
-      "Closed transverse loop around longitudinal reinforcement.",
-      "Lecture includes beams with total depth less than 250 mm among exceptions.",
-      "Area of shear reinforcement within spacing s."
-    ],
-    "c": 1,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Closed transverse loop around longitudinal reinforcement.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+U3RpcnJ1cCBBcnJhbmdlbWVudHM8L3RleHQ+CjxyZWN0IHg9IjEwMCIgeT0iMTIwIiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjI1MCIgY2xhc3M9ImYiLz48cmVjdCB4PSIxMzUiIHk9IjE1NSIgd2lkdGg9IjExMCIgaGVpZ2h0PSIxODAiIGNsYXNzPSJ0aCIvPgo8cmVjdCB4PSIzNjAiIHk9IjEyMCIgd2lkdGg9IjE4MCIgaGVpZ2h0PSIyNTAiIGNsYXNzPSJmMiIvPjxwYXRoIGQ9Ik0zOTUgMzM1IFYxNTUgSDUwNSBWMzM1IiBjbGFzcz0idGgiLz4KPHJlY3QgeD0iNjIwIiB5PSIxMjAiIHdpZHRoPSIxODAiIGhlaWdodD0iMjUwIiBjbGFzcz0iZiIvPjxwYXRoIGQ9Ik02NTUgMzM1IFYxNTUgSDcxMCBWMzM1IE03MTAgMTU1IEg3NjUgVjMzNSIgY2xhc3M9InRoIi8+Cjx0ZXh0IHg9IjI3MCIgeT0iNDMwIiBjbGFzcz0icyI+Y2xvc2VkIC8gVS1zaGFwZWQgLyBtdWx0aS1sZWcgYXJyYW5nZW1lbnRzPC90ZXh0Pjwvc3ZnPg=="
-  },
-  {
-    "s": "Shear Design",
-    "q": "Which statement is correct regarding shear failure?",
-    "o": [
-      "Stirrup with multiple effective vertical legs crossing potential shear cracks.",
-      "Lecture says stirrups are needed when Vu > 0.5 φVc under its older criterion.",
-      "Beam failure mode associated with excessive shear/diagonal tension.",
-      "Lecture defines Vc as shear strength contributed by concrete."
-    ],
-    "c": 2,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Beam failure mode associated with excessive shear/diagonal tension.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+U2hlYXIgRmFpbHVyZSBDb25jZXB0PC90ZXh0Pgo8cmVjdCB4PSIxMDAiIHk9IjE1MCIgd2lkdGg9IjcwMCIgaGVpZ2h0PSIyMjAiIGNsYXNzPSJmIi8+PHBhdGggZD0iTTE4MCAzNTAgTDM2MCAxNzAiIGNsYXNzPSJsIi8+PHBhdGggZD0iTTcyMCAzNTAgTDU0MCAxNzAiIGNsYXNzPSJsIi8+Cjx0ZXh0IHg9IjMzMCIgeT0iNDMwIiBjbGFzcz0icyI+ZGlhZ29uYWwgY3JhY2tpbmcgY2FuIHByb2R1Y2UgYnJpdHRsZSBzaGVhciBmYWlsdXJlPC90ZXh0Pjwvc3ZnPg=="
-  },
-  {
-    "s": "Shear Design",
-    "q": "Which statement is correct regarding av meaning?",
-    "o": [
-      "Vn = Vc + Vs in the lecture.",
-      "Area of shear reinforcement within spacing s.",
-      "Transverse reinforcement such as stirrups used to carry shear and control diagonal cracking.",
-      "Lecture includes the greater of 2.5× flange thickness or one-half web width in its exception wording."
-    ],
-    "c": 1,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Area of shear reinforcement within spacing s."
-  },
-  {
-    "s": "Shear Design",
-    "q": "Which statement is correct regarding source stirrup-needed trigger?",
-    "o": [
-      "Slabs and footings are listed as an exception in the lecture's older provision.",
-      "Lecture gives Vc = (1/6)√f'c b d in its SI-era formulation.",
-      "Lecture says stirrups are needed when Vu > 0.5 φVc under its older criterion.",
-      "Center-to-center spacing of stirrups."
-    ],
-    "c": 2,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Lecture says stirrups are needed when Vu > 0.5 φVc under its older criterion."
-  },
-  {
-    "s": "Shear Design",
-    "q": "Which statement is correct regarding nominal shear strength?",
-    "o": [
-      "Lecture gives Av = 2As = 157 mm² for a 10 mm two-leg stirrup.",
-      "Lecture defines Vc as shear strength contributed by concrete.",
-      "U-shaped transverse reinforcement.",
-      "Vn = Vc + Vs in the lecture."
-    ],
-    "c": 3,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Vn = Vc + Vs in the lecture.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+U291cmNlLUVyYSBTaGVhciBSZWxhdGlvbnNoaXBzPC90ZXh0Pgo8cmVjdCB4PSIxMDAiIHk9IjExMCIgd2lkdGg9IjcwMCIgaGVpZ2h0PSIzMDAiIGNsYXNzPSJmIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iMTc1IiBjbGFzcz0icyI+Vm4gPSBWYyArIFZzPC90ZXh0Pjx0ZXh0IHg9IjE2MCIgeT0iMjMwIiBjbGFzcz0icyI+VnMgPSBWdS/PhiDiiJIgVmM8L3RleHQ+Cjx0ZXh0IHg9IjE2MCIgeT0iMjg1IiBjbGFzcz0icyI+cyA9IEF2IGZ5IGQgLyBWczwvdGV4dD48dGV4dCB4PSIxNjAiIHk9IjM0MCIgY2xhc3M9InMiPnNvdXJjZSBWYyA9ICgxLzYp4oiaZidjIGIgZDwvdGV4dD48L3N2Zz4="
-  },
-  {
-    "s": "Shear Design",
-    "q": "Which statement is correct regarding source vc equation?",
-    "o": [
-      "Can be brittle and occur with less warning than ductile flexural yielding.",
-      "Lecture includes the greater of 2.5× flange thickness or one-half web width in its exception wording.",
-      "Lecture gives Vc = (1/6)√f'c b d in its SI-era formulation.",
-      "s = Av fy d / Vs = Av fy d /(Vu/φ − Vc)."
-    ],
-    "c": 2,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Lecture gives Vc = (1/6)√f'c b d in its SI-era formulation."
-  },
-  {
-    "s": "Shear Design",
-    "q": "Which statement is correct regarding concrete shear vc?",
-    "o": [
-      "The source Vc equation and φ=0.85 are older code values and not the latest ACI shear-design formulation.",
-      "Slabs and footings are listed as an exception in the lecture's older provision.",
-      "Lecture defines Vc as shear strength contributed by concrete.",
-      "Yield strength of web/shear reinforcement."
-    ],
-    "c": 2,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Lecture defines Vc as shear strength contributed by concrete."
-  },
-  {
-    "s": "Shear Design",
-    "q": "Which statement is correct regarding source half-web-width exception?",
-    "o": [
-      "Lecture gives Av = b s /(3 fy).",
-      "Lecture includes the greater of 2.5× flange thickness or one-half web width in its exception wording.",
-      "U-shaped transverse reinforcement.",
-      "Distance from extreme compression fiber to centroid of tension reinforcement in ordinary flexural notation."
-    ],
-    "c": 1,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Lecture includes the greater of 2.5× flange thickness or one-half web width in its exception wording."
-  },
-  {
-    "s": "Shear Design",
-    "q": "Which statement is correct regarding source slab/footing exception?",
-    "o": [
-      "Slabs and footings are listed as an exception in the lecture's older provision.",
-      "Can be brittle and occur with less warning than ductile flexural yielding.",
-      "Vs = Vu/φ − Vc.",
-      "These shear-reinforcement exceptions are source-era provisions; current ACI CODE-318-25 requirements must be checked for actual design."
+      "It carries tension across diagonal cracks and controls their width",
+      "It carries the main bending tension",
+      "It carries the compression",
+      "It stops shrinkage in the slab"
     ],
     "c": 0,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Slabs and footings are listed as an exception in the lecture's older provision."
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "Diagonal cracks form near the supports where shear is high. Stirrups crossing those cracks hold them together."
   },
   {
     "s": "Shear Design",
-    "q": "Which statement is correct regarding u-stirrup?",
+    "q": "In shear design, what does s stand for?",
     "o": [
-      "Lecture uses φ = 0.85 for shear.",
-      "Yield strength of web/shear reinforcement.",
-      "U-shaped transverse reinforcement.",
-      "Lecture includes beams whose depth is not greater than 2.5 times flange thickness under the listed condition."
+      "The span of the beam",
+      "The center-to-center spacing of the stirrups",
+      "The slab thickness",
+      "The cover"
     ],
-    "c": 2,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] U-shaped transverse reinforcement."
+    "c": 1,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "s is measured along the beam from one stirrup to the next. Closer spacing means more steel crossing each crack."
   },
   {
     "s": "Shear Design",
-    "q": "Which statement is correct regarding shear-failure concern?",
+    "q": "What is Av for a two-leg 10 mm stirrup?",
     "o": [
-      "Lecture says shear reinforcement is provided in reinforced-concrete flexural members except listed source-era exceptions.",
-      "Lecture gives Av = b s /(3 fy).",
-      "Can be brittle and occur with less warning than ductile flexural yielding.",
-      "For rectangular beams b is beam width; for T-beams it is web width."
+      "78.5 mm²",
+      "314 mm²",
+      "157 mm²",
+      "100 mm²"
     ],
     "c": 2,
-    "ref": "ACI CODE-318-25 current context / source-era shear provisions",
-    "n": "[SOURCE-ERA FACT — AUDITED] Can be brittle and occur with less warning than ductile flexural yielding."
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "One 10 mm bar has an area of π(10)²/4 = 78.5 mm². A closed or U stirrup has two legs crossing the crack, so Av = 2 × 78.5 = 157 mm².",
+    "formula": "Av = legs × πd²/4",
+    "steps": [
+      "Area of one 10 mm bar = π × 10² / 4 = 78.5 mm²",
+      "Two legs",
+      "Av = 2 × 78.5 = 157 mm²"
+    ]
+  },
+  {
+    "s": "Shear Design",
+    "q": "A beam needs Vs = 100 kN. It uses two-leg 10 mm stirrups (Av = 157 mm²), fyt = 275 MPa and d = 450 mm. What stirrup spacing does strength require?",
+    "o": [
+      "About 97 mm",
+      "About 388 mm",
+      "About 275 mm",
+      "About 194 mm"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "s = Av fyt d / Vs = 157 × 275 × 450 / 100,000 = 194 mm. The code maximum (d/2 = 225 mm) must also be checked; here strength governs, so use about 190 mm.",
+    "formula": "s = Av fyt d / Vs",
+    "steps": [
+      "Av fyt d = 157 × 275 × 450 = 19,428,750 N·mm",
+      "Vs = 100 kN = 100,000 N",
+      "s = 19,428,750 / 100,000 = 194 mm",
+      "Check s ≤ d/2 = 225 mm: OK"
+    ]
+  },
+  {
+    "s": "Shear Design",
+    "q": "Under NSCP 2015, what is the maximum stirrup spacing where Vs is not more than 0.33√f'c bw d?",
+    "o": [
+      "d/2, but not more than 600 mm",
+      "d/4, but not more than 300 mm",
+      "d, but not more than 1,000 mm",
+      "16 bar diameters"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "Every 45° crack must be crossed by at least one stirrup, so spacing is limited to d/2 (600 mm maximum). When Vs is high the limit halves to d/4 (300 mm maximum)."
+  },
+  {
+    "s": "Shear Design",
+    "q": "What is the effective depth d of a beam?",
+    "o": [
+      "The total depth of the beam",
+      "The distance from the extreme compression fibre to the centroid of the tension steel",
+      "The depth of the slab",
+      "The distance from the top bars to the bottom bars"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "d is less than the overall height h by the cover, the stirrup and half the bar size. For a single layer, d ≈ h − 60 to 70 mm."
+  },
+  {
+    "s": "Shear Design",
+    "q": "Under NSCP 2015, what is the maximum Vs a beam section may be designed for?",
+    "o": [
+      "0.17√f'c bw d",
+      "Any amount, if enough stirrups are provided",
+      "0.66√f'c bw d",
+      "0.33√f'c bw d"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "Beyond Vs = 0.66√f'c bw d, the concrete struts between cracks would crush no matter how many stirrups are added, so the section must be enlarged."
+  },
+  {
+    "s": "Shear Design",
+    "q": "Under NSCP 2015, when is a T-beam exempt from the minimum stirrup requirement?",
+    "o": [
+      "Always",
+      "Never",
+      "When it is simply supported",
+      "When its overall depth is no more than the larger of 2.5 times the flange thickness and half the web width"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "Very shallow T-beams, whose depth is small compared with the flange or web, act more like thickened slabs, so the minimum stirrups are waived."
+  },
+  {
+    "s": "Shear Design",
+    "q": "Under NSCP 2015, where must minimum stirrups be provided in ordinary beams?",
+    "o": [
+      "Wherever the factored shear Vu exceeds 0.5φVc",
+      "Only at midspan",
+      "Only where Vu exceeds φVc",
+      "Nowhere, if the concrete is strong"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "Even when concrete alone could carry the shear, a minimum amount of stirrups is required once Vu > 0.5φVc, to give ductility if a diagonal crack opens."
+  },
+  {
+    "s": "Shear Design",
+    "q": "Why are closed stirrups used when a beam carries torsion?",
+    "o": [
+      "They are cheaper",
+      "Torsion causes spiral cracks around all faces, so the stirrup must go all the way around",
+      "They carry the bending moment",
+      "They are easier to bend"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "Torsional shear flows around the perimeter. Open U-stirrups cannot carry it across the top, so closed stirrups with 135° hooks are required."
+  },
+  {
+    "s": "Shear Design",
+    "q": "What characterizes a shear (diagonal tension) failure in a concrete beam?",
+    "o": [
+      "Vertical cracks at midspan that widen slowly",
+      "Crushing at the top of midspan",
+      "An inclined crack near the support that opens suddenly",
+      "Rusting of the stirrups"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "Diagonal tension cracks run at about 45° near the supports, where shear is highest. Without enough stirrups they can open suddenly and split the beam."
+  },
+  {
+    "s": "Shear Design",
+    "q": "In shear design, what is Av?",
+    "o": [
+      "The area of the main bars",
+      "The area of the beam web",
+      "The area of one stirrup leg",
+      "The total area of all stirrup legs within the spacing s"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "Av counts every leg that crosses the crack. A two-leg stirrup of 10 mm bar gives Av = 157 mm²."
+  },
+  {
+    "s": "Shear Design",
+    "q": "A beam has φVc = 120 kN. Above what factored shear Vu are stirrups required?",
+    "o": [
+      "60 kN",
+      "120 kN",
+      "90 kN",
+      "160 kN"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "Minimum stirrups are required where Vu > 0.5φVc = 0.5 × 120 = 60 kN. Above φVc (120 kN), stirrups must also be designed for strength.",
+    "formula": "Stirrups required where Vu > 0.5 φVc",
+    "steps": [
+      "φVc = 120 kN",
+      "0.5 × 120 = 60 kN"
+    ]
+  },
+  {
+    "s": "Shear Design",
+    "q": "What is the nominal shear strength Vn of a reinforced concrete beam?",
+    "o": [
+      "Vn = Vc × Vs",
+      "Vn = Vc + Vs",
+      "Vn = Vs only",
+      "Vn = Vc − Vs"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "The concrete and the stirrups share the shear. The design check is φVn = φ(Vc + Vs) ≥ Vu."
+  },
+  {
+    "s": "Shear Design",
+    "q": "A beam has f'c = 21 MPa, bw = 300 mm and d = 500 mm. Using the simplified formula Vc = 0.17√f'c bw d, what is Vc?",
+    "o": [
+      "About 54 kN",
+      "About 234 kN",
+      "About 117 kN",
+      "About 32 kN"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "Vc = 0.17 × √21 × 300 × 500 = 0.17 × 4.58 × 150,000 = 116,900 N ≈ 117 kN. The older form (1/6)√f'c bw d gives almost the same value.",
+    "formula": "Vc = 0.17 λ √f'c bw d",
+    "steps": [
+      "√21 = 4.58",
+      "bw × d = 300 × 500 = 150,000 mm²",
+      "0.17 × 4.58 × 150,000 = 116,900 N",
+      "Vc ≈ 117 kN"
+    ]
+  },
+  {
+    "s": "Shear Design",
+    "q": "What is Vc in shear design?",
+    "o": [
+      "The shear carried by the stirrups",
+      "The factored shear load",
+      "The shear at the column face",
+      "The shear strength contributed by the concrete"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "Vc comes from the uncracked compression zone, aggregate interlock across cracks and dowel action of the main bars."
+  },
+  {
+    "s": "Shear Design",
+    "q": "Which of these is exempt from the minimum stirrup requirement under NSCP 2015?",
+    "o": [
+      "Solid slabs and footings",
+      "Every beam deeper than 250 mm",
+      "Girders supporting columns",
+      "Cantilever beams"
+    ],
+    "c": 0,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "Slabs and footings spread shear over a wide width and are exempt from minimum stirrups. They are still checked for one-way and two-way (punching) shear."
+  },
+  {
+    "s": "Shear Design",
+    "q": "At what section is the design shear usually taken for a beam loaded on top and supported from below?",
+    "o": [
+      "At the center of the support",
+      "At a distance d from the face of the support",
+      "At midspan",
+      "At the free end"
+    ],
+    "c": 1,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "Loads within d of the support go straight into it by arching, so sections closer than d may be designed for the shear at d."
+  },
+  {
+    "s": "Shear Design",
+    "q": "What is a U-stirrup?",
+    "o": [
+      "A closed rectangular hoop",
+      "A spiral",
+      "An open stirrup bent into a U shape around the bottom bars",
+      "A single straight leg"
+    ],
+    "c": 2,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "U-stirrups are open at the top and hooked around top bars. They are easy to place but cannot resist torsion; closed stirrups are needed then."
+  },
+  {
+    "s": "Shear Design",
+    "q": "Why is shear failure more dangerous than flexural failure?",
+    "o": [
+      "It always happens at midspan",
+      "It is always slow",
+      "It only affects the finish",
+      "It is brittle and can happen with little warning"
+    ],
+    "c": 3,
+    "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
+    "n": "Flexural failure of an under-reinforced beam gives large deflection first. Shear failure can split a beam suddenly, so shear design uses a lower φ and required minimum stirrups."
   }
 ]
