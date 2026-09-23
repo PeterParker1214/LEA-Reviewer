@@ -1,317 +1,339 @@
 [
   {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding positive shear source convention?",
+    "s": "Sign Conventions",
+    "q": "Under the usual beam sign convention, when is the shear at a section positive?",
     "o": [
-      "Simple beam extending beyond one support.",
-      "Net shear acting upward on the left part/cut face.",
-      "Water accumulated on a roof because of geometry, deflection or drainage blockage.",
-      "An inflection point is a zero-curvature/usually zero-moment location in ordinary elastic beam theory, but it is not literally an internal hinge unless a physical hinge exists."
+      "When the net transverse force on the part left of the cut acts upward",
+      "When the net force on the left part acts downward",
+      "When the beam sags",
+      "When the shear diagram is above the moment diagram"
+    ],
+    "c": 0,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "Positive shear: upward on the left of the cut, downward on the right. A simple beam under gravity load has positive shear near its left support and negative shear near its right support."
+  },
+  {
+    "s": "Beams",
+    "q": "A beam with fixed ends and a simple beam carry the same uniform load over the same span. How do their midspan deflections compare?",
+    "o": [
+      "They deflect the same",
+      "The fixed-ended beam deflects one-fifth as much",
+      "The fixed-ended beam deflects twice as much",
+      "The fixed-ended beam deflects half as much"
     ],
     "c": 1,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Net shear acting upward on the left part/cut face.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+TGVjdHVyZSBTaGVhciAvIE1vbWVudCBTaWduIENvbnZlbnRpb248L3RleHQ+CjxyZWN0IHg9IjExMCIgeT0iMTEwIiB3aWR0aD0iNjgwIiBoZWlnaHQ9IjMwMCIgY2xhc3M9ImYiLz4KPHRleHQgeD0iMTYwIiB5PSIxODAiIGNsYXNzPSJzIj4rIHNoZWFyOiB1cHdhcmQgb24gbGVmdCBjdXQgZmFjZTwvdGV4dD48dGV4dCB4PSIxNjAiIHk9IjIzNSIgY2xhc3M9InMiPuKIkiBzaGVhcjogZG93bndhcmQgb24gbGVmdCBjdXQgZmFjZTwvdGV4dD4KPHRleHQgeD0iMTYwIiB5PSIzMDUiIGNsYXNzPSJzIj5tb21lbnQgc2lnbiBtdXN0IGJlIGRlZmluZWQgYnkgYmVuZGluZy9jdXJ2YXR1cmUgY29udmVudGlvbjwvdGV4dD4KPHRleHQgeD0iMTYwIiB5PSIzNjAiIGNsYXNzPSJzIj5zb3VyY2Ugc2xpZGUncyAncG9zaXRpdmUgbW9tZW50JyB0ZXh0IGlzIGVycm9uZW91czwvdGV4dD48L3N2Zz4="
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "Simple beam: 5wL⁴/384EI. Fixed-ended beam: wL⁴/384EI. End fixity stops the ends rotating, so the beam is five times stiffer at midspan."
   },
   {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding fixed-end effect?",
+    "s": "Loads",
+    "q": "Which of these is a live load?",
     "o": [
-      "For a statically determinate simple beam, reactions/internal-force resultants from load geometry do not depend on member material stiffness.",
-      "Lecture/Ching associates negative moment with convex/hogging curvature.",
-      "Movable/use-and-occupancy load.",
-      "End restraint increases rigidity and generally reduces maximum deflection compared with a comparable simple beam."
-    ],
-    "c": 3,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] End restraint increases rigidity and generally reduces maximum deflection compared with a comparable simple beam."
-  },
-  {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding live load?",
-    "o": [
-      "Movable/use-and-occupancy load.",
-      "An inflection point is a zero-curvature/usually zero-moment location in ordinary elastic beam theory, but it is not literally an internal hinge unless a physical hinge exists.",
-      "Action/effect imposed by subsidence and differential foundation settlement.",
-      "End restraint increases rigidity and generally reduces maximum deflection compared with a comparable simple beam."
-    ],
-    "c": 0,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Movable/use-and-occupancy load."
-  },
-  {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding distributed load?",
-    "o": [
-      "Load spread over a length or area.",
-      "Simple beam extending beyond both supports.",
-      "Load applied slowly without rapid fluctuation in magnitude or position.",
-      "Lecture/Ching associates negative moment with convex/hogging curvature."
-    ],
-    "c": 0,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Load spread over a length or area."
-  },
-  {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding water load?",
-    "o": [
-      "For a statically determinate simple beam, reactions/internal-force resultants from load geometry do not depend on member material stiffness.",
-      "Net shear acting upward on the left part/cut face.",
-      "Water accumulated on a roof because of geometry, deflection or drainage blockage.",
-      "Load idealized over a very small area/point."
+      "The weight of the floor slab",
+      "The weight of a fixed partition wall",
+      "People and movable furniture on a floor",
+      "The weight of the roof framing"
     ],
     "c": 2,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Water accumulated on a roof because of geometry, deflection or drainage blockage."
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "Live loads come from use and occupancy and can move or change. The slab, fixed walls and roof framing are permanent, so they are dead loads."
   },
   {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding uniformly distributed load?",
+    "s": "Loads",
+    "q": "What is a distributed load?",
     "o": [
-      "Permanent self-weight and weight of permanently attached building elements/equipment.",
-      "Beam with both ends restrained against translation and rotation.",
-      "Point where curvature changes sign from convex to concave or vice versa.",
-      "Distributed load of constant intensity."
+      "A load acting at a single point",
+      "A load that changes with time",
+      "A load from an earthquake",
+      "A load spread over a length or an area"
     ],
     "c": 3,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Distributed load of constant intensity."
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "Distributed loads are given per length (kN/m) or per area (kPa). A uniformly distributed load has constant intensity; a varying load, such as soil pressure, does not."
   },
   {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding positive moment source error?",
+    "s": "Loads",
+    "q": "What causes a water (ponding) load on a roof?",
     "o": [
-      "Beam with both ends restrained against translation and rotation.",
-      "The lecture's written positive-moment definition repeats the negative-shear definition and is incorrect.",
-      "Load idealized over a very small area/point.",
-      "Permanent self-weight and weight of permanently attached building elements/equipment."
+      "Rainwater collecting because of the roof shape, its deflection or blocked drains",
+      "Condensation on the underside of the roof",
+      "Water in the concrete mix",
+      "Water pipes running across the roof"
+    ],
+    "c": 0,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "If drains clog, rain builds up; the weight makes the roof sag, and the sag collects more water. Flat roofs must be designed for this and given overflow drains."
+  },
+  {
+    "s": "Loads",
+    "q": "A 6 m simple beam carries a uniform load of 10 kN/m. What is each support reaction?",
+    "o": [
+      "60 kN",
+      "30 kN",
+      "15 kN",
+      "20 kN"
     ],
     "c": 1,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[SOURCE ERROR / CLARIFICATION] The lecture's written positive-moment definition repeats the negative-shear definition and is incorrect."
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "The total load is w × L = 10 × 6 = 60 kN. The load is symmetric, so each support takes half: 30 kN.",
+    "formula": "R = wL / 2",
+    "steps": [
+      "Total load W = 10 kN/m × 6 m = 60 kN",
+      "The load is symmetric",
+      "R = 60 / 2 = 30 kN at each support"
+    ]
   },
   {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding occupancy load?",
+    "s": "Sign Conventions",
+    "q": "Under the usual beam sign convention, what does a positive bending moment do?",
     "o": [
-      "Rigid member extending beyond a support/fulcrum and stabilized by balancing action behind it.",
-      "Force/action to which a structure is subjected.",
-      "Live load from people, furniture, stored materials and similar occupancy items.",
-      "Beam on simple supports at both ends, free to rotate and without support moment resistance."
+      "Bends the beam concave downward (hogging), with the top in tension",
+      "Twists the beam",
+      "Bends the beam concave upward (sagging), with the bottom in tension",
+      "Pushes the beam sideways"
     ],
     "c": 2,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Live load from people, furniture, stored materials and similar occupancy items."
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "Positive moment sags the beam, like a smile: bottom fibres in tension, top in compression. It is found at midspan of simple beams."
   },
   {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding fixed-end beam?",
+    "s": "Loads",
+    "q": "What makes up occupancy load?",
     "o": [
-      "Beam on simple supports at both ends, free to rotate and without support moment resistance.",
-      "Distributed load of constant intensity.",
-      "Beam with both ends restrained against translation and rotation.",
-      "The lecture's written positive-moment definition repeats the negative-shear definition and is incorrect."
-    ],
-    "c": 2,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Beam with both ends restrained against translation and rotation."
-  },
-  {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding load?",
-    "o": [
-      "Live load from people, furniture, stored materials and similar occupancy items.",
-      "Net shear acting downward on the left part/cut face.",
-      "Force/action to which a structure is subjected.",
-      "Projecting beam fixed at only one end."
-    ],
-    "c": 2,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Force/action to which a structure is subjected.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+TG9hZCBGYW1pbGllcyBpbiBMZWN0dXJlPC90ZXh0Pgo8cmVjdCB4PSI2NSIgeT0iMTIwIiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjI2MCIgY2xhc3M9ImYiLz48dGV4dCB4PSIxMDUiIHk9IjIzNSIgY2xhc3M9InMiPkNvbmNlbnRyYXRlZDwvdGV4dD4KPHJlY3QgeD0iMjQ1IiB5PSIxMjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMjYwIiBjbGFzcz0iZjIiLz48dGV4dCB4PSIyOTAiIHk9IjIzNSIgY2xhc3M9InMiPkRpc3RyaWJ1dGVkPC90ZXh0Pgo8cmVjdCB4PSI0MjUiIHk9IjEyMCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIyNjAiIGNsYXNzPSJmIi8+PHRleHQgeD0iNDc1IiB5PSIyMzUiIGNsYXNzPSJzIj5MaXZlPC90ZXh0Pgo8cmVjdCB4PSI2MDUiIHk9IjEyMCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIyNjAiIGNsYXNzPSJmMiIvPjx0ZXh0IHg9IjY1NSIgeT0iMjM1IiBjbGFzcz0icyI+RGVhZDwvdGV4dD4KPHRleHQgeD0iMzM1IiB5PSI0NDUiIGNsYXNzPSJzIj53YXRlciDigKIgb2NjdXBhbmN5IOKAoiBzZXR0bGVtZW50IOKAoiBzdGF0aWM8L3RleHQ+PC9zdmc+"
-  },
-  {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding settlement load?",
-    "o": [
-      "Action/effect imposed by subsidence and differential foundation settlement.",
-      "Movable/use-and-occupancy load.",
-      "Lecture/Ching associates negative moment with convex/hogging curvature.",
-      "Simple beam extending beyond both supports."
-    ],
-    "c": 0,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Action/effect imposed by subsidence and differential foundation settlement."
-  },
-  {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding cantilever beam?",
-    "o": [
-      "Rigid member extending beyond a support/fulcrum and stabilized by balancing action behind it.",
-      "Load applied slowly without rapid fluctuation in magnitude or position.",
-      "Force/action to which a structure is subjected.",
-      "Projecting beam fixed at only one end."
+      "The self-weight of the structure",
+      "The weight of the roofing",
+      "Wind pressure on the walls",
+      "People, furniture, stored goods and similar items brought in by the use of a space"
     ],
     "c": 3,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Projecting beam fixed at only one end."
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "Occupancy load is the live load that comes with the use of a space. NSCP sets minimum values for each use in Table 205-1."
   },
   {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding dead load?",
+    "s": "Beams",
+    "q": "A 6 m fixed-ended beam carries a uniform load of 12 kN/m. What is the moment at each fixed end?",
     "o": [
-      "Distributed load of constant intensity.",
-      "The lecture's written positive-moment definition repeats the negative-shear definition and is incorrect.",
-      "Permanent self-weight and weight of permanently attached building elements/equipment.",
-      "Simple beam extending beyond one support."
-    ],
-    "c": 2,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Permanent self-weight and weight of permanently attached building elements/equipment."
-  },
-  {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding simple beam determinate property?",
-    "o": [
-      "An inflection point is a zero-curvature/usually zero-moment location in ordinary elastic beam theory, but it is not literally an internal hinge unless a physical hinge exists.",
-      "End restraint increases rigidity and generally reduces maximum deflection compared with a comparable simple beam.",
-      "For a statically determinate simple beam, reactions/internal-force resultants from load geometry do not depend on member material stiffness.",
-      "Water accumulated on a roof because of geometry, deflection or drainage blockage."
-    ],
-    "c": 2,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] For a statically determinate simple beam, reactions/internal-force resultants from load geometry do not depend on member material stiffness."
-  },
-  {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding cantilever alternate definition?",
-    "o": [
-      "Rigid member extending beyond a support/fulcrum and stabilized by balancing action behind it.",
-      "Point where curvature changes sign from convex to concave or vice versa.",
-      "Projecting beam fixed at only one end.",
-      "Live load from people, furniture, stored materials and similar occupancy items."
+      "36 kN·m",
+      "54 kN·m",
+      "18 kN·m",
+      "72 kN·m"
     ],
     "c": 0,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Rigid member extending beyond a support/fulcrum and stabilized by balancing action behind it."
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "For a fixed-ended beam under uniform load, the end moments are wL²/12 = 12 × 36 / 12 = 36 kN·m (negative, hogging). The midspan moment is wL²/24 = 18 kN·m.",
+    "formula": "M(end) = wL² / 12",
+    "steps": [
+      "w = 12 kN/m, L = 6 m",
+      "L² = 36 m²",
+      "M = 12 × 36 / 12 = 36 kN·m (hogging)"
+    ]
   },
   {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding negative moment?",
+    "s": "Loads",
+    "q": "In structural terms, what is a load?",
     "o": [
-      "End restraint increases rigidity and generally reduces maximum deflection compared with a comparable simple beam.",
-      "Load spread over a length or area.",
-      "Lecture/Ching associates negative moment with convex/hogging curvature.",
-      "Action/effect imposed by subsidence and differential foundation settlement."
-    ],
-    "c": 2,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Lecture/Ching associates negative moment with convex/hogging curvature."
-  },
-  {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding static load?",
-    "o": [
-      "Load spread over a length or area.",
-      "Load applied slowly without rapid fluctuation in magnitude or position.",
-      "Net shear acting downward on the left part/cut face.",
-      "Projecting beam fixed at only one end."
+      "Only the weight of people",
+      "Any force or action that a structure must resist",
+      "Only the weight of the structure",
+      "Only the force of wind"
     ],
     "c": 1,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Load applied slowly without rapid fluctuation in magnitude or position."
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "Loads include weights (dead and live), environmental actions (wind, earthquake, rain) and imposed effects such as settlement and temperature change."
   },
   {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding concentrated load?",
+    "s": "Loads",
+    "q": "What effect does uneven (differential) settlement of foundations have on a structure?",
     "o": [
-      "The lecture's written positive-moment definition repeats the negative-shear definition and is incorrect.",
-      "Water accumulated on a roof because of geometry, deflection or drainage blockage.",
-      "Simple beam extending beyond one support.",
-      "Load idealized over a very small area/point."
-    ],
-    "c": 3,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Load idealized over a very small area/point."
-  },
-  {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding double overhanging beam?",
-    "o": [
-      "Simple beam extending beyond both supports.",
-      "Net shear acting downward on the left part/cut face.",
-      "Load spread over a length or area.",
-      "Action/effect imposed by subsidence and differential foundation settlement."
-    ],
-    "c": 0,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Simple beam extending beyond both supports."
-  },
-  {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding simple beam?",
-    "o": [
-      "Beam with both ends restrained against translation and rotation.",
-      "Point where curvature changes sign from convex to concave or vice versa.",
-      "Beam on simple supports at both ends, free to rotate and without support moment resistance.",
-      "Live load from people, furniture, stored materials and similar occupancy items."
+      "None, as long as the soil is dry",
+      "It only affects the finishes",
+      "It imposes extra forces and moments, like a load",
+      "It reduces the dead load"
     ],
     "c": 2,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Beam on simple supports at both ends, free to rotate and without support moment resistance.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+QmVhbSBUeXBlczwvdGV4dD4KPGxpbmUgeDE9IjgwIiB5MT0iMTIwIiB4Mj0iMzEwIiB5Mj0iMTIwIiBjbGFzcz0ibCIvPjxyZWN0IHg9IjcwIiB5PSI4MCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjgwIiBjbGFzcz0iZiIvPjx0ZXh0IHg9IjEzNSIgeT0iMTcwIiBjbGFzcz0icyI+Y2FudGlsZXZlcjwvdGV4dD4KPGxpbmUgeDE9IjM3MCIgeTE9IjEyMCIgeDI9IjgwMCIgeTI9IjEyMCIgY2xhc3M9ImwiLz48cG9seWdvbiBwb2ludHM9IjQzMCwxMzAgNDAwLDE3NSA0NjAsMTc1IiBjbGFzcz0iZiIvPjxjaXJjbGUgY3g9Ijc0MCIgY3k9IjE1NSIgcj0iMjAiIGNsYXNzPSJmMiIvPjx0ZXh0IHg9IjUzNSIgeT0iMTk1IiBjbGFzcz0icyI+c2ltcGxlPC90ZXh0Pgo8bGluZSB4MT0iMTIwIiB5MT0iMzMwIiB4Mj0iNzgwIiB5Mj0iMzMwIiBjbGFzcz0ibCIvPjxwb2x5Z29uIHBvaW50cz0iMjgwLDM0MCAyNTAsMzg1IDMxMCwzODUiIGNsYXNzPSJmIi8+PGNpcmNsZSBjeD0iNjMwIiBjeT0iMzY1IiByPSIyMCIgY2xhc3M9ImYyIi8+PHRleHQgeD0iNDEwIiB5PSI0MzAiIGNsYXNzPSJzIj5vdmVyaGFuZ2luZzwvdGV4dD48L3N2Zz4="
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "When one support sinks more than another, a continuous or fixed structure is forced to bend, which creates stresses and cracks. NSCP counts restrained differential movement among the loads."
   },
   {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding overhanging beam?",
+    "s": "Beams",
+    "q": "A 3 m cantilever carries a 10 kN point load at its free end. What is the moment at the fixed end?",
     "o": [
-      "Load idealized over a very small area/point.",
-      "Permanent self-weight and weight of permanently attached building elements/equipment.",
-      "Net shear acting upward on the left part/cut face.",
-      "Simple beam extending beyond one support."
+      "10 kN·m",
+      "15 kN·m",
+      "45 kN·m",
+      "30 kN·m"
     ],
     "c": 3,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Simple beam extending beyond one support."
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "M = P × L = 10 kN × 3 m = 30 kN·m, hogging (tension at the top). That is why a cantilever's main bars go at the top.",
+    "formula": "M = P × L",
+    "steps": [
+      "P = 10 kN at the free end",
+      "Lever arm L = 3 m",
+      "M = 10 × 3 = 30 kN·m at the support"
+    ]
   },
   {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding inflection-point caveat?",
+    "s": "Loads",
+    "q": "Which of these is a dead load?",
     "o": [
-      "For a statically determinate simple beam, reactions/internal-force resultants from load geometry do not depend on member material stiffness.",
-      "Net shear acting upward on the left part/cut face.",
-      "Movable/use-and-occupancy load.",
-      "An inflection point is a zero-curvature/usually zero-moment location in ordinary elastic beam theory, but it is not literally an internal hinge unless a physical hinge exists."
-    ],
-    "c": 3,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[SOURCE ERROR / CLARIFICATION] An inflection point is a zero-curvature/usually zero-moment location in ordinary elastic beam theory, but it is not literally an internal hinge unless a physical hinge exists."
-  },
-  {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding negative shear source convention?",
-    "o": [
-      "Force/action to which a structure is subjected.",
-      "Load applied slowly without rapid fluctuation in magnitude or position.",
-      "Net shear acting downward on the left part/cut face.",
-      "Simple beam extending beyond both supports."
-    ],
-    "c": 2,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Net shear acting downward on the left part/cut face."
-  },
-  {
-    "s": "Beams, Signs and Loads",
-    "q": "Which statement is correct regarding inflection point?",
-    "o": [
-      "Point where curvature changes sign from convex to concave or vice versa.",
-      "Beam on simple supports at both ends, free to rotate and without support moment resistance.",
-      "Distributed load of constant intensity.",
-      "Rigid member extending beyond a support/fulcrum and stabilized by balancing action behind it."
+      "A permanently fixed water heater",
+      "Occupants",
+      "Movable office furniture",
+      "Stored boxes"
     ],
     "c": 0,
-    "ref": "Ching / structural analysis / NSCP terminology",
-    "n": "[LECTURE TERM — AUDITED] Point where curvature changes sign from convex to concave or vice versa."
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "Dead load includes the structure and everything permanently fixed to it, such as fixed service equipment. Items that can be moved or removed are live load."
+  },
+  {
+    "s": "Beams",
+    "q": "A 5 m simple beam carries a 20 kN point load 2 m from the left support. What is the left reaction?",
+    "o": [
+      "8 kN",
+      "12 kN",
+      "10 kN",
+      "20 kN"
+    ],
+    "c": 1,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "Take moments about the right support: RL × 5 = 20 × 3, so RL = 12 kN. The right reaction is 20 − 12 = 8 kN. The support nearer the load takes more.",
+    "formula": "RL = P × b / L",
+    "steps": [
+      "Distance from load to right support b = 5 − 2 = 3 m",
+      "ΣM(right) = 0: RL × 5 = 20 × 3",
+      "RL = 60 / 5 = 12 kN",
+      "RR = 20 − 12 = 8 kN"
+    ]
+  },
+  {
+    "s": "Beams",
+    "q": "A balcony slab projects from a building and is held down by the floor slab behind it. What kind of member is the balcony?",
+    "o": [
+      "A simple beam",
+      "A continuous beam",
+      "A cantilever",
+      "A suspended span"
+    ],
+    "c": 2,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "A cantilever projects past its support and relies on fixity or a back-span to stay in balance. Its top bars must extend well back into the floor slab."
+  },
+  {
+    "s": "Sign Conventions",
+    "q": "What curvature goes with a negative (hogging) bending moment?",
+    "o": [
+      "Concave upward, with the bottom in tension",
+      "No curvature at all",
+      "A twist about the axis",
+      "Concave downward (convex), with the top in tension"
+    ],
+    "c": 3,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "Negative moment is found over interior supports of continuous beams and at cantilever roots. The top fibres are in tension there, so the main bars go at the top."
+  },
+  {
+    "s": "Loads",
+    "q": "What is a static load?",
+    "o": [
+      "A load applied slowly, with no rapid change in size or position",
+      "A load that causes vibration",
+      "A sudden impact load",
+      "A moving crane load"
+    ],
+    "c": 0,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "Static loads build up gradually, so the structure has time to respond without dynamic effects. Impact, vibrating machinery and earthquakes are dynamic."
+  },
+  {
+    "s": "Loads",
+    "q": "What is a concentrated load?",
+    "o": [
+      "A load spread evenly along a beam",
+      "A load acting on a very small area, idealized as a point",
+      "A load spread over a whole floor",
+      "A load that changes over time"
+    ],
+    "c": 1,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "A column bearing on a girder or a wheel on a slab is treated as a point load, expressed in kN."
+  },
+  {
+    "s": "Beams",
+    "q": "What is a double overhanging beam?",
+    "o": [
+      "A beam fixed at both ends",
+      "A beam on three supports",
+      "A beam on two supports that extends past both of them",
+      "A cantilever with a prop"
+    ],
+    "c": 2,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "Overhangs at both ends reduce the positive span moment and create negative moment over both supports. The beam is still statically determinate."
+  },
+  {
+    "s": "Beams",
+    "q": "What makes a beam a simple beam?",
+    "o": [
+      "It is fixed at both ends",
+      "It spans over more than two supports",
+      "It is supported at one end only",
+      "It rests on supports at both ends that let it rotate and do not resist moment"
+    ],
+    "c": 3,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "A simple beam sits on a pin and a roller. There is no moment at the supports, and its reactions come from equilibrium alone."
+  },
+  {
+    "s": "Beams",
+    "q": "What is an overhanging beam?",
+    "o": [
+      "A simple beam that extends past one of its supports",
+      "A beam fixed at one end and free at the other",
+      "A beam fixed at both ends",
+      "A beam supported at midspan only"
+    ],
+    "c": 0,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "Extending past a support creates negative moment over it and reduces the positive moment in the span."
+  },
+  {
+    "s": "Beams",
+    "q": "Is a point of inflection in a continuous beam a physical hinge?",
+    "o": [
+      "Yes; the beam is pinned there",
+      "No; it is only where the moment happens to be zero, and the beam stays continuous there",
+      "Yes; it is a construction joint",
+      "No; it is where the shear is greatest"
+    ],
+    "c": 1,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "At an inflection point the curvature changes sign and the moment is zero, but the beam still carries shear and remains continuous. A real hinge exists only where one is built in."
+  },
+  {
+    "s": "Sign Conventions",
+    "q": "Under the usual beam sign convention, when is the shear at a section negative?",
+    "o": [
+      "When the net force on the left part acts upward",
+      "When the beam hogs",
+      "When the net transverse force on the part left of the cut acts downward",
+      "When the moment is zero"
+    ],
+    "c": 2,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "Negative shear: downward on the left of the cut. In a simple beam under uniform load, shear is positive near the left support, zero at midspan and negative near the right."
+  },
+  {
+    "s": "Sign Conventions",
+    "q": "What happens to the curvature of a beam at a point of inflection?",
+    "o": [
+      "It is at its greatest value",
+      "It becomes infinite",
+      "It doubles",
+      "It changes sign, from sagging to hogging or the reverse"
+    ],
+    "c": 3,
+    "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
+    "n": "At the point of inflection the curvature and the moment are both zero. Bar cut-offs and splices are often placed with reference to these points."
   }
 ]
