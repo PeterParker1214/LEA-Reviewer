@@ -525,8 +525,60 @@ def stress_strain():
     return svg(720, 380, body)
 
 
+def _pin(x, y):
+    return poly([(x, y), (x - 11, y + 18), (x + 11, y + 18)], '#fff') + line(x - 16, y + 18, x + 16, y + 18, 's')
+
+
+def _roller(x, y):
+    return (poly([(x, y), (x - 11, y + 14), (x + 11, y + 14)], '#fff') +
+            f'<circle class="s" fill="#fff" cx="{x - 6}" cy="{y + 18}" r="4"/><circle class="s" fill="#fff" cx="{x + 6}" cy="{y + 18}" r="4"/>'
+            + line(x - 16, y + 22, x + 16, y + 22, 's'))
+
+
+def _wall(x, y, side):
+    # side=-1 wall on the left of the beam end, +1 on the right
+    w = x + side * 12
+    hatch = ''.join(line(w, y - 22 + k * 11, w + side * 10, y - 14 + k * 11, 's') for k in range(4))
+    return f'<rect x="{min(x, w)}" y="{y - 24}" width="12" height="48" fill="#d9d9d9" class="s"/>' + hatch
+
+
+def beam_types():
+    # six beams, one per row, letters on the left; the question names the type
+    rows = [('A', [('pin', 90), ('roller', 470)], 90, 470),                      # simple
+            ('B', [('wall-l', 90)], 90, 470),                                      # cantilever
+            ('C', [('pin', 90), ('roller', 380)], 90, 520),                        # overhanging
+            ('D', [('pin', 90), ('roller', 280), ('roller', 470)], 90, 470),       # continuous
+            ('E', [('wall-l', 90), ('roller', 470)], 90, 470),                     # propped cantilever
+            ('F', [('wall-l', 90), ('wall-r', 470)], 90, 470)]                     # fixed-ended
+    body = ''
+    for r, (L, sups, x0, x1) in enumerate(rows):
+        y = 45 + r * 72
+        body += f'<text class="L" x="30" y="{y + 6}">{L}</text>'
+        body += f'<rect class="s" x="{x0}" y="{y - 5}" width="{x1 - x0}" height="10" fill="#b8c7d9"/>'
+        for kind, x in sups:
+            if kind == 'pin': body += _pin(x, y + 5)
+            elif kind == 'roller': body += _roller(x, y + 5)
+            elif kind == 'wall-l': body += _wall(x, y, -1)
+            else: body += _wall(x, y, 1)
+    return svg(560, 460, body)
+
+
+def support_types():
+    body = ''
+    for k, (L, kind) in enumerate([('A', 'roller'), ('B', 'pin'), ('C', 'fixed')]):
+        cx = 90 + k * 170
+        body += f'<text class="L" x="{cx}" y="30" text-anchor="middle">{L}</text>'
+        if kind == 'fixed':
+            body += f'<rect class="s" x="{cx - 45}" y="75" width="70" height="10" fill="#b8c7d9"/>' + _wall(cx + 25, 80, 1)
+        else:
+            body += f'<rect class="s" x="{cx - 45}" y="75" width="90" height="10" fill="#b8c7d9"/>'
+            body += _pin(cx, 85) if kind == 'pin' else _roller(cx, 85)
+    return svg(520, 140, body)
+
+
 BT = 'building-technology/'
 FIGURES = {
+    'structural/beam-types': beam_types, 'structural/support-types': support_types,
     'structural/stress-strain': stress_strain,
     BT + 'curtain-wall': curtain_wall, BT + 'window-frame': window_frame, BT + 'slab-bands': slab_bands,
     BT + 'roof-parts': roof, BT + 'saw-cuts': saw_cuts, BT + 'wood-joinery': joinery,
