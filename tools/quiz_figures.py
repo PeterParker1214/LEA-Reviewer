@@ -686,8 +686,20 @@ def lateral_systems():
     return svg(600, 330, body)
 
 
+def hook_types():
+    # A 90°, B 135°, C 180° hooks drawn as thick bar centrelines
+    st = f'fill="none" stroke="{INK}" stroke-width="7" stroke-linecap="round"'
+    body = (f'<path {st} d="M40,60 L150,60 A22,22 0 0 1 172,82 L172,190"/>'                 # 90°: tail goes straight down
+            f'<path {st} d="M240,60 L350,60 A22,22 0 0 1 365.6,97.6 L300,163"/>'              # 135°: tail angles back
+            f'<path {st} d="M440,60 L560,60 A26,26 0 0 1 560,112 L490,112"/>')             # 180°: tail runs back parallel
+    for L, x in (('A', 120), ('B', 320), ('C', 510)):
+        body += f'<text class="L" x="{x}" y="235" text-anchor="middle">{L}</text>'
+    return svg(620, 255, body)
+
+
 BT = 'building-technology/'
 FIGURES = {
+    'structural/hook-types': hook_types,
     'structural/lateral-systems': lateral_systems,
     'structural/footing-types': footing_types,
     'structural/load-types': load_types, 'structural/force-systems': force_systems,
