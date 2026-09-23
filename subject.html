@@ -12,6 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Subject — LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="assets/sb-client.js?v=81"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Architects+Daughter&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -308,19 +309,19 @@
      draws. Only the modal needs a little more width to hold a face, a name and
      the stats without crowding. */
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=80">
-<link rel="stylesheet" href="assets/leaderboard.css?v=79">
-<script src="assets/presence.js?v=79"></script>
-<script src="assets/avatar.js?v=79"></script>
-<script src="assets/leaderboard.js?v=79"></script>
-<script src="assets/lea-confirm.js?v=79"></script>
-<script src="assets/quiz-source.js?v=79"></script>
-<script src="assets/module-progress.js?v=79"></script>
-<script src="assets/offline.js?v=79"></script>
-<script src="assets/quiz-resume.js?v=79"></script>
-<script src="assets/icons.js?v=79"></script>
-<script src="assets/theme.js?v=79" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=79"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=81">
+<link rel="stylesheet" href="assets/leaderboard.css?v=81">
+<script src="assets/presence.js?v=81"></script>
+<script src="assets/avatar.js?v=81"></script>
+<script src="assets/leaderboard.js?v=81"></script>
+<script src="assets/lea-confirm.js?v=81"></script>
+<script src="assets/quiz-source.js?v=81"></script>
+<script src="assets/module-progress.js?v=81"></script>
+<script src="assets/offline.js?v=81"></script>
+<script src="assets/quiz-resume.js?v=81"></script>
+<script src="assets/icons.js?v=81"></script>
+<script src="assets/theme.js?v=81" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=81"></script>
 </head>
 <body>
 <div class="wrap">
@@ -376,7 +377,7 @@
 // ================= Auth (same pattern every subject page uses) =================
 const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
-const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const sb = leaClient();
 if (window.LEAPresence) { LEAPresence.init({ client: sb }); }
 const authStatus = document.getElementById('authStatus');
 

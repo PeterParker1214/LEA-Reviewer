@@ -37,8 +37,8 @@
   function init(opts) {
     opts = opts || {};
     ensureLib(function () {
-      var sb = opts.client || (window.__leaSharedClient = window.__leaSharedClient ||
-        supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY));
+      var sb = opts.client || (window.leaClient ? window.leaClient() : (window.__leaSharedClient = window.__leaSharedClient ||
+        supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)));
       var channel = null;
 
       function pushState() {

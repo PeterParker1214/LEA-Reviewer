@@ -12,6 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Notifications — LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="assets/sb-client.js?v=81"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -101,17 +102,17 @@
   .state-note{ font-family:var(--font-body); font-size:13px; color:var(--muted); text-align:center; padding:40px 0; line-height:1.6; }
   .err-note{ font-family:var(--font-body); font-size:13px; color:var(--bad); margin-bottom:12px; }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=80">
-<script src="assets/theme.js?v=79" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=79"></script>
-<script src="assets/offline.js?v=79"></script>
-<script src="assets/presence.js?v=79"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=81">
+<script src="assets/theme.js?v=81" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=81"></script>
+<script src="assets/offline.js?v=81"></script>
+<script src="assets/presence.js?v=81"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
-<script src="assets/notifications.js?v=79"></script>
-<script src="assets/module-progress.js?v=79"></script>
-<script src="assets/countdown.js?v=79"></script>
-<script src="assets/reminders.js?v=79"></script>
-<script src="assets/whats-new.js?v=79"></script>
+<script src="assets/notifications.js?v=81"></script>
+<script src="assets/module-progress.js?v=81"></script>
+<script src="assets/countdown.js?v=81"></script>
+<script src="assets/reminders.js?v=81"></script>
+<script src="assets/whats-new.js?v=81"></script>
 </head>
 <body>
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
@@ -129,7 +130,7 @@
 </div>
 
 <script>
-const sb = supabase.createClient('https://rjrrprbvsmflzncojbtq.supabase.co', 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y');
+const sb = leaClient();
 const esc = LEANotify.escapeHtml;
 
 const FILTERS = [

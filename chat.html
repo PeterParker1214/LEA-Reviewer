@@ -12,6 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Messages — LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="assets/sb-client.js?v=81"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Architects+Daughter&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -52,17 +53,17 @@
     color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; text-decoration:none;
   }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=80">
-<script src="assets/theme.js?v=79" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=79"></script>
-<script src="assets/avatar.js?v=79"></script>
-<script src="assets/chat.js?v=79"></script>
-<script src="assets/offline.js?v=79"></script>
-<script src="assets/presence.js?v=79"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=81">
+<script src="assets/theme.js?v=81" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=81"></script>
+<script src="assets/avatar.js?v=81"></script>
+<script src="assets/chat.js?v=81"></script>
+<script src="assets/offline.js?v=81"></script>
+<script src="assets/presence.js?v=81"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
-<link rel="stylesheet" href="assets/messenger.css?v=79">
-<script src="assets/messenger-model.js?v=79"></script>
-<script src="assets/messenger.js?v=79"></script>
+<link rel="stylesheet" href="assets/messenger.css?v=81">
+<script src="assets/messenger-model.js?v=81"></script>
+<script src="assets/messenger.js?v=81"></script>
 <style>body{padding:20px 16px}.wrap{max-width:1120px;height:auto}.message-page-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}.message-page-head h1{font:800 24px var(--font-display);text-transform:uppercase;margin:0}.online-count{margin-left:auto;font:11px var(--font-mono);color:var(--muted)}.online-count b{color:var(--good)}#messenger .lea-msg-heading h2{visibility:hidden}@media(max-width:700px){body{padding:12px 8px}.lea-msg-layout{height:calc(100dvh - 84px)}}</style>
 </head>
 <body>
@@ -72,7 +73,7 @@
 </div>
 <script>
 (async function(){
-  const sb=window.__leaSharedClient || supabase.createClient('https://rjrrprbvsmflzncojbtq.supabase.co','sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y');
+  const sb=window.__leaSharedClient || leaClient();
   const {data:{session}}=await sb.auth.getSession();
   if(!session){location.href='index.html';return;}
   if(window.LEAPresence)LEAPresence.subscribe(names=>{document.getElementById('onlineCount').innerHTML=names.length?'<b>'+names.length+'</b> online':'';});

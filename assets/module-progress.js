@@ -78,8 +78,8 @@ window.LEAProgress = (function () {
 
   function getClient() {
     if (!window.supabase || !window.supabase.createClient) return null;
-    sbClient = window.__leaSharedClient = window.__leaSharedClient ||
-      window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    sbClient = window.leaClient ? window.leaClient() : (window.__leaSharedClient = window.__leaSharedClient ||
+      window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY));
     return sbClient;
   }
 
@@ -98,16 +98,73 @@ window.LEAProgress = (function () {
     return { totalMastered: totalMastered, avgScore: scoreCount > 0 ? (scoreSum / scoreCount) : 0 };
   }
 
+  // Paths this page changed since it read the row: [metaKey] or
+  // [subjectId, moduleId]. Only these are written back; everything else comes
+  // fresh from the row, so a phone and a laptop open at the same time no
+  // longer overwrite each other's streak, mock history or progress.
+  const dirty = new Set();
+  function touch(path) { if (fullData) dirty.add(JSON.stringify(path)); }
+
+  // Lays this page's changes (read from fullData) over `row`. A module record
+  // touched on both sides keeps every question either side mastered and the
+  // better best score; flags and notes follow this page, the newer edit.
+  function overlay(row, paths) {
+    paths.forEach(function (k) {
+      const path = JSON.parse(k);
+      if (path.length === 1) {
+        if (fullData[path[0]] === undefined) delete row[path[0]];
+        else row[path[0]] = fullData[path[0]];
+        return;
+      }
+      const mine = fullData[path[0]] && fullData[path[0]][path[1]];
+      if (!row[path[0]]) row[path[0]] = {};
+      const theirs = row[path[0]][path[1]];
+      if (!mine) { delete row[path[0]][path[1]]; return; }
+      const merged = Object.assign({}, mine);
+      if (theirs) {
+        merged.mastered = Array.from(new Set((theirs.mastered || []).concat(mine.mastered || [])));
+        if ((theirs.bestCorrect || 0) > (mine.bestCorrect || 0)) {
+          merged.bestCorrect = theirs.bestCorrect;
+          merged.bestTotal = theirs.bestTotal;
+        }
+        merged.attempts = Math.max(theirs.attempts || 0, mine.attempts || 0);
+      }
+      row[path[0]][path[1]] = merged;
+    });
+    return row;
+  }
+
+  // ponytail: read-then-write, not atomic. Two devices saving in the same
+  // ~100ms can still lose one write; a jsonb-merge RPC closes that if it shows up.
+  let pushing = false;
   function doPush() {
-    if (!syncUser || !sbClient || !fullData) return;
-    const totals = computeGlobalTotals(fullData);
-    sbClient.from('progress').upsert({
-      user_id: syncUser.id,
-      data: fullData,
-      total_mastered: totals.totalMastered,
-      avg_best_score: totals.avgScore,
-      updated_at: new Date().toISOString()
-    }).then(function () {});
+    if (!syncUser || !sbClient || !fullData || pushing || !dirty.size) return;
+    pushing = true;
+    const paths = Array.from(dirty);
+    dirty.clear();
+    const userId = syncUser.id;
+    sbClient.from('progress').select('data').eq('user_id', userId).maybeSingle().then(function (res) {
+      if (res.error) throw res.error;
+      const merged = overlay((res.data && res.data.data) || {}, paths);
+      const totals = computeGlobalTotals(merged);
+      return sbClient.from('progress').upsert({
+        user_id: userId,
+        data: merged,
+        total_mastered: totals.totalMastered,
+        avg_best_score: totals.avgScore,
+        updated_at: new Date().toISOString()
+      }).then(function (w) {
+        if (w.error) throw w.error;
+        // Anything changed while this was in flight is still dirty; keep it.
+        fullData = overlay(merged, Array.from(dirty));
+        pushing = false;
+        if (dirty.size) pushRemote();
+      });
+    }).catch(function () {
+      // Offline or refused: keep the changes for the next save or page-hide.
+      paths.forEach(function (k) { dirty.add(k); });
+      pushing = false;
+    });
   }
 
   function pushRemote() {
@@ -212,6 +269,7 @@ window.LEAProgress = (function () {
       const remote = fullData[subjectId][moduleId];
       if (!remote) {
         fullData[subjectId][moduleId] = local;
+        touch([subjectId, moduleId]);
         changed = true;
         return;
       }
@@ -244,6 +302,7 @@ window.LEAProgress = (function () {
         if (mergedFlagged.length) merged.flagged = mergedFlagged;
         if (Object.keys(mergedNotes).length) merged.notes = mergedNotes;
         fullData[subjectId][moduleId] = merged;
+        touch([subjectId, moduleId]);
         changed = true;
       }
     });
@@ -302,7 +361,8 @@ window.LEAProgress = (function () {
         return;
       }
       if (res && res.data) {
-        fullData = res.data.data || {};
+        const row = res.data.data || {};
+        fullData = fullData ? overlay(row, Array.from(dirty)) : row;
       } else {
         fullData = {};
         sbClient.from('progress').insert({ user_id: user.id, data: {} }).then(function () {});
@@ -323,7 +383,7 @@ window.LEAProgress = (function () {
       if (!sb) return;
       sb.auth.onAuthStateChange(function (event, session) {
         if (event === 'SIGNED_IN' && session) loadRow(session.user);
-        if (event === 'SIGNED_OUT') { syncUser = null; fullData = null; }
+        if (event === 'SIGNED_OUT') { syncUser = null; fullData = null; dirty.clear(); }
       });
       sb.auth.getSession().then(function (res) {
         const session = res && res.data && res.data.session;
@@ -352,6 +412,7 @@ window.LEAProgress = (function () {
     try { localStorage.setItem('lea_meta_v1_' + key, JSON.stringify(value)); } catch (e) {}
     if (fullData) {
       fullData[key] = value;
+      touch([key]);
       pushRemote();
     }
   }
@@ -372,6 +433,7 @@ window.LEAProgress = (function () {
     if (fullData) {
       if (!fullData[subjectId]) fullData[subjectId] = {};
       fullData[subjectId][moduleId] = data;
+      touch([subjectId, moduleId]);
       pushRemote();
     }
   }
@@ -403,6 +465,7 @@ window.LEAProgress = (function () {
     try { localStorage.removeItem(key(subjectId, moduleId)); } catch (e) {}
     if (fullData && fullData[subjectId]) {
       delete fullData[subjectId][moduleId];
+      touch([subjectId, moduleId]);
       pushRemote();
     }
   }

@@ -11,6 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Welcome — LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="assets/sb-client.js?v=81"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Architects+Daughter&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -88,12 +89,12 @@
     text-transform:uppercase; color:var(--muted); margin-top:12px;
   }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=80">
-<script src="assets/theme.js?v=79" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/quiz-source.js?v=79"></script>
-<script src="assets/module-progress.js?v=79"></script>
-<script src="assets/offline.js?v=79"></script>
-<script src="assets/presence.js?v=79"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=81">
+<script src="assets/theme.js?v=81" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/quiz-source.js?v=81"></script>
+<script src="assets/module-progress.js?v=81"></script>
+<script src="assets/offline.js?v=81"></script>
+<script src="assets/presence.js?v=81"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
 </head>
 <body>
@@ -103,7 +104,7 @@
 <script>
 const SUPABASE_URL = 'https://rjrrprbvsmflzncojbtq.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_NcOypGF5CxQgEoNWjYqOnQ_oO3NR_1Y';
-const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const sb = leaClient();
 
 function escapeHtml(s){
   return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
