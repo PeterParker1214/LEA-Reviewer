@@ -1,160 +1,159 @@
 [
   {
     "s": "Elevator Planning",
-    "q": "Why are several elevators often grouped around a common lobby in larger buildings?",
+    "q": "Why are several elevators often grouped around one lobby in larger buildings?",
     "o": [
-      "To make every elevator hydraulic",
-      "To consolidate passenger waiting, wayfinding and group control",
-      "To eliminate the need for hoistways",
-      "To avoid structural coordination"
+      "So riders wait in one place and a group control can dispatch the cars",
+      "So each car can have its own lobby",
+      "So all cars can share one hoistway door",
+      "So the cars need no group control"
     ],
-    "c": 1,
-    "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-    "n": "Grouping supports clear circulation and allows coordinated dispatching of multiple cars."
+    "c": 0,
+    "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Grouping lets the controller send whichever car is best. Riders can see all the cars from one spot."
   },
   {
     "s": "Elevator Types",
-    "q": "Which elevator is typically designed with dimensions and load characteristics suitable for transporting a patient on a bed or stretcher?",
+    "q": "Which elevator is sized to carry a patient on a bed or stretcher?",
     "o": [
-      "Moving walk",
+      "Passenger elevator",
+      "Hospital (bed) elevator",
       "Dumbwaiter",
-      "Observation stair",
-      "Hospital/bed elevator"
+      "Observation elevator"
     ],
-    "c": 3,
-    "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-    "n": "Hospital/bed elevators are planned to accommodate beds/stretchers, attendants, and associated circulation requirements."
+    "c": 1,
+    "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Bed elevators have deep, narrow cars that fit a bed lengthwise with attendants."
   },
   {
     "s": "Traffic Scenario",
-    "q": "Two elevator groups serve the same lobby, but one is dedicated to floors 2–10 and the other to floors 11–20. This is:",
+    "q": "Two elevator groups share a lobby: one serves floors 2–10 and the other floors 11–20. What is this called?",
     "o": [
-      "A single-sided ventilation system",
-      "A moving walk",
-      "A dumbwaiter group",
-      "A zoned elevator system"
+      "A double-deck system",
+      "Duplex collective control",
+      "A zoned elevator system",
+      "Shuttle service"
     ],
-    "c": 3,
-    "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-    "n": "Assigning separate floor ranges to separate groups is elevator zoning."
+    "c": 2,
+    "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Zoning splits the floors between groups so each car makes fewer stops. The upper group runs express past the lower floors."
   },
   {
     "s": "Traffic Concepts",
-    "q": "Which design change usually increases potential handling capacity, all else being equal?",
+    "q": "Which change usually raises the handling capacity of an elevator group?",
     "o": [
-      "Blocking half the lobby",
-      "Eliminating dispatch control",
-      "Increasing the number or capacity of appropriately sized cars",
-      "Reducing every car to the smallest possible size"
+      "Slowing the cars down",
+      "Reducing the number of cars",
+      "Making the lobby smaller",
+      "Adding cars or using larger cars"
     ],
-    "c": 2,
-    "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-    "n": "More suitable car capacity and/or additional cars can increase the number of passengers moved, though actual performance depends on speed, stops, loading, zoning, and control strategy."
+    "c": 3,
+    "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Handling capacity depends on how many people each car carries and how often cars come."
   },
   {
     "s": "Elevator Planning",
     "q": "What is an elevator bank?",
     "o": [
-      "A group of elevators arranged to serve related traffic and usually a common lobby",
-      "A single escalator",
-      "A pit drainage reservoir",
-      "A financial office beside a lift"
+      "A group of elevators serving the same floors from a common lobby",
+      "One elevator serving one floor",
+      "A sump that drains the elevator pit",
+      "A group of escalators"
     ],
     "c": 0,
-    "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-    "n": "An elevator bank groups multiple cars so passenger demand can be served collectively and dispatched efficiently."
+    "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "A bank is dispatched as a group. Big buildings have several banks, each serving a zone."
   },
   {
     "s": "Elevator Types",
-    "q": "A dumbwaiter is primarily intended for:",
+    "q": "What is a dumbwaiter meant for?",
     "o": [
-      "Serving as an escalator",
-      "Transporting small goods rather than passengers",
-      "Carrying only firefighting water",
-      "Transporting automobiles"
+      "Carrying passengers in small houses",
+      "Carrying small goods, not people",
+      "Carrying cars in parking buildings",
+      "Carrying hospital beds"
     ],
     "c": 1,
-    "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-    "n": "A dumbwaiter is a small service lift intended for materials such as food, documents, or small goods, not passenger transport."
+    "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Dumbwaiters carry food, linen and documents. They are too small for a person to ride in."
   },
   {
     "s": "Traffic Scenario",
-    "q": "A 20-storey building has severe morning up-peak traffic. Which planning concept is most directly relevant to reducing unnecessary stops by assigning different floor ranges to different groups?",
+    "q": "A 20-storey building has heavy morning up-peak traffic. Which concept cuts stops by giving floor ranges to different groups?",
     "o": [
-      "Hydraulic balancing valve",
-      "Cross ventilation",
+      "Double-deck cars",
+      "Hydraulic drive",
       "Zoning",
-      "Comb-plate design"
+      "Longer door dwell time"
     ],
     "c": 2,
-    "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-    "n": "Zoning is used in taller buildings to divide service ranges and improve traffic performance."
+    "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "With zoning, each group serves fewer floors, so round trips are shorter and intervals drop."
   },
   {
     "s": "Traffic Concepts",
-    "q": "In elevator traffic analysis, 'interval' most nearly refers to:",
+    "q": "In elevator traffic analysis, what is the interval?",
     "o": [
-      "Length of the hoistway",
-      "Door panel thickness",
-      "Average time between successive car departures/arrivals serving the main terminal under the selected traffic condition",
-      "Time required to paint the car"
+      "The time for one car to make a full round trip",
+      "The average time a passenger rides in a car",
+      "The time the doors stay open at each stop",
+      "The average time between car departures from the main lobby"
     ],
-    "c": 2,
-    "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-    "n": "Interval is a key measure of the frequency with which elevator service is available at the main terminal."
+    "c": 3,
+    "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Interval is the round-trip time divided by the number of cars. Offices aim for about 25–30 seconds."
   },
   {
     "s": "LEA Integration",
-    "q": "Elevators are most directly examined in architecture as part of:",
+    "q": "What is the round-trip time (RTT) of an elevator?",
     "o": [
-      "Property appraisal only",
-      "Building utilities and vertical transportation",
-      "Ancient architectural history only",
-      "Land surveying only"
+      "The time for a car to leave the lobby, serve its stops and come back",
+      "The average time between car departures from the lobby",
+      "The time a passenger waits for a car",
+      "The time for the doors to open and close once"
     ],
-    "c": 1,
-    "ref": "PRC Board of Architecture, Architecture Licensure Examination Syllabi — Utilities Systems coverage.",
-    "n": "Elevators are building utility/vertical transportation systems and fit the utilities systems portion of architectural technical knowledge."
+    "c": 0,
+    "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "RTT includes travel, stops, door operation and loading. Dividing it by the number of cars gives the interval."
   },
   {
     "s": "Elevator Types",
-    "q": "Which elevator system raises the car primarily by hydraulic pressure acting on a cylinder/plunger or equivalent hydraulic arrangement?",
+    "q": "Which elevator raises the car by pumping oil into a cylinder under a plunger?",
     "o": [
-      "Rack storage",
-      "Moving walk",
-      "Hydraulic",
-      "Traction"
+      "Traction elevator",
+      "Hydraulic elevator",
+      "Drum (winding) elevator",
+      "Rack-and-pinion elevator"
     ],
-    "c": 2,
-    "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-    "n": "Hydraulic elevators use pressurized fluid to move a piston/plunger or roped-hydraulic arrangement.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNzYwIiB2aWV3Qm94PSIwIDAgOTAwIDc2MCI+CjxyZWN0IHg9IjE4MCIgeT0iODAiIHdpZHRoPSI0MjAiIGhlaWdodD0iNTgwIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjMjIyIiBzdHJva2Utd2lkdGg9IjQiLz4KPHJlY3QgeD0iMjkwIiB5PSIyMzAiIHdpZHRoPSIyMTAiIGhlaWdodD0iMjMwIiBmaWxsPSJub25lIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iNSIvPjx0ZXh0IHg9IjM1NSIgeT0iMzUwIiBmb250LXNpemU9IjMwIj5DQVI8L3RleHQ+CjxyZWN0IHg9IjM2NSIgeT0iNDYwIiB3aWR0aD0iNjAiIGhlaWdodD0iMTcwIiBmaWxsPSJub25lIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iNSIvPjx0ZXh0IHg9IjQ0MCIgeT0iNTUwIiBmb250LXNpemU9IjIyIj5QbHVuZ2VyPC90ZXh0Pgo8bGluZSB4MT0iMzk1IiB5MT0iNjMwIiB4Mj0iMzk1IiB5Mj0iNzAwIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iOCIvPgo8cmVjdCB4PSI2NTAiIHk9IjQ5MCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIxMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzIyMiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHRleHQgeD0iNjkwIiB5PSI1NDAiIGZvbnQtc2l6ZT0iMjIiPlB1bXAgLzwvdGV4dD48dGV4dCB4PSI2OTAiIHk9IjU3MCIgZm9udC1zaXplPSIyMiI+dGFuayB1bml0PC90ZXh0Pgo8cGF0aCBkPSJNNjUwIDU0NSBINTAwIFY2ODAgSDM5NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjIyIiBzdHJva2Utd2lkdGg9IjYiLz4KPHRleHQgeD0iNjM1IiB5PSI2NTAiIGZvbnQtc2l6ZT0iMjIiPkh5ZHJhdWxpYyBsaW5lPC90ZXh0Pgo8L3N2Zz4="
+    "c": 1,
+    "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Hydraulic elevators suit low rises, up to about six floors. They need no overhead machine but use more energy."
   },
   {
     "s": "Zoning",
-    "q": "A high-rise system in which one group serves lower floors and another serves upper floors is an example of:",
+    "q": "In a 50-storey building, what is a sky lobby?",
     "o": [
-      "Escalator crisscrossing",
-      "Elevator zoning",
-      "Hydraulic balancing",
-      "Natural ventilation"
+      "A roof deck that houses the elevator machine room",
+      "A lobby for the freight elevators only",
+      "An upper transfer floor reached by express shuttles, where riders change to local cars",
+      "A lobby for the fire-service elevator only"
     ],
-    "c": 1,
-    "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-    "n": "Lower- and upper-floor elevator groups are a classic zoning strategy."
+    "c": 2,
+    "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Sky lobbies stack zones on top of each other so local cars in different zones share the same shafts."
   },
   {
     "s": "Traffic Concepts",
-    "q": "In elevator planning, 'handling capacity' generally refers to:",
+    "q": "In elevator planning, what is handling capacity?",
     "o": [
-      "The amount of passenger traffic a system can transport within a stated period under defined assumptions",
-      "The structural capacity of the roof only",
-      "The width of a stair",
-      "The amount of air in the lobby"
+      "The rated load of one car in kilograms",
+      "The number of cars in a group",
+      "The number of floors served",
+      "The share of the building population moved in 5 minutes at peak"
     ],
-    "c": 0,
-    "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-    "n": "Handling capacity is a traffic-performance concept, commonly expressed as people or a percentage of building population transported over a defined interval."
+    "c": 3,
+    "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Offices typically aim to move 12–15% of their population in five minutes during up-peak."
   },
   {
     "s": "Machine Room",
@@ -166,34 +165,33 @@
       "Main return line"
     ],
     "c": 2,
-    "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-    "n": "MRL means machine-room-less: major drive/control equipment is arranged without a conventional separate elevator machine room, subject to manufacturer and code requirements."
+    "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "MRL means machine-room-less: the drive sits in the hoistway, so no separate machine room is built."
   },
   {
     "s": "Elevator Types",
-    "q": "Which elevator type normally uses ropes or belts passing over a drive sheave, with the car balanced by a counterweight?",
+    "q": "Which elevator uses ropes over a driven sheave, with the car balanced by a counterweight?",
     "o": [
+      "Hydraulic elevator",
       "Traction elevator",
-      "Escalator",
-      "Dumbwaiter without a hoistway",
-      "Direct-plunger hydraulic elevator"
+      "Drum (winding) elevator",
+      "Rack-and-pinion elevator"
     ],
-    "c": 0,
-    "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-    "n": "Traction elevators use a drive sheave and suspension means, typically with a counterweight, to move the car.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iODAwIiB2aWV3Qm94PSIwIDAgOTAwIDgwMCI+CjxyZWN0IHg9IjE3MCIgeT0iODAiIHdpZHRoPSI1NjAiIGhlaWdodD0iNjQwIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjMjIyIiBzdHJva2Utd2lkdGg9IjQiLz4KPGNpcmNsZSBjeD0iNDUwIiBjeT0iMTQ1IiByPSI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjIyIiBzdHJva2Utd2lkdGg9IjUiLz48dGV4dCB4PSI1MTAiIHk9IjE0NSIgZm9udC1zaXplPSIyNCI+VHJhY3Rpb24gc2hlYXZlPC90ZXh0Pgo8bGluZSB4MT0iNDIwIiB5MT0iMTk1IiB4Mj0iMzQwIiB5Mj0iMzIwIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iNiIvPjxsaW5lIHgxPSI0ODAiIHkxPSIxOTUiIHgyPSI1OTAiIHkyPSIzMjAiIHN0cm9rZT0iIzIyMiIgc3Ryb2tlLXdpZHRoPSI2Ii8+CjxyZWN0IHg9IjI2NSIgeT0iMzIwIiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjIzNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjIyIiBzdHJva2Utd2lkdGg9IjUiLz48dGV4dCB4PSIzMDUiIHk9IjQ0MCIgZm9udC1zaXplPSIzMiI+Q0FSPC90ZXh0Pgo8cmVjdCB4PSI1NTUiIHk9IjMyMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjIzNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjIyIiBzdHJva2Utd2lkdGg9IjUiLz48dGV4dCB4PSI1NjUiIHk9IjQ1MCIgZm9udC1zaXplPSIyMiIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDU2NSA0NTApIj5DT1VOVEVSV0VJR0hUPC90ZXh0Pgo8bGluZSB4MT0iMjUwIiB5MT0iMjYwIiB4Mj0iMjUwIiB5Mj0iNjIwIiBzdHJva2U9IiM3NzciIHN0cm9rZS13aWR0aD0iNSIvPjxsaW5lIHgxPSI0NTAiIHkxPSIyNjAiIHgyPSI0NTAiIHkyPSI2MjAiIHN0cm9rZT0iIzc3NyIgc3Ryb2tlLXdpZHRoPSI1Ii8+Cjx0ZXh0IHg9IjgwIiB5PSI0MzAiIGZvbnQtc2l6ZT0iMjQiPkd1aWRlIHJhaWxzPC90ZXh0Pgo8cmVjdCB4PSIyMjAiIHk9IjY1MCIgd2lkdGg9IjExMCIgaGVpZ2h0PSI0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjIyIiBzdHJva2Utd2lkdGg9IjQiLz48cmVjdCB4PSI1NzAiIHk9IjY1MCIgd2lkdGg9IjExMCIgaGVpZ2h0PSI0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjIyIiBzdHJva2Utd2lkdGg9IjQiLz4KPHRleHQgeD0iMzUwIiB5PSI2ODAiIGZvbnQtc2l6ZT0iMjQiPlBpdCBidWZmZXJzPC90ZXh0Pgo8L3N2Zz4="
+    "c": 1,
+    "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Traction elevators suit mid- and high-rise buildings. Friction between ropes and sheave moves the car."
   },
   {
     "s": "Zoning",
-    "q": "What is elevator zoning?",
+    "q": "What does destination dispatch do?",
     "o": [
-      "Using one elevator for all buildings in a city",
-      "Locating all elevators outdoors",
-      "Painting floors different colors",
-      "Assigning different elevator groups to different ranges of floors"
+      "Every car stops at every floor in turn",
+      "Idle cars are parked at the top floor",
+      "Riders enter their floor in the lobby and are assigned a car going there",
+      "Cars are assigned at random to spread wear"
     ],
-    "c": 3,
-    "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-    "n": "Zoning divides building floors among elevator groups to reduce unnecessary stops and improve high-rise traffic performance."
+    "c": 2,
+    "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+    "n": "Grouping riders by destination cuts stops per trip and raises handling capacity."
   }
 ]

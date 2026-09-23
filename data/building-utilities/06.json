@@ -5,16 +5,16 @@
   "questions": [
     {
       "s": "System Coordination",
-      "q": "Which statement about fire/smoke dampers is most accurate?",
+      "q": "What does a fire damper in a duct do?",
       "o": [
-        "They replace sprinklers in all buildings",
-        "They are specialized life-safety devices used where required to restrict fire and/or smoke movement through air-distribution openings",
-        "They are used only in plumbing stacks",
-        "They are ordinary balancing dampers only"
+        "Shuts automatically in a fire to keep flames from passing through a rated wall or floor",
+        "Balances airflow between duct branches during testing and commissioning",
+        "Stops outside air from blowing back in when the exhaust fan is off",
+        "Opens and closes to hold the room at its set temperature"
       ],
-      "c": 1,
-      "ref": "Applicable Philippine fire/building regulations plus listed damper requirements; coordinate with mechanical/fire-protection design.",
-      "n": "Fire and smoke dampers are specialized components associated with rated assemblies and smoke-control strategies; exact requirements depend on the applicable fire/building code."
+      "c": 0,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "A fire damper has a fusible link that melts and drops a curtain across the duct where it passes a fire-rated wall or floor. The others describe volume, backdraft and VAV dampers."
     },
     {
       "s": "Application",
@@ -27,46 +27,46 @@
       ],
       "c": 2,
       "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Toilets are typical exhaust spaces because odor and moisture should be removed rather than deliberately recirculated to cleaner occupied areas."
+      "n": "Toilets are exhausted directly because their odor and moisture should leave the building, not be recirculated."
     },
     {
       "s": "Fans",
-      "q": "Which fan type is generally associated with moving air through duct systems against appreciable static pressure?",
+      "q": "Which fan type is used to move air through ductwork against high static pressure?",
       "o": [
-        "Ceiling paddle fan only",
-        "Desk fan only",
-        "Gravity ventilator only",
-        "Centrifugal fan"
+        "Propeller (wall) fan",
+        "Ceiling paddle fan",
+        "Centrifugal fan",
+        "Pedestal fan"
       ],
-      "c": 3,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Centrifugal fans are widely used in ducted systems because they can handle useful static pressures; selection still depends on duty and system design."
+      "c": 2,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "A centrifugal (blower) fan throws air outward from a wheel into a scroll housing, building up pressure to push air through long ducts. Propeller fans move lots of air at very low pressure."
     },
     {
       "s": "Air Distribution",
-      "q": "What is the primary role of a supply diffuser?",
+      "q": "What is the main role of a supply diffuser?",
       "o": [
-        "Introduce and distribute supply air into a space",
-        "Stop fire in a stair",
-        "Support elevator rails",
-        "Collect sewage gases"
+        "Collect room air and send it back to the air handler",
+        "Discharge stale air to the outdoors",
+        "Mix outdoor air with return air before the coil",
+        "Deliver conditioned air into a room and spread it evenly"
       ],
-      "c": 0,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Diffusers deliver and spread supply air into the occupied zone while helping control throw, spread, and mixing."
+      "c": 3,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "A diffuser sits at the end of a supply duct and throws air across the room. Return grilles collect air, and exhaust louvers discharge it."
     },
     {
       "s": "Natural Ventilation",
-      "q": "Stack effect ventilation is primarily driven by:",
+      "q": "What mainly drives stack-effect ventilation?",
       "o": [
-        "Elevator counterweights",
-        "Mechanical fan pressure",
-        "Only wind speed at roof level",
-        "Differences in air density caused by temperature and elevation"
+        "Warm indoor air being lighter than cooler outdoor air over a height",
+        "Wind pressure on the windward face of the building",
+        "Pressure from a mechanical supply fan",
+        "Moisture given off by the occupants"
       ],
-      "c": 3,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Warm and cool air have different densities. Vertical separation between openings can create buoyancy-driven airflow, commonly called stack effect."
+      "c": 0,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "Warm air rises and leaves through high openings, drawing cooler air in through low ones. The taller the gap between openings and the bigger the temperature difference, the stronger the flow."
     },
     {
       "s": "Ventilation Fundamentals",
@@ -79,257 +79,274 @@
       ],
       "c": 3,
       "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Outdoor air is air introduced from outside to dilute indoor contaminants and support ventilation."
+      "n": "Outdoor air is brought in to dilute contaminants and CO₂ produced indoors."
     },
     {
       "s": "Natural Ventilation",
-      "q": "Why is a clear internal airflow path important in a naturally ventilated plan?",
+      "q": "In a cross-ventilated plan, what happens when full-height partitions block the path between the windward and leeward windows?",
       "o": [
-        "It eliminates wind effects",
-        "Air cannot effectively move between inlet and outlet openings when partitions block the path",
-        "It makes walls load-bearing",
-        "It raises elevator capacity"
+        "Airflow rises, since air speeds up around the partitions",
+        "Nothing changes, since only the window area matters",
+        "Airflow drops sharply, since air cannot pass from inlet to outlet",
+        "The room switches to stack ventilation on its own"
       ],
-      "c": 1,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Openings alone are insufficient if interior partitions or closed doors obstruct the pressure-driven path through the occupied zone."
+      "c": 2,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "Cross ventilation needs a clear path from the high-pressure side to the low-pressure side. Closed doors or solid partitions cut it off, whatever the window size."
     },
     {
       "s": "Application",
       "q": "What is make-up air?",
       "o": [
-        "A synonym for return air in every system",
-        "Air supplied to replace air removed by exhaust or process systems",
-        "Air used to inflate elevator buffers",
-        "Air trapped inside a wall cavity"
+        "Air taken from a room and sent back to the air handler",
+        "Air moved between rooms through a transfer grille",
+        "Outdoor air leaking in through cracks in the envelope",
+        "Air supplied to replace air removed by exhaust systems"
       ],
-      "c": 1,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Make-up air replaces air removed by exhaust so excessive depressurization and uncontrolled infiltration are reduced."
+      "c": 3,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "Kitchen hoods and large exhaust fans pull out a lot of air. Make-up air replaces it so doors do not slam and the hood keeps working."
     },
     {
       "s": "Air Changes",
       "q": "A 60 m³ room receives 360 m³/h of outdoor air. What is the air-change rate?",
       "o": [
+        "6 ACH",
         "12 ACH",
         "3 ACH",
-        "6 ACH",
         "21 ACH"
       ],
-      "c": 2,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Air changes per hour equal the hourly airflow divided by room volume."
+      "c": 0,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "Air changes per hour is the hourly airflow divided by the room volume.",
+      "formula": "ACH = Q ÷ V",
+      "steps": [
+        "Q = 360 m³/h, V = 60 m³",
+        "ACH = 360 ÷ 60",
+        "ACH = 6 air changes per hour"
+      ]
     },
     {
       "s": "Air Distribution",
-      "q": "A return-air grille is normally used to:",
+      "q": "What is a return-air grille used for?",
       "o": [
-        "Collect room air for return to the air-handling system",
-        "Discharge roof drainage",
-        "Distribute potable water",
-        "Control elevator doors"
+        "Delivering conditioned air into the room",
+        "Collecting room air and sending it back to the air handler",
+        "Taking in outdoor air at the building face",
+        "Discharging kitchen exhaust to the outside"
       ],
-      "c": 0,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Return grilles provide an opening for room air to leave the occupied zone and enter the return-air path."
+      "c": 1,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "Return grilles let room air leave the space and flow back to the air handler, where part of it is recirculated and part relieved."
     },
     {
       "s": "Mechanical Ventilation",
-      "q": "Which system intentionally supplies and exhausts air using mechanical equipment?",
+      "q": "Which system uses fans both to supply and to exhaust air, in about equal amounts?",
       "o": [
-        "Stack-only ventilation",
-        "Infiltration",
-        "Single-sided natural ventilation",
-        "Balanced ventilation"
+        "Exhaust-only ventilation",
+        "Supply-only ventilation",
+        "Balanced ventilation",
+        "Infiltration"
       ],
-      "c": 3,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "A balanced system uses both supply and exhaust fans or equivalent mechanical means so the two air streams can be deliberately controlled."
+      "c": 2,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "Balanced systems control both air streams, often through a heat- or energy-recovery unit. Exhaust-only systems depressurize the space, and supply-only systems pressurize it."
     },
     {
       "s": "Ventilation Fundamentals",
-      "q": "Which air stream is taken from an occupied space and routed back toward an air-handling system?",
+      "q": "Which air stream is taken from a room and sent back toward the air handler?",
       "o": [
-        "Make-up water",
-        "Combustion air",
-        "Return air",
-        "Exhaust air"
+        "Exhaust air",
+        "Outdoor air",
+        "Make-up air",
+        "Return air"
       ],
-      "c": 2,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Return air travels from the conditioned/ventilated space back toward the air-handling system and may be partly recirculated or relieved."
+      "c": 3,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "Return air comes back to the air handler to be mixed, filtered and conditioned again. Exhaust air is thrown out of the building."
     },
     {
       "s": "LEA Integration",
-      "q": "Within the PRC architecture licensure syllabus, ventilation is most directly associated with which major subject area?",
+      "q": "What is infiltration?",
       "o": [
-        "History of Architecture only",
-        "Utilities Systems",
-        "Site Planning only",
-        "Professional Practice only"
+        "Outdoor air leaking in through cracks and gaps in the envelope",
+        "Outdoor air brought in on purpose by a supply fan",
+        "Air passed from room to room through a transfer grille",
+        "Air removed from a kitchen by a range hood"
       ],
-      "c": 1,
-      "ref": "PRC Board of Architecture, Architecture Licensure Examination Syllabi — Utilities Systems coverage.",
-      "n": "The PRC architecture syllabus includes building utility systems within the utilities/structural/building-materials examination area."
+      "c": 0,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "Infiltration is uncontrolled. It adds cooling load and humidity, so air-conditioned buildings are sealed and given controlled outdoor air instead."
     },
     {
       "s": "Energy Efficiency",
-      "q": "Which approach generally reduces ventilation fan energy when full airflow is not continuously required?",
+      "q": "Which approach reduces ventilation fan energy when full airflow is not always needed?",
       "o": [
-        "Demand-based or variable-speed control where appropriate",
-        "Blocking all outdoor-air openings",
-        "Removing all sensors",
-        "Operating every fan at full speed at all times"
+        "Running every fan at full speed around the clock",
+        "Demand-based control with variable-speed fans",
+        "Closing all outdoor-air intakes to save energy",
+        "Oversizing the fans so they run less often"
       ],
-      "c": 0,
-      "ref": "DPWH, Philippine Green Building Code User Guide (energy-efficiency provisions for mechanical systems, elevators, escalators/moving walks).",
-      "n": "Controls and variable-speed operation can reduce fan energy during periods of lower demand when allowed by ventilation requirements."
+      "c": 1,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "CO₂ or occupancy sensors can lower airflow when fewer people are present. Fan power falls roughly with the cube of speed, so small cuts save a lot."
     },
     {
       "s": "Air Changes",
-      "q": "A 120 m³ room requires 5 air changes per hour. What airflow rate is required?",
+      "q": "A 120 m³ room needs 5 air changes per hour. What airflow is required?",
       "o": [
         "2,400 m³/h",
-        "600 m³/h",
         "24 m³/h",
+        "600 m³/h",
         "125 m³/h"
       ],
-      "c": 1,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Required hourly airflow equals the target air-change rate multiplied by the room volume."
+      "c": 2,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "Required airflow is the air-change rate times the room volume.",
+      "formula": "Q = ACH × V",
+      "steps": [
+        "ACH = 5, V = 120 m³",
+        "Q = 5 × 120",
+        "Q = 600 m³/h"
+      ]
     },
     {
       "s": "Duct Components",
       "q": "What is the main function of a damper in an air duct?",
       "o": [
-        "Measure elevator speed",
-        "Regulate or shut off airflow",
-        "Filter all microscopic contaminants by itself",
-        "Increase floor loading"
+        "Filter dust out of the air stream",
+        "Reduce fan noise in the duct",
+        "Spread supply air across the room",
+        "Regulate or shut off airflow"
       ],
-      "c": 1,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Dampers are movable devices used to modulate, balance, isolate, or shut off airflow depending on type and application."
+      "c": 3,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "Dampers are movable blades that balance, isolate or shut off airflow. Filters, attenuators and diffusers do the other jobs."
     },
     {
       "s": "Pressure Relationships",
-      "q": "A room designed to prevent contaminants from escaping into adjacent spaces is commonly maintained at:",
+      "q": "A room must keep contaminants from escaping into nearby spaces, such as an isolation room or a toilet. At what pressure is it held?",
       "o": [
-        "High temperature only",
-        "Exactly atmospheric pressure with no airflow",
+        "Negative pressure relative to adjacent spaces",
         "Positive pressure relative to adjacent spaces",
-        "Negative pressure relative to adjacent spaces"
+        "The same pressure as the corridor",
+        "The same pressure as the outdoors"
       ],
-      "c": 3,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "A negative-pressure room draws air inward from adjacent spaces, helping contain contaminants within the room before exhaust.",
+      "c": 0,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "More air is exhausted than supplied, so air flows into the room under the door and not out of it.",
       "fig": "f1"
     },
     {
       "s": "Ventilation Fundamentals",
-      "q": "Exhaust air is best described as:",
+      "q": "What is exhaust air?",
       "o": [
-        "Air entering through a supply diffuser",
-        "Air used only for cooling a motor",
-        "Air permanently discharged from the building",
-        "Air trapped in a duct"
+        "Air returned from a room to the air handler",
+        "Air removed from a space and discharged outdoors",
+        "Air brought in from outside for ventilation",
+        "Air passed from one room to another"
       ],
-      "c": 2,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Exhaust air is removed from a space and discharged outdoors rather than intentionally returned to the occupied zone."
+      "c": 1,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "Exhaust air leaves the building for good. It is taken from toilets, kitchens and other places whose air should not be recirculated."
     },
     {
       "s": "Ventilation Fundamentals",
-      "q": "Which statement best distinguishes ventilation from air-conditioning?",
+      "q": "What sets ventilation apart from air conditioning?",
       "o": [
-        "Ventilation only changes air temperature",
-        "Ventilation is limited to natural airflow through windows",
-        "Ventilation introduces/removes air to maintain indoor air quality, while air-conditioning may also control temperature and humidity",
-        "Air-conditioning always uses outdoor air only"
+        "Ventilation controls humidity; air conditioning only moves air",
+        "They are the same process under two names",
+        "Ventilation supplies and removes air for air quality; air conditioning also controls temperature and humidity",
+        "Ventilation always needs a fan; air conditioning never does"
       ],
       "c": 2,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Ventilation is primarily concerned with supplying, distributing, and removing air for indoor air quality. Air-conditioning may additionally control temperature, humidity, filtration, and comfort."
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "Ventilation dilutes and removes contaminants. Air conditioning treats the air: it cools or heats, dehumidifies, filters and distributes it."
     },
     {
       "s": "System Coordination",
-      "q": "Why should outdoor-air intakes be separated from exhaust outlets and pollutant sources?",
+      "q": "Why are outdoor-air intakes kept away from exhaust outlets and other pollution sources?",
       "o": [
-        "To reduce the chance that contaminated exhaust is drawn back into the building",
-        "To increase elevator speed",
-        "To eliminate all maintenance",
-        "To make ducts heavier"
+        "So intake noise stays away from the exhaust fan",
+        "So the ducts can be made shorter and cheaper",
+        "So rain cannot enter the exhaust outlet",
+        "So contaminated exhaust is not drawn back into the building"
       ],
-      "c": 0,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Separation helps prevent short-circuiting or re-entrainment of exhaust contaminants into outdoor-air intakes."
+      "c": 3,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "If an intake is too close to an exhaust, a plumbing vent or a loading dock, polluted air gets sucked back inside. Codes set minimum separation distances."
     },
     {
       "s": "Airflow",
-      "q": "If average air velocity through a 0.50 m² opening is 2 m/s, what ideal volumetric airflow passes through it?",
+      "q": "Air passes through a 0.50 m² opening at an average of 2 m/s. What is the airflow?",
       "o": [
-        "0.25 m³/s",
         "1.0 m³/s",
+        "0.25 m³/s",
         "4.0 m³/s",
         "2.5 m³/s"
       ],
-      "c": 1,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "For a uniform idealized velocity, volumetric flow is area multiplied by average velocity."
+      "c": 0,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "Volume flow is the opening area times the average air speed through it.",
+      "formula": "Q = A × v",
+      "steps": [
+        "A = 0.50 m², v = 2 m/s",
+        "Q = 0.50 × 2",
+        "Q = 1.0 m³/s"
+      ]
     },
     {
       "s": "Duct Components",
-      "q": "A louver is commonly used at a building opening to:",
+      "q": "What is a louver at an outside-air or exhaust opening for?",
       "o": [
-        "Increase water pressure",
-        "Act as an elevator brake",
-        "Provide weather-resistant air intake or discharge while limiting direct rain entry",
-        "Replace all ductwork"
+        "Spreading supply air evenly across a room",
+        "Letting air through while keeping out rain and debris",
+        "Stopping fire from passing through a rated wall",
+        "Reducing duct noise with lined baffles"
       ],
-      "c": 2,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Louvers are commonly used at outside-air and exhaust openings to permit airflow while helping resist rain and debris entry."
+      "c": 1,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "A louver has angled blades that shed rain and a screen that stops birds and debris, while air passes through."
     },
     {
       "s": "Pressure Relationships",
-      "q": "Which space-pressure relationship is generally used when the objective is to keep contaminants from entering a clean room?",
+      "q": "At what pressure is a clean room held to keep contaminants from getting in?",
       "o": [
-        "No pressure control",
         "Negative pressure",
+        "The same pressure as the corridor",
         "Positive pressure",
-        "Vacuum pressure"
+        "The same pressure as the outdoors"
       ],
       "c": 2,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Positive pressure causes air to tend to flow outward from the cleaner space, reducing inward migration of contaminants.",
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "More air is supplied than exhausted, so air leaks out through gaps and dirty air cannot leak in. Operating rooms work the same way.",
       "fig": "f1"
     },
     {
       "s": "Natural Ventilation",
-      "q": "Which design condition generally improves cross-ventilation?",
+      "q": "Which layout gives the best cross ventilation?",
       "o": [
-        "Openings concentrated on only one interior wall",
-        "Air inlets and outlets on different sides of the space with a pressure path between them",
-        "Eliminating all internal air paths",
-        "A completely sealed façade"
+        "Openings only on one wall of the room",
+        "Large inlets and outlets side by side on the same wall",
+        "A sealed façade with a single small roof vent",
+        "Inlets and outlets on opposite sides of the space, with a clear path between them"
       ],
-      "c": 1,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Cross-ventilation benefits from pressure differences and a clear airflow path between openings, commonly on different sides of a room or building."
+      "c": 3,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "Wind makes high pressure on the windward side and low pressure on the leeward side. Openings on both sides let air flow straight through."
     },
     {
       "s": "Ventilation Fundamentals",
-      "q": "In a simple mechanical exhaust system, what normally causes replacement air to enter the space?",
+      "q": "A room has only an exhaust fan. How does replacement air get in?",
       "o": [
-        "The exhaust grille creates heat",
-        "Air enters through intentional or incidental openings because indoor pressure becomes lower",
-        "The exhaust fan raises indoor pressure",
-        "The return duct becomes a supply duct"
+        "It leaks in through openings, drawn by the slightly lower indoor pressure",
+        "The exhaust fan pushes fresh air in through the same grille",
+        "Indoor pressure rises and forces outdoor air in",
+        "The return duct reverses and becomes a supply duct"
       ],
-      "c": 1,
-      "ref": "ASHRAE ventilation terminology and standard HVAC design principles.",
-      "n": "Mechanical exhaust removes air and typically produces slight negative pressure, drawing replacement air through openings or designated make-up air paths.",
-      "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAwIiBoZWlnaHQ9IjYyMCIgdmlld0JveD0iMCAwIDEwMDAgNjIwIj4KPGRlZnM+PG1hcmtlciBpZD0iYSIgbWFya2VyV2lkdGg9IjEwIiBtYXJrZXJIZWlnaHQ9IjEwIiByZWZYPSI4IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDAsNiBMOSwzIHoiIGZpbGw9IiMyMjIiLz48L21hcmtlcj48L2RlZnM+CjxyZWN0IHg9IjE4MCIgeT0iMTIwIiB3aWR0aD0iNjQwIiBoZWlnaHQ9IjM2MCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzIyMiIgc3Ryb2tlLXdpZHRoPSI0Ii8+CjxsaW5lIHgxPSI1MDAiIHkxPSIxMjAiIHgyPSI1MDAiIHkyPSI0ODAiIHN0cm9rZT0iIzc3NyIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjx0ZXh0IHg9IjMwMCIgeT0iMTU1IiBmb250LXNpemU9IjI2Ij5PY2N1cGllZCBTcGFjZSBBPC90ZXh0Pjx0ZXh0IHg9IjU4NSIgeT0iMTU1IiBmb250LXNpemU9IjI2Ij5PY2N1cGllZCBTcGFjZSBCPC90ZXh0Pgo8cGF0aCBkPSJNNDAgMjUwIEgxODAiIHN0cm9rZT0iIzIyMiIgc3Ryb2tlLXdpZHRoPSI3IiBtYXJrZXItZW5kPSJ1cmwoI2EpIi8+PHRleHQgeD0iMzAiIHk9IjIyMCIgZm9udC1zaXplPSIyMiI+T1VURE9PUiBBSVI8L3RleHQ+CjxwYXRoIGQ9Ik04MjAgMzMwIEg5NjAiIHN0cm9rZT0iIzIyMiIgc3Ryb2tlLXdpZHRoPSI3IiBtYXJrZXItZW5kPSJ1cmwoI2EpIi8+PHRleHQgeD0iODM1IiB5PSIzMDAiIGZvbnQtc2l6ZT0iMjIiPkVYSEFVU1Q8L3RleHQ+CjxwYXRoIGQ9Ik0zNjAgMjUwIEg1MDAiIHN0cm9rZT0iIzIyMiIgc3Ryb2tlLXdpZHRoPSI2IiBtYXJrZXItZW5kPSJ1cmwoI2EpIi8+PHRleHQgeD0iMzU1IiB5PSIyMjAiIGZvbnQtc2l6ZT0iMjAiPlRSQU5TRkVSPC90ZXh0Pgo8cGF0aCBkPSJNNjUwIDM5MCBINTAwIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iNiIgbWFya2VyLWVuZD0idXJsKCNhKSIvPjx0ZXh0IHg9IjU0NSIgeT0iNDI1IiBmb250LXNpemU9IjIwIj5SRVRVUk4gLyBSRUNJUkNVTEFUSU9OPC90ZXh0Pgo8cmVjdCB4PSIxNjAiIHk9IjIyNSIgd2lkdGg9IjI1IiBoZWlnaHQ9IjUwIiBmaWxsPSJub25lIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iMyIvPgo8cmVjdCB4PSI4MTUiIHk9IjMwNSIgd2lkdGg9IjI1IiBoZWlnaHQ9IjUwIiBmaWxsPSJub25lIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iMyIvPgo8L3N2Zz4="
+      "c": 0,
+      "ref": "ASHRAE 62.1 terminology; Grondzik and Kwok, Mechanical and Electrical Equipment for Buildings",
+      "n": "Removing air lowers the indoor pressure a little, and outdoor air flows in through door undercuts, transfer grilles or gaps to replace it."
     }
   ]
 }

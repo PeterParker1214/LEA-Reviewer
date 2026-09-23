@@ -6,176 +6,176 @@
   "questions": [
     {
       "s": "Elevator Components",
-      "q": "The elevator governor is primarily associated with:",
+      "q": "What is the elevator governor for?",
       "o": [
-        "Lobby air-conditioning",
-        "Counterweight painting",
-        "Overspeed detection and initiation of protective action",
-        "Door decoration"
+        "Detecting overspeed and tripping the safety gear",
+        "Controlling how fast the doors open",
+        "Levelling the car with each floor",
+        "Balancing the car against the counterweight"
       ],
-      "c": 2,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "The overspeed governor detects excessive speed and is associated with activation of safety mechanisms and control actions."
+      "c": 0,
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "The governor turns with the car on its own rope. At overspeed it cuts power, then grips its rope, which pulls the safety gear onto the rails."
     },
     {
       "s": "Elevator Doors",
-      "q": "The door operator is primarily responsible for:",
+      "q": "What does the door operator do?",
       "o": [
-        "Driving the main traction sheave",
-        "Supporting the counterweight",
-        "Cooling the machine room",
-        "Powered opening and closing of the car door and associated landing-door operation"
+        "Drives the traction sheave",
+        "Opens and closes the car door, which drives the hoistway door with it",
+        "Locks the hoistway door when the car is away",
+        "Reopens the door when a passenger is in the way"
       ],
-      "c": 3,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "The door operator controls routine door movement and works with sensors and interlocks."
+      "c": 1,
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "The door operator is a motor on top of the car. The interlock locks the doors, and the safety edge or light curtain reopens them."
     },
     {
       "s": "Elevator Shaft",
-      "q": "The vertical enclosure/path in which an elevator car travels is commonly called the:",
+      "q": "What is the vertical enclosure in which an elevator car travels called?",
       "o": [
-        "Plenum only",
-        "Atrium",
-        "Gutter",
-        "Hoistway"
+        "Machine room",
+        "Elevator lobby",
+        "Hoistway",
+        "Plenum"
       ],
-      "c": 3,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "The hoistway or elevator shaft contains the car travel path and associated equipment.",
+      "c": 2,
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "The hoistway (shaft) holds the car, counterweight, rails and ropes, from the pit to the overhead.",
       "fig": "f1"
     },
     {
       "s": "Elevator Components",
-      "q": "The traveling cable primarily provides:",
+      "q": "What does the traveling cable do?",
       "o": [
-        "Flexible electrical/control connections between the moving car and fixed building systems",
-        "Fire rating to the shaft",
-        "Hydraulic oil to every elevator",
-        "Structural support for the car"
+        "Carries the weight of the car",
+        "Trips the safety gear at overspeed",
+        "Balances the weight of the hoist ropes",
+        "Carries power and signals between the moving car and the building"
       ],
-      "c": 0,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "The traveling cable moves with the car while carrying power, signal, communication, and control conductors as designed."
+      "c": 3,
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "The traveling cable hangs in a loop from mid-hoistway to the car. The hoist ropes carry the car, the governor rope trips the safety, and compensating chains balance rope weight."
     },
     {
       "s": "Elevator Components",
-      "q": "Guide rails primarily serve to:",
+      "q": "What do guide rails do?",
       "o": [
-        "Act as smoke ducts",
-        "Guide the vertical travel of the car and counterweight and provide a surface for certain safety devices",
-        "Supply electrical power to the whole building",
-        "Cool the elevator lobby"
+        "Guide the car and counterweight and give the safety gear something to grip",
+        "Carry the weight of the car down to the pit",
+        "Hold the hoistway doors in line",
+        "Carry electric power to the car"
       ],
-      "c": 1,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "Guide rails maintain the intended travel path and are integral to car/counterweight guidance and safety-gear action."
+      "c": 0,
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "Steel T-rails run the full height of the shaft. Guide shoes or rollers on the car run along them."
     },
     {
       "s": "Elevator Doors",
-      "q": "Which pair correctly identifies the two principal door locations?",
+      "q": "Which two doors does an elevator entrance have?",
       "o": [
-        "Car door and landing/hoistway door",
-        "Machine door and stair door only",
-        "Roof door and floor drain",
-        "Supply door and return door"
-      ],
-      "c": 0,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "Elevator entrances normally involve a car door mounted on the car and a landing/hoistway door at each served floor."
-    },
-    {
-      "s": "Elevator Components",
-      "q": "What does the brake on a traction machine normally do when applied?",
-      "o": [
-        "Balances air pressure",
-        "Pumps hydraulic oil",
-        "Opens the hoistway doors",
-        "Holds or stops the elevator drive system"
-      ],
-      "c": 3,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "The machine brake is a key holding/stopping device and is designed to act under defined operating and emergency conditions."
-    },
-    {
-      "s": "Elevator Components",
-      "q": "Buffers are normally located in the:",
-      "o": [
-        "Car operating panel",
-        "Pit, below the car and/or counterweight travel",
-        "Machine-room door",
-        "Elevator lobby ceiling"
+        "A car door and a fire door",
+        "A car door and a hoistway (landing) door",
+        "A landing door and a machine-room door",
+        "A hoistway door and a pit door"
       ],
       "c": 1,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "Buffers are energy-absorbing or energy-dissipating devices positioned at the lower end of travel in the pit.",
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "The car door travels with the car. Each floor has its own hoistway door, which the car door opens when the car arrives."
+    },
+    {
+      "s": "Elevator Components",
+      "q": "What does the brake on a traction machine do?",
+      "o": [
+        "Levels the car with the floor before the doors open",
+        "Grips the guide rails when the car overspeeds",
+        "Stops the drive and holds the car still at a floor",
+        "Absorbs the impact at the bottom of the pit"
+      ],
+      "c": 2,
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "The brake is spring-applied and held off electrically, so it sets whenever power is lost."
+    },
+    {
+      "s": "Elevator Components",
+      "q": "Where are elevator buffers located?",
+      "o": [
+        "In the machine room, beside the brake",
+        "On top of the car, above the crosshead",
+        "In the lobby, behind the hall call buttons",
+        "In the pit, below the car and the counterweight"
+      ],
+      "c": 3,
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "Spring or oil buffers stop a car or counterweight that runs past the bottom landing.",
       "fig": "f1"
     },
     {
       "s": "Elevator Components",
       "q": "What is the traction sheave?",
       "o": [
-        "A grooved wheel driven by the machine that engages the suspension ropes/belts",
-        "A car lighting fixture",
-        "A water-storage tank",
-        "The elevator pit floor drain"
+        "The grooved drive wheel that moves the ropes by friction",
+        "An idler pulley that only redirects the ropes",
+        "A wheel on the car that runs along the rail",
+        "A drum that winds up the rope"
       ],
       "c": 0,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "The traction sheave transfers driving force between the machine and the suspension means through traction.",
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "The ropes run over the sheave to the car on one side and the counterweight on the other. Friction in the grooves moves them.",
       "fig": "f2"
     },
     {
       "s": "Elevator Shaft",
-      "q": "The space above the highest landing needed for car and equipment clearances is generally called the:",
+      "q": "What is the space in the hoistway above the top landing called?",
       "o": [
         "Pit",
-        "Comb plate",
         "Overhead",
-        "Apron"
+        "Travel",
+        "Sill"
       ],
-      "c": 2,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "Overhead provides the required top-of-hoistway clearances for the car and related equipment.",
+      "c": 1,
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "The overhead gives clearance for the car and its equipment if it runs past the top landing.",
       "fig": "f1"
     },
     {
       "s": "Elevator Components",
-      "q": "The controller is best described as the system that:",
+      "q": "What does the elevator controller do?",
       "o": [
-        "Processes commands and controls elevator operation, sequencing, motion and related functions",
-        "Provides potable water",
-        "Carries the full structural building load",
-        "Acts as the pit buffer"
+        "Drives the ropes directly",
+        "Absorbs the impact in the pit",
+        "Answers calls and controls the drive, doors and safety circuits",
+        "Grips the rails at overspeed"
+      ],
+      "c": 2,
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "The controller is the brain: it registers calls, dispatches cars, starts and stops the motor, and runs the doors."
+    },
+    {
+      "s": "Elevator Components",
+      "q": "What does the safety gear of an elevator do?",
+      "o": [
+        "Absorbs the energy of the car in the pit",
+        "Detects overspeed and signals the controller",
+        "Holds the drive sheave when the car is parked",
+        "Grips the guide rails to stop the car when it overspeeds"
+      ],
+      "c": 3,
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "The safety gear is under the car. When the governor trips it, wedges clamp the rails and stop the car."
+    },
+    {
+      "s": "Elevator Components",
+      "q": "What is the counterweight in a traction elevator for?",
+      "o": [
+        "Balancing the car plus about 40–50% of rated load, so the motor does less work",
+        "Holding the car if all the ropes break",
+        "Keeping the ropes taut in the pit",
+        "Stopping the car at the top landing"
       ],
       "c": 0,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "Modern elevator controllers coordinate calls, drive commands, door operation, safety circuits, leveling, and other logic."
-    },
-    {
-      "s": "Elevator Components",
-      "q": "Safety gear is intended to:",
-      "o": [
-        "Provide normal acceleration",
-        "Replace the controller",
-        "Grip the guide rails to stop and hold the car under specified unsafe conditions",
-        "Open the car doors at every floor"
-      ],
-      "c": 2,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "Safety gear is a mechanical protective device designed to act on the guide rails under specified conditions, commonly associated with overspeed protection."
-    },
-    {
-      "s": "Elevator Components",
-      "q": "What is the principal function of the counterweight in a traction elevator?",
-      "o": [
-        "Open landing doors",
-        "Operate fire sprinklers",
-        "Balance a substantial portion of the car and rated load so the drive machine does less net work",
-        "Ventilate the hoistway"
-      ],
-      "c": 2,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "The counterweight offsets the mass of the car plus a design portion of the load, reducing required traction effort and motor power.",
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "With the car half loaded, the two sides nearly balance and the motor only has to overcome friction.",
       "fig": "f2"
     },
     {
@@ -188,22 +188,22 @@
         "Pit"
       ],
       "c": 3,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "The pit is the portion of the hoistway below the lowest landing, containing buffers and other required equipment/clearances.",
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "The pit is the part of the hoistway below the lowest landing. It holds the buffers.",
       "fig": "f1"
     },
     {
       "s": "Elevator Components",
-      "q": "What is the purpose of the door interlock?",
+      "q": "What does a door interlock do?",
       "o": [
-        "Ventilate the shaft",
-        "Act as a counterweight",
-        "Increase rated speed",
-        "Prevent normal car movement unless required doors are properly closed/locked and restrict landing-door opening except under permitted conditions"
+        "Reopens the door when a passenger is in the way",
+        "Holds the doors open during fire-service operation",
+        "Keeps the car from moving unless the hoistway door is closed and locked",
+        "Levels the car before the doors open"
       ],
-      "c": 3,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "Door interlocks are fundamental safety devices coordinating door locking and elevator movement."
+      "c": 2,
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "Each hoistway door has an interlock that locks it unless the car is there and breaks the safety circuit if it is open."
     }
   ]
 }

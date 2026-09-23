@@ -5,135 +5,135 @@
   "questions": [
     {
       "s": "Planning",
-      "q": "Which statement best describes the elevator pit?",
+      "q": "What is the elevator pit?",
       "o": [
-        "The upper elevator lobby",
-        "A duct above the roof",
-        "A type of escalator",
-        "A lower hoistway zone requiring structural, waterproofing, drainage and equipment coordination"
+        "The part of the hoistway below the lowest landing, which needs waterproofing and drainage",
+        "The space above the top landing",
+        "The floor of the machine room",
+        "The lobby space in front of the doors"
       ],
-      "c": 3,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "Pit design affects excavation, structure, waterproofing, drainage, access, clearances, and buffer/equipment placement.",
+      "c": 0,
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "The pit holds the buffers and the lower end of the rails. It is below grade in many buildings, so it must be kept dry.",
       "fig": "f1"
     },
     {
       "s": "Planning",
-      "q": "Which dimension should NOT be guessed from a generic diagram when laying out a real elevator?",
+      "q": "Why must the hoistway, pit and overhead sizes come from the chosen maker's data?",
       "o": [
-        "Actual hoistway, pit, overhead and door dimensions",
-        "Wall paint color",
-        "Room name font",
-        "North arrow direction"
-      ],
-      "c": 0,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "Elevator dimensions vary by manufacturer, capacity, speed, code, structural system, and equipment arrangement; project-specific data must be used."
-    },
-    {
-      "s": "Planning",
-      "q": "Which elevator type is most associated with specialized patient-bed movement?",
-      "o": [
-        "Material chute",
-        "Hospital/bed elevator",
-        "Dumbwaiter",
-        "Moving walk"
+        "The code fixes one size for every elevator",
+        "They change with capacity, speed, drive type and maker",
+        "Only the door width matters to the structure",
+        "The fire code alone sets them"
       ],
       "c": 1,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "Hospital/bed elevators are planned around bed/stretcher dimensions, staff movement, and clinical circulation."
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "A generic diagram shows the parts but not the numbers. Real shafts are laid out from the selected model's drawings."
     },
     {
       "s": "Planning",
-      "q": "Why are elevator machine/equipment access paths important?",
+      "q": "Why is a hospital bed elevator car deeper than it is wide?",
       "o": [
-        "Maintenance and replacement require safe, practical access to equipment",
-        "They allow the car to leave the hoistway",
-        "They increase passenger interval",
-        "They eliminate electrical rooms"
+        "To reduce the hoistway width for the structure",
+        "Because deeper cars travel faster",
+        "To fit a bed or stretcher lengthwise with attendants",
+        "To make room for a second door"
       ],
-      "c": 0,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "Equipment must be inspectable, maintainable, and replaceable; access requirements should be coordinated with the selected system and applicable safety rules."
+      "c": 2,
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "A hospital bed is about 2.2 m long, so bed cars are about 2.5 to 2.7 m deep."
     },
     {
       "s": "Planning",
-      "q": "Why is stacking elevator hoistways vertically important?",
+      "q": "Why are access paths to elevator machinery important?",
       "o": [
-        "It removes the need for guide rails",
-        "It increases natural ventilation",
-        "It makes all elevators panoramic",
-        "The car requires a continuous travel path between served floors"
+        "So the machine can be run from the lobby",
+        "So the car can be parked outside the hoistway",
+        "To give the hoistway natural ventilation",
+        "Technicians must reach the equipment safely to service and replace it"
       ],
       "c": 3,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "An elevator car travels along a continuous vertical or near-vertical path, so misaligned shafts are generally incompatible with conventional service."
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "Drives, controllers and ropes need regular service. Machine spaces need safe stairs, doors and lighting."
+    },
+    {
+      "s": "Planning",
+      "q": "Why must an elevator hoistway stack straight up through the floors?",
+      "o": [
+        "The car needs a continuous, straight travel path",
+        "Stacking removes the need for guide rails",
+        "Stacking gives the shaft natural ventilation",
+        "Offsets are fine as long as the car can tilt"
+      ],
+      "c": 0,
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "Rails run straight from pit to overhead. A shaft that shifts between floors cannot hold a conventional elevator."
     },
     {
       "s": "LEA Integration",
-      "q": "For architecture review, elevator planning should be studied together with:",
+      "q": "Under the BP 344 IRR, what minimum clear space must an elevator lobby have?",
       "o": [
-        "Only furniture selection",
-        "Only landscape irrigation",
-        "Only façade color",
-        "Accessibility, fire/life safety, structure, electrical power, and circulation"
+        "1,500 × 1,500 mm",
+        "1,800 × 1,800 mm",
+        "1,200 × 1,200 mm",
+        "2,400 × 2,400 mm"
       ],
-      "c": 3,
-      "ref": "PRC Board of Architecture, Architecture Licensure Examination Syllabi — Utilities Systems coverage.",
-      "n": "Elevators are interdisciplinary systems requiring coordinated architectural, structural, electrical, mechanical, accessibility, and life-safety planning."
+      "c": 1,
+      "ref": "BP 344 Revised IRR (2024), Appendix A, Sec. 8.11",
+      "n": "The 1,800 mm square lets a wheelchair user turn around in front of the elevator."
     },
     {
       "s": "Planning",
-      "q": "Which item requires early architectural coordination because it can significantly affect structural layout and floor planning?",
+      "q": "Which item needs early coordination because it affects structure and floor plans the most?",
       "o": [
-        "Lobby artwork only",
-        "Carpet color only",
-        "Button font only",
-        "Hoistway location and dimensions"
+        "Car interior finishes",
+        "Hall lantern style",
+        "Hoistway location and size",
+        "Call-button style"
       ],
-      "c": 3,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "Hoistways are vertical, continuous building elements whose dimensions, openings, support conditions, pits, and overheads must be coordinated early."
+      "c": 2,
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "Hoistways run through every floor and need pits and overheads. Finishes can be chosen late."
     },
     {
       "s": "Planning",
-      "q": "Which statement best describes elevator overhead?",
+      "q": "What is the elevator overhead?",
       "o": [
-        "The floor drain below the car",
-        "The passenger waiting interval",
-        "The main entrance canopy",
-        "Required space above the highest landing for car/equipment clearances and safe operation"
+        "The space below the lowest landing",
+        "The machine room floor slab",
+        "The travel distance between landings",
+        "The space above the top landing needed for car and equipment clearance"
       ],
       "c": 3,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "Overhead is essential vertical clearance at the top of the shaft and depends on elevator design and applicable code/manufacturer requirements.",
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "If the car overruns the top floor, the overhead keeps it clear of the ceiling. Its height depends on speed and model.",
       "fig": "f1"
     },
     {
       "s": "Planning",
-      "q": "Why might a service/freight elevator be separated from primary public passenger circulation?",
+      "q": "Why is a service elevator often kept apart from the main passenger lobby?",
       "o": [
-        "Because freight elevators cannot move vertically",
-        "Because codes prohibit all shared lobbies",
-        "To separate goods/service traffic from public flows and support back-of-house operations",
-        "Because passenger elevators have no doors"
+        "To keep deliveries, carts and waste out of public circulation",
+        "Service elevators cannot stop at lobby floors",
+        "Codes ban shared lobbies in every building",
+        "Passenger elevators cannot carry any goods"
       ],
-      "c": 2,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "Service planning often separates deliveries, carts, refuse, housekeeping, and goods movement from public circulation."
+      "c": 0,
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "Hotels, hospitals and offices route housekeeping, refuse and deliveries through back-of-house cores."
     },
     {
       "s": "Planning",
-      "q": "Why should the elevator lobby be visible and easy to reach from principal circulation paths?",
+      "q": "Why should the elevator lobby be visible and easy to reach from the main entrance?",
       "o": [
-        "To make the car heavier",
-        "To eliminate door controls",
-        "To improve wayfinding and reduce unnecessary cross-traffic",
-        "To reduce shaft fire rating"
+        "It lowers the fire rating needed for the shaft",
+        "It helps people find their way and avoids cross-traffic",
+        "It makes the car lighter",
+        "It removes the need for signs"
       ],
-      "c": 2,
-      "ref": "Standard elevator engineering terminology and conventional traction/hydraulic elevator components.",
-      "n": "Clear lobby access improves circulation, orientation, and passenger distribution."
+      "c": 1,
+      "ref": "ASME A17.1 elevator and escalator terminology; Strakosch, The Vertical Transportation Handbook",
+      "n": "BP 344 also puts accessible elevators within 30 m of the entrance."
     }
   ]
 }
