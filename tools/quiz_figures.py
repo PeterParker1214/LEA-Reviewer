@@ -593,8 +593,52 @@ def slump_types():
     return svg(600, 250, body)
 
 
+def _arrow(x1, y1, x2, y2, w=1.6):
+    a = math.atan2(y2 - y1, x2 - x1)
+    hx = [x2 - 9 * math.cos(a - s) for s in (0.4, -0.4)]
+    hy = [y2 - 9 * math.sin(a - s) for s in (0.4, -0.4)]
+    return (f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" stroke="{INK}" stroke-width="{w}"/>'
+            f'<polygon fill="{INK}" points="{x2:.1f},{y2:.1f} {hx[0]:.1f},{hy[0]:.1f} {hx[1]:.1f},{hy[1]:.1f}"/>')
+
+
+def load_types():
+    # A point load, B uniform load, C triangular load, each on a simple beam
+    body = ''
+    for r, L in enumerate('ABC'):
+        y = 95 + r * 115
+        body += f'<text class="L" x="28" y="{y + 6}">{L}</text>'
+        body += f'<rect class="s" x="70" y="{y}" width="400" height="10" fill="#b8c7d9"/>' + _pin(80, y + 10) + _roller(460, y + 10)
+        if L == 'A':
+            body += _arrow(270, y - 60, 270, y - 1, 2.2)
+        elif L == 'B':
+            body += line(70, y - 32, 470, y - 32, 's') + ''.join(_arrow(x, y - 32, x, y - 1) for x in range(80, 471, 39))
+        else:
+            body += line(70, y - 2, 470, y - 62, 's') + ''.join(_arrow(x, y - 2 - (x - 70) * 0.15, x, y - 1) for x in range(110, 471, 40))
+    return svg(500, 360, body)
+
+
+def force_systems():
+    body = ''
+    # A: concurrent, three forces through one point
+    cx, cy = 100, 110
+    for ang in (200, 320, 80):
+        a = math.radians(ang)
+        body += _arrow(cx, cy, cx + 70 * math.cos(a), cy - 70 * math.sin(a), 2)
+    body += f'<circle cx="{cx}" cy="{cy}" r="3" fill="{INK}"/>'
+    # B: parallel, all vertical
+    for x, up in ((250, 0), (290, 1), (330, 0)):
+        body += _arrow(x, 50, x, 170, 2) if not up else _arrow(x, 170, x, 70, 2)
+    # C: non-concurrent, non-parallel
+    for x1, y1, x2, y2 in ((420, 60, 480, 150), (520, 170, 560, 70), (440, 180, 560, 185)):
+        body += _arrow(x1, y1, x2, y2, 2)
+    for L, x in (('A', 100), ('B', 290), ('C', 490)):
+        body += f'<text class="L" x="{x}" y="225" text-anchor="middle">{L}</text>'
+    return svg(600, 240, body)
+
+
 BT = 'building-technology/'
 FIGURES = {
+    'structural/load-types': load_types, 'structural/force-systems': force_systems,
     'structural/slump-types': slump_types,
     'structural/beam-types': beam_types, 'structural/support-types': support_types,
     'structural/stress-strain': stress_strain,

@@ -1,395 +1,417 @@
 [
   {
     "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes parallel forces?",
+    "q": "In the figure, which group shows a parallel force system?",
     "o": [
-      "SI derived unit newton, N.",
-      "Force or moment developed by a support/body in response to applied loading.",
-      "Forces with parallel lines of action.",
-      "Has magnitude but no direction."
-    ],
-    "c": 2,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Forces with parallel lines of action."
-  },
-  {
-    "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes mass?",
-    "o": [
-      "Distributed along a line; unit such as kN/m.",
-      "Forces whose lines of action intersect at a common point.",
-      "SI base unit kilogram, kg.",
-      "F = ma."
-    ],
-    "c": 2,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] SI base unit kilogram, kg."
-  },
-  {
-    "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes scalar quantity?",
-    "o": [
-      "Has magnitude but no direction.",
-      "Concentrated load idealized at a point.",
-      "SI derived unit newton, N.",
-      "Force or moment developed by a support/body in response to applied loading."
+      "Group B",
+      "Group A",
+      "Group C",
+      "None of them"
     ],
     "c": 0,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Has magnitude but no direction."
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "In group B every line of action points the same way (vertical), so the forces are parallel. Gravity loads on a beam form a parallel system. Group A is concurrent and group C is neither.",
+    "img": "../../subjects/structural/quizzes/img/force-systems.png"
   },
   {
     "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes resultant force?",
+    "q": "What is the SI base unit of mass?",
     "o": [
-      "Distributed over area; unit such as kN/m² or kPa.",
-      "Single force representing the net translational effect of a force system.",
-      "W = mg.",
-      "Study of bodies in motion and forces producing acceleration."
+      "Newton (N)",
+      "Kilogram (kg)",
+      "Gram (g)",
+      "Kilonewton (kN)"
     ],
     "c": 1,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Single force representing the net translational effect of a force system."
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "Mass is one of the seven SI base quantities and its unit is the kilogram. The newton is a derived unit for force, so a mass of 1 kg weighs about 9.81 N on Earth."
   },
   {
     "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes force?",
+    "q": "What is a scalar quantity?",
     "o": [
-      "Quantifies how large the force is.",
-      "Concentrated load idealized at a point.",
-      "Force or moment developed by a support/body in response to applied loading.",
-      "SI derived unit newton, N."
+      "A quantity with magnitude and direction, such as force",
+      "A quantity with direction only",
+      "A quantity with magnitude only, such as mass, time or temperature",
+      "A quantity that is always negative"
+    ],
+    "c": 2,
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "A scalar is fully described by a number and a unit. Force, velocity and displacement need a direction as well, so they are vectors."
+  },
+  {
+    "s": "Engineering Mechanics",
+    "q": "What is the resultant of a force system?",
+    "o": [
+      "The largest force in the system",
+      "The force needed to hold the system in equilibrium",
+      "The sum of the magnitudes, ignoring direction",
+      "The single force that has the same net effect as the whole system"
     ],
     "c": 3,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] SI derived unit newton, N."
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "The resultant replaces all the forces with one that pushes the body the same way. The force that would balance them is the equilibrant, equal in size and opposite in direction. Adding magnitudes without direction is wrong for vectors."
   },
   {
     "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes surface load?",
+    "q": "What is the SI unit of force?",
     "o": [
-      "Distributed over area; unit such as kN/m² or kPa.",
-      "W = mg.",
-      "Study of bodies in motion and forces producing acceleration.",
-      "Forces with parallel lines of action."
+      "Newton (N)",
+      "Kilogram (kg)",
+      "Pascal (Pa)",
+      "Joule (J)"
     ],
     "c": 0,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Distributed over area; unit such as kN/m² or kPa."
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "The newton is a derived unit: 1 N = 1 kg·m/s². The pascal is force per area (N/m²) and the joule is work (N·m)."
   },
   {
     "s": "Engineering Mechanics",
-    "q": "What is the weight of a 50 kg mass using g = 9.81 m/s²?",
+    "q": "A load spread over an area, such as a floor live load, is expressed in which unit?",
     "o": [
-      "490.5 N",
-      "9.81 N",
+      "kN/m",
+      "kN/m² (kPa)",
+      "kN",
+      "kN·m"
+    ],
+    "c": 1,
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "Area loads are force per unit area, kN/m², which is the same as kPa. NSCP live loads, for example 1.9 kPa for residential floors, are given this way. Line loads are in kN/m and point loads in kN."
+  },
+  {
+    "s": "Force and Weight",
+    "q": "What is the weight of a 50 kg mass, using g = 9.81 m/s²?",
+    "o": [
       "50 N",
-      "981 N"
+      "5.10 N",
+      "490.5 N",
+      "4,905 N"
+    ],
+    "c": 2,
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "W = mg = 50 kg × 9.81 m/s² = 490.5 N, or about 0.49 kN.",
+    "formula": "W = m × g",
+    "steps": [
+      "m = 50 kg",
+      "g = 9.81 m/s²",
+      "W = 50 × 9.81 = 490.5 kg·m/s²",
+      "1 kg·m/s² = 1 N, so W = 490.5 N"
+    ]
+  },
+  {
+    "s": "Engineering Mechanics",
+    "q": "Which relation gives the weight of a body?",
+    "o": [
+      "W = m/g",
+      "W = ma²",
+      "W = g/m",
+      "W = mg"
+    ],
+    "c": 3,
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "Weight is the gravitational force on a mass: W = mg. It is Newton's second law (F = ma) with the acceleration set to g."
+  },
+  {
+    "s": "Engineering Mechanics",
+    "q": "In the figure, which beam carries a uniformly distributed load?",
+    "o": [
+      "Beam B",
+      "Beam A",
+      "Beam C",
+      "None of them"
     ],
     "c": 0,
-    "ref": "Classical engineering mechanics",
-    "n": "[CALCULATION] W = mg = 50×9.81 = 490.5 N."
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "Beam B has the same load intensity all along its length, shown as a rectangle of equal arrows. For analysis it can be replaced by one resultant w × L acting at midspan. A carries a point load and C a triangular load.",
+    "img": "../../subjects/structural/quizzes/img/load-types.png"
   },
   {
     "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes weight relation?",
+    "q": "Which branch of mechanics studies bodies in motion and the forces that accelerate them?",
     "o": [
-      "Forces with parallel lines of action.",
-      "Study of bodies in motion and forces producing acceleration.",
-      "W = mg.",
-      "Has magnitude but no direction."
-    ],
-    "c": 2,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] W = mg."
-  },
-  {
-    "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes uniformly distributed load?",
-    "o": [
-      "Specifies orientation/line of action of the force.",
-      "Single force representing the net translational effect of a force system.",
-      "Distributed load with constant intensity.",
-      "SI base unit metre, m."
-    ],
-    "c": 2,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Distributed load with constant intensity."
-  },
-  {
-    "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes dynamics?",
-    "o": [
-      "Forces with parallel lines of action.",
-      "Has magnitude but no direction.",
-      "Study of bodies in motion and forces producing acceleration.",
-      "SI derived unit newton, N."
-    ],
-    "c": 2,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Study of bodies in motion and forces producing acceleration."
-  },
-  {
-    "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes force direction?",
-    "o": [
-      "Single force representing the net translational effect of a force system.",
-      "Distributed over area; unit such as kN/m² or kPa.",
-      "Specifies orientation/line of action of the force.",
-      "SI base unit metre, m."
-    ],
-    "c": 2,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Specifies orientation/line of action of the force."
-  },
-  {
-    "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes coplanar forces?",
-    "o": [
-      "Idealized force applied at a point; unit of force such as kN.",
-      "One newton accelerates a 1 kg mass at 1 m/s².",
-      "Forces acting in the same plane.",
-      "Branch of engineering dealing with effects of external forces on bodies."
-    ],
-    "c": 2,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Forces acting in the same plane."
-  },
-  {
-    "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes length?",
-    "o": [
-      "W = mg.",
-      "Distributed over area; unit such as kN/m² or kPa.",
-      "SI base unit metre, m.",
-      "Single force representing the net translational effect of a force system."
-    ],
-    "c": 2,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] SI base unit metre, m."
-  },
-  {
-    "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes concentrated force?",
-    "o": [
-      "Branch of engineering dealing with effects of external forces on bodies.",
-      "Idealized force applied at a point; unit of force such as kN.",
-      "Distributed load with constant intensity.",
-      "One newton accelerates a 1 kg mass at 1 m/s²."
+      "Statics",
+      "Dynamics",
+      "Strength of materials",
+      "Hydraulics"
     ],
     "c": 1,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Idealized force applied at a point; unit of force such as kN."
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "Dynamics covers bodies that accelerate. It has two parts: kinematics (the motion itself) and kinetics (the forces behind it). Statics covers bodies at rest or moving at constant velocity."
   },
   {
     "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes force component?",
+    "q": "Which three things fully describe a force?",
     "o": [
-      "The source uses g = 9.81 m/s².",
-      "Projection/resolution of a force along a selected axis.",
-      "For a planar rigid body, resultant force and resultant moment are zero.",
-      "Acts throughout mass/volume, such as gravitational weight."
-    ],
-    "c": 1,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Projection/resolution of a force along a selected axis."
-  },
-  {
-    "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes newton definition?",
-    "o": [
-      "Distributed load with constant intensity.",
-      "Branch of engineering dealing with effects of external forces on bodies.",
-      "One newton accelerates a 1 kg mass at 1 m/s².",
-      "Specifies orientation/line of action of the force."
+      "Mass, volume and density",
+      "Magnitude, time and temperature",
+      "Magnitude, direction and point of application",
+      "Direction, color and material"
     ],
     "c": 2,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] One newton accelerates a 1 kg mass at 1 m/s²."
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "A force is a vector, so it needs a size and a direction. On a rigid body its line of action (point of application) also matters, because moving a force sideways changes the moment it causes."
   },
   {
     "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes body force?",
+    "q": "What are coplanar forces?",
     "o": [
-      "Acts throughout mass/volume, such as gravitational weight.",
-      "Forces acting in the same plane.",
-      "For a planar rigid body, resultant force and resultant moment are zero.",
-      "The source uses g = 9.81 m/s²."
+      "Forces that all pass through one point",
+      "Forces that are all equal in size",
+      "Forces that act at different times",
+      "Forces whose lines of action all lie in the same plane"
+    ],
+    "c": 3,
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "Coplanar forces lie in one plane, so they can be drawn in 2D and solved with three equations (ΣFx, ΣFy, ΣM). Most beam and truss problems are planar."
+  },
+  {
+    "s": "Engineering Mechanics",
+    "q": "What is the SI base unit of length?",
+    "o": [
+      "Metre (m)",
+      "Millimetre (mm)",
+      "Foot (ft)",
+      "Kilometre (km)"
     ],
     "c": 0,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Acts throughout mass/volume, such as gravitational weight."
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "The metre is the SI base unit. Millimetres and kilometres are the same unit with prefixes, and the foot belongs to the English system."
   },
   {
     "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes engineering mechanics?",
+    "q": "In the figure, which beam carries a concentrated (point) load?",
     "o": [
-      "Distributed load with constant intensity.",
-      "SI base unit metre, m.",
-      "Specifies orientation/line of action of the force.",
-      "Branch of engineering dealing with effects of external forces on bodies."
-    ],
-    "c": 3,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Branch of engineering dealing with effects of external forces on bodies."
-  },
-  {
-    "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes standard gravity?",
-    "o": [
-      "Forces acting in the same plane.",
-      "For a planar rigid body, resultant force and resultant moment are zero.",
-      "The source uses g = 9.81 m/s².",
-      "Idealized force applied at a point; unit of force such as kN."
-    ],
-    "c": 2,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] The source uses g = 9.81 m/s²."
-  },
-  {
-    "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes varying line load?",
-    "o": [
-      "Distributed load whose intensity changes along its length.",
-      "Projection/resolution of a force along a selected axis.",
-      "SI base unit second, s.",
-      "Has magnitude and direction."
-    ],
-    "c": 0,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Distributed load whose intensity changes along its length."
-  },
-  {
-    "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes equilibrium?",
-    "o": [
-      "One newton accelerates a 1 kg mass at 1 m/s².",
-      "Forces acting in the same plane.",
-      "Idealized force applied at a point; unit of force such as kN.",
-      "For a planar rigid body, resultant force and resultant moment are zero."
-    ],
-    "c": 3,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] For a planar rigid body, resultant force and resultant moment are zero.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+UGxhbmFyIEVxdWlsaWJyaXVtPC90ZXh0Pgo8cmVjdCB4PSIyNTAiIHk9IjE2MCIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxODAiIGNsYXNzPSJmIi8+Cjx0ZXh0IHg9IjMxNSIgeT0iMjIwIiBjbGFzcz0idCI+zqNGeCA9IDA8L3RleHQ+PHRleHQgeD0iMzE1IiB5PSIyNzAiIGNsYXNzPSJ0Ij7Oo0Z5ID0gMDwvdGV4dD48dGV4dCB4PSIzMTUiIHk9IjMyMCIgY2xhc3M9InQiPs6jTSA9IDA8L3RleHQ+PC9zdmc+"
-  },
-  {
-    "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes vector quantity?",
-    "o": [
-      "SI base unit second, s.",
-      "Has magnitude and direction.",
-      "Projection/resolution of a force along a selected axis.",
-      "Acts throughout mass/volume, such as gravitational weight."
+      "Beam B",
+      "Beam A",
+      "Beam C",
+      "All three"
     ],
     "c": 1,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Has magnitude and direction.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+Rm9yY2UgYXMgYSBWZWN0b3I8L3RleHQ+CjxsaW5lIHgxPSIxODAiIHkxPSIzNDAiIHgyPSI2NTAiIHkyPSIxNDAiIGNsYXNzPSJsIi8+PHBvbHlnb24gcG9pbnRzPSI2NTAsMTQwIDYyMCwxNDUgNjM1LDE3MCIgZmlsbD0iIzExMSIvPgo8dGV4dCB4PSIzNjAiIHk9IjIyMCIgY2xhc3M9InMiPm1hZ25pdHVkZSArIGRpcmVjdGlvbjwvdGV4dD48L3N2Zz4="
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "Beam A has one load acting at a single point, drawn as one arrow and expressed in kN. A column resting on a beam or a heavy machine is usually idealized this way.",
+    "img": "../../subjects/structural/quizzes/img/load-types.png"
   },
   {
     "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes concurrent forces?",
+    "q": "A force of 100 kN acts at 30° above the horizontal. What is its horizontal component?",
     "o": [
-      "F = ma.",
-      "Study of bodies in equilibrium, ordinarily at rest or with no acceleration.",
-      "Forces whose lines of action intersect at a common point.",
-      "Distributed along a line; unit such as kN/m."
+      "50.0 kN",
+      "100 kN",
+      "86.6 kN",
+      "57.7 kN"
     ],
     "c": 2,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Forces whose lines of action intersect at a common point."
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "Fx = F cos θ = 100 × cos 30° = 100 × 0.866 = 86.6 kN. The vertical component is F sin θ = 50 kN.",
+    "formula": "Fx = F cos θ",
+    "steps": [
+      "F = 100 kN, θ = 30° from the horizontal",
+      "cos 30° = 0.866",
+      "Fx = 100 × 0.866 = 86.6 kN"
+    ]
   },
   {
     "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes time?",
+    "q": "How is one newton defined?",
     "o": [
-      "Projection/resolution of a force along a selected axis.",
-      "The source uses g = 9.81 m/s².",
-      "SI base unit second, s.",
-      "Acts throughout mass/volume, such as gravitational weight."
-    ],
-    "c": 2,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] SI base unit second, s."
-  },
-  {
-    "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes line load?",
-    "o": [
-      "F = ma.",
-      "Study of bodies in equilibrium, ordinarily at rest or with no acceleration.",
-      "Distributed along a line; unit such as kN/m.",
-      "Distributed load whose intensity changes along its length."
-    ],
-    "c": 2,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Distributed along a line; unit such as kN/m."
-  },
-  {
-    "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes reaction?",
-    "o": [
-      "SI base unit kilogram, kg.",
-      "Concentrated load idealized at a point.",
-      "Quantifies how large the force is.",
-      "Force or moment developed by a support/body in response to applied loading."
+      "The weight of a 1 kg mass on Earth",
+      "The force that lifts 1 kg by 1 m",
+      "The pressure of 1 kg on 1 m²",
+      "The force that gives a 1 kg mass an acceleration of 1 m/s²"
     ],
     "c": 3,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Force or moment developed by a support/body in response to applied loading."
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "From F = ma, 1 N = 1 kg × 1 m/s². The weight of 1 kg on Earth is about 9.81 N, not 1 N. Lifting 1 kg by 1 m is work (about 9.81 J)."
   },
   {
     "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes force relation?",
+    "q": "Which of these is a body force, acting on every particle of a body rather than on its surface?",
     "o": [
-      "Distributed load whose intensity changes along its length.",
-      "Study of bodies in equilibrium, ordinarily at rest or with no acceleration.",
-      "F = ma.",
-      "Has magnitude and direction."
+      "Its own weight (gravity)",
+      "Wind pressure on a wall",
+      "A column bearing on a footing",
+      "Soil pressure on a retaining wall"
+    ],
+    "c": 0,
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "Body forces act through the whole volume, like gravity (self-weight) and the inertia forces of an earthquake. Wind pressure, bearing and soil pressure are surface forces applied at contact."
+  },
+  {
+    "s": "Engineering Mechanics",
+    "q": "Which field deals with the effects of forces on bodies, and includes statics and dynamics?",
+    "o": [
+      "Thermodynamics",
+      "Engineering mechanics",
+      "Surveying",
+      "Hydrology"
+    ],
+    "c": 1,
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "Engineering mechanics applies physics to engineering problems. Its two main parts are statics (bodies at rest) and dynamics (bodies in motion). Strength of materials builds on it."
+  },
+  {
+    "s": "Engineering Mechanics",
+    "q": "What value of standard gravity, g, is normally used in structural calculations?",
+    "o": [
+      "9.00 m/s²",
+      "10.81 m/s²",
+      "9.81 m/s²",
+      "32.2 m/s²"
     ],
     "c": 2,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] F = ma."
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "Standard gravity is 9.80665 m/s², rounded to 9.81 m/s². The value 32.2 is the same acceleration in ft/s²."
   },
   {
     "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes point load?",
+    "q": "In the figure, which beam carries a load whose intensity changes along its length?",
     "o": [
-      "Forces whose lines of action intersect at a common point.",
-      "Quantifies how large the force is.",
-      "Concentrated load idealized at a point.",
-      "SI base unit kilogram, kg."
+      "Beam A",
+      "Beam B",
+      "None of them",
+      "Beam C"
+    ],
+    "c": 3,
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "Beam C carries a triangular (uniformly varying) load, such as soil or water pressure that grows with depth. Its resultant equals the area of the triangle, ½wL, acting at one-third of the span from the heavy end.",
+    "img": "../../subjects/structural/quizzes/img/load-types.png"
+  },
+  {
+    "s": "Engineering Mechanics",
+    "q": "What conditions must a planar rigid body satisfy to be in equilibrium?",
+    "o": [
+      "ΣFx = 0, ΣFy = 0 and ΣM = 0",
+      "ΣFx = 0 only",
+      "ΣM = 0 only",
+      "The largest force must equal the smallest"
+    ],
+    "c": 0,
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "In equilibrium the body neither moves nor rotates, so the net force in both directions and the net moment about any point must all be zero. These three equations are the basis of statics."
+  },
+  {
+    "s": "Engineering Mechanics",
+    "q": "What is a vector quantity?",
+    "o": [
+      "A quantity with magnitude only",
+      "A quantity with both magnitude and direction",
+      "A quantity with no unit",
+      "A quantity that only applies to motion"
+    ],
+    "c": 1,
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "Vectors, such as force, displacement, velocity and acceleration, must be added head to tail or by components, not simply by adding numbers."
+  },
+  {
+    "s": "Engineering Mechanics",
+    "q": "In the figure, which group shows a concurrent force system?",
+    "o": [
+      "Group B",
+      "Group C",
+      "Group A",
+      "None of them"
     ],
     "c": 2,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Concentrated load idealized at a point.",
-    "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPjx0ZXh0IHg9IjQwIiB5PSI0MiIgY2xhc3M9InQgYiI+QmFzaWMgTG9hZCBJZGVhbGl6YXRpb25zPC90ZXh0Pgo8bGluZSB4MT0iMTAwIiB5MT0iMzYwIiB4Mj0iODAwIiB5Mj0iMzYwIiBjbGFzcz0ibCIvPgo8bGluZSB4MT0iMjAwIiB5MT0iMTYwIiB4Mj0iMjAwIiB5Mj0iMzUwIiBjbGFzcz0ibCIvPjxwb2x5Z29uIHBvaW50cz0iMjAwLDM1MCAxODUsMzIwIDIxNSwzMjAiIGZpbGw9IiMxMTEiLz4KPHRleHQgeD0iMTUwIiB5PSIxMzAiIGNsYXNzPSJzIj5wb2ludCBsb2FkPC90ZXh0Pgo8cGF0aCBkPSJNMzUwIDE2MCBWMzMwIE00NTAgMTYwIFYzMzAgTTU1MCAxNjAgVjMzMCIgY2xhc3M9InRoIi8+PHRleHQgeD0iMzkwIiB5PSIxMzAiIGNsYXNzPSJzIj51bmlmb3JtIGxvYWQ8L3RleHQ+CjxwYXRoIGQ9Ik02NTAgMzAwIFYzMzAgTTcwMCAyNDAgVjMzMCBNNzUwIDE4MCBWMzMwIiBjbGFzcz0idGgiLz48dGV4dCB4PSI2NjUiIHk9IjEzMCIgY2xhc3M9InMiPnZhcnlpbmcgbG9hZDwvdGV4dD48L3N2Zz4="
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "In group A all the lines of action meet at one point. A concurrent system has no moment about that point, so only ΣFx = 0 and ΣFy = 0 are needed, as at a truss joint.",
+    "img": "../../subjects/structural/quizzes/img/force-systems.png"
   },
   {
     "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes statics?",
+    "q": "What is the SI base unit of time?",
     "o": [
-      "Has magnitude and direction.",
-      "SI base unit second, s.",
-      "Distributed load whose intensity changes along its length.",
-      "Study of bodies in equilibrium, ordinarily at rest or with no acceleration."
+      "Minute (min)",
+      "Hour (h)",
+      "Hertz (Hz)",
+      "Second (s)"
     ],
     "c": 3,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Study of bodies in equilibrium, ordinarily at rest or with no acceleration."
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "The second is the SI base unit of time. Minutes and hours are accepted for use but are not SI base units, and the hertz (1/s) measures frequency."
   },
   {
     "s": "Engineering Mechanics",
-    "q": "Which statement correctly describes force magnitude?",
+    "q": "A load spread along the length of a beam, such as a wall on a beam, is expressed in which unit?",
     "o": [
-      "SI base unit kilogram, kg.",
-      "Distributed along a line; unit such as kN/m.",
-      "Forces whose lines of action intersect at a common point.",
-      "Quantifies how large the force is."
+      "kN/m",
+      "kN/m²",
+      "kN",
+      "kN·m"
+    ],
+    "c": 0,
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "A line load is force per unit length, kN/m. A 3 m high wall weighing 2.5 kPa, for example, puts 7.5 kN/m on the beam under it."
+  },
+  {
+    "s": "Engineering Mechanics",
+    "q": "What is a reaction in structural mechanics?",
+    "o": [
+      "The load applied by the occupants",
+      "A force or moment that a support develops in response to the loads",
+      "The weight of the member itself",
+      "The deflection of the member"
+    ],
+    "c": 1,
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "Supports push back on the structure. The reactions are found from equilibrium (in a determinate structure) and then become the loads on whatever lies below, such as columns and footings."
+  },
+  {
+    "s": "Engineering Mechanics",
+    "q": "Which equation is Newton's second law of motion?",
+    "o": [
+      "F = m/a",
+      "F = mv",
+      "F = ma",
+      "F = ½mv²"
+    ],
+    "c": 2,
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "Force equals mass times acceleration. mv is momentum and ½mv² is kinetic energy."
+  },
+  {
+    "s": "Engineering Mechanics",
+    "q": "A 20 kN load acts 3 m from point O, perpendicular to the lever arm. What moment does it cause about O?",
+    "o": [
+      "6.67 kN·m",
+      "23 kN·m",
+      "60 kN/m",
+      "60 kN·m"
     ],
     "c": 3,
-    "ref": "Classical engineering mechanics",
-    "n": "[SOURCE FACT — AUDITED] Quantifies how large the force is."
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "M = F × d = 20 kN × 3 m = 60 kN·m. The unit is kN·m, force times distance, not kN/m.",
+    "formula": "M = F × d",
+    "steps": [
+      "F = 20 kN",
+      "d = 3 m (perpendicular distance)",
+      "M = 20 × 3 = 60 kN·m"
+    ]
+  },
+  {
+    "s": "Engineering Mechanics",
+    "q": "Which branch of mechanics studies bodies at rest or moving at constant velocity?",
+    "o": [
+      "Statics",
+      "Dynamics",
+      "Kinematics",
+      "Kinetics"
+    ],
+    "c": 0,
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "Statics deals with bodies in equilibrium, where the acceleration is zero. Buildings are designed mostly with statics. Dynamics (with its parts, kinematics and kinetics) handles accelerating bodies."
+  },
+  {
+    "s": "Engineering Mechanics",
+    "q": "In the figure, which group shows a non-concurrent, non-parallel force system?",
+    "o": [
+      "Group A",
+      "Group C",
+      "Group B",
+      "All three"
+    ],
+    "c": 1,
+    "ref": "Hibbeler, Engineering Mechanics: Statics; Beer & Johnston, Vector Mechanics for Engineers",
+    "n": "In group C the lines of action neither meet at one point nor run parallel. Such a system can cause both translation and rotation, so all three equilibrium equations are needed.",
+    "img": "../../subjects/structural/quizzes/img/force-systems.png"
   }
 ]
