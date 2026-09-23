@@ -556,6 +556,7 @@ function initMarquee(){
   const wrap = document.getElementById('marqueeWrap');
   const text = document.getElementById('marqueeText');
   if(!wrap || !text) return;
+  wrap.classList.remove('animate', 'ellipsis');
   if(!text.textContent.trim()){ wrap.classList.add('ellipsis'); return; }
   const overflow = text.scrollWidth - wrap.clientWidth;
   if(overflow > 24){ wrap.classList.add('animate'); }
@@ -569,12 +570,15 @@ function initModuleTitleMarquees(){
     const run = el.querySelector('.mt-run');
     if(!run) return;
     const overflow = run.scrollWidth - el.clientWidth;
-    if(overflow > 4){
-      el.classList.add('scrolls');
-      el.style.setProperty('--mt-shift', (-overflow - 6) + 'px');
-    }
+    el.classList.toggle('scrolls', overflow > 4);
+    el.style.setProperty('--mt-shift', (-overflow - 6) + 'px');
   });
 }
+// Measured again once the web fonts land and whenever the window resizes;
+// a single measurement taken with fallback fonts left them stuck on or off.
+function remeasureMarquees(){ initMarquee(); initModuleTitleMarquees(); }
+document.fonts.ready.then(remeasureMarquees);
+addEventListener('resize', remeasureMarquees);
 
 // ================= Mode selection (persisted per subject) =================
 function getMode(subjectId){
