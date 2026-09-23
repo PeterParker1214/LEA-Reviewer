@@ -53,29 +53,29 @@
   },
   {
     "s": "Pumps",
-    "q": "For a typical residential water system, which pump type is the standard choice?",
+    "q": "Which pump is added to a house supply line to raise weak water pressure from the street main?",
     "o": [
-      "Impeller pump",
-      "Centrifugal pump",
       "Booster pump",
-      "Piston pump"
+      "Sump pump",
+      "Submersible well pump",
+      "Fire jockey pump"
     ],
-    "c": 2,
+    "c": 0,
     "ref": "Pump selection — plumbing systems",
-    "n": "For typical residential water systems, a booster pump is the standard choice to maintain adequate pressure."
+    "n": "A booster pump sits on the incoming line and adds pressure when the main is weak. A sump pump empties pits, and a jockey pump keeps a fire line pressurized."
   },
   {
     "s": "Pumps",
-    "q": "High-rise buildings typically rely on which pump type to distribute water?",
+    "q": "Which pump type, using a spinning impeller, is the usual choice for lifting water in high-rise buildings?",
     "o": [
-      "Piston pump",
-      "Impeller pump",
+      "Reciprocating (piston) pump",
       "Centrifugal pump",
-      "Booster pump"
+      "Hand (pitcher) pump",
+      "Air-lift pump"
     ],
-    "c": 2,
+    "c": 1,
     "ref": "Pump selection — plumbing systems",
-    "n": "High-rise water distribution commonly relies on centrifugal pumps, often staged in series to overcome the greater lift."
+    "n": "Centrifugal pumps give steady flow at high capacity. For very tall buildings they are staged or set in multistage units to reach the needed head."
   },
   {
     "s": "Pumps",
@@ -92,29 +92,29 @@
   },
   {
     "s": "Water Heating & Storage",
-    "q": "Among common water-heating options, which one is regarded as the practical choice?",
+    "q": "Which type of water heater heats water only while a tap is open, with no storage tank?",
     "o": [
-      "Coal Heater",
-      "Electric Heater",
-      "Gas Furnace",
-      "Solar Water Heater"
+      "Storage-tank heater",
+      "Solar water heater with a tank",
+      "Hot-water boiler with a storage cylinder",
+      "Tankless (instantaneous) heater"
     ],
-    "c": 2,
+    "c": 3,
     "ref": "Water heating devices — plumbing systems",
-    "n": "Among common water-heating options, the gas furnace type is treated as the practical, widely-used choice in this material."
+    "n": "A tankless heater fires its gas burner or electric element only when flow is sensed, so it has no standby loss. Storage and solar types keep a tank of hot water ready."
   },
   {
     "s": "Water Heating & Storage",
-    "q": "What is typically located directly beneath a pump room?",
+    "q": "What is usually built directly beneath a pump room?",
     "o": [
-      "Water tank",
-      "Reservoir",
-      "Cistern",
-      "Underground container"
+      "The cistern",
+      "The elevated water tank",
+      "The septic tank",
+      "The grease trap"
     ],
-    "c": 2,
+    "c": 0,
     "ref": "Building water storage — plumbing systems",
-    "n": "A cistern is typically located beneath the pump room so the pump can draw stored water and push it upward."
+    "n": "The cistern stores water from the main at ground or basement level. The pump room sits over it so the pumps can draw water with a short suction line."
   },
   {
     "s": "Water Hammer & Protection",
@@ -157,41 +157,41 @@
   },
   {
     "s": "Valves",
-    "q": "What device releases excess pressure from a boiler or pressure vessel once safe limits are exceeded?",
+    "q": "Which valve opens on its own to release pressure from a boiler or water heater once a safe limit is passed?",
     "o": [
-      "Check Valve",
-      "Ball Valve",
-      "Boiler Blow-off",
-      "Water Hammer"
+      "Safety (pressure-relief) valve",
+      "Boiler blow-off valve",
+      "Check valve",
+      "Ball valve"
     ],
-    "c": 2,
+    "c": 0,
     "ref": "Valve types — plumbing systems",
-    "n": "A boiler blow-off valve releases excess pressure or sediment from a boiler or pressure vessel once safe limits are exceeded."
+    "n": "A relief valve is spring-loaded and opens automatically at its set pressure. A blow-off valve is opened by hand to flush sediment out of the boiler."
   },
   {
     "s": "Valves",
-    "q": "What valve type allows flow to pass in a single direction only, blocking any backflow?",
+    "q": "Which valve lets water flow in one direction only and closes against backflow?",
     "o": [
-      "Ball Valve",
-      "Boiler Blow-off",
-      "Check Valve",
-      "Water Hammer"
+      "Ball valve",
+      "Check valve",
+      "Gate valve",
+      "Boiler blow-off valve"
     ],
-    "c": 2,
+    "c": 1,
     "ref": "Valve types — plumbing systems",
-    "n": "A check valve allows flow in only one direction, preventing backflow into the supply line."
+    "n": "A check valve has a swing disc or spring-loaded poppet that the flow pushes open. Reverse flow pushes it shut."
   },
   {
     "s": "Valves",
-    "q": "Which valve type routes water through a winding internal path that builds up pressure as it throttles flow?",
+    "q": "Which valve sends water through an S-shaped path, making it good for throttling but causing a large pressure drop?",
     "o": [
-      "Cut-off Valve",
-      "Gate Valve",
-      "Globe Valve",
-      "Ball Valve"
+      "Gate valve",
+      "Ball valve",
+      "Globe valve",
+      "Cut-off valve"
     ],
     "c": 2,
     "ref": "Valve types — plumbing systems",
-    "n": "A globe valve forces water through a winding (tortuous) internal path, which builds up pressure as it throttles flow."
+    "n": "In a globe valve, the water turns and passes up through a seat. This makes it easy to regulate but costs pressure. A gate valve gives a straight, full-bore path when open."
   }
 ]
