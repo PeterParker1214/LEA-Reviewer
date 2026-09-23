@@ -3,10 +3,10 @@
     "s": "Reinforcing Steel",
     "q": "Why do reinforcing bars have deformations (lugs) on their surface?",
     "o": [
-      "To interlock mechanically with the concrete and improve bond",
-      "To make the bars lighter",
+      "To interlock with the concrete and improve bond",
+      "To make the bars lighter per metre",
       "To mark the bar grade only",
-      "To reduce rusting"
+      "To slow down rusting of the steel"
     ],
     "c": 0,
     "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
@@ -17,9 +17,9 @@
     "q": "In a tensile test of a steel bar, what is the gage length?",
     "o": [
       "The total length of the specimen",
-      "The marked length over which the elongation is measured",
-      "The length of the grips",
-      "The bar diameter times 10"
+      "The marked length over which elongation is measured",
+      "The length held inside the grips",
+      "Ten times the bar diameter, always"
     ],
     "c": 1,
     "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
@@ -61,10 +61,10 @@
     "s": "Reinforcing Steel",
     "q": "Grade 280 in metric rebar grading is roughly the same as which grade in the English system?",
     "o": [
-      "Grade 40 (40,000 psi)",
-      "Grade 60",
-      "Grade 75",
-      "Grade 33"
+      "Grade 40 (40 ksi)",
+      "Grade 60 (60 ksi)",
+      "Grade 75 (75 ksi)",
+      "Grade 33 (33 ksi)"
     ],
     "c": 0,
     "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
@@ -75,9 +75,9 @@
     "q": "What is the ultimate tensile strength of a steel bar?",
     "o": [
       "The stress at which it first yields",
-      "The highest engineering stress it reaches in a tensile test",
-      "The stress at which it breaks",
-      "The stress at the proportional limit"
+      "The highest stress it reaches in a tensile test",
+      "The stress at which it finally breaks",
+      "The stress at its proportional limit"
     ],
     "c": 1,
     "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
@@ -87,9 +87,9 @@
     "s": "Reinforcing Steel",
     "q": "What is a reinforcing steel bar?",
     "o": [
-      "A steel beam used in framing",
+      "A steel beam used in building frames",
       "A steel sheet used for roofing",
-      "A steel bar, plain round or deformed, used to reinforce concrete",
+      "A plain or deformed steel bar used in concrete",
       "A steel cable used in bridges"
     ],
     "c": 2,
@@ -100,9 +100,9 @@
     "s": "Reinforcing Steel",
     "q": "What property is used to name the grade of a reinforcing bar?",
     "o": [
-      "Its diameter",
-      "Its length",
-      "Its color",
+      "Its nominal diameter",
+      "Its stock length",
+      "Its painted color code",
       "Its minimum yield strength"
     ],
     "c": 3,
@@ -126,10 +126,10 @@
     "s": "Reinforcing Steel",
     "q": "What does a tensile test of a reinforcing bar measure?",
     "o": [
-      "Its bond with concrete",
+      "Its bond strength with concrete",
       "Its yield strength, tensile strength and elongation",
-      "Its corrosion rate",
-      "Its bending radius"
+      "Its rate of corrosion in seawater",
+      "Its minimum bending radius"
     ],
     "c": 1,
     "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
@@ -139,9 +139,9 @@
     "s": "Reinforcing Steel",
     "q": "What is a plain bar?",
     "o": [
-      "A bar with lugs",
+      "A bar rolled with transverse lugs",
       "A bar with an epoxy coating",
-      "A round bar with a smooth surface and no deformations",
+      "A round bar with no surface deformations",
       "A bar bent into a hook"
     ],
     "c": 2,
@@ -152,10 +152,10 @@
     "s": "Reinforcing Steel",
     "q": "How is the percent elongation of a steel bar computed?",
     "o": [
-      "Final length ÷ original length",
-      "(Original − final) ÷ final × 100",
+      "Lf ÷ L0",
+      "(L0 − Lf) ÷ Lf × 100",
       "Load ÷ area × 100",
-      "(Final gage length − original gage length) ÷ original gage length × 100"
+      "(Lf − L0) ÷ L0 × 100"
     ],
     "c": 3,
     "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
@@ -204,10 +204,10 @@
     "s": "Reinforcing Steel",
     "q": "Grade 520 in metric rebar grading is roughly the same as which grade in the English system?",
     "o": [
-      "Grade 60",
-      "Grade 40",
-      "Grade 100",
-      "Grade 75 (75,000 psi)"
+      "Grade 60 (60 ksi)",
+      "Grade 40 (40 ksi)",
+      "Grade 100 (100 ksi)",
+      "Grade 75 (75 ksi)"
     ],
     "c": 3,
     "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
@@ -217,10 +217,10 @@
     "s": "Reinforcing Steel",
     "q": "On a deformed bar, what is the \"gap\" that is checked?",
     "o": [
-      "The gap between the ends of the transverse lugs on either side of the bar",
+      "The gap between lug ends on either side of the bar",
       "The space between two bars in a beam",
       "The space between the bar and the formwork",
-      "The crack width in the concrete"
+      "The width of a crack in the concrete"
     ],
     "c": 0,
     "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
@@ -230,8 +230,8 @@
     "s": "Reinforcing Steel",
     "q": "Where should a designer check which rebar grades and sizes are actually available?",
     "o": [
-      "Only an old reviewer",
-      "The governing standard (PNS 49) and local suppliers",
+      "An old reviewer",
+      "PNS 49 and local suppliers",
       "Any foreign catalogue",
       "The concrete supplier"
     ],
@@ -256,10 +256,10 @@
     "s": "Reinforcing Steel",
     "q": "How is the elongation of a steel specimen expressed?",
     "o": [
-      "In kilonewtons",
-      "In megapascals",
-      "As a ratio of diameters",
-      "As the increase in gage length, as a percentage of the original gage length"
+      "In kilonewtons of load",
+      "In megapascals of stress",
+      "As a ratio of bar diameters",
+      "As a percentage of the original gage length"
     ],
     "c": 3,
     "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",
@@ -285,7 +285,7 @@
       "Only 10 mm bars",
       "The larger sizes, about 19 mm and up",
       "Only 12 mm bars",
-      "Only plain bars"
+      "Only plain round bars"
     ],
     "c": 1,
     "ref": "PNS 49:2020 Steel bars for concrete reinforcement; ASTM A615",

@@ -94,10 +94,10 @@
     "s": "Shear Design",
     "q": "Why are multi-leg stirrups used in wide or heavily loaded beams?",
     "o": [
-      "To make the beam lighter",
-      "To replace the main bars",
-      "To reduce the concrete cover",
-      "More legs cross each diagonal crack, adding shear area and holding more bars"
+      "They make the beam lighter",
+      "They replace the main bars",
+      "They reduce the concrete cover",
+      "More legs cross each crack and hold more bars"
     ],
     "c": 3,
     "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
@@ -107,9 +107,9 @@
     "s": "Shear Design",
     "q": "What does shear reinforcement do in a concrete beam?",
     "o": [
-      "It carries tension across diagonal cracks and controls their width",
+      "It carries tension across diagonal cracks",
       "It carries the main bending tension",
-      "It carries the compression",
+      "It carries the compression at the top",
       "It stops shrinkage in the slab"
     ],
     "c": 0,
@@ -121,9 +121,9 @@
     "q": "In shear design, what does s stand for?",
     "o": [
       "The span of the beam",
-      "The center-to-center spacing of the stirrups",
-      "The slab thickness",
-      "The cover"
+      "The center-to-center stirrup spacing",
+      "The thickness of the slab",
+      "The concrete cover"
     ],
     "c": 1,
     "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
@@ -186,9 +186,9 @@
     "q": "What is the effective depth d of a beam?",
     "o": [
       "The total depth of the beam",
-      "The distance from the extreme compression fibre to the centroid of the tension steel",
-      "The depth of the slab",
-      "The distance from the top bars to the bottom bars"
+      "Compression face to the centroid of tension steel",
+      "The thickness of the slab",
+      "Top bars to bottom bars"
     ],
     "c": 1,
     "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
@@ -211,10 +211,10 @@
     "s": "Shear Design",
     "q": "Under NSCP 2015, when is a T-beam exempt from the minimum stirrup requirement?",
     "o": [
-      "Always",
-      "Never",
+      "Always, whatever its depth",
+      "Never, whatever its depth",
       "When it is simply supported",
-      "When its overall depth is no more than the larger of 2.5 times the flange thickness and half the web width"
+      "When h ≤ the larger of 2.5hf and bw/2"
     ],
     "c": 3,
     "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
@@ -237,10 +237,10 @@
     "s": "Shear Design",
     "q": "Why are closed stirrups used when a beam carries torsion?",
     "o": [
-      "They are cheaper",
-      "Torsion causes spiral cracks around all faces, so the stirrup must go all the way around",
+      "They are cheaper than U-stirrups",
+      "Torsion cracks spiral around all four faces",
       "They carry the bending moment",
-      "They are easier to bend"
+      "They are easier to bend on site"
     ],
     "c": 1,
     "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
@@ -266,7 +266,7 @@
       "The area of the main bars",
       "The area of the beam web",
       "The area of one stirrup leg",
-      "The total area of all stirrup legs within the spacing s"
+      "The area of all stirrup legs within spacing s"
     ],
     "c": 3,
     "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
@@ -354,9 +354,9 @@
     "q": "At what section is the design shear usually taken for a beam loaded on top and supported from below?",
     "o": [
       "At the center of the support",
-      "At a distance d from the face of the support",
-      "At midspan",
-      "At the free end"
+      "At a distance d from the support face",
+      "At midspan of the beam",
+      "At the free end of the beam"
     ],
     "c": 1,
     "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",
@@ -367,8 +367,8 @@
     "q": "What is a U-stirrup?",
     "o": [
       "A closed rectangular hoop",
-      "A spiral",
-      "An open stirrup bent into a U shape around the bottom bars",
+      "A continuous spiral",
+      "An open stirrup bent into a U",
       "A single straight leg"
     ],
     "c": 2,
@@ -380,9 +380,9 @@
     "q": "Why is shear failure more dangerous than flexural failure?",
     "o": [
       "It always happens at midspan",
-      "It is always slow",
-      "It only affects the finish",
-      "It is brittle and can happen with little warning"
+      "It is always slow and visible",
+      "It only damages the finishes",
+      "It is brittle and gives little warning"
     ],
     "c": 3,
     "ref": "NSCP 2015 Sec. 409.6 and 422.5 One-way shear (ACI 318-14)",

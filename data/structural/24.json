@@ -47,10 +47,10 @@
     "s": "Development and Splices",
     "q": "What is development length?",
     "o": [
-      "The length of a lap splice",
-      "The length of a hook's tail",
-      "The distance between two stirrups",
-      "The embedment a bar needs so bond can build up its full design stress"
+      "The overlap needed at a lap splice of two bars",
+      "The straight tail beyond a standard hook's bend",
+      "The clear distance between two adjacent stirrups",
+      "The embedment needed for bond to develop the bar's stress"
     ],
     "c": 3,
     "ref": "NSCP 2015 Sec. 425.4 Development of reinforcement (ACI 318-14 Ch. 25)",
@@ -104,10 +104,10 @@
     "s": "Development and Splices",
     "q": "Under NSCP 2015, how long must a Class B tension lap splice be?",
     "o": [
-      "1.0 times the development length",
-      "2.0 times the development length",
+      "1.0 ld, with no minimum length",
+      "2.0 ld, and at least 600 mm",
       "40 bar diameters in every case",
-      "1.3 times the development length, and at least 300 mm"
+      "1.3 ld, and at least 300 mm"
     ],
     "c": 3,
     "ref": "NSCP 2015 Sec. 425.5 Splices",
@@ -154,9 +154,9 @@
     "s": "Development and Splices",
     "q": "Under NSCP 2015, why do top bars need a longer development length?",
     "o": [
-      "Top bars are always larger",
+      "Top bars are always larger in diameter",
       "Top bars carry compression only",
-      "Bleed water and air collect under bars with more than 300 mm of fresh concrete below them, weakening the bond",
+      "Bleed water under them weakens their bond",
       "Top bars are closer to the formwork"
     ],
     "c": 2,
@@ -180,10 +180,10 @@
     "s": "Development and Splices",
     "q": "Why do epoxy-coated bars need a longer development length?",
     "o": [
-      "The smooth coating reduces the bond between bar and concrete",
-      "The coating makes the bars stronger",
-      "The coating adds weight",
-      "Coated bars rust faster"
+      "The smooth coating reduces bond with the concrete",
+      "The coating makes the bars stronger in tension",
+      "The coating adds weight to the bars",
+      "Coated bars rust faster than plain bars"
     ],
     "c": 0,
     "ref": "NSCP 2015 Sec. 425.4 Development of reinforcement (ACI 318-14 Ch. 25)",
@@ -269,10 +269,10 @@
     "s": "Development and Splices",
     "q": "What can happen if bars are not developed or spliced properly?",
     "o": [
-      "The concrete sets faster",
-      "Nothing, as long as the bars are large",
-      "The bars pull out or the splice slips before the steel yields, causing a brittle failure",
-      "The beam becomes stiffer"
+      "The concrete around the bars sets faster",
+      "Nothing happens, as long as the bars are large",
+      "The bars pull out before yielding, a brittle failure",
+      "The beam becomes stiffer and deflects less"
     ],
     "c": 2,
     "ref": "NSCP 2015 Sec. 425.4 Development of reinforcement (ACI 318-14 Ch. 25)",
@@ -284,8 +284,8 @@
     "o": [
       "It makes the member lighter",
       "It is only for appearance",
-      "It replaces the stirrups",
-      "It gives fire protection and lets the bars bond properly with the concrete"
+      "It takes the place of the stirrups",
+      "It gives fire protection and room for bond"
     ],
     "c": 3,
     "ref": "NSCP 2015 Table 420.6.1.3.1 Cover for cast-in-place non-prestressed concrete",

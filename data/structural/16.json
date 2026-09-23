@@ -17,9 +17,9 @@
     "q": "What is deflection?",
     "o": [
       "The shortening of a column under axial load",
-      "The displacement of a member perpendicular to its axis under transverse load",
-      "The rotation of a footing",
-      "The stretching of a tie rod"
+      "The sideways movement of a member under transverse load",
+      "The rotation of a footing under uneven pressure",
+      "The stretching of a tie rod under tension"
     ],
     "c": 1,
     "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
@@ -42,8 +42,8 @@
     "s": "Beam Vocabulary",
     "q": "How is the internal shear force at a section of a beam found?",
     "o": [
-      "As the sum of all moments about the section",
-      "As the load divided by the beam depth",
+      "As the sum of all the moments taken about the section",
+      "As the total load divided by the depth of the beam",
       "As the reaction at the far support only",
       "As the algebraic sum of the transverse forces on one side of the section"
     ],
@@ -75,10 +75,10 @@
     "s": "Beam Vocabulary",
     "q": "What is a haunch on a beam?",
     "o": [
-      "A notch cut into the beam's end",
+      "A notch cut into the beam's end where it sits on the support",
       "A local deepening of the beam near a support to resist higher moment and shear",
-      "A thin flange added at midspan",
-      "A hook at the end of a bar"
+      "A thin flange added to the top of the beam at midspan",
+      "A hook bent at the end of a main bar"
     ],
     "c": 1,
     "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
@@ -88,10 +88,10 @@
     "s": "Beam Vocabulary",
     "q": "What is the span of a structure?",
     "o": [
-      "The height of a column",
-      "The width of a slab strip",
-      "The distance between two supports, or the part of the structure that crosses it",
-      "The depth of a beam"
+      "The height of a column from floor to floor",
+      "The width of slab strip carried by one beam",
+      "The distance a member crosses between two supports",
+      "The overall depth of a beam from top to bottom"
     ],
     "c": 2,
     "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
@@ -127,10 +127,10 @@
     "s": "Beam Vocabulary",
     "q": "What is a bending moment?",
     "o": [
-      "The force that shortens a column",
+      "The axial force that shortens a column",
       "The internal moment that tends to bend a member at a section",
-      "The twisting of a shaft",
-      "The sliding of a joint"
+      "The twisting action on a shaft about its axis",
+      "The sliding of one part of a joint over another"
     ],
     "c": 1,
     "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
@@ -140,10 +140,10 @@
     "s": "Beam Vocabulary",
     "q": "What is camber?",
     "o": [
-      "The downward sag of a beam under load",
-      "A sloped top surface for drainage",
+      "The downward sag of a beam under its service load",
+      "A sloped top surface given to a roof slab for drainage",
       "A slight upward curve built into a beam to offset its expected deflection",
-      "The rotation of a support"
+      "The rotation of a beam end at its support"
     ],
     "c": 2,
     "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
@@ -173,9 +173,9 @@
     "q": "What is a suspended (hung) span?",
     "o": [
       "A simple span carried between the cantilevered ends of the adjoining spans",
-      "A span carried by cables from a tower",
-      "A beam hung from the floor above",
-      "A span with no supports at all"
+      "A span hung by cables from a tower, as in a suspension bridge",
+      "A beam hung from the floor above by steel rods",
+      "A span that has no supports of any kind"
     ],
     "c": 0,
     "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
@@ -199,9 +199,9 @@
     "q": "What is the resisting moment of a beam section?",
     "o": [
       "The reaction moment at a fixed support",
-      "The moment that causes torsion",
-      "The internal moment, from the compression and tension forces in the section, that balances the bending moment",
-      "The largest moment on the diagram"
+      "The moment that causes a member to twist about its axis",
+      "The internal compression-tension couple that balances the moment",
+      "The largest moment shown on the moment diagram"
     ],
     "c": 2,
     "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
@@ -211,10 +211,10 @@
     "s": "Beam Vocabulary",
     "q": "What is horizontal shearing stress in a beam?",
     "o": [
-      "The shear at the supports only",
-      "The stress from horizontal wind load",
-      "The bearing stress on the column",
-      "Shear along longitudinal planes that keeps the layers of the beam from sliding over each other"
+      "The shear at the supports only, where the reactions act",
+      "The stress produced by horizontal wind load on the beam",
+      "The bearing stress where the beam rests on the column",
+      "Shear along horizontal planes that keeps layers from sliding"
     ],
     "c": 3,
     "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",
@@ -225,9 +225,9 @@
     "q": "What is a beam?",
     "o": [
       "A rigid member that carries loads across its length to its supports",
-      "A vertical member carrying axial load",
-      "A cable carrying tension only",
-      "A plate carrying load in two directions"
+      "A vertical member that carries axial load down to the footing",
+      "A cable that can carry tension only",
+      "A plate that carries load in two directions"
     ],
     "c": 0,
     "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Sec. 406.2.3",

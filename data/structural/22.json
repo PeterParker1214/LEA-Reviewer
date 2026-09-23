@@ -88,10 +88,10 @@
     "s": "RC Columns",
     "q": "What do ties and spirals do for a column?",
     "o": [
-      "They carry most of the axial load",
-      "They resist wind uplift",
+      "They carry most of the axial load in place of the bars",
+      "They resist wind uplift on the roof",
       "They hold the longitudinal bars in place and confine the core concrete",
-      "They anchor the column to the beam"
+      "They anchor the column to the beam above"
     ],
     "c": 2,
     "ref": "NSCP 2015 Vol. 1, Ch. 4 (Sec. 410 columns; 422.4 axial strength; 425.7 ties and spirals)",
@@ -101,9 +101,9 @@
     "s": "RC Columns",
     "q": "Under NSCP 2015, what is the minimum spiral ratio ρs?",
     "o": [
-      "0.01Ag",
-      "0.85f'c/fy",
-      "4as/(s Dc)",
+      "0.01Ag / Ach",
+      "0.85f'c / fy",
+      "4as / (s Dc)",
       "0.45(Ag/Ach − 1)(f'c/fyt)"
     ],
     "c": 3,
@@ -145,10 +145,10 @@
     "s": "RC Columns",
     "q": "Under NSCP 2015, what are the limits on longitudinal steel in an ordinary column?",
     "o": [
-      "At least 0.5% and at most 4%",
-      "At least 2% and at most 10%",
+      "At least 0.5% and at most 4% of the gross area",
+      "At least 2% and at most 10% of the gross area",
       "At least 1% and at most 8% of the gross area",
-      "Exactly 3%"
+      "Exactly 3% of the gross area"
     ],
     "c": 2,
     "ref": "NSCP 2015 Vol. 1, Ch. 4 (Sec. 410 columns; 422.4 axial strength; 425.7 ties and spirals)",
@@ -171,10 +171,10 @@
     "s": "RC Columns",
     "q": "How does a spiral column fail compared with a tied column?",
     "o": [
-      "More gradually: the spiral confines the core, so the column keeps carrying load after the shell spalls",
-      "More suddenly, with no warning",
-      "In exactly the same way",
-      "By buckling of the spiral"
+      "More gradually, since the confined core keeps carrying load",
+      "More suddenly, with no warning at all",
+      "In exactly the same way as a tied column",
+      "By buckling of the spiral wire itself"
     ],
     "c": 0,
     "ref": "NSCP 2015 Vol. 1, Ch. 4 (Sec. 410 columns; 422.4 axial strength; 425.7 ties and spirals)",
@@ -198,9 +198,9 @@
     "q": "How do seismic columns differ from the ordinary tie rules?",
     "o": [
       "They need no ties at all",
-      "They may use wider tie spacing",
-      "They need closely spaced hoops at the column ends, tighter than the ordinary tie spacing",
-      "They use only 90° hooks"
+      "They may use wider tie spacing than ordinary columns",
+      "They need closely spaced hoops at their ends",
+      "They use only 90° hooks on their ties"
     ],
     "c": 2,
     "ref": "NSCP 2015 Vol. 1, Ch. 4 (Sec. 410 columns; 422.4 axial strength; 425.7 ties and spirals)",
@@ -263,9 +263,9 @@
     "s": "RC Columns",
     "q": "What is a tied column?",
     "o": [
-      "A column wrapped by a continuous helix",
+      "A column wrapped in a continuous steel helix",
       "A steel column encased in concrete",
-      "A column whose longitudinal bars are held by separate lateral ties at intervals",
+      "A column with separate ties at intervals",
       "A column with no longitudinal bars"
     ],
     "c": 2,
@@ -341,10 +341,10 @@
     "s": "RC Columns",
     "q": "What is a spiral column?",
     "o": [
-      "A column whose longitudinal bars are enclosed by a continuous helix of reinforcement",
-      "A column with separate square ties",
+      "A column confined by a continuous steel helix",
+      "A column with separate square ties at intervals",
       "A column shaped like a spiral stair",
-      "A column with bundled bars only"
+      "A column reinforced with bundled bars only"
     ],
     "c": 0,
     "ref": "NSCP 2015 Vol. 1, Ch. 4 (Sec. 410 columns; 422.4 axial strength; 425.7 ties and spirals)",

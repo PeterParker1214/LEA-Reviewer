@@ -16,10 +16,10 @@
     "s": "RC Flexure",
     "q": "In SI units, what is the balanced steel ratio ρb of a rectangular beam?",
     "o": [
-      "ρb = 1.4/fy",
-      "ρb = 0.85β1 (f'c/fy) × 600/(600 + fy)",
-      "ρb = As/(bd)",
-      "ρb = 0.25√f'c/fy"
+      "ρb = 1.4 / fy",
+      "ρb = 0.85β1(f'c/fy) × 600/(600 + fy)",
+      "ρb = 0.25√f'c / fy",
+      "ρb = 0.85 f'c / fy"
     ],
     "c": 1,
     "ref": "NSCP 2015 Sec. 409 and 422 (flexure)",
@@ -120,9 +120,9 @@
     "q": "In strength design, what is Mu?",
     "o": [
       "The factored moment the section must resist",
-      "The nominal moment strength",
-      "The service moment",
-      "The cracking moment"
+      "The nominal moment strength of the section",
+      "The moment under service (unfactored) loads",
+      "The moment that first cracks the concrete"
     ],
     "c": 0,
     "ref": "NSCP 2015 Sec. 409 and 422 (flexure)",
@@ -209,10 +209,10 @@
     "s": "RC Flexure",
     "q": "Why do codes want flexural members to be tension-controlled?",
     "o": [
-      "It saves the most steel",
-      "It makes the beam stiffer",
-      "Yielding steel gives large deflection and cracking as a warning before collapse",
-      "It prevents all cracking"
+      "It uses the least amount of steel",
+      "It makes the beam as stiff as possible",
+      "Yielding steel gives warning before collapse",
+      "It prevents all cracking in service"
     ],
     "c": 2,
     "ref": "NSCP 2015 Sec. 409 and 422 (flexure)",
@@ -254,10 +254,10 @@
     "s": "RC Flexure",
     "q": "How does NSCP 2015 limit the maximum steel in a beam?",
     "o": [
-      "By limiting ρ to 0.75ρb",
-      "By requiring the net tensile strain εt to be at least 0.004",
-      "By limiting ρ to 0.5%",
-      "By limiting the number of bars to four"
+      "By limiting ρ to 0.75 times ρb",
+      "By requiring a net tensile strain εt ≥ 0.004",
+      "By limiting ρ to 0.5% of bd",
+      "By limiting the bars to four per layer"
     ],
     "c": 1,
     "ref": "NSCP 2015 Sec. 409 and 422 (flexure), Sec. 409.3.3.1",
@@ -280,10 +280,10 @@
     "s": "RC Flexure",
     "q": "When is a doubly reinforced beam used?",
     "o": [
-      "When the beam is very deep",
+      "When the beam is unusually deep",
       "When the beam carries no load",
       "When the beam is a cantilever only",
-      "When the beam depth is limited and a singly reinforced section cannot carry the moment"
+      "When the depth is limited and more moment is needed"
     ],
     "c": 3,
     "ref": "NSCP 2015 Sec. 409 and 422 (flexure)",
@@ -293,10 +293,10 @@
     "s": "Minimum Thickness",
     "q": "When may a designer use a thinner beam or slab than the NSCP minimum-thickness table allows?",
     "o": [
-      "When deflections are computed and shown to be within the limits",
-      "Never",
-      "Whenever the owner agrees",
-      "When the concrete is stronger than 21 MPa"
+      "When computed deflections are within the limits",
+      "Never, under any circumstances",
+      "Whenever the owner agrees in writing",
+      "Whenever f'c is higher than 21 MPa"
     ],
     "c": 0,
     "ref": "NSCP 2015 Tables 407.3.1.1 (one-way slabs) and 409.3.1.1 (beams), normal-weight concrete, fy = 420 MPa",
@@ -410,10 +410,10 @@
     "s": "RC Flexure",
     "q": "Why does a beam cast with its slab act as a T-beam?",
     "o": [
-      "Because it is shaped like a T in plan",
-      "Because it has T-shaped bars",
+      "Because the beam is shaped like a T in plan",
+      "Because its bars are bent into T shapes",
       "Because it supports a T-shaped load",
-      "The slab and beam are monolithic, so part of the slab works with the beam as a compression flange"
+      "Slab and beam are monolithic, so the slab acts as a flange"
     ],
     "c": 3,
     "ref": "NSCP 2015 Sec. 409 and 422 (flexure)",
@@ -423,10 +423,10 @@
     "s": "RC Flexure",
     "q": "What is a balanced section?",
     "o": [
-      "One where the steel reaches yield strain at the same moment the concrete reaches 0.003",
-      "One with equal top and bottom steel",
-      "One with the neutral axis at mid-depth",
-      "One where the dead and live loads are equal"
+      "Steel yields just as the concrete reaches 0.003",
+      "Top and bottom steel have equal areas",
+      "The neutral axis lies at mid-depth",
+      "Dead and live loads are equal"
     ],
     "c": 0,
     "ref": "NSCP 2015 Sec. 409 and 422 (flexure)",

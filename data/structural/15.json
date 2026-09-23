@@ -16,10 +16,10 @@
     "s": "Material Behavior",
     "q": "In strength design, what is the nominal strength of a member?",
     "o": [
-      "Its capacity after applying φ",
+      "Its capacity after the reduction factor φ has been applied",
       "Its calculated capacity before the strength reduction factor φ is applied",
-      "The factored load it must carry",
-      "The service load it carries"
+      "The factored load that the member must be able to carry",
+      "The service load the member carries in normal use"
     ],
     "c": 1,
     "ref": "Hibbeler, Mechanics of Materials; NSCP 2015 Vol. 1, Ch. 4",
@@ -29,10 +29,10 @@
     "s": "Material Behavior",
     "q": "What is the yield point of a material such as mild steel?",
     "o": [
-      "The stress at which the material breaks",
-      "The highest stress on the stress-strain curve",
+      "The stress at which the material finally breaks apart",
+      "The highest stress reached anywhere on the stress-strain curve",
       "The stress at which strain increases markedly with little or no increase in stress",
-      "The stress at which it first becomes elastic"
+      "The stress at which the material first starts to behave elastically"
     ],
     "c": 2,
     "ref": "Hibbeler, Mechanics of Materials; NSCP 2015 Vol. 1, Ch. 4",
@@ -56,9 +56,9 @@
     "q": "What is the plastic limit load of a structure?",
     "o": [
       "The load at which enough plastic hinges form to turn the structure into a mechanism",
-      "The load at which the first fibre yields",
-      "The load at which the material fractures",
-      "The service load with no factors"
+      "The load at which the first fibre of the section starts to yield",
+      "The load at which the material fractures at its weakest point",
+      "The service load, taken without any load factors"
     ],
     "c": 0,
     "ref": "Hibbeler, Mechanics of Materials; NSCP 2015 Vol. 1, Ch. 4",
@@ -94,9 +94,9 @@
     "s": "Material Behavior",
     "q": "What does Hooke's law state?",
     "o": [
-      "Stress is proportional to time",
-      "Strain is constant under any load",
-      "Stress equals load times area",
+      "Stress is proportional to the time the load is applied",
+      "Strain stays constant however large the load becomes",
+      "Stress equals the load multiplied by the area",
       "Stress is proportional to strain in the linear-elastic range"
     ],
     "c": 3,
@@ -120,10 +120,10 @@
     "s": "Material Behavior",
     "q": "What is a plane frame?",
     "o": [
-      "A frame made only of timber",
+      "A frame built only of timber members nailed together",
       "A frame idealized as two-dimensional, with all members and loads in one plane",
-      "A frame with no joints",
-      "A three-dimensional space truss"
+      "A frame with no joints between its members",
+      "A three-dimensional space truss analysed as a whole"
     ],
     "c": 1,
     "ref": "Hibbeler, Mechanics of Materials; NSCP 2015 Vol. 1, Ch. 4",
@@ -185,10 +185,10 @@
     "s": "Concrete and Steel Practice",
     "q": "What is the usual difference between a stirrup and a tie?",
     "o": [
-      "They are two names for the same bar in the same member",
-      "A tie is used in beams and a stirrup in slabs",
+      "They are two names for the same bar in the same kind of member",
+      "A tie is used in beams for shear, and a stirrup in slabs",
       "A stirrup is used in beams for shear; a tie is used in columns to hold the longitudinal bars",
-      "A stirrup is always larger than a tie"
+      "A stirrup is always a larger bar than a tie in the same building"
     ],
     "c": 2,
     "ref": "Hibbeler, Mechanics of Materials; NSCP 2015 Vol. 1, Ch. 4",
@@ -198,10 +198,10 @@
     "s": "Material Behavior",
     "q": "What is the elastic limit?",
     "o": [
-      "The stress at which it breaks",
-      "The highest stress on the curve",
-      "The stress where the plateau ends",
-      "The highest stress a material can take and still return to its original shape when unloaded"
+      "The stress at which the material finally breaks",
+      "The highest stress reached anywhere on the curve",
+      "The stress where the yield plateau of steel ends",
+      "The highest stress it can take and still fully recover"
     ],
     "c": 3,
     "ref": "Hibbeler, Mechanics of Materials; NSCP 2015 Vol. 1, Ch. 4",
@@ -224,10 +224,10 @@
     "s": "Material Behavior",
     "q": "What does plastic analysis of a structure use to find its collapse load?",
     "o": [
-      "Only elastic stresses at service load",
+      "Only the elastic stresses produced at service load",
       "Rigid-plastic behaviour with plastic hinges, while satisfying equilibrium",
-      "Only the deflection limits",
-      "Wind tunnel tests"
+      "Only the deflection limits of the members",
+      "Wind tunnel tests of a scale model"
     ],
     "c": 1,
     "ref": "Hibbeler, Mechanics of Materials; NSCP 2015 Vol. 1, Ch. 4",
@@ -237,10 +237,10 @@
     "s": "Material Behavior",
     "q": "What is fracture?",
     "o": [
-      "The first yield of a material",
-      "A temporary elastic deformation",
+      "The first yielding of a material under increasing load",
+      "A temporary elastic deformation that disappears on unloading",
       "The breaking of a material once its strength or deformation capacity is used up",
-      "A crack that closes on unloading"
+      "A hairline crack that closes again when the load is removed"
     ],
     "c": 2,
     "ref": "Hibbeler, Mechanics of Materials; NSCP 2015 Vol. 1, Ch. 4",
@@ -250,10 +250,10 @@
     "s": "Concrete and Steel Practice",
     "q": "What are shores in concrete construction?",
     "o": [
-      "Permanent columns of the building",
-      "The steel bars at the bottom of a slab",
-      "The edges of the slab formwork",
-      "Temporary vertical or inclined supports that carry formwork, fresh concrete and construction loads"
+      "Permanent columns that remain part of the finished building",
+      "The steel bars placed at the bottom of a slab",
+      "The side boards that form the edges of a slab",
+      "Temporary supports that hold up formwork and fresh concrete"
     ],
     "c": 3,
     "ref": "Hibbeler, Mechanics of Materials; NSCP 2015 Vol. 1, Ch. 4",
@@ -264,9 +264,9 @@
     "q": "What is the proportional limit?",
     "o": [
       "The stress beyond which stress is no longer proportional to strain",
-      "The stress at fracture",
+      "The stress at which the material fractures",
       "The stress at the end of the yield plateau",
-      "The highest point of the curve"
+      "The highest point of the stress-strain curve"
     ],
     "c": 0,
     "ref": "Hibbeler, Mechanics of Materials; NSCP 2015 Vol. 1, Ch. 4",

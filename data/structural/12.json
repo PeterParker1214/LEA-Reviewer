@@ -56,9 +56,9 @@
     "q": "What is the story shear at a given level of a building?",
     "o": [
       "The sum of the design lateral forces at and above that level",
-      "The lateral force at that floor only",
-      "The weight of that story",
-      "The shear in the columns of the roof"
+      "The lateral force applied at that floor level only",
+      "The seismic weight of that story alone",
+      "The shear carried by the roof-level columns only"
     ],
     "c": 0,
     "ref": "NSCP 2015 Sec. 208 (Earthquake Loads)",
@@ -82,9 +82,9 @@
     "q": "What is the aim of the NSCP seismic provisions?",
     "o": [
       "To make sure buildings suffer zero damage in any earthquake",
-      "To keep every building fully usable after any earthquake",
+      "To keep every building fully usable after any earthquake, however strong",
       "To protect life by reducing the risk of collapse and major damage, not to prevent all damage",
-      "To prevent earthquakes from reaching the building"
+      "To stop earthquake ground motion from reaching the building"
     ],
     "c": 2,
     "ref": "NSCP 2015 Sec. 208 (Earthquake Loads)",
@@ -133,10 +133,10 @@
     "s": "Lateral Systems",
     "q": "In a building where wind forces are larger than earthquake forces, what applies?",
     "o": [
-      "Seismic provisions can be ignored completely",
-      "Only the earthquake forces are used",
+      "The seismic provisions can then be ignored completely",
+      "Only the earthquake forces are used, even though wind is larger",
       "Wind governs the strength design, but the seismic detailing requirements still apply",
-      "The building needs no lateral system"
+      "The building needs no lateral-force-resisting system at all"
     ],
     "c": 2,
     "ref": "NSCP 2015 Sec. 208 (Earthquake Loads)",
@@ -264,9 +264,9 @@
     "q": "Why is an impact increase added to machinery loads?",
     "o": [
       "Moving or vibrating equipment loads a structure more than its static weight alone",
-      "Machinery is lighter than it looks",
-      "Machinery is always placed on the roof",
-      "The increase replaces the live load"
+      "Machinery is lighter than its nameplate weight suggests",
+      "Machinery is always placed on the roof, far from the supports",
+      "The increase replaces the live load of the machine room"
     ],
     "c": 0,
     "ref": "NSCP 2015 Sec. 205 Impact Loads (Table of impact increases)",
@@ -328,10 +328,10 @@
     "s": "Occupancy Categories",
     "q": "Which of these falls under Special Occupancy (Category III) under NSCP 2015?",
     "o": [
-      "A hospital",
+      "A hospital with surgery and emergency treatment areas",
       "A building with an assembly room for 1,000 or more people",
-      "A private garage",
-      "A small single-family house"
+      "A private garage attached to a house",
+      "A small single-family house on its own lot"
     ],
     "c": 1,
     "ref": "NSCP 2015 Vol. 1, Sec. 103 and Table 103-1 Occupancy Category",
@@ -341,10 +341,10 @@
     "s": "Loads",
     "q": "Why are crane loads treated as special loads?",
     "o": [
-      "Cranes are always removed before occupancy",
-      "Crane loads are lighter than floor live loads",
+      "Cranes are always removed before the building is occupied",
+      "Crane loads are lighter than ordinary floor live loads",
       "A moving crane adds vertical impact, lateral and longitudinal forces as well as its weight",
-      "Crane loads act only on the roof"
+      "Crane loads act only on the roof deck and never on the frame"
     ],
     "c": 2,
     "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
@@ -368,9 +368,9 @@
     "q": "What is live load?",
     "o": [
       "The load from the use and occupancy of a building, not including dead load",
-      "The weight of the structure itself",
-      "The load from wind and earthquake only",
-      "The weight of fixed equipment"
+      "The weight of the structure itself and its permanent finishes",
+      "The load from wind and earthquake acting on the building",
+      "The weight of fixed service equipment such as tanks and pumps"
     ],
     "c": 0,
     "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
@@ -420,9 +420,9 @@
     "q": "What is story drift?",
     "o": [
       "The horizontal displacement of one floor relative to the floor below",
-      "The total sway of the roof",
-      "The vertical sag of a floor slab",
-      "The settlement of a footing"
+      "The total sway of the roof measured from the ground",
+      "The vertical sag of a floor slab at midspan",
+      "The settlement of a footing under the column load"
     ],
     "c": 0,
     "ref": "NSCP 2015 Sec. 208 (Earthquake Loads)",
@@ -445,10 +445,10 @@
     "s": "Loads",
     "q": "Under NSCP 2015, which of these counts as a load?",
     "o": [
-      "Only gravity forces",
-      "Only wind and earthquake forces",
-      "All of: self-weight, occupancy, environmental effects, differential movement and restrained dimensional change",
-      "Only the weight of people"
+      "Only gravity forces from the weight of the structure",
+      "Only wind and earthquake forces acting sideways",
+      "Self-weight, occupancy, environment, settlement and restrained movement",
+      "Only the weight of people and their furniture"
     ],
     "c": 2,
     "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
@@ -458,10 +458,10 @@
     "s": "Loads",
     "q": "Under NSCP 2015, what is structural failure?",
     "o": [
-      "Only a total collapse",
-      "Any visible hairline crack",
-      "Any deflection under load",
-      "A loss of capability so that the structure can no longer safely serve its purpose"
+      "Only a total collapse of the whole structure",
+      "Any visible hairline crack in a slab or wall",
+      "Any deflection at all under the applied loads",
+      "Any loss of capability that makes it unsafe for its purpose"
     ],
     "c": 3,
     "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
@@ -472,9 +472,9 @@
     "q": "What causes the P-Δ effect?",
     "o": [
       "Gravity loads acting on a structure that has already swayed sideways",
-      "Wind pressure on the roof",
-      "Settlement of one footing",
-      "Shrinkage of the concrete slab"
+      "Wind pressure acting on the roof and windward wall",
+      "Settlement of one footing more than the others",
+      "Shrinkage of the concrete slab as it dries"
     ],
     "c": 0,
     "ref": "NSCP 2015 Sec. 208 (Earthquake Loads)",
@@ -523,10 +523,10 @@
     "s": "Lateral Systems",
     "q": "What is a diaphragm in a lateral-force system?",
     "o": [
-      "A horizontal or nearly horizontal system, such as a floor or roof, that carries lateral loads to the vertical elements",
-      "A vertical wall resisting lateral load in its plane",
-      "A diagonal brace in a frame",
-      "A thin membrane used for waterproofing"
+      "A floor or roof that carries lateral loads to the walls and frames",
+      "A vertical wall that resists lateral load in its own plane",
+      "A diagonal brace that turns a frame into a vertical truss",
+      "A thin membrane laid over a roof for waterproofing"
     ],
     "c": 0,
     "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
@@ -576,9 +576,9 @@
     "q": "Under NSCP 2015, what defines a Type A seismic source?",
     "o": [
       "A fault that can produce large earthquakes (7.0 ≤ M ≤ 8.4) and has a high rate of activity",
-      "A fault limited to M < 6.5",
-      "Any fault other than B and C",
-      "A fault more than 15 km from the site"
+      "A fault limited to small earthquakes of M < 6.5 with low activity",
+      "Any fault that does not qualify as Type B or Type C",
+      "Any fault located more than 15 km from the site"
     ],
     "c": 0,
     "ref": "NSCP 2015 Sec. 208 (Earthquake Loads), Seismic Source Types",
@@ -588,10 +588,10 @@
     "s": "Earthworks",
     "q": "In earthworks, what is a bench?",
     "o": [
-      "A stockpile of borrow material",
+      "A stockpile of borrow material kept beside the site",
       "A relatively level step cut into the ground on which fill may be placed",
-      "A retaining wall of stone",
-      "A trench for drainage pipes"
+      "A retaining wall of stacked stone at the toe of a slope",
+      "A trench dug to hold drainage pipes"
     ],
     "c": 1,
     "ref": "NSCP 2015 Vol. 1, Chapter 3 (Earthworks and Foundations), definitions",
@@ -628,9 +628,9 @@
     "q": "In earthworks, what does \"earth material\" include?",
     "o": [
       "Rock, natural soil or fill, or any combination of them",
-      "Only natural topsoil",
-      "Only imported fill",
-      "Only crushed gravel"
+      "Only the natural topsoil found on the site",
+      "Only fill that has been imported from a borrow pit",
+      "Only crushed gravel used as base course"
     ],
     "c": 0,
     "ref": "NSCP 2015 Vol. 1, Chapter 3 (Earthworks and Foundations), definitions",
@@ -640,10 +640,10 @@
     "s": "Lateral Systems",
     "q": "Why is the P-Δ effect more critical in tall, flexible buildings?",
     "o": [
-      "Tall buildings have no gravity loads",
+      "Tall buildings carry no gravity loads in their upper stories",
       "Larger drifts make the gravity loads more eccentric, adding bigger secondary moments",
-      "Flexible buildings have no drift",
-      "Tall buildings never sway"
+      "Flexible buildings do not drift under lateral load",
+      "Tall buildings never sway, so the effect is theoretical"
     ],
     "c": 1,
     "ref": "NSCP 2015 Sec. 208 (Earthquake Loads)",
@@ -666,9 +666,9 @@
     "s": "Loads",
     "q": "What is uplift?",
     "o": [
-      "The downward weight of the roof",
-      "The sideways force of soil on a wall",
-      "The settlement of a footing",
+      "The downward weight of the roof on its supports",
+      "The sideways pressure of soil against a basement wall",
+      "The downward settlement of a footing into soft soil",
       "An upward force on floors or foundations from water pressure or wind"
     ],
     "c": 3,
@@ -705,10 +705,10 @@
     "s": "Loads",
     "q": "Why do helipads need special load consideration?",
     "o": [
-      "Helicopters are lighter than people",
-      "Helipads carry no live load",
+      "Helicopters are lighter than a crowd of people standing there",
+      "Helipads carry no live load when no aircraft is present",
       "Landing aircraft cause dynamic impact loads beyond their static weight",
-      "Helipads are always at ground level"
+      "Helipads are always built at ground level, not on roofs"
     ],
     "c": 2,
     "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
@@ -732,9 +732,9 @@
     "q": "For a building to be partially enclosed, what else must its windward-wall openings exceed?",
     "o": [
       "0.37 m² or 1% of that wall's area, whichever is smaller",
-      "10 m² or 10% of that wall's area",
-      "80% of that wall's area",
-      "The area of the roof"
+      "10 m² or 10% of that wall's area, whichever is larger",
+      "80% of that wall's area, as for an open building",
+      "The total area of the openings in the roof"
     ],
     "c": 0,
     "ref": "NSCP 2015 Sec. 207A (Wind Loads, based on ASCE 7-10)",
@@ -744,10 +744,10 @@
     "s": "Loads",
     "q": "Why must roof drainage be designed to prevent water from building up (ponding)?",
     "o": [
-      "Water makes the roof lighter",
+      "Standing water makes the roof lighter by cooling it",
       "Collected water adds load, and deflection lets even more collect",
-      "Ponding only affects appearance",
-      "Water has no weight on a roof"
+      "Ponding only stains the roof and affects its appearance",
+      "Water on a flat roof has no weight worth designing for"
     ],
     "c": 1,
     "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",
@@ -836,9 +836,9 @@
     "q": "In earthworks, what is erosion?",
     "o": [
       "The wearing away of the ground surface by wind or water",
-      "The placing of fill in lifts",
-      "The removal of rock by blasting",
-      "The densifying of soil"
+      "The placing of fill in compacted lifts",
+      "The removal of rock by drilling and blasting",
+      "The densifying of soil with rollers"
     ],
     "c": 0,
     "ref": "NSCP 2015 Vol. 1, Chapter 3 (Earthworks and Foundations), definitions",
@@ -900,10 +900,10 @@
     "s": "Loads",
     "q": "What is dead load?",
     "o": [
-      "The weight of people and furniture",
+      "The weight of people and movable furniture",
       "The weight of all permanent construction and fixed service equipment",
-      "The force from wind on the walls",
-      "The load during construction only"
+      "The force of wind acting on the walls and roof",
+      "The loads acting only during construction"
     ],
     "c": 1,
     "ref": "NSCP 2015 Vol. 1, Chapter 2 (Minimum Design Loads), definitions",

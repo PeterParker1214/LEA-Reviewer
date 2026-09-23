@@ -42,9 +42,9 @@
     "s": "Aggregates",
     "q": "What guides the choice of maximum aggregate size for a concrete mix?",
     "o": [
-      "Always use the smallest size available",
-      "Always use 50 mm",
-      "Use any size, since it does not affect the mix",
+      "Always use the smallest aggregate size available",
+      "Always use 50 mm aggregate for every member",
+      "Any size may be used, since it does not affect the mix",
       "Use the largest economical size that fits the member dimensions and bar spacing"
     ],
     "c": 3,
@@ -125,10 +125,10 @@
     "s": "Aggregates",
     "q": "Why is beach sand not allowed in concrete without the engineer's approval?",
     "o": [
-      "It is too coarse",
-      "Its salt (chlorides) corrodes the reinforcement, and its grains are often uniform and rounded",
-      "It sets too fast",
-      "It is too expensive"
+      "It is too coarse to pass the fine-aggregate sieves",
+      "Its salt corrodes the reinforcement",
+      "It makes the concrete set too fast",
+      "It is too expensive to transport inland"
     ],
     "c": 1,
     "ref": "DPWH Standard Specifications, Item 405",
@@ -216,10 +216,10 @@
     "s": "Aggregates",
     "q": "Why may different sources of fine aggregate not be mixed or alternated in the same class of concrete without approval?",
     "o": [
-      "Changing sources changes the grading and water demand, so the concrete becomes inconsistent",
-      "Because all sand is the same",
-      "Because it is illegal to buy sand from two suppliers",
-      "Because it slows the mixer"
+      "It changes the grading and water demand between batches",
+      "Because all sand is the same, so mixing is pointless",
+      "Because buying sand from two suppliers is illegal",
+      "Because it slows down the mixer"
     ],
     "c": 0,
     "ref": "DPWH Standard Specifications, Item 405.2.3 Fine aggregate grading and deleterious limits",
@@ -229,10 +229,10 @@
     "s": "DPWH Concrete Classes",
     "q": "Which of these is an admixture?",
     "o": [
-      "The coarse aggregate",
+      "The coarse aggregate in the mix",
       "A water-reducing agent added during mixing",
-      "The mixing water",
-      "The portland cement"
+      "The water used for mixing",
+      "The portland cement in the mix"
     ],
     "c": 1,
     "ref": "ACI CT-13 Concrete terminology",
@@ -321,9 +321,9 @@
     "q": "Why does well-graded, larger aggregate usually save cement?",
     "o": [
       "It has fewer voids, so less cement paste is needed to fill them",
-      "It absorbs cement",
-      "It reacts with cement to make it stronger",
-      "It is heavier"
+      "It absorbs part of the cement paste",
+      "It reacts with the cement to make it stronger",
+      "It is heavier, so it compacts better"
     ],
     "c": 0,
     "ref": "NSCP 2015 Sec. 426.4.2.1 (ACI 318-14 26.4.2.1) Aggregate size limits",
@@ -334,9 +334,9 @@
     "q": "How is concrete best described?",
     "o": [
       "A mixture of lime and sand only",
-      "An artificial stone made of cement, fine aggregate, coarse aggregate and water, with or without admixtures",
+      "Cement, sand, gravel and water hardened into stone",
       "A mixture of cement and water only",
-      "Crushed rock bound with asphalt"
+      "Crushed rock bound together with asphalt"
     ],
     "c": 1,
     "ref": "ACI CT-13 Concrete terminology",
@@ -346,10 +346,10 @@
     "s": "Curing",
     "q": "Which curing method works by keeping the concrete's own water from evaporating, rather than adding water?",
     "o": [
-      "Ponding",
-      "Fog spraying",
+      "Ponding the slab with water",
+      "Fog spraying the surface",
       "A liquid membrane curing compound",
-      "Wet burlap"
+      "Wet burlap kept damp"
     ],
     "c": 2,
     "ref": "ACI 308R Guide to curing concrete",
@@ -385,10 +385,10 @@
     "s": "Curing",
     "q": "For how long is concrete usually moist-cured?",
     "o": [
-      "1 hour",
-      "About 7 days for ordinary cement, and longer for slow-gaining mixes",
-      "1 day only",
-      "90 days in every case"
+      "About 1 hour, until the surface is dry",
+      "About 7 days, longer for slow-gaining mixes",
+      "About 1 day, then left to dry",
+      "90 days, in every case"
     ],
     "c": 1,
     "ref": "ACI 308R Guide to curing concrete",
@@ -443,9 +443,9 @@
     "q": "Which of these may be used as coarse aggregate in DPWH concrete?",
     "o": [
       "Crushed clay brick with plaster attached",
-      "Crushed stone, gravel or blast-furnace slag that is hard, strong and clean",
-      "Coral stone",
-      "Organic topsoil"
+      "Clean, hard crushed stone, gravel or slag",
+      "Coral stone gathered from the shore",
+      "Organic topsoil from the site"
     ],
     "c": 1,
     "ref": "DPWH Standard Specifications, Item 405",
@@ -579,9 +579,9 @@
     "q": "What does curing concrete mean?",
     "o": [
       "Letting the concrete dry out as fast as possible",
-      "Painting the concrete surface",
+      "Painting the concrete surface after stripping",
       "Adding water to fresh concrete to raise its slump",
-      "Keeping enough moisture and warmth for long enough so the concrete gains its intended properties"
+      "Keeping it moist and warm long enough to gain strength"
     ],
     "c": 3,
     "ref": "ACI 308R Guide to curing concrete",
@@ -643,10 +643,10 @@
     "s": "Aggregates",
     "q": "Which of these may be used as fine aggregate in DPWH concrete?",
     "o": [
-      "Natural sand or stone screenings with hard, strong, durable particles",
-      "Unwashed beach sand",
-      "Clay",
-      "Sawdust"
+      "Clean natural sand or stone screenings",
+      "Unwashed beach sand from the shore",
+      "Clay dug from the site",
+      "Sawdust from a lumber yard"
     ],
     "c": 0,
     "ref": "DPWH Standard Specifications, Item 405",
@@ -752,10 +752,10 @@
     "s": "Curing",
     "q": "Why is concrete cured for several days instead of a few hours?",
     "o": [
-      "Hydration continues for days, and strength depends on moisture being present all that time",
-      "Concrete sets in minutes and needs nothing after",
-      "Curing is only for appearance",
-      "Water weakens hardened concrete"
+      "Hydration, and so strength gain, needs moisture for days",
+      "Concrete sets in minutes and needs nothing after that",
+      "Curing is done only for appearance",
+      "Water weakens concrete once it has hardened"
     ],
     "c": 0,
     "ref": "ACI 308R Guide to curing concrete",

@@ -58,9 +58,9 @@
     "q": "Why are drop panels or column capitals added to a flat slab?",
     "o": [
       "To thicken the slab at the column and raise its punching-shear strength",
-      "To make the ceiling look higher",
-      "To reduce the self-weight of the slab",
-      "To replace the column ties"
+      "To make the ceiling look higher around the column heads",
+      "To reduce the self-weight of the slab near the columns",
+      "To take the place of the column ties below the slab"
     ],
     "c": 0,
     "ref": "NSCP 2015",
@@ -117,9 +117,9 @@
     "q": "What is a pad footing?",
     "o": [
       "A simple isolated footing of uniform thickness under one column",
-      "A footing under a whole wall",
-      "A footing that supports all the columns",
-      "A pile cap on four piles"
+      "A long footing that runs under a whole wall",
+      "A single footing that supports all the columns",
+      "A pile cap resting on a group of four piles"
     ],
     "c": 0,
     "ref": "NSCP 2015",
@@ -142,10 +142,10 @@
     "s": "Slabs",
     "q": "What is punching shear?",
     "o": [
-      "A bending failure at midspan",
-      "The failure of a beam's stirrups",
+      "A bending failure that forms at midspan of a slab",
+      "The failure of a beam's stirrups under diagonal tension",
       "A two-way shear failure where a column pushes through a slab or footing",
-      "The crushing of the column concrete"
+      "The crushing of the concrete at the top of a column"
     ],
     "c": 2,
     "ref": "NSCP 2015",
@@ -155,9 +155,9 @@
     "s": "Slabs",
     "q": "What is a two-way slab?",
     "o": [
-      "A slab with two layers of bars",
-      "A slab supported on two sides only",
-      "A slab with two different thicknesses",
+      "A slab with two layers of bars, one at the top and one at the bottom",
+      "A slab supported on two opposite sides only",
+      "A slab with two different thicknesses in one panel",
       "A slab that carries its load in two perpendicular directions to its supports"
     ],
     "c": 3,
@@ -169,9 +169,9 @@
     "q": "When is a mat (raft) foundation most suitable?",
     "o": [
       "When the soil is weak, column loads are heavy, or settlement must be kept even",
-      "When the soil is solid rock and loads are light",
-      "When there is only one column",
-      "When the building is a single-storey shed"
+      "When the soil is solid rock and the column loads are light",
+      "When the building has only one column to support",
+      "When the building is a small single-storey shed"
     ],
     "c": 0,
     "ref": "NSCP 2015",
@@ -195,9 +195,9 @@
     "s": "Footings",
     "q": "What is a stepped footing?",
     "o": [
-      "A footing placed on a staircase",
-      "A footing under a stair",
-      "An isolated footing whose thickness decreases in steps away from the column",
+      "A footing placed on the steps of a staircase",
+      "A footing that supports only a stair stringer",
+      "A footing that gets thinner in steps away from the column",
       "Two footings at different levels joined by a beam"
     ],
     "c": 2,
@@ -222,9 +222,9 @@
     "q": "What is a waffle slab?",
     "o": [
       "A two-way slab with a grid of closely spaced ribs running both ways",
-      "A slab with ribs in one direction only",
-      "A flat slab with drop panels",
-      "A slab on grade"
+      "A slab with ribs running in one direction only",
+      "A flat slab thickened with drop panels at the columns",
+      "A slab cast directly on the ground (slab on grade)"
     ],
     "c": 0,
     "ref": "NSCP 2015",
@@ -234,10 +234,10 @@
     "s": "Slabs",
     "q": "A slab panel supported on all four edges measures 5 m × 6 m. How does it behave?",
     "o": [
-      "As a one-way slab",
+      "As a one-way slab, since it is longer in one direction",
       "As a two-way slab, since the long-to-short span ratio is less than 2",
-      "As a cantilever slab",
-      "As a flat slab without supports"
+      "As a cantilever slab, since it has four free edges",
+      "As a flat slab, since it has no interior beams"
     ],
     "c": 1,
     "ref": "NSCP 2015",
@@ -280,10 +280,10 @@
     "s": "Footings",
     "q": "What is a sloped footing?",
     "o": [
-      "An isolated footing whose top surface slopes down from the column toward its edges",
-      "A footing built on a hillside",
-      "A footing tilted to face the wind",
-      "A footing under a ramp"
+      "A footing whose top slopes down from the column to its edges",
+      "A footing built on the slope of a hillside",
+      "A footing tilted so that it faces the prevailing wind",
+      "A footing that supports a ramp or driveway"
     ],
     "c": 0,
     "ref": "NSCP 2015",
@@ -293,10 +293,10 @@
     "s": "Columns",
     "q": "Which way of bracing a column raises its buckling capacity the most?",
     "o": [
-      "Leaving both ends pinned and free to sway",
+      "Leaving both ends pinned and free to sway sideways",
       "Restraining its ends against rotation and sway (fixed and braced)",
-      "Making the column taller",
-      "Using a larger bar spacing"
+      "Making the column taller so it has more steel",
+      "Spacing the longitudinal bars farther apart"
     ],
     "c": 1,
     "ref": "NSCP 2015",
@@ -306,10 +306,10 @@
     "s": "Slabs",
     "q": "What is a one-way ribbed (joist) slab?",
     "o": [
-      "A slab with ribs in two directions",
-      "A slab carried directly by columns",
+      "A slab with ribs running in two perpendicular directions",
+      "A slab carried directly by the columns, with no beams",
       "A thin slab on closely spaced parallel ribs that span in one direction",
-      "A slab that rests on soil"
+      "A slab that rests directly on compacted soil"
     ],
     "c": 2,
     "ref": "NSCP 2015",
@@ -319,10 +319,10 @@
     "s": "Slabs",
     "q": "What is a flat slab?",
     "o": [
-      "A slab on grade",
-      "A slab carried by beams on all four sides",
-      "A slab with ribs both ways",
-      "A slab carried directly by columns without beams, usually with drop panels or capitals"
+      "A slab cast directly on the ground (slab on grade)",
+      "A slab carried by beams along all four edges",
+      "A slab with a grid of ribs running both ways",
+      "A slab carried directly by columns, without beams"
     ],
     "c": 3,
     "ref": "NSCP 2015",

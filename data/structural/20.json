@@ -16,10 +16,10 @@
     "s": "Seismic Design",
     "q": "In seismic design, what is the lateral-force-resisting system?",
     "o": [
-      "All the non-structural partitions",
+      "All the non-structural partitions and ceilings",
       "The part of the structure designed to carry the design seismic forces",
-      "The gravity columns only",
-      "The roofing and cladding"
+      "The gravity columns that carry only vertical load",
+      "The roofing, cladding and windows"
     ],
     "c": 1,
     "ref": "NSCP 2015 Sec. 208 definitions and Table 208-9 (earthquake)",
@@ -29,10 +29,10 @@
     "s": "Structural Systems",
     "q": "What is a cantilevered column system?",
     "o": [
-      "A column that projects from a wall",
-      "A row of columns braced by diagonals",
-      "A lateral system whose columns act as cantilevers fixed at the base, with little moment capacity at the top",
-      "A column carried by a transfer beam"
+      "A column that projects out from a wall",
+      "A row of columns braced by diagonal members",
+      "Columns acting as cantilevers fixed only at their base",
+      "A column carried on a transfer beam"
     ],
     "c": 2,
     "ref": "NSCP 2015 Sec. 208 definitions and Table 208-9 (earthquake)",
@@ -42,10 +42,10 @@
     "s": "Structural Systems",
     "q": "What defines a bearing wall system?",
     "o": [
-      "It has a complete frame for gravity loads",
-      "It has only braced frames",
-      "It uses cables for all loads",
-      "It has no complete vertical load-carrying space frame, so walls carry the gravity loads"
+      "It has a complete space frame for all gravity loads",
+      "It uses only braced frames for all loads",
+      "It uses cables to carry all its loads",
+      "Walls, not a complete frame, carry the gravity loads"
     ],
     "c": 3,
     "ref": "NSCP 2015 Sec. 208 definitions and Table 208-9 (earthquake)",
@@ -55,10 +55,10 @@
     "s": "Wind Design",
     "q": "In NSCP wind design, what is the design force F used for?",
     "o": [
-      "Wind loads on open buildings and other structures",
-      "Wind loads on enclosed buildings",
-      "Seismic loads",
-      "Live loads on floors"
+      "Open buildings, signs, towers and other structures",
+      "Enclosed and partially enclosed buildings",
+      "Seismic loads on any kind of building",
+      "Live loads on occupied floors"
     ],
     "c": 0,
     "ref": "NSCP 2015 Sec. 207A definitions (wind)",
@@ -121,10 +121,10 @@
     "s": "Structural Systems",
     "q": "What is a boundary element?",
     "o": [
-      "A property-line wall",
-      "A reinforced zone along the edges of a shear wall, diaphragm or opening",
-      "A foundation tie beam",
-      "An expansion joint"
+      "A wall built along the property line",
+      "A reinforced zone along the edge of a shear wall",
+      "A tie beam joining two footings",
+      "An expansion joint between two blocks"
     ],
     "c": 1,
     "ref": "NSCP 2015 Sec. 208 definitions and Table 208-9 (earthquake)",
@@ -136,8 +136,8 @@
     "o": [
       "Wind loads on signs and towers only",
       "Earth pressure on basement walls",
-      "Wind loads on enclosed and partially enclosed buildings",
-      "Water pressure in tanks"
+      "Enclosed and partially enclosed buildings",
+      "Water pressure inside tanks"
     ],
     "c": 2,
     "ref": "NSCP 2015 Sec. 207A definitions (wind)",
@@ -160,10 +160,10 @@
     "s": "Wind Design",
     "q": "Why do wind enclosure classifications matter in design?",
     "o": [
-      "They set the internal pressure, which adds to the external pressure on walls and roof",
-      "They set the building's fire rating",
-      "They decide the live load",
-      "They only affect ventilation"
+      "They set the internal pressure on walls and roof",
+      "They set the building's fire-resistance rating",
+      "They decide the floor live load",
+      "They only affect natural ventilation"
     ],
     "c": 0,
     "ref": "NSCP 2015 Sec. 207A definitions (wind)",
@@ -187,9 +187,9 @@
     "q": "What does a floor diaphragm do in a lateral-force system?",
     "o": [
       "It carries only the gravity load to the beams",
-      "It resists uplift at the foundation",
-      "It carries the lateral forces at each level to the vertical resisting elements",
-      "It seals the building against water"
+      "It resists uplift at the foundation level",
+      "It carries lateral forces to the walls and frames",
+      "It seals the building against rain"
     ],
     "c": 2,
     "ref": "NSCP 2015 Sec. 208 definitions and Table 208-9 (earthquake)",
@@ -213,10 +213,10 @@
     "s": "Wind Design",
     "q": "For wind design, what makes a building \"flexible\"?",
     "o": [
-      "A fundamental natural frequency below 1 Hz",
-      "A height under 18 m",
-      "Being made of timber",
-      "Having a pitched roof"
+      "A natural frequency below 1 Hz",
+      "A height of less than 18 m",
+      "A frame made of timber",
+      "A pitched roof"
     ],
     "c": 0,
     "ref": "NSCP 2015 Sec. 207A definitions (wind)",
@@ -226,10 +226,10 @@
     "s": "Wind Design",
     "q": "Under NSCP 2015, what defines a low-rise building for wind design?",
     "o": [
-      "Any building under 5 storeys",
-      "An enclosed or partially enclosed building with mean roof height of 18 m or less, not exceeding its least horizontal dimension",
-      "Any building with a flat roof",
-      "Any open building under 10 m"
+      "Any building of fewer than five storeys",
+      "Roof height ≤ 18 m and ≤ its least plan dimension",
+      "Any building that has a flat roof",
+      "Any open building less than 10 m high"
     ],
     "c": 1,
     "ref": "NSCP 2015 Sec. 207A definitions (wind)",
@@ -240,8 +240,8 @@
     "q": "How is an enclosed building defined for wind design?",
     "o": [
       "As a building with no doors",
-      "As a building with all walls 80% open",
-      "As a building that does not meet the requirements for open or partially enclosed buildings",
+      "As a building whose walls are all 80% open",
+      "As one that is neither open nor partially enclosed",
       "As a building with a flat roof"
     ],
     "c": 2,
@@ -298,10 +298,10 @@
     "s": "Seismic Design",
     "q": "What is base shear?",
     "o": [
-      "The shear in the roof beams",
+      "The shear carried by the roof beams only",
       "The weight of the foundation",
-      "The total design lateral force at the base of the structure",
-      "The shear stress in a column"
+      "The total design lateral force at the base",
+      "The shear stress in one column"
     ],
     "c": 2,
     "ref": "NSCP 2015 Sec. 208 definitions and Table 208-9 (earthquake)",
@@ -314,7 +314,7 @@
       "The main frames and shear walls",
       "The foundation elements",
       "The interior partitions only",
-      "Elements of the envelope that do not qualify as part of the main wind-force-resisting system"
+      "Envelope parts outside the main wind-force system"
     ],
     "c": 3,
     "ref": "NSCP 2015 Sec. 207A definitions (wind)",

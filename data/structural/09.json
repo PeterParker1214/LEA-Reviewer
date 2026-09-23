@@ -56,9 +56,9 @@
     "q": "In strength design, how is the required (ultimate) strength U found?",
     "o": [
       "By multiplying the service loads by load factors in the code load combinations",
-      "By adding all the service loads with no factors",
-      "By dividing the service loads by a factor of safety",
-      "By multiplying only the live load by 2"
+      "By adding all the service loads together without applying any factors",
+      "By dividing the service loads by a single factor of safety",
+      "By multiplying only the live load by 2 and ignoring the dead load"
     ],
     "c": 0,
     "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
@@ -81,10 +81,10 @@
     "s": "Concrete and RC Design",
     "q": "What is the development length of a reinforcing bar?",
     "o": [
-      "The length of the hook bent at the bar's end",
-      "The overlap between two spliced bars",
+      "The length of the hook bent at the bar's end to anchor it in the concrete",
+      "The overlap needed where two bars are lap-spliced end to end",
       "The embedment needed for bond to build up the bar's full design stress",
-      "The distance between two adjacent bars"
+      "The clear distance kept between two adjacent parallel bars"
     ],
     "c": 2,
     "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
@@ -94,9 +94,9 @@
     "s": "Concrete and RC Design",
     "q": "Why is an under-reinforced beam section preferred in design?",
     "o": [
-      "The concrete crushes first, which is quick and clean",
-      "It uses the most steel possible",
-      "It never cracks under service loads",
+      "The concrete crushes before the steel yields, so failure is quick and clean",
+      "It uses the largest amount of steel the section can hold",
+      "It never cracks under service loads, so it needs no maintenance",
       "The tension steel yields before the concrete crushes, so the beam gives warning before it fails"
     ],
     "c": 3,
@@ -173,10 +173,10 @@
     "s": "Concrete and RC Design",
     "q": "In a T-beam under positive moment, which part works as the compression flange?",
     "o": [
-      "The web below the slab",
+      "The web below the slab, between the flange and the bottom bars",
       "The effective width of the slab cast with the beam",
-      "The stirrups",
-      "The bottom tension bars"
+      "The stirrups wrapped around the longitudinal bars of the web",
+      "The bottom tension bars placed near the soffit of the beam"
     ],
     "c": 1,
     "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
@@ -199,9 +199,9 @@
     "s": "Concrete and RC Design",
     "q": "How is the dosage of a chemical admixture decided?",
     "o": [
-      "Always 3% of the total concrete volume",
-      "Always 1 liter per cubic meter, whatever the product",
-      "By the slump alone, with no reference to the product",
+      "Always 3% of the total concrete volume, for every kind of admixture",
+      "Always 1 liter per cubic meter of concrete, whatever the product",
+      "By the target slump alone, without reference to the product used",
       "From the manufacturer's recommendation and trial mixes, usually per mass of cement"
     ],
     "c": 3,
@@ -225,10 +225,10 @@
     "s": "Concrete and RC Design",
     "q": "What is a balanced section in reinforced concrete flexure?",
     "o": [
-      "One where the tension and compression steel have equal areas",
+      "One where the tension steel and the compression steel have equal areas",
       "One where the tension steel reaches yield just as the concrete reaches its crushing strain of 0.003",
-      "One where the beam depth equals its width",
-      "One with steel only at mid-depth"
+      "One where the overall beam depth is equal to the beam width",
+      "One where all the steel is placed at mid-depth of the section"
     ],
     "c": 1,
     "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
@@ -278,10 +278,10 @@
     "s": "Slump Test",
     "q": "A slump test on a normal-weight column mix gives a collapse slump. What should be concluded?",
     "o": [
-      "The mix is ideal for columns",
+      "The mix is ideal for columns because it will fill the forms easily",
       "The mix is too wet for a valid slump reading, so the mix should be checked",
-      "The result is a valid slump of 300 mm",
-      "The concrete is too stiff and needs more cement"
+      "The result is a valid slump reading equal to the full 300 mm cone height",
+      "The concrete is too stiff and needs more cement added at the site"
     ],
     "c": 1,
     "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
@@ -304,9 +304,9 @@
     "s": "Concrete and RC Design",
     "q": "What is a T-beam?",
     "o": [
-      "A beam with a T-shaped steel section inside",
-      "A beam supported at three points",
-      "A beam used only for roof trusses",
+      "A beam with a T-shaped steel section embedded inside the concrete",
+      "A beam that rests on three supports arranged in the shape of a T",
+      "A precast beam used only as the top chord of a roof truss",
       "A beam cast together with the slab, so part of the slab acts as its compression flange"
     ],
     "c": 3,
@@ -330,10 +330,10 @@
     "s": "Concrete and RC Design",
     "q": "What is the role of shear reinforcement (stirrups) in a concrete beam?",
     "o": [
-      "It carries the main bending moment at midspan",
+      "It carries the main bending tension at midspan instead of the bottom bars",
       "It resists diagonal tension from shear and helps confine the concrete and hold the main bars",
-      "It prevents the slab from lifting off the beam",
-      "It controls shrinkage along the top surface"
+      "It stops the slab from lifting off the beam under wind uplift",
+      "It controls shrinkage cracking along the top surface of the beam"
     ],
     "c": 1,
     "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
@@ -370,9 +370,9 @@
     "q": "What is concrete made of?",
     "o": [
       "Cement, water, fine aggregate and coarse aggregate, with optional admixtures",
-      "Cement, lime and sand only",
-      "Cement and water only",
-      "Sand, gravel and lime only"
+      "Cement, lime and sand only, mixed with just enough water to spread",
+      "Cement and water only, poured and left to harden in forms",
+      "Sand, gravel and lime only, with no portland cement at all"
     ],
     "c": 0,
     "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
@@ -382,10 +382,10 @@
     "s": "Concrete and RC Design",
     "q": "What is an over-reinforced beam section?",
     "o": [
-      "One with more stirrups than the code minimum",
+      "One with more stirrups than the code minimum along its whole span",
       "One with so much tension steel that the concrete crushes before the steel yields",
-      "One with compression steel added",
-      "One with steel placed below the required cover"
+      "One with compression steel added near the top of the section",
+      "One with its bars placed closer to the surface than the required cover"
     ],
     "c": 1,
     "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",
@@ -409,9 +409,9 @@
     "s": "Concrete and RC Design",
     "q": "What is an admixture in concrete?",
     "o": [
-      "Any aggregate finer than 4.75 mm",
-      "The water added after the mixer leaves the plant",
-      "The steel reinforcement",
+      "Any aggregate particle finer than the 4.75 mm (No. 4) sieve",
+      "The extra water added to the truck after it leaves the batching plant",
+      "The steel reinforcement placed in the forms before the concrete",
       "An ingredient other than cement, water and aggregate, added to change the concrete's properties"
     ],
     "c": 3,
@@ -423,9 +423,9 @@
     "q": "A ready-mix truck arrives 2 hours after batching and the concrete has stiffened. What should be done?",
     "o": [
       "Reject it or refer it to the engineer, since it is past the normal 90-minute limit",
-      "Add water at the site until it flows",
-      "Pour it into columns, where stiff concrete is better",
-      "Mix in more cement by hand"
+      "Add water at the site until the concrete flows again, then pour it",
+      "Pour it into the columns, where stiffer concrete is actually better",
+      "Mix in more cement by hand to bring back its strength, then pour it"
     ],
     "c": 0,
     "ref": "NSCP 2015 Vol. 1, Ch. 4 (ACI 318-14 basis); ASTM C143 slump test; ASTM C94 ready-mixed concrete",

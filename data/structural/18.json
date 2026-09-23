@@ -29,10 +29,10 @@
     "s": "Concrete Classes",
     "q": "How is modern structural concrete usually specified, instead of by a fixed nominal mix such as Class A?",
     "o": [
-      "By the color of the aggregate",
-      "By the number of bags per truck only",
-      "By the required compressive strength, with the mix proportions designed to reach it",
-      "By the slump alone"
+      "By the color and source of the aggregate",
+      "By the number of cement bags per truck only",
+      "By its required strength f'c, with a designed mix",
+      "By the slump alone, with no strength stated"
     ],
     "c": 2,
     "ref": "ASTM C143 (slump), C31 and C39 (cylinders); DPWH nominal concrete classes",
@@ -57,7 +57,7 @@
     "o": [
       "In three layers of about equal volume, each rodded 25 times",
       "In one layer, rodded 10 times",
-      "In two layers, each vibrated",
+      "In two layers, each vibrated with a poker",
       "In five layers, each tamped once"
     ],
     "c": 0,
@@ -71,7 +71,7 @@
       "100 mm diameter × 100 mm high",
       "150 mm diameter × 300 mm high (6 in × 12 in)",
       "300 mm diameter × 150 mm high",
-      "150 mm cube"
+      "150 mm cube, as in British practice"
     ],
     "c": 1,
     "ref": "ASTM C31 / C39",
@@ -177,9 +177,9 @@
     "s": "Concrete Classes",
     "q": "Which use is Class A concrete normally specified for?",
     "o": [
-      "Concrete placed under water",
+      "Concrete placed under water and retaining walls",
       "Footings, columns, beams and reinforced concrete slabs",
-      "Concrete plant boxes",
+      "Concrete plant boxes and fill concrete",
       "Slabs on fill and non-bearing walls"
     ],
     "c": 1,
@@ -229,10 +229,10 @@
     "s": "Concrete Classes",
     "q": "Which use is Class C concrete normally specified for?",
     "o": [
-      "Columns and beams",
+      "Columns, beams and suspended slabs",
       "Concrete plant boxes and similar non-structural work",
       "Concrete placed under water",
-      "Retaining walls"
+      "Retaining walls and water tanks"
     ],
     "c": 1,
     "ref": "Nominal concrete classes (DPWH; Fajardo, Simplified Construction Estimate)",
@@ -242,10 +242,10 @@
     "s": "Concrete Testing",
     "q": "What are 7-day cylinder tests mainly used for?",
     "o": [
-      "As the official acceptance test",
-      "To measure slump",
+      "As the official test used to accept or reject the concrete",
+      "To measure the slump of the concrete when delivered",
       "As an early indication of whether the concrete will reach its 28-day strength",
-      "To find the air content"
+      "To find the air content of the fresh concrete"
     ],
     "c": 2,
     "ref": "ASTM C143 (slump), C31 and C39 (cylinders); DPWH nominal concrete classes",
@@ -255,9 +255,9 @@
     "s": "Concrete Testing",
     "q": "What is the purpose of the slump test?",
     "o": [
-      "To find the compressive strength of hardened concrete",
-      "To measure the air content",
-      "To find the setting time",
+      "To find the compressive strength of the hardened concrete",
+      "To measure the air content of the fresh concrete",
+      "To find how long the concrete takes to set",
       "To check the consistency of fresh concrete and whether it meets the specified slump"
     ],
     "c": 3,
@@ -268,10 +268,10 @@
     "s": "Concrete Testing",
     "q": "Why must a test cylinder have a height about twice its diameter?",
     "o": [
-      "A standard shape gives comparable results; shorter specimens test stronger because of end friction",
-      "To save concrete",
-      "So it fits in the slump cone",
-      "Because taller specimens cure faster"
+      "Short specimens test stronger because of end friction",
+      "To save concrete when casting the specimens",
+      "So that the cylinder fits inside the slump cone",
+      "Because taller specimens cure faster than short ones"
     ],
     "c": 0,
     "ref": "ASTM C143 (slump), C31 and C39 (cylinders); DPWH nominal concrete classes",
@@ -283,8 +283,8 @@
     "o": [
       "A 25 mm square timber stick",
       "A 16 mm diameter steel rod with a rounded (hemispherical) tip",
-      "A poker vibrator",
-      "A trowel"
+      "A poker vibrator dipped into each layer",
+      "A steel trowel pressed onto the surface"
     ],
     "c": 1,
     "ref": "ASTM C143",
@@ -307,8 +307,8 @@
     "s": "Concrete Testing",
     "q": "What is the shape of the slump cone?",
     "o": [
-      "A closed cylinder",
-      "A cube open at the top",
+      "A closed cylinder with a lid",
+      "A cube that is open at the top",
       "A cone with a pointed top",
       "A frustum of a cone, open at both ends"
     ],

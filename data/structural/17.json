@@ -56,9 +56,9 @@
     "q": "What causes a water (ponding) load on a roof?",
     "o": [
       "Rainwater collecting because of the roof shape, its deflection or blocked drains",
-      "Condensation on the underside of the roof",
-      "Water in the concrete mix",
-      "Water pipes running across the roof"
+      "Condensation forming on the underside of the roof deck",
+      "Water left over in the concrete mix of the roof slab",
+      "The weight of water pipes running across the roof"
     ],
     "c": 0,
     "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
@@ -100,9 +100,9 @@
     "s": "Loads",
     "q": "What makes up occupancy load?",
     "o": [
-      "The self-weight of the structure",
-      "The weight of the roofing",
-      "Wind pressure on the walls",
+      "The self-weight of the structure and its permanent finishes",
+      "The weight of the roofing and the roof framing members",
+      "The wind pressure acting on the walls and roof",
       "People, furniture, stored goods and similar items brought in by the use of a space"
     ],
     "c": 3,
@@ -237,9 +237,9 @@
     "q": "What is a static load?",
     "o": [
       "A load applied slowly, with no rapid change in size or position",
-      "A load that causes vibration",
-      "A sudden impact load",
-      "A moving crane load"
+      "A load that sets the structure vibrating",
+      "A sudden impact, such as a dropped object",
+      "A load that moves along the structure, such as a crane"
     ],
     "c": 0,
     "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
@@ -249,10 +249,10 @@
     "s": "Loads",
     "q": "What is a concentrated load?",
     "o": [
-      "A load spread evenly along a beam",
+      "A load spread evenly along the length of a beam",
       "A load acting on a very small area, idealized as a point",
-      "A load spread over a whole floor",
-      "A load that changes over time"
+      "A load spread over the whole area of a floor",
+      "A load that changes in size over time"
     ],
     "c": 1,
     "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
@@ -262,10 +262,10 @@
     "s": "Beams",
     "q": "What is a double overhanging beam?",
     "o": [
-      "A beam fixed at both ends",
-      "A beam on three supports",
+      "A beam fixed at both of its ends",
+      "A beam carried on three supports",
       "A beam on two supports that extends past both of them",
-      "A cantilever with a prop"
+      "A cantilever with a prop at its free end"
     ],
     "c": 2,
     "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
@@ -275,10 +275,10 @@
     "s": "Beams",
     "q": "What makes a beam a simple beam?",
     "o": [
-      "It is fixed at both ends",
-      "It spans over more than two supports",
-      "It is supported at one end only",
-      "It rests on supports at both ends that let it rotate and do not resist moment"
+      "It is fixed at both ends against rotation",
+      "It spans continuously over more than two supports",
+      "It is supported at one end only, like a cantilever",
+      "It rests on end supports that let it rotate freely"
     ],
     "c": 3,
     "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
@@ -302,9 +302,9 @@
     "q": "Is a point of inflection in a continuous beam a physical hinge?",
     "o": [
       "Yes; the beam is pinned there",
-      "No; it is only where the moment happens to be zero, and the beam stays continuous there",
-      "Yes; it is a construction joint",
-      "No; it is where the shear is greatest"
+      "No; the moment is zero there, but the beam stays continuous",
+      "Yes; it is where a construction joint must be placed",
+      "No; it is the point where the shear is greatest"
     ],
     "c": 1,
     "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
@@ -314,10 +314,10 @@
     "s": "Sign Conventions",
     "q": "Under the usual beam sign convention, when is the shear at a section negative?",
     "o": [
-      "When the net force on the left part acts upward",
-      "When the beam hogs",
+      "When the net force on the left part of the cut acts upward",
+      "When the beam hogs, with tension at the top",
       "When the net transverse force on the part left of the cut acts downward",
-      "When the moment is zero"
+      "When the bending moment at the section is zero"
     ],
     "c": 2,
     "ref": "Ching, Building Structures Illustrated; Hibbeler, Structural Analysis; NSCP 2015 Ch. 2",
@@ -327,9 +327,9 @@
     "s": "Sign Conventions",
     "q": "What happens to the curvature of a beam at a point of inflection?",
     "o": [
-      "It is at its greatest value",
-      "It becomes infinite",
-      "It doubles",
+      "It reaches its greatest value along the beam",
+      "It becomes infinitely large",
+      "It doubles compared with the rest of the span",
       "It changes sign, from sagging to hogging or the reverse"
     ],
     "c": 3,

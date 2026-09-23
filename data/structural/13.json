@@ -29,10 +29,10 @@
     "s": "Concrete Cover",
     "q": "Under NSCP 2015, what cover applies to bundled bars in concrete not cast against earth?",
     "o": [
-      "Always 75 mm",
-      "Twice the largest bar diameter",
+      "Always 75 mm, the same as for concrete cast against earth",
+      "Twice the diameter of the largest bar in the bundle",
       "The smaller of the bundle's equivalent diameter and 50 mm",
-      "Always 20 mm"
+      "Always 20 mm, the same as for single interior bars"
     ],
     "c": 2,
     "ref": "NSCP 2015 Table 420.6.1.3.1 Cover for Cast-in-Place Non-Prestressed Concrete Members; Sec. 420.6.1.3.4",
@@ -81,10 +81,10 @@
     "s": "Standard Hooks",
     "q": "Why must reinforcing bars have enough development length or hooks?",
     "o": [
-      "So the bars do not rust",
-      "So the concrete sets faster",
-      "So bond with the concrete can build up the stress the bar is designed to carry",
-      "So the bars can be spliced without lapping"
+      "So the bars do not rust inside the concrete",
+      "So the concrete around the bars sets faster",
+      "So bond can build up the full design stress in the bar",
+      "So the bars can be joined without any lap splice"
     ],
     "c": 2,
     "ref": "NSCP 2015 Sec. 425.4 Development of reinforcement",
@@ -133,10 +133,10 @@
     "s": "Standard Hooks",
     "q": "Under NSCP 2015, what hook may a 25 mm stirrup or tie use?",
     "o": [
-      "Only a 180° hook",
-      "A 90° hook with a 4db extension",
-      "A 135° hook with a 6db extension (at least 75 mm), or a 90° hook with a 12db extension",
-      "No hook, only a straight bar"
+      "Only a 180° hook with a 4db extension",
+      "A 90° hook with only a 4db extension",
+      "A 135° hook (6db, at least 75 mm) or a 90° hook (12db)",
+      "No hook at all, only a straight bar end"
     ],
     "c": 2,
     "ref": "NSCP 2015 Table 425.3.2 Minimum Bend Diameter and Hook Geometry for Stirrups, Ties and Hoops",
@@ -146,9 +146,9 @@
     "s": "Concrete Cover",
     "q": "Why does concrete cast against earth need more cover than concrete cast in forms and later exposed to earth?",
     "o": [
-      "It sets faster",
-      "It is always unreinforced",
-      "It carries less load",
+      "It sets faster, so it has less time to bond with the bars",
+      "It is always unreinforced, so the cover is only for appearance",
+      "It carries less load, so it can use more concrete",
       "Its surface is rough and uneven and it stays in contact with moist soil"
     ],
     "c": 3,
@@ -387,10 +387,10 @@
     "s": "Concrete Cover",
     "q": "Where is concrete cover measured to?",
     "o": [
-      "The center of the main bars",
+      "The center of the main longitudinal bars",
       "The outermost surface of the reinforcement, usually the stirrups or ties",
-      "The center of the member",
-      "The inside face of the main bars"
+      "The center of the member cross-section",
+      "The inside face of the main bars, toward the core"
     ],
     "c": 1,
     "ref": "NSCP 2015 Table 420.6.1.3.1 Cover for Cast-in-Place Non-Prestressed Concrete Members",
@@ -400,10 +400,10 @@
     "s": "Standard Hooks",
     "q": "Under NSCP 2015, what extension is required on a 90° hook of a 16 mm or smaller stirrup?",
     "o": [
-      "12db",
-      "4db",
+      "12db, with no minimum length",
+      "4db, with no minimum length",
       "6db, but not less than 75 mm",
-      "65 mm only"
+      "65 mm, whatever the bar size"
     ],
     "c": 2,
     "ref": "NSCP 2015 Table 425.3.2 Minimum Bend Diameter and Hook Geometry for Stirrups, Ties and Hoops",

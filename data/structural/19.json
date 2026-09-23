@@ -4,8 +4,8 @@
     "q": "Under NSCP 2015, what are dead loads?",
     "o": [
       "The weight of all materials and fixed equipment built into the structure",
-      "The weight of occupants and furniture",
-      "Loads from wind and earthquake",
+      "The weight of occupants and their movable furniture",
+      "Loads from wind, rain and earthquake",
       "Loads that act only during construction"
     ],
     "c": 0,
@@ -16,9 +16,9 @@
     "s": "NSCP Definitions",
     "q": "Under NSCP 2015, when is a masonry or concrete wall classified as a bearing wall?",
     "o": [
-      "When it supports any load at all",
-      "When it supports more than 2.90 kN/m of vertical load in addition to its own weight",
-      "When it supports more than 1.0 kN/m",
+      "When it supports any vertical load at all",
+      "When it carries more than 2.90 kN/m besides its own weight",
+      "When it supports more than 1.0 kN/m besides its own weight",
       "Only when it is thicker than 200 mm"
     ],
     "c": 1,
@@ -29,10 +29,10 @@
     "s": "Design Methods",
     "q": "In strength design, what must hold true?",
     "o": [
-      "The service stresses must not exceed allowable stresses",
-      "The deflection must equal the span/360",
+      "The service stresses must not exceed the allowable stresses",
+      "The deflection must equal exactly span/360",
       "The factored load effects must not exceed the design strength (φ × nominal strength)",
-      "The dead load must exceed the live load"
+      "The dead load must be greater than the live load"
     ],
     "c": 2,
     "ref": "NSCP 2015 Vol. 1, Sec. 202 Definitions",
@@ -42,10 +42,10 @@
     "s": "NSCP Definitions",
     "q": "Under NSCP 2015, what is a garage?",
     "o": [
-      "Any covered parking area without walls",
-      "A shed for tools",
-      "A storage room for fuel only",
-      "A building or part of one where motor vehicles containing fuel are stored, repaired or kept"
+      "Any covered parking area that has no walls",
+      "A shed for storing garden tools and equipment",
+      "A room used only for storing drums of fuel",
+      "Where fuel-carrying motor vehicles are stored, repaired or kept"
     ],
     "c": 3,
     "ref": "NSCP 2015 Vol. 1, Sec. 202 Definitions",
@@ -56,9 +56,9 @@
     "q": "Under NSCP 2015, what is a parapet wall?",
     "o": [
       "The part of a wall entirely above the roof line",
-      "A wall that carries the roof",
-      "A low wall along a stair",
-      "A wall between two units"
+      "A wall that carries the roof framing",
+      "A low wall along the side of a stair",
+      "A wall that separates two units"
     ],
     "c": 0,
     "ref": "NSCP 2015 Vol. 1, Sec. 202 Definitions",
@@ -68,10 +68,10 @@
     "s": "NSCP Definitions",
     "q": "Under NSCP 2015, what is a prefabricated assembly?",
     "o": [
-      "Any member cast in place",
+      "Any member that is cast in place in its final position",
       "A structural unit whose parts are assembled before it is placed in the building",
-      "A temporary scaffold",
-      "A mix of concrete delivered by truck"
+      "A temporary scaffold used during construction",
+      "A batch of concrete delivered by truck"
     ],
     "c": 1,
     "ref": "NSCP 2015 Vol. 1, Sec. 202 Definitions",
@@ -81,10 +81,10 @@
     "s": "Design Methods",
     "q": "What is a strength limit state?",
     "o": [
-      "A limit state of excessive deflection only",
-      "A limit state of appearance",
-      "A limit state where the structure loses strength or stability and becomes unsafe",
-      "A limit state of cost"
+      "One of excessive deflection only",
+      "One concerned only with appearance",
+      "One where the structure loses strength or stability",
+      "One concerned only with cost"
     ],
     "c": 2,
     "ref": "NSCP 2015 Vol. 1, Sec. 202 Definitions",
@@ -94,9 +94,9 @@
     "s": "Design Methods",
     "q": "What does allowable stress design (ASD) require?",
     "o": [
-      "That factored loads stay below φ times nominal strength",
-      "That only dead load is considered",
-      "That members never deflect",
+      "That factored loads stay below φ times the nominal strength",
+      "That only the dead load is considered in design",
+      "That members are designed never to deflect",
       "That stresses computed under service load combinations stay below allowable stresses"
     ],
     "c": 3,
@@ -120,9 +120,9 @@
     "s": "NSCP Definitions",
     "q": "Under NSCP 2015, when is a metal or wood stud wall classified as a bearing wall?",
     "o": [
-      "When it supports more than 2.90 kN/m",
-      "When it supports more than 1.45 kN/m of vertical load in addition to its own weight",
-      "When it supports any load at all",
+      "When it carries more than 2.90 kN/m besides its own weight",
+      "When it carries more than 1.45 kN/m besides its own weight",
+      "When it supports any vertical load at all",
       "Never; only concrete walls can be bearing walls"
     ],
     "c": 1,
@@ -133,10 +133,10 @@
     "s": "Design Methods",
     "q": "What does load and resistance factor design (LRFD) require?",
     "o": [
-      "That service stresses stay below allowable stresses",
-      "That all members are the same size",
-      "That factored loads not exceed the factored resistance, so no limit state is reached",
-      "That wind is ignored"
+      "Service stresses must stay below allowable stresses",
+      "All members in a frame must be the same size",
+      "Factored loads must not exceed the factored resistance",
+      "Wind loads may be ignored in the design"
     ],
     "c": 2,
     "ref": "NSCP 2015 Vol. 1, Sec. 202 Definitions",
@@ -147,9 +147,9 @@
     "q": "Under NSCP 2015, what is a deck?",
     "o": [
       "An exterior floor that only projects from the building",
-      "A roof with no parapet",
-      "A floor inside a building",
-      "An exterior floor supported on at least two opposing sides by the structure or by independent posts"
+      "A roof that has no parapet around it",
+      "A raised floor inside a building",
+      "An exterior floor with supports on at least two opposite sides"
     ],
     "c": 3,
     "ref": "NSCP 2015 Vol. 1, Sec. 202 Definitions",
@@ -160,9 +160,9 @@
     "q": "Under NSCP 2015, how steep must a wall element be to count as an exterior wall?",
     "o": [
       "Sloped at 60° or more from the horizontal",
-      "Sloped at 30° or more",
-      "Perfectly vertical only",
-      "Any slope"
+      "Sloped at 30° or more from the horizontal",
+      "Perfectly vertical, at 90° only",
+      "Any slope, however shallow"
     ],
     "c": 0,
     "ref": "NSCP 2015 Vol. 1, Sec. 202 Definitions",
@@ -185,10 +185,10 @@
     "s": "Design Methods",
     "q": "What is a limit state?",
     "o": [
-      "The maximum height allowed by zoning",
-      "The boundary of the lot",
-      "A condition beyond which a structure no longer does its job or becomes unsafe",
-      "The last day of construction"
+      "The maximum building height set by zoning",
+      "The boundary line of the lot",
+      "A condition where the structure stops working or is unsafe",
+      "The last day allowed for construction"
     ],
     "c": 2,
     "ref": "NSCP 2015 Vol. 1, Sec. 202 Definitions",
@@ -211,10 +211,10 @@
     "s": "NSCP Definitions",
     "q": "Under NSCP 2015, what is an access floor system?",
     "o": [
-      "Removable panels on pedestals that leave space below for cables, services or air",
-      "A floor that is open to the public",
-      "A ramp for wheelchairs",
-      "A floor of metal grating"
+      "Raised panels on pedestals with service space below",
+      "A floor area that is open to the public",
+      "A ramp that gives wheelchair access",
+      "A floor made of open metal grating"
     ],
     "c": 0,
     "ref": "NSCP 2015 Vol. 1, Sec. 202 Definitions",
@@ -224,10 +224,10 @@
     "s": "NSCP Definitions",
     "q": "Under NSCP 2015, what do live loads exclude?",
     "o": [
-      "People",
-      "Dead, construction and environmental loads such as wind, rain and earthquake",
-      "Movable furniture",
-      "Stored goods"
+      "People occupying the building",
+      "Dead, construction and environmental loads",
+      "Movable furniture and equipment",
+      "Stored goods and materials"
     ],
     "c": 1,
     "ref": "NSCP 2015 Vol. 1, Sec. 202 Definitions",
@@ -250,10 +250,10 @@
     "s": "NSCP Definitions",
     "q": "Under NSCP 2015, what is an exterior balcony?",
     "o": [
-      "An exterior floor on posts at both ends",
-      "An interior mezzanine",
-      "A roof garden",
-      "An exterior floor projecting from and supported by the structure, with no independent supports"
+      "An exterior floor on independent posts at both ends",
+      "An interior mezzanine floor",
+      "A garden built on the roof",
+      "An exterior floor that projects from the building with no posts"
     ],
     "c": 3,
     "ref": "NSCP 2015 Vol. 1, Sec. 202 Definitions",
@@ -276,9 +276,9 @@
     "s": "Design Methods",
     "q": "Which design method name is traditionally used for structural steel and wood?",
     "o": [
-      "Ultimate strength design",
+      "Ultimate strength design (USD)",
       "Load and resistance factor design (LRFD)",
-      "Working stress only",
+      "Working stress design only",
       "Plastic hinge design only"
     ],
     "c": 1,
@@ -290,8 +290,8 @@
     "q": "What are essential facilities?",
     "o": [
       "Buildings with more than ten storeys",
-      "Any government office",
-      "Buildings that must stay in use during and after extreme events such as earthquakes and typhoons",
+      "Any office of the national government",
+      "Buildings that must keep working after disasters",
       "Buildings used only for storage"
     ],
     "c": 2,
@@ -302,10 +302,10 @@
     "s": "NSCP Definitions",
     "q": "Under NSCP 2015, what is a non-bearing wall?",
     "o": [
-      "A wall with no windows",
-      "A wall under 2 m high",
-      "A glass wall only",
-      "Any wall that does not meet the definition of a bearing wall"
+      "A wall with no windows or doors",
+      "A wall less than 2 m high",
+      "A wall made entirely of glass",
+      "Any wall that is not a bearing wall"
     ],
     "c": 3,
     "ref": "NSCP 2015 Vol. 1, Sec. 202 Definitions",
@@ -315,10 +315,10 @@
     "s": "NSCP Definitions",
     "q": "Under NSCP 2015, what is a structure?",
     "o": [
-      "Anything built or constructed, made of parts joined together in a definite manner",
+      "Anything built of parts joined in a definite manner",
       "Only a building with walls and a roof",
-      "Only steel frames",
-      "Only structures taller than 10 m"
+      "Only a frame of structural steel",
+      "Only a construction taller than 10 m"
     ],
     "c": 0,
     "ref": "NSCP 2015 Vol. 1, Sec. 202 Definitions",
@@ -328,9 +328,9 @@
     "s": "Design Methods",
     "q": "Which of these is a serviceability limit state?",
     "o": [
-      "Collapse of a column",
+      "Collapse of a column under overload",
       "Excessive deflection or vibration of a floor",
-      "Overturning of a wall",
+      "Overturning of a retaining wall",
       "Fracture of a tension member"
     ],
     "c": 1,
@@ -341,8 +341,8 @@
     "s": "NSCP Definitions",
     "q": "Under NSCP 2015, what is an addition?",
     "o": [
-      "Any repair of finishes",
-      "A change of occupancy only",
+      "Any repair of finishes such as paint or tiles",
+      "A change of occupancy with no construction",
       "An extension or increase in the floor area or height of a building",
       "A new building on a separate lot"
     ],
@@ -367,10 +367,10 @@
     "s": "NSCP Definitions",
     "q": "Under NSCP 2015, what is a marquee?",
     "o": [
-      "A permanent roofed structure attached to a building and projecting over public property",
-      "A shelter hung from the exterior wall only",
-      "A temporary tent",
-      "A sign painted on a wall"
+      "A permanent roof projecting over public property",
+      "A shelter hung entirely from an exterior wall",
+      "A temporary tent put up for an event",
+      "A sign painted on the face of a wall"
     ],
     "c": 0,
     "ref": "NSCP 2015 Vol. 1, Sec. 202 Definitions",
@@ -380,10 +380,10 @@
     "s": "NSCP Definitions",
     "q": "Under NSCP 2015, what is an alteration?",
     "o": [
-      "Only the demolition of a building",
-      "Any change, addition or modification in construction or occupancy",
-      "Only a new building",
-      "Only painting"
+      "Only the full demolition of a building",
+      "Any change or modification in construction or use",
+      "Only the construction of a new building",
+      "Only repainting of existing surfaces"
     ],
     "c": 1,
     "ref": "NSCP 2015 Vol. 1, Sec. 202 Definitions",

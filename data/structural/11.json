@@ -4,9 +4,9 @@
     "q": "Under NSCP 2015 Table 303-1, how is the minimum number of boreholes found for a structure whose footprint is more than 500 m²?",
     "o": [
       "2 + A/1000, rounded up to the next whole number",
-      "1 + A/500, rounded down",
-      "A/250, rounded up",
-      "Always 3 boreholes"
+      "1 + A/500, rounded down to the whole number below",
+      "A/250, rounded up to the next whole number",
+      "Always 3 boreholes, whatever the size of the footprint"
     ],
     "c": 0,
     "ref": "NSCP 2015 Sec. 303.1 and Table 303-1 Minimum Required Number of Boreholes",
@@ -120,10 +120,10 @@
     "s": "Earthworks and Foundations",
     "q": "When may the prescriptive footing sizes of NSCP 2015 Table 305-1 be used without a separate design?",
     "o": [
-      "For any building of any height",
-      "Only for light buildings on ordinary soil, unless a foundation investigation calls for something else",
-      "Only for buildings on expansive soil",
-      "Only for footings under steel columns"
+      "For any building of any height and on any kind of soil",
+      "For light buildings on ordinary soil, unless an investigation says otherwise",
+      "Only for buildings founded on expansive clay soils",
+      "Only for footings that support steel columns and posts"
     ],
     "c": 1,
     "ref": "NSCP 2015 Table 305-1 Minimum Requirements for Foundations",
@@ -146,9 +146,9 @@
     "s": "Earthworks and Foundations",
     "q": "Under NSCP 2015, what must be done to existing footings that may be undermined by a new excavation next to them?",
     "o": [
-      "Nothing, if they belong to a neighbour",
-      "They must be demolished",
-      "They only need to be photographed before digging",
+      "Nothing needs to be done if the footings belong to a neighbour",
+      "They must be demolished and rebuilt deeper than the excavation",
+      "They only need to be photographed before the digging starts",
       "They must be underpinned or otherwise protected against settlement and lateral movement"
     ],
     "c": 3,
@@ -452,10 +452,10 @@
     "s": "Earthworks and Foundations",
     "q": "What is a field density test used for in earthworks?",
     "o": [
-      "To find the bearing capacity of rock",
-      "To measure the slump of concrete",
+      "To find the allowable bearing capacity of the rock below the fill",
+      "To measure the slump of the concrete placed on the fill",
       "To check the in-place density of compacted fill against the laboratory maximum",
-      "To find the water table depth"
+      "To find the depth of the water table below the site"
     ],
     "c": 2,
     "ref": "NSCP 2015 Vol. 1, Chapter 3 (Earthworks and Foundations), Sec. 302.4.4",

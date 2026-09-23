@@ -123,10 +123,10 @@
     "s": "Theory of Structures",
     "q": "What is the point of inflection (contraflexure) in a beam?",
     "o": [
-      "The point where the shear force is greatest",
+      "The point where the shear force reaches its largest value along the span",
       "The point where the curvature changes sign and the bending moment is zero",
-      "The point where the deflection is greatest",
-      "The point directly above a support"
+      "The point where the beam deflects the most under the applied load",
+      "The point directly above a support, where the reaction acts on the beam"
     ],
     "c": 1,
     "ref": "Hibbeler, Structural Analysis; Leet, Uang & Gilbert, Fundamentals of Structural Analysis",
@@ -217,9 +217,9 @@
     "q": "What happens when a simply supported beam is extended to overhang past its support?",
     "o": [
       "The load on the overhang reduces the positive moment in the span and creates negative moment at the support",
-      "The positive moment in the span always increases",
-      "The support reactions become zero",
-      "The beam becomes statically indeterminate"
+      "The positive moment in the span increases, and the support moment stays at zero",
+      "The support reactions become zero because the overhang balances the span",
+      "The beam becomes statically indeterminate and needs compatibility equations"
     ],
     "c": 0,
     "ref": "Hibbeler, Structural Analysis; Leet, Uang & Gilbert, Fundamentals of Structural Analysis",
