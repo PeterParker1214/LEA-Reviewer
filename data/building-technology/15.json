@@ -29,7 +29,12 @@
       ],
       "c": 2,
       "ref": "Building Technology Tables, p. 58 — Materials Testing",
-      "n": "Four thousand sheets at one sample per 1,000 sheets requires four samples."
+      "n": "Four thousand sheets at one sample per 1,000 sheets requires four samples.",
+      "formula": "samples = quantity / sampling rate",
+      "steps": [
+        "4,000 / 1,000",
+        "= 4 samples"
+      ]
     },
     {
       "s": "Paint",
@@ -69,7 +74,12 @@
       ],
       "c": 0,
       "ref": "Building Technology Tables, p. 58 — Materials Testing",
-      "n": "One thousand five hundred pipes divided by 500 pipes per sample gives three samples."
+      "n": "One thousand five hundred pipes divided by 500 pipes per sample gives three samples.",
+      "formula": "samples = quantity / sampling rate",
+      "steps": [
+        "1,500 / 500",
+        "= 3 samples"
+      ]
     },
     {
       "s": "Paint",
@@ -109,7 +119,12 @@
       ],
       "c": 3,
       "ref": "Building Technology Tables, p. 58 — Materials Testing",
-      "n": "Six hundred drums divided by 200 drums per sample gives three samples."
+      "n": "Six hundred drums divided by 200 drums per sample gives three samples.",
+      "formula": "samples = quantity / sampling rate",
+      "steps": [
+        "600 / 200",
+        "= 3 samples"
+      ]
     },
     {
       "s": "Paint",
@@ -142,14 +157,14 @@
       "s": "Paint",
       "q": "What paint type and solvent/base are associated with Epoxy Enamel?",
       "o": [
-        "Another listed requirement",
+        "Alkyd, Oil-Based",
         "Polyurethane, Varnish",
         "Automotive, Solvent-Based",
         "Epoxy, Epoxy-Based"
       ],
       "c": 3,
       "ref": "Building Technology Tables, p. 58 — Paint",
-      "n": "Epoxy Enamel belongs to the Epoxy group and uses a epoxy-based base."
+      "n": "Epoxy Enamel belongs to the Epoxy group and uses an epoxy base."
     },
     {
       "s": "Paint",
@@ -184,7 +199,7 @@
       "q": "Which application method is associated with Epoxy Enamel?",
       "o": [
         "Spray, roller, brush",
-        "Another listed requirement",
+        "Brush only",
         "On-site application",
         "Roller"
       ],
@@ -210,10 +225,10 @@
       "s": "Materials Testing",
       "q": "What is the minimum quantity of each Steel Pipes sample?",
       "o": [
-        "10 kg",
-        "70 kg",
-        "2 pieces at 10 cm long with both sides unthreaded",
-        "20 kg"
+        "1 piece, 30 cm, threaded",
+        "10 kg of cut pieces",
+        "2 pieces, 10 cm, unthreaded",
+        "3 pieces, 1 m long"
       ],
       "c": 2,
       "ref": "Building Technology Tables, p. 58 — Materials Testing",
@@ -237,8 +252,8 @@
       "s": "Materials Testing",
       "q": "What is the minimum sampling frequency for Asphalt Mix?",
       "o": [
-        "Another listed requirement",
-        "1 per 40 tons OR 1 per 200 drums",
+        "1 per 500 units",
+        "1 per 40 tons or 200 drums",
         "1 per 1,500 cu.m",
         "1 per 2,000 bags"
       ],
@@ -258,7 +273,12 @@
       ],
       "c": 0,
       "ref": "Building Technology Tables, p. 58 — Materials Testing",
-      "n": "Four thousand five hundred cubic meters divided by 1,500 cubic meters per sample gives three samples."
+      "n": "Four thousand five hundred cubic meters divided by 1,500 cubic meters per sample gives three samples.",
+      "formula": "samples = quantity / sampling rate",
+      "steps": [
+        "4,500 / 1,500",
+        "= 3 samples"
+      ]
     },
     {
       "s": "Paint",
@@ -299,7 +319,12 @@
       "c": 3,
       "ref": "Building Technology Tables, p. 58 — Materials Testing",
       "n": "Forty thousand CHB divided by 20,000 units per sample set gives two sample sets.",
-      "fig": "f1"
+      "fig": "f1",
+      "formula": "samples = quantity / sampling rate",
+      "steps": [
+        "40,000 / 20,000",
+        "= 2 samples"
+      ]
     },
     {
       "s": "Paint",
@@ -347,7 +372,7 @@
       "o": [
         "Automotive, Solvent-Based",
         "Epoxy, Epoxy-Based",
-        "Another listed requirement",
+        "Alkyd, Oil-Based",
         "Polyurethane, Varnish"
       ],
       "c": 0,
@@ -386,13 +411,13 @@
       "q": "Which application method is associated with Automotive Paint?",
       "o": [
         "On-site application",
-        "Another listed requirement",
+        "Brush only",
         "Spray, roller, brush",
         "Roller"
       ],
       "c": 0,
       "ref": "Building Technology Tables, p. 58 — Paint",
-      "n": "Automotive Paint is applied by on-site application."
+      "n": "Automotive Paint is for on-site application."
     },
     {
       "s": "Materials Testing",
@@ -425,10 +450,10 @@
       "s": "Paint",
       "q": "Which resistance properties are associated with Epoxy Enamel?",
       "o": [
-        "Acoustic resistance",
-        "Mildew resistance only",
-        "Chemical, corrosion, and abrasion resistance",
-        "Fireproofing only"
+        "Acoustic and vibration only",
+        "Mildew and algae only",
+        "Chemical, corrosion and abrasion",
+        "Fire and heat only"
       ],
       "c": 2,
       "ref": "Building Technology Tables, p. 58 — Paint",
@@ -439,10 +464,10 @@
       "s": "Materials Testing",
       "q": "What is the minimum quantity of each Concrete Hollow Block sample?",
       "o": [
-        "20 kg",
-        "10 kg",
-        "70 kg",
-        "6 units (3 for compressive test, 3 for moisture content)"
+        "3 units for strength only",
+        "10 units of mixed sizes",
+        "20 kg of broken pieces",
+        "6 units (3 strength, 3 moisture)"
       ],
       "c": 3,
       "ref": "Building Technology Tables, p. 58 — Materials Testing",
@@ -455,8 +480,8 @@
       "o": [
         "Applied after varnish sealer",
         "For on-site application",
-        "Used as a topcoat after Epoxy Primer; chemical, corrosion, and abrasion resistant",
-        "Provides solvent, chemical, and stain resistance"
+        "Topcoat over epoxy primer; tough",
+        "Solvent- and stain-resistant"
       ],
       "c": 2,
       "ref": "Building Technology Tables, p. 58 — Paint",
@@ -467,7 +492,7 @@
       "s": "Materials Testing",
       "q": "What is the minimum sampling frequency for Cement?",
       "o": [
-        "Another listed requirement",
+        "1 per 500 units",
         "1 per 1,500 cu.m",
         "1 per 2,000 bags",
         "1 per 40 tons OR 1 per 200 drums"
@@ -489,7 +514,12 @@
       "c": 2,
       "ref": "Building Technology Tables, p. 58 — Materials Testing",
       "n": "Six thousand bags divided by 2,000 bags per sample gives three samples.",
-      "fig": "f1"
+      "fig": "f1",
+      "formula": "samples = quantity / sampling rate",
+      "steps": [
+        "6,000 / 2,000",
+        "= 3 samples"
+      ]
     },
     {
       "s": "Paint",
@@ -537,7 +567,7 @@
       "q": "What paint type and solvent/base are associated with PU Varnish Topcoat?",
       "o": [
         "Automotive, Solvent-Based",
-        "Another listed requirement",
+        "Alkyd, Oil-Based",
         "Polyurethane, Varnish",
         "Epoxy, Epoxy-Based"
       ],
@@ -579,7 +609,7 @@
         "On-site application",
         "Roller",
         "Spray, roller, brush",
-        "Another listed requirement"
+        "Brush only"
       ],
       "c": 2,
       "ref": "Building Technology Tables, p. 58 — Paint",
@@ -611,7 +641,12 @@
       "c": 3,
       "ref": "Building Technology Tables, p. 58 — Materials Testing",
       "n": "One hundred twenty tons divided by 40 tons per sample gives three samples.",
-      "fig": "f1"
+      "fig": "f1",
+      "formula": "samples = quantity / sampling rate",
+      "steps": [
+        "120 / 40",
+        "= 3 samples"
+      ]
     },
     {
       "s": "Paint",
@@ -697,7 +732,7 @@
       "s": "Paint",
       "q": "Which resistance properties are associated with Acqua Epoxy?",
       "o": [
-        "Solvent, chemical, and stain resistance",
+        "Solvents, chemicals and stains",
         "Heat and fire only",
         "Mildew and insects only",
         "UV light only"
@@ -728,11 +763,11 @@
         "Polyurethane, Varnish",
         "Automotive, Solvent-Based",
         "Epoxy, Epoxy-Based",
-        "Another listed requirement"
+        "Alkyd, Oil-Based"
       ],
       "c": 2,
       "ref": "Building Technology Tables, p. 58 — Paint",
-      "n": "Acqua Epoxy belongs to the Epoxy group and uses a epoxy-based base."
+      "n": "Acqua Epoxy belongs to the Epoxy group and uses an epoxy base."
     },
     {
       "s": "Materials Testing",
@@ -760,14 +795,19 @@
       "c": 1,
       "ref": "Building Technology Tables, p. 58 — Materials Testing",
       "n": "Three thousand cubic meters at one sample per 1,500 cubic meters requires two samples.",
-      "fig": "f1"
+      "fig": "f1",
+      "formula": "samples = quantity / sampling rate",
+      "steps": [
+        "3,000 / 1,500",
+        "= 2 samples"
+      ]
     },
     {
       "s": "Paint",
       "q": "Which application method is associated with Acqua Epoxy?",
       "o": [
         "On-site application",
-        "Another listed requirement",
+        "Brush only",
         "Roller",
         "Spray, roller, brush"
       ],
