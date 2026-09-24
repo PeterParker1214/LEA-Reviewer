@@ -9,8 +9,8 @@
       "P13,500,000"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Under the Group I DADS schedule, a PCC over P1.0 billion is billed at P11,100,000 plus 0.6% of the excess over P1.0 billion. P18,500,000 and P13,500,000 are DAEDS base figures, and P8,100,000 is the DADS base for the 500M-1B bracket. (SPP Document 202, Sec. 6.3.1)"
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "Under the Group I DADS schedule, a PCC over P1.0 billion is billed at P11,100,000 plus 0.6% of the excess over P1.0 billion. P18,500,000 and P13,500,000 are DAEDS base figures, and P8,100,000 is the DADS base for the 500M-1B bracket."
   },
   {
     "s": "",
@@ -22,9 +22,15 @@
       "P2,500,000.00"
     ],
     "c": 0,
-    "ref": "",
-    "n": "DAEDS formula: P2,500,000 + 4% of excess over P50M. Excess = P80M - P50M = P30M. 4% x P30,000,000 = P1,200,000. RPF = P2,500,000 + P1,200,000 = P3,700,000.00. (SPP Document 202, Sec. 6.3.1)",
-    "scenario": "A warehouse (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P80,000,000.00, which falls in the \"over P50.0 million to P100.0 million\" bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "DAEDS formula: P2,500,000 + 4% of excess over P50M.",
+    "scenario": "A warehouse (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P80,000,000.00, which falls in the \"over P50.0 million to P100.0 million\" bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "Excess = P80M - P50M = P30M",
+      "4% x P30,000,000 = P1,200,000",
+      "RPF = P2,500,000 + P1,200,000 = P3,700,000.00"
+    ]
   },
   {
     "s": "",
@@ -36,9 +42,15 @@
       "P4,050,000.00"
     ],
     "c": 3,
-    "ref": "",
-    "n": "DADS formula: P2,700,000 + 1.8% of excess over P100M. Excess = P175M - P100M = P75M. 1.8% x P75,000,000 = P1,350,000. RPF = P2,700,000 + P1,350,000 = P4,050,000.00. (SPP Document 202, Sec. 6.3.1)",
-    "scenario": "An industrial building (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P175,000,000.00, which falls in the \"over P100.0 million to P200.0 million\" bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "DADS formula: P2,700,000 + 1.8% of excess over P100M.",
+    "scenario": "An industrial building (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P175,000,000.00, which falls in the \"over P100.0 million to P200.0 million\" bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "Excess = P175M - P100M = P75M",
+      "1.8% x P75,000,000 = P1,350,000",
+      "RPF = P2,700,000 + P1,350,000 = P4,050,000.00"
+    ]
   },
   {
     "s": "",
@@ -50,8 +62,8 @@
       "DAEDS"
     ],
     "c": 3,
-    "ref": "",
-    "n": "A single Architect-Owner contract, with the Architect sub-contracting the engineering/allied professionals, describes DAEDS (Detailed Architectural and Engineering Design Services). (SPP Document 202, Sec. 6.1)"
+    "ref": "SPP Doc. 202, Sec. 6.1",
+    "n": "A single Architect-Owner contract, with the Architect sub-contracting the engineering/allied professionals, describes DAEDS (Detailed Architectural and Engineering Design Services)."
   },
   {
     "s": "",
@@ -63,9 +75,14 @@
       "P1,200,000.00"
     ],
     "c": 2,
-    "ref": "",
-    "n": "At exactly P50.0 million, the PCC falls in the \"P50.0 million and less\" bracket, billed at 3% of PCC: 3% x P50,000,000 = P1,500,000.00, matching the base figure of the next DADS bracket (P1,500,000 + 2.4% of excess). (SPP Document 202, Sec. 6.3.1)",
-    "scenario": "A public market (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of exactly P50,000,000.00."
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "At exactly P50.0 million, the PCC falls in the \"P50.0 million and less\" bracket, billed at 3% of PCC: 3% x P50,000,000 = P1,500,000.00, matching the base figure of the next DADS bracket (P1,500,000 + 2.4% of excess).",
+    "scenario": "A public market (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of exactly P50,000,000.00.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "At exactly P50.0 million, the PCC falls in the \"P50.0 million and less\" bracket, billed at 3% of PCC",
+      "3% x P50,000,000 = P1,500,000.00, matching the base figure of the next DADS bracket (P1,500,000 + 2.4% of excess)"
+    ]
   },
   {
     "s": "",
@@ -77,9 +94,14 @@
       "P900,000.00"
     ],
     "c": 3,
-    "ref": "",
-    "n": "At P30M (under the P50M-and-less bracket), DADS RPF = 3% x P30,000,000 = P900,000.00. (SPP Document 202, Sec. 6.3.1)",
-    "scenario": "A simple loft-type building (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P30,000,000.00, which falls in the \"P50.0 million and less\" bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "At P30M (under the P50M-and-less bracket), DADS RPF = 3% x P30,000,000 = P900,000.00.",
+    "scenario": "A simple loft-type building (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P30,000,000.00, which falls in the \"P50.0 million and less\" bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "At P30M (under the P50M-and-less bracket), DADS RPF = 3% x P30,000,000",
+      "= P900,000.00"
+    ]
   },
   {
     "s": "",
@@ -88,11 +110,11 @@
       "They are automatically merged and assumed solely by the Architect as Lead Professional",
       "They are shared equally regardless of who performed the work",
       "They are transferred entirely to the Owner",
-      "They remain separate; the Architect does not assume the responsibilities and liabilities of the other Registered/Licensed Professionals (RLPs)"
+      "They stay separate; the Architect does not assume the others' liabilities"
     ],
     "c": 3,
-    "ref": "",
-    "n": "Sec. 6.1 states that in both DAEDS and DADS, the professional responsibilities and civil liabilities of each State-regulated professional remain separate; the Architect does not assume any of the responsibilities and liabilities of the other RLPs. (SPP Document 202, Sec. 6.1)"
+    "ref": "SPP Doc. 202, Sec. 6.1",
+    "n": "Sec. 6.1 states that in both DAEDS and DADS, the professional responsibilities and civil liabilities of each State-regulated professional remain separate; the Architect does not assume any of the responsibilities and liabilities of the other RLPs."
   },
   {
     "s": "",
@@ -104,8 +126,8 @@
       "Buildings of exceptional character and complexity of plan/design requiring comparatively large amounts of research and of engineering and allied architectural design"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Sec. 6.3.1 defines Group I as buildings of the simplest utilization and character, without complication of plan/design or detail, requiring only a minimum of architectural finishes, engineering, and allied architectural elements. (b) describes Group II and (c) describes Group III. (SPP Document 202, Sec. 6.3.1)"
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "Sec. 6.3.1 defines Group I as buildings of the simplest utilization and character, without complication of plan/design or detail, requiring only a minimum of architectural finishes, engineering, and allied architectural elements. (b) describes Group II and (c) describes Group III."
   },
   {
     "s": "",
@@ -117,22 +139,27 @@
       "P2,700,000.00"
     ],
     "c": 3,
-    "ref": "",
-    "n": "DAEDS RPF at PCC=P175M is P6,750,000.00 (P4,500,000 + 3% of P75M excess) and DADS RPF is P4,050,000.00 (P2,700,000 + 1.8% of P75M excess). Difference = P6,750,000 - P4,050,000 = P2,700,000.00, reflecting the added sub-consultancy administration scope the Architect carries under DAEDS. (SPP Document 202, Sec. 6.3.1)",
-    "scenario": "An architect is comparing the total Recommended Professional Fee an Owner would pay for the same Group I hangar project (PCC = P175,000,000.00) under DAEDS versus under DADS."
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "DAEDS RPF at PCC=P175M is P6,750,000.00 (P4,500,000 + 3% of P75M excess) and DADS RPF is P4,050,000.00 (P2,700,000 + 1.8% of P75M excess). Difference = P6,750,000 - P4,050,000 = P2,700,000.00, reflecting the added sub-consultancy administration scope the Architect carries under DAEDS.",
+    "scenario": "An architect is comparing the total Recommended Professional Fee an Owner would pay for the same Group I hangar project (PCC = P175,000,000.00) under DAEDS versus under DADS.",
+    "formula": "Difference = DAEDS RPF − DADS RPF",
+    "steps": [
+      "DAEDS RPF at PCC=P175M is P6,750,000.00 (P4,500,000 + 3% of P75M excess) and DADS RPF is P4,050,000.00 (P2,700,000 + 1.8% of P75M excess)",
+      "Difference = P6,750,000 - P4,050,000 = P2,700,000.00, reflecting the added sub-consultancy administration scope the Architect carries under DAEDS"
+    ]
   },
   {
     "s": "",
     "q": "For a Group I project with a PCC over P1.0 billion, what percentage applies to the excess over P1.0 billion under the DAEDS schedule?",
     "o": [
-      "0.5% (1/2%)",
+      "0.5%",
       "1%",
       "2%",
       "0.6%"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Under the Group I DAEDS schedule, a PCC over P1.0 billion is billed at a base of P18,500,000 plus 1/2% (0.5%) of the excess over P1.0 billion. (SPP Document 202, Sec. 6.3.1)"
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "Under the Group I DAEDS schedule, a PCC over P1.0 billion is billed at a base of P18,500,000 plus 1/2% (0.5%) of the excess over P1.0 billion."
   },
   {
     "s": "",
@@ -144,8 +171,8 @@
       "Libraries"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Sec. 6.3.1 lists Habitable Agricultural Buildings, Hangars, Industrial Buildings, and Manufacturing/Industrial Plants together as Group I building types. (SPP Document 202, Sec. 6.3.1)"
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "Sec. 6.3.1 lists Habitable Agricultural Buildings, Hangars, Industrial Buildings, and Manufacturing/Industrial Plants together as Group I building types."
   },
   {
     "s": "",
@@ -157,9 +184,15 @@
       "P21,000,000.00"
     ],
     "c": 3,
-    "ref": "",
-    "n": "DAEDS formula: P18,500,000 + 0.5% of excess over P1.0B. Excess = P1.5B - P1.0B = P500M. 0.5% x P500,000,000 = P2,500,000. RPF = P18,500,000 + P2,500,000 = P21,000,000.00. (SPP Document 202, Sec. 6.3.1)",
-    "scenario": "A large armory complex (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P1,500,000,000.00 (P1.5 billion), which falls in the \"over P1.0 billion\" bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "DAEDS formula: P18,500,000 + 0.5% of excess over P1.0B.",
+    "scenario": "A large armory complex (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P1,500,000,000.00 (P1.5 billion), which falls in the \"over P1.0 billion\" bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "Excess = P1.5B - P1.0B = P500M",
+      "0.5% x P500,000,000 = P2,500,000",
+      "RPF = P18,500,000 + P2,500,000 = P21,000,000.00"
+    ]
   },
   {
     "s": "",
@@ -171,9 +204,15 @@
       "P11,000,000.00"
     ],
     "c": 1,
-    "ref": "",
-    "n": "DAEDS formula: P7,500,000 + 2% of excess over P200M. Excess = P350M - P200M = P150M. 2% x P150,000,000 = P3,000,000. RPF = P7,500,000 + P3,000,000 = P10,500,000.00. (SPP Document 202, Sec. 6.3.1)",
-    "scenario": "A manufacturing/industrial plant (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P350,000,000.00, which falls in the \"over P200.0 million to P500.0 million\" bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "DAEDS formula: P7,500,000 + 2% of excess over P200M.",
+    "scenario": "A manufacturing/industrial plant (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P350,000,000.00, which falls in the \"over P200.0 million to P500.0 million\" bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "Excess = P350M - P200M = P150M",
+      "2% x P150,000,000 = P3,000,000",
+      "RPF = P7,500,000 + P3,000,000 = P10,500,000.00"
+    ]
   },
   {
     "s": "",
@@ -185,9 +224,14 @@
       "P1,500,000.00"
     ],
     "c": 1,
-    "ref": "",
-    "n": "At exactly P50.0 million, the PCC falls in the \"P50.0 million and less\" bracket, billed at 5% of PCC: 5% x P50,000,000 = P2,500,000.00. This also matches the base figure of the next bracket (P2,500,000 + 4% of excess), confirming the schedule is continuous at the P50M threshold. (SPP Document 202, Sec. 6.3.1)",
-    "scenario": "A public market (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of exactly P50,000,000.00."
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "This also matches the base figure of the next bracket (P2,500,000 + 4% of excess), confirming the schedule is continuous at the P50M threshold.",
+    "scenario": "A public market (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of exactly P50,000,000.00.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "At exactly P50.0 million, the PCC falls in the \"P50.0 million and less\" bracket, billed at 5% of PCC",
+      "5% x P50,000,000 = P2,500,000.00"
+    ]
   },
   {
     "s": "",
@@ -199,9 +243,15 @@
       "P4,500,000.00"
     ],
     "c": 1,
-    "ref": "",
-    "n": "DADS formula: P4,500,000 + 1.2% of excess over P200M. Excess = P350M - P200M = P150M. 1.2% x P150,000,000 = P1,800,000. RPF = P4,500,000 + P1,800,000 = P6,300,000.00. (SPP Document 202, Sec. 6.3.1)",
-    "scenario": "A manufacturing/industrial plant (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P350,000,000.00, which falls in the \"over P200.0 million to P500.0 million\" bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "DADS formula: P4,500,000 + 1.2% of excess over P200M.",
+    "scenario": "A manufacturing/industrial plant (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P350,000,000.00, which falls in the \"over P200.0 million to P500.0 million\" bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "Excess = P350M - P200M = P150M",
+      "1.2% x P150,000,000 = P1,800,000",
+      "RPF = P4,500,000 + P1,800,000 = P6,300,000.00"
+    ]
   },
   {
     "s": "",
@@ -213,9 +263,15 @@
       "P14,100,000.00"
     ],
     "c": 3,
-    "ref": "",
-    "n": "DADS formula: P11,100,000 + 0.6% of excess over P1.0B. Excess = P1.5B - P1.0B = P500M. 0.6% x P500,000,000 = P3,000,000. RPF = P11,100,000 + P3,000,000 = P14,100,000.00. (SPP Document 202, Sec. 6.3.1)",
-    "scenario": "A large armory complex (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P1,500,000,000.00 (P1.5 billion), which falls in the \"over P1.0 billion\" bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "DADS formula: P11,100,000 + 0.6% of excess over P1.0B.",
+    "scenario": "A large armory complex (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P1,500,000,000.00 (P1.5 billion), which falls in the \"over P1.0 billion\" bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "Excess = P1.5B - P1.0B = P500M",
+      "0.6% x P500,000,000 = P3,000,000",
+      "RPF = P11,100,000 + P3,000,000 = P14,100,000.00"
+    ]
   },
   {
     "s": "",
@@ -227,8 +283,8 @@
       "Schools"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Warehouses are listed under Group I. Hospitals/Medical Buildings are Group III (exceptional complexity); Schools and Shopping Centers are Group II (moderate complexity). (SPP Document 202, Sec. 6.3.1)"
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "Warehouses are listed under Group I. Hospitals/Medical Buildings are Group III (exceptional complexity); Schools and Shopping Centers are Group II (moderate complexity)."
   },
   {
     "s": "",
@@ -240,9 +296,14 @@
       "P900,000.00"
     ],
     "c": 1,
-    "ref": "",
-    "n": "At P30M (under the P50M-and-less bracket), DAEDS RPF = 5% x P30,000,000 = P1,500,000.00. (SPP Document 202, Sec. 6.3.1)",
-    "scenario": "A simple loft-type building (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P30,000,000.00, which falls in the \"P50.0 million and less\" bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "At P30M (under the P50M-and-less bracket), DAEDS RPF = 5% x P30,000,000 = P1,500,000.00.",
+    "scenario": "A simple loft-type building (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P30,000,000.00, which falls in the \"P50.0 million and less\" bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "At P30M (under the P50M-and-less bracket), DAEDS RPF = 5% x P30,000,000",
+      "= P1,500,000.00"
+    ]
   },
   {
     "s": "",
@@ -254,8 +315,8 @@
       "Banks and Financial Institutions"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Public Markets fall under Group I. Banks/Financial Institutions and Residential Condominiums are Group II buildings, while Convention Facilities belong to Group III. (SPP Document 202, Sec. 6.3.1)"
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "Public Markets fall under Group I. Banks/Financial Institutions and Residential Condominiums are Group II buildings, while Convention Facilities belong to Group III."
   },
   {
     "s": "",
@@ -267,8 +328,8 @@
       "DAEDS"
     ],
     "c": 1,
-    "ref": "",
-    "n": "When the Architect and the engineering/allied professionals each execute separate, direct contracts with the Owner, this is DADS (Detailed Architectural Design Services), which uses its own lower RPF bracket schedule since the Architect no longer administers sub-consultancy contracts. (SPP Document 202, Sec. 6.1)"
+    "ref": "SPP Doc. 202, Sec. 6.1",
+    "n": "When the Architect and the engineering/allied professionals each execute separate, direct contracts with the Owner, this is DADS (Detailed Architectural Design Services), which uses its own lower RPF bracket schedule since the Architect no longer administers sub-consultancy contracts."
   },
   {
     "s": "",
@@ -280,8 +341,8 @@
       "P4,500,000 plus 3% of the excess over P100.0 million"
     ],
     "c": 2,
-    "ref": "",
-    "n": "The Group I DADS bracket for PCC over P100.0 million up to P200.0 million is P2,700,000 plus 1.8% of the excess over P100.0 million. Choice (b) is the corresponding DAEDS formula for the same bracket. (SPP Document 202, Sec. 6.3.1)"
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "The Group I DADS bracket for PCC over P100.0 million up to P200.0 million is P2,700,000 plus 1.8% of the excess over P100.0 million. P4,500,000 plus 3% of the excess over P100.0 million is the DAEDS formula for the same bracket."
   },
   {
     "s": "",
@@ -293,21 +354,21 @@
       "Buildings without a building permit"
     ],
     "c": 0,
-    "ref": "",
-    "n": "The Group I list ends with a catch-all clause, \"Other similar utilization type buildings,\" extending the classification to comparable simple-use structures not individually named. (SPP Document 202, Sec. 6.3.1)"
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "The Group I list ends with a catch-all clause, \"Other similar utilization type buildings,\" extending the classification to comparable simple-use structures not individually named."
   },
   {
     "s": "",
     "q": "SPP Document 202's building type groupings (Group I through Group X) primarily exist to accomplish what purpose?",
     "o": [
       "To set minimum floor area requirements for each building type",
-      "To classify architectural work by degree of complexity and creative skill required, in order to determine fair remuneration for the Architect",
+      "To set fair remuneration by the complexity and skill the work needs",
       "To assign projects exclusively to either DAEDS or DADS with no other basis for choice",
       "To determine which projects require a building permit"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Sec. 6.2 explains that professional architectural work is classified according to the degree of complexity and creative skill required to meet the Client's requirements, and this grouping of buildings is provided to determine fair remuneration for the Architect. (SPP Document 202, Sec. 6.2)"
+    "ref": "SPP Doc. 202, Sec. 6.2",
+    "n": "Sec. 6.2 explains that professional architectural work is classified according to the degree of complexity and creative skill required to meet the Client's requirements, and this grouping of buildings is provided to determine fair remuneration for the Architect."
   },
   {
     "s": "",
@@ -319,8 +380,8 @@
       "The Owner subcontracts the other professionals to the general contractor"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Under DAEDS, there is a single contract between the Architect and the Owner, and the Architect enters into sub-consultancy contracts with the other professionals working with the Architect. (SPP Document 202, Sec. 6.1)"
+    "ref": "SPP Doc. 202, Sec. 6.1",
+    "n": "Under DAEDS, there is a single contract between the Architect and the Owner, and the Architect enters into sub-consultancy contracts with the other professionals working with the Architect."
   },
   {
     "s": "",
@@ -332,9 +393,15 @@
       "P18,500,000.00"
     ],
     "c": 2,
-    "ref": "",
-    "n": "DAEDS formula: P13,500,000 + 1% of excess over P500M. Excess = P750M - P500M = P250M. 1% x P250,000,000 = P2,500,000. RPF = P13,500,000 + P2,500,000 = P16,000,000.00. (SPP Document 202, Sec. 6.3.1)",
-    "scenario": "A packaging and processing plant (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P750,000,000.00, which falls in the \"over P500.0 million to P1.0 billion\" bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "DAEDS formula: P13,500,000 + 1% of excess over P500M.",
+    "scenario": "A packaging and processing plant (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P750,000,000.00, which falls in the \"over P500.0 million to P1.0 billion\" bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "Excess = P750M - P500M = P250M",
+      "1% x P250,000,000 = P2,500,000",
+      "RPF = P13,500,000 + P2,500,000 = P16,000,000.00"
+    ]
   },
   {
     "s": "",
@@ -346,8 +413,8 @@
       "4% of PCC"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Per the Group I DAEDS bracket schedule, a PCC of P50.0 million and less carries an RPF of 5% of PCC. (SPP Document 202, Sec. 6.3.1)"
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "Per the Group I DAEDS bracket schedule, a PCC of P50.0 million and less carries an RPF of 5% of PCC."
   },
   {
     "s": "",
@@ -359,8 +426,8 @@
       "Bakeries"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Hotels are classified under Group III (buildings of exceptional character and complexity), not Group I. Service Garages, Bakeries, and Parking Structures are all listed under Group I. (SPP Document 202, Sec. 6.3.1)"
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "Hotels are classified under Group III (buildings of exceptional character and complexity), not Group I. Service Garages, Bakeries, and Parking Structures are all listed under Group I."
   },
   {
     "s": "",
@@ -372,9 +439,15 @@
       "P11,100,000.00"
     ],
     "c": 2,
-    "ref": "",
-    "n": "DADS formula: P8,100,000 + 0.6% of excess over P500M. Excess = P750M - P500M = P250M. 0.6% x P250,000,000 = P1,500,000. RPF = P8,100,000 + P1,500,000 = P9,600,000.00. (SPP Document 202, Sec. 6.3.1)",
-    "scenario": "A packaging and processing plant (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P750,000,000.00, which falls in the \"over P500.0 million to P1.0 billion\" bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "DADS formula: P8,100,000 + 0.6% of excess over P500M.",
+    "scenario": "A packaging and processing plant (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P750,000,000.00, which falls in the \"over P500.0 million to P1.0 billion\" bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "Excess = P750M - P500M = P250M",
+      "0.6% x P250,000,000 = P1,500,000",
+      "RPF = P8,100,000 + P1,500,000 = P9,600,000.00"
+    ]
   },
   {
     "s": "",
@@ -386,8 +459,8 @@
       "Sec. 6"
     ],
     "c": 3,
-    "ref": "",
-    "n": "The Group I building type classification and its RPF bracket schedules appear under Sec. 6, \"Regular Design Services,\" of SPP Document 202. (SPP Document 202, Sec. 6)"
+    "ref": "SPP Doc. 202, Sec. 6",
+    "n": "The Group I building type classification and its RPF bracket schedules appear under Sec. 6, \"Regular Design Services,\" of SPP Document 202."
   },
   {
     "s": "",
@@ -399,8 +472,8 @@
       "Direct Architectural and Design Supervision"
     ],
     "c": 2,
-    "ref": "",
-    "n": "DADS stands for Detailed Architectural Design Services, where the Architect and the engineering/allied professionals each execute separate, direct contracts with the Owner. (SPP Document 202, Sec. 6.1)"
+    "ref": "SPP Doc. 202, Sec. 6.1",
+    "n": "DADS stands for Detailed Architectural Design Services, where the Architect and the engineering/allied professionals each execute separate, direct contracts with the Owner."
   },
   {
     "s": "",
@@ -412,21 +485,21 @@
       "Flat per-square-meter national average rate"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Sec. 6.2.1 lists Percentage (%) of Project Construction Cost (PCC) as one of the recognized methods of compensation, alongside Unit Cost Method, Professional Fee plus Expenses, Lump Sum/Fixed Fee, Per Diem/Honorarium plus Reimbursable Expenses, Multiple of Direct Personnel Expenses, and Mixed Methods. (SPP Document 202, Sec. 6.2)"
+    "ref": "SPP Doc. 202, Sec. 6.2",
+    "n": "Sec. 6.2.1 lists Percentage (%) of Project Construction Cost (PCC) as one of the recognized methods of compensation, alongside Unit Cost Method, Professional Fee plus Expenses, Lump Sum/Fixed Fee, Per Diem/Honorarium plus Reimbursable Expenses, Multiple of Direct Personnel Expenses, and Mixed Methods."
   },
   {
     "s": "",
     "q": "Comparing the Group I RPF schedules, why is the DAEDS percentage/fee consistently higher than the DADS fee at every matching PCC bracket?",
     "o": [
-      "Because under DAEDS the Architect also administers sub-consultancy contracts with, and bears added coordination scope over, the other design professionals",
+      "The Architect also runs the sub-consultancy contracts and coordination",
       "Because DADS is only used for renovation work while DAEDS is only for new construction",
       "Because the percentages are arbitrary and unrelated to scope",
       "Because DAEDS always covers a larger physical floor area than DADS"
     ],
     "c": 0,
-    "ref": "",
-    "n": "DAEDS involves a single Architect-Owner contract under which the Architect also enters sub-consultancy contracts with the engineering/allied professionals, adding coordination and administrative scope beyond DADS (where those professionals contract directly with the Owner) — which is reflected in the consistently higher DAEDS percentages/fees. (SPP Document 202, Sec. 6.1)"
+    "ref": "SPP Doc. 202, Sec. 6.1",
+    "n": "DAEDS involves a single Architect-Owner contract under which the Architect also enters sub-consultancy contracts with the engineering/allied professionals, adding coordination and administrative scope beyond DADS (where those professionals contract directly with the Owner) — which is reflected in the consistently higher DAEDS percentages/fees."
   },
   {
     "s": "",
@@ -438,8 +511,8 @@
       "3% of PCC"
     ],
     "c": 3,
-    "ref": "",
-    "n": "Per the Group I DADS bracket schedule, a PCC of P50.0 million and less carries an RPF of 3% of PCC (lower than the corresponding DAEDS rate of 5% since DADS excludes the Architect's sub-consultancy administration of the other professionals). (SPP Document 202, Sec. 6.3.1)"
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "Per the Group I DADS bracket schedule, a PCC of P50.0 million and less carries an RPF of 3% of PCC (lower than the corresponding DAEDS rate of 5% since DADS excludes the Architect's sub-consultancy administration of the other professionals)."
   },
   {
     "s": "",
@@ -451,8 +524,8 @@
       "Detailed Architectural and Engineering Design Services"
     ],
     "c": 3,
-    "ref": "",
-    "n": "DAEDS stands for Detailed Architectural and Engineering Design Services: a single contract between the Architect and the Owner, with the Architect entering sub-consultancy contracts with the other professionals. (SPP Document 202, Sec. 6.1)"
+    "ref": "SPP Doc. 202, Sec. 6.1",
+    "n": "DAEDS stands for Detailed Architectural and Engineering Design Services: a single contract between the Architect and the Owner, with the Architect entering sub-consultancy contracts with the other professionals."
   },
   {
     "s": "",
@@ -464,9 +537,15 @@
       "P1,950,000.00"
     ],
     "c": 0,
-    "ref": "",
-    "n": "DADS formula: P1,500,000 + 2.4% of excess over P50M. Excess = P80M - P50M = P30M. 2.4% x P30,000,000 = P720,000. RPF = P1,500,000 + P720,000 = P2,220,000.00. (SPP Document 202, Sec. 6.3.1)",
-    "scenario": "A warehouse (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P80,000,000.00, which falls in the \"over P50.0 million to P100.0 million\" bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "DADS formula: P1,500,000 + 2.4% of excess over P50M.",
+    "scenario": "A warehouse (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P80,000,000.00, which falls in the \"over P50.0 million to P100.0 million\" bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "Excess = P80M - P50M = P30M",
+      "2.4% x P30,000,000 = P720,000",
+      "RPF = P1,500,000 + P720,000 = P2,220,000.00"
+    ]
   },
   {
     "s": "",
@@ -478,8 +557,8 @@
       "Group I"
     ],
     "c": 3,
-    "ref": "",
-    "n": "Printing Plants and Packaging and Processing Plants are both expressly enumerated as Group I (Simple) buildings in Sec. 6.3.1. (SPP Document 202, Sec. 6.3.1)"
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "Printing Plants and Packaging and Processing Plants are both expressly enumerated as Group I (Simple) buildings in Sec. 6.3.1."
   },
   {
     "s": "",
@@ -491,8 +570,8 @@
       "It cannot be classified under any group without a court ruling"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Service Garages are explicitly listed as a Group I building type in Sec. 6.3.1, so a straightforward service garage with minimal finishes is correctly billed under the Group I RPF schedule. (SPP Document 202, Sec. 6.3.1)"
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "Service Garages are explicitly listed as a Group I building type in Sec. 6.3.1, so a straightforward service garage with minimal finishes is correctly billed under the Group I RPF schedule."
   },
   {
     "s": "",
@@ -504,9 +583,15 @@
       "P4,050,000.00"
     ],
     "c": 1,
-    "ref": "",
-    "n": "DAEDS formula: P4,500,000 + 3% of excess over P100M. Excess = P175M - P100M = P75M. 3% x P75,000,000 = P2,250,000. RPF = P4,500,000 + P2,250,000 = P6,750,000.00. (SPP Document 202, Sec. 6.3.1)",
-    "scenario": "An industrial building (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P175,000,000.00, which falls in the \"over P100.0 million to P200.0 million\" bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "DAEDS formula: P4,500,000 + 3% of excess over P100M.",
+    "scenario": "An industrial building (a Group I building under SPP Document 202, Sec. 6.3.1) has a Project Construction Cost (PCC) of P175,000,000.00, which falls in the \"over P100.0 million to P200.0 million\" bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "Excess = P175M - P100M = P75M",
+      "3% x P75,000,000 = P2,250,000",
+      "RPF = P4,500,000 + P2,250,000 = P6,750,000.00"
+    ]
   },
   {
     "s": "",
@@ -518,8 +603,8 @@
       "Percentage (%) of Project Construction Cost (PCC)"
     ],
     "c": 3,
-    "ref": "",
-    "n": "The Group I RPF tables express the Architect's fee as a percentage of Project Construction Cost (PCC), which is method 6.2.1, Percentage (%) of Project Construction Cost. (SPP Document 202, Sec. 6.2)"
+    "ref": "SPP Doc. 202, Sec. 6.2",
+    "n": "The Group I RPF tables express the Architect's fee as a percentage of Project Construction Cost (PCC), which is method 6.2.1, Percentage (%) of Project Construction Cost."
   },
   {
     "s": "",
@@ -531,8 +616,8 @@
       "The Owner, since the Owner selected the engineer"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Sec. 6.1 is explicit that in both DAEDS and DADS, liabilities of each State-regulated professional remain separate; the Architect does not assume the responsibilities and liabilities of the other RLPs — here, the structural engineer bears responsibility for the structural design error. (SPP Document 202, Sec. 6.1)"
+    "ref": "SPP Doc. 202, Sec. 6.1",
+    "n": "Sec. 6.1 is explicit that in both DAEDS and DADS, liabilities of each State-regulated professional remain separate; the Architect does not assume the responsibilities and liabilities of the other RLPs — here, the structural engineer bears responsibility for the structural design error."
   },
   {
     "s": "",
@@ -544,7 +629,7 @@
       "P3,000,000 plus 5% of the excess over P50.0 million"
     ],
     "c": 1,
-    "ref": "",
-    "n": "The Group I DAEDS bracket for PCC over P50.0 million up to P100.0 million is P2,500,000 plus 4% of the excess over P50.0 million. Choice (b) is the corresponding DADS formula for the same bracket, and (c) is the next DAEDS bracket. (SPP Document 202, Sec. 6.3.1)"
+    "ref": "SPP Doc. 202, Sec. 6.3.1",
+    "n": "The Group I DAEDS bracket for PCC over P50.0 million up to P100.0 million is P2,500,000 plus 4% of the excess over P50.0 million. P1,500,000 plus 2.4% is the DADS formula for the same bracket, and P4,500,000 plus 3% is the next DAEDS bracket."
   }
 ]
