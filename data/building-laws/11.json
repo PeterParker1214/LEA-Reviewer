@@ -9,7 +9,7 @@
   "questions": [
     {
       "s": "Ten Most Populous Cities",
-      "q": "What 2010 population is listed for Cebu City?",
+      "q": "What was the 2010 population of Cebu City?",
       "o": [
         "866,171",
         "1,652,171",
@@ -22,7 +22,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with House of Representatives at the Batasang Pambansa Complex?",
+      "q": "Which city is known for this: House of Representatives at the Batasang Pambansa Complex?",
       "o": [
         "Manila",
         "Quezon City",
@@ -35,7 +35,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What land area is listed for Marikina?",
+      "q": "What is the land area of Marikina?",
       "o": [
         "21.52 sq km",
         "32.69 sq km",
@@ -48,7 +48,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What cityhood/incorporation entry is listed for Parañaque?",
+      "q": "In what year did Parañaque become a city?",
       "o": [
         "1571",
         "1962",
@@ -61,7 +61,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with first capital of the country?",
+      "q": "Which city was the first capital of the country?",
       "o": [
         "Manila",
         "Quezon City",
@@ -74,7 +74,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What cityhood/incorporation entry is listed for Marikina?",
+      "q": "In what year did Marikina become a city?",
       "o": [
         "1571",
         "1962",
@@ -87,7 +87,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with City of Golden Friendship?",
+      "q": "Which city is known for this: City of Golden Friendship?",
       "o": [
         "Quezon City",
         "Manila",
@@ -142,7 +142,7 @@
     },
     {
       "s": "Key Housing Agencies",
-      "q": "Which housing agency is most directly associated with Abot-Kaya Pabahay Fund (AKPF)?",
+      "q": "Which housing agency is responsible for Abot-Kaya Pabahay Fund (AKPF)?",
       "o": [
         "HGC",
         "SHFC",
@@ -169,7 +169,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What population density is listed for Muntinlupa?",
+      "q": "What was the 2010 population density of Muntinlupa?",
       "o": [
         "11,571 per sq km",
         "16,903 per sq km",
@@ -182,7 +182,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What population density is listed for Caloocan?",
+      "q": "What was the 2010 population density of Caloocan?",
       "o": [
         "26,685 per sq km",
         "42,858 per sq km",
@@ -195,7 +195,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What cityhood/incorporation entry is listed for Taguig?",
+      "q": "In what year did Taguig become a city?",
       "o": [
         "1962",
         "1997",
@@ -236,7 +236,7 @@
     },
     {
       "s": "Applied Metro Manila Statistics",
-      "q": "Using Quezon City's listed population of 2,761,720 and area of 166.20 sq km, what approximate density do you obtain?",
+      "q": "Using Quezon City's 2010 population of 2,761,720 and area of 166.20 sq km, what approximate density do you obtain?",
       "o": [
         "About 16,617 persons/sq km",
         "About 21,606",
@@ -246,11 +246,16 @@
       "c": 0,
       "ref": "Principles of Planning Tables, p. 53 — Metro Manila",
       "n": "Population divided by area gives approximately 16.6 thousand persons per sq km, close to the listed density after rounding.",
-      "fig": "f1"
+      "fig": "f1",
+      "formula": "density = population ÷ land area",
+      "steps": [
+        "2,761,720 ÷ 166.20 sq km",
+        "= about 16,617 persons per sq km"
+      ]
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What cityhood/incorporation entry is listed for Navotas?",
+      "q": "In what year did Navotas become a city?",
       "o": [
         "1571",
         "1962",
@@ -276,7 +281,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What land area is listed for Taguig?",
+      "q": "What is the land area of Taguig?",
       "o": [
         "53.67 sq km",
         "55.80 sq km",
@@ -289,7 +294,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What population density is listed for Navotas?",
+      "q": "What was the 2010 population density of Navotas?",
       "o": [
         "26,685 per sq km",
         "16,903 per sq km",
@@ -302,7 +307,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What population density is listed for Malabon?",
+      "q": "What was the 2010 population density of Malabon?",
       "o": [
         "26,685 per sq km",
         "22,491 per sq km",
@@ -329,7 +334,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with 87th fastest-growing city in the world in the cited 2011 ranking?",
+      "q": "Which city is known for this: 87th fastest-growing city in the world in the cited 2011 ranking?",
       "o": [
         "Davao City",
         "Manila",
@@ -342,7 +347,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with Andrés Bonifacio and Katipunan meetings?",
+      "q": "Which city is known for this: Andrés Bonifacio and Katipunan meetings?",
       "o": [
         "Caloocan",
         "Quezon City",
@@ -355,7 +360,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What land area is listed for Caloocan?",
+      "q": "What is the land area of Caloocan?",
       "o": [
         "55.80 sq km",
         "32.69 sq km",
@@ -368,7 +373,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What land area is listed for Quezon City?",
+      "q": "What is the land area of Quezon City?",
       "o": [
         "38.55 sq km",
         "55.80 sq km",
@@ -395,7 +400,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What land area is listed for San Juan?",
+      "q": "What is the land area of San Juan?",
       "o": [
         "38.55 sq km",
         "55.80 sq km",
@@ -421,7 +426,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What population density is listed for Marikina?",
+      "q": "What was the 2010 population density of Marikina?",
       "o": [
         "26,685 per sq km",
         "16,903 per sq km",
@@ -461,7 +466,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "Which Metro Manila LGU has the highest listed 2010 population?",
+      "q": "Which Metro Manila LGU has the highest 2010 population?",
       "o": [
         "Quezon City",
         "Caloocan",
@@ -474,7 +479,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with former national capital from 1948 to 1976?",
+      "q": "Which city is known for this: former national capital from 1948 to 1976?",
       "o": [
         "Davao City",
         "Quezon City",
@@ -487,7 +492,7 @@
     },
     {
       "s": "Key Housing Agencies",
-      "q": "Which agency is associated with 'EO 90'?",
+      "q": "Which agency goes with \"EO 90\"?",
       "o": [
         "HUDCC",
         "HGC",
@@ -496,7 +501,7 @@
       ],
       "c": 0,
       "ref": "Principles of Planning Tables, p. 52 — The Key Housing Agencies",
-      "n": "HUDCC is associated with EO 90."
+      "n": "HUDCC is associated with EO 90. Since 2019 (RA 11201) its functions belong to DHSUD and the Human Settlements Adjudication Commission."
     },
     {
       "s": "Ten Most Populous Cities",
@@ -541,7 +546,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What population density is listed for Pateros?",
+      "q": "What was the 2010 population density of Pateros?",
       "o": [
         "26,685 per sq km",
         "16,903 per sq km",
@@ -554,7 +559,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What cityhood/incorporation entry is listed for Manila?",
+      "q": "In what year did Manila become a city?",
       "o": [
         "1571",
         "1997",
@@ -580,7 +585,7 @@
     },
     {
       "s": "Applied Metro Manila Statistics",
-      "q": "Using the table values, what approximate population results from Manila's area of 38.55 sq km multiplied by its density of 42,858 persons/sq km?",
+      "q": "What approximate population results from Manila's area of 38.55 sq km multiplied by its density of 42,858 persons/sq km?",
       "o": [
         "About 4.29 million",
         "About 1.65 million",
@@ -590,11 +595,16 @@
       "c": 1,
       "ref": "Principles of Planning Tables, p. 53 — Metro Manila",
       "n": "Multiplying area by density yields approximately the listed population.",
-      "fig": "f1"
+      "fig": "f1",
+      "formula": "population = area × density",
+      "steps": [
+        "38.55 sq km × 42,858 persons/sq km",
+        "= 1,652,176, about 1.65 million"
+      ]
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "What 2010 population is listed for Cagayan de Oro?",
+      "q": "What was the 2010 population of Cagayan de Oro?",
       "o": [
         "1,489,040",
         "2,761,720",
@@ -607,7 +617,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What cityhood/incorporation entry is listed for San Juan?",
+      "q": "In what year did San Juan become a city?",
       "o": [
         "1962",
         "1997",
@@ -633,7 +643,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with Intramuros?",
+      "q": "Which city is known for this: Intramuros?",
       "o": [
         "Davao City",
         "Caloocan",
@@ -646,7 +656,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with Sinulog?",
+      "q": "Which city is known for this: Sinulog?",
       "o": [
         "Quezon City",
         "Manila",
@@ -659,7 +669,7 @@
     },
     {
       "s": "Key Housing Agencies",
-      "q": "Which housing agency is most directly associated with nationwide provident fund for the government's housing program?",
+      "q": "Which housing agency is responsible for nationwide provident fund for the government's housing program?",
       "o": [
         "HDMF",
         "HGC",
@@ -672,7 +682,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What population density is listed for Taguig?",
+      "q": "What was the 2010 population density of Taguig?",
       "o": [
         "16,903 per sq km",
         "42,858 per sq km",
@@ -685,7 +695,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What cityhood/incorporation entry is listed for Las Piñas?",
+      "q": "In what year did Las Piñas become a city?",
       "o": [
         "1571",
         "1962",
@@ -698,7 +708,7 @@
     },
     {
       "s": "Wind Loads",
-      "q": "What basic wind speed is listed for Zone II (NW)?",
+      "q": "Under the old NSCP 2001 wind map, what basic wind speed applied to Zone II (NW)?",
       "o": [
         "250 kph",
         "200 kph",
@@ -707,12 +717,12 @@
       ],
       "c": 1,
       "ref": "Principles of Planning Tables, p. 53 — Wind Loads",
-      "n": "Zone II (NW) is associated with a wind speed of 200 kph.",
+      "n": "Zone II (NW) is associated with a wind speed of 200 kph. (These are the old NSCP 2001 wind zones; NSCP 2015 replaced them with a basic wind speed map by province.)",
       "fig": "f5"
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with western shore of Laguna de Bay?",
+      "q": "Which city is known for this: western shore of Laguna de Bay?",
       "o": [
         "Manila",
         "Taguig",
@@ -739,7 +749,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What land area is listed for Pasig?",
+      "q": "What is the land area of Pasig?",
       "o": [
         "31.00 sq km",
         "38.55 sq km",
@@ -752,7 +762,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "What 2010 population is listed for Taguig?",
+      "q": "What was the 2010 population of Taguig?",
       "o": [
         "1,652,171",
         "1,489,040",
@@ -807,7 +817,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What land area is listed for Malabon?",
+      "q": "What is the land area of Malabon?",
       "o": [
         "38.55 sq km",
         "15.71 sq km",
@@ -820,7 +830,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "What 2010 population is listed for Davao City?",
+      "q": "What was the 2010 population of Davao City?",
       "o": [
         "1,489,040",
         "2,761,720",
@@ -869,11 +879,17 @@
       ],
       "c": 1,
       "ref": "Principles of Planning Tables, p. 54 — Ten Most Populous Cities in the Philippines",
-      "n": "The population gap is 1,109,549, which is about 40.2% of Quezon City's 2,761,720."
+      "n": "The population gap is 1,109,549, which is about 40.2% of Quezon City's 2,761,720.",
+      "formula": "% smaller = (QC − Manila) ÷ QC × 100",
+      "steps": [
+        "2,761,720 − 1,652,171 = 1,109,549",
+        "1,109,549 ÷ 2,761,720 = 0.402",
+        "= about 40.2%"
+      ]
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What population density is listed for Pasig?",
+      "q": "What was the 2010 population density of Pasig?",
       "o": [
         "16,903 per sq km",
         "42,858 per sq km",
@@ -900,7 +916,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "What 2010 population is listed for Pasig?",
+      "q": "What was the 2010 population of Pasig?",
       "o": [
         "1,489,040",
         "1,652,171",
@@ -913,7 +929,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What land area is listed for Parañaque?",
+      "q": "What is the land area of Parañaque?",
       "o": [
         "32.69 sq km",
         "47.69 sq km",
@@ -926,7 +942,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What land area is listed for Manila?",
+      "q": "What is the land area of Manila?",
       "o": [
         "32.69 sq km",
         "21.57 sq km",
@@ -953,7 +969,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What land area is listed for Navotas?",
+      "q": "What is the land area of Navotas?",
       "o": [
         "38.55 sq km",
         "32.69 sq km",
@@ -966,7 +982,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What cityhood/incorporation entry is listed for Pasay?",
+      "q": "In what year did Pasay become a city?",
       "o": [
         "1571",
         "1997",
@@ -993,7 +1009,7 @@
     },
     {
       "s": "Key Housing Agencies",
-      "q": "Which agency is associated with 'formerly Human Settlements Regulatory Commission'?",
+      "q": "Which agency goes with \"formerly Human Settlements Regulatory Commission\"?",
       "o": [
         "HLURB",
         "HUDCC",
@@ -1002,11 +1018,11 @@
       ],
       "c": 0,
       "ref": "Principles of Planning Tables, p. 52 — The Key Housing Agencies",
-      "n": "HLURB is associated with formerly Human Settlements Regulatory Commission."
+      "n": "HLURB is associated with formerly Human Settlements Regulatory Commission. Since 2019 (RA 11201) its functions belong to DHSUD and the Human Settlements Adjudication Commission."
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with Ciudad de las Flores?",
+      "q": "Which city is known for this: Ciudad de las Flores?",
       "o": [
         "Zamboanga City",
         "Manila",
@@ -1019,7 +1035,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What population density is listed for Valenzuela?",
+      "q": "What was the 2010 population density of Valenzuela?",
       "o": [
         "26,685 per sq km",
         "12,236 per sq km",
@@ -1041,12 +1057,12 @@
       ],
       "c": 2,
       "ref": "Principles of Planning Tables, p. 52 — The Key Housing Agencies",
-      "n": "HUDCC stands for Housing and Urban Development Coordinating Council.",
+      "n": "HUDCC stands for Housing and Urban Development Coordinating Council. Since 2019 (RA 11201) its functions belong to DHSUD and the Human Settlements Adjudication Commission.",
       "fig": "f4"
     },
     {
       "s": "Applied City Rankings",
-      "q": "How many more people did Quezon City have than Manila in the 2010 table?",
+      "q": "How many more people did Quezon City have than Manila in 2010?",
       "o": [
         "1,209,549",
         "2,109,549",
@@ -1056,7 +1072,12 @@
       "c": 2,
       "ref": "Principles of Planning Tables, p. 54 — Ten Most Populous Cities in the Philippines",
       "n": "Subtracting Manila's population from Quezon City's gives 1,109,549.",
-      "fig": "f3"
+      "fig": "f3",
+      "formula": "difference = QC − Manila",
+      "steps": [
+        "2,761,720 − 1,652,171",
+        "= 1,109,549"
+      ]
     },
     {
       "s": "Key Housing Agencies",
@@ -1074,7 +1095,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with Malacañang Palace?",
+      "q": "Which city is known for this: Malacañang Palace?",
       "o": [
         "Quezon City",
         "Davao City",
@@ -1096,12 +1117,12 @@
       ],
       "c": 2,
       "ref": "Principles of Planning Tables, p. 52 — The Key Housing Agencies",
-      "n": "This role belongs to HLURB, the Housing and Land Use Regulatory Board.",
+      "n": "This role belongs to HLURB, the Housing and Land Use Regulatory Board. Since 2019 (RA 11201) its functions belong to DHSUD and the Human Settlements Adjudication Commission.",
       "fig": "f4"
     },
     {
       "s": "Key Housing Agencies",
-      "q": "Which housing agency is most directly associated with policy development, planning, and regulation?",
+      "q": "Which housing agency is responsible for policy development, planning, and regulation?",
       "o": [
         "HLURB",
         "HUDCC",
@@ -1110,7 +1131,7 @@
       ],
       "c": 0,
       "ref": "Principles of Planning Tables, p. 52 — The Key Housing Agencies",
-      "n": "HLURB is the agency associated with policy development, planning, and regulation."
+      "n": "HLURB is the agency associated with policy development, planning, and regulation. Since 2019 (RA 11201) its functions belong to DHSUD and the Human Settlements Adjudication Commission."
     },
     {
       "s": "Urban Land Use Map Colors",
@@ -1170,7 +1191,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with largest city in Mindanao?",
+      "q": "Which city is known for this: largest city in Mindanao?",
       "o": [
         "Caloocan",
         "Manila",
@@ -1197,7 +1218,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "What 2010 population is listed for Quezon City?",
+      "q": "What was the 2010 population of Quezon City?",
       "o": [
         "1,652,171",
         "1,449,296",
@@ -1238,7 +1259,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What cityhood/incorporation entry is listed for Caloocan?",
+      "q": "In what year did Caloocan become a city?",
       "o": [
         "1995",
         "1962",
@@ -1251,7 +1272,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What cityhood/incorporation entry is listed for Makati?",
+      "q": "In what year did Makati become a city?",
       "o": [
         "1995",
         "1962",
@@ -1278,7 +1299,7 @@
     },
     {
       "s": "Key Housing Agencies",
-      "q": "Which agency is associated with 'EO 273'?",
+      "q": "Which agency goes with \"EO 273\"?",
       "o": [
         "NHA",
         "HUDCC",
@@ -1291,7 +1312,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What cityhood/incorporation entry is listed for Pasig?",
+      "q": "In what year did Pasig become a city?",
       "o": [
         "1997",
         "1962",
@@ -1304,7 +1325,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What population density is listed for Mandaluyong?",
+      "q": "What was the 2010 population density of Mandaluyong?",
       "o": [
         "26,685 per sq km",
         "16,903 per sq km",
@@ -1317,7 +1338,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "Which Metro Manila LGU has the largest listed land area?",
+      "q": "Which Metro Manila LGU has the largest land area?",
       "o": [
         "Taguig",
         "Manila",
@@ -1330,7 +1351,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "Which Metro Manila LGU has the smallest listed land area?",
+      "q": "Which Metro Manila LGU has the smallest land area?",
       "o": [
         "Navotas",
         "Pasay",
@@ -1352,7 +1373,7 @@
       ],
       "c": 1,
       "ref": "Principles of Planning Tables, p. 53 — Wind Loads",
-      "n": "200 kph corresponds to Zone II (NW).",
+      "n": "200 kph corresponds to Zone II (NW). (These are the old NSCP 2001 wind zones; NSCP 2015 replaced them with a basic wind speed map by province.)",
       "fig": "f5"
     },
     {
@@ -1385,7 +1406,7 @@
     },
     {
       "s": "Key Housing Agencies",
-      "q": "Which agency is associated with 'Pag-IBIG Fund'?",
+      "q": "Which agency goes with \"Pag-IBIG Fund\"?",
       "o": [
         "NHA",
         "HGC",
@@ -1425,7 +1446,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What land area is listed for Makati?",
+      "q": "What is the land area of Makati?",
       "o": [
         "38.55 sq km",
         "55.80 sq km",
@@ -1452,7 +1473,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What land area is listed for Pasay?",
+      "q": "What is the land area of Pasay?",
       "o": [
         "32.69 sq km",
         "38.55 sq km",
@@ -1465,7 +1486,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What cityhood/incorporation entry is listed for Malabon?",
+      "q": "In what year did Malabon become a city?",
       "o": [
         "1997",
         "2001",
@@ -1478,7 +1499,7 @@
     },
     {
       "s": "Key Housing Agencies",
-      "q": "Which housing agency is most directly associated with lowest 30% of urban income-earners?",
+      "q": "Which housing agency is responsible for lowest 30% of urban income-earners?",
       "o": [
         "HLURB",
         "HGC",
@@ -1491,7 +1512,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with Ortigas Center?",
+      "q": "Which city is known for this: Ortigas Center?",
       "o": [
         "Caloocan",
         "Quezon City",
@@ -1504,7 +1525,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with Hinulugang Taktak National Park?",
+      "q": "Which city is known for this: Hinulugang Taktak National Park?",
       "o": [
         "Antipolo",
         "Manila",
@@ -1544,7 +1565,7 @@
     },
     {
       "s": "Key Housing Agencies",
-      "q": "Which housing agency is most directly associated with credit insurance, mortgage guarantee, and securities?",
+      "q": "Which housing agency is responsible for credit insurance, mortgage guarantee, and securities?",
       "o": [
         "NHA",
         "HLURB",
@@ -1557,7 +1578,7 @@
     },
     {
       "s": "Key Housing Agencies",
-      "q": "Which housing agency is most directly associated with long-term funds principally from SSS, GSIS, and HDMF?",
+      "q": "Which housing agency is responsible for long-term funds principally from SSS, GSIS, and HDMF?",
       "o": [
         "NHMFC",
         "HUDCC",
@@ -1612,7 +1633,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What land area is listed for Valenzuela?",
+      "q": "What is the land area of Valenzuela?",
       "o": [
         "38.55 sq km",
         "47.02 sq km",
@@ -1625,7 +1646,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What population density is listed for Manila?",
+      "q": "What was the 2010 population density of Manila?",
       "o": [
         "26,685 per sq km",
         "42,858 per sq km",
@@ -1651,7 +1672,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with Queen City of the South?",
+      "q": "Which city is known for this: Queen City of the South?",
       "o": [
         "Caloocan",
         "Manila",
@@ -1701,12 +1722,12 @@
       ],
       "c": 1,
       "ref": "Principles of Planning Tables, p. 52 — The Key Housing Agencies",
-      "n": "This role belongs to HUDCC, the Housing and Urban Development Coordinating Council.",
+      "n": "This role belongs to HUDCC, the Housing and Urban Development Coordinating Council. Since 2019 (RA 11201) its functions belong to DHSUD and the Human Settlements Adjudication Commission.",
       "fig": "f4"
     },
     {
       "s": "Wind Loads",
-      "q": "What basic wind speed is listed for Zone III (SW)?",
+      "q": "Under the old NSCP 2001 wind map, what basic wind speed applied to Zone III (SW)?",
       "o": [
         "250 kph",
         "200 kph",
@@ -1715,7 +1736,7 @@
       ],
       "c": 2,
       "ref": "Principles of Planning Tables, p. 53 — Wind Loads",
-      "n": "Zone III (SW) is associated with a wind speed of 125 kph.",
+      "n": "Zone III (SW) is associated with a wind speed of 125 kph. (These are the old NSCP 2001 wind zones; NSCP 2015 replaced them with a basic wind speed map by province.)",
       "fig": "f5"
     },
     {
@@ -1775,7 +1796,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with La Mesa Reservoir?",
+      "q": "Which city is known for this: La Mesa Reservoir?",
       "o": [
         "Quezon City",
         "Manila",
@@ -1788,7 +1809,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What land area is listed for Mandaluyong?",
+      "q": "What is the land area of Mandaluyong?",
       "o": [
         "55.80 sq km",
         "38.55 sq km",
@@ -1815,7 +1836,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with Fort Bonifacio?",
+      "q": "Which city is known for this: Fort Bonifacio?",
       "o": [
         "Taguig",
         "Quezon City",
@@ -1828,7 +1849,7 @@
     },
     {
       "s": "Key Housing Agencies",
-      "q": "Which housing agency is most directly associated with Comprehensive Land Use Plans (CLUPs)?",
+      "q": "Which housing agency is responsible for Comprehensive Land Use Plans (CLUPs)?",
       "o": [
         "NHA",
         "HUDCC",
@@ -1837,11 +1858,11 @@
       ],
       "c": 3,
       "ref": "Principles of Planning Tables, p. 52 — The Key Housing Agencies",
-      "n": "HLURB is the agency associated with Comprehensive Land Use Plans (CLUPs)."
+      "n": "HLURB is the agency associated with Comprehensive Land Use Plans (CLUPs). Since 2019 (RA 11201) its functions belong to DHSUD and the Human Settlements Adjudication Commission."
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with City in the Sky?",
+      "q": "Which city is known for this: City in the Sky?",
       "o": [
         "Caloocan",
         "Antipolo",
@@ -1854,7 +1875,7 @@
     },
     {
       "s": "Key Housing Agencies",
-      "q": "Which agency is associated with 'formerly HIGC'?",
+      "q": "Which agency goes with \"formerly HIGC\"?",
       "o": [
         "NHA",
         "HGC",
@@ -1867,7 +1888,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "What 2010 population is listed for Zamboanga City?",
+      "q": "What was the 2010 population of Zamboanga City?",
       "o": [
         "2,761,720",
         "807,129",
@@ -1880,7 +1901,7 @@
     },
     {
       "s": "Key Housing Agencies",
-      "q": "Which housing agency is most directly associated with Community Mortgage Program (CMP)?",
+      "q": "Which housing agency is responsible for Community Mortgage Program (CMP)?",
       "o": [
         "SHFC",
         "HGC",
@@ -1907,7 +1928,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What population density is listed for San Juan?",
+      "q": "What was the 2010 population density of San Juan?",
       "o": [
         "42,858 per sq km",
         "16,903 per sq km",
@@ -1920,7 +1941,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What land area is listed for Pateros?",
+      "q": "What is the land area of Pateros?",
       "o": [
         "32.69 sq km",
         "2.25 sq km",
@@ -1933,7 +1954,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with whitewater rafting or kayaking?",
+      "q": "Which city is known for this: whitewater rafting or kayaking?",
       "o": [
         "Cagayan de Oro",
         "Manila",
@@ -1946,7 +1967,7 @@
     },
     {
       "s": "Wind Loads",
-      "q": "What basic wind speed is listed for Zone I (NE)?",
+      "q": "Under the old NSCP 2001 wind map, what basic wind speed applied to Zone I (NE)?",
       "o": [
         "200 kph",
         "250 kph",
@@ -1955,12 +1976,12 @@
       ],
       "c": 1,
       "ref": "Principles of Planning Tables, p. 53 — Wind Loads",
-      "n": "Zone I (NE) is associated with a wind speed of 250 kph.",
+      "n": "Zone I (NE) is associated with a wind speed of 250 kph. (These are the old NSCP 2001 wind zones; NSCP 2015 replaced them with a basic wind speed map by province.)",
       "fig": "f5"
     },
     {
       "s": "Key Housing Agencies",
-      "q": "Which housing agency is most directly associated with highest policy-making and coordinating office on shelter programs?",
+      "q": "Which housing agency is responsible for highest policy-making and coordinating office on shelter programs?",
       "o": [
         "HGC",
         "HLURB",
@@ -1969,7 +1990,7 @@
       ],
       "c": 3,
       "ref": "Principles of Planning Tables, p. 52 — The Key Housing Agencies",
-      "n": "HUDCC is the agency associated with highest policy-making and coordinating office on shelter programs."
+      "n": "HUDCC is the agency associated with highest policy-making and coordinating office on shelter programs. Since 2019 (RA 11201) its functions belong to DHSUD and the Human Settlements Adjudication Commission."
     },
     {
       "s": "Urban Land Use Map Colors",
@@ -2009,7 +2030,7 @@
       ],
       "c": 0,
       "ref": "Principles of Planning Tables, p. 53 — Wind Loads",
-      "n": "250 kph corresponds to Zone I (NE).",
+      "n": "250 kph corresponds to Zone I (NE). (These are the old NSCP 2001 wind zones; NSCP 2015 replaced them with a basic wind speed map by province.)",
       "fig": "f5"
     },
     {
@@ -2042,7 +2063,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What cityhood/incorporation entry is listed for Quezon City?",
+      "q": "In what year did Quezon City become a city?",
       "o": [
         "1571",
         "1939",
@@ -2069,7 +2090,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What population density is listed for Las Piñas?",
+      "q": "What was the 2010 population density of Las Piñas?",
       "o": [
         "16,903 per sq km",
         "26,685 per sq km",
@@ -2082,7 +2103,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with largest city in the Philippines in terms of land area?",
+      "q": "Which city is known for this: largest city in the Philippines in terms of land area?",
       "o": [
         "Quezon City",
         "Caloocan",
@@ -2095,7 +2116,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "What 2010 population is listed for Antipolo?",
+      "q": "What was the 2010 population of Antipolo?",
       "o": [
         "677,741",
         "2,761,720",
@@ -2108,7 +2129,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What cityhood/incorporation entry is listed for Pateros?",
+      "q": "In what year did Pateros become a city?",
       "o": [
         "1997",
         "1962",
@@ -2163,7 +2184,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "Which Metro Manila LGU has the highest listed population density?",
+      "q": "Which Metro Manila LGU has the highest population density?",
       "o": [
         "Pasay",
         "Caloocan",
@@ -2176,7 +2197,7 @@
     },
     {
       "s": "Applied Wind Loads",
-      "q": "By what percentage is Zone I's listed wind speed higher than Zone II's?",
+      "q": "By what percentage is Zone I's wind speed higher than Zone II's?",
       "o": [
         "20%",
         "40%",
@@ -2185,11 +2206,17 @@
       ],
       "c": 2,
       "ref": "Principles of Planning Tables, p. 53 — Wind Loads",
-      "n": "Zone I exceeds Zone II by 50 kph; 50 divided by 200 equals 25%."
+      "n": "Zone I exceeds Zone II by 50 kph; 50 divided by 200 equals 25%. (These are the old NSCP 2001 wind zones; NSCP 2015 replaced them with a basic wind speed map by province.)",
+      "formula": "% higher = (Zone I − Zone II) ÷ Zone II × 100",
+      "steps": [
+        "250 − 200 = 50 kph",
+        "50 ÷ 200 = 0.25",
+        "= 25%"
+      ]
     },
     {
       "s": "Key Housing Agencies",
-      "q": "Which housing agency is most directly associated with slum upgrading and squatter relocation?",
+      "q": "Which housing agency is responsible for slum upgrading and squatter relocation?",
       "o": [
         "HUDCC",
         "NHA",
@@ -2309,12 +2336,17 @@
       ],
       "c": 3,
       "ref": "Principles of Planning Tables, p. 53 — Wind Loads",
-      "n": "Zone I is 250 kph and Zone III is 125 kph, so the difference is 125 kph.",
-      "fig": "f5"
+      "n": "Zone I is 250 kph and Zone III is 125 kph, so the difference is 125 kph. (These are the old NSCP 2001 wind zones; NSCP 2015 replaced them with a basic wind speed map by province.)",
+      "fig": "f5",
+      "formula": "difference = Zone I − Zone III",
+      "steps": [
+        "250 kph − 125 kph",
+        "= 125 kph"
+      ]
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What land area is listed for Muntinlupa?",
+      "q": "What is the land area of Muntinlupa?",
       "o": [
         "38.55 sq km",
         "55.80 sq km",
@@ -2327,7 +2359,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What population density is listed for Quezon City?",
+      "q": "What was the 2010 population density of Quezon City?",
       "o": [
         "16,903 per sq km",
         "26,685 per sq km",
@@ -2349,7 +2381,7 @@
       ],
       "c": 1,
       "ref": "Principles of Planning Tables, p. 53 — Wind Loads",
-      "n": "125 kph corresponds to Zone III (SW).",
+      "n": "125 kph corresponds to Zone III (SW). (These are the old NSCP 2001 wind zones; NSCP 2015 replaced them with a basic wind speed map by province.)",
       "fig": "f5"
     },
     {
@@ -2377,12 +2409,12 @@
       ],
       "c": 0,
       "ref": "Principles of Planning Tables, p. 52 — The Key Housing Agencies",
-      "n": "HLURB stands for Housing and Land Use Regulatory Board.",
+      "n": "HLURB stands for Housing and Land Use Regulatory Board. Since 2019 (RA 11201) its functions belong to DHSUD and the Human Settlements Adjudication Commission.",
       "fig": "f4"
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What cityhood/incorporation entry is listed for Muntinlupa?",
+      "q": "In what year did Muntinlupa become a city?",
       "o": [
         "1995",
         "1571",
@@ -2409,7 +2441,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What population density is listed for Makati?",
+      "q": "What was the 2010 population density of Makati?",
       "o": [
         "16,903 per sq km",
         "24,527 per sq km",
@@ -2422,7 +2454,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What population density is listed for Parañaque?",
+      "q": "What was the 2010 population density of Parañaque?",
       "o": [
         "16,903 per sq km",
         "26,685 per sq km",
@@ -2435,7 +2467,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "What 2010 population is listed for Manila?",
+      "q": "What was the 2010 population of Manila?",
       "o": [
         "1,489,040",
         "1,652,171",
@@ -2475,7 +2507,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What population density is listed for Pasay?",
+      "q": "What was the 2010 population density of Pasay?",
       "o": [
         "28,122 per sq km",
         "16,903 per sq km",
@@ -2502,7 +2534,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What cityhood/incorporation entry is listed for Mandaluyong?",
+      "q": "In what year did Mandaluyong become a city?",
       "o": [
         "1571",
         "1994",
@@ -2515,7 +2547,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "What 2010 population is listed for Caloocan?",
+      "q": "What was the 2010 population of Caloocan?",
       "o": [
         "2,761,720",
         "1,449,296",
@@ -2556,7 +2588,7 @@
     },
     {
       "s": "Ten Most Populous Cities",
-      "q": "Which city is associated with Ciudad Latina de Asia?",
+      "q": "Which city is known for this: Ciudad Latina de Asia?",
       "o": [
         "Zamboanga City",
         "Quezon City",
@@ -2569,7 +2601,7 @@
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What cityhood/incorporation entry is listed for Valenzuela?",
+      "q": "In what year did Valenzuela become a city?",
       "o": [
         "1962",
         "1997",
@@ -2619,11 +2651,16 @@
       ],
       "c": 0,
       "ref": "Principles of Planning Tables, p. 54 — Ten Most Populous Cities in the Philippines",
-      "n": "Adding Pasig's 669,773 and Taguig's 644,473 yields 1,314,246."
+      "n": "Adding Pasig's 669,773 and Taguig's 644,473 yields 1,314,246.",
+      "formula": "combined = Pasig + Taguig",
+      "steps": [
+        "669,773 + 644,473",
+        "= 1,314,246"
+      ]
     },
     {
       "s": "Metro Manila Statistics",
-      "q": "What land area is listed for Las Piñas?",
+      "q": "What is the land area of Las Piñas?",
       "o": [
         "32.69 sq km",
         "21.57 sq km",
