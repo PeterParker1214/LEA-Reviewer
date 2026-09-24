@@ -175,30 +175,16 @@
   },
   {
     "s": "Fire Zones",
-    "q": "In which fire zone is Type 3 construction permitted?",
+    "q": "In which fire zone is Type III construction permitted?",
     "o": [
-      "A zone that is not fire-restricted",
-      "A zone classified as fire restrictive",
-      "A zone classified as highly fire restrictive",
-      {
-        "ref": [
-          0,
-          1
-        ],
-        "tpl": "only"
-      },
-      {
-        "ref": [
-          0,
-          1,
-          2
-        ],
-        "tpl": "list"
-      }
+      "Fire restrictive zone",
+      "Non-fire restricted zone",
+      "Highly fire restrictive zone",
+      "Any fire zone"
     ],
-    "c": 3,
-    "ref": "IRR Rule V — Requirements for Fire Zones",
-    "n": "The fire restrictive zone only bars Type I, so Type III is allowed there and in the non-restricted zone. The highly fire restrictive zone bars Types I, II, and III, permitting only Types IV and V."
+    "c": 0,
+    "ref": "IRR of PD 1096, Rule V, Sec. 5.1 — Fire Zones",
+    "n": "The IRR allows Types II to IV in fire restrictive zones; non-fire-restricted zones take only Types I and II, and highly fire restrictive zones only Types IV and V."
   },
   {
     "s": "Building Permits",
