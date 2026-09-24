@@ -35,10 +35,10 @@
       "s": "Concrete Floor Systems",
       "q": "What is a reinforced-concrete floor in which a solid slab is supported by reinforced-concrete beams or girders?",
       "o": [
-        "Beam-and-slab floor construction",
-        "Slab-on-ground",
-        "Lift slab",
-        "Flat plate"
+        "Beam-and-slab floor",
+        "Flat plate floor",
+        "Flat slab with drop panels",
+        "Waffle slab floor"
       ],
       "c": 0,
       "ref": "Concrete Reinforcing Steel Institute (CRSI), Reinforced Concrete Terminology",
@@ -69,11 +69,17 @@
       ],
       "c": 1,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Metal Reinforcement: Post and Column Reinforcement / Lateral Ties",
-      "n": "There are 598 ties with eight bar intersections each; multiplying by 0.40 m gives 1,913.6 m."
+      "n": "There are 598 ties with eight bar intersections each; multiplying by 0.40 m gives 1,913.6 m.",
+      "scenario": "A building has 26 tied columns, each 500 mm × 500 mm and 7.00 m high, with eight 20 mm bars, 10 mm ties and 40 mm clear cover. Tie wire is 0.40 m per bar intersection (53 m per kg); ties are cut from 6.00 m bars.",
+      "formula": "wire = ties × intersections × 0.40 m",
+      "steps": [
+        "598 × 8 = 4,784 intersections",
+        "4,784 × 0.40 = 1,913.6 m"
+      ]
     },
     {
       "s": "Column Tie Estimating",
-      "q": "For this estimating exercise, what tie-side dimension should be used for A and B?",
+      "q": "What tie-side dimension should be used for A and B?",
       "o": [
         "400 mm",
         "420 mm",
@@ -82,8 +88,9 @@
       ],
       "c": 1,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Metal Reinforcement: Post and Column Reinforcement / Lateral Ties",
-      "n": "Using the simplified estimating convention in the stated problem, the clear tie side is taken as 500 mm less 40 mm cover at each face.",
-      "fig": "f2"
+      "n": "Using the simplified estimating convention , the clear tie side is taken as 500 mm less 40 mm cover at each face.",
+      "fig": "f2",
+      "scenario": "A building has 26 tied columns, each 500 mm × 500 mm and 7.00 m high, with eight 20 mm bars, 10 mm ties and 40 mm clear cover. Tie wire is 0.40 m per bar intersection (53 m per kg); ties are cut from 6.00 m bars."
     },
     {
       "s": "Applied Tie Estimating",
@@ -148,7 +155,13 @@
       ],
       "c": 1,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Metal Reinforcement: Post and Column Reinforcement / Lateral Ties",
-      "n": "The calculated mass is 1,913.6/53 ≈ 36.1 kg; allowing whole kilograms gives about 37 kg."
+      "n": "The calculated mass is 1,913.6/53 ≈ 36.1 kg; allowing whole kilograms gives about 37 kg.",
+      "scenario": "A building has 26 tied columns, each 500 mm × 500 mm and 7.00 m high, with eight 20 mm bars, 10 mm ties and 40 mm clear cover. Tie wire is 0.40 m per bar intersection (53 m per kg); ties are cut from 6.00 m bars.",
+      "formula": "kg = length / 53",
+      "steps": [
+        "1,913.6 / 53 = 36.1 kg",
+        "Round up: about 37 kg"
+      ]
     },
     {
       "s": "Column Tie Estimating",
@@ -162,7 +175,13 @@
       "c": 1,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Metal Reinforcement: Post and Column Reinforcement / Lateral Ties",
       "n": "Substituting A=B=0.42 m and d=0.01 m gives a 1.88 m cutting length.",
-      "fig": "f2"
+      "fig": "f2",
+      "scenario": "A building has 26 tied columns, each 500 mm × 500 mm and 7.00 m high, with eight 20 mm bars, 10 mm ties and 40 mm clear cover. Tie wire is 0.40 m per bar intersection (53 m per kg); ties are cut from 6.00 m bars.",
+      "formula": "L = 2(A + B) + 20d",
+      "steps": [
+        "2(0.42 + 0.42) = 1.68 m",
+        "1.68 + 20(0.01) = 1.88 m"
+      ]
     },
     {
       "s": "Applied Tie Estimating",
@@ -176,7 +195,12 @@
       "c": 1,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Metal Reinforcement: Post and Column Reinforcement / Lateral Ties",
       "n": "The perimeter component is 1.28 m and the 20d allowance is 0.20 m, totaling 1.48 m.",
-      "fig": "f2"
+      "fig": "f2",
+      "formula": "L = 2(A + B) + 20d",
+      "steps": [
+        "2(0.32 + 0.32) = 1.28 m",
+        "1.28 + 0.20 = 1.48 m"
+      ]
     },
     {
       "s": "Concrete Defects",
@@ -243,7 +267,13 @@
       ],
       "c": 2,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Metal Reinforcement: Post and Column Reinforcement / Lateral Ties",
-      "n": "Each column requires 23 ties, so 26 columns require 26×23 = 598 ties."
+      "n": "Each column requires 23 ties, so 26 columns require 26×23 = 598 ties.",
+      "scenario": "A building has 26 tied columns, each 500 mm × 500 mm and 7.00 m high, with eight 20 mm bars, 10 mm ties and 40 mm clear cover. Tie wire is 0.40 m per bar intersection (53 m per kg); ties are cut from 6.00 m bars.",
+      "formula": "ties = columns × ties per column",
+      "steps": [
+        "26 × 23",
+        "= 598 ties"
+      ]
     },
     {
       "s": "Column Ties",
@@ -256,7 +286,13 @@
       ],
       "c": 0,
       "ref": "ACI 318-19, Sec. 25.7.2.1 - maximum spacing of transverse reinforcement in tied columns",
-      "n": "ACI 318 limits the spacing to the least of the three governing quantities. Here, 16(20)=320 mm, 48(10)=480 mm, and the least section dimension is 500 mm."
+      "n": "ACI 318 limits the spacing to the least of the three governing quantities. Here, 16(20)=320 mm, 48(10)=480 mm, and the least section dimension is 500 mm.",
+      "scenario": "A building has 26 tied columns, each 500 mm × 500 mm and 7.00 m high, with eight 20 mm bars, 10 mm ties and 40 mm clear cover. Tie wire is 0.40 m per bar intersection (53 m per kg); ties are cut from 6.00 m bars.",
+      "formula": "s = least of 16db, 48dt, least dimension",
+      "steps": [
+        "16 × 20 = 320 mm; 48 × 10 = 480 mm; 500 mm",
+        "Least = 320 mm"
+      ]
     },
     {
       "s": "Concrete Defects",
@@ -287,12 +323,12 @@
     },
     {
       "s": "Slab-on-Ground Reinforcement",
-      "q": "Where should shrinkage-control reinforcement be placed for greatest effectiveness in the slab system described by ACI 360R's cited recommendation?",
+      "q": "Where should shrinkage-control reinforcement sit in a slab on ground for best effect (ACI 360R)?",
       "o": [
-        "At any depth with equal effect",
-        "About one-third of the slab depth from the top",
-        "At the bottom face",
-        "At mid-depth only"
+        "At the bottom face of the slab",
+        "About 1/3 of the depth from the top",
+        "Exactly at mid-depth",
+        "Right under the top surface"
       ],
       "c": 1,
       "ref": "ACI 360R-10, Sec. 9.3.3; ACI 223R - reinforcement location in shrinkage-compensating slabs",
@@ -323,7 +359,13 @@
       ],
       "c": 1,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Metal Reinforcement: Post and Column Reinforcement / Lateral Ties",
-      "n": "One 6.00 m bar yields three 1.88 m ties. The 598 required ties therefore need ceil(598/3)=200 commercial bars."
+      "n": "One 6.00 m bar yields three 1.88 m ties. The 598 required ties therefore need ceil(598/3)=200 commercial bars.",
+      "scenario": "A building has 26 tied columns, each 500 mm × 500 mm and 7.00 m high, with eight 20 mm bars, 10 mm ties and 40 mm clear cover. Tie wire is 0.40 m per bar intersection (53 m per kg); ties are cut from 6.00 m bars.",
+      "formula": "bars = ties / ties per bar",
+      "steps": [
+        "6.00 / 1.88 = 3 ties per bar",
+        "598 / 3 = 199.3 → 200 bars"
+      ]
     },
     {
       "s": "Column Ties",
@@ -336,7 +378,13 @@
       ],
       "c": 1,
       "ref": "ACI 318-19, Sec. 25.7.2.1 - maximum spacing of transverse reinforcement in tied columns",
-      "n": "A 7.00 m height at a maximum 0.32 m spacing requires 22 spaces after rounding upward, which means 23 tie levels."
+      "n": "A 7.00 m height at a maximum 0.32 m spacing requires 22 spaces after rounding upward, which means 23 tie levels.",
+      "scenario": "A building has 26 tied columns, each 500 mm × 500 mm and 7.00 m high, with eight 20 mm bars, 10 mm ties and 40 mm clear cover. Tie wire is 0.40 m per bar intersection (53 m per kg); ties are cut from 6.00 m bars.",
+      "formula": "ties = height / spacing, rounded up, + 1",
+      "steps": [
+        "7.00 / 0.32 = 21.9 → 22 spaces",
+        "22 + 1 = 23 ties"
+      ]
     }
   ]
 }

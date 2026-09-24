@@ -16,21 +16,21 @@
       ],
       "c": 3,
       "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
-      "n": "The source defines Flemish bond as alternating headers and stretchers in the same course.",
+      "n": "Flemish bond: alternating headers and stretchers in the same course.",
       "fig": "f1"
     },
     {
       "s": "Masonry Arches",
       "q": "What geometric feature distinguishes a voussoir from an ordinary rectangular masonry unit?",
       "o": [
-        "It has no bearing surfaces",
-        "Its faces remain parallel",
+        "Its sides stay parallel like a brick",
         "It is always square in plan",
-        "Its side faces converge toward an arch center"
+        "It has no bearing faces at all",
+        "Its sides converge toward the arch center"
       ],
       "c": 3,
       "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
-      "n": "The source describes the sides of a voussoir as converging toward one of the arch centers.",
+      "n": "Sides of a voussoir: converging toward one of the arch centers.",
       "fig": "f2"
     },
     {
@@ -48,16 +48,16 @@
     },
     {
       "s": "Plastering",
-      "q": "For 12 mm plaster in the source table, what sand factor is used?",
+      "q": "For 12 mm cement plaster, how much sand is needed per m²?",
       "o": [
-        "0.020 m³ per m²",
-        "0.012 m³ per m²",
-        "0.016 m³ per m²",
-        "0.008 m³ per m²"
+        "0.020 m³",
+        "0.016 m³",
+        "0.008 m³",
+        "0.012 m³"
       ],
-      "c": 1,
-      "ref": "BLDGTECH - JOE PREBOARD, source items 20–23 and Table 1.0 (substantially reworded)",
-      "n": "Table 1.0 gives 0.012 m³ of sand per square metre for 12 mm plaster."
+      "c": 3,
+      "ref": "Plastering estimates",
+      "n": "A 12 mm coat is 0.012 m³ per m², so the sand factor equals the thickness in metres."
     },
     {
       "s": "Brick and Clay Products",
@@ -70,7 +70,7 @@
       ],
       "c": 2,
       "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
-      "n": "The source identifies this extrusion-and-wire-cut method as the stiff-mud process."
+      "n": "This extrusion-and-wire-cut method: the stiff-mud process."
     },
     {
       "s": "Plastering — Quantity Estimating",
@@ -83,7 +83,13 @@
       ],
       "c": 0,
       "ref": "BLDGTECH - JOE PREBOARD, source items 20–23 and Table 1.0 (substantially reworded)",
-      "n": "Gross wall area is 96.25 m². The total area of doors is 15.75 m² and windows total 11.30 m², leaving 69.20 m²."
+      "n": "Gross wall area is 96.25 m². The total area of doors is 15.75 m² and windows total 11.30 m², leaving 69.20 m².",
+      "scenario": "An exterior wall has a gross area of 96.25 m². Doors total 15.75 m² and windows 11.30 m². It gets 12 mm Class C cement plaster: 0.108 bag of cement and 0.012 m³ of sand per m².",
+      "formula": "net = gross − openings",
+      "steps": [
+        "15.75 + 11.30 = 27.05 m²",
+        "96.25 − 27.05 = 69.20 m²"
+      ]
     },
     {
       "s": "Applied Masonry",
@@ -101,17 +107,22 @@
     },
     {
       "s": "Plastering — Quantity Estimating",
-      "q": "If all openings are set back 0.10 m from the exterior face, how much additional plaster area is created by the reveals/returns?",
+      "q": "A 0.90 m × 2.10 m door opening is recessed 0.10 m. How much reveal plaster is needed on its jambs and head?",
       "o": [
-        "4.85 m²",
-        "6.61 m²",
-        "2.85 m²",
-        "3.36 m²"
+        "0.60 m²",
+        "0.42 m²",
+        "5.10 m²",
+        "0.51 m²"
       ],
-      "c": 1,
-      "ref": "BLDGTECH - JOE PREBOARD, source items 20–23 and Table 1.0 (substantially reworded)",
-      "n": "The reveal area is based on the exposed perimeter of each opening multiplied by the 0.10 m recess depth, with door bottoms excluded.",
-      "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgOTAwIDQ4MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPk9wZW5pbmcgUmV2ZWFsIC8gUmV0dXJuIEFyZWE8L3RleHQ+CjxyZWN0IHg9IjE0MCIgeT0iMTAwIiB3aWR0aD0iNjIwIiBoZWlnaHQ9IjI3MCIgY2xhc3M9ImYiLz4KPHJlY3QgeD0iMzI1IiB5PSIxNzUiIHdpZHRoPSIyNTAiIGhlaWdodD0iMTk1IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjIiLz4KPHBhdGggZD0iTTMyNSAxNzUgTDI4NSAxNDUgTDUzNSAxNDUgTDU3NSAxNzUiIGNsYXNzPSJ0aCIvPgo8cGF0aCBkPSJNMzI1IDE3NSBMMjg1IDE0NSBMMjg1IDM0MCBMMzI1IDM3MCIgY2xhc3M9InRoIi8+CjxwYXRoIGQ9Ik01NzUgMTc1IEw2MTUgMTQ1IEw2MTUgMzQwIEw1NzUgMzcwIiBjbGFzcz0idGgiLz4KPHRleHQgeD0iMzA1IiB5PSI0MjAiIGNsYXNzPSJzIj5SZXZlYWwgZGVwdGggPSAwLjEwIG08L3RleHQ+Cjwvc3ZnPg=="
+      "c": 3,
+      "ref": "Plastering estimates",
+      "n": "The reveal is the exposed perimeter (two jambs and the head; no plaster at the floor) times the recess depth.",
+      "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgOTAwIDQ4MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPk9wZW5pbmcgUmV2ZWFsIC8gUmV0dXJuIEFyZWE8L3RleHQ+CjxyZWN0IHg9IjE0MCIgeT0iMTAwIiB3aWR0aD0iNjIwIiBoZWlnaHQ9IjI3MCIgY2xhc3M9ImYiLz4KPHJlY3QgeD0iMzI1IiB5PSIxNzUiIHdpZHRoPSIyNTAiIGhlaWdodD0iMTk1IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjIiLz4KPHBhdGggZD0iTTMyNSAxNzUgTDI4NSAxNDUgTDUzNSAxNDUgTDU3NSAxNzUiIGNsYXNzPSJ0aCIvPgo8cGF0aCBkPSJNMzI1IDE3NSBMMjg1IDE0NSBMMjg1IDM0MCBMMzI1IDM3MCIgY2xhc3M9InRoIi8+CjxwYXRoIGQ9Ik01NzUgMTc1IEw2MTUgMTQ1IEw2MTUgMzQwIEw1NzUgMzcwIiBjbGFzcz0idGgiLz4KPHRleHQgeD0iMzA1IiB5PSI0MjAiIGNsYXNzPSJzIj5SZXZlYWwgZGVwdGggPSAwLjEwIG08L3RleHQ+Cjwvc3ZnPg==",
+      "formula": "A = (2h + w) × depth",
+      "steps": [
+        "2(2.10) + 0.90 = 5.10 m",
+        "5.10 × 0.10 = 0.51 m²"
+      ]
     },
     {
       "s": "Brickwork",
@@ -124,7 +135,7 @@
       ],
       "c": 2,
       "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
-      "n": "The source identifies this long-edge placement with the end exposed as a rowlock.",
+      "n": "This long-edge placement with the end exposed: a rowlock.",
       "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNDgwIiB2aWV3Qm94PSIwIDAgOTAwIDQ4MCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLmJ7Zm9udC13ZWlnaHQ6NzAwfQoubHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6NDtmaWxsOm5vbmV9IC50aHtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6MjtmaWxsOm5vbmV9Ci5me2ZpbGw6I2VlZjNmYjtzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0gLmYye2ZpbGw6I2Y1ZWVlMztzdHJva2U6IzExMTtzdHJva2Utd2lkdGg6Mn0KLmR7c3Ryb2tlOiM2NjY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheTo3IDY7ZmlsbDpub25lfQo8L3N0eWxlPgo8dGV4dCB4PSI0MCIgeT0iNDIiIGNsYXNzPSJ0IGIiPkJyaWNrIE9yaWVudGF0aW9uPC90ZXh0Pgo8cmVjdCB4PSI5MCIgeT0iMTIwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjEyMCIgY2xhc3M9ImYiLz4KPHRleHQgeD0iMTY1IiB5PSIxOTAiIGNsYXNzPSJzIj5sb25nIGZhY2UgZXhwb3NlZDwvdGV4dD4KPHJlY3QgeD0iNTMwIiB5PSIxMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iMjQwIiBjbGFzcz0iZjIiLz4KPHRleHQgeD0iNDg1IiB5PSIzODUiIGNsYXNzPSJzIj5icmljayBvbiBsb25nIGVkZ2Ugd2l0aCBlbmQgZXhwb3NlZDwvdGV4dD4KPC9zdmc+"
     },
     {
@@ -138,7 +149,13 @@
       ],
       "c": 1,
       "ref": "BLDGTECH - JOE PREBOARD, source items 20–23 and Table 1.0 (substantially reworded)",
-      "n": "The table gives 0.012 m³ of sand per square metre for 12 mm plaster. Multiplying by 69.20 m² gives 0.8304 m³."
+      "n": "Standard factors give 0.012 m³ of sand per square metre for 12 mm plaster. Multiplying by 69.20 m² gives 0.8304 m³.",
+      "scenario": "An exterior wall has a gross area of 96.25 m². Doors total 15.75 m² and windows 11.30 m². It gets 12 mm Class C cement plaster: 0.108 bag of cement and 0.012 m³ of sand per m².",
+      "formula": "sand = area × 0.012",
+      "steps": [
+        "69.20 × 0.012",
+        "= 0.8304 m³"
+      ]
     },
     {
       "s": "Applied Masonry Arches",
@@ -165,7 +182,7 @@
       ],
       "c": 1,
       "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
-      "n": "The source identifies masonry veneer as the masonry skin attached to a separate structural frame.",
+      "n": "Masonry veneer: the masonry skin attached to a separate structural frame.",
       "fig": "f3"
     },
     {
@@ -206,7 +223,7 @@
       ],
       "c": 3,
       "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
-      "n": "The source defines English bond by alternating all-header and all-stretcher courses.",
+      "n": "English bond by alternating all-header and all-stretcher courses.",
       "fig": "f1"
     },
     {
@@ -233,33 +250,39 @@
       ],
       "c": 1,
       "ref": "BLDGTECH - JOE PREBOARD, source items 20–23 and Table 1.0 (substantially reworded)",
-      "n": "69.20 m² × 0.108 bag/m² = 7.47 bags, so the estimate rounds up to 8 bags."
+      "n": "69.20 m² × 0.108 bag/m² = 7.47 bags, so the estimate rounds up to 8 bags.",
+      "scenario": "An exterior wall has a gross area of 96.25 m². Doors total 15.75 m² and windows 11.30 m². It gets 12 mm Class C cement plaster: 0.108 bag of cement and 0.012 m³ of sand per m².",
+      "formula": "bags = area × 0.108",
+      "steps": [
+        "69.20 × 0.108 = 7.47",
+        "Round up: 8 bags"
+      ]
     },
     {
       "s": "Plastering",
-      "q": "Which material quantity in the source estimating table changes directly with plaster thickness but not with mixture class?",
+      "q": "In plaster estimating, which quantity depends on thickness but not on mix class?",
       "o": [
-        "Cement bag factor",
+        "Cement bags",
         "Sand",
-        "Brick count",
-        "Tie wire"
+        "Lime",
+        "Water"
       ],
       "c": 1,
-      "ref": "BLDGTECH - JOE PREBOARD, source items 20–23 and Table 1.0 (substantially reworded)",
-      "n": "In Table 1.0, the sand quantity is listed once for each thickness, while cement usage varies by both thickness and mixture class."
+      "ref": "Plastering estimates",
+      "n": "Sand volume follows the plaster volume (thickness × area); cement per m² changes with both thickness and mix class."
     },
     {
       "s": "Masonry Wall Systems",
       "q": "Why is a movement joint needed where exterior cladding is attached to a structural frame?",
       "o": [
-        "To increase wall dead load",
-        "To eliminate all sealants",
-        "To allow the frame and enclosure to move independently",
-        "To force both layers to move as one"
+        "So the wall carries more dead load",
+        "So sealants are no longer needed",
+        "So frame and cladding move independently",
+        "So both layers move as one unit"
       ],
       "c": 2,
       "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
-      "n": "The source describes soft sealant joints that permit independent movement between the structural frame and exterior skin.",
+      "n": "Soft sealant joints that permit independent movement between the structural frame and exterior skin.",
       "fig": "f3"
     },
     {
@@ -273,7 +296,7 @@
       ],
       "c": 1,
       "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
-      "n": "The source describes rammed earth compacted in forms as pisé."
+      "n": "Rammed earth compacted in forms: pisé."
     },
     {
       "s": "Masonry Arches",
@@ -286,12 +309,12 @@
       ],
       "c": 0,
       "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
-      "n": "The source defines the wedge-shaped arch units as voussoirs.",
+      "n": "Wedge-shaped arch units: voussoirs.",
       "fig": "f2"
     },
     {
       "s": "Masonry Wall Systems",
-      "q": "What is the source's term for the movement joint between a building frame and its cladding skin?",
+      "q": "What is the term for the movement joint between a building frame and its cladding skin?",
       "o": [
         "Working construction joint",
         "Surface divider joint",
@@ -300,7 +323,7 @@
       ],
       "c": 2,
       "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
-      "n": "The source classifies the independent frame-to-cladding attachment as a structure/enclosure joint."
+      "n": "Independent frame-to-cladding attachment: a structure/enclosure joint."
     },
     {
       "s": "Plastering",
@@ -313,7 +336,7 @@
       ],
       "c": 2,
       "ref": "BLDGTECH - JOE PREBOARD, source items 26–27, 93–95, 151, 153–155 (substantially reworded)",
-      "n": "The source identifies sand-free plaster as neat plaster."
+      "n": "Sand-free plaster: neat plaster."
     }
   ]
 }

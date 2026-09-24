@@ -22,9 +22,9 @@
       "s": "Roof Trusses",
       "q": "Which statement best distinguishes Pratt and Howe trusses?",
       "o": [
-        "Their diagonal web directions and typical tension/compression roles are reversed",
-        "Only one can have verticals",
-        "One has no diagonals",
+        "Their diagonals slope in opposite directions",
+        "Only one of them has vertical members",
+        "One of them has no diagonal members",
         "They differ only in roof covering"
       ],
       "c": 0,
@@ -83,7 +83,13 @@
       ],
       "c": 1,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Roofing Materials, corrugated G.I. sheet estimating and Table 6-2",
-      "n": "There are 20 sheet positions across the roof and two lengths are needed in each position."
+      "n": "There are 20 sheet positions across the roof and two lengths are needed in each position.",
+      "scenario": "A roof slope is 6.00 m long and the gutter line 14.00 m. Corrugated GI sheets have a 0.70 m effective width and a 0.30 m end lap; each run uses one 12 ft (3.60 m) and one 9 ft (2.70 m) sheet. Rivets: 26 per 12 ft sheet, 22 per 9 ft sheet.",
+      "formula": "sheets = runs × 2",
+      "steps": [
+        "14.00 / 0.70 = 20 runs",
+        "20 × 2 = 40 sheets"
+      ]
     },
     {
       "s": "Applied Roof Anatomy",
@@ -101,7 +107,7 @@
     },
     {
       "s": "Sheet Metal Roofing",
-      "q": "For corrugated G.I. roofing with a 1½-corrugation side lap in the cited estimating method, what effective width is used?",
+      "q": "For corrugated G.I. roofing with a 1½-corrugation side lap, what effective width is used?",
       "o": [
         "0.70 m",
         "0.60 m",
@@ -110,7 +116,7 @@
       ],
       "c": 0,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Roofing Materials, corrugated G.I. sheet estimating and Table 6-2",
-      "n": "Fajardo's roofing estimating table uses 0.70 m effective width for 1½-corrugation side laps."
+      "n": "Fajardo uses 0.70 m effective width for 1½-corrugation side laps."
     },
     {
       "s": "Roof Trusses",
@@ -165,7 +171,13 @@
       ],
       "c": 1,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Roofing Materials, corrugated G.I. sheet estimating and Table 6-2",
-      "n": "Twenty 12 ft sheets require 520 rivets and twenty 9 ft sheets require 440 rivets, for a total of 960."
+      "n": "Twenty 12 ft sheets require 520 rivets and twenty 9 ft sheets require 440 rivets, for a total of 960.",
+      "scenario": "A roof slope is 6.00 m long and the gutter line 14.00 m. Corrugated GI sheets have a 0.70 m effective width and a 0.30 m end lap; each run uses one 12 ft (3.60 m) and one 9 ft (2.70 m) sheet. Rivets: 26 per 12 ft sheet, 22 per 9 ft sheet.",
+      "formula": "rivets = 20 × 26 + 20 × 22",
+      "steps": [
+        "520 + 440",
+        "= 960 rivets"
+      ]
     },
     {
       "s": "Applied Roof Drainage",
@@ -183,7 +195,7 @@
     },
     {
       "s": "Sheet Metal Roofing",
-      "q": "What standard end-lap range is given in the cited corrugated-G.I. estimating reference?",
+      "q": "What end lap is standard for corrugated GI roofing sheets?",
       "o": [
         "About 5 to 10 cm",
         "About 10 to 15 cm",
@@ -192,7 +204,7 @@
       ],
       "c": 3,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Roofing Materials, corrugated G.I. sheet estimating and Table 6-2",
-      "n": "The cited estimating reference gives a standard end-lap range of approximately 25–30 cm."
+      "n": "Common practice uses a standard end-lap range of approximately 25–30 cm."
     },
     {
       "s": "Roof Trusses",
@@ -211,10 +223,10 @@
       "s": "Roof Assemblies",
       "q": "What is the principal function of roof sheathing?",
       "o": [
-        "To replace all rafters",
-        "To act only as final exposed roofing",
-        "To function only as vapor paint",
-        "To provide a continuous structural deck and base for the roof covering"
+        "The final exposed roof finish",
+        "A replacement for the rafters",
+        "A vapor coating on the purlins",
+        "A continuous deck under the roofing"
       ],
       "c": 3,
       "ref": "Francis D.K. Ching, Building Construction Illustrated - roof framing, sheathing, underlayment, eaves, rakes and drainage",
@@ -237,16 +249,21 @@
     },
     {
       "s": "Corrugated G.I. Roofing Estimating",
-      "q": "For this 6.00 m slope, approximately how many purlin lines are required when the selected sheet lengths follow the tabulated spacing guidance?",
+      "q": "Purlins are spaced 0.60 m on center along a 6.00 m slope, with one at each end. How many purlin lines are needed?",
       "o": [
-        "8 purlin lines",
-        "12 purlin lines",
-        "10 purlin lines",
-        "9 purlin lines"
+        "10",
+        "11",
+        "12",
+        "9"
       ],
-      "c": 2,
-      "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Roofing Materials, corrugated G.I. sheet estimating and Table 6-2",
-      "n": "The estimating-table spacing for the selected 9 ft and 12 ft sheets leads to about ten supporting purlin lines over the 6.00 m slope."
+      "c": 1,
+      "ref": "Roofing estimates",
+      "n": "Lines = spaces + 1.",
+      "formula": "lines = slope / spacing + 1",
+      "steps": [
+        "6.00 / 0.60 = 10 spaces",
+        "10 + 1 = 11 lines"
+      ]
     },
     {
       "s": "Corrugated G.I. Roofing Estimating",
@@ -259,7 +276,13 @@
       ],
       "c": 0,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Roofing Materials, corrugated G.I. sheet estimating and Table 6-2",
-      "n": "At 0.70 m effective width per sheet, 14.00 m requires exactly 20 sheets in each row."
+      "n": "At 0.70 m effective width per sheet, 14.00 m requires exactly 20 sheets in each row.",
+      "scenario": "A roof slope is 6.00 m long and the gutter line 14.00 m. Corrugated GI sheets have a 0.70 m effective width and a 0.30 m end lap; each run uses one 12 ft (3.60 m) and one 9 ft (2.70 m) sheet. Rivets: 26 per 12 ft sheet, 22 per 9 ft sheet.",
+      "formula": "sheets = gutter length / effective width",
+      "steps": [
+        "14.00 / 0.70",
+        "= 20 sheets"
+      ]
     },
     {
       "s": "Sheet Metal Roofing",
@@ -339,7 +362,8 @@
       ],
       "c": 1,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Roofing Materials, corrugated G.I. sheet estimating and Table 6-2",
-      "n": "A 12 ft sheet is about 3.60 m and a 9 ft sheet about 2.70 m. Their combined nominal length is 6.30 m; subtracting the 0.30 m lap gives 6.00 m effective coverage."
+      "n": "A 12 ft sheet is about 3.60 m and a 9 ft sheet about 2.70 m. Their combined nominal length is 6.30 m; subtracting the 0.30 m lap gives 6.00 m effective coverage.",
+      "scenario": "A roof slope is 6.00 m long and the gutter line 14.00 m. Corrugated GI sheets have a 0.70 m effective width and a 0.30 m end lap; each run uses one 12 ft (3.60 m) and one 9 ft (2.70 m) sheet. Rivets: 26 per 12 ft sheet, 22 per 9 ft sheet."
     }
   ]
 }

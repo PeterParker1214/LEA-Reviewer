@@ -43,7 +43,13 @@
       ],
       "c": 2,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - lumber, board-foot, partition and plywood quantity estimating",
-      "n": "Area is width multiplied by height: 5.80 × 2.80 = 16.24 m²."
+      "n": "Area is width multiplied by height: 5.80 × 2.80 = 16.24 m².",
+      "scenario": "A stud partition is 5.80 m long and 2.80 m high, framed with 2 in × 3 in lumber in 10 ft lengths and sheathed on both faces with 1.20 m × 2.40 m plywood.",
+      "formula": "A = L × H",
+      "steps": [
+        "5.80 × 2.80",
+        "= 16.24 m²"
+      ]
     },
     {
       "s": "Applied Lumber Behavior",
@@ -117,7 +123,7 @@
       "s": "Wood Preservation",
       "q": "What is the Bethell process?",
       "o": [
-        "A full-cell pressure treatment process for wood preservatives",
+        "A full-cell pressure treatment",
         "A kiln-drying schedule",
         "A finger-jointing process",
         "A quarter-sawing method"
@@ -157,9 +163,9 @@
       "s": "Door Hardware",
       "q": "Which hinge arrangement permits a service door to swing in both directions and return by gravity?",
       "o": [
-        "Continuous hinge",
-        "Butt hinge",
-        "Drop-leaf hinge",
+        "Continuous piano hinge",
+        "Single-acting butt hinge",
+        "Concealed cup hinge",
         "Double-acting gravity hinge"
       ],
       "c": 3,
@@ -168,7 +174,7 @@
     },
     {
       "s": "Wood Partition Estimating",
-      "q": "Using the stated tabulated factor of 8.060 bd ft/m², what estimated framing quantity results?",
+      "q": "Using a factor of 8.060 bd ft/m², what estimated framing quantity results?",
       "o": [
         "About 95 bd ft",
         "About 120 bd ft",
@@ -177,7 +183,13 @@
       ],
       "c": 2,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - lumber, board-foot, partition and plywood quantity estimating",
-      "n": "The tabular estimate is 16.24 × 8.060 = 130.89 board feet, or about 131 board feet."
+      "n": "The tabular estimate is 16.24 × 8.060 = 130.89 board feet, or about 131 board feet.",
+      "scenario": "A stud partition is 5.80 m long and 2.80 m high, framed with 2 in × 3 in lumber in 10 ft lengths and sheathed on both faces with 1.20 m × 2.40 m plywood.",
+      "formula": "bd ft = area × 8.060",
+      "steps": [
+        "16.24 × 8.060 = 130.9",
+        "About 131 bd ft"
+      ]
     },
     {
       "s": "Wood Partition Estimating",
@@ -190,7 +202,8 @@
       ],
       "c": 1,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - lumber, board-foot, partition and plywood quantity estimating",
-      "n": "Counting the vertical studs and horizontal nailers gives a total framing length that requires 24 pieces of 10 ft stock after whole-piece rounding."
+      "n": "Counting the vertical studs and horizontal nailers gives a total framing length that requires 24 pieces of 10 ft stock after whole-piece rounding.",
+      "scenario": "A stud partition is 5.80 m long and 2.80 m high, framed with 2 in × 3 in lumber in 10 ft lengths and sheathed on both faces with 1.20 m × 2.40 m plywood."
     },
     {
       "s": "Lumber Drying",
@@ -223,10 +236,10 @@
       "s": "Lumber Drying",
       "q": "Why is lumber seasoned before installation?",
       "o": [
-        "To reduce moisture-related dimensional change and improve service performance",
-        "To remove the grain direction",
-        "To convert softwood into hardwood",
-        "To make all wood completely waterproof"
+        "To limit shrinking and swelling in use",
+        "To change the grain direction",
+        "To turn softwood into hardwood",
+        "To make the wood fully waterproof"
       ],
       "c": 0,
       "ref": "USDA Forest Products Laboratory, Wood Handbook: Wood as an Engineering Material (2021), Chs. 3, 4, 6, 13",
@@ -311,7 +324,13 @@
       ],
       "c": 2,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - lumber, board-foot, partition and plywood quantity estimating",
-      "n": "Both faces total 32.48 m². One sheet covers 2.88 m², so 32.48/2.88 = 11.28 sheets and the count rounds up to 12."
+      "n": "Both faces total 32.48 m². One sheet covers 2.88 m², so 32.48/2.88 = 11.28 sheets and the count rounds up to 12.",
+      "scenario": "A stud partition is 5.80 m long and 2.80 m high, framed with 2 in × 3 in lumber in 10 ft lengths and sheathed on both faces with 1.20 m × 2.40 m plywood.",
+      "formula": "sheets = both faces / sheet area",
+      "steps": [
+        "2 × 16.24 = 32.48 m²; sheet = 2.88 m²",
+        "32.48 / 2.88 = 11.3 → 12 sheets"
+      ]
     },
     {
       "s": "Wood Properties",
@@ -331,9 +350,9 @@
       "q": "What is a rabbet?",
       "o": [
         "A diagonal scarf connection",
-        "A projecting tongue only",
+        "A projecting tongue on an edge",
         "A round hole through a member",
-        "A rectangular recess cut along the edge of a member"
+        "A rectangular recess along an edge"
       ],
       "c": 3,
       "ref": "Architectural Woodwork Institute (AWI), Glossary and ANSI/AWI woodwork standards",

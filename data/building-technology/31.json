@@ -10,9 +10,9 @@
       "q": "Why can fast-tracking reduce schedule duration?",
       "o": [
         "It guarantees no changes",
-        "It eliminates coordination",
+        "It removes coordination",
         "It removes all approvals",
-        "Later construction packages can start while later design packages are still being completed"
+        "Construction starts before design ends"
       ],
       "c": 3,
       "ref": "AIA/CSI project-delivery terminology",
@@ -36,10 +36,10 @@
       "s": "Specifications",
       "q": "Why are defined operative words important in specifications?",
       "o": [
-        "They clarify responsibility, obligation, permission, and intent",
+        "They fix duties, permissions and intent",
         "They set tax rates",
-        "They determine structural loads",
-        "They replace drawings"
+        "They set structural loads",
+        "They replace the drawings"
       ],
       "c": 0,
       "ref": "CSI Construction Specifications Practice Guide",
@@ -64,8 +64,8 @@
       "o": [
         "Isometric has no axes",
         "They are identical",
-        "Dimetric is perspective",
-        "Dimetric uses two equal axis scales, while isometric uses equal scale on all three principal axes"
+        "Dimetric is a perspective",
+        "Dimetric: two equal axes; isometric: three"
       ],
       "c": 3,
       "ref": "Architectural graphics terminology",
@@ -76,10 +76,10 @@
       "s": "Specifications",
       "q": "What is a proprietary specification?",
       "o": [
-        "A specification that identifies a particular product, manufacturer, system, or process",
-        "A specification containing no product information",
+        "One naming a specific product or maker",
+        "One with no product information",
         "A cost estimate only",
-        "A purely verbal instruction"
+        "A verbal instruction only"
       ],
       "c": 0,
       "ref": "CSI Construction Specifications Practice Guide",
@@ -90,9 +90,9 @@
       "q": "What is topping out?",
       "o": [
         "Closing the punch list",
-        "Placing the final major structural member at the top of a building frame",
-        "Excavating the footing",
-        "Applying the final coat of paint"
+        "Placing the last top structural member",
+        "Excavating the footings",
+        "Applying the final paint coat"
       ],
       "c": 1,
       "ref": "Cyril M. Harris, Dictionary of Architecture and Construction",
@@ -130,10 +130,10 @@
       "s": "Project Cost",
       "q": "What is life-cycle cost?",
       "o": [
-        "Only the architect's fee",
-        "Only the land cost",
-        "Only the bid price",
-        "The total cost of owning, operating, maintaining, and disposing of a facility over its useful life"
+        "The architect's fee only",
+        "The land cost only",
+        "The bid price only",
+        "Total cost over the whole life"
       ],
       "c": 3,
       "ref": "Whole-building life-cycle cost terminology",
@@ -143,10 +143,10 @@
       "s": "Project Delivery",
       "q": "What is fast-track delivery?",
       "o": [
-        "Completing all design before bidding",
-        "Using only one contractor forever",
-        "Eliminating design documentation",
-        "Overlapping design and construction phases to shorten total project duration"
+        "Finishing all design before bidding",
+        "Using one contractor forever",
+        "Skipping design documents",
+        "Overlapping design and construction"
       ],
       "c": 3,
       "ref": "AIA/CSI project-delivery terminology",
@@ -157,9 +157,9 @@
       "s": "Scheduling",
       "q": "Which type of network logic is shown when Activity B cannot start until Activity A is complete?",
       "o": [
-        "Finish-to-start sequential logic",
-        "Parallel logic",
-        "Start-to-start only",
+        "Finish-to-start",
+        "Start-to-start",
+        "Finish-to-finish",
         "No dependency"
       ],
       "c": 0,
@@ -223,9 +223,9 @@
       "s": "Specifications",
       "q": "In construction specifications, what does 'install' generally mean?",
       "o": [
-        "Place in position, incorporate into the Work, adjust, clean, and make ready for use",
+        "Place, adjust, clean and ready for use",
         "Purchase but do not place",
-        "Design the entire building",
+        "Design the whole building",
         "Deliver to the site only"
       ],
       "c": 0,
@@ -248,7 +248,7 @@
     },
     {
       "s": "Concrete Records",
-      "q": "Under legacy ACI 318 provisions commonly cited in older construction references, how long were concrete material/test records required to be retained after project completion?",
+      "q": "Under legacy ACI 318 provisions (older editions), how long were concrete material/test records required to be retained after project completion?",
       "o": [
         "1 year",
         "At least 2 years",
@@ -265,7 +265,7 @@
       "o": [
         "Strict sequential logic",
         "No network logic",
-        "Overlapping or restraining activity logic",
+        "Overlapping (lag or lead) logic",
         "Post-occupancy logic"
       ],
       "c": 2,

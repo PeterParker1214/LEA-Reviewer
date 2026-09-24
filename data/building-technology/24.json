@@ -11,9 +11,9 @@
       "q": "What is the toe of a weld?",
       "o": [
         "The deepest point of the joint",
-        "The backing material",
+        "The backing bar under the joint",
         "The centerline of the electrode",
-        "The junction between the weld face and base metal"
+        "Where the weld face meets base metal"
       ],
       "c": 3,
       "ref": "AWS A3.0, Standard Welding Terms and Definitions; AWS A2.4, Standard Symbols for Welding, Brazing, and Nondestructive Examination",
@@ -65,9 +65,9 @@
       "q": "What is a gusset plate?",
       "o": [
         "A floor finish plate",
-        "A plate used to connect multiple structural members at a joint",
-        "A roof membrane",
-        "A hollow steel tube"
+        "A plate joining members at a joint",
+        "A base plate under a column",
+        "A stiffener on a beam web"
       ],
       "c": 1,
       "ref": "AISC Steel Construction Manual and AISC structural steel terminology",
@@ -78,10 +78,10 @@
       "s": "Steel Framing Systems",
       "q": "Why are moment connections important in a moment-resisting frame?",
       "o": [
-        "They transfer bending moments between beams and columns",
-        "They eliminate all axial forces",
+        "They carry bending between beam and column",
+        "They remove all axial forces",
         "They replace the floor diaphragm",
-        "They make columns nonstructural"
+        "They let columns rotate freely"
       ],
       "c": 0,
       "ref": "AISC Steel Construction Manual and AISC structural steel terminology",
@@ -131,10 +131,10 @@
       "s": "Weld Terminology",
       "q": "What is the root of a weld?",
       "o": [
-        "The outermost edge of the weld face",
-        "The entire visible bead",
-        "The portion of the joint where the members are closest to each other and where the weld begins at the deepest point",
-        "The backing plate itself"
+        "The outer edge of the weld face",
+        "The whole visible weld bead",
+        "Where the parts are closest; weld starts there",
+        "The backing plate under the joint"
       ],
       "c": 2,
       "ref": "AWS A3.0, Standard Welding Terms and Definitions; AWS A2.4, Standard Symbols for Welding, Brazing, and Nondestructive Examination",
@@ -198,10 +198,10 @@
       "s": "Structural Steel Shapes",
       "q": "Which shapes are commonly produced as HSS?",
       "o": [
-        "Only wide-flange beams",
-        "Square, rectangular, and round sections",
-        "Only sheet piles",
-        "Only solid round bars"
+        "Wide-flange shapes only",
+        "Square, rectangular and round",
+        "Channels and angles only",
+        "Solid round bars only"
       ],
       "c": 1,
       "ref": "ASTM A500/A500M - Cold-Formed Welded and Seamless Carbon Steel Structural Tubing",
@@ -251,10 +251,10 @@
       "s": "Metal Finishes",
       "q": "What is the principal purpose of anodizing architectural aluminum?",
       "o": [
-        "To remove the oxide layer permanently",
-        "To convert aluminum into steel",
-        "To make the metal combustible",
-        "To improve surface durability and corrosion resistance while providing a controlled finish"
+        "Removing the oxide layer for good",
+        "Turning the surface into steel",
+        "Making the metal easy to weld",
+        "A harder, corrosion-resistant finish"
       ],
       "c": 3,
       "ref": "Aluminum Association, Aluminum Design Manual / anodizing terminology",
@@ -330,10 +330,10 @@
       "s": "Steel Fabrication",
       "q": "What is the principal purpose of a shop drawing in structural steelwork?",
       "o": [
-        "To serve only as a marketing image",
-        "To specify interior finishes",
-        "To replace the structural design calculations entirely",
-        "To communicate fabrication details, dimensions, connections, and piece information"
+        "A marketing image of the frame",
+        "The interior finish schedule",
+        "The design calculations",
+        "Fabrication details for each piece"
       ],
       "c": 3,
       "ref": "AISC Steel Construction Manual and AISC structural steel terminology",
@@ -343,10 +343,10 @@
       "s": "Welding Symbols",
       "q": "What is the purpose of backing at the root side of a groove weld?",
       "o": [
-        "To eliminate all joint preparation",
-        "To replace the electrode",
-        "To serve only as a decorative plate",
-        "To support molten weld metal and help obtain sound root fusion"
+        "To skip all joint preparation",
+        "To act as a spare electrode",
+        "To serve only as trim",
+        "To hold weld metal and fuse the root"
       ],
       "c": 3,
       "ref": "AWS A3.0, Standard Welding Terms and Definitions; AWS A2.4, Standard Symbols for Welding, Brazing, and Nondestructive Examination",
@@ -385,10 +385,10 @@
       "s": "Composite Steel Construction",
       "q": "What is the primary structural function of headed shear studs in a composite floor system?",
       "o": [
-        "To make the concrete slab and steel beam act compositely by transferring interface shear",
-        "To suspend the ceiling",
-        "To support masonry veneer only",
-        "To replace beam web stiffeners"
+        "Transfer shear so slab and beam act together",
+        "Hang the ceiling from the beam",
+        "Carry masonry veneer only",
+        "Replace the web stiffeners"
       ],
       "c": 0,
       "ref": "AISC composite construction guidance - headed steel stud anchors",
@@ -399,8 +399,8 @@
       "s": "Fasteners",
       "q": "What is a set screw?",
       "o": [
-        "A screw, usually headless, used to secure one component relative to another",
-        "A roofing nail",
+        "A usually headless screw that locks a part",
+        "A roofing nail with a washer",
         "A headed carriage bolt",
         "A masonry anchor plate"
       ],

@@ -13,10 +13,10 @@
       "s": "Beam Terminology",
       "q": "What is a spandrel beam?",
       "o": [
-        "A beam buried only in soil",
-        "A vertical column",
-        "A beam running along the exterior edge of a floor or roof",
-        "A stair stringer"
+        "A beam buried in the soil",
+        "A beam at the roof ridge",
+        "A beam along the edge of a floor",
+        "A beam carrying a stair"
       ],
       "c": 2,
       "ref": "Francis D.K. Ching, Building Construction Illustrated - structural systems, retaining walls, frames and slabs",
@@ -28,8 +28,8 @@
       "o": [
         "It cannot carry vertical shear",
         "It is used only in concrete",
-        "It does not provide the rotational restraint needed to develop the cantilever end moment",
-        "It is too heavy"
+        "It cannot resist the end moment",
+        "It is too heavy to install"
       ],
       "c": 2,
       "ref": "AISC Steel Construction Manual - beams, columns, moment connections and structural stability",
@@ -39,9 +39,9 @@
       "s": "Building Levels",
       "q": "What is a mezzanine?",
       "o": [
-        "An intermediate partial floor between main stories",
-        "A roof ridge",
-        "A full basement",
+        "A partial floor between two stories",
+        "A roof ridge line",
+        "A full basement level",
         "A retaining wall footing"
       ],
       "c": 0,
@@ -66,10 +66,10 @@
       "s": "Structural Conceptualization",
       "q": "What does structural conceptualization primarily involve?",
       "o": [
-        "Choosing paint colors only",
-        "Selecting and arranging structural systems and elements to satisfy function, safety, constructability, and architectural intent",
-        "Calculating only project taxes",
-        "Preparing only shop drawings"
+        "Choosing the paint colors",
+        "Choosing and arranging the structural system",
+        "Calculating the project taxes",
+        "Preparing the shop drawings"
       ],
       "c": 1,
       "ref": "Daniel L. Schodek et al., Structures - structural systems, space frames, folded plates and diaphragms",
@@ -217,10 +217,10 @@
       "s": "Applied Structural Stability",
       "q": "A long steel beam reaches instability by lateral movement and twist before the section yields in flexure. What failure mode occurred?",
       "o": [
-        "Bearing failure",
+        "Web crippling",
         "Lateral-torsional buckling",
-        "Plastic shrinkage",
-        "Punching shear"
+        "Local flange buckling",
+        "Shear yielding"
       ],
       "c": 1,
       "ref": "AISC guidance on lateral-torsional buckling and slender structural members",
@@ -282,10 +282,10 @@
       "s": "Plate Structures",
       "q": "What gives a folded-plate roof much of its stiffness?",
       "o": [
-        "Roof membrane only",
-        "The geometric depth and rigidity created by the folds",
-        "Paint thickness",
-        "Surface color"
+        "The roof membrane alone",
+        "The depth created by the folds",
+        "The paint thickness",
+        "The surface color"
       ],
       "c": 1,
       "ref": "Daniel L. Schodek et al., Structures - structural systems, space frames, folded plates and diaphragms",
@@ -296,10 +296,10 @@
       "s": "Structural Conceptualization",
       "q": "Which consideration is fundamental when selecting an initial structural system?",
       "o": [
-        "A clear load path from applied loads to the foundations",
-        "Decorative naming only",
-        "Logo placement",
-        "Furniture color only"
+        "A clear load path to the foundations",
+        "The shape of the roof line",
+        "The color of the cladding",
+        "The furniture layout"
       ],
       "c": 0,
       "ref": "ASCE/SEI 7 - Minimum Design Loads and Associated Criteria for Buildings and Other Structures",
@@ -309,10 +309,10 @@
       "s": "Lateral Structural Behavior",
       "q": "What is interstory drift?",
       "o": [
-        "Roof slope",
+        "The slope of the roof",
         "The total building height",
-        "Vertical shortening of a column",
-        "The relative horizontal displacement between two adjacent floors"
+        "Shortening of a column",
+        "Sideways movement between two floors"
       ],
       "c": 3,
       "ref": "ASCE/SEI 7 - Minimum Design Loads and Associated Criteria for Buildings and Other Structures",
@@ -337,7 +337,7 @@
       "q": "What is a structural diaphragm?",
       "o": [
         "A decorative ceiling only",
-        "A floor or roof plane that transfers in-plane lateral forces to vertical resisting elements",
+        "A floor or roof carrying lateral loads",
         "A window frame",
         "A foundation drain"
       ],
@@ -391,10 +391,10 @@
       "s": "Structural Stability",
       "q": "What is a slender column?",
       "o": [
-        "A column governed only by concrete color",
-        "A short block with no instability risk",
+        "One governed by concrete color",
+        "A short block that cannot buckle",
         "A nonstructural mullion",
-        "A column whose capacity is significantly influenced by buckling"
+        "One whose strength buckling reduces"
       ],
       "c": 3,
       "ref": "AISC Steel Construction Manual - beams, columns, moment connections and structural stability",
@@ -419,9 +419,9 @@
       "s": "Structural Stability",
       "q": "Why is lateral bracing important for the compression flange of a steel beam?",
       "o": [
-        "It restrains lateral movement and twist, increasing resistance to lateral-torsional buckling",
-        "It changes steel into concrete",
-        "It acts only as paint support",
+        "It resists lateral-torsional buckling",
+        "It turns steel into concrete",
+        "It only holds up the paint",
         "It removes all bending moment"
       ],
       "c": 0,
@@ -432,10 +432,10 @@
       "s": "Space Frames",
       "q": "Why are triangulated space frames structurally efficient?",
       "o": [
-        "They require no support conditions",
+        "They need no supports",
         "They rely only on bending",
-        "Triangulation provides geometric stability and distributes loads through axial member forces",
-        "They eliminate all joints"
+        "Triangles are stable; members carry axial force",
+        "They have no joints"
       ],
       "c": 2,
       "ref": "Daniel L. Schodek et al., Structures - structural systems, space frames, folded plates and diaphragms",
