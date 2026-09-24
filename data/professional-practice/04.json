@@ -8,8 +8,16 @@
       "P9,000,000"
     ],
     "c": 0,
-    "n": "Group 2 DAEDS bracket for P100M—P200M: P5,500,000 + 4% of excess over P100M. Excess = P50M; 4% × P50M = P2,000,000. Total = P5,500,000 + P2,000,000 = P7,500,000. [Source: Sec. 6.3, Group 2 DAEDS table]",
-    "hidden": false
+    "n": "Group 2 DAEDS bracket for P100M—P200M: P5,500,000 + 4% of excess over P100M. Excess = P50M; 4% × P50M = P2,000,000. Total = P5,500,000 + P2,000,000 = P7,500,000.",
+    "hidden": false,
+    "ref": "UAP-IAPOA Doc. 210, Sec. 6.3, Group 2 DAEDS table",
+    "steps": [
+      "Group 2 DAEDS bracket for P100M—P200M: P5,500,000 + 4% of excess over P100M.",
+      "Excess = P50M;",
+      "4% × P50M = P2,000,000.",
+      "Total = P5,500,000 + P2,000,000 = P7,500,000."
+    ],
+    "formula": "Fee = base + rate × excess"
   },
   {
     "q": "A Group 3 hospital project carries a PCC of P300,000,000. Applying the DAEDS bracket of P11,500,000 plus 4% of the excess over P200.0M, what Professional Fee results?",
@@ -20,8 +28,16 @@
       "P13,500,000"
     ],
     "c": 0,
-    "n": "Group 3 DAEDS bracket for P200M—P500M: P11,500,000 + 4% of excess over P200M. Excess = P100M; 4% × P100M = P4,000,000. Total = P11,500,000 + P4,000,000 = P15,500,000. [Source: Sec. 6.3, Group 3 DAEDS table]",
-    "hidden": false
+    "n": "Group 3 DAEDS bracket for P200M—P500M: P11,500,000 + 4% of excess over P200M. Excess = P100M; 4% × P100M = P4,000,000. Total = P11,500,000 + P4,000,000 = P15,500,000.",
+    "hidden": false,
+    "ref": "UAP-IAPOA Doc. 210, Sec. 6.3, Group 3 DAEDS table",
+    "steps": [
+      "Group 3 DAEDS bracket for P200M—P500M: P11,500,000 + 4% of excess over P200M.",
+      "Excess = P100M;",
+      "4% × P100M = P4,000,000.",
+      "Total = P11,500,000 + P4,000,000 = P15,500,000."
+    ],
+    "formula": "Fee = base + rate × excess"
   },
   {
     "q": "An industrial plant (Group 1) is contracted under DADS with a PCC of P120,000,000. Applying the DADS bracket of P2,700,000 plus 1.8% of the excess over P100.0M, what Professional Fee results?",
@@ -32,8 +48,16 @@
       "P3,600,000"
     ],
     "c": 1,
-    "n": "Group 1 DADS bracket for P100M—P200M: P2,700,000 + 1.8% of excess over P100M. Excess = P20M; 1.8% × P20M = P360,000. Total = P2,700,000 + P360,000 = P3,060,000. [Source: Sec. 6.3, Group 1 DADS table]",
-    "hidden": false
+    "n": "Group 1 DADS bracket for P100M—P200M: P2,700,000 + 1.8% of excess over P100M. Excess = P20M; 1.8% × P20M = P360,000. Total = P2,700,000 + P360,000 = P3,060,000.",
+    "hidden": false,
+    "ref": "UAP-IAPOA Doc. 210, Sec. 6.3, Group 1 DADS table",
+    "steps": [
+      "Group 1 DADS bracket for P100M—P200M: P2,700,000 + 1.8% of excess over P100M.",
+      "Excess = P20M;",
+      "1.8% × P20M = P360,000.",
+      "Total = P2,700,000 + P360,000 = P3,060,000."
+    ],
+    "formula": "Fee = base + rate × excess"
   },
   {
     "q": "A single-detached residence (Group 4) has a PCC of P20,000,000 and is contracted under DADS at a flat 6% of PCC. What Professional Fee results?",
@@ -44,8 +68,14 @@
       "P1,600,000"
     ],
     "c": 0,
-    "n": "Group 4 DADS is a flat 6% of PCC (architecture-only scope). 6% × P20,000,000 = P1,200,000. [Source: Sec. 6.3, Group 4]",
-    "hidden": false
+    "n": "Group 4 DADS is a flat 6% of PCC (architecture-only scope). 6% × P20,000,000 = P1,200,000.",
+    "hidden": false,
+    "ref": "UAP-IAPOA Doc. 210, Sec. 6.3, Group 4",
+    "steps": [
+      "Group 4 DADS is a flat 6% of PCC (architecture-only scope).",
+      "6% × P20,000,000 = P1,200,000."
+    ],
+    "formula": "Fee = rate × base"
   },
   {
     "q": "A developer constructs 4 identical retail branches (Group 6, Repetitive Construction) from the same unamended plans. Given a full RPF of P5,000,000 for one such building, what fee applies to the 4th building?",
@@ -56,8 +86,14 @@
       "P1,000,000"
     ],
     "c": 1,
-    "n": "Under Group 6, the 4th building and succeeding units are billed at 30% of the RPF for that building type. 30% × P5,000,000 = P1,500,000. [Source: Sec. 6.3, Group 6]",
-    "hidden": false
+    "n": "Under Group 6, the 4th building and succeeding units are billed at 30% of the RPF for that building type. 30% × P5,000,000 = P1,500,000.",
+    "hidden": false,
+    "ref": "UAP-IAPOA Doc. 210, Sec. 6.3, Group 6",
+    "steps": [
+      "Under Group 6, the 4th building and succeeding units are billed at 30% of the RPF for that building type.",
+      "30% × P5,000,000 = P1,500,000."
+    ],
+    "formula": "Fee = rate × base"
   },
   {
     "q": "An existing office building (Group 2) is undergoing renovation, with the renovation work priced at a PCC of P40,000,000, against a base DAEDS rate of 6% for Group 2 (PCC ≤ P50M). After the Group 9 renovation surcharge is applied, what total Professional Fee results?",
@@ -68,8 +104,14 @@
       "P2,400,000"
     ],
     "c": 2,
-    "n": "The building is a Group 2 type (base DAEDS rate 6%), and renovation work under Group 9 is surcharged 150% of the applicable RPF: 6% × 1.5 = 9%. 9% × P40,000,000 = P3,600,000. [Source: Sec. 6.3, Groups 2 and 9]",
-    "hidden": false
+    "n": "The building is a Group 2 type (base DAEDS rate 6%), and renovation work under Group 9 is surcharged 150% of the applicable RPF: 6% × 1.5 = 9%. 9% × P40,000,000 = P3,600,000.",
+    "hidden": false,
+    "ref": "UAP-IAPOA Doc. 210, Sec. 6.3, Groups 2 and 9",
+    "steps": [
+      "The building is a Group 2 type (base DAEDS rate 6%), and renovation work under Group 9 is surcharged 150% of the applicable RPF: 6% × 1.5 = 9%.",
+      "9% × P40,000,000 = P3,600,000."
+    ],
+    "formula": "Fee = rate × base"
   },
   {
     "q": "An Architect is called as an expert witness for 3 scheduled court hearings, of which 2 are postponed and never take place. What is the minimum total fee owed across all 3 appearances?",
@@ -80,8 +122,14 @@
       "P10,000"
     ],
     "c": 1,
-    "n": "As an expert witness, the fee is not less than P5,000.00 per appearance, regardless of whether the scheduled hearing took place. 3 appearances × P5,000 = P15,000. [Source: Sec. 6.3, Group 10]",
-    "hidden": false
+    "n": "As an expert witness, the fee is not less than P5,000.00 per appearance, regardless of whether the scheduled hearing took place. 3 appearances × P5,000 = P15,000.",
+    "hidden": false,
+    "ref": "UAP-IAPOA Doc. 210, Sec. 6.3, Group 10",
+    "steps": [
+      "As an expert witness, the fee is not less than P5,000.00 per appearance, regardless of whether the scheduled hearing took place.",
+      "3 appearances × P5,000 = P15,000."
+    ],
+    "formula": "Fee = rate × base"
   },
   {
     "q": "A project's total Professional Fee (PF) comes to P10,000,000. What cumulative amount is owed to the Architect once the Schematic Design phase is complete?",
@@ -92,8 +140,14 @@
       "P1,500,000"
     ],
     "c": 0,
-    "n": "Cumulative payment after Schematic Design completion is 20% of PF (5% signing + 15% schematic). 20% × P10,000,000 = P2,000,000. [Source: Sec. 6.4]",
-    "hidden": false
+    "n": "Cumulative payment after Schematic Design completion is 20% of PF (5% signing + 15% schematic). 20% × P10,000,000 = P2,000,000.",
+    "hidden": false,
+    "ref": "UAP-IAPOA Doc. 210, Sec. 6.4",
+    "steps": [
+      "Cumulative payment after Schematic Design completion is 20% of PF (5% signing + 15% schematic).",
+      "20% × P10,000,000 = P2,000,000."
+    ],
+    "formula": "Fee = rate × base"
   },
   {
     "q": "A project's total PF is P8,000,000. Within 15 days of the contract being awarded to the winning Constructor, what cumulative amount should the Architect have received?",
@@ -104,8 +158,14 @@
       "P8,000,000"
     ],
     "c": 1,
-    "n": "Within 15 days after award to the winning Constructor, cumulative payment reaches 90% of PF (based on the winning bid price). 90% × P8,000,000 = P7,200,000. [Source: Sec. 6.4]",
-    "hidden": false
+    "n": "Within 15 days after award to the winning Constructor, cumulative payment reaches 90% of PF (based on the winning bid price). 90% × P8,000,000 = P7,200,000.",
+    "hidden": false,
+    "ref": "UAP-IAPOA Doc. 210, Sec. 6.4",
+    "steps": [
+      "Within 15 days after award to the winning Constructor, cumulative payment reaches 90% of PF (based on the winning bid price).",
+      "90% × P8,000,000 = P7,200,000."
+    ],
+    "formula": "Fee = rate × base"
   },
   {
     "q": "Under the Unit Cost Method, an office building has 5,000 sqm of GFA priced at a historical PCC of P25,000/sqm with a 5% PCC fee, plus 1,000 sqm of non-GFA area billed at 50% of the GFA rate. What is the TOTAL fee (GFA plus non-GFA)?",
@@ -116,8 +176,15 @@
       "P6,875,000"
     ],
     "c": 3,
-    "n": "GFA fee: P25,000 × 0.05 = P1,250/sqm × 5,000 sqm = P6,250,000. Non-GFA fee (50% of GFA rate): P625/sqm × 1,000 sqm = P625,000. Total = P6,250,000 + P625,000 = P6,875,000. [Source: Sec. 4.1.2, Unit Cost Method]",
-    "hidden": false
+    "n": "GFA fee: P25,000 × 0.05 = P1,250/sqm × 5,000 sqm = P6,250,000. Non-GFA fee (50% of GFA rate): P625/sqm × 1,000 sqm = P625,000. Total = P6,250,000 + P625,000 = P6,875,000.",
+    "hidden": false,
+    "ref": "UAP-IAPOA Doc. 210, Sec. 4.1.2, Unit Cost Method",
+    "steps": [
+      "GFA fee: P25,000 × 0.05 = P1,250/sqm × 5,000 sqm = P6,250,000.",
+      "Non-GFA fee (50% of GFA rate): P625/sqm × 1,000 sqm = P625,000.",
+      "Total = P6,250,000 + P625,000 = P6,875,000."
+    ],
+    "formula": "Fee = rate × base"
   },
   {
     "q": "Under Group 7 (Housing Project, DAEDS), a housing project comprises 15 identical units. Given an RPF of P1,000,000 for the 1st unit alone, what is the TOTAL fee across all 15 units?",
@@ -128,8 +195,15 @@
       "P7,500,000"
     ],
     "c": 3,
-    "n": "Units 2—10 (9 additional units) at 50% of RPF each: 9 × (0.5 × P1,000,000) = P4,500,000, plus the 1st unit's P1,000,000 = P5,500,000 for 10 units. For units 11—15 (5 additional units) at 40% of RPF each: 5 × (0.4 × P1,000,000) = P2,000,000. Total for 15 units = P5,500,000 + P2,000,000 = P7,500,000. [Source: Sec. 6.3, Group 7]",
-    "hidden": false
+    "n": "Units 2—10 (9 additional units) at 50% of RPF each: 9 × (0.5 × P1,000,000) = P4,500,000, plus the 1st unit's P1,000,000 = P5,500,000 for 10 units. For units 11—15 (5 additional units) at 40% of RPF each: 5 × (0.4 × P1,000,000) = P2,000,000. Total for 15 units = P5,500,000 + P2,000,000 = P7,500,000.",
+    "hidden": false,
+    "ref": "UAP-IAPOA Doc. 210, Sec. 6.3, Group 7",
+    "steps": [
+      "Units 2—10 (9 additional units) at 50% of RPF each: 9 × (0.5 × P1,000,000) = P4,500,000, plus the 1st unit's P1,000,000 = P5,500,000 for 10 units.",
+      "For units 11—15 (5 additional units) at 40% of RPF each: 5 × (0.4 × P1,000,000) = P2,000,000.",
+      "Total for 15 units = P5,500,000 + P2,000,000 = P7,500,000."
+    ],
+    "formula": "Fee = rate × base"
   },
   {
     "q": "A Group 2 building carries a PCC of P40,000,000 (within the ≤P50M bracket, base DAEDS rate 6%). The Architect qualifies as a Level 2 Specialist (+1.00%), the project employs BIM (+0.10%), and submittals are fast-tracked (+0.10%). What total Professional Fee results after these adjustments?",
@@ -140,8 +214,14 @@
       "P3,200,000"
     ],
     "c": 1,
-    "n": "Sub-total rate = 6.00% base + 1.00% (Level 2 Specialist) + 0.10% (BIM) + 0.10% (fast-track) = 7.20%. Since PCC ≤ P50M, the fee is simply 7.20% × P40,000,000 = P2,880,000. [Source: Sec. 6.3, Group 2; Annex D-style adjustment factors]",
-    "hidden": false
+    "n": "Sub-total rate = 6.00% base + 1.00% (Level 2 Specialist) + 0.10% (BIM) + 0.10% (fast-track) = 7.20%. Since PCC ≤ P50M, the fee is simply 7.20% × P40,000,000 = P2,880,000.",
+    "hidden": false,
+    "ref": "UAP-IAPOA Doc. 210, Sec. 6.3, Group 2; Annex D-style adjustment factors",
+    "steps": [
+      "Sub-total rate = 6.00% base + 1.00% (Level 2 Specialist) + 0.10% (BIM) + 0.10% (fast-track) = 7.20%.",
+      "Since PCC ≤ P50M, the fee is simply 7.20% × P40,000,000 = P2,880,000."
+    ],
+    "formula": "Fee = rate × base"
   },
   {
     "q": "A hotel (Group 3) is contracted under DADS with a PCC of P90,000,000. Applying the DADS bracket of P2,100,000 plus 3.6% of the excess over P50.0M, what Professional Fee results?",
@@ -152,8 +232,16 @@
       "P4,020,000"
     ],
     "c": 0,
-    "n": "Group 3 DADS bracket for P50M—P100M: P2,100,000 + 3.6% of excess over P50M. Excess = P40M; 3.6% × P40M = P1,440,000. Total = P2,100,000 + P1,440,000 = P3,540,000. [Source: Sec. 6.3, Group 3 DADS table]",
-    "hidden": false
+    "n": "Group 3 DADS bracket for P50M—P100M: P2,100,000 + 3.6% of excess over P50M. Excess = P40M; 3.6% × P40M = P1,440,000. Total = P2,100,000 + P1,440,000 = P3,540,000.",
+    "hidden": false,
+    "ref": "UAP-IAPOA Doc. 210, Sec. 6.3, Group 3 DADS table",
+    "steps": [
+      "Group 3 DADS bracket for P50M—P100M: P2,100,000 + 3.6% of excess over P50M.",
+      "Excess = P40M;",
+      "3.6% × P40M = P1,440,000.",
+      "Total = P2,100,000 + P1,440,000 = P3,540,000."
+    ],
+    "formula": "Fee = base + rate × excess"
   },
   {
     "q": "A manufacturing plant (Group 1) is contracted under DADS with a PCC of P250,000,000. Applying the DADS bracket of P4,500,000 plus 1.2% of the excess over P200.0M, what Professional Fee results?",
@@ -164,8 +252,16 @@
       "P4,800,000"
     ],
     "c": 0,
-    "n": "Group 1 DADS bracket for P200M—P500M: P4,500,000 + 1.2% of excess over P200M. Excess = P50M; 1.2% × P50M = P600,000. Total = P4,500,000 + P600,000 = P5,100,000. [Source: Sec. 6.3, Group 1 DADS table]",
-    "hidden": false
+    "n": "Group 1 DADS bracket for P200M—P500M: P4,500,000 + 1.2% of excess over P200M. Excess = P50M; 1.2% × P50M = P600,000. Total = P4,500,000 + P600,000 = P5,100,000.",
+    "hidden": false,
+    "ref": "UAP-IAPOA Doc. 210, Sec. 6.3, Group 1 DADS table",
+    "steps": [
+      "Group 1 DADS bracket for P200M—P500M: P4,500,000 + 1.2% of excess over P200M.",
+      "Excess = P50M;",
+      "1.2% × P50M = P600,000.",
+      "Total = P4,500,000 + P600,000 = P5,100,000."
+    ],
+    "formula": "Fee = base + rate × excess"
   },
   {
     "q": "A PCA works under a P50,000/month Retainer for 6 months. The Client separately requests one extra consultation falling outside the retainer's scope, billed at P1,000/hour for 8 hours. What is the PCA's TOTAL compensation across the period?",
@@ -176,7 +272,14 @@
       "P8,000"
     ],
     "c": 0,
-    "n": "Retainer covers the minimum service obligation: 6 months × P50,000 = P300,000. The additional consultation (outside the retainer scope) is billed separately on an hourly basis: 8 hours × P1,000/hr = P8,000. Total compensation = P300,000 + P8,000 = P308,000. [Source: Sec. 4.3.13, Retainer]",
-    "hidden": false
+    "n": "Retainer covers the minimum service obligation: 6 months × P50,000 = P300,000. The additional consultation (outside the retainer scope) is billed separately on an hourly basis: 8 hours × P1,000/hr = P8,000. Total compensation = P300,000 + P8,000 = P308,000.",
+    "hidden": false,
+    "ref": "UAP-IAPOA Doc. 210, Sec. 4.3.13, Retainer",
+    "steps": [
+      "Retainer covers the minimum service obligation: 6 months × P50,000 = P300,000.",
+      "The additional consultation (outside the retainer scope) is billed separately on an hourly basis: 8 hours × P1,000/hr = P8,000.",
+      "Total compensation = P300,000 + P8,000 = P308,000."
+    ],
+    "formula": "Fee = rate × base"
   }
 ]
