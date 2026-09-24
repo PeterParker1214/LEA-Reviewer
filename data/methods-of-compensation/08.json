@@ -6,11 +6,11 @@
       "identical in scope, just billed differently",
       "broader in scope, always covering multiple buildings on one site",
       "limited strictly to structural engineering",
-      "narrower in scope, focused on detail-level components, fittings, or interior/development work rather than the whole building"
+      "narrower, limited to details, fittings or interiors"
     ],
     "c": 3,
-    "ref": "",
-    "n": "Group VIII is scope-limited to detail-level design work (built-ins, fittings, screens, counters, interiors, development planning), which is why it is billed as a flat percentage rather than by building classification or unit count. (Source: SPP Doc. 202, Sec. 6.3.8)"
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Group VIII is scope-limited to detail-level design work (built-ins, fittings, screens, counters, interiors, development planning), which is why it is billed as a flat percentage rather than by building classification or unit count."
   },
   {
     "s": "",
@@ -22,8 +22,8 @@
       "Architectural interior design services for a tenant space"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Designing a complete new building's shell/structure is full building design falling under Groups 1-7's classification-based or unit-based scales, not the extensive-detail scope of Group VIII. (Source: SPP Doc. 202, Sec. 6.3.8)"
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Designing a complete new building's shell/structure is full building design falling under Groups 1-7's classification-based or unit-based scales, not the extensive-detail scope of Group VIII."
   },
   {
     "s": "",
@@ -35,9 +35,15 @@
       "PHP 48,000.00"
     ],
     "c": 0,
-    "ref": "",
-    "n": "RPF = 15% x PCC = 0.15 x PHP 800,000.00 = PHP 120,000.00. Built-in cabinetry/storage components fall under Group VIII's flat 15% of PCC rate. (Source: SPP Doc. 202, Sec. 6.3.8)",
-    "scenario": "An architect is engaged solely to design custom built-in cabinetry and storage elements for a residential unit, with a Project Construction Cost (PCC) of PHP 800,000.00 for that built-in scope."
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Built-in cabinetry/storage components fall under Group VIII's flat 15% of PCC rate.",
+    "scenario": "An architect is engaged solely to design custom built-in cabinetry and storage elements for a residential unit, with a Project Construction Cost (PCC) of PHP 800,000.00 for that built-in scope.",
+    "formula": "RPF = 15% × PCC",
+    "steps": [
+      "RPF = 15% x PCC",
+      "= 0.15 x PHP 800,000.00",
+      "= PHP 120,000.00"
+    ]
   },
   {
     "s": "",
@@ -49,8 +55,8 @@
       "Under Group VIII, at a flat 15% of the PCC attributable to the built-in/millwork scope"
     ],
     "c": 3,
-    "ref": "",
-    "n": "Because the engagement is limited to built-in components/elements rather than the building's overall design, it falls under Group VIII and is billed at the flat 15% of PCC for that detail-level scope — not under the building-classification or unit-based scales used for full building design. (Source: SPP Doc. 202, Sec. 6.3.8)"
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Because the engagement is limited to built-in components/elements rather than the building's overall design, it falls under Group VIII and is billed at the flat 15% of PCC for that detail-level scope — not under the building-classification or unit-based scales used for full building design."
   },
   {
     "s": "",
@@ -62,9 +68,15 @@
       "PHP 600,000.00"
     ],
     "c": 1,
-    "ref": "",
-    "n": "RPF = 15% x PCC = 0.15 x PHP 5,000,000.00 = PHP 750,000.00. Development planning and/or design is expressly listed under Group VIII. (Source: SPP Doc. 202, Sec. 6.3.8)",
-    "scenario": "A landowner engages an architect strictly for a development planning/masterplanning engagement over a parcel of raw land, before any building design is commissioned, with a PCC of PHP 5,000,000.00 attributed to that development-planning scope."
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Development planning and/or design is expressly listed under Group VIII.",
+    "scenario": "A landowner engages an architect strictly for a development planning/masterplanning engagement over a parcel of raw land, before any building design is commissioned, with a PCC of PHP 5,000,000.00 attributed to that development-planning scope.",
+    "formula": "RPF = 15% × PCC",
+    "steps": [
+      "RPF = 15% x PCC",
+      "= 0.15 x PHP 5,000,000.00",
+      "= PHP 750,000.00"
+    ]
   },
   {
     "s": "",
@@ -72,12 +84,12 @@
     "o": [
       "Because Group VIII projects are always larger in PCC than any Group 1-7 project",
       "Because Group VIII is reserved exclusively for government projects",
-      "Because Group VIII projects are typically limited, detail-level scopes (built-ins, fittings, counters, interiors, development planning) rather than whole-building designs whose fee would otherwise need to scale with building classification or number of units/buildings",
+      "Its scopes are limited details, not whole buildings",
       "Because Group VIII fees are fixed by law and cannot be a percentage of PCC"
     ],
     "c": 2,
-    "ref": "",
-    "n": "The bracket/tiered tables in Groups 1-7 exist to scale fees with the complexity of designing whole buildings (classification, successive buildings, or number of housing units). Because Group VIII covers narrower, detail-level scopes rather than whole-building design, a single flat percentage of PCC is used instead. (Source: SPP Doc. 202, Sec. 6.3.8)"
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "The bracket/tiered tables in Groups 1-7 exist to scale fees with the complexity of designing whole buildings (classification, successive buildings, or number of housing units). Because Group VIII covers narrower, detail-level scopes rather than whole-building design, a single flat percentage of PCC is used instead."
   },
   {
     "s": "",
@@ -85,12 +97,12 @@
     "o": [
       "Alterations, renovations, retrofitting, and expansion of an existing building",
       "Full architectural and engineering design of a new low- to medium-rise building",
-      "Projects involving extensive detail, such as designs for built-in components or elements, built-in equipment, special fittings, screens, counters, architectural interiors, and development planning and/or design",
+      "Extensive detail: built-ins, fittings, counters, interiors, planning",
       "Rendering a professional opinion, advice, or clarification on a technical matter"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Group VIII is defined precisely as covering extensive-detail scopes — built-in components/elements, built-in equipment, special fittings, screens, counters, architectural interiors, and development planning and/or design — not full-building design (Groups 1-7), alteration work (Group 9), or advisory opinion (Group 10). (Source: SPP Doc. 202, Sec. 6.3.8)"
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Group VIII is defined precisely as covering extensive-detail scopes — built-in components/elements, built-in equipment, special fittings, screens, counters, architectural interiors, and development planning and/or design — not full-building design (Groups 1-7), alteration work (Group 9), or advisory opinion (Group 10)."
   },
   {
     "s": "",
@@ -99,11 +111,11 @@
       "Group VIII has no RPF at all; fees are negotiated case by case",
       "Group VIII uses a tiered scale based on the number of housing units, exactly like Group 7",
       "Group VIII uses a scale that decreases with each additional building, exactly like Groups 1-6",
-      "Group VIII uses a single flat percentage of PCC, while Groups 1-7 use fee scales that vary by building classification, number of buildings, or number of housing units"
+      "Group VIII is one flat %; Groups 1-7 vary by class, buildings or units"
     ],
     "c": 3,
-    "ref": "",
-    "n": "Groups 1-6 scale RPF by successive buildings (100%/50%/40%/30% of RPF for 1st/2nd/3rd/4th+ buildings) and Group 7 scales by number of housing units, both varying with project scope. Group VIII instead applies one flat percentage (15% of PCC) with no bracket or tier. (Source: SPP Doc. 202, Sec. 6.3.8)"
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Groups 1-6 scale RPF by successive buildings (100%/50%/40%/30% of RPF for 1st/2nd/3rd/4th+ buildings) and Group 7 scales by number of housing units, both varying with project scope. Group VIII instead applies one flat percentage (15% of PCC) with no bracket or tier."
   },
   {
     "s": "",
@@ -115,8 +127,8 @@
       "Group 10, since masterplanning is merely advisory opinion"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Development planning and/or design is expressly named as a Group VIII scope, billed at the flat 15% of the PCC attributed to that engagement — it is not an advisory opinion (Group 10) nor a housing-unit design (Group 7). (Source: SPP Doc. 202, Sec. 6.3.8)"
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Development planning and/or design is expressly named as a Group VIII scope, billed at the flat 15% of the PCC attributed to that engagement — it is not an advisory opinion (Group 10) nor a housing-unit design (Group 7)."
   },
   {
     "s": "",
@@ -125,11 +137,11 @@
       "Additions and expansions to an existing school building",
       "Single-detached houses, duplexes, and row houses",
       "Housing projects using one set of plans across multiple units on one site",
-      "Built-in components or elements, built-in equipment, special fittings, screens, counters, architectural interiors, and development planning and/or design"
+      "Built-ins, special fittings, screens, counters and interiors"
     ],
     "c": 3,
-    "ref": "",
-    "n": "Sec. 6.3.8 lists exactly these extensive-detail scopes for Group VIII; the other options describe Group 7 (housing projects, one set of plans across units) or Group 9 (alterations/additions to existing buildings). (Source: SPP Doc. 202, Sec. 6.3.8)"
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Sec. 6.3.8 lists exactly these extensive-detail scopes for Group VIII; the other options describe Group 7 (housing projects, one set of plans across units) or Group 9 (alterations/additions to existing buildings)."
   },
   {
     "s": "",
@@ -137,12 +149,12 @@
     "o": [
       "No RPF applies to either scope because the building already exists",
       "The entire engagement is billed at a single flat 15% of the combined PCC",
-      "The renovation scope is computed under Group 9 (increase of 50%, i.e., a total of 150% of the applicable base RPF), while the built-in counters/screens scope is computed separately under Group VIII's flat 15% of its own PCC",
+      "Renovation at 150% under Group 9; counters at 15% under Group VIII",
       "Both scopes are billed under Group 7's housing-unit scale"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Renovation of an existing building falls under Group 9, whose RPF is increased by 50% (total 150% of the RPF otherwise applicable). The built-in counters and interior screens are a separate, extensive-detail scope governed by Group VIII's flat 15% of the PCC attributable to that scope. (Source: SPP Doc. 202, Sec. 6.3.8)"
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Renovation of an existing building falls under Group 9, whose RPF is increased by 50% (total 150% of the RPF otherwise applicable). The built-in counters and interior screens are a separate, extensive-detail scope governed by Group VIII's flat 15% of the PCC attributable to that scope."
   },
   {
     "s": "",
@@ -154,9 +166,15 @@
       "PHP 60,750.00"
     ],
     "c": 1,
-    "ref": "",
-    "n": "RPF = 15% x PCC = 0.15 x PHP 450,000.00 = PHP 67,500.00. Special fittings are expressly listed under Group VIII. (Source: SPP Doc. 202, Sec. 6.3.8)",
-    "scenario": "A homeowner separately hires an architect to design special fittings (custom window grilles and hardware details) for a residence, with a PCC of PHP 450,000.00 for that fittings scope."
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Special fittings are expressly listed under Group VIII.",
+    "scenario": "A homeowner separately hires an architect to design special fittings (custom window grilles and hardware details) for a residence, with a PCC of PHP 450,000.00 for that fittings scope.",
+    "formula": "RPF = 15% × PCC",
+    "steps": [
+      "RPF = 15% x PCC",
+      "= 0.15 x PHP 450,000.00",
+      "= PHP 67,500.00"
+    ]
   },
   {
     "s": "",
@@ -165,11 +183,11 @@
       "The number of stories in the building",
       "The geographic location of the project",
       "The total floor area of the building involved",
-      "Whether the engagement is limited to detail-level scopes (built-ins, fittings, screens, counters, interiors, or development planning) rather than the building's overall architectural/structural design"
+      "Whether the scope is limited to details, not the whole building"
     ],
     "c": 3,
-    "ref": "",
-    "n": "Group VIII is defined by the nature of the scope — extensive detail work — not by size, location, or height. If the engagement covers the whole building's design, Groups 1-7 (or 9, if it is an existing building) apply instead. (Source: SPP Doc. 202, Sec. 6.3.8)"
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Group VIII is defined by the nature of the scope — extensive detail work — not by size, location, or height. If the engagement covers the whole building's design, Groups 1-7 (or 9, if it is an existing building) apply instead."
   },
   {
     "s": "",
@@ -177,25 +195,25 @@
     "o": [
       "construction supervision of an ongoing project",
       "structural engineering design of a building's frame",
-      "a scope such as site/master development planning or design work, engaged separately from full building design",
+      "site or master development planning done apart from building design",
       "quantity surveying and cost estimating services"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Alongside built-in components, equipment, fittings, screens, counters, and interiors, Group VIII's list includes development planning and/or design as its own qualifying scope of detail-level or planning-level work distinct from designing an entire building. (Source: SPP Doc. 202, Sec. 6.3.8)"
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Alongside built-in components, equipment, fittings, screens, counters, and interiors, Group VIII's list includes development planning and/or design as its own qualifying scope of detail-level or planning-level work distinct from designing an entire building."
   },
   {
     "s": "",
     "q": "What is the overall purpose of dividing Regular Design Services into Building Type Groups (Groups 1 through 10) under SPP Doc. 202?",
     "o": [
-      "To categorize the architect's recommended professional fee basis according to the nature, scale, and complexity of the project or scope of engagement",
+      "To base the fee on the nature, scale and complexity of the work",
       "To determine which projects require a building permit",
       "To assign each Group to a different government agency for approval",
       "To limit which projects a licensed architect is legally allowed to accept"
     ],
     "c": 0,
-    "ref": "",
-    "n": "The Building Type Groups classify projects and scopes of architectural engagement (by building classification, unit count, extensive detail, alteration, or advisory opinion, among others) so that the Recommended Professional Fee can be computed on a basis appropriate to that project's nature and complexity — Group VIII being the flat-rate category for extensive-detail work. (Source: SPP Doc. 202, Sec. 6.3.8)"
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "The Building Type Groups classify projects and scopes of architectural engagement (by building classification, unit count, extensive detail, alteration, or advisory opinion, among others) so that the Recommended Professional Fee can be computed on a basis appropriate to that project's nature and complexity — Group VIII being the flat-rate category for extensive-detail work."
   },
   {
     "s": "",
@@ -207,9 +225,15 @@
       "PHP 180,000.00"
     ],
     "c": 3,
-    "ref": "",
-    "n": "RPF = 15% x PCC = 0.15 x PHP 1,200,000.00 = PHP 180,000.00. A decorative screen is expressly listed under Group VIII. (Source: SPP Doc. 202, Sec. 6.3.8)",
-    "scenario": "A commercial building owner separately engages an architect to design a decorative lobby screen wall, with a PCC of PHP 1,200,000.00 for that screen-wall scope alone."
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "A decorative screen is expressly listed under Group VIII.",
+    "scenario": "A commercial building owner separately engages an architect to design a decorative lobby screen wall, with a PCC of PHP 1,200,000.00 for that screen-wall scope alone.",
+    "formula": "RPF = 15% × PCC",
+    "steps": [
+      "RPF = 15% x PCC",
+      "= 0.15 x PHP 1,200,000.00",
+      "= PHP 180,000.00"
+    ]
   },
   {
     "s": "",
@@ -221,9 +245,15 @@
       "PHP 490,000.00"
     ],
     "c": 2,
-    "ref": "",
-    "n": "RPF = 15% x PCC = 0.15 x PHP 3,500,000.00 = PHP 525,000.00. Architectural interiors are expressly listed under Group VIII. (Source: SPP Doc. 202, Sec. 6.3.8)",
-    "scenario": "A retail tenant hires an architect purely to design the architectural interiors (finishes, partitions, ceiling, and interior fit-out) of its leased space, with a PCC of PHP 3,500,000.00 for that interior fit-out scope."
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Architectural interiors are expressly listed under Group VIII.",
+    "scenario": "A retail tenant hires an architect purely to design the architectural interiors (finishes, partitions, ceiling, and interior fit-out) of its leased space, with a PCC of PHP 3,500,000.00 for that interior fit-out scope.",
+    "formula": "RPF = 15% × PCC",
+    "steps": [
+      "RPF = 15% x PCC",
+      "= 0.15 x PHP 3,500,000.00",
+      "= PHP 525,000.00"
+    ]
   },
   {
     "s": "",
@@ -235,8 +265,8 @@
       "Group 9, since any work on an existing building is automatically an alteration"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Because the scope is confined to a counter and screens — both explicitly named in Group VIII — and does not touch the building's structure or overall design, it is billed under Group VIII's flat 15% of PCC rather than as an alteration under Group 9. (Source: SPP Doc. 202, Sec. 6.3.8)"
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Because the scope is confined to a counter and screens — both explicitly named in Group VIII — and does not touch the building's structure or overall design, it is billed under Group VIII's flat 15% of PCC rather than as an alteration under Group 9."
   },
   {
     "s": "",
@@ -248,8 +278,8 @@
       "10% of the Project Construction Cost (PCC), as with a first housing unit under Group 7"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Group VIII's RPF is a single flat rate: 15% of the Project Construction Cost (PCC), regardless of project size or building classification. (Source: SPP Doc. 202, Sec. 6.3.8)"
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Group VIII's RPF is a single flat rate: 15% of the Project Construction Cost (PCC), regardless of project size or building classification."
   },
   {
     "s": "",
@@ -261,9 +291,15 @@
       "PHP 39,000.00"
     ],
     "c": 1,
-    "ref": "",
-    "n": "RPF = 15% x PCC = 0.15 x PHP 650,000.00 = PHP 97,500.00. Counters are expressly listed under Group VIII. (Source: SPP Doc. 202, Sec. 6.3.8)",
-    "scenario": "An architect designs a reception counter and millwork package for an office lobby, with a PCC of PHP 650,000.00 for that package."
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Counters are expressly listed under Group VIII.",
+    "scenario": "An architect designs a reception counter and millwork package for an office lobby, with a PCC of PHP 650,000.00 for that package.",
+    "formula": "RPF = 15% × PCC",
+    "steps": [
+      "RPF = 15% x PCC",
+      "= 0.15 x PHP 650,000.00",
+      "= PHP 97,500.00"
+    ]
   },
   {
     "s": "",
@@ -271,12 +307,12 @@
     "o": [
       "Group 10 uses the same successive-building scale as Groups 1-6",
       "Groups 9 and 10 both use the identical flat 15% of PCC rate as Group VIII",
-      "Group 9 (alterations/renovations to existing Group 1-5 buildings) increases the applicable base RPF by 50% (to a total of 150%), while Group 10 (rendering opinion/advice on technical matters) is treated differently from a straightforward percentage-of-PCC fee — distinct from Group VIII's own flat 15% of PCC for extensive-detail scopes",
+      "Group 9 is 150% of base RPF; Group 10 is an hourly or per-appearance fee",
       "Group 9 uses a housing-unit tiered scale identical to Group 7"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Group 9 covers alterations/renovations/retrofit/expansion of existing buildings under Groups 1-5, with RPF increased by 50% for a total of 150% of the otherwise-applicable RPF. Group 10 covers advisory opinion/advice, which is not computed as a straightforward percentage-of-PCC design fee. Group VIII stands apart from both, applying its own flat 15% of PCC to extensive-detail scopes. (Source: SPP Doc. 202, Sec. 6.3.8)"
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Group 9 covers alterations/renovations/retrofit/expansion of existing buildings under Groups 1-5, with RPF increased by 50% for a total of 150% of the otherwise-applicable RPF. Group 10 covers advisory opinion/advice, which is not computed as a straightforward percentage-of-PCC design fee. Group VIII stands apart from both, applying its own flat 15% of PCC to extensive-detail scopes."
   },
   {
     "s": "",
@@ -288,8 +324,8 @@
       "It applies only to government infrastructure projects"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Groups 1-6 classify new buildings and scale RPF by successive buildings; Group 7 covers multi-unit housing projects; Group VIII covers extensive-detail scopes at a flat 15% of PCC; Group 9 covers alterations/renovations at 150% of the base RPF; Group 10 covers advisory opinions. Group VIII sits between the full-building groups and the alteration/advisory groups as its own distinct category. (Source: SPP Doc. 202, Sec. 6.3.8)"
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Groups 1-6 classify new buildings and scale RPF by successive buildings; Group 7 covers multi-unit housing projects; Group VIII covers extensive-detail scopes at a flat 15% of PCC; Group 9 covers alterations/renovations at 150% of the base RPF; Group 10 covers advisory opinions. Group VIII sits between the full-building groups and the alteration/advisory groups as its own distinct category."
   },
   {
     "s": "",
@@ -301,8 +337,14 @@
       "PHP 240,000.00"
     ],
     "c": 0,
-    "ref": "",
-    "n": "RPF = 15% x PCC = 0.15 x PHP 2,000,000.00 = PHP 300,000.00. Built-in equipment is expressly listed under Group VIII. (Source: SPP Doc. 202, Sec. 6.3.8)",
-    "scenario": "An architect is engaged only to design built-in equipment (e.g., custom fabricated fixtures) for a restaurant, with a PCC of PHP 2,000,000.00 for that built-in-equipment scope."
+    "ref": "SPP Doc. 202, Sec. 6.3.8",
+    "n": "Built-in equipment is expressly listed under Group VIII.",
+    "scenario": "An architect is engaged only to design built-in equipment (e.g., custom fabricated fixtures) for a restaurant, with a PCC of PHP 2,000,000.00 for that built-in-equipment scope.",
+    "formula": "RPF = 15% × PCC",
+    "steps": [
+      "RPF = 15% x PCC",
+      "= 0.15 x PHP 2,000,000.00",
+      "= PHP 300,000.00"
+    ]
   }
 ]
