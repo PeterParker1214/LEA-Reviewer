@@ -3,11 +3,10 @@
     "s": "",
     "q": "How does the IRR define a 'Foreign Architect'?",
     "o": [
-      "An architect who is not a Filipino citizen nor registered/licensed in the Philippines, but is duly registered and licensed as an architect in his/her home country",
-      "A Filipino architect who works overseas",
-      "Any non-citizen employee of an architectural firm",
-      "Any architect who studied outside the Philippines, regardless of citizenship",
-      "Hindi po alam"
+      "A non-Filipino licensed in his home country",
+      "A Filipino architect working overseas",
+      "Any non-citizen employee of a firm",
+      "Any architect who studied abroad"
     ],
     "c": 0,
     "ref": "",
@@ -17,10 +16,10 @@
     "s": "",
     "q": "Per Section 34, can a non-registered person describe his/her services as equivalent to a registered architect's, so long as the title 'Architect' is never actually used?",
     "o": [
-      "Yes, as long as the word 'Architect' itself is avoided",
-      "No — non-registered persons may not claim or represent their services as equivalent to a registered architect's, even without using the title",
-      "Yes, provided they hold a civil engineering license instead",
-      "Yes, if they have more than ten years of informal experience"
+      "Yes, if 'Architect' is avoided",
+      "No, not even without the title",
+      "Yes, with an engineering license",
+      "Yes, with ten years of experience"
     ],
     "c": 1,
     "ref": "",
@@ -69,14 +68,20 @@
     "s": "",
     "q": "Government architect Dela Cruz earns an annual salary of P600,000 and serves as architect-of-record for an P8,000,000 project. Applying the 1.5% incentive-pay rule under Section 35(3), subject to the 50%-of-salary cap, how much incentive pay is she entitled to?",
     "o": [
-      "P600,000 (100% of her annual salary)",
-      "P120,000 (1.5% of project cost, which is below the P300,000 cap, so the full amount is paid)",
-      "P8,000 flat fee",
-      "P300,000 (the salary cap applies regardless)"
+      "P600,000",
+      "P120,000",
+      "P8,000",
+      "P300,000"
     ],
     "c": 1,
     "ref": "",
-    "n": "1.5% of the P8,000,000 project cost is P120,000. The 50%-of-salary cap is 50% of P600,000 = P300,000. Since P120,000 is below the cap, the full 1.5% computed amount (P120,000) is paid, not the cap. (Source: IRR of RA 9266, Rule IV, Sec. 35(3) (applied computation))"
+    "n": "1.5% of the P8,000,000 project cost is P120,000. The 50%-of-salary cap is 50% of P600,000 = P300,000. Since P120,000 is below the cap, the full 1.5% computed amount (P120,000) is paid, not the cap. (Source: IRR of RA 9266, Rule IV, Sec. 35(3) (applied computation))",
+    "formula": "Incentive = 1.5% × project cost, capped at 50% of salary",
+    "steps": [
+      "1.5% × P8,000,000 = P120,000",
+      "Cap = 50% × P600,000 = P300,000",
+      "P120,000 < cap, so P120,000"
+    ]
   },
   {
     "s": "",
@@ -95,10 +100,10 @@
     "s": "",
     "q": "Per Section 36, is it lawful for someone who isn't a registered architect to collect a fee for architectural services?",
     "o": [
-      "Yes, if the fee is below the Standards of Professional Practice minimum",
-      "Yes, if disclosed to the client in writing",
+      "Yes, if below the SPP minimum",
+      "Yes, if disclosed in writing",
       "Yes, without restriction",
-      "It is unlawful, except when acting as an employee collecting a fee as representative of a Registered Architect"
+      "Unlawful, except as an architect's employee"
     ],
     "c": 3,
     "ref": "",
@@ -121,10 +126,10 @@
     "s": "",
     "q": "Under Section 37(a), who is permitted to form and register an architectural firm, company, partnership, association, or corporation, whether alone or with allied technical professionals?",
     "o": [
-      "Any civil engineer, with or without an architecture license",
-      "Only Filipino citizens properly registered and licensed as architects under R.A. No. 9266",
-      "Any DTI-registered business owner",
-      "Any foreign national residing in the Philippines"
+      "Any civil engineer",
+      "Only Filipino RLAs under RA 9266",
+      "Any DTI-registered owner",
+      "Any foreign resident"
     ],
     "c": 1,
     "ref": "",
@@ -186,10 +191,10 @@
     "s": "",
     "q": "As originally provided in this IRR, does Section 7(i) make CPD attendance mandatory for renewing a Professional Identification Card?",
     "o": [
-      "Only architects over 60 years old are exempted",
-      "Only foreign architects are exempted",
-      "No, attendance to CPD shall not be a mandatory requirement for PIC renewal",
-      "Yes, it is an absolute mandatory requirement"
+      "Only those over 60 were exempt",
+      "Only foreigners were exempt",
+      "No, it was not mandatory",
+      "Yes, it was mandatory"
     ],
     "c": 2,
     "ref": "",
@@ -238,10 +243,10 @@
     "s": "",
     "q": "Who is empowered to suspend or remove a Board member, and based on whose recommendation?",
     "o": [
-      "The Senate, on recommendation of the House of Representatives",
-      "The Ombudsman, motu proprio",
-      "The President of the Philippines, upon recommendation of the Commission, after due administrative investigation",
-      "The UAP Board of Directors, without need for investigation"
+      "The Senate, on House recommendation",
+      "The Ombudsman, on its own",
+      "The President, on Commission recommendation",
+      "The UAP Board, without investigation"
     ],
     "c": 2,
     "ref": "",
@@ -264,10 +269,10 @@
     "s": "",
     "q": "Beyond a BS Architecture degree and good moral character, what practical requirement does Section 13 impose on an examination applicant?",
     "o": [
-      "At least two (2) years or equivalent of diversified architectural experience duly certified by a registered/licensed architect",
-      "Passing a preliminary aptitude test administered by UAP",
-      "At least five (5) years of diversified architectural experience",
-      "Completion of a master's degree in architecture"
+      "Two years of certified diversified experience",
+      "A UAP aptitude test",
+      "Five years of experience",
+      "A master's degree"
     ],
     "c": 0,
     "ref": "",
@@ -277,8 +282,8 @@
     "s": "",
     "q": "Under Section 44, who besides the Commission and Board is tasked to act as legal adviser and provide legal assistance in enforcing R.A. No. 9266?",
     "o": [
-      "The Solicitor General exclusively",
-      "The Secretary of Justice or his/her duly designated representative",
+      "The Solicitor General only",
+      "The Secretary of Justice",
       "The Ombudsman",
       "The Commission on Audit"
     ],
@@ -316,10 +321,10 @@
     "s": "",
     "q": "What may the Board do, under Section 13, if an examination or registration application involves false evidence, misrepresentation, or false swearing?",
     "o": [
-      "Refuse to renew a professional identification card, or suspend/revoke a certificate, or refuse to renew or grant registration",
-      "Nothing; the Board has no power to act on false applications",
-      "Transfer jurisdiction to the Department of Justice exclusively",
-      "Automatically imprison the applicant without a hearing"
+      "Refuse, suspend or revoke registration",
+      "Nothing; it has no power",
+      "Refer it to the DOJ only",
+      "Jail the applicant at once"
     ],
     "c": 0,
     "ref": "",
@@ -329,10 +334,10 @@
     "s": "",
     "q": "How does the document titled 'IRR of the Architecture Act of 2004' relate overall to Republic Act No. 9266?",
     "o": [
-      "The IRR repeals R.A. No. 9266 in its entirety",
-      "The IRR is the set of Implementing Rules and Regulations promulgated by the Board of Architecture (per Sec. 7(a) and Sec. 41, Art. V of R.A. 9266) to carry out R.A. No. 9266's provisions",
-      "R.A. No. 9266 is a mere draft version of the IRR",
-      "They are entirely separate and unrelated laws"
+      "It repeals RA 9266",
+      "The Board's implementing rules for RA 9266",
+      "RA 9266 is a draft of it",
+      "They are unrelated laws"
     ],
     "c": 1,
     "ref": "",
@@ -407,10 +412,10 @@
     "s": "",
     "q": "Taking Section 29 (unauthorized practice penal clause) together with Section 32 (15-year civil liability under Art. 1723 of the Civil Code), what overall distinction does the IRR draw between these two kinds of liability?",
     "o": [
-      "Section 29 applies only to foreigners, while Section 32 applies only to Filipino architects",
-      "Section 32 is a criminal penalty that replaces Section 29 entirely",
-      "There is no distinction; both sections impose identical penalties",
-      "Section 29 imposes criminal/penal liability (fines and/or imprisonment) for unauthorized practice and related offenses, while Section 32 imposes civil liability (for 15 years) on the Architect-of-record specifically for the architectural documents he/she signs and seals"
+      "Sec. 29 foreigners; Sec. 32 Filipinos",
+      "Sec. 32 replaces Sec. 29",
+      "No distinction; same penalties",
+      "Sec. 29 penal; Sec. 32 civil for 15 years"
     ],
     "c": 3,
     "ref": "",
@@ -420,10 +425,10 @@
     "s": "",
     "q": "Upon initial payment of the prescribed annual registration fee, for how many years is a Professional Identification Card issued, and what keeps it valid afterward?",
     "o": [
-      "Three (3) years, then renewal is required upon payment of annual registration fees for every three (3) years thereafter",
-      "Ten (10) years, permanently valid thereafter",
-      "One (1) year, renewable annually indefinitely without further fee",
-      "Five (5) years, renewable only once in a lifetime"
+      "Three years, renewed every three years",
+      "Ten years, then permanent",
+      "One year, renewed yearly free",
+      "Five years, renewed once"
     ],
     "c": 0,
     "ref": "",
@@ -433,10 +438,10 @@
     "s": "",
     "q": "Per Section 10, how is compensation and allowances fixed for the Board's chairman and members?",
     "o": [
-      "No compensation is provided; the position is strictly voluntary",
-      "Comparable to that received by the chairman and members of existing regulatory Boards under the Commission, as provided in the General Appropriations Act",
-      "A fixed honorarium set solely by the UAP",
-      "Based on a percentage of licensure examination fees collected"
+      "None; it is voluntary",
+      "Like other PRC boards, per the GAA",
+      "An honorarium set by UAP",
+      "A share of exam fees"
     ],
     "c": 1,
     "ref": "",
@@ -472,10 +477,10 @@
     "s": "",
     "q": "Under Section 20(3), when may an architect lawfully sign his/her name or affix his/her seal on plans or specifications prepared under another architect's supervision?",
     "o": [
-      "Only when it clearly indicates the part or parts of the work actually performed by the signing architect",
-      "As long as the client consents",
-      "Only if the other architect is deceased",
-      "Never, under any circumstance"
+      "Only if it shows the parts he actually did",
+      "If the client consents",
+      "Only if the other architect died",
+      "Never"
     ],
     "c": 0,
     "ref": "",
@@ -485,10 +490,10 @@
     "s": "",
     "q": "Which choice correctly captures the IRR's definition of 'Architect'?",
     "o": [
-      "Any holder of a Bachelor of Science in Architecture degree, whether licensed or not",
-      "A person professionally and academically qualified, registered and licensed under R.A. No. 9266, holding a Certificate of Registration and Professional Identification Card",
-      "Anyone who supervises construction workers on a building site",
-      "A civil engineer who has taken continuing education units in design"
+      "Any BS Architecture graduate",
+      "A person registered and licensed under RA 9266",
+      "Anyone supervising construction",
+      "A civil engineer with design units"
     ],
     "c": 1,
     "ref": "",
@@ -498,10 +503,10 @@
     "s": "",
     "q": "Section 22 bars issuance of a Certificate of Registration and PIC to which type of person?",
     "o": [
-      "Any applicant who is over 60 years of age",
-      "Any applicant who studied architecture abroad",
-      "Any person who has falsely sworn or misrepresented himself/herself in the application, or who is convicted of a crime involving moral turpitude, or of unsound mind",
-      "Any applicant who failed the exam once before passing on a retake"
+      "Applicants over 60 years old",
+      "Applicants who studied abroad",
+      "False swearers, moral turpitude convicts, unsound mind",
+      "Applicants who passed on a retake"
     ],
     "c": 2,
     "ref": "",
@@ -524,10 +529,10 @@
     "s": "",
     "q": "Section 23(e) treats which specific practice — rendering architectural services without a valid service agreement guaranteeing payment — as grounds for suspension or revocation?",
     "o": [
-      "Open solicitation of projects without a valid service agreement, or allowing oneself to be exploited without one",
-      "Refusing a project due to scheduling conflicts",
-      "Charging fees higher than the Standards of Professional Practice minimum",
-      "Sub-contracting drafting work to a licensed junior architect"
+      "Soliciting projects without a valid agreement",
+      "Refusing a project for scheduling",
+      "Charging above the SPP minimum",
+      "Subcontracting drafting to an RLA"
     ],
     "c": 0,
     "ref": "",
@@ -537,10 +542,10 @@
     "s": "",
     "q": "Per Section 3(25), under what condition does a Consulting Architect take on civil liability under Article 1723 of the Civil Code?",
     "o": [
-      "Only when the Architect-of-record is a foreign architect",
-      "Only if he/she attempts to or succeeds in interfering with or contravening the legal and professional functions of the Architect-of-Record",
-      "Automatically, in every project he/she consults on",
-      "Never, under any circumstance"
+      "Only if the AoR is foreign",
+      "Only if he interferes with the AoR",
+      "Automatically, on every project",
+      "Never"
     ],
     "c": 1,
     "ref": "",
@@ -550,10 +555,10 @@
     "s": "",
     "q": "Section 25 makes what a precondition before someone may practice architecture, use the title 'Architect,' or hold out as one in the Philippines?",
     "o": [
-      "Mere completion of a BS Architecture degree",
-      "Membership in any professional organization, regardless of license",
-      "Receipt of a Certificate of Registration and issuance of a Professional Identification Card from the Board",
-      "Two years of apprenticeship under any engineer"
+      "Completion of a BS Architecture",
+      "Membership in any organization",
+      "A Certificate of Registration and PIC",
+      "Two years under any engineer"
     ],
     "c": 2,
     "ref": "",
@@ -563,10 +568,10 @@
     "s": "",
     "q": "Which item is explicitly listed under the 'Scope of the Practice of Architecture' in Section 3(4)?",
     "o": [
-      "Notarization of legal contracts unrelated to construction",
-      "Structural steel fabrication and welding work",
-      "Issuance of business permits by the local government",
-      "Preparation of preliminary, technical, economic and financial feasibility studies of plans, models and project promotional services"
+      "Notarizing unrelated contracts",
+      "Structural steel fabrication",
+      "Issuing business permits",
+      "Feasibility studies and promotional services"
     ],
     "c": 3,
     "ref": "",
@@ -576,10 +581,10 @@
     "s": "",
     "q": "Per Section 26 (Vested Rights), what became of architects already registered when R.A. No. 9266 took effect?",
     "o": [
-      "They are automatically registered under the new law's provisions, subject to future requirements, and their existing certificates retain full force and effect",
-      "Their prior registration is voided and must be renewed from scratch",
-      "They are downgraded to 'temporary permit' status",
-      "They must retake the licensure examination under the new law"
+      "Automatically registered; certificates stay valid",
+      "Voided and renewed from scratch",
+      "Downgraded to temporary permits",
+      "Required to retake the exam"
     ],
     "c": 0,
     "ref": "",
@@ -602,10 +607,10 @@
     "s": "",
     "q": "Under Section 28, which organization develops the overall Continuing Professional Development (CPD) program for architects?",
     "o": [
-      "The Commission on Higher Education",
+      "CHED",
       "Individual review centers",
-      "The integrated and accredited professional organization (i.e., UAP, through its CPE Council)",
-      "The Department of Trade and Industry"
+      "The accredited organization (UAP CPE Council)",
+      "DTI"
     ],
     "c": 2,
     "ref": "",
@@ -615,10 +620,10 @@
     "s": "",
     "q": "What form must a 'Service Agreement,' as the IRR defines it, take?",
     "o": [
-      "A verbal understanding between architect and client",
-      "A document signed only by the client, without the architect's signature",
-      "An informal email exchange confirming project scope",
-      "A duly notarized written contract or equivalent public instrument stipulating the scope of services and guaranteeing compensation"
+      "A verbal understanding",
+      "A document signed by the client only",
+      "An informal email exchange",
+      "A notarized written contract"
     ],
     "c": 3,
     "ref": "",
@@ -667,10 +672,10 @@
     "s": "",
     "q": "'Architectural Documents,' as the IRR defines them, are outputs only an architect may sign and seal. Which of these does the term explicitly include?",
     "o": [
-      "Environmental Compliance Certificates issued by DENR",
-      "Land title documents issued by the Registry of Deeds",
-      "Structural steel shop drawings prepared by a fabricator",
-      "Vicinity maps, site development plans, architectural program, perspective drawings, floor plans, elevations, sections, and cost estimates"
+      "DENR compliance certificates",
+      "Land titles from the Registry",
+      "A fabricator's shop drawings",
+      "Site plans, floor plans, sections, estimates"
     ],
     "c": 3,
     "ref": "",
@@ -706,10 +711,10 @@
     "s": "",
     "q": "Per Section 33, how are drawings, specifications, and other contract documents regarded once duly signed, stamped, or sealed?",
     "o": [
-      "Government property once a building permit is issued",
-      "The property of the client automatically upon payment of fees",
-      "The intellectual property and documents of the architect, whether the object for which they were made is executed or not",
-      "Public domain material available for free copying"
+      "Government property after the permit",
+      "The client's property upon payment",
+      "The architect's intellectual property",
+      "Public domain material"
     ],
     "c": 2,
     "ref": "",
@@ -758,14 +763,20 @@
     "s": "",
     "q": "Government architect Cruz earns P480,000 annually and is architect-of-record for a P30,000,000 government project. Applying Section 35(3)'s 1.5% incentive-pay rule, capped at 50% of annual salary, how much can Cruz actually collect upon completion?",
     "o": [
-      "P30,000 (0.1% of project cost)",
-      "P480,000 (100% of annual salary)",
-      "P240,000 (the 50%-of-annual-salary cap, since 1.5% of project cost would exceed it)",
-      "P450,000 (1.5% of the project cost, uncapped)"
+      "P30,000",
+      "P480,000",
+      "P240,000",
+      "P450,000"
     ],
     "c": 2,
     "ref": "",
-    "n": "1.5% of the P30,000,000 project cost is P450,000, but Section 35(3) caps the incentive pay at 50% of the architect's annual salary — 50% of P480,000 = P240,000. Since P450,000 exceeds the cap, Architect Cruz may only collect P240,000. (Source: IRR of RA 9266, Rule IV, Sec. 35(3) (applied computation))"
+    "n": "1.5% of the P30,000,000 project cost is P450,000, but Section 35(3) caps the incentive pay at 50% of the architect's annual salary — 50% of P480,000 = P240,000. Since P450,000 exceeds the cap, Architect Cruz may only collect P240,000. (Source: IRR of RA 9266, Rule IV, Sec. 35(3) (applied computation))",
+    "formula": "Incentive = 1.5% × project cost, capped at 50% of salary",
+    "steps": [
+      "1.5% × P30,000,000 = P450,000",
+      "Cap = 50% × P480,000 = P240,000",
+      "P450,000 > cap, so P240,000"
+    ]
   },
   {
     "s": "",
@@ -774,7 +785,7 @@
       "SEC",
       "DOLE",
       "PDCB",
-      "CHED (Commission on Higher Education)"
+      "CHED"
     ],
     "c": 3,
     "ref": "",
@@ -784,9 +795,9 @@
     "s": "",
     "q": "Per Section 35(1), may government agencies collapse existing architect plantilla positions to recreate them as non-architect positions?",
     "o": [
-      "No — such collapsing of architect plantilla positions for that purpose is prohibited",
+      "No, it is prohibited",
       "Yes, if budget-constrained",
-      "Yes, but only in local government units",
+      "Yes, in LGUs only",
       "Yes, with PRC approval"
     ],
     "c": 0,
@@ -836,10 +847,10 @@
     "s": "",
     "q": "Before taking up duties on foreign-funded or assisted government projects in the Philippines, what must foreign nationals serving as architects/consultants secure under Section 38?",
     "o": [
-      "A special/temporary permit from the Board, subject to approval of the Commission",
+      "A special/temporary permit from the Board",
       "A civil engineering license",
-      "Membership in the Integrated Bar of the Philippines",
-      "Only a tourist visa"
+      "IBP membership",
+      "A tourist visa only"
     ],
     "c": 0,
     "ref": "",
@@ -849,10 +860,10 @@
     "s": "",
     "q": "How long is a Professional Regulatory Board of Architecture member's term, and how many times may that member be reappointed?",
     "o": [
-      "Five (5) years, reappointable twice",
-      "Three (3) years, reappointable for one full additional term of three (3) years",
-      "Two (2) years, reappointable indefinitely",
-      "Four (4) years, non-reappointable"
+      "Five years, reappointable twice",
+      "Three years, reappointable once",
+      "Two years, reappointable forever",
+      "Four years, not reappointable"
     ],
     "c": 1,
     "ref": "",
@@ -927,10 +938,10 @@
     "s": "",
     "q": "Which of these constitutes a ground for suspension or removal of a Board member under Section 9?",
     "o": [
-      "Publishing an academic paper on architecture theory",
-      "Taking an approved leave of absence",
-      "Disagreeing with a Board resolution on policy grounds",
-      "Manipulation or rigging of the architecture licensure examination results, or tampering of grades"
+      "Publishing an academic paper",
+      "Taking approved leave",
+      "Disagreeing on policy",
+      "Rigging exam results or tampering grades"
     ],
     "c": 3,
     "ref": "",
@@ -966,10 +977,10 @@
     "s": "",
     "q": "Under Section 43, does R.A. No. 9266 affect or block the practice of other legally recognized professions?",
     "o": [
-      "It affects only professions related to construction",
-      "Only civil engineering is exempted from its effect",
-      "No — R.A. No. 9266 shall not be construed to affect or prevent the practice of any other legally recognized profession",
-      "Yes, it supersedes all other professional regulatory laws"
+      "It affects construction professions only",
+      "Only civil engineering is exempt",
+      "No, it does not affect other professions",
+      "Yes, it supersedes all other laws"
     ],
     "c": 2,
     "ref": "",
@@ -992,10 +1003,10 @@
     "s": "",
     "q": "Per Section 45 (Separability Clause), what becomes of the rest of the IRR if one section or provision is struck down as unconstitutional or invalid?",
     "o": [
-      "The remainder of the IRR, or its application to other persons/circumstances, shall not be affected by such declaration",
-      "The Board must draft an entirely new IRR from scratch",
-      "The entire IRR is automatically voided",
-      "Only Rule I is voided, while the rest remains"
+      "The rest of the IRR stays in force",
+      "A new IRR must be drafted",
+      "The whole IRR is voided",
+      "Only Rule I is voided"
     ],
     "c": 0,
     "ref": "",
@@ -1031,10 +1042,10 @@
     "s": "",
     "q": "Which is one of the four subject groupings Section 14 prescribes for the architecture licensure exam?",
     "o": [
-      "Real Estate Appraisal and Valuation",
-      "Business Law and Taxation",
-      "Mechanical and Electrical Engineering Codes",
-      "Structural Design, Building Materials, Methods of Construction and Utilities"
+      "Real estate appraisal and valuation",
+      "Business law and taxation",
+      "Mechanical and electrical codes",
+      "Structural design, materials, methods, utilities"
     ],
     "c": 3,
     "ref": "",
@@ -1044,10 +1055,10 @@
     "s": "",
     "q": "R.A. No. 9266, 'The Architecture Act of 2004,' repealed which earlier law on the practice of architecture in the Philippines?",
     "o": [
-      "R.A. No. 545, as amended, 'An Act to Regulate the Practice of Architecture in the Philippines'",
-      "The Civil Code of the Philippines",
-      "P.D. No. 1096 (the National Building Code)",
-      "The Intellectual Property Code (R.A. No. 8293)"
+      "RA 545, as amended",
+      "The Civil Code",
+      "PD 1096, the Building Code",
+      "RA 8293, the IP Code"
     ],
     "c": 0,
     "ref": "",
@@ -1083,10 +1094,10 @@
     "s": "",
     "q": "Candidate B scores an overall weighted average of 74%, but only 46% in Structural Design. Does Candidate B pass under Section 15?",
     "o": [
-      "It depends on whether the Board grants a discretionary waiver",
-      "Yes, because only the weighted average matters, not individual subject scores",
-      "Yes, because the overall average of 74% exceeds the 70% requirement",
-      "No, because a grade of 46% in one subject is below the 50% minimum-per-subject requirement, regardless of the overall average"
+      "It depends on a Board waiver",
+      "Yes — only the average matters",
+      "Yes — 74% exceeds 70%",
+      "No — 46% is below the 50% minimum"
     ],
     "c": 3,
     "ref": "",
@@ -1096,10 +1107,10 @@
     "s": "",
     "q": "Whose guidelines govern the Board's accreditation of CPD/CPE providers, and which organization built the overarching CPD program referenced in Section 28?",
     "o": [
-      "Guidelines of the Professional Regulation Commission; program developed by the United Architects of the Philippines, Inc. through its CPE Council",
-      "No guidelines exist; each CPD provider sets its own standards",
-      "Guidelines of CHED; program developed by individual universities",
-      "Guidelines of DOLE; program developed by DTI"
+      "PRC guidelines; UAP CPE Council program",
+      "No guidelines; providers decide",
+      "CHED guidelines; university program",
+      "DOLE guidelines; DTI program"
     ],
     "c": 0,
     "ref": "",
@@ -1110,9 +1121,9 @@
     "q": "Before whom must every successful examination candidate take the oath of profession before practicing architecture?",
     "o": [
       "A notary public only",
-      "Any member of the Board, any authorized government official, or any person authorized by law to administer oaths",
-      "Only the Chairman of the PRC in person",
-      "The President of the UAP exclusively"
+      "A Board member or anyone authorized by law",
+      "The PRC Chairman only",
+      "The UAP President only"
     ],
     "c": 1,
     "ref": "",
@@ -1213,10 +1224,10 @@
     "s": "",
     "q": "Which of these is a listed ground under Section 23 for suspending or revoking a Certificate of Registration/PIC?",
     "o": [
-      "Having attended fewer CPD seminars than other architects",
-      "Having signed and affixed his/her seal on plans or specifications not prepared by him/her or not executed under his/her immediate supervision",
-      "Having practiced in a province other than his/her registered address",
-      "Having taken a sabbatical leave from practice for personal reasons"
+      "Attending fewer CPD seminars",
+      "Sealing plans not his or not under his supervision",
+      "Practicing in another province",
+      "Taking a sabbatical"
     ],
     "c": 1,
     "ref": "",
@@ -1265,10 +1276,10 @@
     "s": "",
     "q": "How is a foreign architect or unauthorized person who carries out architectural activities in the Philippines without authorization treated?",
     "o": [
-      "Subject only to a civil fine with no criminal liability",
-      "Engaged in the unauthorized practice of architecture and criminally liable under R.A. No. 9266",
-      "Automatically registered by reciprocity",
-      "Exempt, provided the project owner consents"
+      "A civil fine only",
+      "Unauthorized practice, criminally liable",
+      "Registered by reciprocity",
+      "Exempt if the owner consents"
     ],
     "c": 1,
     "ref": "",
@@ -1291,10 +1302,10 @@
     "s": "",
     "q": "Under Section 27 (Reciprocity), a foreign citizen may sit the Philippine architecture licensure examination only if his/her home country meets what condition?",
     "o": [
-      "Simply has a bilateral trade agreement with the Philippines unrelated to professions",
-      "Has no architecture licensing system at all",
-      "Requires no licensing examination whatsoever for architects",
-      "Admits Filipino citizens to the practice of architecture without restriction, or allows them to practice after an exam on terms of strict and absolute equality"
+      "It has an unrelated trade pact",
+      "It has no licensing system",
+      "It has no licensure exam",
+      "It admits Filipinos on equal terms"
     ],
     "c": 3,
     "ref": "",
@@ -1343,10 +1354,10 @@
     "s": "",
     "q": "How must government or private-firm employees who aren't registered architects, but who do architectural work as part of their job, go about that work?",
     "o": [
-      "Freely, without restriction, since they are government/company employees",
-      "Only with a notarized waiver from the client",
-      "Only if they hold an engineering license instead",
-      "Only under the direct supervision of a licensed architect; otherwise it is unauthorized practice penalized under Section 29"
+      "Freely, as employees",
+      "With a client waiver",
+      "With an engineering license",
+      "Only under direct supervision of an architect"
     ],
     "c": 3,
     "ref": "",
@@ -1395,10 +1406,10 @@
     "s": "",
     "q": "Under Section 32, does the Architect-of-record's civil liability extend to cover other signing professionals, such as the Architect-in-charge of construction or the Consulting Architect?",
     "o": [
-      "Yes, always, regardless of employment relationship",
-      "Yes, but only for the Consulting Architect, never the Architect-in-charge of construction",
-      "This liability rule applies only to architects employed in government, not those in private practice",
-      "No — the Architect-of-record's liability is limited to architectural documents of the project and does not extend to those other professionals' liability, unless they are under his/her direct employ"
+      "Yes, always",
+      "Yes, for the Consulting Architect only",
+      "Only in government practice",
+      "No — it covers his documents only"
     ],
     "c": 3,
     "ref": "",
