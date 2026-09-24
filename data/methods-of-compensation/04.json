@@ -9,8 +9,8 @@
       "A single contract between the Owner and each engineer, with the Architect as sub-consultant"
     ],
     "c": 0,
-    "ref": "",
-    "n": "DAEDS uses a single contract between the Architect and the Owner; the Architect then engages the other professionals under separate sub-consultancy contracts. (SPP Doc. 202, Sec. 6.1.1)"
+    "ref": "SPP Doc. 202, Sec. 6.1.1",
+    "n": "DAEDS uses a single contract between the Architect and the Owner; the Architect then engages the other professionals under separate sub-consultancy contracts."
   },
   {
     "s": "",
@@ -22,8 +22,8 @@
       "6% of PCC"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Group IV's DAEDS rate — covering both architectural and engineering design under a single Architect-held contract — is a flat 10% of Project Construction Cost. (SPP Doc. 202, Sec. 6.3.4)"
+    "ref": "SPP Doc. 202, Sec. 6.3.4",
+    "n": "Group IV's DAEDS rate — covering both architectural and engineering design under a single Architect-held contract — is a flat 10% of Project Construction Cost."
   },
   {
     "s": "",
@@ -35,9 +35,14 @@
       "PHP 2,500,000"
     ],
     "c": 3,
-    "ref": "",
-    "n": "RPF (DAEDS) = 10% x PHP 25,000,000 = PHP 2,500,000. (Sec. 6.3.4 (SPP Doc. 202, Sec. 6))",
-    "scenario": "Scenario: A row-house development (Group IV) has a Project Construction Cost (PCC) of PHP 25,000,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.4",
+    "n": "RPF (DAEDS) = 10% x PHP 25,000,000 = PHP 2,500,000.",
+    "scenario": "A row-house development (Group IV) has a Project Construction Cost (PCC) of PHP 25,000,000.",
+    "formula": "RPF = rate × PCC",
+    "steps": [
+      "RPF (DAEDS) = 10% x PHP 25,000,000",
+      "= PHP 2,500,000"
+    ]
   },
   {
     "s": "",
@@ -49,9 +54,14 @@
       "PHP 12,000,000 — still 10% of the full PCC, since Group IV has no bracket table"
     ],
     "c": 3,
-    "ref": "",
-    "n": "Group IV has no bracket table — the 10% DAEDS rate applies uniformly to the entire PCC no matter how large the project is. RPF = 0.10 x PHP 120,000,000 = PHP 12,000,000. (Sec. 6.3.4 (SPP Doc. 202, Sec. 6))",
-    "scenario": "Scenario: A large, high-end single-detached residence (Group IV) has a Project Construction Cost (PCC) of PHP 120,000,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.4",
+    "n": "Group IV has no bracket table — the 10% DAEDS rate applies uniformly to the entire PCC no matter how large the project is.",
+    "scenario": "A large, high-end single-detached residence (Group IV) has a Project Construction Cost (PCC) of PHP 120,000,000.",
+    "formula": "RPF = rate × PCC",
+    "steps": [
+      "RPF = 0.10 x PHP 120,000,000",
+      "= PHP 12,000,000"
+    ]
   },
   {
     "s": "",
@@ -63,8 +73,8 @@
       "Group IV, since it is still a residential building"
     ],
     "c": 2,
-    "ref": "",
-    "n": "\"Residential Condominiums\" appear explicitly under Group 2 (buildings of moderate complexity), not Group IV — Group IV is limited to single-detached/duplex houses, row-/shop-houses, small apartment houses, and townhouses. (SPP Doc. 202, Sec. 6.3.2 (Group 2) cf. Sec. 6.3.4 (Group IV))"
+    "ref": "SPP Doc. 202, Sec. 6.3.2 (Group 2) cf. Sec. 6.3.4",
+    "n": "\"Residential Condominiums\" appear explicitly under Group 2 (buildings of moderate complexity), not Group IV — Group IV is limited to single-detached/duplex houses, row-/shop-houses, small apartment houses, and townhouses."
   },
   {
     "s": "",
@@ -76,8 +86,8 @@
       "DADS — separate contracts between the Owner and each engineer"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Because the client wants a single point of contract accountability covering both architectural and engineering design, DAEDS is appropriate: the Architect signs one contract with the Owner and sub-consults the engineering and allied professionals. (SPP Doc. 202, Sec. 6.1.1)"
+    "ref": "SPP Doc. 202, Sec. 6.1.1",
+    "n": "Because the client wants a single point of contract accountability covering both architectural and engineering design, DAEDS is appropriate: the Architect signs one contract with the Owner and sub-consults the engineering and allied professionals."
   },
   {
     "s": "",
@@ -89,21 +99,21 @@
       "Construction Supervision Services"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Sec. 6 of SPP Doc. 202 is titled \"Regular Design Services\"; it sets out the manner of providing services, the methods of compensation, and the building-group fee tables (including Group IV, residences). (SPP Doc. 202, Sec. 6)"
+    "ref": "SPP Doc. 202, Sec. 6",
+    "n": "Sec. 6 of SPP Doc. 202 is titled \"Regular Design Services\"; it sets out the manner of providing services, the methods of compensation, and the building-group fee tables (including Group IV, residences)."
   },
   {
     "s": "",
     "q": "Whether services are provided under DAEDS or DADS, how are the professional responsibilities and civil liabilities of the Architect and the other State-regulated professionals treated?",
     "o": [
-      "They remain separate — the Architect does not assume the responsibilities and liabilities of the other professionals",
+      "They stay separate; the Architect does not assume the others' liabilities",
       "The Architect assumes full liability for all professionals under DAEDS only",
       "Liability is always shared jointly and severally among all professionals",
       "The Owner assumes all professional liability once the contract is signed"
     ],
     "c": 0,
-    "ref": "",
-    "n": "In both DAEDS and DADS, each State-regulated professional's responsibility and civil liability remains separate; the Architect does not assume the liabilities of the other professionals (RLPs). (SPP Doc. 202, Sec. 6.1)"
+    "ref": "SPP Doc. 202, Sec. 6.1",
+    "n": "In both DAEDS and DADS, each State-regulated professional's responsibility and civil liability remains separate; the Architect does not assume the liabilities of the other professionals (RLPs)."
   },
   {
     "s": "",
@@ -115,21 +125,21 @@
       "3% of PCC"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Group IV's DADS rate — where the Architect's contract covers architectural design only, with the Owner separately contracting the engineers — is a flat 6% of Project Construction Cost. (SPP Doc. 202, Sec. 6.3.4)"
+    "ref": "SPP Doc. 202, Sec. 6.3.4",
+    "n": "Group IV's DADS rate — where the Architect's contract covers architectural design only, with the Owner separately contracting the engineers — is a flat 6% of Project Construction Cost."
   },
   {
     "s": "",
     "q": "How does the Group IV Recommended Professional Fee structure differ from that of Groups I–III?",
     "o": [
       "Group IV and Groups I–III both use identical bracket tables",
-      "Group IV uses a single flat percentage of PCC for each service (10% DAEDS / 6% DADS) regardless of project cost, while Groups I–III use graduated bracket tables that add a percentage of the excess over cost thresholds",
+      "Group IV is a flat % of PCC; Groups I-III use cost brackets",
       "Group IV fees are computed per square meter, while Groups I–III use percentage of PCC",
       "Group IV uses graduated brackets while Groups I–III use flat percentages"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Unlike Groups I, II, and III, which scale the RPF through bracket tables (a base peso amount plus a percentage of the excess PCC beyond a threshold), Group IV simply applies one flat percentage to the entire PCC, with no bracket table. (SPP Doc. 202, Sec. 6.3.4 cf. Secs. 6.3.1-6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.4 cf. Secs. 6.3.1-6.3.3",
+    "n": "Unlike Groups I, II, and III, which scale the RPF through bracket tables (a base peso amount plus a percentage of the excess PCC beyond a threshold), Group IV simply applies one flat percentage to the entire PCC, with no bracket table."
   },
   {
     "s": "",
@@ -141,8 +151,8 @@
       "The Owner and the Architect share a single contract with the engineers as witnesses"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Under DADS, the Architect and the engineering/allied professionals each execute their own, separate contract directly with the Owner — unlike DAEDS, where the Architect holds a single contract and sub-consults the others. (SPP Doc. 202, Sec. 6.1.2)"
+    "ref": "SPP Doc. 202, Sec. 6.1.2",
+    "n": "Under DADS, the Architect and the engineering/allied professionals each execute their own, separate contract directly with the Owner — unlike DAEDS, where the Architect holds a single contract and sub-consults the others."
   },
   {
     "s": "",
@@ -154,9 +164,14 @@
       "PHP 7,200,000"
     ],
     "c": 3,
-    "ref": "",
-    "n": "RPF (DADS) = 6% x PHP 120,000,000 = PHP 7,200,000. (Sec. 6.3.4 (SPP Doc. 202, Sec. 6))",
-    "scenario": "Scenario: A large, high-end single-detached residence (Group IV) has a Project Construction Cost (PCC) of PHP 120,000,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.4",
+    "n": "RPF (DADS) = 6% x PHP 120,000,000 = PHP 7,200,000.",
+    "scenario": "A large, high-end single-detached residence (Group IV) has a Project Construction Cost (PCC) of PHP 120,000,000.",
+    "formula": "RPF = rate × PCC",
+    "steps": [
+      "RPF (DADS) = 6% x PHP 120,000,000",
+      "= PHP 7,200,000"
+    ]
   },
   {
     "s": "",
@@ -168,8 +183,8 @@
       "Four, one for each design discipline"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Sec. 6.1 provides exactly two manners of providing services: Detailed Architectural and Engineering Design Services (DAEDS) and Detailed Architectural Design Services (DADS). (SPP Doc. 202, Sec. 6.1)"
+    "ref": "SPP Doc. 202, Sec. 6.1",
+    "n": "Sec. 6.1 provides exactly two manners of providing services: Detailed Architectural and Engineering Design Services (DAEDS) and Detailed Architectural Design Services (DADS)."
   },
   {
     "s": "",
@@ -181,8 +196,8 @@
       "DAEDS, at 6% of PCC"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Since the Owner is directly and separately contracting the engineers herself, the Architect's engagement is DADS (Detailed Architectural Design Services), for which Group IV's flat rate is 6% of PCC. (SPP Doc. 202, Sec. 6.1.2 and Sec. 6.3.4)"
+    "ref": "SPP Doc. 202, Sec. 6.1.2 and Sec. 6.3.4",
+    "n": "Since the Owner is directly and separately contracting the engineers herself, the Architect's engagement is DADS (Detailed Architectural Design Services), for which Group IV's flat rate is 6% of PCC."
   },
   {
     "s": "",
@@ -194,21 +209,21 @@
       "A residential condominium"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Group IV expressly lists row-houses and shop-houses (attached units along a frontage, the latter with ground-floor commercial use) as residence types it covers. (SPP Doc. 202, Sec. 6.3.4)"
+    "ref": "SPP Doc. 202, Sec. 6.3.4",
+    "n": "Group IV expressly lists row-houses and shop-houses (attached units along a frontage, the latter with ground-floor commercial use) as residence types it covers."
   },
   {
     "s": "",
     "q": "What is the overall purpose of grouping buildings into Groups (e.g., Group I through Group IX and beyond) under Sec. 6.3?",
     "o": [
       "To assign buildings to different professional regulatory boards",
-      "To determine fair remuneration for the Architect based on the degree of complexity and creative skill a building type requires",
+      "To set fair remuneration by the complexity and skill required",
       "To determine which buildings require a building permit",
       "To rank buildings by required floor area for zoning purposes"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Sec. 6.3 explains that architectural work is classified according to the degree of complexity and creative skill needed to meet the Client's requirements, and this grouping is used to determine fair remuneration for the Architect. (SPP Doc. 202, Sec. 6.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3",
+    "n": "Sec. 6.3 explains that architectural work is classified according to the degree of complexity and creative skill needed to meet the Client's requirements, and this grouping is used to determine fair remuneration for the Architect."
   },
   {
     "s": "",
@@ -220,9 +235,15 @@
       "PHP 230,000"
     ],
     "c": 2,
-    "ref": "",
-    "n": "RPF (DADS) = 6% x PCC = 0.06 x PHP 2,300,000 = PHP 138,000. (Sec. 6.3.4 (SPP Doc. 202, Sec. 6))",
-    "scenario": "Scenario: An Architect is engaged to design a single-detached residence with a Project Construction Cost (PCC) of PHP 2,300,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.4",
+    "n": "RPF (DADS) = 6% x PCC = 0.06 x PHP 2,300,000 = PHP 138,000.",
+    "scenario": "An Architect is engaged to design a single-detached residence with a Project Construction Cost (PCC) of PHP 2,300,000.",
+    "formula": "RPF = rate × PCC",
+    "steps": [
+      "RPF (DADS) = 6% x PCC",
+      "= 0.06 x PHP 2,300,000",
+      "= PHP 138,000"
+    ]
   },
   {
     "s": "",
@@ -234,8 +255,13 @@
       "PHP 4,387,500"
     ],
     "c": 1,
-    "ref": "",
-    "n": "RPF (DAEDS) = 10% x PHP 48,750,000 = PHP 4,875,000. (Sec. 6.3.4 (SPP Doc. 202, Sec. 6))"
+    "ref": "SPP Doc. 202, Sec. 6.3.4",
+    "n": "RPF (DAEDS) = 10% x PHP 48,750,000 = PHP 4,875,000.",
+    "formula": "RPF = rate × PCC",
+    "steps": [
+      "RPF (DAEDS) = 10% x PHP 48,750,000",
+      "= PHP 4,875,000"
+    ]
   },
   {
     "s": "",
@@ -247,9 +273,14 @@
       "PHP 840,000"
     ],
     "c": 3,
-    "ref": "",
-    "n": "RPF (DAEDS) = 10% x PHP 8,400,000 = PHP 840,000. (Sec. 6.3.4 (SPP Doc. 202, Sec. 6))",
-    "scenario": "Scenario: A row of shop-houses (ground-floor retail with upper-floor residential units) has a Project Construction Cost (PCC) of PHP 8,400,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.4",
+    "n": "RPF (DAEDS) = 10% x PHP 8,400,000 = PHP 840,000.",
+    "scenario": "A row of shop-houses (ground-floor retail with upper-floor residential units) has a Project Construction Cost (PCC) of PHP 8,400,000.",
+    "formula": "RPF = rate × PCC",
+    "steps": [
+      "RPF (DAEDS) = 10% x PHP 8,400,000",
+      "= PHP 840,000"
+    ]
   },
   {
     "s": "",
@@ -258,24 +289,33 @@
       "PHP 1,500,000",
       "PHP 900,000",
       "PHP 300,000",
-      "PHP 600,000 (PHP 1,500,000 DAEDS minus PHP 900,000 DADS)"
+      "PHP 600,000"
     ],
     "c": 3,
-    "ref": "",
-    "n": "DAEDS fee = 10% x 15,000,000 = PHP 1,500,000; DADS fee = 6% x 15,000,000 = PHP 900,000; difference = PHP 1,500,000 - PHP 900,000 = PHP 600,000. The extra 4% compensates the Architect for holding the single contract and coordinating the sub-consulted engineers directly. (Sec. 6.3.4 (SPP Doc. 202, Sec. 6))"
+    "ref": "SPP Doc. 202, Sec. 6.3.4",
+    "n": "The extra 4% compensates the Architect for holding the single contract and coordinating the sub-consulted engineers directly.",
+    "formula": "RPF = rate × PCC",
+    "steps": [
+      "DAEDS fee = 10% x 15,000,000",
+      "= PHP 1,500,000; DADS fee",
+      "= 6% x 15,000,000",
+      "= PHP 900,000; difference",
+      "= PHP 1,500,000 - PHP 900,000",
+      "= PHP 600,000"
+    ]
   },
   {
     "s": "",
     "q": "Per Sec. 6.3.4, which building types fall under Group IV?",
     "o": [
       "Industrial plants, warehouses, and parking structures",
-      "Residences (single-detached, single-attached or duplex; row-houses or shop-houses), small apartment houses and townhouses",
+      "Residences, small apartment houses and townhouses",
       "Monumental buildings requiring consummate design skill and precise detailing",
       "Office buildings, banks, schools, and shopping centers"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Group IV covers residences — single-detached, single-attached or duplex houses; row-houses or shop-houses — as well as small apartment houses and townhouses. (SPP Doc. 202, Sec. 6.3.4)"
+    "ref": "SPP Doc. 202, Sec. 6.3.4",
+    "n": "Group IV covers residences — single-detached, single-attached or duplex houses; row-houses or shop-houses — as well as small apartment houses and townhouses."
   },
   {
     "s": "",
@@ -287,9 +327,14 @@
       "PHP 500,000"
     ],
     "c": 3,
-    "ref": "",
-    "n": "RPF (DAEDS) = 10% x PHP 5,000,000 = PHP 500,000. (Sec. 6.3.4 (SPP Doc. 202, Sec. 6))",
-    "scenario": "Scenario: A duplex (single-attached) residence has a Project Construction Cost (PCC) of PHP 5,000,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.4",
+    "n": "RPF (DAEDS) = 10% x PHP 5,000,000 = PHP 500,000.",
+    "scenario": "A duplex (single-attached) residence has a Project Construction Cost (PCC) of PHP 5,000,000.",
+    "formula": "RPF = rate × PCC",
+    "steps": [
+      "RPF (DAEDS) = 10% x PHP 5,000,000",
+      "= PHP 500,000"
+    ]
   },
   {
     "s": "",
@@ -301,8 +346,8 @@
       "6.2.1 — Percentage (%) of Project Construction Cost (PCC)"
     ],
     "c": 3,
-    "ref": "",
-    "n": "The Group IV rates are expressed as a percentage of Project Construction Cost, i.e., compensation method 6.2.1, one of the several methods (unit cost, fee plus expenses, lump sum, per diem, DPE multiple, mixed) listed under Sec. 6.2. (SPP Doc. 202, Sec. 6.2.1)"
+    "ref": "SPP Doc. 202, Sec. 6.2.1",
+    "n": "The Group IV rates are expressed as a percentage of Project Construction Cost, i.e., compensation method 6.2.1, one of the several methods (unit cost, fee plus expenses, lump sum, per diem, DPE multiple, mixed) listed under Sec. 6.2."
   },
   {
     "s": "",
@@ -314,9 +359,14 @@
       "PHP 360,000"
     ],
     "c": 2,
-    "ref": "",
-    "n": "RPF (DADS) = 6% x PHP 5,000,000 = PHP 300,000. (Sec. 6.3.4 (SPP Doc. 202, Sec. 6))",
-    "scenario": "Scenario: A duplex (single-attached) residence has a Project Construction Cost (PCC) of PHP 5,000,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.4",
+    "n": "RPF (DADS) = 6% x PHP 5,000,000 = PHP 300,000.",
+    "scenario": "A duplex (single-attached) residence has a Project Construction Cost (PCC) of PHP 5,000,000.",
+    "formula": "RPF = rate × PCC",
+    "steps": [
+      "RPF (DADS) = 6% x PHP 5,000,000",
+      "= PHP 300,000"
+    ]
   },
   {
     "s": "",
@@ -328,9 +378,14 @@
       "PHP 1,500,000"
     ],
     "c": 3,
-    "ref": "",
-    "n": "RPF (DADS) = 6% x PHP 25,000,000 = PHP 1,500,000. (Sec. 6.3.4 (SPP Doc. 202, Sec. 6))",
-    "scenario": "Scenario: A row-house development (Group IV) has a Project Construction Cost (PCC) of PHP 25,000,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.4",
+    "n": "RPF (DADS) = 6% x PHP 25,000,000 = PHP 1,500,000.",
+    "scenario": "A row-house development (Group IV) has a Project Construction Cost (PCC) of PHP 25,000,000.",
+    "formula": "RPF = rate × PCC",
+    "steps": [
+      "RPF (DADS) = 6% x PHP 25,000,000",
+      "= PHP 1,500,000"
+    ]
   },
   {
     "s": "",
@@ -342,8 +397,8 @@
       "Liability is shared equally between the Architect and the Owner"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Sec. 6.1 makes clear that in both DAEDS and DADS, each State-regulated professional's responsibility and civil liability remains separate; the Architect does not assume the liabilities of the sub-consulted engineers merely because DAEDS routes payment through a single contract. (SPP Doc. 202, Sec. 6.1)"
+    "ref": "SPP Doc. 202, Sec. 6.1",
+    "n": "Sec. 6.1 makes clear that in both DAEDS and DADS, each State-regulated professional's responsibility and civil liability remains separate; the Architect does not assume the liabilities of the sub-consulted engineers merely because DAEDS routes payment through a single contract."
   },
   {
     "s": "",
@@ -355,8 +410,8 @@
       "Residential condominiums and mixed-use buildings"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Group IV's coverage, as stated in Sec. 6.3.4, closes with \"small apartment houses and townhouses,\" in addition to the detached/duplex and row-/shop-house types. (SPP Doc. 202, Sec. 6.3.4)"
+    "ref": "SPP Doc. 202, Sec. 6.3.4",
+    "n": "Group IV's coverage, as stated in Sec. 6.3.4, closes with \"small apartment houses and townhouses,\" in addition to the detached/duplex and row-/shop-house types."
   },
   {
     "s": "",
@@ -368,9 +423,15 @@
       "PHP 138,000"
     ],
     "c": 0,
-    "ref": "",
-    "n": "RPF (DAEDS) = 10% x PCC = 0.10 x PHP 2,300,000 = PHP 230,000. (Sec. 6.3.4 (SPP Doc. 202, Sec. 6))",
-    "scenario": "Scenario: An Architect is engaged to design a single-detached residence with a Project Construction Cost (PCC) of PHP 2,300,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.4",
+    "n": "RPF (DAEDS) = 10% x PCC = 0.10 x PHP 2,300,000 = PHP 230,000.",
+    "scenario": "An Architect is engaged to design a single-detached residence with a Project Construction Cost (PCC) of PHP 2,300,000.",
+    "formula": "RPF = rate × PCC",
+    "steps": [
+      "RPF (DAEDS) = 10% x PCC",
+      "= 0.10 x PHP 2,300,000",
+      "= PHP 230,000"
+    ]
   },
   {
     "s": "",
@@ -382,8 +443,13 @@
       "PHP 588,000"
     ],
     "c": 2,
-    "ref": "",
-    "n": "RPF (DADS) = 6% x PHP 8,400,000 = PHP 504,000. (Sec. 6.3.4 (SPP Doc. 202, Sec. 6))",
-    "scenario": "Scenario: A row of shop-houses (ground-floor retail with upper-floor residential units) has a Project Construction Cost (PCC) of PHP 8,400,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.4",
+    "n": "RPF (DADS) = 6% x PHP 8,400,000 = PHP 504,000.",
+    "scenario": "A row of shop-houses (ground-floor retail with upper-floor residential units) has a Project Construction Cost (PCC) of PHP 8,400,000.",
+    "formula": "RPF = rate × PCC",
+    "steps": [
+      "RPF (DADS) = 6% x PHP 8,400,000",
+      "= PHP 504,000"
+    ]
   }
 ]
