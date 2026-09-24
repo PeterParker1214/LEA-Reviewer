@@ -1,7 +1,7 @@
 [
   {
-    "s": "Type of Land Use",
-    "q": "What is the minimum permitted slope for Entrance Area?",
+    "s": "Recommended Slopes",
+    "q": "What is the maximum permitted slope for Entrance Area?",
     "o": [
       "1%",
       "5%",
@@ -10,7 +10,7 @@
     ],
     "c": 3,
     "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Entrance Area uses a minimum permitted slope of 4%, corresponding to 1:25."
+    "n": "Entrance Area has a maximum permitted slope of 4%, corresponding to 1:25."
   },
   {
     "s": "Creation of Local Government Units (LGU)",
@@ -78,8 +78,8 @@
     "n": "It reverses the conventional concentric pattern rather than simply repeating it."
   },
   {
-    "s": "Type of Land Use",
-    "q": "What is the maximum permitted slope for Parking Areas?",
+    "s": "Recommended Slopes",
+    "q": "What is the minimum permitted slope for Parking Areas?",
     "o": [
       "2%",
       "4%",
@@ -88,33 +88,45 @@
     ],
     "c": 3,
     "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Parking Areas has a maximum permitted slope of 1%, equivalent to 1:100."
+    "n": "Parking Areas uses a minimum permitted slope of 1%, equivalent to 1:100."
   },
   {
     "s": "Entrance Ramps",
-    "q": "What is the minimum permitted slope for Lawns?",
+    "q": "A grassed playlot rises at 4%. What is that as a rise-to-run ratio?",
     "o": [
-      "1%",
-      "5%",
-      "4%",
-      "2%"
+      "1:4",
+      "1:40",
+      "1:20",
+      "1:25"
     ],
-    "c": 1,
-    "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Lawns uses a minimum permitted slope of 5%, corresponding to 1:20."
+    "c": 3,
+    "ref": "Principles of planning: recommended slopes",
+    "n": "4% means 4 m of rise per 100 m of run; 100 ÷ 4 = 25, so the slope is 1:25.",
+    "formula": "ratio = 1 : (100 ÷ slope %)",
+    "steps": [
+      "Slope % = rise ÷ run × 100 = 4%",
+      "Run for 1 m of rise = 100 ÷ 4 = 25 m",
+      "Ratio = 1:25"
+    ]
   },
   {
     "s": "Type of Land Use",
-    "q": "What is the minimum permitted slope for Minor Footpaths?",
+    "q": "A minor footpath rises at 14%. What is that as a rise-to-run ratio?",
     "o": [
-      "8%",
-      "50%",
-      "33%",
-      "14%"
+      "1:7.1",
+      "1:14",
+      "1:4",
+      "1:10"
     ],
-    "c": 3,
-    "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Minor Footpaths uses a minimum permitted slope of 14%, corresponding to 1:07."
+    "c": 0,
+    "ref": "Principles of planning: recommended slopes",
+    "n": "14% means 14 m of rise per 100 m of run; 100 ÷ 14 = 7.1, so the slope is 1:7.1.",
+    "formula": "ratio = 1 : (100 ÷ slope %)",
+    "steps": [
+      "Slope % = rise ÷ run × 100 = 14%",
+      "Run for 1 m of rise = 100 ÷ 14 = 7.1 m",
+      "Ratio = 1:7.1"
+    ]
   },
   {
     "s": "Urban Ecological Processes",
@@ -170,16 +182,15 @@
   },
   {
     "s": "Degree of Inclination",
-    "q": "Which description best matches a 0 - 3% site slope?",
+    "q": "Which slope range is described as broad, level to nearly level or flat land?",
     "o": [
-      "8 - 15%",
-      "5 - 8%",
-      "0 - 3%",
-      "3 - 5%"
+      "3–5%",
+      "0–3%",
+      "5–8%"
     ],
-    "c": 2,
-    "ref": "Principles of Planning Tables, p. 46 — Degree of Inclination",
-    "n": "A 0 - 3% slope is described as broad to level to nearly level or flat."
+    "c": 1,
+    "ref": "Principles of planning: degree of inclination",
+    "n": "A 0–3% slope is broad, level to nearly level or flat land."
   },
   {
     "s": "Creation of Local Government Units (LGU)",
@@ -248,16 +259,15 @@
   },
   {
     "s": "Degree of Inclination",
-    "q": "Which description best matches a >18% site slope?",
+    "q": "Which slope range is described as very steeply sloping, rolling land in many directions?",
     "o": [
-      "5 - 8%",
-      "0 - 3%",
-      "3 - 5%",
-      ">18%"
+      "15–18%",
+      "over 18%",
+      "8–15%"
     ],
-    "c": 3,
-    "ref": "Principles of Planning Tables, p. 46 — Degree of Inclination",
-    "n": "A >18% slope is described as very steeply sloping and rolling land in many directions."
+    "c": 1,
+    "ref": "Principles of planning: degree of inclination",
+    "n": "A over 18% slope is very steeply sloping, rolling land in many directions."
   },
   {
     "s": "Advocacy and Radical Planning",
@@ -299,7 +309,7 @@
     "n": "E. W. Burgess developed the Concentric Zone Theory."
   },
   {
-    "s": "Entrance Ramps",
+    "s": "Recommended Slopes",
     "q": "What is the maximum permitted slope for Lawn?",
     "o": [
       "2%",
@@ -309,7 +319,7 @@
     ],
     "c": 2,
     "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Lawn has a maximum permitted slope of 25%, equivalent to 1:04."
+    "n": "Lawn has a maximum permitted slope of 25%, equivalent to 1:4."
   },
   {
     "s": "Slope and Land Use",
@@ -429,8 +439,8 @@
     "n": "The north-south condition uses a segmental-shaped shading mask."
   },
   {
-    "s": "Type of Land Use",
-    "q": "What is the minimum permitted slope for Planted Slopes?",
+    "s": "Recommended Slopes",
+    "q": "What is the maximum permitted slope for Planted Slopes?",
     "o": [
       "8%",
       "14%",
@@ -439,7 +449,7 @@
     ],
     "c": 2,
     "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Planted Slopes uses a minimum permitted slope of 50%, corresponding to 1:02."
+    "n": "Planted Slopes has a maximum permitted slope of 50%, corresponding to 1:2."
   },
   {
     "s": "City Classification",
@@ -482,16 +492,22 @@
   },
   {
     "s": "Pedestrian Ramps",
-    "q": "What is the minimum permitted slope for Paved Playlots?",
+    "q": "A planted bank rises at 50%. What is that as a rise-to-run ratio?",
     "o": [
-      "8%",
-      "50%",
-      "33%",
-      "14%"
+      "1:50",
+      "1:2",
+      "1:5",
+      "1:3"
     ],
     "c": 1,
-    "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Paved Playlots uses a minimum permitted slope of 50%, corresponding to 1:02."
+    "ref": "Principles of planning: recommended slopes",
+    "n": "50% means 50 m of rise per 100 m of run; 100 ÷ 50 = 2, so the slope is 1:2.",
+    "formula": "ratio = 1 : (100 ÷ slope %)",
+    "steps": [
+      "Slope % = rise ÷ run × 100 = 50%",
+      "Run for 1 m of rise = 100 ÷ 50 = 2 m",
+      "Ratio = 1:2"
+    ]
   },
   {
     "s": "Air Movement Within Buildings",
@@ -534,16 +550,16 @@
   },
   {
     "s": "Central Place Theory",
-    "q": "Who advanced Central Place Theory in City Limits?",
+    "q": "Who wrote City Limits (1981), arguing that a city's economic competition limits what its politics can do?",
     "o": [
-      "Paul Peterson",
       "Friedrich Engels",
+      "Paul Peterson",
       "E. W. Burgess",
       "Walter Christaller"
     ],
-    "c": 0,
-    "ref": "Principles of Planning Tables, p. 47 — Major Theories in Urban Spatial Structure of Cities",
-    "n": "Paul Peterson is identified as the person who advanced the ideas in City Limits."
+    "c": 1,
+    "ref": "Urban theory",
+    "n": "Political scientist Paul Peterson's City Limits argues that cities favor development policies because they compete for capital and residents."
   },
   {
     "s": "Other Design Factors and Wind Shadows",
@@ -624,8 +640,8 @@
     "n": "A municipality requires 25,000 population in the stated criteria."
   },
   {
-    "s": "Type of Land Use",
-    "q": "What is the minimum permitted slope for Mown Grass Banks?",
+    "s": "Recommended Slopes",
+    "q": "What is the maximum permitted slope for Mown Grass Banks?",
     "o": [
       "50%",
       "14%",
@@ -634,7 +650,7 @@
     ],
     "c": 2,
     "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Mown Grass Banks uses a minimum permitted slope of 33%, corresponding to 1:03."
+    "n": "Mown Grass Banks has a maximum permitted slope of 33%, corresponding to 1:3."
   },
   {
     "s": "Creation of Local Government Units (LGU)",
@@ -832,7 +848,7 @@
     "n": "Component cities are part of the province in which they are geographically located."
   },
   {
-    "s": "Entrance Ramps",
+    "s": "Recommended Slopes",
     "q": "What is the maximum permitted slope for Pedestrian?",
     "o": [
       "4%",
@@ -924,16 +940,16 @@
   },
   {
     "s": "City Classification",
-    "q": "What population is required for an independent component city?",
+    "q": "An independent component city is independent of which local government unit?",
     "o": [
-      "150,000",
-      "250,000",
-      "100,000",
-      "200,000"
+      "The barangay",
+      "The region",
+      "Metro Manila",
+      "The province"
     ],
-    "c": 0,
-    "ref": "Principles of Planning Tables, p. 47 — City Classification",
-    "n": "An independent component city requires at least 150,000 inhabitants."
+    "c": 3,
+    "ref": "RA 7160, Sec. 451",
+    "n": "Like a highly urbanized city, an independent component city is not under the province, though it stays geographically within it."
   },
   {
     "s": "Monsoons in the Philippines",
@@ -988,8 +1004,8 @@
     "n": "The discussion concludes that people gather into cities to share goods and ideas."
   },
   {
-    "s": "Type of Land Use",
-    "q": "What is the minimum permitted slope for Parking Areas?",
+    "s": "Recommended Slopes",
+    "q": "What is the maximum permitted slope for Parking Areas?",
     "o": [
       "1%",
       "2%",
@@ -998,7 +1014,7 @@
     ],
     "c": 3,
     "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Parking Areas uses a minimum permitted slope of 5%, corresponding to 1:20."
+    "n": "Parking Areas has a maximum permitted slope of 5%, corresponding to 1:20."
   },
   {
     "s": "Sector and Multiple Nuclei Theories",
@@ -1054,16 +1070,16 @@
   },
   {
     "s": "City Classification",
-    "q": "What annual income is required for a highly urbanized city?",
+    "q": "Under the Local Government Code (RA 7160, Sec. 452), what minimum annual income does a highly urbanized city need?",
     "o": [
-      "₱350 million",
+      "₱500 million",
+      "₱50 million",
       "₱100 million",
-      "₱250 million",
-      "₱500 million"
+      "₱20 million"
     ],
-    "c": 3,
-    "ref": "Principles of Planning Tables, p. 47 — City Classification",
-    "n": "The income threshold is at least ₱500 million based on 2008 constant prices."
+    "c": 1,
+    "ref": "RA 7160, Sec. 452",
+    "n": "Sec. 452 requires at least 200,000 people (certified by the statistics office) and an income of at least ₱50 million at 1991 constant prices (certified by the city treasurer)."
   },
   {
     "s": "Monsoons in the Philippines",
@@ -1080,20 +1096,20 @@
   },
   {
     "s": "Central Place Theory",
-    "q": "Paul Peterson tested his conclusions in which place?",
+    "q": "Walter Christaller drew Central Place Theory (1933) from a study of towns in which region?",
     "o": [
       "Northern France",
-      "Southern Germany",
       "Central Italy",
-      "Eastern England"
+      "Eastern England",
+      "Southern Germany"
     ],
-    "c": 1,
-    "ref": "Principles of Planning Tables, p. 47 — Major Theories in Urban Spatial Structure of Cities",
-    "n": "The conclusions were tested in Southern Germany."
+    "c": 3,
+    "ref": "Central place theory",
+    "n": "Christaller mapped the market towns of southern Germany to show how central places space themselves in a hexagonal hierarchy."
   },
   {
-    "s": "Type of Land Use",
-    "q": "What is the minimum permitted slope for Streets and Drives?",
+    "s": "Recommended Slopes",
+    "q": "What is the maximum permitted slope for Streets and Drives?",
     "o": [
       "33%",
       "8%",
@@ -1102,20 +1118,20 @@
     ],
     "c": 1,
     "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Streets and Drives uses a minimum permitted slope of 8%, corresponding to 1:12."
+    "n": "Streets and Drives has a maximum permitted slope of 8%, corresponding to 1:12."
   },
   {
     "s": "Monsoons in the Philippines",
-    "q": "During which months does Habagat persist?",
+    "q": "During which months does the Habagat (southwest monsoon) usually prevail?",
     "o": [
-      "January to February",
-      "March to April",
-      "June to July",
-      "November to December"
+      "November to February",
+      "June to September",
+      "March to May",
+      "October to December"
     ],
-    "c": 3,
-    "ref": "Principles of Planning Tables, p. 46 — Monsoons in the Philippines",
-    "n": "Habagat persists from November to December in the seasonal pattern given."
+    "c": 1,
+    "ref": "PAGASA monsoon seasons",
+    "n": "The Habagat sets in around late May or June, peaks in August and fades out by October; the Amihan rules from about October to March."
   },
   {
     "s": "Advocacy and Radical Planning",
@@ -1144,8 +1160,8 @@
     "n": "Renovation and rising property values can displace lower-income households and small businesses from deteriorated neighborhoods."
   },
   {
-    "s": "Type of Land Use",
-    "q": "What is the maximum permitted slope for Terrace (Paved)?",
+    "s": "Recommended Slopes",
+    "q": "What is the minimum permitted slope for Terrace (Paved)?",
     "o": [
       "2%",
       "1%",
@@ -1154,10 +1170,10 @@
     ],
     "c": 1,
     "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Terrace (Paved) has a maximum permitted slope of 1%, equivalent to 1:100."
+    "n": "Terrace (Paved) uses a minimum permitted slope of 1%, equivalent to 1:100."
   },
   {
-    "s": "Pedestrian Ramps",
+    "s": "Recommended Slopes",
     "q": "What is the maximum permitted slope for Playgrounds?",
     "o": [
       "15%",
@@ -1167,7 +1183,7 @@
     ],
     "c": 0,
     "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Playgrounds has a maximum permitted slope of 15%, equivalent to 1:06."
+    "n": "Playgrounds has a maximum permitted slope of 15%, equivalent to 1:6."
   },
   {
     "s": "City Classification",
@@ -1196,7 +1212,7 @@
     "n": "Gentrification includes wealthier individuals buying and renovating properties, improving values while potentially displacing existing occupants."
   },
   {
-    "s": "Pedestrian Ramps",
+    "s": "Recommended Slopes",
     "q": "What is the minimum permitted slope for Sitting Areas?",
     "o": [
       "4%",
@@ -1287,7 +1303,7 @@
     "n": "Cost-benefit analysis is given as an example of a scientific evaluation technique used to compare alternatives."
   },
   {
-    "s": "Pedestrian Ramps",
+    "s": "Recommended Slopes",
     "q": "What is the maximum permitted slope for Sitting Areas?",
     "o": [
       "1%",
@@ -1301,16 +1317,16 @@
   },
   {
     "s": "City Classification",
-    "q": "What annual income is required for an independent component city?",
+    "q": "What sets an independent component city apart from other component cities?",
     "o": [
-      "₱350 million",
-      "₱500 million",
-      "₱250 million",
-      "₱100 million"
+      "Its charter bars its voters from voting for provincial officials",
+      "It must have at least 500,000 residents",
+      "It must earn at least ₱350 million a year",
+      "It must lie inside Metro Manila"
     ],
     "c": 0,
-    "ref": "Principles of Planning Tables, p. 47 — City Classification",
-    "n": "The annual income threshold is at least ₱350 million based on 2008 constant prices."
+    "ref": "RA 7160, Sec. 451",
+    "n": "Under RA 7160, Sec. 451, a component city whose charter prohibits its voters from voting for provincial officials is independent of the province."
   },
   {
     "s": "Creation of Local Government Units (LGU)",
@@ -1365,8 +1381,8 @@
     "n": "North- and south-facing openings use a horizontal shading approach with overhangs, canopies, light shelves, louvers, shutters, and awnings."
   },
   {
-    "s": "Type of Land Use",
-    "q": "What is the maximum permitted slope for Entrance Area?",
+    "s": "Recommended Slopes",
+    "q": "What is the minimum permitted slope for Entrance Area?",
     "o": [
       "1%",
       "5%",
@@ -1375,7 +1391,7 @@
     ],
     "c": 0,
     "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Entrance Area has a maximum permitted slope of 1%, equivalent to 1:100."
+    "n": "Entrance Area uses a minimum permitted slope of 1%, equivalent to 1:100."
   },
   {
     "s": "City Classification",
@@ -1418,19 +1434,19 @@
   },
   {
     "s": "Degree of Inclination",
-    "q": "Which description best matches a 15 - 18% site slope?",
+    "q": "Which slope range is described as steeply undulating, rolling land sloping in many directions?",
     "o": [
-      "15 - 18%",
-      "0 - 3%",
-      "3 - 5%",
-      "5 - 8%"
+      "8–15%",
+      "15–18%",
+      "over 18%",
+      "5–8%"
     ],
-    "c": 0,
-    "ref": "Principles of Planning Tables, p. 46 — Degree of Inclination",
-    "n": "A 15 - 18% slope is described as steeply undulating and rolling land sloping in many directions."
+    "c": 1,
+    "ref": "Principles of planning: degree of inclination",
+    "n": "A 15–18% slope is steeply undulating, rolling land sloping in many directions."
   },
   {
-    "s": "Entrance Ramps",
+    "s": "Recommended Slopes",
     "q": "What is the maximum permitted slope for Grassed Playlots?",
     "o": [
       "5%",
@@ -1456,7 +1472,7 @@
     "n": "Concentric Zone Theory describes a monocentric city with growth expanding in rings from one center."
   },
   {
-    "s": "Type of Land Use",
+    "s": "Recommended Slopes",
     "q": "What is the maximum permitted slope for Ramps for Vehicles?",
     "o": [
       "4%",
@@ -1509,16 +1525,22 @@
   },
   {
     "s": "Type of Land Use",
-    "q": "What minimum slope is assigned to the Main Ramp on Footpath (Short)?",
+    "q": "A short ramp on a main footpath rises at 14%. What is that as a rise-to-run ratio?",
     "o": [
-      "8%",
-      "5%",
-      "14%",
-      "4%"
+      "1:7.1",
+      "1:14",
+      "1:5",
+      "1:12.5"
     ],
-    "c": 2,
-    "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "The short main ramp on a footpath has a minimum slope of 14%, equivalent to a 1:07 ratio."
+    "c": 0,
+    "ref": "Principles of planning: recommended slopes",
+    "n": "14% means 14 m of rise per 100 m of run; 100 ÷ 14 = 7.1, so the slope is 1:7.1.",
+    "formula": "ratio = 1 : (100 ÷ slope %)",
+    "steps": [
+      "Slope % = rise ÷ run × 100 = 14%",
+      "Run for 1 m of rise = 100 ÷ 14 = 7.1 m",
+      "Ratio = 1:7.1"
+    ]
   },
   {
     "s": "Concentric and Inverse Concentric Zone Theories",
@@ -1652,29 +1674,35 @@
   },
   {
     "s": "Type of Land Use",
-    "q": "What is the maximum permitted slope for Minor Footpaths?",
+    "q": "A minor footpath rises at 5%. What is that as a rise-to-run ratio?",
     "o": [
-      "4%",
-      "5%",
-      "2%",
-      "1%"
+      "1:5",
+      "1:25",
+      "1:50",
+      "1:20"
     ],
-    "c": 1,
-    "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Minor Footpaths has a maximum permitted slope of 5%, equivalent to 1:20."
+    "c": 3,
+    "ref": "Principles of planning: recommended slopes",
+    "n": "5% means 5 m of rise per 100 m of run; 100 ÷ 5 = 20, so the slope is 1:20.",
+    "formula": "ratio = 1 : (100 ÷ slope %)",
+    "steps": [
+      "Slope % = rise ÷ run × 100 = 5%",
+      "Run for 1 m of rise = 100 ÷ 5 = 20 m",
+      "Ratio = 1:20"
+    ]
   },
   {
     "s": "Degree of Inclination",
-    "q": "Which description best matches a 8 - 15% site slope?",
+    "q": "Which slope range is described as moderately undulating, gently rolling land sloping in more than one direction?",
     "o": [
-      "5 - 8%",
-      "0 - 3%",
-      "3 - 5%",
-      "8 - 15%"
+      "8–15%",
+      "5–8%",
+      "15–18%",
+      "3–5%"
     ],
-    "c": 3,
-    "ref": "Principles of Planning Tables, p. 46 — Degree of Inclination",
-    "n": "A 8 - 15% slope is described as moderately undulating and gently rolling land sloping in more than one direction."
+    "c": 0,
+    "ref": "Principles of planning: degree of inclination",
+    "n": "A 8–15% slope is moderately undulating, gently rolling land sloping in more than one direction."
   },
   {
     "s": "Incrementalism and Transactive Planning",
@@ -1755,7 +1783,7 @@
     "n": "Implementation follows the selection of the preferred policy alternative."
   },
   {
-    "s": "Type of Land Use",
+    "s": "Recommended Slopes",
     "q": "What is the minimum permitted slope for Ramps for Vehicles?",
     "o": [
       "1%",
@@ -1781,7 +1809,7 @@
     "n": "The city threshold is ₱100M for the last two consecutive years based on 2000 constant prices."
   },
   {
-    "s": "Pedestrian Ramps",
+    "s": "Recommended Slopes",
     "q": "What is the maximum permitted slope for Paved Playlots?",
     "o": [
       "1%",
@@ -1886,16 +1914,16 @@
   },
   {
     "s": "Degree of Inclination",
-    "q": "Which description best matches a 3 - 5% site slope?",
+    "q": "Which slope range is described as gently sloping land falling in one general direction?",
     "o": [
-      "8 - 15%",
-      "0 - 3%",
-      "3 - 5%",
-      "5 - 8%"
+      "0–3%",
+      "3–5%",
+      "5–8%",
+      "8–15%"
     ],
-    "c": 2,
-    "ref": "Principles of Planning Tables, p. 46 — Degree of Inclination",
-    "n": "A 3 - 5% slope is described as gently sloping with land sloping in one general direction."
+    "c": 1,
+    "ref": "Principles of planning: degree of inclination",
+    "n": "A 3–5% slope is gently sloping land falling in one general direction."
   },
   {
     "s": "Concentric and Inverse Concentric Zone Theories",
@@ -1911,8 +1939,8 @@
     "n": "The theory is presented as applying mainly to cities in more developed countries (MDCs)."
   },
   {
-    "s": "Entrance Ramps",
-    "q": "What is the maximum permitted slope for Lawns?",
+    "s": "Recommended Slopes",
+    "q": "What is the minimum permitted slope for Lawns?",
     "o": [
       "2%",
       "5%",
@@ -1921,7 +1949,7 @@
     ],
     "c": 2,
     "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Lawns has a maximum permitted slope of 1%, equivalent to 1:100."
+    "n": "Lawns uses a minimum permitted slope of 1%, equivalent to 1:100."
   },
   {
     "s": "Incrementalism and Transactive Planning",
@@ -1977,16 +2005,16 @@
   },
   {
     "s": "Degree of Inclination",
-    "q": "Which description best matches a 5 - 8% site slope?",
+    "q": "Which slope range is described as gently undulating and rolling land sloping in more than one direction?",
     "o": [
-      "3 - 5%",
-      "5 - 8%",
-      "8 - 15%",
-      "0 - 3%"
+      "5–8%",
+      "3–5%",
+      "8–15%",
+      "0–3%"
     ],
-    "c": 1,
-    "ref": "Principles of Planning Tables, p. 46 — Degree of Inclination",
-    "n": "A 5 - 8% slope is described as gently undulating and rolling; land sloping in more than one general direction."
+    "c": 0,
+    "ref": "Principles of planning: degree of inclination",
+    "n": "A 5–8% slope is gently undulating and rolling land sloping in more than one direction."
   },
   {
     "s": "Urban Ecological Processes",
@@ -2003,20 +2031,26 @@
   },
   {
     "s": "Entrance Ramps",
-    "q": "What is the minimum permitted slope for Grassed Playlots?",
+    "q": "A mown grass bank rises at 33%. What is that as a rise-to-run ratio?",
     "o": [
-      "8%",
-      "50%",
-      "33%",
-      "14%"
+      "1:33",
+      "1:4",
+      "1:3",
+      "1:2"
     ],
-    "c": 1,
-    "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Grassed Playlots uses a minimum permitted slope of 50%, corresponding to 1:02."
+    "c": 2,
+    "ref": "Principles of planning: recommended slopes",
+    "n": "33% means 33 m of rise per 100 m of run; 100 ÷ 33 = 3, so the slope is 1:3.",
+    "formula": "ratio = 1 : (100 ÷ slope %)",
+    "steps": [
+      "Slope % = rise ÷ run × 100 = 33%",
+      "Run for 1 m of rise = 100 ÷ 33 = 3 m",
+      "Ratio = 1:3"
+    ]
   },
   {
-    "s": "Type of Land Use",
-    "q": "What is the maximum permitted slope for Streets and Drives?",
+    "s": "Recommended Slopes",
+    "q": "What is the minimum permitted slope for Streets and Drives?",
     "o": [
       "5%",
       "1%",
@@ -2025,10 +2059,10 @@
     ],
     "c": 1,
     "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Streets and Drives has a maximum permitted slope of 1%, equivalent to 1:100."
+    "n": "Streets and Drives uses a minimum permitted slope of 1%, equivalent to 1:100."
   },
   {
-    "s": "Pedestrian Ramps",
+    "s": "Recommended Slopes",
     "q": "What is the minimum permitted slope for Playgrounds?",
     "o": [
       "4%",
@@ -2067,7 +2101,7 @@
     "n": "The Eggrate condition is associated with NE-NW and SE-SW orientations and combines vertical and horizontal elements."
   },
   {
-    "s": "Entrance Ramps",
+    "s": "Recommended Slopes",
     "q": "What is the minimum permitted slope for Pedestrian?",
     "o": [
       "1%",
@@ -2080,8 +2114,8 @@
     "n": "Pedestrian uses a minimum permitted slope of 1%, corresponding to 1:100."
   },
   {
-    "s": "Type of Land Use",
-    "q": "What is the minimum permitted slope for Terrace (Paved)?",
+    "s": "Recommended Slopes",
+    "q": "What is the maximum permitted slope for Terrace (Paved)?",
     "o": [
       "2%",
       "1%",
@@ -2090,7 +2124,7 @@
     ],
     "c": 0,
     "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Terrace (Paved) uses a minimum permitted slope of 2%, corresponding to 1:50."
+    "n": "Terrace (Paved) has a maximum permitted slope of 2%, corresponding to 1:50."
   },
   {
     "s": "Other Design Factors and Wind Shadows",
@@ -2132,7 +2166,7 @@
     "n": "Methodism applies known planning techniques even when the ends have not yet been clearly defined."
   },
   {
-    "s": "Entrance Ramps",
+    "s": "Recommended Slopes",
     "q": "What is the minimum permitted slope for Lawn?",
     "o": [
       "5%",
@@ -2146,16 +2180,22 @@
   },
   {
     "s": "Type of Land Use",
-    "q": "What is the maximum permitted slope for Main Footpaths (Bitumen)?",
+    "q": "A main bitumen footpath rises at 5%. What is that as a rise-to-run ratio?",
     "o": [
-      "2%",
-      "4%",
-      "5%",
-      "1%"
+      "1:5",
+      "1:20",
+      "1:15",
+      "1:25"
     ],
-    "c": 2,
-    "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Main Footpaths (Bitumen) has a maximum permitted slope of 5%, equivalent to 1:20."
+    "c": 1,
+    "ref": "Principles of planning: recommended slopes",
+    "n": "5% means 5 m of rise per 100 m of run; 100 ÷ 5 = 20, so the slope is 1:20.",
+    "formula": "ratio = 1 : (100 ÷ slope %)",
+    "steps": [
+      "Slope % = rise ÷ run × 100 = 5%",
+      "Run for 1 m of rise = 100 ÷ 5 = 20 m",
+      "Ratio = 1:20"
+    ]
   },
   {
     "s": "Air Movement Within Buildings",
@@ -2276,15 +2316,21 @@
   },
   {
     "s": "Type of Land Use",
-    "q": "What is the minimum permitted slope for Main Footpaths (Bitumen)?",
+    "q": "A main bitumen footpath rises at 8%. What is that as a rise-to-run ratio?",
     "o": [
-      "33%",
-      "50%",
-      "8%",
-      "14%"
+      "1:8",
+      "1:15",
+      "1:10",
+      "1:12.5"
     ],
-    "c": 2,
-    "ref": "Principles of Planning Tables, p. 46 — Slope and Land Use",
-    "n": "Main Footpaths (Bitumen) uses a minimum permitted slope of 8%, corresponding to 1:12."
+    "c": 3,
+    "ref": "Principles of planning: recommended slopes",
+    "n": "8% means 8 m of rise per 100 m of run; 100 ÷ 8 = 12.5, so the slope is 1:12.5.",
+    "formula": "ratio = 1 : (100 ÷ slope %)",
+    "steps": [
+      "Slope % = rise ÷ run × 100 = 8%",
+      "Run for 1 m of rise = 100 ÷ 8 = 12.5 m",
+      "Ratio = 1:12.5"
+    ]
   }
 ]
