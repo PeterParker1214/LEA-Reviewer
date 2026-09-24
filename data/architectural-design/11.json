@@ -10,7 +10,7 @@
     ],
     "c": 2,
     "ref": "",
-    "n": "An exposed/bare ceiling is easiest to keep clean and free of dust traps, an important consideration for infection control in nursing wards, per the source document.",
+    "n": "An exposed/bare ceiling is easiest to keep clean and free of dust traps, an important consideration for infection control in nursing wards,.",
     "scenario": "Nursing wards are part of the barangay health facility's program."
   },
   {
@@ -24,7 +24,7 @@
     ],
     "c": 0,
     "ref": "",
-    "n": "A playground is a fitting community amenity for a barangay health facility set among residential neighbors, encouraging family use of the site, per the source document.",
+    "n": "A playground is a fitting community amenity for a barangay health facility set among residential neighbors, encouraging family use of the site,.",
     "scenario": "The barangay health facility is surrounded by residential neighbors, bordered by a barangay chapel on one side and a municipal water pumping station on another."
   },
   {
@@ -38,7 +38,7 @@
     ],
     "c": 3,
     "ref": "",
-    "n": "Wood requires comparatively little processing energy to produce, giving it the lowest embodied energy among the materials listed, per the source document.",
+    "n": "Wood requires comparatively little processing energy to produce, giving it the lowest embodied energy among the materials listed,.",
     "scenario": "The design team is choosing finish materials for the barangay health facility."
   },
   {
@@ -81,7 +81,12 @@
     "c": 2,
     "ref": "",
     "n": "A standard gypsum board sheet measures 1.22 m x 2.44 m (about 2.98 sq. m.). Dividing the 75 sq. m. eave area by this sheet size gives about 25.2 sheets; rounding up for full-sheet coverage gives 26 pieces.",
-    "scenario": "The facility's eaves total 75 square meters and are to be finished in gypsum board."
+    "scenario": "The facility's eaves total 75 square meters and are to be finished in gypsum board.",
+    "formula": "boards = area / board area, rounded up",
+    "steps": [
+      "1.22 × 2.44 = 2.98 m² per board",
+      "75 / 2.98 = 25.2 → 26 boards"
+    ]
   },
   {
     "s": "",
@@ -94,7 +99,7 @@
     ],
     "c": 2,
     "ref": "",
-    "n": "White-and-gray tones read as clean, neutral, and institutional, reinforcing the facility's public-health character while keeping maintenance simple, per the source document.",
+    "n": "White-and-gray tones read as clean, neutral, and institutional, reinforcing the facility's public-health character while keeping maintenance simple,.",
     "scenario": "This is a national-government-developed, General Institutional (GI) barangay health facility."
   },
   {
@@ -102,13 +107,13 @@
     "q": "Which architectural style suits this project best?",
     "o": [
       "Stylized Classical",
-      "Modern, with clean and textured lines",
+      "Modern, clean and textured",
       "Dadaism",
       "Neo-Brutalism"
     ],
     "c": 1,
     "ref": "",
-    "n": "A modern approach with clean, textured lines suits the practical, contemporary image expected of a government health facility, per the source document.",
+    "n": "A modern approach with clean, textured lines suits the practical, contemporary image expected of a government health facility,.",
     "scenario": "The facility is a General Institutional (GI) barangay health project undertaken by the national government."
   },
   {
@@ -136,7 +141,7 @@
     ],
     "c": 2,
     "ref": "",
-    "n": "A “kostura” (rough scratch coat) finish is sufficient for masonry joints hidden within a concealed plenum, since they are never exposed to view and don't warrant a smooth finish coat, per the source document.",
+    "n": "A “kostura” (rough scratch coat) finish is sufficient for masonry joints hidden within a concealed plenum, since they are never exposed to view and don't warrant a smooth finish coat,.",
     "scenario": "The waiting/congregation area is designed with a suspended ceiling above CHB masonry walls."
   },
   {
@@ -150,7 +155,7 @@
     ],
     "c": 1,
     "ref": "",
-    "n": "The reception area should be directly accessible from the waiting area so arriving patients can be received and directed without delay, per the source document.",
+    "n": "The reception area should be directly accessible from the waiting area so arriving patients can be received and directed without delay,.",
     "scenario": "The floor plan of the barangay health facility is organized around a central waiting/congregation area."
   },
   {
@@ -164,7 +169,7 @@
     ],
     "c": 1,
     "ref": "",
-    "n": "A trabeated (post-and-beam) system is a straightforward, economical structural approach well-suited to a low-rise government health facility of this scale, per the source document.",
+    "n": "A trabeated (post-and-beam) system is a straightforward, economical structural approach well-suited to a low-rise government health facility of this scale,.",
     "scenario": "This project is a low-rise, General Institutional (GI) barangay health facility."
   },
   {
@@ -192,7 +197,7 @@
     ],
     "c": 1,
     "ref": "",
-    "n": "Vinyl tile flooring is durable, low-maintenance, and comfortable underfoot, which suits a high-traffic public waiting area in a health facility, per the source document.",
+    "n": "Vinyl tile flooring is durable, low-maintenance, and comfortable underfoot, which suits a high-traffic public waiting area in a health facility,.",
     "scenario": "This is the waiting/congregation area of the barangay health facility."
   },
   {
@@ -206,7 +211,7 @@
     ],
     "c": 2,
     "ref": "",
-    "n": "Diffused lighting spreads illumination evenly across a space and reduces glare and harsh shadows, maximizing usable light coverage, per the source document.",
+    "n": "Diffused lighting spreads illumination evenly across a space and reduces glare and harsh shadows, maximizing usable light coverage,.",
     "scenario": "The lighting scheme spans the facility's public and clinical spaces."
   },
   {
@@ -234,7 +239,7 @@
     ],
     "c": 2,
     "ref": "",
-    "n": "As a government-run community health facility, the design should read as understated and utilitarian while still maintaining a formal, institutional bearing, rather than a decorative or overly relaxed character, per the source document.",
+    "n": "As a government-run community health facility, the design should read as understated and utilitarian while still maintaining a formal, institutional bearing, rather than a decorative or overly relaxed character,.",
     "scenario": "A national government agency is building a General Institutional (GI) barangay health facility."
   },
   {
@@ -263,7 +268,12 @@
     "c": 1,
     "ref": "",
     "n": "With an 18-meter frontage on a 1,350 sq. m. lot, the site depth is 75 meters (1,350 ÷ 18). At a 3% grade, the elevation change across that depth is 75 x 0.03 = 2.25 meters.",
-    "scenario": "The rectangular, 1,350-square-meter lot has an 18.00-meter frontage and an overall 3% grade sloping toward the adjacent road."
+    "scenario": "The rectangular, 1,350-square-meter lot has an 18.00-meter frontage and an overall 3% grade sloping toward the adjacent road.",
+    "formula": "fall = depth × grade",
+    "steps": [
+      "Depth = 1,350 / 18 = 75 m",
+      "75 × 0.03 = 2.25 m"
+    ]
   },
   {
     "s": "",
@@ -276,7 +286,7 @@
     ],
     "c": 1,
     "ref": "",
-    "n": "A 4-inch CHB masonry wall is a lightweight, cost-effective, and durable partition standard, appropriate for interior divisions in a government health facility, per the source document.",
+    "n": "A 4-inch CHB masonry wall is a lightweight, cost-effective, and durable partition standard, appropriate for interior divisions in a government health facility,.",
     "scenario": "Per the project objectives, the facility's floor plan is divided into several distinct spaces."
   },
   {
@@ -290,7 +300,7 @@
     ],
     "c": 2,
     "ref": "",
-    "n": "Jalousie windows offer maximum, adjustable natural ventilation, well-suited to a tropical-climate public health facility, per the source document.",
+    "n": "Jalousie windows offer maximum, adjustable natural ventilation, well-suited to a tropical-climate public health facility,.",
     "scenario": "The facility is being constructed in a tropical climate."
   },
   {
@@ -304,7 +314,7 @@
     ],
     "c": 1,
     "ref": "",
-    "n": "The “senepa” is the roof framing member along the eaves that carries and supports the gutter in a G.I. roofing system, per the source document.",
+    "n": "The “senepa” is the roof framing member along the eaves that carries and supports the gutter in a G.I. roofing system,.",
     "scenario": "A G.I. sheet roofing system covers the facility's roof."
   },
   {
@@ -318,7 +328,7 @@
     ],
     "c": 0,
     "ref": "",
-    "n": "Cool white CFL lighting produces brighter, more alert illumination appropriate for a clinical/public waiting space, per the source document.",
+    "n": "Cool white CFL lighting produces brighter, more alert illumination appropriate for a clinical/public waiting space,.",
     "scenario": "This is the facility's waiting/congregation area."
   },
   {
@@ -332,7 +342,7 @@
     ],
     "c": 0,
     "ref": "",
-    "n": "A square column section resists bending equally in both directions, minimizing torsional or moment imbalance compared with a rectangular section, per the source document.",
+    "n": "A square column section resists bending equally in both directions, minimizing torsional or moment imbalance compared with a rectangular section,.",
     "scenario": "The facility is a low-rise, General Institutional (GI) barangay health project."
   },
   {
@@ -346,7 +356,7 @@
     ],
     "c": 3,
     "ref": "",
-    "n": "Brass hardware is durable and has natural antimicrobial properties, making it well-suited to frequently-touched fixtures in a health facility, per the source document.",
+    "n": "Brass hardware is durable and has natural antimicrobial properties, making it well-suited to frequently-touched fixtures in a health facility,.",
     "scenario": "Door hardware is being specified across the facility."
   },
   {
@@ -360,7 +370,7 @@
     ],
     "c": 0,
     "ref": "",
-    "n": "A white semi-gloss paint finish is economical, easy to clean, and brightens the interior — practical for a public health facility, per the source document.",
+    "n": "A white semi-gloss paint finish is economical, easy to clean, and brightens the interior — practical for a public health facility,.",
     "scenario": "This is the barangay health facility's waiting/congregation area."
   }
 ]
