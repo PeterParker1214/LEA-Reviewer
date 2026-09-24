@@ -9,22 +9,30 @@
       "P26,500,000.00"
     ],
     "c": 0,
-    "ref": "",
-    "n": "PCC = P700M falls in the 'Over P500.0 million to P1.0 billion' bracket: RPF = P23,500,000 + 3% of excess of P500M = 23,500,000 + [0.03 x (700,000,000 - 500,000,000)] = 23,500,000 + 6,000,000 = P29,500,000.00. (Source: SPP Document 202, Sec. 6.3.3)",
-    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — a regional stadium (stadia) complex — with a Project Construction Cost (PCC) of P700,000,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "PCC = P700M falls in the 'Over P500.0 million to P1.0 billion' bracket: RPF = P23,500,000 + 3% of excess of P500M = 23,500,000 + [0.03 x (700,000,000 - 500,000,000)] = 23,500,000 + 6,000,000 = P29,500,000.00.",
+    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — a regional stadium (stadia) complex — with a Project Construction Cost (PCC) of P700,000,000.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "PCC = P700M falls in the 'Over P500.0 million to P1.0 billion' bracket",
+      "RPF = P23,500,000 + 3% of excess of P500M",
+      "= 23,500,000 + [0.03 x (700,000,000 - 500,000,000)]",
+      "= 23,500,000 + 6,000,000",
+      "= P29,500,000.00"
+    ]
   },
   {
     "s": "",
     "q": "A developer is planning a resort with a marina component and wants to know if it qualifies for the higher Group III fee rates instead of ordinary Group I rates. What should the architect confirm before applying Group III rates?",
     "o": [
-      "That the project is a marina and/or resort complex, which SPP Document 202 explicitly lists under Group III (Exceptional)",
+      "That it is a marina or resort complex, a listed Group III type",
       "That the project is located within Metro Manila",
       "That the total floor area exceeds 10,000 square meters",
       "That the client has hired a structural engineer"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Marinas and Resort Complexes are explicitly named under Group 3 in Sec. 6.3.3; classification is based on the building type matching the enumerated list, not on floor area, engineering staffing, or location. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "Marinas and Resort Complexes are explicitly named under Group 3 in Sec. 6.3.3; classification is based on the building type matching the enumerated list, not on floor area, engineering staffing, or location."
   },
   {
     "s": "",
@@ -36,8 +44,8 @@
       "Detailed Architectural and Engineering Design Services, and Detailed Architectural Design Services"
     ],
     "c": 3,
-    "ref": "",
-    "n": "DAEDS is Detailed Architectural and Engineering Design Services (the architect provides both architectural and full engineering design), while DADS is Detailed Architectural Design Services only. Sec. 6.3.3 gives separate RPF schedules for each. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "DAEDS is Detailed Architectural and Engineering Design Services (the architect provides both architectural and full engineering design), while DADS is Detailed Architectural Design Services only. Sec. 6.3.3 gives separate RPF schedules for each."
   },
   {
     "s": "",
@@ -49,8 +57,8 @@
       "Sec. 6.3.1"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Sec. 6.3.3 of SPP Document 202 sets out both the Group 3 building type list and its DAEDS/DADS Recommended Professional Fee bracket schedules. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "Sec. 6.3.3 of SPP Document 202 sets out both the Group 3 building type list and its DAEDS/DADS Recommended Professional Fee bracket schedules."
   },
   {
     "s": "",
@@ -62,9 +70,16 @@
       "P2,400,000.00"
     ],
     "c": 0,
-    "ref": "",
-    "n": "PCC = P40M falls in the 'P50.0 million and less' bracket, where DAEDS RPF = 7% of PCC = 0.07 x 40,000,000 = P2,800,000.00. (Source: SPP Document 202, Sec. 6.3.3)",
-    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — a public health center — with a Project Construction Cost (PCC) of P40,000,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "PCC = P40M falls in the 'P50.0 million and less' bracket, where DAEDS RPF = 7% of PCC = 0.07 x 40,000,000 = P2,800,000.00.",
+    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — a public health center — with a Project Construction Cost (PCC) of P40,000,000.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "PCC = P40M falls in the 'P50.0 million and less' bracket",
+      "DAEDS RPF = 7% of PCC",
+      "= 0.07 x 40,000,000",
+      "= P2,800,000.00"
+    ]
   },
   {
     "s": "",
@@ -76,9 +91,17 @@
       "P23,100,000.00"
     ],
     "c": 0,
-    "ref": "",
-    "n": "PCC = P1.5B falls in the 'Over P1.0 billion' bracket: RPF = P23,100,000 + 1.2% of excess of P1.0B = 23,100,000 + [0.012 x (1,500,000,000 - 1,000,000,000)] = 23,100,000 + 6,000,000 = P29,100,000.00. (Source: SPP Document 202, Sec. 6.3.3)",
-    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — a major transportation hub — with a Project Construction Cost (PCC) of P1,500,000,000 (P1.5 billion)."
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "PCC = P1.5B falls in the 'Over P1.0 billion' bracket: RPF = P23,100,000 + 1.2% of excess of P1.0B = 23,100,000 + [0.012 x (1,500,000,000 - 1,000,000,000)] = 23,100,000 + 6,000,000 = P29,100,000.00.",
+    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — a major transportation hub — with a Project Construction Cost (PCC) of P1,500,000,000 (P1.5 billion).",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "PCC = P1.5B falls in the 'Over P1.0 billion' bracket",
+      "RPF = P23,100,000 + 1.2% of excess of P1.0B",
+      "= 23,100,000 + [0.012 x (1,500,000,000 - 1,000,000,000)]",
+      "= 23,100,000 + 6,000,000",
+      "= P29,100,000.00"
+    ]
   },
   {
     "s": "",
@@ -90,9 +113,15 @@
       "The 'Over P100.0 million to P200.0 million' bracket applies; RPF = P6,500,000 + 5% of excess of P100M"
     ],
     "c": 2,
-    "ref": "",
-    "n": "PCC = P50M falls exactly at the top of the 'P50.0 million and less' bracket, so DAEDS RPF = 7% x 50,000,000 = P3,500,000.00 (which also equals the base amount that begins the next bracket's formula, P3,500,000 + 6% of excess of P50M). (Source: SPP Document 202, Sec. 6.3.3)",
-    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — a gymnasium complex — with a Project Construction Cost (PCC) of exactly P50,000,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "PCC = P50M falls exactly at the top of the 'P50.0 million and less' bracket, so DAEDS RPF = 7% x 50,000,000 = P3,500,000.00 (which also equals the base amount that begins the next bracket's formula, P3,500,000 + 6% of excess of P50M).",
+    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — a gymnasium complex — with a Project Construction Cost (PCC) of exactly P50,000,000.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "PCC = P50M falls exactly at the top of the 'P50.0 million and less' bracket, so DAEDS RPF",
+      "= 7% x 50,000,000",
+      "= P3,500,000.00 (which also equals the base amount that begins the next bracket's formula, P3,500,000 + 6% of excess of P50M)"
+    ]
   },
   {
     "s": "",
@@ -104,9 +133,17 @@
       "P3,180,000.00"
     ],
     "c": 3,
-    "ref": "",
-    "n": "PCC = P80M falls in the 'Over P50.0 million to P100.0 million' bracket: RPF = P2,100,000 + 3.6% of excess of P50M = 2,100,000 + [0.036 x (80,000,000 - 50,000,000)] = 2,100,000 + 1,080,000 = P3,180,000.00. (Source: SPP Document 202, Sec. 6.3.3)",
-    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project with a Project Construction Cost (PCC) of P80,000,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "PCC = P80M falls in the 'Over P50.0 million to P100.0 million' bracket: RPF = P2,100,000 + 3.6% of excess of P50M = 2,100,000 + [0.036 x (80,000,000 - 50,000,000)] = 2,100,000 + 1,080,000 = P3,180,000.00.",
+    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project with a Project Construction Cost (PCC) of P80,000,000.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "PCC = P80M falls in the 'Over P50.0 million to P100.0 million' bracket",
+      "RPF = P2,100,000 + 3.6% of excess of P50M",
+      "= 2,100,000 + [0.036 x (80,000,000 - 50,000,000)]",
+      "= 2,100,000 + 1,080,000",
+      "= P3,180,000.00"
+    ]
   },
   {
     "s": "",
@@ -118,9 +155,17 @@
       "P6,900,000.00"
     ],
     "c": 2,
-    "ref": "",
-    "n": "PCC = P350M falls in the 'Over P200.0 million to P500.0 million' bracket: RPF = P6,900,000 + 2.4% of excess of P200M = 6,900,000 + [0.024 x (350,000,000 - 200,000,000)] = 6,900,000 + 3,600,000 = P10,500,000.00. (Source: SPP Document 202, Sec. 6.3.3)",
-    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — an international airport terminal — with a Project Construction Cost (PCC) of P350,000,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "PCC = P350M falls in the 'Over P200.0 million to P500.0 million' bracket: RPF = P6,900,000 + 2.4% of excess of P200M = 6,900,000 + [0.024 x (350,000,000 - 200,000,000)] = 6,900,000 + 3,600,000 = P10,500,000.00.",
+    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — an international airport terminal — with a Project Construction Cost (PCC) of P350,000,000.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "PCC = P350M falls in the 'Over P200.0 million to P500.0 million' bracket",
+      "RPF = P6,900,000 + 2.4% of excess of P200M",
+      "= 6,900,000 + [0.024 x (350,000,000 - 200,000,000)]",
+      "= 6,900,000 + 3,600,000",
+      "= P10,500,000.00"
+    ]
   },
   {
     "s": "",
@@ -132,8 +177,8 @@
       "They are simple structures needing only a minimum of architectural finishes, engineering, and allied architectural elements"
     ],
     "c": 1,
-    "ref": "",
-    "n": "SPP 202, Sec. 6.3.3 defines Group 3 as buildings of exceptional character and complexity of plan/design, or requiring comparatively large amounts of research and of engineering and allied architectural design — distinct from Group I (simple, Sec. 6.3.1), Group IV (residences, Sec. 6.3.4-6.3.5... actually Group 4), and Group V (monumental buildings). (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "SPP 202, Sec. 6.3.3 defines Group 3 as buildings of exceptional character and complexity of plan/design, or requiring comparatively large amounts of research and of engineering and allied architectural design — distinct from Group I (simple, Sec. 6.3.1), Group IV (residences, Sec. 6.3.4-6.3.5... actually Group 4), and Group V (monumental buildings)."
   },
   {
     "s": "",
@@ -145,21 +190,21 @@
       "DADS is not defined for the base bracket"
     ],
     "c": 1,
-    "ref": "",
-    "n": "4.2% / 7% = 0.6, so the Group III DADS base rate is exactly 60% of the DAEDS base rate, reflecting that DADS compensates architectural design services alone while DAEDS compensates architectural plus engineering design services combined, per Sec. 6.3.3. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "4.2% / 7% = 0.6, so the Group III DADS base rate is exactly 60% of the DAEDS base rate, reflecting that DADS compensates architectural design services alone while DAEDS compensates architectural plus engineering design services combined, per Sec. 6.3.3."
   },
   {
     "s": "",
     "q": "An architect completes DAEDS for a Group III telecommunications building with PCC = P120,000,000. The client later asks the architect to also justify why the fee percentage (5% base of the excess) is lower than the 6% rate used for a P80M-PCC Group III project earlier that year. What is the best explanation?",
     "o": [
-      "The Group III RPF schedule is a bracketed/graduated schedule where the percentage applied to the excess amount decreases as the PCC bracket increases",
+      "The rate on the excess drops as the PCC bracket rises",
       "The 6% rate was a billing error and should have been 5%",
       "Telecommunication buildings are always billed at a discount",
       "DAEDS rates only apply to hospitals, not telecommunication buildings"
     ],
     "c": 0,
-    "ref": "",
-    "n": "The Group III RPF schedule under Sec. 6.3.3 is graduated: 7% (<=50M), 6% (50-100M), 5% (100-200M), 4% (200-500M), 3% (500M-1B), 2% (over 1B) for DAEDS — the marginal percentage decreases as the PCC bracket rises, which is normal and not an error. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "The Group III RPF schedule under Sec. 6.3.3 is graduated: 7% (<=50M), 6% (50-100M), 5% (100-200M), 4% (200-500M), 3% (500M-1B), 2% (over 1B) for DAEDS — the marginal percentage decreases as the PCC bracket rises, which is normal and not an error."
   },
   {
     "s": "",
@@ -171,9 +216,17 @@
       "P53,500,000.00"
     ],
     "c": 2,
-    "ref": "",
-    "n": "PCC = P1.5B falls in the 'Over P1.0 billion' bracket: RPF = P38,500,000 + 2% of excess of P1.0B = 38,500,000 + [0.02 x (1,500,000,000 - 1,000,000,000)] = 38,500,000 + 10,000,000 = P48,500,000.00. (Source: SPP Document 202, Sec. 6.3.3)",
-    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — a major transportation hub — with a Project Construction Cost (PCC) of P1,500,000,000 (P1.5 billion)."
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "PCC = P1.5B falls in the 'Over P1.0 billion' bracket: RPF = P38,500,000 + 2% of excess of P1.0B = 38,500,000 + [0.02 x (1,500,000,000 - 1,000,000,000)] = 38,500,000 + 10,000,000 = P48,500,000.00.",
+    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — a major transportation hub — with a Project Construction Cost (PCC) of P1,500,000,000 (P1.5 billion).",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "PCC = P1.5B falls in the 'Over P1.0 billion' bracket",
+      "RPF = P38,500,000 + 2% of excess of P1.0B",
+      "= 38,500,000 + [0.02 x (1,500,000,000 - 1,000,000,000)]",
+      "= 38,500,000 + 10,000,000",
+      "= P48,500,000.00"
+    ]
   },
   {
     "s": "",
@@ -185,21 +238,21 @@
       "Group I - Simple"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Hospitals & Medical Buildings are explicitly listed under Group 3 (Exceptional) in Sec. 6.3.3, together with other buildings requiring exceptional design complexity and research. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "Hospitals & Medical Buildings are explicitly listed under Group 3 (Exceptional) in Sec. 6.3.3, together with other buildings requiring exceptional design complexity and research."
   },
   {
     "s": "",
     "q": "An architect designed a mortuary and, separately, a veterinary hospital in the same year. A junior staff member assumes these should be billed under two different building type groups since they serve very different purposes. Is this assumption correct?",
     "o": [
-      "No, both Mortuaries and Veterinary Hospitals are listed under Group III (Exceptional), so both use the same RPF schedule",
+      "No, both are listed under Group III",
       "No, both are classified under Group VII (Housing Projects)",
       "Yes, mortuaries are Group V and veterinary hospitals are Group III",
       "Yes, mortuaries are Group I and veterinary hospitals are Group IV"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Both Mortuaries and Veterinary Hospitals are explicitly listed under Group 3 (Exceptional) in Sec. 6.3.3, so both projects would use the same Group III RPF schedule despite serving very different purposes. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "Both Mortuaries and Veterinary Hospitals are explicitly listed under Group 3 (Exceptional) in Sec. 6.3.3, so both projects would use the same Group III RPF schedule despite serving very different purposes."
   },
   {
     "s": "",
@@ -211,8 +264,8 @@
       "Group III DAEDS schedule, 'Over P500.0 million to P1.0 billion' bracket"
     ],
     "c": 3,
-    "ref": "",
-    "n": "Nuclear facilities are Group III (Exceptional) buildings under Sec. 6.3.3. Because the architect is rendering both architectural and engineering design services, the DAEDS schedule applies, and a P600M PCC falls in the 'Over P500.0 million to P1.0 billion' bracket. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "Nuclear facilities are Group III (Exceptional) buildings under Sec. 6.3.3. Because the architect is rendering both architectural and engineering design services, the DAEDS schedule applies, and a P600M PCC falls in the 'Over P500.0 million to P1.0 billion' bracket."
   },
   {
     "s": "",
@@ -224,8 +277,8 @@
       "Group II"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Veterinary Hospitals, Mortuaries, and Mental Institutions are all explicitly enumerated under Group 3 (Exceptional) in Sec. 6.3.3. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "Veterinary Hospitals, Mortuaries, and Mental Institutions are all explicitly enumerated under Group 3 (Exceptional) in Sec. 6.3.3."
   },
   {
     "s": "",
@@ -237,22 +290,29 @@
       "P2,800,000.00"
     ],
     "c": 1,
-    "ref": "",
-    "n": "PCC = P40M falls in the 'P50.0 million and less' bracket, where DADS RPF = 4.2% of PCC = 0.042 x 40,000,000 = P1,680,000.00. (Source: SPP Document 202, Sec. 6.3.3)",
-    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — a public health center — with a Project Construction Cost (PCC) of P40,000,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "PCC = P40M falls in the 'P50.0 million and less' bracket, where DADS RPF = 4.2% of PCC = 0.042 x 40,000,000 = P1,680,000.00.",
+    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — a public health center — with a Project Construction Cost (PCC) of P40,000,000.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "PCC = P40M falls in the 'P50.0 million and less' bracket",
+      "DADS RPF = 4.2% of PCC",
+      "= 0.042 x 40,000,000",
+      "= P1,680,000.00"
+    ]
   },
   {
     "s": "",
-    "q": "Which of the following best summarizes what a candidate should know about Group III under SPP Document 202 for the AR licensure exam: its scope, its RPF basis, and its two service-scope variants?",
+    "q": "Which summary of Group III under SPP Doc. 202 is correct?",
     "o": [
-      "Group III applies only to alteration and renovation work, distinct from new design",
-      "Group III covers only residential buildings, uses a flat 10% RPF, and has no DAEDS/DADS distinction",
-      "Group III covers monumental buildings only and uses a flat 12% RPF with no bracket structure",
-      "Group III covers buildings of exceptional character/complexity (e.g., hospitals, airports, stadia, laboratories) requiring large amounts of research, uses a graduated percent-of-PCC RPF bracket schedule (Sec. 6.3.3), and provides separate DAEDS (architectural + engineering) and DADS (architectural only) fee schedules"
+      "Alteration work only; 150% of RPF; no DADS table",
+      "Residences only; flat 10% of PCC; no DADS table",
+      "Monumental buildings only; flat 12% of PCC; no brackets",
+      "Exceptional buildings; graduated brackets; DAEDS and DADS tables"
     ],
     "c": 3,
-    "ref": "",
-    "n": "Group III (Exceptional) under Sec. 6.3.3 covers buildings such as hospitals, airports, stadia, and laboratories that require exceptional design complexity or large amounts of research; its RPF is computed on a graduated percent-of-PCC bracket schedule, with separate DAEDS and DADS versions of the schedule. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "Group III (Exceptional) under Sec. 6.3.3 covers buildings such as hospitals, airports, stadia, and laboratories that require exceptional design complexity or large amounts of research; its RPF is computed on a graduated percent-of-PCC bracket schedule, with separate DAEDS and DADS versions of the schedule."
   },
   {
     "s": "",
@@ -264,8 +324,8 @@
       "Group II"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Group III is the 'Exceptional' classification, covering buildings of exceptional character/complexity or requiring large amounts of research and engineering and allied architectural design — including hospitals, airports, and research facilities. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "Group III is the 'Exceptional' classification, covering buildings of exceptional character/complexity or requiring large amounts of research and engineering and allied architectural design — including hospitals, airports, and research facilities."
   },
   {
     "s": "",
@@ -277,9 +337,17 @@
       "P6,500,000.00"
     ],
     "c": 2,
-    "ref": "",
-    "n": "PCC = P150M falls in the 'Over P100.0 million to P200.0 million' bracket: RPF = P6,500,000 + 5% of excess of P100M = 6,500,000 + [0.05 x (150,000,000 - 100,000,000)] = 6,500,000 + 2,500,000 = P9,000,000.00. (Source: SPP Document 202, Sec. 6.3.3)",
-    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — a convention center — with a Project Construction Cost (PCC) of P150,000,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "PCC = P150M falls in the 'Over P100.0 million to P200.0 million' bracket: RPF = P6,500,000 + 5% of excess of P100M = 6,500,000 + [0.05 x (150,000,000 - 100,000,000)] = 6,500,000 + 2,500,000 = P9,000,000.00.",
+    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — a convention center — with a Project Construction Cost (PCC) of P150,000,000.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "PCC = P150M falls in the 'Over P100.0 million to P200.0 million' bracket",
+      "RPF = P6,500,000 + 5% of excess of P100M",
+      "= 6,500,000 + [0.05 x (150,000,000 - 100,000,000)]",
+      "= 6,500,000 + 2,500,000",
+      "= P9,000,000.00"
+    ]
   },
   {
     "s": "",
@@ -291,8 +359,8 @@
       "Group III - Exceptional"
     ],
     "c": 3,
-    "ref": "",
-    "n": "Breweries, Cold Storage Facilities, Hotels, Medical Arts Offices & Clinics, and Theaters & Similar Facilities are all explicitly enumerated under Group 3 (Exceptional) in Sec. 6.3.3, so a single Group III RPF schedule applies to all five. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "Breweries, Cold Storage Facilities, Hotels, Medical Arts Offices & Clinics, and Theaters & Similar Facilities are all explicitly enumerated under Group 3 (Exceptional) in Sec. 6.3.3, so a single Group III RPF schedule applies to all five."
   },
   {
     "s": "",
@@ -304,8 +372,8 @@
       "Auditoriums"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Habitable Agricultural Buildings are listed under Group I (Simple). Convention Facilities, Marinas and Resort Complexes, and Auditoriums are all Group 3 building types per Sec. 6.3.3. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "Habitable Agricultural Buildings are listed under Group I (Simple). Convention Facilities, Marinas and Resort Complexes, and Auditoriums are all Group 3 building types per Sec. 6.3.3."
   },
   {
     "s": "",
@@ -317,60 +385,60 @@
       "It increases steadily from 7% up to a maximum of 12%"
     ],
     "c": 2,
-    "ref": "",
-    "n": "The Group III DAEDS schedule under Sec. 6.3.3 is a graduated/regressive schedule: 7% (<=50M), 6% (50-100M), 5% (100-200M), 4% (200-500M), 3% (500M-1B), and 2% (over 1B) applied to the excess over each bracket's floor. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "The Group III DAEDS schedule under Sec. 6.3.3 is a graduated/regressive schedule: 7% (<=50M), 6% (50-100M), 5% (100-200M), 4% (200-500M), 3% (500M-1B), and 2% (over 1B) applied to the excess over each bracket's floor."
   },
   {
     "s": "",
     "q": "Within Group III's Recommended Professional Fee (RPF) schedule, why is the DADS (Detailed Architectural Design Services) percentage-of-PCC rate lower than the DAEDS (Detailed Architectural and Engineering Design Services) rate at every bracket?",
     "o": [
-      "DADS covers architectural design services alone, without the allied engineering design services bundled into DAEDS",
+      "DADS covers architectural design only, without engineering",
       "DADS and DAEDS rates are actually identical for Group III",
       "DADS is charged only on projects below P50 million",
       "DADS applies only to Group I buildings"
     ],
     "c": 0,
-    "ref": "",
-    "n": "DADS compensates the architect for architectural design services only, while DAEDS compensates for both architectural and the allied engineering design services, so the DAEDS percentage is consistently higher (e.g., 7% vs. 4.2% at the base bracket) under Sec. 6.3.3. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "DADS compensates the architect for architectural design services only, while DAEDS compensates for both architectural and the allied engineering design services, so the DAEDS percentage is consistently higher (e.g., 7% vs. 4.2% at the base bracket) under Sec. 6.3.3."
   },
   {
     "s": "",
     "q": "An architect is asked whether a proposed 'exceptional' classification and its higher fee percentages can be applied to a simple two-story service garage just because the client wants a higher fee. What should the architect do?",
     "o": [
-      "Classify the project according to its actual building type under the SPP list — a service garage is Group I (Simple), not Group III, regardless of the fee the client is willing to pay",
+      "Classify it by its actual type: a service garage is Group I",
       "Apply Group III rates if the client requests it, since client preference governs classification",
       "Refuse to take any fee under SPP Document 202",
       "Split the difference and average Group I and Group III rates"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Classification under SPP Document 202 is based on the building type's actual character per Sec. 6.3.1-6.3.3, not on client preference for a higher fee; service garages are explicitly Group I (Simple). (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "Classification under SPP Document 202 is based on the building type's actual character per Sec. 6.3.1-6.3.3, not on client preference for a higher fee; service garages are explicitly Group I (Simple)."
   },
   {
     "s": "",
-    "q": "Relative to Group I (Simple) buildings, how do Group III (Exceptional) buildings' base DAEDS Recommended Professional Fee percentages compare?",
+    "q": "How does the Group III DAEDS rate at the lowest bracket (P50.0 million and less) compare with Group I's?",
     "o": [
-      "Group III shares the same 7% base rate as Group I at the lowest PCC bracket, reflecting that both groups' base bracket carries the schedule's higher-end starting rate for their respective category",
-      "Group III has no defined fee schedule at all",
-      "Group III's percentages are lower than Group I's because exceptional buildings need less oversight",
-      "Group III's percentages are identical to Group I's at every bracket"
+      "Higher: 7% of PCC against 5% for Group I",
+      "Lower: 5% of PCC against 7% for Group I",
+      "The same: 7% of PCC for both groups",
+      "The same: 5% of PCC for both groups"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Both Group I and Group III use 7% as the DAEDS base-bracket rate (PCC <=50M) in their respective schedules — however, the overall design and coordination burden implied by 'exceptional character and complexity' is what justifies Group III's separate classification. Sec. 6.3.1 (Group I) and Sec. 6.3.3 (Group III) each set out their own bracket schedules. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "Group I (simple) starts at 5% of PCC and Group III (exceptional) at 7%; the harder the building, the higher the rate."
   },
   {
     "s": "",
     "q": "A project involves an existing airport terminal (Group III) that will undergo not new construction but extensive alteration and renovation. Should the architect still use the Group III Regular Design Services fee brackets described in Sec. 6.3.3?",
     "o": [
-      "No — SPP Document 202 provides a separate group/schedule specifically for alterations, renovations, rehabilitation, retrofit, and expansion/addition work (Group IX), distinct from the regular new-design Group III schedule",
+      "No, it falls under Group IX, which has its own fee rule",
       "Yes, because airports are always Group III regardless of scope of work",
       "No, alteration work is not covered anywhere in SPP Document 202",
       "Yes, alterations always use the same fee schedule as new construction"
     ],
     "c": 0,
-    "ref": "",
-    "n": "SPP Document 202 separately classifies Alterations, Renovations, Rehabilitations, Retrofit, and Expansion/Addition work under its own group (Group IX), distinct from the Group III new-design brackets, since the nature and effort of alteration work differs from new design. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "SPP Document 202 separately classifies Alterations, Renovations, Rehabilitations, Retrofit, and Expansion/Addition work under its own group (Group IX), distinct from the Group III new-design brackets, since the nature and effort of alteration work differs from new design."
   },
   {
     "s": "",
@@ -382,8 +450,8 @@
       "Group VII - Housing Projects"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Both Laboratories/Testing Facilities and Research Facilities are Group 3 buildings; the group's defining rationale in Sec. 6.3.3 explicitly includes buildings 'requiring comparatively large amounts of research and of engineering and allied architectural design.' (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "Both Laboratories/Testing Facilities and Research Facilities are Group 3 buildings; the group's defining rationale in Sec. 6.3.3 explicitly includes buildings 'requiring comparatively large amounts of research and of engineering and allied architectural design.'"
   },
   {
     "s": "",
@@ -392,11 +460,11 @@
       "To assign building permit numbers",
       "To determine which architects are licensed to practice",
       "To regulate the construction materials used in each building type",
-      "To categorize projects by design complexity/character so that an appropriate Recommended Professional Fee (RPF) percentage-of-PCC schedule can be applied"
+      "To match each project's complexity to an RPF schedule"
     ],
     "c": 3,
-    "ref": "",
-    "n": "The Group I-X classification system in SPP Document 202 exists to categorize projects by their design complexity and character so that the correct RPF percentage-of-PCC bracket schedule is applied — simpler buildings (Group I) get lower base percentages, while more complex ones (e.g., Group III, V) get higher ones. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "The Group I-X classification system in SPP Document 202 exists to categorize projects by their design complexity and character so that the correct RPF percentage-of-PCC bracket schedule is applied — simpler buildings (Group I) get lower base percentages, while more complex ones (e.g., Group III, V) get higher ones."
   },
   {
     "s": "",
@@ -408,8 +476,8 @@
       "Telecommunication Buildings"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Public Markets are listed under Group I (Simple), not Group III. Stadia, Telecommunication Buildings, and Observatories are all Group III (Exceptional) building types under Sec. 6.3.3. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "Public Markets are listed under Group I (Simple), not Group III. Stadia, Telecommunication Buildings, and Observatories are all Group III (Exceptional) building types under Sec. 6.3.3."
   },
   {
     "s": "",
@@ -421,8 +489,8 @@
       "The Group VI repetitive-construction schedule"
     ],
     "c": 2,
-    "ref": "",
-    "n": "When the architect renders architectural design services only (engineering design handled separately), the DADS (Detailed Architectural Design Services) schedule applies, not DAEDS, which is for combined architectural-and-engineering design. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "When the architect renders architectural design services only (engineering design handled separately), the DADS (Detailed Architectural Design Services) schedule applies, not DAEDS, which is for combined architectural-and-engineering design."
   },
   {
     "s": "",
@@ -430,12 +498,12 @@
     "o": [
       "Warehouses and Service Garages",
       "Row-houses and Townhouses",
-      "Airports/Wet & Dry Ports & Terminals and Nuclear Facilities",
+      "Airports and Nuclear Facilities",
       "Museums and Mausoleums"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Airports/Wet & Dry Ports & Terminals and Nuclear Facilities are both listed under Group 3 in Sec. 6.3.3. Warehouses/Service Garages are Group I (Simple); row-houses/townhouses are Group IV (Residences); Museums/Mausoleums are Group V (Monumental). (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "Airports/Wet & Dry Ports & Terminals and Nuclear Facilities are both listed under Group 3 in Sec. 6.3.3. Warehouses/Service Garages are Group I (Simple); row-houses/townhouses are Group IV (Residences); Museums/Mausoleums are Group V (Monumental)."
   },
   {
     "s": "",
@@ -443,12 +511,12 @@
     "o": [
       "No, aquariums are Group V monumental buildings",
       "Yes, because aquariums do not require engineering design",
-      "No, Aquariums are explicitly listed as a Group III (Exceptional) building type under SPP Document 202",
+      "No, aquariums are listed under Group III",
       "Yes, all single-purpose commercial buildings are Group I"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Aquariums are explicitly enumerated under Group 3 (Exceptional) in Sec. 6.3.3, not Group I. Classification follows the building type list in the SPP, not a general commercial/single-purpose label. (Source: SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "Aquariums are explicitly enumerated under Group 3 (Exceptional) in Sec. 6.3.3, not Group I. Classification follows the building type list in the SPP, not a general commercial/single-purpose label."
   },
   {
     "s": "",
@@ -460,9 +528,17 @@
       "P14,100,000.00"
     ],
     "c": 2,
-    "ref": "",
-    "n": "PCC = P700M falls in the 'Over P500.0 million to P1.0 billion' bracket: RPF = P14,100,000 + 1.8% of excess of P500M = 14,100,000 + [0.018 x (700,000,000 - 500,000,000)] = 14,100,000 + 3,600,000 = P17,700,000.00. (Source: SPP Document 202, Sec. 6.3.3)",
-    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — a regional stadium (stadia) complex — with a Project Construction Cost (PCC) of P700,000,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "PCC = P700M falls in the 'Over P500.0 million to P1.0 billion' bracket: RPF = P14,100,000 + 1.8% of excess of P500M = 14,100,000 + [0.018 x (700,000,000 - 500,000,000)] = 14,100,000 + 3,600,000 = P17,700,000.00.",
+    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — a regional stadium (stadia) complex — with a Project Construction Cost (PCC) of P700,000,000.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "PCC = P700M falls in the 'Over P500.0 million to P1.0 billion' bracket",
+      "RPF = P14,100,000 + 1.8% of excess of P500M",
+      "= 14,100,000 + [0.018 x (700,000,000 - 500,000,000)]",
+      "= 14,100,000 + 3,600,000",
+      "= P17,700,000.00"
+    ]
   },
   {
     "s": "",
@@ -474,9 +550,17 @@
       "P9,000,000.00"
     ],
     "c": 2,
-    "ref": "",
-    "n": "PCC = P150M falls in the 'Over P100.0 million to P200.0 million' bracket: RPF = P3,900,000 + 3% of excess of P100M = 3,900,000 + [0.03 x (150,000,000 - 100,000,000)] = 3,900,000 + 1,500,000 = P5,400,000.00. (Source: SPP Document 202, Sec. 6.3.3)",
-    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — a convention center — with a Project Construction Cost (PCC) of P150,000,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "PCC = P150M falls in the 'Over P100.0 million to P200.0 million' bracket: RPF = P3,900,000 + 3% of excess of P100M = 3,900,000 + [0.03 x (150,000,000 - 100,000,000)] = 3,900,000 + 1,500,000 = P5,400,000.00.",
+    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — a convention center — with a Project Construction Cost (PCC) of P150,000,000.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "PCC = P150M falls in the 'Over P100.0 million to P200.0 million' bracket",
+      "RPF = P3,900,000 + 3% of excess of P100M",
+      "= 3,900,000 + [0.03 x (150,000,000 - 100,000,000)]",
+      "= 3,900,000 + 1,500,000",
+      "= P5,400,000.00"
+    ]
   },
   {
     "s": "",
@@ -488,9 +572,17 @@
       "P5,600,000.00"
     ],
     "c": 2,
-    "ref": "",
-    "n": "PCC = P80M falls in the 'Over P50.0 million to P100.0 million' bracket: RPF = P3,500,000 + 6% of excess of P50M = 3,500,000 + [0.06 x (80,000,000 - 50,000,000)] = 3,500,000 + 1,800,000 = P5,300,000.00. (Source: SPP Document 202, Sec. 6.3.3)",
-    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project with a Project Construction Cost (PCC) of P80,000,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "PCC = P80M falls in the 'Over P50.0 million to P100.0 million' bracket: RPF = P3,500,000 + 6% of excess of P50M = 3,500,000 + [0.06 x (80,000,000 - 50,000,000)] = 3,500,000 + 1,800,000 = P5,300,000.00.",
+    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project with a Project Construction Cost (PCC) of P80,000,000.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "PCC = P80M falls in the 'Over P50.0 million to P100.0 million' bracket",
+      "RPF = P3,500,000 + 6% of excess of P50M",
+      "= 3,500,000 + [0.06 x (80,000,000 - 50,000,000)]",
+      "= 3,500,000 + 1,800,000",
+      "= P5,300,000.00"
+    ]
   },
   {
     "s": "",
@@ -502,8 +594,16 @@
       "P14,000,000.00"
     ],
     "c": 2,
-    "ref": "",
-    "n": "PCC = P350M falls in the 'Over P200.0 million to P500.0 million' bracket: RPF = P11,500,000 + 4% of excess of P200M = 11,500,000 + [0.04 x (350,000,000 - 200,000,000)] = 11,500,000 + 6,000,000 = P17,500,000.00. (Source: SPP Document 202, Sec. 6.3.3)",
-    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — an international airport terminal — with a Project Construction Cost (PCC) of P350,000,000."
+    "ref": "SPP Doc. 202, Sec. 6.3.3",
+    "n": "PCC = P350M falls in the 'Over P200.0 million to P500.0 million' bracket: RPF = P11,500,000 + 4% of excess of P200M = 11,500,000 + [0.04 x (350,000,000 - 200,000,000)] = 11,500,000 + 6,000,000 = P17,500,000.00.",
+    "scenario": "An architect is engaged for the Regular Design Services of a Group III (Exceptional) project — an international airport terminal — with a Project Construction Cost (PCC) of P350,000,000.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "PCC = P350M falls in the 'Over P200.0 million to P500.0 million' bracket",
+      "RPF = P11,500,000 + 4% of excess of P200M",
+      "= 11,500,000 + [0.04 x (350,000,000 - 200,000,000)]",
+      "= 11,500,000 + 6,000,000",
+      "= P17,500,000.00"
+    ]
   }
 ]
