@@ -3,14 +3,14 @@
     "s": "",
     "q": "In both DAEDS and DADS arrangements under SPP Doc. 202, what happens to the professional responsibility and civil liability of each State-regulated professional (Architect and other RLPs) involved in the project?",
     "o": [
-      "The professional responsibilities and civil liabilities of each professional remain separate; the Architect does not assume the responsibilities/liabilities of the other RLPs",
+      "They stay separate; the Architect does not assume the other RLPs' liabilities",
       "The Architect assumes full liability for all other professionals in both cases",
       "Liability is transferred entirely to the Owner once the contract is signed",
       "Liability is pooled and shared equally among all professionals regardless of contract structure"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Sec. 6.1 states that in both DAEDS and DADS, the professional responsibilities and civil liabilities of each State-regulated professional remain separate, and the Architect does not assume the responsibilities and liabilities of the other RLPs. (Source: SPP Document 202, Sec. 6.1)"
+    "ref": "SPP Doc. 202, Sec. 6.1",
+    "n": "Sec. 6.1 states that in both DAEDS and DADS, the professional responsibilities and civil liabilities of each State-regulated professional remain separate, and the Architect does not assume the responsibilities and liabilities of the other RLPs."
   },
   {
     "s": "",
@@ -22,8 +22,8 @@
       "Detailed Architectural and Engineering Design Services (DAEDS)"
     ],
     "c": 3,
-    "ref": "",
-    "n": "DAEDS is defined precisely as a single contract between the Architect and the Owner, with the Architect entering sub-consultancy contracts with the other professionals — matching the Architect's intended arrangement here. (Source: SPP Document 202, Sec. 6.1)"
+    "ref": "SPP Doc. 202, Sec. 6.1",
+    "n": "DAEDS is defined precisely as a single contract between the Architect and the Owner, with the Architect entering sub-consultancy contracts with the other professionals — matching the Architect's intended arrangement here."
   },
   {
     "s": "",
@@ -35,21 +35,21 @@
       "Row-houses/shop-houses"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Residential Condominiums is listed under Group II, while single-detached/single-attached/duplex residences, row-houses and shop-houses, small apartment houses, and townhouses fall under Group 4. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2; SPP Document 202, Sec. 6.3.4)"
+    "ref": "SPP Doc. 202, Sec. 6.3.2; SPP Doc. 202, Sec. 6.3.4",
+    "n": "Residential Condominiums is listed under Group II, while single-detached/single-attached/duplex residences, row-houses and shop-houses, small apartment houses, and townhouses fall under Group 4."
   },
   {
     "s": "",
     "q": "In the formula used to compute this project's DAEDS fee, what does the 'P3,000,000' base amount represent?",
     "o": [
       "A fixed government filing fee unrelated to PCC",
-      "The RPF that would already be earned at the P50.0-million bracket boundary, per the 6% Group II DAEDS rate",
+      "The fee already earned at P50M: 6% of P50,000,000",
       "A minimum professional fee mandated by law regardless of bracket",
       "50% of the total project construction cost"
     ],
     "c": 1,
-    "ref": "",
-    "n": "The P3,000,000 base is simply 6% of P50,000,000 — the DAEDS fee already accrued up to the bracket boundary — to which 5% of the excess above P50M is then added. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "The P3,000,000 base is simply 6% of P50,000,000 — the DAEDS fee already accrued up to the bracket boundary — to which 5% of the excess above P50M is then added.",
     "scenario": "A Group II shopping center is being designed with a PCC of P75,000,000.00, which falls in the 'Over P50.0 million to P100.0 million' bracket."
   },
   {
@@ -62,9 +62,16 @@
       "P10,550,000.00"
     ],
     "c": 3,
-    "ref": "",
-    "n": "DAEDS = P9,500,000 + [3% x (P235M - P200M)] = P9,500,000 + [3% x P35,000,000] = P9,500,000 + P1,050,000 = P10,550,000.00. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
-    "scenario": "A proposed Group II retail/wholesale store complex has a PCC of P235,000,000.00, placing it in the 'Over P200.0 million to P500.0 million' bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "DAEDS = P9,500,000 + [3% x (P235M - P200M)] = P9,500,000 + [3% x P35,000,000] = P9,500,000 + P1,050,000 = P10,550,000.00.",
+    "scenario": "A proposed Group II retail/wholesale store complex has a PCC of P235,000,000.00, placing it in the 'Over P200.0 million to P500.0 million' bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "DAEDS = P9,500,000 + [3% x (P235M - P200M)]",
+      "= P9,500,000 + [3% x P35,000,000]",
+      "= P9,500,000 + P1,050,000",
+      "= P10,550,000.00"
+    ]
   },
   {
     "s": "",
@@ -76,8 +83,8 @@
       "Hangars"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Fire Stations is one of the enumerated Group II building types. Manufacturing/Industrial Plants, Hangars, and Public Markets are all Group 1 (simplest) buildings. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2; SPP Document 202, Sec. 6.3.1)"
+    "ref": "SPP Doc. 202, Sec. 6.3.2; SPP Doc. 202, Sec. 6.3.1",
+    "n": "Fire Stations is one of the enumerated Group II building types. Manufacturing/Industrial Plants, Hangars, and Public Markets are all Group 1 (simplest) buildings."
   },
   {
     "s": "",
@@ -89,21 +96,21 @@
       "Percentage (%) of Project Construction Cost method; Sec. 6.3.2 (Group 2)"
     ],
     "c": 3,
-    "ref": "",
-    "n": "A flat percentage of the estimated construction budget is the Percentage (%) of Project Construction Cost method (Sec. 6.2.1); since a mall complex is a Group II building type, the Sec. 6.3.2 bracket table applies. (Source: SPP Document 202, Sec. 6.2; SPP Document 202 (Regular Design Services), Sec. 6.3.2)"
+    "ref": "SPP Doc. 202, Sec. 6.2; SPP Doc. 202, Sec. 6.3.2",
+    "n": "A flat percentage of the estimated construction budget is the Percentage (%) of Project Construction Cost method (Sec. 6.2.1); since a mall complex is a Group II building type, the Sec. 6.3.2 bracket table applies."
   },
   {
     "s": "",
     "q": "Why does SPP Document 202 group buildings into categories such as Group I, Group II, and Group III at all?",
     "o": [
       "To determine which professionals are legally allowed to design the building",
-      "To determine the fair remuneration of the Architect according to the degree of complexity and creative skill required by the building type",
+      "To set fair remuneration by the complexity and creative skill required",
       "To determine the government agency with jurisdiction over the project",
       "To determine the required number of construction permits"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Sec. 6.2 explains that professional architectural work is classified according to the degree of complexity and creative skill required, and 'a grouping of buildings is provided to determine the fair remuneration for the Architect.' (Source: SPP Document 202, Sec. 6.2)"
+    "ref": "SPP Doc. 202, Sec. 6.2",
+    "n": "Sec. 6.2 explains that professional architectural work is classified according to the degree of complexity and creative skill required, and 'a grouping of buildings is provided to determine the fair remuneration for the Architect.'"
   },
   {
     "s": "",
@@ -115,8 +122,8 @@
       "Above Group III in required design complexity and fee percentage"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Group I's DAEDS base rate is 5% (≤50M), Group II's is 6%, and Group III's is 7% — the fee schedule escalates with design complexity from Group I through Group III, placing Group II in the middle. (Source: SPP Document 202, Sec. 6.3.1; SPP Document 202 (Regular Design Services), Sec. 6.3.2; SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.1; SPP Doc. 202, Sec. 6.3.2; SPP Doc. 202, Sec. 6.3.3",
+    "n": "Group I's DAEDS base rate is 5% (≤50M), Group II's is 6%, and Group III's is 7% — the fee schedule escalates with design complexity from Group I through Group III, placing Group II in the middle."
   },
   {
     "s": "",
@@ -128,9 +135,14 @@
       "P2,500,000.00"
     ],
     "c": 2,
-    "ref": "",
-    "n": "At exactly P50.0 million, the PCC still falls in the '≤P50.0 million' bracket at 6%: 6% x P50,000,000 = P3,000,000.00 — which is also the fixed base amount used to start the next bracket (Over P50M to P100M). (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
-    "scenario": "An Architect is engaged for a Group II project — a private club building — with a PCC of exactly P50,000,000.00 (the upper boundary of the first fee bracket)."
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "At exactly P50.0 million, the PCC still falls in the '≤P50.0 million' bracket at 6%: 6% x P50,000,000 = P3,000,000.00 — which is also the fixed base amount used to start the next bracket (Over P50M to P100M).",
+    "scenario": "An Architect is engaged for a Group II project — a private club building — with a PCC of exactly P50,000,000.00 (the upper boundary of the first fee bracket).",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "At exactly P50.0 million, the PCC still falls in the '≤P50.0 million' bracket at 6%",
+      "6% x P50,000,000 = P3,000,000.00 — which is also the fixed base amount used to start the next bracket (Over P50M to P100M)"
+    ]
   },
   {
     "s": "",
@@ -142,8 +154,8 @@
       "The Over P50M-P100M bracket, starting from a P3,000,000 base"
     ],
     "c": 3,
-    "ref": "",
-    "n": "P90,000,000 falls between P50.0 million and P100.0 million, so the applicable DAEDS formula is P3,000,000 plus 5% of the excess over P50.0 million. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "P90,000,000 falls between P50.0 million and P100.0 million, so the applicable DAEDS formula is P3,000,000 plus 5% of the excess over P50.0 million.",
     "scenario": "A nursing home project (Group II) has a PCC of P90,000,000.00."
   },
   {
@@ -156,9 +168,16 @@
       "P13,100,000.00"
     ],
     "c": 2,
-    "ref": "",
-    "n": "DADS = P11,100,000 + [1.2% x (P700M - P500M)] = P11,100,000 + [1.2% x P200,000,000] = P11,100,000 + P2,400,000 = P13,500,000.00. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
-    "scenario": "A Group II mixed-use building has a PCC of P700,000,000.00, placing it in the 'Over P500.0 million to P1.0 billion' bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "DADS = P11,100,000 + [1.2% x (P700M - P500M)] = P11,100,000 + [1.2% x P200,000,000] = P11,100,000 + P2,400,000 = P13,500,000.00.",
+    "scenario": "A Group II mixed-use building has a PCC of P700,000,000.00, placing it in the 'Over P500.0 million to P1.0 billion' bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "DADS = P11,100,000 + [1.2% x (P700M - P500M)]",
+      "= P11,100,000 + [1.2% x P200,000,000]",
+      "= P11,100,000 + P2,400,000",
+      "= P13,500,000.00"
+    ]
   },
   {
     "s": "",
@@ -170,9 +189,13 @@
       "P3,400,000.00"
     ],
     "c": 0,
-    "ref": "",
-    "n": "DAEDS RPF (P10,550,000.00) minus DADS RPF (P6,330,000.00) = P4,220,000.00 — the additional compensation for the Architect's coordination of and single-contract responsibility for the sub-consultancy engineering/allied professional services under DAEDS. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
-    "scenario": "A proposed Group II retail/wholesale store complex has a PCC of P235,000,000.00, placing it in the 'Over P200.0 million to P500.0 million' bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "DAEDS RPF (P10,550,000.00) minus DADS RPF (P6,330,000.00) = P4,220,000.00 — the additional compensation for the Architect's coordination of and single-contract responsibility for the sub-consultancy engineering/allied professional services under DAEDS.",
+    "scenario": "A proposed Group II retail/wholesale store complex has a PCC of P235,000,000.00, placing it in the 'Over P200.0 million to P500.0 million' bracket.",
+    "formula": "Difference = DAEDS RPF − DADS RPF",
+    "steps": [
+      "DAEDS RPF (P10,550,000.00) minus DADS RPF (P6,330,000.00) = P4,220,000.00 — the additional compensation for the Architect's coordination of and single-contract responsibility for the sub-consultancy engineering/allied professional services under DAEDS"
+    ]
   },
   {
     "s": "",
@@ -184,8 +207,8 @@
       "Group V"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Postal Facilities, Police Stations, and Welfare Buildings are all explicitly enumerated Group II building types under Sec. 6.3.2. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)"
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "Postal Facilities, Police Stations, and Welfare Buildings are all explicitly enumerated Group II building types under Sec. 6.3.2."
   },
   {
     "s": "",
@@ -197,13 +220,13 @@
       "1% — one-sixth of the 6% base rate"
     ],
     "c": 3,
-    "ref": "",
-    "n": "Sec. 6.3.2's Group II DAEDS table applies 1% to the excess of PCC over P1.0 billion, versus the 6% base rate applied to PCC of P50.0 million and less — the marginal percentage rate declines as PCC grows. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "Sec. 6.3.2's Group II DAEDS table applies 1% to the excess of PCC over P1.0 billion, versus the 6% base rate applied to PCC of P50.0 million and less — the marginal percentage rate declines as PCC grows.",
     "scenario": "A large Group II serviced-apartment / condominium development has a PCC of P1,500,000,000.00 (P1.5 billion), placing it in the 'Over P1.0 billion' bracket."
   },
   {
     "s": "",
-    "q": "Group II buildings are informally described in architecture board-exam reviewers by which single word, reflecting their design complexity relative to Groups I and III?",
+    "q": "Which word does SPP Doc. 202 use for the design complexity of Group II buildings?",
     "o": [
       "Exceptional",
       "Moderate",
@@ -211,8 +234,8 @@
       "Simplest"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Group 1 buildings are of the 'simplest' character, Group 2 buildings require a 'moderate' amount of research and design effort, and Group 3 buildings are of 'exceptional' character and complexity — Group 2 sits between the two. (Source: SPP Document 202, Sec. 6.3.1; SPP Document 202 (Regular Design Services), Sec. 6.3.2; SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.1; SPP Doc. 202, Sec. 6.3.2; SPP Doc. 202, Sec. 6.3.3",
+    "n": "Sec. 6.3.2 describes Group II as buildings of 'moderate' complexity; Group I is 'simplest' and Group III 'exceptional'."
   },
   {
     "s": "",
@@ -220,12 +243,12 @@
     "o": [
       "DAEDS covers only residential projects while DADS covers commercial projects",
       "DAEDS excludes engineering design entirely while DADS includes it",
-      "In DAEDS the Architect holds a single contract with the Owner and sub-consultancy contracts with the other professionals; in DADS the Architect and the other professionals each contract directly and separately with the Owner",
+      "DAEDS: one contract, engineers sub-consulted; DADS: separate contracts",
       "DAEDS is used only for Group I buildings while DADS is used only for Group II buildings"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Sec. 6.1.1 defines DAEDS as a single Architect-Owner contract with the Architect sub-contracting the allied professionals, while Sec. 6.1.2 defines DADS as the Architect and the engineering/allied professionals each having separate direct contracts with the Owner. (Source: SPP Document 202, Sec. 6.1)"
+    "ref": "SPP Doc. 202, Sec. 6.1",
+    "n": "Sec. 6.1.1 defines DAEDS as a single Architect-Owner contract with the Architect sub-contracting the allied professionals, while Sec. 6.1.2 defines DADS as the Architect and the engineering/allied professionals each having separate direct contracts with the Owner."
   },
   {
     "s": "",
@@ -237,8 +260,8 @@
       "All three are Group I"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Publishing Plants, Exhibition Halls & Display Structures, and Laundries & Cleaning Facilities are all explicitly listed under Group II in Sec. 6.3.2. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)"
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "Publishing Plants, Exhibition Halls & Display Structures, and Laundries & Cleaning Facilities are all explicitly listed under Group II in Sec. 6.3.2."
   },
   {
     "s": "",
@@ -250,8 +273,8 @@
       "Sec. 6.5.1"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Sec. 6.2.1 names 'Percentage (%) of Project Construction Cost (PCC)' as one of the methods of compensation for Regular Design Services; the Group 1-10 bracket tables (e.g., Sec. 6.3.2 for Group 2) apply this method. (Source: SPP Document 202, Sec. 6.2)"
+    "ref": "SPP Doc. 202, Sec. 6.2",
+    "n": "Sec. 6.2.1 names 'Percentage (%) of Project Construction Cost (PCC)' as one of the methods of compensation for Regular Design Services; the Group 1-10 bracket tables (e.g., Sec. 6.3.2 for Group 2) apply this method."
   },
   {
     "s": "",
@@ -263,8 +286,8 @@
       "Multiple of Direct Personnel Expenses arrangement"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Under DADS, the Architect and each of the engineering and allied professionals execute separate contracts directly with the Owner, matching the Owner's stated preference. (Source: SPP Document 202, Sec. 6.1)"
+    "ref": "SPP Doc. 202, Sec. 6.1",
+    "n": "Under DADS, the Architect and each of the engineering and allied professionals execute separate contracts directly with the Owner, matching the Owner's stated preference."
   },
   {
     "s": "",
@@ -276,8 +299,8 @@
       "Convention Facilities"
     ],
     "c": 3,
-    "ref": "",
-    "n": "Convention Facilities is listed under Group III (exceptional), not Group II. Correctional & Detention Facilities, Court Houses/Halls of Justice, and Convents/Monasteries/Seminaries are all Group II. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2; SPP Document 202, Sec. 6.3.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3.2; SPP Doc. 202, Sec. 6.3.3",
+    "n": "Convention Facilities is listed under Group III (exceptional), not Group II. Correctional & Detention Facilities, Court Houses/Halls of Justice, and Convents/Monasteries/Seminaries are all Group II."
   },
   {
     "s": "",
@@ -289,8 +312,8 @@
       "It restricts Group II to only the buildings explicitly named, with no room for analogous types"
     ],
     "c": 0,
-    "ref": "",
-    "n": "The 'other buildings of similar nature or use' clause allows building types not specifically named in the list to be classified by analogy to the enumerated Group II examples, based on comparable moderate design complexity. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)"
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "The 'other buildings of similar nature or use' clause allows building types not specifically named in the list to be classified by analogy to the enumerated Group II examples, based on comparable moderate design complexity."
   },
   {
     "s": "",
@@ -298,12 +321,12 @@
     "o": [
       "DAEDS fees include a mandatory profit markup not present in DADS",
       "There is no real difference; the two schedules are numerically identical",
-      "Under DAEDS the Architect's single fee also compensates for coordinating and being responsible for the sub-consultancy contracts with the engineering and allied professionals, which DADS excludes because those professionals contract and are paid directly by the Owner",
+      "DAEDS also pays for engaging and coordinating the engineers",
       "DADS is a discounted promotional rate offered only to government projects"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Because DAEDS bundles the architectural and engineering/allied design services into one Architect-held contract, its RPF percentage is higher than DADS, which covers architectural design services alone. (Source: SPP Document 202, Sec. 6.1)"
+    "ref": "SPP Doc. 202, Sec. 6.1",
+    "n": "Because DAEDS bundles the architectural and engineering/allied design services into one Architect-held contract, its RPF percentage is higher than DADS, which covers architectural design services alone."
   },
   {
     "s": "",
@@ -315,9 +338,16 @@
       "P4,500,000.00"
     ],
     "c": 1,
-    "ref": "",
-    "n": "DAEDS for this bracket = P3,000,000 + [5% x (PCC - P50M)] = P3,000,000 + [5% x P25,000,000] = P3,000,000 + P1,250,000 = P4,250,000.00. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
-    "scenario": "A Group II shopping center is being designed with a PCC of P75,000,000.00, which falls in the 'Over P50.0 million to P100.0 million' bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "DAEDS for this bracket = P3,000,000 + [5% x (PCC - P50M)] = P3,000,000 + [5% x P25,000,000] = P3,000,000 + P1,250,000 = P4,250,000.00.",
+    "scenario": "A Group II shopping center is being designed with a PCC of P75,000,000.00, which falls in the 'Over P50.0 million to P100.0 million' bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "DAEDS for this bracket = P3,000,000 + [5% x (PCC - P50M)]",
+      "= P3,000,000 + [5% x P25,000,000]",
+      "= P3,000,000 + P1,250,000",
+      "= P4,250,000.00"
+    ]
   },
   {
     "s": "",
@@ -329,9 +359,14 @@
       "P1,200,000.00"
     ],
     "c": 1,
-    "ref": "",
-    "n": "For PCC of P50.0 million and less, the Group II DADS rate is a flat 3.6% of PCC: 3.6% x P30,000,000 = P1,080,000.00. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
-    "scenario": "An Architect is engaged under a Group II project — a proposed 4-storey office building — with a Statement of Probable Project Construction Cost (PCC) of P30,000,000.00."
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "For PCC of P50.0 million and less, the Group II DADS rate is a flat 3.6% of PCC: 3.6% x P30,000,000 = P1,080,000.00.",
+    "scenario": "An Architect is engaged under a Group II project — a proposed 4-storey office building — with a Statement of Probable Project Construction Cost (PCC) of P30,000,000.00.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "For PCC of P50.0 million and less, the Group II DADS rate is a flat 3.6% of PCC",
+      "3.6% x P30,000,000 = P1,080,000.00"
+    ]
   },
   {
     "s": "",
@@ -343,8 +378,8 @@
       "Group II (moderate)"
     ],
     "c": 3,
-    "ref": "",
-    "n": "City/Town Halls & Civic Centers are explicitly enumerated under Group II in Sec. 6.3.2. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)"
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "City/Town Halls & Civic Centers are explicitly enumerated under Group II in Sec. 6.3.2."
   },
   {
     "s": "",
@@ -352,12 +387,12 @@
     "o": [
       "Airports and Hotels",
       "Armories and Bakeries",
-      "Banks/Financial Institutions and Churches/Religious Facilities",
+      "Banks and Churches",
       "Museums and Mausoleums"
     ],
     "c": 2,
-    "ref": "",
-    "n": "Banks, Exchange and Other Financial Institutions, and Churches and Religious Facilities, are both listed under Group II. Airports/Hotels are Group 3; Armories/Bakeries are Group 1; Museums/Mausoleums are Group 5. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)"
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "Banks, Exchange and Other Financial Institutions, and Churches and Religious Facilities, are both listed under Group II. Airports/Hotels are Group 3; Armories/Bakeries are Group 1; Museums/Mausoleums are Group 5."
   },
   {
     "s": "",
@@ -369,8 +404,8 @@
       "Over P100M-P200M bracket; base of P3,300,000, plus 2.4% of the excess over P100M"
     ],
     "c": 1,
-    "ref": "",
-    "n": "P480,000,000 falls between P200.0 million and P500.0 million, so the Group II DADS formula is P5,700,000 plus 1.8% of the excess over P200.0 million. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "P480,000,000 falls between P200.0 million and P500.0 million, so the Group II DADS formula is P5,700,000 plus 1.8% of the excess over P200.0 million.",
     "scenario": "A private club project (Group II) has a PCC of P480,000,000.00, to be delivered under DADS."
   },
   {
@@ -383,9 +418,16 @@
       "P6,600,000.00"
     ],
     "c": 2,
-    "ref": "",
-    "n": "DADS = P5,700,000 + [1.8% x (P235M - P200M)] = P5,700,000 + [1.8% x P35,000,000] = P5,700,000 + P630,000 = P6,330,000.00. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
-    "scenario": "A proposed Group II retail/wholesale store complex has a PCC of P235,000,000.00, placing it in the 'Over P200.0 million to P500.0 million' bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "DADS = P5,700,000 + [1.8% x (P235M - P200M)] = P5,700,000 + [1.8% x P35,000,000] = P5,700,000 + P630,000 = P6,330,000.00.",
+    "scenario": "A proposed Group II retail/wholesale store complex has a PCC of P235,000,000.00, placing it in the 'Over P200.0 million to P500.0 million' bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "DADS = P5,700,000 + [1.8% x (P235M - P200M)]",
+      "= P5,700,000 + [1.8% x P35,000,000]",
+      "= P5,700,000 + P630,000",
+      "= P6,330,000.00"
+    ]
   },
   {
     "s": "",
@@ -397,8 +439,8 @@
       "Group I"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Dormitories are explicitly listed among the Group II (moderate complexity) building types in Sec. 6.3.2. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)"
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "Dormitories are explicitly listed among the Group II (moderate complexity) building types in Sec. 6.3.2."
   },
   {
     "s": "",
@@ -410,8 +452,8 @@
       "Monumental buildings requiring consummate design skill and much precise detailing"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Sec. 6.3.2 defines Group 2 as buildings of moderate complexity of plan/design requiring a moderate amount of research and of engineering and allied architectural design — hence the informal label 'Moderate.' (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)"
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "Sec. 6.3.2 defines Group 2 as buildings of moderate complexity of plan/design requiring a moderate amount of research and of engineering and allied architectural design — hence the informal label 'Moderate.'"
   },
   {
     "s": "",
@@ -423,9 +465,16 @@
       "P7,500,000.00"
     ],
     "c": 3,
-    "ref": "",
-    "n": "DAEDS = P5,500,000 + [4% x (P150M - P100M)] = P5,500,000 + [4% x P50,000,000] = P5,500,000 + P2,000,000 = P7,500,000.00. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
-    "scenario": "A Group II multi-storey apartment building has a PCC of P150,000,000.00, placing it in the 'Over P100.0 million to P200.0 million' bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "DAEDS = P5,500,000 + [4% x (P150M - P100M)] = P5,500,000 + [4% x P50,000,000] = P5,500,000 + P2,000,000 = P7,500,000.00.",
+    "scenario": "A Group II multi-storey apartment building has a PCC of P150,000,000.00, placing it in the 'Over P100.0 million to P200.0 million' bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "DAEDS = P5,500,000 + [4% x (P150M - P100M)]",
+      "= P5,500,000 + [4% x P50,000,000]",
+      "= P5,500,000 + P2,000,000",
+      "= P7,500,000.00"
+    ]
   },
   {
     "s": "",
@@ -437,9 +486,16 @@
       "P31,500,000.00"
     ],
     "c": 0,
-    "ref": "",
-    "n": "DAEDS = P28,500,000 + [1% x (P1.5B - P1.0B)] = P28,500,000 + [1% x P500,000,000] = P28,500,000 + P5,000,000 = P33,500,000.00. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
-    "scenario": "A large Group II serviced-apartment / condominium development has a PCC of P1,500,000,000.00 (P1.5 billion), placing it in the 'Over P1.0 billion' bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "DAEDS = P28,500,000 + [1% x (P1.5B - P1.0B)] = P28,500,000 + [1% x P500,000,000] = P28,500,000 + P5,000,000 = P33,500,000.00.",
+    "scenario": "A large Group II serviced-apartment / condominium development has a PCC of P1,500,000,000.00 (P1.5 billion), placing it in the 'Over P1.0 billion' bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "DAEDS = P28,500,000 + [1% x (P1.5B - P1.0B)]",
+      "= P28,500,000 + [1% x P500,000,000]",
+      "= P28,500,000 + P5,000,000",
+      "= P33,500,000.00"
+    ]
   },
   {
     "s": "",
@@ -451,8 +507,8 @@
       "Group III"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Bowlodromes and Call Centers are both explicitly listed Group II building types in Sec. 6.3.2. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)"
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "Bowlodromes and Call Centers are both explicitly listed Group II building types in Sec. 6.3.2."
   },
   {
     "s": "",
@@ -464,9 +520,16 @@
       "P4,800,000.00"
     ],
     "c": 2,
-    "ref": "",
-    "n": "DADS = P3,300,000 + [2.4% x (P150M - P100M)] = P3,300,000 + [2.4% x P50,000,000] = P3,300,000 + P1,200,000 = P4,500,000.00. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
-    "scenario": "A Group II multi-storey apartment building has a PCC of P150,000,000.00, placing it in the 'Over P100.0 million to P200.0 million' bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "DADS = P3,300,000 + [2.4% x (P150M - P100M)] = P3,300,000 + [2.4% x P50,000,000] = P3,300,000 + P1,200,000 = P4,500,000.00.",
+    "scenario": "A Group II multi-storey apartment building has a PCC of P150,000,000.00, placing it in the 'Over P100.0 million to P200.0 million' bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "DADS = P3,300,000 + [2.4% x (P150M - P100M)]",
+      "= P3,300,000 + [2.4% x P50,000,000]",
+      "= P3,300,000 + P1,200,000",
+      "= P4,500,000.00"
+    ]
   },
   {
     "s": "",
@@ -478,9 +541,16 @@
       "P20,700,000.00"
     ],
     "c": 2,
-    "ref": "",
-    "n": "DADS = P17,100,000 + [0.6% x (P1.5B - P1.0B)] = P17,100,000 + [0.6% x P500,000,000] = P17,100,000 + P3,000,000 = P20,100,000.00. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
-    "scenario": "A large Group II serviced-apartment / condominium development has a PCC of P1,500,000,000.00 (P1.5 billion), placing it in the 'Over P1.0 billion' bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "DADS = P17,100,000 + [0.6% x (P1.5B - P1.0B)] = P17,100,000 + [0.6% x P500,000,000] = P17,100,000 + P3,000,000 = P20,100,000.00.",
+    "scenario": "A large Group II serviced-apartment / condominium development has a PCC of P1,500,000,000.00 (P1.5 billion), placing it in the 'Over P1.0 billion' bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "DADS = P17,100,000 + [0.6% x (P1.5B - P1.0B)]",
+      "= P17,100,000 + [0.6% x P500,000,000]",
+      "= P17,100,000 + P3,000,000",
+      "= P20,100,000.00"
+    ]
   },
   {
     "s": "",
@@ -492,8 +562,8 @@
       "Sec. 6.2 (Method of Compensation)"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Sec. 6.3, 'Recommended Professional Fee (RPF)', groups buildings (Groups 1-10, with Group 2 defined in Sec. 6.3.2) to determine the fair remuneration of the Architect based on design complexity. (Source: SPP Document 202, Sec. 6.3)"
+    "ref": "SPP Doc. 202, Sec. 6.3",
+    "n": "Sec. 6.3, 'Recommended Professional Fee (RPF)', groups buildings (Groups 1-10, with Group 2 defined in Sec. 6.3.2) to determine the fair remuneration of the Architect based on design complexity."
   },
   {
     "s": "",
@@ -505,8 +575,8 @@
       "All three fall under Group I"
     ],
     "c": 0,
-    "ref": "",
-    "n": "Supermarkets/Hyper-marts, Malls/Mall Complexes, and Retail/Wholesale Stores are all explicitly listed under Group II — classification under SPP Doc. 202 is by building type/use, not by floor area. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)"
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "Supermarkets/Hyper-marts, Malls/Mall Complexes, and Retail/Wholesale Stores are all explicitly listed under Group II — classification under SPP Doc. 202 is by building type/use, not by floor area."
   },
   {
     "s": "",
@@ -518,9 +588,14 @@
       "P2,100,000.00"
     ],
     "c": 0,
-    "ref": "",
-    "n": "At exactly P50.0 million, the PCC still falls in the '≤P50.0 million' bracket at 3.6%: 3.6% x P50,000,000 = P1,800,000.00 — the fixed base for the next DADS bracket. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
-    "scenario": "An Architect is engaged for a Group II project — a private club building — with a PCC of exactly P50,000,000.00 (the upper boundary of the first fee bracket)."
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "At exactly P50.0 million, the PCC still falls in the '≤P50.0 million' bracket at 3.6%: 3.6% x P50,000,000 = P1,800,000.00 — the fixed base for the next DADS bracket.",
+    "scenario": "An Architect is engaged for a Group II project — a private club building — with a PCC of exactly P50,000,000.00 (the upper boundary of the first fee bracket).",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "At exactly P50.0 million, the PCC still falls in the '≤P50.0 million' bracket at 3.6%",
+      "3.6% x P50,000,000 = P1,800,000.00 — the fixed base for the next DADS bracket"
+    ]
   },
   {
     "s": "",
@@ -532,8 +607,8 @@
       "Public Markets"
     ],
     "c": 1,
-    "ref": "",
-    "n": "Office Buildings / Office Condominium is one of the enumerated Group II building types. Public Markets and Warehouses are Group 1 (simplest) buildings, while Hospitals & Medical Buildings are Group 3 (exceptional). (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)"
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "Office Buildings / Office Condominium is one of the enumerated Group II building types. Public Markets and Warehouses are Group 1 (simplest) buildings, while Hospitals & Medical Buildings are Group 3 (exceptional)."
   },
   {
     "s": "",
@@ -545,9 +620,16 @@
       "P20,500,000.00"
     ],
     "c": 1,
-    "ref": "",
-    "n": "DAEDS = P18,500,000 + [2% x (P700M - P500M)] = P18,500,000 + [2% x P200,000,000] = P18,500,000 + P4,000,000 = P22,500,000.00. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
-    "scenario": "A Group II mixed-use building has a PCC of P700,000,000.00, placing it in the 'Over P500.0 million to P1.0 billion' bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "DAEDS = P18,500,000 + [2% x (P700M - P500M)] = P18,500,000 + [2% x P200,000,000] = P18,500,000 + P4,000,000 = P22,500,000.00.",
+    "scenario": "A Group II mixed-use building has a PCC of P700,000,000.00, placing it in the 'Over P500.0 million to P1.0 billion' bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "DAEDS = P18,500,000 + [2% x (P700M - P500M)]",
+      "= P18,500,000 + [2% x P200,000,000]",
+      "= P18,500,000 + P4,000,000",
+      "= P22,500,000.00"
+    ]
   },
   {
     "s": "",
@@ -559,9 +641,16 @@
       "P2,250,000.00"
     ],
     "c": 1,
-    "ref": "",
-    "n": "DADS for this bracket = P1,800,000 + [3.0% x (PCC - P50M)] = P1,800,000 + [3.0% x P25,000,000] = P1,800,000 + P750,000 = P2,550,000.00. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
-    "scenario": "A Group II shopping center is being designed with a PCC of P75,000,000.00, which falls in the 'Over P50.0 million to P100.0 million' bracket."
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "DADS for this bracket = P1,800,000 + [3.0% x (PCC - P50M)] = P1,800,000 + [3.0% x P25,000,000] = P1,800,000 + P750,000 = P2,550,000.00.",
+    "scenario": "A Group II shopping center is being designed with a PCC of P75,000,000.00, which falls in the 'Over P50.0 million to P100.0 million' bracket.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "DADS for this bracket = P1,800,000 + [3.0% x (PCC - P50M)]",
+      "= P1,800,000 + [3.0% x P25,000,000]",
+      "= P1,800,000 + P750,000",
+      "= P2,550,000.00"
+    ]
   },
   {
     "s": "",
@@ -573,8 +662,13 @@
       "P3,000,000.00"
     ],
     "c": 0,
-    "ref": "",
-    "n": "For PCC of P50.0 million and less, the Group II DAEDS rate is a flat 6% of PCC: 6% x P30,000,000 = P1,800,000.00. (Source: SPP Document 202 (Regular Design Services), Sec. 6.3.2)",
-    "scenario": "An Architect is engaged under a Group II project — a proposed 4-storey office building — with a Statement of Probable Project Construction Cost (PCC) of P30,000,000.00."
+    "ref": "SPP Doc. 202, Sec. 6.3.2",
+    "n": "For PCC of P50.0 million and less, the Group II DAEDS rate is a flat 6% of PCC: 6% x P30,000,000 = P1,800,000.00.",
+    "scenario": "An Architect is engaged under a Group II project — a proposed 4-storey office building — with a Statement of Probable Project Construction Cost (PCC) of P30,000,000.00.",
+    "formula": "RPF = base of bracket + rate × (PCC − lower limit of bracket)",
+    "steps": [
+      "For PCC of P50.0 million and less, the Group II DAEDS rate is a flat 6% of PCC",
+      "6% x P30,000,000 = P1,800,000.00"
+    ]
   }
 ]
