@@ -1,6 +1,6 @@
 [
   {
-    "s": "Curing Period",
+    "s": "Form Removal Time",
     "q": "For beam and girder bottoms, how much additional time is added per foot of span?",
     "o": [
       "2 days",
@@ -10,11 +10,11 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table adds 1 day per foot."
+    "n": "1 day per foot."
   },
   {
     "s": "Mortar & Plaster",
-    "q": "How many 50 kg cement units are listed for Class B mortar?",
+    "q": "How many 50 kg bags of cement does 1 m³ of Class B mortar need?",
     "o": [
       "9.5",
       "14.5",
@@ -23,11 +23,11 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "Class B lists 9.5 units of 50 kg cement."
+    "n": "Per cubic meter of mortar: Class A (1:2) 14.5 bags of 50 kg cement (18 of 40 kg); Class B (1:3) 9.5 (12); Class C (1:4) 7 (9); Class D (1:5) 6 (7.5)."
   },
   {
-    "s": "Curing Period",
-    "q": "How long is required for spandrel arches?",
+    "s": "Form Removal Time",
+    "q": "How long must forms stay on spandrel arches before removal?",
     "o": [
       "14 days",
       "21 days",
@@ -40,7 +40,7 @@
   },
   {
     "s": "Mortar & Plaster",
-    "q": "How many 50 kg cement units are listed for Class C mortar?",
+    "q": "How many 50 kg bags of cement does 1 m³ of Class C mortar need?",
     "o": [
       "9",
       "7",
@@ -49,11 +49,11 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "Class C lists 7 units of 50 kg cement."
+    "n": "Per cubic meter of mortar: Class A (1:2) 14.5 bags of 50 kg cement (18 of 40 kg); Class B (1:3) 9.5 (12); Class C (1:4) 7 (9); Class D (1:5) 6 (7.5)."
   },
   {
-    "s": "Curing Period",
-    "q": "How long is required for steel and side forms of balustrade copings?",
+    "s": "Form Removal Time",
+    "q": "How long must forms stay on steel and side forms of balustrade copings before removal?",
     "o": [
       "14 days",
       "1 day",
@@ -62,11 +62,11 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table gives 1 day."
+    "n": "1 day."
   },
   {
     "s": "Mortar & Plaster",
-    "q": "How many 50 kg cement units are listed for Class D mortar?",
+    "q": "How many 50 kg bags of cement does 1 m³ of Class D mortar need?",
     "o": [
       "5",
       "7",
@@ -75,11 +75,11 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "Class D lists 6 units of 50 kg cement."
+    "n": "Per cubic meter of mortar: Class A (1:2) 14.5 bags of 50 kg cement (18 of 40 kg); Class B (1:3) 9.5 (12); Class C (1:4) 7 (9); Class D (1:5) 6 (7.5)."
   },
   {
-    "s": "Curing Period",
-    "q": "How long is required for the bottoms of reinforced-concrete piles and posts?",
+    "s": "Form Removal Time",
+    "q": "How long must forms stay on the bottoms of reinforced-concrete piles and posts before removal?",
     "o": [
       "14 days",
       "7 days",
@@ -101,20 +101,20 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The 4-inch CHB row lists 0.0015 cu.m. for mortar fill."
+    "n": "Mortar fill for 4-inch CHB: 0.0015 cu.m.."
   },
   {
     "s": "Fiber Burning",
-    "q": "What flame characteristic is listed for cotton and linen?",
+    "q": "How do cotton and linen burn?",
     "o": [
       "Yellow flame with light smoke and glowing embers",
-      "Blue flame with heavy smoke",
-      "No flame and only melting",
-      "Rapid flame with black smoke"
+      "Rapid flame that melts and drips beads",
+      "Slow burn that curls away and self-extinguishes",
+      "Sputtering flame with heavy black smoke"
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "The table describes cotton/linen as burning with a yellow flame, light smoke, and glowing embers."
+    "n": "Cotton/linen as burning with a yellow flame, light smoke, and glowing embers."
   },
   {
     "s": "CHB Computation",
@@ -127,7 +127,7 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The 6-inch CHB row lists 0.0030 cu.m. for mortar fill."
+    "n": "Mortar fill for 6-inch CHB: 0.0030 cu.m.."
   },
   {
     "s": "Fiber Burning",
@@ -153,7 +153,7 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The 8-inch CHB row lists 0.0045 cu.m. for mortar fill."
+    "n": "Mortar fill for 8-inch CHB: 0.0045 cu.m.."
   },
   {
     "s": "Fiber Burning",
@@ -166,11 +166,11 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "The source notes that hot molten plastic residue from acetate is difficult to remove."
+    "n": "Hot molten plastic residue from acetate is difficult to remove."
   },
   {
     "s": "Plaster",
-    "q": "What plaster factor is listed for one side per CHB?",
+    "q": "What plaster factor is for one side per CHB?",
     "o": [
       "0.002032",
       "0.0023",
@@ -179,7 +179,7 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The plaster table lists 0.0023 for one side per CHB."
+    "n": "0.0023 for one side per CHB."
   },
   {
     "s": "Fiber Burning",
@@ -196,16 +196,16 @@
   },
   {
     "s": "Rebar Weight",
-    "q": "What factor is given for rebar weight per meter using diameter d?",
+    "q": "Rebar weight in kg/m = d² × k, with d in mm. What is k?",
     "o": [
-      "d² x 0.0617",
-      "d x 0.00617",
-      "d / 0.00617",
-      "d² x 0.00617"
+      "0.0617",
+      "0.000617",
+      "0.617",
+      "0.00617"
     ],
     "c": 3,
-    "ref": "Building Technology & Materials, p. 91",
-    "n": "The table gives Ø² x 0.00617 for rebar weight per meter in kg."
+    "ref": "Reinforcing bars",
+    "n": "k = 1/162 = 0.00617, from steel at 7850 kg/m³ (e.g. 12 mm: 144 × 0.00617 = 0.89 kg/m)."
   },
   {
     "s": "Fiber Burning",
@@ -218,7 +218,7 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "Wool and silk are listed under protein fibers."
+    "n": "Wool and silk are protein fibers."
   },
   {
     "s": "Rebar Conversion",
@@ -231,7 +231,7 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The table gives # / 8 x 25.4."
+    "n": "# / 8 x 25.4."
   },
   {
     "s": "Fiber Burning",
@@ -248,7 +248,7 @@
   },
   {
     "s": "Rebar Conversion",
-    "q": "What formula converts diameter in millimeters to a rebar number format shown in the table?",
+    "q": "Which formula converts a bar diameter in mm to its bar number?",
     "o": [
       "# x 3.125",
       "Ø² / 162",
@@ -270,11 +270,11 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "Aramid, Novoloid, and Vinyon are listed as char but do not burn."
+    "n": "Aramid, Novoloid, and Vinyon are char but do not burn."
   },
   {
-    "s": "Permissible Sump Consistency",
-    "q": "What is the minimum slump listed for slabs, beams, thin reinforced walls, and building columns?",
+    "s": "Permissible Slump Consistency",
+    "q": "What is the minimum slump for slabs, beams, thin reinforced walls, and building columns?",
     "o": [
       "25 mm (1\")",
       "50 mm (2\")",
@@ -296,10 +296,10 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "The source gives a 50/50 cotton-polyester blend as an example of longer burning."
+    "n": "A 50/50 cotton-polyester blend as an example of longer burning."
   },
   {
-    "s": "Permissible Sump Consistency",
+    "s": "Permissible Slump Consistency",
     "q": "What is the minimum slump for reinforced foundation walls and footings?",
     "o": [
       "75 mm (3\")",
@@ -309,7 +309,7 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The table lists 50 mm as the minimum."
+    "n": "50 mm as the minimum."
   },
   {
     "s": "Fiber Burning",
@@ -325,7 +325,7 @@
     "n": "Heavy, close structures ignite with greater difficulty and burn more slowly."
   },
   {
-    "s": "Permissible Sump Consistency",
+    "s": "Permissible Slump Consistency",
     "q": "What is the minimum slump for plain footings, caissons, and substructure walls?",
     "o": [
       "50 mm (2\")",
@@ -348,10 +348,10 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "The source attributes longer burning to the greater amount of flammable material present."
+    "n": "Longer burning to the greater amount of flammable material present."
   },
   {
-    "s": "Permissible Sump Consistency",
+    "s": "Permissible Slump Consistency",
     "q": "What is the minimum slump for pavements and floors laid on ground?",
     "o": [
       "100 mm (4\")",
@@ -377,7 +377,7 @@
     "n": "Napped or brushed surfaces expose more fine fibers to oxygen."
   },
   {
-    "s": "Permissible Sump Consistency",
+    "s": "Permissible Slump Consistency",
     "q": "What is the minimum slump for heavy mass construction?",
     "o": [
       "75 mm (3\")",
@@ -400,7 +400,7 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "The Modified Mercalli Scale is shown from I through XII."
+    "n": "The Modified Mercalli Scale rates intensity from I (not felt) to XII (total destruction)."
   },
   {
     "s": "Beam and Slab Thickness",
@@ -413,16 +413,16 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The table gives L/16."
+    "n": "Minimum thickness when deflection is not computed (NSCP 2015, fy = 415 MPa): simply supported L/16 for beams and ribbed slabs, L/20 for solid slabs; one end continuous L/18.5 and L/24; both ends continuous L/21 and L/28; cantilever L/8 and L/10."
   },
   {
     "s": "Earthquake Magnitudes",
-    "q": "At Modified Mercalli II, how is the earthquake described?",
+    "q": "Which description matches Modified Mercalli intensity II?",
     "o": [
-      "Felt by almost no one",
-      "Felt by many people",
+      "Felt indoors by many; like a truck struck the building",
+      "Felt by nearly everyone; many are awakened",
       "Felt by very few people",
-      "Everyone runs outdoors"
+      "People run outdoors and furniture moves"
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 93",
@@ -439,20 +439,20 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The table gives L/18.5."
+    "n": "Minimum thickness when deflection is not computed (NSCP 2015, fy = 415 MPa): simply supported L/16 for beams and ribbed slabs, L/20 for solid slabs; one end continuous L/18.5 and L/24; both ends continuous L/21 and L/28; cantilever L/8 and L/10."
   },
   {
     "s": "Earthquake Magnitudes",
-    "q": "What Richter value is paired with Modified Mercalli II/III in the table as the first listed magnitude?",
+    "q": "About what Richter magnitude matches Modified Mercalli intensity II–III?",
     "o": [
-      "2.5",
       "3.5",
-      "6.0",
-      "4.5"
+      "4.5",
+      "2.5",
+      "6.0"
     ],
-    "c": 0,
-    "ref": "Building Technology & Materials, p. 93",
-    "n": "The Richter column lists 2.5 near the first low-intensity entries."
+    "c": 2,
+    "ref": "Earthquake scales",
+    "n": "Magnitude 2.5 is usually felt only by a few people near the epicenter (MMI II–III); 3.5 is felt by many."
   },
   {
     "s": "Beam and Slab Thickness",
@@ -465,7 +465,7 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The table gives L/21."
+    "n": "Minimum thickness when deflection is not computed (NSCP 2015, fy = 415 MPa): simply supported L/16 for beams and ribbed slabs, L/20 for solid slabs; one end continuous L/18.5 and L/24; both ends continuous L/21 and L/28; cantilever L/8 and L/10."
   },
   {
     "s": "Earthquake Magnitudes",
@@ -478,7 +478,7 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "The table pairs 3.5 with the statement that it is felt by many people."
+    "n": "3.5 with the statement that it is felt by many people."
   },
   {
     "s": "Beam and Slab Thickness",
@@ -491,16 +491,16 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The table gives L/8."
+    "n": "Minimum thickness when deflection is not computed (NSCP 2015, fy = 415 MPa): simply supported L/16 for beams and ribbed slabs, L/20 for solid slabs; one end continuous L/18.5 and L/24; both ends continuous L/21 and L/28; cantilever L/8 and L/10."
   },
   {
     "s": "Earthquake Magnitudes",
-    "q": "At Modified Mercalli VI, what is observed?",
+    "q": "Which description matches Modified Mercalli intensity VI?",
     "o": [
-      "Only a slight tremor is noticed",
+      "Felt indoors by many; like a truck struck the building",
       "People run outdoors and furniture moves",
-      "Ground cracks widely",
-      "Bridges collapse"
+      "Special designs slightly damaged; others may collapse",
+      "Noticed by many, often not recognized as a quake"
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 93",
@@ -510,23 +510,23 @@
     "s": "Conversion Factors",
     "q": "How many square feet are in 1 square meter?",
     "o": [
-      "3.2808 ft",
-      "10.7639 ft²",
-      "1550.0031 in²",
-      "0.3048 m"
+      "3.2808 ft²",
+      "1.1960 ft²",
+      "9.2903 ft²",
+      "10.7639 ft²"
     ],
-    "c": 1,
-    "ref": "Building Technology & Materials, p. 91",
-    "n": "The table lists 10.7639 ft² for 1 m²."
+    "c": 3,
+    "ref": "Conversion Factors",
+    "n": "1 m² = 3.2808² ft² = 10.7639 ft²."
   },
   {
     "s": "Earthquake Magnitudes",
-    "q": "At Modified Mercalli VII, what happens to poorly built structures?",
+    "q": "Which description matches Modified Mercalli intensity VII?",
     "o": [
-      "They are considerably damaged",
-      "Only specially designed structures fail",
-      "They are unaffected",
-      "They completely disappear"
+      "Considerable damage to poorly built structures",
+      "Felt by nearly everyone; many are awakened",
+      "Buildings are considerably damaged and many shift off foundations",
+      "Felt indoors by many; like a truck struck the building"
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 93",
@@ -556,7 +556,7 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "The table labels 6.0 as a destructive earthquake."
+    "n": "6.0 as a destructive earthquake."
   },
   {
     "s": "Conversion Factors",
@@ -573,12 +573,12 @@
   },
   {
     "s": "Earthquake Magnitudes",
-    "q": "At Modified Mercalli X, what is noted?",
+    "q": "Which description matches Modified Mercalli intensity X?",
     "o": [
       "Many structures are destroyed and the ground is badly cracked",
-      "No ground effects occur",
-      "Bridges remain intact",
-      "Only weak furniture moves"
+      "Special designs slightly damaged; others may collapse",
+      "Total destruction, with waves seen on the ground",
+      "Considerable damage to poorly built structures"
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 93",
@@ -599,12 +599,12 @@
   },
   {
     "s": "Earthquake Magnitudes",
-    "q": "At Modified Mercalli XI, what is noted?",
+    "q": "Which description matches Modified Mercalli intensity XI?",
     "o": [
-      "Only furniture moves",
+      "Buildings are considerably damaged and many shift off foundations",
       "Bridges are wrecked and very wide cracks occur in the ground",
-      "No visible effects occur",
-      "Only slight damage occurs"
+      "Special designs slightly damaged; others may collapse",
+      "Considerable damage to poorly built structures"
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 93",
@@ -621,16 +621,16 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The table lists 0.003785412 m³ per US gallon."
+    "n": "0.003785412 m³ per US gallon."
   },
   {
     "s": "Earthquake Magnitudes",
-    "q": "At Modified Mercalli XII, what is described?",
+    "q": "Which description matches Modified Mercalli intensity XII?",
     "o": [
       "Total destruction, with waves seen on the ground",
-      "Only bridge damage",
-      "Minor local damage",
-      "Only indoor shaking"
+      "Many structures are destroyed and the ground is badly cracked",
+      "Buildings are considerably damaged and many shift off foundations",
+      "Special designs slightly damaged; others may collapse"
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 93",
@@ -647,20 +647,20 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The table lists 231 in³ per US gallon."
+    "n": "231 in³ per US gallon."
   },
   {
     "s": "Earthquake Magnitudes",
     "q": "What does each increase of 1 on the Richter scale represent?",
     "o": [
       "A tenfold increase in ground motion",
-      "A hundredfold increase",
-      "A fivefold increase",
-      "A twofold increase"
+      "A hundredfold increase in ground motion",
+      "A fivefold increase in ground motion",
+      "A doubling of ground motion"
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "The source states that each increase of 1 represents a tenfold increase in ground motion."
+    "n": "Each increase of 1 represents a tenfold increase in ground motion."
   },
   {
     "s": "Conversion Factors",
@@ -686,7 +686,7 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class AAA has a 1:1:2 concrete proportion."
+    "n": "Per cubic meter of concrete: Class AA (1:1.5:3) 9.5 bags of 50 kg cement (12 of 40 kg); A (1:2:4) 7 (9); B (1:2.5:5) 6 (7.5); C (1:3:6) 5 (6); D (1:3.5:7) 4 (5). Each uses about 0.5 m³ sand and 1.0 m³ gravel."
   },
   {
     "s": "Conversion Factors",
@@ -712,7 +712,7 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class A uses a 1:2:4 proportion."
+    "n": "Per cubic meter of concrete: Class AA (1:1.5:3) 9.5 bags of 50 kg cement (12 of 40 kg); A (1:2:4) 7 (9); B (1:2.5:5) 6 (7.5); C (1:3:6) 5 (6); D (1:3.5:7) 4 (5). Each uses about 0.5 m³ sand and 1.0 m³ gravel."
   },
   {
     "s": "Conversion Factors",
@@ -725,7 +725,7 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The table lists 4 gallons per tin."
+    "n": "4 gallons per tin."
   },
   {
     "s": "Concrete Mixture Proportion",
@@ -738,24 +738,29 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class C uses a 1:3:6 proportion."
+    "n": "Per cubic meter of concrete: Class AA (1:1.5:3) 9.5 bags of 50 kg cement (12 of 40 kg); A (1:2:4) 7 (9); B (1:2.5:5) 6 (7.5); C (1:3:6) 5 (6); D (1:3.5:7) 4 (5). Each uses about 0.5 m³ sand and 1.0 m³ gravel."
   },
   {
     "s": "Conversion Factors",
-    "q": "How many quarts are in 1 tin?",
+    "q": "How many quarts are in 1 tin (4 US gallons)?",
     "o": [
-      "128 quarts",
       "64 quarts",
       "16 quarts",
-      "32 quarts"
+      "32 quarts",
+      "8 quarts"
     ],
     "c": 1,
-    "ref": "Building Technology & Materials, p. 91",
-    "n": "The table lists 64 quarts."
+    "ref": "Conversion Factors",
+    "n": "1 tin (lata) = 4 US gallons = 16 quarts = 32 pints ≈ 15.14 liters.",
+    "formula": "quarts = gallons × 4",
+    "steps": [
+      "4 gal × 4 qt/gal",
+      "= 16 quarts"
+    ]
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "How much 40 kg cement is listed for Class AA?",
+    "q": "How many 40 kg bags of cement does 1 m³ of Class AA concrete need?",
     "o": [
       "9",
       "12",
@@ -764,11 +769,11 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class AA lists 12 units of 40 kg cement."
+    "n": "Per cubic meter of concrete: Class AA (1:1.5:3) 9.5 bags of 50 kg cement (12 of 40 kg); A (1:2:4) 7 (9); B (1:2.5:5) 6 (7.5); C (1:3:6) 5 (6); D (1:3.5:7) 4 (5). Each uses about 0.5 m³ sand and 1.0 m³ gravel."
   },
   {
     "s": "Formulas",
-    "q": "What is the board-foot formula shown for dimensions in inches and length in feet?",
+    "q": "What is the board-foot formula for dimensions in inches and length in feet?",
     "o": [
       "T(ft) x W(ft) x L(ft) / 12",
       "T(in) x W(in) x L(ft) / 144",
@@ -781,7 +786,7 @@
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "How much 40 kg cement is listed for Class A?",
+    "q": "How many 40 kg bags of cement does 1 m³ of Class A concrete need?",
     "o": [
       "6",
       "7.5",
@@ -790,7 +795,7 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class A lists 9 units of 40 kg cement."
+    "n": "Per cubic meter of concrete: Class AA (1:1.5:3) 9.5 bags of 50 kg cement (12 of 40 kg); A (1:2:4) 7 (9); B (1:2.5:5) 6 (7.5); C (1:3:6) 5 (6); D (1:3.5:7) 4 (5). Each uses about 0.5 m³ sand and 1.0 m³ gravel."
   },
   {
     "s": "Formulas",
@@ -807,7 +812,7 @@
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "How much 40 kg cement is listed for Class B?",
+    "q": "How many 40 kg bags of cement does 1 m³ of Class B concrete need?",
     "o": [
       "5",
       "9",
@@ -816,11 +821,11 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class B lists 7.5 units of 40 kg cement."
+    "n": "Per cubic meter of concrete: Class AA (1:1.5:3) 9.5 bags of 50 kg cement (12 of 40 kg); A (1:2:4) 7 (9); B (1:2.5:5) 6 (7.5); C (1:3:6) 5 (6); D (1:3.5:7) 4 (5). Each uses about 0.5 m³ sand and 1.0 m³ gravel."
   },
   {
     "s": "Formulas",
-    "q": "What is the Pythagorean theorem shown in the table?",
+    "q": "Which formula gives the hypotenuse c of a right triangle?",
     "o": [
       "a = √(b² + c²)",
       "c = a² + b²",
@@ -829,11 +834,11 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table gives c = √(a² + b²)."
+    "n": "C = √(a² + b²)."
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "How much 40 kg cement is listed for Class C?",
+    "q": "How many 40 kg bags of cement does 1 m³ of Class C concrete need?",
     "o": [
       "5",
       "7.5",
@@ -842,7 +847,7 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class C lists 6 units of 40 kg cement."
+    "n": "Per cubic meter of concrete: Class AA (1:1.5:3) 9.5 bags of 50 kg cement (12 of 40 kg); A (1:2:4) 7 (9); B (1:2.5:5) 6 (7.5); C (1:3:6) 5 (6); D (1:3.5:7) 4 (5). Each uses about 0.5 m³ sand and 1.0 m³ gravel."
   },
   {
     "s": "SOH CAH TOA",
@@ -859,7 +864,7 @@
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "How much 40 kg cement is listed for Class D?",
+    "q": "How many 40 kg bags of cement does 1 m³ of Class D concrete need?",
     "o": [
       "5",
       "4",
@@ -868,7 +873,7 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class D lists 5 units of 40 kg cement."
+    "n": "Per cubic meter of concrete: Class AA (1:1.5:3) 9.5 bags of 50 kg cement (12 of 40 kg); A (1:2:4) 7 (9); B (1:2.5:5) 6 (7.5); C (1:3:6) 5 (6); D (1:3.5:7) 4 (5). Each uses about 0.5 m³ sand and 1.0 m³ gravel."
   },
   {
     "s": "SOH CAH TOA",
@@ -885,7 +890,7 @@
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "What sand quantity is listed for Class A?",
+    "q": "What sand quantity is for Class A?",
     "o": [
       "0.75",
       "0.25",
@@ -894,7 +899,7 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "The table lists 0.5 for sand in Class A."
+    "n": "0.5 for sand in Class A."
   },
   {
     "s": "SOH CAH TOA",
@@ -959,7 +964,7 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table gives H = O / sin θ."
+    "n": "H = O / sin θ."
   },
   {
     "s": "Concrete Mixture Proportion",
@@ -985,7 +990,7 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table gives A = H x cos θ."
+    "n": "A = H x cos θ."
   },
   {
     "s": "Concrete Mixture Proportion",
@@ -1037,11 +1042,11 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table gives A = O / tan θ."
+    "n": "A = O / tan θ."
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "How much water is listed for Class A in US gallons per 94 lb cement?",
+    "q": "How much water is for Class A in US gallons per 94 lb cement?",
     "o": [
       "5",
       "6.5",
@@ -1050,24 +1055,24 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class A uses 5 US gallons per the table."
+    "n": "Per cubic meter of concrete: Class AA (1:1.5:3) 9.5 bags of 50 kg cement (12 of 40 kg); A (1:2:4) 7 (9); B (1:2.5:5) 6 (7.5); C (1:3:6) 5 (6); D (1:3.5:7) 4 (5). Each uses about 0.5 m³ sand and 1.0 m³ gravel."
   },
   {
     "s": "Two-way Slab Thickness",
-    "q": "When is the two-way slab rule based on W/L > 0.5?",
+    "q": "A slab has short-to-long span ratio W/L greater than 0.5. How does it act?",
     "o": [
-      "Cantilever",
       "1-way",
       "2-way",
-      "Ribbed slab"
+      "Cantilever",
+      "Flat plate only"
     ],
-    "c": 2,
-    "ref": "Building Technology & Materials, p. 92",
-    "n": "The table pairs W/L > 0.5 with the two-way condition."
+    "c": 1,
+    "ref": "Two-way slab thickness",
+    "n": "A slab spanning both ways (short/long ratio W/L above 0.5, or L/W under 2) is two-way; old rule of thumb: thickness = perimeter/180."
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "How much water is listed for Class C?",
+    "q": "How much water is for Class C?",
     "o": [
       "6.5",
       "5",
@@ -1080,16 +1085,21 @@
   },
   {
     "s": "Two-way Slab Thickness",
-    "q": "Which formula is shown for slab thickness in terms of W and L?",
+    "q": "By the old rule of thumb, what is the thickness T of a two-way slab with sides W and L?",
     "o": [
-      "T = [W² + L²] / 180",
-      "T = [W + L] / 180",
+      "T = (W + L) / 180",
       "T = WL / 180",
-      "T = W + L / 180"
+      "T = 2(W + L) / 360",
+      "T = 2(W + L) / 180"
     ],
-    "c": 0,
-    "ref": "Building Technology & Materials, p. 92",
-    "n": "The table shows T = [W² + L²] / 180."
+    "c": 3,
+    "ref": "Two-way slab thickness",
+    "n": "T = perimeter / 180 = 2(W + L)/180. For a 4 m × 5 m panel: 18/180 = 0.10 m.",
+    "formula": "T = 2(W + L) / 180",
+    "steps": [
+      "Example 4 m × 5 m: perimeter = 2(4 + 5) = 18 m",
+      "T = 18 / 180 = 0.10 m"
+    ]
   },
   {
     "s": "Concrete Mixture Proportion",
@@ -1102,24 +1112,24 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class AAA is listed for pre-stressed and post-tensioned work."
+    "n": "Class AAA is used for pre-stressed and post-tensioned work."
   },
   {
     "s": "Two-way Slab Thickness",
-    "q": "What length ratio is paired with the 1-way condition in the second rule?",
+    "q": "Which long-to-short span ratio makes a slab one-way?",
     "o": [
+      "L/W < 2",
       "L/W > 2",
-      "L/W > 1/2",
-      "L/W = 2",
-      "L/W < 2"
+      "L/W = 1",
+      "L/W < 1/2"
     ],
-    "c": 0,
-    "ref": "Building Technology & Materials, p. 92",
-    "n": "The table pairs the 1-way case with L/W > 2."
+    "c": 1,
+    "ref": "Two-way slab thickness",
+    "n": "A slab spanning both ways (short/long ratio W/L above 0.5, or L/W under 2) is two-way; old rule of thumb: thickness = perimeter/180."
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "Which class is listed for footings, piers, columns, girders, beams, joists, and slabs?",
+    "q": "Which class is for footings, piers, columns, girders, beams, joists, and slabs?",
     "o": [
       "A",
       "D",
@@ -1128,11 +1138,11 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class A is listed for these structural uses."
+    "n": "Class A is used for these structural uses."
   },
   {
     "s": "Weight of Materials",
-    "q": "What is the listed unit weight of concrete?",
+    "q": "What is the unit weight of concrete?",
     "o": [
       "2000 kg/m³",
       "1000 kg/m³",
@@ -1141,11 +1151,11 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table lists concrete at 2400 kg/m³."
+    "n": "Concrete at 2400 kg/m³."
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "Which class is listed for concrete plant boxes and parapet walls?",
+    "q": "Which class is for concrete plant boxes and parapet walls?",
     "o": [
       "D",
       "A",
@@ -1154,10 +1164,10 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class C is listed for plant boxes and parapet walls."
+    "n": "Class C is used for plant boxes and parapet walls."
   },
   {
-    "s": "Curing Period",
+    "s": "Form Removal Time",
     "q": "How long is required before removing forms from a massive footing?",
     "o": [
       "3 days",
@@ -1167,7 +1177,7 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The curing table lists 1 day for massive footings."
+    "n": "1 day for massive footings."
   },
   {
     "s": "Portland Cement",
@@ -1180,11 +1190,11 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "The source defines Portland cement as hydraulic cement made by burning clay and limestone and pulverizing the clinker."
+    "n": "Portland cement as hydraulic cement made by burning clay and limestone and pulverizing the clinker."
   },
   {
-    "s": "Curing Period",
-    "q": "How long is required for slab footings?",
+    "s": "Form Removal Time",
+    "q": "How long must forms stay on slab footings before removal?",
     "o": [
       "7 days",
       "3 days",
@@ -1209,7 +1219,7 @@
     "n": "Type II has reduced tricalcium aluminate and is used where moderate sulfate resistance is required."
   },
   {
-    "s": "Curing Period",
+    "s": "Form Removal Time",
     "q": "For massive walls, how much additional time is added per meter?",
     "o": [
       "2 days",
@@ -1219,7 +1229,7 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table adds 1 day per meter."
+    "n": "1 day per meter."
   },
   {
     "s": "Portland Cement",
@@ -1235,7 +1245,7 @@
     "n": "Type III cures faster and gains strength earlier than normal Portland cement."
   },
   {
-    "s": "Curing Period",
+    "s": "Form Removal Time",
     "q": "For thin walls, how much additional time is added per meter?",
     "o": [
       "2 days",
@@ -1245,7 +1255,7 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table adds 1.5 days per meter for thin walls."
+    "n": "1.5 days per meter for thin walls."
   },
   {
     "s": "Portland Cement",
@@ -1261,7 +1271,7 @@
     "n": "Type V is the sulfate-resisting type for severe sulfate action."
   },
   {
-    "s": "Curing Period",
+    "s": "Form Removal Time",
     "q": "For columns with a height-to-least-diameter ratio up to 4, what time is required?",
     "o": [
       "1 day",
@@ -1271,7 +1281,7 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The column table gives 2 days up to a ratio of 4."
+    "n": "2 days up to a ratio of 4."
   },
   {
     "s": "Portland Cement",
@@ -1287,7 +1297,7 @@
     "n": "White Portland cement is produced from raw materials low in iron oxide and manganese oxide."
   },
   {
-    "s": "Curing Period",
+    "s": "Form Removal Time",
     "q": "For columns in the 4-to-15 ratio range, how much additional time is added per meter of height?",
     "o": [
       "2 days",
@@ -1297,7 +1307,7 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table adds 1 day per meter of height."
+    "n": "1 day per meter of height."
   },
   {
     "s": "Mortar & Plaster",
@@ -1310,10 +1320,10 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "Class A mortar uses a 1:2 cement-to-sand proportion."
+    "n": "Per cubic meter of mortar: Class A (1:2) 14.5 bags of 50 kg cement (18 of 40 kg); Class B (1:3) 9.5 (12); Class C (1:4) 7 (9); Class D (1:5) 6 (7.5)."
   },
   {
-    "s": "Curing Period",
+    "s": "Form Removal Time",
     "q": "For slabs with 3-to-7-foot spans, how much additional time is added per foot?",
     "o": [
       "1.5 days",
@@ -1323,7 +1333,7 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table adds one-half day per foot."
+    "n": "One-half day per foot."
   },
   {
     "s": "Mortar & Plaster",
@@ -1336,10 +1346,10 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "Class C uses a 1:4 proportion."
+    "n": "Per cubic meter of mortar: Class A (1:2) 14.5 bags of 50 kg cement (18 of 40 kg); Class B (1:3) 9.5 (12); Class C (1:4) 7 (9); Class D (1:5) 6 (7.5)."
   },
   {
-    "s": "Curing Period",
+    "s": "Form Removal Time",
     "q": "For slabs over 7-foot spans, how much additional time is added per foot?",
     "o": [
       "2 days",
@@ -1349,11 +1359,11 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table adds 1 day per foot of span."
+    "n": "1 day per foot of span."
   },
   {
     "s": "Mortar & Plaster",
-    "q": "How many 40 kg cement units are listed for Class A mortar?",
+    "q": "How many 40 kg bags of cement does 1 m³ of Class A mortar need?",
     "o": [
       "12",
       "9",
@@ -1362,10 +1372,10 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "Class A lists 18 units of 40 kg cement."
+    "n": "Per cubic meter of mortar: Class A (1:2) 14.5 bags of 50 kg cement (18 of 40 kg); Class B (1:3) 9.5 (12); Class C (1:4) 7 (9); Class D (1:5) 6 (7.5)."
   },
   {
-    "s": "Curing Period",
+    "s": "Form Removal Time",
     "q": "For beam and girder bottoms up to 14 ft, what is the curing-time range?",
     "o": [
       "3 to 14 days",
@@ -1375,11 +1385,11 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table gives 14 to 28 days for bottoms up to 14 ft."
+    "n": "14 to 28 days for bottoms up to 14 ft."
   },
   {
     "s": "Mortar & Plaster",
-    "q": "How many 40 kg cement units are listed for Class B mortar?",
+    "q": "How many 40 kg bags of cement does 1 m³ of Class B mortar need?",
     "o": [
       "7.5",
       "18",
@@ -1388,11 +1398,11 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "Class B lists 12 units of 40 kg cement."
+    "n": "Per cubic meter of mortar: Class A (1:2) 14.5 bags of 50 kg cement (18 of 40 kg); Class B (1:3) 9.5 (12); Class C (1:4) 7 (9); Class D (1:5) 6 (7.5)."
   },
   {
-    "s": "Curing Period",
-    "q": "How long is required for spandrel walls?",
+    "s": "Form Removal Time",
+    "q": "How long must forms stay on spandrel walls before removal?",
     "o": [
       "21 days",
       "14 days",
@@ -1405,7 +1415,7 @@
   },
   {
     "s": "Mortar & Plaster",
-    "q": "How many 40 kg cement units are listed for Class C mortar?",
+    "q": "How many 40 kg bags of cement does 1 m³ of Class C mortar need?",
     "o": [
       "12",
       "6",
@@ -1414,11 +1424,11 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "Class C lists 9 units of 40 kg cement."
+    "n": "Per cubic meter of mortar: Class A (1:2) 14.5 bags of 50 kg cement (18 of 40 kg); Class B (1:3) 9.5 (12); Class C (1:4) 7 (9); Class D (1:5) 6 (7.5)."
   },
   {
-    "s": "Curing Period",
-    "q": "How long is required for main arches?",
+    "s": "Form Removal Time",
+    "q": "How long must forms stay on main arches before removal?",
     "o": [
       "14 days",
       "28 days",
@@ -1431,7 +1441,7 @@
   },
   {
     "s": "Mortar & Plaster",
-    "q": "How many 40 kg cement units are listed for Class D mortar?",
+    "q": "How many 40 kg bags of cement does 1 m³ of Class D mortar need?",
     "o": [
       "7.5",
       "12",
@@ -1440,11 +1450,11 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "Class D lists 7.5 units of 40 kg cement."
+    "n": "Per cubic meter of mortar: Class A (1:2) 14.5 bags of 50 kg cement (18 of 40 kg); Class B (1:3) 9.5 (12); Class C (1:4) 7 (9); Class D (1:5) 6 (7.5)."
   },
   {
-    "s": "Curing Period",
-    "q": "How long is required for the sides of reinforced-concrete piles and posts?",
+    "s": "Form Removal Time",
+    "q": "How long must forms stay on the sides of reinforced-concrete piles and posts before removal?",
     "o": [
       "1 day",
       "3 days",
@@ -1457,7 +1467,7 @@
   },
   {
     "s": "CHB",
-    "q": "How many CHB pieces are listed per square meter?",
+    "q": "How many CHB pieces are per square meter?",
     "o": [
       "15 pieces",
       "12.5 pieces",
@@ -1466,11 +1476,11 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The table lists 12.5 CHB pieces per square meter."
+    "n": "12.5 CHB pieces per square meter."
   },
   {
     "s": "Fiber Burning",
-    "q": "How are cotton and linen classified in the fiber table?",
+    "q": "How are cotton and linen classified by fiber type?",
     "o": [
       "Synthetics",
       "Natural cellulosic fibers",
@@ -1479,7 +1489,7 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "Cotton and linen are listed under natural cellulosic fibers."
+    "n": "Cotton and linen are natural cellulosic fibers."
   },
   {
     "s": "CHB Computation",
@@ -1492,7 +1502,7 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The 4-inch CHB row lists 0.001016 cu.m. for mortar lay."
+    "n": "Mortar lay for 4-inch CHB: 0.001016 cu.m.."
   },
   {
     "s": "Fiber Burning",
@@ -1505,7 +1515,7 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "The source states that cellulosic fibers do not melt or draw away from flames."
+    "n": "Cellulosic fibers do not melt or draw away from flames."
   },
   {
     "s": "CHB Computation",
@@ -1518,7 +1528,7 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The 6-inch CHB row lists 0.001524 cu.m. for mortar lay."
+    "n": "Mortar lay for 6-inch CHB: 0.001524 cu.m.."
   },
   {
     "s": "Fiber Burning",
@@ -1544,7 +1554,7 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The 8-inch CHB row lists 0.002032 cu.m. for mortar lay."
+    "n": "Mortar lay for 8-inch CHB: 0.002032 cu.m.."
   },
   {
     "s": "Fiber Burning",
@@ -1561,7 +1571,7 @@
   },
   {
     "s": "Plaster",
-    "q": "What plaster factor is listed for one side per square meter?",
+    "q": "What plaster factor is for one side per square meter?",
     "o": [
       "0.0030",
       "0.029",
@@ -1570,7 +1580,7 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The plaster table lists 0.029 for one side per square meter."
+    "n": "0.029 for one side per square meter."
   },
   {
     "s": "Fiber Burning",
@@ -1583,20 +1593,20 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "The table describes these synthetics as burning slowly and melting."
+    "n": "These synthetics as burning slowly and melting."
   },
   {
     "s": "Rebar Weight",
-    "q": "In the rebar weight formula, what is the denominator?",
+    "q": "Rebar weight in kg/m = d² / N, with d in mm. What is N?",
     "o": [
-      "162",
       "8",
-      "3.125",
+      "3.175",
+      "162",
       "25.4"
     ],
-    "c": 0,
-    "ref": "Building Technology & Materials, p. 91",
-    "n": "The table shows Ø² / 162."
+    "c": 2,
+    "ref": "Reinforcing bars",
+    "n": "Steel is 7850 kg/m³, so weight = π/4 × d² × 7850 / 10⁶ = d²/162 kg/m (e.g. 16 mm: 256/162 = 1.58 kg/m)."
   },
   {
     "s": "Fiber Burning",
@@ -1609,24 +1619,24 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "The table says wool and silk burn slowly and are difficult to ignite, and may self-extinguish."
+    "n": "Wool and silk burn slowly and are difficult to ignite, and may self-extinguish."
   },
   {
     "s": "Rebar Conversion",
-    "q": "What formula converts diameter in millimeters to bar number?",
+    "q": "Which shortcut converts a bar number (in eighths of an inch) to its diameter in mm?",
     "o": [
-      "(Ø x 8) / 25.4",
-      "# / 8 x 25.4",
-      "Ø² x 0.00617",
-      "# x 3.125"
+      "# × 3.175",
+      "# × 3.125",
+      "# ÷ 3.175",
+      "# × 25.4"
     ],
-    "c": 3,
-    "ref": "Building Technology & Materials, p. 91",
-    "n": "The table gives # x 3.125."
+    "c": 0,
+    "ref": "Reinforcing bars",
+    "n": "Bar number = diameter in eighths of an inch, so d = # × 25.4 / 8 = # × 3.175 mm (e.g. #8 = 25.4 mm)."
   },
   {
     "s": "Fiber Burning",
-    "q": "Which fibers are listed as melting slowly and self-extinguishing?",
+    "q": "Which fibers are as melting slowly and self-extinguishing?",
     "o": [
       "Rayon and acetate",
       "Aramid and Vinyon",
@@ -1638,8 +1648,8 @@
     "n": "Modacrylic and Saran are described as burning very slowly with melting and self-extinguishing."
   },
   {
-    "s": "Permissible Sump Consistency",
-    "q": "What is the maximum slump listed for slabs, beams, thin reinforced walls, and building columns?",
+    "s": "Permissible Slump Consistency",
+    "q": "What is the maximum slump for slabs, beams, thin reinforced walls, and building columns?",
     "o": [
       "125 mm (5\")",
       "100 mm (4\")",
@@ -1648,23 +1658,23 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The table lists a maximum of 150 mm and a minimum of 75 mm for this group."
+    "n": "A maximum of 150 mm and a minimum of 75 mm for this group."
   },
   {
     "s": "Fiber Burning",
     "q": "Why can blends be more hazardous than either of their individual fibers?",
     "o": [
       "They may burn differently from either fiber",
-      "They contain no oxygen",
-      "They cannot melt",
-      "They always self-extinguish"
+      "They always contain a flame retardant",
+      "Their fibers cannot melt at all",
+      "They always self-extinguish quickly"
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 93",
     "n": "Blends of fibers can have burning behavior different from, and sometimes more hazardous than, either component."
   },
   {
-    "s": "Permissible Sump Consistency",
+    "s": "Permissible Slump Consistency",
     "q": "What is the maximum slump for reinforced foundation walls and footings?",
     "o": [
       "125 mm (5\")",
@@ -1674,23 +1684,23 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The table lists 125 mm as the maximum."
+    "n": "125 mm as the maximum."
   },
   {
     "s": "Fiber Burning",
     "q": "What aspect of fabric construction can affect burning behavior?",
     "o": [
-      "Only fabric brand",
-      "Only fabric color",
-      "Only fabric length",
+      "Only the brand of the fabric",
+      "Only the dye color used",
+      "Only the length of the cut",
       "Knit, weave, or lace construction"
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "The source says how a fabric is made, such as knit, weave, or lace, affects burning."
+    "n": "How a fabric is made, such as knit, weave, or lace, affects burning."
   },
   {
-    "s": "Permissible Sump Consistency",
+    "s": "Permissible Slump Consistency",
     "q": "What is the maximum slump for plain footings, caissons, and substructure walls?",
     "o": [
       "125 mm (5\")",
@@ -1713,10 +1723,10 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "The source says summer-weight clothing is generally more likely to catch fire."
+    "n": "Summer-weight clothing is generally more likely to catch fire."
   },
   {
-    "s": "Permissible Sump Consistency",
+    "s": "Permissible Slump Consistency",
     "q": "What is the maximum slump for pavements and floors laid on ground?",
     "o": [
       "50 mm (2\")",
@@ -1742,21 +1752,21 @@
     "n": "Greater fiber surface exposed to air supplies more oxygen and can increase flammability."
   },
   {
-    "s": "Permissible Sump Consistency",
+    "s": "Permissible Slump Consistency",
     "q": "What is the maximum slump for heavy mass construction?",
     "o": [
-      "125 mm (5\")",
+      "75 mm (3\")",
       "100 mm (4\")",
       "50 mm (2\")",
-      "75 mm (3\")"
+      "125 mm (5\")"
     ],
-    "c": 3,
-    "ref": "Building Technology & Materials, p. 91",
-    "n": "The maximum is 75 mm (3 inches)."
+    "c": 2,
+    "ref": "ACI 211.1 slump table",
+    "n": "Mass concrete is placed stiff, at 25–50 mm slump (ACI 211.1), to limit water, heat and shrinkage."
   },
   {
     "s": "Earthquake Magnitudes",
-    "q": "Which scale in the table is described as subjective and based on human reactions and observations?",
+    "q": "Which scale is described as subjective and based on human reactions and observations?",
     "o": [
       "Beaufort Scale",
       "Modified Mercalli Scale",
@@ -1778,16 +1788,16 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The table gives L/20 for a simply supported solid one-way slab."
+    "n": "Minimum thickness when deflection is not computed (NSCP 2015, fy = 415 MPa): simply supported L/16 for beams and ribbed slabs, L/20 for solid slabs; one end continuous L/18.5 and L/24; both ends continuous L/21 and L/28; cantilever L/8 and L/10."
   },
   {
     "s": "Earthquake Magnitudes",
-    "q": "At Modified Mercalli I, how is the earthquake described?",
+    "q": "Which description matches Modified Mercalli intensity I?",
     "o": [
-      "Buildings are destroyed",
-      "Felt by nearly everyone",
+      "Noticed by many, often not recognized as a quake",
+      "Felt indoors by many; like a truck struck the building",
       "Felt by almost no one",
-      "Felt by very few people"
+      "Felt by nearly everyone; many are awakened"
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 93",
@@ -1804,16 +1814,16 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The table gives L/24."
+    "n": "Minimum thickness when deflection is not computed (NSCP 2015, fy = 415 MPa): simply supported L/16 for beams and ribbed slabs, L/20 for solid slabs; one end continuous L/18.5 and L/24; both ends continuous L/21 and L/28; cantilever L/8 and L/10."
   },
   {
     "s": "Earthquake Magnitudes",
-    "q": "At Modified Mercalli III, what is observed?",
+    "q": "Which description matches Modified Mercalli intensity III?",
     "o": [
-      "Buildings shift off foundations",
-      "Tremor is noticed by many, but they may not realize it is an earthquake",
-      "There is total destruction",
-      "Everyone runs outdoors"
+      "Felt by almost no one",
+      "Noticed by many, often not recognized as a quake",
+      "Felt by nearly everyone; many are awakened",
+      "People run outdoors and furniture moves"
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 93",
@@ -1830,14 +1840,14 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The table gives L/28."
+    "n": "Minimum thickness when deflection is not computed (NSCP 2015, fy = 415 MPa): simply supported L/16 for beams and ribbed slabs, L/20 for solid slabs; one end continuous L/18.5 and L/24; both ends continuous L/21 and L/28; cantilever L/8 and L/10."
   },
   {
     "s": "Earthquake Magnitudes",
-    "q": "At Modified Mercalli IV, how is the shaking described?",
+    "q": "Which description matches Modified Mercalli intensity IV?",
     "o": [
-      "Bridges are wrecked",
-      "Total destruction",
+      "Felt by very few people",
+      "People run outdoors and furniture moves",
       "Felt indoors by many; like a truck struck the building",
       "Felt by almost no one"
     ],
@@ -1856,16 +1866,16 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The table gives L/10."
+    "n": "Minimum thickness when deflection is not computed (NSCP 2015, fy = 415 MPa): simply supported L/16 for beams and ribbed slabs, L/20 for solid slabs; one end continuous L/18.5 and L/24; both ends continuous L/21 and L/28; cantilever L/8 and L/10."
   },
   {
     "s": "Earthquake Magnitudes",
-    "q": "At Modified Mercalli V, what is observed?",
+    "q": "Which description matches Modified Mercalli intensity V?",
     "o": [
       "Felt by nearly everyone; many are awakened",
-      "Total destruction",
-      "Bridges are wrecked",
-      "Only seismometers detect it"
+      "Noticed by many, often not recognized as a quake",
+      "Considerable damage to poorly built structures",
+      "Felt by very few people"
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 93",
@@ -1882,11 +1892,11 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "The note specifies multiplying the values by (0.4 + Fy/700)."
+    "n": "Multiplying the values by (0.4 + Fy/700)."
   },
   {
     "s": "Earthquake Magnitudes",
-    "q": "What Richter value is associated with some local damage in the table?",
+    "q": "What Richter value is associated with some local damage?",
     "o": [
       "3.5",
       "7.0",
@@ -1895,29 +1905,29 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "The table places 4.5 beside the statement that some local damage may occur."
+    "n": "4.5 beside the statement that some local damage may occur."
   },
   {
     "s": "Conversion Factors",
     "q": "How many square inches are in 1 square meter?",
     "o": [
+      "144.0000 in²",
+      "1296.0000 in²",
       "1550.0031 in²",
-      "10.7639 ft²",
-      "304.8 in²",
-      "144 in²"
+      "645.1600 in²"
     ],
-    "c": 0,
-    "ref": "Building Technology & Materials, p. 91",
-    "n": "The conversion table lists 1550.0031 in²."
+    "c": 2,
+    "ref": "Conversion Factors",
+    "n": "1 m² = 39.37² in² = 1550 in²; 645.16 is mm² per in²."
   },
   {
     "s": "Earthquake Magnitudes",
-    "q": "At Modified Mercalli VIII, what is stated about specially designed structures?",
+    "q": "Which description matches Modified Mercalli intensity VIII?",
     "o": [
-      "Only bridges are damaged",
-      "They are all destroyed",
-      "They are damaged slightly while others may collapse",
-      "They are completely unaffected"
+      "People run outdoors and furniture moves",
+      "Many structures are destroyed and the ground is badly cracked",
+      "Special designs slightly damaged; others may collapse",
+      "Felt by nearly everyone; many are awakened"
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 93",
@@ -1938,12 +1948,12 @@
   },
   {
     "s": "Earthquake Magnitudes",
-    "q": "At Modified Mercalli IX, what is noted?",
+    "q": "Which description matches Modified Mercalli intensity IX?",
     "o": [
-      "No structural damage occurs",
-      "Only windows rattle",
+      "Considerable damage to poorly built structures",
+      "Bridges are wrecked and very wide cracks occur in the ground",
       "Buildings are considerably damaged and many shift off foundations",
-      "Only furniture moves"
+      "People run outdoors and furniture moves"
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 93",
@@ -1973,7 +1983,7 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "The table labels 7.0 as a major earthquake."
+    "n": "7.0 as a major earthquake."
   },
   {
     "s": "Conversion Factors",
@@ -1999,7 +2009,7 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "The table labels 8.0 and up as great earthquakes."
+    "n": "8.0 and up as great earthquakes."
   },
   {
     "s": "Conversion Factors",
@@ -2016,7 +2026,7 @@
   },
   {
     "s": "Earthquake Magnitudes",
-    "q": "What does the Richter Scale measure according to the table?",
+    "q": "What does the Richter Scale measure?",
     "o": [
       "Ground motion 100 km from the epicenter",
       "Wind speed at the surface",
@@ -2025,7 +2035,7 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "The table states that the Richter Scale measures ground motion 100 km from the earthquake epicenter."
+    "n": "The Richter Scale measures ground motion 100 km from the earthquake epicenter."
   },
   {
     "s": "Conversion Factors",
@@ -2038,33 +2048,33 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "One kilogram equals 2.205 pounds in the table."
+    "n": "One kilogram equals 2.205 pounds."
   },
   {
     "s": "Earthquake Magnitudes",
     "q": "Why is the Modified Mercalli Scale considered subjective?",
     "o": [
-      "Observed intensity depends on how far the observer is from the earthquake center",
-      "It uses no intensity categories",
-      "It is measured only by seismometers",
-      "It measures only ground acceleration"
+      "Intensity depends on where the observer stands",
+      "It is read only from seismometer traces",
+      "It measures ground acceleration only",
+      "It has no fixed intensity categories"
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 93",
-    "n": "The table says apparent intensity depends on the observer distance from the earthquake center."
+    "n": "Mercalli intensity is judged from what people feel and see, so it changes with distance from the epicenter; Richter magnitude is one number per quake."
   },
   {
     "s": "Conversion Factors",
-    "q": "How many British thermal units are in 1 refrigeration ton (RT)?",
+    "q": "What is 1 ton of refrigeration (TR) in BTU per hour?",
     "o": [
-      "3412 BTU",
-      "24000 BTU",
-      "1000 BTU",
-      "12000 BTU"
+      "3,412 BTU/h",
+      "24,000 BTU/h",
+      "12,000 BTU/h",
+      "1,000 BTU/h"
     ],
-    "c": 3,
-    "ref": "Building Technology & Materials, p. 91",
-    "n": "The table lists 12,000 BTU for 1 ton (RT)."
+    "c": 2,
+    "ref": "Conversion Factors",
+    "n": "1 TR is the heat to melt 1 short ton of ice in 24 hours: 12,000 BTU/h (about 3.517 kW). 3,412 BTU/h is 1 kW."
   },
   {
     "s": "Concrete Mixture Proportion",
@@ -2077,20 +2087,20 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class AA uses a 1:1.5:3 proportion."
+    "n": "Per cubic meter of concrete: Class AA (1:1.5:3) 9.5 bags of 50 kg cement (12 of 40 kg); A (1:2:4) 7 (9); B (1:2.5:5) 6 (7.5); C (1:3:6) 5 (6); D (1:3.5:7) 4 (5). Each uses about 0.5 m³ sand and 1.0 m³ gravel."
   },
   {
     "s": "Conversion Factors",
     "q": "How many inches are in 1 kilometer?",
     "o": [
-      "1000 in",
       "39,370.078 in",
-      "39,370.078 ft",
-      "3,280.8398 in"
+      "3,937.008 in",
+      "393,700.787 in",
+      "3,280.840 in"
     ],
-    "c": 1,
-    "ref": "Building Technology & Materials, p. 91",
-    "n": "The table lists 39,370.078 inches per kilometer."
+    "c": 0,
+    "ref": "Conversion Factors",
+    "n": "1 km = 1000 m × 39.37 in/m = 39,370 in."
   },
   {
     "s": "Concrete Mixture Proportion",
@@ -2103,20 +2113,25 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class B uses a 1:2.5:5 proportion."
+    "n": "Per cubic meter of concrete: Class AA (1:1.5:3) 9.5 bags of 50 kg cement (12 of 40 kg); A (1:2:4) 7 (9); B (1:2.5:5) 6 (7.5); C (1:3:6) 5 (6); D (1:3.5:7) 4 (5). Each uses about 0.5 m³ sand and 1.0 m³ gravel."
   },
   {
     "s": "Conversion Factors",
-    "q": "How many liters are in 1 tin?",
+    "q": "About how many liters are in 1 tin (4 US gallons)?",
     "o": [
-      "20 liters",
-      "12 liters",
-      "4 liters",
-      "16 liters"
+      "18.93 liters",
+      "3.79 liters",
+      "15.14 liters",
+      "12.00 liters"
     ],
-    "c": 3,
-    "ref": "Building Technology & Materials, p. 91",
-    "n": "The table lists 16 liters per tin."
+    "c": 2,
+    "ref": "Conversion Factors",
+    "n": "1 tin (lata) = 4 US gallons = 16 quarts = 32 pints ≈ 15.14 liters.",
+    "formula": "liters = gallons × 3.785",
+    "steps": [
+      "4 gal × 3.785 L/gal",
+      "= 15.14 L"
+    ]
   },
   {
     "s": "Concrete Mixture Proportion",
@@ -2129,24 +2144,29 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class D uses a 1:3.5:7 proportion."
+    "n": "Per cubic meter of concrete: Class AA (1:1.5:3) 9.5 bags of 50 kg cement (12 of 40 kg); A (1:2:4) 7 (9); B (1:2.5:5) 6 (7.5); C (1:3:6) 5 (6); D (1:3.5:7) 4 (5). Each uses about 0.5 m³ sand and 1.0 m³ gravel."
   },
   {
     "s": "Conversion Factors",
-    "q": "How many pints are in 1 tin?",
+    "q": "How many pints are in 1 tin (4 US gallons)?",
     "o": [
       "32 pints",
-      "64 pints",
       "256 pints",
-      "128 pints"
+      "64 pints",
+      "16 pints"
     ],
-    "c": 2,
-    "ref": "Building Technology & Materials, p. 91",
-    "n": "The table lists 256 pints."
+    "c": 0,
+    "ref": "Conversion Factors",
+    "n": "1 tin (lata) = 4 US gallons = 16 quarts = 32 pints ≈ 15.14 liters.",
+    "formula": "pints = gallons × 8",
+    "steps": [
+      "4 gal × 8 pt/gal",
+      "= 32 pints"
+    ]
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "How much 50 kg cement is listed for Class AA?",
+    "q": "How many 50 kg bags of cement does 1 m³ of Class AA concrete need?",
     "o": [
       "12",
       "7",
@@ -2155,7 +2175,7 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class AA lists 9.5 units of 50 kg cement."
+    "n": "Per cubic meter of concrete: Class AA (1:1.5:3) 9.5 bags of 50 kg cement (12 of 40 kg); A (1:2:4) 7 (9); B (1:2.5:5) 6 (7.5); C (1:3:6) 5 (6); D (1:3.5:7) 4 (5). Each uses about 0.5 m³ sand and 1.0 m³ gravel."
   },
   {
     "s": "Formulas",
@@ -2172,7 +2192,7 @@
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "How much 50 kg cement is listed for Class A?",
+    "q": "How many 50 kg bags of cement does 1 m³ of Class A concrete need?",
     "o": [
       "5",
       "9",
@@ -2181,7 +2201,7 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class A lists 7 units of 50 kg cement."
+    "n": "Per cubic meter of concrete: Class AA (1:1.5:3) 9.5 bags of 50 kg cement (12 of 40 kg); A (1:2:4) 7 (9); B (1:2.5:5) 6 (7.5); C (1:3:6) 5 (6); D (1:3.5:7) 4 (5). Each uses about 0.5 m³ sand and 1.0 m³ gravel."
   },
   {
     "s": "Formulas",
@@ -2198,7 +2218,7 @@
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "How much 50 kg cement is listed for Class B?",
+    "q": "How many 50 kg bags of cement does 1 m³ of Class B concrete need?",
     "o": [
       "6",
       "7",
@@ -2207,24 +2227,24 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class B lists 6 units of 50 kg cement."
+    "n": "Per cubic meter of concrete: Class AA (1:1.5:3) 9.5 bags of 50 kg cement (12 of 40 kg); A (1:2:4) 7 (9); B (1:2.5:5) 6 (7.5); C (1:3:6) 5 (6); D (1:3.5:7) 4 (5). Each uses about 0.5 m³ sand and 1.0 m³ gravel."
   },
   {
     "s": "Formulas",
-    "q": "Which expression is listed for board-foot volume using D and L?",
+    "q": "Which log rule (Doyle) gives board feet from log diameter D (in) and length L (ft)?",
     "o": [
-      "D² x L / 16",
-      "(D - 4)² x L / 16",
-      "(D + 4)² x L / 16",
-      "(D - 4) x L / 16"
+      "D² × L / 16",
+      "(D + 4)² × L / 16",
+      "(D − 4)² × L / 16",
+      "(D − 4) × L / 16"
     ],
-    "c": 1,
-    "ref": "Building Technology & Materials, p. 92",
-    "n": "The board-foot volume expression shown is (D - 4)² x L / 16."
+    "c": 2,
+    "ref": "Lumber formulas",
+    "n": "The Doyle rule deducts 4 in of diameter for slabs and saw kerf, then squares it: (D − 4)² L / 16."
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "How much 50 kg cement is listed for Class C?",
+    "q": "How many 50 kg bags of cement does 1 m³ of Class C concrete need?",
     "o": [
       "5",
       "4",
@@ -2233,11 +2253,11 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class C lists 5 units of 50 kg cement."
+    "n": "Per cubic meter of concrete: Class AA (1:1.5:3) 9.5 bags of 50 kg cement (12 of 40 kg); A (1:2:4) 7 (9); B (1:2.5:5) 6 (7.5); C (1:3:6) 5 (6); D (1:3.5:7) 4 (5). Each uses about 0.5 m³ sand and 1.0 m³ gravel."
   },
   {
     "s": "SOH CAH TOA",
-    "q": "When is the sine relation used according to the table?",
+    "q": "When is the sine relation used?",
     "o": [
       "When there is no A",
       "When there is no O",
@@ -2246,11 +2266,11 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table says to use sine when there is no A."
+    "n": "To use sine when there is no A."
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "How much 50 kg cement is listed for Class D?",
+    "q": "How many 50 kg bags of cement does 1 m³ of Class D concrete need?",
     "o": [
       "5",
       "7",
@@ -2259,7 +2279,7 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class D lists 4 units of 50 kg cement."
+    "n": "Per cubic meter of concrete: Class AA (1:1.5:3) 9.5 bags of 50 kg cement (12 of 40 kg); A (1:2:4) 7 (9); B (1:2.5:5) 6 (7.5); C (1:3:6) 5 (6); D (1:3.5:7) 4 (5). Each uses about 0.5 m³ sand and 1.0 m³ gravel."
   },
   {
     "s": "SOH CAH TOA",
@@ -2272,11 +2292,11 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table says to use cosine when there is no O."
+    "n": "To use cosine when there is no O."
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "What gravel quantity is listed for Class A?",
+    "q": "What gravel quantity is for Class A?",
     "o": [
       "0.5",
       "2",
@@ -2285,7 +2305,7 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "The table lists 1 for gravel in Class A."
+    "n": "1 for gravel in Class A."
   },
   {
     "s": "SOH CAH TOA",
@@ -2298,7 +2318,7 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table says to use tangent when there is no H."
+    "n": "To use tangent when there is no H."
   },
   {
     "s": "Concrete Mixture Proportion",
@@ -2324,7 +2344,7 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table gives O = H x sin θ."
+    "n": "O = H x sin θ."
   },
   {
     "s": "Concrete Mixture Proportion",
@@ -2376,7 +2396,7 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table gives H = A / cos θ."
+    "n": "H = A / cos θ."
   },
   {
     "s": "Concrete Mixture Proportion",
@@ -2402,7 +2422,7 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table gives O = A x tan θ."
+    "n": "O = A x tan θ."
   },
   {
     "s": "Concrete Mixture Proportion",
@@ -2419,20 +2439,20 @@
   },
   {
     "s": "Two-way Slab Thickness",
-    "q": "Which thickness formula is shown for a two-way slab based on perimeter?",
+    "q": "By the old rule of thumb, a two-way slab is how thick?",
     "o": [
-      "T = PERIMETER / 120",
-      "T = PERIMETER / 240",
-      "T = PERIMETER / 180",
-      "T = PERIMETER / 360"
+      "Perimeter / 120",
+      "Perimeter / 240",
+      "Perimeter / 180",
+      "Perimeter / 360"
     ],
     "c": 2,
-    "ref": "Building Technology & Materials, p. 92",
-    "n": "The table gives T = perimeter / 180."
+    "ref": "Two-way slab thickness",
+    "n": "A slab spanning both ways (short/long ratio W/L above 0.5, or L/W under 2) is two-way; old rule of thumb: thickness = perimeter/180."
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "How much water is listed for Class B?",
+    "q": "How much water is for Class B?",
     "o": [
       "5",
       "6.5",
@@ -2445,20 +2465,20 @@
   },
   {
     "s": "Two-way Slab Thickness",
-    "q": "When is the one-way slab condition shown as W/L < 0.5?",
+    "q": "A slab has short-to-long span ratio W/L less than 0.5. How does it act?",
     "o": [
+      "1-way",
       "2-way",
       "Cantilever",
-      "Two-way flat slab",
-      "1-way"
+      "Flat plate only"
     ],
-    "c": 3,
-    "ref": "Building Technology & Materials, p. 92",
-    "n": "The table pairs W/L < 0.5 with the one-way condition."
+    "c": 0,
+    "ref": "Two-way slab thickness",
+    "n": "A slab spanning both ways (short/long ratio W/L above 0.5, or L/W under 2) is two-way; old rule of thumb: thickness = perimeter/180."
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "How much water is listed for Class D?",
+    "q": "How much water is for Class D?",
     "o": [
       "7",
       "5.75",
@@ -2471,20 +2491,20 @@
   },
   {
     "s": "Two-way Slab Thickness",
-    "q": "What length ratio is paired with the 2-way condition in the second rule?",
+    "q": "Which long-to-short span ratio makes a slab two-way?",
     "o": [
       "L/W > 2",
-      "L/W < 1",
-      "L/W = 2",
-      "L/W < 2"
+      "L/W > 3",
+      "L/W < 2",
+      "L/W = 4"
     ],
-    "c": 3,
-    "ref": "Building Technology & Materials, p. 92",
-    "n": "The table pairs the 2-way case with L/W < 2."
+    "c": 2,
+    "ref": "Two-way slab thickness",
+    "n": "A slab spanning both ways (short/long ratio W/L above 0.5, or L/W under 2) is two-way; old rule of thumb: thickness = perimeter/180."
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "Which class is listed for underwater retaining walls, shear walls, and elevator core walls?",
+    "q": "Which class is for underwater retaining walls, shear walls, and elevator core walls?",
     "o": [
       "AA",
       "A",
@@ -2493,11 +2513,11 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class AA is listed for these uses."
+    "n": "Class AA is used for these uses."
   },
   {
     "s": "Weight of Materials",
-    "q": "What is the listed unit weight of steel?",
+    "q": "What is the unit weight of steel?",
     "o": [
       "1000 kg/m³",
       "7850 kg/m³",
@@ -2506,11 +2526,11 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table lists steel at 7850 kg/m³."
+    "n": "Steel at 7850 kg/m³."
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "Which class is listed for slabs on fill and non-load-bearing walls or 4-inch CHB?",
+    "q": "Which class is for slabs on fill and non-load-bearing walls or 4-inch CHB?",
     "o": [
       "B",
       "C",
@@ -2519,11 +2539,11 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class B is listed for slabs on fill and non-load-bearing walls or 4-inch CHB."
+    "n": "Class B is used for slabs on fill and non-load-bearing walls or 4-inch CHB."
   },
   {
     "s": "Weight of Materials",
-    "q": "What is the listed unit weight of water?",
+    "q": "What is the unit weight of water?",
     "o": [
       "1000 kg/m³",
       "100 kg/m³",
@@ -2532,11 +2552,11 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table lists water at 1000 kg/m³."
+    "n": "Water at 1000 kg/m³."
   },
   {
     "s": "Concrete Mixture Proportion",
-    "q": "Which class is listed for footpaths, walkways, plant boxes, and lean concrete?",
+    "q": "Which class is for footpaths, walkways, plant boxes, and lean concrete?",
     "o": [
       "D",
       "A",
@@ -2545,11 +2565,11 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 90",
-    "n": "Class D is listed for these lower-strength uses."
+    "n": "Class D is used for these lower-strength uses."
   },
   {
-    "s": "Curing Period",
-    "q": "How long is required for a cantilever footing?",
+    "s": "Form Removal Time",
+    "q": "How long must forms stay on a cantilever footing before removal?",
     "o": [
       "7 days",
       "1 day",
@@ -2574,7 +2594,7 @@
     "n": "Type I is the normal general-purpose cement."
   },
   {
-    "s": "Curing Period",
+    "s": "Form Removal Time",
     "q": "For massive walls 0.30 m–2.00 m high, what is the base time?",
     "o": [
       "2 days",
@@ -2600,7 +2620,7 @@
     "n": "Type III is the high early strength cement."
   },
   {
-    "s": "Curing Period",
+    "s": "Form Removal Time",
     "q": "For thin walls under 0.30 m to 2.00 m high, what is the base time?",
     "o": [
       "5 days",
@@ -2626,7 +2646,7 @@
     "n": "Type IV is the low-heat cement."
   },
   {
-    "s": "Curing Period",
+    "s": "Form Removal Time",
     "q": "Cantilever walls, buttresses, counterforts, and diaphragms without loads use the same curing time as what?",
     "o": [
       "Thin walls",
@@ -2636,7 +2656,7 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table says without loads they are the same as thin walls."
+    "n": "Without loads they are the same as thin walls."
   },
   {
     "s": "Portland Cement",
@@ -2652,7 +2672,7 @@
     "n": "Air-entraining Portland cement uses the suffix A, such as Type IA or IIA."
   },
   {
-    "s": "Curing Period",
+    "s": "Form Removal Time",
     "q": "For columns with a height-to-least-diameter ratio from 4 to 15, what is the range?",
     "o": [
       "5 to 14 days",
@@ -2662,11 +2682,11 @@
     ],
     "c": 1,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table gives 2 to 28 days for ratios from 4 to 15."
+    "n": "2 to 28 days for ratios from 4 to 15."
   },
   {
     "s": "Portland Cement",
-    "q": "Which material is listed as a use of white Portland cement?",
+    "q": "Which material is a use of white Portland cement?",
     "o": [
       "Structural steel",
       "Asphalt paving",
@@ -2678,7 +2698,7 @@
     "n": "White Portland cement is used in precast work, terrazzo, stucco, and tile grout."
   },
   {
-    "s": "Curing Period",
+    "s": "Form Removal Time",
     "q": "For slabs with 3-to-7-foot spans, what is the base curing time?",
     "o": [
       "3 days",
@@ -2688,7 +2708,7 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table gives 5 days for 3-to-7 ft spans."
+    "n": "5 days for 3-to-7 ft spans."
   },
   {
     "s": "Mortar & Plaster",
@@ -2701,10 +2721,10 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "Class B uses a 1:3 proportion."
+    "n": "Per cubic meter of mortar: Class A (1:2) 14.5 bags of 50 kg cement (18 of 40 kg); Class B (1:3) 9.5 (12); Class C (1:4) 7 (9); Class D (1:5) 6 (7.5)."
   },
   {
-    "s": "Curing Period",
+    "s": "Form Removal Time",
     "q": "For slabs over 7-foot spans, what is the base range?",
     "o": [
       "14 to 28 days",
@@ -2714,7 +2734,7 @@
     ],
     "c": 3,
     "ref": "Building Technology & Materials, p. 92",
-    "n": "The table gives 7 to 28 days for spans over 7 ft."
+    "n": "7 to 28 days for spans over 7 ft."
   },
   {
     "s": "Mortar & Plaster",
@@ -2727,10 +2747,10 @@
     ],
     "c": 2,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "Class D uses a 1:5 proportion."
+    "n": "Per cubic meter of mortar: Class A (1:2) 14.5 bags of 50 kg cement (18 of 40 kg); Class B (1:3) 9.5 (12); Class C (1:4) 7 (9); Class D (1:5) 6 (7.5)."
   },
   {
-    "s": "Curing Period",
+    "s": "Form Removal Time",
     "q": "How long should beam and girder sides remain before removal of forms?",
     "o": [
       "3 days",
@@ -2744,7 +2764,7 @@
   },
   {
     "s": "Mortar & Plaster",
-    "q": "How many 50 kg cement units are listed for Class A mortar?",
+    "q": "How many 50 kg bags of cement does 1 m³ of Class A mortar need?",
     "o": [
       "14.5",
       "18",
@@ -2753,6 +2773,6 @@
     ],
     "c": 0,
     "ref": "Building Technology & Materials, p. 91",
-    "n": "Class A lists 14.5 units of 50 kg cement."
+    "n": "Per cubic meter of mortar: Class A (1:2) 14.5 bags of 50 kg cement (18 of 40 kg); Class B (1:3) 9.5 (12); Class C (1:4) 7 (9); Class D (1:5) 6 (7.5)."
   }
 ]
