@@ -13,7 +13,7 @@
     "n": "Slip Lane requires the facade to be within 80 ft of the right-of-way and puts parking in the first layer."
   },
   {
-    "s": "Riverside Pattern",
+    "s": "Street Patterns",
     "q": "Which pattern is highly responsive to terrain and evenly disperses traffic through a web?",
     "o": [
       "Washington Pattern",
@@ -49,10 +49,10 @@
     ],
     "c": 2,
     "ref": "Principles of Planning Tables, p. 51 — Frontage Types / Wind Exposure Category",
-    "n": "Exposure A is for dense city centers where at least half of the buildings are taller than 70 ft."
+    "n": "Exposure A is for dense city centers where at least half of the buildings are taller than 70 ft. (Exposure A comes from ASCE 7-98; NSCP 2015 uses only Exposures B, C and D.)"
   },
   {
-    "s": "Riverside Pattern",
+    "s": "Street Patterns",
     "q": "What synonym is associated with the Riverside pattern?",
     "o": [
       "Sitte model",
@@ -82,16 +82,16 @@
     "q": "What default applies when a site does not meet the definition of another wind exposure category?",
     "o": [
       "Exposure D",
-      "Exposure C",
       "Exposure B",
+      "Exposure C",
       "Exposure A"
     ],
     "c": 2,
-    "ref": "Principles of Planning Tables, p. 51 — Frontage Types / Wind Exposure Category",
-    "n": "Exposure B is assumed unless the site meets the definition of another exposure category."
+    "ref": "NSCP 2015, Sec. 207A.7.3",
+    "n": "Exposure C applies wherever Exposure B or D does not (NSCP 2015 Sec. 207A.7.3, following ASCE 7)."
   },
   {
-    "s": "Radburn Pattern",
+    "s": "Street Patterns",
     "q": "Which disadvantage is associated with the Radburn pattern?",
     "o": [
       "High number of awkward lot shapes",
@@ -221,7 +221,7 @@
     "n": "Personalization encourages users to make their own mark on their living and working environments."
   },
   {
-    "s": "Savannah Pattern",
+    "s": "Street Patterns",
     "q": "Which street pattern uses straight lines to enhance rolling terrain?",
     "o": [
       "Nantucket Pattern",
@@ -234,7 +234,7 @@
     "n": "The Savannah pattern uses straight lines that work well with rolling terrain."
   },
   {
-    "s": "Radburn Pattern",
+    "s": "Street Patterns",
     "q": "Which street pattern easily absorbs environmental interruptions while remaining responsive to terrain?",
     "o": [
       "Nantucket Pattern",
@@ -260,7 +260,7 @@
     "n": "An easement for private use of the right-of-way is usually required for the arcade condition."
   },
   {
-    "s": "Savannah Pattern",
+    "s": "Street Patterns",
     "q": "What is another name for the Savannah pattern?",
     "o": [
       "Olmstedian model",
@@ -299,7 +299,7 @@
     "n": "The frontage’s sidewalk-grade ground floor lacks the raised story that would provide residential privacy. Residential use is more appropriate above."
   },
   {
-    "s": "Nantucket Pattern",
+    "s": "Street Patterns",
     "q": "Which pattern absorbs environmental interruptions easily and reduces monotony through terminated vistas?",
     "o": [
       "Radburn Pattern",
@@ -338,8 +338,8 @@
     "n": "A forecourt keeps most of the facade close to the frontage line while setting a portion back."
   },
   {
-    "s": "Mariemont Pattern",
-    "q": "Which pattern uses diagonals for through traffic and disperses traffic through a grid?",
+    "s": "Street Patterns",
+    "q": "Which pattern uses diagonals for through traffic and has well-defined diagonal intersections?",
     "o": [
       "Mariemont Pattern",
       "Washington Pattern",
@@ -377,7 +377,7 @@
     "n": "Trees in forecourts should have canopies that overhang sidewalks for shade and shelter."
   },
   {
-    "s": "Mariemont Pattern",
+    "s": "Street Patterns",
     "q": "What are common synonyms for the Mariemont pattern?",
     "o": [
       "Orthogonal grid and gridiron",
@@ -416,7 +416,7 @@
     "n": "The porch should be at least 8 ft wide to be useful."
   },
   {
-    "s": "Washington Pattern",
+    "s": "Street Patterns",
     "q": "Which disadvantage of the Washington pattern concerns parcel geometry?",
     "o": [
       "No intrinsic hierarchy",
@@ -455,7 +455,7 @@
     "n": "The large setback of a Common Lawn provides a buffer from faster traffic."
   },
   {
-    "s": "Washington Pattern",
+    "s": "Street Patterns",
     "q": "Which pattern combines deflected vistas with easy absorption of environmental interruptions?",
     "o": [
       "Mariemont Pattern",
@@ -494,7 +494,7 @@
     "n": "Landscaped sidewalk systems provide shade and shelter, act as a streetwall buffer, and connect transit stops to private sidewalks."
   },
   {
-    "s": "Riverside Pattern",
+    "s": "Street Patterns",
     "q": "Which disadvantage of Riverside concerns roadway organization?",
     "o": [
       "No lot variety",
@@ -533,7 +533,7 @@
     "n": "Exposure B covers urban and suburban areas, wooded areas, and similar terrain with numerous closely spaced obstructions."
   },
   {
-    "s": "Radburn Pattern",
+    "s": "Street Patterns",
     "q": "Which pattern offers controllable variety of blocks and lots while responding well to terrain?",
     "o": [
       "Mariemont Pattern",
@@ -663,7 +663,7 @@
     "n": "Richness increases the range of sensory experiences available to users."
   },
   {
-    "s": "Savannah Pattern",
+    "s": "Street Patterns",
     "q": "Which street pattern provides end grain of blocks for fast traffic?",
     "o": [
       "Washington Pattern",
@@ -676,12 +676,12 @@
     "n": "Savannah has end-grain block conditions that support fast traffic movement."
   },
   {
-    "s": "Mariemont Pattern",
+    "s": "Street Patterns",
     "q": "Which street pattern provides even dispersal of traffic through a grid while using diagonal routes for through traffic?",
     "o": [
-      "Mariemont Pattern",
-      "Savannah Pattern",
       "Washington Pattern",
+      "Savannah Pattern",
+      "Mariemont Pattern",
       "Riverside Pattern"
     ],
     "c": 2,
@@ -702,7 +702,7 @@
     "n": "The arcade should be at least 12 ft wide to be useful."
   },
   {
-    "s": "Savannah Pattern",
+    "s": "Street Patterns",
     "q": "Which disadvantage belongs to the Savannah pattern?",
     "o": [
       "Unresponsive to steep terrain",
@@ -741,7 +741,7 @@
     "n": "Shopfront & Awning is a conventional retail frontage and may have a cantilevered shed roof or awning."
   },
   {
-    "s": "Nantucket Pattern",
+    "s": "Street Patterns",
     "q": "Which pattern is especially responsive to terrain and follows traces in the landscape?",
     "o": [
       "Mariemont Pattern",
@@ -780,7 +780,7 @@
     "n": "Stoops support ground-floor residential uses at short setbacks and are common with rowhouses and apartments."
   },
   {
-    "s": "Nantucket Pattern",
+    "s": "Street Patterns",
     "q": "What synonym is associated with the Nantucket pattern?",
     "o": [
       "Olmstedian",
@@ -819,7 +819,7 @@
     "n": "Excessive continuous setbacks can reduce pedestrian safety and visual interest."
   },
   {
-    "s": "Mariemont Pattern",
+    "s": "Street Patterns",
     "q": "Which disadvantage is associated with the Mariemont pattern?",
     "o": [
       "It tends to be disorienting",
@@ -858,7 +858,7 @@
     "n": "Porch & Fence combines a setback facade with a projecting porch and a fence at the frontage line."
   },
   {
-    "s": "Washington Pattern",
+    "s": "Street Patterns",
     "q": "Which pattern uses diagonal routes to interrupt the monotony of a grid?",
     "o": [
       "Savannah Pattern",
@@ -897,7 +897,7 @@
     "n": "Common Lawn simulates buildings placed within a shared rural landscape rather than behind individual fences."
   },
   {
-    "s": "Washington Pattern",
+    "s": "Street Patterns",
     "q": "Which synonyms are associated with the Washington pattern?",
     "o": [
       "Unwin model and spider web",
@@ -936,7 +936,7 @@
     "n": "Private sidewalks run between the public sidewalk and the building entrances."
   },
   {
-    "s": "Riverside Pattern",
+    "s": "Street Patterns",
     "q": "Which disadvantage of the Riverside pattern means that movement through it can be confusing?",
     "o": [
       "Unresponsive to steep terrain",
@@ -965,17 +965,17 @@
     "s": "Wind Exposure Category",
     "q": "What minimum upwind distance of representative Exposure A terrain is required for Exposure A to apply?",
     "o": [
-      "0.5 mile or 10 times height",
       "1 mile or 10 times height",
       "0.25 mile or 5 times height",
+      "0.5 mile or 10 times height",
       "1.5 miles or 20 times height"
     ],
     "c": 2,
     "ref": "Principles of Planning Tables, p. 51 — Frontage Types / Wind Exposure Category",
-    "n": "Exposure A requires representative Exposure A terrain upwind for at least 0.5 mile or 10 times the building height, whichever is greater."
+    "n": "Exposure A requires representative Exposure A terrain upwind for at least 0.5 mile or 10 times the building height, whichever is greater. (Exposure A comes from ASCE 7-98; NSCP 2015 uses only Exposures B, C and D.)"
   },
   {
-    "s": "Riverside Pattern",
+    "s": "Street Patterns",
     "q": "Which pattern provides a good street hierarchy for local and collector movement?",
     "o": [
       "Savannah Pattern",
@@ -1014,7 +1014,7 @@
     "n": "Exposure C is open terrain with scattered obstructions and generally low surface irregularities."
   },
   {
-    "s": "Radburn Pattern",
+    "s": "Street Patterns",
     "q": "What is a synonym for the Radburn pattern?",
     "o": [
       "Cul-de-sac",
@@ -1105,7 +1105,7 @@
     "n": "Visual appropriateness concerns how the physical design makes the available choices apparent to people."
   },
   {
-    "s": "Savannah Pattern",
+    "s": "Street Patterns",
     "q": "Which street pattern provides excellent directional orientation and controllable lot depth?",
     "o": [
       "Savannah Pattern",
@@ -1144,7 +1144,7 @@
     "n": "Gallery & Arcade is a retail-oriented private frontage in which a colonnade overlaps the sidewalk."
   },
   {
-    "s": "Savannah Pattern",
+    "s": "Street Patterns",
     "q": "Which street pattern is efficient for double-loading alleys and utilities?",
     "o": [
       "Nantucket Pattern",
@@ -1157,7 +1157,7 @@
     "n": "Savannah’s regular grid supports efficient double-loading of alleys and utilities."
   },
   {
-    "s": "Radburn Pattern",
+    "s": "Street Patterns",
     "q": "Which pattern is synonymous with the cul-de-sac?",
     "o": [
       "Washington Pattern",
@@ -1183,7 +1183,7 @@
     "n": "Shopfront & Awning places the facade close to the frontage line and keeps the entrance at sidewalk grade."
   },
   {
-    "s": "Nantucket Pattern",
+    "s": "Street Patterns",
     "q": "Which pattern has a hierarchy with long routes for through traffic and even dispersal through a web?",
     "o": [
       "Washington Pattern",
@@ -1222,7 +1222,7 @@
     "n": "A stoop raises the first story from the sidewalk and uses an exterior stair and landing at the entrance."
   },
   {
-    "s": "Nantucket Pattern",
+    "s": "Street Patterns",
     "q": "Which is a disadvantage of the Nantucket pattern?",
     "o": [
       "Unresponsive to steep terrain",
@@ -1261,7 +1261,7 @@
     "n": "Forecourts provide a setback area that can accommodate gardens, drop-offs, and utility off-loading."
   },
   {
-    "s": "Mariemont Pattern",
+    "s": "Street Patterns",
     "q": "Which pattern interrupts monotony with deflected vistas and has well-defined diagonal intersections?",
     "o": [
       "Riverside Pattern",
@@ -1300,7 +1300,7 @@
     "n": "Dooryard & Light Court uses a shallow setback, often with a garden or patio and low frontage wall."
   },
   {
-    "s": "Mariemont Pattern",
+    "s": "Street Patterns",
     "q": "Which pattern uses diagonals for through traffic and focuses diagonally on terrain features?",
     "o": [
       "Nantucket Pattern",
@@ -1339,7 +1339,7 @@
     "n": "A Common Lawn frontage leaves the front yard unfenced and visually continuous with neighboring yards."
   },
   {
-    "s": "Washington Pattern",
+    "s": "Street Patterns",
     "q": "Which Washington-pattern problem concerns intersections?",
     "o": [
       "Intersections are always perpendicular",
