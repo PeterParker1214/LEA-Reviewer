@@ -9,9 +9,16 @@
       "PHP 1,050,000.00"
     ],
     "c": 0,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "1st unit = 10% x PHP 1,200,000 = PHP 120,000. Units 2–10 (9 additional, 50%) = 50% x PHP 120,000 x 9 = PHP 540,000, giving PHP 660,000 for 10 units. Units 11–15 (5 additional, 40%) = 40% x PHP 120,000 x 5 = PHP 240,000. Total = PHP 660,000 + PHP 240,000 = PHP 900,000.00.",
-    "scenario": "SCENARIO: Architect Reyes is engaged by a developer to design a 15-unit row-house project on one consolidated lot, using a single set of plans/design, specifications and related documents for all units. PCC is PHP 1,200,000.00 per unit."
+    "scenario": "Architect Reyes is engaged by a developer to design a 15-unit row-house project on one consolidated lot, using a single set of plans/design, specifications and related documents for all units. PCC is PHP 1,200,000.00 per unit.",
+    "formula": "Fee = first-unit RPF + % of RPF × each additional unit, by bracket",
+    "steps": [
+      "1st unit = 10% x PHP 1,200,000 = PHP 120,000",
+      "Units 2–10 (9 additional, 50%) = 50% x PHP 120,000 x 9 = PHP 540,000, giving PHP 660,000 for 10 units",
+      "Units 11–15 (5 additional, 40%) = 40% x PHP 120,000 x 5 = PHP 240,000",
+      "Total = PHP 660,000 + PHP 240,000 = PHP 900,000.00"
+    ]
   },
   {
     "s": "",
@@ -23,9 +30,14 @@
       "PHP 1,500,000.00"
     ],
     "c": 1,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "Units 2–10 add 50% of the first-unit RPF per additional unit: 50% x PHP 300,000 x 9 additional units = PHP 1,350,000.00.",
-    "scenario": "SCENARIO: An Architect is engaged for a housing project consisting of one house plan implemented 25 times on a single site (25 residential units, one set of plans), with a Project Construction Cost (PCC) of PHP 3,000,000.00 per unit."
+    "scenario": "An Architect is engaged for a housing project consisting of one house plan implemented 25 times on a single site (25 residential units, one set of plans), with a Project Construction Cost (PCC) of PHP 3,000,000.00 per unit.",
+    "formula": "Fee = first-unit RPF + % of RPF × each additional unit, by bracket",
+    "steps": [
+      "Units 2–10 add 50% of the first-unit RPF per additional unit",
+      "50% x PHP 300,000 x 9 additional units = PHP 1,350,000.00"
+    ]
   },
   {
     "s": "",
@@ -37,20 +49,20 @@
       "Fee for 50 units plus 25% of RPF for each additional unit"
     ],
     "c": 1,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "For the 51st unit and above, the DAEDS fee is the fee already computed for 50 units, plus 15% of RPF for each additional unit beyond the 50th — the lowest marginal rate in the DAEDS scale."
   },
   {
     "s": "",
-    "q": "Which issuance of the Board/Institute establishes the Building Type Group classifications (Groups I through X, including Group VII) and their corresponding Recommended Professional Fee scales referenced in this reviewer?",
+    "q": "Which issuance of the Board/Institute establishes the Building Type Group classifications (Groups I through X, including Group VII) and their corresponding Recommended Professional Fee scales?",
     "o": [
-      "SPP Document 202 (Schedule of Recommended Professional Fees for Regular Design Services)",
+      "SPP Document 202",
       "The Code of Ethical Conduct for Architects",
       "RA 9266 (Architecture Law)",
       "PD 1096 (National Building Code)"
     ],
     "c": 0,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "The Building Type Group classifications (Group VII being Housing Projects) and their fee scales are found in SPP (Standard/Standardized Professional Practice) Document 202, which governs Regular Design Services professional fees, at Sec. 6.3.7."
   },
   {
@@ -63,9 +75,16 @@
       "PHP 1,314,000.00"
     ],
     "c": 3,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "1st unit (DADS) = 6% x PHP 3,000,000 = PHP 180,000. Units 2–10 (9 additional units) add 30% of RPF each: 30% x PHP 180,000 x 9 = PHP 486,000, giving PHP 666,000 for 10 units. Units 11–25 (15 additional units, 11–30 bracket) add 24% of RPF each: 24% x PHP 180,000 x 15 = PHP 648,000. Total = PHP 666,000 + PHP 648,000 = PHP 1,314,000.00.",
-    "scenario": "SCENARIO: An Architect is engaged for a housing project consisting of one house plan implemented 25 times on a single site (25 residential units, one set of plans), with a Project Construction Cost (PCC) of PHP 3,000,000.00 per unit."
+    "scenario": "An Architect is engaged for a housing project consisting of one house plan implemented 25 times on a single site (25 residential units, one set of plans), with a Project Construction Cost (PCC) of PHP 3,000,000.00 per unit.",
+    "formula": "Fee = first-unit RPF + % of RPF × each additional unit, by bracket",
+    "steps": [
+      "1st unit (DADS) = 6% x PHP 3,000,000 = PHP 180,000",
+      "Units 2–10 (9 additional units) add 30% of RPF each: 30% x PHP 180,000 x 9 = PHP 486,000, giving PHP 666,000 for 10 units",
+      "Units 11–25 (15 additional units, 11–30 bracket) add 24% of RPF each: 24% x PHP 180,000 x 15 = PHP 648,000",
+      "Total = PHP 666,000 + PHP 648,000 = PHP 1,314,000.00"
+    ]
   },
   {
     "s": "",
@@ -77,7 +96,7 @@
       "Fee for 30 units plus 9% of RPF for each additional unit"
     ],
     "c": 2,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "Under DADS, the 31st to 50th unit bracket is the fee for 30 units plus 15% of RPF for each additional unit."
   },
   {
@@ -86,11 +105,11 @@
     "o": [
       "The Architect must be a sole practitioner, not a firm",
       "The project must consist of exactly ten (10) units or more",
-      "The units must be built on a single site using one (1) set of plans/design, specifications, and related documents",
+      "One site and one set of plans for all the units",
       "The units must all be sold to the same buyer"
     ],
     "c": 2,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "Group VII's scale applies only when several residential units are constructed on a single site sharing one set of plans/design, specs and related documents — not merely when a project has many units."
   },
   {
@@ -103,9 +122,17 @@
       "PHP 510,000.00"
     ],
     "c": 2,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "1st unit (DADS) = 6% x PHP 1,000,000 = PHP 60,000. Units 2–10 (9 additional, 30% each) = 30% x PHP 60,000 x 9 = PHP 162,000, giving PHP 222,000 for 10 units. Units 11–30 (20 additional, 24% each) = 24% x PHP 60,000 x 20 = PHP 288,000, giving PHP 510,000 for 30 units. Units 31–40 (10 additional, 15% each) = 15% x PHP 60,000 x 10 = PHP 90,000. Total = PHP 510,000 + PHP 90,000 = PHP 600,000.00.",
-    "scenario": "SCENARIO: A housing project of 40 identical units is built on a single site from one set of plans, with a Project Construction Cost (PCC) of PHP 1,000,000.00 per unit."
+    "scenario": "A housing project of 40 identical units is built on a single site from one set of plans, with a Project Construction Cost (PCC) of PHP 1,000,000.00 per unit.",
+    "formula": "Fee = first-unit RPF + % of RPF × each additional unit, by bracket",
+    "steps": [
+      "1st unit (DADS) = 6% x PHP 1,000,000 = PHP 60,000",
+      "Units 2–10 (9 additional, 30% each) = 30% x PHP 60,000 x 9 = PHP 162,000, giving PHP 222,000 for 10 units",
+      "Units 11–30 (20 additional, 24% each) = 24% x PHP 60,000 x 20 = PHP 288,000, giving PHP 510,000 for 30 units",
+      "Units 31–40 (10 additional, 15% each) = 15% x PHP 60,000 x 10 = PHP 90,000",
+      "Total = PHP 510,000 + PHP 90,000 = PHP 600,000.00"
+    ]
   },
   {
     "s": "",
@@ -117,9 +144,15 @@
       "PHP 120,000.00"
     ],
     "c": 3,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "1st unit (DAEDS) = 10% x PHP 800,000 = PHP 80,000. The 2nd unit (within the 2–10 bracket) adds 50% of that RPF: 50% x PHP 80,000 = PHP 40,000. Total = PHP 80,000 + PHP 40,000 = PHP 120,000.00.",
-    "scenario": "SCENARIO: An Architect is engaged to design a small housing project of 2 identical residential units on a single site, using one (1) set of plans/design, specifications and related documents. The Project Construction Cost (PCC) is PHP 800,000.00 per unit."
+    "scenario": "An Architect is engaged to design a small housing project of 2 identical residential units on a single site, using one (1) set of plans/design, specifications and related documents. The Project Construction Cost (PCC) is PHP 800,000.00 per unit.",
+    "formula": "Fee = first-unit RPF + % of RPF × each additional unit, by bracket",
+    "steps": [
+      "1st unit (DAEDS) = 10% x PHP 800,000 = PHP 80,000",
+      "The 2nd unit (within the 2–10 bracket) adds 50% of that RPF: 50% x PHP 80,000 = PHP 40,000",
+      "Total = PHP 80,000 + PHP 40,000 = PHP 120,000.00"
+    ]
   },
   {
     "s": "",
@@ -131,7 +164,7 @@
       "12% of the Project Construction Cost (PCC)"
     ],
     "c": 0,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "Under Group VII, the DAEDS fee for the first unit is 10% of PCC."
   },
   {
@@ -144,9 +177,9 @@
       "PHP 1,197,000.00"
     ],
     "c": 1,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "1st unit (DADS) = 6% x PHP 1,500,000 = PHP 90,000. Units 2–10 (9 additional, 30%) = PHP 243,000, giving PHP 333,000 for 10 units. Units 11–30 (20 additional, 24%) = PHP 432,000, giving PHP 765,000 for 30 units. Units 31–50 (20 additional, 15%) = PHP 270,000, giving PHP 1,035,000 for 50 units. Units 51–60 (10 additional, 9%) = 9% x PHP 90,000 x 10 = PHP 81,000. Total = PHP 1,035,000 + PHP 81,000 = PHP 1,116,000.00.",
-    "scenario": "SCENARIO: A large housing project of 60 identical units is built on a single site from one set of plans, with a Project Construction Cost (PCC) of PHP 1,500,000.00 per unit."
+    "scenario": "A large housing project of 60 identical units is built on a single site from one set of plans, with a Project Construction Cost (PCC) of PHP 1,500,000.00 per unit."
   },
   {
     "s": "",
@@ -158,9 +191,15 @@
       "PHP 216,000.00"
     ],
     "c": 2,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "1st unit (DADS) = 6% x PHP 2,000,000 = PHP 120,000. Units 2–5 (4 additional units) add 30% of RPF each: 30% x PHP 120,000 x 4 = PHP 144,000. Total = PHP 120,000 + PHP 144,000 = PHP 264,000.00.",
-    "scenario": "SCENARIO: An Architect designs a 5-unit housing project (single site, one set of plans) with a Project Construction Cost (PCC) of PHP 2,000,000.00 per unit."
+    "scenario": "An Architect designs a 5-unit housing project (single site, one set of plans) with a Project Construction Cost (PCC) of PHP 2,000,000.00 per unit.",
+    "formula": "Fee = first-unit RPF + % of RPF × each additional unit, by bracket",
+    "steps": [
+      "1st unit (DADS) = 6% x PHP 2,000,000 = PHP 120,000",
+      "Units 2–5 (4 additional units) add 30% of RPF each: 30% x PHP 120,000 x 4 = PHP 144,000",
+      "Total = PHP 120,000 + PHP 144,000 = PHP 264,000.00"
+    ]
   },
   {
     "s": "",
@@ -172,7 +211,7 @@
       "Fee for 10 units plus 24% of RPF for each additional unit"
     ],
     "c": 0,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "For the 11th to 30th unit bracket, the DAEDS fee is the fee already computed for 10 units, plus 40% of RPF for each additional unit beyond the 10th."
   },
   {
@@ -180,12 +219,12 @@
     "q": "A different developer asks Architect Cruz to design a 30-unit housing project on a single site, but insists that each of the 30 units be individually and distinctly designed with its own separate architectural plans (no plan is repeated). How should Architect Cruz classify and charge this engagement?",
     "o": [
       "As a Group VII Housing Project, using the 30-unit DAEDS/DADS bracket fee",
-      "Not as a Group VII Housing Project, since Group VII presupposes one set of plans/design used across the units; 30 individually and distinctly designed units would instead be charged individually (e.g., under the applicable building-type group for each design, or under Group VI if the repetitive-building criteria are met)",
+      "Not under Group VII; each distinct design is charged on its own",
       "As a Group VII Housing Project, but only charging for the first unit since the rest are 'additional units'",
       "As a Group VI project, because there are more than ten buildings"
     ],
     "c": 1,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "Group VII's tiered discount scale is premised on several units sharing one set of plans/design, specifications and related documents. Where every unit is individually and distinctly designed, that premise is absent, so the project would not be charged under the Group VII bracket scale but rather assessed on its own basis (e.g., each unit under its applicable building-type classification)."
   },
   {
@@ -198,9 +237,14 @@
       "PHP 1,350,000.00"
     ],
     "c": 2,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "Units 11–25 fall in the 11–30 bracket, which adds 40% of the first-unit RPF per additional unit: 40% x PHP 300,000 x 15 additional units = PHP 1,800,000.00.",
-    "scenario": "SCENARIO: An Architect is engaged for a housing project consisting of one house plan implemented 25 times on a single site (25 residential units, one set of plans), with a Project Construction Cost (PCC) of PHP 3,000,000.00 per unit."
+    "scenario": "An Architect is engaged for a housing project consisting of one house plan implemented 25 times on a single site (25 residential units, one set of plans), with a Project Construction Cost (PCC) of PHP 3,000,000.00 per unit.",
+    "formula": "Fee = first-unit RPF + % of RPF × each additional unit, by bracket",
+    "steps": [
+      "Units 11–25 fall in the 11–30 bracket, which adds 40% of the first-unit RPF per additional unit",
+      "40% x PHP 300,000 x 15 additional units = PHP 1,800,000.00"
+    ]
   },
   {
     "s": "",
@@ -212,7 +256,7 @@
       "40% of RPF for each additional unit"
     ],
     "c": 0,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "Under DADS, units 2 to 10 add 30% of RPF per additional unit (compared to DAEDS's 50%)."
   },
   {
@@ -221,11 +265,11 @@
     "o": [
       "Because the National Building Code caps total professional fees for any project at a fixed amount",
       "To penalize developers for building affordable housing",
-      "Because reusing one set of plans/design across multiple repetitive units on the same site requires proportionately less additional design effort per unit as more units are added, so the fee scale reflects that economy of scale while still compensating the Architect for each unit built",
+      "Each added unit re-uses the same plans and needs less design effort",
       "Because only the first and last units in a housing project actually get built to the approved plans"
     ],
     "c": 2,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "The graduated, declining percentages (e.g., DAEDS 50%→40%→25%→15%) recognize that once the Architect has produced one set of plans/design/specifications, applying it to additional identical units involves less incremental design work than the original unit, while still fairly compensating the Architect on a per-unit basis as the project scales up."
   },
   {
@@ -238,9 +282,16 @@
       "PHP 1,500,000.00"
     ],
     "c": 1,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "1st unit = 10% x PHP 1,000,000 = PHP 100,000. Units 2–10 (9 additional units, 50% each) = 50% x PHP 100,000 x 9 = PHP 450,000, giving PHP 550,000 for 10 units. Units 11–30 (20 additional units, 40% each) = 40% x PHP 100,000 x 20 = PHP 800,000. Fee for 30 units = PHP 550,000 + PHP 800,000 = PHP 1,350,000.00.",
-    "scenario": "SCENARIO: A housing project of 40 identical units is built on a single site from one set of plans, with a Project Construction Cost (PCC) of PHP 1,000,000.00 per unit."
+    "scenario": "A housing project of 40 identical units is built on a single site from one set of plans, with a Project Construction Cost (PCC) of PHP 1,000,000.00 per unit.",
+    "formula": "Fee = first-unit RPF + % of RPF × each additional unit, by bracket",
+    "steps": [
+      "1st unit = 10% x PHP 1,000,000 = PHP 100,000",
+      "Units 2–10 (9 additional units, 50% each) = 50% x PHP 100,000 x 9 = PHP 450,000, giving PHP 550,000 for 10 units",
+      "Units 11–30 (20 additional units, 40% each) = 40% x PHP 100,000 x 20 = PHP 800,000",
+      "Fee for 30 units = PHP 550,000 + PHP 800,000 = PHP 1,350,000.00"
+    ]
   },
   {
     "s": "",
@@ -252,7 +303,7 @@
       "Fee for 50 units plus 24% of RPF for each additional unit"
     ],
     "c": 1,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "Under DADS, unit 51 and above is the fee for 50 units plus 9% of RPF for each additional unit — the lowest marginal rate in the DADS scale."
   },
   {
@@ -261,11 +312,11 @@
     "o": [
       "No, because Group VII only applies to condominium units, not detached houses",
       "Yes, because there are more than ten residential units involved",
-      "No, because Group VII requires the units to be on a single site and use one set of plans/design and specifications — separate sites and separate plans take it outside Group VII",
+      "No, Group VII needs a single site and one set of plans",
       "Yes, because all the units are residential in nature"
     ],
     "c": 2,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "Group VII specifically requires (1) a single site and (2) one set of plans/design, specifications and related documents for all units. Scattered sites with individually prepared plans do not meet either condition, so the tiered Group VII scale would not apply."
   },
   {
@@ -278,9 +329,17 @@
       "PHP 2,775,000.00"
     ],
     "c": 3,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "1st unit = 10% x PHP 1,500,000 = PHP 150,000. Units 2–10 (9 additional, 50%) = 50% x PHP 150,000 x 9 = PHP 675,000, giving PHP 825,000 for 10 units. Units 11–30 (20 additional, 40%) = 40% x PHP 150,000 x 20 = PHP 1,200,000, giving PHP 2,025,000 for 30 units. Units 31–50 (20 additional, 25%) = 25% x PHP 150,000 x 20 = PHP 750,000. Fee for 50 units = PHP 2,025,000 + PHP 750,000 = PHP 2,775,000.00.",
-    "scenario": "SCENARIO: A large housing project of 60 identical units is built on a single site from one set of plans, with a Project Construction Cost (PCC) of PHP 1,500,000.00 per unit."
+    "scenario": "A large housing project of 60 identical units is built on a single site from one set of plans, with a Project Construction Cost (PCC) of PHP 1,500,000.00 per unit.",
+    "formula": "Fee = first-unit RPF + % of RPF × each additional unit, by bracket",
+    "steps": [
+      "1st unit = 10% x PHP 1,500,000 = PHP 150,000",
+      "Units 2–10 (9 additional, 50%) = 50% x PHP 150,000 x 9 = PHP 675,000, giving PHP 825,000 for 10 units",
+      "Units 11–30 (20 additional, 40%) = 40% x PHP 150,000 x 20 = PHP 1,200,000, giving PHP 2,025,000 for 30 units",
+      "Units 31–50 (20 additional, 25%) = 25% x PHP 150,000 x 20 = PHP 750,000",
+      "Fee for 50 units = PHP 2,025,000 + PHP 750,000 = PHP 2,775,000.00"
+    ]
   },
   {
     "s": "",
@@ -292,9 +351,15 @@
       "PHP 96,000.00"
     ],
     "c": 0,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "1st unit (DADS) = 6% x PHP 800,000 = PHP 48,000. The 2nd unit adds 30% of that RPF: 30% x PHP 48,000 = PHP 14,400. Total = PHP 48,000 + PHP 14,400 = PHP 62,400.00.",
-    "scenario": "SCENARIO: An Architect is engaged to design a small housing project of 2 identical residential units on a single site, using one (1) set of plans/design, specifications and related documents. The Project Construction Cost (PCC) is PHP 800,000.00 per unit."
+    "scenario": "An Architect is engaged to design a small housing project of 2 identical residential units on a single site, using one (1) set of plans/design, specifications and related documents. The Project Construction Cost (PCC) is PHP 800,000.00 per unit.",
+    "formula": "Fee = first-unit RPF + % of RPF × each additional unit, by bracket",
+    "steps": [
+      "1st unit (DADS) = 6% x PHP 800,000 = PHP 48,000",
+      "The 2nd unit adds 30% of that RPF: 30% x PHP 48,000 = PHP 14,400",
+      "Total = PHP 48,000 + PHP 14,400 = PHP 62,400.00"
+    ]
   },
   {
     "s": "",
@@ -306,7 +371,7 @@
       "4% of the Project Construction Cost (PCC)"
     ],
     "c": 0,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "Under Group VII, the DADS fee for the first unit is 6% of PCC (lower than DAEDS's 10%, since DADS excludes the engineering design component)."
   },
   {
@@ -319,9 +384,9 @@
       "Group VII does not apply because there are more than 10 units"
     ],
     "c": 1,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "With 15 total units, units 11 through 15 fall within the 11–30 unit bracket, where the DAEDS/DADS fee is the fee already computed for 10 units plus the applicable marginal percentage (40% DAEDS / 24% DADS) of RPF for each unit beyond the 10th. Group VII has no upper unit-count limit — it simply adds further brackets (31–50, 51+) as the count grows.",
-    "scenario": "SCENARIO: Architect Reyes is engaged by a developer to design a 15-unit row-house project on one consolidated lot, using a single set of plans/design, specifications and related documents for all units. PCC is PHP 1,200,000.00 per unit."
+    "scenario": "Architect Reyes is engaged by a developer to design a 15-unit row-house project on one consolidated lot, using a single set of plans/design, specifications and related documents for all units. PCC is PHP 1,200,000.00 per unit."
   },
   {
     "s": "",
@@ -333,9 +398,14 @@
       "PHP 180,000.00"
     ],
     "c": 2,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "The DAEDS fee for the first unit is 10% of PCC: 10% x PHP 3,000,000 = PHP 300,000.00.",
-    "scenario": "SCENARIO: An Architect is engaged for a housing project consisting of one house plan implemented 25 times on a single site (25 residential units, one set of plans), with a Project Construction Cost (PCC) of PHP 3,000,000.00 per unit."
+    "scenario": "An Architect is engaged for a housing project consisting of one house plan implemented 25 times on a single site (25 residential units, one set of plans), with a Project Construction Cost (PCC) of PHP 3,000,000.00 per unit.",
+    "formula": "Fee = first-unit RPF + % of RPF × each additional unit, by bracket",
+    "steps": [
+      "The DAEDS fee for the first unit is 10% of PCC",
+      "10% x PHP 3,000,000 = PHP 300,000.00"
+    ]
   },
   {
     "s": "",
@@ -347,7 +417,7 @@
       "Fee for 50 units plus 25% of RPF for each additional unit"
     ],
     "c": 0,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "For the 31st to 50th unit bracket, the DAEDS fee is the fee already computed for 30 units, plus 25% of RPF for each additional unit beyond the 30th."
   },
   {
@@ -357,10 +427,10 @@
       "Free of charge, since the plans have already been paid for",
       "At the full 100% first-unit RPF rate for each of the 3 additional units",
       "As entirely new Group IV or V fees, unrelated to the original 12-unit computation",
-      "As additional units within the Group VII bracket scale, continuing the tiered computation from where the 12-unit fee left off (i.e., these 3 additional units still fall in the 11–30 bracket, at 40% of RPF each for DAEDS)"
+      "As added units in the 11-30 bracket, at 40% of RPF each (DAEDS)"
     ],
     "c": 3,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "Because the added units reuse the same single set of plans on the same site, they remain within the Group VII scope; the fee for the 3 additional units continues the same bracket progression (11–30 bracket at this unit count), rather than being computed as a separate or unrelated fee."
   },
   {
@@ -373,9 +443,15 @@
       "PHP 3,150,000.00"
     ],
     "c": 2,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "Total DAEDS RPF = fee for 1st unit + fee for units 2–10 + fee for units 11–25 = PHP 300,000 + PHP 1,350,000 + PHP 1,800,000 = PHP 3,450,000.00.",
-    "scenario": "SCENARIO: An Architect is engaged for a housing project consisting of one house plan implemented 25 times on a single site (25 residential units, one set of plans), with a Project Construction Cost (PCC) of PHP 3,000,000.00 per unit."
+    "scenario": "An Architect is engaged for a housing project consisting of one house plan implemented 25 times on a single site (25 residential units, one set of plans), with a Project Construction Cost (PCC) of PHP 3,000,000.00 per unit.",
+    "formula": "Fee = first-unit RPF + % of RPF × each additional unit, by bracket",
+    "steps": [
+      "Total DAEDS RPF = fee for 1st unit + fee for units 2–10 + fee for units 11–25",
+      "= PHP 300,000 + PHP 1,350,000 + PHP 1,800,000",
+      "= PHP 3,450,000.00"
+    ]
   },
   {
     "s": "",
@@ -387,7 +463,7 @@
       "Fee for 10 units plus 24% of RPF for each additional unit"
     ],
     "c": 3,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "Under DADS, the 11th to 30th unit bracket is the fee for 10 units plus 24% of RPF for each additional unit."
   },
   {
@@ -397,10 +473,10 @@
       "A single monumental building of unique design",
       "The repetitive construction of similar but separately-designed buildings on different sites",
       "An alteration, renovation, or expansion of an existing residential building",
-      "A Housing Project involving the construction of several residential units on a single site using one (1) set of plans/design, specifications and related documents"
+      "Several residential units on one site using one set of plans"
     ],
     "c": 3,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "Group VII covers Housing Projects: several residential units built on a single site, all sharing one set of plans/design, specifications, and related contract documents."
   },
   {
@@ -413,34 +489,40 @@
       "PHP 1,850,000.00"
     ],
     "c": 1,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "Fee for 30 units = PHP 1,350,000. Units 31–40 (10 additional units, 31–50 bracket) add 25% of RPF each: 25% x PHP 100,000 x 10 = PHP 250,000. Total = PHP 1,350,000 + PHP 250,000 = PHP 1,600,000.00.",
-    "scenario": "SCENARIO: A housing project of 40 identical units is built on a single site from one set of plans, with a Project Construction Cost (PCC) of PHP 1,000,000.00 per unit."
+    "scenario": "A housing project of 40 identical units is built on a single site from one set of plans, with a Project Construction Cost (PCC) of PHP 1,000,000.00 per unit.",
+    "formula": "Fee = first-unit RPF + % of RPF × each additional unit, by bracket",
+    "steps": [
+      "Fee for 30 units = PHP 1,350,000",
+      "Units 31–40 (10 additional units, 31–50 bracket) add 25% of RPF each: 25% x PHP 100,000 x 10 = PHP 250,000",
+      "Total = PHP 1,350,000 + PHP 250,000 = PHP 1,600,000.00"
+    ]
   },
   {
     "s": "",
     "q": "What overall pattern describes the Group VII fee scale as the number of units in a housing project increases (for both DAEDS and DADS)?",
     "o": [
       "The fee is a flat percentage of PCC regardless of the number of units",
-      "The marginal percentage charged per additional unit decreases with each successive bracket (e.g., DAEDS goes 50% → 40% → 25% → 15%), reflecting economies of scale from reusing the same set of plans across more units",
+      "The percentage per added unit drops with each bracket (50%, 40%, 25%, 15%)",
       "Only the first ten units are charged a fee; all units beyond the 10th are provided free of charge",
       "The marginal percentage charged per additional unit increases with each bracket, rewarding larger projects with a higher fee rate"
     ],
     "c": 1,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "Both the DAEDS (50%→40%→25%→15%) and DADS (30%→24%→15%→9%) scales step down the marginal percentage applied to each additional unit as the project moves into higher unit-count brackets, since re-using one set of plans across more repetitive units involves proportionately less additional design effort per unit."
   },
   {
     "s": "",
     "q": "How does Group VII (Housing Projects) differ from Group VI (repetitive construction of similar buildings) under SPP Document 202's Building Type classification?",
     "o": [
-      "Group VI uses unit-count brackets (1, 2–10, 11–30…), while Group VI uses per-building brackets (1st, 2nd, 3rd…)",
-      "Group VI grades fee reduction per successive whole building (1st, 2nd, 3rd, 4th and succeeding) using a single flat percentage scale of the building-type RPF; Group VII grades fee reduction per residential unit using its own DAEDS/DADS percentage-of-PCC base rates and unit-count brackets",
+      "Group VI uses unit-count brackets (1, 2–10, 11–30…), while Group VII uses per-building brackets (1st, 2nd, 3rd…)",
+      "Group VI steps down per building; Group VII per unit with its own brackets",
       "Group VI applies only to institutional buildings, while Group VII applies only to commercial buildings",
       "They are identical; Group VII is simply the newer designation for Group VI"
     ],
     "c": 1,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "Group VI (Sec. 6.3.6) reduces fees per successive similar building built from the same unamended drawings (100%/50%/40%/30% of the building type's RPF for the 1st/2nd/3rd/4th-and-succeeding buildings). Group VII (Sec. 6.3.7) instead grades the fee per residential unit within a single housing project, computed from its own DAEDS (10% of PCC) or DADS (6% of PCC) base rate for the first unit, then a declining percentage for each additional unit across brackets (2–10, 11–30, 31–50, 51+)."
   },
   {
@@ -453,9 +535,15 @@
       "PHP 3,000,000.00"
     ],
     "c": 3,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "Fee for 50 units = PHP 2,775,000. Units 51–60 (10 additional units, 51+ bracket) add 15% of RPF each: 15% x PHP 150,000 x 10 = PHP 225,000. Total = PHP 2,775,000 + PHP 225,000 = PHP 3,000,000.00.",
-    "scenario": "SCENARIO: A large housing project of 60 identical units is built on a single site from one set of plans, with a Project Construction Cost (PCC) of PHP 1,500,000.00 per unit."
+    "scenario": "A large housing project of 60 identical units is built on a single site from one set of plans, with a Project Construction Cost (PCC) of PHP 1,500,000.00 per unit.",
+    "formula": "Fee = first-unit RPF + % of RPF × each additional unit, by bracket",
+    "steps": [
+      "Fee for 50 units = PHP 2,775,000",
+      "Units 51–60 (10 additional units, 51+ bracket) add 15% of RPF each: 15% x PHP 150,000 x 10 = PHP 225,000",
+      "Total = PHP 2,775,000 + PHP 225,000 = PHP 3,000,000.00"
+    ]
   },
   {
     "s": "",
@@ -467,9 +555,15 @@
       "PHP 600,000.00"
     ],
     "c": 3,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "1st unit (DAEDS) = 10% x PHP 2,000,000 = PHP 200,000. Units 2–5 (4 additional units, within the 2–10 bracket) add 50% of RPF each: 50% x PHP 200,000 x 4 = PHP 400,000. Total = PHP 200,000 + PHP 400,000 = PHP 600,000.00.",
-    "scenario": "SCENARIO: An Architect designs a 5-unit housing project (single site, one set of plans) with a Project Construction Cost (PCC) of PHP 2,000,000.00 per unit."
+    "scenario": "An Architect designs a 5-unit housing project (single site, one set of plans) with a Project Construction Cost (PCC) of PHP 2,000,000.00 per unit.",
+    "formula": "Fee = first-unit RPF + % of RPF × each additional unit, by bracket",
+    "steps": [
+      "1st unit (DAEDS) = 10% x PHP 2,000,000 = PHP 200,000",
+      "Units 2–5 (4 additional units, within the 2–10 bracket) add 50% of RPF each: 50% x PHP 200,000 x 4 = PHP 400,000",
+      "Total = PHP 200,000 + PHP 400,000 = PHP 600,000.00"
+    ]
   },
   {
     "s": "",
@@ -481,7 +575,7 @@
       "40% of the RPF (first-unit fee) for each additional unit"
     ],
     "c": 0,
-    "ref": "",
+    "ref": "SPP Doc. 202, Sec. 6.3.7",
     "n": "For the 2nd to 10th unit bracket, the DAEDS fee is the fee for one unit plus 50% of RPF for each additional unit in that bracket."
   }
 ]
