@@ -57,7 +57,7 @@
   },
   {
     "s": "",
-    "q": "Because the site floods easily, the family patriarch — age 65 — wants the finished floor level raised 1 meter above natural grade, accessed by a single-flight ramp. Under Batas Pambansa Blg. 344, what horizontal run, in meters, must that ramp have?",
+    "q": "Because the site floods easily, the family patriarch — age 65 — wants the finished floor raised 1 meter above natural grade and reached by a ramp. Under the 2024 Revised IRR of BP 344, what horizontal length do the sloped runs plus the required intermediate landing need?",
     "o": [
       "21.8",
       "15",
@@ -65,14 +65,14 @@
       "16.8"
     ],
     "c": 0,
-    "ref": "[Source: Batas Pambansa Blg. 344, as amended by the 2024 Revised Implementing Rules and Regulations, published in the Official Gazette, July 8, 2024 — Accessible Ramps, Sec. A.1.2 (Maximum Slope) and Sec. A.1.2(e) (Level Landing Requirement)]",
-    "n": "Under the 2024 Revised IRR of BP 344, the maximum ramp slope is 1:20, with a steeper 1:15 exception allowed only for ramps with a maximum length of 10.50m and a maximum rise of 700mm. Since this ramp's rise is 1,000mm — above the 700mm cap — the 1:15 exception does not apply, and the ramp must follow the general 1:20 maximum slope. At 1:20, a 1-meter rise requires a 20-meter horizontal run. Adding the mandatory 1,800mm (1.8m) level landing at the ramp's upper end brings the total horizontal run to 21.8 meters.",
+    "ref": "Batas Pambansa Blg. 344, as amended by the 2024 Revised Implementing Rules and Regulations, published in the Official Gazette, July 8, 2024 — Accessible Ramps, Sec. A.1.2 (Maximum Slope) and Sec. A.1.2(e) (Level Landing Requirement)",
+    "n": "A 1,000 mm rise exceeds the 700 mm limit for the 1:15 exception, so the ramp must be 1:20: 20 m of slope. Ramps longer than 10.50 m need an intermediate landing of at least 1.80 m, so 20 + 1.8 = 21.8 m, before adding the 1.80 m level areas at the top and bottom.",
     "scenario": "A family has hired you as project architect for their upscale, two-storey single-detached residence within a gated subdivision in Makati City. Their interior lot totals 200 square meters, with a 10.00-meter frontage along a two-lane, two-way road right-of-way that runs along the lot's southern edge. Three-storey single-detached homes already stand on the neighboring lots to the west and east. The lot's northern edge borders a creek area governed by the easement rules of Presidential Decree 1067, and the ground slopes gently — about 2% — down toward that creek.",
     "steps": [
-      "Rise = 1.00 m",
-      "Max slope = 1:20 → Run = 20 × 1.00 m = 20.00 m",
-      "Required level landing (upper end) = 1.80 m",
-      "Total horizontal run = 20.00 + 1.80 = 21.80 m"
-    ]
+      "Rise 1.00 m > 0.70 m, so the slope must be 1:20",
+      "Sloped run = 1.00 × 20 = 20.0 m",
+      "20.0 m > 10.50 m, so add a 1.80 m landing: 21.8 m"
+    ],
+    "formula": "length = rise × 20 + intermediate landing"
   }
 ]
