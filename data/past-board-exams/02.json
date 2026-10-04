@@ -1,0 +1,776 @@
+{
+  "figures": {
+    "f1": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5EcmFpbmFnZSBTdGFjaywgVmVudCBDYXAgYW5kIENsZWFub3V0PC90ZXh0PgoKPGxpbmUgeDE9IjQ1MCIgeTE9IjExMCIgeDI9IjQ1MCIgeTI9IjM4MCIgY2xhc3M9ImwiLz4KPHBvbHlnb24gcG9pbnRzPSI0MjUsMTEwIDQ3NSwxMTAgNDUwLDgwIiBjbGFzcz0iZjIiLz4KPHRleHQgeD0iNDkwIiB5PSI5NSIgY2xhc3M9Im0gYiI+VkVOVCBDQVA6IGFpciBpbi9vdXQsIHJhaW4gb3V0PC90ZXh0Pgo8dGV4dCB4PSI0OTAiIHk9IjIwMCIgY2xhc3M9Im0gYiI+VkVOVCBTVEFDSzogZXF1YWxpemVzIHByZXNzdXJlPC90ZXh0Pgo8bGluZSB4MT0iNDUwIiB5MT0iMzgwIiB4Mj0iODQwIiB5Mj0iNDEwIiBjbGFzcz0ibCIvPgo8bGluZSB4MT0iNjUwIiB5MT0iMzk1IiB4Mj0iNjkwIiB5Mj0iMzQ1IiBjbGFzcz0ibCIvPjxyZWN0IHg9IjY4MCIgeT0iMzMyIiB3aWR0aD0iMjQiIGhlaWdodD0iMTYiIGNsYXNzPSJmMyIvPgo8dGV4dCB4PSI3MTUiIHk9IjM0NSIgY2xhc3M9Im0gYiI+Q0xFQU5PVVQ8L3RleHQ+Cjx0ZXh0IHg9IjQ4MCIgeT0iNDQwIiBjbGFzcz0ibSI+U2xvcGU6IDIlIHN0YW5kYXJkOyAxJSBhbGxvd2VkIGZvciAxMDAgbW0rIHdoZW4gYXBwcm92ZWQ8L3RleHQ+Cjwvc3ZnPgo=",
+    "f2": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5UaWVkIHZzIFNwaXJhbCBDb2x1bW48L3RleHQ+Cgo8cmVjdCB4PSIxMDAiIHk9IjE0MCIgd2lkdGg9IjIyMCIgaGVpZ2h0PSIyMjAiIGNsYXNzPSJmMiIvPjxyZWN0IHg9IjEyMCIgeT0iMTYwIiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgY2xhc3M9InRoIi8+CjxnIGNsYXNzPSJmMyI+PGNpcmNsZSBjeD0iMTI1IiBjeT0iMTY1IiByPSI5Ii8+PGNpcmNsZSBjeD0iMjk1IiBjeT0iMTY1IiByPSI5Ii8+PGNpcmNsZSBjeD0iMTI1IiBjeT0iMzM1IiByPSI5Ii8+PGNpcmNsZSBjeD0iMjk1IiBjeT0iMzM1IiByPSI5Ii8+PC9nPgo8dGV4dCB4PSIxMDAiIHk9IjM5NSIgY2xhc3M9InMgYiI+VElFRDwvdGV4dD48dGV4dCB4PSIxMDAiIHk9IjQyMCIgY2xhc3M9Im0iPnNlcGFyYXRlIGhvb3BzLCBtaW4gNCBiYXJzLCBwaGkgMC42NTwvdGV4dD4KPGNpcmNsZSBjeD0iNjIwIiBjeT0iMjUwIiByPSIxMTAiIGNsYXNzPSJmMiIvPjxjaXJjbGUgY3g9IjYyMCIgY3k9IjI1MCIgcj0iOTAiIGNsYXNzPSJ0aCIvPgo8ZyBjbGFzcz0iZjMiPjxjaXJjbGUgY3g9IjY5OCIgY3k9IjI1MCIgcj0iOSIvPjxjaXJjbGUgY3g9IjY1OSIgY3k9IjMxOCIgcj0iOSIvPjxjaXJjbGUgY3g9IjU4MSIgY3k9IjMxOCIgcj0iOSIvPjxjaXJjbGUgY3g9IjU0MiIgY3k9IjI1MCIgcj0iOSIvPjxjaXJjbGUgY3g9IjU4MSIgY3k9IjE4MiIgcj0iOSIvPjxjaXJjbGUgY3g9IjY1OSIgY3k9IjE4MiIgcj0iOSIvPjwvZz4KPHRleHQgeD0iNTAwIiB5PSIzOTUiIGNsYXNzPSJzIGIiPlNQSVJBTDwvdGV4dD48dGV4dCB4PSI1MDAiIHk9IjQyMCIgY2xhc3M9Im0iPmNvbnRpbnVvdXMgaGVsaXgsIG1pbiA2IGJhcnMsIHBoaSAwLjc1PC90ZXh0Pgo8L3N2Zz4K",
+    "f3": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5Mb2FkIFBhdGg6IFNsYWIgdG8gQmVhbSB0byBDb2x1bW4gdG8gRm9vdGluZzwvdGV4dD4KCjxyZWN0IHg9IjEwMCIgeT0iMTYwIiB3aWR0aD0iNzAwIiBoZWlnaHQ9IjIwIiBjbGFzcz0iZiIvPjxyZWN0IHg9IjEwMCIgeT0iMTgwIiB3aWR0aD0iNzAwIiBoZWlnaHQ9IjU1IiBjbGFzcz0iZjIiLz4KPHJlY3QgeD0iMTMwIiB5PSIyMzUiIHdpZHRoPSI0MCIgaGVpZ2h0PSIxNTAiIGNsYXNzPSJmMyIvPjxyZWN0IHg9IjczMCIgeT0iMjM1IiB3aWR0aD0iNDAiIGhlaWdodD0iMTUwIiBjbGFzcz0iZjMiLz4KPHJlY3QgeD0iMTAwIiB5PSIzODUiIHdpZHRoPSIxMDAiIGhlaWdodD0iMjUiIGNsYXNzPSJmMiIvPjxyZWN0IHg9IjcwMCIgeT0iMzg1IiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjI1IiBjbGFzcz0iZjIiLz4KPHRleHQgeD0iMTIwIiB5PSIxNTAiIGNsYXNzPSJtIGIiPlNMQUIgKHRoaW4sIHNwYW5zIGJldHdlZW4gYmVhbXMpPC90ZXh0Pgo8dGV4dCB4PSIzMzAiIHk9IjIxMiIgY2xhc3M9Im0gYiI+QkVBTSAoY2FycmllcyBzbGFiIGxvYWQgdG8gY29sdW1ucyk8L3RleHQ+Cjx0ZXh0IHg9IjE3NSIgeT0iMzIwIiBjbGFzcz0ibSI+Q09MVU1OPC90ZXh0Pjx0ZXh0IHg9IjY3NSIgeT0iMzIwIiBjbGFzcz0ibSI+Q09MVU1OPC90ZXh0Pgo8dGV4dCB4PSIxMDUiIHk9IjQzMiIgY2xhc3M9Im0iPkZPT1RJTkc8L3RleHQ+PHRleHQgeD0iNzA1IiB5PSI0MzIiIGNsYXNzPSJtIj5GT09USU5HPC90ZXh0Pgo8dGV4dCB4PSIxMDAiIHk9IjQ3MCIgY2xhc3M9Im0iPlJlbW92ZSB0aGUgYmVhbTogdGhlIHNsYWIgc3BhbiBkb3VibGVzLCBzbyBpdCBiZW5kcyBhbmQgY3JhY2tzLjwvdGV4dD4KPC9zdmc+Cg=="
+  },
+  "questions": [
+    {
+      "s": "Telecom and Security Systems",
+      "q": "Which of these is a brand of security (alarm) systems?",
+      "o": [
+        "Visonic",
+        "Phelps Dodge",
+        "Delta",
+        "Cisco"
+      ],
+      "c": 0,
+      "ref": "General telecommunications and structured-cabling practice (PABX, RJ11/RJ45)",
+      "n": "Visonic makes wireless alarm and security panels. Cisco = network equipment; Phelps Dodge = electrical wire and cable."
+    },
+    {
+      "s": "Structural Basics: Slab, Beam, Column",
+      "q": "What is the usual mix proportion (cement : sand : gravel) of Class AA concrete?",
+      "o": [
+        "1 : 2 : 4",
+        "1 : 1.5 : 3",
+        "1 : 3 : 6",
+        "1 : 2.5 : 5"
+      ],
+      "c": 1,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines), reinforced concrete provisions and common design practice",
+      "n": "Memory ladder: AA 1:1.5:3, A 1:2:4, B 1:2.5:5, C 1:3:6. The richer in cement, the higher the class."
+    },
+    {
+      "s": "Sanitary Drainage and Plumbing",
+      "q": "What is the purpose of a cleanout?",
+      "o": [
+        "Adds water pressure",
+        "Vents sewer gas",
+        "Gives access for inspecting and clearing blockages",
+        "Reduces pipe size"
+      ],
+      "c": 2,
+      "ref": "National Plumbing Code of the Philippines (Revised), drainage and vent provisions",
+      "n": "A cleanout is a service door into the pipe. Plumbers push a snake through it.",
+      "fig": "f1"
+    },
+    {
+      "s": "Rocks and Materials",
+      "q": "Which stain- and acid-resistant material is well suited to kitchen countertops?",
+      "o": [
+        "Sintered stone",
+        "Natural limestone",
+        "Chinese granite (untreated)",
+        "Turkish marble"
+      ],
+      "c": 0,
+      "ref": "General building-materials references (rocks, masonry, finishes)",
+      "n": "Sintered stone is fired at high heat and pressure, so it is dense and non-porous. Marble stains and etches with acids such as lemon juice."
+    },
+    {
+      "s": "Structural Basics: Slab, Beam, Column",
+      "q": "What is the main purpose of concrete cover over reinforcing bars?",
+      "o": [
+        "Protects the steel from corrosion and fire and helps bond",
+        "To act as formwork",
+        "To reduce the amount of cement",
+        "To make the concrete lighter"
+      ],
+      "c": 0,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines), reinforced concrete provisions and common design practice",
+      "n": "Cover is the concrete 'jacket' around the bars. Without it the steel rusts and swells, and the concrete spalls."
+    },
+    {
+      "s": "Structural Basics: Slab, Beam, Column",
+      "q": "In a steel frame, which element commonly connects the web of a beam to a column?",
+      "o": [
+        "Gypsum furring channel",
+        "Drywall stud",
+        "Rebar tie wire only",
+        "Clip angle (angle cleat)"
+      ],
+      "c": 3,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines), reinforced concrete provisions and common design practice",
+      "n": "A pair of angles bolts the beam end to the column like an L-bracket joining shelf and wall. In concrete frames the link is the beam-column joint with anchored rebars."
+    },
+    {
+      "s": "Glass and Glazing",
+      "q": "Which glass door is commonly used for retail shops?",
+      "o": [
+        "Louvered door",
+        "Metal roll-up only",
+        "Frameless tempered glass door",
+        "Solid timber door"
+      ],
+      "c": 2,
+      "ref": "General glazing and glass-fabrication practice",
+      "n": "A frameless door shows the store inside with nothing in the way, like a window that opens."
+    },
+    {
+      "s": "Sanitary Drainage and Plumbing",
+      "q": "What is the purpose of a vent stack in the sanitary drainage system?",
+      "o": [
+        "Stores wastewater",
+        "Carries solid waste downward",
+        "Filters grease",
+        "Equalizes air pressure to protect trap seals and lets sewer gases escape"
+      ],
+      "c": 3,
+      "ref": "National Plumbing Code of the Philippines (Revised), drainage and vent provisions",
+      "n": "A vent lets air in behind flowing water so traps do not get sucked dry. Like poking a second hole in a juice can so it pours smoothly.",
+      "fig": "f1"
+    },
+    {
+      "s": "Acoustics",
+      "q": "Which wall type is best for an acoustic room such as a recording studio?",
+      "o": [
+        "Hollow-block wall with no finish",
+        "Glass curtain wall",
+        "Double wall with an air gap and insulation",
+        "Single thin partition"
+      ],
+      "c": 2,
+      "ref": "General architectural-acoustics practice",
+      "n": "Two separate walls with insulation between them stop vibration from jumping across. Think of two doors with a hallway between them.",
+      "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5Eb3VibGUgV2FsbCBmb3IgU291bmQgSXNvbGF0aW9uPC90ZXh0PgoKPHJlY3QgeD0iMzAwIiB5PSIxMDAiIHdpZHRoPSI0MCIgaGVpZ2h0PSIzMDAiIGNsYXNzPSJmMiIvPjxyZWN0IHg9IjUyMCIgeT0iMTAwIiB3aWR0aD0iNDAiIGhlaWdodD0iMzAwIiBjbGFzcz0iZjIiLz4KPHJlY3QgeD0iMzQwIiB5PSIxMDAiIHdpZHRoPSIxODAiIGhlaWdodD0iMzAwIiBjbGFzcz0iZjMiLz4KPHBhdGggZD0iTTM1MCAxMzAgcTIwIC0xNSA0MCAwIHQ0MCAwIHQ0MCAwIE0zNTAgMTkwIHEyMCAtMTUgNDAgMCB0NDAgMCB0NDAgMCBNMzUwIDI1MCBxMjAgLTE1IDQwIDAgdDQwIDAgdDQwIDAgTTM1MCAzMTAgcTIwIC0xNSA0MCAwIHQ0MCAwIHQ0MCAwIiBjbGFzcz0idGgiLz4KPGxpbmUgeDE9IjEyMCIgeTE9IjI1MCIgeDI9IjI5NSIgeTI9IjI1MCIgY2xhc3M9ImwiLz4KPHRleHQgeD0iOTAiIHk9IjIzMCIgY2xhc3M9Im0gYiI+bm9pc2U8L3RleHQ+PHRleHQgeD0iNTkwIiB5PSIyNTAiIGNsYXNzPSJtIGIiPm11Y2ggcXVpZXRlcjwvdGV4dD4KPHRleHQgeD0iMzUwIiB5PSI0MzAiIGNsYXNzPSJtIj5haXIgZ2FwICsgaW5zdWxhdGlvbjwvdGV4dD4KPHRleHQgeD0iNjAiIHk9IjQ3MCIgY2xhc3M9Im0iPlR3byBkZWNvdXBsZWQgd2FsbHM6IHZpYnJhdGlvbiBjYW5ub3QgY3Jvc3MgdGhlIGdhcCBkaXJlY3RseS48L3RleHQ+Cjwvc3ZnPgo="
+    },
+    {
+      "s": "Structural Basics: Slab, Beam, Column",
+      "q": "Which cross-section shape usually goes with a spiral column?",
+      "o": [
+        "L-shaped",
+        "Circular",
+        "Triangular",
+        "Rectangular only"
+      ],
+      "c": 1,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines), reinforced concrete provisions and common design practice",
+      "n": "A helix wraps naturally around a round core.",
+      "fig": "f2"
+    },
+    {
+      "s": "Basic Electrical",
+      "q": "Where is single-phase power most commonly used?",
+      "o": [
+        "Large industrial motors",
+        "Homes and small commercial loads",
+        "High-voltage transmission lines",
+        "Elevator drive motors"
+      ],
+      "c": 1,
+      "ref": "Philippine Electrical Code and general residential wiring practice",
+      "n": "Lights, outlets, and small appliances run on single-phase. Big motors prefer three-phase."
+    },
+    {
+      "s": "Sanitary Drainage and Plumbing",
+      "q": "What is the purpose of a vent cap?",
+      "o": [
+        "Lets air in and out while keeping rain, debris, and pests out of the vent pipe",
+        "To block all airflow",
+        "To connect two pipes",
+        "To store water"
+      ],
+      "c": 0,
+      "ref": "National Plumbing Code of the Philippines (Revised), drainage and vent provisions",
+      "n": "It is a hat on the vent pipe's roof opening. Air passes; rain and birds do not.",
+      "fig": "f1"
+    },
+    {
+      "s": "Acoustics",
+      "q": "What treatment is used on a concrete floor to stop vibration and impact noise from being felt below?",
+      "o": [
+        "Floating floor on resilient pads",
+        "Open ceiling",
+        "Wall tiles",
+        "Thick paint"
+      ],
+      "c": 0,
+      "ref": "General architectural-acoustics practice",
+      "n": "A floating floor sits on rubber-like pads, so vibration cannot pass straight into the slab. Like walking on a mattress instead of the ground."
+    },
+    {
+      "s": "Roofing",
+      "q": "Which roof covering needs the most maintenance over time?",
+      "o": [
+        "Concrete tiles",
+        "Wood shingles",
+        "Standing seam metal",
+        "Asphalt shingles"
+      ],
+      "c": 1,
+      "ref": "General roofing and roof-framing references",
+      "n": "Wood rots, curls, and burns. Memory trick: natural material, natural decay."
+    },
+    {
+      "s": "Basic Electrical",
+      "q": "What color is commonly used for the live wire in a single-phase circuit?",
+      "o": [
+        "Green or yellow-green",
+        "Bare copper only",
+        "Black or brown",
+        "Light blue"
+      ],
+      "c": 2,
+      "ref": "Philippine Electrical Code and general residential wiring practice",
+      "n": "Green or yellow-green is the ground. Blue (or white) is the neutral. Color codes vary by code edition, so confirm locally."
+    },
+    {
+      "s": "Glass and Glazing",
+      "q": "What gives a seamless look to the joints of frameless glass panels?",
+      "o": [
+        "Standoff",
+        "Rubber gasket",
+        "Patch fitting",
+        "Clear silicone"
+      ],
+      "c": 3,
+      "ref": "General glazing and glass-fabrication practice",
+      "n": "Clear silicone fills and bonds the butt joint, so the glass looks like one sheet."
+    },
+    {
+      "s": "Rocks and Materials",
+      "q": "Granite belongs to which rock family?",
+      "o": [
+        "Metamorphic",
+        "Igneous",
+        "Organic",
+        "Sedimentary"
+      ],
+      "c": 1,
+      "ref": "General building-materials references (rocks, masonry, finishes)",
+      "n": "Granite cools from molten rock deep underground. Igneous comes from Latin ignis, 'fire'. Think of cooled candle wax. Granite word root: Italian granito, 'grained'."
+    },
+    {
+      "s": "Structural Basics: Slab, Beam, Column",
+      "q": "Which element provides ductility to a reinforced concrete member?",
+      "o": [
+        "Longer curing alone",
+        "More sand in the mix",
+        "A low water-cement ratio alone",
+        "Properly placed and sufficient steel reinforcement"
+      ],
+      "c": 3,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines), reinforced concrete provisions and common design practice",
+      "n": "Concrete is strong but brittle, like a cracker. Steel bars stretch before breaking, so they warn before failure. Word root: ductile from Latin ducere, 'to lead' (can be drawn out into wire)."
+    },
+    {
+      "s": "Roofing",
+      "q": "Which roofing material is the right choice for a standing seam roof?",
+      "o": [
+        "Clay tiles",
+        "Metal sheet (steel, aluminum, or zinc)",
+        "Wood shingles",
+        "Concrete tiles"
+      ],
+      "c": 1,
+      "ref": "General roofing and roof-framing references",
+      "n": "Standing seams are raised folded joints between metal panels. Wood and tile cannot be folded."
+    },
+    {
+      "s": "Accessible Elevator",
+      "q": "What is the minimum clear opening of an accessible elevator door?",
+      "o": [
+        "1200 mm",
+        "800 mm",
+        "700 mm",
+        "900 mm"
+      ],
+      "c": 3,
+      "ref": "2024 Revised Implementing Rules and Regulations of BP 344, NCDA/DPWH",
+      "n": "The door is narrower than the car, but 900 mm still clears a wheelchair. Word root: elevator from Latin elevare, 'to lift up'."
+    },
+    {
+      "s": "Basic Electrical",
+      "q": "How many live (line) wires does a three-phase circuit have?",
+      "o": [
+        "4",
+        "1",
+        "3 only",
+        "2"
+      ],
+      "c": 2,
+      "ref": "Philippine Electrical Code and general residential wiring practice",
+      "n": "L1, L2, and L3 are the live wires. A neutral may be added, but it is not a live wire."
+    },
+    {
+      "s": "Structural Basics: Slab, Beam, Column",
+      "q": "What is the minimum thickness of a reinforced concrete footing measured above the bottom reinforcement, for footings on soil?",
+      "o": [
+        "200 mm",
+        "100 mm",
+        "150 mm",
+        "300 mm"
+      ],
+      "c": 2,
+      "ref": "NSCP 2015, Sec. 305 (Footings) and Chapter 4 (footing depth above bottom reinforcement)",
+      "n": "300 mm applies to footings on piles. Soil footings are the thinner case."
+    },
+    {
+      "s": "Structural Basics: Slab, Beam, Column",
+      "q": "What is the commonly used minimum size of main reinforcing bars in concrete members?",
+      "o": [
+        "20 mm",
+        "10 mm",
+        "6 mm",
+        "8 mm"
+      ],
+      "c": 1,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines), reinforced concrete provisions and common design practice",
+      "n": "10 mm is the usual lower limit for structural main bars. Column main bars are bigger (16 mm)."
+    },
+    {
+      "s": "Rocks and Materials",
+      "q": "Which test measures the moisture content of soil?",
+      "o": [
+        "Sieve analysis",
+        "Oven-dry method",
+        "Compaction test",
+        "Slump test"
+      ],
+      "c": 1,
+      "ref": "General building-materials references (rocks, masonry, finishes)",
+      "n": "Weigh the sample, bake it, weigh again. The lost weight was water."
+    },
+    {
+      "s": "Structural Basics: Slab, Beam, Column",
+      "q": "Under NSCP Table 305-1, what is the minimum depth below undisturbed ground for the footing of a one-storey concrete foundation?",
+      "o": [
+        "300 mm",
+        "150 mm",
+        "600 mm",
+        "450 mm"
+      ],
+      "c": 0,
+      "ref": "NSCP 2015, Sec. 305 (Footings) and Chapter 4 (footing depth above bottom reinforcement)",
+      "n": "Depth grows with floors: 1 floor 300 mm, 2 floors 450 mm, 3 floors 600 mm. Taller means deeper roots, like a tree."
+    },
+    {
+      "s": "Waterproofing and Moisture Protection",
+      "q": "Which material expands when it contacts water and is used as a waterstop?",
+      "o": [
+        "Vermiculite",
+        "Gypsum",
+        "Bentonite",
+        "Pozzolan"
+      ],
+      "c": 2,
+      "ref": "General waterproofing and moisture-protection practice",
+      "n": "Bentonite clay swells many times its size and plugs gaps. Word root: named after Fort Benton, Wyoming. Think of a dry sponge that fills any crack once wet."
+    },
+    {
+      "s": "Basic Electrical",
+      "q": "How many switches are used in a standard three-way switch circuit?",
+      "o": [
+        "3",
+        "2",
+        "4",
+        "1"
+      ],
+      "c": 1,
+      "ref": "Philippine Electrical Code and general residential wiring practice",
+      "n": "Two switches control one light from two places, like the hallway light with a switch at each end.",
+      "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5UaHJlZS1XYXkgU3dpdGNoaW5nICgyIFN3aXRjaGVzLCAxIExhbXApPC90ZXh0PgoKPGxpbmUgeDE9IjYwIiB5MT0iMjUwIiB4Mj0iMTcwIiB5Mj0iMjUwIiBjbGFzcz0ibCIvPjx0ZXh0IHg9IjYwIiB5PSIyMzUiIGNsYXNzPSJtIGIiPnNvdXJjZTwvdGV4dD4KPHJlY3QgeD0iMTcwIiB5PSIyMTUiIHdpZHRoPSI3MCIgaGVpZ2h0PSI3MCIgY2xhc3M9ImYiLz48dGV4dCB4PSIxNzgiIHk9IjI1NiIgY2xhc3M9Im0gYiI+U1cgQTwvdGV4dD4KPGxpbmUgeDE9IjI0MCIgeTE9IjIzNSIgeDI9IjY0MCIgeTI9IjIzNSIgY2xhc3M9ImwiLz48bGluZSB4MT0iMjQwIiB5MT0iMjY1IiB4Mj0iNjQwIiB5Mj0iMjY1IiBjbGFzcz0ibCIvPgo8dGV4dCB4PSIzNDAiIHk9IjIxNSIgY2xhc3M9Im0iPnR3byB0cmF2ZWxlciB3aXJlczwvdGV4dD4KPHJlY3QgeD0iNjQwIiB5PSIyMTUiIHdpZHRoPSI3MCIgaGVpZ2h0PSI3MCIgY2xhc3M9ImYiLz48dGV4dCB4PSI2NDgiIHk9IjI1NiIgY2xhc3M9Im0gYiI+U1cgQjwvdGV4dD4KPGxpbmUgeDE9IjcxMCIgeTE9IjI1MCIgeDI9Ijc2MCIgeTI9IjI1MCIgY2xhc3M9ImwiLz48Y2lyY2xlIGN4PSI4MDAiIGN5PSIyNTAiIHI9IjM2IiBjbGFzcz0iZjMiLz48dGV4dCB4PSI3NzgiIHk9IjI1NiIgY2xhc3M9Im0gYiI+TEFNUDwvdGV4dD4KPHRleHQgeD0iNjAiIHk9IjM4MCIgY2xhc3M9Im0iPkZsaXAgZWl0aGVyIHN3aXRjaCBhbmQgdGhlIGxhbXAgY2hhbmdlcyBzdGF0ZTogbGlrZSBhIGhhbGx3YXkgbGlnaHQgd2l0aCBhIHN3aXRjaCBhdCBlYWNoIGVuZC48L3RleHQ+Cjwvc3ZnPgo="
+    },
+    {
+      "s": "Rocks and Materials",
+      "q": "Which is the most commonly used sedimentary rock in construction?",
+      "o": [
+        "Marble",
+        "Basalt",
+        "Limestone",
+        "Granite"
+      ],
+      "c": 2,
+      "ref": "General building-materials references (rocks, masonry, finishes)",
+      "n": "Sedimentary rock forms in layers, like a layer cake. Marble is limestone cooked into metamorphic rock."
+    },
+    {
+      "s": "Basic Electrical",
+      "q": "How many live (line) wires does a single-phase circuit have?",
+      "o": [
+        "1",
+        "2",
+        "4",
+        "3"
+      ],
+      "c": 0,
+      "ref": "Philippine Electrical Code and general residential wiring practice",
+      "n": "Single-phase = one live wire plus a neutral (and a ground). Think of one supply pipe and one return pipe."
+    },
+    {
+      "s": "Acoustics",
+      "q": "Which room proportion is best for acoustics?",
+      "o": [
+        "A perfectly square plan",
+        "Unequal length, width, and height (not a cube)",
+        "Equal length and width only",
+        "All dimensions equal"
+      ],
+      "c": 1,
+      "ref": "General architectural-acoustics practice",
+      "n": "Equal dimensions pile up the same sound waves (standing waves). Uneven sizes spread them out."
+    },
+    {
+      "s": "Accessible Elevator",
+      "q": "What is the purpose of the grab bar or handrail inside an accessible elevator?",
+      "o": [
+        "To keep the doors closed",
+        "To give support and balance to passengers, especially persons with disabilities",
+        "To hang advertisements",
+        "For aesthetics only"
+      ],
+      "c": 1,
+      "ref": "2024 Revised Implementing Rules and Regulations of BP 344, NCDA/DPWH",
+      "n": "Elevators start and stop with a jolt. The rail is a steady hand when you are unsteady."
+    },
+    {
+      "s": "Glass and Glazing",
+      "q": "Which window best fits a narrow hallway or stairwell where the only purpose is to let light in?",
+      "o": [
+        "Casement window",
+        "Sliding window",
+        "Awning window",
+        "Fixed window"
+      ],
+      "c": 3,
+      "ref": "General glazing and glass-fabrication practice",
+      "n": "A fixed window does not open, so it needs no clearance. Operable windows would swing into the passage."
+    },
+    {
+      "s": "Accessible Elevator",
+      "q": "What is the minimum clear width of an accessible elevator car?",
+      "o": [
+        "1400 mm",
+        "1200 mm",
+        "1500 mm",
+        "900 mm"
+      ],
+      "c": 1,
+      "ref": "2024 Revised Implementing Rules and Regulations of BP 344, NCDA/DPWH",
+      "n": "Memory trick: width 1200, depth 1400. The car is longer than it is wide."
+    },
+    {
+      "s": "Telecom and Security Systems",
+      "q": "Which connector is commonly used for telephone lines in the Philippines?",
+      "o": [
+        "USB-C",
+        "RJ11",
+        "RJ45",
+        "Coaxial F-type"
+      ],
+      "c": 1,
+      "ref": "General telecommunications and structured-cabling practice (PABX, RJ11/RJ45)",
+      "n": "RJ11 is the small 2-pair phone plug; RJ45 is the wider 4-pair network plug. Memory trick: 11 is thin like a phone cord, 45 is fat like a network cable."
+    },
+    {
+      "s": "Sanitary Drainage and Plumbing",
+      "q": "What is the standard minimum slope of horizontal sanitary drainage pipes?",
+      "o": [
+        "5%",
+        "2% (20 mm per meter)",
+        "10%",
+        "0.5%"
+      ],
+      "c": 1,
+      "ref": "National Plumbing Code of the Philippines (Revised), drainage and vent provisions",
+      "n": "That is a drop of 20 mm over every meter, or 1/4 inch per foot.",
+      "fig": "f1"
+    },
+    {
+      "s": "Structural Basics: Slab, Beam, Column",
+      "q": "What is the minimum diameter of the main bars used in a tied column?",
+      "o": [
+        "12 mm",
+        "10 mm",
+        "20 mm",
+        "16 mm"
+      ],
+      "c": 3,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines), reinforced concrete provisions and common design practice",
+      "n": "Columns carry compression, so thin bars buckle. Ties are smaller (10 mm). Common NSCP-based practice.",
+      "fig": "f2"
+    },
+    {
+      "s": "Fire Detection and Alarm",
+      "q": "Which part of a fire detection and alarm system receives signals from detectors and triggers the alarm?",
+      "o": [
+        "Fire detector head",
+        "Exit sign",
+        "Sprinkler riser",
+        "Fire Alarm Control Panel (FACP)"
+      ],
+      "c": 3,
+      "ref": "General fire-detection and alarm-system practice (FDAS)",
+      "n": "The FACP is the system's brain. Detectors are the senses. FDAS is the whole system; FACP is the control panel within it."
+    },
+    {
+      "s": "Sanitary Drainage and Plumbing",
+      "q": "Which part is used to seal the joint between two flanged pipe sections?",
+      "o": [
+        "Clamp",
+        "Gasket",
+        "Escutcheon",
+        "Reducer"
+      ],
+      "c": 1,
+      "ref": "National Plumbing Code of the Philippines (Revised), drainage and vent provisions",
+      "n": "A gasket is a soft ring squeezed between flanges to stop leaks, like the rubber ring in a jar lid."
+    },
+    {
+      "s": "Structural Basics: Slab, Beam, Column",
+      "q": "What is the difference between a tied column and a spiral column?",
+      "o": [
+        "Spiral columns have no vertical bars",
+        "Tied columns are always round and spiral columns square",
+        "They are identical except for color",
+        "Tied columns use separate hoops with at least 4 bars; spiral columns use a continuous helix with at least 6 bars and are more ductile"
+      ],
+      "c": 3,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines), reinforced concrete provisions and common design practice",
+      "n": "Ties are separate rings, like barrel hoops. A spiral is one long coil, like a spring, so it confines the core better. Strength reduction factor: 0.65 tied, 0.75 spiral.",
+      "fig": "f2"
+    },
+    {
+      "s": "Sanitary Drainage and Plumbing",
+      "q": "Which device attaches pipes to a wall or ceiling?",
+      "o": [
+        "Reducer",
+        "Pipe clamp (hanger)",
+        "Coupling",
+        "Escutcheon"
+      ],
+      "c": 1,
+      "ref": "National Plumbing Code of the Philippines (Revised), drainage and vent provisions",
+      "n": "Clamps hold the pipe's weight, like a hook for a hose."
+    },
+    {
+      "s": "Telecom and Security Systems",
+      "q": "What does PABX stand for?",
+      "o": [
+        "Public Automatic Branch Exchange",
+        "Private Automatic Base Exchange",
+        "Private Analog Broadband Exchange",
+        "Private Automatic Branch Exchange"
+      ],
+      "c": 3,
+      "ref": "General telecommunications and structured-cabling practice (PABX, RJ11/RJ45)",
+      "n": "A PABX is a building's own phone switchboard that shares a few outside lines among many desk phones. Word root: exchange = a place where calls are swapped between lines. Think of the office receptionist's switchboard, but automatic."
+    },
+    {
+      "s": "Roofing",
+      "q": "Which roof type needs a stronger structure because of heavy foot traffic and maintenance access?",
+      "o": [
+        "Standing seam metal roof",
+        "Roof deck (occupied roof)",
+        "Corrugated GI sheet roof",
+        "Asphalt shingle roof"
+      ],
+      "c": 1,
+      "ref": "General roofing and roof-framing references",
+      "n": "A roof deck is a floor in the sky, so it must carry people, furniture, and equipment."
+    },
+    {
+      "s": "Structural Basics: Slab, Beam, Column",
+      "q": "According to design practice and NSCP checks, what minimum factor of safety against overturning is used for a gravity retaining wall?",
+      "o": [
+        "2.5",
+        "1.0",
+        "1.2",
+        "1.5"
+      ],
+      "c": 3,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines), reinforced concrete provisions and common design practice",
+      "n": "The wall's resisting moment must be 1.5 times the overturning moment. Similar value (1.5) is used for sliding."
+    },
+    {
+      "s": "Sanitary Drainage and Plumbing",
+      "q": "Which device covers the gap where a pipe passes through a wall?",
+      "o": [
+        "Union",
+        "Escutcheon",
+        "Trap",
+        "Flange"
+      ],
+      "c": 1,
+      "ref": "National Plumbing Code of the Philippines (Revised), drainage and vent provisions",
+      "n": "Word root: Old French escuchon, from Latin scutum, 'shield'. It is a small decorative shield around the hole."
+    },
+    {
+      "s": "Waterproofing and Moisture Protection",
+      "q": "Which of these is a cementitious waterproofing coating?",
+      "o": [
+        "Torch-on bituminous membrane",
+        "Flex Seal rubber spray",
+        "Thoroseal",
+        "Epoxy floor paint"
+      ],
+      "c": 2,
+      "ref": "General waterproofing and moisture-protection practice",
+      "n": "Cementitious coatings are cement-based and brushed on like thick paint, good for rigid surfaces such as tanks."
+    },
+    {
+      "s": "Glass and Glazing",
+      "q": "Which section is used to hold glass edges onto a structural steel member?",
+      "o": [
+        "Angle bar",
+        "Tee bar",
+        "Flat bar",
+        "U-channel"
+      ],
+      "c": 3,
+      "ref": "General glazing and glass-fabrication practice",
+      "n": "A U-channel cradles the glass edge like a hand holding a plate."
+    },
+    {
+      "s": "Structural Basics: Slab, Beam, Column",
+      "q": "What curing method is used for concrete hollow blocks (CHB) when you need them to cure quickly?",
+      "o": [
+        "Kiln drying",
+        "Steam curing",
+        "Oven drying",
+        "Air drying"
+      ],
+      "c": 1,
+      "ref": "General building-materials references (rocks, masonry, finishes)",
+      "n": "Heat and moisture speed up cement hydration, like a pressure cooker for blocks."
+    },
+    {
+      "s": "Roofing",
+      "q": "In a roof truss, which member resists tension and keeps the rafters from spreading?",
+      "o": [
+        "Fascia board",
+        "Tie beam (bottom chord)",
+        "Ridge board",
+        "Purlin"
+      ],
+      "c": 1,
+      "ref": "General roofing and roof-framing references",
+      "n": "The tie is the string on a bow: it pulls the two ends together."
+    },
+    {
+      "s": "Structural Basics: Slab, Beam, Column",
+      "q": "What is the purpose of mortar in masonry construction?",
+      "o": [
+        "Adds steel reinforcement",
+        "Makes the wall waterproof alone",
+        "Replaces the footing",
+        "Bonds units together and spreads the load evenly"
+      ],
+      "c": 3,
+      "ref": "General building-materials references (rocks, masonry, finishes)",
+      "n": "Word root: Latin mortarium, a bowl for pounding. Mortar is the cushion between bricks, like the cream in a sandwich."
+    },
+    {
+      "s": "Sanitary Drainage and Plumbing",
+      "q": "When a 2% slope is impracticable, what reduced slope may a 100 mm (102 mm or larger) horizontal drain use if approved?",
+      "o": [
+        "1% (10 mm per meter)",
+        "2%",
+        "0.5%",
+        "3%"
+      ],
+      "c": 0,
+      "ref": "National Plumbing Code of the Philippines (Revised), drainage and vent provisions",
+      "n": "Bigger pipes carry more water, so they can run flatter. The recall list did not give a key for 100 mm, so know both numbers: 2% standard, 1% reduced.",
+      "fig": "f1"
+    },
+    {
+      "s": "Structural Basics: Slab, Beam, Column",
+      "q": "What is the purpose of a beam in a slab-beam relationship?",
+      "o": [
+        "It replaces the footing",
+        "It carries the slab load and transfers it to the columns",
+        "It only decorates the ceiling",
+        "It holds the slab's waterproofing"
+      ],
+      "c": 1,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines), reinforced concrete provisions and common design practice",
+      "n": "The slab rests on beams, and beams hand the load to columns. Think of beams as the shelves' brackets and columns as the wall posts.",
+      "fig": "f3"
+    },
+    {
+      "s": "Acoustics",
+      "q": "Which door is most effective for blocking sound?",
+      "o": [
+        "Louvered door",
+        "Solid-core wooden door with seals",
+        "Hollow-core flush door",
+        "Single-pane glass door"
+      ],
+      "c": 1,
+      "ref": "General architectural-acoustics practice",
+      "n": "Mass blocks sound, and seals close the gaps. Word root: acoustics from Greek akouein, 'to hear'."
+    },
+    {
+      "s": "Waterproofing and Moisture Protection",
+      "q": "What do you call the protection that resists water under pressure (hydrostatic pressure)?",
+      "o": [
+        "Sealant",
+        "Dampproofing",
+        "Vapor retarder",
+        "Waterproofing"
+      ],
+      "c": 3,
+      "ref": "General waterproofing and moisture-protection practice",
+      "n": "Waterproofing handles pressurized water, like a basement below the water table. Dampproofing only stops moisture and vapor."
+    },
+    {
+      "s": "Rocks and Materials",
+      "q": "What is the typical angle of repose of dry loose granular material such as sand?",
+      "o": [
+        "30 to 35 degrees",
+        "10 to 15 degrees",
+        "45 to 50 degrees",
+        "60 degrees"
+      ],
+      "c": 0,
+      "ref": "General building-materials references (rocks, masonry, finishes)",
+      "n": "It is the steepest slope a pile holds before sliding, like a sand pile at the beach."
+    },
+    {
+      "s": "Accessible Elevator",
+      "q": "Under the 2024 Revised IRR of BP 344, what is the minimum clear depth of an accessible elevator car?",
+      "o": [
+        "1100 mm",
+        "1800 mm",
+        "1200 mm",
+        "1400 mm"
+      ],
+      "c": 3,
+      "ref": "2024 Revised Implementing Rules and Regulations of BP 344, NCDA/DPWH",
+      "n": "Depth is the front-to-back length of the car. The car is 1400 mm deep and 1200 mm wide, so a wheelchair can enter and fit."
+    },
+    {
+      "s": "Structural Basics: Slab, Beam, Column",
+      "q": "What happens if the supporting beam is removed in a slab-beam system?",
+      "o": [
+        "The slab becomes stronger",
+        "Nothing changes",
+        "The slab span grows, so bending and deflection increase and the slab may crack or fail",
+        "The columns carry less load"
+      ],
+      "c": 2,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines), reinforced concrete provisions and common design practice",
+      "n": "Longer span means more bend. Like removing the middle leg of a table: the top sags. A thicker slab or a flat-slab design would be needed.",
+      "fig": "f3"
+    },
+    {
+      "s": "Sanitary Drainage and Plumbing",
+      "q": "Which fitting joins two pipes of different sizes?",
+      "o": [
+        "Coupling",
+        "Reducer",
+        "Cap",
+        "Plug"
+      ],
+      "c": 1,
+      "ref": "National Plumbing Code of the Philippines (Revised), drainage and vent provisions",
+      "n": "A reducer steps a pipe down in size, like a funnel. A bushing also reduces size but fits inside another fitting."
+    },
+    {
+      "s": "Telecom and Security Systems",
+      "q": "What is the main purpose of a raised access floor system?",
+      "o": [
+        "To make floors waterproof",
+        "Easy access to cables and floor boxes without cutting the floor slab",
+        "To remove the need for an HVAC system",
+        "To make the slab thicker"
+      ],
+      "c": 1,
+      "ref": "General telecommunications and structured-cabling practice (PABX, RJ11/RJ45)",
+      "n": "A raised floor leaves a void under removable panels for cables, so changes need no slab cutting. Think of a stage with a hollow under it where the wiring runs.",
+      "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5SYWlzZWQgQWNjZXNzIEZsb29yPC90ZXh0PgoKPHJlY3QgeD0iODAiIHk9IjQwMCIgd2lkdGg9Ijc0MCIgaGVpZ2h0PSIzMCIgY2xhc3M9ImYyIi8+PHRleHQgeD0iOTAiIHk9IjQ1MCIgY2xhc3M9Im0iPlN0cnVjdHVyYWwgc2xhYiAobmV2ZXIgY3V0KTwvdGV4dD4KPGcgY2xhc3M9InRoIj48bGluZSB4MT0iMTYwIiB5MT0iMzAwIiB4Mj0iMTYwIiB5Mj0iNDAwIi8+PGxpbmUgeDE9IjMwMCIgeTE9IjMwMCIgeDI9IjMwMCIgeTI9IjQwMCIvPjxsaW5lIHgxPSI0NDAiIHkxPSIzMDAiIHgyPSI0NDAiIHkyPSI0MDAiLz48bGluZSB4MT0iNTgwIiB5MT0iMzAwIiB4Mj0iNTgwIiB5Mj0iNDAwIi8+PGxpbmUgeDE9IjcyMCIgeTE9IjMwMCIgeDI9IjcyMCIgeTI9IjQwMCIvPjwvZz4KPHJlY3QgeD0iMTAwIiB5PSIyODUiIHdpZHRoPSI2ODAiIGhlaWdodD0iMTUiIGNsYXNzPSJmIi8+CjxyZWN0IHg9IjQ3MCIgeT0iMjU1IiB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGNsYXNzPSJmMyIvPjx0ZXh0IHg9IjQ1MCIgeT0iMjQ1IiBjbGFzcz0ibSBiIj5mbG9vciBib3g8L3RleHQ+CjxwYXRoIGQ9Ik0xMzAgMzgwIEg1MDAgVjMwMCIgY2xhc3M9ImQiLz48cGF0aCBkPSJNMjAwIDM2MCBINTAwIiBjbGFzcz0iZCIvPgo8dGV4dCB4PSIyNDAiIHk9IjM0NSIgY2xhc3M9Im0gYiI+dm9pZDogY2FibGVzLCBkYXRhLCBhaXI8L3RleHQ+Cjx0ZXh0IHg9IjEwMCIgeT0iMjMwIiBjbGFzcz0ibSI+UmVtb3ZhYmxlIHBhbmVscyBvbiBwZWRlc3RhbHM6IHJlcm91dGUgY2FibGVzIHdpdGhvdXQgY3V0dGluZyB0aGUgc2xhYi48L3RleHQ+Cjwvc3ZnPgo="
+    }
+  ]
+}
