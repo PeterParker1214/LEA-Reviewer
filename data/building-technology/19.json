@@ -258,7 +258,7 @@
     },
     {
       "s": "Column Tie Estimating",
-      "q": "How many closed ties are required for all 26 columns?",
+      "q": "For a quantity estimate using 23 closed ties per column, how many ties are required for all 26 columns?",
       "o": [
         "552 ties",
         "676 ties",
@@ -268,7 +268,7 @@
       "c": 2,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Metal Reinforcement: Post and Column Reinforcement / Lateral Ties",
       "n": "Each column requires 23 ties, so 26 columns require 26×23 = 598 ties.",
-      "scenario": "A building has 26 tied columns, each 500 mm × 500 mm and 7.00 m high, with eight 20 mm bars, 10 mm ties and 40 mm clear cover. Tie wire is 0.40 m per bar intersection (53 m per kg); ties are cut from 6.00 m bars.",
+      "scenario": "A building has 26 tied columns, each 500 mm × 500 mm and 7.00 m high, with eight 20 mm bars, 10 mm ties and 40 mm clear cover. Tie wire is 0.40 m per bar intersection (53 m per kg); ties are cut from 6.00 m bars. For this quantity exercise, use a specified schedule of 23 closed ties per column (598 ties in total); derive no tie-spacing design from this assumed count.",
       "formula": "ties = columns × ties per column",
       "steps": [
         "26 × 23",
@@ -350,7 +350,7 @@
     },
     {
       "s": "Column Tie Estimating",
-      "q": "If 6.00 m commercial bars are used, approximately how many bars are required when each 1.88 m tie is cut from whole bars?",
+      "q": "A schedule requires 598 closed ties, each with a 1.88 m cutting length. How many 6.00 m commercial bars are required if ties must be cut whole from individual bars?",
       "o": [
         "188 bars",
         "200 bars",
@@ -359,12 +359,12 @@
       ],
       "c": 1,
       "ref": "Max B. Fajardo Jr., Simplified Construction Estimate - Metal Reinforcement: Post and Column Reinforcement / Lateral Ties",
-      "n": "One 6.00 m bar yields three 1.88 m ties. The 598 required ties therefore need ceil(598/3)=200 commercial bars.",
-      "scenario": "A building has 26 tied columns, each 500 mm × 500 mm and 7.00 m high, with eight 20 mm bars, 10 mm ties and 40 mm clear cover. Tie wire is 0.40 m per bar intersection (53 m per kg); ties are cut from 6.00 m bars.",
+      "n": "Each 6.00 m bar yields three whole 1.88 m ties. Thus ceil(598/3) = 200 bars. Dividing total tie length by 6.00 m would ignore unusable offcuts.",
+      "scenario": "A building has 26 tied columns, each 500 mm × 500 mm and 7.00 m high, with eight 20 mm bars, 10 mm ties and 40 mm clear cover. Tie wire is 0.40 m per bar intersection (53 m per kg); ties are cut from 6.00 m bars. The specified schedule requires 598 ties in total. Each tie has a 1.88 m cutting length; offcuts are not spliced into ties.",
       "formula": "bars = ties / ties per bar",
       "steps": [
-        "6.00 / 1.88 = 3 ties per bar",
-        "598 / 3 = 199.3 → 200 bars"
+        "floor(6.00 / 1.88) = 3 whole ties per bar",
+        "ceil(598 / 3) = 200 commercial bars"
       ]
     },
     {

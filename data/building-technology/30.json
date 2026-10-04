@@ -145,7 +145,7 @@
   },
   {
     "s": "Paint Estimating",
-    "q": "If 25 m² per gallon is interpreted as coverage per coat, how many whole gallons are required for three coats on the walls and ceiling?",
+    "q": "For a net paintable wall-and-ceiling area of 50.83 m², how many whole gallons are required for three coats if one gallon covers 25 m² per coat?",
     "o": [
       "6 gallons",
       "7 gallons",
@@ -154,7 +154,8 @@
     ],
     "c": 1,
     "ref": "Architectural coating quantity estimating; calculated from stated situation givens",
-    "n": "Using the explicit per-coat interpretation, the net wall plus ceiling area is about 50.83 m². Three coats require 152.49 m² of coverage; 152.49/25=6.10 gallons, so seven whole gallons are needed."
+    "n": "50.83 × 3 = 152.49 m² of coat coverage. 152.49 / 25 = 6.0996 gallons; round up to 7 whole gallons.",
+    "scenario": "The combined net paintable area of the walls and ceiling is 50.83 m², after deducting openings. Apply three coats. Coverage is 25 m² per gallon per coat; exclude additional waste allowance and round up to whole gallons."
   },
   {
     "s": "Ceiling Estimating",
