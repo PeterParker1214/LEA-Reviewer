@@ -1,0 +1,920 @@
+{
+  "figures": {
+    "f1": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5Ud28gQ2xpbWF0ZXMsIFR3byBIb3VzZXM8L3RleHQ+Cgo8cmVjdCB4PSI3MCIgeT0iMjAwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjE4MCIgY2xhc3M9ImYyIi8+PHJlY3QgeD0iMTAwIiB5PSIyMzAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgY2xhc3M9ImYzIi8+PHJlY3QgeD0iMjkwIiB5PSIyMzAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgY2xhc3M9ImYzIi8+Cjx0ZXh0IHg9IjcwIiB5PSIxODAiIGNsYXNzPSJzIGIiPkhPVCBhbmQgRFJZPC90ZXh0Pjx0ZXh0IHg9IjcwIiB5PSI0MTAiIGNsYXNzPSJtIj50aGljaywgbGlnaHQgd2FsbHMsIHNtYWxsIHdpbmRvd3M8L3RleHQ+PHRleHQgeD0iNzAiIHk9IjQzMiIgY2xhc3M9Im0iPm1hc3MgaG9sZHMgaGVhdCwgbGlnaHQgY29sb3IgcmVmbGVjdHMgc3VuPC90ZXh0Pgo8cG9seWdvbiBwb2ludHM9IjQ3MCwyMDAgNjQwLDE0MCA4MTAsMjAwIiBjbGFzcz0iZjIiLz48cmVjdCB4PSI0OTAiIHk9IjIwMCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIxMDAiIGNsYXNzPSJmIi8+CjxnIGNsYXNzPSJ0aCI+PGxpbmUgeDE9IjUyMCIgeTE9IjMwMCIgeDI9IjUyMCIgeTI9IjM4MCIvPjxsaW5lIHgxPSI3NjAiIHkxPSIzMDAiIHgyPSI3NjAiIHkyPSIzODAiLz48L2c+CjxwYXRoIGQ9Ik00NDAgMjUwIEg0OTAgTTc5MCAyNTAgSDg0MCIgY2xhc3M9ImQiLz48dGV4dCB4PSI0NzAiIHk9IjEyMCIgY2xhc3M9InMgYiI+V0FSTSBhbmQgSFVNSUQ8L3RleHQ+PHRleHQgeD0iNDcwIiB5PSI0MTAiIGNsYXNzPSJtIj5saWdodCwgb3BlbiwgcmFpc2VkLCB3ZWxsIHZlbnRpbGF0ZWQ8L3RleHQ+Cjx0ZXh0IHg9IjQ3MCIgeT0iNDMyIiBjbGFzcz0ibSI+bW92aW5nIGFpciBpcyB0aGUgY29vbGluZzwvdGV4dD4KPC9zdmc+Cg==",
+    "f2": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5BbWVuZGVkIEJQIDM0NDogVHdvIE51bWJlcnM8L3RleHQ+Cgo8cmVjdCB4PSI4MCIgeT0iMTEwIiB3aWR0aD0iNDYwIiBoZWlnaHQ9IjEwMCIgY2xhc3M9ImYiLz48Y2lyY2xlIGN4PSIyMjAiIGN5PSIxNjAiIHI9IjE4IiBjbGFzcz0iZjMiLz48Y2lyY2xlIGN4PSIzODAiIGN5PSIxNjAiIHI9IjE4IiBjbGFzcz0iZjIiLz4KPHRleHQgeD0iNTYwIiB5PSIxNTAiIGNsYXNzPSJtIGIiPldhbGt3YXk6IDE1MDAgbW0gbWluPC90ZXh0Pjx0ZXh0IHg9IjU2MCIgeT0iMTcyIiBjbGFzcz0ibSI+d2hlZWxjaGFpciArIHdhbGtlciBwYXNzPC90ZXh0Pgo8cmVjdCB4PSI4MCIgeT0iMzIwIiB3aWR0aD0iNjAiIGhlaWdodD0iODAiIGNsYXNzPSJmMyIvPjx0ZXh0IHg9Ijc1IiB5PSI0MjUiIGNsYXNzPSJtIGIiPkVOVFJBTkNFPC90ZXh0Pgo8bGluZSB4MT0iMTQwIiB5MT0iMzYwIiB4Mj0iNjkwIiB5Mj0iMzYwIiBjbGFzcz0ibCIvPjxyZWN0IHg9IjY5MCIgeT0iMzIwIiB3aWR0aD0iNzAiIGhlaWdodD0iODAiIGNsYXNzPSJmMiIvPjx0ZXh0IHg9IjY4MCIgeT0iNDI1IiBjbGFzcz0ibSBiIj5FTEVWQVRPUjwvdGV4dD4KPHRleHQgeD0iMzAwIiB5PSIzNDUiIGNsYXNzPSJtIGIiPjMwLDAwMCBtbSAoMzAgbSkgbWF4PC90ZXh0Pgo8L3N2Zz4K",
+    "f3": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5LZXZpbiBMeW5jaDogRml2ZSBFbGVtZW50cyBvZiB0aGUgQ2l0eTwvdGV4dD4KCjxyZWN0IHg9IjExMCIgeT0iMTEwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1MCIgY2xhc3M9ImYyIi8+PHRleHQgeD0iMTI1IiB5PSIxNDAiIGNsYXNzPSJtIGIiPkRJU1RSSUNUPC90ZXh0Pgo8cmVjdCB4PSI0NzAiIHk9IjMwMCIgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxMTAiIGNsYXNzPSJmMyIvPjx0ZXh0IHg9IjQ4NSIgeT0iMzMwIiBjbGFzcz0ibSBiIj5ESVNUUklDVDwvdGV4dD4KPGxpbmUgeDE9IjgwIiB5MT0iMzAwIiB4Mj0iNzIwIiB5Mj0iMzAwIiBjbGFzcz0ibCIvPjxsaW5lIHgxPSI0MjAiIHkxPSI4MCIgeDI9IjQyMCIgeTI9IjQ0MCIgY2xhc3M9ImwiLz48dGV4dCB4PSIxMDAiIHk9IjI5MCIgY2xhc3M9Im0gYiI+UEFUSDwvdGV4dD4KPGNpcmNsZSBjeD0iNDIwIiBjeT0iMzAwIiByPSIxNCIgY2xhc3M9ImYiLz48dGV4dCB4PSI0NDAiIHk9IjI4NSIgY2xhc3M9Im0gYiI+Tk9ERTwvdGV4dD4KPHBhdGggZD0iTTc4MCA5MCBDNzQwIDE5MCA4MjAgMjkwIDc2MCA0MzAiIGNsYXNzPSJsIi8+PHRleHQgeD0iNzkwIiB5PSIyNjAiIGNsYXNzPSJtIGIiPkVER0U8L3RleHQ+Cjxwb2x5Z29uIHBvaW50cz0iNjEwLDIwMCA2MzUsMTUwIDY2MCwyMDAiIGNsYXNzPSJmMiIvPjx0ZXh0IHg9IjU5MCIgeT0iMjI1IiBjbGFzcz0ibSBiIj5MQU5ETUFSSzwvdGV4dD4KPHRleHQgeD0iODAiIHk9IjQ3NSIgY2xhc3M9Im0iPlBhdGhzLCBFZGdlcywgRGlzdHJpY3RzLCBOb2RlcywgTGFuZG1hcmtzLjwvdGV4dD4KPC9zdmc+Cg==",
+    "f4": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5FZ3lwdGlhbiBUb21iIFR5cGVzPC90ZXh0PgoKPHBvbHlnb24gcG9pbnRzPSI2MCwzODAgMTEwLDMwMCAyNzAsMzAwIDMyMCwzODAiIGNsYXNzPSJmMiIvPjx0ZXh0IHg9Ijg1IiB5PSI0MjAiIGNsYXNzPSJzIGIiPk1BU1RBQkE8L3RleHQ+PHRleHQgeD0iNjAiIHk9IjQ0NSIgY2xhc3M9Im0iPm5vYmxlJ3MgdG9tYiwgZmxhdCB0b3A8L3RleHQ+Cjxwb2x5Z29uIHBvaW50cz0iMzUwLDM4MCA0OTAsMTcwIDYzMCwzODAiIGNsYXNzPSJmMiIvPjx0ZXh0IHg9IjQxNSIgeT0iNDIwIiBjbGFzcz0icyBiIj5QWVJBTUlEPC90ZXh0Pjx0ZXh0IHg9IjM1NSIgeT0iNDQ1IiBjbGFzcz0ibSI+bWFpbiBidWlsZGluZyBvZiBhIHdhbGxlZCBjb21wbGV4PC90ZXh0Pgo8cmVjdCB4PSI2ODAiIHk9IjE5MCIgd2lkdGg9IjE4MCIgaGVpZ2h0PSIxOTAiIGNsYXNzPSJmMiIvPjxnIGNsYXNzPSJ0aCI+PGxpbmUgeDE9IjcwNSIgeTE9IjI5MCIgeDI9IjcwNSIgeTI9IjM4MCIvPjxsaW5lIHgxPSI3MzUiIHkxPSIyOTAiIHgyPSI3MzUiIHkyPSIzODAiLz48bGluZSB4MT0iNzY1IiB5MT0iMjkwIiB4Mj0iNzY1IiB5Mj0iMzgwIi8+PC9nPgo8cmVjdCB4PSI3OTAiIHk9IjMyMCIgd2lkdGg9IjU1IiBoZWlnaHQ9IjYwIiBjbGFzcz0iZCIvPjx0ZXh0IHg9IjcwMCIgeT0iNDIwIiBjbGFzcz0icyBiIj5ST0NLLUhFV048L3RleHQ+PHRleHQgeD0iNjYwIiB5PSI0NDUiIGNsYXNzPSJtIj5wb3J0aWNvIGZyb250LCBjaGFwZWwgYmVoaW5kPC90ZXh0Pgo8L3N2Zz4K",
+    "f5": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5EZXNpZ24tU2VydmljZXMgUGF5bWVudCBTY2hlZHVsZSAoVUFQIERvYyAyMDIpPC90ZXh0PgoKPHJlY3QgeD0iNTAiIHk9IjIwMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjgwIiBjbGFzcz0iZjMiLz48cmVjdCB4PSI5MCIgeT0iMjAwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiBjbGFzcz0iZiIvPjxyZWN0IHg9IjIxMCIgeT0iMjAwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiBjbGFzcz0iZjIiLz48cmVjdCB4PSIzMzAiIHk9IjIwMCIgd2lkdGg9IjQwMCIgaGVpZ2h0PSI4MCIgY2xhc3M9ImYiLz48cmVjdCB4PSI3MzAiIHk9IjIwMCIgd2lkdGg9IjEyMCIgaGVpZ2h0PSI4MCIgY2xhc3M9ImYzIi8+Cjx0ZXh0IHg9IjQ1IiB5PSIxOTAiIGNsYXNzPSJtIGIiPjUlPC90ZXh0Pjx0ZXh0IHg9IjEyNSIgeT0iMTkwIiBjbGFzcz0ibSBiIj4xNSU8L3RleHQ+PHRleHQgeD0iMjQ1IiB5PSIxOTAiIGNsYXNzPSJtIGIiPjE1JTwvdGV4dD48dGV4dCB4PSI1MDAiIHk9IjE5MCIgY2xhc3M9Im0gYiI+NTAlPC90ZXh0Pjx0ZXh0IHg9Ijc3MCIgeT0iMTkwIiBjbGFzcz0ibSBiIj4xNSU8L3RleHQ+Cjx0ZXh0IHg9IjMwIiB5PSIzMDUiIGNsYXNzPSJtIj5TaWduaW5nPC90ZXh0Pjx0ZXh0IHg9Ijk1IiB5PSIzMzAiIGNsYXNzPSJtIj5TY2hlbWF0aWM8L3RleHQ+PHRleHQgeD0iMTk1IiB5PSIzNTUiIGNsYXNzPSJtIj5EZXNpZ24gZGV2LjwvdGV4dD48dGV4dCB4PSI0NDAiIHk9IjI0NSIgY2xhc3M9Im0iPkNvbnRyYWN0IGRvY3VtZW50czwvdGV4dD48dGV4dCB4PSI3NDUiIHk9IjI0NSIgY2xhc3M9Im0iPkNvbnN0ci48L3RleHQ+Cjx0ZXh0IHg9IjUwIiB5PSI0MzAiIGNsYXNzPSJtIj5DdW11bGF0aXZlOiA1LCAyMCwgMzUsIDg1LCAxMDAgcGVyY2VudC48L3RleHQ+Cjwvc3ZnPgo="
+  },
+  "questions": [
+    {
+      "s": "Tropical Architecture and Climate",
+      "q": "Which tropical modernism work is by Geoffrey Bawa?",
+      "o": [
+        "Kandalama Hotel",
+        "Seagram Building",
+        "Burj Khalifa",
+        "Price Tower"
+      ],
+      "c": 0,
+      "ref": "General references on tropical architecture and climate-responsive design",
+      "n": "Kandalama in Sri Lanka melts into the cliff and jungle, so the hotel seems grown, not built."
+    },
+    {
+      "s": "International Architects and Quotes",
+      "q": "Which architect said, 'In all my works, light is an important controlling factor'?",
+      "o": [
+        "Richard Neutra",
+        "Kenzo Tange",
+        "Louis Sullivan",
+        "Tadao Ando"
+      ],
+      "c": 3,
+      "ref": "General architectural-history references on modern and contemporary architects",
+      "n": "Ando is the master of concrete and light, such as the Church of the Light."
+    },
+    {
+      "s": "Architect's Fees and Practice",
+      "q": "Which bond guarantees that the contractor will complete the work as contracted?",
+      "o": [
+        "Payment bond",
+        "Guarantee bond only",
+        "Performance bond",
+        "Bid bond"
+      ],
+      "c": 2,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees (DAEDS/DADS) and payment schedule; UAP Doc 205 (Post-Construction Services)",
+      "n": "Word root: bond from Old English bindan, 'to bind'. The contractor is bound to deliver."
+    },
+    {
+      "s": "Tropical Architecture and Climate",
+      "q": "A light, insulated, light-colored, well-ventilated house suits which climate?",
+      "o": [
+        "Warm and humid",
+        "Arctic",
+        "Hot and dry",
+        "Cold"
+      ],
+      "c": 0,
+      "ref": "General references on tropical architecture and climate-responsive design",
+      "n": "Humid heat needs moving air, not stored heat. Think of a breezy stilt house. The recall stem was cut off.",
+      "fig": "f1"
+    },
+    {
+      "s": "International Architects and Quotes",
+      "q": "Which Frank Lloyd Wright work is the only skyscraper he built, nicknamed 'the tree that escaped the forest'?",
+      "o": [
+        "Fallingwater",
+        "Johnson Wax Headquarters",
+        "Price Tower",
+        "Guggenheim Museum"
+      ],
+      "c": 2,
+      "ref": "General architectural-history references on modern and contemporary architects",
+      "n": "Price Tower in Oklahoma has a central 'trunk' with floors branching like limbs."
+    },
+    {
+      "s": "Laws and Standards",
+      "q": "Under the amended BP 344, how far from the entrance may an accessible elevator be located at most?",
+      "o": [
+        "20,000 mm",
+        "30,000 mm (30 m)",
+        "45,000 mm",
+        "35,000 mm"
+      ],
+      "c": 1,
+      "ref": "2024 Amended IRR of BP 344, NCDA/DPWH",
+      "n": "30 m is the maximum walk to the elevator. Larger transport facilities use respite areas instead.",
+      "fig": "f2"
+    },
+    {
+      "s": "Urban Planning",
+      "q": "Which author wrote 'The Image of the City'?",
+      "o": [
+        "Clarence Stein",
+        "Ebenezer Howard",
+        "Patrick Geddes",
+        "Kevin Lynch"
+      ],
+      "c": 3,
+      "ref": "General urban-planning history (Kevin Lynch, Hippodamus, Ebenezer Howard, Vitruvius)",
+      "n": "Lynch studied how people mentally map a city, as if each person carried a sketch in their head.",
+      "fig": "f3"
+    },
+    {
+      "s": "Landmark Buildings and Records",
+      "q": "Which museum is the most visited in the world?",
+      "o": [
+        "Louvre Museum",
+        "British Museum",
+        "National Museum",
+        "Smithsonian"
+      ],
+      "c": 0,
+      "ref": "General references on landmark buildings and records",
+      "n": "The Louvre draws around 9-10 million visitors a year, helped by the glass pyramid entrance."
+    },
+    {
+      "s": "Laws and Standards",
+      "q": "Which parking slot size is for a truck or bus?",
+      "o": [
+        "3.6 m x 12 m",
+        "2.15 m x 7 m",
+        "3 m x 12 m",
+        "3 m x 9 m"
+      ],
+      "c": 0,
+      "ref": "Philippine laws and standards (PD 705, PD 1185, PD 223, PD 957, BP 220)",
+      "n": "A bus needs both width and length. The recall key lists 3.6 x 12; confirm against your IRR table."
+    },
+    {
+      "s": "Urban Planning",
+      "q": "Which Roman author and architect wrote 'De architectura', the famous ten books on architecture?",
+      "o": [
+        "Alberti",
+        "Vitruvius",
+        "Palladio",
+        "Hippodamus"
+      ],
+      "c": 1,
+      "ref": "General urban-planning history (Kevin Lynch, Hippodamus, Ebenezer Howard, Vitruvius)",
+      "n": "He is the Roman theorist of architecture and city planning."
+    },
+    {
+      "s": "Landmark Buildings and Records",
+      "q": "Which concert hall is celebrated for its exterior, interior, and acoustics together?",
+      "o": [
+        "Sydney Opera House",
+        "Royal Albert Hall",
+        "Walt Disney Concert Hall",
+        "Carnegie Hall"
+      ],
+      "c": 2,
+      "ref": "General references on landmark buildings and records",
+      "n": "The recall had a question mark here. Disney Hall (Gehry) is known for its steel curves and strong acoustics, while Sydney is better known for its shells than its sound."
+    },
+    {
+      "s": "Practice Terms",
+      "q": "What does CPD stand for?",
+      "o": [
+        "Council of Professional Designers",
+        "Continuing Professional Development",
+        "Certified Practice Document",
+        "Construction Permit Draft"
+      ],
+      "c": 1,
+      "ref": "General Philippine architectural practice terms",
+      "n": "CPD means architects keep learning to renew their license, like updating an app."
+    },
+    {
+      "s": "Architect's Fees and Practice",
+      "q": "What does DADS stand for, and what share of the DAEDS fee does the architect receive?",
+      "o": [
+        "Direct Architect Design Service; 100% of the DAEDS fee",
+        "Detailed Architectural Design Services; 40% of the DAEDS fee",
+        "Design And Drafting Services; 25% of the DAEDS fee",
+        "Detailed Architectural Design Services; 60% of the DAEDS fee"
+      ],
+      "c": 3,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees (DAEDS/DADS) and payment schedule; UAP Doc 205 (Post-Construction Services)",
+      "n": "Architect-only gets 60% because the architect leads and coordinates but other designers do the rest."
+    },
+    {
+      "s": "Egyptian, Greek and Roman Architecture",
+      "q": "Which Egyptian tomb is usually the main building of a complex surrounded by an enclosure wall?",
+      "o": [
+        "Mastaba",
+        "Pyramid",
+        "Rock-hewn tomb",
+        "Ziggurat"
+      ],
+      "c": 1,
+      "ref": "General architectural-history references on ancient Egyptian, Greek, and Roman building",
+      "n": "The pyramid sits in a courtyard of temples and walls. A ziggurat is Mesopotamian, not Egyptian.",
+      "fig": "f4"
+    },
+    {
+      "s": "Filipino Architects and Works",
+      "q": "Who is the architect of the Quezon Memorial Shrine?",
+      "o": [
+        "Cesar Concio",
+        "Federico Ilustre",
+        "Jorge Ramos",
+        "Francisco Manosa"
+      ],
+      "c": 1,
+      "ref": "General references on Filipino architecture; National Artists and notable Filipino architects",
+      "n": "Ilustre designed the three-pylon shrine in Quezon City. The tall pylons rise like three candles around the tomb."
+    },
+    {
+      "s": "Architect's Fees and Practice",
+      "q": "What percentage of the design fee is paid for the contract documents phase?",
+      "o": [
+        "50%",
+        "5%",
+        "15%",
+        "20%"
+      ],
+      "c": 0,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees (DAEDS/DADS) and payment schedule; UAP Doc 205 (Post-Construction Services)",
+      "n": "This phase is the heavy work: drawings, specs, and contract papers. Schedule: 5, 15, 15, 50, then 15 for construction.",
+      "fig": "f5"
+    },
+    {
+      "s": "Egyptian, Greek and Roman Architecture",
+      "q": "Greek temple architecture grew from which kind of belief?",
+      "o": [
+        "Belief centered on life after death",
+        "Gods tied to nature (anthropomorphic nature deities)",
+        "Christianity",
+        "Ancestor worship only"
+      ],
+      "c": 1,
+      "ref": "General architectural-history references on ancient Egyptian, Greek, and Roman building",
+      "n": "Egypt's belief in life after death shaped its tombs; Greece honored gods of sky, sea, and harvest. The recall key listed 'natural' for this one."
+    },
+    {
+      "s": "International Architects and Quotes",
+      "q": "Who founded the architecture firm Morphosis?",
+      "o": [
+        "Philip Johnson",
+        "Michael Graves",
+        "Thom Mayne",
+        "Richard Meier"
+      ],
+      "c": 2,
+      "ref": "General architectural-history references on modern and contemporary architects",
+      "n": "Word root: Morphosis comes from Greek morphe, 'form', so 'the shaping of form'. Mayne won the Pritzker Prize in 2005."
+    },
+    {
+      "s": "Architect's Fees and Practice",
+      "q": "What is the minimum percentage of gross rentals for post-construction services?",
+      "o": [
+        "2%",
+        "3%",
+        "6%",
+        "4%"
+      ],
+      "c": 3,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees (DAEDS/DADS) and payment schedule; UAP Doc 205 (Post-Construction Services)",
+      "n": "Range is 4% to 6%: the low end is 4%."
+    },
+    {
+      "s": "Gothic Cathedrals and Renaissance",
+      "q": "Which cathedral is a famous pilgrimage site, housing the Virgin's veil and renowned for its stained glass?",
+      "o": [
+        "Chartres",
+        "Beauvais",
+        "Reims",
+        "Amiens"
+      ],
+      "c": 0,
+      "ref": "General architectural-history references on French Gothic cathedrals and the Renaissance",
+      "n": "Pilgrims came to Chartres for centuries. Word root: pilgrim from Latin peregrinus, 'foreigner, traveler'."
+    },
+    {
+      "s": "International Architects and Quotes",
+      "q": "Who said 'Form follows function'?",
+      "o": [
+        "Frank Lloyd Wright",
+        "Le Corbusier",
+        "Louis Sullivan",
+        "Mies van der Rohe"
+      ],
+      "c": 2,
+      "ref": "General architectural-history references on modern and contemporary architects",
+      "n": "Sullivan's idea: shape should come from purpose, like a spoon's bowl comes from holding soup."
+    },
+    {
+      "s": "Architect's Fees and Practice",
+      "q": "What do you call the architect who performs post-construction services on site?",
+      "o": [
+        "Resident architect",
+        "Executive architect",
+        "Foreign architect",
+        "Construction manager"
+      ],
+      "c": 0,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees (DAEDS/DADS) and payment schedule; UAP Doc 205 (Post-Construction Services)",
+      "n": "'Resident' means one who stays there, like a building's live-in architect. The recall key says resident architect."
+    },
+    {
+      "s": "Tropical Architecture and Climate",
+      "q": "Which is a passive (non-mechanical) way to cool a tropical building?",
+      "o": [
+        "Insulation, shading, and cross-ventilation",
+        "Air conditioning units",
+        "Sealed windows",
+        "Electric fans only"
+      ],
+      "c": 0,
+      "ref": "General references on tropical architecture and climate-responsive design",
+      "n": "Passive means no machine does the cooling. The recall's choices were Solar Control Glass, Insulation, and Mechanical, and its key leaned toward insulation."
+    },
+    {
+      "s": "International Architects and Quotes",
+      "q": "Which architect designed the Yale University Art Gallery and is known for beginning his significant building career around age 50?",
+      "o": [
+        "Louis Kahn",
+        "Philip Johnson",
+        "Michael Graves",
+        "Richard Meier"
+      ],
+      "c": 0,
+      "ref": "General architectural-history references on modern and contemporary architects",
+      "n": "Kahn bloomed late, like a tree that fruits after many years."
+    },
+    {
+      "s": "Architect's Fees and Practice",
+      "q": "Which compensation method bases the fee on revenue or profitability outcomes of the project?",
+      "o": [
+        "Value-based pricing",
+        "Unit cost method",
+        "Per diem",
+        "Lump sum"
+      ],
+      "c": 0,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees (DAEDS/DADS) and payment schedule; UAP Doc 205 (Post-Construction Services)",
+      "n": "You are paid for results, not hours. Think of a sales commission."
+    },
+    {
+      "s": "Tropical Architecture and Climate",
+      "q": "Thick, light-colored walls suit which climate?",
+      "o": [
+        "Warm and humid",
+        "Cool and wet",
+        "Cold",
+        "Hot and dry"
+      ],
+      "c": 3,
+      "ref": "General references on tropical architecture and climate-responsive design",
+      "n": "Thick walls store the day's heat and release it at night, and light color reflects sun, like a clay water jar that keeps water cool. The recall stem was cut off.",
+      "fig": "f1"
+    },
+    {
+      "s": "International Architects and Quotes",
+      "q": "Which architect developed the theory called Biorealism, linking design to human biology and nature?",
+      "o": [
+        "Richard Neutra",
+        "Louis Kahn",
+        "Philip Johnson",
+        "Kevin Lynch"
+      ],
+      "c": 0,
+      "ref": "General architectural-history references on modern and contemporary architects",
+      "n": "Word root: bio = life, so 'design that respects living people'. Neutra is also tied to the recalled 'razor-sharp sense of individuality' quote."
+    },
+    {
+      "s": "Laws and Standards",
+      "q": "Under the amended BP 344, what is the minimum width of sidewalks, walkways, and pathways?",
+      "o": [
+        "1100 mm",
+        "900 mm",
+        "1500 mm",
+        "1200 mm"
+      ],
+      "c": 2,
+      "ref": "2024 Amended IRR of BP 344, NCDA/DPWH",
+      "n": "1500 mm lets a wheelchair user and a walker pass each other. The older IRR used 1200 mm, so always read 'as per amended BP 344'.",
+      "fig": "f2"
+    },
+    {
+      "s": "Tropical Architecture and Climate",
+      "q": "Which describes Japanese architecture?",
+      "o": [
+        "Rectilinear and clean",
+        "Curved and decorative",
+        "Heavy and heavily carved",
+        "Round and ornate"
+      ],
+      "c": 0,
+      "ref": "General architectural-history references on modern and contemporary architects",
+      "n": "Straight lines, clean planes, and simple spaces, like a folded sheet of paper."
+    },
+    {
+      "s": "Landmark Buildings and Records",
+      "q": "Which is the largest aquarium in the Southwestern United States, a 200,000 sq ft facility in Scottsdale?",
+      "o": [
+        "Blue Planet",
+        "Sea Life",
+        "OdySea Aquarium",
+        "Seattle Aquarium"
+      ],
+      "c": 2,
+      "ref": "General references on landmark buildings and records",
+      "n": "The recall stem said 'in the world', but OdySea is the largest in the Southwest, so know both phrasings. Aquariums are Exceptional-group buildings in the fee schedule (they need consultants)."
+    },
+    {
+      "s": "Laws and Standards",
+      "q": "What is the minimum frontage of a regular lot under PD 957 (open-market subdivisions)?",
+      "o": [
+        "4 m",
+        "12 m",
+        "10 m",
+        "8 m"
+      ],
+      "c": 2,
+      "ref": "Philippine laws and standards (PD 705, PD 1185, PD 223, PD 957, BP 220)",
+      "n": "Open-market lots are bigger than socialized lots: 10 m versus 8 m. The recall key lists 10 m."
+    },
+    {
+      "s": "Urban Planning",
+      "q": "Who is regarded as the father of urban planning, known for the gridiron plan?",
+      "o": [
+        "Kevin Lynch",
+        "Vitruvius",
+        "Ebenezer Howard",
+        "Hippodamus of Miletus"
+      ],
+      "c": 3,
+      "ref": "General urban-planning history (Kevin Lynch, Hippodamus, Ebenezer Howard, Vitruvius)",
+      "n": "He laid streets in a grid, like graph paper for cities."
+    },
+    {
+      "s": "Landmark Buildings and Records",
+      "q": "Which Manhattan building has 70 floors?",
+      "o": [
+        "Empire State Building",
+        "Chrysler Building",
+        "Woolworth Building",
+        "30 Rockefeller Plaza"
+      ],
+      "c": 3,
+      "ref": "General references on landmark buildings and records",
+      "n": "Empire State has 102 floors and the Chrysler 77. Rockefeller is the 70-floor one."
+    },
+    {
+      "s": "Practice Terms",
+      "q": "What does OCT stand for in land titling?",
+      "o": [
+        "Official Certificate of Tenure",
+        "Original Certificate of Title",
+        "Owner's Certificate of Title",
+        "Original Contract of Transfer"
+      ],
+      "c": 1,
+      "ref": "General Philippine architectural practice terms",
+      "n": "An OCT is issued the first time land is registered. Word root: the Torrens system is named after Sir Robert Torrens."
+    },
+    {
+      "s": "Architect's Fees and Practice",
+      "q": "What does DAEDS stand for?",
+      "o": [
+        "Direct Architect and Engineer Daily Services",
+        "Detailed Architectural Design Specifications",
+        "Detailed Architectural and Engineering Design Services",
+        "Design And Engineering Drawing Schedule"
+      ],
+      "c": 2,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees (DAEDS/DADS) and payment schedule; UAP Doc 205 (Post-Construction Services)",
+      "n": "DAEDS is the complete design package: architecture plus engineering. It is the more common arrangement."
+    },
+    {
+      "s": "Egyptian, Greek and Roman Architecture",
+      "q": "Which tomb of the nobility is cut into a cliff, with a portico in front and an offering chapel behind?",
+      "o": [
+        "Ziggurat",
+        "Mastaba",
+        "Pyramid",
+        "Rock-hewn tomb"
+      ],
+      "c": 3,
+      "ref": "General architectural-history references on ancient Egyptian, Greek, and Roman building",
+      "n": "Hewn means chiseled out of rock, like carving a cave room from a cliff.",
+      "fig": "f4"
+    },
+    {
+      "s": "Filipino Architects and Works",
+      "q": "Which Filipino architect is known for passive cooling design and specialty hospitals?",
+      "o": [
+        "Jorge Ramos",
+        "Cesar Concio",
+        "Gabriel Formoso",
+        "Francisco Manosa"
+      ],
+      "c": 0,
+      "ref": "General references on Filipino architecture; National Artists and notable Filipino architects",
+      "n": "Ramos is the name tied to climate-wise hospital design. Memory trick: Ramos = hospital + natural cooling."
+    },
+    {
+      "s": "Architect's Fees and Practice",
+      "q": "What percentage is paid upon signing the agreement under regular design services?",
+      "o": [
+        "20%",
+        "5%",
+        "50%",
+        "15%"
+      ],
+      "c": 1,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees (DAEDS/DADS) and payment schedule; UAP Doc 205 (Post-Construction Services)",
+      "n": "Signing is the smallest payment, like a deposit.",
+      "fig": "f5"
+    },
+    {
+      "s": "Egyptian, Greek and Roman Architecture",
+      "q": "Which ancient architecture is known for using concrete along with brick, terra cotta, and marble facing?",
+      "o": [
+        "Roman",
+        "Greek",
+        "Mesopotamian",
+        "Egyptian"
+      ],
+      "c": 0,
+      "ref": "General architectural-history references on ancient Egyptian, Greek, and Roman building",
+      "n": "Roman concrete let them build arches, vaults, and domes. Marble was a thin skin over brick and concrete."
+    },
+    {
+      "s": "Filipino Architects and Works",
+      "q": "Which architect is known for vernacular, native-inspired design?",
+      "o": [
+        "Federico Ilustre",
+        "Cesar Concio",
+        "Francisco Manosa",
+        "Jorge Ramos"
+      ],
+      "c": 2,
+      "ref": "General references on Filipino architecture; National Artists and notable Filipino architects",
+      "n": "Think of him as the architect who made the bahay kubo a luxury resort."
+    },
+    {
+      "s": "Architect's Fees and Practice",
+      "q": "What is the fee range for post-construction services when based on gross rentals?",
+      "o": [
+        "1% to 2%",
+        "12% to 15%",
+        "4% to 6% of gross rentals",
+        "8% to 10%"
+      ],
+      "c": 2,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees (DAEDS/DADS) and payment schedule; UAP Doc 205 (Post-Construction Services)",
+      "n": "Post-construction covers building administration and maintenance. Another option is a fixed monthly salary."
+    },
+    {
+      "s": "Gothic Cathedrals and Renaissance",
+      "q": "Which cathedral has a west facade with three deep, richly carved portals?",
+      "o": [
+        "Beauvais",
+        "Chartres",
+        "Amiens",
+        "Reims"
+      ],
+      "c": 2,
+      "ref": "General architectural-history references on French Gothic cathedrals and the Renaissance",
+      "n": "Amiens is huge and its three doors welcome you like a triple gate. The key comes from the recall."
+    },
+    {
+      "s": "International Architects and Quotes",
+      "q": "Who said 'Less is more'?",
+      "o": [
+        "Richard Meier",
+        "Tadao Ando",
+        "Ludwig Mies van der Rohe",
+        "Louis Sullivan"
+      ],
+      "c": 2,
+      "ref": "General architectural-history references on modern and contemporary architects",
+      "n": "Mies means strip away everything unnecessary, like a clean sentence with no extra words."
+    },
+    {
+      "s": "Architect's Fees and Practice",
+      "q": "For post-construction services, which compensation modes are available?",
+      "o": [
+        "Lump sum only",
+        "Hourly only",
+        "Fixed monthly salary or a percentage of gross rentals",
+        "Net pricing only"
+      ],
+      "c": 2,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees (DAEDS/DADS) and payment schedule; UAP Doc 205 (Post-Construction Services)",
+      "n": "A resident architect can be on salary or paid by a cut of the building's rental income."
+    },
+    {
+      "s": "Gothic Cathedrals and Renaissance",
+      "q": "Which is considered the most important building of the Renaissance?",
+      "o": [
+        "Villa Farnese",
+        "St. Peter's Basilica",
+        "Palazzo Farnese",
+        "Santa Maria Novella"
+      ],
+      "c": 1,
+      "ref": "General architectural-history references on French Gothic cathedrals and the Renaissance",
+      "n": "It gathers the work of Bramante, Michelangelo, and Bernini and was the Renaissance's grandest project."
+    },
+    {
+      "s": "International Architects and Quotes",
+      "q": "Which architect is part of the New York Five and also associated with the Memphis Group?",
+      "o": [
+        "Paul Rudolph",
+        "Marcel Breuer",
+        "Michael Graves",
+        "Louis Kahn"
+      ],
+      "c": 2,
+      "ref": "General architectural-history references on modern and contemporary architects",
+      "n": "The New York Five were Eisenman, Graves, Gwathmey, Hejduk, and Meier. Graves also designed playful Memphis-style objects."
+    },
+    {
+      "s": "Architect's Fees and Practice",
+      "q": "Which mode of compensation fits an ocular inspection?",
+      "o": [
+        "Percentage of project cost",
+        "Time basis (per diem)",
+        "Turnkey",
+        "Lump sum for the whole building"
+      ],
+      "c": 1,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees (DAEDS/DADS) and payment schedule; UAP Doc 205 (Post-Construction Services)",
+      "n": "A visit is short and open-ended, so pay for the time. Per diem comes from Latin per diem, 'by the day'."
+    },
+    {
+      "s": "Tropical Architecture and Climate",
+      "q": "Which set of traditional materials is typical of tropical architecture?",
+      "o": [
+        "Earth, wood, and stone",
+        "Fiberglass and vinyl",
+        "Steel, glass, and plastic",
+        "Concrete only"
+      ],
+      "c": 0,
+      "ref": "General references on tropical architecture and climate-responsive design",
+      "n": "Local, natural, breathable materials suit the heat. The recall had two versions; this is the natural-materials one."
+    },
+    {
+      "s": "International Architects and Quotes",
+      "q": "Which architect said architecture should appeal to the human heart while also being logical?",
+      "o": [
+        "Kenzo Tange",
+        "Louis Sullivan",
+        "Tadao Ando",
+        "Richard Neutra"
+      ],
+      "c": 0,
+      "ref": "General architectural-history references on modern and contemporary architects",
+      "n": "Tange blended Japanese tradition with modern structure, as in the Yoyogi National Gymnasium. Quote attribution is from the recall key."
+    },
+    {
+      "s": "Laws and Standards",
+      "q": "Which decree is the Revised Forestry Code of the Philippines?",
+      "o": [
+        "PD 223",
+        "PD 705",
+        "PD 1185",
+        "PD 1096"
+      ],
+      "c": 1,
+      "ref": "Philippine laws and standards (PD 705, PD 1185, PD 223, PD 957, BP 220)",
+      "n": "PD 1096 is the Building Code, PD 1185 the Fire Code, and PD 223 created the PRC."
+    },
+    {
+      "s": "Tropical Architecture and Climate",
+      "q": "Which window placement is appropriate in Metro Manila given the sun path?",
+      "o": [
+        "Unshaded glass on the west wall",
+        "Clerestory on the east side",
+        "Clerestory on the north side",
+        "Clerestory on the west side"
+      ],
+      "c": 2,
+      "ref": "General references on tropical architecture and climate-responsive design",
+      "n": "East and west windows catch low, hot sun. A north clerestory brings steady daylight with little heat. The recall's options were cut off."
+    },
+    {
+      "s": "International Architects and Quotes",
+      "q": "Which architect designed the Johnson Wax Headquarters?",
+      "o": [
+        "Philip Johnson",
+        "Louis Kahn",
+        "Frank Lloyd Wright",
+        "Mies van der Rohe"
+      ],
+      "c": 2,
+      "ref": "General architectural-history references on modern and contemporary architects",
+      "n": "Its mushroom-like columns are a Wright signature."
+    },
+    {
+      "s": "Laws and Standards",
+      "q": "What is the minimum frontage of a regular lot under BP 220 (socialized housing)?",
+      "o": [
+        "4 m",
+        "12 m",
+        "10 m",
+        "8 m"
+      ],
+      "c": 3,
+      "ref": "Philippine laws and standards (PD 705, PD 1185, PD 223, PD 957, BP 220)",
+      "n": "BP 220 allows smaller lots to keep housing affordable. The recall key lists 8 m."
+    },
+    {
+      "s": "Urban Planning",
+      "q": "Which set lists the five elements of the city image?",
+      "o": [
+        "Parks, plazas, streets, blocks, lots",
+        "Roads, walls, gates, towers, markets",
+        "Zones, grids, axes, cores, rings",
+        "Paths, edges, districts, nodes, landmarks"
+      ],
+      "c": 3,
+      "ref": "General urban-planning history (Kevin Lynch, Hippodamus, Ebenezer Howard, Vitruvius)",
+      "n": "Path = a route; edge = a boundary; district = a zone; node = a junction (Latin nodus, 'knot'); landmark = a point you remember.",
+      "fig": "f3"
+    },
+    {
+      "s": "Landmark Buildings and Records",
+      "q": "Which is the tallest building in the world?",
+      "o": [
+        "Petronas Towers, Malaysia",
+        "Shanghai Tower, China",
+        "Empire State Building, USA",
+        "Burj Khalifa, Dubai"
+      ],
+      "c": 3,
+      "ref": "General references on landmark buildings and records",
+      "n": "The Burj Khalifa is about 828 m tall. Shanghai Tower is second-tier in height."
+    },
+    {
+      "s": "Laws and Standards",
+      "q": "Which parking slot size is for a jeepney or shuttle?",
+      "o": [
+        "3.6 m x 12 m",
+        "3 m x 12 m",
+        "3 m x 9 m",
+        "2.15 m x 7 m"
+      ],
+      "c": 2,
+      "ref": "Philippine laws and standards (PD 705, PD 1185, PD 223, PD 957, BP 220)",
+      "n": "A jeepney is smaller than a bus. The recall key lists 3 x 9; confirm against your IRR table."
+    },
+    {
+      "s": "Urban Planning",
+      "q": "Who proposed the Garden City concept?",
+      "o": [
+        "Patrick Geddes",
+        "Hippodamus",
+        "Ebenezer Howard",
+        "Kevin Lynch"
+      ],
+      "c": 2,
+      "ref": "General urban-planning history (Kevin Lynch, Hippodamus, Ebenezer Howard, Vitruvius)",
+      "n": "A garden city blends town and country, like a city wrapped in a green belt."
+    },
+    {
+      "s": "Egyptian, Greek and Roman Architecture",
+      "q": "Which Egyptian tomb type was for nobles and officials: a flat-roofed rectangular structure with sloping sides?",
+      "o": [
+        "Obelisk",
+        "Pyramid",
+        "Mastaba",
+        "Ziggurat"
+      ],
+      "c": 2,
+      "ref": "General architectural-history references on ancient Egyptian, Greek, and Roman building",
+      "n": "Word root: Arabic mastaba, 'bench', because it looks like a low bench. Pyramids came from stacking mastabas.",
+      "fig": "f4"
+    },
+    {
+      "s": "Filipino Architects and Works",
+      "q": "Who designed the Church of the Risen Lord in UP Diliman, known for its saddle-shaped hyperbolic paraboloid roof?",
+      "o": [
+        "Cesar Concio",
+        "Federico Ilustre",
+        "Leandro Locsin",
+        "Francisco Manosa"
+      ],
+      "c": 0,
+      "ref": "General references on Filipino architecture; National Artists and notable Filipino architects",
+      "n": "Concio designed this Protestant chapel in the 1950s. Word root: hyperbolic comes from Greek hyperbole, 'a throwing beyond', and paraboloid from parabole, 'a placing alongside'. Think of a Pringles chip: curved up one way and down the other."
+    },
+    {
+      "s": "Architect's Fees and Practice",
+      "q": "What is the DAEDS rate for a mall complex (Group II, moderate)?",
+      "o": [
+        "7%",
+        "10%",
+        "6%",
+        "5%"
+      ],
+      "c": 2,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees (DAEDS/DADS) and payment schedule; UAP Doc 205 (Post-Construction Services)",
+      "n": "Group I is 5%, Group II is 6%, Group III is 7%, and residences are 10%. Memory trick: 5, 6, 7 going up in complexity.",
+      "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5EQUVEUyBGZWUgR3JvdXBzICg1ME0gYW5kIGxlc3MpPC90ZXh0PgoKPHJlY3QgeD0iNjAiIHk9IjMwMCIgd2lkdGg9IjE1MCIgaGVpZ2h0PSIxMDAiIGNsYXNzPSJmMyIvPjxyZWN0IHg9IjI1MCIgeT0iMjUwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgY2xhc3M9ImYiLz48cmVjdCB4PSI0NDAiIHk9IjIwMCIgd2lkdGg9IjE1MCIgaGVpZ2h0PSIyMDAiIGNsYXNzPSJmMiIvPjxyZWN0IHg9IjYzMCIgeT0iMTIwIiB3aWR0aD0iMTkwIiBoZWlnaHQ9IjI4MCIgY2xhc3M9ImYzIi8+Cjx0ZXh0IHg9IjgwIiB5PSIzMzUiIGNsYXNzPSJzIGIiPkdST1VQIEk8L3RleHQ+PHRleHQgeD0iODAiIHk9IjM2MiIgY2xhc3M9Im0iPjUlIChEQURTIDMlKTwvdGV4dD48dGV4dCB4PSI4MCIgeT0iMzg1IiBjbGFzcz0ibSI+c2ltcGxlPC90ZXh0Pgo8dGV4dCB4PSIyNzAiIHk9IjI4NSIgY2xhc3M9InMgYiI+R1JPVVAgSUk8L3RleHQ+PHRleHQgeD0iMjcwIiB5PSIzMTIiIGNsYXNzPSJtIj42JSAoREFEUyAzLjYlKTwvdGV4dD48dGV4dCB4PSIyNzAiIHk9IjMzNSIgY2xhc3M9Im0iPm1vZGVyYXRlOiBtYWxsczwvdGV4dD4KPHRleHQgeD0iNDYwIiB5PSIyMzUiIGNsYXNzPSJzIGIiPkdST1VQIElJSTwvdGV4dD48dGV4dCB4PSI0NjAiIHk9IjI2MiIgY2xhc3M9Im0iPjclIChEQURTIDQuMiUpPC90ZXh0Pjx0ZXh0IHg9IjQ2MCIgeT0iMjg1IiBjbGFzcz0ibSI+ZXhjZXB0aW9uYWw8L3RleHQ+Cjx0ZXh0IHg9IjY1MCIgeT0iMTU1IiBjbGFzcz0icyBiIj5SRVNJREVOQ0VTPC90ZXh0Pjx0ZXh0IHg9IjY1MCIgeT0iMTgyIiBjbGFzcz0ibSI+MTAlIChEQURTIDYlKTwvdGV4dD4KPHRleHQgeD0iNjAiIHk9IjQ1MCIgY2xhc3M9Im0iPkRBRFMgPSA2MCUgb2YgREFFRFMuIE1lbW9yeSB0cmljazogNSwgNiwgNyBhcyBjb21wbGV4aXR5IHJpc2VzLjwvdGV4dD4KPC9zdmc+Cg=="
+    },
+    {
+      "s": "Egyptian, Greek and Roman Architecture",
+      "q": "Greek architecture used which set of materials?",
+      "o": [
+        "Concrete and brick only",
+        "Timber and thatch only",
+        "Steel and glass",
+        "Marble, stone, and terra cotta"
+      ],
+      "c": 3,
+      "ref": "General architectural-history references on ancient Egyptian, Greek, and Roman building",
+      "n": "Greece had marble and limestone quarries. No concrete: that is the Roman trick."
+    },
+    {
+      "s": "Filipino Architects and Works",
+      "q": "Which architect designed the Pearl Farm Beach Resort in Davao?",
+      "o": [
+        "Jorge Ramos",
+        "Federico Ilustre",
+        "Manuel Manosa",
+        "Francisco Manosa"
+      ],
+      "c": 3,
+      "ref": "General references on Filipino architecture; National Artists and notable Filipino architects",
+      "n": "Mañosa is the Filipino vernacular master, known for the 'Tropical Filipino' style with bamboo, thatch, and native forms."
+    },
+    {
+      "s": "Architect's Fees and Practice",
+      "q": "Architect, staff, and consultant fees count as which kind of cost in compensation computations?",
+      "o": [
+        "Total cost",
+        "Direct cost",
+        "Indirect cost",
+        "Partial cost"
+      ],
+      "c": 1,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees (DAEDS/DADS) and payment schedule; UAP Doc 205 (Post-Construction Services)",
+      "n": "They are direct personnel expenses, the people who actually do the work."
+    },
+    {
+      "s": "Gothic Cathedrals and Renaissance",
+      "q": "Which French Gothic cathedral had the loftiest (highest) vault, which later collapsed?",
+      "o": [
+        "Beauvais",
+        "Chartres",
+        "Reims",
+        "Amiens"
+      ],
+      "c": 0,
+      "ref": "General architectural-history references on French Gothic cathedrals and the Renaissance",
+      "n": "Beauvais aimed for the sky and fell, like a tower of blocks stacked one too high. Word root: Gothic was a Renaissance insult after the Goths."
+    },
+    {
+      "s": "International Architects and Quotes",
+      "q": "Which work is by Louis Sullivan?",
+      "o": [
+        "Robie House",
+        "Wainwright Building",
+        "Guggenheim Museum",
+        "Seagram Building"
+      ],
+      "c": 1,
+      "ref": "General architectural-history references on modern and contemporary architects",
+      "n": "The Wainwright Building in St. Louis is an early steel-frame skyscraper. Sullivan's famous line is 'form follows function'."
+    },
+    {
+      "s": "Architect's Fees and Practice",
+      "q": "What is the maximum percentage of gross rentals for post-construction services?",
+      "o": [
+        "6%",
+        "4%",
+        "10%",
+        "8%"
+      ],
+      "c": 0,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees (DAEDS/DADS) and payment schedule; UAP Doc 205 (Post-Construction Services)",
+      "n": "Range is 4% to 6%: the top is 6%."
+    },
+    {
+      "s": "Gothic Cathedrals and Renaissance",
+      "q": "Which cathedral is known as the coronation church of French kings?",
+      "o": [
+        "Reims",
+        "Beauvais",
+        "Amiens",
+        "Chartres"
+      ],
+      "c": 0,
+      "ref": "General architectural-history references on French Gothic cathedrals and the Renaissance",
+      "n": "Kings were crowned in Reims, so it is the royal ceremony hall."
+    },
+    {
+      "s": "International Architects and Quotes",
+      "q": "Which architect said 'A house is a machine for living in'?",
+      "o": [
+        "Louis Kahn",
+        "Mies van der Rohe",
+        "Alvar Aalto",
+        "Le Corbusier"
+      ],
+      "c": 3,
+      "ref": "General architectural-history references on modern and contemporary architects",
+      "n": "A machine is efficient and plain, so Le Corbusier wanted houses to be the same."
+    },
+    {
+      "s": "Architect's Fees and Practice",
+      "q": "Annual gross rentals are P20,000,000. Using the 4% to 6% range, what is the post-construction fee range?",
+      "o": [
+        "P400,000 to P600,000",
+        "P200,000 to P300,000",
+        "P800,000 to P1,200,000",
+        "P1,200,000 to P1,800,000"
+      ],
+      "c": 2,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees (DAEDS/DADS) and payment schedule; UAP Doc 205 (Post-Construction Services)",
+      "n": "The recall noted 3 to 4 computation questions on this, with 20M and 15M as examples. For P15M the range is P600,000 to P900,000."
+    }
+  ]
+}
