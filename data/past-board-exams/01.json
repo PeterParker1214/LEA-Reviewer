@@ -1,0 +1,1060 @@
+{
+  "figures": {
+    "f1": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5Eb3VibGUgRmFjYWRlIHdpdGggVmVydGljYWwgRmluczwvdGV4dD4KCjxyZWN0IHg9IjI1MCIgeT0iOTAiIHdpZHRoPSIxMiIgaGVpZ2h0PSIzMzAiIGNsYXNzPSJmIi8+PHJlY3QgeD0iNDIwIiB5PSI5MCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjMzMCIgY2xhc3M9ImYiLz4KPGcgY2xhc3M9InRoIj48bGluZSB4MT0iMzEwIiB5MT0iOTAiIHgyPSIzMTAiIHkyPSI0MjAiLz48bGluZSB4MT0iMzQwIiB5MT0iOTAiIHgyPSIzNDAiIHkyPSI0MjAiLz48bGluZSB4MT0iMzcwIiB5MT0iOTAiIHgyPSIzNzAiIHkyPSI0MjAiLz48L2c+CjxyZWN0IHg9IjMwNSIgeT0iOTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIzMzAiIGNsYXNzPSJmMiIvPjxyZWN0IHg9IjMzNSIgeT0iOTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIzMzAiIGNsYXNzPSJmMiIvPjxyZWN0IHg9IjM2NSIgeT0iOTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIzMzAiIGNsYXNzPSJmMiIvPgo8dGV4dCB4PSI0NzAiIHk9IjE1MCIgY2xhc3M9InMgYiI+T3V0ZXIgZ2xhc3MgbGF5ZXI8L3RleHQ+PHRleHQgeD0iNDcwIiB5PSIyNTAiIGNsYXNzPSJzIGIiPlZlcnRpY2FsIGZpbnMgKHNoYWRlLCBjdXQgZ2xhcmUpPC90ZXh0Pjx0ZXh0IHg9IjQ3MCIgeT0iMzUwIiBjbGFzcz0icyBiIj5Jbm5lciBnbGFzcyBsYXllcjwvdGV4dD4KPHRleHQgeD0iNDAiIHk9IjQ3MCIgY2xhc3M9Im0iPlR3byBnbGFzcyBza2lucyArIGFpciBnYXAgPSBkb3VibGUgZ2xhemluZy4gU3VuIGNvbWVzIGluIHNpZGV3YXlzLCBzbyBmaW5zIGJsb2NrIGl0LjwvdGV4dD4KPC9zdmc+Cg==",
+    "f2": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5QYXJ0cyBvZiB0aGUgQmFoYXkgS3VibyAoc2VjdGlvbik8L3RleHQ+Cgo8bGluZSB4MT0iNjAiIHkxPSI0MjAiIHgyPSI4NDAiIHkyPSI0MjAiIGNsYXNzPSJsIi8+CjxsaW5lIHgxPSIyMjAiIHkxPSIyNjAiIHgyPSIyMjAiIHkyPSI0MjAiIGNsYXNzPSJsIi8+PGxpbmUgeDE9IjQ0MCIgeTE9IjI2MCIgeDI9IjQ0MCIgeTI9IjQyMCIgY2xhc3M9ImwiLz48bGluZSB4MT0iNjYwIiB5MT0iMjYwIiB4Mj0iNjYwIiB5Mj0iNDIwIiBjbGFzcz0ibCIvPgo8cmVjdCB4PSIxODAiIHk9IjI0OCIgd2lkdGg9IjUyMCIgaGVpZ2h0PSIxMiIgY2xhc3M9ImYyIi8+Cjxwb2x5Z29uIHBvaW50cz0iMTcwLDEyMCAzNjAsNTAgNTUwLDEyMCIgY2xhc3M9ImYyIi8+CjxyZWN0IHg9IjE5MCIgeT0iMTIwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjEyOCIgY2xhc3M9ImYiLz4KPHJlY3QgeD0iMjUwIiB5PSIxNTAiIHdpZHRoPSI3MCIgaGVpZ2h0PSI1NSIgY2xhc3M9ImYzIi8+CjxsaW5lIHgxPSI1MzAiIHkxPSIxOTAiIHgyPSI2MTAiIHkyPSIxOTAiIGNsYXNzPSJsIi8+CjxsaW5lIHgxPSI1NDUiIHkxPSIxOTAiIHgyPSI1NDUiIHkyPSIxNjUiIGNsYXNzPSJ0aCIvPjxsaW5lIHgxPSI1NzUiIHkxPSIxOTAiIHgyPSI1NzUiIHkyPSIxNjUiIGNsYXNzPSJ0aCIvPgo8dGV4dCB4PSIyMDUiIHk9IjEwOCIgY2xhc3M9Im0iPkJVTFdBR0FOOiBsaXZpbmcgLyBkaW5pbmcgLyBzbGVlcGluZzwvdGV4dD4KPHRleHQgeD0iMjQwIiB5PSIyMjUiIGNsYXNzPSJtIj4oZHVuZ2F3YW4gPSB3aW5kb3cgYWJvdmUpPC90ZXh0Pgo8dGV4dCB4PSI1MjAiIHk9IjE1MCIgY2xhc3M9Im0gYiI+QkFOR0dFUkFIQU48L3RleHQ+PHRleHQgeD0iNTIwIiB5PSIxNjgiIGNsYXNzPSJtIj5zbGF0dGVkIHV0ZW5zaWwgcmFjazwvdGV4dD4KPHRleHQgeD0iNTYwIiB5PSIyOTAiIGNsYXNzPSJtIGIiPkJBVEFMQU48L3RleHQ+PHRleHQgeD0iNTYwIiB5PSIzMDgiIGNsYXNzPSJtIj5vcGVuIHdldCBhcmVhOiB3YXNoIC8gbGF1bmRyeTwvdGV4dD4KPHRleHQgeD0iMjE1IiB5PSIzNTAiIGNsYXNzPSJtIGIiPlNJTE9ORzwvdGV4dD48dGV4dCB4PSIyMTUiIHk9IjM2OCIgY2xhc3M9Im0iPnVuZGVyLWZsb29yOiBzdG9yYWdlLCB0b29scywgYW5pbWFsczwvdGV4dD4KPHRleHQgeD0iMTkwIiB5PSI0ODAiIGNsYXNzPSJtIj5CYW1ib28gc2xhdCBmbG9vcjogYWlyIGFuZCBzcGlsbHMgcGFzcyB0aHJvdWdoPC90ZXh0Pgo8L3N2Zz4K",
+    "f3": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5QRCAxMDk2IFZpb2xhdGlvbiBDbGFzc2VzIChJUlIgUnVsZSBJSSk8L3RleHQ+Cgo8cmVjdCB4PSI2MCIgeT0iMzAwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjExMCIgY2xhc3M9ImYzIi8+PHJlY3QgeD0iMzMwIiB5PSIyMzAiIHdpZHRoPSIyNDAiIGhlaWdodD0iMTgwIiBjbGFzcz0iZiIvPjxyZWN0IHg9IjYwMCIgeT0iMTUwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjI2MCIgY2xhc3M9ImYyIi8+Cjx0ZXh0IHg9Ijc1IiB5PSIzMzAiIGNsYXNzPSJzIGIiPkxJR0hUICBQNSwwMDA8L3RleHQ+PHRleHQgeD0iNzUiIHk9IjM2MCIgY2xhc3M9Im0iPm5vIHBvc3RlZCBjZXJ0aWZpY2F0ZTwvdGV4dD48dGV4dCB4PSI3NSIgeT0iMzg1IiBjbGFzcz0ibSI+bm8gd29ya2VyIHNhZmV0eSBtZWFzdXJlczwvdGV4dD4KPHRleHQgeD0iMzQ1IiB5PSIyNjAiIGNsYXNzPSJzIGIiPkxFU1MgR1JBVkUgIFA4LDAwMDwvdGV4dD48dGV4dCB4PSIzNDUiIHk9IjI5MCIgY2xhc3M9Im0iPnVzZSB3aXRob3V0IENlcnQuIG9mPC90ZXh0Pjx0ZXh0IHg9IjM0NSIgeT0iMzEwIiBjbGFzcz0ibSI+T2NjdXBhbmN5PC90ZXh0Pgo8dGV4dCB4PSI2MTUiIHk9IjE4MCIgY2xhc3M9InMgYiI+R1JBVkUgIFAxMCwwMDA8L3RleHQ+PHRleHQgeD0iNjE1IiB5PSIyMTAiIGNsYXNzPSJtIj5jaGFuZ2Ugb2YgdXNlIHdpdGhvdXQ8L3RleHQ+PHRleHQgeD0iNjE1IiB5PSIyMzAiIGNsYXNzPSJtIj5jaGFuZ2UgY2VydGlmaWNhdGU8L3RleHQ+PHRleHQgeD0iNjE1IiB5PSIyNjAiIGNsYXNzPSJtIj5tb3JlIHRvIGxlc3MgZmlyZS1yZXNpc3RpdmU8L3RleHQ+PHRleHQgeD0iNjE1IiB5PSIyODAiIGNsYXNzPSJtIj5jb25zdHJ1Y3Rpb24gdHlwZTwvdGV4dD4KPHRleHQgeD0iNjAiIHk9IjQ1MCIgY2xhc3M9Im0iPkxhZGRlcjogbm90IHBvc3RpbmcgJmx0OyB1c2luZyB3aXRob3V0IGNlcnRpZmljYXRlICZsdDsgY2hhbmdpbmcgdXNlIHdpdGhvdXQgY2VydGlmaWNhdGU8L3RleHQ+Cjwvc3ZnPgo=",
+    "f4": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5Sb21hbmVzcXVlIHZzIEdvdGhpYyBBcmNoPC90ZXh0PgoKPHBhdGggZD0iTTEyMCAzODAgVjI1MCBBODAgODAgMCAwIDEgMjgwIDI1MCBWMzgwIiBjbGFzcz0ibCIvPgo8cmVjdCB4PSI5MCIgeT0iMjUwIiB3aWR0aD0iMzAiIGhlaWdodD0iMTMwIiBjbGFzcz0iZjIiLz48cmVjdCB4PSIyODAiIHk9IjI1MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjEzMCIgY2xhc3M9ImYyIi8+Cjx0ZXh0IHg9Ijk1IiB5PSI0MzAiIGNsYXNzPSJzIGIiPlJPTUFORVNRVUU8L3RleHQ+PHRleHQgeD0iOTUiIHk9IjQ1NSIgY2xhc3M9Im0iPnNlbWljaXJjdWxhciBhcmNoLCB0aGljayB3YWxscywgc21hbGwgd2luZG93czwvdGV4dD4KPHBhdGggZD0iTTU0MCAzODAgVjI2MCBRNTQwIDE3MCA2MjAgMTEwIFE3MDAgMTcwIDcwMCAyNjAgVjM4MCIgY2xhc3M9ImwiLz4KPHRleHQgeD0iNTQwIiB5PSI0MzAiIGNsYXNzPSJzIGIiPkdPVEhJQyAoZm9yIGNvbnRyYXN0KTwvdGV4dD48dGV4dCB4PSI1NDAiIHk9IjQ1NSIgY2xhc3M9Im0iPnBvaW50ZWQgYXJjaCwgYmlnIHdpbmRvd3MsIGJ1dHRyZXNzZXM8L3RleHQ+Cjx0ZXh0IHg9Ijk1IiB5PSI4MCIgY2xhc3M9Im0iPk1lbW9yeSB0cmljazogUm9tYW5lc3F1ZSA9IHJhaW5ib3cgKHJvdW5kKTsgR290aGljID0gcHJheWluZyBoYW5kcyAocG9pbnRlZCk8L3RleHQ+Cjwvc3ZnPgo=",
+    "f5": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5aaWdndXJhdCBvZiBVciAoc3RlcHBlZCBhbmQgdGVycmFjZWQpPC90ZXh0PgoKPHJlY3QgeD0iMTcwIiB5PSIzMzAiIHdpZHRoPSI1NjAiIGhlaWdodD0iNzAiIGNsYXNzPSJmMiIvPjxyZWN0IHg9IjI1MCIgeT0iMjY1IiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjY1IiBjbGFzcz0iZjIiLz4KPHJlY3QgeD0iMzMwIiB5PSIyMDAiIHdpZHRoPSIyNDAiIGhlaWdodD0iNjUiIGNsYXNzPSJmMiIvPjxyZWN0IHg9IjQwMCIgeT0iMTUwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjUwIiBjbGFzcz0iZiIvPgo8bGluZSB4MT0iMzAwIiB5MT0iNDUwIiB4Mj0iNDUwIiB5Mj0iMzMwIiBjbGFzcz0ibCIvPjxsaW5lIHgxPSI0NTAiIHkxPSI0NTAiIHgyPSI0NTAiIHkyPSIzMzAiIGNsYXNzPSJsIi8+PGxpbmUgeDE9IjYwMCIgeTE9IjQ1MCIgeDI9IjQ1MCIgeTI9IjMzMCIgY2xhc3M9ImwiLz4KPHRleHQgeD0iNTIwIiB5PSIxODAiIGNsYXNzPSJtIGIiPlNocmluZSAocmVsaWdpb3VzKTwvdGV4dD4KPHRleHQgeD0iNDAiIHk9IjQ4MCIgY2xhc3M9Im0iPjMgc3RhaXJ3YXlzIG1lZXQgYXQgb25lIGdhdGUuIE11ZC1icmljayBjb3JlLCBiYWtlZC1icmljayBza2luLiBTdGVwcGVkLCBub3Qgc21vb3RoIGxpa2UgYSBweXJhbWlkLjwvdGV4dD4KPC9zdmc+Cg==",
+    "f6": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5BbXBoaXRoZWF0ZXIgdnMgVGhlYXRlcjwvdGV4dD4KCjxlbGxpcHNlIGN4PSIyNDAiIGN5PSIyNTAiIHJ4PSIxNzAiIHJ5PSIxMTAiIGNsYXNzPSJmMiIvPjxlbGxpcHNlIGN4PSIyNDAiIGN5PSIyNTAiIHJ4PSI5MCIgcnk9IjQ1IiBjbGFzcz0iZiIvPgo8dGV4dCB4PSI3MCIgeT0iNDIwIiBjbGFzcz0icyBiIj5BTVBISVRIRUFURVI8L3RleHQ+PHRleHQgeD0iNzAiIHk9IjQ0NSIgY2xhc3M9Im0iPnNlYXRpbmcgYWxsIGFyb3VuZCAoZ2xhZGlhdG9ycyk8L3RleHQ+CjxwYXRoIGQ9Ik01MjAgMzIwIEExNDAgMTQwIDAgMCAxIDgwMCAzMjAgWiIgY2xhc3M9ImYyIi8+PHBhdGggZD0iTTU3MCAzMjAgQTkwIDkwIDAgMCAxIDc1MCAzMjAgWiIgY2xhc3M9ImYiLz4KPHJlY3QgeD0iNTIwIiB5PSIzMjAiIHdpZHRoPSIyODAiIGhlaWdodD0iMzUiIGNsYXNzPSJmMyIvPjx0ZXh0IHg9IjYyMCIgeT0iMzQ0IiBjbGFzcz0ibSI+c3RhZ2U8L3RleHQ+Cjx0ZXh0IHg9IjUyMCIgeT0iNDIwIiBjbGFzcz0icyBiIj5USEVBVEVSPC90ZXh0Pjx0ZXh0IHg9IjUyMCIgeT0iNDQ1IiBjbGFzcz0ibSI+c2VtaWNpcmNsZSAocGxheXMsIGVudGVydGFpbm1lbnQpPC90ZXh0Pgo8L3N2Zz4K"
+  },
+  "questions": [
+    {
+      "s": "Bauhaus Dessau",
+      "q": "What composition principle was applied in the Bauhaus Dessau layout?",
+      "o": [
+        "Asymmetrical",
+        "Symmetrical",
+        "Radial",
+        "Centered"
+      ],
+      "c": 0,
+      "ref": "General references on the Bauhaus Dessau building (Walter Gropius, 1925-26)",
+      "n": "Three wings spin off a central hub like a pinwheel, balanced without being mirrored."
+    },
+    {
+      "s": "Ziggurat of Ur",
+      "q": "What was the main purpose of the ziggurat?",
+      "o": [
+        "Religious temple",
+        "Tomb",
+        "Fortress",
+        "Civic hall"
+      ],
+      "c": 0,
+      "ref": "General references on Mesopotamian architecture; Ziggurat of Ur (Ur-Nammu)",
+      "n": "It served the city's moon god. Pyramids are tombs; ziggurats are stairways to a shrine. Word root: Akkadian ziqqurratu, 'temple tower', from zaqaru, 'to build high'."
+    },
+    {
+      "s": "Architect Roles (RA 9266)",
+      "q": "Who assumes civil liability for the architectural plans, specifications, and contract documents he or she signed and sealed?",
+      "o": [
+        "Architect-of-Record (AOR)",
+        "Architect-in-Charge of Construction (AICC)",
+        "Consulting Architect",
+        "Foreign Architect"
+      ],
+      "c": 0,
+      "ref": "RA 9266 (Architecture Act of 2004) and its IRR, definitions of Architect-of-Record, AICC, Consulting Architect, Foreign Architect",
+      "n": "Signing and sealing means accepting liability for that work."
+    },
+    {
+      "s": "SDG 2 Zero Hunger: Home Growing",
+      "q": "Which system grows plants without soil, using only water with dissolved nutrients?",
+      "o": [
+        "Aquaponics",
+        "Hydroponics",
+        "Container gardening",
+        "Aeroponics"
+      ],
+      "c": 1,
+      "ref": "UN Sustainable Development Goal 2 (Zero Hunger); urban-agriculture terminology",
+      "n": "Word root: Greek hydor (water) + ponos (labor), so 'water-working'. Roots sit in water; no fish involved."
+    },
+    {
+      "s": "Roman Architecture",
+      "q": "Which Roman structure was dedicated to the gods?",
+      "o": [
+        "Temple",
+        "Thermae",
+        "Basilica",
+        "Forum"
+      ],
+      "c": 0,
+      "ref": "General architectural-history references on ancient Roman building types",
+      "n": "Word root: Latin templum, a space marked off as sacred. Thermae were public baths (Greek thermos = hot)."
+    },
+    {
+      "s": "Architect Roles (RA 9266)",
+      "q": "Which architect is directly responsible for construction supervision of a project?",
+      "o": [
+        "Foreign Architect",
+        "Consulting Architect",
+        "Architect-in-Charge of Construction (AICC)",
+        "Architect-of-Record (AOR)"
+      ],
+      "c": 2,
+      "ref": "RA 9266 (Architecture Act of 2004) and its IRR, definitions of Architect-of-Record, AICC, Consulting Architect, Foreign Architect",
+      "n": "AOR = design on paper; AICC = design on site."
+    },
+    {
+      "s": "Arthaland Century Pacific Tower",
+      "q": "Which tropical design element is used in the tower's facade?",
+      "o": [
+        "Egg-crate shading",
+        "Vertical fins",
+        "Ceramic tinting only",
+        "Horizontal louvers"
+      ],
+      "c": 1,
+      "ref": "Public project descriptions by Arthaland, GFP Architects, and the IFC EDGE / World GBC case study",
+      "n": "Vertical fins sit between two glass layers to cut heat and glare. Think of them as the tower's sun-blocking eyelashes.",
+      "fig": "f1"
+    },
+    {
+      "s": "Architect Roles (RA 9266)",
+      "q": "Which architect is engaged for recognized expertise in a particular branch of architecture?",
+      "o": [
+        "Foreign Architect",
+        "Architect-in-Charge of Construction (AICC)",
+        "Architect-of-Record (AOR)",
+        "Consulting Architect"
+      ],
+      "c": 3,
+      "ref": "RA 9266 (Architecture Act of 2004) and its IRR, definitions of Architect-of-Record, AICC, Consulting Architect, Foreign Architect",
+      "n": "A consultant is the specialist you call in, like a heritage or acoustics specialist. The recall list shortened this role to 'PCA'."
+    },
+    {
+      "s": "Parts of the Bahay Kubo",
+      "q": "Which part is the main hall used for living, dining, and sleeping?",
+      "o": [
+        "Soleras",
+        "Silid",
+        "Bulwagan",
+        "Batalan"
+      ],
+      "c": 2,
+      "ref": "Diksyonaryong Biswal term list cited in the supplied recall; common Filipino vernacular-architecture usage",
+      "n": "The bulwagan is the big shared room, the 'hall'. Silid is a separate small room. Think of the bulwagan as a studio apartment's main space.",
+      "fig": "f2"
+    },
+    {
+      "s": "Frank Lloyd Wright",
+      "q": "Fallingwater belongs to which architectural idea?",
+      "o": [
+        "Art Deco",
+        "Brutalism",
+        "International Style",
+        "Organic architecture"
+      ],
+      "c": 3,
+      "ref": "General references on Frank Lloyd Wright's life and works",
+      "n": "Organic means building and nature grow together. Fallingwater sits over a waterfall like a tree growing from the rock."
+    },
+    {
+      "s": "Roman Architecture",
+      "q": "Which Roman structure was used for public gatherings, courts, and civic business?",
+      "o": [
+        "Thermae",
+        "Basilica",
+        "Forum",
+        "Temple"
+      ],
+      "c": 1,
+      "ref": "General architectural-history references on ancient Roman building types",
+      "n": "Word root: Greek basilike stoa, 'royal portico'. Think of a town hall."
+    },
+    {
+      "s": "Parts of the Bahay Kubo",
+      "q": "Which permeable, outward-projecting platform or rack is used to hold and dry kitchen utensils?",
+      "o": [
+        "Banggerahan",
+        "Silong",
+        "Soleras",
+        "Dungawan"
+      ],
+      "c": 0,
+      "ref": "Diksyonaryong Biswal term list cited in the supplied recall; common Filipino vernacular-architecture usage",
+      "n": "The banggerahan is a slatted rack that sticks out so water drips off. Dungawan means window (from dungaw, to peek out). Think of it as a built-in dish rack.",
+      "fig": "f2"
+    },
+    {
+      "s": "Architect's Fee (RBF)",
+      "q": "What is the project construction cost (PCC)?",
+      "o": [
+        "P47,500,000",
+        "P50,000,000",
+        "P4,750,000",
+        "P57,000,000"
+      ],
+      "c": 0,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees and payment phases",
+      "n": "PCC = area x cost per sq m. Think of it as the building's price tag before fees."
+    },
+    {
+      "s": "Conservation vs Development: Intramuros",
+      "q": "Which strategy helps balance preservation and modernization?",
+      "o": [
+        "Full demolition",
+        "Adaptive reuse",
+        "Reconstruction without records",
+        "Frozen preservation with no use"
+      ],
+      "c": 1,
+      "ref": "General heritage-conservation practice (Intramuros / Casa Manila context)",
+      "n": "Keep the shell, give it a new job. Like turning an old train station into a museum."
+    },
+    {
+      "s": "Architect's Fee (RBF)",
+      "q": "What is the RBF for architectural services only?",
+      "o": [
+        "P3,325,000",
+        "P2,850,000",
+        "P1,710,000",
+        "P1,995,000"
+      ],
+      "c": 3,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees and payment phases",
+      "n": "Architectural-only = 60% of the A&E fee. A quick trick: multiples of 0.6 help you eliminate wrong choices fast. If your exam used the 6% table instead, the answer would be P1,710,000."
+    },
+    {
+      "s": "Universal Principles of Design",
+      "q": "Panic doors with lever handles that need little force illustrate which principle?",
+      "o": [
+        "Equitable Use",
+        "Tolerance for Error",
+        "Flexibility in Use",
+        "Low Physical Effort"
+      ],
+      "c": 3,
+      "ref": "Center for Universal Design (NC State), Principles of Universal Design",
+      "n": "A lever works with an elbow; a knob needs a grip. Less strength needed means more people can use it."
+    },
+    {
+      "s": "Space Dimensions",
+      "q": "Under the 2024 Revised IRR of BP 344, what is the minimum size of an accessible toilet cubicle?",
+      "o": [
+        "1.20 m x 1.20 m",
+        "1.80 m x 1.80 m",
+        "1.50 m x 1.50 m",
+        "1.70 m x 1.80 m"
+      ],
+      "c": 1,
+      "ref": "2024 Revised Implementing Rules and Regulations of BP 344, NCDA/DPWH",
+      "n": "The older IRR used 1.70 x 1.80 m; the 2024 revision enlarged it to a square 1.80 m. 1.80 m is also the wheelchair turning space."
+    },
+    {
+      "s": "Roman Architecture",
+      "q": "Which Roman structure was the open city center and marketplace?",
+      "o": [
+        "Temple",
+        "Forum",
+        "Thermae",
+        "Basilica"
+      ],
+      "c": 1,
+      "ref": "General architectural-history references on ancient Roman building types",
+      "n": "The forum was the city's open living room. Word root: Latin forum, an open public place (related to foris, outside)."
+    },
+    {
+      "s": "Architect Roles (RA 9266)",
+      "q": "Which architect is responsible for the plans and specifications and signs and seals them?",
+      "o": [
+        "Architect-in-Charge of Construction (AICC)",
+        "Architect-of-Record (AOR)",
+        "Consulting Architect",
+        "Foreign Architect"
+      ],
+      "c": 1,
+      "ref": "RA 9266 (Architecture Act of 2004) and its IRR, definitions of Architect-of-Record, AICC, Consulting Architect, Foreign Architect",
+      "n": "AOR owns the design documents. Think of the AOR as the author whose name is on the book."
+    },
+    {
+      "s": "Architect's Fee (RBF)",
+      "q": "For architectural-only services, what percentage of the RBF should the architect have received after completing schematic design and design development?",
+      "o": [
+        "35%",
+        "25%",
+        "65%",
+        "60%"
+      ],
+      "c": 0,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees and payment phases",
+      "n": "Cumulative payments: 5% on signing, plus 10% at schematic design (15%), plus 20% at design development (35%). Some textbooks print slightly different phase splits, so confirm against your reviewer.",
+      "img": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5DdW11bGF0aXZlIEZlZSBNaWxlc3RvbmVzIChVQVAgRG9jIDIwMik8L3RleHQ+Cgo8cmVjdCB4PSI2MCIgeT0iMjAwIiB3aWR0aD0iNDAiIGhlaWdodD0iODAiIGNsYXNzPSJmMyIvPjxyZWN0IHg9IjEwMCIgeT0iMjAwIiB3aWR0aD0iODAiIGhlaWdodD0iODAiIGNsYXNzPSJmIi8+PHJlY3QgeD0iMTgwIiB5PSIyMDAiIHdpZHRoPSIxNjAiIGhlaWdodD0iODAiIGNsYXNzPSJmMiIvPjxyZWN0IHg9IjM0MCIgeT0iMjAwIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjgwIiBjbGFzcz0iZiIvPgo8dGV4dCB4PSI1NSIgeT0iMTkwIiBjbGFzcz0ibSI+NSU8L3RleHQ+PHRleHQgeD0iMTA1IiB5PSIxOTAiIGNsYXNzPSJtIj4rMTAgPSAxNSU8L3RleHQ+PHRleHQgeD0iMjA1IiB5PSIxOTAiIGNsYXNzPSJtIj4rMjAgPSAzNSU8L3RleHQ+Cjx0ZXh0IHg9IjQwIiB5PSIzMjAiIGNsYXNzPSJtIj5TaWduaW5nPC90ZXh0Pjx0ZXh0IHg9IjEwMCIgeT0iMzQ1IiBjbGFzcz0ibSI+U2NoZW1hdGljIGRlc2lnbjwvdGV4dD48dGV4dCB4PSIyMDAiIHk9IjM3MCIgY2xhc3M9Im0iPkRlc2lnbiBkZXZlbG9wbWVudDwvdGV4dD4KPHRleHQgeD0iMzgwIiB5PSIyNDUiIGNsYXNzPSJtIj5Db250cmFjdCBkb2N1bWVudHMsIGNvbnN0cnVjdGlvbiwgcmV0ZW50aW9uICh0byAxMDAlKTwvdGV4dD4KPHRleHQgeD0iNDAiIHk9IjQ0MCIgY2xhc3M9InMgYiI+QWZ0ZXIgZGVzaWduIGRldmVsb3BtZW50LCAzNSUgb2YgdGhlIGZlZSBpcyBkdWUgKGN1bXVsYXRpdmUpLjwvdGV4dD4KPC9zdmc+Cg=="
+    },
+    {
+      "s": "PD 1096 Violations",
+      "q": "Failure to provide or install safety measures for workers, inspectors, visitors, neighbors, and pedestrians is which class of violation?",
+      "o": [
+        "Grave",
+        "Severe",
+        "Less grave",
+        "Light"
+      ],
+      "c": 3,
+      "ref": "PD 1096 Revised IRR, Rule II, Sec. 212 (Administrative Fines)",
+      "n": "Surprising but true: it is listed under light violations in the IRR.",
+      "fig": "f3"
+    },
+    {
+      "s": "Romanesque Architecture",
+      "q": "What is the typical arch of Romanesque architecture?",
+      "o": [
+        "Semicircular",
+        "Pointed",
+        "Ogee",
+        "Horseshoe"
+      ],
+      "c": 0,
+      "ref": "General architectural-history references on Romanesque architecture",
+      "n": "Romanesque uses the round, semicircular arch inherited from Rome. Word root: Roman + -esque (Italian -esco, 'in the manner of'), so 'Roman-like'. Memory trick: Romanesque = rainbow arch (round); Gothic = praying-hands arch (pointed).",
+      "fig": "f4"
+    },
+    {
+      "s": "Frank Lloyd Wright",
+      "q": "Which FLW work, built over a waterfall, is often called one of America's greatest buildings?",
+      "o": [
+        "Solomon R. Guggenheim Museum",
+        "Robie House",
+        "Taliesin West",
+        "Fallingwater"
+      ],
+      "c": 3,
+      "ref": "General references on Frank Lloyd Wright's life and works",
+      "n": "The Guggenheim is a spiral museum, not a waterfall house."
+    },
+    {
+      "s": "Conservation vs Development: Intramuros",
+      "q": "What does retrofitting an existing building mean?",
+      "o": [
+        "Rebuilding it from old drawings",
+        "Adding or upgrading systems and performance after the building was built",
+        "Demolishing it and rebuilding it",
+        "Only repainting the facade"
+      ],
+      "c": 1,
+      "ref": "General heritage-conservation practice (Intramuros / Casa Manila context)",
+      "n": "Word root: Latin retro (backward) + fit. 'Fitting in later', like adding a seat belt to an old car."
+    },
+    {
+      "s": "Ziggurat of Ur",
+      "q": "How many main stairways lead up the Ziggurat of Ur?",
+      "o": [
+        "3",
+        "1",
+        "2",
+        "4"
+      ],
+      "c": 0,
+      "ref": "General references on Mesopotamian architecture; Ziggurat of Ur (Ur-Nammu)",
+      "n": "Three staircases meet at a gateway on the first terrace. Think of a three-lane road merging into one gate.",
+      "fig": "f5"
+    },
+    {
+      "s": "Space Dimensions",
+      "q": "What is the minimum ceiling height of a habitable room with natural ventilation?",
+      "o": [
+        "3.00 m",
+        "2.10 m",
+        "2.40 m",
+        "2.70 m"
+      ],
+      "c": 3,
+      "ref": "PD 1096 Revised IRR, Rules VII-VIII (light and ventilation)",
+      "n": "Natural ventilation needs more height so warm air rises above people. Word root: ventilare, Latin 'to fan', from ventus (wind)."
+    },
+    {
+      "s": "Architect's Fee (RBF)",
+      "q": "The client increases the floor area by 390 sq m. What is the new RBF for architectural services only?",
+      "o": [
+        "P2,712,000",
+        "P4,520,000",
+        "P2,412,000",
+        "P2,814,000"
+      ],
+      "c": 0,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees and payment phases",
+      "n": "The new PCC passes P50M, so the first P50M is charged at 7% and the excess at 6%, then 60% is taken for architectural-only."
+    },
+    {
+      "s": "PD 1096 Violations",
+      "q": "Changing the existing use or occupancy without a Certificate of Change of Occupancy/Use/Operation is which class of violation?",
+      "o": [
+        "Grave",
+        "Severe",
+        "Less grave",
+        "Light"
+      ],
+      "c": 0,
+      "ref": "PD 1096 Revised IRR, Rule II, Sec. 212 (Administrative Fines)",
+      "n": "Changing use changes fire and life-safety demands, so it ranks highest. Grave = P10,000 fine.",
+      "fig": "f3"
+    },
+    {
+      "s": "Universal Principles of Design",
+      "q": "How many principles of universal design are there?",
+      "o": [
+        "10",
+        "5",
+        "7",
+        "6"
+      ],
+      "c": 2,
+      "ref": "Center for Universal Design (NC State), Principles of Universal Design",
+      "n": "The 7: equitable use, flexibility, simple and intuitive, perceptible information, tolerance for error, low physical effort, size and space for approach and use."
+    },
+    {
+      "s": "Space Dimensions",
+      "q": "What is the minimum clear ceiling height for a mezzanine?",
+      "o": [
+        "2.00 m",
+        "1.80 m",
+        "2.30 m",
+        "1.50 m"
+      ],
+      "c": 1,
+      "ref": "PD 1096 Revised IRR, Rules VII-VIII (light and ventilation)",
+      "n": "Word root: Italian mezzano, 'middle', a half-floor between floors. It is the lowest ceiling in the set."
+    },
+    {
+      "s": "Types of Specification",
+      "q": "A specification that requires compliance with ASTM, PNS, or similar published standards is called what?",
+      "o": [
+        "Narrative specification",
+        "Performance specification",
+        "Proprietary specification",
+        "Reference-standard specification"
+      ],
+      "c": 3,
+      "ref": "Standard construction-specification practice (CSI-style spec types)",
+      "n": "It borrows a published rulebook instead of listing every detail."
+    },
+    {
+      "s": "Space Dimensions",
+      "q": "What is the minimum ceiling height of a habitable room with artificial ventilation?",
+      "o": [
+        "2.70 m",
+        "2.40 m",
+        "2.10 m",
+        "1.80 m"
+      ],
+      "c": 1,
+      "ref": "PD 1096 Revised IRR, Rules VII-VIII (light and ventilation)",
+      "n": "A fan or aircon does the airflow work, so the room can be lower. Natural 2.70, artificial 2.40."
+    },
+    {
+      "s": "Romanesque Architecture",
+      "q": "What kind of walls are typical of Romanesque buildings?",
+      "o": [
+        "Thick, heavy masonry walls",
+        "Light timber-frame screens",
+        "Thin walls braced by flying buttresses",
+        "Thin glass curtain walls"
+      ],
+      "c": 0,
+      "ref": "General architectural-history references on Romanesque architecture",
+      "n": "Mass is the structure. The walls themselves hold the weight, unlike Gothic where ribs and buttresses do the work."
+    },
+    {
+      "s": "Universal Principles of Design",
+      "q": "A single accessible entrance used by all users is an example of which principle?",
+      "o": [
+        "Flexibility in Use",
+        "Low Physical Effort",
+        "Equitable Use",
+        "Tolerance for Error"
+      ],
+      "c": 2,
+      "ref": "Center for Universal Design (NC State), Principles of Universal Design",
+      "n": "Word root: Latin aequus, 'level, equal'. One door for everyone, no separate side door."
+    },
+    {
+      "s": "Frank Lloyd Wright",
+      "q": "What do you call Wright's custom-designed concrete blocks reinforced with steel rods?",
+      "o": [
+        "Brick veneer",
+        "Hollow blocks",
+        "Textile blocks",
+        "Glass blocks"
+      ],
+      "c": 2,
+      "ref": "General references on Frank Lloyd Wright's life and works",
+      "n": "Patterned blocks are knitted together with rods like threads in fabric. Word root: textile = 'woven', from Latin texere."
+    },
+    {
+      "s": "PD 1096 Violations",
+      "q": "Failure to post the Certificate of Occupancy/Use/Operation is which class of violation?",
+      "o": [
+        "Grave",
+        "Less grave",
+        "Light",
+        "Severe"
+      ],
+      "c": 2,
+      "ref": "PD 1096 Revised IRR, Rule II, Sec. 212 (Administrative Fines)",
+      "n": "Posting is a paperwork-visibility issue, not a danger. Light = P5,000 fine.",
+      "fig": "f3"
+    },
+    {
+      "s": "Bauhaus Dessau",
+      "q": "Which color palette best describes the Dessau building's exterior?",
+      "o": [
+        "Black, white, and grey",
+        "Yellow, blue, and red",
+        "Black, white, and orange",
+        "Black, white, and red"
+      ],
+      "c": 0,
+      "ref": "General references on the Bauhaus Dessau building (Walter Gropius, 1925-26)",
+      "n": "White walls, dark steel frames, and grey tones. Primary colors belong to Bauhaus graphics and interiors, not the building's exterior."
+    },
+    {
+      "s": "Space Dimensions",
+      "q": "For vent shafts, what minimum cross-sectional area is required for every meter of shaft height?",
+      "o": [
+        "0.10 sq m",
+        "0.20 sq m",
+        "0.40 sq m",
+        "0.30 sq m"
+      ],
+      "c": 0,
+      "ref": "PD 1096 Revised IRR, Rules VII-VIII (light and ventilation)",
+      "n": "Rule: 0.10 sq m per meter of height, but never less than 1.00 sq m, and least dimension not less than 600 mm. Taller shaft, bigger chimney."
+    },
+    {
+      "s": "Romanesque Architecture",
+      "q": "Romanesque architecture is most commonly described as a blend of which earlier traditions?",
+      "o": [
+        "Roman and Greek",
+        "Roman and Baroque",
+        "Roman and Gothic",
+        "Roman and Byzantine"
+      ],
+      "c": 3,
+      "ref": "General architectural-history references on Romanesque architecture",
+      "n": "Byzantine (from Byzantium) added domes and rich decoration to Roman arches and vaults. Gothic and Baroque came after Romanesque, so they cannot be ingredients of it."
+    },
+    {
+      "s": "Types of Specification",
+      "q": "A specification that states exact materials, composition, and installation method is called what?",
+      "o": [
+        "Descriptive (prescriptive) specification",
+        "Performance specification",
+        "Proprietary specification",
+        "Reference-standard specification"
+      ],
+      "c": 0,
+      "ref": "Standard construction-specification practice (CSI-style spec types)",
+      "n": "Prescriptive = 'written beforehand', like a recipe with exact ingredients and steps."
+    },
+    {
+      "s": "PD 1096 Violations",
+      "q": "Under the IRR fine schedule, what are the fines for light, less grave, and grave violations?",
+      "o": [
+        "P1,000, P5,000, P10,000",
+        "P8,000, P10,000, P20,000",
+        "P5,000, P10,000, P20,000",
+        "P5,000, P8,000, P10,000"
+      ],
+      "c": 3,
+      "ref": "PD 1096 Revised IRR, Rule II, Sec. 212 (Administrative Fines)",
+      "n": "Fines climb in steps of seriousness.",
+      "fig": "f3"
+    },
+    {
+      "s": "Universal Principles of Design",
+      "q": "Which principle uses color contrast, tactile, and audible cues so information reaches users with any sensory ability?",
+      "o": [
+        "Low Physical Effort",
+        "Flexibility in Use",
+        "Tolerance for Error",
+        "Perceptible Information"
+      ],
+      "c": 3,
+      "ref": "Center for Universal Design (NC State), Principles of Universal Design",
+      "n": "If you cannot see it, you can hear or feel it. Examples: tactile paving, audible elevator signals."
+    },
+    {
+      "s": "Bauhaus Dessau",
+      "q": "Which element expresses 'transparency' in the workshop wing of the Bauhaus Dessau?",
+      "o": [
+        "Brick screen",
+        "Glass blocks",
+        "Glass curtain wall",
+        "Pilotis"
+      ],
+      "c": 2,
+      "ref": "General references on the Bauhaus Dessau building (Walter Gropius, 1925-26)",
+      "n": "The curtain wall hangs on the structure like a window-curtain, so the glass can run corner to corner."
+    },
+    {
+      "s": "Romanesque Architecture",
+      "q": "Which window head shape is characteristic of Romanesque buildings?",
+      "o": [
+        "Flat-lintel strip window",
+        "Semicircular-arched window",
+        "Pointed-arch window",
+        "Ogee-arch window"
+      ],
+      "c": 1,
+      "ref": "General architectural-history references on Romanesque architecture",
+      "n": "Window heads echo the main arch: round for Romanesque, pointed for Gothic.",
+      "fig": "f4"
+    },
+    {
+      "s": "Bauhaus Dessau",
+      "q": "What roof type does the Bauhaus Dessau building have?",
+      "o": [
+        "Flat roof",
+        "Gable roof",
+        "Hip roof",
+        "Terraced roof"
+      ],
+      "c": 0,
+      "ref": "General references on the Bauhaus Dessau building (Walter Gropius, 1925-26)",
+      "n": "Flat roofs are a signature of Modernism."
+    },
+    {
+      "s": "Conservation vs Development: Intramuros",
+      "q": "What is a primary challenge of retrofitting heritage buildings?",
+      "o": [
+        "Modern codes do not apply to old buildings",
+        "No skilled workers exist at all",
+        "Heritage buildings can never be reused",
+        "Inserting new utility systems into old structures"
+      ],
+      "c": 3,
+      "ref": "General heritage-conservation practice (Intramuros / Casa Manila context)",
+      "n": "New ducts, pipes, and wires must fit without damaging old walls. Think of adding a modern kitchen to a grandmother's antique cabinet without cutting it."
+    },
+    {
+      "s": "Types of Specification",
+      "q": "What is the detailed written document that defines the quality, materials, workmanship, and procedures of a project?",
+      "o": [
+        "Schedule of finishes",
+        "General notes sheet",
+        "Bill of quantities",
+        "Construction specification"
+      ],
+      "c": 3,
+      "ref": "Standard construction-specification practice (CSI-style spec types)",
+      "n": "Drawings show what and where; specifications say how good and how built."
+    },
+    {
+      "s": "Arthaland Century Pacific Tower",
+      "q": "Besides LEED Platinum and BERDE 5-star, which other green rating did the tower achieve?",
+      "o": [
+        "Green Mark Platinum",
+        "EDGE Zero Carbon",
+        "BREEAM Outstanding",
+        "CASBEE S-rank"
+      ],
+      "c": 1,
+      "ref": "Public project descriptions by Arthaland, GFP Architects, and the IFC EDGE / World GBC case study",
+      "n": "It was the world's first EDGE Zero Carbon building. EDGE = Excellence in Design for Greater Efficiencies (IFC)."
+    },
+    {
+      "s": "Universal Principles of Design",
+      "q": "Railings and a zocalo (kick base) that reduce falls and accidents illustrate which principle?",
+      "o": [
+        "Flexibility in Use",
+        "Simple and Intuitive Use",
+        "Low Physical Effort",
+        "Tolerance for Error"
+      ],
+      "c": 3,
+      "ref": "Center for Universal Design (NC State), Principles of Universal Design",
+      "n": "Design assumes people slip, so it softens the mistake. Word root: zocalo comes from Italian zoccolo, 'little shoe', the base of a wall."
+    },
+    {
+      "s": "Parts of the Bahay Kubo",
+      "q": "Why are the floors of the bulwagan and batalan made of bamboo slats with small gaps?",
+      "o": [
+        "For ventilation and to let spills and dust pass through",
+        "To make the floor waterproof",
+        "To keep rats out",
+        "For flood control"
+      ],
+      "c": 0,
+      "ref": "Diksyonaryong Biswal term list cited in the supplied recall; common Filipino vernacular-architecture usage",
+      "n": "Gaps let air rise from the silong and let water and dirt fall through. Think of the floor as a giant kitchen strainer: air and liquids pass, people stay on top.",
+      "fig": "f2"
+    },
+    {
+      "s": "Parts of the Bahay Kubo",
+      "q": "What is the silong, the space under the raised floor of a bahay kubo, mainly used for?",
+      "o": [
+        "The main sleeping chamber",
+        "A children's playroom with a bamboo roof",
+        "Storing tools, firewood, and keeping small livestock",
+        "A formal guest entryway"
+      ],
+      "c": 2,
+      "ref": "Diksyonaryong Biswal term list cited in the supplied recall; common Filipino vernacular-architecture usage",
+      "n": "The silong is the shaded under-floor space. Word root: silong comes from the idea of taking shelter (sumilong = to take shelter). Think of it as the house's built-in garage and storeroom.",
+      "fig": "f2"
+    },
+    {
+      "s": "Bauhaus Dessau",
+      "q": "Which architect designed the Bauhaus building in Dessau?",
+      "o": [
+        "Walter Gropius",
+        "Frank Lloyd Wright",
+        "Mies van der Rohe",
+        "Le Corbusier"
+      ],
+      "c": 0,
+      "ref": "General references on the Bauhaus Dessau building (Walter Gropius, 1925-26)",
+      "n": "Gropius founded the Bauhaus and designed the Dessau school (1925-26). Word root: German Bau (building) + Haus (house)."
+    },
+    {
+      "s": "SDG 2 Zero Hunger: Home Growing",
+      "q": "Plants grown on stacked shelves or racks to save floor space are an example of what?",
+      "o": [
+        "Aquaponics",
+        "Container gardening",
+        "Vertical gardening",
+        "Aeroponics"
+      ],
+      "c": 2,
+      "ref": "UN Sustainable Development Goal 2 (Zero Hunger); urban-agriculture terminology",
+      "n": "Grow up, not out. Think of a bookshelf where each shelf is a garden."
+    },
+    {
+      "s": "Roman Architecture",
+      "q": "Which Roman structure is semicircular and used for plays and entertainment?",
+      "o": [
+        "Forum",
+        "Theater",
+        "Circus",
+        "Amphitheater"
+      ],
+      "c": 1,
+      "ref": "General architectural-history references on ancient Roman building types",
+      "n": "Word root: Greek theatron from theasthai, 'to behold'. A theater is half of an amphitheater. A circus was for chariot races.",
+      "fig": "f6"
+    },
+    {
+      "s": "SDG 2 Zero Hunger: Home Growing",
+      "q": "Plants grown in pots, containers, or grow bags are an example of what?",
+      "o": [
+        "Aquaponics",
+        "Vertical gardening",
+        "Hydroponics",
+        "Container gardening"
+      ],
+      "c": 3,
+      "ref": "UN Sustainable Development Goal 2 (Zero Hunger); urban-agriculture terminology",
+      "n": "The container is the mini-garden bed. Easy for balconies and rooftops."
+    },
+    {
+      "s": "Types of Specification",
+      "q": "A specification that states only the required end result is called what?",
+      "o": [
+        "Closed specification",
+        "Performance specification",
+        "Proprietary specification",
+        "Descriptive specification"
+      ],
+      "c": 1,
+      "ref": "Standard construction-specification practice (CSI-style spec types)",
+      "n": "You say what it must do, not how. Think of 'make it waterproof' versus 'use this exact membrane'."
+    },
+    {
+      "s": "Architect's Fee (RBF)",
+      "q": "What is the recommended basic fee (RBF) for architectural and engineering services?",
+      "o": [
+        "P4,520,000",
+        "P3,325,000",
+        "P2,850,000",
+        "P1,995,000"
+      ],
+      "c": 1,
+      "ref": "UAP Doc 202 (Design Services), schedule of minimum basic fees and payment phases",
+      "n": "PCC is under P50M, so the 7% rate applies to the whole cost."
+    },
+    {
+      "s": "Ziggurat of Ur",
+      "q": "What material was the Ziggurat of Ur mainly built from?",
+      "o": [
+        "Timber",
+        "Cut limestone",
+        "Marble",
+        "Mud bricks"
+      ],
+      "c": 3,
+      "ref": "General references on Mesopotamian architecture; Ziggurat of Ur (Ur-Nammu)",
+      "n": "A mud-brick core with a baked-brick skin. Mesopotamia had clay, not stone. Think of a giant layer cake: soft inside, hard crust outside."
+    },
+    {
+      "s": "SDG 2 Zero Hunger: Home Growing",
+      "q": "Which system grows plants using nutrient-rich water from fish tanks?",
+      "o": [
+        "Aquaponics",
+        "Hydroponics",
+        "Container gardening",
+        "Aeroponics"
+      ],
+      "c": 0,
+      "ref": "UN Sustainable Development Goal 2 (Zero Hunger); urban-agriculture terminology",
+      "n": "Fish waste feeds plants, plants clean the water. Word root: Latin aqua (water) + Greek ponos (labor)."
+    },
+    {
+      "s": "Types of Specification",
+      "q": "A specification that names a specific brand or product is called what?",
+      "o": [
+        "Descriptive specification",
+        "Reference-standard specification",
+        "Proprietary specification",
+        "Performance specification"
+      ],
+      "c": 2,
+      "ref": "Standard construction-specification practice (CSI-style spec types)",
+      "n": "Word root: proprietary from Latin proprius, 'one's own', meaning owned by a brand. Think of ordering 'a Coke' instead of 'a cola'."
+    },
+    {
+      "s": "Frank Lloyd Wright",
+      "q": "Which style did Frank Lloyd Wright establish, known for low horizontal lines inspired by the Midwest landscape?",
+      "o": [
+        "Prairie style",
+        "Art Deco",
+        "Beaux-Arts",
+        "Gothic Revival"
+      ],
+      "c": 0,
+      "ref": "General references on Frank Lloyd Wright's life and works",
+      "n": "Long low roofs echo the flat prairie horizon."
+    },
+    {
+      "s": "SDG 2 Zero Hunger: Home Growing",
+      "q": "Which soil-free system grows plants with roots hanging in air and sprayed with a nutrient mist?",
+      "o": [
+        "Aquaponics",
+        "Vertical gardening",
+        "Aeroponics",
+        "Hydroponics"
+      ],
+      "c": 2,
+      "ref": "UN Sustainable Development Goal 2 (Zero Hunger); urban-agriculture terminology",
+      "n": "Word root: Greek aer (air) + ponos (labor). Roots in the air."
+    },
+    {
+      "s": "Ziggurat of Ur",
+      "q": "What is the main characteristic of the Ziggurat of Ur?",
+      "o": [
+        "Spiral and ramped only",
+        "Smooth and pyramidal",
+        "Stepped and terraced",
+        "Domed and hollow"
+      ],
+      "c": 2,
+      "ref": "General references on Mesopotamian architecture; Ziggurat of Ur (Ur-Nammu)",
+      "n": "Stacked, shrinking platforms like a wedding cake. A true pyramid has smooth sloped sides.",
+      "fig": "f5"
+    },
+    {
+      "s": "PD 1096 Violations",
+      "q": "Using or occupying a building without the appropriate Certificate of Occupancy/Use/Operation is which class of violation?",
+      "o": [
+        "Grave",
+        "Light",
+        "Severe",
+        "Less grave"
+      ],
+      "c": 3,
+      "ref": "PD 1096 Revised IRR, Rule II, Sec. 212 (Administrative Fines)",
+      "n": "Memory ladder: not posting a certificate (light) < using without one (less grave) < changing use without one (grave). Less grave = P8,000 fine.",
+      "fig": "f3"
+    },
+    {
+      "s": "Bauhaus Dessau",
+      "q": "What architectural style is the Bauhaus Dessau building?",
+      "o": [
+        "International Style (Modernism)",
+        "Art Nouveau",
+        "Neo-Gothic",
+        "Eclectic"
+      ],
+      "c": 0,
+      "ref": "General references on the Bauhaus Dessau building (Walter Gropius, 1925-26)",
+      "n": "Flat roofs, glass, steel, and no ornament are hallmarks of the International Style."
+    },
+    {
+      "s": "Architect Roles (RA 9266)",
+      "q": "An ASEAN architect from abroad works on a Philippine project with a local architect. How is the foreign practitioner classified?",
+      "o": [
+        "Architect-in-Charge of Construction (AICC) by default",
+        "Architect-of-Record (AOR)",
+        "Registered local architect",
+        "Foreign Architect"
+      ],
+      "c": 3,
+      "ref": "RA 9266 (Architecture Act of 2004) and its IRR, definitions of Architect-of-Record, AICC, Consulting Architect, Foreign Architect",
+      "n": "A foreign architect holding a permit cannot be the AOR. The Filipino counterpart must serve as AOR."
+    },
+    {
+      "s": "Universal Principles of Design",
+      "q": "A layout that is easy to understand regardless of language or experience, even without text signs, follows which principle?",
+      "o": [
+        "Simple and Intuitive Use",
+        "Low Physical Effort",
+        "Equitable Use",
+        "Flexibility in Use"
+      ],
+      "c": 0,
+      "ref": "Center for Universal Design (NC State), Principles of Universal Design",
+      "n": "A good door explains itself: push plate means push. Color-coded zones that guide people without words also help here."
+    },
+    {
+      "s": "Conservation vs Development: Intramuros",
+      "q": "What is the central debate between heritage preservation and modernization?",
+      "o": [
+        "Whether stone or wood is stronger",
+        "Which building is cheaper to paint",
+        "Keeping historic character versus updating for modern needs and use",
+        "Who owns the street names"
+      ],
+      "c": 2,
+      "ref": "General heritage-conservation practice (Intramuros / Casa Manila context)",
+      "n": "The tension is authenticity versus function."
+    },
+    {
+      "s": "PD 1096 Violations",
+      "q": "Unauthorized change in construction type from more fire-resistive to less fire-resistive is which class of violation?",
+      "o": [
+        "Severe",
+        "Grave",
+        "Light",
+        "Less grave"
+      ],
+      "c": 1,
+      "ref": "PD 1096 Revised IRR, Rule II, Sec. 212 (Administrative Fines)",
+      "n": "Weakening a building's fire resistance risks lives, so it is graded grave.",
+      "fig": "f3"
+    },
+    {
+      "s": "Frank Lloyd Wright",
+      "q": "Which school did Frank Lloyd Wright establish?",
+      "o": [
+        "FLW Scholarship",
+        "Wright Foundation School",
+        "Taliesin Fellowship",
+        "Wisconsin School of Design"
+      ],
+      "c": 2,
+      "ref": "General references on Frank Lloyd Wright's life and works",
+      "n": "An apprenticeship community started in 1932. Word root: Taliesin is Welsh for 'shining brow', named for the hillside site."
+    },
+    {
+      "s": "Arthaland Century Pacific Tower",
+      "q": "What type of building is Arthaland Century Pacific Tower?",
+      "o": [
+        "Industrial",
+        "Residential",
+        "Office",
+        "Institutional"
+      ],
+      "c": 2,
+      "ref": "Public project descriptions by Arthaland, GFP Architects, and the IFC EDGE / World GBC case study",
+      "n": "It is a premium-grade office tower in Bonifacio Global City."
+    },
+    {
+      "s": "Romanesque Architecture",
+      "q": "What are the usual window characteristics of Romanesque buildings?",
+      "o": [
+        "Few and small openings",
+        "Many but small openings",
+        "Many and large openings",
+        "Few and large openings"
+      ],
+      "c": 0,
+      "ref": "General architectural-history references on Romanesque architecture",
+      "n": "Thick masonry walls carry the heavy roof, so big windows would weaken them. Think of a castle wall: strong but with only small slits.",
+      "fig": "f4"
+    },
+    {
+      "s": "Ziggurat of Ur",
+      "q": "What is the basis of the ziggurat's orientation?",
+      "o": [
+        "The pole star only",
+        "The flow of the Euphrates",
+        "The sunrise only",
+        "The four cardinal directions"
+      ],
+      "c": 3,
+      "ref": "General references on Mesopotamian architecture; Ziggurat of Ur (Ur-Nammu)",
+      "n": "The structure is aligned to the cardinal points, a sign of deliberate religious planning."
+    },
+    {
+      "s": "Roman Architecture",
+      "q": "Which Roman structure has seating all around an arena and was used for gladiator fights?",
+      "o": [
+        "Amphitheater",
+        "Forum",
+        "Thermae",
+        "Circus"
+      ],
+      "c": 0,
+      "ref": "General architectural-history references on ancient Roman building types",
+      "n": "Word root: Greek amphi (on both sides, around) + theatron (viewing place). Two theaters glued together makes a full oval.",
+      "fig": "f6"
+    },
+    {
+      "s": "Universal Principles of Design",
+      "q": "A space that can easily adapt to many uses or users follows which principle?",
+      "o": [
+        "Equitable Use",
+        "Simple and Intuitive Use",
+        "Flexibility in Use",
+        "Tolerance for Error"
+      ],
+      "c": 2,
+      "ref": "Center for Universal Design (NC State), Principles of Universal Design",
+      "n": "Think of a Swiss army knife: one design, many uses."
+    },
+    {
+      "s": "Arthaland Century Pacific Tower",
+      "q": "Who is the architect of record of Arthaland Century Pacific Tower?",
+      "o": [
+        "Casas",
+        "GF & Partners Architects (GFP)",
+        "AIDEA Rchitects",
+        "Skidmore, Owings & Merrill (SOM)"
+      ],
+      "c": 1,
+      "ref": "Public project descriptions by Arthaland, GFP Architects, and the IFC EDGE / World GBC case study",
+      "n": "GFP is the Filipino architect of record. SOM of New York did the design in collaboration. Remember: the architect of record signs and seals local documents."
+    },
+    {
+      "s": "Conservation vs Development: Intramuros",
+      "q": "Casa Manila in Intramuros was built as a replica of a 19th-century Spanish-colonial house. Which conservation term best describes it?",
+      "o": [
+        "Reconstruction",
+        "Adaptive reuse",
+        "Preservation",
+        "Restoration"
+      ],
+      "c": 0,
+      "ref": "General heritage-conservation practice (Intramuros / Casa Manila context)",
+      "n": "Reconstruction means building it again from records, while restoration repairs original fabric. Casa Manila is a museum-house, so 'Re-' plus 'construct' fits."
+    },
+    {
+      "s": "Parts of the Bahay Kubo",
+      "q": "Which part is the open or lightly covered area beside the kitchen used for washing, laundry, and similar wet chores?",
+      "o": [
+        "Bulwagan",
+        "Soleras",
+        "Batalan",
+        "Silid"
+      ],
+      "c": 2,
+      "ref": "Diksyonaryong Biswal term list cited in the supplied recall; common Filipino vernacular-architecture usage",
+      "n": "The batalan is the house's outdoor wet area. Think of it as a veranda that works as the laundry and washing station, kept open so water drains away.",
+      "fig": "f2"
+    },
+    {
+      "s": "Arthaland Century Pacific Tower",
+      "q": "What type of glazing is used on the tower's facade?",
+      "o": [
+        "Translucent polycarbonate panels",
+        "Glass blocks",
+        "Double glazing",
+        "Single glazing"
+      ],
+      "c": 2,
+      "ref": "Public project descriptions by Arthaland, GFP Architects, and the IFC EDGE / World GBC case study",
+      "n": "Two glass layers trap an insulating air gap, like a thermos for the building.",
+      "fig": "f1"
+    }
+  ]
+}
