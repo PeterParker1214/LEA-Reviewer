@@ -1,0 +1,887 @@
+{
+  "figures": {
+    "f1": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5UeXBpY2FsIENvbmNyZXRlIENvdmVyPC90ZXh0PgoKPHJlY3QgeD0iODAiIHk9IjMyMCIgd2lkdGg9IjMyMCIgaGVpZ2h0PSI4MCIgY2xhc3M9ImYyIi8+PGxpbmUgeDE9IjEwMCIgeTE9IjM4NSIgeDI9IjM4MCIgeTI9IjM4NSIgY2xhc3M9ImwiLz48dGV4dCB4PSI5MCIgeT0iNDI1IiBjbGFzcz0ibSBiIj5BZ2FpbnN0IGVhcnRoOiA3NSBtbTwvdGV4dD4KPHJlY3QgeD0iODAiIHk9IjE3MCIgd2lkdGg9IjMyMCIgaGVpZ2h0PSIzMCIgY2xhc3M9ImYyIi8+PGxpbmUgeDE9IjEwMCIgeTE9IjE5MCIgeDI9IjM4MCIgeTI9IjE5MCIgY2xhc3M9ImwiLz48dGV4dCB4PSI5MCIgeT0iMjQwIiBjbGFzcz0ibSBiIj5TdXNwZW5kZWQgc2xhYjogMjAgbW08L3RleHQ+CjxyZWN0IHg9IjQ3MCIgeT0iMTcwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgY2xhc3M9ImYyIi8+PHJlY3QgeD0iNDk1IiB5PSIxOTUiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBjbGFzcz0idGgiLz48dGV4dCB4PSI0NTAiIHk9IjM1MCIgY2xhc3M9Im0gYiI+QmVhbSAvIGNvbHVtbiB0aWVzOiA0MCBtbTwvdGV4dD4KPHJlY3QgeD0iNjgwIiB5PSIzMjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMzAiIGNsYXNzPSJmMiIvPjx0ZXh0IHg9IjY2MCIgeT0iMzg1IiBjbGFzcz0ibSBiIj5TbGFiIG9uIGdyYWRlOiA0MCBtbTwvdGV4dD4KPC9zdmc+Cg==",
+    "f2": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5Gb290aW5nIFR5cGVzPC90ZXh0PgoKPHJlY3QgeD0iNzAiIHk9IjI2MCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjMwIiBjbGFzcz0iZjIiLz48cmVjdCB4PSI5NSIgeT0iMTYwIiB3aWR0aD0iMzAiIGhlaWdodD0iMTAwIiBjbGFzcz0iZiIvPjx0ZXh0IHg9IjcwIiB5PSIzMjUiIGNsYXNzPSJtIGIiPklTT0xBVEVEPC90ZXh0Pgo8cmVjdCB4PSIyNjAiIHk9IjI2MCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjMwIiBjbGFzcz0iZjIiLz48cmVjdCB4PSIzODAiIHk9IjI2MCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjMwIiBjbGFzcz0iZjIiLz48bGluZSB4MT0iMzQwIiB5MT0iMjc1IiB4Mj0iMzgwIiB5Mj0iMjc1IiBjbGFzcz0ibCIvPjx0ZXh0IHg9IjI3MCIgeT0iMzI1IiBjbGFzcz0ibSBiIj5TVFJBUCAoYmVhbSk8L3RleHQ+CjxyZWN0IHg9IjUyMCIgeT0iMjcwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjI1IiBjbGFzcz0iZjIiLz48cmVjdCB4PSI1NzAiIHk9IjE2MCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjExMCIgY2xhc3M9ImYiLz48dGV4dCB4PSI1NDAiIHk9IjMyNSIgY2xhc3M9Im0gYiI+U1RSSVAgLyBXQUxMPC90ZXh0Pgo8cmVjdCB4PSI3MTAiIHk9IjI2MCIgd2lkdGg9IjE1MCIgaGVpZ2h0PSIzMCIgY2xhc3M9ImYyIi8+PGcgY2xhc3M9ImYiPjxyZWN0IHg9IjczMCIgeT0iMTkwIiB3aWR0aD0iMjAiIGhlaWdodD0iNzAiLz48cmVjdCB4PSI4MDAiIHk9IjE5MCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjcwIi8+PC9nPjx0ZXh0IHg9Ijc0MCIgeT0iMzI1IiBjbGFzcz0ibSBiIj5NQVQgKHJhZnQpPC90ZXh0Pgo8dGV4dCB4PSI3MCIgeT0iNDIwIiBjbGFzcz0ibSI+QWRvYmUgc29pbDogaXNvbGF0ZWQuIFdlYWsgb3IgZmxvb2QtcHJvbmUgc29pbDogbWF0LjwvdGV4dD4KPC9zdmc+Cg==",
+    "f3": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5Ud28tQ2hhbWJlciBTZXB0aWMgVGFuayBhbmQgRGlzdGFuY2VzPC90ZXh0PgoKPHJlY3QgeD0iMTIwIiB5PSIyMDAiIHdpZHRoPSIzMDAiIGhlaWdodD0iMTQwIiBjbGFzcz0iZjIiLz48bGluZSB4MT0iMjkwIiB5MT0iMjAwIiB4Mj0iMjkwIiB5Mj0iMzQwIiBjbGFzcz0ibCIvPgo8dGV4dCB4PSIxMzUiIHk9IjI3MCIgY2xhc3M9Im0gYiI+RElHRVNUSU9OPC90ZXh0Pjx0ZXh0IHg9IjEzNSIgeT0iMjkyIiBjbGFzcz0ibSI+Y2hhbWJlciAxPC90ZXh0Pgo8dGV4dCB4PSIzMDAiIHk9IjI3MCIgY2xhc3M9Im0gYiI+U0VUVExJTkcgLzwvdGV4dD48dGV4dCB4PSIzMDAiIHk9IjI5MiIgY2xhc3M9Im0gYiI+TEVBQ0hJTkc8L3RleHQ+CjxsaW5lIHgxPSIxNTAiIHkxPSIyMDAiIHgyPSIxNTAiIHkyPSIxNTAiIGNsYXNzPSJsIi8+PHRleHQgeD0iMTAwIiB5PSIxNDAiIGNsYXNzPSJtIj52ZW50PC90ZXh0Pgo8bGluZSB4MT0iNDIwIiB5MT0iMzAwIiB4Mj0iNTIwIiB5Mj0iMzAwIiBjbGFzcz0ibCIvPjxyZWN0IHg9IjUyMCIgeT0iMjgwIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjQwIiBjbGFzcz0iZjMiLz48dGV4dCB4PSI1MzAiIHk9IjMwNSIgY2xhc3M9Im0gYiI+bGVhY2hpbmcgZmllbGQ8L3RleHQ+CjxjaXJjbGUgY3g9IjgwMCIgY3k9IjI2MCIgcj0iMjYiIGNsYXNzPSJmIi8+PHRleHQgeD0iNzgwIiB5PSIzMDUiIGNsYXNzPSJtIGIiPldFTEw8L3RleHQ+CjxsaW5lIHgxPSI0MjAiIHkxPSI0MDAiIHgyPSI3NzQiIHkyPSI0MDAiIGNsYXNzPSJsIi8+PHRleHQgeD0iNDgwIiB5PSIzOTAiIGNsYXNzPSJtIGIiPmF0IGxlYXN0IDI1IG0gKFNhbml0YXRpb24gQ29kZSBJUlIpPC90ZXh0Pgo8L3N2Zz4K",
+    "f4": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5CZWFtIE1vbWVudHMgYW5kIE9wZW5pbmcgWm9uZTwvdGV4dD4KCjxyZWN0IHg9IjE0MCIgeT0iMTIwIiB3aWR0aD0iNjIwIiBoZWlnaHQ9IjUwIiBjbGFzcz0iZjIiLz48cG9seWdvbiBwb2ludHM9IjE0MCwxNzAgMTIwLDIwMCAxNjAsMjAwIiBjbGFzcz0iZiIvPjxwb2x5Z29uIHBvaW50cz0iNzYwLDE3MCA3NDAsMjAwIDc4MCwyMDAiIGNsYXNzPSJmIi8+CjxwYXRoIGQ9Ik0xNDAgMzAwIFE0NTAgNDEwIDc2MCAzMDAiIGNsYXNzPSJsIi8+PHRleHQgeD0iMzYwIiB5PSIzOTUiIGNsYXNzPSJtIGIiPnBvc2l0aXZlIG1vbWVudCAobWlkLXNwYW4pPC90ZXh0Pgo8bGluZSB4MT0iMTQwIiB5MT0iMzAwIiB4Mj0iNzYwIiB5Mj0iMzAwIiBjbGFzcz0idGgiLz48dGV4dCB4PSIxNDAiIHk9IjI5MCIgY2xhc3M9Im0iPnN1cHBvcnQ8L3RleHQ+PHRleHQgeD0iNzIwIiB5PSIyOTAiIGNsYXNzPSJtIj5zdXBwb3J0PC90ZXh0Pgo8bGluZSB4MT0iMTcwIiB5MT0iMTYwIiB4Mj0iNzMwIiB5Mj0iMTYwIiBjbGFzcz0ibCIvPjx0ZXh0IHg9IjMwMCIgeT0iMjE1IiBjbGFzcz0ibSI+Ym90dG9tIGJhcnMgYXQgbWlkLXNwYW48L3RleHQ+CjxyZWN0IHg9IjMwMCIgeT0iMTI1IiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwIiBjbGFzcz0iZCIvPjx0ZXh0IHg9IjMzMCIgeT0iMTEyIiBjbGFzcz0ibSBiIj5vcGVuaW5nIHpvbmU6IG1pZGRsZSB0aGlyZCwgbWlkLWRlcHRoPC90ZXh0Pgo8L3N2Zz4K",
+    "f5": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5DSEIgV2FsbCBSZWluZm9yY2VtZW50PC90ZXh0PgoKPGcgY2xhc3M9ImYyIj48cmVjdCB4PSIxODAiIHk9IjEyMCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSI0MCIvPjxyZWN0IHg9IjMyMCIgeT0iMTIwIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjQwIi8+PHJlY3QgeD0iNDYwIiB5PSIxMjAiIHdpZHRoPSIxNDAiIGhlaWdodD0iNDAiLz48cmVjdCB4PSIyNTAiIHk9IjE2MCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSI0MCIvPjxyZWN0IHg9IjM5MCIgeT0iMTYwIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjQwIi8+PHJlY3QgeD0iMTgwIiB5PSIyMDAiIHdpZHRoPSIxNDAiIGhlaWdodD0iNDAiLz48cmVjdCB4PSIzMjAiIHk9IjIwMCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSI0MCIvPjxyZWN0IHg9IjQ2MCIgeT0iMjAwIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjQwIi8+PC9nPgo8bGluZSB4MT0iMzIwIiB5MT0iMTEwIiB4Mj0iMzIwIiB5Mj0iMzAwIiBjbGFzcz0ibCIvPjxsaW5lIHgxPSI0NjAiIHkxPSIxMTAiIHgyPSI0NjAiIHkyPSIzMDAiIGNsYXNzPSJsIi8+CjxsaW5lIHgxPSIxNzAiIHkxPSIyMDAiIHgyPSI2MTAiIHkyPSIyMDAiIGNsYXNzPSJsIi8+Cjx0ZXh0IHg9IjE4MCIgeT0iOTUiIGNsYXNzPSJtIGIiPnZlcnRpY2FsIGJhcnMgZXZlcnkgNjAwIG1tPC90ZXh0Pjx0ZXh0IHg9IjE4MCIgeT0iMzMwIiBjbGFzcz0ibSI+aG9yaXpvbnRhbCBiYXJzIGV2ZXJ5IDMgbGF5ZXJzIChhYm91dCA2MDAgbW0pPC90ZXh0Pgo8dGV4dCB4PSIxODAiIHk9IjM2MCIgY2xhc3M9Im0iPjQgaW46IDEwIG1tIGJhcnMuIDggaW46IDEyIG1tIGJhcnMgKGNvbmZpcm0pLjwvdGV4dD4KPC9zdmc+Cg==",
+    "f6": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+CjxzdHlsZT4KdGV4dHtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmaWxsOiMxMTF9Ci50e2ZvbnQtc2l6ZToyMnB4fSAuc3tmb250LXNpemU6MThweH0gLm17Zm9udC1zaXplOjE1cHh9IC5ie2ZvbnQtd2VpZ2h0OjcwMH0KLmx7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjQ7ZmlsbDpub25lfSAudGh7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjI7ZmlsbDpub25lfQouZntmaWxsOiNlZWYzZmI7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mMntmaWxsOiNmNWVlZTM7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9IC5mM3tmaWxsOiNlOGYzZTg7c3Ryb2tlOiMxMTE7c3Ryb2tlLXdpZHRoOjJ9Ci5ke3N0cm9rZTojNjY2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6NyA2O2ZpbGw6bm9uZX0KPC9zdHlsZT4KPHRleHQgeD0iNDAiIHk9IjQyIiBjbGFzcz0idCBiIj5Sb29mIExheWVycyBhbmQgU2FnIFJvZHM8L3RleHQ+Cgo8cG9seWdvbiBwb2ludHM9IjEwMCwyODAgNDUwLDEyMCA4MDAsMjgwIiBjbGFzcz0iZjIiLz4KPHBvbHlnb24gcG9pbnRzPSIxMTUsMjg4IDQ1MCwxMzUgNzg1LDI4OCIgY2xhc3M9ImYzIi8+CjxnIGNsYXNzPSJ0aCI+PGxpbmUgeDE9IjIxMCIgeTE9IjI0NCIgeDI9IjIxMCIgeTI9IjMzMCIvPjxsaW5lIHgxPSI0NTAiIHkxPSIxMzUiIHgyPSI0NTAiIHkyPSIzMzAiLz48bGluZSB4MT0iNjkwIiB5MT0iMjQ0IiB4Mj0iNjkwIiB5Mj0iMzMwIi8+PC9nPgo8dGV4dCB4PSIxMjAiIHk9IjExMCIgY2xhc3M9Im0gYiI+MSAgcm9vZiBzaGVldHM8L3RleHQ+PHRleHQgeD0iMTIwIiB5PSIxMzIiIGNsYXNzPSJtIGIiPjIgIGluc3VsYXRpb24gKHJlZmxlY3RpdmUgZm9pbCk8L3RleHQ+PHRleHQgeD0iMTIwIiB5PSIxNTQiIGNsYXNzPSJtIGIiPjMgIHB1cmxpbnM8L3RleHQ+Cjx0ZXh0IHg9IjIxNSIgeT0iMzU1IiBjbGFzcz0ibSBiIj5TQUcgUk9EUyB0aWUgdGhlIHB1cmxpbnMgaW4gbGluZTwvdGV4dD4KPC9zdmc+Cg=="
+  },
+  "questions": [
+    {
+      "s": "Services, Brands, Surveying, and Environment",
+      "q": "Which of these is NOT an elevator or escalator manufacturer?",
+      "o": [
+        "Kone",
+        "Honeywell",
+        "Schindler",
+        "Otis"
+      ],
+      "c": 1,
+      "ref": "General mechanical, electrical, and fire-protection practice (HVAC, PEC)",
+      "n": "Honeywell makes building controls and fire alarms. The recall's key lists Kone as an elevator maker."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "What is the commonly specified minimum lap splice length for reinforcing bars?",
+      "o": [
+        "60 db",
+        "30 db",
+        "20 db",
+        "40 bar diameters (not less than 600 mm)"
+      ],
+      "c": 3,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "A splice overlaps two bars so force passes between them. Memory trick: 40 db and 600 mm."
+    },
+    {
+      "s": "Roofing, Gutters and Insulation",
+      "q": "Which insulation has the lowest R-value on its own but performs well when paired with an air cavity?",
+      "o": [
+        "Rockwool",
+        "Earthwool",
+        "Reflective foil",
+        "Glasswool"
+      ],
+      "c": 2,
+      "ref": "General building-insulation practice and R-value references",
+      "n": "Foil reflects radiant heat but only works with a still air gap. Like a mirror that needs space to bounce."
+    },
+    {
+      "s": "Services, Brands, Surveying, and Environment",
+      "q": "What is the standard electrical frequency in the Philippines?",
+      "o": [
+        "50 Hz",
+        "400 Hz",
+        "60 Hz",
+        "100 Hz"
+      ],
+      "c": 2,
+      "ref": "General mechanical, electrical, and fire-protection practice (HVAC, PEC)",
+      "n": "The recall listed 220 V 60 Hz; the PEC states 230 V, 60 Hz. Remember frequency: 60 Hz."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "What concrete cover is commonly specified for a suspended slab?",
+      "o": [
+        "75 mm",
+        "40 mm",
+        "20 mm",
+        "50 mm"
+      ],
+      "c": 2,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "Suspended slabs are inside the building and away from earth, so the thinnest cover applies.",
+      "fig": "f1"
+    },
+    {
+      "s": "Roofing, Gutters and Insulation",
+      "q": "Which insulation seals both air and moisture when sprayed onto a wall?",
+      "o": [
+        "Spray foam",
+        "EPS board",
+        "XPS board",
+        "Reflective foil"
+      ],
+      "c": 0,
+      "ref": "General building-insulation practice and R-value references",
+      "n": "Spray foam expands and fills every gap, like caulk that also insulates."
+    },
+    {
+      "s": "Services, Brands, Surveying, and Environment",
+      "q": "Which survey re-establishes lost property corners or monuments using the title's technical description?",
+      "o": [
+        "Hydrographic survey",
+        "Route survey",
+        "Topographic survey",
+        "Relocation survey"
+      ],
+      "c": 3,
+      "ref": "General land-surveying practice",
+      "n": "Re-locating = finding the original boundary again. Setting-out marks new design points on site."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "Which footing suits adobe soil (a hard volcanic tuff with high bearing capacity)?",
+      "o": [
+        "Isolated footing",
+        "Floating raft only",
+        "Pile cap only",
+        "Mat footing"
+      ],
+      "c": 0,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "Adobe is strong, so each column can have its own simple pad. Word root: adobe from Arabic at-tub, 'the brick'.",
+      "fig": "f2"
+    },
+    {
+      "s": "Finishes, Materials and Hardware",
+      "q": "Which timber is classed among the 'Philippine mahoganies'?",
+      "o": [
+        "Acacia",
+        "Yakal",
+        "Guijo",
+        "Tanguile"
+      ],
+      "c": 3,
+      "ref": "General building-materials and finishing references (timber, paints, gypsum, flooring, hardware)",
+      "n": "Yakal and guijo are hard, heavy structural timbers. Tanguile is the lighter lauan-type wood."
+    },
+    {
+      "s": "Plumbing and Septic Systems",
+      "q": "In a two-chamber septic tank, where does the clarified liquid go after the second chamber?",
+      "o": [
+        "Back to the digestion chamber",
+        "Into the roof gutter",
+        "To the settling/leaching chamber or leaching field",
+        "Directly to the water supply"
+      ],
+      "c": 2,
+      "ref": "National Plumbing Code of the Philippines and the Code on Sanitation (PD 856) IRR, Chapter XVII",
+      "n": "Chamber 1 is the digestion chamber where solids are broken down; chamber 2 lets the liquid settle, then it leaches to the ground. The recall offered 'digestive' and 'leaching' for the second chamber, so choose leaching.",
+      "fig": "f3"
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "What is the function of a base plate?",
+      "o": [
+        "Spreads the column load onto the concrete foundation",
+        "Acts as a drainage pan",
+        "Connects the beam to the roof",
+        "Stops rusting only"
+      ],
+      "c": 0,
+      "ref": "General structural-steel and roof-framing practice (AISC/NSCP slenderness limits)",
+      "n": "A small column load becomes a big load on a tiny spot, so the plate spreads it like a snowshoe. The recall option said 'connect column to beam', which is wrong."
+    },
+    {
+      "s": "Finishes, Materials and Hardware",
+      "q": "What does VOC mean in paint?",
+      "o": [
+        "Vinyl Oil Component",
+        "Very Odorless Coating",
+        "Variable Opacity Coat",
+        "Volatile Organic Compound"
+      ],
+      "c": 3,
+      "ref": "General building-materials and finishing references (timber, paints, gypsum, flooring, hardware)",
+      "n": "Word root: volatile from Latin volare, 'to fly', because it evaporates into the air. Low-VOC paint has less smell and fumes."
+    },
+    {
+      "s": "Plumbing and Septic Systems",
+      "q": "What do you do before installing plumbing fixtures?",
+      "o": [
+        "Roughing-in",
+        "Final painting",
+        "Tiling the roof",
+        "Landscaping"
+      ],
+      "c": 0,
+      "ref": "National Plumbing Code of the Philippines and the Code on Sanitation (PD 856) IRR, Chapter XVII",
+      "n": "Roughing-in installs the hidden pipes first. Think of laying the skeleton before dressing the body."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "What is the maximum slenderness ratio for compression members in steel?",
+      "o": [
+        "150",
+        "180",
+        "300",
+        "200"
+      ],
+      "c": 3,
+      "ref": "General structural-steel and roof-framing practice (AISC/NSCP slenderness limits)",
+      "n": "Slenderness ratio = KL/r. Compression: 200; tension: 300. A very slender compression member buckles like a thin straw."
+    },
+    {
+      "s": "Finishes, Materials and Hardware",
+      "q": "Which is a gypsum board brand in the Philippines?",
+      "o": [
+        "Mapei",
+        "Kone",
+        "Phelps Dodge",
+        "Boral"
+      ],
+      "c": 3,
+      "ref": "General building-materials and finishing references (timber, paints, gypsum, flooring, hardware)",
+      "n": "Mapei makes tile adhesives, Phelps Dodge wires, and Kone elevators."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "Where is the best location for utility openings (sleeves) through a beam?",
+      "o": [
+        "Anywhere; location does not matter",
+        "At the top of the beam over the column",
+        "Right next to the support at the bottom",
+        "Middle third of the span at mid-depth"
+      ],
+      "c": 3,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "Shear is highest near supports, so avoid cutting there. Mid-depth is near the neutral axis, where bending stress is lowest. The recall options were cut off, so this is the standard rule.",
+      "fig": "f4"
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "What is the spacing of vertical and horizontal bars in a CHB wall?",
+      "o": [
+        "1200 mm vertical; every 8 layers",
+        "450 mm vertical; every 5 layers",
+        "600 mm vertical; horizontal every 3 layers of CHB",
+        "300 mm vertical; every layer"
+      ],
+      "c": 2,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "Three CHB layers equal about 600 mm, so both grids are 600 mm.",
+      "fig": "f5"
+    },
+    {
+      "s": "Finishes, Materials and Hardware",
+      "q": "What is the purpose of a threshold?",
+      "o": [
+        "Holds the glass",
+        "Seals the gap at the door bottom and smooths the floor change",
+        "Covers the wiring",
+        "Hangs the door"
+      ],
+      "c": 1,
+      "ref": "General building-materials and finishing references (timber, paints, gypsum, flooring, hardware)",
+      "n": "A threshold is the strip you step over, closing the door gap."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "Which slab type carries heavy loads without beams?",
+      "o": [
+        "Two-way slab on beams",
+        "Flat slab (with drop panels)",
+        "One-way slab",
+        "Slab on grade"
+      ],
+      "c": 1,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "The slab sits directly on columns and gets thicker drop panels at the columns."
+    },
+    {
+      "s": "Roofing, Gutters and Insulation",
+      "q": "Which roof has two slopes?",
+      "o": [
+        "Dome roof",
+        "Flat roof",
+        "Hip roof",
+        "Gable roof"
+      ],
+      "c": 3,
+      "ref": "General roofing practice (gables, hips, flashing, gutters)",
+      "n": "Gable has two slopes meeting at a ridge, like an open book on a table. A hip roof slopes on four sides. Word root: gable from Old Norse gafl."
+    },
+    {
+      "s": "Services, Brands, Surveying, and Environment",
+      "q": "Which HVAC device reduces noise in ductwork?",
+      "o": [
+        "Sound attenuator (silencer)",
+        "Return grille",
+        "Vane damper",
+        "Plenum box"
+      ],
+      "c": 0,
+      "ref": "General mechanical, electrical, and fire-protection practice (HVAC, PEC)",
+      "n": "Word root: attenuate from Latin attenuare, 'to make thin'. It thins out the noise. A plenum is a space full of air (Latin plenum, 'full')."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "Which admixture reduces the water needed in a concrete mix?",
+      "o": [
+        "Air-entrainer only",
+        "Accelerator",
+        "Plasticizer",
+        "Retarder"
+      ],
+      "c": 2,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "Word root: Greek plastikos, 'moldable'. It makes the mix flow with less water, like adding oil to a stiff dough."
+    },
+    {
+      "s": "Roofing, Gutters and Insulation",
+      "q": "What is the typical order of layers for a tropical roof (from the top down)?",
+      "o": [
+        "Roof sheet, then purlins, then insulation",
+        "Insulation, then purlins, then roof sheet",
+        "Purlins, then roof sheet, then insulation",
+        "Roof sheet, then insulation, then purlins"
+      ],
+      "c": 3,
+      "ref": "General building-insulation practice and R-value references",
+      "n": "The insulation sits just under the roof sheets, over the purlins, so heat is stopped near the top. Word root: insulate from Latin insula, 'island', as in cut off.",
+      "fig": "f6"
+    },
+    {
+      "s": "Services, Brands, Surveying, and Environment",
+      "q": "Which is a Philippine electrical wire brand?",
+      "o": [
+        "Mapei",
+        "Boral",
+        "Phelps Dodge",
+        "Kone"
+      ],
+      "c": 2,
+      "ref": "General mechanical, electrical, and fire-protection practice (HVAC, PEC)",
+      "n": "Phelps Dodge makes building wire. Others are gypsum, adhesives, and elevators."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "What concrete cover is required where concrete is deposited directly against earth?",
+      "o": [
+        "75 mm",
+        "20 mm",
+        "50 mm",
+        "40 mm"
+      ],
+      "c": 0,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "Earth contact is the harshest, so the cover is the thickest. 50 mm applies where concrete is exposed to earth but cast against forms.",
+      "fig": "f1"
+    },
+    {
+      "s": "Roofing, Gutters and Insulation",
+      "q": "Which is the cheapest insulation for tropical buildings?",
+      "o": [
+        "Earthwool",
+        "Reflective foil",
+        "Rockwool",
+        "Glasswool"
+      ],
+      "c": 1,
+      "ref": "General building-insulation practice and R-value references",
+      "n": "In the tropics, radiant heat from the roof is the main enemy, and foil blocks it cheaply."
+    },
+    {
+      "s": "Services, Brands, Surveying, and Environment",
+      "q": "Which way should an emergency exit door swing?",
+      "o": [
+        "Inward",
+        "Sliding only",
+        "Outward, in the direction of exit travel",
+        "Both ways"
+      ],
+      "c": 2,
+      "ref": "General mechanical, electrical, and fire-protection practice (HVAC, PEC)",
+      "n": "In a rush, people push forward. An outward door opens with the crowd."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "Which footing is used under a continuous wall?",
+      "o": [
+        "Strip (wall) footing",
+        "Isolated footing",
+        "Strap footing",
+        "Mat footing"
+      ],
+      "c": 0,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "A strip runs along the wall like a belt under it.",
+      "fig": "f2"
+    },
+    {
+      "s": "Roofing, Gutters and Insulation",
+      "q": "Which insulation is made with about 50% recycled PET material?",
+      "o": [
+        "Spray foam",
+        "Rockwool",
+        "Polyester insulation",
+        "Glasswool"
+      ],
+      "c": 2,
+      "ref": "General building-insulation practice and R-value references",
+      "n": "PET is the plastic in drink bottles, so the insulation is recycled bottles."
+    },
+    {
+      "s": "Plumbing and Septic Systems",
+      "q": "Under the IRR of the Code on Sanitation, what is the minimum distance of a septic tank from any well, spring, or cistern?",
+      "o": [
+        "1.5 m",
+        "50 m",
+        "25 m",
+        "10 m"
+      ],
+      "c": 2,
+      "ref": "National Plumbing Code of the Philippines and the Code on Sanitation (PD 856) IRR, Chapter XVII",
+      "n": "Keep waste far from drinking water. The National Plumbing Code table shows 15.2 m for well-to-septic, so if your exam offers only 15 or 30, check which code the question names. Word root: cistern from Latin cisterna, from cista, 'box'.",
+      "fig": "f3"
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "Which footing is best for weak soil and flood-prone sites?",
+      "o": [
+        "Strap footing",
+        "Isolated footing",
+        "Mat (raft) footing",
+        "Strip footing"
+      ],
+      "c": 2,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "A mat spreads the load over the whole footprint, like snowshoes on soft snow.",
+      "fig": "f2"
+    },
+    {
+      "s": "Finishes, Materials and Hardware",
+      "q": "Which coat is applied on wood to make the lacquer topcoat smooth and easy to sand?",
+      "o": [
+        "Cement slurry",
+        "Red oxide primer",
+        "Lacquer sanding sealer",
+        "Roof paint"
+      ],
+      "c": 2,
+      "ref": "General building-materials and finishing references (timber, paints, gypsum, flooring, hardware)",
+      "n": "The sealer fills wood pores, like putting primer on a rough canvas. Word root: lacquer traces to Sanskrit laksha, the lac resin."
+    },
+    {
+      "s": "Plumbing and Septic Systems",
+      "q": "Which unit separates oil and grease from kitchen wastewater, working like a septic tank for fats?",
+      "o": [
+        "Grease trap",
+        "Floor drain",
+        "Cistern",
+        "Manhole"
+      ],
+      "c": 0,
+      "ref": "National Plumbing Code of the Philippines and the Code on Sanitation (PD 856) IRR, Chapter XVII",
+      "n": "Fat floats, water flows out underneath. Think of skimming fat off a soup."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "What is the function of a shear stud?",
+      "o": [
+        "Holds glass in place",
+        "Connects two steel columns",
+        "Connects the steel beam to the concrete slab so they act together",
+        "Anchors a roof sheet"
+      ],
+      "c": 2,
+      "ref": "General structural-steel and roof-framing practice (AISC/NSCP slenderness limits)",
+      "n": "Studs make composite action, so the slab and beam work as one T-shaped beam."
+    },
+    {
+      "s": "Finishes, Materials and Hardware",
+      "q": "Which primer is applied on steel or metal doors before painting?",
+      "o": [
+        "Whitewash",
+        "Red oxide primer",
+        "Lacquer sealer",
+        "Cement slurry"
+      ],
+      "c": 1,
+      "ref": "General building-materials and finishing references (timber, paints, gypsum, flooring, hardware)",
+      "n": "Red oxide protects steel from rust, like a raincoat before the outer coat."
+    },
+    {
+      "s": "Plumbing and Septic Systems",
+      "q": "What is the maximum number of water closets that can be served by a circuit vent?",
+      "o": [
+        "8",
+        "10",
+        "6",
+        "4"
+      ],
+      "c": 0,
+      "ref": "National Plumbing Code of the Philippines and the Code on Sanitation (PD 856) IRR, Chapter XVII",
+      "n": "A circuit vent serves a row of fixtures with one vent. The recall options were 4, 6, 8, 10."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "What is the purpose of a sag rod?",
+      "o": [
+        "Tension rod that stops purlins from sagging and deflecting sideways",
+        "It carries the roof sheets",
+        "It supports the ceiling board",
+        "It seals the ridge"
+      ],
+      "c": 0,
+      "ref": "General structural-steel and roof-framing practice (AISC/NSCP slenderness limits)",
+      "n": "A sag rod holds the purlin's sideways bend, like a clothesline brace.",
+      "fig": "f6"
+    },
+    {
+      "s": "Finishes, Materials and Hardware",
+      "q": "Which is the cheapest flooring among plastic laminate, terrazzo, and granite?",
+      "o": [
+        "Terrazzo",
+        "Marble",
+        "Plastic laminate",
+        "Granite"
+      ],
+      "c": 0,
+      "ref": "General building-materials and finishing references (timber, paints, gypsum, flooring, hardware)",
+      "n": "Terrazzo is poured chips of marble in cement, cheaper than solid stone. Word root: Italian terrazzo, 'terrace'. Plastic laminate is mainly a countertop and wall surface, not a floor choice."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "By rule of thumb, how should the beam width compare with the column width?",
+      "o": [
+        "Beam width is unrelated to the column",
+        "Beam width is smaller than or equal to the column width",
+        "Beam width is much wider than the column",
+        "Beam is always bigger"
+      ],
+      "c": 1,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "Strong column, weak beam: if something must yield, let the beam bend first so the column survives."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "Which vertical bar size is commonly used for a 4-inch CHB wall?",
+      "o": [
+        "10 mm",
+        "12 mm",
+        "16 mm",
+        "20 mm"
+      ],
+      "c": 0,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "Thin walls take thin bars. The recall had no clear key between 10 and 12 mm for 4 in, and 12 mm for 8 in; confirm.",
+      "fig": "f5"
+    },
+    {
+      "s": "Finishes, Materials and Hardware",
+      "q": "What is the purpose of weatherstripping?",
+      "o": [
+        "Protects from termites only",
+        "Seals gaps against air, water, and sound",
+        "Increases wall thickness",
+        "Hangs the door"
+      ],
+      "c": 1,
+      "ref": "General building-materials and finishing references (timber, paints, gypsum, flooring, hardware)",
+      "n": "It is a soft seal around the door or window, like a draft seal on a fridge."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "What is the purpose of reinforcing bars in concrete?",
+      "o": [
+        "To make concrete waterproof",
+        "To resist tension",
+        "To speed up curing",
+        "To make concrete heavier"
+      ],
+      "c": 1,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "Concrete is strong when squeezed and weak when stretched, so steel does the stretching job."
+    },
+    {
+      "s": "Roofing, Gutters and Insulation",
+      "q": "What is a common mistake in roofing installation?",
+      "o": [
+        "Painting the ridge cap",
+        "Using a gutter",
+        "Using too many screws",
+        "Poor sheet overlap and wrong flashing"
+      ],
+      "c": 3,
+      "ref": "General roofing practice (gables, hips, flashing, gutters)",
+      "n": "Water finds any gap. Flashing is the metal collar that seals roof edges and joints."
+    },
+    {
+      "s": "Services, Brands, Surveying, and Environment",
+      "q": "Which device is installed in a duct to stop fire from spreading through it?",
+      "o": [
+        "Sound attenuator",
+        "Plenum sheet",
+        "Fire stop",
+        "Fire damper"
+      ],
+      "c": 3,
+      "ref": "General mechanical, electrical, and fire-protection practice (HVAC, PEC)",
+      "n": "A fire damper closes when heat is detected, like a trapdoor in the duct. Fire stop seals pipe and cable holes in walls."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "What is the maximum slump commonly specified for concrete in beams and slabs?",
+      "o": [
+        "100 mm",
+        "50 mm",
+        "125 mm",
+        "200 mm"
+      ],
+      "c": 0,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "Slump measures how wet the mix is. Typical Philippine notes use 100 mm max for beams and slabs. The recall options included 125."
+    },
+    {
+      "s": "Roofing, Gutters and Insulation",
+      "q": "Where does insulation go for a vaulted ceiling?",
+      "o": [
+        "At the ceiling (roof) plane",
+        "In the floor",
+        "Under the footing",
+        "In the wall only"
+      ],
+      "c": 0,
+      "ref": "General building-insulation practice and R-value references",
+      "n": "A vaulted ceiling is the roof, so the insulation follows the slope of the roof."
+    },
+    {
+      "s": "Services, Brands, Surveying, and Environment",
+      "q": "Which is a lower-cost circuit breaker brand among Koten, GE, and Square D?",
+      "o": [
+        "GE",
+        "Koten",
+        "Schneider",
+        "Square D"
+      ],
+      "c": 1,
+      "ref": "General mechanical, electrical, and fire-protection practice (HVAC, PEC)",
+      "n": "Breakers range in cost by brand. This is from the recall and is a market fact, so check local prices."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "What concrete cover is commonly specified for a slab on grade?",
+      "o": [
+        "100 mm",
+        "75 mm",
+        "20 mm",
+        "40 mm"
+      ],
+      "c": 3,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "Typical Philippine notes use 40 mm for slab on grade and 20 mm for suspended slabs. The recall options differed slightly, so check your reviewer.",
+      "fig": "f1"
+    },
+    {
+      "s": "Roofing, Gutters and Insulation",
+      "q": "Which insulation is more resistant to water vapor, EPS or XPS?",
+      "o": [
+        "EPS",
+        "XPS",
+        "Reflective foil",
+        "Rock wool"
+      ],
+      "c": 1,
+      "ref": "General building-insulation practice and R-value references",
+      "n": "XPS has a denser, closed cell structure, like a tight sponge versus a loose one."
+    },
+    {
+      "s": "Services, Brands, Surveying, and Environment",
+      "q": "Which survey locates utilities, roads, and natural and built features of a site?",
+      "o": [
+        "Topographic survey",
+        "Cadastral survey only",
+        "Boundary relocation survey",
+        "Hydrographic survey"
+      ],
+      "c": 0,
+      "ref": "General land-surveying practice",
+      "n": "Word root: topography from Greek topos, 'place' + graphein, 'to write', so 'writing the place'."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "Which footing is connected to another footing by a beam?",
+      "o": [
+        "Strap footing",
+        "Isolated footing",
+        "Strip footing",
+        "Mat footing"
+      ],
+      "c": 0,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "The strap beam is a handle joining two footings.",
+      "fig": "f2"
+    },
+    {
+      "s": "Finishes, Materials and Hardware",
+      "q": "What does S2S mean for lumber?",
+      "o": [
+        "Seasoned two seasons",
+        "Sanded to two sizes",
+        "Sawn on two sides",
+        "Surfaced (planed) on two sides"
+      ],
+      "c": 3,
+      "ref": "General building-materials and finishing references (timber, paints, gypsum, flooring, hardware)",
+      "n": "S4S is surfaced on four sides. Rough lumber is unsurfaced."
+    },
+    {
+      "s": "Plumbing and Septic Systems",
+      "q": "Under the Sanitation Code IRR, what is the minimum distance between a cistern and a septic tank?",
+      "o": [
+        "1.5 m",
+        "3 m",
+        "25 m",
+        "10 m"
+      ],
+      "c": 2,
+      "ref": "National Plumbing Code of the Philippines and the Code on Sanitation (PD 856) IRR, Chapter XVII",
+      "n": "A cistern stores clean water, so it gets the same 25 m buffer as a well.",
+      "fig": "f3"
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "Which describes a Lally column?",
+      "o": [
+        "A steel tube column filled with concrete",
+        "A solid timber post",
+        "A glass-fiber column",
+        "A precast hollow slab"
+      ],
+      "c": 0,
+      "ref": "General structural-steel and roof-framing practice (AISC/NSCP slenderness limits)",
+      "n": "Named after John Lally, its inventor. Concrete inside stops the steel tube from buckling."
+    },
+    {
+      "s": "Finishes, Materials and Hardware",
+      "q": "Which paint type is oil-based?",
+      "o": [
+        "Alkyd enamel",
+        "Cement paint",
+        "Water-based acrylic",
+        "Latex emulsion"
+      ],
+      "c": 0,
+      "ref": "General building-materials and finishing references (timber, paints, gypsum, flooring, hardware)",
+      "n": "Word root: alkyd from alcohol + acid. Emulsion comes from Latin emulgere, 'to milk out', and is water-based."
+    },
+    {
+      "s": "Plumbing and Septic Systems",
+      "q": "What does PVC stand for?",
+      "o": [
+        "Polyvinyl chloride",
+        "Plastic vinyl chloride",
+        "Polyvinyl carbonate",
+        "Polymer vinyl compound"
+      ],
+      "c": 0,
+      "ref": "National Plumbing Code of the Philippines and the Code on Sanitation (PD 856) IRR, Chapter XVII",
+      "n": "Word root: vinyl from Latin vinum, 'wine' (a chemistry link), and chloride from Greek chloros, 'pale green'."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "What is the purpose of a post base?",
+      "o": [
+        "Seals the roof",
+        "Holds a window",
+        "Connects two beams",
+        "Connects a wood post to a concrete foundation and keeps it off the ground"
+      ],
+      "c": 3,
+      "ref": "General structural-steel and roof-framing practice (AISC/NSCP slenderness limits)",
+      "n": "It lifts the post bottom above moisture, like a shoe sole."
+    },
+    {
+      "s": "Finishes, Materials and Hardware",
+      "q": "What gypsum board thickness is commonly used for wall partitions?",
+      "o": [
+        "8 mm",
+        "10 mm",
+        "6 mm",
+        "12 mm"
+      ],
+      "c": 3,
+      "ref": "General building-materials and finishing references (timber, paints, gypsum, flooring, hardware)",
+      "n": "Walls need stiffer boards than ceilings. 9 mm is common for ceilings."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "Which part of a simply supported beam has the positive moment, so the main bars go at the bottom?",
+      "o": [
+        "Mid-span",
+        "At the top of the beam only",
+        "At the column face only",
+        "At the supports"
+      ],
+      "c": 0,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "A beam sags in the middle, so the bottom stretches and the bottom bars work there. Think of a bent ruler.",
+      "fig": "f4"
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "What is the common standard thickness set for concrete hollow blocks (CHB)?",
+      "o": [
+        "5 in, 7 in, and 9 in",
+        "3 in, 5 in, and 7 in",
+        "4 in, 6 in, and 8 in (a 5 in block is not standard)",
+        "2 in and 10 in only"
+      ],
+      "c": 2,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "Sizes are 100, 150, and 200 mm. 5 in is the odd one out."
+    },
+    {
+      "s": "Finishes, Materials and Hardware",
+      "q": "Which hardware stops a door from slamming?",
+      "o": [
+        "Door viewer",
+        "Door damper (soft-close closer)",
+        "Door knob",
+        "Door stopper"
+      ],
+      "c": 1,
+      "ref": "General building-materials and finishing references (timber, paints, gypsum, flooring, hardware)",
+      "n": "A damper slows the door down, like a seat belt for a door. A stopper only stops it at the wall."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "In a one-way slab, where is the main reinforcement placed?",
+      "o": [
+        "Only at the slab edges",
+        "Parallel to the short span (with temperature bars across)",
+        "Only at the top",
+        "Parallel to the long span"
+      ],
+      "c": 1,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "A one-way slab spans the short way, like a plank across a narrow stream."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "Which vertical bar size is commonly used for an 8-inch CHB wall?",
+      "o": [
+        "20 mm",
+        "12 mm",
+        "16 mm",
+        "8 mm"
+      ],
+      "c": 1,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "Thicker walls take thicker bars. Recall option was 10 mm or 12 mm; confirm with your reviewer.",
+      "fig": "f5"
+    },
+    {
+      "s": "Services, Brands, Surveying, and Environment",
+      "q": "Which agency regulates noise pollution from industrial buildings?",
+      "o": [
+        "DENR",
+        "DOH only",
+        "DPWH",
+        "DTI"
+      ],
+      "c": 0,
+      "ref": "DENR/EMB regulations (PD 1586 ECC; Clean Air Act and noise standards)",
+      "n": "DENR through the EMB handles environmental standards, including noise. DENR-EMB also issues ECCs."
+    },
+    {
+      "s": "Concrete and Structural Basics",
+      "q": "What binds the sand and gravel together in concrete?",
+      "o": [
+        "Gravel",
+        "Sand",
+        "Cement",
+        "Water only"
+      ],
+      "c": 2,
+      "ref": "NSCP 2015 (National Structural Code of the Philippines) and common Philippine structural general notes",
+      "n": "Word root: cement from Latin caementum, 'rough stone chips'. Concrete comes from Latin concretus, 'grown together'. Cement is the glue."
+    },
+    {
+      "s": "Roofing, Gutters and Insulation",
+      "q": "What does the size of a roof gutter depend on?",
+      "o": [
+        "The roof pitch only",
+        "The age of the building",
+        "The roof area and the rainfall intensity",
+        "The color of the roof"
+      ],
+      "c": 2,
+      "ref": "General roofing practice (gables, hips, flashing, gutters)",
+      "n": "More roof and more rain means more water, so a bigger gutter. Word root: gutter from Old French goutiere, from goute, 'drop'."
+    }
+  ]
+}
