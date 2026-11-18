@@ -10,7 +10,7 @@
  *
  * Usage:
  *   LEACountdown.parts()            -> { days, hrs, mins, secs, diff }
- *   LEACountdown.label              -> "17 January 2027"
+ *   LEACountdown.label              -> "19 January 2027"
  *   const stop = LEACountdown.subscribe(p => { ...paint... });
  *
  * subscribe() fires immediately and then once a second, and returns a
@@ -29,8 +29,8 @@
 window.LEACountdown = (function () {
   // Philippine time: the exam sits on a date, not a moment in the reader's
   // zone, so the offset is pinned rather than left to the local clock.
-  var EXAM_DATE = new Date('2027-01-17T00:00:00+08:00');
-  var LABEL = '17 January 2027';
+  var EXAM_DATE = new Date('2027-01-19T00:00:00+08:00');
+  var LABEL = '19 January 2027';
 
   function parts() {
     var diff = Math.max(0, EXAM_DATE.getTime() - Date.now());

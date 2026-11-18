@@ -30,7 +30,7 @@
 // the last change (the subject list moving to network-first) shipped without
 // one, which left the old copy sitting in the old cache on every device that
 // had visited before.
-const VERSION = 'lea-v82';
+const VERSION = 'lea-v83';
 const SHELL = VERSION + '-shell';
 const DATA = VERSION + '-data';
 const VENDOR = VERSION + '-vendor';
@@ -69,7 +69,7 @@ const SHELL_URLS = [
   'assets/lea-confirm.js?v=81',
   'assets/theme.js?v=81',
   'assets/icons.js?v=81',
-  'assets/countdown.js?v=81',
+  'assets/countdown.js?v=83',
   'assets/blueprint.css?v=81',
   'assets/leaderboard.css?v=81',
   'assets/leaderboard.js?v=81',
