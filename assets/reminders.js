@@ -10,6 +10,7 @@
  *   rivals - someone passed you on this week's board, or who to catch next
  *   focus  - weakest subject and the module to open next
  *   update - the site has a newer version than the one this page loaded
+ *   quiz   - a pop-up quiz question, hourly or once a day (assets/quiz-pop.js)
  *
  * Which ones a reader wants is saved in their progress (meta key
  * 'reminderPrefs'), so the choice follows them across devices.
@@ -19,10 +20,18 @@
  */
 (function(){
   'use strict';
-  const BUILD = 18;
+  const BUILD = 19;
   const EXAM_MILESTONES = [180, 120, 90, 60, 30, 14, 7, 3, 1];
-  const DEFAULT_PREFS = { daily:true, streak:true, exam:true, rivals:true, focus:true, update:true };
+  const DEFAULT_PREFS = { quiz:true, quizFreq:'hourly', daily:true, streak:true, exam:true, rivals:true, focus:true, update:true };
+  const QUIZ_FREQS = [
+    { id:'hourly',    label:'Every hour' },
+    { id:'morning',   label:'Morning, 8 AM' },
+    { id:'lunch',     label:'Lunch, 12 PM' },
+    { id:'afternoon', label:'Afternoon, 3 PM' },
+    { id:'evening',   label:'Evening, 7 PM' }
+  ];
   const TYPES = [
+    { id:'quiz',   label:'Pop-up quiz',          sub:'A question from the reviewer to answer, as often as you choose below' },
     { id:'daily',  label:'Daily Drill nudge',    sub:'When today’s Daily Drill is not done yet' },
     { id:'streak', label:'Streak at risk',       sub:'From 6 PM, when your streak would end at midnight' },
     { id:'exam',   label:'Exam countdown',       sub:'At 180, 120, 90, 60, 30, 14, 7, 3 and 1 day left' },
@@ -75,6 +84,21 @@
         { href })];
     }
     return [];
+  }
+
+  // ---- pop-up quiz ----
+  // The slot's question is the same for everyone and stays put all slot, so
+  // the bell does not change under the reader every time it refreshes.
+  async function quizReminders(p){
+    if(!window.LEAQuizPop) return [];
+    const slot = LEAQuizPop.slot(p.quizFreq);
+    const it = await LEAQuizPop.forSlot(slot.id);
+    if(!it) return [];
+    const q = it.q.q.length > 120 ? it.q.q.slice(0, 117).trim() + '…' : it.q.q;
+    return [reminder('quiz', slot.id, 'Pop-up quiz · ' + plainName(it.s.name), q + '\nTap to answer.', {
+      at: slot.at.toISOString(),
+      href: 'index.html?qs=' + encodeURIComponent(it.s.id) + '&qm=' + encodeURIComponent(it.m.id) + '&qi=' + it.qi
+    })];
   }
 
   // ---- exam countdown ----
@@ -207,6 +231,7 @@
     const p = prefs();
     const jobs = [];
     const guard = fn => Promise.resolve().then(fn).catch(() => []);
+    if(p.quiz) jobs.push(guard(() => quizReminders(p)));
     jobs.push(guard(() => drillReminders(p)));
     if(p.exam) jobs.push(guard(examReminders));
     if(p.focus) jobs.push(guard(focusReminders));
@@ -216,5 +241,5 @@
   }
 
   if(window.LEANotify) LEANotify.registerSource('reminders', load);
-  window.LEAReminders = { BUILD, TYPES, prefs, savePrefs, load, hardRefresh };
+  window.LEAReminders = { BUILD, TYPES, QUIZ_FREQS, prefs, savePrefs, load, hardRefresh };
 })();

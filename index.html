@@ -12,23 +12,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/sb-client.js?v=81"></script>
-<script src="assets/icons.js?v=81"></script>
-<script src="assets/countdown.js?v=83"></script>
-<script src="assets/theme.js?v=81" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=81"></script>
-<script src="assets/quiz-source.js?v=81"></script>
-<script src="assets/avatar.js?v=81"></script>
-<script src="assets/module-progress.js?v=81"></script>
-<script src="assets/offline.js?v=81"></script>
-<script src="assets/quiz-resume.js?v=81"></script>
-<script src="assets/notifications.js?v=81"></script>
-<script src="assets/audio.js?v=81"></script>
-<script src="assets/reminders.js?v=81"></script>
-<script src="assets/whats-new.js?v=81"></script>
-<script src="assets/chat.js?v=81"></script>
-<script src="assets/messenger-model.js?v=81"></script>
-<script src="assets/messenger.js?v=81"></script>
+<script src="assets/sb-client.js?v=84"></script>
+<script src="assets/icons.js?v=84"></script>
+<script src="assets/countdown.js?v=84"></script>
+<script src="assets/theme.js?v=84" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=84"></script>
+<script src="assets/quiz-source.js?v=84"></script>
+<script src="assets/quiz-pop.js?v=84"></script>
+<script src="assets/avatar.js?v=84"></script>
+<script src="assets/module-progress.js?v=84"></script>
+<script src="assets/offline.js?v=84"></script>
+<script src="assets/quiz-resume.js?v=84"></script>
+<script src="assets/notifications.js?v=84"></script>
+<script src="assets/audio.js?v=84"></script>
+<script src="assets/reminders.js?v=84"></script>
+<script src="assets/whats-new.js?v=84"></script>
+<script src="assets/chat.js?v=84"></script>
+<script src="assets/messenger-model.js?v=84"></script>
+<script src="assets/messenger.js?v=84"></script>
 <script>
 // Coming back to Home from anywhere in the app used to flash the sign-in
 // screen for about half a second: the signed-out shell is what the document
@@ -623,8 +624,8 @@
       border-left:3px solid var(--blue-bright); padding:13px 15px; border-radius:10px; }
   }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=81">
-<link rel="stylesheet" href="assets/messenger.css?v=81">
+<link rel="stylesheet" href="assets/blueprint.css?v=84">
+<link rel="stylesheet" href="assets/messenger.css?v=84">
 </head>
 <body>
 <div class="wrap">
@@ -1459,6 +1460,8 @@ async function showSignedIn(user){
   // Not mid page-transition: redrawing Home would cancel it (assets/nav.js).
   LEANav.afterTransition(renderHome);
   window.leaOnProgressReset = renderHome;
+  // Pop-up quiz: once per visit, then each new hour (assets/quiz-pop.js).
+  LEAQuizPop.startHome(() => !signedInShell.classList.contains('hidden'));
 }
 
 function showSignedOut(){
@@ -1507,6 +1510,8 @@ function startSignInScreen(){
   if(signInClockStop) signInClockStop();
   signInClockStop = LEACountdown.subscribe(p => renderCountdown(p, 'si'));
   startSignInPresence();
+  // A taste of the reviewer before signing in (assets/quiz-pop.js).
+  LEAQuizPop.startSignIn(() => { const el = document.getElementById('loginEmail'); if(el) el.focus(); });
   const forgotBtn = document.getElementById('forgotBtn');
   if(forgotBtn && !forgotBtn.dataset.wired){
     forgotBtn.dataset.wired = '1';

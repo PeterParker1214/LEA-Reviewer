@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reminders — LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/sb-client.js?v=81"></script>
+<script src="assets/sb-client.js?v=84"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -53,6 +53,11 @@
 
   .toggle-row{ display:flex; align-items:center; gap:12px; padding:13px 0; border-bottom:1px dotted var(--line); cursor:pointer; }
   .toggle-row:last-child{ border-bottom:none; }
+  .freq-row{ display:flex; flex-wrap:wrap; gap:6px; padding:0 0 13px; border-bottom:1px dotted var(--line); transition:opacity .25s; }
+  .freq-row.off{ opacity:.4; pointer-events:none; }
+  .freq-chip{ font-family:var(--font-mono); font-size:11.5px; padding:6px 11px; border-radius:999px; border:1px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; transition:background .2s, border-color .2s, transform .2s cubic-bezier(.34,1.56,.64,1); }
+  .freq-chip:hover{ transform:translateY(-1px); border-color:var(--gold); }
+  .freq-chip.on{ background:var(--gold); border-color:var(--gold); color:#1a1206; font-weight:600; }
   .toggle-row .tr-text{ flex:1; }
   .tr-label{ font-weight:600; font-size:14px; }
   .tr-sub{ font-size:12.5px; color:var(--muted); margin-top:2px; line-height:1.45; }
@@ -74,15 +79,17 @@
   .foot{ font-size:12px; color:var(--muted); line-height:1.6; margin-top:18px; }
   .foot a{ color:var(--gold-bright); }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=81">
-<script src="assets/theme.js?v=81" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=81"></script>
-<script src="assets/offline.js?v=81"></script>
-<script src="assets/presence.js?v=81"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=84">
+<script src="assets/theme.js?v=84" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=84"></script>
+<script src="assets/offline.js?v=84"></script>
+<script src="assets/presence.js?v=84"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
-<script src="assets/module-progress.js?v=81"></script>
-<script src="assets/countdown.js?v=83"></script>
-<script src="assets/reminders.js?v=81"></script>
+<script src="assets/module-progress.js?v=84"></script>
+<script src="assets/countdown.js?v=84"></script>
+<script src="assets/quiz-source.js?v=84"></script>
+<script src="assets/quiz-pop.js?v=84"></script>
+<script src="assets/reminders.js?v=84"></script>
 </head>
 <body>
 <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
@@ -136,12 +143,25 @@ function renderToggles(){
     '<label class="toggle-row">' +
       '<div class="tr-text"><div class="tr-label">' + esc(t.label) + '</div><div class="tr-sub">' + esc(t.sub) + '</div></div>' +
       '<span class="switch"><input type="checkbox" data-type="' + t.id + '"' + (p[t.id] ? ' checked' : '') + ' aria-label="' + esc(t.label) + '"><span class="track"></span><span class="knob"></span></span>' +
-    '</label>'
+    '</label>' +
+    (t.id === 'quiz'
+      ? '<div class="freq-row' + (p.quiz ? '' : ' off') + '" role="radiogroup" aria-label="How often">' +
+          LEAReminders.QUIZ_FREQS.map(f => '<button type="button" class="freq-chip' + (p.quizFreq === f.id ? ' on' : '') + '" role="radio" aria-checked="' + (p.quizFreq === f.id) + '" data-freq="' + f.id + '">' + esc(f.label) + '</button>').join('') +
+        '</div>'
+      : '')
   ).join('');
+  document.querySelectorAll('#toggles .freq-chip').forEach(chip => chip.addEventListener('click', () => {
+    const next = LEAReminders.prefs();
+    next.quizFreq = chip.dataset.freq;
+    LEAReminders.savePrefs(next);
+    renderToggles();
+    renderNow();
+  }));
   document.querySelectorAll('#toggles input').forEach(input => input.addEventListener('change', () => {
     const next = LEAReminders.prefs();
     next[input.dataset.type] = input.checked;
     LEAReminders.savePrefs(next);
+    if(input.dataset.type === 'quiz') document.querySelector('#toggles .freq-row').classList.toggle('off', !input.checked);
     renderNow();
   }));
 }

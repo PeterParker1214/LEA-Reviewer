@@ -74,6 +74,7 @@
   document.addEventListener('click', function(e){
     var el = e.target.closest && e.target.closest('button, a[href], [role="button"], summary, input[type="button"], input[type="submit"], input[type="reset"], input[type="checkbox"], input[type="radio"]');
     if(!el || el.disabled || el.getAttribute('aria-disabled') === 'true') return;
+    if(el.closest('[data-own-sfx]')) return;   // plays its own sound (assets/quiz-pop.js)
     playUiClick();
   }, true);
 
