@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Run — LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/sb-client.js?v=84"></script>
+<script src="assets/sb-client.js?v=85"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Architects+Daughter&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -642,19 +642,19 @@
   .footer-btn.next{ box-shadow:0 8px 16px -10px rgba(0,0,0,.6), inset 0 1px 0 color-mix(in srgb, #fff 35%, transparent); }
   .footer-btn.skip{ background:none; border:1px solid var(--line); color:var(--muted); flex:0 0 32%; }
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=84">
-<script src="assets/lea-confirm.js?v=84"></script>
-<script src="assets/quiz-source.js?v=84"></script>
-<script src="assets/duel.js?v=84"></script>
-<script src="assets/etymology.js?v=84"></script>
-<script src="assets/module-progress.js?v=84"></script>
-<script src="assets/offline.js?v=84"></script>
-<script src="assets/presence.js?v=84"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=85">
+<script src="assets/lea-confirm.js?v=85"></script>
+<script src="assets/quiz-source.js?v=85"></script>
+<script src="assets/duel.js?v=85"></script>
+<script src="assets/etymology.js?v=85"></script>
+<script src="assets/module-progress.js?v=85"></script>
+<script src="assets/offline.js?v=85"></script>
+<script src="assets/presence.js?v=85"></script>
 <script>if(window.LEAPresence) LEAPresence.init({});</script>
-<script src="assets/quiz-resume.js?v=84"></script>
-<script src="assets/theme.js?v=84" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=84"></script>
-<script src="assets/audio.js?v=84"></script>
+<script src="assets/quiz-resume.js?v=85"></script>
+<script src="assets/theme.js?v=85" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=85"></script>
+<script src="assets/audio.js?v=85"></script>
 </head>
 <body>
 <!-- The rail is a sibling of #pageBody, not a child: every render replaces
@@ -1797,6 +1797,20 @@ async function logQuestionAnswer(questionRef, selected, isCorrect){
   }catch(e){ /* stats are best-effort; never surface this to the reader */ }
 }
 
+// Totals per choice for one question: [{ selected, n, correct }]. Asks the
+// question_stats function, which gives totals without user ids
+// (design_handoff_lea_reviewer/question-stats-privacy-setup.sql). Until that
+// has been run, falls back to reading the rows and totalling them here.
+async function fetchQuestionStats(questionRef){
+  const r = await sb.rpc('question_stats', { ref: questionRef });
+  if(!r.error && Array.isArray(r.data)){
+    return r.data.map(x => ({ selected: x.selected, n: Number(x.n) || 0, correct: Number(x.correct) || 0 }));
+  }
+  const t = await sb.from('question_answers').select('selected,is_correct').eq('question_ref', questionRef);
+  if(t.error || !t.data) return null;
+  return t.data.map(d => ({ selected: d.selected, n: 1, correct: d.is_correct ? 1 : 0 }));
+}
+
 // Renders the "N% of reviewers got this right" line inside the already-
 // painted explain box. Runs after the fact (async) rather than blocking
 // renderCard(), and checks isStale() right before touching the DOM so a
@@ -1804,14 +1818,14 @@ async function logQuestionAnswer(questionRef, selected, isCorrect){
 // wrong question.
 async function loadQuestionStats(questionRef, item, isStale){
   try{
-    const { data, error } = await sb.from('question_answers').select('selected,is_correct').eq('question_ref', questionRef);
-    if(error || !data || isStale()) return;
+    const data = await fetchQuestionStats(questionRef);
+    if(!data || isStale()) return;
     const el = document.getElementById('qStat');
     if(!el) return;
     const MIN_SAMPLE = 5; // below this, a percentage is more misleading than useful
-    if(data.length < MIN_SAMPLE) return;
-    const total = data.length;
-    const correctCount = data.filter(d => d.is_correct).length;
+    const total = data.reduce((a, d) => a + d.n, 0);
+    if(total < MIN_SAMPLE) return;
+    const correctCount = data.reduce((a, d) => a + d.correct, 0);
     const pctCorrect = Math.round((correctCount / total) * 100);
     let line;
     if(pctCorrect >= 50){
@@ -1820,7 +1834,7 @@ async function loadQuestionStats(questionRef, item, isStale){
       // Most-picked WRONG option — quote its text rather than a letter,
       // since options are shuffled per reader and "B" means nothing shared.
       const counts = {};
-      data.forEach(d => { if(!d.is_correct) counts[d.selected] = (counts[d.selected] || 0) + 1; });
+      data.forEach(d => { const wrong = d.n - d.correct; if(wrong > 0) counts[d.selected] = (counts[d.selected] || 0) + wrong; });
       let topIdx = null, topCount = -1;
       Object.keys(counts).forEach(k => { if(counts[k] > topCount){ topCount = counts[k]; topIdx = parseInt(k, 10); } });
       const topPct = topIdx == null ? 0 : Math.round((topCount / total) * 100);

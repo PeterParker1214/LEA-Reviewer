@@ -17,6 +17,7 @@
  *   - Tells the page transition which way you are going, so going back plays
  *     the animation in reverse (see "PAGE TRANSITIONS" in blueprint.css).
  */
+var NAV_SRC = (document.currentScript && document.currentScript.src) || '';
 (function () {
   'use strict';
   var SCROLL_PREFIX = 'lea_scroll:';
@@ -370,4 +371,14 @@
   }
 
   window.LEANav = { back: back, saveScroll: saveScroll, restoreSnap: restoreSnap, clearSnaps: clearSnaps, skel: skel, goTo: goTo, afterTransition: afterTransition };
+
+  // The "Buy me a coffee" tab (assets/coffee.js), loaded at the same ?v= as
+  // this file. Left off where a reader is busy or where it does not belong.
+  var COFFEE_SKIP = { run: 1, duel: 1, admin: 1, onboarding: 1, about: 1, welcome: 1 };
+  if (!COFFEE_SKIP[pageName(location.href)] && NAV_SRC) {
+    var coffee = document.createElement('script');
+    coffee.src = NAV_SRC.replace(/nav\.js(\?|$)/, 'coffee.js$1');
+    coffee.defer = true;
+    document.head.appendChild(coffee);
+  }
 })();
