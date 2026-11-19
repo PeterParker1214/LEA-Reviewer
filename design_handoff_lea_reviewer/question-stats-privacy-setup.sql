@@ -61,7 +61,7 @@ end $$;
 drop policy if exists question_answers_read_own on public.question_answers;
 create policy question_answers_read_own on public.question_answers
   for select to authenticated
-  using (user_id = auth.uid());
+  using (user_id::text = auth.uid()::text);
 
 -- If the old rule was an ALL rule, inserts went with it. This puts back
 -- "you may add your own answers", which is all the quiz does.
@@ -72,7 +72,7 @@ begin
     where schemaname = 'public' and tablename = 'question_answers' and cmd = 'INSERT'
   ) then
     execute 'create policy question_answers_insert_own on public.question_answers
-             for insert to authenticated with check (user_id = auth.uid())';
+             for insert to authenticated with check (user_id::text = auth.uid()::text)';
   end if;
 end $$;
 
