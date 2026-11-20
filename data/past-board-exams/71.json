@@ -1,314 +1,539 @@
 [
   {
-    "s": "Columns",
-    "q": "What is the minimum bar size for column longitudinal reinforcement?",
+    "s": "HVAC",
+    "q": "What is the function of Figure A?",
     "o": [
-      "10 mm",
-      "12 mm",
-      "20 mm",
-      "16 mm"
+      "Expels unwanted air from inside to the outside of the building.",
+      "A commercial and industrial-grade exhaust duct.",
+      "Distributes air conditioning to different parts of the building.",
+      "Stops or regulates the flow of air in the building."
     ],
     "c": 3,
-    "n": "NSCP sets 16 mm as the usual minimum."
+    "n": "Figure A is a damper.",
+    "img": "figs/BUILDING_UTILITIES__04-A.png"
   },
   {
-    "s": "Columns",
-    "q": "What is the minimum bar size for column ties (main bars 32 mm or smaller)?",
+    "s": "HVAC",
+    "q": "What is the function of Figure B?",
     "o": [
-      "20 mm",
-      "16 mm",
-      "12 mm",
-      "10 mm"
+      "Air duct cover",
+      "Air diffuser",
+      "Return air vent",
+      "HVAC damper"
+    ],
+    "c": 1,
+    "n": "Figure B is a round ceiling diffuser.",
+    "img": "figs/BUILDING_UTILITIES__04-A.png"
+  },
+  {
+    "s": "HVAC",
+    "q": "What is the function of Figure D?",
+    "o": [
+      "Air conditioner",
+      "Air-interchanger",
+      "Generator",
+      "Transformer"
+    ],
+    "c": 0,
+    "n": "Figure D is a packaged air-conditioning unit.",
+    "img": "figs/BUILDING_UTILITIES__04-A.png"
+  },
+  {
+    "s": "HVAC",
+    "q": "What is the function of Figure E?",
+    "o": [
+      "Air-conditioning",
+      "Photovoltaic Array",
+      "Electric hot water",
+      "Solar water heating"
     ],
     "c": 3,
-    "n": "10 mm ties for bars up to 32 mm."
+    "n": "Figure E is a solar water heater.",
+    "img": "figs/BUILDING_UTILITIES__04-A.png"
   },
   {
-    "s": "Columns",
-    "q": "What is a column that doesn't line up with the column below it?",
+    "s": "HVAC",
+    "q": "Which figure is used for interior room applications?",
     "o": [
-      "Planted column",
-      "Short column",
-      "Under-reinforced column",
-      "False column"
-    ],
-    "c": 0,
-    "n": "It sits on a transfer beam."
-  },
-  {
-    "s": "Columns",
-    "q": "What is the largest axial load a column can carry, in theory, before it buckles?",
-    "o": [
-      "Buckling",
-      "Eccentricity",
-      "Critical buckling load",
-      "Critical buckling stress"
+      "Figure A",
+      "Figure C",
+      "Figure B",
+      "Figure D"
     ],
     "c": 2,
-    "n": "Euler's critical load."
+    "n": "The ceiling exhaust fan (B) serves interior rooms.",
+    "img": "figs/BUILDING_UTILITIES__04-B.png"
   },
   {
-    "s": "Columns",
-    "q": "What does a column's slenderness ratio mainly determine?",
+    "s": "HVAC",
+    "q": "Which figure can be installed on exterior wall?",
     "o": [
-      "Maximum height",
-      "Effective length",
-      "Effective depth",
-      "Its tendency to buckle"
+      "Figure C",
+      "Figure D",
+      "Figure E",
+      "Figure B"
     ],
-    "c": 3,
-    "n": "High kL/r means buckling governs."
+    "c": 1,
+    "n": "The shuttered fan (D) mounts through an exterior wall.",
+    "img": "figs/BUILDING_UTILITIES__04-B.png"
   },
   {
-    "s": "Columns",
-    "q": "What is a steel pipe column filled with concrete commonly called?",
+    "s": "HVAC",
+    "q": "Which figure do NOT need electricity to run?",
     "o": [
-      "Lally column",
-      "Long column",
-      "Tied column",
-      "Spiral column"
+      "Figure D",
+      "Figure E",
+      "Figure A",
+      "Figure C"
     ],
-    "c": 0,
-    "n": "Lally column."
+    "c": 1,
+    "n": "A turbine ventilator (E) turns with the wind, without power.",
+    "img": "figs/BUILDING_UTILITIES__04-B.png"
   },
   {
-    "s": "Columns",
-    "q": "What wood column is a single piece of square or rectangular section?",
+    "s": "HVAC",
+    "q": "Which figure is used for commercial rooftop application?",
     "o": [
-      "Solid",
-      "Built-up",
-      "Tapered",
-      "Glued-laminated"
-    ],
-    "c": 0,
-    "n": "Solid sawn column."
-  },
-  {
-    "s": "Columns",
-    "q": "What thick column tends to fail by crushing rather than buckling?",
-    "o": [
-      "Long column",
-      "Composite column",
-      "Short column",
-      "All of the above"
-    ],
-    "c": 2,
-    "n": "Short columns crush."
-  },
-  {
-    "s": "Columns",
-    "q": "What is it called when a straight column under compression suddenly deflects sideways?",
-    "o": [
-      "Buckling",
-      "Creep",
-      "Elongation",
-      "None of the above"
+      "Figure A",
+      "Figure D",
+      "Figure E",
+      "Figure C"
     ],
     "c": 0,
-    "n": "Buckling."
+    "n": "A mushroom rooftop exhaust fan (A) is a commercial unit.",
+    "img": "figs/BUILDING_UTILITIES__04-B.png"
   },
   {
-    "s": "Columns",
-    "q": "Ties are used mainly in:",
+    "s": "HVAC",
+    "q": "Which figure is applicable only for tiny room?",
     "o": [
-      "Slabs",
-      "Beams",
-      "Columns",
-      "Footings"
+      "Figure B",
+      "Figure C",
+      "Figure D",
+      "Figure A"
     ],
-    "c": 2,
-    "n": "Ties confine column bars."
+    "c": 1,
+    "n": "The small wall fan (C) suits a tiny room like a toilet.",
+    "img": "figs/BUILDING_UTILITIES__04-B.png"
   },
   {
-    "s": "Columns",
-    "q": "Which force tends to shorten a member?",
+    "s": "HVAC",
+    "q": "Which AC component boils the refrigerant, absorbing heat to cool the air?",
     "o": [
-      "Torsion",
-      "Bending",
-      "Compression",
-      "Tension"
+      "Condenser",
+      "Evaporator",
+      "Air distribution",
+      "Vapor pump"
     ],
-    "c": 2,
-    "n": "Compression."
+    "c": 1,
+    "n": "Evaporation absorbs heat."
   },
   {
-    "s": "Columns",
-    "q": "Which column is most likely to fail by buckling?",
+    "s": "HVAC",
+    "q": "Which control device senses temperature to hold it near the setpoint?",
     "o": [
-      "Short column",
-      "Long column",
-      "Pedestal",
+      "Thermometer",
+      "Thermostat",
+      "Wire gauge",
       "None of the above"
     ],
     "c": 1,
-    "n": "Slender columns buckle."
+    "n": "Thermostats switch equipment by temperature."
   },
   {
-    "s": "Columns",
-    "q": "Which column commonly fails by crushing?",
+    "s": "HVAC",
+    "q": "What is the correct amount of refrigerant for an AC to run properly?",
     "o": [
-      "Long column",
-      "Intermediate column",
-      "Pedestal",
-      "Short column"
+      "Operating charge",
+      "Volume",
+      "Sub-zero",
+      "Migration"
     ],
-    "c": 3,
-    "n": "Short columns crush first."
+    "c": 0,
+    "n": "The charge is set by the maker."
   },
   {
-    "s": "Columns",
-    "q": "A long column is designed mainly against:",
+    "s": "HVAC",
+    "q": "For maximum efficiency, which components should be located near each other?",
     "o": [
-      "Crushing",
-      "Elongation",
-      "Hardness",
-      "Buckling"
-    ],
-    "c": 3,
-    "n": "Stability governs."
-  },
-  {
-    "s": "Columns",
-    "q": "Which column shape is considered the most efficient for structural performance?",
-    "o": [
-      "Rectangular",
-      "Circular",
-      "Square",
-      "Triangular"
-    ],
-    "c": 1,
-    "n": "A circular section has equal stiffness in every direction and resists buckling evenly."
-  },
-  {
-    "s": "Columns",
-    "q": "Which reinforcement in an RC column resists lateral forces and confines the core?",
-    "o": [
-      "Dowels",
-      "Stirrups",
-      "Main bars",
-      "Lateral ties"
-    ],
-    "c": 3,
-    "n": "Ties (or spirals)."
-  },
-  {
-    "s": "Columns",
-    "q": "What is the typical job of a column?",
-    "o": [
-      "Resisting horizontal movement",
-      "Distributing lateral forces to beams",
-      "Carrying axial loads from beams and slabs to the foundation",
-      "Decoration only"
+      "FCU and Chiller",
+      "AHU and FCU",
+      "AHU and Chiller",
+      "Electric fan and Chiller"
     ],
     "c": 2,
-    "n": "Columns carry axial load down."
+    "n": "Per the MST answer key: AHU and Chiller."
   },
   {
-    "s": "Columns",
-    "q": "Why is concrete cover provided over column bars?",
+    "s": "HVAC",
+    "q": "Which device raises refrigerant pressure in an AC system?",
     "o": [
-      "Lower cost",
-      "Extra weight",
-      "Aesthetics",
-      "Protection from corrosion and fire"
-    ],
-    "c": 3,
-    "n": "Cover protects steel."
-  },
-  {
-    "s": "Columns",
-    "q": "What is the maximum usable strain at the extreme concrete compression fiber?",
-    "o": [
-      "0.003",
-      "0.002",
-      "0.001",
-      "0.004"
+      "Compressor",
+      "Expansion valve",
+      "Condenser",
+      "Evaporator"
     ],
     "c": 0,
-    "n": "NSCP and ACI use 0.003."
+    "n": "The compressor squeezes low-pressure vapor."
   },
   {
-    "s": "Columns",
-    "q": "Under NSCP 2015, what is the strength reduction factor for bearing on concrete?",
+    "s": "HVAC",
+    "q": "What is the minimum clearance from the floor for air-conditioning pipes when crossing a hallway or corridor?",
     "o": [
-      "0.65",
-      "0.70",
-      "0.90",
-      "0.75"
-    ],
-    "c": 0,
-    "n": "NSCP 2015 (after ACI 318-14) uses φ = 0.65 for bearing; 0.70 was the older value."
-  },
-  {
-    "s": "Columns",
-    "q": "What is the minimum number of longitudinal bars in a spiral column?",
-    "o": [
-      "10",
-      "8",
-      "4",
-      "6"
-    ],
-    "c": 3,
-    "n": "Six bars with spirals; four in rectangular tied columns."
-  },
-  {
-    "s": "Columns",
-    "q": "What is the minimum clear spacing between parallel bars in a beam layer?",
-    "o": [
-      "20 mm",
-      "25 mm",
-      "10 mm",
-      "30 mm"
+      "2.10 m",
+      "2.30 m",
+      "2.50 m",
+      "2.40 m"
     ],
     "c": 1,
-    "n": "At least 25 mm or one bar diameter."
+    "n": "Per the MST answer key: 2.30 m."
   },
   {
-    "s": "Columns",
-    "q": "What is a beam fixed at one end and free at the other?",
+    "s": "HVAC",
+    "q": "Which AC system suits a large, sprawling factory?",
     "o": [
-      "Cantilever",
-      "Overhanging",
-      "Continuous",
-      "Simply supported"
+      "Split type",
+      "Window unit",
+      "Industrial fan",
+      "Chiller system"
     ],
-    "c": 0,
-    "n": "Cantilever."
+    "c": 3,
+    "n": "Central chilled water serves big floor areas."
   },
   {
-    "s": "Columns",
-    "q": "What beam, below or above grade, ties two members together to keep them from spreading?",
+    "s": "HVAC",
+    "q": "For a 20 sqm manager's office located in a central core area (center of the floor), which air-conditioning system is most appropriate?",
     "o": [
-      "Connection beam",
-      "Tie beam",
-      "Plinth girder",
-      "Lally beam"
+      "2 HP window-type",
+      "Cassette-type",
+      "5 TR floor-mounted",
+      "1 TR floor-mounted"
     ],
     "c": 1,
-    "n": "Tie beams link footings."
+    "n": "Per the MST answer key: Cassette-type."
   },
   {
-    "s": "Columns",
-    "q": "What beam spans over a door or window opening?",
+    "s": "HVAC",
+    "q": "For a high-rise building, where is the best location for a chiller unit?",
     "o": [
-      "Header beam",
-      "Door beam",
-      "Door header",
-      "Lintel beam"
+      "Basement",
+      "Ground floor",
+      "Roof deck",
+      "Outside the building near the parking lot"
     ],
-    "c": 3,
-    "n": "Lintel."
+    "c": 0,
+    "n": "Per the MST answer key: Basement."
   },
   {
-    "s": "Columns",
-    "q": "Which column has a continuous helical bar around its longitudinal bars?",
+    "s": "HVAC",
+    "q": "Where is a cassette-type AC installed?",
     "o": [
-      "Tied column",
-      "RC column",
-      "Helical column",
-      "Spiral column"
+      "Wall",
+      "Column",
+      "Ceiling",
+      "Floor"
+    ],
+    "c": 2,
+    "n": "Cassettes sit flush in the ceiling."
+  },
+  {
+    "s": "HVAC",
+    "q": "Where is the best place for a cooling tower?",
+    "o": [
+      "Service core",
+      "Basement",
+      "Kitchen",
+      "Roof deck"
     ],
     "c": 3,
-    "n": "Spiral."
+    "n": "Towers need open air to reject heat."
+  },
+  {
+    "s": "HVAC",
+    "q": "What carries conditioned air from the air handling unit?",
+    "o": [
+      "Cooling tower",
+      "Chiller",
+      "Ducts",
+      "Pipe chase"
+    ],
+    "c": 2,
+    "n": "Ducts distribute AHU air."
+  },
+  {
+    "s": "HVAC",
+    "q": "Air at 100% relative humidity is:",
+    "o": [
+      "Dehumidified",
+      "Saturated",
+      "Moist",
+      "Supersaturated"
+    ],
+    "c": 1,
+    "n": "It holds all the vapor it can."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which colorless, odorless gas varies in quantity in air and sets relative humidity?",
+    "o": [
+      "Hydrogen",
+      "Nitrogen",
+      "Oxygen",
+      "Water vapor"
+    ],
+    "c": 3,
+    "n": "RH measures water vapor."
+  },
+  {
+    "s": "HVAC",
+    "q": "What is the science of lowering the temperature of a space or substance?",
+    "o": [
+      "Refrigeration",
+      "Dehumidification",
+      "Humidification",
+      "Air-conditioning"
+    ],
+    "c": 0,
+    "n": "Refrigeration removes heat."
+  },
+  {
+    "s": "HVAC",
+    "q": "A yellow energy guide label on an AC shows a large bold number. What is it?",
+    "o": [
+      "Energy efficiency ratio",
+      "Energy consumption",
+      "Rated power input",
+      "Energy efficiency factor"
+    ],
+    "c": 0,
+    "n": "The label highlights EER (now CSPF on inverter units)."
+  },
+  {
+    "s": "HVAC",
+    "q": "For an AC unit, horsepower describes:",
+    "o": [
+      "Compressor weight",
+      "How fast air is cooled",
+      "Motor or compressor power",
+      "Air volume per minute"
+    ],
+    "c": 2,
+    "n": "HP is a power rating."
+  },
+  {
+    "s": "HVAC",
+    "q": "What should a small windowless kitchen or T&B have?",
+    "o": [
+      "Dehumidifier",
+      "Air conditioner",
+      "Mechanical exhaust fan",
+      "Glass blocks"
+    ],
+    "c": 2,
+    "n": "Exhaust fans remove odor and moisture."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which is the best location for a condenser unit?",
+    "o": [
+      "Beside the service counter",
+      "Beside the generator",
+      "Hung on a tree",
+      "Roof deck"
+    ],
+    "c": 3,
+    "n": "Open roof space dissipates heat."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which ventilation component removes stale or humid air?",
+    "o": [
+      "Air filter",
+      "Diffuser",
+      "Humidifier",
+      "Exhaust fan"
+    ],
+    "c": 3,
+    "n": "Exhaust fans pull air out."
+  },
+  {
+    "s": "HVAC",
+    "q": "Why must a condenser unit be in a well-ventilated outdoor spot?",
+    "o": [
+      "To hide it",
+      "For proper heat rejection",
+      "To reduce maintenance",
+      "For looks"
+    ],
+    "c": 1,
+    "n": "Trapped hot air cuts efficiency."
+  },
+  {
+    "s": "HVAC",
+    "q": "In ventilation, CFM measures:",
+    "o": [
+      "Fan speed",
+      "Temperature",
+      "Static pressure",
+      "Airflow"
+    ],
+    "c": 3,
+    "n": "Cubic feet per minute."
+  },
+  {
+    "s": "HVAC",
+    "q": "What is installed over an entrance to limit air exchange through the door?",
+    "o": [
+      "Door stopper",
+      "Exhaust fan",
+      "Air curtain",
+      "Dehumidifier"
+    ],
+    "c": 2,
+    "n": "A downward air jet separates inside and outside."
+  },
+  {
+    "s": "HVAC",
+    "q": "Where should the ACCU for a convenience store go?",
+    "o": [
+      "In the basement",
+      "On the ceiling",
+      "At the store front",
+      "Outside the store"
+    ],
+    "c": 3,
+    "n": "The condensing unit is outdoors."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which is NOT a standard HVAC component?",
+    "o": [
+      "ACCU",
+      "AHU",
+      "FHU",
+      "Condensate drain pipe"
+    ],
+    "c": 2,
+    "n": "FHU isn't an HVAC component; ACCU, AHU and the drain are."
+  },
+  {
+    "s": "HVAC",
+    "q": "What is the main function of an AHU?",
+    "o": [
+      "Removing humidity only",
+      "Cooling refrigerant",
+      "Circulating and conditioning air",
+      "Expelling hot air outdoors"
+    ],
+    "c": 2,
+    "n": "AHUs filter, cool and move air."
+  },
+  {
+    "s": "HVAC",
+    "q": "BTU stands for:",
+    "o": [
+      "Balanced Temperature Unit",
+      "Built-in Temperature Utility",
+      "Basic Thermal Unit",
+      "British Thermal Unit"
+    ],
+    "c": 3,
+    "n": "1 BTU heats 1 lb of water 1 °F."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which is NOT a mode of heat transfer?",
+    "o": [
+      "Conduction",
+      "Convection",
+      "Radiation",
+      "Evaporation"
+    ],
+    "c": 3,
+    "n": "Evaporation is a phase change, not one of the three modes."
+  },
+  {
+    "s": "HVAC",
+    "q": "What is installed in ducts where they pass through fire-rated walls?",
+    "o": [
+      "Attenuator",
+      "Firestop",
+      "Fire damper",
+      "Plenum sheet"
+    ],
+    "c": 2,
+    "n": "Fire dampers close when heat melts a fusible link."
+  },
+  {
+    "s": "HVAC",
+    "q": "What duct devices near fans, AHUs and dampers absorb or deflect sound to limit its spread?",
+    "o": [
+      "Thermostats",
+      "Attenuators",
+      "Air filters",
+      "Plenums"
+    ],
+    "c": 1,
+    "n": "Sound attenuators (silencers)."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which part of a split-type AC is outdoors?",
+    "o": [
+      "Evaporator",
+      "Condenser",
+      "Fan coil unit",
+      "Blower"
+    ],
+    "c": 1,
+    "n": "The condensing unit sits outside."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which of the following brands does NOT manufacture air conditioners?",
+    "o": [
+      "LG",
+      "Samsung",
+      "Asahi",
+      "Carrier"
+    ],
+    "c": 2,
+    "n": "Per the MST answer key: Asahi."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which part of a split-type AC cools the indoor air?",
+    "o": [
+      "Thermostat",
+      "Condenser",
+      "Compressor",
+      "Evaporator"
+    ],
+    "c": 3,
+    "n": "The indoor coil is the evaporator."
+  },
+  {
+    "s": "HVAC",
+    "q": "What is the refrigerant's main job in an AC system?",
+    "o": [
+      "Regulating humidity",
+      "Circulating air",
+      "Absorbing and releasing heat",
+      "Filtering dust"
+    ],
+    "c": 2,
+    "n": "It carries heat from the evaporator to the condenser."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which AC system suits large commercial spaces?",
+    "o": [
+      "Centralized system",
+      "Split type",
+      "Portable unit",
+      "Window type"
+    ],
+    "c": 0,
+    "n": "Central plants serve large buildings."
   }
 ]
