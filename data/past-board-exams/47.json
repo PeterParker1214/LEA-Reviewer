@@ -8,8 +8,8 @@
       "Gravel, sand, cement, water",
       "Water, cement, gravel, sand"
     ],
-    "c": 2,
-    "n": "Coarse aggregate first, then sand, cement, and water."
+    "c": 1,
+    "n": "Per the MST answer key: Sand, cement, gravel, water."
   },
   {
     "s": "Concrete",
@@ -306,15 +306,39 @@
   },
   {
     "s": "Concrete",
-    "q": "A second-floor slab measures 40 m × 50 m × 150 mm. If each truck delivers 6 m³, how many truckloads of ready-mix are needed?",
+    "q": "How many truckloads of ready-mix concrete are needed for a 40 m × 50 m second-floor slab, 150 mm thick, if each truck carries 10 m³?",
     "o": [
       "20 loads",
       "25 loads",
       "30 loads",
       "50 loads"
     ],
+    "c": 2,
+    "n": "40 × 50 × 0.15 = 300 m³; 300 ÷ 10 m³ per truck = 30 loads (per the MST answer key)."
+  },
+  {
+    "s": "Concrete",
+    "q": "For a small residential project with a 40 sq.m. second-floor slab, which concrete method is most suitable?",
+    "o": [
+      "2-bagger mixer",
+      "1-bagger mixer",
+      "Ready-mix concrete",
+      "Manual mix"
+    ],
+    "c": 0,
+    "n": "Per the MST answer key: 2-bagger mixer."
+  },
+  {
+    "s": "Concrete",
+    "q": "What is the most practical method for pouring a 4 cu.m. concrete slab?",
+    "o": [
+      "Manual mix",
+      "1-bagger mixer",
+      "Ready-mix concrete",
+      "2-bagger mixer"
+    ],
     "c": 3,
-    "n": "40 × 50 × 0.15 = 300 m³, and 300 ÷ 6 = 50 loads."
+    "n": "Per the MST answer key: 2-bagger mixer."
   },
   {
     "s": "Concrete",
