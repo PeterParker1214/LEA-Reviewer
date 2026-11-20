@@ -1,438 +1,413 @@
 [
   {
-    "s": "Steel & Prestressing",
-    "q": "What is Figure A, a type of metal sheet that has a pattern of holes or slots punched into it, often used for filtering, ventilation, and decorative purposes?",
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What is the standard spacing of horizontal reinforcement in CHB walls?",
     "o": [
-      "Expanded mesh",
-      "Perforated metal sheet",
-      "Slotted sheet",
-      "Lattice plate"
+      "Every 2 layers",
+      "1.0 m",
+      "0.90 m",
+      "0.60 m or every 3 layers"
     ],
-    "c": 1,
-    "n": "Holes or slots punched through: perforated sheet.",
-    "img": "figs/STRUCTURAL_CONCEPTUALIZA__17-A.png"
+    "c": 3,
+    "n": "Horizontal bars every 0.60 m (every 3 courses)."
   },
   {
-    "s": "Steel & Prestressing",
-    "q": "What is Figure B, a metal sheet that has been slits and stretched to form a mesh pattern, often used in security applications or as a surface material for strength and drainage?",
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What is the minimum dead load requirement for a wall?",
     "o": [
-      "Expanded metal sheet",
-      "Woven wire mesh",
-      "Perforated sheet",
-      "Mesh plate"
-    ],
-    "c": 0,
-    "n": "Slit and stretched into a mesh: expanded metal.",
-    "img": "figs/STRUCTURAL_CONCEPTUALIZA__17-A.png"
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "What is Figure C, a metal sheet with a raised diamond pattern, commonly used for flooring, stair treads, and traction surfaces?",
-    "o": [
-      "Checkered metal sheet",
-      "Kicker plate",
-      "Step plate",
-      "Safety plate"
-    ],
-    "c": 0,
-    "n": "A raised diamond pattern: checkered plate.",
-    "img": "figs/STRUCTURAL_CONCEPTUALIZA__17-A.png"
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "What is Figure D, a type of metal sheet with a series of parallel ridges or grooves, often used in roofing, siding, and construction for its strength and lightweight properties?",
-    "o": [
-      "Embossed metal plate",
-      "Corrugated metal sheet",
-      "Fluted steel sheet",
-      "Profiled metal sheet"
-    ],
-    "c": 1,
-    "n": "Parallel ridges and grooves: corrugated sheet.",
-    "img": "figs/STRUCTURAL_CONCEPTUALIZA__17-A.png"
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "What is Figure E, a continuous roll of metal sheet that is wound into a coil, typically used for manufacturing, forming, and processing into other shapes or products?",
-    "o": [
-      "Metal plate roll",
-      "Rolled steel",
-      "Metal sheet coil",
-      "Wire coil"
+      "5SkPa",
+      "0.5kPa",
+      "1kPa",
+      "2kPa"
     ],
     "c": 2,
-    "n": "A continuous sheet wound into a coil.",
-    "img": "figs/STRUCTURAL_CONCEPTUALIZA__17-A.png"
+    "n": "Per the MST answer key: 1kPa."
   },
   {
-    "s": "Steel & Prestressing",
-    "q": "Which item is the steel rafter?",
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What may be built along side or rear property lines on fairly flat lots?",
     "o": [
+      "Zócalo walls",
+      "End walls",
+      "Firewalls and perimeter walls",
+      "Retaining walls"
+    ],
+    "c": 2,
+    "n": "Within code limits."
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What is the most commonly used size of reinforcing bars for both vertical and horizontal reinforcement in CHB walls (in millimeters)?",
+    "o": [
+      "12 mm",
+      "10 mm",
+      "18 mm",
+      "8 mm"
+    ],
+    "c": 1,
+    "n": "10 mm bars are the most common in CHB walls."
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What is Figure A, a bolt used to fasten a structure to a foundation, typically for holding steel columns or beams in place?",
+    "o": [
+      "Expansion anchor",
+      "Dowel pin",
+      "Through bolt",
+      "Anchor bolt"
+    ],
+    "c": 3,
+    "n": "Figure A is a hooked anchor bolt.",
+    "img": "figs/STRUCTURAL_CONCEPTUALIZA__16-A.png"
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What is Figure B, a metal plate used to connect and reinforce the joints of a truss, beam, or column in structural applications?",
+    "o": [
+      "Bearing plate",
+      "Gusset plate",
+      "Splice plate",
+      "Connection plate"
+    ],
+    "c": 1,
+    "n": "Figure B is a gusset plate at a truss joint.",
+    "img": "figs/STRUCTURAL_CONCEPTUALIZA__16-A.png"
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What is Figure C, a metal connector used to join wood trusses, often in the form of a metal plate with nails driven through it?",
+    "o": [
+      "Gang nail",
+      "Shear plate",
+      "Truss clip",
+      "Gusset plate"
+    ],
+    "c": 0,
+    "n": "Figure C is a gang-nail (nail plate) connector.",
+    "img": "figs/STRUCTURAL_CONCEPTUALIZA__16-A.png"
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What is Figure D, a type of bolt that expands when tightened, used to anchor structures to concrete or masonry?",
+    "o": [
+      "Expansion bolt",
+      "Anchor bolt",
+      "Lag bolt",
+      "Concrete fastener"
+    ],
+    "c": 0,
+    "n": "Figure D shows expansion bolts.",
+    "img": "figs/STRUCTURAL_CONCEPTUALIZA__16-A.png"
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What is Figure E, a type of stud welded to steel beams or plates to improve the shear connection between concrete and steel in composite construction?",
+    "o": [
+      "Connection stud",
+      "Anchor stud",
+      "Rivet",
+      "Shear stud"
+    ],
+    "c": 3,
+    "n": "Figure E shows shear studs.",
+    "img": "figs/STRUCTURAL_CONCEPTUALIZA__16-A.png"
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What is Item A?",
+    "o": [
+      "Anchor Bolt",
+      "Base Plate",
+      "Post Base",
+      "Column Cap"
+    ],
+    "c": 2,
+    "n": "Item A is a post base.",
+    "img": "figs/STRUCTURAL_CONCEPTUALIZA__16-B.png"
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What is Item B?",
+    "o": [
+      "Truss Hanger",
+      "Ledger Connector",
+      "Angle Bracket",
+      "Sill Plate"
+    ],
+    "c": 0,
+    "n": "Item B is a hanger.",
+    "img": "figs/STRUCTURAL_CONCEPTUALIZA__16-B.png"
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What is Item C?",
+    "o": [
+      "Sleeve Anchor",
+      "Lag Shield Anchor",
+      "Drop-In Anchor",
+      "Wedge Anchor"
+    ],
+    "c": 0,
+    "n": "Item C is a sleeve anchor.",
+    "img": "figs/STRUCTURAL_CONCEPTUALIZA__16-B.png"
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "Figure 16-B: What is Item D?",
+    "o": [
+      "Joist connector",
+      "Post cap",
+      "Truss hanger",
+      "Post base"
+    ],
+    "c": 1,
+    "n": "Item D is a post cap.",
+    "img": "figs/STRUCTURAL_CONCEPTUALIZA__16-B.png"
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What is Item E used for?",
+    "o": [
+      "Wood Connections",
+      "Concrete Connections",
+      "Glass Installations",
+      "Steel Installations"
+    ],
+    "c": 2,
+    "n": "Item E shows glass railing connectors.",
+    "img": "figs/STRUCTURAL_CONCEPTUALIZA__16-B.png"
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "Which connector is used for drywall construction?",
+    "o": [
+      "Figure C",
       "Figure B",
-      "Figure A",
       "Figure E",
       "Figure D"
     ],
     "c": 1,
-    "n": "A points to the sloping member of the rigid frame: the steel rafter.",
-    "img": "figs/STRUCTURAL_CONCEPTUALIZA__17-B.png"
+    "n": "Figure B is a light-gauge framing angle used in drywall partitions.",
+    "img": "figs/STRUCTURAL_CONCEPTUALIZA__16-E.png"
   },
   {
-    "s": "Steel & Prestressing",
-    "q": "Which item is the eave purlin?",
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "Which connector is used for steel construction?",
     "o": [
+      "Figure D",
       "Figure E",
-      "Figure C",
-      "Figure D",
-      "Figure A"
+      "Figure A",
+      "Figure B"
     ],
-    "c": 3,
-    "n": "Per the MST answer key: Figure A.",
-    "img": "figs/STRUCTURAL_CONCEPTUALIZA__17-B.png"
+    "c": 1,
+    "n": "Figure E is a rivet for steel work.",
+    "img": "figs/STRUCTURAL_CONCEPTUALIZA__16-E.png"
   },
   {
-    "s": "Steel & Prestressing",
-    "q": "Which item is the anchor bolt?",
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "Which connector is used for roofing work?",
     "o": [
+      "Figure B",
       "Figure D",
+      "Figure C",
+      "Figure E"
+    ],
+    "c": 2,
+    "n": "Figure C is a roof anchor for fall protection.",
+    "img": "figs/STRUCTURAL_CONCEPTUALIZA__16-E.png"
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "Which connector is used for woodworking?",
+    "o": [
       "Figure A",
+      "Figure E",
       "Figure B",
       "Figure C"
     ],
     "c": 0,
-    "n": "Per the MST answer key: Figure D.",
-    "img": "figs/STRUCTURAL_CONCEPTUALIZA__17-B.png"
+    "n": "Figure A is a nail plate for timber trusses.",
+    "img": "figs/STRUCTURAL_CONCEPTUALIZA__16-E.png"
   },
   {
-    "s": "Steel & Prestressing",
-    "q": "Which item is the corner post?",
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "Which connector is used for both concrete and steel construction?",
     "o": [
-      "Figure C",
-      "Figure B",
-      "Figure D",
-      "Figure E"
-    ],
-    "c": 0,
-    "n": "Per the MST answer key: Figure C.",
-    "img": "figs/STRUCTURAL_CONCEPTUALIZA__17-B.png"
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "Which item is the post-and-beam end frame?",
-    "o": [
-      "Figure B",
       "Figure E",
+      "Figure C",
       "Figure A",
       "Figure D"
     ],
-    "c": 0,
-    "n": "Per the MST answer key: Figure B.",
-    "img": "figs/STRUCTURAL_CONCEPTUALIZA__17-B.png"
+    "c": 3,
+    "n": "Shear studs (D) join steel beams to concrete.",
+    "img": "figs/STRUCTURAL_CONCEPTUALIZA__16-E.png"
   },
   {
-    "s": "Steel & Prestressing",
-    "q": "What is Figure A, a type of wire used to securely bind reinforcement bars in concrete construction?",
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What short bar extends from one concrete element into another, such as from footing to column?",
     "o": [
-      "Twisted wire",
-      "Baling wire",
-      "Galvanized wire",
-      "Tie wire"
+      "Stirrup",
+      "Corbel",
+      "Temperature bar",
+      "Dowel"
     ],
     "c": 3,
-    "n": "Tie wire binds rebar at intersections.",
-    "img": "figs/STRUCTURAL_CONCEPTUALIZA__17-C.png"
+    "n": "Dowels transfer force across joints."
   },
   {
-    "s": "Steel & Prestressing",
-    "q": "What is Figure B, a type of wire used for security fencing, characterized by sharp edges or points along the wire?",
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "Howis a pre-stressed concrete element typically connected to reinforced concrete?",
     "o": [
-      "Barbed wire",
-      "Security wire",
-      "Tension wire",
-      "Razor wire"
-    ],
-    "c": 0,
-    "n": "Barbed wire carries sharp points along its length.",
-    "img": "figs/STRUCTURAL_CONCEPTUALIZA__17-C.png"
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "What is Figure C, a type of wire mesh made by welding the intersections of horizontal and vertical wires?",
-    "o": [
-      "Reinforcing mesh",
-      "Welded wire",
-      "Crimped wire",
-      "Barbed mesh"
-    ],
-    "c": 1,
-    "n": "Welded wire mesh is fused at each crossing.",
-    "img": "figs/STRUCTURAL_CONCEPTUALIZA__17-C.png"
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "What is Figure D, amesh made from metal wires that are woven or welded together to form a grid structure?",
-    "o": [
-      "Reinforcing grid",
-      "Galvanized steel mesh",
-      "Expanded metal mesh",
-      "Wire mesh"
-    ],
-    "c": 3,
-    "n": "Wire mesh is woven or welded into a grid.",
-    "img": "figs/STRUCTURAL_CONCEPTUALIZA__17-C.png"
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "What is Figure E, a type of fencing material made from interwoven metal wire, commonly used for security and boundary purposes?",
-    "o": [
-      "Razor wire",
-      "Cyclone wire",
-      "Cable wire",
-      "Expanded wire"
-    ],
-    "c": 1,
-    "n": "Cyclone wire (chain link) is interwoven fencing.",
-    "img": "figs/STRUCTURAL_CONCEPTUALIZA__17-C.png"
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "Which type of building benefits the most from steel construction?",
-    "o": [
-      "Sports facilities",
-      "Storage facilities",
-      "Health facilities",
-      "Office buildings"
-    ],
-    "c": 0,
-    "n": "Per the MST answer key: Sports facilities."
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "What is the main disadvantage of steel as a building material?",
-    "o": [
-      "Corrosion",
-      "Earthquake resistance",
-      "Availability",
-      "Cost"
-    ],
-    "c": 0,
-    "n": "Steel rusts without protection."
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "When specifying fireproofing for steel, which material is the most expensive?",
-    "o": [
-      "Cementitious spray-on",
-      "Poured concrete",
-      "Gypsum board",
-      "Metal lath with plaster"
-    ],
-    "c": 1,
-    "n": "Per the MST answer key: Poured concrete."
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "Which of the following is a major steel construction company in the Philippines?",
-    "o": [
-      "EEI Corporation",
-      "Megawide Construction Corporation",
-      "SteelAsia Corporation",
-      "Amsteel Structures Inc."
-    ],
-    "c": 2,
-    "n": "Per the MST answer key: SteelAsia Corporation."
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "Who is mainly responsible for the structural design of steel members?",
-    "o": [
-      "Civil (structural) engineer",
-      "Design architect",
-      "Steel fabricator",
-      "General contractor"
-    ],
-    "c": 0,
-    "n": "The engineer of record."
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "What does W4 × 13 mean?",
-    "o": [
-      "W-flange 4 in. high, 13 in. wide",
-      "Steel flange weighing 4 lb, 13 in. high",
-      "W-section 4 in. wide, 13 in. high",
-      "Wide flange about 4 in. deep weighing 13 lb/ft"
-    ],
-    "c": 3,
-    "n": "Nominal depth × weight per foot."
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "What do you call an I-beam used specifically as a steel column?",
-    "o": [
-      "Web beam",
-      "Universal column",
-      "I-column",
-      "Wide flange column"
-    ],
-    "c": 1,
-    "n": "Per the MST answer key: Universal column."
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "Which part of an I-beam resists shear?",
-    "o": [
-      "End part",
-      "Web",
-      "Middle part",
-      "Flange"
-    ],
-    "c": 1,
-    "n": "The web takes shear."
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "An I-shape with equal or nearly equal width and depth best suits use as a:",
-    "o": [
-      "Column",
-      "Girder",
-      "Beam",
-      "Joist"
-    ],
-    "c": 0,
-    "n": "Wide flanges resist buckling both ways."
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "What is the central vertical plate of a wide flange section?",
-    "o": [
-      "Side flange",
-      "Web",
-      "Wing",
-      "Floor flange"
-    ],
-    "c": 1,
-    "n": "The web."
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "An",
-    "o": [
-      "t-beam is also known as a:",
-      "H-section",
-      "Universal beam",
-      "Channel",
-      "W-section"
-    ],
-    "c": 4,
-    "n": "Per the MST answer key: Universal beam."
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "Which is NOT a standard steel section abbreviation?",
-    "o": [
-      "HHS",
-      "CHS",
-      "SHS",
-      "RHS"
-    ],
-    "c": 0,
-    "n": "Square, circular and rectangular hollow sections."
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "What is an I-beam mainly used as?",
-    "o": [
-      "Beam",
-      "Slab",
-      "Wall",
-      "Column"
-    ],
-    "c": 0,
-    "n": "It is shaped for bending."
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "What is the typical use of a wide flange section?",
-    "o": [
-      "Gutter",
-      "Roof",
-      "Column",
-      "Stair"
-    ],
-    "c": 2,
-    "n": "Per the MST answer key: Column."
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "What are the horizontal plates of a wide flange beam called?",
-    "o": [
-      "Plates",
-      "Web",
-      "Edges",
-      "Flanges"
-    ],
-    "c": 3,
-    "n": "Flanges."
-  },
-  {
-    "s": "Steel & Prestressing",
-    "q": "Which part of an I-beam carries most of the bending?",
-    "o": [
-      "The flanges",
-      "The web",
-      "All of the above",
+      "Dowel",
+      "Mortar",
+      "Axle",
       "None of the above"
     ],
     "c": 0,
-    "n": "Flanges are farthest from the neutral axis."
+    "n": "Dowels connect precast/prestressed members to cast-in-place concrete."
   },
   {
-    "s": "Steel & Prestressing",
-    "q": "What does the web of an I-beam do?",
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What is the primary function of a shear stud?",
     "o": [
-      "Holds flange plates",
-      "Adds weight",
-      "Resists shear",
-      "Resists bending"
+      "To anchor formwork to concrete",
+      "To connect steel decking to beams",
+      "To distribute the load from the slab to the beam",
+      "Toconnect columns to beams"
     ],
     "c": 2,
-    "n": "Web resists shear."
+    "n": "Per the MST answer key: To distribute the load from the slab to the beam."
   },
   {
-    "s": "Steel & Prestressing",
-    "q": "Which section suits long-span uses like bridges?",
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "Which masonry anchor has a split malleable-iron cone that expands as it's tightened?",
     "o": [
-      "Angle",
-      "Channel",
-      "I-beam or W-section",
-      "Square hollow section"
+      "Expansion bolt",
+      "Contraction bolt",
+      "Extrusion bolt",
+      "Bearing bolt"
     ],
-    "c": 2,
-    "n": "High bending capacity."
+    "c": 0,
+    "n": "Expansion anchor."
   },
   {
-    "s": "Steel & Prestressing",
-    "q": "What is the main advantage of wide flange sections?",
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "Which element is placed at construction joints to ensure load transfer between two separate concrete pours?",
     "o": [
-      "Light and flexible",
-      "Easy to paint",
-      "High compression resistance",
-      "High moment of inertia and bending capacity"
+      "Shear key",
+      "Expansion joint",
+      "Anchor bolt",
+      "Dowel bar"
     ],
     "c": 3,
-    "n": "Efficient in bending."
+    "n": "Per the MST answer key: Dowel bar."
   },
   {
-    "s": "Steel & Prestressing",
-    "q": "Who is a local manufacturer of prestressed bars?",
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What is the surface where a concrete pour was stopped and later resumed?",
     "o": [
-      "SteelAsia",
-      "Unisteel",
-      "Benedicto Steel Group",
-      "Pag-asa Steel"
+      "Construction joint",
+      "Thermal joint",
+      "Expansion joint",
+      "Control joint"
+    ],
+    "c": 0,
+    "n": "Construction joint."
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What material is commonly used as a filler for an expansion joint?",
+    "o": [
+      "Bitumen",
+      "Grout",
+      "Mortar",
+      "Foam"
+    ],
+    "c": 0,
+    "n": "Bituminous filler is the classic expansion-joint filler."
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What is a seismic gap for?",
+    "o": [
+      "Spacing bars",
+      "Keeping adjacent buildings from pounding in an earthquake",
+      "Thermal expansion in roof slabs",
+      "None of the above"
+    ],
+    "c": 1,
+    "n": "A separation joint."
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "Which joint absorbs thermal movement, vibration and settlement or seismic movement?",
+    "o": [
+      "Construction joint",
+      "Expansion joint",
+      "Doweled joint",
+      "None of the above"
+    ],
+    "c": 1,
+    "n": "Expansion joint."
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What long light-gauge members hold finishes such as drywall or ceiling boards?",
+    "o": [
+      "Steel frame",
+      "Metal furring",
+      "Drywall",
+      "Steel deck"
+    ],
+    "c": 1,
+    "n": "Furring channels."
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "Which steel plate connects truss members?",
+    "o": [
+      "Tie plate",
+      "Gusset plate",
+      "Base plate",
+      "Lacing"
+    ],
+    "c": 1,
+    "n": "Gusset."
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What diagonal light members join parts into a built-up strut?",
+    "o": [
+      "Tie plates",
+      "Base plates",
+      "Lacing",
+      "Shear connectors"
     ],
     "c": 2,
-    "n": "Per the MST answer key: Benedicto Steel Group."
+    "n": "Lacing bars."
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What is the minimum splice length for reinforcing bars (rebar)?",
+    "o": [
+      "60db",
+      "40db",
+      "30db",
+      "50db"
+    ],
+    "c": 1,
+    "n": "Per the MST answer key: 40db."
+  },
+  {
+    "s": "Roof Framing, Walls & Connectors",
+    "q": "What does a gusset plate do in a steel truss?",
+    "o": [
+      "Joins members and transfers loads",
+      "Anchors the truss to the foundation",
+      "Fastens roof sheets",
+      "Adds weight for seismic resistance"
+    ],
+    "c": 0,
+    "n": "Gussets connect members at nodes."
   }
 ]

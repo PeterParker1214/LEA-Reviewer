@@ -1,496 +1,350 @@
 [
   {
-    "s": "Electrical Power & Lighting",
-    "q": "Which figure shows a dimmer switch?",
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "When water is released immediately from the main, what system can be used to supply higher levels?",
     "o": [
-      "Figure E",
-      "Figure D",
-      "Figure C",
-      "Figure A"
+      "Wet pipe",
+      "Pre-action",
+      "Deluge",
+      "Dry pipe"
+    ],
+    "c": 2,
+    "n": "Per the MST key, a deluge system."
+  },
+  {
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "What pipe supplies each floor with water for firefighting?",
+    "o": [
+      "Sprinkler",
+      "Standpipe",
+      "Fire hydrant",
+      "Water reserve"
+    ],
+    "c": 1,
+    "n": "Standpipes feed hose valves on each floor."
+  },
+  {
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "What is the maximum height of a Siamese connection from the ground line?",
+    "o": [
+      "1200 mm",
+      "450 mm",
+      "150 mm",
+      "380 mm"
+    ],
+    "c": 0,
+    "n": "Fire department connections sit between about 450 mm and 1200 mm above grade."
+  },
+  {
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "What is a Siamese (fire department) connection for?",
+    "o": [
+      "Linking two hydrants",
+      "Letting fire trucks pump water into the standpipe or sprinkler system",
+      "Storing emergency water",
+      "Cooling the fire pump"
+    ],
+    "c": 1,
+    "n": "The FDC lets the fire service boost the system."
+  },
+  {
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "Which system is set off by heat and discharges only at the heads that open?",
+    "o": [
+      "Dry pipe",
+      "Wet pipe",
+      "Pre-action",
+      "Deluge"
+    ],
+    "c": 1,
+    "n": "In a wet system water is already at each head."
+  },
+  {
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "Which pump is used to eject sewage or liquid waste?",
+    "o": [
+      "Sump pump",
+      "Booster pump",
+      "Centrifugal pump",
+      "Rotary pump"
+    ],
+    "c": 0,
+    "n": "A sump (ejector-type) pump lifts sewage or liquid waste to the sewer."
+  },
+  {
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "Which pump removes water from the lowest part of a building?",
+    "o": [
+      "Centrifugal pump",
+      "Booster pump",
+      "Sump pump",
+      "Rotary pump"
+    ],
+    "c": 2,
+    "n": "Sump pumps drain pits and basements."
+  },
+  {
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "What is the best location for installing a water pump?",
+    "o": [
+      "Storage tank",
+      "Roof deck",
+      "Service pipe",
+      "Cistern"
     ],
     "c": 3,
-    "n": "Figure A is a slide dimmer.",
-    "img": "figs/BUILDING_UTILITIES__06-A.png"
+    "n": "Per the MST answer key: Cistern."
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "Which figure shows a USB outlet?",
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "Where is a pump ideally located in relation to a cistern?",
     "o": [
-      "Figure D",
-      "Figure A",
-      "Figure C",
-      "Figure B"
-    ],
-    "c": 2,
-    "n": "Figure C has USB ports.",
-    "img": "figs/BUILDING_UTILITIES__06-A.png"
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "Which figure shows a range outlet?",
-    "o": [
-      "Figure A",
-      "Figure E",
-      "Figure D",
-      "Figure B"
+      "Beside the cistern",
+      "Side by side with the cistern",
+      "Inside the cistern",
+      "On top of the cistern"
     ],
     "c": 3,
-    "n": "Figure B is a high-amperage range outlet.",
-    "img": "figs/BUILDING_UTILITIES__06-A.png"
+    "n": "Per the MST answer key: On top of the cistern."
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "Which figure shows a multipurpose outlet?",
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "Which pump keeps adequate pressure on the upper floors of a multi-story building?",
     "o": [
-      "Figure D",
-      "Figure B",
-      "Figure E",
-      "Figure A"
+      "Sump pump",
+      "Booster pump",
+      "Sewage ejector",
+      "Rotary pump"
     ],
-    "c": 2,
-    "n": "Figure E is a universal (multipurpose) outlet.",
-    "img": "figs/BUILDING_UTILITIES__06-A.png"
+    "c": 1,
+    "n": "Boosters make up static head losses."
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "Which figure shows a pop-up floor outlet?",
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "Considering the operational needs and potential emergency scenarios in a three-storey hospital, how many elevators are recommended to serve both patients and staff?",
     "o": [
-      "Figure D",
-      "Figure C",
-      "Figure B",
-      "Figure A"
-    ],
-    "c": 0,
-    "n": "Figure D is a pop-up floor outlet.",
-    "img": "figs/BUILDING_UTILITIES__06-A.png"
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What electrical component in Figure A houses circuit breakers or fuses to distribute power within a building?",
-    "o": [
-      "Panel board",
-      "Surface junction box",
-      "Light dimmer module",
-      "Switch plate"
-    ],
-    "c": 0,
-    "n": "Figure A is a panel board.",
-    "img": "figs/BUILDING_UTILITIES__06-B.png"
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What enclosure in Figure B is used to safely house electrical connections, typically rated by environmental protection standards?",
-    "o": [
-      "Wall outlet box",
-      "Load center",
-      "Pull box",
-      "NEMA box"
+      "One for patients only",
+      "Three, one for each floor",
+      "One, but it is ideal to have one for passengers",
+      "One for passengers and one for patients on stretchers"
     ],
     "c": 3,
-    "n": "Figure B is a NEMA-rated enclosure.",
-    "img": "figs/BUILDING_UTILITIES__06-B.png"
+    "n": "A hospital needs a passenger elevator plus a stretcher-size elevator for patients."
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "What device in Figure C automatically switches a load between two power sources, often used in backup power systems?",
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "Given the building height and expected load of a three-storey hospital, which type of elevator system is most appropriate for efficient and safe vertical transportation?",
     "o": [
-      "Rotary breaker",
-      "Disconnect switch",
-      "Automatic transfer switch",
-      "Manual transfer switch"
+      "Electric",
+      "Traction or hydraulic",
+      "Machine room-less",
+      "Magnetic"
     ],
-    "c": 2,
-    "n": "Per the MST answer key: Automatic transfer switch.",
-    "img": "figs/BUILDING_UTILITIES__06-B.png"
+    "c": 1,
+    "n": "Per the MST answer key: Traction or hydraulic."
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "What safety device in Figure D protects electrical circuits by stopping the current flow in case of overload or short circuit?",
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "In the design of a three-storey hospital, which of the following fire suppression systems is typically NOT included in standard fire safety protocols?",
     "o": [
-      "Toggle switch",
-      "Fuse block",
-      "Contactor",
-      "Circuit breaker"
+      "Wet standpipe",
+      "Fire extinguisher",
+      "Sprinkler",
+      "Dry standpipe"
     ],
     "c": 3,
-    "n": "Figure D is a circuit breaker.",
-    "img": "figs/BUILDING_UTILITIES__06-B.png"
+    "n": "Per the MST key, a dry standpipe (not needed in a low-rise building)."
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "What device in Figure E is designed to quickly cut power to prevent electric shock, typically used in wet areas?",
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "According to fire code requirements, how many dry standpipes are typically required in a three-storey hospital?",
     "o": [
-      "GFCI",
-      "USB outlet",
-      "Duplex receptacle",
-      "Tamper-resistant outlet"
+      "1",
+      "3",
+      "0",
+      "2"
     ],
-    "c": 0,
-    "n": "Figure E is a GFCI receptacle.",
-    "img": "figs/BUILDING_UTILITIES__06-B.png"
+    "c": 2,
+    "n": "Dry standpipes are required only from four storeys up, so none for three storeys."
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "What is image 1 that supports and stabilizes the generator?",
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "What is the most appropriate and code-compliant location for installing a dry standpipe in a hospital?",
     "o": [
-      "Frame",
-      "Skid Mount",
-      "Generator Base Panel",
-      "Housing Enclosure"
+      "Roof deck",
+      "Pipe chase",
+      "Stairway",
+      "Ground floor common toilet"
     ],
-    "c": 1,
-    "n": "Item 1 marks the skid base that supports the generator.",
-    "img": "figs/BUILDING_UTILITIES__06-C.png"
+    "c": 2,
+    "n": "Standpipe outlets go in the exit stairways, where firefighters stage."
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "What is image 3 that supplies mechanical energy?",
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "Which of these does NOT make elevators?",
     "o": [
-      "Rotor Assembly",
-      "Crankcase",
-      "Power Head",
-      "Engine"
+      "Hyundai",
+      "Mitsubishi",
+      "Hitachi",
+      "None of the above — all three do"
     ],
     "c": 3,
-    "n": "Item 3 is the engine, the source of mechanical power.",
-    "img": "figs/BUILDING_UTILITIES__06-C.png"
+    "n": "All three build elevators."
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "What is image 5 that regulates the generator’s voltage output?",
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "Which brand is well known for its ultra-fast elevators used in skyscrapers?",
     "o": [
-      "Voltage Regulator",
-      "Load Controller",
-      "Rectifier Unit",
-      "AVR Panel"
-    ],
-    "c": 0,
-    "n": "Per the MST answer key: Voltage Regulator.",
-    "img": "figs/BUILDING_UTILITIES__06-C.png"
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What is image 6 that produces the electrical output?",
-    "o": [
-      "Power Distribution Module",
-      "Alternator",
-      "Transformer Core",
-      "Stator Windings"
+      "Schindler",
+      "Mitsubishi",
+      "Otis",
+      "KONE"
     ],
     "c": 1,
-    "n": "Per the MST answer key: Alternator.",
-    "img": "figs/BUILDING_UTILITIES__06-C.png"
+    "n": "Per the MST answer key: Mitsubishi."
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "Which type of conduit is permitted for use in electrical service entrances?",
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "Which elevator brand is from Finland?",
     "o": [
-      "EMT",
-      "RSC",
-      "IMC",
-      "PVC"
+      "KONE",
+      "Thyssenkrupp",
+      "Otis",
+      "Hitachi"
+    ],
+    "c": 0,
+    "n": "KONE is Finnish."
+  },
+  {
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "Which is one of the oldest elevator makers, founded in the United States?",
+    "o": [
+      "Mitsubishi",
+      "Otis",
+      "Hyundai",
+      "KONE"
     ],
     "c": 1,
-    "n": "Rigid steel conduit is the standard for service entrances."
+    "n": "Elisha Otis demonstrated the safety brake in 1854."
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "What is an ATS for in an electrical system?",
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "Which German company makes elevators and escalators worldwide?",
     "o": [
-      "A switch used with a standby generator",
-      "An emergency switch in fire alarms",
-      "A switch for elevators and conveyors",
-      "A switch for building automation"
+      "Thyssenkrupp (TK Elevator)",
+      "Schindler",
+      "Hitachi",
+      "KONE"
     ],
     "c": 0,
-    "n": "It transfers load between utility and generator."
+    "n": "Schindler is Swiss and KONE Finnish."
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "When is the Certificate of Electrical Inspection (CEI) issued?",
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "Which of these makes elevators and escalators?",
     "o": [
-      "Before the utility installs the meter",
-      "After the utility installs the meter",
-      "Before the Building Official's final inspection",
-      "After the Building Official's final inspection"
+      "KONE",
+      "Kofu",
+      "Bosch",
+      "Honeywell"
     ],
     "c": 0,
-    "n": "The utility needs the CEI before it energizes and meters the service."
+    "n": "KONE is a lift maker."
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "Which of the following companies supplies electrical products?",
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "After how many minutes of inactivity will an escalator temporarily stop to save electricity?",
     "o": [
-      "Philips",
-      "Fumaco",
-      "Schneider",
-      "Osram"
+      "10 minutes",
+      "3 minutes",
+      "5 minutes",
+      "15 minutes"
     ],
-    "c": 2,
-    "n": "Per the MST key, Schneider."
+    "c": 1,
+    "n": "Escalators on auto-stop typically pause after about three minutes with no passengers."
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "Which type of electrical enclosures is designed for outdoor use?",
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "What is the minimum load capacity of a home elevator in kilograms?",
     "o": [
-      "Hard plastic enclosures",
-      "ABS enclosures",
-      "Metal enclosure",
-      "NEMA enclosures"
+      "250 kg",
+      "150 kg",
+      "300 kg",
+      "200 kg"
+    ],
+    "c": 0,
+    "n": "Per the MST answer key: 250 kg."
+  },
+  {
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "What do you call the door inside the elevator?",
+    "o": [
+      "Special",
+      "Exit",
+      "Interior",
+      "Cab"
     ],
     "c": 3,
-    "n": "NEMA-rated (e.g., NEMA 3R/4) enclosures are made for outdoor use."
+    "n": "The door on the car itself is the cab (car) door."
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "When a circuit is divided into two or more branches, each branch transmitting part of the current, what is each branch conductor called when taken separately?",
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "Which part opens and closes elevator doors automatically?",
     "o": [
-      "Circuit",
-      "Series",
-      "Parallel",
-      "Shunt"
+      "Door operator",
+      "Cab",
+      "Hoist cable",
+      "Counterweight"
+    ],
+    "c": 0,
+    "n": "The operator is mounted on the car top."
+  },
+  {
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "Which is NOT a fire protection device?",
+    "o": [
+      "Sprinkler system",
+      "Helmet",
+      "Firewall",
+      "Smoke detector"
     ],
     "c": 2,
-    "n": "Per the MST answer key: Parallel."
+    "n": "Per the answer key, a firewall is a fire-rated building element, not a device."
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "Which of the following appliances does not require an individual branch circuit?",
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "What device senses smoke and triggers an alarm?",
     "o": [
-      "Air conditioner",
-      "Range",
-      "Microwave",
-      "Pump"
+      "Smoke detector",
+      "Alarm bell",
+      "Fire hose",
+      "Heat sensor"
     ],
-    "c": 2,
-    "n": "Per the MST answer key: Microwave."
+    "c": 0,
+    "n": "Smoke detectors sense particles."
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "What is the standard power voltage supplied by MERALCO?",
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "Which part discharges water automatically when it senses heat?",
     "o": [
-      "110V",
-      "220V",
-      "120V",
-      "230V"
+      "Sprinkler head",
+      "Fire extinguisher",
+      "Fire alarm panel",
+      "Smoke detector"
+    ],
+    "c": 0,
+    "n": "A fusible link or glass bulb opens the head."
+  },
+  {
+    "s": "Pumps, Fire Protection & Conveying",
+    "q": "Which equipment is used to put out small fires by hand?",
+    "o": [
+      "Fire alarm panel",
+      "Smoke detector",
+      "Sprinkler system",
+      "Fire extinguisher"
     ],
     "c": 3,
-    "n": "Per the MST answer key: 230V."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What frequency does MERALCO supply to consumers?",
-    "o": [
-      "80 Hz",
-      "70 Hz",
-      "60 Hz",
-      "50 Hz"
-    ],
-    "c": 2,
-    "n": "The Philippine grid runs at 60 Hz."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "In a string of bulbs wired in series, what happens if one bulb is removed?",
-    "o": [
-      "The rest stay lit",
-      "All go out",
-      "Only the bulb before it goes out",
-      "Only bulbs after it go out"
-    ],
-    "c": 1,
-    "n": "A series circuit has a single path."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What device detects ground faults and cuts power immediately to prevent shock?",
-    "o": [
-      "GFCI",
-      "Circuit breaker",
-      "Distribution panel",
-      "Fuse"
-    ],
-    "c": 0,
-    "n": "A GFCI trips on leakage current."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What are the conductors from a main distribution center to the branch-circuit panels called?",
-    "o": [
-      "Panelboard",
-      "Feeders",
-      "Raceway",
-      "None of the above"
-    ],
-    "c": 1,
-    "n": "Feeders supply panelboards."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What resists the flow of electricity?",
-    "o": [
-      "Insulator",
-      "Conductor",
-      "Semiconductor",
-      "None of the above"
-    ],
-    "c": 0,
-    "n": "Insulators have high resistance."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What conductors run from the service equipment to distribution points in a building?",
-    "o": [
-      "Service lateral",
-      "Feeders",
-      "Switchboard",
-      "Unit substation"
-    ],
-    "c": 1,
-    "n": "Feeders run between the service and the panels."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "A valve controls water flow. What does the same job in an electrical circuit?",
-    "o": [
-      "Convenience outlet",
-      "Switch",
-      "Circuit breaker",
-      "Fuse"
-    ],
-    "c": 1,
-    "n": "A switch opens and closes the circuit."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What is the minimum wire size required for a service drop?",
-    "o": [
-      "22 mm²",
-      "8 mm²",
-      "14 mm²",
-      "3.5 mm²"
-    ],
-    "c": 1,
-    "n": "Per the MST answer key: 8 mm²."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What is the minimum wire size required for a 60-amp circuit breaker?",
-    "o": [
-      "14 mm²",
-      "22 mm²",
-      "5.5 mm²",
-      "8 mm²"
-    ],
-    "c": 0,
-    "n": "A 60 A breaker needs about 14 mm² THHN copper."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What is the ampacity requirement for a 6-kW multipoint water heater?",
-    "o": [
-      "50A",
-      "40A",
-      "20A",
-      "30A"
-    ],
-    "c": 3,
-    "n": "6,000 W ÷ 230 V ≈ 26 A, so a 30 A circuit."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "For a1-horsepower air conditioning unit (ACU), what should be the size of the wire or cable?",
-    "o": [
-      "3.5 mm² - 20 A",
-      "2.0 mm² - 15 A",
-      "5.5 mm² - 30 A",
-      "All of the above (depending on load and installation conditions)"
-    ],
-    "c": 0,
-    "n": "A 1 HP aircon runs on 3.5 mm² wire with a 20 A breaker."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What matters most when sizing wire for a circuit?",
-    "o": [
-      "Length only",
-      "Brand",
-      "Ampacity",
-      "Insulation color"
-    ],
-    "c": 2,
-    "n": "Wire must carry the load current safely."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "Power was cut but restored right away by standby generators. What switched the source automatically?",
-    "o": [
-      "Double-throw switch",
-      "Manual transfer switch",
-      "Automatic transfer switch",
-      "All of the above"
-    ],
-    "c": 2,
-    "n": "An ATS starts and transfers to the generator."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What do banks typically use to ensure a smooth transition to emergency power during an outage?",
-    "o": [
-      "UPS",
-      "ATS",
-      "MTS",
-      "None of the above"
-    ],
-    "c": 1,
-    "n": "Per the answer key, an automatic transfer switch (ATS) shifts the load to the generator."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What is the main function of an automatic transfer switch?",
-    "o": [
-      "Switching automatically from the utility to a standby generator",
-      "Storing backup power",
-      "Monitoring loads",
-      "Regulating voltage"
-    ],
-    "c": 0,
-    "n": "It senses outage and transfers load."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What is the main purpose of a UPS?",
-    "o": [
-      "Backup lighting only",
-      "Temporary power during outages or until a generator starts",
-      "Controlling the panel",
-      "Raising current"
-    ],
-    "c": 1,
-    "n": "Batteries carry the load through the gap."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "In manual emergency switching, what device connects the load to the alternate source?",
-    "o": [
-      "MTS",
-      "Breaker panel",
-      "ATS",
-      "UPS"
-    ],
-    "c": 0,
-    "n": "MTS is a manual transfer switch."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "THHN wire is used for 600 V AC distribution in dry and damp locations. THHN stands for:",
-    "o": [
-      "Thermoplastic, moisture-resistant",
-      "Thermoplastic, high heat-resistant, nylon-coated",
-      "Thermoplastic, heat- and moisture-resistant",
-      "Thermoplastic, heat- and moisture-resistant, nylon-coated"
-    ],
-    "c": 1,
-    "n": "T-HH-N: thermoplastic, high heat, nylon."
+    "n": "Portable extinguishers are for incipient fires."
   }
 ]

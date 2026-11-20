@@ -1,392 +1,600 @@
 [
   {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "The ideal width of the main entrance door in meters is __.",
+    "s": "Project 1 - Two-Storey Duplex",
+    "q": "One side of a rectangular toilet and bath is exactly 1.00 m. How long must the other side be to meet the Building Code's minimum area?",
     "o": [
-      "0.7",
-      "1.0",
-      "1.2",
-      "1.5"
+      "1.00 m",
+      "0.80 m",
+      "1.50 m",
+      "1.20 m"
+    ],
+    "c": 3,
+    "n": "Minimum toilet area is 1.20 m², so 1.20 ÷ 1.00 = 1.20 m.",
+    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
+  },
+  {
+    "s": "Project 1 - Two-Storey Duplex",
+    "q": "What is the minimum distance required between canopies and awnings and the property lines?",
+    "o": [
+      "2000 mm",
+      "750 mm",
+      "1000 mm",
+      "300 mm"
     ],
     "c": 1,
-    "n": "About 1.0 m suits a main entrance door.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
+    "n": "NBC IRR Sec. 808: eaves, canopies and awnings over required windows at least 750 mm from property lines.",
+    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
   },
   {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "What would be the best and cost-effective material for toilet?",
+    "s": "Project 1 - Two-Storey Duplex",
+    "q": "What is the total lot area of the site?",
     "o": [
-      "200 x 200 mm ceramic",
-      "1200 x1200 mm granite",
-      "300.x 300 mm marble",
-      "300 x 300 mm ceramic"
+      "216 sq.m.",
+      "213 sq.m.",
+      "214 sq.m.",
+      "215 sq.m."
     ],
     "c": 3,
-    "n": "300 × 300 mm ceramic tiles are cheap and slip-resistant in toilets.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
+    "n": "The bearings give a parallelogram of 15 m × 16 m sides; its area is about 215 m² (the value the PSO/ISA/USA choices are built on).",
+    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
   },
   {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "Which elevator button is pressed to summon the car?",
+    "s": "Project 1 - Two-Storey Duplex",
+    "q": "What is the front setback?",
     "o": [
-      "Panel button",
-      "Direct button",
-      "Switch button",
-      "Call button"
+      "8.0 m",
+      "2.0 m",
+      "3.0 m",
+      "4.5 m"
+    ],
+    "c": 2,
+    "n": "A duplex is Basic R-2; Table VIII.2 sets a 3.00 m front setback.",
+    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
+  },
+  {
+    "s": "Project 1 - Two-Storey Duplex",
+    "q": "What is the area of the fence if it stands 3.10 m above the NGL?",
+    "o": [
+      "179.8 m²",
+      "192.2 m²",
+      "142.6 m²",
+      "192.0 m²"
+    ],
+    "c": 2,
+    "n": "The fence runs on the three non-road sides: (15 + 16 + 15) × 3.10 = 142.6 m².",
+    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
+  },
+  {
+    "s": "Project 1 - Two-Storey Duplex",
+    "q": "How many bags of cement are needed for the carports of the 2 units if the slab is 4 inches thick and uses Class A concrete?",
+    "o": [
+      "53",
+      "55",
+      "54",
+      "56"
+    ],
+    "c": 1,
+    "n": "2 units × 2 cars × (3.0 × 5.0) = 60 m²; × 0.1016 m = 6.10 m³; × 9 bags = 54.9, say 55 bags.",
+    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
+  },
+  {
+    "s": "Project 1 - Two-Storey Duplex",
+    "q": "If you want to level the site, how many truckloads of backfill material will you use?",
+    "o": [
+      "10",
+      "19",
+      "16",
+      "8"
+    ],
+    "c": 0,
+    "n": "The lot rises 15 ÷ 16 ≈ 0.94 m to the road; fill ≈ 215 × 0.94 ÷ 2 ≈ 100 m³, about 10 truckloads of 10 m³.",
+    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
+  },
+  {
+    "s": "Project 1 - Two-Storey Duplex",
+    "q": "What is the maximum allowable length of firewall for the project?",
+    "o": [
+      "80% of the total length of a side property line",
+      "70% of the total length of a side property line",
+      "75% of the total length of a side property line",
+      "NOTA"
+    ],
+    "c": 0,
+    "n": "Sec. 707: an R-2 firewall may run up to 80% of one side property line.",
+    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
+  },
+  {
+    "s": "Project 1 - Two-Storey Duplex",
+    "q": "How many septic tanks should be provided for. the project?",
+    "o": [
+      "1 per unit",
+      "2 per unit",
+      "1 unit",
+      "NOTA"
+    ],
+    "c": 0,
+    "n": "Each dwelling unit gets its own septic tank.",
+    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
+  },
+  {
+    "s": "Project 1 - Two-Storey Duplex",
+    "q": "Where is the RROW located?",
+    "o": [
+      "Line 2-3",
+      "Line 3-4",
+      "Line 1-2",
+      "Line 4-1"
+    ],
+    "c": 0,
+    "n": "The brief says the lot is bounded on the east along line 2-3 by the RROW.",
+    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
+  },
+  {
+    "s": "Project 1 - Two-Storey Duplex",
+    "q": "Which side of the lot is the highest?",
+    "o": [
+      "Line 4-1",
+      "Line 3-4",
+      "Line 1-2",
+      "Line 2-3"
     ],
     "c": 3,
-    "n": "Hall call buttons sit at each landing.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
+    "n": "The lot slopes upward toward line 2-3.",
+    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
   },
   {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "What glass is typical for the shower enclosures?",
+    "s": "Project 1 - Two-Storey Duplex",
+    "q": "What is the difference in elevation between the highest and lowest points of the lot?",
     "o": [
-      "10 mm tempered",
-      "12 mm tempered",
-      "12 mm clear annealed",
-      "10 mm float"
+      "0.87 m",
+      "0.90 m",
+      "0.94 m",
+      "1.00 m"
+    ],
+    "c": 2,
+    "n": "The slope is 1/16 across the 15.0 m depth to line 2-3: 15.0 ÷ 16 = 0.94 m.",
+    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
+  },
+  {
+    "s": "Project 1 - Two-Storey Duplex",
+    "q": "Compute the perimeter of the lot.",
+    "o": [
+      "62 m",
+      "46 m",
+      "58 m",
+      "60 m"
     ],
     "c": 0,
-    "n": "Frameless enclosures use about 10 mm tempered.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
+    "n": "15.0 + 16.0 + 15.0 + 16.0 = 62 m.",
+    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
   },
   {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "What sealant is used to set glass?",
+    "s": "Project 1 - Two-Storey Duplex",
+    "q": "What is the lot area of unit 1?",
     "o": [
-      "Clear silicone",
-      "Clear Mighty Bond",
-      "Epoxy",
-      "Clear PVC"
+      "112 sq.m.",
+      "111.5 sq.m.",
+      "110 sq.m.",
+      "107.5 sq.m."
+    ],
+    "c": 3,
+    "n": "Each unit gets half the lot: 215 ÷ 2 = 107.5 m².",
+    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
+  },
+  {
+    "s": "Project 1 - Two-Storey Duplex",
+    "q": "What is the PSO of the 2 units?",
+    "o": [
+      "129 sq.m.",
+      "118.25 sq.m.",
+      "150.5 sq.m.",
+      "110 sq.m."
     ],
     "c": 0,
-    "n": "Silicone stays flexible.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
+    "n": "Basic R-2 with firewall: PSO 60% (Table VIII.1) × 215 = 129 m².",
+    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
   },
   {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "Select the appropriate and cost-effective paint for the ceiling at the lobby?",
+    "s": "Project 1 - Two-Storey Duplex",
+    "q": "How much is the ISA of the project?",
     "o": [
-      "Flat wall enamel",
-      "Red oxide",
+      "60 sq.m.",
+      "87 sq.m.",
+      "70 sq.m.",
+      "64.5 sq.m."
+    ],
+    "c": 3,
+    "n": "Basic R-2 with firewall: ISA 30% × 215 = 64.5 m².",
+    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
+  },
+  {
+    "s": "Project 1 - Two-Storey Duplex",
+    "q": "How much is the USA of the project?",
+    "o": [
+      "35 sq.m.",
+      "30 sq.m.",
+      "43.5 sq.m.",
+      "21.5 sq.m."
+    ],
+    "c": 3,
+    "n": "Basic R-2 with firewall: USA 10% × 215 = 21.5 m².",
+    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "The approximate location of the main entrance doorknob, measured from the floor finish is —— meters:",
+    "o": [
+      "0.80",
+      "1.20",
+      "0.90",
+      "1.00"
+    ],
+    "c": 2,
+    "n": "BP 344 sets door hardware at about 0.90 m.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "The second-floor rooms will be air-conditioned. What minimum finished ceiling height applies there?",
+    "o": [
+      "2,400 mm",
+      "2,250 mm",
+      "2,700 mm",
+      "1,800 mm"
+    ],
+    "c": 0,
+    "n": "Rooms with artificial ventilation need at least 2.40 m.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "What is the approximate height of each riser from the sidewalk to the house, in meters, if the maximum allowable height of riser and minimum setback required are applied?",
+    "o": [
+      "0.30",
+      "0.20",
+      "0.10",
+      "0.50"
+    ],
+    "c": 1,
+    "n": "At the 3.0 m setback the grade has risen 1.75% × 3 = 0.05 m; the remaining 0.40 m takes two risers of about 0.20 m (the NBC maximum).",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "What is the ideal width of the t & b door in meter?",
+    "o": [
+      "0.70",
+      "1.00",
+      "0.80",
+      "0.90"
+    ],
+    "c": 0,
+    "n": "A 0.70 m door suits a toilet and bath.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "Which code governs all electrical design and installation?",
+    "o": [
+      "City electrical ordinance",
+      "City mechanical ordinance",
+      "Philippine Electrical Code",
+      "Philippine Professional Electrical Code"
+    ],
+    "c": 2,
+    "n": "NBC Sec. 1101.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "Which code governs all mechanical systems and equipment installation?",
+    "o": [
+      "Philippine Mechanical Code",
+      "Philippine Mechanical Engineering Code",
+      "City mechanical ordinance",
+      "Local mechanical ordinance"
+    ],
+    "c": 1,
+    "n": "NBC Sec. 1201.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "How much will be tax in percentage of design fee of the architect?",
+    "o": [
+      ".7%",
+      "12%",
+      "10%",
+      "2%"
+    ],
+    "c": 1,
+    "n": "Professional fees carry 12% VAT.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "The most appropriate topcoat paint material for this project's exterior concrete wall is __.",
+    "o": [
       "Latex",
-      "Enamel"
-    ],
-    "c": 2,
-    "n": "Flat latex is the economical ceiling paint.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "What is the nearest allowable maximum building footprint of the project rounded off to the nearest square meters?",
-    "o": [
-      "710",
-      "439",
-      "426",
-      "648"
+      "Elastomeric",
+      "Enamel",
+      "Acrylic"
     ],
     "c": 1,
-    "n": "Max R-3 setbacks (3.00 front, 2.00 sides and rear): (20.90 − 4.00) × (31.00 − 3.00 − 2.00) = 16.90 × 26.00 = 439.4 m², tighter than the 70% PSO.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
+    "n": "Elastomeric paint bridges hairline cracks on exterior concrete.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
   },
   {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "An artificial stone of cement, aggregates and water with no reinforcement is ______ concrete.",
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "What is the minimum thickness of a concrete footing in millimeters? a> 250, b. 100 c. 300 d. 150",
     "o": [
-      "Mixed",
-      "Regular",
-      "Rough",
-      "Plain"
+      "100",
+      "300",
+      "150",
+      "250"
+    ],
+    "c": 2,
+    "n": "NSCP: footing depth above the bottom bars at least 150 mm.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "What is the minimum depth of the footing below the surface of the ground in millimeters?",
+    "o": [
+      "500",
+      "300",
+      "400",
+      "600"
     ],
     "c": 3,
-    "n": "Plain concrete.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
+    "n": "NBC IRR Sec. 708: footings at least 600 mm below the ground surface.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
   },
   {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "What is the most common type of cement in general use?",
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "What is the design live load for the ground floor of this house, in kg/m²?",
     "o": [
-      "Sulfate-resisting",
-      "Pozzolan",
-      "High-alumina",
-      "Portland"
-    ],
-    "c": 3,
-    "n": "Ordinary Portland cement.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "Which cement gains strength fastest?",
-    "o": [
-      "High-alumina",
-      "Portland",
-      "Pozzolan",
-      "Blast furnace"
+      "200",
+      "300",
+      "400",
+      "100"
     ],
     "c": 0,
-    "n": "It reaches most of its strength in a day.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
+    "n": "NSCP residential live load is 1.9 kPa, about 200 kg/m².",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
   },
   {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "Which cement hardens slowly?",
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "What would be the approximate depth of the column in meters on this project?",
     "o": [
-      "Ordinary",
-      "Sulfate",
-      "Portland pozzolan",
-      "High-alumina"
-    ],
-    "c": 2,
-    "n": "Pozzolans react slowly.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "Crushed stone or gravel retained on a 5 mm sieve is ______ aggregate.",
-    "o": [
-      "Coarse",
-      "Big",
-      "Fine",
-      "Small"
-    ],
-    "c": 0,
-    "n": "Coarse aggregate.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "What closed loop of bar holds a beam's main reinforcement?",
-    "o": [
-      "Stirrup",
-      "Closing bar",
-      "Lateral tie",
-      "Pull bar"
-    ],
-    "c": 0,
-    "n": "Stirrups also resist shear.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "What closed loop of bar holds a column's main reinforcement?",
-    "o": [
-      "Pull bar",
-      "Stirrup",
-      "Closing bar",
-      "Lateral tie"
-    ],
-    "c": 3,
-    "n": "Ties keep column bars from buckling.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "What composite offsets concrete's low tensile strength and ductility with reinforcement of higher tensile strength?",
-    "o": [
-      "Ductile board",
-      "High-density board",
-      "Reinforced concrete",
-      "Plain concrete"
-    ],
-    "c": 2,
-    "n": "Reinforced concrete.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "Which is NOT a material for rebar spacers?",
-    "o": [
-      "Concrete",
-      "Metal",
-      "Foam",
-      "Plastic"
-    ],
-    "c": 2,
-    "n": "Spacers must be rigid.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "Which is NOT a temporary construction facility?",
-    "o": [
-      "Site office",
-      "Barracks",
-      "Sump pit",
-      "Bunkhouse"
-    ],
-    "c": 2,
-    "n": "A sump pit is permanent.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "Which is NOT part of the architectural drawings?",
-    "o": [
-      "Shear wall details",
-      "Door schedule",
-      "Reflected ceiling plan",
-      "Window schedule"
-    ],
-    "c": 0,
-    "n": "Shear walls are structural.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "Agraphic horizontal section looking up instead of down as normal drawing?",
-    "o": [
-      "Ceiling Plan",
-      "Isometric Drawing",
-      "Reflected Plan",
-      "Inverted Plan"
-    ],
-    "c": 2,
-    "n": "A reflected ceiling plan shows the ceiling as if mirrored from below.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "In which phase does the architect produce initial line drawings of design studies leading to a recommended solution, with a general description?",
-    "o": [
-      "Design development",
-      "Contract documents",
-      "Schematic design",
-      "Design brief"
-    ],
-    "c": 2,
-    "n": "SPP 202.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "What are non-load-bearing precast panels fixed to a metal frame called?",
-    "o": [
-      "Precast curtain walls",
-      "Composite walls",
-      "CHB walls",
-      "Metal panel walls"
-    ],
-    "c": 0,
-    "n": "Curtain walls carry only their own weight.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "Which window projects outward to add space to a room?",
-    "o": [
-      "Fixed",
-      "Clerestory",
-      "Bay",
-      "Dormer"
-    ],
-    "c": 2,
-    "n": "Bays push out from the wall.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "A window hinged at the top is a:",
-    "o": [
-      "Sliding",
-      "Awning",
-      "Fixed",
-      "Casement"
-    ],
-    "c": 1,
-    "n": "Awning.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "A window hinged at the side is a:",
-    "o": [
-      "Casement",
-      "Overhang",
-      "Awning",
-      "Sliding"
-    ],
-    "c": 0,
-    "n": "Casement.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "Which building permit document lists estimated materials and costs?",
-    "o": [
-      "Schedule of Materials",
-      "Quantity of Materials",
-      "List of Materials",
-      "Bill of Materials"
-    ],
-    "c": 3,
-    "n": "The BOM and cost estimate.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "What is the open space between the building and the property line created by the required setback?",
-    "o": [
-      "Court",
-      "Yard",
-      "Open space",
-      "Free space"
-    ],
-    "c": 1,
-    "n": "A yard.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "What is the approximate area in minimum in square meters of the office table for one person?",
-    "o": [
-      "0.72",
       "1.5",
+      "0.30",
       "1",
-      "2"
-    ],
-    "c": 0,
-    "n": "A one-person office table is about 0.6 × 1.2 m = 0.72 m².",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "What is the total area of common areas per floor excluding the fire exit stair?",
-    "o": [
-      "37.20 sq.m.",
-      "45.12 sq.m.",
-      "94.54 sq.m.",
-      "57.33 sq.m."
-    ],
-    "c": 2,
-    "n": "Lobby/stair/storage 57.33 m² + hallway 24.80 × 1.50 = 37.20 m² → 94.53 m².",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
-  },
-  {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "What is the AMBF of the project?",
-    "o": [
-      "426.05 sq.m.",
-      "439.40 sq.m.",
-      "453.53 sq.m.",
-      "518.32 sq.m."
+      "0.15"
     ],
     "c": 1,
-    "n": "By setbacks: 16.90 × 26.00 = 439.40 m² (below the 70% PSO of 453.53 m²).",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
+    "n": "A typical residential column is about 0.30 m deep.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
   },
   {
-    "s": "Project 4 - Seven-Storey Apartment",
-    "q": "What is the GFA of the roof deck, where only the water tank and storage enclosure is roofed?",
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "The sidewalk is at elevation 0.0. What is the rise from the sidewalk to the rear of the lot?",
     "o": [
-      "389.41 m²",
-      "12.00 m²",
-      "24.64 m²",
-      "36.64 m²"
+      "0.180 m",
+      "0.175 m",
+      "0.150 m",
+      "0.25 m"
+    ],
+    "c": 1,
+    "n": "Depth is 75 ÷ 7.50 = 10 m; 10 × 1.75% = 0.175 m.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "How much is the AMBF of the project?",
+    "o": [
+      "30.50 sq.m.",
+      "45.00 sq.m.",
+      "27.50 sq.m.",
+      "28.00 sq.m."
     ],
     "c": 2,
-    "n": "The brief gives 24.64 m² for that enclosure.",
-    "scenario": "PROJECT 4 – SEVEN-STOREY APARTMENT\n\nProblem: A local–foreign joint venture will build a seven-storey apartment in Makati City for young executives and BPO employees working in the CBD. You will design it and serve as construction manager.\n\nRequirements:\n• Ground floor: at least 24 parking spaces reached by a 6.0 m driveway starting 7.0 m from the lot's left corner. At the right corner, an entrance lobby, guard's quarters with T&B and storage, 4.90 m wide and 57.33 m²; a 1.0 m pedestrian walkway beside it. At the rear, a utility room (5.0 × 2.0 m) and a generator/electrical room (5.9 × 2.8 m) opposite each other.\n• Build to the allowable 7 floors and keep perimeter open areas for landscaping.\n• Typical 2nd–7th floors: 8 studio units (4 left, 4 right) with 3.2 × 7.7 m balconies at the rear, and 2 two-bedroom units with 6.0 × 10.2 m balconies at the front — 10 units per floor. Balconies are at most 1.20 m wide (3.84 m² or 7.20 m²) and double as drying areas. A 24.80 × 1.5 m hallway ends at a 1.5 × 8.0 m fire exit/service stair; the other end has the common lobby, stair and storage (57.33 m², 4.90 m wide).\n• Roof deck, same size as the typical floor: 24.64 m² for elevated water tanks and storage; the rest is party space.\n\nSite: A rectangular inside lot of 647.90 m² with a 20.90 m frontage, now occupied by three 2-storey units at 0.0 elevation from the sidewalk. Bounded on the east by the sidewalk and road right-of-way. Zoned R-3 with a 3.0 m front setback.\n\nObjectives: Consider improving the existing building of the same use to cut cost and keep units affordable; maximize the limited lot; build at least 7 floors."
+    "n": "Basic R-2, one side abutting: (7.50 − 2.00) × (10.00 − 3.00 front − 2.00 rear) = 27.50 m².",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "How much is the percentage of site occupancy?",
+    "o": [
+      "50.00%",
+      "60.00%",
+      "36.67%",
+      "30.00%"
+    ],
+    "c": 2,
+    "n": "27.50 ÷ 75 = 36.67%.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "Applying the setbacks of Table VIII.2 (Sec. 804), how much is the AMBF of the project?",
+    "o": [
+      "27.50 sq.m.",
+      "30.50 sq.m.",
+      "45.00 sq.m.",
+      "28.00 sq.m."
+    ],
+    "c": 0,
+    "n": "Basic R-2 setbacks (3.00 front, 2.00 one side, 2.00 rear): 5.50 × 5.00 = 27.50 m².",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "Which interior sheet material is made of wood particles and binder, usually faced with veneer?",
+    "o": [
+      "Fly board",
+      "Panel board",
+      "Chipboard (particleboard)",
+      "Plywood"
+    ],
+    "c": 2,
+    "n": "Particleboard.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "What is removing a material's natural color with chlorine compounds to get a uniform tone?",
+    "o": [
+      "Bleaching",
+      "Blasting",
+      "Fading",
+      "Sun drying"
+    ],
+    "c": 0,
+    "n": "Wood bleaching evens out color.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "What is the usual height range of a kitchen work counter?",
+    "o": [
+      "0.95–1.00 m",
+      "0.70–0.80 m",
+      "0.60–0.70 m",
+      "0.85–0.90 m"
+    ],
+    "c": 3,
+    "n": "About 850–900 mm.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "What isthe typical size, in inches, of a square dining table for two persons?",
+    "o": [
+      "20 × 20",
+      "36 × 36",
+      "30 × 30",
+      "24 × 24"
+    ],
+    "c": 2,
+    "n": "A two-person square table is about 30 × 30 in.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "Under BP344, what is the height of a doorknob in meters?",
+    "o": [
+      "850 mm",
+      "900 mm",
+      "1000 mm",
+      "950 mm"
+    ],
+    "c": 1,
+    "n": "BP 344 puts door handles at 0.90 m.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "What is the height in meters of electrical manual switches from the floor line?",
+    "o": [
+      "1.20 to 1.30",
+      "0.90 to 1.20",
+      "0.80 to 0.85",
+      "1.40 to 1.50"
+    ],
+    "c": 1,
+    "n": "BP 344 places switches 0.90–1.20 m above the floor.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "About what size is a queen bed for Bedroom 1?",
+    "o": [
+      "1.35 × 1.90 m",
+      "1.90 × 2.00 m",
+      "1.50 × 2.00 m",
+      "1.00 × 1.90 m"
+    ],
+    "c": 2,
+    "n": "60 × 80 in.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "About what size is a twin (single) bed for Bedroom 2?",
+    "o": [
+      "1.00 × 1.90 m",
+      "1.35 × 1.90 m",
+      "0.90 × 1.90 m",
+      "1.50 × 2.00 m"
+    ],
+    "c": 2,
+    "n": "About 36 × 75 in.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "What is the percentage of the carport relative to the ISA provided?",
+    "o": [
+      "30",
+      "7",
+      "24.3",
+      "41.7"
+    ],
+    "c": 3,
+    "n": "Paved areas (ISA): carport 43 m² + pool and deck 60 m² = 103 m²; 43 ÷ 103 = 41.7%.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "What is the percentage of the swimming pool with deck & pump room relative to the ISA provided?",
+    "o": [
+      "17",
+      "41.7",
+      "58.25",
+      "30"
+    ],
+    "c": 2,
+    "n": "60 ÷ 103 = 58.25%.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "What is the total cubic meter of compacted earth fill needed to level the lot to the sidewalk at point 6?",
+    "o": [
+      "140",
+      "0",
+      "282",
+      "148"
+    ],
+    "c": 1,
+    "n": "Every point of the lot is at or above the sidewalk (+0.00 to +0.80), so leveling to point 6 needs cut, not fill.",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "What isthe building footprint of the house in square meters?",
+    "o": [
+      "180",
+      "190",
+      "184",
+      "194"
+    ],
+    "c": 1,
+    "n": "Level 1 floor area is given as 190 m².",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+  },
+  {
+    "s": "Project 2 - Two-Storey Single Attached",
+    "q": "What is the total gross floor area of the project in square meters?",
+    "o": [
+      "370",
+      "384",
+      "364",
+      "415"
+    ],
+    "c": 3,
+    "n": "190 m² (level 1) + 225 m² (level 2) = 415 m².",
+    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
   }
 ]
