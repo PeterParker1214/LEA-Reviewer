@@ -1,0 +1,494 @@
+[
+  {
+    "s": "Beams & Slabs",
+    "q": "What is the area of a trapezoidal pavement with parallel sides of 15 m and 10 m and a depth of 8 m?",
+    "o": [
+      "80 m²",
+      "120 m²",
+      "140 m²",
+      "100 m²"
+    ],
+    "c": 3,
+    "n": "(15 + 10) ÷ 2 × 8 = 100 m²."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "That trapezoidal pavement is 4 in. thick. What is its volume?",
+    "o": [
+      "10 m³",
+      "8 m³",
+      "14 m³",
+      "12 m³"
+    ],
+    "c": 0,
+    "n": "100 × 0.1016 = 10.2 m³."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What concrete mix is standard for slabs and beams?",
+    "o": [
+      "1 : 3 : 6",
+      "1 : 1.5 : 3",
+      "1 : 2 : 4",
+      "1 : 2.5 : 5"
+    ],
+    "c": 2,
+    "n": "Class A."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What is the typical strength of concrete for slabs and beams?",
+    "o": [
+      "2,500 psi",
+      "3,000 psi",
+      "3,500 psi",
+      "4,000 psi"
+    ],
+    "c": 1,
+    "n": "About 21 MPa."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Without computing deflection, what is the minimum thickness of a simply supported one-way slab?",
+    "o": [
+      "L/10",
+      "L/28",
+      "L/20",
+      "L/24"
+    ],
+    "c": 2,
+    "n": "ACI/NSCP table."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What is the thickened or deepened part of a beam that develops greater moment resistance near supports?",
+    "o": [
+      "Clear span",
+      "Effective length",
+      "Fixed-end beam",
+      "Haunch"
+    ],
+    "c": 3,
+    "n": "Haunches deepen the section."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "If a beam stays within its elastic limit, what happens when the load is removed?",
+    "o": [
+      "It returns to its original shape",
+      "It eventually breaks",
+      "It keeps deforming without load",
+      "It keeps deforming under slight load"
+    ],
+    "c": 0,
+    "n": "Elastic behavior is reversible."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What deformation is typical in a loaded beam?",
+    "o": [
+      "Elongation",
+      "Deflection",
+      "Deformation",
+      "Compression"
+    ],
+    "c": 1,
+    "n": "Beams deflect."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "If a beam pour can't be finished in one go, where should it stop?",
+    "o": [
+      "Near the center (middle third)",
+      "Anywhere",
+      "At points of high shear",
+      "None of the above"
+    ],
+    "c": 0,
+    "n": "Shear is lowest at midspan."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Besides resisting shear, what do stirrups do in a beam?",
+    "o": [
+      "Resist shrinkage",
+      "Hold the longitudinal bars in place",
+      "Resist flexure",
+      "None of the above"
+    ],
+    "c": 1,
+    "n": "They form the cage."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What is a perimeter beam called?",
+    "o": [
+      "Girder",
+      "Plinth beam",
+      "Girt",
+      "Spandrel beam"
+    ],
+    "c": 3,
+    "n": "Spandrels run along the edges."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What members support floors?",
+    "o": [
+      "Purlins",
+      "Joists",
+      "Struts",
+      "Rafters"
+    ],
+    "c": 1,
+    "n": "Joists carry the floor deck."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What carries smaller beams?",
+    "o": [
+      "Columns",
+      "Posts",
+      "Girders",
+      "Joists"
+    ],
+    "c": 2,
+    "n": "Girders."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "The net shear acting upward on the left of a section is:",
+    "o": [
+      "Negative moment",
+      "Positive moment",
+      "Negative shear",
+      "Positive shear"
+    ],
+    "c": 3,
+    "n": "Standard beam convention."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "The net shear acting downward on the left of a section is:",
+    "o": [
+      "Negative shear",
+      "Negative moment",
+      "Positive moment",
+      "Positive shear"
+    ],
+    "c": 0,
+    "n": "Standard beam convention."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What is the tendency of a force to cause rotation, equal to force times moment arm?",
+    "o": [
+      "Moment arm",
+      "Moment center",
+      "Moment",
+      "Positive moment"
+    ],
+    "c": 2,
+    "n": "M = F × d."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What is the sum of the moments on one side of a beam section?",
+    "o": [
+      "Resisting moment",
+      "Bending moment",
+      "Reaction",
+      "External moment"
+    ],
+    "c": 1,
+    "n": "Bending moment."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What slight upward curve is built into a beam to offset deflection?",
+    "o": [
+      "Inflation",
+      "Camber",
+      "Inflection",
+      "Deflection"
+    ],
+    "c": 1,
+    "n": "Camber."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What most often makes a slab on fill crack?",
+    "o": [
+      "Poor soil compaction",
+      "Bad concrete mix",
+      "No rebar",
+      "None of the above"
+    ],
+    "c": 0,
+    "n": "The base settles."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Where is the main reinforcement in a cantilever slab?",
+    "o": [
+      "Top",
+      "Anywhere",
+      "Middle",
+      "Bottom"
+    ],
+    "c": 0,
+    "n": "Tension is at the top."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "If a slab pour can't be finished in one go, where should it stop?",
+    "o": [
+      "At the edge",
+      "In the middle third of the span",
+      "At points of high shear",
+      "None of the above"
+    ],
+    "c": 1,
+    "n": "Construction joints go where shear is low."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Which slab has no projections below its surface at all?",
+    "o": [
+      "Flat plate",
+      "One-way slab",
+      "Flat slab",
+      "Ribbed slab"
+    ],
+    "c": 0,
+    "n": "Flat slabs have drop panels."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Which slab carries heavy loads with no beams, using drop panels or capitals?",
+    "o": [
+      "Ribbed slab",
+      "Two-way slab",
+      "One-way slab",
+      "Flat slab"
+    ],
+    "c": 3,
+    "n": "Flat slab."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Which slab has closely spaced ribs in two directions for long spans and heavy loads?",
+    "o": [
+      "One-way slab",
+      "Waffle slab",
+      "Ribbed slab",
+      "Flat plate"
+    ],
+    "c": 1,
+    "n": "Waffle slab."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Which slab is supported on two opposite sides only, suiting corridors?",
+    "o": [
+      "Two-way slab",
+      "Waffle slab",
+      "Flat slab",
+      "One-way slab"
+    ],
+    "c": 3,
+    "n": "It bends in one direction."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "In a one-way slab, the main bars run:",
+    "o": [
+      "Parallel to the long span",
+      "Along the edges",
+      "Across the long span (parallel to the short span)",
+      "Only at the center"
+    ],
+    "c": 2,
+    "n": "Main bars follow the short span."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Which slab suits square or nearly square panels?",
+    "o": [
+      "Flat plate",
+      "Two-way slab",
+      "Ribbed slab",
+      "One-way slab"
+    ],
+    "c": 1,
+    "n": "Long-to-short ratio under 2."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What is temperature reinforcement in a slab for?",
+    "o": [
+      "Controlling cracks from temperature and shrinkage",
+      "Shear",
+      "Live loads",
+      "Flexure"
+    ],
+    "c": 0,
+    "n": "Shrinkage and temperature steel."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What lets a slab move with thermal expansion and contraction without cracking?",
+    "o": [
+      "Haunch",
+      "Expansion joint",
+      "Drop panel",
+      "Column capital"
+    ],
+    "c": 1,
+    "n": "Expansion joints."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What horizontal member is mainly subject to bending?",
+    "o": [
+      "Beam",
+      "Header",
+      "Hollow blocks",
+      "Canopy"
+    ],
+    "c": 0,
+    "n": "Beams resist bending."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "In a simply supported RC beam, which part is in tension?",
+    "o": [
+      "Top",
+      "Middle",
+      "Bottom",
+      "All of the above"
+    ],
+    "c": 2,
+    "n": "Positive moment stretches the bottom."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What section property resists bending stress?",
+    "o": [
+      "Section modulus",
+      "Rigidity",
+      "Moment of inertia",
+      "None of the above"
+    ],
+    "c": 0,
+    "n": "σ = M/S."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What plate welded to a slender web prevents it from buckling?",
+    "o": [
+      "Buckler",
+      "Lacing",
+      "Capping",
+      "Stiffener"
+    ],
+    "c": 3,
+    "n": "Web stiffeners."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What is a beam or wall that rises above a slab and is cast with it?",
+    "o": [
+      "Underpin",
+      "Canopy",
+      "Upstand",
+      "Parapet"
+    ],
+    "c": 2,
+    "n": "An upstand (inverted) beam."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What is a beam over more than two supports?",
+    "o": [
+      "Cantilever beam",
+      "One-way slab",
+      "Two-way slab",
+      "Continuous beam"
+    ],
+    "c": 3,
+    "n": "Continuous beam."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Which beam is thickened at its supports?",
+    "o": [
+      "Cantilever",
+      "Simply supported",
+      "Haunched beam",
+      "I-beam"
+    ],
+    "c": 2,
+    "n": "Haunched beam."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Under positive bending, a beam is:",
+    "o": [
+      "Stretched below, compressed above",
+      "Evenly compressed and stretched",
+      "Compressed below, stretched above",
+      "Unaffected"
+    ],
+    "c": 0,
+    "n": "It sags."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Where does a simply supported beam see positive moment?",
+    "o": [
+      "Near supports",
+      "Whole beam",
+      "Nowhere",
+      "Midspan"
+    ],
+    "c": 3,
+    "n": "Maximum at midspan."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Which bar is NOT normally found in a slab?",
+    "o": [
+      "Bottom bar",
+      "Temperature bar",
+      "Main vertical bar",
+      "Distribution bar"
+    ],
+    "c": 2,
+    "n": "Vertical bars belong to walls and columns."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What embedded length develops a bar's design strength at a critical section?",
+    "o": [
+      "End anchorage",
+      "Development length",
+      "Critical length",
+      "Embedment length"
+    ],
+    "c": 1,
+    "n": "Ld."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Where does bending moment change sign along a beam?",
+    "o": [
+      "Inflection point",
+      "Midspan",
+      "Neutral axis",
+      "Shear line"
+    ],
+    "c": 0,
+    "n": "Contraflexure point."
+  }
+]
