@@ -1,338 +1,482 @@
 [
   {
-    "s": "Structural Systems & Mechanics",
-    "q": "An instrument used to measure deformation.",
+    "s": "Acoustics",
+    "q": "Which area of a house best suits rubber flooring?",
     "o": [
-      "Strain gauge",
-      "Extensometer",
-      "Deformation measuring equipment",
+      "Music room",
+      "Theater room",
+      "Playroom",
+      "Den"
+    ],
+    "c": 2,
+    "n": "Rubber is resilient and cushions falls."
+  },
+  {
+    "s": "Acoustics",
+    "q": "Which flooring suits clients who want a sustainable option?",
+    "o": [
+      "Rubber",
+      "Carpet",
+      "Vinyl",
+      "Linoleum"
+    ],
+    "c": 3,
+    "n": "Linoleum is made of linseed oil, cork and wood flour."
+  },
+  {
+    "s": "Acoustics",
+    "q": "Which room is most appropriate for carpet flooring?",
+    "o": [
+      "Hotel room",
+      "Bar lounge",
+      "Office room",
+      "Home theater room"
+    ],
+    "c": 3,
+    "n": "Per the MST answer key: Home theater room."
+  },
+  {
+    "s": "Acoustics",
+    "q": "If ease of replacement and affordability are priorities, which flooring is most suitable?",
+    "o": [
+      "Vinyl Tiles",
+      "Linoleum Tiles",
+      "Carpet Tiles",
+      "Rubber Tiles"
+    ],
+    "c": 0,
+    "n": "Per the MST answer key: Vinyl Tiles."
+  },
+  {
+    "s": "Acoustics",
+    "q": "Which flooring has pigment through its full thickness, not just at the surface?",
+    "o": [
+      "Laminate",
+      "Printed vinyl",
+      "Embossed sheet",
+      "Homogeneous vinyl"
+    ],
+    "c": 3,
+    "n": "Homogeneous flooring has uniform color throughout."
+  },
+  {
+    "s": "Acoustics",
+    "q": "What is the rate at which acoustic energy is radiated, in watts?",
+    "o": [
+      "Sound power",
+      "Phon",
+      "Sound pressure",
+      "Octave"
+    ],
+    "c": 0,
+    "n": "Sound power is energy per unit time."
+  },
+  {
+    "s": "Acoustics",
+    "q": "What is the sound level at which sound becomes painful?",
+    "o": [
+      "Threshold of pain",
+      "Threshold of audibility",
+      "Noise",
+      "Ultrasonic"
+    ],
+    "c": 0,
+    "n": "About 120–130 dB."
+  },
+  {
+    "s": "Acoustics",
+    "q": "What branch of physics studies sound, its behavior and control?",
+    "o": [
+      "Echo",
+      "Acoustics",
+      "Attenuation",
+      "Reverberation"
+    ],
+    "c": 1,
+    "n": "Acoustics is the science of sound."
+  },
+  {
+    "s": "Acoustics",
+    "q": "What is the unit of loudness level?",
+    "o": [
+      "Sabin",
+      "Phon",
+      "Decibel",
+      "Hertz"
+    ],
+    "c": 1,
+    "n": "Phons rate perceived loudness."
+  },
+  {
+    "s": "Acoustics",
+    "q": "What is the lowest frequency in a complex tone?",
+    "o": [
+      "Partial",
+      "Fundamental",
+      "Sound absorption",
+      "Harmonic"
+    ],
+    "c": 1,
+    "n": "Harmonics are multiples of the fundamental."
+  },
+  {
+    "s": "Acoustics",
+    "q": "If a wall's transmission coefficient is 0.001, what is its transmission loss?",
+    "o": [
+      "40 dB",
+      "50 dB",
+      "30 dB",
+      "20 dB"
+    ],
+    "c": 2,
+    "n": "TL = 10 log (1/τ) = 10 log 1,000 = 30 dB."
+  },
+  {
+    "s": "Acoustics",
+    "q": "Which of these does NOT significantly affect sound transmission between rooms?",
+    "o": [
+      "Wall area",
+      "Wall material",
+      "Size of the room",
+      "Wall thickness"
+    ],
+    "c": 2,
+    "n": "TL depends on the partition itself."
+  },
+  {
+    "s": "Acoustics",
+    "q": "What happens to sound in a long and narrow hallway?",
+    "o": [
+      "Sound cannot be produced",
+      "Sound will be absorbed by the ceiling",
+      "Sound will be absorbed by the floor",
+      "Sound will bounce back and forth more rapidly"
+    ],
+    "c": 3,
+    "n": "Per the MST answer key: Sound will bounce back and forth more rapidly."
+  },
+  {
+    "s": "Acoustics",
+    "q": "What is the persistence of sound by repeated reflection after the source stops?",
+    "o": [
+      "Reverberation",
+      "Echo",
+      "Absorption",
+      "Diffusion"
+    ],
+    "c": 0,
+    "n": "Reverb time measures this decay."
+  },
+  {
+    "s": "Acoustics",
+    "q": "What is the rapid, repeated reflection between parallel hard surfaces that sounds like fluttering?",
+    "o": [
+      "Standing wave",
+      "Reverberation",
+      "Echo",
+      "Flutter echo"
+    ],
+    "c": 3,
+    "n": "Flutter occurs between parallel walls."
+  },
+  {
+    "s": "Acoustics",
+    "q": "For amusic hall with a large audience, what is the most appropriate flooring material?",
+    "o": [
+      "Carpettiles",
+      "Vinyl tiles",
+      "Wood planks",
       "None of the above"
     ],
-    "c": 1,
-    "n": "Per the MST answer key: Extensometer."
+    "c": 2,
+    "n": "Wood planks give a music hall resonant, durable flooring."
   },
   {
-    "s": "Structural Systems & Mechanics",
-    "q": "Which instrument records ground acceleration during an earthquake?",
+    "s": "Acoustics",
+    "q": "An office manager wants to see into the adjacent music room. Which partition is best acoustically?",
     "o": [
-      "Seismograph",
-      "Geiger counter",
-      "Accelerograph",
-      "None of the above"
+      "Gypsum board with sliding glass",
+      "Gypsum board with fixed glass",
+      "150 mm CHB with fixed glass",
+      "Double-wall 3/4\" plywood with fixed glass"
     ],
     "c": 2,
-    "n": "Strong-motion accelerographs."
+    "n": "Mass and fixed glazing best block sound."
   },
   {
-    "s": "Structural Systems & Mechanics",
-    "q": "What is a material's resistance to deformation under stress?",
+    "s": "Acoustics",
+    "q": "What is the most effective way to reduce airborne sound transmission?",
     "o": [
-      "Ductility",
-      "Stiffness",
-      "Brittleness",
-      "Toughness"
+      "Use absorptive materials",
+      "Cover your ears",
+      "Relocate the building",
+      "Cover the source"
     ],
-    "c": 1,
-    "n": "Stiffness."
+    "c": 0,
+    "n": "Per the MST key, absorptive materials."
   },
   {
-    "s": "Structural Systems & Mechanics",
-    "q": "Atransformer vault is considered a:",
+    "s": "Acoustics",
+    "q": "Which of the following is the most effective method for preventing sound transmission between rooms?",
     "o": [
-      "Dead load",
-      "Concentrated load",
-      "Live load",
-      "Uniformly distributed load"
+      "Double wall",
+      "Cavity wall",
+      "Drywall with insulation",
+      "Gypsum board"
     ],
-    "c": 1,
-    "n": "A transformer vault is a heavy concentrated load."
+    "c": 0,
+    "n": "A double wall with separate studs breaks the sound path best."
   },
   {
-    "s": "Structural Systems & Mechanics",
-    "q": "Furniture counts as what kind of load?",
+    "s": "Acoustics",
+    "q": "Which element mainly controls how much sound is reflected within a room?",
     "o": [
-      "Uniformly distributed load",
-      "Dead load",
-      "Live load",
-      "Concentrated load"
-    ],
-    "c": 2,
-    "n": "Movable contents are live load."
-  },
-  {
-    "s": "Structural Systems & Mechanics",
-    "q": "What is force per unit area?",
-    "o": [
-      "Fatigue",
-      "Strain",
-      "Stress",
-      "Creep"
-    ],
-    "c": 2,
-    "n": "Stress."
-  },
-  {
-    "s": "Structural Systems & Mechanics",
-    "q": "What is the deformation of a body under load?",
-    "o": [
-      "Gunite",
-      "Intensity",
-      "Stress",
-      "Strain"
+      "Door material",
+      "Floor finish",
+      "Ceiling height",
+      "Wall surface treatment"
     ],
     "c": 3,
-    "n": "Strain."
+    "n": "Absorptive or reflective wall finishes set the reflections."
   },
   {
-    "s": "Structural Systems & Mechanics",
-    "q": "A force that pulls an elastic body apart is a:",
+    "s": "Acoustics",
+    "q": "What is the best ceiling material when considering acoustic performance?",
     "o": [
-      "Axial force",
-      "Tensile force",
-      "Stress",
-      "Torsion"
+      "Plywood",
+      "Gypsum",
+      "Concrete",
+      "Hardiflex"
     ],
     "c": 1,
-    "n": "Tension."
+    "n": "Per the MST key, gypsum."
   },
   {
-    "s": "Structural Systems & Mechanics",
-    "q": "What is the greatest stress a material can take before it fractures?",
+    "s": "Acoustics",
+    "q": "Which shape is best avoided in room design to prevent undesirable sound focusing and echo?",
     "o": [
-      "Yield point",
-      "Ultimate strength",
-      "Elasticity",
-      "Elastic limit"
+      "Rectangular",
+      "Dome-shaped",
+      "Triangular",
+      "Circular"
     ],
     "c": 1,
-    "n": "Ultimate strength."
+    "n": "Per the MST key, a dome focuses sound the worst."
   },
   {
-    "s": "Structural Systems & Mechanics",
-    "q": "What is the stress beyond which a material doesn't return to its original length?",
+    "s": "Acoustics",
+    "q": "Which wall material best cuts echo in a recording studio?",
     "o": [
-      "Elastic limit",
-      "Strain",
-      "Plastic expansion",
-      "Plastic limit"
+      "Glass",
+      "Wood paneling",
+      "Acoustic foam",
+      "Concrete"
+    ],
+    "c": 2,
+    "n": "Porous foam absorbs mid and high frequencies."
+  },
+  {
+    "s": "Acoustics",
+    "q": "In acoustic design, what does STC measure?",
+    "o": [
+      "How well a partition blocks sound",
+      "Reflection angle",
+      "Reverberation level",
+      "Echo duration"
     ],
     "c": 0,
-    "n": "Past it there's permanent set."
+    "n": "Sound Transmission Class rates airborne insulation."
   },
   {
-    "s": "Structural Systems & Mechanics",
-    "q": "What is the tendency of a slender member to bow under compression?",
+    "s": "Acoustics",
+    "q": "Which material is commonly used on ceilings and walls to absorb sound?",
     "o": [
-      "Buckling",
-      "Yielding",
-      "Shearing",
-      "Cracking"
+      "Fiber cement board",
+      "Gypsum board",
+      "Acoustic board",
+      "Glass panel"
+    ],
+    "c": 2,
+    "n": "Acoustic boards are porous and absorptive."
+  },
+  {
+    "s": "Acoustics",
+    "q": "A manager wants cubicle partitions that help acoustics yet keep visual contact. What fits?",
+    "o": [
+      "Low modular partitions with a glass strip in the middle",
+      "CHB",
+      "Drywall partitions",
+      "Full glass"
     ],
     "c": 0,
-    "n": "Euler buckling."
+    "n": "Fabric panels absorb sound while the glass keeps sightlines."
   },
   {
-    "s": "Structural Systems & Mechanics",
-    "q": "Which property is resistance to indentation or scratching?",
+    "s": "Acoustics",
+    "q": "What material is best used on walls to reduce sound transmission?",
     "o": [
-      "Elasticity",
-      "Hardness",
-      "Ductility",
-      "Toughness"
+      "Gypsum board on studs",
+      "Styrofoam inside drywall",
+      "CHB",
+      "Cornstarch board"
+    ],
+    "c": 0,
+    "n": "Per the answer key, a gypsum-on-stud assembly (with its cavity) reduces sound transmission best."
+  },
+  {
+    "s": "Acoustics",
+    "q": "Which part of a door should be treated first to cut sound transmission?",
+    "o": [
+      "The face",
+      "Lower panel",
+      "The edges",
+      "Upper panel"
+    ],
+    "c": 2,
+    "n": "Gaps around the leaf leak the most sound."
+  },
+  {
+    "s": "Acoustics",
+    "q": "Which inexpensive yet effective wall treatment would you recommend to reduce noise?",
+    "o": [
+      "Bamboo",
+      "Egg crate foam",
+      "Rock salt",
+      "Sawali"
     ],
     "c": 1,
-    "n": "Hardness."
+    "n": "Per the MST key, egg crate foam."
   },
   {
-    "s": "Structural Systems & Mechanics",
-    "q": "What is a space frame built to carry all vertical gravity loads?",
+    "s": "Acoustics",
+    "q": "Which floor finish best reduces noise in an office?",
     "o": [
-      "Vertical load-carrying space frame",
-      "Bracing system",
-      "Moment-resisting space frame",
-      "Bearing wall system"
+      "Linoleum",
+      "Carpet tiles",
+      "Wood planks",
+      "Vinyl tiles"
     ],
-    "c": 0,
-    "n": "NSCP term."
+    "c": 1,
+    "n": "Carpet absorbs footfall and airborne noise."
   },
   {
-    "s": "Structural Systems & Mechanics",
-    "q": "What is an element that deforms much more under lateral load than adjoining parts?",
+    "s": "Acoustics",
+    "q": "Which type of flooring is made from polymers?",
     "o": [
-      "Boundary element",
-      "Platform",
-      "Horizontal bracing system",
-      "Flexible element"
+      "Rubber flooring",
+      "Carpet flooring",
+      "Laminated flooring",
+      "Resilient flooring"
     ],
     "c": 3,
-    "n": "NSCP definition."
+    "n": "Resilient flooring (vinyl, rubber) is polymer-based."
   },
   {
-    "s": "Structural Systems & Mechanics",
-    "q": "Which method distributes total lateral force to vertical elements in proportion to their rigidity, considering the diaphragm?",
+    "s": "Acoustics",
+    "q": "Which facility suits rubber flooring best?",
     "o": [
-      "Distribution of horizontal shear",
-      "Horizontal torsional moments",
-      "Shear and moment diagram",
-      "Stability against overturning"
-    ],
-    "c": 0,
-    "n": "NSCP horizontal shear distribution."
-  },
-  {
-    "s": "Structural Systems & Mechanics",
-    "q": "Anassemblage of framing members designed to support gravity loads and resist lateral forces is called a:",
-    "o": [
-      "System",
-      "Structure",
-      "Grid",
-      "Frame"
-    ],
-    "c": 3,
-    "n": "A frame is an assemblage of members resisting gravity and lateral loads."
-  },
-  {
-    "s": "Structural Systems & Mechanics",
-    "q": "What is a space frame whose members and joints resist forces mainly by flexure?",
-    "o": [
-      "Vertical load-carrying frame",
-      "Bracing system",
-      "Moment-resisting space frame",
-      "Bearing wall system"
-    ],
-    "c": 2,
-    "n": "Moment frames bend."
-  },
-  {
-    "s": "Structural Systems & Mechanics",
-    "q": "Which ASTM standard covers deformed steel welded wire fabric?",
-    "o": [
-      "ASTM A497",
-      "ASTM A706",
-      "ASTM A615",
-      "ASTM A496"
-    ],
-    "c": 0,
-    "n": "A497 (A496 is the wire itself)."
-  },
-  {
-    "s": "Structural Systems & Mechanics",
-    "q": "Which ASTM standard covers deformed and plain carbon-steel bars for concrete?",
-    "o": [
-      "ASTM C94",
-      "ASTM C33",
-      "ASTM A615",
-      "ASTM A706"
-    ],
-    "c": 2,
-    "n": "A706 is low-alloy weldable bar."
-  },
-  {
-    "s": "Structural Systems & Mechanics",
-    "q": "Which ASTM standard covers ready-mixed concrete?",
-    "o": [
-      "ASTM C143",
-      "ASTM C94",
-      "ASTM C150",
-      "ASTM A36"
+      "Dance hall",
+      "Sports hall",
+      "Exhibition hall",
+      "Music hall"
     ],
     "c": 1,
-    "n": "C150 is cement; C143 the slump test."
+    "n": "Rubber cushions impact and resists wear."
   },
   {
-    "s": "Structural Systems & Mechanics",
-    "q": "Which ASTM standard covers stainless steel bars and shapes?",
+    "s": "Acoustics",
+    "q": "If low maintenance and ease of replacement are priorities for a high-end project, which flooring should be specified?",
     "o": [
-      "ASTM A307",
-      "ASTM A615",
-      "ASTM A276",
-      "ASTM A36"
-    ],
-    "c": 2,
-    "n": "A276."
-  },
-  {
-    "s": "Structural Systems & Mechanics",
-    "q": "What is the live load of hardware and tools (in kg/m?)?",
-    "o": [
-      "2200",
-      "1800",
-      "2000",
-      "1500"
-    ],
-    "c": 2,
-    "n": "Per the MST answer key: 2000."
-  },
-  {
-    "s": "Structural Systems & Mechanics",
-    "q": "What is the design load of copper (in kKN/m?)?",
-    "o": [
-      "78.5",
-      "88.6",
-      "87.3",
-      "77.3"
-    ],
-    "c": 2,
-    "n": "Copper weighs about 8,900 kg/m³ ≈ 87.3 kN/m³."
-  },
-  {
-    "s": "Structural Systems & Mechanics",
-    "q": "What do you call the point at which a material is about to rupture?",
-    "o": [
-      "Ultimate strength",
-      "Point of breaking",
-      "Point of no return",
-      "NOTA"
+      "Luxury carpet tile flooring",
+      "Linoleum tile flooring",
+      "Granite slab flooring",
+      "Vinyl composition tile flooring"
     ],
     "c": 0,
-    "n": "Ultimate strength is the stress just before rupture."
+    "n": "Luxury carpet tiles are high-end and swapped one tile at a time."
   },
   {
-    "s": "Structural Systems & Mechanics",
-    "q": "What is nominal strength times the strength reduction factor φ?",
+    "s": "Acoustics",
+    "q": "For maximum durability in any condition, easy installation, and the longest lifespan, which flooring should be specified?",
     "o": [
-      "Required strength",
-      "Design strength",
-      "Calculated strength",
-      "Reduced strength"
+      "Linoleum",
+      "Vinyl",
+      "Rubber",
+      "Ceramic"
+    ],
+    "c": 3,
+    "n": "Ceramic tile lasts longest in any condition."
+  },
+  {
+    "s": "Acoustics",
+    "q": "Which resilient flooring is made from renewable materials?",
+    "o": [
+      "Carpet tile",
+      "Cork tile",
+      "Laminate tile",
+      "Vinyl tile"
     ],
     "c": 1,
-    "n": "φRn ≥ Ru."
+    "n": "Cork is bark harvested without felling the tree."
   },
   {
-    "s": "Structural Systems & Mechanics",
-    "q": "Which SI unit of force is about 0.225 lb?",
+    "s": "Acoustics",
+    "q": "What is the best acoustic treatment location for narrow spaces?",
     "o": [
-      "Kilopascal",
-      "Kilonewton",
-      "Megapascal",
-      "Newton"
+      "Ceiling",
+      "Walls",
+      "Doors",
+      "Floor"
     ],
-    "c": 3,
-    "n": "1 N ≈ 0.2248 lbf."
+    "c": 1,
+    "n": "Per the MST answer key: Walls."
   },
   {
-    "s": "Structural Systems & Mechanics",
-    "q": "What stress stays locked in a material from manufacturing?",
+    "s": "Acoustics",
+    "q": "In asmall conference room, where should acoustic panels primarily be placed to reduce echo?",
     "o": [
-      "Salinity",
-      "Buckling stress",
-      "Resilience",
-      "Residual stress"
+      "Ceiling",
+      "Windows",
+      "Floor",
+      "Side walls"
     ],
-    "c": 3,
-    "n": "From rolling, welding or cooling."
+    "c": 0,
+    "n": "In a small room the ceiling is the main reflecting surface to treat."
   },
   {
-    "s": "Structural Systems & Mechanics",
-    "q": "At what stress does a material begin to deform permanently?",
+    "s": "Acoustics",
+    "q": "Where are acoustic baffles most effective in a large open-plan office?",
     "o": [
-      "Elastic limit",
-      "Ultimate strength",
-      "Yield strength",
-      "Breaking point"
+      "Hung from the ceiling",
+      "Behind doors",
+      "On windows",
+      "Under desks"
     ],
-    "c": 2,
-    "n": "Yield."
+    "c": 0,
+    "n": "Ceiling baffles absorb sound over the whole floor."
+  },
+  {
+    "s": "Acoustics",
+    "q": "Where should acoustic treatment be concentrated in a home theater?",
+    "o": [
+      "Rear and side walls",
+      "Door and desk",
+      "Ceiling only",
+      "Floor and windows"
+    ],
+    "c": 0,
+    "n": "Early reflections come off the side and rear walls."
+  },
+  {
+    "s": "Acoustics",
+    "q": "In a tall lobby full of hard surfaces, where should absorption go first?",
+    "o": [
+      "Doors",
+      "Ceiling",
+      "Glass walls",
+      "Floor"
+    ],
+    "c": 1,
+    "n": "The ceiling is the largest free reflecting surface."
   }
 ]

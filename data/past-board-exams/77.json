@@ -1,350 +1,612 @@
 [
   {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "When water is released immediately from the main, what system can be used to supply higher levels?",
+    "s": "HVAC",
+    "q": "What is the function of Figure A?",
     "o": [
-      "Wet pipe",
-      "Pre-action",
-      "Deluge",
-      "Dry pipe"
+      "Expels unwanted air from inside to the outside of the building.",
+      "A commercial and industrial-grade exhaust duct.",
+      "Distributes air conditioning to different parts of the building.",
+      "Stops or regulates the flow of air in the building."
     ],
-    "c": 2,
-    "n": "Per the MST key, a deluge system."
+    "c": 3,
+    "n": "Figure A is a damper.",
+    "img": "figs/BUILDING_UTILITIES__04-A.png"
   },
   {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "What pipe supplies each floor with water for firefighting?",
+    "s": "HVAC",
+    "q": "What is the function of Figure B?",
     "o": [
-      "Sprinkler",
-      "Standpipe",
-      "Fire hydrant",
-      "Water reserve"
+      "Air duct cover",
+      "Air diffuser",
+      "Return air vent",
+      "HVAC damper"
     ],
     "c": 1,
-    "n": "Standpipes feed hose valves on each floor."
+    "n": "Figure B is a round ceiling diffuser.",
+    "img": "figs/BUILDING_UTILITIES__04-A.png"
   },
   {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "What is the maximum height of a Siamese connection from the ground line?",
+    "s": "HVAC",
+    "q": "What is the function of Figure C?",
     "o": [
-      "1200 mm",
-      "450 mm",
-      "150 mm",
-      "380 mm"
+      "Electric vent",
+      "Solar lighting",
+      "Sunroof",
+      "Solar roof vent"
+    ],
+    "c": 3,
+    "n": "The figure shows a roof vent with a solar panel driving its fan: a solar roof vent.",
+    "img": "figs/BUILDING_UTILITIES__04-A.png"
+  },
+  {
+    "s": "HVAC",
+    "q": "What is the function of Figure D?",
+    "o": [
+      "Air conditioner",
+      "Air-interchanger",
+      "Generator",
+      "Transformer"
     ],
     "c": 0,
-    "n": "Fire department connections sit between about 450 mm and 1200 mm above grade."
+    "n": "Figure D is a packaged air-conditioning unit.",
+    "img": "figs/BUILDING_UTILITIES__04-A.png"
   },
   {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "What is a Siamese (fire department) connection for?",
+    "s": "HVAC",
+    "q": "What is the function of Figure E?",
     "o": [
-      "Linking two hydrants",
-      "Letting fire trucks pump water into the standpipe or sprinkler system",
-      "Storing emergency water",
-      "Cooling the fire pump"
+      "Air-conditioning",
+      "Photovoltaic Array",
+      "Electric hot water",
+      "Solar water heating"
     ],
-    "c": 1,
-    "n": "The FDC lets the fire service boost the system."
+    "c": 3,
+    "n": "Figure E is a solar water heater.",
+    "img": "figs/BUILDING_UTILITIES__04-A.png"
   },
   {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "Which system is set off by heat and discharges only at the heads that open?",
+    "s": "HVAC",
+    "q": "Which figure is used for interior room applications?",
     "o": [
-      "Dry pipe",
-      "Wet pipe",
-      "Pre-action",
-      "Deluge"
-    ],
-    "c": 1,
-    "n": "In a wet system water is already at each head."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "Which pump is used to eject sewage or liquid waste?",
-    "o": [
-      "Sump pump",
-      "Booster pump",
-      "Centrifugal pump",
-      "Rotary pump"
-    ],
-    "c": 0,
-    "n": "A sump (ejector-type) pump lifts sewage or liquid waste to the sewer."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "Which pump removes water from the lowest part of a building?",
-    "o": [
-      "Centrifugal pump",
-      "Booster pump",
-      "Sump pump",
-      "Rotary pump"
+      "Figure A",
+      "Figure C",
+      "Figure B",
+      "Figure D"
     ],
     "c": 2,
-    "n": "Sump pumps drain pits and basements."
+    "n": "The ceiling exhaust fan (B) serves interior rooms.",
+    "img": "figs/BUILDING_UTILITIES__04-B.png"
   },
   {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "What is the best location for installing a water pump?",
+    "s": "HVAC",
+    "q": "Which figure can be installed on exterior wall?",
     "o": [
-      "Storage tank",
+      "Figure C",
+      "Figure D",
+      "Figure E",
+      "Figure B"
+    ],
+    "c": 1,
+    "n": "The shuttered fan (D) mounts through an exterior wall.",
+    "img": "figs/BUILDING_UTILITIES__04-B.png"
+  },
+  {
+    "s": "HVAC",
+    "q": "Which figure do NOT need electricity to run?",
+    "o": [
+      "Figure D",
+      "Figure E",
+      "Figure A",
+      "Figure C"
+    ],
+    "c": 1,
+    "n": "A turbine ventilator (E) turns with the wind, without power.",
+    "img": "figs/BUILDING_UTILITIES__04-B.png"
+  },
+  {
+    "s": "HVAC",
+    "q": "Which figure is used for commercial rooftop application?",
+    "o": [
+      "Figure A",
+      "Figure D",
+      "Figure E",
+      "Figure C"
+    ],
+    "c": 0,
+    "n": "A mushroom rooftop exhaust fan (A) is a commercial unit.",
+    "img": "figs/BUILDING_UTILITIES__04-B.png"
+  },
+  {
+    "s": "HVAC",
+    "q": "Which figure is applicable only for tiny room?",
+    "o": [
+      "Figure B",
+      "Figure C",
+      "Figure D",
+      "Figure A"
+    ],
+    "c": 1,
+    "n": "The small wall fan (C) suits a tiny room like a toilet.",
+    "img": "figs/BUILDING_UTILITIES__04-B.png"
+  },
+  {
+    "s": "HVAC",
+    "q": "Which AC component boils the refrigerant, absorbing heat to cool the air?",
+    "o": [
+      "Condenser",
+      "Evaporator",
+      "Air distribution",
+      "Vapor pump"
+    ],
+    "c": 1,
+    "n": "Evaporation absorbs heat."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which control device senses temperature to hold it near the setpoint?",
+    "o": [
+      "Thermometer",
+      "Thermostat",
+      "Wire gauge",
+      "None of the above"
+    ],
+    "c": 1,
+    "n": "Thermostats switch equipment by temperature."
+  },
+  {
+    "s": "HVAC",
+    "q": "What is the correct amount of refrigerant for an AC to run properly?",
+    "o": [
+      "Operating charge",
+      "Volume",
+      "Sub-zero",
+      "Migration"
+    ],
+    "c": 0,
+    "n": "The charge is set by the maker."
+  },
+  {
+    "s": "HVAC",
+    "q": "For maximum efficiency, which components should be located near each other?",
+    "o": [
+      "FCU and Chiller",
+      "AHU and FCU",
+      "AHU and Chiller",
+      "Electric fan and Chiller"
+    ],
+    "c": 2,
+    "n": "Per the MST answer key: AHU and Chiller."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which device raises refrigerant pressure in an AC system?",
+    "o": [
+      "Compressor",
+      "Expansion valve",
+      "Condenser",
+      "Evaporator"
+    ],
+    "c": 0,
+    "n": "The compressor squeezes low-pressure vapor."
+  },
+  {
+    "s": "HVAC",
+    "q": "What is the minimum clearance from the floor for air-conditioning pipes when crossing a hallway or corridor?",
+    "o": [
+      "2.10 m",
+      "2.30 m",
+      "2.50 m",
+      "2.40 m"
+    ],
+    "c": 1,
+    "n": "Per the MST answer key: 2.30 m."
+  },
+  {
+    "s": "HVAC",
+    "q": "What is the limitation in the installation of a split-type air conditioner?",
+    "o": [
+      "The refrigerant tubing should not exceed a set length from the condenser to the evaporator",
+      "It has a limit of 5 units per building",
+      "It is difficult to repair",
+      "None of the above"
+    ],
+    "c": 0,
+    "n": "Split-type units have a limit on refrigerant line length between condenser and evaporator."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which AC system suits a large, sprawling factory?",
+    "o": [
+      "Split type",
+      "Window unit",
+      "Industrial fan",
+      "Chiller system"
+    ],
+    "c": 3,
+    "n": "Central chilled water serves big floor areas."
+  },
+  {
+    "s": "HVAC",
+    "q": "For a 20 sqm manager's office located in a central core area (center of the floor), which air-conditioning system is most appropriate?",
+    "o": [
+      "2 HP window-type",
+      "Cassette-type",
+      "5 TR floor-mounted",
+      "1 TR floor-mounted"
+    ],
+    "c": 1,
+    "n": "Per the MST answer key: Cassette-type."
+  },
+  {
+    "s": "HVAC",
+    "q": "For a high-rise building, where is the best location for a chiller unit?",
+    "o": [
+      "Basement",
+      "Ground floor",
       "Roof deck",
-      "Service pipe",
-      "Cistern"
+      "Outside the building near the parking lot"
     ],
-    "c": 3,
-    "n": "Per the MST answer key: Cistern."
+    "c": 0,
+    "n": "Per the MST answer key: Basement."
   },
   {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "Where is a pump ideally located in relation to a cistern?",
+    "s": "HVAC",
+    "q": "Where is a cassette-type AC installed?",
     "o": [
-      "Beside the cistern",
-      "Side by side with the cistern",
-      "Inside the cistern",
-      "On top of the cistern"
-    ],
-    "c": 3,
-    "n": "Per the MST answer key: On top of the cistern."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "Which pump keeps adequate pressure on the upper floors of a multi-story building?",
-    "o": [
-      "Sump pump",
-      "Booster pump",
-      "Sewage ejector",
-      "Rotary pump"
-    ],
-    "c": 1,
-    "n": "Boosters make up static head losses."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "Considering the operational needs and potential emergency scenarios in a three-storey hospital, how many elevators are recommended to serve both patients and staff?",
-    "o": [
-      "One for patients only",
-      "Three, one for each floor",
-      "One, but it is ideal to have one for passengers",
-      "One for passengers and one for patients on stretchers"
-    ],
-    "c": 3,
-    "n": "A hospital needs a passenger elevator plus a stretcher-size elevator for patients."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "Given the building height and expected load of a three-storey hospital, which type of elevator system is most appropriate for efficient and safe vertical transportation?",
-    "o": [
-      "Electric",
-      "Traction or hydraulic",
-      "Machine room-less",
-      "Magnetic"
-    ],
-    "c": 1,
-    "n": "Per the MST answer key: Traction or hydraulic."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "In the design of a three-storey hospital, which of the following fire suppression systems is typically NOT included in standard fire safety protocols?",
-    "o": [
-      "Wet standpipe",
-      "Fire extinguisher",
-      "Sprinkler",
-      "Dry standpipe"
-    ],
-    "c": 3,
-    "n": "Per the MST key, a dry standpipe (not needed in a low-rise building)."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "According to fire code requirements, how many dry standpipes are typically required in a three-storey hospital?",
-    "o": [
-      "1",
-      "3",
-      "0",
-      "2"
+      "Wall",
+      "Column",
+      "Ceiling",
+      "Floor"
     ],
     "c": 2,
-    "n": "Dry standpipes are required only from four storeys up, so none for three storeys."
+    "n": "Cassettes sit flush in the ceiling."
   },
   {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "What is the most appropriate and code-compliant location for installing a dry standpipe in a hospital?",
+    "s": "HVAC",
+    "q": "Where is the best place for a cooling tower?",
     "o": [
-      "Roof deck",
-      "Pipe chase",
-      "Stairway",
-      "Ground floor common toilet"
+      "Service core",
+      "Basement",
+      "Kitchen",
+      "Roof deck"
+    ],
+    "c": 3,
+    "n": "Towers need open air to reject heat."
+  },
+  {
+    "s": "HVAC",
+    "q": "If you are installing a centralized air-conditioning system for a building, what additional utility must be provided?",
+    "o": [
+      "Chiller",
+      "Ducts",
+      "Cooling tower",
+      "Pipe chase"
     ],
     "c": 2,
-    "n": "Standpipe outlets go in the exit stairways, where firefighters stage."
+    "n": "A water-cooled central system needs a cooling tower to reject heat."
   },
   {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "Which of these does NOT make elevators?",
+    "s": "HVAC",
+    "q": "What carries conditioned air from the air handling unit?",
     "o": [
-      "Hyundai",
-      "Mitsubishi",
-      "Hitachi",
-      "None of the above — all three do"
-    ],
-    "c": 3,
-    "n": "All three build elevators."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "Which brand is well known for its ultra-fast elevators used in skyscrapers?",
-    "o": [
-      "Schindler",
-      "Mitsubishi",
-      "Otis",
-      "KONE"
-    ],
-    "c": 1,
-    "n": "Per the MST answer key: Mitsubishi."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "Which elevator brand is from Finland?",
-    "o": [
-      "KONE",
-      "Thyssenkrupp",
-      "Otis",
-      "Hitachi"
-    ],
-    "c": 0,
-    "n": "KONE is Finnish."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "Which is one of the oldest elevator makers, founded in the United States?",
-    "o": [
-      "Mitsubishi",
-      "Otis",
-      "Hyundai",
-      "KONE"
-    ],
-    "c": 1,
-    "n": "Elisha Otis demonstrated the safety brake in 1854."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "Which German company makes elevators and escalators worldwide?",
-    "o": [
-      "Thyssenkrupp (TK Elevator)",
-      "Schindler",
-      "Hitachi",
-      "KONE"
-    ],
-    "c": 0,
-    "n": "Schindler is Swiss and KONE Finnish."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "Which of these makes elevators and escalators?",
-    "o": [
-      "KONE",
-      "Kofu",
-      "Bosch",
-      "Honeywell"
-    ],
-    "c": 0,
-    "n": "KONE is a lift maker."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "After how many minutes of inactivity will an escalator temporarily stop to save electricity?",
-    "o": [
-      "10 minutes",
-      "3 minutes",
-      "5 minutes",
-      "15 minutes"
-    ],
-    "c": 1,
-    "n": "Escalators on auto-stop typically pause after about three minutes with no passengers."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "What is the minimum load capacity of a home elevator in kilograms?",
-    "o": [
-      "250 kg",
-      "150 kg",
-      "300 kg",
-      "200 kg"
-    ],
-    "c": 0,
-    "n": "Per the MST answer key: 250 kg."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "What do you call the door inside the elevator?",
-    "o": [
-      "Special",
-      "Exit",
-      "Interior",
-      "Cab"
-    ],
-    "c": 3,
-    "n": "The door on the car itself is the cab (car) door."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "Which part opens and closes elevator doors automatically?",
-    "o": [
-      "Door operator",
-      "Cab",
-      "Hoist cable",
-      "Counterweight"
-    ],
-    "c": 0,
-    "n": "The operator is mounted on the car top."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "Which is NOT a fire protection device?",
-    "o": [
-      "Sprinkler system",
-      "Helmet",
-      "Firewall",
-      "Smoke detector"
+      "Cooling tower",
+      "Chiller",
+      "Ducts",
+      "Pipe chase"
     ],
     "c": 2,
-    "n": "Per the answer key, a firewall is a fire-rated building element, not a device."
+    "n": "Ducts distribute AHU air."
   },
   {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "What device senses smoke and triggers an alarm?",
+    "s": "HVAC",
+    "q": "Where should a window-type air conditioner be installed?",
     "o": [
-      "Smoke detector",
-      "Alarm bell",
-      "Fire hose",
-      "Heat sensor"
-    ],
-    "c": 0,
-    "n": "Smoke detectors sense particles."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "Which part discharges water automatically when it senses heat?",
-    "o": [
-      "Sprinkler head",
-      "Fire extinguisher",
-      "Fire alarm panel",
-      "Smoke detector"
-    ],
-    "c": 0,
-    "n": "A fusible link or glass bulb opens the head."
-  },
-  {
-    "s": "Pumps, Fire Protection & Conveying",
-    "q": "Which equipment is used to put out small fires by hand?",
-    "o": [
-      "Fire alarm panel",
-      "Smoke detector",
-      "Sprinkler system",
-      "Fire extinguisher"
+      "Aligned with the window sill",
+      "Below the window sill",
+      "Middle of the wall",
+      "Top of the wall"
     ],
     "c": 3,
-    "n": "Portable extinguishers are for incipient fires."
+    "n": "Per the MST key, high on the wall."
+  },
+  {
+    "s": "HVAC",
+    "q": "Air at 100% relative humidity is:",
+    "o": [
+      "Dehumidified",
+      "Saturated",
+      "Moist",
+      "Supersaturated"
+    ],
+    "c": 1,
+    "n": "It holds all the vapor it can."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which colorless, odorless gas varies in quantity in air and sets relative humidity?",
+    "o": [
+      "Hydrogen",
+      "Nitrogen",
+      "Oxygen",
+      "Water vapor"
+    ],
+    "c": 3,
+    "n": "RH measures water vapor."
+  },
+  {
+    "s": "HVAC",
+    "q": "What is the science of lowering the temperature of a space or substance?",
+    "o": [
+      "Refrigeration",
+      "Dehumidification",
+      "Humidification",
+      "Air-conditioning"
+    ],
+    "c": 0,
+    "n": "Refrigeration removes heat."
+  },
+  {
+    "s": "HVAC",
+    "q": "A yellow energy guide label on an AC shows a large bold number. What is it?",
+    "o": [
+      "Energy efficiency ratio",
+      "Energy consumption",
+      "Rated power input",
+      "Energy efficiency factor"
+    ],
+    "c": 0,
+    "n": "The label highlights EER (now CSPF on inverter units)."
+  },
+  {
+    "s": "HVAC",
+    "q": "For an AC unit, horsepower describes:",
+    "o": [
+      "Compressor weight",
+      "How fast air is cooled",
+      "Motor or compressor power",
+      "Air volume per minute"
+    ],
+    "c": 2,
+    "n": "HP is a power rating."
+  },
+  {
+    "s": "HVAC",
+    "q": "What should a small windowless kitchen or T&B have?",
+    "o": [
+      "Dehumidifier",
+      "Air conditioner",
+      "Mechanical exhaust fan",
+      "Glass blocks"
+    ],
+    "c": 2,
+    "n": "Exhaust fans remove odor and moisture."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which is the best location for a condenser unit?",
+    "o": [
+      "Beside the service counter",
+      "Beside the generator",
+      "Hung on a tree",
+      "Roof deck"
+    ],
+    "c": 3,
+    "n": "Open roof space dissipates heat."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which ventilation component removes stale or humid air?",
+    "o": [
+      "Air filter",
+      "Diffuser",
+      "Humidifier",
+      "Exhaust fan"
+    ],
+    "c": 3,
+    "n": "Exhaust fans pull air out."
+  },
+  {
+    "s": "HVAC",
+    "q": "Why must a condenser unit be in a well-ventilated outdoor spot?",
+    "o": [
+      "To hide it",
+      "For proper heat rejection",
+      "To reduce maintenance",
+      "For looks"
+    ],
+    "c": 1,
+    "n": "Trapped hot air cuts efficiency."
+  },
+  {
+    "s": "HVAC",
+    "q": "In ventilation, CFM measures:",
+    "o": [
+      "Fan speed",
+      "Temperature",
+      "Static pressure",
+      "Airflow"
+    ],
+    "c": 3,
+    "n": "Cubic feet per minute."
+  },
+  {
+    "s": "HVAC",
+    "q": "What is installed over an entrance to limit air exchange through the door?",
+    "o": [
+      "Door stopper",
+      "Exhaust fan",
+      "Air curtain",
+      "Dehumidifier"
+    ],
+    "c": 2,
+    "n": "A downward air jet separates inside and outside."
+  },
+  {
+    "s": "HVAC",
+    "q": "Where should the ACCU for a convenience store go?",
+    "o": [
+      "In the basement",
+      "On the ceiling",
+      "At the store front",
+      "Outside the store"
+    ],
+    "c": 3,
+    "n": "The condensing unit is outdoors."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which is NOT a standard HVAC component?",
+    "o": [
+      "ACCU",
+      "AHU",
+      "FHU",
+      "Condensate drain pipe"
+    ],
+    "c": 2,
+    "n": "FHU isn't an HVAC component; ACCU, AHU and the drain are."
+  },
+  {
+    "s": "HVAC",
+    "q": "What is the main function of an AHU?",
+    "o": [
+      "Removing humidity only",
+      "Cooling refrigerant",
+      "Circulating and conditioning air",
+      "Expelling hot air outdoors"
+    ],
+    "c": 2,
+    "n": "AHUs filter, cool and move air."
+  },
+  {
+    "s": "HVAC",
+    "q": "BTU stands for:",
+    "o": [
+      "Balanced Temperature Unit",
+      "Built-in Temperature Utility",
+      "Basic Thermal Unit",
+      "British Thermal Unit"
+    ],
+    "c": 3,
+    "n": "1 BTU heats 1 lb of water 1 °F."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which is NOT a mode of heat transfer?",
+    "o": [
+      "Conduction",
+      "Convection",
+      "Radiation",
+      "Evaporation"
+    ],
+    "c": 3,
+    "n": "Evaporation is a phase change, not one of the three modes."
+  },
+  {
+    "s": "HVAC",
+    "q": "What is the method of heat transfer from one room to another?",
+    "o": [
+      "Conduction",
+      "Convection",
+      "Compression",
+      "Radiation"
+    ],
+    "c": 0,
+    "n": "Heat passes from room to room through the walls by conduction."
+  },
+  {
+    "s": "HVAC",
+    "q": "What is installed in ducts where they pass through fire-rated walls?",
+    "o": [
+      "Attenuator",
+      "Firestop",
+      "Fire damper",
+      "Plenum sheet"
+    ],
+    "c": 2,
+    "n": "Fire dampers close when heat melts a fusible link."
+  },
+  {
+    "s": "HVAC",
+    "q": "What duct devices near fans, AHUs and dampers absorb or deflect sound to limit its spread?",
+    "o": [
+      "Thermostats",
+      "Attenuators",
+      "Air filters",
+      "Plenums"
+    ],
+    "c": 1,
+    "n": "Sound attenuators (silencers)."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which of the following is NOT a default knob height setting on a shower heater?",
+    "o": [
+      "Low",
+      "Medium",
+      "Standard",
+      "High"
+    ],
+    "c": 2,
+    "n": "Shower heater knobs run Low, Medium and High; \"Standard\" is not a setting."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which part of a split-type AC is outdoors?",
+    "o": [
+      "Evaporator",
+      "Condenser",
+      "Fan coil unit",
+      "Blower"
+    ],
+    "c": 1,
+    "n": "The condensing unit sits outside."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which of the following brands does NOT manufacture air conditioners?",
+    "o": [
+      "LG",
+      "Samsung",
+      "Asahi",
+      "Carrier"
+    ],
+    "c": 2,
+    "n": "Per the MST answer key: Asahi."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which part of a split-type AC cools the indoor air?",
+    "o": [
+      "Thermostat",
+      "Condenser",
+      "Compressor",
+      "Evaporator"
+    ],
+    "c": 3,
+    "n": "The indoor coil is the evaporator."
+  },
+  {
+    "s": "HVAC",
+    "q": "What is the refrigerant's main job in an AC system?",
+    "o": [
+      "Regulating humidity",
+      "Circulating air",
+      "Absorbing and releasing heat",
+      "Filtering dust"
+    ],
+    "c": 2,
+    "n": "It carries heat from the evaporator to the condenser."
+  },
+  {
+    "s": "HVAC",
+    "q": "Which AC system suits large commercial spaces?",
+    "o": [
+      "Centralized system",
+      "Split type",
+      "Portable unit",
+      "Window type"
+    ],
+    "c": 0,
+    "n": "Central plants serve large buildings."
   }
 ]

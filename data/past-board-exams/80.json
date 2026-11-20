@@ -1,458 +1,496 @@
 [
   {
     "s": "Electrical Power & Lighting",
-    "q": "On which appliance's energy label is the Energy Efficiency Factor (EEF) shown?",
+    "q": "Which figure shows a dimmer switch?",
     "o": [
-      "Washing machine",
-      "Refrigerator",
+      "Figure E",
+      "Figure D",
+      "Figure C",
+      "Figure A"
+    ],
+    "c": 3,
+    "n": "Figure A is a slide dimmer.",
+    "img": "figs/BUILDING_UTILITIES__06-A.png"
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Which figure shows a USB outlet?",
+    "o": [
+      "Figure D",
+      "Figure A",
+      "Figure C",
+      "Figure B"
+    ],
+    "c": 2,
+    "n": "Figure C has USB ports.",
+    "img": "figs/BUILDING_UTILITIES__06-A.png"
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Which figure shows a range outlet?",
+    "o": [
+      "Figure A",
+      "Figure E",
+      "Figure D",
+      "Figure B"
+    ],
+    "c": 3,
+    "n": "Figure B is a high-amperage range outlet.",
+    "img": "figs/BUILDING_UTILITIES__06-A.png"
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Which figure shows a multipurpose outlet?",
+    "o": [
+      "Figure D",
+      "Figure B",
+      "Figure E",
+      "Figure A"
+    ],
+    "c": 2,
+    "n": "Figure E is a universal (multipurpose) outlet.",
+    "img": "figs/BUILDING_UTILITIES__06-A.png"
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Which figure shows a pop-up floor outlet?",
+    "o": [
+      "Figure D",
+      "Figure C",
+      "Figure B",
+      "Figure A"
+    ],
+    "c": 0,
+    "n": "Figure D is a pop-up floor outlet.",
+    "img": "figs/BUILDING_UTILITIES__06-A.png"
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What electrical component in Figure A houses circuit breakers or fuses to distribute power within a building?",
+    "o": [
+      "Panel board",
+      "Surface junction box",
+      "Light dimmer module",
+      "Switch plate"
+    ],
+    "c": 0,
+    "n": "Figure A is a panel board.",
+    "img": "figs/BUILDING_UTILITIES__06-B.png"
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What enclosure in Figure B is used to safely house electrical connections, typically rated by environmental protection standards?",
+    "o": [
+      "Wall outlet box",
+      "Load center",
+      "Pull box",
+      "NEMA box"
+    ],
+    "c": 3,
+    "n": "Figure B is a NEMA-rated enclosure.",
+    "img": "figs/BUILDING_UTILITIES__06-B.png"
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What device in Figure C automatically switches a load between two power sources, often used in backup power systems?",
+    "o": [
+      "Rotary breaker",
+      "Disconnect switch",
+      "Automatic transfer switch",
+      "Manual transfer switch"
+    ],
+    "c": 2,
+    "n": "Per the MST answer key: Automatic transfer switch.",
+    "img": "figs/BUILDING_UTILITIES__06-B.png"
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What safety device in Figure D protects electrical circuits by stopping the current flow in case of overload or short circuit?",
+    "o": [
+      "Toggle switch",
+      "Fuse block",
+      "Contactor",
+      "Circuit breaker"
+    ],
+    "c": 3,
+    "n": "Figure D is a circuit breaker.",
+    "img": "figs/BUILDING_UTILITIES__06-B.png"
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What device in Figure E is designed to quickly cut power to prevent electric shock, typically used in wet areas?",
+    "o": [
+      "GFCI",
+      "USB outlet",
+      "Duplex receptacle",
+      "Tamper-resistant outlet"
+    ],
+    "c": 0,
+    "n": "Figure E is a GFCI receptacle.",
+    "img": "figs/BUILDING_UTILITIES__06-B.png"
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What is image 1 that supports and stabilizes the generator?",
+    "o": [
+      "Frame",
+      "Skid Mount",
+      "Generator Base Panel",
+      "Housing Enclosure"
+    ],
+    "c": 1,
+    "n": "Item 1 marks the skid base that supports the generator.",
+    "img": "figs/BUILDING_UTILITIES__06-C.png"
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What is image 3 that supplies mechanical energy?",
+    "o": [
+      "Rotor Assembly",
+      "Crankcase",
+      "Power Head",
+      "Engine"
+    ],
+    "c": 3,
+    "n": "Item 3 is the engine, the source of mechanical power.",
+    "img": "figs/BUILDING_UTILITIES__06-C.png"
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What is image 5 that regulates the generator’s voltage output?",
+    "o": [
+      "Voltage Regulator",
+      "Load Controller",
+      "Rectifier Unit",
+      "AVR Panel"
+    ],
+    "c": 0,
+    "n": "Per the MST answer key: Voltage Regulator.",
+    "img": "figs/BUILDING_UTILITIES__06-C.png"
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What is image 6 that produces the electrical output?",
+    "o": [
+      "Power Distribution Module",
+      "Alternator",
+      "Transformer Core",
+      "Stator Windings"
+    ],
+    "c": 1,
+    "n": "Per the MST answer key: Alternator.",
+    "img": "figs/BUILDING_UTILITIES__06-C.png"
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Which type of conduit is permitted for use in electrical service entrances?",
+    "o": [
+      "EMT",
+      "RSC",
+      "IMC",
+      "PVC"
+    ],
+    "c": 1,
+    "n": "Rigid steel conduit is the standard for service entrances."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What is an ATS for in an electrical system?",
+    "o": [
+      "A switch used with a standby generator",
+      "An emergency switch in fire alarms",
+      "A switch for elevators and conveyors",
+      "A switch for building automation"
+    ],
+    "c": 0,
+    "n": "It transfers load between utility and generator."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "When is the Certificate of Electrical Inspection (CEI) issued?",
+    "o": [
+      "Before the utility installs the meter",
+      "After the utility installs the meter",
+      "Before the Building Official's final inspection",
+      "After the Building Official's final inspection"
+    ],
+    "c": 0,
+    "n": "The utility needs the CEI before it energizes and meters the service."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Which of the following companies supplies electrical products?",
+    "o": [
+      "Philips",
+      "Fumaco",
+      "Schneider",
+      "Osram"
+    ],
+    "c": 2,
+    "n": "Per the MST key, Schneider."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Which type of electrical enclosures is designed for outdoor use?",
+    "o": [
+      "Hard plastic enclosures",
+      "ABS enclosures",
+      "Metal enclosure",
+      "NEMA enclosures"
+    ],
+    "c": 3,
+    "n": "NEMA-rated (e.g., NEMA 3R/4) enclosures are made for outdoor use."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "When a circuit is divided into two or more branches, each branch transmitting part of the current, what is each branch conductor called when taken separately?",
+    "o": [
+      "Circuit",
+      "Series",
+      "Parallel",
+      "Shunt"
+    ],
+    "c": 2,
+    "n": "Per the MST answer key: Parallel."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Which of the following appliances does not require an individual branch circuit?",
+    "o": [
       "Air conditioner",
-      "Electric fan"
+      "Range",
+      "Microwave",
+      "Pump"
+    ],
+    "c": 2,
+    "n": "Per the MST answer key: Microwave."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What is the standard power voltage supplied by MERALCO?",
+    "o": [
+      "110V",
+      "220V",
+      "120V",
+      "230V"
+    ],
+    "c": 3,
+    "n": "Per the MST answer key: 230V."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What frequency does MERALCO supply to consumers?",
+    "o": [
+      "80 Hz",
+      "70 Hz",
+      "60 Hz",
+      "50 Hz"
+    ],
+    "c": 2,
+    "n": "The Philippine grid runs at 60 Hz."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "In a string of bulbs wired in series, what happens if one bulb is removed?",
+    "o": [
+      "The rest stay lit",
+      "All go out",
+      "Only the bulb before it goes out",
+      "Only bulbs after it go out"
     ],
     "c": 1,
-    "n": "Philippine labels rate refrigerators by EEF and ACs by EER/CSPF."
+    "n": "A series circuit has a single path."
   },
   {
     "s": "Electrical Power & Lighting",
-    "q": "What is the maximum number of outlets usually allowed on a 15-amp circuit?",
+    "q": "What device detects ground faults and cuts power immediately to prevent shock?",
     "o": [
-      "12",
-      "8",
-      "10",
-      "6"
-    ],
-    "c": 2,
-    "n": "Common rule: 180 VA per outlet, so about 10 outlets on a 15 A circuit."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What is a flat silicon cell that turns sunlight into electricity?",
-    "o": [
-      "Photoelectric",
-      "Photovoltaic",
-      "Photocell",
-      "Photosynthesis"
-    ],
-    "c": 1,
-    "n": "PV cells generate current from light."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What do you call an enclosure or location used to house electrical or communication components, which may be surface-mounted or recessed?",
-    "o": [
-      "Blackout",
-      "Utility storage",
-      "Utility box",
-      "Circuit shell"
-    ],
-    "c": 2,
-    "n": "Per the MST answer key: Utility box."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "Which is NOT a standard fluorescent lamp wattage?",
-    "o": [
-      "20 W",
-      "40 W",
-      "100 W",
-      "36 W"
-    ],
-    "c": 2,
-    "n": "Linear tubes come in 18/20, 36/40 W and similar."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "To control one light from four locations, what switches are needed?",
-    "o": [
-      "Two 3-way switches and two 4-way switches",
-      "Two 3-way switches and one 2-way switch",
-      "Three 3-way switches",
-      "None of the above"
+      "GFCI",
+      "Circuit breaker",
+      "Distribution panel",
+      "Fuse"
     ],
     "c": 0,
-    "n": "Each location past the two ends adds one 4-way switch."
+    "n": "A GFCI trips on leakage current."
   },
   {
     "s": "Electrical Power & Lighting",
-    "q": "What is the recommended spotlight angle for highlighting walls or paintings?",
+    "q": "What are the conductors from a main distribution center to the branch-circuit panels called?",
     "o": [
-      "Less than 20 degrees",
-      "More than 45 degrees",
-      "20-30 degrees",
-      "90 degrees"
-    ],
-    "c": 2,
-    "n": "A narrow 20–30° beam highlights art and wall features."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "Which switch has a pilot light so it can be found in the dark?",
-    "o": [
-      "Glow switch",
-      "3-way switch",
-      "Illuminated switch",
-      "Dimmer"
-    ],
-    "c": 2,
-    "n": "Illuminated switches have a built-in indicator."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What type of lighting is most suitable for a two-storey residential house?",
-    "o": [
-      "Cool light",
-      "Warm light",
-      "It doesn't matter",
-      "White light"
-    ],
-    "c": 1,
-    "n": "Warm light (about 2,700–3,000 K) suits homes."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What lighting emphasizes a specific area or object for drama?",
-    "o": [
-      "Highlight lighting",
-      "Accent lighting",
-      "Direct lighting",
+      "Panelboard",
+      "Feeders",
+      "Raceway",
       "None of the above"
     ],
     "c": 1,
-    "n": "Accent lighting sets up a focal point."
+    "n": "Feeders supply panelboards."
   },
   {
     "s": "Electrical Power & Lighting",
-    "q": "What lighting suits a curved or wavy ceiling?",
+    "q": "What resists the flow of electricity?",
     "o": [
-      "Indirect lighting at the base of the curve",
-      "Direct lighting",
-      "Downlights",
+      "Insulator",
+      "Conductor",
+      "Semiconductor",
       "None of the above"
     ],
     "c": 0,
-    "n": "Uplight washes reveal the form."
+    "n": "Insulators have high resistance."
   },
   {
     "s": "Electrical Power & Lighting",
-    "q": "What lighting is used for reading at night?",
+    "q": "What conductors run from the service equipment to distribution points in a building?",
     "o": [
-      "Daylighting",
-      "Task lighting",
-      "Accent lighting",
-      "General lighting"
+      "Service lateral",
+      "Feeders",
+      "Switchboard",
+      "Unit substation"
     ],
     "c": 1,
-    "n": "Reading needs localized light."
+    "n": "Feeders run between the service and the panels."
   },
   {
     "s": "Electrical Power & Lighting",
-    "q": "What lighting suits a reading desk?",
+    "q": "A valve controls water flow. What does the same job in an electrical circuit?",
     "o": [
-      "Task lighting",
-      "Indirect lighting",
-      "Cove lighting",
-      "General lighting"
-    ],
-    "c": 0,
-    "n": "A desk lamp is task lighting."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What lighting draws attention to an object or casts decorative patterns on a surface?",
-    "o": [
-      "LED lighting",
-      "Cove lighting",
-      "Sodium lighting",
-      "Accent lighting"
-    ],
-    "c": 3,
-    "n": "Accent light is directional and focused."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "Which of these saves up to about 75–80% energy compared with incandescent and gives bright light?",
-    "o": [
-      "Incandescent",
-      "Metal halide",
-      "CFL",
-      "Linear fluorescent"
-    ],
-    "c": 2,
-    "n": "CFLs use roughly a quarter of the power."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "Which type of light is best suited for outdoor parking areas?",
-    "o": [
-      "Metal Halide",
-      "Low Pressure Sodium",
-      "Incandescent",
-      "High Intensity Discharge (HID)"
-    ],
-    "c": 3,
-    "n": "High-intensity discharge lamps light parking areas efficiently."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What type of lighting is ideal for a production area with a soffit on a suspended slab?",
-    "o": [
-      "Troffer",
-      "LED",
-      "Metal Halide",
-      "Pendant"
-    ],
-    "c": 0,
-    "n": "Per the MST answer key: Troffer."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "Why are downlights or pin lights commonly used in retail stores?",
-    "o": [
-      "To emphasize the texture of materials",
-      "To save electricity",
-      "To preserve the original tone and color of materials",
-      "For dramatic effect"
-    ],
-    "c": 2,
-    "n": "Downlights render merchandise color and tone accurately."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What focuses or intensifies the direction of light?",
-    "o": [
-      "Reflector",
-      "Ballast",
-      "Diffuser",
-      "Bulb casing"
-    ],
-    "c": 0,
-    "n": "Reflectors redirect light into a beam."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What is the best type of lighting for a factory, considering its impact on the work environment?",
-    "o": [
-      "Cool light",
-      "Daylight",
-      "It doesn’t matter",
-      "Warm light"
+      "Convenience outlet",
+      "Switch",
+      "Circuit breaker",
+      "Fuse"
     ],
     "c": 1,
-    "n": "Daylight-white (5,000–6,500 K) light keeps factory workers alert."
+    "n": "A switch opens and closes the circuit."
   },
   {
     "s": "Electrical Power & Lighting",
-    "q": "What light color is generally preferred in offices for alertness?",
+    "q": "What is the minimum wire size required for a service drop?",
     "o": [
-      "Blue light only",
-      "Soft yellow (2,200 K)",
-      "Daylight (5,000–6,500 K)",
-      "Warm white (2,700 K)"
+      "22 mm²",
+      "8 mm²",
+      "14 mm²",
+      "3.5 mm²"
     ],
-    "c": 2,
-    "n": "Cooler light supports alertness."
+    "c": 1,
+    "n": "Per the MST answer key: 8 mm²."
   },
   {
     "s": "Electrical Power & Lighting",
-    "q": "What does a diffuser in a luminaire do?",
+    "q": "What is the minimum wire size required for a 60-amp circuit breaker?",
     "o": [
-      "Increases brightness",
-      "Reflects light",
-      "Softens and spreads light evenly",
-      "Changes light color"
-    ],
-    "c": 2,
-    "n": "Diffusers scatter light and cut glare."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "Which type of lighting is best for directing and concentrating light to enhance visibility and mimic natural brightness?",
-    "o": [
-      "Reflector",
-      "Diffuser",
-      "Bulb cover",
-      "Daylight"
-    ],
-    "c": 3,
-    "n": "Per the MST key, daylight."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "Which lamp has a filament?",
-    "o": [
-      "Incandescent",
-      "LED",
-      "Fluorescent",
-      "None of the above"
+      "14 mm²",
+      "22 mm²",
+      "5.5 mm²",
+      "8 mm²"
     ],
     "c": 0,
-    "n": "Incandescents heat a tungsten filament."
+    "n": "A 60 A breaker needs about 14 mm² THHN copper."
   },
   {
     "s": "Electrical Power & Lighting",
-    "q": "Modular cubicles are installed in an office. How many electrical outlets per cubicle are recommended if the office uses a UPS system?",
+    "q": "What is the ampacity requirement for a 6-kW multipoint water heater?",
     "o": [
-      "0",
-      "3",
-      "1",
-      "2"
+      "50A",
+      "40A",
+      "20A",
+      "30A"
     ],
     "c": 3,
-    "n": "Two outlets: one on the UPS for computers, one regular."
+    "n": "6,000 W ÷ 230 V ≈ 26 A, so a 30 A circuit."
   },
   {
     "s": "Electrical Power & Lighting",
-    "q": "Which lamp is efficient and long-lived but has no filament?",
+    "q": "For a1-horsepower air conditioning unit (ACU), what should be the size of the wire or cable?",
     "o": [
-      "Incandescent",
-      "Halogen",
-      "LED",
-      "None of the above"
-    ],
-    "c": 2,
-    "n": "LEDs are solid-state."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "In office electrical systems, UPS stands for:",
-    "o": [
-      "Unit Power Source",
-      "Uninterrupted Power Source",
-      "Uniform Power System",
-      "Uninterruptible Power Supply"
-    ],
-    "c": 3,
-    "n": "A UPS supplies battery power."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What voltage serves general-purpose office outlets in the Philippines?",
-    "o": [
-      "440 V",
-      "110 V",
-      "230 V",
-      "12 V"
-    ],
-    "c": 2,
-    "n": "Local outlets are 230 V (often called 220 V)."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What is used to start a fluorescent lamp?",
-    "o": [
-      "Starter",
-      "Driver",
-      "Ignitor",
-      "Ballast"
+      "3.5 mm² - 20 A",
+      "2.0 mm² - 15 A",
+      "5.5 mm² - 30 A",
+      "All of the above (depending on load and installation conditions)"
     ],
     "c": 0,
-    "n": "The starter strikes the arc in a preheat fluorescent lamp."
+    "n": "A 1 HP aircon runs on 3.5 mm² wire with a 20 A breaker."
   },
   {
     "s": "Electrical Power & Lighting",
-    "q": "What starts and runs a compact fluorescent lamp?",
+    "q": "What matters most when sizing wire for a circuit?",
     "o": [
-      "Driver",
-      "Starter",
-      "Electronic ballast",
-      "Ignitor"
+      "Length only",
+      "Brand",
+      "Ampacity",
+      "Insulation color"
     ],
     "c": 2,
-    "n": "CFLs have a built-in electronic ballast."
+    "n": "Wire must carry the load current safely."
   },
   {
     "s": "Electrical Power & Lighting",
-    "q": "What powers and controls an LED lamp?",
+    "q": "Power was cut but restored right away by standby generators. What switched the source automatically?",
     "o": [
-      "Driver",
-      "Transformer",
-      "Ballast",
-      "Starter"
-    ],
-    "c": 0,
-    "n": "Drivers supply regulated DC."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What light is best for reading and writing?",
-    "o": [
-      "Blue light",
-      "Yellow light",
-      "Warm white",
-      "Daylight"
-    ],
-    "c": 3,
-    "n": "Daylight tones aid visual tasks."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What type of switch is used to control a light from two different locations?",
-    "o": [
-      "2-Way Switch",
-      "Push Button Switch",
-      "3-Way Switch",
-      "Toggle Switch"
-    ],
-    "c": 2,
-    "n": "Per the MST answer key: 3-Way Switch."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "Which is not a good location for light switches?",
-    "o": [
-      "Behind the door",
-      "On the wall",
-      "Beside the door on the direction of the swing",
+      "Double-throw switch",
+      "Manual transfer switch",
+      "Automatic transfer switch",
       "All of the above"
     ],
-    "c": 0,
-    "n": "Per the MST answer key: Behind the door."
+    "c": 2,
+    "n": "An ATS starts and transfers to the generator."
   },
   {
     "s": "Electrical Power & Lighting",
-    "q": "What type of switch is commonly used for staircases?",
+    "q": "What do banks typically use to ensure a smooth transition to emergency power during an outage?",
     "o": [
-      "Two-way switch",
-      "Three-way switch",
-      "One-way switch",
+      "UPS",
+      "ATS",
+      "MTS",
       "None of the above"
     ],
     "c": 1,
-    "n": "Per the MST answer key: Three-way switch."
+    "n": "Per the answer key, an automatic transfer switch (ATS) shifts the load to the generator."
   },
   {
     "s": "Electrical Power & Lighting",
-    "q": "Before the widespread use of LED lighting, where was it originally used?",
+    "q": "What is the main function of an automatic transfer switch?",
     "o": [
-      "Exit signs",
-      "Street lights",
-      "Stove bulbs",
-      "Flashlights"
-    ],
-    "c": 3,
-    "n": "Per the MST key, flashlights."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What is one disadvantage of LED lighting?",
-    "o": [
-      "Higher initial cost",
-      "Not energy efficient",
-      "Limited light colors",
-      "Hard to install"
+      "Switching automatically from the utility to a standby generator",
+      "Storing backup power",
+      "Monitoring loads",
+      "Regulating voltage"
     ],
     "c": 0,
-    "n": "LEDs cost more up front."
+    "n": "It senses outage and transfers load."
   },
   {
     "s": "Electrical Power & Lighting",
-    "q": "What commonly replaces older lamps in street lighting?",
+    "q": "What is the main purpose of a UPS?",
     "o": [
-      "Fluorescent lamps",
-      "Mercury vapor lamps",
-      "Incandescent bulbs",
-      "LED lights"
+      "Backup lighting only",
+      "Temporary power during outages or until a generator starts",
+      "Controlling the panel",
+      "Raising current"
     ],
-    "c": 3,
-    "n": "LEDs are now standard for streets."
+    "c": 1,
+    "n": "Batteries carry the load through the gap."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "In manual emergency switching, what device connects the load to the alternate source?",
+    "o": [
+      "MTS",
+      "Breaker panel",
+      "ATS",
+      "UPS"
+    ],
+    "c": 0,
+    "n": "MTS is a manual transfer switch."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "THHN wire is used for 600 V AC distribution in dry and damp locations. THHN stands for:",
+    "o": [
+      "Thermoplastic, moisture-resistant",
+      "Thermoplastic, high heat-resistant, nylon-coated",
+      "Thermoplastic, heat- and moisture-resistant",
+      "Thermoplastic, heat- and moisture-resistant, nylon-coated"
+    ],
+    "c": 1,
+    "n": "T-HH-N: thermoplastic, high heat, nylon."
   }
 ]
