@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Subject — LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/sb-client.js?v=85"></script>
+<script src="assets/sb-client.js?v=86"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Architects+Daughter&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -239,6 +239,8 @@
   @media (prefers-reduced-motion: reduce){ .mp-bar-fill{ animation:none; } }
   .mp-cap{ font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-top:6px; }
   .module-grid{ display:flex; flex-direction:column; gap:12px; }
+  .module-group{ margin:18px 0 0; }
+  .module-group:first-child{ margin-top:0; }
   .module-card{
     position:relative; display:block; text-decoration:none;
     background: var(--bg-panel); border:1px solid var(--line); border-radius:0; padding:16px 18px 15px;
@@ -309,19 +311,19 @@
      draws. Only the modal needs a little more width to hold a face, a name and
      the stats without crowding. */
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=85">
-<link rel="stylesheet" href="assets/leaderboard.css?v=85">
-<script src="assets/presence.js?v=85"></script>
-<script src="assets/avatar.js?v=85"></script>
-<script src="assets/leaderboard.js?v=85"></script>
-<script src="assets/lea-confirm.js?v=85"></script>
-<script src="assets/quiz-source.js?v=85"></script>
-<script src="assets/module-progress.js?v=85"></script>
-<script src="assets/offline.js?v=85"></script>
-<script src="assets/quiz-resume.js?v=85"></script>
-<script src="assets/icons.js?v=85"></script>
-<script src="assets/theme.js?v=85" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=85"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=86">
+<link rel="stylesheet" href="assets/leaderboard.css?v=86">
+<script src="assets/presence.js?v=86"></script>
+<script src="assets/avatar.js?v=86"></script>
+<script src="assets/leaderboard.js?v=86"></script>
+<script src="assets/lea-confirm.js?v=86"></script>
+<script src="assets/quiz-source.js?v=86"></script>
+<script src="assets/module-progress.js?v=86"></script>
+<script src="assets/offline.js?v=86"></script>
+<script src="assets/quiz-resume.js?v=86"></script>
+<script src="assets/icons.js?v=86"></script>
+<script src="assets/theme.js?v=86" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=86"></script>
 </head>
 <body>
 <div class="wrap">
@@ -708,7 +710,11 @@ function wireModeRows(subject){
 }
 
 function renderModulesList(subject, mode){
+  let lastGroup = null;
   return '<div class="module-grid lea-stagger">' + subject.modules.map(mod => {
+    // Big subjects tag modules with a group; print its name where it changes.
+    const head = mod.group && mod.group !== lastGroup ? '<div class="section-label module-group">' + escapeHtml(mod.group) + '</div>' : '';
+    lastGroup = mod.group || lastGroup;
     const mp = moduleProgress(subject.id, mod);
     const resume = LEAResume.load(subject.id, mod.id);
     const inProgress = !!(resume && resume.total && resume.answeredCount > 0 && resume.answeredCount < resume.total);
@@ -727,7 +733,7 @@ function renderModulesList(subject, mode){
     let pct = mod.total > 0 ? Math.round((mp.mastered / mod.total) * 100) : 0;
     if(mode === 'drill'){ pct = mod.total > 0 ? Math.round(((mod.total - mp.toDrill) / mod.total) * 100) : 0; }
 
-    return (
+    return head + (
       '<a class="module-card' + (inProgress ? ' in-progress' : '') + (disabled ? ' disabled' : '') +
         moduleColourClass(mod) + '" href="' + escapeHtml(href) + '">' +
         '<div class="module-num">' + escapeHtml(mod.no) + (mod.hard ? ' · Advanced' : '') + '</div>' +
@@ -771,6 +777,8 @@ function writeTopicsOpen(subjectId, open){
 }
 
 async function renderTopicsCard(subject){
+  // Untagged bulk subjects say so up front, so we don't fetch every module to find out.
+  if(subject.noTopics) return '';
   const topicTotals = {};
   const topicMastered = {};
   const untagged = [];
