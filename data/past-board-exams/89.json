@@ -1,223 +1,387 @@
 [
   {
-    "s": "Project 1 - Two-Storey Duplex",
-    "q": "One side of a rectangular toilet and bath is exactly 1.00 m. How long must the other side be to meet the Building Code's minimum area?",
+    "s": "Beams & Slabs",
+    "q": "The net shear acting downward on the left of a section is:",
     "o": [
-      "1.00 m",
-      "0.80 m",
-      "1.50 m",
-      "1.20 m"
+      "Negative shear",
+      "Negative moment",
+      "Positive moment",
+      "Positive shear"
     ],
-    "c": 3,
-    "n": "Minimum toilet area is 1.20 m², so 1.20 ÷ 1.00 = 1.20 m.",
-    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
+    "c": 0,
+    "n": "Standard beam convention."
   },
   {
-    "s": "Project 1 - Two-Storey Duplex",
-    "q": "What is the area of the fence if it stands 3.10 m above the NGL?",
+    "s": "Beams & Slabs",
+    "q": "What is the tendency of a force to cause rotation, equal to force times moment arm?",
     "o": [
-      "179.8 m²",
-      "192.2 m²",
-      "142.6 m²",
-      "192.0 m²"
+      "Moment arm",
+      "Moment center",
+      "Moment",
+      "Positive moment"
     ],
     "c": 2,
-    "n": "The fence runs on the three non-road sides: (15 + 16 + 15) × 3.10 = 142.6 m².",
-    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
+    "n": "M = F × d."
   },
   {
-    "s": "Project 1 - Two-Storey Duplex",
-    "q": "How many bags of cement are needed for the carports of the 2 units if the slab is 4 inches thick and uses Class A concrete?",
+    "s": "Beams & Slabs",
+    "q": "What is the sum of the moments on one side of a beam section?",
     "o": [
-      "53",
-      "55",
-      "54",
-      "56"
+      "Resisting moment",
+      "Bending moment",
+      "Reaction",
+      "External moment"
     ],
     "c": 1,
-    "n": "2 units × 2 cars × (3.0 × 5.0) = 60 m²; × 0.1016 m = 6.10 m³; × 9 bags = 54.9, say 55 bags.",
-    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
+    "n": "Bending moment."
   },
   {
-    "s": "Project 1 - Two-Storey Duplex",
-    "q": "Where is the RROW located?",
+    "s": "Beams & Slabs",
+    "q": "What slight upward curve is built into a beam to offset deflection?",
     "o": [
-      "Line 2-3",
-      "Line 3-4",
-      "Line 1-2",
-      "Line 4-1"
-    ],
-    "c": 0,
-    "n": "The brief says the lot is bounded on the east along line 2-3 by the RROW.",
-    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
-  },
-  {
-    "s": "Project 1 - Two-Storey Duplex",
-    "q": "Which side of the lot is the highest?",
-    "o": [
-      "Line 4-1",
-      "Line 3-4",
-      "Line 1-2",
-      "Line 2-3"
-    ],
-    "c": 3,
-    "n": "The lot slopes upward toward line 2-3.",
-    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
-  },
-  {
-    "s": "Project 1 - Two-Storey Duplex",
-    "q": "What is the difference in elevation between the highest and lowest points of the lot?",
-    "o": [
-      "0.87 m",
-      "0.90 m",
-      "0.94 m",
-      "1.00 m"
-    ],
-    "c": 2,
-    "n": "The slope is 1/16 across the 15.0 m depth to line 2-3: 15.0 ÷ 16 = 0.94 m.",
-    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
-  },
-  {
-    "s": "Project 1 - Two-Storey Duplex",
-    "q": "Compute the perimeter of the lot.",
-    "o": [
-      "62 m",
-      "46 m",
-      "58 m",
-      "60 m"
-    ],
-    "c": 0,
-    "n": "15.0 + 16.0 + 15.0 + 16.0 = 62 m.",
-    "scenario": "PROJECT 1 – TWO-STOREY DUPLEX\n\nProblem: A newlywed couple who set up a real estate development corporation will build a 2-storey duplex in a low-density subdivision in Davao City, aimed at working couples in junior executive positions. You, a recent board topnotcher, will design and manage construction.\n\nRequirements:\n• Each unit: a paved 2-car carport (3.0 × 5.0 m per car) in the front yard and a 2.0 × 3.0 m covered porch; both units have the same floor area.\n• Ground floor: foyer (2.0 m deep × 3.0 m wide), stairs, T&B and maid's room, all against the common wall; kitchen across from the maid's room; living and dining opposite the common wall; 100 mm slab on grade.\n• Second floor: stairwell, master bedroom with walk-in closet and T&B, balcony, Bedroom 1 with walk-in closet and T&B; uses the maximum allowable GFA; 100 mm slab.\n• Entrance steps or walkway as wide as the porch.\n\nSite: Lot bounded S (1-2) by Lot 2, E (2-3) by the RROW, N (3-4) by Lot 3, W (4-1) by Lot 4. Sides 1-2 and 3-4 are 15.0 m; sides 2-3 and 4-1 are 16.0 m. The lot slopes up toward line 2-3 at 1:16.\n\nObjectives: The OBO approved more than 60% paved front yard. Each unit should make the most of the lot and keep both carports, since buyers are working couples with their own cars."
-  },
-  {
-    "s": "Project 2 - Two-Storey Single Attached",
-    "q": "The second-floor rooms will be air-conditioned. What minimum finished ceiling height applies there?",
-    "o": [
-      "2,400 mm",
-      "2,250 mm",
-      "2,700 mm",
-      "1,800 mm"
-    ],
-    "c": 0,
-    "n": "Rooms with artificial ventilation need at least 2.40 m.",
-    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
-  },
-  {
-    "s": "Project 2 - Two-Storey Single Attached",
-    "q": "Which code governs all electrical design and installation?",
-    "o": [
-      "City electrical ordinance",
-      "City mechanical ordinance",
-      "Philippine Electrical Code",
-      "Philippine Professional Electrical Code"
-    ],
-    "c": 2,
-    "n": "NBC Sec. 1101.",
-    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
-  },
-  {
-    "s": "Project 2 - Two-Storey Single Attached",
-    "q": "Which code governs all mechanical systems and equipment installation?",
-    "o": [
-      "Philippine Mechanical Code",
-      "Philippine Mechanical Engineering Code",
-      "City mechanical ordinance",
-      "Local mechanical ordinance"
+      "Inflation",
+      "Camber",
+      "Inflection",
+      "Deflection"
     ],
     "c": 1,
-    "n": "NBC Sec. 1201.",
-    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+    "n": "Camber."
   },
   {
-    "s": "Project 2 - Two-Storey Single Attached",
-    "q": "What is the design live load for the ground floor of this house, in kg/m²?",
+    "s": "Beams & Slabs",
+    "q": "What most often makes a slab on fill crack?",
     "o": [
-      "200",
-      "300",
-      "400",
-      "100"
+      "Poor soil compaction",
+      "Bad concrete mix",
+      "No rebar",
+      "None of the above"
     ],
     "c": 0,
-    "n": "NSCP residential live load is 1.9 kPa, about 200 kg/m².",
-    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+    "n": "The base settles."
   },
   {
-    "s": "Project 2 - Two-Storey Single Attached",
-    "q": "The sidewalk is at elevation 0.0. What is the rise from the sidewalk to the rear of the lot?",
+    "s": "Beams & Slabs",
+    "q": "Where is the main reinforcement in a cantilever slab?",
     "o": [
-      "0.180 m",
-      "0.175 m",
-      "0.150 m",
-      "0.25 m"
+      "Top",
+      "Anywhere",
+      "Middle",
+      "Bottom"
+    ],
+    "c": 0,
+    "n": "Tension is at the top."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "If a slab pour can't be finished in one go, where should it stop?",
+    "o": [
+      "At the edge",
+      "In the middle third of the span",
+      "At points of high shear",
+      "None of the above"
     ],
     "c": 1,
-    "n": "Depth is 75 ÷ 7.50 = 10 m; 10 × 1.75% = 0.175 m.",
-    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+    "n": "Construction joints go where shear is low."
   },
   {
-    "s": "Project 2 - Two-Storey Single Attached",
-    "q": "Which interior sheet material is made of wood particles and binder, usually faced with veneer?",
+    "s": "Beams & Slabs",
+    "q": "When pouring concrete for beams and slabs, which should be poured first with a one-day interval?",
     "o": [
-      "Fly board",
-      "Panel board",
-      "Chipboard (particleboard)",
-      "Plywood"
-    ],
-    "c": 2,
-    "n": "Particleboard.",
-    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
-  },
-  {
-    "s": "Project 2 - Two-Storey Single Attached",
-    "q": "What is removing a material's natural color with chlorine compounds to get a uniform tone?",
-    "o": [
-      "Bleaching",
-      "Blasting",
-      "Fading",
-      "Sun drying"
+      "Beam first",
+      "Slab first",
+      "It doesn't matter which is poured first",
+      "Both must be poured at the same time"
     ],
     "c": 0,
-    "n": "Wood bleaching evens out color.",
-    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+    "n": "Pour the beams first, then the slab after an interval, so the beams take their initial set."
   },
   {
-    "s": "Project 2 - Two-Storey Single Attached",
-    "q": "What is the usual height range of a kitchen work counter?",
+    "s": "Beams & Slabs",
+    "q": "Which slab has no projections below its surface at all?",
     "o": [
-      "0.95–1.00 m",
-      "0.70–0.80 m",
-      "0.60–0.70 m",
-      "0.85–0.90 m"
+      "Flat plate",
+      "One-way slab",
+      "Flat slab",
+      "Ribbed slab"
+    ],
+    "c": 0,
+    "n": "Flat slabs have drop panels."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Which slab carries heavy loads with no beams, using drop panels or capitals?",
+    "o": [
+      "Ribbed slab",
+      "Two-way slab",
+      "One-way slab",
+      "Flat slab"
     ],
     "c": 3,
-    "n": "About 850–900 mm.",
-    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+    "n": "Flat slab."
   },
   {
-    "s": "Project 2 - Two-Storey Single Attached",
-    "q": "About what size is a queen bed for Bedroom 1?",
+    "s": "Beams & Slabs",
+    "q": "Which type of slab is easy to construct but more expensive due to its greater thickness?",
     "o": [
-      "1.35 × 1.90 m",
-      "1.90 × 2.00 m",
-      "1.50 × 2.00 m",
-      "1.00 × 1.90 m"
+      "Two-way slab",
+      "One-way slab",
+      "Waffle slab",
+      "Flat slab"
     ],
-    "c": 2,
-    "n": "60 × 80 in.",
-    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+    "c": 3,
+    "n": "Per the MST answer key: Flat slab."
   },
   {
-    "s": "Project 2 - Two-Storey Single Attached",
-    "q": "About what size is a twin (single) bed for Bedroom 2?",
+    "s": "Beams & Slabs",
+    "q": "Which slab has closely spaced ribs in two directions for long spans and heavy loads?",
     "o": [
-      "1.00 × 1.90 m",
-      "1.35 × 1.90 m",
-      "0.90 × 1.90 m",
-      "1.50 × 2.00 m"
+      "One-way slab",
+      "Waffle slab",
+      "Ribbed slab",
+      "Flat plate"
+    ],
+    "c": 1,
+    "n": "Waffle slab."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Which slab is supported on two opposite sides only, suiting corridors?",
+    "o": [
+      "Two-way slab",
+      "Waffle slab",
+      "Flat slab",
+      "One-way slab"
+    ],
+    "c": 3,
+    "n": "It bends in one direction."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "In a one-way slab, the main bars run:",
+    "o": [
+      "Parallel to the long span",
+      "Along the edges",
+      "Across the long span (parallel to the short span)",
+      "Only at the center"
     ],
     "c": 2,
-    "n": "About 36 × 75 in.",
-    "scenario": "PROJECT 2 – TWO-STOREY SINGLE ATTACHED\n\nProblem: A Pasig-based developer is offering its third subdivision, zoned R-2 in Antipolo City, to overseas workers. It commissions an RLA to design a 2-storey, 2-bedroom single attached house: concept design, details and contract documents, and advice on selecting the contractor.\n\nDeveloper's requirements:\n• A 15 m² paved carport with a 3.0 m opening at the sidewalk, starting from the lot's right corner.\n• Ground floor (living, dining, kitchen, stair, T&B) uses the maximum allowable construction area; storage under the stair where possible.\n• Second floor, within the maximum allowable building footprint: Bedroom 1 (13.75 m²), Bedroom 2 (7.75 m²), stairwell and hallway.\n• Ground floor is naturally ventilated (no air-conditioning); second-floor rooms are air-conditioned.\n• Ground floor line raised 450 mm above the sidewalk.\n• Carport floor at the highest natural grade taken from the rear, plus a 100 mm slab.\n\nSite: A regular, rectangular inside lot of 75 m² with a 7.50 m frontage. The right corner is at 0.0 (sidewalk level); the lot slopes up toward the rear at 1.75% and toward the left corner at 1.5%. Bounded on the south by the sidewalk and road right-of-way.\n\nObjective: A fair return for the developer and a functional, attractive house for a starting family of three."
+    "n": "Main bars follow the short span."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Which slab suits square or nearly square panels?",
+    "o": [
+      "Flat plate",
+      "Two-way slab",
+      "Ribbed slab",
+      "One-way slab"
+    ],
+    "c": 1,
+    "n": "Long-to-short ratio under 2."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What is the best location for drilling holes in a beam to minimize structural impact?",
+    "o": [
+      "L/3",
+      "Near support",
+      "L/4",
+      "Close to the support"
+    ],
+    "c": 0,
+    "n": "Holes go in the middle third of the span, away from high-shear supports."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What is temperature reinforcement in a slab for?",
+    "o": [
+      "Controlling cracks from temperature and shrinkage",
+      "Shear",
+      "Live loads",
+      "Flexure"
+    ],
+    "c": 0,
+    "n": "Shrinkage and temperature steel."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What lets a slab move with thermal expansion and contraction without cracking?",
+    "o": [
+      "Haunch",
+      "Expansion joint",
+      "Drop panel",
+      "Column capital"
+    ],
+    "c": 1,
+    "n": "Expansion joints."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What horizontal member is mainly subject to bending?",
+    "o": [
+      "Beam",
+      "Header",
+      "Hollow blocks",
+      "Canopy"
+    ],
+    "c": 0,
+    "n": "Beams resist bending."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "In a simply supported RC beam, which part is in tension?",
+    "o": [
+      "Top",
+      "Middle",
+      "Bottom",
+      "All of the above"
+    ],
+    "c": 2,
+    "n": "Positive moment stretches the bottom."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What section property resists bending stress?",
+    "o": [
+      "Section modulus",
+      "Rigidity",
+      "Moment of inertia",
+      "None of the above"
+    ],
+    "c": 0,
+    "n": "σ = M/S."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What plate welded to a slender web prevents it from buckling?",
+    "o": [
+      "Buckler",
+      "Lacing",
+      "Capping",
+      "Stiffener"
+    ],
+    "c": 3,
+    "n": "Web stiffeners."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What is a beam or wall that rises above a slab and is cast with it?",
+    "o": [
+      "Underpin",
+      "Canopy",
+      "Upstand",
+      "Parapet"
+    ],
+    "c": 2,
+    "n": "An upstand (inverted) beam."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "While traversing EDSA, you can see the elevated MRT. What do you call the concrete portion running parallel to the road where the train tracks are placed?",
+    "o": [
+      "Rail beam",
+      "Girder",
+      "Box girder",
+      "None of the above"
+    ],
+    "c": 2,
+    "n": "The MRT viaduct deck is a box girder."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What is a beam over more than two supports?",
+    "o": [
+      "Cantilever beam",
+      "One-way slab",
+      "Two-way slab",
+      "Continuous beam"
+    ],
+    "c": 3,
+    "n": "Continuous beam."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Which beam is thickened at its supports?",
+    "o": [
+      "Cantilever",
+      "Simply supported",
+      "Haunched beam",
+      "I-beam"
+    ],
+    "c": 2,
+    "n": "Haunched beam."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What beam section appears as the letter \"H\" when vertical and the letter \"",
+    "o": [
+      "\" when horizontal?",
+      "W-section",
+      "Channel",
+      "H-section",
+      "Universal beam"
+    ],
+    "c": 0,
+    "n": "An H-section reads as H upright and I on its side."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Under positive bending, a beam is:",
+    "o": [
+      "Stretched below, compressed above",
+      "Evenly compressed and stretched",
+      "Compressed below, stretched above",
+      "Unaffected"
+    ],
+    "c": 0,
+    "n": "It sags."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Where does a simply supported beam see positive moment?",
+    "o": [
+      "Near supports",
+      "Whole beam",
+      "Nowhere",
+      "Midspan"
+    ],
+    "c": 3,
+    "n": "Maximum at midspan."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Which bar is NOT normally found in a slab?",
+    "o": [
+      "Bottom bar",
+      "Temperature bar",
+      "Main vertical bar",
+      "Distribution bar"
+    ],
+    "c": 2,
+    "n": "Vertical bars belong to walls and columns."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "What embedded length develops a bar's design strength at a critical section?",
+    "o": [
+      "End anchorage",
+      "Development length",
+      "Critical length",
+      "Embedment length"
+    ],
+    "c": 1,
+    "n": "Ld."
+  },
+  {
+    "s": "Beams & Slabs",
+    "q": "Where does bending moment change sign along a beam?",
+    "o": [
+      "Inflection point",
+      "Midspan",
+      "Neutral axis",
+      "Shear line"
+    ],
+    "c": 0,
+    "n": "Contraflexure point."
   }
 ]

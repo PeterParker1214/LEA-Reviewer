@@ -1,326 +1,419 @@
 [
   {
-    "s": "Water Supply",
-    "q": "Why are water supply pipes resized in high-rise buildings?",
+    "s": "Doors, Windows & Hardware",
+    "q": "Which of the following is used in tilt and turn windows, allowing the sash to tilt inward at the top or swing fully open like a door?",
     "o": [
-      "To handle the pressure difference between the service and the fixtures",
-      "To avoid other piping",
-      "Fixtures need different flows",
-      "To save money"
+      "Figure E",
+      "Figure A",
+      "Figure C",
+      "Figure B"
     ],
     "c": 0,
-    "n": "Static head changes with height."
+    "n": "Figure E is tilt-and-turn hardware.",
+    "img": "figs/BUILDING_TECHNOLOGY__29-F.png"
   },
   {
-    "s": "Water Supply",
-    "q": "Where is water pressure highest in a plumbing system?",
+    "s": "Doors, Windows & Hardware",
+    "q": "Which of the following is used in swing windows, allowing the window sash to open inward or outward on side hinges?",
     "o": [
-      "At the farthest fixture",
-      "At fixtures nearest the riser",
-      "It's the same everywhere",
-      "At the lowest fixture"
+      "Figure B",
+      "Figure E",
+      "Figure C",
+      "Figure D"
+    ],
+    "c": 0,
+    "n": "Figure B is the casement handle for side-hinged sashes.",
+    "img": "figs/BUILDING_TECHNOLOGY__29-F.png"
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which of the following is used in jalousie windows, allowing multiple glass slats to open and close simultaneously for ventilation?",
+    "o": [
+      "Figure B",
+      "Figure C",
+      "Figure A",
+      "Figure D"
+    ],
+    "c": 2,
+    "n": "Figure A is the jalousie operator that moves all slats together.",
+    "img": "figs/BUILDING_TECHNOLOGY__29-F.png"
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which of the following is used in awning windows, allowing the window to swing outward from the bottom, hinged at the top?",
+    "o": [
+      "Figure B",
+      "Figure A",
+      "Figure D",
+      "Figure C"
+    ],
+    "c": 2,
+    "n": "Figure D is the friction stay for top-hung awning windows.",
+    "img": "figs/BUILDING_TECHNOLOGY__29-F.png"
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which hardware can be used for a wooden window?",
+    "o": [
+      "Figure E",
+      "Figure A",
+      "Figures C andD",
+      "Figures A and E"
+    ],
+    "c": 1,
+    "n": "Per the MST answer key: Figure A.",
+    "img": "figs/BUILDING_TECHNOLOGY__29-H.png"
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which hardware can be used for screen windows?",
+    "o": [
+      "Figure D",
+      "Figure C",
+      "Figure B",
+      "Figure E"
+    ],
+    "c": 2,
+    "n": "Figure B is the roller used on screen windows.",
+    "img": "figs/BUILDING_TECHNOLOGY__29-H.png"
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which hardware can be used for a uPVC window?",
+    "o": [
+      "Figures BandC",
+      "Figures C andD",
+      "Figure D",
+      "Figure C"
+    ],
+    "c": 1,
+    "n": "Per the MST answer key: Figures C andD.",
+    "img": "figs/BUILDING_TECHNOLOGY__29-H.png"
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which hardware can be used for an aluminum window?",
+    "o": [
+      "Figures C and D",
+      "Figure C",
+      "Figures D and E",
+      "Figure D"
+    ],
+    "c": 2,
+    "n": "The friction stay (D) and sliding cam lock (E) are aluminum window hardware.",
+    "img": "figs/BUILDING_TECHNOLOGY__29-H.png"
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which hardware can be used for a curtain wall window?",
+    "o": [
+      "Figure D",
+      "Figure C",
+      "Figure B",
+      "None of the above"
+    ],
+    "c": 0,
+    "n": "Curtain-wall top-hung vents use friction stays (Figure D).",
+    "img": "figs/BUILDING_TECHNOLOGY__29-H.png"
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which window keeps rain out while still letting air in during a downpour?",
+    "o": [
+      "Awning",
+      "Casement",
+      "Sliding",
+      "All of the above"
+    ],
+    "c": 0,
+    "n": "The top-hinged sash acts as a hood."
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which type of window admits up to 95% of air?",
+    "o": [
+      "Awning",
+      "Louvers with 150 mm wide blades",
+      "Casement",
+      "Sliding"
+    ],
+    "c": 1,
+    "n": "Per the MST answer key: Louvers with 150 mm wide blades."
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which type of window is the easiest to clean?",
+    "o": [
+      "Louvers",
+      "Casement",
+      "Awning",
+      "Sliding"
+    ],
+    "c": 1,
+    "n": "Per the MST answer key: Casement."
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which window is hardest to reach?",
+    "o": [
+      "Awning",
+      "Casement",
+      "Clerestory",
+      "Jalousie"
+    ],
+    "c": 2,
+    "n": "Clerestories sit high on the wall."
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which type of window is best for a kitchen that opens onto a lanai?",
+    "o": [
+      "Jalousie",
+      "Casement",
+      "Awning",
+      "Sliding"
     ],
     "c": 3,
-    "n": "Static pressure rises with depth."
+    "n": "A sliding window opens wide as a pass-through to the lanai without a swinging sash in the way."
   },
   {
-    "s": "Water Supply",
-    "q": "What mainly affects water pipe sizing in a multi-story building?",
+    "s": "Doors, Windows & Hardware",
+    "q": "Which type of window is commonly used in condominiums where safety and waterproofing are important?",
     "o": [
-      "Fixture type",
-      "Building height and pressure needed",
-      "Pipe material",
-      "Site location"
-    ],
-    "c": 1,
-    "n": "Height drives pressure loss and demand."
-  },
-  {
-    "s": "Water Supply",
-    "q": "What is the main reason for increasing pipe size in a supply system?",
-    "o": [
-      "To cut installation cost",
-      "To carry a larger flow",
-      "To look better",
-      "To cut water use"
-    ],
-    "c": 1,
-    "n": "Bigger pipes carry more flow at lower friction."
-  },
-  {
-    "s": "Water Supply",
-    "q": "Which part of Metro Manila does Manila Water serve?",
-    "o": [
-      "East",
-      "West",
-      "South",
-      "North"
-    ],
-    "c": 0,
-    "n": "Manila Water holds the East Zone concession."
-  },
-  {
-    "s": "Water Supply",
-    "q": "Which part of Metro Manila does Maynilad serve?",
-    "o": [
-      "West",
-      "North",
-      "South",
-      "East"
-    ],
-    "c": 0,
-    "n": "Maynilad holds the West Zone."
-  },
-  {
-    "s": "Water Supply",
-    "q": "Which material is NOT recommended for rooftop water tanks?",
-    "o": [
-      "Galvanized steel",
-      "Polyethylene",
-      "Fiberglass",
-      "Stainless steel"
-    ],
-    "c": 0,
-    "n": "Galvanized tanks rust and taint water."
-  },
-  {
-    "s": "Water Supply",
-    "q": "What is the minimum number of floors that requires an Elevated Water Tank (EWT)?",
-    "o": [
-      "5 Floors",
-      "10 Floors",
-      "12 Floors",
-      "8 Floors"
-    ],
-    "c": 1,
-    "n": "Per the MST answer key: 10 Floors."
-  },
-  {
-    "s": "Water Supply",
-    "q": "What is the minimum distance between a water well and a sewer line or septic tank?",
-    "o": [
-      "0.6 m",
-      "1.5 m",
-      "15.2 m",
-      "45.7 m"
+      "Sliding",
+      "Tilt-and-turn",
+      "Awning",
+      "Casement"
     ],
     "c": 2,
-    "n": "The Plumbing Code requires 15.2 m (50 ft)."
+    "n": "Per the MST answer key: Awning."
   },
   {
-    "s": "Water Supply",
-    "q": "Which of these valves is NOT meant for regulating flow?",
+    "s": "Doors, Windows & Hardware",
+    "q": "Which window is common in shower areas?",
     "o": [
-      "Diaphragm",
-      "Needle",
-      "Gate",
-      "Globe"
-    ],
-    "c": 2,
-    "n": "Gate valves should be fully open or closed."
-  },
-  {
-    "s": "Water Supply",
-    "q": "Which linear-motion valve is used to regulate water flow?",
-    "o": [
-      "Globe",
-      "Ball",
-      "Butterfly",
-      "Check"
-    ],
-    "c": 0,
-    "n": "Globe valves have a linear stem; ball and butterfly are quarter-turn."
-  },
-  {
-    "s": "Water Supply",
-    "q": "Which of the following valves is best for water containing solid waste?",
-    "o": [
-      "Gate",
-      "Check",
-      "Butterfly",
-      "Globe"
-    ],
-    "c": 0,
-    "n": "Per the MST answer key: Gate."
-  },
-  {
-    "s": "Water Supply",
-    "q": "How are HDPE pipes joined?",
-    "o": [
-      "Mechanical clamp",
-      "Electrofusion",
-      "Rubber gasket",
-      "Solvent cement"
-    ],
-    "c": 1,
-    "n": "HDPE is fusion welded."
-  },
-  {
-    "s": "Water Supply",
-    "q": "How are PPR pipes joined?",
-    "o": [
-      "Compression fitting",
-      "Clamp",
-      "Heat (socket) fusion",
-      "Threaded adapter"
-    ],
-    "c": 2,
-    "n": "PPR is socket-fused with a heating tool."
-  },
-  {
-    "s": "Water Supply",
-    "q": "How are PVC pipes joined?",
-    "o": [
-      "Solvent cement",
-      "Rubber ring",
-      "Flanged joint",
-      "Heat welding"
-    ],
-    "c": 0,
-    "n": "Solvent cement fuses the surfaces."
-  },
-  {
-    "s": "Water Supply",
-    "q": "How are hubless cast iron pipes joined?",
-    "o": [
-      "Screwed joints",
-      "Teflon tape",
-      "Solvent",
-      "Neoprene couplings with stainless band clamps"
+      "Wall-hung",
+      "Sliding",
+      "Casement",
+      "Awning"
     ],
     "c": 3,
-    "n": "No-hub couplings clamp the pipe ends."
+    "n": "Small high awnings vent and shed water."
   },
   {
-    "s": "Water Supply",
-    "q": "What is used to join Concrete pipes?",
+    "s": "Doors, Windows & Hardware",
+    "q": "Which window gives the best natural ventilation?",
     "o": [
-      "Epoxy",
-      "PVC cement",
+      "Awning",
+      "Casement",
+      "Jalousie",
+      "Sliding"
+    ],
+    "c": 2,
+    "n": "Per the MST answer key: Jalousie."
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which type of window is commonly used in hospitals?",
+    "o": [
+      "Sliding",
+      "Awning",
+      "Steel casement",
+      "Jalousie"
+    ],
+    "c": 0,
+    "n": "Per the MST answer key: Sliding."
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which window should NOT open onto a hallway?",
+    "o": [
+      "Casement",
+      "Louver",
+      "Picture",
+      "Sliding"
+    ],
+    "c": 0,
+    "n": "An outward sash swings into the walkway."
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "What is a long horizontal band of windows called?",
+    "o": [
+      "Long window",
+      "Clerestory window",
+      "Ribbon window",
+      "Bay window"
+    ],
+    "c": 2,
+    "n": "Ribbon windows run in a continuous strip."
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "A high-rise condo uses mostly fixed windows with small openings for safety. What does this give up?",
+    "o": [
+      "Aesthetics",
+      "View",
+      "Cost",
+      "Comfort, from limited ventilation"
+    ],
+    "c": 3,
+    "n": "Fixed glazing still gives a view but little airflow."
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "What fills the space between the panes of double-glazed windows?",
+    "o": [
+      "Air or gas",
       "Mortar",
-      "Rubber gasket"
+      "Screen",
+      "Silicone"
     ],
-    "c": 2,
-    "n": "Per the MST answer key: Mortar."
+    "c": 0,
+    "n": "The sealed gap holds dry air or argon."
   },
   {
-    "s": "Water Supply",
-    "q": "Which flexible plastic tubing is suitable for hot and cold pressure lines and resists acids and alkalis but not fuel oil, gasoline or kerosene?",
+    "s": "Doors, Windows & Hardware",
+    "q": "Which type of window is best for tropical countries to allow maximum airflow?",
     "o": [
-      "uPVC",
-      "PVC",
-      "Polybutylene",
-      "Polyethylene"
-    ],
-    "c": 2,
-    "n": "That is the textbook description of PB."
-  },
-  {
-    "s": "Water Supply",
-    "q": "What is the minimum size of the supply pipe distributing the main line to the primary branch?",
-    "o": [
-      "75 mm",
-      "150 mm",
-      "50 mm",
-      "100 mm"
-    ],
-    "c": 2,
-    "n": "Per the MST answer key: 50 mm."
-  },
-  {
-    "s": "Water Supply",
-    "q": "Which practice is illegal?",
-    "o": [
-      "Providing a cistern to supply the building",
-      "Tapping the main for fixtures",
-      "Feeding each building's cistern from the main",
-      "Using a booster pump to draw water straight from the main"
+      "Louvered",
+      "Awning",
+      "Sliding",
+      "Casement"
     ],
     "c": 3,
-    "n": "Pumping directly off the main robs pressure from neighbors."
+    "n": "A casement opens nearly 100% of its area and scoops passing breezes."
   },
   {
-    "s": "Water Supply",
-    "q": "In a three-storey residential building, where is the water pressure the highest?",
+    "s": "Doors, Windows & Hardware",
+    "q": "What is the proper way to install a steel window frame?",
     "o": [
-      "Second floor",
-      "At the vertical pipe",
-      "Underground",
-      "Ground floor"
+      "Either way, depending on the installer",
+      "Finish the opening first, then set the frame",
+      "It doesn't matter",
+      "Set the frame before finishing the opening"
+    ],
+    "c": 3,
+    "n": "Steel frames are set and grouted, then the opening is finished around them."
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which window is hinged at the top?",
+    "o": [
+      "Awning",
+      "Casement",
+      "Sliding",
+      "Jalousie"
+    ],
+    "c": 0,
+    "n": "Awnings swing out from the top."
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which window is hinged at the side?",
+    "o": [
+      "Sliding",
+      "Jalousie",
+      "Casement",
+      "Awning"
     ],
     "c": 2,
-    "n": "Per the MST answer key: Underground."
+    "n": "Casements swing like doors."
   },
   {
-    "s": "Water Supply",
-    "q": "What valve is typically installed where the service line enters, to shut off the whole building?",
+    "s": "Doors, Windows & Hardware",
+    "q": "Which window has adjustable horizontal glass slats?",
     "o": [
-      "Ball valve",
-      "Pressure-reducing valve",
-      "Gate valve",
-      "Check valve"
+      "Sliding",
+      "Casement",
+      "Awning",
+      "Jalousie"
+    ],
+    "c": 3,
+    "n": "Jalousie blades pivot together."
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which window runs on a horizontal track and doesn't project in or out?",
+    "o": [
+      "Jalousie",
+      "Sliding",
+      "Casement",
+      "Awning"
+    ],
+    "c": 1,
+    "n": "Sliders stay in the wall plane."
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which window is fixed and cannot open?",
+    "o": [
+      "Louvered",
+      "Casement",
+      "Picture window",
+      "Awning"
     ],
     "c": 2,
-    "n": "A full-port gate valve is the main shutoff."
+    "n": "Picture windows are fixed glazing."
   },
   {
-    "s": "Water Supply",
-    "q": "What is the greenish film that forms on copper over time?",
+    "s": "Doors, Windows & Hardware",
+    "q": "What is the main disadvantage of wooden windows?",
     "o": [
-      "Pitting",
-      "Rust",
-      "Scale",
-      "Patina"
+      "They eventually rot",
+      "They shrink and swell with the weather",
+      "They look unattractive",
+      "Water seeps in"
     ],
-    "c": 3,
-    "n": "Patina is copper carbonate."
+    "c": 1,
+    "n": "Moisture movement causes sticking and gaps."
   },
   {
-    "s": "Water Supply",
-    "q": "Which hand tool is used to flare tubing?",
+    "s": "Doors, Windows & Hardware",
+    "q": "What is the main reason why jalousie windows are popular?",
     "o": [
-      "Crimping tool",
-      "Welding rod",
-      "Hammer",
-      "Flaring tool"
-    ],
-    "c": 3,
-    "n": "A flaring tool spreads the tube end."
-  },
-  {
-    "s": "Water Supply",
-    "q": "Which valve gives the finest flow control?",
-    "o": [
-      "Check valve",
-      "Ball valve",
-      "Angle valve",
-      "Needle valve"
-    ],
-    "c": 3,
-    "n": "A tapered needle meters small flows."
-  },
-  {
-    "s": "Water Supply",
-    "q": "What tool removes burrs inside a cut pipe?",
-    "o": [
-      "Plunger",
-      "Flaring tool",
-      "Reamer",
-      "Pipe wrench"
+      "Most attractive",
+      "Easy to install",
+      "Cost",
+      "100% ventilation"
     ],
     "c": 2,
-    "n": "Reaming restores the full bore."
+    "n": "Per the MST answer key: Cost."
   },
   {
-    "s": "Water Supply",
-    "q": "What valve at a tank outlet or pump suction prevents backflow?",
+    "s": "Doors, Windows & Hardware",
+    "q": "Which window looks cheaper because it uses ordinary hinges?",
     "o": [
-      "Ball valve",
-      "Needle valve",
-      "Angle valve",
-      "Foot valve"
+      "Aluminum sliding",
+      "Aluminum awning",
+      "Jalousie",
+      "Wood casement"
     ],
     "c": 3,
-    "n": "A foot valve is a check valve at the suction end."
+    "n": "Wood casements hang on plain butt hinges."
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which window is most likely to leak air without maintenance?",
+    "o": [
+      "Casement",
+      "Sliding",
+      "Fixed",
+      "Jalousie"
+    ],
+    "c": 3,
+    "n": "Overlapping blades never seal tightly."
+  },
+  {
+    "s": "Doors, Windows & Hardware",
+    "q": "Which type of window is least recommended for areas exposed to strong winds?",
+    "o": [
+      "Casement window",
+      "Awning window",
+      "Jalousie window",
+      "Sliding window"
+    ],
+    "c": 2,
+    "n": "Per the MST answer key: Jalousie window."
   }
 ]

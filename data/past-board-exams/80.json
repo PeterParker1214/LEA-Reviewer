@@ -1,314 +1,458 @@
 [
   {
-    "s": "Columns",
-    "q": "What is the minimum bar size for column longitudinal reinforcement?",
+    "s": "Electrical Power & Lighting",
+    "q": "On which appliance's energy label is the Energy Efficiency Factor (EEF) shown?",
     "o": [
-      "10 mm",
-      "12 mm",
-      "20 mm",
-      "16 mm"
-    ],
-    "c": 3,
-    "n": "NSCP sets 16 mm as the usual minimum."
-  },
-  {
-    "s": "Columns",
-    "q": "What is the minimum bar size for column ties (main bars 32 mm or smaller)?",
-    "o": [
-      "20 mm",
-      "16 mm",
-      "12 mm",
-      "10 mm"
-    ],
-    "c": 3,
-    "n": "10 mm ties for bars up to 32 mm."
-  },
-  {
-    "s": "Columns",
-    "q": "What is a column that doesn't line up with the column below it?",
-    "o": [
-      "Planted column",
-      "Short column",
-      "Under-reinforced column",
-      "False column"
-    ],
-    "c": 0,
-    "n": "It sits on a transfer beam."
-  },
-  {
-    "s": "Columns",
-    "q": "What is the largest axial load a column can carry, in theory, before it buckles?",
-    "o": [
-      "Buckling",
-      "Eccentricity",
-      "Critical buckling load",
-      "Critical buckling stress"
-    ],
-    "c": 2,
-    "n": "Euler's critical load."
-  },
-  {
-    "s": "Columns",
-    "q": "What does a column's slenderness ratio mainly determine?",
-    "o": [
-      "Maximum height",
-      "Effective length",
-      "Effective depth",
-      "Its tendency to buckle"
-    ],
-    "c": 3,
-    "n": "High kL/r means buckling governs."
-  },
-  {
-    "s": "Columns",
-    "q": "What is a steel pipe column filled with concrete commonly called?",
-    "o": [
-      "Lally column",
-      "Long column",
-      "Tied column",
-      "Spiral column"
-    ],
-    "c": 0,
-    "n": "Lally column."
-  },
-  {
-    "s": "Columns",
-    "q": "What wood column is a single piece of square or rectangular section?",
-    "o": [
-      "Solid",
-      "Built-up",
-      "Tapered",
-      "Glued-laminated"
-    ],
-    "c": 0,
-    "n": "Solid sawn column."
-  },
-  {
-    "s": "Columns",
-    "q": "What thick column tends to fail by crushing rather than buckling?",
-    "o": [
-      "Long column",
-      "Composite column",
-      "Short column",
-      "All of the above"
-    ],
-    "c": 2,
-    "n": "Short columns crush."
-  },
-  {
-    "s": "Columns",
-    "q": "What is it called when a straight column under compression suddenly deflects sideways?",
-    "o": [
-      "Buckling",
-      "Creep",
-      "Elongation",
-      "None of the above"
-    ],
-    "c": 0,
-    "n": "Buckling."
-  },
-  {
-    "s": "Columns",
-    "q": "Ties are used mainly in:",
-    "o": [
-      "Slabs",
-      "Beams",
-      "Columns",
-      "Footings"
-    ],
-    "c": 2,
-    "n": "Ties confine column bars."
-  },
-  {
-    "s": "Columns",
-    "q": "Which force tends to shorten a member?",
-    "o": [
-      "Torsion",
-      "Bending",
-      "Compression",
-      "Tension"
-    ],
-    "c": 2,
-    "n": "Compression."
-  },
-  {
-    "s": "Columns",
-    "q": "Which column is most likely to fail by buckling?",
-    "o": [
-      "Short column",
-      "Long column",
-      "Pedestal",
-      "None of the above"
+      "Washing machine",
+      "Refrigerator",
+      "Air conditioner",
+      "Electric fan"
     ],
     "c": 1,
-    "n": "Slender columns buckle."
+    "n": "Philippine labels rate refrigerators by EEF and ACs by EER/CSPF."
   },
   {
-    "s": "Columns",
-    "q": "Which column commonly fails by crushing?",
+    "s": "Electrical Power & Lighting",
+    "q": "What is the maximum number of outlets usually allowed on a 15-amp circuit?",
     "o": [
-      "Long column",
-      "Intermediate column",
-      "Pedestal",
-      "Short column"
-    ],
-    "c": 3,
-    "n": "Short columns crush first."
-  },
-  {
-    "s": "Columns",
-    "q": "A long column is designed mainly against:",
-    "o": [
-      "Crushing",
-      "Elongation",
-      "Hardness",
-      "Buckling"
-    ],
-    "c": 3,
-    "n": "Stability governs."
-  },
-  {
-    "s": "Columns",
-    "q": "Which column shape is considered the most efficient for structural performance?",
-    "o": [
-      "Rectangular",
-      "Circular",
-      "Square",
-      "Triangular"
-    ],
-    "c": 1,
-    "n": "A circular section has equal stiffness in every direction and resists buckling evenly."
-  },
-  {
-    "s": "Columns",
-    "q": "Which reinforcement in an RC column resists lateral forces and confines the core?",
-    "o": [
-      "Dowels",
-      "Stirrups",
-      "Main bars",
-      "Lateral ties"
-    ],
-    "c": 3,
-    "n": "Ties (or spirals)."
-  },
-  {
-    "s": "Columns",
-    "q": "What is the typical job of a column?",
-    "o": [
-      "Resisting horizontal movement",
-      "Distributing lateral forces to beams",
-      "Carrying axial loads from beams and slabs to the foundation",
-      "Decoration only"
-    ],
-    "c": 2,
-    "n": "Columns carry axial load down."
-  },
-  {
-    "s": "Columns",
-    "q": "Why is concrete cover provided over column bars?",
-    "o": [
-      "Lower cost",
-      "Extra weight",
-      "Aesthetics",
-      "Protection from corrosion and fire"
-    ],
-    "c": 3,
-    "n": "Cover protects steel."
-  },
-  {
-    "s": "Columns",
-    "q": "What is the maximum usable strain at the extreme concrete compression fiber?",
-    "o": [
-      "0.003",
-      "0.002",
-      "0.001",
-      "0.004"
-    ],
-    "c": 0,
-    "n": "NSCP and ACI use 0.003."
-  },
-  {
-    "s": "Columns",
-    "q": "Under NSCP 2015, what is the strength reduction factor for bearing on concrete?",
-    "o": [
-      "0.65",
-      "0.70",
-      "0.90",
-      "0.75"
-    ],
-    "c": 0,
-    "n": "NSCP 2015 (after ACI 318-14) uses φ = 0.65 for bearing; 0.70 was the older value."
-  },
-  {
-    "s": "Columns",
-    "q": "What is the minimum number of longitudinal bars in a spiral column?",
-    "o": [
-      "10",
+      "12",
       "8",
-      "4",
+      "10",
       "6"
     ],
-    "c": 3,
-    "n": "Six bars with spirals; four in rectangular tied columns."
+    "c": 2,
+    "n": "Common rule: 180 VA per outlet, so about 10 outlets on a 15 A circuit."
   },
   {
-    "s": "Columns",
-    "q": "What is the minimum clear spacing between parallel bars in a beam layer?",
+    "s": "Electrical Power & Lighting",
+    "q": "What is a flat silicon cell that turns sunlight into electricity?",
     "o": [
-      "20 mm",
-      "25 mm",
-      "10 mm",
-      "30 mm"
+      "Photoelectric",
+      "Photovoltaic",
+      "Photocell",
+      "Photosynthesis"
     ],
     "c": 1,
-    "n": "At least 25 mm or one bar diameter."
+    "n": "PV cells generate current from light."
   },
   {
-    "s": "Columns",
-    "q": "What is a beam fixed at one end and free at the other?",
+    "s": "Electrical Power & Lighting",
+    "q": "What do you call an enclosure or location used to house electrical or communication components, which may be surface-mounted or recessed?",
     "o": [
-      "Cantilever",
-      "Overhanging",
-      "Continuous",
-      "Simply supported"
+      "Blackout",
+      "Utility storage",
+      "Utility box",
+      "Circuit shell"
+    ],
+    "c": 2,
+    "n": "Per the MST answer key: Utility box."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Which is NOT a standard fluorescent lamp wattage?",
+    "o": [
+      "20 W",
+      "40 W",
+      "100 W",
+      "36 W"
+    ],
+    "c": 2,
+    "n": "Linear tubes come in 18/20, 36/40 W and similar."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "To control one light from four locations, what switches are needed?",
+    "o": [
+      "Two 3-way switches and two 4-way switches",
+      "Two 3-way switches and one 2-way switch",
+      "Three 3-way switches",
+      "None of the above"
     ],
     "c": 0,
-    "n": "Cantilever."
+    "n": "Each location past the two ends adds one 4-way switch."
   },
   {
-    "s": "Columns",
-    "q": "What beam, below or above grade, ties two members together to keep them from spreading?",
+    "s": "Electrical Power & Lighting",
+    "q": "What is the recommended spotlight angle for highlighting walls or paintings?",
     "o": [
-      "Connection beam",
-      "Tie beam",
-      "Plinth girder",
-      "Lally beam"
+      "Less than 20 degrees",
+      "More than 45 degrees",
+      "20-30 degrees",
+      "90 degrees"
+    ],
+    "c": 2,
+    "n": "A narrow 20–30° beam highlights art and wall features."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Which switch has a pilot light so it can be found in the dark?",
+    "o": [
+      "Glow switch",
+      "3-way switch",
+      "Illuminated switch",
+      "Dimmer"
+    ],
+    "c": 2,
+    "n": "Illuminated switches have a built-in indicator."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What type of lighting is most suitable for a two-storey residential house?",
+    "o": [
+      "Cool light",
+      "Warm light",
+      "It doesn't matter",
+      "White light"
     ],
     "c": 1,
-    "n": "Tie beams link footings."
+    "n": "Warm light (about 2,700–3,000 K) suits homes."
   },
   {
-    "s": "Columns",
-    "q": "What beam spans over a door or window opening?",
+    "s": "Electrical Power & Lighting",
+    "q": "What lighting emphasizes a specific area or object for drama?",
     "o": [
-      "Header beam",
-      "Door beam",
-      "Door header",
-      "Lintel beam"
+      "Highlight lighting",
+      "Accent lighting",
+      "Direct lighting",
+      "None of the above"
     ],
-    "c": 3,
-    "n": "Lintel."
+    "c": 1,
+    "n": "Accent lighting sets up a focal point."
   },
   {
-    "s": "Columns",
-    "q": "Which column has a continuous helical bar around its longitudinal bars?",
+    "s": "Electrical Power & Lighting",
+    "q": "What lighting suits a curved or wavy ceiling?",
     "o": [
-      "Tied column",
-      "RC column",
-      "Helical column",
-      "Spiral column"
+      "Indirect lighting at the base of the curve",
+      "Direct lighting",
+      "Downlights",
+      "None of the above"
+    ],
+    "c": 0,
+    "n": "Uplight washes reveal the form."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What lighting is used for reading at night?",
+    "o": [
+      "Daylighting",
+      "Task lighting",
+      "Accent lighting",
+      "General lighting"
+    ],
+    "c": 1,
+    "n": "Reading needs localized light."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What lighting suits a reading desk?",
+    "o": [
+      "Task lighting",
+      "Indirect lighting",
+      "Cove lighting",
+      "General lighting"
+    ],
+    "c": 0,
+    "n": "A desk lamp is task lighting."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What lighting draws attention to an object or casts decorative patterns on a surface?",
+    "o": [
+      "LED lighting",
+      "Cove lighting",
+      "Sodium lighting",
+      "Accent lighting"
     ],
     "c": 3,
-    "n": "Spiral."
+    "n": "Accent light is directional and focused."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Which of these saves up to about 75–80% energy compared with incandescent and gives bright light?",
+    "o": [
+      "Incandescent",
+      "Metal halide",
+      "CFL",
+      "Linear fluorescent"
+    ],
+    "c": 2,
+    "n": "CFLs use roughly a quarter of the power."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Which type of light is best suited for outdoor parking areas?",
+    "o": [
+      "Metal Halide",
+      "Low Pressure Sodium",
+      "Incandescent",
+      "High Intensity Discharge (HID)"
+    ],
+    "c": 3,
+    "n": "High-intensity discharge lamps light parking areas efficiently."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What type of lighting is ideal for a production area with a soffit on a suspended slab?",
+    "o": [
+      "Troffer",
+      "LED",
+      "Metal Halide",
+      "Pendant"
+    ],
+    "c": 0,
+    "n": "Per the MST answer key: Troffer."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Why are downlights or pin lights commonly used in retail stores?",
+    "o": [
+      "To emphasize the texture of materials",
+      "To save electricity",
+      "To preserve the original tone and color of materials",
+      "For dramatic effect"
+    ],
+    "c": 2,
+    "n": "Downlights render merchandise color and tone accurately."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What focuses or intensifies the direction of light?",
+    "o": [
+      "Reflector",
+      "Ballast",
+      "Diffuser",
+      "Bulb casing"
+    ],
+    "c": 0,
+    "n": "Reflectors redirect light into a beam."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What is the best type of lighting for a factory, considering its impact on the work environment?",
+    "o": [
+      "Cool light",
+      "Daylight",
+      "It doesn’t matter",
+      "Warm light"
+    ],
+    "c": 1,
+    "n": "Daylight-white (5,000–6,500 K) light keeps factory workers alert."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What light color is generally preferred in offices for alertness?",
+    "o": [
+      "Blue light only",
+      "Soft yellow (2,200 K)",
+      "Daylight (5,000–6,500 K)",
+      "Warm white (2,700 K)"
+    ],
+    "c": 2,
+    "n": "Cooler light supports alertness."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What does a diffuser in a luminaire do?",
+    "o": [
+      "Increases brightness",
+      "Reflects light",
+      "Softens and spreads light evenly",
+      "Changes light color"
+    ],
+    "c": 2,
+    "n": "Diffusers scatter light and cut glare."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Which type of lighting is best for directing and concentrating light to enhance visibility and mimic natural brightness?",
+    "o": [
+      "Reflector",
+      "Diffuser",
+      "Bulb cover",
+      "Daylight"
+    ],
+    "c": 3,
+    "n": "Per the MST key, daylight."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Which lamp has a filament?",
+    "o": [
+      "Incandescent",
+      "LED",
+      "Fluorescent",
+      "None of the above"
+    ],
+    "c": 0,
+    "n": "Incandescents heat a tungsten filament."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Modular cubicles are installed in an office. How many electrical outlets per cubicle are recommended if the office uses a UPS system?",
+    "o": [
+      "0",
+      "3",
+      "1",
+      "2"
+    ],
+    "c": 3,
+    "n": "Two outlets: one on the UPS for computers, one regular."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Which lamp is efficient and long-lived but has no filament?",
+    "o": [
+      "Incandescent",
+      "Halogen",
+      "LED",
+      "None of the above"
+    ],
+    "c": 2,
+    "n": "LEDs are solid-state."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "In office electrical systems, UPS stands for:",
+    "o": [
+      "Unit Power Source",
+      "Uninterrupted Power Source",
+      "Uniform Power System",
+      "Uninterruptible Power Supply"
+    ],
+    "c": 3,
+    "n": "A UPS supplies battery power."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What voltage serves general-purpose office outlets in the Philippines?",
+    "o": [
+      "440 V",
+      "110 V",
+      "230 V",
+      "12 V"
+    ],
+    "c": 2,
+    "n": "Local outlets are 230 V (often called 220 V)."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What is used to start a fluorescent lamp?",
+    "o": [
+      "Starter",
+      "Driver",
+      "Ignitor",
+      "Ballast"
+    ],
+    "c": 0,
+    "n": "The starter strikes the arc in a preheat fluorescent lamp."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What starts and runs a compact fluorescent lamp?",
+    "o": [
+      "Driver",
+      "Starter",
+      "Electronic ballast",
+      "Ignitor"
+    ],
+    "c": 2,
+    "n": "CFLs have a built-in electronic ballast."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What powers and controls an LED lamp?",
+    "o": [
+      "Driver",
+      "Transformer",
+      "Ballast",
+      "Starter"
+    ],
+    "c": 0,
+    "n": "Drivers supply regulated DC."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What light is best for reading and writing?",
+    "o": [
+      "Blue light",
+      "Yellow light",
+      "Warm white",
+      "Daylight"
+    ],
+    "c": 3,
+    "n": "Daylight tones aid visual tasks."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What type of switch is used to control a light from two different locations?",
+    "o": [
+      "2-Way Switch",
+      "Push Button Switch",
+      "3-Way Switch",
+      "Toggle Switch"
+    ],
+    "c": 2,
+    "n": "Per the MST answer key: 3-Way Switch."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Which is not a good location for light switches?",
+    "o": [
+      "Behind the door",
+      "On the wall",
+      "Beside the door on the direction of the swing",
+      "All of the above"
+    ],
+    "c": 0,
+    "n": "Per the MST answer key: Behind the door."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What type of switch is commonly used for staircases?",
+    "o": [
+      "Two-way switch",
+      "Three-way switch",
+      "One-way switch",
+      "None of the above"
+    ],
+    "c": 1,
+    "n": "Per the MST answer key: Three-way switch."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "Before the widespread use of LED lighting, where was it originally used?",
+    "o": [
+      "Exit signs",
+      "Street lights",
+      "Stove bulbs",
+      "Flashlights"
+    ],
+    "c": 3,
+    "n": "Per the MST key, flashlights."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What is one disadvantage of LED lighting?",
+    "o": [
+      "Higher initial cost",
+      "Not energy efficient",
+      "Limited light colors",
+      "Hard to install"
+    ],
+    "c": 0,
+    "n": "LEDs cost more up front."
+  },
+  {
+    "s": "Electrical Power & Lighting",
+    "q": "What commonly replaces older lamps in street lighting?",
+    "o": [
+      "Fluorescent lamps",
+      "Mercury vapor lamps",
+      "Incandescent bulbs",
+      "LED lights"
+    ],
+    "c": 3,
+    "n": "LEDs are now standard for streets."
   }
 ]
