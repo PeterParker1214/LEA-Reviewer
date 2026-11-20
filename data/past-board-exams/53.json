@@ -1,578 +1,504 @@
 [
   {
-    "s": "Electrical Power & Lighting",
-    "q": "What is an ATS for in an electrical system?",
+    "s": "Finishes",
+    "q": "What is Figure A that is a decorative concrete pavement finished using a patterned template to create surface designs resembling bricks, tiles, or stones?",
     "o": [
-      "A switch used with a standby generator",
-      "An emergency switch in fire alarms",
-      "A switch for elevators and conveyors",
-      "A switch for building automation"
+      "Stenciled concrete pavement",
+      "Broom finish",
+      "Pebble washout finish",
+      "Stamped concrete pavement"
     ],
     "c": 0,
-    "n": "It transfers load between utility and generator."
+    "n": "Stenciled concrete uses a pattern template.",
+    "img": "figs/BUILDING_TECHNOLOGY__30-A.png"
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "When is the Certificate of Electrical Inspection (CEI) issued?",
+    "s": "Finishes",
+    "q": "What is Figure B that is a decorative concrete pavement finished by impressing patterns into fresh concrete to give the look of natural materials?",
     "o": [
-      "Before the utility installs the meter",
-      "After the utility installs the meter",
-      "Before the Building Official's final inspection",
-      "After the Building Official's final inspection"
+      "Stamped concrete pavement",
+      "Pebble washout finish",
+      "Terrazzo",
+      "Broom finish"
     ],
     "c": 0,
-    "n": "The utility needs the CEI before it energizes and meters the service."
+    "n": "Stamped concrete is pressed with patterns while fresh.",
+    "img": "figs/BUILDING_TECHNOLOGY__30-A.png"
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "What frequency does MERALCO supply to consumers?",
+    "s": "Finishes",
+    "q": "What is Figure C that is a concrete surface with a textured finish created by dragging a tool over it for added slip resistance?",
     "o": [
-      "80 Hz",
-      "70 Hz",
-      "60 Hz",
-      "50 Hz"
-    ],
-    "c": 2,
-    "n": "The Philippine grid runs at 60 Hz."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "In a string of bulbs wired in series, what happens if one bulb is removed?",
-    "o": [
-      "The rest stay lit",
-      "All go out",
-      "Only the bulb before it goes out",
-      "Only bulbs after it go out"
-    ],
-    "c": 1,
-    "n": "A series circuit has a single path."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What device detects ground faults and cuts power immediately to prevent shock?",
-    "o": [
-      "GFCI",
-      "Circuit breaker",
-      "Distribution panel",
-      "Fuse"
-    ],
-    "c": 0,
-    "n": "A GFCI trips on leakage current."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What are the conductors from a main distribution center to the branch-circuit panels called?",
-    "o": [
-      "Panelboard",
-      "Feeders",
-      "Raceway",
-      "None of the above"
-    ],
-    "c": 1,
-    "n": "Feeders supply panelboards."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What resists the flow of electricity?",
-    "o": [
-      "Insulator",
-      "Conductor",
-      "Semiconductor",
-      "None of the above"
-    ],
-    "c": 0,
-    "n": "Insulators have high resistance."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What conductors run from the service equipment to distribution points in a building?",
-    "o": [
-      "Service lateral",
-      "Feeders",
-      "Switchboard",
-      "Unit substation"
-    ],
-    "c": 1,
-    "n": "Feeders run between the service and the panels."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "A valve controls water flow. What does the same job in an electrical circuit?",
-    "o": [
-      "Convenience outlet",
-      "Switch",
-      "Circuit breaker",
-      "Fuse"
-    ],
-    "c": 1,
-    "n": "A switch opens and closes the circuit."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What matters most when sizing wire for a circuit?",
-    "o": [
-      "Length only",
-      "Brand",
-      "Ampacity",
-      "Insulation color"
-    ],
-    "c": 2,
-    "n": "Wire must carry the load current safely."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "Power was cut but restored right away by standby generators. What switched the source automatically?",
-    "o": [
-      "Double-throw switch",
-      "Manual transfer switch",
-      "Automatic transfer switch",
-      "All of the above"
-    ],
-    "c": 2,
-    "n": "An ATS starts and transfers to the generator."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What do banks use to bridge the gap before emergency power takes over?",
-    "o": [
-      "UPS",
-      "ATS",
-      "MTS",
-      "None of the above"
-    ],
-    "c": 0,
-    "n": "A UPS gives instant, unbroken power."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What is the main function of an automatic transfer switch?",
-    "o": [
-      "Switching automatically from the utility to a standby generator",
-      "Storing backup power",
-      "Monitoring loads",
-      "Regulating voltage"
-    ],
-    "c": 0,
-    "n": "It senses outage and transfers load."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What is the main purpose of a UPS?",
-    "o": [
-      "Backup lighting only",
-      "Temporary power during outages or until a generator starts",
-      "Controlling the panel",
-      "Raising current"
-    ],
-    "c": 1,
-    "n": "Batteries carry the load through the gap."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "In manual emergency switching, what device connects the load to the alternate source?",
-    "o": [
-      "MTS",
-      "Breaker panel",
-      "ATS",
-      "UPS"
-    ],
-    "c": 0,
-    "n": "MTS is a manual transfer switch."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "THHN wire is used for 600 V AC distribution in dry and damp locations. THHN stands for:",
-    "o": [
-      "Thermoplastic, moisture-resistant",
-      "Thermoplastic, high heat-resistant, nylon-coated",
-      "Thermoplastic, heat- and moisture-resistant",
-      "Thermoplastic, heat- and moisture-resistant, nylon-coated"
-    ],
-    "c": 1,
-    "n": "T-HH-N: thermoplastic, high heat, nylon."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "THWN stands for:",
-    "o": [
-      "Thermoplastic, heat- and moisture-resistant, nylon-coated",
-      "Thermoplastic, moisture-resistant",
-      "Thermoplastic, high heat-resistant, nylon-coated",
-      "Thermoplastic, heat- and moisture-resistant"
-    ],
-    "c": 0,
-    "n": "T-H-W-N: thermoplastic, heat, water, nylon."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "Why do THHN and THWN wires have a nylon jacket?",
-    "o": [
-      "To prevent overheating",
-      "For extra mechanical protection",
-      "To conduct better",
-      "To lower resistance"
-    ],
-    "c": 1,
-    "n": "Nylon resists abrasion when pulled through conduit."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What color is a ground wire in residential wiring?",
-    "o": [
-      "White",
-      "Green or bare copper",
-      "Red",
-      "Black"
-    ],
-    "c": 1,
-    "n": "Green (or green-yellow) or bare marks grounding."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What is conduit for?",
-    "o": [
-      "Boosting voltage",
-      "Protecting wiring from damage",
-      "Raising current",
-      "Cooling wires"
-    ],
-    "c": 1,
-    "n": "Conduit encloses and protects conductors."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What nominal voltage and frequency are used in the Philippines?",
-    "o": [
-      "240 V, 50 Hz",
-      "230 V, 60 Hz",
-      "110 V, 60 Hz",
-      "220 V, 50 Hz"
-    ],
-    "c": 1,
-    "n": "Supply is 230 V nominal (often called 220 V) at 60 Hz."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "Which is a brand of electrical wire?",
-    "o": [
-      "Panasonic",
-      "Omni",
-      "Phelps Dodge",
-      "Schneider"
-    ],
-    "c": 2,
-    "n": "Phelps Dodge is a major wire maker."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What box holds wire splices and is meant to be concealed and tamper-resistant?",
-    "o": [
-      "Junction box",
-      "Utility box",
-      "Pull box",
-      "Cutout box"
-    ],
-    "c": 0,
-    "n": "Splices are made in junction boxes."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What shape is a typical junction box for ceiling outlets?",
-    "o": [
-      "Rectangular",
-      "Hexagonal",
-      "Octagonal",
-      "Round"
-    ],
-    "c": 2,
-    "n": "Octagonal boxes are standard for lighting."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "Which of these is NOT a protective electrical device?",
-    "o": [
-      "CATV",
-      "Surge protector",
-      "Voltage regulator",
-      "UPS"
-    ],
-    "c": 0,
-    "n": "CATV is cable television."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "On which appliance's energy label is the Energy Efficiency Factor (EEF) shown?",
-    "o": [
-      "Washing machine",
-      "Refrigerator",
-      "Air conditioner",
-      "Electric fan"
-    ],
-    "c": 1,
-    "n": "Philippine labels rate refrigerators by EEF and ACs by EER/CSPF."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What is a flat silicon cell that turns sunlight into electricity?",
-    "o": [
-      "Photoelectric",
-      "Photovoltaic",
-      "Photocell",
-      "Photosynthesis"
-    ],
-    "c": 1,
-    "n": "PV cells generate current from light."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "Which is NOT a standard fluorescent lamp wattage?",
-    "o": [
-      "20 W",
-      "40 W",
-      "100 W",
-      "36 W"
-    ],
-    "c": 2,
-    "n": "Linear tubes come in 18/20, 36/40 W and similar."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "To control one light from four locations, what switches are needed?",
-    "o": [
-      "Two 3-way switches and two 4-way switches",
-      "Two 3-way switches and one 2-way switch",
-      "Three 3-way switches",
-      "None of the above"
-    ],
-    "c": 0,
-    "n": "Each location past the two ends adds one 4-way switch."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "Which switch has a pilot light so it can be found in the dark?",
-    "o": [
-      "Glow switch",
-      "3-way switch",
-      "Illuminated switch",
-      "Dimmer"
-    ],
-    "c": 2,
-    "n": "Illuminated switches have a built-in indicator."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What lighting emphasizes a specific area or object for drama?",
-    "o": [
-      "Highlight lighting",
-      "Accent lighting",
-      "Direct lighting",
-      "None of the above"
-    ],
-    "c": 1,
-    "n": "Accent lighting sets up a focal point."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What lighting suits a curved or wavy ceiling?",
-    "o": [
-      "Indirect lighting at the base of the curve",
-      "Direct lighting",
-      "Downlights",
-      "None of the above"
-    ],
-    "c": 0,
-    "n": "Uplight washes reveal the form."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What lighting is used for reading at night?",
-    "o": [
-      "Daylighting",
-      "Task lighting",
-      "Accent lighting",
-      "General lighting"
-    ],
-    "c": 1,
-    "n": "Reading needs localized light."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What lighting suits a reading desk?",
-    "o": [
-      "Task lighting",
-      "Indirect lighting",
-      "Cove lighting",
-      "General lighting"
-    ],
-    "c": 0,
-    "n": "A desk lamp is task lighting."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What lighting draws attention to an object or casts decorative patterns on a surface?",
-    "o": [
-      "LED lighting",
-      "Cove lighting",
-      "Sodium lighting",
-      "Accent lighting"
+      "Stenciled concrete pavement",
+      "Stamped concrete pavement",
+      "Terrazzo",
+      "Broom finish"
     ],
     "c": 3,
-    "n": "Accent light is directional and focused."
+    "n": "A broom finish is dragged across for slip resistance.",
+    "img": "figs/BUILDING_TECHNOLOGY__30-A.png"
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "Which of these saves up to about 75–80% energy compared with incandescent and gives bright light?",
+    "s": "Finishes",
+    "q": "What is Figure D that is a concrete finish where the top layer is washed off to expose decorative aggregates for a textured look?",
     "o": [
-      "Incandescent",
-      "Metal halide",
-      "CFL",
-      "Linear fluorescent"
+      "Terrazzo",
+      "Broom finish",
+      "Pebble washout finish",
+      "Stenciled concrete pavement"
     ],
     "c": 2,
-    "n": "CFLs use roughly a quarter of the power."
+    "n": "The surface paste is washed off to expose the aggregate.",
+    "img": "figs/BUILDING_TECHNOLOGY__30-A.png"
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "What focuses or intensifies the direction of light?",
+    "s": "Finishes",
+    "q": "What is Figure E that is a decorative flooring material made from chips of stone or marble set in concrete and polished to a smooth surface?",
     "o": [
-      "Reflector",
-      "Ballast",
-      "Diffuser",
-      "Bulb casing"
+      "Pebble washout finish",
+      "Terrazzo",
+      "Broom finish",
+      "Stamped concrete pavement"
     ],
-    "c": 0,
-    "n": "Reflectors redirect light into a beam."
+    "c": 1,
+    "n": "Terrazzo is marble chips in a polished matrix.",
+    "img": "figs/BUILDING_TECHNOLOGY__30-A.png"
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "What light color is generally preferred in offices for alertness?",
+    "s": "Finishes",
+    "q": "What material, shown in Item B, is typically used to fill the joints between mosaic tiles for sealing and stability?",
     "o": [
-      "Blue light only",
-      "Soft yellow (2,200 K)",
-      "Daylight (5,000–6,500 K)",
-      "Warm white (2,700 K)"
-    ],
-    "c": 2,
-    "n": "Cooler light supports alertness."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What does a diffuser in a luminaire do?",
-    "o": [
-      "Increases brightness",
-      "Reflects light",
-      "Softens and spreads light evenly",
-      "Changes light color"
-    ],
-    "c": 2,
-    "n": "Diffusers scatter light and cut glare."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "Which lamp has a filament?",
-    "o": [
-      "Incandescent",
-      "LED",
-      "Fluorescent",
-      "None of the above"
-    ],
-    "c": 0,
-    "n": "Incandescents heat a tungsten filament."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "Which lamp is efficient and long-lived but has no filament?",
-    "o": [
-      "Incandescent",
-      "Halogen",
-      "LED",
-      "None of the above"
-    ],
-    "c": 2,
-    "n": "LEDs are solid-state."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "In office electrical systems, UPS stands for:",
-    "o": [
-      "Unit Power Source",
-      "Uninterrupted Power Source",
-      "Uniform Power System",
-      "Uninterruptible Power Supply"
+      "Adhesive",
+      "Lime",
+      "Cement",
+      "Grout"
     ],
     "c": 3,
-    "n": "A UPS supplies battery power."
+    "n": "Grout fills the joints between tiles.",
+    "img": "figs/BUILDING_TECHNOLOGY__30-B.png"
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "What voltage serves general-purpose office outlets in the Philippines?",
+    "s": "Finishes",
+    "q": "What type of paving material is Item C, which is fully manufactured and widely used for its durability in paving applications?",
     "o": [
-      "440 V",
-      "110 V",
-      "230 V",
-      "12 V"
-    ],
-    "c": 2,
-    "n": "Local outlets are 230 V (often called 220 V)."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What starts and runs a compact fluorescent lamp?",
-    "o": [
-      "Driver",
-      "Starter",
-      "Electronic ballast",
-      "Ignitor"
-    ],
-    "c": 2,
-    "n": "CFLs have a built-in electronic ballast."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What powers and controls an LED lamp?",
-    "o": [
-      "Driver",
-      "Transformer",
-      "Ballast",
-      "Starter"
-    ],
-    "c": 0,
-    "n": "Drivers supply regulated DC."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What light is best for reading and writing?",
-    "o": [
-      "Blue light",
-      "Yellow light",
-      "Warm white",
-      "Daylight"
+      "Rubber Paver",
+      "Natural Stone Paver",
+      "Brick Paver",
+      "Concrete Paver"
     ],
     "c": 3,
-    "n": "Daylight tones aid visual tasks."
+    "n": "Concrete pavers are factory-made and durable.",
+    "img": "figs/BUILDING_TECHNOLOGY__30-B.png"
   },
   {
-    "s": "Electrical Power & Lighting",
-    "q": "What is one disadvantage of LED lighting?",
+    "s": "Finishes",
+    "q": "Which type of paving material, shown in Item D, is most suitable for outdoor playgrounds due to its soft, shock- absorbing properties?",
     "o": [
-      "Higher initial cost",
-      "Not energy efficient",
-      "Limited light colors",
-      "Hard to install"
-    ],
-    "c": 0,
-    "n": "LEDs cost more up front."
-  },
-  {
-    "s": "Electrical Power & Lighting",
-    "q": "What commonly replaces older lamps in street lighting?",
-    "o": [
-      "Fluorescent lamps",
-      "Mercury vapor lamps",
-      "Incandescent bulbs",
-      "LED lights"
+      "Natural Stone Paver",
+      "Clay Brick Paver",
+      "Concrete Paver",
+      "Rubber Paver"
     ],
     "c": 3,
-    "n": "LEDs are now standard for streets."
+    "n": "Rubber pavers absorb impact, suiting playgrounds.",
+    "img": "figs/BUILDING_TECHNOLOGY__30-B.png"
+  },
+  {
+    "s": "Finishes",
+    "q": "What type of paving material, shown in Item E, is known for being environmentally friendly and often used in sustainable design projects?",
+    "o": [
+      "Natural Stone Paver",
+      "Rubber Paver",
+      "Clay Brick Paver",
+      "Concrete Paver"
+    ],
+    "c": 0,
+    "n": "Natural stone needs little processing, a low-impact choice.",
+    "img": "figs/BUILDING_TECHNOLOGY__30-B.png"
+  },
+  {
+    "s": "Finishes",
+    "q": "What is Figure B, a type of white coral stone commonly used in residential walls?",
+    "o": [
+      "Yellow slate",
+      "Mactan stone",
+      "Ibiza slate",
+      "Fossil reef stone"
+    ],
+    "c": 1,
+    "n": "Mactan stone is the white coral stone of Cebu.",
+    "img": "figs/BUILDING_TECHNOLOGY__30-D.png"
+  },
+  {
+    "s": "Finishes",
+    "q": "Which company is a leading maker of architectural and structural wood products in the Philippines?",
+    "o": [
+      "Arctic Forest",
+      "Timberco",
+      "Filtra Timber",
+      "Matimco"
+    ],
+    "c": 3,
+    "n": "Matimco makes treated lumber and engineered wood."
+  },
+  {
+    "s": "Finishes",
+    "q": "Which brand of thermosetting plastic laminate is used as a heat- and chemical-resistant surface on furniture and wall panels?",
+    "o": [
+      "Formica",
+      "Matimco",
+      "Decra",
+      "HardieFlex"
+    ],
+    "c": 0,
+    "n": "Formica is the classic high-pressure laminate."
+  },
+  {
+    "s": "Finishes",
+    "q": "Which of these is a gypsum board brand?",
+    "o": [
+      "HardieFlex",
+      "Boral",
+      "Matimco",
+      "Mapei"
+    ],
+    "c": 1,
+    "n": "HardieFlex is fiber cement; Mapei is adhesives."
+  },
+  {
+    "s": "Finishes",
+    "q": "What board covers the bottom of an interior wall to hide the wall–floor joint?",
+    "o": [
+      "Cornice",
+      "Baseboard",
+      "Parquet",
+      "Trim"
+    ],
+    "c": 1,
+    "n": "Baseboards also protect the wall from knocks."
+  },
+  {
+    "s": "Finishes",
+    "q": "What board is placed above curtains to hide the rod and hardware?",
+    "o": [
+      "Curtain cover",
+      "Cornice",
+      "Valance",
+      "Curtain pocket"
+    ],
+    "c": 1,
+    "n": "A cornice board boxes in the curtain head."
+  },
+  {
+    "s": "Finishes",
+    "q": "What resilient strip on a wall protects it from carts and movable equipment?",
+    "o": [
+      "Baseboard",
+      "Guard rail",
+      "Wall guard",
+      "Dado"
+    ],
+    "c": 2,
+    "n": "Wall guards (crash rails) are common in hospitals."
+  },
+  {
+    "s": "Finishes",
+    "q": "What piece goes between a door and the floor finish?",
+    "o": [
+      "PWD ramp",
+      "Molding",
+      "Astragal",
+      "Threshold"
+    ],
+    "c": 3,
+    "n": "The threshold covers the floor joint at the door."
+  },
+  {
+    "s": "Finishes",
+    "q": "What is paneling on the lower part of a wall only called?",
+    "o": [
+      "Paneling",
+      "Wainscoting",
+      "Basing",
+      "Treating"
+    ],
+    "c": 1,
+    "n": "Wainscot covers the lower wall."
+  },
+  {
+    "s": "Finishes",
+    "q": "Which is NOT part of a suspended ceiling framing system?",
+    "o": [
+      "Wall angle",
+      "Furring channel",
+      "Hanger rod",
+      "Door trim"
+    ],
+    "c": 3,
+    "n": "The others make up the ceiling frame."
+  },
+  {
+    "s": "Finishes",
+    "q": "What tape is used on gypsum board joints before applying joint compound?",
+    "o": [
+      "Plaster tape",
+      "Putty",
+      "Joint tape",
+      "Gypsum tape"
+    ],
+    "c": 2,
+    "n": "Paper or mesh joint tape is bedded in joint compound to bridge board seams."
+  },
+  {
+    "s": "Finishes",
+    "q": "What ceiling hides ductwork while still allowing maintenance access?",
+    "o": [
+      "Coffered ceiling",
+      "Suspended ceiling",
+      "Acoustic board ceiling",
+      "Exposed beam ceiling"
+    ],
+    "c": 1,
+    "n": "Lift-out panels give access to the plenum."
+  },
+  {
+    "s": "Finishes",
+    "q": "What supports and aligns the panels in a suspended ceiling?",
+    "o": [
+      "Corner bead",
+      "Main tee runner",
+      "Furring channel",
+      "Drywall screw"
+    ],
+    "c": 1,
+    "n": "Main tees and cross tees form the grid."
+  },
+  {
+    "s": "Finishes",
+    "q": "What keeps the joints between gypsum boards from cracking?",
+    "o": [
+      "Ceiling tile",
+      "Joint tape",
+      "Corner bead",
+      "Furring channel"
+    ],
+    "c": 1,
+    "n": "Tape embedded in compound bridges the joint."
+  },
+  {
+    "s": "Finishes",
+    "q": "What is the best lighting to highlight a painting?",
+    "o": [
+      "Strip light",
+      "Sconce",
+      "Backlight",
+      "Spotlight"
+    ],
+    "c": 3,
+    "n": "A focused beam accents the artwork."
+  },
+  {
+    "s": "Finishes",
+    "q": "What lighting is best for a workspace or reading area?",
+    "o": [
+      "Task light",
+      "Cove light",
+      "Ambient light",
+      "Accent light"
+    ],
+    "c": 0,
+    "n": "Task lighting targets the work surface."
+  },
+  {
+    "s": "Finishes",
+    "q": "Which wall-mounted fixture gives both decorative and functional light?",
+    "o": [
+      "Pendant",
+      "Sconce",
+      "Track light",
+      "Strip light"
+    ],
+    "c": 1,
+    "n": "Sconces mount on walls."
+  },
+  {
+    "s": "Finishes",
+    "q": "Which lighting emphasizes architectural features, art or displays?",
+    "o": [
+      "General",
+      "Cove",
+      "Accent",
+      "Ambient"
+    ],
+    "c": 2,
+    "n": "Accent lighting creates contrast on a focal point."
+  },
+  {
+    "s": "Finishes",
+    "q": "Which lighting creates a warm, inviting feel in a living room?",
+    "o": [
+      "Ambient",
+      "Task",
+      "Track",
+      "Fluorescent"
+    ],
+    "c": 0,
+    "n": "Soft general light sets the mood."
+  },
+  {
+    "s": "Finishes",
+    "q": "What general term covers particle board, fiberboard and gypsum board?",
+    "o": [
+      "Wall panel",
+      "Hardboard",
+      "Wall accent",
+      "Wallboard"
+    ],
+    "c": 3,
+    "n": "All are sheet wallboards."
+  },
+  {
+    "s": "Finishes",
+    "q": "Fiber cement board is mainly cement, cellulose fiber and ______.",
+    "o": [
+      "Wood particles",
+      "Gravel",
+      "Silica sand",
+      "Water"
+    ],
+    "c": 2,
+    "n": "Ground silica sand is the filler."
+  },
+  {
+    "s": "Finishes",
+    "q": "Which ceiling material is chosen because it absorbs sound?",
+    "o": [
+      "Acoustic board",
+      "Marine plywood",
+      "Gypsum board",
+      "Cement board"
+    ],
+    "c": 0,
+    "n": "Acoustic (mineral fiber) board is porous and absorbs sound."
+  },
+  {
+    "s": "Finishes",
+    "q": "What is the standard size of a marine plywood sheet?",
+    "o": [
+      "1.20 m × 3.00 m",
+      "1.20 m × 2.40 m",
+      "2.30 m × 4.20 m",
+      "1.30 m × 3.00 m"
+    ],
+    "c": 1,
+    "n": "4 ft × 8 ft."
+  },
+  {
+    "s": "Finishes",
+    "q": "What is the standard thickness of gypsum board for wall partitions?",
+    "o": [
+      "8 mm",
+      "10 mm",
+      "6 mm",
+      "12 mm"
+    ],
+    "c": 3,
+    "n": "12 mm (1/2\") is standard for walls."
+  },
+  {
+    "s": "Finishes",
+    "q": "What is placed between two surfaces to stop gas, oil or other substances passing through?",
+    "o": [
+      "Rebars",
+      "Mortar",
+      "Sealant",
+      "Putty"
+    ],
+    "c": 2,
+    "n": "A sealant (or gasket) closes the joint."
+  },
+  {
+    "s": "Finishes",
+    "q": "Which material has the lowest embodied carbon per kilogram before delivery to site?",
+    "o": [
+      "Aluminum",
+      "Steel",
+      "Copper",
+      "Plastic"
+    ],
+    "c": 1,
+    "n": "Primary aluminum and copper are far more energy-intensive."
+  },
+  {
+    "s": "Finishes",
+    "q": "Which paver best reduces outdoor heat gain and helps keep interiors cool?",
+    "o": [
+      "Unglazed white tiles",
+      "Dark pavers",
+      "Gray concrete pavers",
+      "Yellow pavers"
+    ],
+    "c": 0,
+    "n": "Light colors reflect sunlight."
+  },
+  {
+    "s": "Finishes",
+    "q": "How do you find the number of 60 × 120 cm acoustic boards for a ceiling?",
+    "o": [
+      "Divide the ceiling area by 0.72",
+      "Multiply the area by 0.072",
+      "Divide the area by 2.88",
+      "Add 0.072 to the area"
+    ],
+    "c": 0,
+    "n": "Each board covers 0.6 × 1.2 = 0.72 m²."
+  },
+  {
+    "s": "Finishes",
+    "q": "How many 60 × 60 cm acoustic tiles cover a 20 m × 30 m ceiling?",
+    "o": [
+      "1,670 pcs",
+      "2,000 pcs",
+      "1,500 pcs",
+      "1,900 pcs"
+    ],
+    "c": 0,
+    "n": "600 m² ÷ 0.36 = 1,667, so about 1,670."
+  },
+  {
+    "s": "Finishes",
+    "q": "How many 1.2 × 2.4 m plywood sheets are needed for a 5 m × 7 m bedroom ceiling?",
+    "o": [
+      "13 pcs",
+      "26 pcs",
+      "15 pcs",
+      "20 pcs"
+    ],
+    "c": 0,
+    "n": "35 m² ÷ 2.88 = 12.2, round up to 13."
+  },
+  {
+    "s": "Finishes",
+    "q": "How many 300 × 300 mm tiles should be ordered for a 150 m² public toilet floor?",
+    "o": [
+      "1,800 pcs",
+      "1,500 pcs",
+      "1,600 pcs",
+      "1,700 pcs"
+    ],
+    "c": 3,
+    "n": "150 ÷ 0.09 = 1,667, about 1,700."
+  },
+  {
+    "s": "Finishes",
+    "q": "How many 100 × 150 mm pavers cover 1 m²?",
+    "o": [
+      "67 pcs",
+      "66.7 pcs",
+      "68 pcs",
+      "66 pcs"
+    ],
+    "c": 0,
+    "n": "1 ÷ 0.015 = 66.7, rounded up to 67 whole pieces."
   }
 ]

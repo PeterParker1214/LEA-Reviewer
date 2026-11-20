@@ -20,7 +20,7 @@
  */
 (function(){
   'use strict';
-  const BUILD = 24;
+  const BUILD = 25;
   const EXAM_MILESTONES = [180, 120, 90, 60, 30, 14, 7, 3, 1];
   const DEFAULT_PREFS = { quiz:true, quizFreq:'hourly', daily:true, streak:true, exam:true, rivals:true, focus:true, update:true };
   const QUIZ_FREQS = [
