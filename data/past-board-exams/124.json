@@ -1,0 +1,530 @@
+[
+  {
+    "s": "Structural Conceptualization",
+    "q": "A beam that goes horizontally over a door",
+    "o": [
+      "Door Beam",
+      "Header Beam",
+      "Lintel Beam",
+      "Door Header"
+    ],
+    "c": 2,
+    "n": "A lintel is the beam spanning horizontally over a door or window opening. Source: Ching, Building Construction Illustrated."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "Columns primarily resist axial forces, while beams primarily resist bending from transverse loads. What is the most critical structural consequence of having only columns with no beams in a multi-storey building?",
+    "o": [
+      "Increased axial load on columns due to the absence of secondary framing members.",
+      "Reduced slab deflection because the load transfers directly to the columns without intermediate supports.",
+      "The structure becomes a sway mechanism with no lateral stiffness, causing collapse under minimal horizontal load.",
+      "Improved vertical load path efficiency since beams no longer interrupt the transfer of forces to the foundation."
+    ],
+    "c": 2,
+    "n": "Without beams there is no frame action between columns. The structure becomes a sway mechanism with little lateral stiffness and can collapse under small horizontal loads. Source: NSCP 2015 (7th ed.), Vol. 1, Sec. 208 (seismic-force-resisting systems); Salvadori & Heller, Structure in Architecture."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "In a reinforced concrete floor system, the slab distributes loads across its surface but cannot span long distances without excessive deflection or cracking. Within this structural relationship, what is the primary function of the beam supporting the slab?",
+    "o": [
+      "To act as a stiffener that prevents temperature-induced expansion and contraction of the slab during daily thermal cycles",
+      "To reduce the slab's punching shear demand by increasing the effective depth at the column-slab interface",
+      "To serve as a construction guide for formwork alignment and ensure uniform slab thickness during pouring",
+      "To collect and transfer the slab's loads to the columns or walls, providing the main flexural and shear resistance needed for the slab to span safely"
+    ],
+    "c": 3,
+    "n": "Beams collect slab loads and carry them to columns or walls. They supply the main flexural and shear resistance that lets the slab span safely. Source: Nilson, Design of Concrete Structures, Ch. 12."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "During a lateral load review of a mid-rise structure. the engineer evaluates the performance of the building diaphragm at each floor level. The diaphragm is modeled as a horizontal structural element capable of developing in-plane shear and distributing forces lo vertical resisting components. Which of the following BEST describes the primary structural function of the building diaphragm?",
+    "o": [
+      "To provide out-of-plane bracing to masonry walls by anchoring them at each floor level",
+      "To act as a collector element that drags axial forces into shear walls",
+      "To resist overturning by providing vertical flexural resistance along the height of the structure",
+      "To collect and transfer in-plane lateral forces to shear walls or frames, ensuring the building behaves as a unified lateral system"
+    ],
+    "c": 3,
+    "n": "A diaphragm collects in-plane lateral forces at each floor and delivers them to the shear walls or frames, so the building acts as one lateral system. Source: NSCP 2015 (7th ed.), Vol. 1, Sec. 208.7 (Diaphragms); ASCE 7-16, Sec. 12.10."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "A couple is constructing their two-storey residence when the foreman proposes a \"cost-saving technique.\" He convinces them that beams are unnecessary, claiming he has completed several projects using the same method and that removing the beams will save time, materials, and labor. Trusting his confidence and \"experience,\" the couple agrees. The slab is poured without beams, spanning directly from column to column. Within weeks, the floor begins to sag at mid-span, cracks widen, and distress appears around the columns. In reality, what structural phenomenon is occurring?",
+    "o": [
+      "The slab has lost its primary flexural support, causing excessive bending, uncontrolled deflection, cracking, and potential punching shear failure because the load path has been destroyed.",
+      "The slab is successfully redistributing loads and functioning as a two-way flat slab system, improving structural efficiency despite the absence of beams.",
+      "The slab is transitioning into arching action, increasing its load-carrying capacity but causing localized cracking at the supports.",
+      "The slab is undergoing thermal expansion stresses because beams normally restrain temperature-induced movement."
+    ],
+    "c": 0,
+    "n": "Removing the beams takes away the slab's main flexural support. A slab designed for beam support then bends excessively, deflects, cracks, and risks punching shear at the columns. Source: Nilson, Design of Concrete Structures, Ch. 12–13; NSCP 2015 (7th ed.), Vol. 1, Sec. 422.6 (punching shear)."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "A simply supported reinforced concrete beam carries a uniformly distributed load from the floor system above. Under these conditions, which type of structural stress primarily governs the behavior of the member along its span?",
+    "o": [
+      "Torsional stress induced by minor eccentricities between the slab and beam centroid",
+      "Axial stress resulting from the self-weight of the beam acting along its longitudinal axis",
+      "Shear stress concentrated near the supports due to vertical load transfer",
+      "Bending stress produced by the flexural action caused by the transverse loading"
+    ],
+    "c": 3,
+    "n": "A transversely loaded, simply supported beam is governed mainly by bending stress along its span. Shear governs only near the supports. Source: Hibbeler, Mechanics of Materials, Ch. 6."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "To minimize bending moments in the supporting members, where should heavy rooftop equipment such as water tanks and air-cooling units be placed?",
+    "o": [
+      "At the centroid of the roof slab panel to equalize load distribution in all directions.",
+      "At mid-span of the stiffest beam to reduce differential deflection between adjacent framing members.",
+      "Along the intersection of two primary beams where torsional effects are minimized.",
+      "Near the column–beam junction where negative moments dominate and flexural demand is lowest."
+    ],
+    "c": 3,
+    "n": "Heavy equipment placed near column–beam junctions puts its load close to the supports, where it adds little positive moment and the load path to the column is shortest. Source: Salvadori & Heller, Structure in Architecture; Hibbeler, Mechanics of Materials (moment vs. load position)."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "A flat slab system supports several heavy rooftop chillers placed directly on the slab without drop panels. During analysis, the engineer observes that the concentrated loads create a highly localized stress field around the column heads. Which type of structural stress becomes critical in determining whether the slab will fail by a localized perforation around the column?",
+    "o": [
+      "Axial stress transmitted through the slab thickness as.the load travels vertically to the supports",
+      "Torsional stress induced by the unbalanced moment between adjacent slab panels under differential loading",
+      "Punching stress caused by the concentrated load attempting to drive the slab downward around the column perimeter",
+      "Bending stress due to flexural action radiating outward from the column—slab interface"
+    ],
+    "c": 2,
+    "n": "Concentrated load around a column without drop panels makes punching (two-way) shear critical. The slab can fail by a cone-shaped perforation around the column. Source: NSCP 2015 (7th ed.), Vol. 1, Sec. 422.6."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "In a flat slab system where loads are transferred directly from slab to column without the aid of beams, the slab experiences highly concentrated stresses. This creates a critical region where diagonal tension cracks may form. What is the PRIMARY structural concern in such a beamless flat slab system?",
+    "o": [
+      "Torsional stress along edges",
+      "Excessive deflection at midspan",
+      "Punching shear failure around the column",
+      "Diagonal thermal cracks form in a truncated cone shape"
+    ],
+    "c": 2,
+    "n": "In beamless flat slabs, the main concern is punching shear around the column, where diagonal tension cracks form a truncated cone. Source: NSCP 2015 (7th ed.), Vol. 1, Sec. 422.6; Nilson, Design of Concrete Structures, Ch. 13."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "When a reinforced concrete column is subjected primarily to a concentric vertical load from the floors above. which type of structural stress governs the behavior of the member under ideal conditions?",
+    "o": [
+      "Axial stress resulting from the direct compression along the member's longitudinal axis",
+      "Bending stress caused by minor eccentricities in the applied load",
+      "Torsional stress induced by rotational restraint at the beam—column joints",
+      "Shear stress due to vertical load transfer along the height of the column"
+    ],
+    "c": 0,
+    "n": "A concentrically loaded column is governed by axial (compressive) stress along its longitudinal axis. Source: Hibbeler, Mechanics of Materials, Ch. 1; NSCP 2015 (7th ed.), Vol. 1, Sec. 422.4."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "When a steel base plate transfers the concentrated load of a column onto a concrete pedestal, which type of structural stress primarily develops at the interface between the two materials?",
+    "o": [
+      "Axial stress transmitted through the column's longitudinal axis into the supporting pedestal",
+      "Shear stress caused by horizontal slip between the steel plate and concrete surface",
+      "Bending stress within the base plate due to eccentricity between the column load and pedestal centroid",
+      "Bearing stress produced by the compressive contact pressure between the steel plate and concrete"
+    ],
+    "c": 3,
+    "n": "Where a steel base plate sits on concrete, bearing stress develops from the compressive contact pressure. Source: AISC Design Guide 1 (Base Plate and Anchor Rod Design); NSCP 2015 (7th ed.), Vol. 1, Sec. 422.8 (bearing)."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "Which of the following resists compression the most?",
+    "o": [
+      "Roof",
+      "Footing",
+      "Column",
+      "Beam"
+    ],
+    "c": 2,
+    "n": "Columns are the members designed mainly to resist compression. Source: Ching, Building Construction Illustrated (columns)."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "A structural member subjected to concentric axial compression fails by lateral instability despite the induced stresses remaining below the material's yield strength. Which member is MOST likely to exhibit this behavior?",
+    "o": [
+      "Composite column, because the differing elastic properties of steel and concrete induce lateral deformation.",
+      "Pedestal column, because its short height concentrates compressive stresses.",
+      "Spiral column, because confinement reinforcement delays concrete crushing.",
+      "Long column, because its large effective length and high slenderness ratio make stability the governing criterion."
+    ],
+    "c": 3,
+    "n": "A long, slender column fails by buckling, a lateral instability, while its stress is still below yield. Stability governs because of its large effective length and slenderness ratio. Source: Hibbeler, Mechanics of Materials, Ch. 13."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "The AISC recommended limit for the slenderness ratio of steel compression members (columns)",
+    "o": [
+      "300",
+      "200",
+      "180",
+      "150"
+    ],
+    "c": 1,
+    "n": "AISC recommends that the slenderness ratio KL/r of compression members preferably not exceed 200. Source: AISC 360-16, Sec. E2 (User Note); NSCP 2015 (7th ed.), Vol. 1, Sec. 505."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "A steel compression member has a very high slenderness ratio and is loaded concentrically. Long before the material reaches its yield strength, the member suddenly bends sideways and becomes unstable. What phenomenon governs the failure?",
+    "o": [
+      "Torsional Yielding",
+      "Local Crushing",
+      "Buckling",
+      "Plastic Hinging"
+    ],
+    "c": 2,
+    "n": "A very slender, concentrically loaded steel member that suddenly bends sideways below yield is failing by buckling. Source: Hibbeler, Mechanics of Materials, Ch. 13 (Euler buckling)."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "Which of the following carries transverse loads the most?",
+    "o": [
+      "Roofing",
+      "Column",
+      "Footing",
+      "Beam"
+    ],
+    "c": 3,
+    "n": "Beams are the members that carry transverse loads, resisting them in bending. Source: Hibbeler, Mechanics of Materials, Ch. 6."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "A structural element that spans openings such as portals, doors and windows",
+    "o": [
+      "Cantilever",
+      "Continuous",
+      "Spandrel",
+      "Lintel"
+    ],
+    "c": 3,
+    "n": "A lintel spans openings such as portals, doors and windows. Source: Ching, Building Construction Illustrated."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "A type of column where a continuous helical bar is wrapped around the main bars",
+    "o": [
+      "RC",
+      "Tied",
+      "Helical",
+      "Spiral"
+    ],
+    "c": 3,
+    "n": "A spiral column has a continuous helical bar wrapped around its main longitudinal bars. Source: NSCP 2015 (7th ed.), Vol. 1, Sec. 425.7.3 (spirals)."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "What is the advantage of using spiral columns instead of tied columns?",
+    "o": [
+      "Faster form removal",
+      "Easier and faster to construct",
+      "Better load-bearing capacity, ductility and early indication before failure",
+      "Lower load-bearing capacity and ductility, making it easier to detect failure"
+    ],
+    "c": 2,
+    "n": "Spirals confine the core continuously. This gives spiral columns higher capacity (φ = 0.75 vs. 0.65 for tied) and greater ductility, and they show visible distress before failing. Source: NSCP 2015 (7th ed.), Vol. 1, Sec. 421.2.2 and Sec. 422.4.2."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "What is the major difference between the spiral column and the tied column?",
+    "o": [
+      "Tied Column is stronger than the Spiral Column",
+      "Difference varies according to use and the rebars used",
+      "There is no difference between them",
+      "Spiral Column is stronger than the Tied Column"
+    ],
+    "c": 3,
+    "n": "With continuous confinement, a spiral column has a higher strength-reduction factor and more ductility than a comparable tied column. Source: NSCP 2015 (7th ed.), Vol. 1, Sec. 421.2.2."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "During the 2025 Bogo, Cebu earthquake, many older reinforced concrete buildings suffered brittle column failures once the cover concrete spalled off under intense shaking. Modern seismic design requires detailing that allows a column to retain strength even after severe cracking and lateral deformation. Which structural feature most directly enables a concrete column to maintain DUCTILITY under such earthquake-induced cyclic stresses?",
+    "o": [
+      "Providing closely spaced transverse reinforcement that confines the concrete core and allows it to sustain large inelastic strains",
+      "Increasing the concrete compressive strength to delay crushing of the unconfined core during strong ground motion",
+      "Using larger longitudinal bars to increase the flexural strength and reduce curvature demand during lateral displacement reversal",
+      "Reducing the clear cover to improve bond between steel and concrete and minimize slip during cyclic loading"
+    ],
+    "c": 0,
+    "n": "Closely spaced, well-anchored transverse reinforcement (hoops or spirals) confines the core. That confinement lets the column sustain large inelastic strains after the cover spalls. Source: NSCP 2015 (7th ed.), Vol. 1, Sec. 418.7.5 (transverse reinforcement in special moment frame columns)."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "A reinforced concrete column in a mid-rise structure is expected to resist high axial compression combined with repeated lateral displacement reversals during a major seismic event. The designer must choose the confinement system that can sustain significant post-peak deformation while maintaining its ability to carry load. Which type of column reinforcement provides the most reliable resistance to combined axial and cyclic lateral stresses?",
+    "o": [
+      "Spiral column, because the helical reinforcement reduces the effective slenderness ratio and minimizes second-order effects under axial load",
+      "Tied column, because the rectangular tie configuration enhances shear resistance and stabilizes the column under biaxial bending",
+      "Spiral column, because continuous confinement maintains the integrity of the concrete core and preserves axial strength even after severe cover spalling",
+      "Tied column, because the discrete ties confine the concrete core at regular intervals and delay longitudinal bar buckling under compression"
+    ],
+    "c": 2,
+    "n": "Continuous spiral confinement keeps the concrete core intact after the cover spalls, so the column keeps its axial strength under cyclic seismic loading. Source: NSCP 2015 (7th ed.), Vol. 1, Sec. 418.7.5; Park & Paulay, Reinforced Concrete Structures."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "This element prevents twisting (lateral-torsional buckling) of Purlins.",
+    "o": [
+      "Rafters",
+      "Sag Rod",
+      "Gusset Plate",
+      "Cleats"
+    ],
+    "c": 1,
+    "n": "Sag rods brace purlins about their weak axis. They limit sag and twisting (lateral-torsional buckling) under sloping roof loads. Source: AISC Design Guide (purlin bracing); Salmon & Johnson, Steel Structures."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "In structural framing, which best describes the function of a sag rod, ensuring proper alignment and stability of purlins and girts under load?",
+    "o": [
+      "A moment-resisting brace used for enhancing flexural stiffness in steel roof framing",
+      "A shear-resisting element installed to transfer lateral forces between girts and columns",
+      "A tension member responsible for limiting unintended deformation in horizontal structural elements by applying a pulling force",
+      "A compression member designed to support axial loads by preventing vertical displacement in steel framing systems"
+    ],
+    "c": 2,
+    "n": "A sag rod is a tension member. It pulls purlins and girts into line and limits their deformation about the weak axis. Source: Salmon & Johnson, Steel Structures (sag rods)."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "A load-bearing horizontal building element that supports ceilings or floors.",
+    "o": [
+      "Sill Plate",
+      "Purlin",
+      "Stud",
+      "Joist"
+    ],
+    "c": 3,
+    "n": "A joist is a horizontal load-bearing member that supports floors or ceilings. Source: Ching, Building Construction Illustrated (floor framing)."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "A structural feature or element used to thicken the bottom of a beam or column. It creates a wedge-like shape with the wider part at the bottom and the narrower part at the top.",
+    "o": [
+      "End Plate",
+      "Stiffener",
+      "Cantilever",
+      "Haunch"
+    ],
+    "c": 3,
+    "n": "A haunch thickens a beam toward its support, giving a tapered, wedge-like profile deepest at the support. Source: Ching, Building Construction Illustrated; Nilson, Design of Concrete Structures."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "A concrete product produced in a reusable mold, cured in a controlled environment, transported to the construction site and then maneuvered/installed into place.",
+    "o": [
+      "Prestressed",
+      "Precast Concrete",
+      "Cast-in-place Concrete",
+      "Post tensioned"
+    ],
+    "c": 1,
+    "n": "Precast concrete is cast in reusable molds and cured in a controlled environment, then transported and lifted into place. Source: PCI Design Handbook, Ch. 1."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "Concrete poured directly into forms to harden and become the fixed elements of the structure. 3",
+    "o": [
+      "Post-tensioned",
+      "Precast Concrete",
+      "Prestressed",
+      "Cast-in-place Concrete"
+    ],
+    "c": 3,
+    "n": "Cast-in-place concrete is poured into forms at its final location and hardens there as part of the structure. Source: Ching, Building Construction Illustrated."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "A multi-level parking building requires a large number of identical concrete members—such as beams and slabs—that must be produced with high dimensional accuracy and consistent quality. The contractor prefers a method performed in a controlled environment where long production lines allow multiple units to be fabricated efficiently. Which prestressing method is most appropriate for this situation?",
+    "o": [
+      "Prestressed grouting",
+      "Post-tensioning",
+      "Pretensioning",
+      "Reinforced concrete"
+    ],
+    "c": 2,
+    "n": "Pretensioning in a plant on long casting beds produces many identical, accurate, uniform-quality members efficiently. Source: PCI Design Handbook; Nawy, Prestressed Concrete."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "A large shopping mall is being designed with wide, column-free retail spaces and long spans to maximize flexibility for tenants. The developer also wants thinner floor slabs. The method must be performed on site and allow stressing only after the concrete has reached sufficient strength. Which prestressing method is most appropriate for this situation?",
+    "o": [
+      "Prestressed grouting",
+      "Pretensioning",
+      "Reinforced concrete",
+      "Post-tensioning"
+    ],
+    "c": 3,
+    "n": "Post-tensioning is done on site after the concrete reaches strength. It allows long spans and thinner slabs. Source: PTI Post-Tensioning Manual; Nawy, Prestressed Concrete."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "When the steel tendons are tensioned prior to casting of concrete. The tendons will be temporarily anchored against some abutments and then cut or released after the concrete has been placed and hardened.",
+    "o": [
+      "Post-tensioned",
+      "Pre-tensioned",
+      "Cast-in-place",
+      "Precast"
+    ],
+    "c": 1,
+    "n": "In pretensioning, the tendons are stressed against abutments before casting and released after the concrete hardens. Source: Nawy, Prestressed Concrete, Ch. 1."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "When the steel tendons are tensioned after the concrete has been cast and hardened. Tensioning is accomplished by using hydraulic jacks that stretch the strands while bearing against the ends of the member and then replacing the jacks by permanent anchorages that bear on the member thus keeping the steel strands in tension.",
+    "o": [
+      "Post-tensioned",
+      "Cast-in-place",
+      "Pre-tensioned",
+      "Precast"
+    ],
+    "c": 0,
+    "n": "In post-tensioning, tendons are stressed with hydraulic jacks after the concrete hardens, then locked off with permanent anchorages. Source: Nawy, Prestressed Concrete, Ch. 1."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "A slab that carries loads without the need for beam supports",
+    "o": [
+      "Ribbed Slab",
+      "1-way slab",
+      "2-way slab",
+      "Flat Slab"
+    ],
+    "c": 3,
+    "n": "A flat slab rests directly on columns without beams. Drop panels or capitals may be added. Source: NSCP 2015 (7th ed.), Vol. 1, Sec. 408 (two-way slabs without beams)."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "In flat slab construction, which of the following structural features is commonly added to prevent punching shear failure at the slab-column junction?",
+    "o": [
+      "Transfer Beam",
+      "Drop Panel",
+      "Shear Wall",
+      "Column Capital"
+    ],
+    "c": 1,
+    "n": "Drop panels thicken the slab around the column, increasing the effective depth against punching shear. Column capitals serve a similar purpose. Source: NSCP 2015 (7th ed.), Vol. 1, Sec. 408.2.4 (drop panels)."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "Which type of reinforced concrete slab is most suitable for resisting heavy loads and minimizing punching shear around column supports, while allowing ease of installation, inspection, and maintenance?",
+    "o": [
+      "Flat slab",
+      "Two-way slab with drop panels",
+      "Ribbed slab",
+      "Prestressed concrete slab"
+    ],
+    "c": 1,
+    "n": "A two-way slab with drop panels carries heavy loads. The drop panels raise punching-shear capacity at the columns, and the flat soffit is easy to form and maintain. Source: NSCP 2015 (7th ed.), Vol. 1, Secs. 408.2.4 and 422.6."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "What is the primary structural advantage of using a ribbed slab system in reinforced concrete construction?",
+    "o": [
+      "It eliminates the need for formwork during casting",
+      "It increases the slab's thickness for punching shear resistance",
+      "It reduces dead load while maintaining flexural strength",
+      "It simplifies reinforcement detailing around column heads"
+    ],
+    "c": 2,
+    "n": "Ribs place concrete only where it is needed in tension and shear, cutting dead load while keeping flexural strength. Source: NSCP 2015 (7th ed.), Vol. 1, Sec. 409.8 (joist construction)."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "In a 1-way slab, how are Main Reinforcement Bars placed?",
+    "o": [
+      "All around",
+      "At the support regions to resist negative moments",
+      "Along the longer span to prevent cracking and to evenly distribute loads",
+      "Along the shorter span to resist tensile forces caused by bending"
+    ],
+    "c": 3,
+    "n": "In a one-way slab the main bars run along the short span, which carries the bending. Source: NSCP 2015 (7th ed.), Vol. 1, Sec. 407 (one-way slabs)."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "In a one-way reinforced concrete slab, bars are provided perpendicular to the main reinforcement to minimize shrinkage cracking, maintain the correct spacing of primary reinforcement during construction, and improve the slab's overall integrity. What are these bars called?",
+    "o": [
+      "LongitudinalBars, because they supplement the primary Flexural reinforcement in the direction of the span.",
+      "Temperature Bars, because they provide secondary reinforcement that controls cracking and accommodates volumetric changes in the concrete.",
+      "Distribution Bars, because they assist in spreading concentrated loads across the slab surface.",
+      "Bent Bars, because they contribute additional resistance against diagonal tension stresses near supports."
+    ],
+    "c": 1,
+    "n": "Bars perpendicular to the main steel in a one-way slab are shrinkage and temperature bars. They control cracking from volume changes. Source: NSCP 2015 (7th ed.), Vol. 1, Sec. 424.4 (shrinkage and temperature reinforcement)."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "In a continuous two-way slab, which region predominantly experiences negative moment (hogging) due to flexural stresses?",
+    "o": [
+      "Mid-span of the slab",
+      "Support region",
+      "Edge of the:slab",
+      "Neutral axis of the section"
+    ],
+    "c": 1,
+    "n": "In continuous slabs, negative (hogging) moment occurs over the supports. Source: NSCP 2015 (7th ed.), Vol. 1, Sec. 406.5 (approximate moments); Nilson, Design of Concrete Structures."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "Also known as cohesion piles, these piles transfer the loads from the structure to the soil via the force that develops between the surface of the pile and the soil surrounding it. These piles are utilized when the hard stratum is very deep and it is not economical to directly reach it.",
+    "o": [
+      "End Bearing Piles",
+      "Friction Piles",
+      "Tension Piles",
+      "Screw Piles"
+    ],
+    "c": 1,
+    "n": "Friction (cohesion) piles carry load through skin friction along the shaft. They are used where hard strata are too deep to reach. Source: Das, Principles of Foundation Engineering, Ch. 9 (Pile Foundations)."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "Which type of deep foundation element relies primarily on skin friction to transfer loads to surrounding soil and is typically small in diameter and installed by drilling and grouting?",
+    "o": [
+      "Socketed pile",
+      "Caisson",
+      "Micropile",
+      "Helical pile"
+    ],
+    "c": 2,
+    "n": "Micropiles are small-diameter, drilled and grouted piles. They carry load mainly by grout-to-ground skin friction. Source: FHWA-NHI-05-039, Micropile Design and Construction."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "This structural element is where Load Bearing Walls rest.",
+    "o": [
+      "Wall or Strip Footing",
+      "Tie Beam",
+      "Plinth Beam",
+      "Grade Beam"
+    ],
+    "c": 0,
+    "n": "Load-bearing walls rest on wall (strip) footings, continuous strips that spread the wall load to the soil. Source: Das, Principles of Foundation Engineering, Ch. 3; Ching, Building Construction Illustrated."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "It is used to connect columns and is not designed to carry vertical loads.",
+    "o": [
+      "Plinth Beam",
+      "Wall or Strip Footing",
+      "Tie Beam",
+      "Grade Beam"
+    ],
+    "c": 2,
+    "n": "A tie beam connects columns or footings to hold them in place. It is not designed to carry vertical loads. Source: NSCP 2015 (7th ed.), Vol. 1, Sec. 418.13 (foundation ties); Ching, Building Construction Illustrated."
+  },
+  {
+    "s": "Structural Conceptualization",
+    "q": "It is a structural element resting on piles designed to transfer loads from the upper structure to the piles below.",
+    "o": [
+      "Pile Head",
+      "Mat Footing",
+      "Pile top",
+      "Pile Cap"
+    ],
+    "c": 3,
+    "n": "A pile cap sits on a group of piles and transfers the superstructure loads to them. Source: Das, Principles of Foundation Engineering, Ch. 9."
+  }
+]
