@@ -9,7 +9,7 @@
       "Positive shear"
     ],
     "c": 3,
-    "n": "Standard beam convention."
+    "n": "By convention, net upward shear on the left of a section is positive shear. Source: Hibbeler, Structural Analysis; Gere & Goodno."
   },
   {
     "s": "Beams & Slabs",
@@ -21,7 +21,7 @@
       "Positive shear"
     ],
     "c": 0,
-    "n": "Standard beam convention."
+    "n": "Net downward shear on the left of a section is negative shear. Source: Hibbeler, Structural Analysis."
   },
   {
     "s": "Beams & Slabs",
@@ -33,7 +33,7 @@
       "Positive moment"
     ],
     "c": 2,
-    "n": "M = F × d."
+    "n": "Moment is the tendency of a force to cause rotation, equal to force × moment arm (M = F × d). Source: Hibbeler, Engineering Mechanics: Statics."
   },
   {
     "s": "Beams & Slabs",
@@ -45,7 +45,7 @@
       "External moment"
     ],
     "c": 1,
-    "n": "Bending moment."
+    "n": "The bending moment at a section is the sum of the moments of all forces on one side of it. Source: Hibbeler, Structural Analysis."
   },
   {
     "s": "Beams & Slabs",
@@ -57,7 +57,7 @@
       "Deflection"
     ],
     "c": 1,
-    "n": "Camber."
+    "n": "Camber is a slight upward curve built into a beam to offset expected deflection. Source: Ching, A Visual Dictionary of Architecture."
   },
   {
     "s": "Beams & Slabs",
@@ -69,7 +69,7 @@
       "None of the above"
     ],
     "c": 0,
-    "n": "The base settles."
+    "n": "Slabs on fill most often crack from poorly compacted subgrade that later settles. Source: ACI 302.1R (Guide for Concrete Floor and Slab Construction)."
   },
   {
     "s": "Beams & Slabs",
@@ -81,7 +81,7 @@
       "Bottom"
     ],
     "c": 0,
-    "n": "Tension is at the top."
+    "n": "A cantilever has negative moment, with tension on top, so the main bars go at the top. Source: NSCP 2015, Chapter 4; Ching, Building Construction Illustrated."
   },
   {
     "s": "Beams & Slabs",
@@ -93,7 +93,7 @@
       "None of the above"
     ],
     "c": 1,
-    "n": "Construction joints go where shear is low."
+    "n": "Slab construction joints go in the middle third of the span, where shear is low. Source: ACI 301; NSCP 2015, Sec. 426.5.6."
   },
   {
     "s": "Beams & Slabs",
@@ -105,7 +105,7 @@
       "Both must be poured at the same time"
     ],
     "c": 0,
-    "n": "Pour the beams first, then the slab after an interval, so the beams take their initial set."
+    "n": "Where beams and slabs cannot be cast monolithically, the beam is cast first and the slab later, about a day after, so the beam concrete can settle. Source: ACI 301; DPWH Standard Specifications, Item 405."
   },
   {
     "s": "Beams & Slabs",
@@ -117,7 +117,7 @@
       "Ribbed slab"
     ],
     "c": 0,
-    "n": "Flat slabs have drop panels."
+    "n": "A flat plate has a uniform thickness with no projections below (no drop panels, capitals or beams). Source: Ching, Building Construction Illustrated."
   },
   {
     "s": "Beams & Slabs",
@@ -129,7 +129,7 @@
       "Flat slab"
     ],
     "c": 3,
-    "n": "Flat slab."
+    "n": "A flat slab carries heavy loads without beams, using drop panels or column capitals to resist punching shear. Source: Ching, Building Construction Illustrated."
   },
   {
     "s": "Beams & Slabs",
@@ -141,7 +141,7 @@
       "Flat slab"
     ],
     "c": 3,
-    "n": "Per the MST answer key: Flat slab."
+    "n": "Flat slabs are simple to form (no beams) but need greater thickness and concrete, so they cost more in materials. Source: Ching, Building Construction Illustrated."
   },
   {
     "s": "Beams & Slabs",
@@ -153,7 +153,7 @@
       "Flat plate"
     ],
     "c": 1,
-    "n": "Waffle slab."
+    "n": "A waffle (two-way joist) slab has closely spaced ribs in two directions, for long spans and heavy loads. Source: Ching, Building Construction Illustrated."
   },
   {
     "s": "Beams & Slabs",
@@ -165,7 +165,7 @@
       "One-way slab"
     ],
     "c": 3,
-    "n": "It bends in one direction."
+    "n": "A one-way slab, supported on two opposite sides, bends in one direction, which suits corridors. Source: Ching, Building Construction Illustrated."
   },
   {
     "s": "Beams & Slabs",
@@ -177,7 +177,7 @@
       "Only at the center"
     ],
     "c": 2,
-    "n": "Main bars follow the short span."
+    "n": "In a one-way slab the main bars span the short direction, between supports, at right angles to them. Source: NSCP 2015, Chapter 4; Ching."
   },
   {
     "s": "Beams & Slabs",
@@ -189,7 +189,7 @@
       "One-way slab"
     ],
     "c": 1,
-    "n": "Long-to-short ratio under 2."
+    "n": "Two-way slabs suit square or nearly square panels, where the long-to-short span ratio is less than 2. Source: NSCP 2015, Chapter 4 (two-way slabs)."
   },
   {
     "s": "Beams & Slabs",
@@ -201,7 +201,7 @@
       "Close to the support"
     ],
     "c": 0,
-    "n": "Holes go in the middle third of the span, away from high-shear supports."
+    "n": "Holes in beams are best placed in the middle third of the span (around L/3 from supports), away from high-shear zones near supports. Source: Ching, Building Construction Illustrated; ACI guidance on web openings."
   },
   {
     "s": "Beams & Slabs",
@@ -213,7 +213,7 @@
       "Flexure"
     ],
     "c": 0,
-    "n": "Shrinkage and temperature steel."
+    "n": "Temperature (shrinkage) reinforcement controls cracking from shrinkage and temperature changes. Source: NSCP 2015, Sec. 424.4."
   },
   {
     "s": "Beams & Slabs",
@@ -225,7 +225,7 @@
       "Column capital"
     ],
     "c": 1,
-    "n": "Expansion joints."
+    "n": "Expansion joints let a slab move with thermal expansion and contraction without cracking. Source: ACI 224.3R (Joints in Concrete Construction)."
   },
   {
     "s": "Beams & Slabs",
@@ -237,7 +237,7 @@
       "Canopy"
     ],
     "c": 0,
-    "n": "Beams resist bending."
+    "n": "A beam is a horizontal member mainly subject to bending. Source: Ching, Building Construction Illustrated."
   },
   {
     "s": "Beams & Slabs",
@@ -249,7 +249,7 @@
       "All of the above"
     ],
     "c": 2,
-    "n": "Positive moment stretches the bottom."
+    "n": "Under positive moment, a simply supported RC beam has tension at the bottom, where the main bars go. Source: NSCP 2015, Chapter 4."
   },
   {
     "s": "Beams & Slabs",
@@ -261,7 +261,7 @@
       "None of the above"
     ],
     "c": 0,
-    "n": "σ = M/S."
+    "n": "The section modulus (S = I/c) relates bending stress to moment, σ = M/S. Source: Gere & Goodno, Mechanics of Materials."
   },
   {
     "s": "Beams & Slabs",
@@ -273,7 +273,7 @@
       "Stiffener"
     ],
     "c": 3,
-    "n": "Web stiffeners."
+    "n": "A stiffener is a plate welded to a slender web to prevent it from buckling. Source: NSCP 2015, Chapter 5 (Sec. 5G); AISC 360."
   },
   {
     "s": "Beams & Slabs",
@@ -285,7 +285,7 @@
       "Parapet"
     ],
     "c": 2,
-    "n": "An upstand (inverted) beam."
+    "n": "An upstand (inverted) beam rises above the slab and is cast with it. Source: Ching, A Visual Dictionary of Architecture."
   },
   {
     "s": "Beams & Slabs",
@@ -297,7 +297,7 @@
       "None of the above"
     ],
     "c": 2,
-    "n": "The MRT viaduct deck is a box girder."
+    "n": "The MRT-3 guideway is a precast concrete box girder carrying the tracks above EDSA. Source: DOTr MRT-3 project records; Ching."
   },
   {
     "s": "Beams & Slabs",
@@ -309,7 +309,7 @@
       "Continuous beam"
     ],
     "c": 3,
-    "n": "Continuous beam."
+    "n": "A continuous beam runs over more than two supports. Continuity over interior supports reduces midspan moments and deflection compared with a series of simple spans. Source: Hibbeler, Structural Analysis."
   },
   {
     "s": "Beams & Slabs",
@@ -321,20 +321,19 @@
       "I-beam"
     ],
     "c": 2,
-    "n": "Haunched beam."
+    "n": "A haunched beam is thickened at its supports. The extra depth at the supports matches the larger negative moments and shears there. Source: Ching, A Visual Dictionary of Architecture."
   },
   {
     "s": "Beams & Slabs",
-    "q": "What beam section appears as the letter \"H\" when vertical and the letter \"",
+    "q": "What beam section appears as the letter \"H\" when vertical and the letter \"I\" when horizontal?",
     "o": [
-      "\" when horizontal?",
       "W-section",
-      "Channel",
       "H-section",
-      "Universal beam"
+      "Universal beam",
+      "Channel"
     ],
-    "c": 0,
-    "n": "An H-section reads as H upright and I on its side."
+    "c": 1,
+    "n": "A wide-flange H-section reads as an \"H\" when its flanges are vertical and as an \"I\" when laid horizontally. Source: AISC Steel Construction Manual; Ching."
   },
   {
     "s": "Beams & Slabs",
@@ -346,7 +345,7 @@
       "Unaffected"
     ],
     "c": 0,
-    "n": "It sags."
+    "n": "Under positive (sagging) bending, a beam is stretched below the neutral axis and compressed above it. Source: Gere & Goodno, Mechanics of Materials."
   },
   {
     "s": "Beams & Slabs",
@@ -358,7 +357,7 @@
       "Midspan"
     ],
     "c": 3,
-    "n": "Maximum at midspan."
+    "n": "A simply supported beam has positive moment along its span, greatest at midspan under symmetric load. Source: Hibbeler, Structural Analysis."
   },
   {
     "s": "Beams & Slabs",
@@ -370,7 +369,7 @@
       "Distribution bar"
     ],
     "c": 2,
-    "n": "Vertical bars belong to walls and columns."
+    "n": "Slabs have bottom, top, temperature and distribution bars. Main vertical bars belong to walls and columns. Source: NSCP 2015, Chapter 4."
   },
   {
     "s": "Beams & Slabs",
@@ -382,7 +381,7 @@
       "Embedment length"
     ],
     "c": 1,
-    "n": "Ld."
+    "n": "Development length (Ld) is the embedded length needed to develop a bar's design strength at a critical section. Source: NSCP 2015, Sec. 425.4."
   },
   {
     "s": "Beams & Slabs",
@@ -394,6 +393,6 @@
       "Shear line"
     ],
     "c": 0,
-    "n": "Contraflexure point."
+    "n": "Bending moment changes sign at the inflection point (point of contraflexure). Source: Hibbeler, Structural Analysis."
   }
 ]
