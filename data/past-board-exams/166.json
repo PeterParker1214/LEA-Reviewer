@@ -3,37 +3,49 @@
     "s": "Design, Site Planning & Interiors",
     "q": "Which furniture is ideal for both seating and sleeping?",
     "o": [
-      "ottoman",
-      "recliner",
-      "chesterfield",
-      "futon"
+      "Ottoman",
+      "Recliner",
+      "Chesterfield",
+      "Futon"
     ],
     "c": 3,
-    "n": "A futon is a padded mattress on a convertible frame that folds into a sofa for sitting and flattens into a bed for sleeping. Source: Ching, Interior Design Illustrated (Furniture); Time-Saver Standards for Interior Design."
+    "n": "A futon is designed to convert easily between a seat and a bed, making it a practical choice for dual-purpose use, especially in compact living spaces. A futon is a padded mattress on a convertible frame that folds into a sofa for sitting and flattens into a bed for sleeping. Source: Ching, Interior Design Illustrated (Furniture); Time-Saver Standards for Interior Design."
   },
   {
     "s": "Design, Site Planning & Interiors",
     "q": "Where is a credenza table most ideally placed in a home?",
     "o": [
-      "bathroom",
-      "dining room",
-      "kitchen",
-      "bedroom"
+      "Bathroom",
+      "Dining room",
+      "Kitchen",
+      "Bedroom"
     ],
     "c": 1,
-    "n": "A credenza (sideboard) is a low storage cabinet for serving pieces and tableware. Its natural place is the dining room, along a wall. Source: Ching, Interior Design Illustrated (Furniture Types); Harris, Dictionary of Architecture and Construction."
+    "n": "A credenza table is ideally placed in the dining room, where it serves as additional storage and surface space for serving dishes, tableware, or decorative items. A credenza (sideboard) is a low storage cabinet for serving pieces and tableware. Its natural place is the dining room, along a wall. Source: Ching, Interior Design Illustrated (Furniture Types); Harris, Dictionary of Architecture and Construction."
+  },
+  {
+    "s": "Design, Site Planning & Interiors",
+    "q": "What is determined by projecting the AMBF vertically up to the maximum building height (BHL)?",
+    "o": [
+      "Angular plane",
+      "Building’s outermost face",
+      "Limit of building projections",
+      "TGFA"
+    ],
+    "c": 1,
+    "n": "The NBC defines the outermost faces of the building by projecting the allowable maximum building footprint (AMBF) vertically up to the building height limit. Source: 2004 Revised IRR of PD 1096 (NBCP), Rule VII, Sec. 707 (Outermost Face of Building / Building Envelope)."
   },
   {
     "s": "Design, Site Planning & Interiors",
     "q": "Which structural element is primarily used to resist lateral forces such as wind or seismic loads in high-rise buildings?",
     "o": [
-      "shear wall",
-      "moment wall",
-      "moment beam",
-      "braced wall"
+      "Shear wall",
+      "Moment wall",
+      "Moment beam",
+      "Braced wall"
     ],
     "c": 0,
-    "n": "Shear walls are stiff structural walls that resist lateral wind and seismic forces in their plane. They are the primary lateral system in many high-rises. Source: NSCP 2015, Sec. 208 (Bearing Wall and Dual Systems); Ching, Building Structures Illustrated."
+    "n": "A shear wall is a vertical structural element that provides stiffness and strength to resist lateral forces, helping prevent swaying and structural failure in tall buildings during wind or earthquakes. {2. | LRFD (Load and Resistance Factor Design) is the most comprehensive method, as it applies separate safety factors to both loads and material strengths, providing a more refined and reliable approach compared to ASD (Allowable Stress Design) or older methods. Shear walls are stiff structural walls that resist lateral wind and seismic forces in their plane. They are the primary lateral system in many high-rises. Source: NSCP 2015, Sec. 208 (Bearing Wall and Dual Systems); Ching, Building Structures Illustrated."
   },
   {
     "s": "Design, Site Planning & Interiors",
@@ -49,6 +61,18 @@
   },
   {
     "s": "Design, Site Planning & Interiors",
+    "q": "In a typical slab reinforcement, which portion requires the main reinforcement on the top section of the slab?",
+    "o": [
+      "Continous edge",
+      "End of cantilever",
+      "All portion",
+      "Midspan"
+    ],
+    "c": 0,
+    "n": "Over continuous edges (interior supports) a slab has negative moment, so its main reinforcement goes in the top. A cantilever also has top bars. Source: NSCP 2015, Sec. 407 and 408 (Slab Reinforcement); MacGregor & Wight, Reinforced Concrete."
+  },
+  {
+    "s": "Design, Site Planning & Interiors",
     "q": "Which of the following software is primarily used for structural analysis and design?",
     "o": [
       "Revit Pro",
@@ -57,7 +81,7 @@
       "STAAD.Pro"
     ],
     "c": 3,
-    "n": "STAAD.Pro is software for structural analysis and design. Revit is BIM modeling software, and InfraWorks is for infrastructure planning. Source: Bentley Systems, STAAD.Pro product documentation; Autodesk product documentation."
+    "n": "STAAD.Pro is a specialized software for structural analysis and design, capable of handling complex load calculations and code-based design for buildings, bridges, and other structures. STAAD.Pro is software for structural analysis and design. Revit is BIM modeling software, and InfraWorks is for infrastructure planning. Source: Bentley Systems, STAAD.Pro product documentation; Autodesk product documentation."
   },
   {
     "s": "Design, Site Planning & Interiors",
@@ -69,7 +93,31 @@
       "Exposure C"
     ],
     "c": 0,
-    "n": "Exposure B covers urban and suburban areas, and wooded terrain, with many closely spaced obstructions the size of single-family dwellings or larger. Source: NSCP 2015, Sec. 207A.7.3 (Exposure Categories)."
+    "n": "Exposure B applies to suburban or urban areas where buildings, trees, or other surface roughness elements reduce wind speed. It is the standard classification for most residential developments in structural wind load design. This is based on the NSCP. Exposure B covers urban and suburban areas, and wooded terrain, with many closely spaced obstructions the size of single-family dwellings or larger. Source: NSCP 2015, Sec. 207A.7.3 (Exposure Categories)."
+  },
+  {
+    "s": "Design, Site Planning & Interiors",
+    "q": "Which of the following is a non-GFA space?",
+    "o": [
+      "Basements",
+      "Maid’s quarter",
+      "Mezzanine",
+      "Auxiliary support space"
+    ],
+    "c": 0,
+    "n": "Per the exam key, basements used for parking or services are excluded from the GFA. Source: 2004 Revised IRR of PD 1096 (NBCP), Rule VII, Sec. 707 (GFA definition and exclusions)."
+  },
+  {
+    "s": "Design, Site Planning & Interiors",
+    "q": "What is the maximum firewall height for abutment constructed on the rear side?",
+    "o": [
+      "3 storeys",
+      "2 storeys",
+      "6.5m",
+      "3.2m"
+    ],
+    "c": 3,
+    "n": "Per the exam key, a rear abutment firewall is limited to about 3.20 m in height. Source: 2004 Revised IRR of PD 1096 (NBCP), Rule VII, Sec. 707 (Firewalls – maximum height and length)."
   },
   {
     "s": "Design, Site Planning & Interiors",
@@ -85,24 +133,48 @@
   },
   {
     "s": "Design, Site Planning & Interiors",
-    "q": "Which of the following best describes a positive latching mechanism?",
+    "q": "If a circular stairways is to be used as an exit, what is condition to be complied?",
     "o": [
-      "a soft-close mechanism for drawers and cabinets",
-      "a magnetic hold that requires no physical engagement",
-      "a mechanical latch that holds a door or panel closed until deliberately released",
-      "a device that locks using a key or code"
+      "Shall be made from 1-hr fire construction",
+      "Building must be 4 storeys and above",
+      "250mm minimum width of run",
+      "1.50m minimum lateral width"
     ],
     "c": 2,
-    "n": "A positive latching mechanism is a mechanical latch that engages automatically and holds a door closed until it is deliberately released. Fire doors require one. Source: NFPA 80 (Fire Doors – Positive Latching); RA 9514 (Fire Code) RIRR."
+    "n": "Per the exam key, a curved stairway may be used as an exit if its run (tread depth) is at least 250 mm at the narrow side. Source: RA 9514 (Fire Code) 2019 RIRR, Div. 10.2.5 (Curved Stairs); NFPA 101, Sec. 7.2.2.2.2."
+  },
+  {
+    "s": "Design, Site Planning & Interiors",
+    "q": "Which of the following best describes a positive latching mechanism?",
+    "o": [
+      "A soft-close mechanism for drawers and cabinets",
+      "A magnetic hold that requires no physical engagement",
+      "A mechanical latch that holds a door or panel closed until deliberately released",
+      "A device that locks using a key or code"
+    ],
+    "c": 2,
+    "n": "A positive latching mechanism uses a mechanical action to actively hold a door or panel closed and requires a deliberate release, such as pressing or pulling, to open—ensuring secure and intentional engagement. A positive latching mechanism is a mechanical latch that engages automatically and holds a door closed until it is deliberately released. Fire doors require one. Source: NFPA 80 (Fire Doors – Positive Latching); RA 9514 (Fire Code) RIRR."
+  },
+  {
+    "s": "Design, Site Planning & Interiors",
+    "q": "In FDAS, the each zone for annunciation shall have a maximum of in area.",
+    "o": [
+      "1,500sqm",
+      "1,580sqm",
+      "1,860sqm",
+      "1,250sqm"
+    ],
+    "c": 2,
+    "n": "Per the exam key, each FDAS annunciation zone is limited to about 1,860 sqm (20,000 sq ft) of floor area. Note: NFPA 72 uses 22,500 sq ft. Source: RA 9514 (Fire Code) 2019 RIRR (Fire Detection and Alarm System – Zoning); NFPA 72."
   },
   {
     "s": "Design, Site Planning & Interiors",
     "q": "A color to evoke trustworthiness.",
     "o": [
-      "yellow",
-      "red",
-      "green",
-      "blue"
+      "Yellow",
+      "Red",
+      "Green",
+      "Blue"
     ],
     "c": 3,
     "n": "Blue is associated with trust, dependability and calm, which is why it is common in corporate and institutional branding. Source: Mahnke, Color, Environment and Human Response; Ching, Interior Design Illustrated (Color Psychology)."
@@ -111,13 +183,13 @@
     "s": "Design, Site Planning & Interiors",
     "q": "Which of the following is not considered a vision window?",
     "o": [
-      "clerestory",
-      "awning window",
-      "bay window",
-      "ribbon window"
+      "Clerestory",
+      "Awning window",
+      "Bay window",
+      "Ribbon window"
     ],
     "c": 0,
-    "n": "Clerestory windows sit high on the wall, above eye level, to admit daylight and ventilation, not views. Bay, ribbon and awning windows can be vision windows. Source: Ching, A Visual Dictionary of Architecture (Window); Lechner, Heating, Cooling, Lighting."
+    "n": "Clerestory windows are positioned high on walls, primarily for natural light and ventilation, not for direct outward vision like bay, ribbon, and awning windows. Clerestory windows sit high on the wall, above eye level, to admit daylight and ventilation, not views. Bay, ribbon and awning windows can be vision windows. Source: Ching, A Visual Dictionary of Architecture (Window); Lechner, Heating, Cooling, Lighting."
   },
   {
     "s": "Design, Site Planning & Interiors",
@@ -129,40 +201,40 @@
       "No. 8"
     ],
     "c": 2,
-    "n": "Stainless steel finish No. 2B is a dull, cold-rolled matte finish with the least reflectivity of the choices. No. 4 is brushed, and No. 8 is a mirror finish. Source: ASTM A480 (Stainless Steel Finishes); International Stainless Steel Forum."
+    "n": "No. 2B finish has a smooth, dull, and non-reflective surface, making it the least reflective compared to the more polished No. 4, No. 8, and mirror finishes. Stainless steel finish No. 2B is a dull, cold-rolled matte finish with the least reflectivity of the choices. No. 4 is brushed, and No. 8 is a mirror finish. Source: ASTM A480 (Stainless Steel Finishes); International Stainless Steel Forum."
   },
   {
     "s": "Design, Site Planning & Interiors",
     "q": "In an artisanal bedroom interior, which element does not complement the style?",
     "o": [
-      "woven rattan chair",
-      "textured modular table",
-      "vintage tapestry",
-      "handcrafted wooden bed"
+      "Woven rattan chair",
+      "Textured modular table",
+      "Vintage tapestry",
+      "Handcrafted wooden bed"
     ],
     "c": 1,
-    "n": "Artisanal interiors celebrate handcraft and natural materials: carved wood, woven rattan, vintage textiles. A mass-produced modular table does not belong. Source: Ching, Interior Design Illustrated (Style); Pile, A History of Interior Design."
+    "n": "Artisanal interiors emphasize handmade, rustic, and unique elements, while a textured modular table typically features mass-produced, synthetic materials that contrast with the handcrafted aesthetic. Artisanal interiors celebrate handcraft and natural materials: carved wood, woven rattan, vintage textiles. A mass-produced modular table does not belong. Source: Ching, Interior Design Illustrated (Style); Pile, A History of Interior Design."
   },
   {
     "s": "Design, Site Planning & Interiors",
     "q": "Which of the following features is least likely to be found in a “quiet luxury\" interior space?",
     "o": [
-      "subtle neutral color palette",
-      "ornate gilded mirrors",
-      "understated minimalist furniture",
-      "high-quality natural fabrics"
+      "Subtle neutral color palette",
+      "Ornate gilded mirrors",
+      "Understated minimalist furniture",
+      "High-quality natural fabrics"
     ],
     "c": 1,
-    "n": "\"Quiet luxury\" favors understated quality: fine natural materials, neutral palettes and minimal forms. Ornate gilded mirrors are the opposite of that restraint. Source: Ching, Interior Design Illustrated (Style and Character); contemporary interior design references."
+    "n": "Ornate gilded mirrors are typically associated with opulence and grandeur, while \"quiet luxury\" emphasizes subtle elegance, high-quality materials, and a minimalist aesthetic. \"Quiet luxury\" favors understated quality: fine natural materials, neutral palettes and minimal forms. Ornate gilded mirrors are the opposite of that restraint. Source: Ching, Interior Design Illustrated (Style and Character); contemporary interior design references."
   },
   {
     "s": "Design, Site Planning & Interiors",
     "q": "What type of base tile is ideal for hygienic purposes in a typical restaurant kitchen?",
     "o": [
-      "epoxy",
-      "coved",
-      "stainless steel",
-      "aluminum"
+      "Epoxy",
+      "Coved",
+      "Stainless steel",
+      "Aluminum"
     ],
     "c": 1,
     "n": "Coved base tiles curve from floor to wall, leaving no sharp corner where dirt and bacteria collect. Food-safety codes call for them in commercial kitchens. Source: FDA Food Code, Sec. 6-201.13 (Floor and Wall Junctures, Coved); Time-Saver Standards for Building Types (Restaurants)."
@@ -171,49 +243,61 @@
     "s": "Design, Site Planning & Interiors",
     "q": "What type of door is most suitable for separating a restaurant kitchen from the dining area to allow easy two-way access without using hands?",
     "o": [
-      "single hinged door",
-      "automatic door",
-      "double acting door",
-      "swinging door"
+      "Single hinged door",
+      "Automatic door",
+      "Double acting door",
+      "Swinging door"
     ],
     "c": 2,
-    "n": "Double-acting (two-way swinging) doors open both ways with a push. Servers can pass between kitchen and dining room with full hands. Source: Time-Saver Standards for Building Types (Restaurants – Kitchen Doors); Ching, Building Construction Illustrated, Ch. 8."
+    "n": "Double acting doors swing in both directions and can be pushed open from either side without using hands, making them ideal for high-traffic areas like restaurant kitchens where staff frequently move between spaces while carrying items. Double-acting (two-way swinging) doors open both ways with a push. Servers can pass between kitchen and dining room with full hands. Source: Time-Saver Standards for Building Types (Restaurants – Kitchen Doors); Ching, Building Construction Illustrated, Ch. 8."
   },
   {
     "s": "Design, Site Planning & Interiors",
     "q": "What is the primary purpose of a bain marie in a professional kitchen setting?",
     "o": [
-      "boil ingredients rapidly",
-      "keep cooked food warm",
-      "flash-freeze plated items",
-      "steam raw vegetables"
+      "Boil ingredients rapidly",
+      "Keep cooked food warm",
+      "Flash-freeze plated items",
+      "Steam raw vegetables"
     ],
     "c": 1,
-    "n": "A bain-marie is a hot water bath that keeps cooked food and sauces warm at a gentle, even temperature without overcooking them. Source: Culinary Institute of America, The Professional Chef; FDA Food Code (hot holding)."
+    "n": "A bain marie, or water bath, is used to maintain the temperature of cooked food gently and evenly, preventing overcooking or drying—commonly used in buffet lines and restaurant prep stations. A bain-marie is a hot water bath that keeps cooked food and sauces warm at a gentle, even temperature without overcooking them. Source: Culinary Institute of America, The Professional Chef; FDA Food Code (hot holding)."
+  },
+  {
+    "s": "Design, Site Planning & Interiors",
+    "q": "Pipe color coding for LPG according to the building code.",
+    "o": [
+      "Green",
+      "Red",
+      "Yellow",
+      "Orange"
+    ],
+    "c": 3,
+    "n": "Per the exam key, LPG piping is identified by color coding, and the answer given is orange. Source: PNS/ISO 14726 and ASME A13.1 (Pipe Identification); RA 9514 RIRR."
   },
   {
     "s": "Design, Site Planning & Interiors",
     "q": "What is the primary purpose of a 3-compartment sink in a restaurant kitchen?",
     "o": [
-      "to manage grease, wastewater, and solids",
-      "to separate meat, seafood, and vegetables",
-      "to soak, air dry, and store equipment",
-      "to wash, rinse, and sanitize utensils and cookware"
+      "To manage grease, wastewater, and solids",
+      "To separate meat, seafood, and vegetables",
+      "To soak, air dry, and store equipment",
+      "To wash, rinse, and sanitize utensils and cookware"
     ],
     "c": 3,
-    "n": "A three-compartment sink lets ware be washed, rinsed and sanitized in sequence, as food codes require for manual warewashing. Source: FDA Food Code, Sec. 4-301.12 (Manual Warewashing – Sink Compartment Requirements)."
+    "n": "A 3-compartment sink is designed for manual dishwashing, with each basin designated for washing, rinsing, and sanitizing. This setup ensures food safety compliance by thoroughly cleaning and disinfecting kitchen items. A three-compartment sink lets ware be washed, rinsed and sanitized in sequence, as food codes require for manual warewashing. Source: FDA Food Code, Sec. 4-301.12 (Manual Warewashing – Sink Compartment Requirements)."
   },
   {
     "s": "Design, Site Planning & Interiors",
     "q": "In which industrial application is the reach envelope most critical to ensure safety and efficiency?",
     "o": [
-      "floor finish selection",
-      "corridor width planning",
-      "control panel design",
-      "material storage layout"
+      "Floor finish selection",
+      "Corridor width planning",
+      "Control panel design",
+      "Material storage layout"
     ],
     "c": 2,
-    "n": "The reach envelope, the zone a worker can reach comfortably, is most critical in control panel design. Controls must be within safe, efficient reach to avoid errors and strain. Source: Panero & Zelnik, Human Dimension and Interior Space; ISO 14738 (Anthropometric Requirements for Workstations)."
+    "n": "In control panel design, the reach envelope is crucial to ensure that all switches, buttons, and displays are within safe and comfortable reach of the operator, reducing strain and preventing operational errors. The reach envelope, the zone a worker can reach comfortably, is most critical in control panel design. Controls must be within safe, efficient reach to avoid errors and strain. Source: Panero & Zelnik, Human Dimension and Interior Space; ISO 14738 (Anthropometric Requirements for Workstations)."
   },
   {
     "s": "Design, Site Planning & Interiors",
@@ -225,19 +309,19 @@
       "90th percentile"
     ],
     "c": 2,
-    "n": "Clearances are designed for the 95th percentile, so 95% of users fit. Reaches are designed for the 5th percentile, so the smallest users can reach. Source: Panero & Zelnik, Human Dimension and Interior Space (Percentiles)."
+    "n": "The 95th percentile is used to design for the larger end of the user population, ensuring that tall or large individuals are accommodated, particularly in areas like head clearance, doorway height, or workspace dimensions. Clearances are designed for the 95th percentile, so 95% of users fit. Reaches are designed for the 5th percentile, so the smallest users can reach. Source: Panero & Zelnik, Human Dimension and Interior Space (Percentiles)."
   },
   {
     "s": "Design, Site Planning & Interiors",
     "q": "Which field focuses on analyzing human body movements to improve safety and efficiency in physically demanding work environments?",
     "o": [
-      "industrial occupational safety",
-      "occupational biomechanics",
-      "occupational ergonomics",
-      "industrial hygiene"
+      "Industrial occupational safety",
+      "Occupational biomechanics",
+      "Occupational ergonomics",
+      "Industrial hygiene"
     ],
     "c": 1,
-    "n": "Occupational biomechanics analyzes the forces and movements of the body during physical work. It is used to reduce injuries and improve efficiency. Source: Chaffin, Andersson & Martin, Occupational Biomechanics; International Ergonomics Association."
+    "n": "Occupational biomechanics studies the mechanical aspects of human movement in the workplace, helping to design tasks and tools that reduce strain and prevent musculoskeletal injuries. Occupational biomechanics analyzes the forces and movements of the body during physical work. It is used to reduce injuries and improve efficiency. Source: Chaffin, Andersson & Martin, Occupational Biomechanics; International Ergonomics Association."
   },
   {
     "s": "Design, Site Planning & Interiors",
@@ -255,49 +339,61 @@
     "s": "Design, Site Planning & Interiors",
     "q": "In an industrial workspace, what unit is used to measure if the lighting meets the minimum required illumination for tasks like assembly or inspection?",
     "o": [
-      "watt",
-      "lux",
-      "lumen",
-      "candela"
+      "Watt",
+      "Lux",
+      "Lumen",
+      "Candela"
     ],
     "c": 1,
-    "n": "Required task illuminance is specified and measured in lux (lumens per sqm) with a light meter. Source: IES Lighting Handbook (Illuminance Recommendations); DOLE OSHS Rule 1075 (Illumination)."
+    "n": "Lux measures the amount of light falling on a surface and is the standard unit used to assess whether industrial work areas have adequate illumination for safety and productivity. Required task illuminance is specified and measured in lux (lumens per sqm) with a light meter. Source: IES Lighting Handbook (Illuminance Recommendations); DOLE OSHS Rule 1075 (Illumination)."
   },
   {
     "s": "Design, Site Planning & Interiors",
     "q": "Which of the following is not typically considered part of interior furnishings?",
     "o": [
-      "table lamp",
-      "wall mural",
-      "accent chair",
-      "area rug"
+      "Table lamp",
+      "Wall mural",
+      "Accent chair",
+      "Area rug"
     ],
     "c": 1,
-    "n": "A wall mural is a wall finish or artwork applied to the building surface. Area rugs, accent chairs and table lamps are movable furnishings. Source: Ching, Interior Design Illustrated (Furnishings vs. Finishes)."
+    "n": "Wall mural is a surface finish applied to fixed elements, whereas furnishings refer to movable items like chairs, lamps, and rugs used to equip and decorate a space. A wall mural is a wall finish or artwork applied to the building surface. Area rugs, accent chairs and table lamps are movable furnishings. Source: Ching, Interior Design Illustrated (Furnishings vs. Finishes)."
   },
   {
     "s": "Design, Site Planning & Interiors",
     "q": "Which of the following table types is most closely associated with modernist design principles?",
     "o": [
-      "parsons table",
-      "farmhouse table",
-      "drop-leaf table",
-      "pedestal table"
+      "Parsons table",
+      "Farmhouse table",
+      "Drop-leaf table",
+      "Pedestal table"
     ],
     "c": 0,
-    "n": "The Parsons table, with legs flush with a square apron in one clean block, came from the Parsons School of Design in the 1930s. It embodies modernist simplicity. Source: Pile, A History of Interior Design; Parsons School of Design history."
+    "n": "The Parsons table is a modernist icon known for its clean lines, simple form, and right angles. Its minimalist design reflects the modernist emphasis on function, proportion, and lack of ornamentation. The Parsons table, with legs flush with a square apron in one clean block, came from the Parsons School of Design in the 1930s. It embodies modernist simplicity. Source: Pile, A History of Interior Design; Parsons School of Design history."
   },
   {
     "s": "Design, Site Planning & Interiors",
     "q": "Acid washing is a finishing technique typically used on which of the following materials?",
     "o": [
-      "ceramic",
-      "wood",
-      "stone",
-      "metal"
+      "Ceramic",
+      "Wood",
+      "Stone",
+      "Metal"
     ],
     "c": 2,
-    "n": "Acid washing is a finishing process applied to stone, such as granite and marble, to give a weathered, textured surface. It is also used to etch concrete. Source: Natural Stone Institute, Dimension Stone Design Manual (Finishes)."
+    "n": "Acid washing is commonly applied to concrete and stone surfaces to create a textured, aged, or matte finish by reacting with the material’s surface, enhancing visual depth and slip resistance. Acid washing is a finishing process applied to stone, such as granite and marble, to give a weathered, textured surface. It is also used to etch concrete. Source: Natural Stone Institute, Dimension Stone Design Manual (Finishes)."
+  },
+  {
+    "s": "Design, Site Planning & Interiors",
+    "q": "Which stainless steel finish is most commonly used for kitchen equipment and surfaces due to its smooth, hygienic, and cost-effective properties?",
+    "o": [
+      "Brushed finish",
+      "No. 2B",
+      "Reflective finish",
+      "Mirror finish"
+    ],
+    "c": 1,
+    "n": "No. 2B finish is widely used in kitchen equipment because it is smooth, corrosicn-resistant, easy to clean, and cost-effective—ideal for functional areas like countertops, sinks, and prep tables. Per the exam key, No. 2B (smooth, dull) finish is the answer given for its smoothness, hygiene and cost. Note: food-service equipment often uses No. 4 brushed finish. Source: ASTM A480 (Stainless Steel Finishes); NSF/ANSI 2 (Food Equipment)."
   },
   {
     "s": "Design, Site Planning & Interiors",
@@ -315,144 +411,48 @@
     "s": "Design, Site Planning & Interiors",
     "q": "What is the most damaging factor to synthetic leather when it comes to maintenance?",
     "o": [
-      "occasional use of mild cleaning agents",
-      "prolonged exposure to direct sunlight",
-      "prolonged indoor temperature control",
-      "routine application of leather conditioner"
+      "Occasional use of mild cleaning agents",
+      "Prolonged exposure to direct sunlight",
+      "Prolonged indoor temperature control",
+      "Routine application of leather conditioner"
     ],
     "c": 1,
-    "n": "Prolonged direct sunlight (UV and heat) degrades synthetic leather. The coating fades, dries out and cracks. Source: Manufacturers' care guides for PU/PVC upholstery; ASTM D4329 (UV Exposure of Plastics)."
+    "n": "Prolonged exposure to direct sunlight is the most damaging factor to synthetic leather because it causes the material to dry out, crack, fade, and lose its elasticity. UV rays degrade the synthetic coating and weaken the fibers, leading to premature aging and deterioration. !n contrast, occasional use of mild cleaning agents is generally safe when used properly, as they help maintain cleanliness without damaging the surface. Routine application of leather conditioner can actually prolong the life of synthetic leather by keeping it supple and preventing dryness. Consistent indoor temperature control has minimal impact since synthetic leather is relatively stable under normal indoor conditions. Therefore, while cleaning and conditioning are beneficial, sunlight exposure remains the primary threat to synthetic leather's longevity. Prolonged direct sunlight (UV and heat) degrades synthetic leather. The coating fades, dries out and cracks. Source: Manufacturers' care guides for PU/PVC upholstery; ASTM D4329 (UV Exposure of Plastics)."
   },
   {
     "s": "Design, Site Planning & Interiors",
     "q": "Which application is a tile with a grip finish best suited for?",
     "o": [
-      "living room floor",
-      "kitchen backsplash",
-      "outdoor patio",
-      "bedroom wall"
+      "Living room floor",
+      "Kitchen backsplash",
+      "Outdoor patio",
+      "Bedroom wall"
     ],
     "c": 2,
-    "n": "Tiles with grip (anti-slip) finishes are made for wet exterior floors such as patios, pool decks and ramps. Source: ANSI A137.1 (DCOF slip resistance); Tile Council of North America Handbook."
+    "n": "Grip finish tiles are designed to provide slip resistance, making them ideal for outdoor patios or areas prone to moisture, where safety is a priority. Tiles with grip (anti-slip) finishes are made for wet exterior floors such as patios, pool decks and ramps. Source: ANSI A137.1 (DCOF slip resistance); Tile Council of North America Handbook."
   },
   {
     "s": "Design, Site Planning & Interiors",
     "q": "\"Salt and pepper” is a common pattern of which floor tile?",
     "o": [
-      "ceramic tile",
-      "vinyl tile",
-      "granite tile",
-      "porcelain tile"
+      "Ceramic tile",
+      "Vinyl tile",
+      "Granite tile",
+      "Porcelain tile"
     ],
     "c": 2,
-    "n": "\"Salt and pepper\" is the speckled black-and-white look of granite tiles, from mixed light and dark minerals. Source: Natural Stone Institute, Dimension Stone Design Manual (Granite)."
+    "n": "Salt and pepper granite tiles are characterized by their distinctive speckled pattern, created by a combination of light and dark mineral crystals, making them popular for flooring and countertops. \"Salt and pepper\" is the speckled black-and-white look of granite tiles, from mixed light and dark minerals. Source: Natural Stone Institute, Dimension Stone Design Manual (Granite)."
   },
   {
     "s": "Design, Site Planning & Interiors",
-    "q": "Who is responsible to produce the record drawings?",
+    "q": "Which of the following is typically the most expensive type of marble?",
     "o": [
-      "owner",
-      "architect",
-      "contractor",
-      "engineers"
-    ],
-    "c": 2,
-    "n": "The contractor produces record (as-built) drawings that show the work as actually constructed. The architect may review them. Source: UAP SPP Doc. 301 (General Conditions – Record Drawings); Architect's Guidelines (2016)."
-  },
-  {
-    "s": "Design, Site Planning & Interiors",
-    "q": "Where is a pipe sleeve typically required?",
-    "o": [
-      "pipe. bend",
-      "pipe through slab",
-      "pipe end",
-      "pipe joint"
+      "Carrara marble",
+      "Bookmatched marble",
+      "Statuario marble",
+      "Calacatta marble"
     ],
     "c": 1,
-    "n": "Pipe sleeves are cast into slabs and walls where pipes pass through. They allow movement and replacement, and penetrations can then be firestopped. Source: Revised National Plumbing Code (Sleeves); ASTM E814 (Firestop Systems)."
-  },
-  {
-    "s": "Design, Site Planning & Interiors",
-    "q": "Which construction method involves creating a reinforced concrete wall by excavating a trench stabilized with slurry before pouring concrete?",
-    "o": [
-      "secant caisson wall",
-      "tangent pile enclosure",
-      "precast shoring barrier",
-      "slurry wall"
-    ],
-    "c": 3,
-    "n": "A slurry (diaphragm) wall is cast in a trench excavated under bentonite slurry, which holds the trench open until concrete is tremied in. Source: Das, Principles of Foundation Engineering (Diaphragm Walls); Ching, Building Construction Illustrated, Ch. 3."
-  },
-  {
-    "s": "Design, Site Planning & Interiors",
-    "q": "In prestressed concrete, what method is used to offset or counteract the weight of the structure using the force from tendons?",
-    "o": [
-      "creep compensation",
-      "tendon shaping",
-      "load balancing",
-      "anchorage zoning"
-    ],
-    "c": 2,
-    "n": "In the load-balancing method of prestressed concrete design, draped tendons exert upward forces that counteract part of the gravity load. Source: Lin & Burns, Design of Prestressed Concrete Structures (Load Balancing); Nawy, Prestressed Concrete."
-  },
-  {
-    "s": "Design, Site Planning & Interiors",
-    "q": "Minimum main rebars for a spiral column.",
-    "o": [
-      "5 bars",
-      "8 bars",
-      "4 bars",
-      "6 bars"
-    ],
-    "c": 3,
-    "n": "Spirally reinforced columns need at least 6 longitudinal bars. Tied rectangular columns need 4. Source: NSCP 2015, Sec. 410.7.3.1 (Minimum number of longitudinal bars); ACI 318."
-  },
-  {
-    "s": "Design, Site Planning & Interiors",
-    "q": "What is an ideal task lighting on the kitchen counter?",
-    "o": [
-      "high bay lighting",
-      "wall sconce",
-      "under-cabinet strip,",
-      "valance lighting"
-    ],
-    "c": 2,
-    "n": "Under-cabinet strip lighting puts light right on the counter without shadows from the user's head. It is the ideal kitchen task lighting. Source: IES Lighting Handbook (Residential Kitchen Lighting)."
-  },
-  {
-    "s": "Design, Site Planning & Interiors",
-    "q": "Which of the following is considered a safety lighting?",
-    "o": [
-      "troffer light",
-      "twin head lamp",
-      "track light",
-      "direct lamp"
-    ],
-    "c": 1,
-    "n": "Twin-head emergency lamps are battery-backed units that switch on automatically during power failure to light egress paths, so they are safety lighting. Source: RA 9514 (Fire Code) 2019 RIRR (Emergency Lighting); NFPA 101, Sec. 7.9."
-  },
-  {
-    "s": "Design, Site Planning & Interiors",
-    "q": "Where should a UFO emergency light be installed?",
-    "o": [
-      "swimming pool",
-      "ceiling",
-      "exit steps",
-      "upper wall"
-    ],
-    "c": 1,
-    "n": "UFO-type (round, recessed or surface) emergency lights are installed on the ceiling to spread egress illumination widely. Source: RA 9514 (Fire Code) 2019 RIRR (Emergency Lighting); manufacturers' installation guides."
-  },
-  {
-    "s": "Design, Site Planning & Interiors",
-    "q": "Outline specifications are a deliverable under what design phase?",
-    "o": [
-      "design development",
-      "contract document",
-      "project definition",
-      "schematic design"
-    ],
-    "c": 0,
-    "n": "Outline specifications are part of the Design Development Phase deliverables, together with the developed drawings and the updated cost estimate. Source: Architect's Guidelines (2016), Design Development Phase deliverables."
+    "n": "Bookmatched marble is typically the most expensive due to the complex process of aligning consecutive slabs to create a mirrored, symmetrical pattern, making it highly sought after for luxurious interior designs. Bookmatched marble costs more because consecutive slabs must be cut, selected and laid as mirror images. That increases waste and labor. Source: Natural Stone Institute, Dimension Stone Design Manual (Bookmatching)."
   }
 ]
