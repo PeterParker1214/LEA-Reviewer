@@ -1,6 +1,570 @@
 [
   {
     "s": "Utilities, Construction, Structures & Materials",
+    "q": "What makes a self-cleaning glass capable of repelling dirt and water effectively?",
+    "o": [
+      "Hydrorepellant coating",
+      "Hydrophobic coating",
+      "Hydrosynthetic coating",
+      "Hydrophilic coating"
+    ],
+    "c": 3,
+    "n": "Self-cleaning glass typically uses a hydrophilic coating, which allows water to spread uniformly across the surface, forming a thin film that washes away dirt and organic particies. The coating also reacts with sunlight to break down organic matter, making maintenance easier. Most self-cleaning glass, such as Pilkington Activ, has a titanium-dioxide coating that is photocatalytic and hydrophilic. Sunlight breaks down organic dirt, and rain then sheets evenly across the glass and rinses it away instead of beading. Source: Pilkington technical literature; GANA Glazing Manual (Self-Cleaning Coatings)."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "What substance is commonly used to etch decorative patterns onto glass surfaces?",
+    "o": [
+      "Laser engraving fluid",
+      "Alkaline solution",
+      "Hydrofluoric gel",
+      "Acid"
+    ],
+    "c": 3,
+    "n": "Acid etching, typically using hydrofluoric acid, is a common method for creating decorative patterns on glass. The acid reacts with the glass surface, producing a frosted or opaque appearance. Other methods, like laser engraving, can etch glass but are less commonly used for decorative purposes. Decorative patterns are etched into glass with acid, typically hydrofluoric acid, which gives a frosted, matte finish. Source: GANA Glazing Manual (Acid-Etched Glass); Allen & Iano, Fundamentals of Building Construction, Ch. 17."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "A composite glass with one or more interlayers.",
+    "o": [
+      "Annealed glass",
+      "Laminated glass",
+      "Insulated glass",
+      "Tempered glass"
+    ],
+    "c": 1,
+    "n": "Laminated glass consists of two or more layers of glass bonded together with interlayers, typically made of polyvinyl butyral (PVB) or ethylene-vinyl acetate (EVA). This structure enhances safety and strength, as the interlayer holds the glass fragments together if broken. Laminated glass is two or more glass plies bonded with one or more plastic interlayers (PVB, SGP or EVA). If broken, the pieces stay adhered. Source: ASTM C1172 (Laminated Architectural Flat Glass); GANA Laminated Glazing Reference Manual."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "What is the function of a low-e glass?",
+    "o": [
+      "Reduces heat transfer while allowing light transmission",
+      "Blocks infrared radiation completely",
+      "Reflects ambient sound waves",
+      "Enhances thermal conductivity"
+    ],
+    "c": 0,
+    "n": "Low-E glass has a microscopically thin coating that reduces heat transfer while allowing visible light to pass through. It does not completely block infrared radiation but instead reflects a portion of it, helping to maintain indoor temperatures. The other options are incorrect because Low-E glass is not designed to enhance thermal conductivity or reflect sound waves. Low-E glass has a thin coating that reflects long-wave infrared (heat). It cuts heat transfer while still transmitting most visible light. Source: GANA Glazing Manual (Low-Emissivity Coatings); ASHRAE Handbook – Fundamentals, Ch. 15 (Fenestration)."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "Placement of the glass into frames.",
+    "o": [
+      "Sectioning",
+      "Glazing",
+      "Sealing",
+      "Fitting"
+    ],
+    "c": 1,
+    "n": "Glazing is the setting of glass into window or door frames with stops, beads, gaskets or compound. Source: Harris, Dictionary of Architecture and Construction (Glazing); GANA Glazing Manual."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "Angle of repose for gravel material.",
+    "o": [
+      "27 degrees",
+      "30 degrees",
+      "38 degrees",
+      "45 degrees"
+    ],
+    "c": 3,
+    "n": "Per the exam key, gravel's angle of repose is taken as 45°. Values from about 30° to 45° are cited depending on grading and moisture. Source: Das, Principles of Geotechnical Engineering; Peurifoy, Construction Planning, Equipment and Methods (Soil Properties)."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "What is the usual minimum spacing of lateral ties?",
+    "o": [
+      "1/2 beam depth",
+      "5 mm",
+      "5/3 of aggregate size",
+      "16 x main bar diameter"
+    ],
+    "c": 1,
+    "n": "Per the exam key, the answer given is 5 mm. Code note: the NSCP limits tie spacing to the smallest of 16 longitudinal bar diameters, 48 tie diameters or the least column dimension, so this is a reviewer convention, not a code value. Source: NSCP 2015, Sec. 425.7.2 (Ties)."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "Slab thickness is critical in a project. What can be introduced to decrease the thickness of a suspended slab?",
+    "o": [
+      "Remove rebar embeddment",
+      "Use high viscosity cement",
+      "Introduce drop panels",
+      "Use small aggregate size"
+    ],
+    "c": 2,
+    "n": "Drop panels thicken the slab locally around the columns. They resist punching shear and negative moment there, so the rest of a flat slab can be thinner. Source: NSCP 2015, Sec. 408 (Two-Way Slabs – Drop Panels); MacGregor & Wight, Reinforced Concrete."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "What is the usual depth from the ground line to the bottom of the footing for a 1-storey building?",
+    "o": [
+      "1.20m",
+      "600mm",
+      "1.50m",
+      "1.00m"
+    ],
+    "c": 3,
+    "n": "The building code specified 600mm minimum footing depth but in practice 1.00m footing depth is more commonly used. The NBC's minimum footing depth is about 600 mm, but a 1.00 m depth below grade is common practice for one-storey buildings. Source: 2004 Revised IRR of PD 1096 (NBCP) (foundations); Das, Principles of Foundation Engineering."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "A weak storey in a building is defined when its lateral stiffness is less than what percentage of the storey above?",
+    "o": [
+      "Greater than 120%",
+      "Equal to 100%",
+      "Exactly 50%",
+      "Less than 80%"
+    ],
+    "c": 3,
+    "n": "A weak storey occurs when its lateral stiffness is less than 80% of the stiffness of the storey above. This reduced stiffness makes the structure more prone to collapse under lateral forces like earthquakes or strong winds. Per the exam key, a weak storey is taken as one whose lateral capacity is less than 80% of the storey above. Code note: NSCP defines a weak storey by strength (under 80%) and a soft storey by stiffness (under 70%). Source: NSCP 2015, Table 208-9 (Vertical Structural Irregularities)."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "In a high-rise building, what type of elevator system is typically preferred to minimize energy consumption and enhance ride comfort during long vertical travel?",
+    "o": [
+      "Pneumatic vacuum elevator",
+      "Hydraulic elevator with telescopic piston",
+      "Machine-room-less (MRL) elevator",
+      "Traction elevator with counterweight"
+    ],
+    "c": 3,
+    "n": "Traction elevators use a counterweight system to balance the car’s weight, significantly reducing energy consumption during vertical travel. They are commonly used in high-rise buildings for their efficiency and smoother ride compared to hydraulic or pneumatic systems. High-rise buildings use traction elevators with counterweights. The counterweight balances the car, so less motor energy is needed, and gearless traction drives give smooth rides at high speed over long travel. Hydraulic and pneumatic lifts suit only low rises. Source: Strakosch, The Vertical Transportation Handbook; ASME A17.1."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "Which component of an elevator system primarily controls the smooth acceleration and deceleration of the elevator car during operation?",
+    "o": [
+      "Variable Frequency Drive (VFD)",
+      "Motor Controller",
+      "Speed Governor",
+      "Electronic Brake Regulator"
+    ],
+    "c": 0,
+    "n": "The Variable Frequency Drive (VFD) controls the motor speed by adjusting the frequency and voltage supplied, ensuring smooth acceleration and deceleration of the elevator car. The Speed Governor primarily serves to detect overspeed conditions, the Motor Controller generally manages the motor's on/off functions, and the Electronic Brake Regulator manages braking rather than speed variation. The VFD is essential for providing a comfortable and smooth ride in modern elevator systems. A variable frequency drive varies the motor's frequency and voltage. That ramps speed smoothly, giving gentle acceleration and deceleration and accurate leveling. The governor is only a safety device for overspeed. Source: Strakosch, The Vertical Transportation Handbook; IEC 61800 (Adjustable Speed Drives)."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "In a traction elevator system, what is the primary function of the counterweight?",
+    "o": [
+      "Guide the elevator car during movement",
+      "Balance the car load to reduce motor power requirements",
+      "Prevent overspeed by regulating car speed",
+      "Absorb shock at the bottom of the shaft"
+    ],
+    "c": 1,
+    "n": "The counterweight in a traction elevator system balances the weight of the elevator car, significantly reducing the motor's workload during lifting and lowering. This system minimizes energy consumption and stabilizes the movement of the car. The counterweight does not absorb shock, guide the car, or regulate speed directly. Its primary function is to counterbalance the car load. The counterweight balances the car plus about 40–50% of rated load. The motor then lifts only the out-of-balance load, which cuts the required power. Source: Strakosch, The Vertical Transportation Handbook; Stein & Reynolds, Mechanical and Electrical Equipment for Buildings."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "Which component of an escalator is primarily responsible for maintaining the tension and alignment of the moving steps during operation?",
+    "o": [
+      "Handrail drive",
+      "Step chain",
+      "Main drive shaft",
+      "Step platform"
+    ],
+    "c": 1,
+    "n": "The Step Chain is a critical component of an escalator that connects the individual steps and moves them along the track. It maintains the tension and alignment of the moving steps, ensuring smooth and synchronized operation. The Handrail Drive moves the handrail, the Main Drive Shaft powers the escalator, and the Comb Plate serves as a transition between the moving steps and the landing. The step chains link the steps and run on sprockets. Kept under tension, they hold the steps in alignment along the truss. Source: EN 115-1 / ASME A17.1 (Escalators); Strakosch, The Vertical Transportation Handbook."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "In an escalator system, which component is primarily responsible for guiding the movement of the handrail along its path?",
+    "o": [
+      "Handrail guide rail",
+      "Step chain roller",
+      "Brake mechanism",
+      "Handrail glazing"
+    ],
+    "c": 0,
+    "n": "The Handrail Guide Rail is specifically designed to direct and maintain the path of the handrail as it moves around the escalator system. It ensures the handrail moves smoothly and stays aligned with the steps. The Step Chain Roller supports the step chain, the Drive Sprocket moves the steps, and the Brake Mechanism stops the escalator in emergencies, but none directly guide the handrail. The handrail runs on handrail guide rails (profiles) along the balustrade, which keep it on its path. A separate handrail drive moves it. Source: EN 115-1 / ASME A17.1 (Escalators – Handrail System)."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "What is the known tradename of conduit bodies?",
+    "o": [
+      "Conduline",
+      "Condubods",
+      "Condubox",
+      "Condulets"
+    ],
+    "c": 3,
+    "n": "Conduit bodies are known for its tradename condulets or unilets (though both are trademarks) \"Condulet\" is the long-established trade name (originally Crouse-Hinds) for conduit bodies such as LB, LL, LR, T and C fittings. Source: Philippine Electrical Code (PEC) Part 1, Art. 3.14 (Conduit Bodies); Crouse-Hinds product history."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "What type of switch is commonly used in machinery to detect the presence or absence of an object and automatically stop movement when a predetermined position is reached?",
+    "o": [
+      "Capacitive switch",
+      "Limit switch",
+      "Optical switch",
+      "Proximity switch"
+    ],
+    "c": 1,
+    "n": "A limit switch is a mechanical device that detects the position or movement of an object and automatically stops or changes the motion when a set limit is reached. It is commonly used in machinery for safety and position control. Unlike proximity, capacitive, or optical switches, limit switches require direct physical contact to activate. A limit switch is actuated by the moving part itself when it reaches a set position. It then stops or reverses the motion. Proximity switches sense objects without contact but are not end-of-travel stops. Source: NEMA ICS 5 (Control-Circuit and Pilot Devices); IEC 60947-5-1."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "What is a sudden increase in voltage that can damage electrical equipment, typically caused by lightning strikes, power outages or the switching of heavy loads?",
+    "o": [
+      "Short circuit",
+      "Voltage drop",
+      "Power conditioning",
+      "Surge"
+    ],
+    "c": 3,
+    "n": "A surge (transient overvoltage) is a sudden voltage spike from lightning, utility switching or heavy loads cycling. It can damage electronics. Surge protective devices limit it. Source: IEEE C62.41 (Surge Environment); PEC Part 1, Art. 2.85 (Surge-Protective Devices)."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "What is the process of regulating and filtering incoming electrical power to ensure stable voltage and frequency, protecting sensitive equipment from spikes and surges?",
+    "o": [
+      "Voltage regulation",
+      "Grounding",
+      "Load balancing",
+      "Power conditioning"
+    ],
+    "c": 3,
+    "n": "Power conditioning regulates and filters the incoming supply so equipment gets stable voltage and frequency, free of spikes, surges, sags and noise. Source: IEEE Std 1100 (Powering and Grounding Electronic Equipment – Emerald Book)."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "What opens and closes a circuit?",
+    "o": [
+      "Relay",
+      "Fuse",
+      "Switch",
+      "Breaker"
+    ],
+    "c": 2,
+    "n": "A switch manually opens and closes a circuit. Fuses and breakers open automatically on faults, and relays are electrically operated switches. Source: Philippine Electrical Code (PEC) Part 1, Art. 1.1 (Definitions – Switch) and Art. 4.4."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "A brickwork or masonry bond composed of overlapping stretchers.",
+    "o": [
+      "Common bond",
+      "Flemish bond",
+      "Stack bond",
+      "Running bond"
+    ],
+    "c": 3,
+    "n": "Running bond is also known as stretcher bond. Running (stretcher) bond is all stretchers, each course overlapping the one below by half a unit. Source: Ching, Building Construction Illustrated, Ch. 5 (Masonry Bonds); Brick Industry Association Tech Note 30."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "A brickwork or masonry bond having successive courses of stretchers with all head joints aligned vertically.",
+    "o": [
+      "Stack bond",
+      "Running bond",
+      "Common bond",
+      "Flemish bond"
+    ],
+    "c": 0,
+    "n": "Stack bond lays stretchers with all head joints aligned vertically, so the units do not overlap. It needs joint reinforcement. Source: Ching, Building Construction Illustrated, Ch. 5; BIA Technical Note 30."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "A brickwork bond having alternating headers and stretchers in each course, each header being centered above and below a stretcher.",
+    "o": [
+      "Stack bond",
+      "Running bond",
+      "Flemish bond",
+      "Common bond"
+    ],
+    "c": 2,
+    "n": "Flemish bond alternates headers and stretchers within each course, with every header centered over the stretcher below. Source: Ching, Building Construction Illustrated, Ch. 5; BIA Technical Note 30."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "A brickwork bond having a course of headers between every five or six courses of stretchers.",
+    "o": [
+      "Stack bond",
+      "Running bond",
+      "Common bond",
+      "English bond"
+    ],
+    "c": 2,
+    "n": "Common (American) bond has a course of headers every fifth or sixth course, with stretchers between. Source: Ching, Building Construction Illustrated, Ch. 5; BIA Technical Note 30."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "A brickwork bond having alternate courses of headers and stretchers, in which the headers are centered on the stretchers and the joints between stretchers line up vertically in all courses.",
+    "o": [
+      "Stack bond",
+      "English cross bond",
+      "English bond",
+      "Running bond"
+    ],
+    "c": 2,
+    "n": "English bond alternates whole courses of headers and stretchers, with headers centered on stretchers and stretcher joints aligned vertically. In English cross bond, alternate stretcher courses are shifted instead. Source: Ching, Building Construction Illustrated, Ch. 5; BIA Technical Note 30."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "Which of the following components allows a window to be operable?",
+    "o": [
+      "Muntin",
+      "Sash lock",
+      "Hinge",
+      "Glazing bead"
+    ],
+    "c": 2,
+    "n": "The hinge allows the window to open and close, making it operable. In contrast, the other options do not serve this function. Muntins are fixed components that divide the glass into smaller panes, while glazing beads secure the glass within the frame without enabling movement. The sash lock is used to secure the window when it is closed, but it does not facilitate opening or closing. Therefore, only the hinge directly allows the window to be operable. A sash becomes operable through its hardware for movement, such as hinges for casement and awning windows. Muntins divide the glass, glazing beads hold it, and a sash lock only secures the sash shut. Source: Ching, Building Construction Illustrated, Ch. 8 (Windows)."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "To improve the seal and reduce drafts around a window, a flexible material was added to the edges where the window meets the frame. What is this addition called?",
+    "o": [
+      "Weatherstripping",
+      "Sealant",
+      "Gasket",
+      "Glazing bead"
+    ],
+    "c": 0,
+    "n": "Weatherstripping is used to seal gaps around windows and doors, reducing drafts and preventing water infiltration. It is typically made of flexible materials like rubber, foam, or felt. Glazing beads secure the glass, sealants fill cracks, and gaskets are used for tight seals in mechanical joints, but none specifically address window draft prevention like weatherstripping does. Weatherstripping is flexible strip material fitted where a sash meets its frame. It seals against air drafts, rain and dust. Source: Ching, Building Construction Illustrated, Ch. 8 (Weatherstripping); ASTM E283 (Air Leakage)."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "In the MasterFormat classification system, which number division is designated for Doors and Windows?",
+    "o": [
+      "Division 06",
+      "Division 04",
+      "Division 10",
+      "Division 08"
+    ],
+    "c": 3,
+    "n": "CSI MasterFormat puts Openings (doors, windows, frames, hardware and glazing) in Division 08. Source: CSI/CSC MasterFormat (Division 08 – Openings)."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "To prevent a sliding barn door from swinging outward or wobbling during operation, which component is typically installed at the base of the door?",
+    "o": [
+      "Threshold",
+      "Floor guide",
+      "Floor plate",
+      "Floor track"
+    ],
+    "c": 1,
+    "n": "A floor guide (bottom guide) at the base of a sliding barn door rides in a slot or along the door's bottom edge. It keeps the door from swinging outward or wobbling. Source: Sliding door hardware manufacturers' installation guides; Ching, Building Construction Illustrated, Ch. 8."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "An H-handle is installed in what type of door?",
+    "o": [
+      "Exit door",
+      "Glass door",
+      "Accordion door",
+      "Fire door"
+    ],
+    "c": 1,
+    "n": "H-type pull handles are mounted through frameless tempered glass doors, back to back on both faces. Source: Glass door hardware references; ANSI/BHMA A156.6 (Architectural Door Trim)."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "Continuous unobstructed slots for permitting movement due to changes in temperature or moisture.",
+    "o": [
+      "Construction joints",
+      "Expansion joints",
+      "Control joints",
+      "Isolation joints"
+    ],
+    "c": 1,
+    "n": "Expansion joints are continuous unobstructed gaps through a structure or slab. They let parts expand and contract with temperature or moisture without damage. Source: ACI 224.3R (Joints in Concrete Construction); Ching, Building Construction Illustrated."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "Used as a plane of weakness in concrete.",
+    "o": [
+      "Expansion joints",
+      "Isolation joints",
+      "Movement joints",
+      "Control joints"
+    ],
+    "c": 3,
+    "n": "Control (contraction) joints are sawn or tooled grooves that make a deliberate plane of weakness. Shrinkage cracking then occurs there instead of at random. Source: ACI 224.3R; ACI 302.1R."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "A joint between fixed and moving segment.",
+    "o": [
+      "Isolation joint",
+      "Segment joint",
+      "Vibration joint",
+      "Expansion joint"
+    ],
+    "c": 0,
+    "n": "An isolation joint fully separates elements that move differently, such as a slab and a column or wall. They then do not restrain each other. Source: ACI 224.3R (Isolation Joints); ACI 302.1R."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "In construction, which of the following materials is not ideal for use as an expansion joint filler?",
+    "o": [
+      "Epoxy grout",
+      "Rubberized asphalt",
+      "Bituminous fiberboard",
+      "Closed-cell foam"
+    ],
+    "c": 0,
+    "n": "Epoxy grout is a rigid, non-flexible material that hardens to form a solid, durable surface, making it unsuitable as an expansion joint filler. Expansion joints require materials that can compress and expand, such as closed-cell foam, rubberized asphalt, or bituminous fiberboard, to accommodate thermal movements and prevent cracking. Expansion-joint fillers must be compressible and resilient: closed-cell foam, rubberized asphalt, bituminous fiberboard. Epoxy grout cures rigid and would block movement. Source: ACI 504R (Guide to Sealing Joints); ASTM D1751 / D1752."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "Which of the following characteristics is most important for a good vapor retarder in building construction?",
+    "o": [
+      "High permeance",
+      "Low permeance",
+      "High compressibility",
+      "Low viscosity"
+    ],
+    "c": 1,
+    "n": "A good vapor retarder should have low permeance to effectively block the passage of water vapor through building materials. This characteristic helps prevent moisture accumulation within wall assemblies, reducing the risk of mold and structural damage. High permeance would allow vapor to pass through, defeating the purpose of the vapor retarder. A vapor retarder must have low permeance (in perms), so it resists the diffusion of water vapor into the assembly. High permeance would let vapor pass. Source: ASHRAE Handbook – Fundamentals, Ch. 26 (Vapor Retarders); ASTM E96."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "Which of the following is not ideal for use in structural concrete applications?",
+    "o": [
+      "High-strength concrete",
+      "Lean concrete",
+      "Rich concrete",
+      "Mass concrete"
+    ],
+    "c": 1,
+    "n": "Lean concrete has a low cement content and low strength. It is used for blinding, mass fill and sub-base, not for structural members. Source: Kosmatka et al., Design and Control of Concrete Mixtures (PCA); Max Fajardo, Simplified Construction Estimate."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "What is the minimum concrete cover for cast-in-place footing?",
+    "o": [
+      "20mm",
+      "75mm",
+      "50mm",
+      "100mm"
+    ],
+    "c": 1,
+    "n": "Concrete cast against and permanently exposed to earth, as in footings, needs at least 75 mm of cover over the reinforcement. Source: NSCP 2015, Table 420.6.1.3.1 (Specified Concrete Cover – cast against and permanently in contact with ground); ACI 318."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "What is the minimum concrete cover to protect stirrups and ties?",
+    "o": [
+      "30mm",
+      "40mm",
+      "75mm",
+      "2mm"
+    ],
+    "c": 1,
+    "n": "Since it mentioned ties and stirrups, it refers to beams and columns. Cast-in-place beams and columns not exposed to weather or earth need 40 mm of cover over the primary bars, ties, stirrups and spirals. Source: NSCP 2015, Table 420.6.1.3.1; ACI 318."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "Which of the following admixtures is primarily used to reduce the water-cement ratio while maintaining workability, resulting in increased compressive strength and durability of concrete?",
+    "o": [
+      "Superplasticizer",
+      "Fluidizer",
+      "Air-entraining agent",
+      "Water reducing agent"
+    ],
+    "c": 0,
+    "n": "Superplasticizers (high-range water reducers) cut the water-cement ratio sharply while keeping workability, which raises strength and durability. Source: ASTM C494 Type F/G (High-Range Water-Reducing Admixtures); ACI 212.3R."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "Which of the following is not a cement brand?",
+    "o": [
+      "Lafarge",
+      "Bosch",
+      "Holcim",
+      "Cemex"
+    ],
+    "c": 1,
+    "n": "Bosch makes power tools and appliances, not cement. Lafarge, Holcim and Cemex are cement makers. Source: Lafarge/Holcim, Cemex and Bosch company profiles."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "Which type of rebar is used in slabs?",
+    "o": [
+      "Lateral ties",
+      "Shear",
+      "Trimmer",
+      "Hoop"
+    ],
+    "c": 2,
+    "n": "Trimmer bars are added around openings in slabs. They replace the cut bars and control cracking at the corners. Shear bars, ties and hoops belong to beams and columns. Source: ACI 315 (Details and Detailing of Concrete Reinforcement); CRSI Manual of Standard Practice."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "Which type of rebar is used in beams and columns?",
+    "o": [
+      "Distribution bar",
+      "Temperature bar",
+      "Web bar",
+      "Shrinkage bar"
+    ],
+    "c": 2,
+    "n": "Web bars (skin reinforcement) run along the sides of deep beams and columns to control cracking in the web. Temperature, distribution and shrinkage bars belong to slabs. Source: NSCP 2015, Sec. 409.7.2.3 (Skin Reinforcement); ACI 318."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "What is the primary purpose of shear studs in reinforced concrete beams?",
+    "o": [
+      "Enhance composite action between steel and concrete",
+      "Provide lateral confinement to longitudinal bars",
+      "Act as a thermal expansion joint",
+      "Increase the tensile strength of the concrete"
+    ],
+    "c": 0,
+    "n": "Shear studs welded to the top flange of a steel beam anchor the concrete slab. They transfer horizontal shear, so steel and concrete act compositely. Source: NSCP 2015, Sec. 509 (Composite Members); AISC 360, Chapter I."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "Which type of rebar is used in slabs?",
+    "o": [
+      "Lateral ties",
+      "Spiral",
+      "Temperature",
+      "Stirrups"
+    ],
+    "c": 2,
+    "n": "Slabs get temperature (shrinkage) bars at right angles to the main bars. They control cracking from shrinkage and temperature change. Stirrups, ties and spirals are beam and column reinforcement. Source: NSCP 2015, Sec. 424.4 (Shrinkage and Temperature Reinforcement); ACI 318."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "What type of foundation consists of a large, thick concrete slab that covers the entire footprint of a building, distributing the load evenly over a large area, especially suitable for soils with low bearing capacity?",
+    "o": [
+      "Cellular foundation",
+      "Mat foundation",
+      "Pile foundation",
+      "Mass foundation"
+    ],
+    "c": 1,
+    "n": "A mat foundation (also known as a raft foundation) is a large, continuous slab that supports multiple columns and walls, spreading the load across a wide area. It is particularly useful in situations where the soil bearing capacity is low, preventing differential settlement. Pile foundations transfer loads deeper into the ground, strip foundations support load-bearing walls, and raft foundations are similar to mat foundations but may differ in design and application. A mat (raft) foundation is one thick slab under the whole building footprint. It spreads the load over soil of low bearing capacity and reduces differential settlement. Source: Das, Principles of Foundation Engineering (Mat Foundations); Ching, Building Construction Illustrated, Ch. 3."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "What is the primary use of a sand blaster gun in construction and maintenance work?",
+    "o": [
+      "Paint application",
+      "Surface cleaning",
+      "Wood lamination",
+      "Concrete texturing"
+    ],
+    "c": 1,
+    "n": "A sand blaster gun is primarily used to clean surfaces and remove rust, paint, and contaminants from metal, concrete, or other durable surfaces. It works by blasting abrasive materials at high velocity. It is not used for cutting concrete, drilling holes, or mixing concrete. Sandblasting propels abrasive at high speed to clean surfaces. It strips rust, mill scale, old paint and laitance before coating or repair. Source: SSPC-SP 5/SP 10 (Abrasive Blast Cleaning); ICRI 310.2R."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
+    "q": "Which equipment is used to level and compact freshly poured concrete, creating a smooth and even surface?",
+    "o": [
+      "Concrete mixer",
+      "Vibratory plate",
+      "Screeding machine",
+      "Power trowel"
+    ],
+    "c": 2,
+    "n": "A screeding machine is specifically designed to level and compact freshly poured concrete, ensuring a smooth and even surface. It uses a long, flat blade that vibrates to distribute and level the concrete efficiently. In contrast, a concrete mixer mixes the ingredients, a vibratory plate compacts soil or asphait, and a power trowel finishes and smoothens the concrete surface after leveling. A screeding machine (vibratory or laser screed) strikes off fresh concrete to grade and consolidates the surface. That gives a level, even slab ready for finishing. Source: ACI 302.1R (Concrete Floor and Slab Construction – Strikeoff and Screeding)."
+  },
+  {
+    "s": "Utilities, Construction, Structures & Materials",
     "q": "In construction and surveying, which instrument is primarily used to accurately measure both horizontal and vertical angles?",
     "o": [
       "Laser level",
@@ -10,521 +574,5 @@
     ],
     "c": 2,
     "n": "A theodolite is an optical instrument specifically designed to measure horizontal and vertical angles with high precision, making it essential for tasks like land surveying, building layout, and alignment. A laser level projects a horizontal or vertical plane but does not measure angles, a plumb bob determines verticality, and a total station measures distances and angles but combines multiple functions beyond just angle measurement. A theodolite measures horizontal and vertical angles with high precision. A total station adds electronic distance measurement. Source: Brinker & Wolf, Elementary Surveying (Theodolites and Total Stations)."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "In heavy construction projects involving excavation in hard soil or rock, which of the following equipment is most suitable for both digging and lifting large amounts of material in confined spaces?",
-    "o": [
-      "Backhoe loader",
-      "Excavator",
-      "Skid steer",
-      "Dragline"
-    ],
-    "c": 0,
-    "n": "A backhoe loader is versatile equipment that can both dig and lift material efficiently, especially in confined spaces. It features a digging bucket on the back and a loading bucket on the front. While an excavator is also efficient in digging, it lacks the dual functionality of the loader. A dragline is used for large-scale excavation and mining, while a skid steer is primarily used for loading and not deep digging. A backhoe loader can dig with its rear hoe and lift or load with its front bucket. That makes it versatile in confined sites. Source: Peurifoy, Construction Planning, Equipment and Methods (Backhoes and Loaders)."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "Which construction equipment is most efficient for spreading and leveling large volumes of loose material like gravel or asphalt on a road project, while also compacting it in the process?",
-    "o": [
-      "Bulldozer",
-      "Motor grader",
-      "Paver",
-      "Vibratory roller"
-    ],
-    "c": 1,
-    "n": "A motor grader is specifically designed for spreading, leveling, and grading loose materials with a high degree of precision. It has a long blade for even distribution and can handle roadwork and finishing tasks. A bulldozer moves earth but lacks fine leveling capability. A vibratory roller compacts surfaces but does not spread material, and a paver lays asphalt but does not perform fine grading. A motor grader spreads, levels and grades loose material precisely with its long, adjustable blade. Its weight and pneumatic tires also give some compaction. Source: Peurifoy, Construction Planning, Equipment and Methods (Motor Graders)."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "What is the solid or semisolid residue obtained from the partial evaporation or fractional distillation of tar?",
-    "o": [
-      "Asphalt",
-      "Bitumen",
-      "Resin",
-      "Pitch"
-    ],
-    "c": 3,
-    "n": "Pitch is the dark solid or semisolid residue left after distilling coal tar or wood tar. Bitumen and asphalt come from petroleum. Source: ASTM D8 (Standard Terminology – Pitch); Harris, Dictionary of Architecture and Construction."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "Which of the following is a thermoset material commonly used in construction?",
-    "o": [
-      "Epoxy",
-      "Polyethylene",
-      "Polystyrene",
-      "Polyvinyl chloride (PVC)"
-    ],
-    "c": 0,
-    "n": "Epoxy is a thermoset material, meaning it undergoes a chemical reaction during curing and becomes permanently hard and inflexible. It is widely used in adhesives, coatings, and composites. Unlike thermoplastics, thermosets cannot be remelted or reshaped. Epoxy is a thermoset: it cures by irreversible cross-linking and cannot be remelted. Polyethylene, PVC and polystyrene are thermoplastics. Source: Callister, Materials Science and Engineering (Polymers); Allen & Iano, Fundamentals of Building Construction."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "Which of the following is a thermoplastic material commonly used in construction applications?",
-    "o": [
-      "Bakelite",
-      "Polyethylene",
-      "Epoxy",
-      "Melamine"
-    ],
-    "c": 1,
-    "n": "Polyethylene is a thermoplastic, meaning it can be melted and reshaped multiple times without significant chemical change. It is commonly used in plastic piping, insulation, and protective coatings. Unlike thermosets, thermoplastics soften upon heating. Polyethylene is a thermoplastic that softens when heated and can be reshaped. It is used for vapor barriers, pipes and membranes. Bakelite, epoxy and melamine are thermosets. Source: Callister, Materials Science and Engineering (Polymers)."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "In construction, what is the term for the layer of soil or rock that provides adequate bearing capacity for the load transferred by piles?",
-    "o": [
-      "Subgrade",
-      "Support depth",
-      "Bearing zone",
-      "Bearing stratum"
-    ],
-    "c": 3,
-    "n": "The bearing stratum is the soil or rock layer with enough capacity to support the loads transferred by piles. End-bearing piles are driven to it. Source: Das, Principles of Foundation Engineering (Pile Foundations); Ching, Building Construction Illustrated, Ch. 3."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "Mortar grade with the least strength.",
-    "o": [
-      "Type S",
-      "Type M",
-      "Type O",
-      "Type K"
-    ],
-    "c": 3,
-    "n": "Masonry mortar types in descending strength are M, S, N, O and K. Type K is the weakest and is used only for non-load-bearing work. Source: ASTM C270 (Mortar for Unit Masonry)."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "What safety procedure is used to ensure that machinery is properly shut off and not started up again before the completion of maintenance or servicing work?",
-    "o": [
-      "Confined Space Entry",
-      "Hot Work",
-      "Shut Off Procedure",
-      "Lockout/Tagout"
-    ],
-    "c": 3,
-    "n": "Lockout/Tagout (LOTO) is a safety procedure used to ensure that machines are properly shut off and cannot be restarted until maintenance or servicing is complete. It involves locking and tagging the power source to prevent accidental activation. Other options, like Permit to Work and Hot Work Permit, are safety protocols but do not specifically prevent machinery from being restarted during maintenance. Lockout/Tagout (LOTO) isolates energy sources and locks and tags them. Machinery then cannot be restarted until maintenance or servicing is finished. Source: DOLE OSHS Rule 1210 and DO 198-18 (Construction Safety); OSHA 29 CFR 1910.147."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "What is the primary purpose of a deadman switch in construction equipment?",
-    "o": [
-      "Provide a backup power source in case of failure",
-      "Automatically stop the machine when the operator releases control",
-      "Enhance the speed of machine operation",
-      "Maintain constant power output during operation"
-    ],
-    "c": 1,
-    "n": "A deadman switch must be held by the operator. If the operator releases it, through incapacity or leaving the controls, the machine stops automatically. Source: DOLE OSHS (Construction Safety – Equipment Controls); ISO 12100 (Safety of Machinery)."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "Which government department is primarily responsible for implementing Occupational Safety and Health (OSH) regulations in the construction industry?",
-    "o": [
-      "Department of Public Works and Highways (DPWH)",
-      "Department of Labor and Employment (DOLE)",
-      "Department of Trade and Industry (DTI)",
-      "Department of Environment and Natural Resources (DENR)"
-    ],
-    "c": 1,
-    "n": "The Department of Labor and Employment implements and enforces Occupational Safety and Health standards, including construction safety. Source: RA 11058 (OSH Law) and DOLE DO 198-18; DOLE Occupational Safety and Health Standards."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "How many hours is the Construction Occupational Safety and Health (COSH) training required in the Philippines for site safety officers?",
-    "o": [
-      "16 hours",
-      "24 hours",
-      "80 hours",
-      "40 hours"
-    ],
-    "c": 3,
-    "n": "Construction safety officers must complete the 40-hour Construction Occupational Safety and Health (COSH) training accredited by DOLE. Source: DOLE DO 13 s.1998 and DO 198-18 (IRR of RA 11058)."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "What term is used to describe construction activities that involve open flames, sparks, or the generation of heat, requiring special safety precautions to prevent fires?",
-    "o": [
-      "Heat work",
-      "Hazard work",
-      "Hot work",
-      "Shop work"
-    ],
-    "c": 2,
-    "n": "Hot work is any work producing flames, sparks or heat, such as welding, cutting, brazing and grinding. It needs a hot-work permit and fire precautions. Source: RA 9514 (Fire Code) 2019 RIRR (Hot Work); NFPA 51B."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "Why is quarter sawing considered better than plain sawing when cutting hardwood logs?",
-    "o": [
-      "It produces more wood from each log",
-      "It creates a smoother surface",
-      "It is faster and requires less effort",
-      "It makes boards more stable and less likely to warp"
-    ],
-    "c": 3,
-    "n": "Quarter sawing cuts logs into quarters before slicing, creating boards that are more stable and less prone to warping. This method also shows attractive grain patterns. Although it takes more time and effort than plain sawing, the result is more dimensionally stable lumber. Quarter-sawn boards have growth rings at a steep angle to the face. They shrink less across the width, resist cupping and warping, and are more stable. Plain sawing gives more yield, faster. Source: USDA Forest Products Laboratory, Wood Handbook, Ch. 5; Hoadley, Understanding Wood."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "In construction, what is the primary purpose of the tool commonly known as \"pitik”?",
-    "o": [
-      "To mark straight reference lines on surfaces",
-      "To level horizontal surfaces",
-      "To drill precise holes in concrete",
-      "To measure vertical alignment"
-    ],
-    "c": 0,
-    "n": "\"Pitik\" is the local name for the chalk line. Stretched and snapped, it marks a straight reference line on floors, walls and boards. Source: Max Fajardo, Simplified Construction Estimate (Layout tools); construction trade terminology."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "A concrete-filled, thin-walled tubular steel column used for vertical support in buildings.",
-    "o": [
-      "Concrete column",
-      "Combined column",
-      "Composite column",
-      "Lally column"
-    ],
-    "c": 3,
-    "n": "A lally column is a thin-walled steel pipe filled with concrete, used as a vertical support such as under basement beams. Source: Harris, Dictionary of Architecture and Construction (Lally Column); Ching, A Visual Dictionary of Architecture."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "Which of the following is a horizontal element?",
-    "o": [
-      "Stake",
-      "Batterboard",
-      "Pile",
-      "Rake"
-    ],
-    "c": 1,
-    "n": "A batter board is the horizontal board nailed to stakes outside the building corners. It holds the strings that mark the building lines. Stakes and piles are vertical. Source: Ching, Building Construction Illustrated, Ch. 1 (Layout); Fajardo, Simplified Construction Estimate."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "Which of the following is the ideal foundation in loose sand?",
-    "o": [
-      "Wall footing",
-      "Mat or pile",
-      "Spread footing",
-      "Lean footing"
-    ],
-    "c": 1,
-    "n": "Loose sand has low bearing capacity and settles. Loads are spread over a mat or carried down by piles to firmer strata. Source: Das, Principles of Foundation Engineering (Mat and Pile Foundations)."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "What type of Fire Detection and Alarm System (FDAS) provides the exact location of a fire within a building?",
-    "o": [
-      "Digital",
-      "Wireless",
-      "Conventional",
-      "Addressable"
-    ],
-    "c": 3,
-    "n": "An addressable FDAS assigns a unique address to each detection device (such as smoke detectors and pull stations), allowing the system to identify the exact location of a fire. This feature significantly improves response time and accuracy. In contrast, a conventional FDAS groups devices into zones without pinpointing the exact source, a manual fire alarm system requires manual activation, and a wireless FDAS focuses on signal transmission without necessarily providing location details. In an addressable FDAS, each device has a unique address. The panel identifies the exact device and location in alarm. Conventional systems only identify a zone. Source: NFPA 72 (Fire Alarm and Signaling Code); RA 9514 RIRR."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "What is the standard color of a manual call point (MCP)?",
-    "o": [
-      "Yellow",
-      "Green",
-      "Blue",
-      "Red"
-    ],
-    "c": 3,
-    "n": "MCP means manual call point and is usually red in color. Manual call points (MCPs) are red, so they are instantly recognizable as fire alarm devices. Source: BS EN 54-11 (Manual Call Points); NFPA 72."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "Which type of HVAC system is most commonly used in residential and small commercial applications due to its cost-effectiveness and modular design?",
-    "o": [
-      "VRF system",
-      "DX system",
-      "Hydronic system",
-      "Chilled water system"
-    ],
-    "c": 1,
-    "n": "The DX (Direct Expansion) system is the most common HVAC choice for residential and small commercial applications because it is cost-effective, compact, and easy to install. Types like split systems, packaged units, and ductless mini-splits are widely used. In contrast, chilled water systems are more suitable for large commercial buildings, VRF systems are typically found in mid to large- scale commercial applications, and hydronic systems are used for heating in colder climates. Direct-expansion (DX) systems, the split and window units, cool the air directly with refrigerant. They are modular and economical, so they dominate homes and small commercial spaces. Source: ASHRAE Handbook – HVAC Systems and Equipment (Unitary/DX Systems)."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "What is the purpose of night setback in HVAC systems?",
-    "o": [
-      "To reduce energy consumption",
-      "To clean HVAC filter",
-      "To improve cooling performance",
-      "To maximize the solar energy collected"
-    ],
-    "c": 0,
-    "n": "Night setback raises the cooling setpoint (or lowers the heating setpoint) when a building is unoccupied, to save energy. Source: ASHRAE Standard 90.1 (Setback Controls); ASHRAE Handbook – HVAC Applications."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "A supply vent with adjustable louvers to regulate airflow.",
-    "o": [
-      "Register",
-      "Grille",
-      "Ducting",
-      "Air slot"
-    ],
-    "c": 0,
-    "n": "A register is a supply outlet with a grille and adjustable louvers or a damper, so airflow can be directed and regulated. A grille has no damper. Source: ASHRAE Handbook – Fundamentals (Air Diffusion); Stein & Reynolds, Mechanical and Electrical Equipment for Buildings."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "What term describes the gradual downward movement of a structure due to the compression of soil beneath its foundation?",
-    "o": [
-      "Heave",
-      "Buckling",
-      "Settlement",
-      "Creep"
-    ],
-    "c": 2,
-    "n": "Settlement is the downward movement of a structure as the soil beneath its foundation compresses or consolidates. Source: Das, Principles of Foundation Engineering (Settlement); NSCP 2015, Ch. 3."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "What can be done to reduce the minimum thickness of one-way slab?",
-    "o": [
-      "Add rake and beam",
-      "Make it ribbed",
-      "Supporting girder",
-      "Provide two supports on opposite sides"
-    ],
-    "c": 1,
-    "n": "Per the exam key, making a one-way slab ribbed (joist slab) reduces the slab thickness between ribs. Code note: the NSCP minimum depth for ribbed one-way slabs (L/16) is larger than for solid slabs (L/20). Source: NSCP 2015, Table 409.3.1.1."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "Standard commercial length of sheet piles.",
-    "o": [
-      "12 meters",
-      "6 meters",
-      "15 meters",
-      "10 meters"
-    ],
-    "c": 1,
-    "n": "Per the exam key, steel sheet piles are commonly stocked in 6 m lengths and spliced or ordered longer as needed. Source: Supplier stock lengths; ArcelorMittal Piling Handbook."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "In steel roofing, which structural element is commonly supported or aligned using a setting angle?",
-    "o": [
-      "Purlins",
-      "Flashing",
-      "Gutters",
-      "Rafters"
-    ],
-    "c": 0,
-    "n": "Purlins are set on, and aligned by, setting angles (purlin cleats) fixed to the rafters or top chords. Source: Max Fajardo, Simplified Construction Estimate (Steel Roof Framing); AISI S100."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "What type of bolt is most suitable for connecting a steel beam to a reinforced concrete (RC) beam?",
-    "o": [
-      "Anchor bolt",
-      "Eye bolt",
-      "Machine bolt",
-      "Carriage bolt"
-    ],
-    "c": 0,
-    "n": "Anchor bolts, cast-in or post-installed, fix steel members to concrete. They are the connector for joining a steel beam to an RC beam or wall. Machine and carriage bolts join steel or wood to steel or wood. Source: ACI 318 / NSCP 2015, Ch. 4 (Anchoring to Concrete); AISC Design Guide 1."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "What is the purpose of temperature bars?",
-    "o": [
-      "Resist bending",
-      "Main reinforcement for negative moment",
-      "Main reinforcement for positive moment",
-      "Minimize cracks"
-    ],
-    "c": 3,
-    "n": "Temperature (shrinkage) bars are distribution steel placed perpendicular to the main bars. They control and minimize cracks from shrinkage and temperature change. Source: NSCP 2015, Sec. 424.4; ACI 318."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "In a continuous concrete slab, where is the greatest negative moment typically located?",
-    "o": [
-      "At the slab corners",
-      "At midspan",
-      "Near the edges",
-      "Over the supports"
-    ],
-    "c": 3,
-    "n": "In a continuous slab, the largest negative moments occur over the interior supports. The top bars are concentrated there. Positive moment peaks near midspan. Source: NSCP 2015, Sec. 406.5 (Approximate Moment Coefficients); MacGregor & Wight, Reinforced Concrete."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "In a one-way slab, what is the orientation of the main reinforcement bars?",
-    "o": [
-      "Perpendicular to the longer span",
-      "Parallel to the longer span",
-      "Perpendicular to the shorter span",
-      "Both directions"
-    ],
-    "c": 0,
-    "n": "A one-way slab bends mainly across its short span. The main bars run parallel to the short span, which is perpendicular to the long side. Temperature bars run the other way. Source: NSCP 2015, Sec. 407 (One-way Slabs); MacGregor & Wight, Reinforced Concrete."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "What can be used in wood surface to prevent discoloration from the inside of the wood?",
-    "o": [
-      "Red oxide paint",
-      "Latex paint",
-      "Tannin-resistant paint",
-      "Epoxy paint"
-    ],
-    "c": 2,
-    "n": "Tannin-blocking (stain-resistant) primers or paints stop water-soluble tannins in woods like narra and cedar from bleeding through and discoloring the finish. Source: PDCA Painting Standards (Tannin Bleed); MPI Architectural Painting Specification Manual."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "What is the term for the angular cut made at the end of beams or joists to prevent structural damage during a fire?",
-    "o": [
-      "Miter cut",
-      "Firecut",
-      "Notch cut",
-      "Bevel cut"
-    ],
-    "c": 1,
-    "n": "A fire cut is an angled cut at the end of a joist or beam bearing in masonry. If the member burns through and falls, it rotates out without levering the wall over. Source: Harris, Dictionary of Architecture and Construction (Fire Cut); Ching, Building Construction Illustrated."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "Mosaic work using small pieces of wood.",
-    "o": [
-      "Intarsia",
-      "Inlay",
-      "Parquetry",
-      "Marquetry"
-    ],
-    "c": 2,
-    "n": "Parquetry is mosaic work of small pieces of wood laid in geometric patterns, mainly for floors. Marquetry and intarsia are pictorial veneer and inlay work. Source: Harris, Dictionary of Architecture and Construction (Parquetry); NWFA."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "What is the ideal woodworking joint for connecting two profiled moldings, ensuring a tight and seamless fit?",
-    "o": [
-      "Coped joint",
-      "Butt joint",
-      "Lap joint",
-      "Mitre joint"
-    ],
-    "c": 0,
-    "n": "A coped joint cuts one molding to the reverse profile of the other, so it fits tightly over its face. It stays closed at inside corners even if the wood moves. Source: Spence, Carpentry and Building Construction (Finish Carpentry); Ching, Building Construction Illustrated, Ch. 10."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "In a mortise and tenon joint, what is the name of the projecting part that fits into the cavity?",
-    "o": [
-      "Mortise",
-      "Tenon",
-      "Dado",
-      "Joggle"
-    ],
-    "c": 1,
-    "n": "In a mortise-and-tenon joint, the tenon is the projecting tongue that fits into the mortise, the cavity. Source: Spence, Carpentry and Building Construction (Joinery); Ching, A Visual Dictionary of Architecture."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "Which type of joinery involves cutting two pieces of material at an angle, usually 45 degrees, to form a corner joint?",
-    "o": [
-      "Lap",
-      "Butt",
-      "Dovetail",
-      "Miter"
-    ],
-    "c": 3,
-    "n": "A miter joint cuts both pieces at an angle, usually 45°, so they form a corner. Source: Spence, Carpentry and Building Construction (Joinery); Ching, A Visual Dictionary of Architecture."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "What is the term for the upper surface of a sill block that is inclined to shed rainwater away from a building?",
-    "o": [
-      "Wash",
-      "Slope",
-      "Chamfer",
-      "Drip"
-    ],
-    "c": 0,
-    "n": "The wash is the sloped top surface of a sill, coping or cornice. It sheds rainwater away from the wall. Source: Harris, Dictionary of Architecture and Construction (Wash); Ching, A Visual Dictionary of Architecture."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "Which of the following is an engineered wood product commonly used in construction and furniture making?",
-    "o": [
-      "Bamboo",
-      "Teak",
-      "Mahogany",
-      "Plywood"
-    ],
-    "c": 3,
-    "n": "Plywood is an engineered wood panel made of cross-laminated veneers. Teak and mahogany are solid timbers, and bamboo is a natural grass. Source: USDA Forest Products Laboratory, Wood Handbook, Ch. 11 (Wood-Based Composites)."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "ASHRAE Minimum ACH for residential spaces.",
-    "o": [
-      "2.58",
-      "1.00",
-      "0.35",
-      "7.00"
-    ],
-    "c": 2,
-    "n": "ASHRAE Standard 62 (62-1989 and early 62.2) set a minimum of 0.35 air changes per hour for residential living areas. Source: ASHRAE Standard 62-1989 / 62.2 (Ventilation for Acceptable Indoor Air Quality in Residential Buildings)."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "ASHRAE Minimum ACH for restaurants.",
-    "o": [
-      "6.0",
-      "4.0",
-      "1.0",
-      "2.8"
-    ],
-    "c": 0,
-    "n": "Per the exam key, about 6 air changes per hour is the guide value given for restaurants. Note: ASHRAE 62.1 now specifies outdoor air per person and per area instead of ACH. Source: ASHRAE Standard 62.1 (Ventilation Rate Procedure); ASHRAE Handbook – HVAC Applications."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "ASHRAE Minimum ACH for offices.",
-    "o": [
-      "7.00",
-      "1.00",
-      "2.00",
-      "0.35"
-    ],
-    "c": 2,
-    "n": "Per the exam key, about 2 air changes per hour is the guide value given for offices. Note: ASHRAE 62.1 now specifies outdoor air per person and per area instead of ACH. Source: ASHRAE Standard 62.1; ASHRAE Handbook – HVAC Applications."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "ASHRAE Minimum ACH for schools.",
-    "o": [
-      "1.00",
-      "0.35",
-      "7.00",
-      "5.00"
-    ],
-    "c": 3,
-    "n": "Per the exam key, about 5 air changes per hour is the guide value given for schools. Note: ASHRAE 62.1 now specifies outdoor air per person and per area instead of ACH. Source: ASHRAE Standard 62.1; ASHRAE Handbook – HVAC Applications."
-  },
-  {
-    "s": "Utilities, Construction, Structures & Materials",
-    "q": "What does ASHRAE mean?",
-    "o": [
-      "Alliance for Safe HVAC and Refrigeration Applications and Efficiency",
-      "Association for Sustainable Heating, Refrigeration, and Air Engineering",
-      "Advanced Standards for Heating, Airflow, and Refrigeration Engineering",
-      "American Society of Heating, Refrigerating, and Air-Conditioning Engineers"
-    ],
-    "c": 3,
-    "n": "ASHRAE stands for the American Society of Heating, Refrigerating and Air-Conditioning Engineers. Source: ASHRAE (official name and charter)."
   }
 ]
