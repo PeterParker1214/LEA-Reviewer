@@ -12,7 +12,7 @@ vm.runInContext(fs.readFileSync(path.join(root, 'sw.js'), 'utf8') + ';this.pushQ
 (async () => {
   const msg = { title: 'Hi', body: 'admin', url: 'notifications.html?show=message' };
   assert.deepStrictEqual(await sandbox.pushQuestion(msg), msg);
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 300; i++) {
     const d = await sandbox.pushQuestion({ title: 'Time to study', body: 'generic', url: 'index.html' });
     assert.strictEqual(d.title, 'Time to study');
     assert.notStrictEqual(d.body, 'generic');
@@ -20,7 +20,7 @@ vm.runInContext(fs.readFileSync(path.join(root, 'sw.js'), 'utf8') + ';this.pushQ
     const m = d.url.match(/^index\.html\?qs=([^&]+)&qm=([^&]+)&qi=(\d+)$/); assert.ok(m, d.url);
     const subs = JSON.parse(fs.readFileSync(path.join(root, 'data/subjects.json'), 'utf8'));
     const mod = subs.find((s) => s.id === decodeURIComponent(m[1])).modules.find((x) => x.id === decodeURIComponent(m[2]));
-    const q = JSON.parse(fs.readFileSync(path.join(root, mod.file), 'utf8'))[+m[3]];
+    const q = (x => Array.isArray(x) ? x : x.questions)(JSON.parse(fs.readFileSync(path.join(root, mod.file), 'utf8')))[+m[3]];
     assert.ok((q.q || q.question).startsWith(d.body.replace(/…$/, '')), 'body is that question');
   }
   console.log('PUSH QUESTION OK');

@@ -30,7 +30,7 @@
 // the last change (the subject list moving to network-first) shipped without
 // one, which left the old copy sitting in the old cache on every device that
 // had visited before.
-const VERSION = 'lea-v104';
+const VERSION = 'lea-v105';
 const SHELL = VERSION + '-shell';
 const DATA = VERSION + '-data';
 const VENDOR = VERSION + '-vendor';
@@ -205,11 +205,12 @@ async function pushQuestion(data) {
     const subs = (await (await fetch('data/subjects.json')).json()).filter((x) => x.ready);
     const mods = []; let total = 0;
     subs.forEach((s) => (s.modules || []).forEach((m) => { if (m.total > 0) mods.push({ s, m, end: (total += m.total) }); }));
-    for (let tries = 0; tries < 4 && total; tries++) {
+    for (let tries = 0; tries < 8 && total; tries++) {
       const r = Math.random() * total;
       const hit = mods.find((x) => r < x.end);
-      const qs = await (await fetch(hit.m.file)).json();
-      const live = (Array.isArray(qs) ? qs : []).map((q, i) => ({ t: String((q && (q.q || q.question)) || '').trim(), q, i }))
+      let qs = await (await fetch(hit.m.file)).json();
+      qs = Array.isArray(qs) ? qs : (qs && qs.questions) || [];
+      const live = qs.map((q, i) => ({ t: String((q && (q.q || q.question)) || '').trim(), q, i }))
         .filter((x) => x.t.length >= 30 && !x.q.hidden && !x.q.scenario && !x.q.img);
       if (!live.length) continue;
       const x = live[Math.floor(Math.random() * live.length)];
