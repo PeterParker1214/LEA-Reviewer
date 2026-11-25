@@ -30,7 +30,7 @@
 // the last change (the subject list moving to network-first) shipped without
 // one, which left the old copy sitting in the old cache on every device that
 // had visited before.
-const VERSION = 'lea-v103';
+const VERSION = 'lea-v104';
 const SHELL = VERSION + '-shell';
 const DATA = VERSION + '-data';
 const VENDOR = VERSION + '-vendor';
@@ -51,31 +51,31 @@ const SHELL_URLS = [
   'reminders.html',
   'notifications.html',
   'chat.html',
-  'assets/chat.js?v=103',
-  'assets/messenger-model.js?v=103',
-  'assets/messenger.js?v=103',
-  'assets/messenger.css?v=103',
+  'assets/chat.js?v=104',
+  'assets/messenger-model.js?v=104',
+  'assets/messenger.js?v=104',
+  'assets/messenger.css?v=104',
   'duel.html',
   'user.html',
   'about.html',
-  'assets/notifications.js?v=103',
-  'assets/reminders.js?v=103',
-  'assets/whats-new.js?v=103',
-  'assets/module-progress.js?v=103',
-  'assets/sb-client.js?v=103',
-  'assets/quiz-source.js?v=103',
-  'assets/quiz-pop.js?v=103',
-  'assets/coffee.js?v=103',
-  'assets/avatar.js?v=103',
-  'assets/quiz-resume.js?v=103',
-  'assets/lea-confirm.js?v=103',
-  'assets/theme.js?v=103',
-  'assets/icons.js?v=103',
-  'assets/countdown.js?v=103',
-  'assets/blueprint.css?v=103',
-  'assets/leaderboard.css?v=103',
-  'assets/leaderboard.js?v=103',
-  'assets/legacy-desktop.css?v=103',
+  'assets/notifications.js?v=104',
+  'assets/reminders.js?v=104',
+  'assets/whats-new.js?v=104',
+  'assets/module-progress.js?v=104',
+  'assets/sb-client.js?v=104',
+  'assets/quiz-source.js?v=104',
+  'assets/quiz-pop.js?v=104',
+  'assets/coffee.js?v=104',
+  'assets/avatar.js?v=104',
+  'assets/quiz-resume.js?v=104',
+  'assets/lea-confirm.js?v=104',
+  'assets/theme.js?v=104',
+  'assets/icons.js?v=104',
+  'assets/countdown.js?v=104',
+  'assets/blueprint.css?v=104',
+  'assets/leaderboard.css?v=104',
+  'assets/leaderboard.js?v=104',
+  'assets/legacy-desktop.css?v=104',
   'data/subjects.json',
   'favicon.svg?v=5',
   'favicon-32x32.png',
@@ -194,15 +194,42 @@ self.addEventListener('fetch', (event) => {
 });
 
 // ---- Phone/browser notifications (sent by the send-push edge function) ----
+// Study and streak reminders carry a real question as their text, so the
+// notification itself is the hook; tapping it opens that question on Home.
+// Admin messages and report replies (?show=message / ?show=report) pass
+// through untouched. Any failure falls back to the server's own text.
+const trim = (t, n) => (t.length > n ? t.slice(0, n - 1).replace(/\s+\S*$/, '') + '…' : t);
+async function pushQuestion(data) {
+  if (/show=(message|report)/.test(data.url || '')) return data;
+  try {
+    const subs = (await (await fetch('data/subjects.json')).json()).filter((x) => x.ready);
+    const mods = []; let total = 0;
+    subs.forEach((s) => (s.modules || []).forEach((m) => { if (m.total > 0) mods.push({ s, m, end: (total += m.total) }); }));
+    for (let tries = 0; tries < 4 && total; tries++) {
+      const r = Math.random() * total;
+      const hit = mods.find((x) => r < x.end);
+      const qs = await (await fetch(hit.m.file)).json();
+      const live = (Array.isArray(qs) ? qs : []).map((q, i) => ({ t: String((q && (q.q || q.question)) || '').trim(), q, i }))
+        .filter((x) => x.t.length >= 30 && !x.q.hidden && !x.q.scenario && !x.q.img);
+      if (!live.length) continue;
+      const x = live[Math.floor(Math.random() * live.length)];
+      return Object.assign({}, data, {
+        body: trim(x.t, 200),
+        url: 'index.html?qs=' + encodeURIComponent(hit.s.id) + '&qm=' + encodeURIComponent(hit.m.id) + '&qi=' + x.i
+      });
+    }
+  } catch (e) {}
+  return data;
+}
 self.addEventListener('push', (event) => {
   let data = {};
   try { data = event.data ? event.data.json() : {}; } catch (e) {}
-  event.waitUntil(self.registration.showNotification(data.title || 'LEA Reviewer', {
-    body: data.body || '',
+  event.waitUntil(pushQuestion(data).then((d) => self.registration.showNotification(d.title || 'LEA Reviewer', {
+    body: d.body || '',
     icon: 'apple-touch-icon.png',
     badge: 'favicon-32x32.png',
-    data: { url: data.url || 'notifications.html' }
-  }));
+    data: { url: d.url || 'notifications.html' }
+  })));
 });
 
 // Tapping a notification focuses an open LEA tab, or opens one.
