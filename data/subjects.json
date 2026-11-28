@@ -1149,7 +1149,8 @@
         "title": "PD 1096 — Permits & Definitions",
         "total": 15,
         "file": "data/building-laws/01.json",
-        "format": "json"
+        "format": "json",
+        "group": "PD 1096 — National Building Code"
       },
       {
         "id": "pd1096-q2",
@@ -1157,7 +1158,8 @@
         "title": "PD 1096 — Light, Yards & Height",
         "total": 15,
         "file": "data/building-laws/02.json",
-        "format": "json"
+        "format": "json",
+        "group": "PD 1096 — National Building Code"
       },
       {
         "id": "pd1096-q3",
@@ -1165,55 +1167,8 @@
         "title": "PD 1096 — Egress & Occupancy",
         "total": 15,
         "file": "data/building-laws/03.json",
-        "format": "json"
-      },
-      {
-        "id": "bp220-pd957",
-        "no": "04",
-        "title": "BP 220 & PD 957",
-        "total": 25,
-        "file": "data/building-laws/04.json",
-        "format": "json"
-      },
-      {
-        "id": "preboard",
-        "no": "05",
-        "title": "Preboard Review - PD 1096, BP 344, RA 9266 & Fire Code",
-        "total": 200,
-        "file": "data/building-laws/05.json",
-        "format": "json"
-      },
-      {
-        "id": "bp220-classifications",
-        "no": "06",
-        "title": "BP 220 — Housing Classifications & Site Standards",
-        "total": 43,
-        "file": "data/building-laws/06.json",
-        "format": "json"
-      },
-      {
-        "id": "building-laws-07",
-        "no": "07",
-        "title": "Doc 301, IRR of RA 9266 and PD 1096",
-        "total": 247,
-        "file": "data/building-laws/07.json",
-        "format": "json"
-      },
-      {
-        "id": "building-laws-08",
-        "no": "08",
-        "title": "PD 1096 Contents, Parking, BP 344",
-        "total": 206,
-        "file": "data/building-laws/08.json",
-        "format": "json"
-      },
-      {
-        "id": "building-laws-09",
-        "no": "09",
-        "title": "BP 344 Details, Officials",
-        "total": 170,
-        "file": "data/building-laws/09.json",
-        "format": "json"
+        "format": "json",
+        "group": "PD 1096 — National Building Code"
       },
       {
         "id": "building-laws-10",
@@ -1221,7 +1176,62 @@
         "title": "TGFA by Lot Type, Permits and Certificates",
         "total": 6,
         "file": "data/building-laws/10.json",
-        "format": "json"
+        "format": "json",
+        "group": "PD 1096 — National Building Code"
+      },
+      {
+        "id": "bp220-pd957",
+        "no": "04",
+        "title": "BP 220 & PD 957",
+        "total": 25,
+        "file": "data/building-laws/04.json",
+        "format": "json",
+        "group": "Housing Laws — BP 220 & PD 957"
+      },
+      {
+        "id": "bp220-classifications",
+        "no": "06",
+        "title": "BP 220 — Housing Classifications & Site Standards",
+        "total": 43,
+        "file": "data/building-laws/06.json",
+        "format": "json",
+        "group": "Housing Laws — BP 220 & PD 957"
+      },
+      {
+        "id": "preboard",
+        "no": "05",
+        "title": "Preboard Review - PD 1096, BP 344, RA 9266 & Fire Code",
+        "total": 200,
+        "file": "data/building-laws/05.json",
+        "format": "json",
+        "group": "Mixed Reviews — PD 1096, BP 344, RA 9266 & Fire Code"
+      },
+      {
+        "id": "building-laws-07",
+        "no": "07",
+        "title": "Doc 301, IRR of RA 9266 and PD 1096",
+        "total": 247,
+        "file": "data/building-laws/07.json",
+        "format": "json",
+        "group": "Mixed Reviews — PD 1096, BP 344, RA 9266 & Fire Code"
+      },
+      {
+        "id": "building-laws-08",
+        "no": "08",
+        "title": "PD 1096 Contents, Parking, BP 344",
+        "total": 206,
+        "file": "data/building-laws/08.json",
+        "format": "json",
+        "group": "Mixed Reviews — PD 1096, BP 344, RA 9266 & Fire Code"
+      },
+      {
+        "id": "building-laws-09",
+        "no": "09",
+        "title": "BP 344 Details, Officials",
+        "total": 170,
+        "file": "data/building-laws/09.json",
+        "format": "json",
+        "group": "Mixed Reviews — PD 1096, BP 344, RA 9266 & Fire Code"
       },
       {
         "id": "building-laws-11",
@@ -1229,7 +1239,143 @@
         "title": "Philippine Housing Agencies, Land Use Map Colors, Metro Manila and City Profiles, from Principles of Planning",
         "total": 196,
         "file": "data/building-laws/11.json",
-        "format": "json"
+        "format": "json",
+        "group": "Planning, Housing Agencies & Land Use"
+      },
+      {
+        "id": "doh-01",
+        "no": "DOH-01",
+        "title": "DOH Hospital Basics — Site, Safety & Exits (+ mixed review)",
+        "total": 17,
+        "file": "data/building-laws/doh-01.json",
+        "format": "json",
+        "group": "DOH Guidelines in Architectural Design"
+      },
+      {
+        "id": "doh-02",
+        "no": "DOH-02",
+        "title": "DOH Hospital Circulation — Corridors, Ramps & Elevators (+ mixed review)",
+        "total": 16,
+        "file": "data/building-laws/doh-02.json",
+        "format": "json",
+        "group": "DOH Guidelines in Architectural Design"
+      },
+      {
+        "id": "doh-03",
+        "no": "DOH-03",
+        "title": "DOH Hospital Zoning & Functional Relationships (+ mixed review)",
+        "total": 18,
+        "file": "data/building-laws/doh-03.json",
+        "format": "json",
+        "group": "DOH Guidelines in Architectural Design"
+      },
+      {
+        "id": "doh-04",
+        "no": "DOH-04",
+        "title": "DOH Space Standards — Unit Areas, Admin & Service (+ mixed review)",
+        "total": 17,
+        "file": "data/building-laws/doh-04.json",
+        "format": "json",
+        "group": "DOH Guidelines in Architectural Design"
+      },
+      {
+        "id": "doh-05",
+        "no": "DOH-05",
+        "title": "DOH Space Standards — Clinical, Nursing & Ancillary (+ mixed review)",
+        "total": 18,
+        "file": "data/building-laws/doh-05.json",
+        "format": "json",
+        "group": "DOH Guidelines in Architectural Design"
+      },
+      {
+        "id": "doh-06",
+        "no": "DOH-06",
+        "title": "DOH Floor Plan Checklists — Hospital Levels, Infirmary, ASC & Psychiatric (+ mixed review)",
+        "total": 16,
+        "file": "data/building-laws/doh-06.json",
+        "format": "json",
+        "group": "DOH Guidelines in Architectural Design"
+      },
+      {
+        "id": "doh-07",
+        "no": "DOH-07",
+        "title": "DOH Birthing Home (+ mixed review)",
+        "total": 17,
+        "file": "data/building-laws/doh-07.json",
+        "format": "json",
+        "group": "DOH Guidelines in Architectural Design"
+      },
+      {
+        "id": "doh-08",
+        "no": "DOH-08",
+        "title": "DOH Primary Care Facility (PCF) (+ mixed review)",
+        "total": 18,
+        "file": "data/building-laws/doh-08.json",
+        "format": "json",
+        "group": "DOH Guidelines in Architectural Design"
+      },
+      {
+        "id": "doh-09",
+        "no": "DOH-09",
+        "title": "DOH Hemodialysis Clinic (+ mixed review)",
+        "total": 17,
+        "file": "data/building-laws/doh-09.json",
+        "format": "json",
+        "group": "DOH Guidelines in Architectural Design"
+      },
+      {
+        "id": "doh-10",
+        "no": "DOH-10",
+        "title": "DOH Drug Rehabilitation Centers & Drug Testing Laboratories (+ mixed review)",
+        "total": 18,
+        "file": "data/building-laws/doh-10.json",
+        "format": "json",
+        "group": "DOH Guidelines in Architectural Design"
+      },
+      {
+        "id": "doh-11",
+        "no": "DOH-11",
+        "title": "DOH Medical Facility for Overseas Workers & Seafarers (+ mixed review)",
+        "total": 17,
+        "file": "data/building-laws/doh-11.json",
+        "format": "json",
+        "group": "DOH Guidelines in Architectural Design"
+      },
+      {
+        "id": "doh-12",
+        "no": "DOH-12",
+        "title": "DOH Permit to Construct (DOH-PTC) — Process & Terms (+ mixed review)",
+        "total": 16,
+        "file": "data/building-laws/doh-12.json",
+        "format": "json",
+        "group": "DOH Guidelines in Architectural Design"
+      },
+      {
+        "id": "doh-13",
+        "no": "DOH-13",
+        "title": "DOH Hospital Manual — Room Data Sheets & Design Criteria (+ mixed review)",
+        "total": 16,
+        "file": "data/building-laws/doh-13.json",
+        "format": "json",
+        "group": "DOH Guidelines in Architectural Design"
+      },
+      {
+        "id": "doh-14",
+        "no": "DOH-14",
+        "title": "DOH Hospital Manual — Environmental Data of Critical Rooms (Level 3) (+ mixed review)",
+        "total": 18,
+        "file": "data/building-laws/doh-14.json",
+        "format": "json",
+        "group": "DOH Guidelines in Architectural Design"
+      },
+      {
+        "id": "doh-15",
+        "no": "DOH-15",
+        "title": "DOH Hospital Manual — Planning Relationships of Key Rooms (Level 3) (+ mixed review)",
+        "total": 16,
+        "file": "data/building-laws/doh-15.json",
+        "format": "json",
+        "group": "DOH Guidelines in Architectural Design"
       }
     ]
   },
