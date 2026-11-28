@@ -1,13 +1,16 @@
 /* LEA Reviewer — shared sound effects.
    Synthesized with the Web Audio API (no audio files to load), so it works
-   instantly on every page. One localStorage key ('leaSfxMuted') is shared
-   across the site, same pattern as theme.js. */
+   instantly on every page. Mute is the app-wide one in audio.js's
+   'lea_audio_settings_v2', so muting a quiz also mutes flashcards. */
 (function () {
-  var KEY = 'leaSfxMuted';
+  var KEY = 'lea_audio_settings_v2';
   var ctx = null;
   var muted = false;
 
-  try { muted = localStorage.getItem(KEY) === '1'; } catch (e) {}
+  function readSettings() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; }
+  }
+  muted = !!readSettings().muted;
 
   function ensureCtx() {
     if (!ctx) {
@@ -62,9 +65,22 @@
     tone(740, 0, 0.05, { type: 'sine', peak: 0.06 });
   }
 
+  // Flashcards (cards.html): a soft paper "tick" for the flip, a rising
+  // fifth for a streak of Easy.
+  function playFlip() {
+    tone(420, 0, 0.06, { type: 'triangle', peak: 0.05, glideTo: 620 });
+  }
+
+  function playLevelUp() {
+    tone(659.25, 0.00, 0.10, { type: 'sine', peak: 0.10 }); // E5
+    tone(987.77, 0.08, 0.18, { type: 'sine', peak: 0.10 }); // B5
+  }
+
   function setMuted(next) {
     muted = next;
-    try { localStorage.setItem(KEY, muted ? '1' : '0'); } catch (e) {}
+    var st = readSettings();
+    st.muted = muted;
+    try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {}
   }
 
   // opts: { buttonId }
@@ -94,6 +110,10 @@
     playCorrect: playCorrect,
     playIncorrect: playIncorrect,
     playComplete: playComplete,
-    playClick: playClick
+    playClick: playClick,
+    playFlip: playFlip,
+    playLevelUp: playLevelUp,
+    isMuted: function () { return muted; },
+    setMuted: setMuted
   };
 })();

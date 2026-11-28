@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Subject — LEA Reviewer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/sb-client.js?v=110"></script>
+<script src="assets/sb-client.js?v=111"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Architects+Daughter&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -311,19 +311,20 @@
      draws. Only the modal needs a little more width to hold a face, a name and
      the stats without crowding. */
 </style>
-<link rel="stylesheet" href="assets/blueprint.css?v=110">
-<link rel="stylesheet" href="assets/leaderboard.css?v=110">
-<script src="assets/presence.js?v=110"></script>
-<script src="assets/avatar.js?v=110"></script>
-<script src="assets/leaderboard.js?v=110"></script>
-<script src="assets/lea-confirm.js?v=110"></script>
-<script src="assets/quiz-source.js?v=110"></script>
-<script src="assets/module-progress.js?v=110"></script>
-<script src="assets/offline.js?v=110"></script>
-<script src="assets/quiz-resume.js?v=110"></script>
-<script src="assets/icons.js?v=110"></script>
-<script src="assets/theme.js?v=110" data-alt-class="light-mode" data-default-is="dark"></script>
-<script src="assets/nav.js?v=110"></script>
+<link rel="stylesheet" href="assets/blueprint.css?v=111">
+<link rel="stylesheet" href="assets/leaderboard.css?v=111">
+<script src="assets/presence.js?v=111"></script>
+<script src="assets/avatar.js?v=111"></script>
+<script src="assets/leaderboard.js?v=111"></script>
+<script src="assets/lea-confirm.js?v=111"></script>
+<script src="assets/quiz-source.js?v=111"></script>
+<script src="assets/module-progress.js?v=111"></script>
+<script src="assets/srs.js?v=111"></script>
+<script src="assets/offline.js?v=111"></script>
+<script src="assets/quiz-resume.js?v=111"></script>
+<script src="assets/icons.js?v=111"></script>
+<script src="assets/theme.js?v=111" data-alt-class="light-mode" data-default-is="dark"></script>
+<script src="assets/nav.js?v=111"></script>
 </head>
 <body>
 <div class="wrap">
@@ -396,10 +397,11 @@ sb.auth.onAuthStateChange((event, session) => {
 });
 
 let LEA_SUBJECT_ID_PAGE = null;
+let LEA_UID = null;   // NEW (flashcards): whose deck counts to read
 
 (async function initApp(){
   const { data: { session } } = await sb.auth.getSession();
-  if(session){ await onSignedIn(session.user); } else { window.location.href = 'index.html'; return; }
+  if(session){ LEA_UID = session.user.id; await onSignedIn(session.user); } else { window.location.href = 'index.html'; return; }
   await boot();
 })();
 
@@ -626,6 +628,7 @@ async function render(subject){
     renderMastheadHtml(subject) +
     renderOverallCard(subject, rollup, pct) +
     renderModeRows(subject, rollup, mode) +
+    renderDecks(subject) +
     '<div class="section-label">Modules</div>' +
     renderModulesList(subject, mode) +
     '<div class="note-panel">Progress is saved to your account and synced across devices.</div>' +
@@ -707,6 +710,25 @@ function wireModeRows(subject){
       render(subject);
     });
   });
+}
+
+// NEW (flashcards): decks declared on the subject in data/subjects.json.
+// Counts come from the saved deck state, so nothing is fetched here.
+function renderDecks(subject){
+  if(!subject.decks || !subject.decks.length || !window.LEASrs) return '';
+  return '<div class="section-label">Flashcards</div><div class="module-grid">' + subject.decks.map(d => {
+    const key = subject.id + '__' + d.id;
+    let blob = null;
+    try{ blob = JSON.parse(localStorage.getItem('lea_fc_v1_' + LEA_UID + '_' + key)); }catch(e){}
+    blob = LEASrs.merge(LEASrs.forUser(blob, LEA_UID), LEASrs.forUser(LEAProgress.loadMeta('fc_' + key), LEA_UID));
+    const c = LEASrs.summary(blob || { n: 0 }, Date.now());
+    const meta = blob ? c.neu + ' new · ' + c.learn + ' learning · ' + c.due + ' due' : 'Picture on the front, answer on the back';
+    return '<a class="module-card" href="cards.html?s=' + encodeURIComponent(subject.id) + '&d=' + encodeURIComponent(d.id) + '">' +
+      '<div class="module-num">Deck</div>' +
+      '<div class="module-title"><span class="mt-run">' + escapeHtml(d.title) + '</span></div>' +
+      '<div class="module-meta"><span>' + escapeHtml(meta) + '</span><span class="module-arrow">&rarr;</span></div>' +
+    '</a>';
+  }).join('') + '</div>';
 }
 
 function renderModulesList(subject, mode){

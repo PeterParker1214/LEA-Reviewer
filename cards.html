@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- NEW (flashcards): spaced-repetition deck page. Decks are declared in
+     data/subjects.json (subject.decks[]); scheduling lives in assets/srs.js. -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=5">
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flashcards — LEA Reviewer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="assets/sb-client.js?v=111"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#eef1e9; --bg-deep:#0a1218; --bg-panel:#0e1c28; --bg-panel-2:#0a1520;
+    --gold:#e0a83f; --gold-bright:#f0c268; --blue:#6fa8cf; --blue-bright:#8fc4ea;
+    --muted:#8b98a5; --good:#5fbf82; --bad:#e2604a;
+    --line:rgba(111,168,207,0.20); --grid-line:rgba(111,168,207,0.09);
+    --mat:#0c1822; --paper:#102231;
+    --font-display:'Big Shoulders Display',sans-serif; --font-body:'Space Grotesk',sans-serif; --font-mono:'IBM Plex Mono',monospace;
+    --ease:cubic-bezier(.2,.7,.2,1);
+  }
+  body.light-mode, :root.light-mode{
+    --ink:#16202b; --bg-deep:#d3dee6; --bg-panel:#ffffff; --bg-panel-2:#e9eff4;
+    --gold:#b5791f; --gold-bright:#7d520c; --blue:#2f6c95; --blue-bright:#1b4a6b;
+    --muted:#4f5d6a; --good:#206b3c; --bad:#a1372a;
+    --line:rgba(47,108,149,0.28); --grid-line:rgba(47,108,149,0.11);
+    --mat:#e4ecf2; --paper:#fbfcfd;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0 1px, transparent 1px 34px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0 1px, transparent 1px 34px),
+      var(--bg-deep);
+    color:var(--ink); font-family:var(--font-body); min-height:100vh;
+    display:flex; justify-content:center; padding:24px 16px 48px;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .wrap{width:100%; max-width:560px;}
+  button{font:inherit; color:inherit;}
+  :focus-visible{outline:2px solid var(--gold-bright); outline-offset:3px;}
+  .hidden{display:none !important;}
+
+  /* header */
+  .bar{display:flex; align-items:center; gap:10px; margin-bottom:18px;}
+  .icon-btn{width:44px; height:44px; border-radius:8px; background:var(--bg-panel); border:1px solid var(--line);
+    color:var(--gold-bright); display:flex; align-items:center; justify-content:center; cursor:pointer; text-decoration:none; flex-shrink:0;}
+  .icon-btn:hover{border-color:var(--gold-bright);}
+  .icon-btn svg{width:18px; height:18px;}
+  .bar h1{flex:1; min-width:0; margin:0; font-family:var(--font-display); font-weight:800; font-size:24px; line-height:1.05;
+    text-transform:uppercase; letter-spacing:.01em;}
+  .bar h1 small{display:block; font-family:var(--font-body); font-weight:500; font-size:12.5px; text-transform:none; color:var(--muted); letter-spacing:0; margin-top:3px;}
+
+  /* counts + streak */
+  .stats{display:flex; align-items:center; gap:16px; flex-wrap:wrap; font-family:var(--font-mono); font-size:12.5px; color:var(--muted); margin-bottom:10px;}
+  .stats b{font-weight:600; font-size:15px; margin-right:4px;}
+  .c-new b{color:var(--blue-bright);} .c-learn b{color:var(--bad);} .c-due b{color:var(--good);}
+  .stats .spacer{flex:1;}
+  .flame{display:inline-flex; align-items:center; gap:4px; color:var(--gold-bright);}
+  .flame svg{width:16px; height:16px;}
+  .track{height:4px; background:var(--line); overflow:hidden; margin-bottom:20px;}
+  .track i{display:block; height:100%; background:var(--gold); transform-origin:left; transform:scaleX(0); transition:transform .5s var(--ease);}
+
+  /* the card: blueprint family, square corners */
+  .stage{position:relative; perspective:1400px; touch-action:pan-y;}
+  .card{position:relative; display:block; width:100%; border:0; padding:0; background:none; cursor:pointer; text-align:left;
+    transform-style:preserve-3d; transition:transform .5s var(--ease);}
+  .card::after{content:''; position:absolute; inset:0; box-shadow:0 18px 40px -18px rgba(0,0,0,.6); opacity:0; transition:opacity .25s ease; pointer-events:none;}
+  .lift{transition:transform .25s var(--ease);}
+  @media (hover:hover){ .lift:hover{transform:translateY(-3px);} .lift:hover .card::after{opacity:1;} }
+  .lift:active{transform:translateY(-1px) scale(.995);}
+  .card.flipped{transform:rotateY(180deg);}
+  .face{backface-visibility:hidden; -webkit-backface-visibility:hidden; border:1px solid var(--line); background:var(--mat);}
+  .back{position:absolute; inset:0; transform:rotateY(180deg); background:var(--paper); display:flex; flex-direction:column;}
+
+  /* front: the photo mounted on a mat with drafting crop marks */
+  .front{padding:18px;}
+  .photo{position:relative; aspect-ratio:4/3; overflow:hidden; background:var(--bg-panel-2);}
+  .photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:0; transition:opacity .35s ease;}
+  .photo img.ready{opacity:1;}
+  .photo .ph{position:absolute; inset:0; background:linear-gradient(110deg, transparent 30%, rgba(143,196,234,.08) 50%, transparent 70%);
+    animation:ph 1.4s linear infinite; transform:translateX(-100%);}
+  @keyframes ph{to{transform:translateX(100%);}}
+  .crop{position:absolute; width:14px; height:14px; border-color:var(--blue); border-style:solid; opacity:.7;}
+  .crop.tl{top:8px; left:8px; border-width:1px 0 0 1px;} .crop.tr{top:8px; right:8px; border-width:1px 1px 0 0;}
+  .crop.bl{bottom:8px; left:8px; border-width:0 0 1px 1px;} .crop.br{bottom:8px; right:8px; border-width:0 1px 1px 0;}
+
+  /* back: a drawing-sheet title block */
+  .band{flex:0 0 38%; position:relative; overflow:hidden; border-bottom:1px solid var(--line); background:var(--bg-panel-2);}
+  .band img{width:100%; height:100%; object-fit:cover; opacity:.9;}
+  .tb{flex:1; display:grid; grid-template-columns:1fr auto; grid-template-rows:1fr auto auto;}
+  .tb .name{grid-column:1 / -1; padding:16px 18px 12px; display:flex; align-items:flex-end;
+    font-family:var(--font-display); font-weight:800; font-size:clamp(26px, 7vw, 36px); line-height:1.02; text-transform:uppercase; letter-spacing:.005em;}
+  .cell{border-top:1px solid var(--line); padding:9px 18px 11px;}
+  .cell + .cell{border-left:1px solid var(--line);}
+  .cell small{display:block; font-family:var(--font-mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--blue-bright); margin-bottom:3px;}
+  .cell .arch{font-size:17px; font-weight:600;}
+  .cell .yr{font-family:var(--font-mono); font-size:16px; font-weight:500;}
+  .credit{grid-column:1 / -1; border-top:1px solid var(--line); padding:6px 18px; font-family:var(--font-mono); font-size:10px; color:var(--muted);}
+
+  /* slide between cards (transform + opacity only) */
+  .stage.out-1 .lift{transform:translateX(-115%) rotate(-6deg); opacity:0; transition:transform .28s ease-in, opacity .28s ease-in;}
+  .stage.out-2 .lift{transform:translateY(40%); opacity:0; transition:transform .28s ease-in, opacity .28s ease-in;}
+  .stage.out-3 .lift{transform:translateX(115%) rotate(6deg); opacity:0; transition:transform .28s ease-in, opacity .28s ease-in;}
+  .stage.out-4 .lift{transform:translate(60%,-40%) rotate(8deg); opacity:0; transition:transform .28s ease-in, opacity .28s ease-in;}
+  .stage.in .lift{animation:in .34s var(--ease) backwards;}
+  @keyframes in{from{transform:translateY(24px) scale(.97); opacity:0;}}
+  .stage.drag .lift{transition:none;}
+
+  /* actions */
+  .actions{margin-top:18px; min-height:64px;}
+  .show{width:100%; min-height:56px; border:1px solid var(--gold); background:transparent; color:var(--gold-bright); cursor:pointer;
+    font-family:var(--font-display); font-weight:700; font-size:20px; text-transform:uppercase; letter-spacing:.03em;}
+  .show:hover{background:rgba(224,168,63,.08);}
+  .key{font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-left:8px; text-transform:none; letter-spacing:0; font-weight:400;}
+  .rate{display:grid; grid-template-columns:repeat(4,1fr); gap:8px;}
+  .rate button{min-height:64px; border:1px solid var(--line); background:var(--bg-panel); cursor:pointer; padding:8px 4px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; transition:transform .15s ease;}
+  .rate button:active{transform:scale(.97);}
+  .rate .lbl{font-weight:600; font-size:15px; display:flex; align-items:center; gap:5px;}
+  .rate .lbl::before{content:''; width:8px; height:8px; background:currentColor;}
+  .rate .ivl{font-family:var(--font-mono); font-size:11.5px; color:var(--muted);}
+  .r1{color:var(--bad);} .r2{color:var(--gold-bright);} .r3{color:var(--blue-bright);} .r4{color:var(--good);}
+  .rate button:hover{border-color:currentColor;}
+  .hint{font-family:var(--font-mono); font-size:11px; color:var(--muted); text-align:center; margin-top:10px;}
+  .hint .touch{display:none;}
+  @media (hover:none){ .hint .kb, .show .key{display:none;} .hint .touch{display:inline;} }
+
+  /* options */
+  .opts{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:22px; padding-top:16px; border-top:1px solid var(--line);}
+  .chip{min-height:40px; padding:0 14px; border:1px solid var(--line); background:transparent; cursor:pointer; font-size:13.5px; display:inline-flex; align-items:center; gap:7px;}
+  .chip[aria-pressed="true"]{border-color:var(--gold); color:var(--gold-bright); background:rgba(224,168,63,.08);}
+  .chip[aria-pressed="true"]::before{content:'✓';}
+  .opts label{margin-left:auto; font-size:13.5px; color:var(--muted); display:flex; align-items:center; gap:8px;}
+  .opts select{min-height:40px; background:var(--bg-panel); color:var(--ink); border:1px solid var(--line); padding:0 8px; font:inherit;}
+
+  /* empty / done */
+  .done{border:1px solid var(--line); background:var(--bg-panel); padding:32px 22px; text-align:center;}
+  .done h2{font-family:var(--font-display); font-weight:800; font-size:30px; text-transform:uppercase; margin:0 0 8px;}
+  .done p{color:var(--muted); margin:0 0 18px; line-height:1.55;}
+  .done .row{display:flex; gap:8px; justify-content:center; flex-wrap:wrap;}
+  .msg{color:var(--muted); text-align:center; padding:40px 0;}
+
+  /* Easy streak */
+  .burst{position:absolute; left:50%; top:45%; pointer-events:none;}
+  .burst i{position:absolute; width:7px; height:7px; opacity:0; animation:pop .9s ease-out forwards;}
+  @keyframes pop{0%{opacity:1; transform:translate(0,0) rotate(0);} 100%{opacity:0; transform:translate(var(--x),var(--y)) rotate(220deg);}}
+  .glow{position:absolute; inset:-6px; border:2px solid var(--good); opacity:0; pointer-events:none;}
+  .glow.on{animation:glow .8s ease-out;}
+  @keyframes glow{30%{opacity:.8;} 100%{opacity:0;}}
+
+  @media (prefers-reduced-motion: reduce){
+    .card{transition:none;}
+    .card.flipped{transform:none;}
+    .back{transform:none; opacity:0; transition:opacity .25s ease;}
+    .front{transition:opacity .25s ease;}
+    .card.flipped .back{opacity:1;}
+    .card.flipped .front{opacity:0;}
+    .lift, .lift:hover, .lift:active{transform:none;}
+    .stage[class*="out-"] .lift{transform:none !important; transition:opacity .2s ease !important;}
+    .stage.in .lift{animation:fade .25s ease backwards;}
+    @keyframes fade{from{opacity:0;}}
+    .photo .ph{animation:none; transform:none;}
+    .burst{display:none;}
+  }
+</style>
+<script src="assets/module-progress.js?v=111"></script>
+<script src="assets/offline.js?v=111"></script>
+<script src="assets/srs.js?v=111"></script>
+<script src="assets/sfx.js?v=111"></script>
+<script src="assets/icons.js?v=111"></script>
+<script src="assets/theme.js?v=111" data-alt-class="light-mode" data-default-is="dark"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar">
+    <a class="icon-btn" id="back" href="index.html" aria-label="Back to subject">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    </a>
+    <h1 id="title">Flashcards<small id="subtitle"></small></h1>
+    <button class="icon-btn" id="mute" type="button"></button>
+  </div>
+  <script>if (window.LEATheme) { LEATheme.init({ altClass:'light-mode', defaultIs:'dark' }); }</script>
+
+  <div id="app"><div class="msg">Loading deck…</div></div>
+</div>
+
+<script>
+'use strict';
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const params = new URLSearchParams(location.search);
+const SID = params.get('s'), DID = params.get('d');
+
+const weakDone = new Set();   // weak mode: each card once per sitting
+let deck = null, cfg = null, uid = 'guest', blob = null, cur = null, flipped = false, easyRun = 0, busy = false, waitTimer = null;
+
+// ---- sound ----
+const ICON_ON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>';
+const ICON_OFF = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/></svg>';
+function paintMute(){
+  const m = LEASfx.isMuted();
+  $('mute').innerHTML = m ? ICON_OFF : ICON_ON;
+  $('mute').setAttribute('aria-label', m ? 'Sound off. Turn sound on' : 'Sound on. Turn sound off');
+  $('mute').setAttribute('aria-pressed', String(m));
+}
+$('mute').addEventListener('click', () => { LEASfx.setMuted(!LEASfx.isMuted()); paintMute(); if (!LEASfx.isMuted()) LEASfx.playClick(); });
+paintMute();
+const sfx = (name) => { try { LEASfx[name](); } catch (e) {} };
+
+// ---- storage: local copy per user + the account's progress row ----
+const metaKey = () => 'fc_' + SID + '__' + DID;
+const localKey = () => 'lea_fc_v1_' + uid + '_' + SID + '__' + DID;
+function readLocal(){ try { return JSON.parse(localStorage.getItem(localKey())); } catch (e) { return null; } }
+function loadBlob(){
+  const remote = window.LEAProgress ? LEASrs.forUser(LEAProgress.loadMeta(metaKey()), uid) : null;
+  const b = LEASrs.merge(LEASrs.forUser(readLocal(), uid), remote) ||
+    { uid: uid, t: 0, cards: {}, log: {}, news: {}, prefs: { newPerDay: 10, shuffle: false, weak: false } };
+  b.prefs = Object.assign({ newPerDay: 10, shuffle: false, weak: false }, b.prefs);
+  b.uid = uid;
+  return b;
+}
+function saveBlob(){
+  blob.t = Date.now();
+  blob.n = deck.cards.length;
+  try { localStorage.setItem(localKey(), JSON.stringify(blob)); } catch (e) {}
+  if (window.LEAProgress) LEAProgress.saveMeta(metaKey(), blob);
+}
+// The account row landed (or changed): fold it in without interrupting.
+window.leaOnProgressReset = function(){
+  if (!deck) return;
+  blob = LEASrs.merge(blob, LEASrs.forUser(LEAProgress.loadMeta(metaKey()), uid));
+  paintStats();
+};
+
+// ---- boot ----
+(async function(){
+  try {
+    const sb = window.leaClient ? leaClient() : null;
+    const res = sb ? await sb.auth.getSession() : null;
+    const session = res && res.data && res.data.session;
+    if (!session) { location.href = 'index.html'; return; }
+    uid = session.user.id;
+  } catch (e) { /* offline with no cached session: study as guest on this device */ }
+  try {
+    const subjects = await fetch('data/subjects.json').then(r => r.json());
+    const subj = subjects.find(s => s.id === SID);
+    cfg = subj && (subj.decks || []).find(d => d.id === DID);
+    if (!cfg) throw new Error('Deck not found');
+    $('back').href = 'subject.html?s=' + encodeURIComponent(SID);
+    $('title').firstChild.nodeValue = cfg.title;
+    $('subtitle').textContent = subj.name;
+    document.title = cfg.title + ' — LEA Reviewer';
+    const [rows, look] = await Promise.all([
+      fetch(cfg.source).then(r => r.json()),
+      cfg.lookup ? fetch(cfg.lookup).then(r => r.json()) : Promise.resolve([])
+    ]);
+    deck = LEASrs.buildDeck(cfg, rows, look);
+    const base = new URL(cfg.source, location.href);
+    deck.cards.forEach(c => { c.src = new URL(c.img, base).href; });
+    blob = loadBlob();
+    renderShell();
+    nextCard();
+    prefetchImages();
+  } catch (e) {
+    $('app').innerHTML = '<div class="msg">This deck could not load. Check your connection and try again.</div>';
+  }
+})();
+
+// Fetch every picture once, quietly, so the deck works offline (the service
+// worker keeps what it fetches). Skipped on data-saver connections.
+function prefetchImages(){
+  if (navigator.connection && navigator.connection.saveData) return;
+  const urls = deck.cards.map(c => c.src);
+  let i = 0;
+  const pump = () => { if (i >= urls.length) return; fetch(urls[i++]).catch(() => {}).finally(() => setTimeout(pump, 40)); };
+  setTimeout(() => { pump(); pump(); pump(); }, 2000);
+}
+
+// ---- render ----
+function renderShell(){
+  $('app').innerHTML =
+    '<div class="stats" id="stats"></div>' +
+    '<div class="track" aria-hidden="true"><i id="bar"></i></div>' +
+    '<div id="main"></div>' +
+    '<div class="opts">' +
+      '<button class="chip" id="shuffle" type="button" aria-pressed="' + blob.prefs.shuffle + '">Shuffle</button>' +
+      '<button class="chip" id="weak" type="button" aria-pressed="' + blob.prefs.weak + '">Weak cards only</button>' +
+      '<label>New cards a day <select id="perday">' + [5,10,15,20,30,50].map(n =>
+        '<option' + (n === blob.prefs.newPerDay ? ' selected' : '') + '>' + n + '</option>').join('') + '</select></label>' +
+    '</div>';
+  $('shuffle').onclick = () => { blob.prefs.shuffle = !blob.prefs.shuffle; $('shuffle').setAttribute('aria-pressed', blob.prefs.shuffle); saveBlob(); };
+  $('weak').onclick = () => { blob.prefs.weak = !blob.prefs.weak; $('weak').setAttribute('aria-pressed', blob.prefs.weak); saveBlob(); nextCard(); };
+  $('perday').onchange = (e) => { blob.prefs.newPerDay = +e.target.value; saveBlob(); paintStats(); if (!cur) nextCard(); };
+}
+
+const today = () => LEASrs.dayKey(Date.now());
+const newLeft = () => blob.prefs.newPerDay - (blob.news[today()] || 0);
+
+function paintStats(){
+  const now = Date.now();
+  const c = LEASrs.counts(deck.cards, blob.cards, now, newLeft());
+  const done = blob.log[today()] || 0, streak = LEASrs.streak(blob.log, now);
+  $('stats').innerHTML =
+    '<span class="c-new"><b>' + c.neu + '</b>New</span>' +
+    '<span class="c-learn"><b>' + c.learn + '</b>Learning</span>' +
+    '<span class="c-due"><b>' + c.due + '</b>Due</span>' +
+    '<span class="spacer"></span>' +
+    '<span class="flame" title="Days in a row">' + (window.LEAIcons ? LEAIcons.flame(16) : '') + '<b>' + streak + '</b></span>' +
+    '<span><b>' + done + '</b>today</span>';
+  const left = c.neu + c.learn + c.due;
+  $('bar').style.transform = 'scaleX(' + (done + left ? done / (done + left) : 0) + ')';
+}
+
+function nextCard(skip){
+  clearTimeout(waitTimer);
+  const now = Date.now();
+  const pool = blob.prefs.weak ? deck.cards.filter(c => !weakDone.has(c.id)) : deck.cards;
+  cur = LEASrs.next(pool, blob.cards, now, { newLeft: newLeft(), weak: blob.prefs.weak, shuffle: blob.prefs.shuffle, skip: skip });
+  if (!cur && skip && !blob.prefs.weak) cur = LEASrs.next(pool, blob.cards, now, { newLeft: newLeft(), shuffle: blob.prefs.shuffle });
+  paintStats();
+  flipped = false;
+  if (!cur) return renderDone();
+  const s = blob.cards[cur.id];
+  const p = LEASrs.preview(s, now);
+  $('main').innerHTML =
+    '<div class="stage in" id="stage">' +
+      '<div class="lift" id="lift"><div class="glow" id="glow"></div>' +
+      '<button class="card" id="card" type="button" aria-label="Picture of a building. Press to show the answer.">' +
+        '<div class="face front"><div class="photo"><div class="ph"></div>' +
+          '<img id="img" alt="Which building is this?" decoding="async"></div>' +
+          '<span class="crop tl"></span><span class="crop tr"></span><span class="crop bl"></span><span class="crop br"></span></div>' +
+        '<div class="face back" aria-hidden="true">' +
+          '<div class="band"><img src="' + esc(cur.src) + '" alt=""></div>' +
+          '<div class="tb">' +
+            '<div class="name">' + esc(cur.name) + '</div>' +
+            '<div class="cell"><small>Architect / proponent</small><div class="arch">' + esc(cur.architect) + '</div></div>' +
+            '<div class="cell"><small>Year</small><div class="yr">' + esc(cur.year || '—') + '</div></div>' +
+            '<div class="credit">Image: ' + esc(cur.credit) + ' · ' + esc(cur.license) + '</div>' +
+          '</div></div>' +
+      '</button></div></div>' +
+    '<div class="actions" id="actions">' +
+      '<button class="show" id="show" type="button">Show answer<span class="key">Space</span></button>' +
+      '<div class="rate hidden" id="rate">' +
+        ['Again','Hard','Good','Easy'].map((l, i) =>
+          '<button type="button" class="r' + (i + 1) + '" data-r="' + (i + 1) + '"><span class="lbl">' + l + '</span><span class="ivl">' + LEASrs.fmt(p[i]) + '</span></button>').join('') +
+      '</div>' +
+      '<div class="hint"><span class="kb">Space flips · 1–4 rates</span><span class="touch">Tap to flip · swipe left for Again, right for Good</span></div>' +
+    '</div>';
+  const img = $('img');
+  img.onload = () => img.classList.add('ready');
+  img.src = cur.src;
+  $('card').onclick = () => { if (!flipped) flip(); };
+  $('show').onclick = flip;
+  $('rate').querySelectorAll('button').forEach(b => b.onclick = () => rate(+b.dataset.r));
+  wireSwipe();
+  // warm the next likely picture
+  const peek = LEASrs.next(deck.cards, blob.cards, now, { newLeft: newLeft(), weak: blob.prefs.weak, skip: cur.id });
+  if (peek) (new Image()).src = peek.src;
+}
+
+function flip(){
+  if (!cur || flipped) return;
+  flipped = true;
+  $('card').classList.add('flipped');
+  $('card').setAttribute('aria-label', cur.name + '. Architect or proponent: ' + cur.architect + '. Year: ' + (cur.year || 'not recorded'));
+  $('show').classList.add('hidden');
+  $('rate').classList.remove('hidden');
+  $('rate').querySelector('[data-r="3"]').focus({ preventScroll: true });
+  sfx('playFlip');
+}
+
+function rate(r){
+  if (!cur || !flipped || busy) return;
+  busy = true;
+  const now = Date.now(), d = today();
+  const before = blob.cards[cur.id];
+  if (blob.prefs.weak) weakDone.add(cur.id);
+  if (!before || before.q === 0) blob.news[d] = (blob.news[d] || 0) + 1;
+  blob.cards[cur.id] = LEASrs.schedule(before, r, now);
+  blob.log[d] = (blob.log[d] || 0) + 1;
+  saveBlob();
+  easyRun = r === 4 ? easyRun + 1 : 0;
+  sfx(r === 1 ? 'playIncorrect' : 'playCorrect');
+  if (easyRun > 0 && easyRun % 3 === 0) celebrate();
+  const id = cur.id, stage = $('stage');
+  stage.classList.remove('in', 'drag');
+  $('lift').style.transform = '';
+  stage.classList.add('out-' + r);
+  setTimeout(() => { busy = false; nextCard(id); }, reduced() ? 200 : 280);
+}
+
+function celebrate(){
+  sfx('playLevelUp');
+  const g = $('glow'); if (g) { g.classList.remove('on'); void g.offsetWidth; g.classList.add('on'); }
+  if (reduced()) return;
+  const burst = document.createElement('div');
+  burst.className = 'burst';
+  const colors = ['var(--gold)', 'var(--good)', 'var(--blue-bright)'];
+  for (let i = 0; i < 16; i++) {
+    const a = (i / 16) * Math.PI * 2, dist = 90 + (i % 3) * 30;
+    const p = document.createElement('i');
+    p.style.background = colors[i % 3];
+    p.style.setProperty('--x', Math.cos(a) * dist + 'px');
+    p.style.setProperty('--y', Math.sin(a) * dist + 'px');
+    burst.appendChild(p);
+  }
+  $('main').appendChild(burst);
+  setTimeout(() => burst.remove(), 1000);
+}
+
+function renderDone(){
+  const now = Date.now();
+  const soon = LEASrs.nextLearnDue(deck.cards, blob.cards, now);
+  const weakN = deck.cards.filter(c => LEASrs.isWeak(blob.cards[c.id])).length;
+  let title = 'All caught up', text = 'Nothing is due right now. Come back tomorrow for your reviews and ' + blob.prefs.newPerDay + ' new cards.';
+  if (blob.prefs.weak) { title = weakDone.size ? 'Weak cards done' : 'No weak cards'; text = weakDone.size ? 'You went through every weak card once. Turn off "Weak cards only" to go back to the normal schedule.' : 'Cards you miss land here. Turn off "Weak cards only" to study the deck.'; }
+  else if (soon) text = 'A card you are learning comes back in ' + LEASrs.fmt(soon - now) + '. Stay here and it will appear.';
+  $('main').innerHTML = '<div class="done"><h2>' + title + '</h2><p>' + esc(text) + '</p><div class="row">' +
+    (!blob.prefs.weak && weakN ? '<button class="chip" id="goWeak" type="button">Study ' + weakN + ' weak cards</button>' : '') +
+    '<button class="chip" id="more" type="button">Add 10 more new cards today</button>' +
+    '<a class="chip" href="' + esc($('back').href) + '" style="text-decoration:none">Back to subject</a></div></div>';
+  if ($('goWeak')) $('goWeak').onclick = () => { blob.prefs.weak = true; $('weak').setAttribute('aria-pressed', 'true'); saveBlob(); nextCard(); };
+  $('more').onclick = () => { blob.news[today()] = (blob.news[today()] || 0) - 10; saveBlob(); nextCard(); };
+  if (soon) waitTimer = setTimeout(() => nextCard(), Math.max(1000, soon - now + 500));
+}
+
+// ---- input ----
+document.addEventListener('keydown', (e) => {
+  if (!cur || e.target.closest('select') || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (e.code === 'Space' || (e.key === 'Enter' && !flipped)) {
+    if (!flipped) { e.preventDefault(); flip(); }
+    else if (e.code === 'Space') e.preventDefault();
+    return;
+  }
+  if (flipped && e.key >= '1' && e.key <= '4') { e.preventDefault(); rate(+e.key); }
+});
+
+function wireSwipe(){
+  const stage = $('stage'), lift = $('lift');
+  let x0 = null, y0 = 0, dx = 0;
+  stage.addEventListener('pointerdown', (e) => { if (!flipped || e.pointerType === 'mouse') return; x0 = e.clientX; y0 = e.clientY; dx = 0; });
+  stage.addEventListener('pointermove', (e) => {
+    if (x0 === null) return;
+    dx = e.clientX - x0;
+    if (Math.abs(e.clientY - y0) > Math.abs(dx) && Math.abs(dx) < 12) return;   // let the page scroll
+    stage.classList.add('drag');
+    if (!reduced()) lift.style.transform = 'translateX(' + dx + 'px) rotate(' + dx / 30 + 'deg)';
+  });
+  const end = () => {
+    if (x0 === null) return;
+    x0 = null;
+    stage.classList.remove('drag');
+    if (dx < -80) rate(1);
+    else if (dx > 80) rate(3);
+    else lift.style.transform = '';
+  };
+  stage.addEventListener('pointerup', end);
+  stage.addEventListener('pointercancel', end);
+}
+</script>
+</body>
+</html>

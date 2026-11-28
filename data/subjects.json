@@ -2377,6 +2377,17 @@
     "name": "Architectural Sites, Proponents, & Styles",
     "blurb": "Name the building, the architect, the style.",
     "ready": true,
+    "decks": [
+      {
+        "id": "buildings-sites",
+        "title": "Architectural Buildings and Sites",
+        "blurb": "See the building, recall its name, architect and year.",
+        "source": "data/architectural-sites-proponents-styles/01.json",
+        "lookup": "data/architectural-sites-proponents-styles/02.json",
+        "credit": "LEA Reviewer image bank",
+        "license": "Own work (see CREDITS.md)"
+      }
+    ],
     "modules": [
       {
         "id": "identify-structure",
